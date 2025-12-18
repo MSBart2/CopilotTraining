@@ -17,7 +17,11 @@ Each module is self-contained with theory, exercises, and links to official docu
 
 ### [Module 0: Orientation — The Markdown Whisperer Philosophy](./modules/00-orientation/README.md)
 
-Understand the evolution of enterprise programming and why clarity of thought is your superpower.
+Understand the training philosophy, meet the personas, and learn how modules are structured. Includes optional historical context about the evolution of enterprise programming.
+
+**Two parts**:
+- Part A: How this training works (10-15 min, start here)
+- Part B: Why this training exists (10-15 min, optional context)
 
 ### [Module 1: Getting Started with GitHub Copilot](./modules/01-getting-started/README.md)
 

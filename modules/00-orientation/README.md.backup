@@ -1,22 +1,8 @@
-# Module 0: Orientation
+# Module 0: Orientation — How This Training Works
 
 ## 📖 Overview
 
-Welcome! This module introduces you to the training philosophy, structure, and personas you'll encounter throughout. It has two parts:
-
-- **Part A: How This Training Works** (10-15 minutes) — The practical structure, personas, and first exercise
-- **Part B: Why This Training Exists** (10-15 minutes) — Optional: The evolution of programming and why clarity matters now
-
-**Choose Your Path**:
-- 🚀 **Ready to start coding?** Complete Part A, then jump to [Module 1: Getting Started](../01-getting-started/README.md)
-- 🤔 **Want deeper context?** Read Part B first to understand the "why," then Part A, then Module 1
-
----
-
-# Part A: How This Training Works
-
-This path turns great thinking into effective collaboration with Copilot. You'll learn a common structure across modules: clear objectives, practical content, persona-driven exercises, and links to official docs. Expect short focused lessons with hands‑on tasks.
-
+Welcome! This path turns great thinking into effective collaboration with Copilot. You’ll learn a common structure across modules: clear objectives, practical content, persona-driven exercises, and links to official docs. Expect short focused lessons with hands‑on tasks.
 
 ## Prerequisites
 
@@ -102,16 +88,6 @@ Write down what you want from Copilot in 3 bullets.
 ## ➡️ Next Steps
 
 Go to Module 1: modules/01-getting-started/README.md
-
-
----
----
-
-# Part B: Why This Training Exists — The Evolution of Enterprise Programming
-
-*This section provides historical context about the evolution of enterprise programming and explains why "clarity over cleverness" became the defining skill in the age of AI. **This is optional**—you can skip directly to [Module 1: Getting Started](../01-getting-started/README.md) and return here later if you wish.*
-
----
 
 # Module 0: Orientation — The Evolution of Enterprise Programming: A 15-Year Journey
 
@@ -293,20 +269,18 @@ Welcome to the future of enterprise development. Let's learn to whisper to markd
 
 ---
 
-## How These Concepts Map to This Training
+## Training Modules (Coming)
 
-The "Markdown Whisperer" philosophy is embedded throughout this training:
+Each module takes 15-20 minutes and covers one topic:
 
-| Philosophy Concept | Covered In |
-|-------------------|------------|
-| **Clarity as a Foundation** | Module 2: Context & Configuration<br>Module 3: Prompt Engineering |
-| **Documentation as Leverage** | Module 2: Context & Configuration<br>(ADRs, patterns, conventions files) |
-| **Intent Over Implementation** | Module 3: Prompt Engineering<br>(clear prompts drive better AI results) |
-| **AI-Assisted Design Thinking** | Module 4: Agents & Tools<br>(@workspace, specialized agents) |
-| **Collaborative Development Workflows** | Module 8: Advanced Features<br>(multi-file editing, code review integration) |
-| **Building Maintainable Systems** | Module 9: Best Practices<br>(long-term thinking with AI assistance) |
-
-Each subsequent module teaches you **how** to be a "Markdown Whisperer" through practical, persona-driven exercises and hands-on experience with GitHub Copilot.
+- **Module 1:** The Markdown Foundation – How to structure your thoughts for clarity
+- **Module 2:** Intent Over Implementation – Writing code that Copilot understands
+- **Module 3:** Architecture as Documentation – ADRs and decision records that scale knowledge
+- **Module 4:** API Design for Clarity – How good contracts make better code
+- **Module 5:** From Requirements to Implementation – Using prompts and documentation as a development workflow
+- **Module 6:** Debugging with AI – How Copilot can help you think through problems
+- **Module 7:** The Architecture Review in the Era of AI – What humans evaluate that machines can't (yet)
+- **Module 8:** Building for Maintainability – How clarity today prevents chaos tomorrow
 
 ---
 

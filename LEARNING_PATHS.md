@@ -2,6 +2,19 @@
 
 This guide helps you navigate the GitHub Copilot training based on your role, experience level, and goals.
 
+## 📖 Starting Point: Module 0
+
+**All learners should start with [Module 0: Orientation](./modules/00-orientation/README.md), Part A** (10-15 minutes)
+- Introduces the training philosophy, structure, and personas
+- Essential foundation for all paths
+
+**Module 0, Part B is optional** but highly recommended for:
+- Skeptical seniors (Sarah, David personas) — provides historical context and explains the paradigm shift
+- Team leads evaluating Copilot — helps explain "why this matters now"
+- Anyone wondering "why should I care about AI-assisted development?"
+
+---
+
 ## 🎯 Choose Your Path
 
 ### Path 1: Complete Beginner
@@ -9,6 +22,11 @@ This guide helps you navigate the GitHub Copilot training based on your role, ex
 **"I'm new to GitHub Copilot"**
 
 **Recommended Sequence:**
+
+0. [Module 0: Orientation](./modules/00-orientation/README.md) - ⏱️ 15-30 mins
+
+   - Part A: How this training works (required)
+   - Part B: Why this training exists (optional, but recommended for context)
 
 1. [Module 1: Getting Started](./modules/01-getting-started/README.md) - ⏱️ 1-2 hours
 
@@ -40,6 +58,9 @@ This guide helps you navigate the GitHub Copilot training based on your role, ex
 **"I code daily but am new to Copilot"**
 
 **Recommended Sequence:**
+
+0. [Module 0: Orientation, Part A](./modules/00-orientation/README.md) - ⏱️ 10 mins
+   - Quick overview of training structure and philosophy
 
 1. [Module 1: Getting Started](./modules/01-getting-started/README.md) - ⏱️ 30 mins
 
@@ -81,6 +102,10 @@ This guide helps you navigate the GitHub Copilot training based on your role, ex
 **"I need to evaluate and deploy Copilot for my team"**
 
 **Recommended Sequence:**
+
+0. [Module 0: Orientation](./modules/00-orientation/README.md) - ⏱️ 20-30 mins
+   - Part A: Training structure 
+   - Part B: Historical context (highly recommended for explaining ROI to stakeholders)
 
 1. [Module 1: Getting Started](./modules/01-getting-started/README.md) - ⏱️ 30 mins
 
@@ -124,6 +149,9 @@ This guide helps you navigate the GitHub Copilot training based on your role, ex
 
 **Recommended Sequence:**
 
+0. [Module 0: Orientation, Part A](./modules/00-orientation/README.md) - ⏱️ 10 mins
+   - Understanding privacy and security philosophy
+
 1. [Module 1: Getting Started](./modules/01-getting-started/README.md) - ⏱️ 30 mins
 
    - Focus on Privacy and Security section
@@ -156,6 +184,8 @@ This guide helps you navigate the GitHub Copilot training based on your role, ex
 
 **Recommended Sequence:**
 
+0. [Module 0: Orientation, Part A](./modules/00-orientation/README.md) - ⏱️ 10 mins
+
 1. [Module 1: Getting Started](./modules/01-getting-started/README.md) - ⏱️ 1 hour
 
 2. **Core Skills Modules:**
@@ -185,6 +215,9 @@ This guide helps you navigate the GitHub Copilot training based on your role, ex
 **"I work primarily with CLI, scripts, and infrastructure code"**
 
 **Recommended Sequence:**
+
+0. [Module 0: Orientation, Part A](./modules/00-orientation/README.md) - ⏱️ 10 mins
+   - Meet Marcus, the DevOps Developer persona
 
 1. [Module 1: Getting Started](./modules/01-getting-started/README.md) - ⏱️ 30 mins
 
@@ -221,6 +254,10 @@ This guide helps you navigate the GitHub Copilot training based on your role, ex
 
 **Recommended Sequence:**
 
+0. [Module 0: Orientation](./modules/00-orientation/README.md) - ⏱️ 20-30 mins
+   - Part A & B recommended — Meet David, the Seasoned Architect persona
+   - Part B explains how expertise becomes MORE valuable with AI
+
 1. [Module 1: Getting Started](./modules/01-getting-started/README.md) - ⏱️ 30 mins
 
 2. [Module 4: Agents and Tools](./modules/04-agents-and-tools/README.md) - ⏱️ 1.5 hours
@@ -255,6 +292,10 @@ This guide helps you navigate the GitHub Copilot training based on your role, ex
 **"I'm teaching others about Copilot"**
 
 **Recommended Sequence:**
+
+0. [Module 0: Orientation](./modules/00-orientation/README.md) - ⏱️ 30 mins
+   - Part A & B essential — understand the philosophy and persona-driven approach
+   - This module explains the teaching approach used throughout
 
 1. **Complete All Modules** - ⏱️ 12-15 hours
 
