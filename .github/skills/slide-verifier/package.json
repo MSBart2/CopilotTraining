@@ -1,9 +1,0 @@
-{
-  "name": "slide-verifier",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "playwright": "^1.40.0",
-    "@playwright/test": "^1.40.0"
-  }
-}

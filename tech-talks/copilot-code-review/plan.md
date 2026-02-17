@@ -1,3 +1,19 @@
+---
+status: active
+updated: 2026-02-17
+section: "Copilot Surfaces"
+references:
+  - url: https://docs.github.com/en/copilot/concepts/agents/code-review
+    label: "Copilot Code Review overview"
+    verified: 2026-02-17
+  - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/configure-automatic-review
+    label: "Configure automatic code review"
+    verified: 2026-02-17
+  - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review
+    label: "Use Copilot code review in PRs"
+    verified: 2026-02-17
+---
+
 # Content Plan: GitHub Copilot Code Review
 
 > Issue #TBD | Generated from research artifacts
@@ -118,11 +134,11 @@ The agent operates as a GitHub webhook integration, triggering on PR events (cre
 ### Move Toward (Embrace These Patterns)
 
 - ✅ **Immediate Feedback Over Delayed Review**: Get comprehensive analysis within minutes of PR creation instead of waiting days for human reviewer availability → Developers iterate faster, maintain flow state, reduce context switching
-  
+
 - ✅ **Consistent Enforcement Over Variable Quality**: Apply identical standards to every PR regardless of time pressure or reviewer workload → Eliminate "rubber stamp" approvals under deadline pressure, catch issues consistently
-  
+
 - ✅ **Educational Review Over Gatekeeping**: Receive explanatory feedback that teaches patterns and best practices → Accelerate developer learning, reduce onboarding time, build team capability
-  
+
 - ✅ **Measurable ROI Over Qualitative Value**: Track quantified time savings, quality improvements, and cost-benefit metrics → Justify investment with data, optimize configuration based on outcomes, demonstrate business impact
 
 - ✅ **Proactive Prevention Over Reactive Fixing**: Catch security vulnerabilities and performance issues before merge → Reduce production incidents, lower remediation costs, improve customer experience
@@ -145,10 +161,10 @@ The agent operates as a GitHub webhook integration, triggering on PR events (cre
 
 - 🛑 **Replacing Human Review Entirely**: Treating automated review as complete replacement for human oversight on complex changes → Misses nuanced business logic, architectural tradeoffs, and domain-specific requirements. Copilot handles mechanical checks; humans handle strategy.
 
-> **Example Transformation:** 
-> 
+> **Example Transformation:**
+>
 > **Before:** Developer submits authentication refactoring PR Friday afternoon. PR sits through weekend. Monday morning reviewer has 15 other PRs queued. Quick scan approves without catching SQL injection vulnerability in new query builder. Ships to production Tuesday. Customer data exposed Wednesday. Emergency patch and incident response costs 40 engineering hours.
-> 
+>
 > **After:** Developer submits same PR Friday afternoon. Copilot reviews in 90 seconds, flags SQL injection with specific line comment and parameterized query fix. Developer corrects in 5 minutes, re-submits. Human reviewer sees "security: ✅ no critical issues" status, focuses review on business logic and UX implications. Approved Friday evening, ships Monday, zero incidents.
 
 ---
@@ -316,7 +332,7 @@ Technology doesn't create value—people using it well do. Successful Copilot Co
 ## Real-World Use Cases (3-5 Scenarios)
 
 ### Use Case 1: E-Commerce Platform - Security at Scale
-**Problem (2-3 sentences):** 
+**Problem (2-3 sentences):**
 Mid-sized e-commerce company processes 10,000+ daily transactions with PCI-DSS compliance requirements. Development team of 15 engineers submits 80-100 PRs weekly. Security team could only manually review 30% of PRs before merge, creating compliance risk and production vulnerabilities.
 
 **Solution:**

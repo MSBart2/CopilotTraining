@@ -141,6 +141,21 @@ section: "Context & Customization" # index-custom.html sub-group
   - `Agent Architecture` — Teams, Multi-Step Tasks, Parallel Execution
   - `Agentic Transformation` — Journey, SDLC, Enterprise Patterns
   - `Executive Talks` — Used for exec-talks only
+- `references` — _(optional)_ Array of authoritative URLs used as sources for the talk's content. Each entry has:
+  - `url` — _(required)_ Full URL to the official documentation or source
+  - `label` — _(required)_ Short human-readable description of the page
+  - `verified` — _(required)_ Date (YYYY-MM-DD) when the URL was last confirmed accurate and accessible
+
+  Example:
+
+  ```yaml
+  references:
+    - url: https://docs.github.com/en/copilot/...
+      label: "Official overview page"
+      verified: 2026-02-17
+  ```
+
+  Agents should populate `references` from the talk's `research.md` URLs when creating or updating content. The `scripts/check-references.mjs` script validates that all reference URLs are still accessible.
 
 **Change detection:** When generating slides, compare the README's `updated` date against the slide file's `updated` date. If the README is newer, the slide needs regeneration. If the slide is newer or equal, it's already up to date.
 
@@ -156,30 +171,15 @@ node slides/scripts/sync-index-dates.mjs
 
 Use `--check` to verify without modifying (useful in CI). The script reads `updated:` from all slide frontmatter and rewrites the `SLIDE_DATES` map in `index-custom.html`.
 
-**For complete slide lifecycle (generation + verification):** Use the `slide-manager` agent (see `.github/agents/slide-manager.agent.md`)
-
-**For generation only:** Use the `slide-generator` agent (see `.github/agents/slide-generator.agent.md`)
-
-**For verification:** The `@slide-verifier` skill uses Playwright to check slides for overflow, broken images, and errors
-
-**For fixing:** The `@slide-fixer` skill resolves issues by splitting slides and correcting problems (invoke manually if needed)
-
-**Note:** The `slide-manager` agent generates and verifies but does not auto-fix. Issues are reported for manual resolution or targeted fixing via `@slide-fixer` skill.
+**For slide generation:** Use the `slide-generator` agent (see `.github/agents/slide-generator.agent.md`)
 
 ### Recommended Workflow
 
 ```
-Use slide-manager agent to create slides for workshop/03-custom-prompts
+Use slide-generator agent to create slides for workshop/03-custom-prompts
 ```
 
-This orchestrates:
-
-1. Generation from README (selective, 15-20 slides)
-2. Smart verification (lint-first, Playwright only if errors)
-3. Results report with pass/fail and issue details
-4. Fast completion (~2-6 minutes depending on whether Playwright runs)
-
-**Note:** Issues are reported, not auto-fixed. Use `@slide-fixer` skill or manual edits if fixes needed.
+This generates slides from the module README (selective, 15-20 slides), updates the slide index, and reports completion.
 
 **Persona reference:** [workshop/00-orientation/PERSONAS.md](../workshop/00-orientation/PERSONAS.md)
 

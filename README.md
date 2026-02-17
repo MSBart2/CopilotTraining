@@ -153,9 +153,6 @@ Content development is powered by custom Copilot agents and skills that run insi
 | `@Module Planner` | Research and plan module outlines |
 | `@Tech Talk Generator` | Research and generate tech talk content |
 | `@Slide Generator` | Create Slidev slides from README files |
-| `@Slide Manager` | Generate + verify slides in one pass |
-| `@slide-verifier` skill | Playwright-based slide validation |
-| `@slide-fixer` skill | Auto-fix overflowing or broken slides |
 | `@exercise-author` skill | Create exercise files from module plans |
 
 Agent definitions live in `.github/agents/` and skills in `.github/skills/`.

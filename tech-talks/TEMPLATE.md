@@ -1,3 +1,16 @@
+---
+status: active
+updated: YYYY-MM-DD
+section: "Sub-group Name"
+references:
+  - url: https://docs.github.com/en/copilot/...
+    label: "Official doc page title"
+    verified: YYYY-MM-DD
+  - url: https://github.blog/...
+    label: "Blog post or article title"
+    verified: YYYY-MM-DD
+---
+
 # [Feature/Capability Name]: [Compelling Subtitle]
 
 > **The Question This Talk Answers:**

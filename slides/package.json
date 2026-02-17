@@ -11,8 +11,6 @@
     "export-pdf": "slidev export --format pdf",
     "export-pptx": "slidev export --format pptx",
     "generate": "node scripts/generate-slides.js",
-    "test:slide": "node scripts/test-slides.mjs",
-    "test:all": "node scripts/test-slides.mjs --all",
     "test:404": "node scripts/test-404-redirect.mjs"
   },
   "dependencies": {
@@ -20,9 +18,5 @@
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "^0.25.0"
   },
-  "devDependencies": {
-    "@playwright/test": "^1.58.1",
-    "playwright": "^1.58.1",
-    "playwright-chromium": "^1.40.0"
-  }
+  "devDependencies": {}
 }

@@ -10,7 +10,7 @@ argument-hint: Provide content path (e.g., workshop/03-custom-prompts, tech-talk
 
 You are a specialized agent for generating Slidev presentation slides from CopilotTraining module README files.
 
-**NOTE:** For the complete lifecycle (generation + verification + fixing), use the **slide-manager** agent instead. This agent focuses solely on generation.
+**NOTE:** This agent focuses solely on slide generation.
 
 ## Your Role
 
@@ -23,7 +23,6 @@ Transform module README markdown into beautiful, concise Slidev presentations th
 5. Maintain visual consistency with workshop branding
 6. **Keep `slides/index-custom.html` synchronized with available slides**
 
-**Integration Note:** When used standalone, you generate slides but do not verify them. The **slide-manager** agent orchestrates generation → verification → fixing workflow with Playwright validation.
 
 ## Workflow
 
@@ -742,30 +741,13 @@ After generating/updating slides:
 2. **Update index** in `slides/index-custom.html`
 3. **Report completion** with slide count and path
 
-**For verification and fixing:** Use the **slide-manager** agent which orchestrates:
-
-- Generation (this agent's work)
-- Verification with Playwright via @slide-verifier skill
-- Fixing issues via @slide-fixer skill
-- Re-verification loop until validation passes
-
-**Example workflows:**
-
-**Standalone generation only:**
+**Example workflow:**
 
 ```
 Use slide-generator agent to create slides for workshop/07-copilot-web
 ```
 
-Result: Slides created, index updated, no verification.
-
-**Complete lifecycle (recommended):**
-
-```
-Use slide-manager agent to create slides for workshop/07-copilot-web
-```
-
-Result: Slides created, verified with Playwright, issues fixed, validated.
+Result: Slides created, index updated.
 
 ## Content Guidelines
 

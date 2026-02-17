@@ -18,7 +18,6 @@ We condensed the agent and skill files in `.github/` to essential definitions (t
 
 - `agents-module-creator-FULL.md` → Referenced by `.github/agents/module-creator.agent.md`
 - `agents-module-planner-FULL.md` → Referenced by `.github/agents/module-planner.agent.md`
-- `agents-slide-manager.agent.md` → Referenced by `.github/agents/slide-manager.agent.md`
 - `agents-tech-talk-generator.agent.md` → Referenced by `.github/agents/tech-talk-generator.agent.md`
 - `slide-generator-FULL.md` → Referenced by `.github/agents/slide-generator.agent.md`
 
@@ -27,8 +26,6 @@ We condensed the agent and skill files in `.github/` to essential definitions (t
 - `skills-exercise-author-SKILL.md` → Referenced by `.github/skills/exercise-author/SKILL.md`
 - `skills-module-author-SKILL.md` → Referenced by `.github/skills/module-author/SKILL.md`
 - `skills-tech-talk-author-SKILL.md` → Referenced by `.github/skills/tech-talk-author/SKILL.md`
-- `skills/slide-fixer-FULL.md` → Referenced by `.github/skills/slide-fixer/SKILL.md`
-- `skills/slide-verifier-FULL.md` → Referenced by `.github/skills/slide-verifier/SKILL.md`
 
 ## When to Use This Documentation
 

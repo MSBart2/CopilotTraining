@@ -63,22 +63,16 @@ Agents can read the full docs when needed for implementation details.
 - `.github/agents/module-creator.agent.md` (7,445 → 1,291 chars)
 - `.github/agents/module-planner.agent.md` (6,236 → 1,406 chars)
 - `.github/agents/slide-generator.agent.md` (44,260 → 3,270 chars)
-- `.github/agents/slide-manager.agent.md` (15,446 → 1,372 chars)
 - `.github/agents/tech-talk-generator.agent.md` (11,774 → 1,291 chars)
 - `.github/skills/exercise-author/SKILL.md` (12,582 → 931 chars)
 - `.github/skills/module-author/SKILL.md` (10,796 → 905 chars)
-- `.github/skills/slide-fixer/SKILL.md` (17,719 → 2,071 chars)
-- `.github/skills/slide-verifier/SKILL.md` (20,942 → 2,319 chars)
 - `.github/skills/tech-talk-author/SKILL.md` (15,577 → 834 chars)
 
 ### Full Documentation (in `/docs/`)
 - `docs/agents/slide-generator-FULL.md`
 - `docs/agents-module-creator-FULL.md`
 - `docs/agents-module-planner-FULL.md`
-- `docs/agents-slide-manager.agent.md`
 - `docs/agents-tech-talk-generator.agent.md`
-- `docs/skills/slide-verifier-FULL.md`
-- `docs/skills/slide-fixer-FULL.md`
 - `docs/exercise-author-SKILL.md`
 - `docs/module-author-SKILL.md`
 - `docs/tech-talk-author-SKILL.md`
