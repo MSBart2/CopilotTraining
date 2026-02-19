@@ -1,10 +1,3 @@
---
-
-create a "what's New in VSCode" tech talk covering multiple versions, go 3 versions back (90-days). links/sections to eeach release for easy navigation.  focus on new agent capabilities, but also cover any other major features that have been released in the last 3 months.  this will be a recurring talk that we update every month as VS releases to keep teams up to date on the latest capabilities and how they can be used in their workflows.
-
-Need to figure out a good way to include GH announcements in this talk as well, since not all features are released in VS Code at the same time as they're announced.  maybe a "recent announcements" section that highlights new features that are coming soon but not yet released in VS Code?
-
----
 
 agentic-issues.  by having agents combs/compile/research/plan issues, it gets us closer to just "assign this to copilot". That seems to be the closest "easy button" for teams to adopt, and also the most direct way to get value out of agents without needing to rewire your entire SDLC.  need to add a section on this to the agentic-sdlc talk, and then add a link to it in the decision guide for teams who want to dip their toes in the water before doing a full SDLC transformation.
 
@@ -21,14 +14,5 @@ AGENTS.md: https://agents.md/
 Using agents in Visual Studio Code: https://code.visualstudio.com/docs/copilot/agents/overview#_types-of-agents
 
 ---
-Built a repo: copilot-usage.  Need to create PAT and test.
-new tech talk for reporting based on https://docs.github.com/en/enterprise-cloud@latest/rest/copilot/copilot-usage-metrics?apiVersion=2022-11-28
-"how to hold developers/managers accountable for copilot usage?" "how to measure the impact of copilot on your org?"  "what metrics should you be looking at to understand usage and impact?"  "how to set goals for copilot usage and track progress towards those goals?"
 
----
-
-investigate this :  https://search.app/1fZRT
-
----
-built a repo: cli-acp.  works.  good scenario.  maybe add another sccenario like "Update logging across all repos to make it consistent."
-build tech-talk for multi-repo workspaces in VS Code.  how to set them up, best practices for using them, how they can help with working across multiple related repositories (e.g. microservices, frontend/backend, etc.) Answers the question of "how do I use copilot agents across multiple repositories?" and "how do I set up my environment to work with multiple repos at once?"  also covers the new multi-repo features in VS Code that make this easier, and any tips/tricks for getting the most out of it.
+add some meat around the statement "Guidance not Governance".  EAs seems to want to bring all their bad habits/assumptions to agentic delivery.
