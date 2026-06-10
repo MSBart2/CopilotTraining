@@ -95,10 +95,10 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
   pillLabel="Section 1 · Integration"
   title="From Command to Live Agent Workflow"
   codePosition="left"
-  :code='{ language: "bash", filename: "acp-session", content: "$ copilot --acp --stdio\n{method: initialize, protocolVersion: 2024-06}\n{result: ready, capabilities: [read, write, execute]}\n\n$ send-prompt \"Refactor this fetch\":\n  [thinking] Analyzing imports, dependencies...\n  [search] @files src/api.ts\n  [thinking] Found 3 fetch calls, suggesting Promise.all\n  [code] function getUsers() {\n    return Promise.all([\n      fetch(/api/users),\n      fetch(/api/posts)\n    ])\n  }" }'
+  :code='{ language: "powershell", filename: "terminal", content: "PS> copilot --acp --stdio\n{method: initialize, protocolVersion: 2024-06}\n{result: ready, capabilities: [read, write]}\n\nPS> Send-Prompt \"Refactor fetch calls\"\n[thinking] Analyzing imports...\n[tool] Search files: *.ts\n[thinking] Found 3 fetch calls\n[stream] function getUsers() {\n  return Promise.all([\n    fetch(/api/users),\n    fetch(/api/posts)\n  ])\n}" }'
   :features="[
     { icon: '💭', title: 'Agent thinking visible', description: 'Stream reasoning steps to editor UI' },
-    { icon: '🔧', title: 'Tool invocations in-flight', description: 'Agent can search files, run tests, call APIs' },
+    { icon: '🔧', title: 'Tool invocations in-flight', description: 'Agent can search files, read context, call APIs' },
     { icon: '📝', title: 'Real code output', description: 'Streaming code, diffs, and explanations' }
   ]"
   :progressDots='{ current: 1, total: 2, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
