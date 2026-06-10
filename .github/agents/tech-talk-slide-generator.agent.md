@@ -95,6 +95,19 @@ Write the scaffold in one pass:
 
 ---
 
+## Phase B Pre-read: Component Schema Reference
+
+> **CRITICAL: Before writing ANY body slide, you MUST read this first.**
+
+Read **`slides/tech-talks/template.md`** to build a mental map of all 13 Tier-1 components:
+- Each component has an **exact prop name and structure** documented with working examples
+- Study the escaping rules and usage patterns
+- This is your authoritative source — do not guess at prop names or structures
+
+**Only AFTER you have `template.md` loaded in context should you write any component tags.**
+
+---
+
 ## Phase B — Body content (README-driven)
 
 Now read everything that Phase B needs — **all in one parallel pass before writing any body slides**. Issue all reads simultaneously, not sequentially:
@@ -316,3 +329,7 @@ Run through this before handing off.
 - `ThankYouSlide` props are `title`, `subtitle`, `cards`, `prompt` — no `message`, no `links`
 - TOC `slide` numbers must be counted from the final deck, not estimated from the outline
 - UTF-8 BOM breaks frontmatter — write files with `UTF8Encoding($false)` if using PowerShell
+- **Guessing at component props** — Every body component is documented in `slides/tech-talks/template.md` with working examples. If you don't see it there, the prop doesn't exist. **Always check template.md BEFORE writing any component tags.**
+- **BeforeAfterSlide vs BeforeAfterMetricsSlide** — These are different components with different props. Check template.md to determine which one the content calls for, then verify the exact prop schema.
+- **Section openers don't use universal body props** — `SectionOpenerSlide` requires `partNumber`, `section`, `title`, `subtitle`, `cards`, but NOT `pillIcon`, `pillLabel`, or `progressDots`. Verify in template.md before adding any props.
+- **Adding props that don't exist breaks the build silently** — Vue components validate strict prop definitions. If you add a prop that doesn't exist on the component, Slidev will fail or ignore it. Always cross-reference with template.md working examples.
