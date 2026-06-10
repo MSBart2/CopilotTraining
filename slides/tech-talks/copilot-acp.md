@@ -274,23 +274,11 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
   pillIcon="✅"
   pillLabel="Section 4 · Decision"
   title="Choose Your Path"
-  :cards="[
-    {
-      icon: '🎯',
-      title: 'Use ACP Now',
-      items: ['Non-VS Code tool', 'Need multi-agent coordination', 'Building with Claude API', 'Enterprise policy required']
-    },
-    {
-      icon: '🤔',
-      title: 'Consider Alternatives',
-      items: ['Already VS Code extension', 'Need IDE-specific integration', 'Single-agent only', 'Built-in copilot works']
-    },
-    {
-      icon: '📚',
-      title: 'Start Small',
-      items: ['Read the spec first', 'Try the SDK for your lang', 'Deploy to dev/test', 'Add policies before production']
-    }
-  ]"
+  :columns='[
+    { icon: "🎯", title: "Use ACP Now", description: "Non-VS Code tool, multi-agent coordination, Claude API, enterprise policy" },
+    { icon: "🤔", title: "Consider Alternatives", description: "Already VS Code, IDE-specific needs, single-agent only, built-in copilot works" },
+    { icon: "📚", title: "Start Small", description: "Read spec, try SDK for your language, deploy to dev/test, add policies before prod" }
+  ]'
   :progressDots='{ current: 1, total: 1, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
