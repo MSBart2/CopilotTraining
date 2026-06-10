@@ -93,13 +93,13 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
   :partNumber="1"
   pillIcon="🚀"
   pillLabel="Section 1 · Integration"
-  title="One Flag. Full Agent API."
+  title="From Command to Live Agent"
   codePosition="left"
-  :code='{ language: "bash", filename: "shell", content: "$ copilot --acp --stdio\n# Connects to ACP protocol\n# Streams real-time responses\n# Works in any editor\n# No extension required\n# Initialize: ~5 lines\n# Create session: ~3 lines\n# Done." }'
+  :code='{ language: "bash", filename: "shell", content: "$ copilot --acp --stdio\n{\n  jsonrpc: 2.0, method: initialize\n}\n{\n  jsonrpc: 2.0, result: initialized\n}\n$ cat prompt.txt | acp-client\nReading files...\nAnalyzing code...\nAgent response: [streaming...]" }'
   :features="[
-    { icon: '🎯', title: 'Streaming responses', description: 'Agent output flows in real-time' },
-    { icon: '📡', title: 'Standard protocol', description: 'Works with any editor, language, platform' },
-    { icon: '⚡', title: 'Ready in minutes', description: 'No VS Code extension dependency' }
+    { icon: '🎯', title: 'Standard JSON-RPC protocol', description: 'Initialize session, send prompts, stream responses' },
+    { icon: '📡', title: 'Your editor handles it', description: 'No special agent integration needed—just speak the protocol' },
+    { icon: '⚡', title: 'Full streaming agent API', description: 'Real-time reasoning, tool calls, code generation all available' }
   ]"
   :progressDots='{ current: 1, total: 2, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
