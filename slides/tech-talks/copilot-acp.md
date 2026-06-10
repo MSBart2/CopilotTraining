@@ -62,7 +62,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
     { icon: "👨‍💻", title: "Zed Developer", subtitle: "From locked-in to full agent", blurb: "Connect without months of custom work", slide: 4 },
     { icon: "🔧", title: "Platform Engineer", subtitle: "Three permission strategies", blurb: "Ship safely with policy-enforced permissions", slide: 7 },
     { icon: "🤖", title: "Multi-Agent Orchestrator", subtitle: "One protocol, many agents", blurb: "Coordinate agents across repositories", slide: 10 },
-    { icon: "✅", title: "Ship Safely", subtitle: "When and how to use ACP", blurb: "Decision framework for adoption", slide: 12 }
+    { icon: "✅", title: "Ship Safely", subtitle: "When and how to use ACP", blurb: "Decision framework for adoption", slide: 17 }
   ]'
 />
 
@@ -243,7 +243,147 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
     { icon: '🔀', title: 'Same protocol everywhere', description: 'No special multi-agent mode' },
     { icon: '🧩', title: 'Compose at will', description: 'Standard ACP sessions compose naturally' }
   ]"
-  :progressDots='{ current: 1, total: 1, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+  :progressDots='{ current: 1, total: 6, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Shopfleet Scenario Arc -->
+
+<CodeWithFeaturesSlide
+  :partNumber="3"
+  pillIcon="🗺️"
+  pillLabel="Section 3 · Scenario Arc"
+  title="Five Scenarios, One Operator Playbook"
+  codePosition="left"
+  :code='{ language: "markdown", filename: "SCENARIO.md", content: "1. service-audit-and-api-alignment\n2. payment-expansion\n3. loyalty-feature-rollout\n4. inventory-sync-coordination\n5. security-audit-shared-upgrade\n\nSuggested: 1 -> 2 -> 3 -> 4 -> 5" }'
+  :features="[
+    { icon: '🏁', title: 'Start with architecture truth', description: 'Scenario 1 creates a shared baseline across all repos' },
+    { icon: '🔁', title: 'Escalate complexity', description: 'Scenarios 2-4 layer feature rollout and dependency routing' },
+    { icon: '🚨', title: 'End with critical path ops', description: 'Scenario 5 proves security sequencing under pressure' }
+  ]"
+  :progressDots='{ current: 2, total: 6, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Broadcast + Synthesis Operator Loop -->
+
+<AITerminalTranscriptSlide
+  :partNumber="3"
+  pillIcon="📡"
+  pillLabel="Section 3 · Operator Loop"
+  title="Scenario 1: Broadcast First, Synthesize Second"
+  subtitle="The fastest way to align eight shopfleet services"
+  :transcript='[
+    { type: "prompt", text: "Broadcast to all workers" },
+    { type: "user", text: "Audit this microservice: purpose, APIs, dependencies, risks" },
+    { type: "thinking", label: "🤔 Workers streaming:" },
+    { type: "response", lines: ["users: profile + auth ownership", "orders: fulfillment + payment handoff", "storefront: UI + checkout orchestration"] },
+    { type: "divider" },
+    { type: "prompt", text: "Set Orchestrator Focus" },
+    { type: "user", text: "Synthesize dependency map + alignment gaps + next 3 actions" },
+    { type: "outcome", text: "One architecture narrative from seven isolated contexts" }
+  ]'
+  footerMetric="Operator pattern: shared prompt -> worker evidence -> orchestrator synthesis"
+  :progressDots='{ current: 3, total: 6, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Dependency Routing in Action -->
+
+<CodeWithFeaturesSlide
+  :partNumber="3"
+  pillIcon="🔄"
+  pillLabel="Section 3 · Dependency Routing"
+  title="Scenario 3: Loyalty Rollout with Cross-Repo Cascades"
+  codePosition="left"
+  :code='{ language: "json", filename: "acp-manifest.json", content: "{\n  \"name\": \"shopfleet-storefront\",\n  \"dependsOn\": [\"shopfleet-users\", \"shopfleet-products\"]\n}\n\n// Broadcast: implement loyalty points\n// Route plan: storefront <- users, products, payments\n// Cascade: service-specific prompts generated per dependency" }'
+  :features="[
+    { icon: '🧠', title: 'Graph-aware prompts', description: 'Routes are generated from repo relationships, not guesswork' },
+    { icon: '🎯', title: 'Repo-specific execution', description: 'Each worker gets the same intent but tailored implementation context' },
+    { icon: '🧪', title: 'Consistency checks', description: 'Orchestrator catches schema drift across LoyaltyAccount and PointsTransaction' }
+  ]"
+  :progressDots='{ current: 4, total: 6, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Security Sequence Matters -->
+
+<WorkflowShowdownStepsSlide
+  :partNumber="3"
+  pillIcon="🛡️"
+  pillLabel="Section 3 · Security Ops"
+  title="Scenario 5: Shared Library Security Upgrade"
+  subtitle="Order of operations is the difference between safety and outage"
+  leftLabel="Ad-hoc rollout"
+  rightLabel="Orchestrated rollout"
+  :steps='[
+    {
+      left: { label: "Patch services in parallel", note: "Inconsistent hash behavior" },
+      right: { label: "Patch shopfleet-shared first", note: "Single source of crypto truth" }
+    },
+    {
+      left: { label: "Discover breakages after deploy", note: "Login failures surface late" },
+      right: { label: "Broadcast diagnostic audit", note: "Find all hash usage before rollout" }
+    },
+    {
+      left: { label: "No migration plan", note: "Users forced into resets" },
+      right: { label: "Dual-verify transition", note: "Old SHA + new bcrypt during migration" }
+    },
+    {
+      left: { label: "Manual coordination", note: "High incident risk" },
+      right: { label: "Orchestrator validates all services", note: "Evidence before production" }
+    }
+  ]'
+  :outcomeLeft='{ icon: "⚠️", label: "Uncontrolled security blast radius" }'
+  :outcomeRight='{ icon: "✅", label: "Controlled migration with audit trail" }'
+  summaryMetric="Critical path: shared library -> dependent services -> validation broadcast"
+  :progressDots='{ current: 5, total: 6, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Screenshot Storyboard -->
+
+<ThreeColumnCardSlide
+  :partNumber="3"
+  pillIcon="📸"
+  pillLabel="Section 3 · Demo Visuals"
+  title="Live Screenshot Storyboard for Your Polyrepo Demo"
+  :columns='[
+    {
+      icon: "1️⃣",
+      title: "Topology",
+      items: [
+        "Full app layout: orchestrator + 3+ workers",
+        "Dependency graph with node and edge counts",
+        "Banner showing unloaded dependency neighbors"
+      ]
+    },
+    {
+      icon: "2️⃣",
+      title: "Coordination",
+      items: [
+        "Routing plan panel with edited downstream prompts",
+        "Broadcast results with coalesced worker outputs",
+        "Orchestrator card in Synthesizing state"
+      ]
+    },
+    {
+      icon: "3️⃣",
+      title: "Agent States",
+      items: [
+        "Worker card with dependsOn and dependedBy pills",
+        "Unloaded dep chip with Load as Worker action",
+        "Session panel showing Restore vs Re-spawn"
+      ]
+    }
+  ]'
+  :insight='{ icon: "🧭", text: "If you want backup visuals, cli-acp has walkthrough captures under docs/images/walkthrough/01-06 while you replace with live local shots." }'
+  :progressDots='{ current: 6, total: 6, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
