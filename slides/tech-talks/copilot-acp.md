@@ -58,14 +58,12 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 <!-- SLIDE: The Journey -->
 
 <TocSlide
-  title="The Three Builders Arc"
-  subtitle="Zed Developer → Platform Engineer → Multi-Agent Orchestrator → Ship Safely"
-  :sections="[
-    { label: 'Zed Developer', description: 'Connect in 14 lines', slide: 4 },
-    { label: 'Platform Engineer', description: 'Secure with policy', slide: 7 },
-    { label: 'Multi-Agent Orchestrator', description: 'Compose at scale', slide: 10 },
-    { label: 'Ship Safely', description: 'Your first step', slide: 12 }
-  ]"
+  :sections='[
+    { icon: "👨‍💻", title: "Zed Developer", subtitle: "From locked-in to full agent", blurb: "Connect without months of custom work", slide: 4 },
+    { icon: "🔧", title: "Platform Engineer", subtitle: "Three permission strategies", blurb: "Ship safely with policy-enforced permissions", slide: 7 },
+    { icon: "🤖", title: "Multi-Agent Orchestrator", subtitle: "One protocol, many agents", blurb: "Coordinate agents across repositories", slide: 10 },
+    { icon: "✅", title: "Ship Safely", subtitle: "When and how to use ACP", blurb: "Decision framework for adoption", slide: 12 }
+  ]'
 />
 
 ---
