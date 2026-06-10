@@ -93,13 +93,13 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
   :partNumber="1"
   pillIcon="🚀"
   pillLabel="Section 1 · Integration"
-  title="From Command to Live Agent"
+  title="From Command to Live Agent Workflow"
   codePosition="left"
-  :code='{ language: "bash", filename: "shell", content: "$ copilot --acp --stdio\n{\n  jsonrpc: 2.0, method: initialize\n}\n{\n  jsonrpc: 2.0, result: initialized\n}\n$ cat prompt.txt | acp-client\nReading files...\nAnalyzing code...\nAgent response: [streaming...]" }'
+  :code='{ language: "bash", filename: "acp-session", content: "$ copilot --acp --stdio\n{method: initialize, protocolVersion: 2024-06}\n{result: ready, capabilities: [read, write, execute]}\n\n$ send-prompt \"Refactor this fetch\":\n  [thinking] Analyzing imports, dependencies...\n  [search] @files src/api.ts\n  [thinking] Found 3 fetch calls, suggesting Promise.all\n  [code] function getUsers() {\n    return Promise.all([\n      fetch(/api/users),\n      fetch(/api/posts)\n    ])\n  }" }'
   :features="[
-    { icon: '🎯', title: 'Standard JSON-RPC protocol', description: 'Initialize session, send prompts, stream responses' },
-    { icon: '📡', title: 'Your editor handles it', description: 'No special agent integration needed—just speak the protocol' },
-    { icon: '⚡', title: 'Full streaming agent API', description: 'Real-time reasoning, tool calls, code generation all available' }
+    { icon: '💭', title: 'Agent thinking visible', description: 'Stream reasoning steps to editor UI' },
+    { icon: '🔧', title: 'Tool invocations in-flight', description: 'Agent can search files, run tests, call APIs' },
+    { icon: '📝', title: 'Real code output', description: 'Streaming code, diffs, and explanations' }
   ]"
   :progressDots='{ current: 1, total: 2, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
