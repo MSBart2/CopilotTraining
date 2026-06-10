@@ -95,11 +95,11 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
   pillLabel="Section 1 · Integration"
   title="From Command to Live Agent Workflow"
   codePosition="left"
-  :code='{ language: "powershell", filename: "terminal", content: "PS> copilot --acp --stdio\n{method: initialize, protocolVersion: 2024-06}\n{result: ready, capabilities: [read, write]}\n\nPS> Send-Prompt \"Refactor fetch calls\"\n[thinking] Analyzing imports...\n[tool] Search files: *.ts\n[thinking] Found 3 fetch calls\n[stream] function getUsers() {\n  return Promise.all([\n    fetch(/api/users),\n    fetch(/api/posts)\n  ])\n}" }'
+  :code='{ language: "json", filename: "acp-protocol", content: "→ {method: initialize, params: {...}}\n← {result: initialized}\n\n→ {method: prompt, text: Refactor fetch}\n← {event: thinking, text: Analyzing...}\n← {event: tool, tool: read_files, path: *.ts}\n← {event: thinking, text: Found 3 fetches}\n← {event: text, delta: function getUsers() {\n  return Promise.all([\n    fetch(/api/users),\n    fetch(/api/posts)\n  ])\n}}" }'
   :features="[
-    { icon: '💭', title: 'Agent thinking visible', description: 'Stream reasoning steps to editor UI' },
-    { icon: '🔧', title: 'Tool invocations in-flight', description: 'Agent can search files, read context, call APIs' },
-    { icon: '📝', title: 'Real code output', description: 'Streaming code, diffs, and explanations' }
+    { icon: '💭', title: 'Streaming protocol', description: 'Real JSON-RPC messages: → client, ← server' },
+    { icon: '🔧', title: 'Visible agent internals', description: 'See thinking, tool calls, and code as it streams' },
+    { icon: '📡', title: 'Language-agnostic', description: 'Any editor can implement this protocol' }
   ]"
   :progressDots='{ current: 1, total: 2, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
