@@ -4,6 +4,24 @@ Confirmed, locked facts about Slidev infrastructure, build rules, and structural
 
 ---
 
+## Component content validator limits — character maximums per component (2026-06-16)
+
+`schema_version: 1` | `date: 2026-06-16`
+
+The build validator enforces per-component character limits that are NOT documented in `template.md`. Exceed them → `[WARN]` lines in build output (deck still builds `[OK]` but content may overflow visually).
+
+| Component | Constraint | Max |
+|---|---|---|
+| `FourCardGridSlide` | `:cards` items | exactly 4 (insight prop counts toward limit — remove it if you have 4 cards) |
+| `ThreeColumnCardSlide` | `description` per column | 100 chars |
+| `MaturityJourneyRoadmapSlide` | `description` per stage | 100 chars |
+| `FrameworkMappingRowsSlide` | `label` per row | 13 chars |
+| `FrameworkMappingRowsSlide` | `description` per row | 70 chars |
+
+**`FourCardGridSlide` + insight:** The validator counts `:insight` as an item alongside `:cards`. If you have 4 cards + insight = 5 items → CARDS_MAX warning. Workaround: remove `:insight` when you need all 4 cards.
+
+---
+
 ## Blank line required between `---` and `<!-- SLIDE: -->` (2026-05-05)
 
 `schema_version: 1` | `date: 2026-05-05`

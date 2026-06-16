@@ -4,6 +4,24 @@ Confirmed facts specific to the tech-talk content pipeline, workflow, and catalo
 
 ---
 
+## copilot-app deck complete — Trust Ladder framing (2026-06-16)
+
+`schema_version: 1` | `date: 2026-06-16`
+
+`tech-talks/copilot-app/` is a complete, building tech-talk in the **Agentic Systems** section. 25 slides.
+
+**Trust Ladder structuring principle** (from council-improved recipe): each of the 4 sections answers one escalating trust question:
+1. "What is this?" (The Fleet Model)
+2. "Is it safe?" (Safe Parallelism)
+3. "How much control do I keep?" (Control Surfaces)
+4. "What does done look like at scale?" (Sessions to Systems)
+
+This pattern is reusable for any talk that introduces new infrastructure tooling where audience skepticism is the core blocker.
+
+**Key cross-references:** overlaps with Agent Teams (worktree architecture), Agentic Workflows (workflow/trigger patterns), MCP Apps (Canvas MCP surface).
+
+---
+
 ## component-test.md is a visual testing harness — not a tech-talk (2026-04-21)
 
 `schema_version: 1` | `date: 2026-04-21`
