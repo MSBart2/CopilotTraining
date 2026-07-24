@@ -4,6 +4,18 @@ Breakthroughs — patterns that solved persistent problems in Slidev slide autho
 
 ---
 
+## `CARDS_MAX`/`SECTIONS_MAX` prop-lint false positive when a card component also has an `insight` prop (2026-07-24)
+
+`schema_version: 1` | `date: 2026-07-24`
+
+`build-all.ps1`'s `Invoke-PropLint` counts `CARDS_MAX` (and `SECTIONS_MAX`) by regex-matching every `icon:\s*"[^"]+"` occurrence inside the **whole** `<ComponentName ... />` block — not just inside the `:cards` array. Components like `FourCardGridSlide` that also accept an optional `:insight='{ icon: "...", text: "..." }'` prop get their insight's own `icon:` field counted as a 5th "card", producing `[WARN] line N: CARDS_MAX exceeded (5 items, max 4)` even when `:cards` genuinely contains exactly 4 items.
+
+**How to confirm it's a false positive, not a real bug:** count the `{ icon: ..., title: ..., description: ... }` entries inside `:cards='[...]'` only. If that count matches the component's actual max, the warning is a linter artifact — the component's own runtime `validationError` guard (`cards.length !== 4`) is the ground truth, and the Slidev build still reports `[OK]`.
+
+**Not fixed this session** (regex fix is in `scripts/build-all.ps1`, out of scope for content-only work) — but future sessions should recognize this pattern immediately rather than re-auditing card counts from scratch. Seen in `slides/tech-talks/copilot-code-quality.md` (2 instances, both false positives).
+
+---
+
 ## Raw HTML slides in Slidev decks can use `isDark` via deck-level `<script setup>` (2026-04-26)
 
 `schema_version: 1` | `date: 2026-04-26`

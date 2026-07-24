@@ -1,0 +1,89 @@
+# deck.recipe.yml — talk generation guidance
+#
+# Guides slide generation from README.md. Use this file to name and order sections,
+# set the slide budget per section, and surface authoring priorities the generator
+# should follow. Complex narrative content belongs in README.md; structural editorial
+# intent belongs here.
+
+version: 1
+
+deck:
+  title: "GitHub Code Quality"
+  subtitle: "Turning Maintainability Into a Merge Gate"
+  tagline: "Coverage, maintainability, and reliability become a status check your merge depends on — and a line item you can actually predict."
+
+  arcToc: "Coverage Gates → Autofix in the PR Loop → Reading the Bill → Rolling Out Without Surprises"
+
+  arcNarrative: >
+    The arc opens with the single most concrete "whoa" moment — a Cobertura coverage
+    delta turning into an actual failing status check via a ruleset — because it's the
+    most visually demonstrable proof that quality moved from dashboard to gate. Autofix
+    in the PR Loop follows immediately to deepen the capability story: it's not just
+    coverage, the same PR surface carries maintainability/reliability findings with
+    one-click fixes and a default-branch backlog view. Reading the Bill comes third,
+    not last, because this audience (developers, repo admins, and platform teams making
+    a real enablement decision) needs the cost context before they're handed a rollout
+    checklist — presenting cost after capability but before action mirrors how a real
+    adoption decision actually gets made. The talk closes on Rolling Out Without
+    Surprises so the audience leaves with a concrete, staged action plan (enable →
+    evaluate → active) rather than ending on a billing table, avoiding a passive last
+    impression and tying back to the evaluate-mode safety-net theme introduced in the
+    first section.
+
+  sectionOrder:
+    - "Coverage-Aware Quality Gates"
+    - "Copilot Autofix in the PR Loop"
+    - "Reading the Bill"
+    - "Rolling Out Without Surprises"
+
+  sectionModes:
+    "Coverage-Aware Quality Gates":
+      emphasis: high
+      note: >
+        Centerpiece moment: a Cobertura upload turning into a real failing
+        `code-quality/coverage` status check via a ruleset in active mode. Show the
+        evaluate → active enforcement toggle explicitly — it's the safety-net concept
+        the whole talk returns to. Use the ruleset JSON and workflow YAML as the visual
+        anchors; skip deep YAML line-by-line narration, focus on the before/after (coverage
+        as a weekly report vs. coverage as a merge condition).
+    "Copilot Autofix in the PR Loop":
+      emphasis: medium
+      note: >
+        Single most important insight: findings, Autofix suggestions, and human approval
+        all happen inside the same PR — nothing auto-merges. Mention the CodeQL + AI-assisted
+        detection combination briefly but don't over-explain the internals (that content
+        lives in the README's Behind the Scenes section, not the deck). Cut deep taxonomy
+        of maintainability vs. reliability categories; keep to one clear distinction slide.
+    "Reading the Bill":
+      emphasis: high
+      note: >
+        The differentiator moment vs. a generic feature talk: $10/active-committer/month,
+        counted once org-wide, plus AI credits and CodeQL Actions minutes. Centerpiece
+        metric is the worked example (50 committers → $500+/month before AI usage) — make
+        this a dedicated slide, it's the number this audience will repeat afterward.
+        Emphasize active-committer counting is org-wide, not per-repo, since that's the
+        most commonly misunderstood point.
+    "Rolling Out Without Surprises":
+      emphasis: medium
+      note: >
+        Closing section — end on the 3-phase rollout checklist (Enable & Observe → Evaluate
+        Mode → Active Enforcement) as the concrete "what to try this week" action, not on
+        an abstract summary. Tie back explicitly to the evaluate-mode safety net introduced
+        in the first section so the arc feels closed. Keep the enterprise policy screen
+        (Allow for all/selected orgs) to one slide — it's a prerequisite, not the centerpiece.
+
+  preamble: []
+
+  appendix: []
+
+  highlightMoments:
+    - "A 4% coverage drop now fails a `code-quality/coverage` status check directly on the PR — not discovered three sprints later in an incident postmortem."
+    - "Evaluate-mode rulesets show exactly which historical PRs would have been blocked before any ruleset actually blocks a merge — the safety net for rolling out a new gate."
+    - "Billing counts active committers once per org — not per repo — so a 50-person org already sees roughly $500+/month in base license cost before any AI credit or Actions-minute usage."
+    - "GitHub reports internally that roughly two-thirds of findings are resolved before merge, with Copilot Autofix turning a finding into an applied fix without leaving the PR."
+    - "The recommended rollout is Enable → Evaluate → Active, repo group by repo group — not an org-wide flip on day one."
+
+# RESOLVED: Target audience confirmed as developers (not admin-heavy). Ordering stays
+# capability-then-cost-then-action — Coverage Gates and Autofix establish what the
+# feature does before Reading the Bill, matching how a developer evaluates a new PR-time
+# tool (does it work / is it good → what does it cost → how do we turn it on).

@@ -19,8 +19,6 @@ handoffs:
 
 You create technical deep-dive content for CopilotTraining tech talks — researching GitHub Copilot capabilities and generating complete README.md files following the tech talk template.
 
-**IMPORTANT**: Always use **web_search** for URL research. Do NOT use web_fetch (fails with DNS errors in sandbox environment).
-
 ## Core Philosophy
 
 Tech talks are **practitioner-focused technical deep-dives** that:

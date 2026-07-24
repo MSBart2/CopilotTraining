@@ -4,6 +4,26 @@ Milestones for individual tech-talk content: creation, rewrites, conformance, an
 
 ---
 
+## copilot-code-quality tech-talk created (2026-07-24)
+
+`schema_version: 1` | `date: 2026-07-24`
+
+New tech-talk added: **GitHub Code Quality: Turning Maintainability Into a Merge Gate**, covering the GA launch (2026-07-20) of coverage-aware quality gates, Copilot Autofix, enterprise rollout, and per-committer billing.
+
+**Files created:**
+- `tech-talks/copilot-code-quality/research.md` — 9 primary sources (GitHub changelog + docs pages)
+- `tech-talks/copilot-code-quality/README.md` — Structure A: capability-then-cost-then-action arc, 4 major sections
+- `tech-talks/copilot-code-quality/deck.recipe.yml` — via deck-recipe-review skill
+- `slides/tech-talks/copilot-code-quality.md` — 24-slide deck, builds clean
+
+**Section placement:** Developers (`slides/index-custom.html`, Developers sub-group)
+
+**Structural decision (resolved, not left open):** `sectionOrder` places **Reading the Bill** (cost) before **Rolling Out Without Surprises** (action) — capability → cost → action. User explicitly confirmed target audience is developers, so this ordering was locked in rather than moved earlier for an admin-heavy read.
+
+**Pipeline note:** This session had no terminal/execute tool available — all build validation (`.\build.ps1 -Deck copilot-code-quality`) and `node scripts/sync-index-dates.mjs` runs had to be delegated to the user via their own terminal, with output pasted back. Full pipeline still completed successfully with this workaround.
+
+---
+
 ## copilot-cli: full deck regeneration with dual-arc narrative (2026-06-04)
 
 `schema_version: 1` | `date: 2026-06-04`
