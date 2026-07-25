@@ -34,7 +34,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="MCP Apps"
   subtitle="Rich Interactive UI in Chat"
@@ -44,7 +44,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="What if your chat responses were interactive visualizations you could explore inline?"
   subtext="Chat returns text. MCP Apps return"
@@ -61,7 +61,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "🎨", title: "Component Types",   subtitle: "The visual palette — 6 types",              blurb: "Charts, tables, forms, trees, cards, custom — and when to use each",      slide: 4  },
@@ -73,7 +73,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 1 — Component Types -->
+# Part 1 — Component Types
 <SectionOpenerSlide
   :partNumber="1"
   title="Component Types"
@@ -88,7 +88,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: The Six Types -->
+# The Six Types
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="🎨"
@@ -108,7 +108,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Charts and Tables in detail -->
+# Charts and Tables in detail
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="📊"
@@ -137,7 +137,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Forms, Trees, Cards -->
+# Forms, Trees, Cards
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🔧"
@@ -153,7 +153,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 2 — Building MCP Apps -->
+# Part 2 — Building MCP Apps
 <SectionOpenerSlide
   :partNumber="2"
   title="Building MCP Apps"
@@ -168,7 +168,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: The Pivotal Moment -->
+# The Pivotal Moment
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="⚡"
@@ -186,7 +186,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: The Full Callback Lifecycle -->
+# The Full Callback Lifecycle
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🔄"
@@ -205,7 +205,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Callback Code Example -->
+# Callback Code Example
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="🔗"
@@ -223,7 +223,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Security Model -->
+# Security Model
 <FourCardGridSlide
   :partNumber="2"
   pillIcon="🔒"
@@ -241,7 +241,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 3 — Real-World Patterns -->
+# Part 3 — Real-World Patterns
 <SectionOpenerSlide
   :partNumber="3"
   title="Real-World Patterns"
@@ -256,7 +256,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Dashboard Pattern -->
+# Dashboard Pattern
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="📊"
@@ -274,7 +274,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Progressive Drill-Down -->
+# Progressive Drill-Down
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="🔍"
@@ -303,7 +303,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: The 12-min → 45-sec Payoff -->
+# The 12-min → 45-sec Payoff
 <HeroStatSlide
   :partNumber="3"
   pillIcon="⚡"
@@ -322,7 +322,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Best Practices -->
+# Best Practices
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="✅"
@@ -340,7 +340,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 4 — Integration -->
+# Part 4 — Integration
 <SectionOpenerSlide
   :partNumber="4"
   title="Integration"
@@ -355,7 +355,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: With Custom Agents and Skills -->
+# With Custom Agents and Skills
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="🤖"
@@ -384,7 +384,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Copilot Memory Integration -->
+# Copilot Memory Integration
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="💾"
@@ -400,7 +400,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: The Platform View -->
+# The Platform View
 <FourCardGridSlide
   :partNumber="4"
   pillIcon="🔗"
@@ -418,7 +418,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
   header="From Text-Stream Chat to Visual Workspace"
   :leftItems='["Data responses are markdown tables or ASCII — unreadable beyond toy examples", "Copy data to Excel, build chart, realize wrong date range, repeat — 12 min per query", "Static results: re-prompt and start over when you need a different filter or view", "Context switches accumulate: 90 minutes per day lost to data formatting in heavy workflows"]'
@@ -432,7 +432,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Install the MCP Apps Playground and run all six component type examples locally", "Change one existing MCP tool to return type: component instead of text — build your first chart", "Map your most text-heavy tool response to the decision tree: which component type fits best?"]'
   :thisWeek='["Add a sortable table component to your highest-traffic data query tool", "Implement one callback: form onSubmit or tree onSelect calling a second MCP tool", "Test the security model — verify iframe sandboxing and CSP restrictions with browser devtools"]'
@@ -442,7 +442,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -459,7 +459,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="MCP Apps"
   subtitle="Rich Interactive UI in Chat"

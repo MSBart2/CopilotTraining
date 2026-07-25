@@ -33,7 +33,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="The Labor Multiplier"
   subtitle="Where the other 67% of delivery labor lives"
@@ -45,7 +45,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 src: ./exec-spine.md
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="Where does the P&L gain actually live — and what must leadership authorize to capture it?"
   subtext="AI is already in engineering organizations. The productivity data is real. The P&L impact is not showing up — and this briefing explains exactly why."
@@ -62,7 +62,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Overview -->
+# Overview
 <TocSlide
   :sections='[
     { icon: "📊", title: "The Hidden Labor Bill", blurb: "Where AI is working — and why the gains are not reaching the P&L", slide: 5 },
@@ -74,7 +74,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 1 — The Hidden Labor Bill -->
+# Part 1 — The Hidden Labor Bill
 <SectionOpenerSlide
   :partNumber="1"
   title="The Hidden Labor Bill"
@@ -89,7 +89,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 1 Slide 1 — The Accenture Proof -->
+# Part 1 Slide 1 — The Accenture Proof
 <BeforeAfterMetricsSlide
   :partNumber="1"
   pillIcon="📊"
@@ -107,7 +107,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 1 Slide 2 — The 67% Problem -->
+# Part 1 Slide 2 — The 67% Problem
 <HeroStatSlide
   :partNumber="1"
   pillIcon="⏱️"
@@ -127,7 +127,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 1 Slide 3 — Mirror and Multiplier -->
+# Part 1 Slide 3 — Mirror and Multiplier
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="🔬"
@@ -157,7 +157,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 1 Slide 4 — What AI Reaches -->
+# Part 1 Slide 4 — What AI Reaches
 <BeforeAfterPanelsSlide
   :partNumber="1"
   pillIcon="🎯"
@@ -170,7 +170,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 2 — The SDLC Labor Map -->
+# Part 2 — The SDLC Labor Map
 <SectionOpenerSlide
   :partNumber="2"
   title="The SDLC Labor Map"
@@ -185,7 +185,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 2 Slide 1 — Three Zones Framework -->
+# Part 2 Slide 1 — Three Zones Framework
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🗺️"
@@ -202,7 +202,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 2 Slide 2 — Control Zone -->
+# Part 2 Slide 2 — Control Zone
 <BeforeAfterMetricsSlide
   :partNumber="2"
   pillIcon="🛡️"
@@ -220,7 +220,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 2 Slide 3 — Coordination Zone -->
+# Part 2 Slide 3 — Coordination Zone
 <HeroStatSlide
   :partNumber="2"
   pillIcon="🔄"
@@ -240,7 +240,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 2 Slide 4 — Context Zone -->
+# Part 2 Slide 4 — Context Zone
 <BeforeAfterPanelsSlide
   :partNumber="2"
   pillIcon="📚"
@@ -254,7 +254,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 3 — The Handoff Pattern -->
+# Part 3 — The Handoff Pattern
 <SectionOpenerSlide
   :partNumber="3"
   title="The Handoff Pattern"
@@ -269,7 +269,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 3 Slide 1 — Handoff Compression -->
+# Part 3 Slide 1 — Handoff Compression
 <BeforeAfterMetricsSlide
   :partNumber="3"
   pillIcon="🔄"
@@ -287,7 +287,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 3 Slide 2 — Trust as Architecture -->
+# Part 3 Slide 2 — Trust as Architecture
 <HeroStatSlide
   :partNumber="3"
   pillIcon="🤝"
@@ -307,7 +307,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 3 Slide 3 — DORA 7 Foundations -->
+# Part 3 Slide 3 — DORA 7 Foundations
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="📋"
@@ -327,7 +327,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 4 — The Decision -->
+# Part 4 — The Decision
 <SectionOpenerSlide
   :partNumber="4"
   title="The Decision"
@@ -342,7 +342,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 4 Slide 1 — Governance Baseline -->
+# Part 4 Slide 1 — Governance Baseline
 <HeroStatSlide
   :partNumber="4"
   pillIcon="📊"
@@ -362,7 +362,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 4 Slide 2 — One Authorization -->
+# Part 4 Slide 2 — One Authorization
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="✅"
@@ -379,7 +379,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Before and After -->
+# Before and After
 <BeforeAfterSlide
   header="What Changes When Agents Enter the SDLC"
   :leftItems='[
@@ -403,7 +403,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
     "Identify one high-friction engineering workflow as the governance pilot target"
@@ -422,7 +422,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📊 Research and Industry Data", color: "cyan", items: [
@@ -447,7 +447,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="The Labor Multiplier"
   subtitle="AI addressed the 33%. The other 67% is the addressable opportunity."

@@ -33,7 +33,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="No Instruments, No Delivery"
   subtitle="The Enterprise Agentic Imperative"
@@ -45,7 +45,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 src: ./exec-spine.md
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="What does it take to operate agentic AI safely at enterprise scale?"
   subtext="The tools are available. The question is whether the organization has the infrastructure to use them safely — and the governance to know when not to."
@@ -62,7 +62,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "✈️", title: "The Shift", subtitle: "From Coders to Captains", blurb: "Business stakes and the reframe that changes the calculus for enterprise AI investment", slide: 6 },
@@ -74,7 +74,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 1 — The Shift -->
+# Part 1 — The Shift
 <SectionOpenerSlide
   :partNumber="1"
   title="The Shift"
@@ -90,7 +90,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The 5% Signal -->
+# The 5% Signal
 <HeroStatSlide
   :partNumber="1"
   pillIcon="📊"
@@ -109,7 +109,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The Enterprise Stakes -->
+# The Enterprise Stakes
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="⚖️"
@@ -126,7 +126,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: From Coders to Captains -->
+# From Coders to Captains
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="✈️"
@@ -158,7 +158,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 2 — The Flight Model -->
+# Part 2 — The Flight Model
 <SectionOpenerSlide
   :partNumber="2"
   title="The Flight Model"
@@ -174,7 +174,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The Enterprise Flight System -->
+# The Enterprise Flight System
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🗼"
@@ -194,7 +194,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The Instrument Panel -->
+# The Instrument Panel
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🎛️"
@@ -215,7 +215,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Authorization and the Multiplier -->
+# Authorization and the Multiplier
 <TwoColPairedConceptsSlide
   :partNumber="2"
   pillIcon="⚡"
@@ -246,7 +246,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 3 — The Risk -->
+# Part 3 — The Risk
 <SectionOpenerSlide
   :partNumber="3"
   title="The Risk"
@@ -262,7 +262,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The Governance Charter -->
+# The Governance Charter
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="⚖️"
@@ -283,7 +283,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The CFO and CISO Case -->
+# The CFO and CISO Case
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="💰"
@@ -315,7 +315,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 4 — The Decision -->
+# Part 4 — The Decision
 <SectionOpenerSlide
   :partNumber="4"
   title="The Decision"
@@ -331,7 +331,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Action 1 — Platform Infrastructure Audit -->
+# Action 1 — Platform Infrastructure Audit
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🔍"
@@ -348,7 +348,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Action 2 — Fund the Instrument Panel -->
+# Action 2 — Fund the Instrument Panel
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🏗️"
@@ -365,7 +365,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Action 3 — Designate a Pilot Team -->
+# Action 3 — Designate a Pilot Team
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="✈️"
@@ -382,7 +382,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Before and After -->
+# Before and After
 <BeforeAfterSlide
   header="The Instrument Panel Changes Everything"
   :leftItems='["One developer, one agentic session — manual verification at every step", "AI-generated code ships without automated security or compliance checks", "Flying blind across more missions amplifies failures, not productivity", "Risk is invisible until incident — SEC 4-day clock starts after the breach"]'
@@ -396,7 +396,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Schedule the platform infrastructure audit with VP Engineering — four-week deadline, instrument gap map as the deliverable", "Identify which of the six instruments the delivery pipeline already has"]'
   :thisWeek='["Designate a pilot team candidate and define baseline DORA metrics before agentic workflow begins", "Draft the platform team investment proposal — 3–5 engineers, specific gaps identified, payback timeline"]'
@@ -406,7 +406,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📊 AI Productivity Research", color: "cyan", items: [
@@ -430,7 +430,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="No Instruments, No Delivery"
   subtitle="The Enterprise Agentic Imperative"

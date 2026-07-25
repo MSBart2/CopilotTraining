@@ -26,8 +26,7 @@ import ReferencesSlide from './components/structure/ReferencesSlide.vue'
 import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
-
+# Title
 <TitleSlide
   title="GitHub Copilot ACP"
   subtitle="Your Tool Just Got an AI Agent"
@@ -37,8 +36,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Your Question -->
-
+# Your Question
 <CoreQuestionSlide
   question="I build tools outside VS Code — how do I give them Copilot&#39;s full agent capabilities?"
   subtext="Every role needs something different: real integration speed, enterprise trust, or multi-agent coordination."
@@ -55,8 +53,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: The Journey -->
-
+# The Journey
 <TocSlide
   :sections='[
     { icon: "👨‍💻", title: "Zed Developer", subtitle: "From locked-in to full agent", blurb: "Connect without months of custom work", slide: 4 },
@@ -68,8 +65,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Zed Developer -->
-
+# Zed Developer
 <SectionOpenerSlide
   :partNumber="1"
   section="Part 1"
@@ -87,8 +83,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: The 14-Line Integration -->
-
+# The 14-Line Integration
 <CodeWithFeaturesSlide
   :partNumber="1"
   pillIcon="🚀"
@@ -106,8 +101,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Before & After: What Zed Gets -->
-
+# Before & After: What Zed Gets
 <BeforeAfterMetricsSlide
   :partNumber="1"
   pillIcon="📊"
@@ -139,8 +133,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Platform Engineer -->
-
+# Platform Engineer
 <SectionOpenerSlide
   :partNumber="2"
   section="Part 2"
@@ -158,8 +151,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Permission Callback: Three Strategies -->
-
+# Permission Callback: Three Strategies
 <ProblemSolutionOutcomeSlide
   :partNumber="2"
   pillIcon="🔐"
@@ -191,8 +183,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Context-Aware Policy: Tiered by Environment -->
-
+# Context-Aware Policy: Tiered by Environment
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="🎯"
@@ -210,8 +201,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Multi-Agent Orchestrator -->
-
+# Multi-Agent Orchestrator
 <SectionOpenerSlide
   :partNumber="3"
   section="Part 3"
@@ -229,8 +219,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Architecture: One Orchestrator, Many Workers -->
-
+# Architecture: One Orchestrator, Many Workers
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="🤖"
@@ -248,8 +237,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Shopfleet Scenario Arc -->
-
+# Shopfleet Scenario Arc
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="🗺️"
@@ -267,8 +255,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Broadcast + Synthesis Operator Loop -->
-
+# Broadcast + Synthesis Operator Loop
 <AITerminalTranscriptSlide
   :partNumber="3"
   pillIcon="📡"
@@ -291,8 +278,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Dependency Routing in Action -->
-
+# Dependency Routing in Action
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="🔄"
@@ -310,8 +296,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Security Sequence Matters -->
-
+# Security Sequence Matters
 <WorkflowShowdownStepsSlide
   :partNumber="3"
   pillIcon="🛡️"
@@ -346,8 +331,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Screenshot Storyboard -->
-
+# Screenshot Storyboard
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="📸"
@@ -388,8 +372,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Ship Safely -->
-
+# Ship Safely
 <SectionOpenerSlide
   :partNumber="4"
   section="Part 4"
@@ -407,8 +390,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: When to Use ACP: Decision Framework -->
-
+# When to Use ACP: Decision Framework
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="✅"
@@ -424,8 +406,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
-
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Follow agentclientprotocol.com/spec", "Bookmark the official documentation", "Star the SDK repositories"]'
   :thisWeek='["Clone the ACP SDK for your language", "Run the 14-line example and stream responses", "Read the four-layer architecture guide"]'
@@ -435,8 +416,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: References -->
-
+# References
 <ReferencesSlide
   title="Learn More"
   :groups='[
@@ -454,8 +434,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 
 ---
 
-<!-- SLIDE: Thank You -->
-
+# Thank You
 <ThankYouSlide
   title="Your Tool Just Got an AI Agent"
   subtitle="Build with ACP. Ship safely. Scale."

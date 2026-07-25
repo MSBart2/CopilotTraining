@@ -1,0 +1,112 @@
+# deck.recipe.yml — loop engineering talk generation guidance
+# Fresh recipe produced by deck-recipe-review skill (council run: 2026-07-02).
+#
+# Guides slide generation from tech-talks/loopy-agents/README.md.
+# Council consolidated 5 README 🎬 sections to 4 deck sections:
+#   → "Multi-Agent Design" draws from ## Agent-to-Agent Communication
+#                                  AND ## Orchestration Topologies
+# Option B confirmed: three-slide simple-path sequence in "The Loop" section.
+
+version: 1
+
+deck:
+  title: "Loop Engineering"
+  subtitle: "Designing Agent Systems That Run Reliably"
+  tagline: "Autonomous by design. Verifiable by default."
+
+  # arcToc: one line ≤ 80 chars, displayed as TocSlide subtitle.
+  arcToc: "The Loop → Multi-Agent Design → Production Controls → Wiring It Together"
+
+  # arcNarrative: prose rationale for section ordering. Generator authoring guidance only.
+  arcNarrative: >
+    The talk opens by answering the one question practitioners need before anything else:
+    what IS a loopy agent? One sentence, one slide — the anchor for everything that follows.
+    The trigger lands second: without a recurring fire mechanism, what we have is one-shot
+    orchestration; Copilot Automations (Agents tab → Create new) is the native answer and
+    showing the UI is the first concrete aha. The section closes with the three-slide
+    simple-path sequence — orchestrator, worker, shared state — so practitioners see a
+    complete working loop before the talk increases in complexity. Section 2 zooms into
+    multi-agent coordination: structured handoff, lifecycle states (the Idle → Suspended
+    transition is the "that's where my loop died" moment), and topology as a design decision
+    rather than an accident. Section 3 is the safety layer practitioners skip most: three
+    controls, plain-language first, code second. Section 4 leads with the outcome before
+    the machinery — the runtime walkthrough table (18 minutes, zero prompts, T+18 highlighted)
+    before the agent-file diagram — so practitioners feel the pull before they see the
+    construction. The arc (definition → trigger → structure → safety → proof) earns its
+    length because each section is the prerequisite for the next.
+
+  sectionOrder:
+    - "The Loop"
+    - "Multi-Agent Design"
+    - "Production Controls"
+    - "Wiring It Together"
+
+  sectionModes:
+    "The Loop":
+      # high = 4–5 slides, medium = 2–3, medium-low = 1–2
+      emphasis: high
+      note: >
+        Slide 1 — definition only: "A loopy agent continues to act and verify in a cycle
+        until the goal is demonstrably met — then stops." Let it sit before moving on.
+        Slide 2 — trigger: without a recurring fire, this is one-shot orchestration; show
+        the Copilot Automation UI (Agents tab → Create new → schedule or event options).
+        This is the aha: the trigger is already built in. Slides 3–5 — three-slide
+        simple-path sequence: (3) orchestrator agent instructions with the five components
+        (trigger, goal, execute, verify, control) labeled inline, (4) a worker agent file
+        showing how it receives a task and writes results back — answers "how does the
+        orchestrator invoke workers?", (5) loop-state.json as the shared brain. YAML
+        blueprint is a brief tertiary slide labeled "same pattern, production scale" —
+        linked to README, not explained line by line. NPX commands earn one callout slide
+        as a readiness-check tool. Skip ReAct history.
+
+    "Multi-Agent Design":
+      emphasis: high
+      note: >
+        Draws from two README sections: Agent-to-Agent Communication AND Orchestration
+        Topologies. Lead with the structured-handoff concept: agents need to pass work in
+        a way that is traceable and includes escalation paths. Show first as a
+        loop-state.json entry (simple path), then as the task-envelope JSON schema
+        (structured path). Key fields to call out regardless of format: intent, constraints,
+        escalate_on, on_complete. Lifecycle state diagram (Created → Active → Idle →
+        Suspended → Escalated → Terminated) earns one slide — the Idle → Suspended
+        transition is the "that's where my loop died" moment and completes the watchdog
+        story in section 3. Topology catalog as a comparison table (flat-pool, hierarchical,
+        pipeline) with a plain-English selection guide; map each to its .github/agents/
+        equivalent. Cut all topology YAML from slides.
+
+    "Production Controls":
+      emphasis: medium
+      note: >
+        Open with the finding: production-control patterns account for the majority of
+        reported production failures in agentic systems. Three controls, each earns a tight
+        callout — plain-language rule first, implementation second: circuit breaker
+        (iteration cap + timeout — "stop after N iterations regardless of goal state"),
+        bounded execution (budget note in task delegation), goal-watchdog (stall detection
+        — resolves the Idle → Suspended transition introduced in section 2). Close with
+        the loop-audit CLI: show the three FAIL-severity checks as a checklist practitioners
+        can screenshot and run against any loop, simple or structured. Code is secondary
+        to the plain-language rule throughout.
+
+    "Wiring It Together":
+      emphasis: medium-low
+      note: >
+        Lead with the outcome, not the machinery. First slide: the runtime walkthrough
+        table — "18 minutes, zero human prompts" as the header, T+18 min row highlighted.
+        Let practitioners feel the pull before seeing the construction. Second slide: the
+        agent-file diagram showing which .github/agents/ files participate, what each does,
+        and how they share state — this is the "now I understand how to build it" moment.
+        Close with a single "What We Get" summary card: 18 minutes, zero human prompts,
+        full audit trail via trace_id. Do not show the full pipeline YAML on a slide —
+        link to README. The section's job is to make practitioners say "I can build this
+        today."
+
+  preamble: []
+  appendix: []
+
+  # 3–5 high-signal moments the generator must surface in the deck.
+  highlightMoments:
+    - "Definition slide: 'A loopy agent continues to act and verify until the goal is demonstrably met — then stops.' One sentence. Most screenworthy slide in the deck."
+    - "Copilot Automation: Agents tab → Create new → 'every day at midnight' — the loop trigger is already built in, no infrastructure required"
+    - "18 minutes, zero human prompts: security advisory → scan → fix → critic → verified PR, fully automated"
+    - "The Idle → Suspended transition: most silent loop failures live here — the goal-watchdog is what catches them regardless of implementation"
+    - "npx @cobusgreyling/loop-audit . --suggest gives a Loop Readiness Score against any loop config — simple or structured"

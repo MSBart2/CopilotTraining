@@ -35,7 +35,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="Copilot Memory"
   subtitle="Stateful AI That Remembers Your Preferences"
@@ -45,7 +45,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How do I stop re-explaining my coding style every session?"
   subtext="Every developer using Copilot hits the same wall:"
@@ -55,7 +55,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   title="Copilot Memory"
   subtitle="Hook (stateless pain) → Mechanism → Activation → Decision framework"
@@ -64,7 +64,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Part 1 Opener -->
+# Part 1 Opener
 <SectionOpenerSlide
   :partNumber="1"
   pillIcon="🧠"
@@ -77,7 +77,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Storage Decision Logic -->
+# Storage Decision Logic
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="🧠"
@@ -89,7 +89,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Store vs Retrieve -->
+# Store vs Retrieve
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="🧠"
@@ -102,7 +102,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Cross-Platform Sync -->
+# Cross-Platform Sync
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="🧠"
@@ -114,7 +114,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: 28 Days and ROI -->
+# 28 Days and ROI
 <HeroStatSlide
   :partNumber="1"
   pillIcon="🧠"
@@ -129,7 +129,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Part 2 Opener -->
+# Part 2 Opener
 <SectionOpenerSlide
   :partNumber="2"
   pillIcon="⚙️"
@@ -142,7 +142,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Enable and Configure -->
+# Enable and Configure
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="⚙️"
@@ -156,7 +156,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Memory Management -->
+# Memory Management
 <FourCardGridSlide
   :partNumber="2"
   pillIcon="⚙️"
@@ -168,7 +168,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Part 3 Opener -->
+# Part 3 Opener
 <SectionOpenerSlide
   :partNumber="3"
   pillIcon="📝"
@@ -181,7 +181,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Ideal Candidates -->
+# Ideal Candidates
 <FourCardGridSlide
   :partNumber="3"
   pillIcon="📝"
@@ -193,7 +193,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: What NOT to Store -->
+# What NOT to Store
 <FourCardGridSlide
   :partNumber="3"
   pillIcon="📝"
@@ -205,7 +205,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: The Persistence Test -->
+# The Persistence Test
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="📝"
@@ -217,7 +217,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Memory vs Custom Instructions -->
+# Memory vs Custom Instructions
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="📝"
@@ -230,7 +230,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Part 4 Opener -->
+# Part 4 Opener
 <SectionOpenerSlide
   :partNumber="4"
   pillIcon="🔐"
@@ -243,7 +243,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Privacy Model -->
+# Privacy Model
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="🔐"
@@ -256,7 +256,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Enterprise Governance -->
+# Enterprise Governance
 <FourCardGridSlide
   :partNumber="4"
   pillIcon="🔐"
@@ -268,7 +268,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: ROI -->
+# ROI
 <HeroStatSlide
   :partNumber="4"
   pillIcon="🔐"
@@ -283,7 +283,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: Before and After -->
+# Before and After
 <BeforeAfterSlide
   header="Life Before and After Copilot Memory"
   :leftItems='["Re-explain coding style every session","Prompt-engineer preferences into every chat","Context lost when switching between tools","Team members get inconsistent Copilot behavior"]'
@@ -293,7 +293,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Enable memory in VS Code settings (chat.memory.enabled)","Open the memory management panel and review defaults","Write your first preference: preferred language or framework"]'
   :thisWeek='["Store your test and review style preferences","Add framework and dependency preferences","Tell Copilot your PR and commit message conventions"]'
@@ -303,14 +303,14 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[{"title":"📖 Official Documentation","color":"cyan","items":[{"label":"Copilot Memory documentation","href":"https://docs.github.com/en/copilot/how-tos/use-copilot-agents/copilot-memory","description":"Core concepts, memory curation, and privacy model"},{"label":"Custom instructions in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/custom-instructions","description":"Complementary team-wide instructions feature"}]}]'
 />
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Copilot Memory"
   subtitle="Your preferences, persisted. Your context, never lost."

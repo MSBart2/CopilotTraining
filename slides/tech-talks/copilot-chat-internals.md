@@ -36,7 +36,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="Copilot Chat Internals"
   subtitle="Debugging AI Interactions"
@@ -45,7 +45,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="Why can&#39;t I reproduce this Copilot failure?"
   subtext="When AI responses break, most engineers have nowhere to look. Copilot now ships"
@@ -61,7 +61,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "📡", title: "Agent Debug Panel", subtitle: "Real-Time Event Stream (v1.110)", blurb: "Monitor every model turn, tool call, and chart in real time", slide: 4 },
@@ -72,7 +72,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Part 1 — Agent Debug Panel: Real-Time Events -->
+# Part 1 — Agent Debug Panel: Real-Time Events
 <SectionOpenerSlide
   :partNumber="1"
   title="Agent Debug Panel: Real-Time Events"
@@ -86,7 +86,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Agent Debug Panel — Four Events -->
+# Agent Debug Panel — Four Events
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="📡"
@@ -103,7 +103,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Agent Debug Panel — Customization Failure -->
+# Agent Debug Panel — Customization Failure
 <AITerminalTranscriptSlide
   :partNumber="1"
   pillIcon="🔍"
@@ -124,7 +124,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Agent Debug Panel — Chart and Customizations -->
+# Agent Debug Panel — Chart and Customizations
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="📊"
@@ -154,7 +154,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Agent Debug Panel — Impact -->
+# Agent Debug Panel — Impact
 <WorkflowShowdownStepsSlide
   :partNumber="1"
   pillIcon="🎯"
@@ -176,7 +176,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Part 2 — Chat Debug View: Full Pipeline -->
+# Part 2 — Chat Debug View: Full Pipeline
 <SectionOpenerSlide
   :partNumber="2"
   title="Chat Debug View: Full Pipeline"
@@ -190,7 +190,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Chat Debug View — Request Pipeline -->
+# Chat Debug View — Request Pipeline
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🔍"
@@ -209,7 +209,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Chat Debug View — Context Inspection -->
+# Chat Debug View — Context Inspection
 <AITerminalTranscriptSlide
   :partNumber="2"
   pillIcon="🔍"
@@ -231,7 +231,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Chat Debug View — Thinking Tokens -->
+# Chat Debug View — Thinking Tokens
 <FourCardGridSlide
   :partNumber="2"
   pillIcon="🧠"
@@ -248,7 +248,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Chat Debug View — Context Management -->
+# Chat Debug View — Context Management
 <BeforeAfterMetricsSlide
   :partNumber="2"
   pillIcon="📐"
@@ -282,7 +282,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Part 3 — Customization Diagnostics -->
+# Part 3 — Customization Diagnostics
 <SectionOpenerSlide
   :partNumber="3"
   title="Customization Diagnostics"
@@ -296,7 +296,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Customization Diagnostics — Failure Modes -->
+# Customization Diagnostics — Failure Modes
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="⚙️"
@@ -314,7 +314,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Customization Diagnostics — Tools Comparison -->
+# Customization Diagnostics — Tools Comparison
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="🔧"
@@ -344,7 +344,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Part 4 — Systematic Troubleshooting -->
+# Part 4 — Systematic Troubleshooting
 <SectionOpenerSlide
   :partNumber="4"
   title="Systematic Troubleshooting"
@@ -358,7 +358,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Troubleshooting Patterns — Decision Map -->
+# Troubleshooting Patterns — Decision Map
 <FrameworkMappingRowsSlide
   :partNumber="4"
   pillIcon="🗺️"
@@ -376,7 +376,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Troubleshooting Patterns — Systematic vs Ad-Hoc -->
+# Troubleshooting Patterns — Systematic vs Ad-Hoc
 <WorkflowShowdownStepsSlide
   :partNumber="4"
   pillIcon="🎯"
@@ -398,7 +398,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Troubleshooting Patterns — Impact -->
+# Troubleshooting Patterns — Impact
 <HeroStatSlide
   :partNumber="4"
   pillIcon="⏱️"
@@ -417,7 +417,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Before After -->
+# Before After
 <BeforeAfterSlide
   header="From Guesswork to Systematic AI Debugging"
   :leftItems='["Guess at why Copilot responded incorrectly", "No visibility into what context was sent to the model", "Config errors take 30–45 minutes to diagnose", "Reproduce AI failures by trial and error"]'
@@ -430,7 +430,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Open Agent Debug Panel in VS Code (v1.110+)", "Enable Chat Debug View for your current agent session", "Check one instruction file through the diagnostics panel"]'
   :thisWeek='["Add debug view to your standard agent troubleshooting flow", "Explore thinking tokens on a failing agent task", "Validate all custom instruction files in your workspace"]'
@@ -439,7 +439,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -458,7 +458,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 />
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Copilot Chat Internals"
   subtitle="Debugging AI Interactions"

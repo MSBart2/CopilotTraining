@@ -126,6 +126,17 @@ Look for error message in output. Usually:
 
 **Fix and retry** — the build command.
 
+### Vue SyntaxError pointing to a specific `__slidev_N.md` file
+
+The `N` in `__slidev_N.md` is the slide number (1-indexed). `__slidev_1` = slide 1 (Title), `__slidev_5` = slide 5, etc.
+
+| Error / symptom | Root cause | Fix |
+|---|---|---|
+| `Error parsing JavaScript expression: Unexpected token` | Apostrophe or quote character inside a JS string expression | All array/object props need **single outer quotes** (`:prop='[...]'`). Use `&#39;` for apostrophes inside double-quoted string values. Never `\"` or `&quot;` |
+| `Module not found: ./components/TitleSlide.vue` | Structural component imported from wrong path | Structural components live in `./components/structure/X.vue`; body components in `./components/X.vue` |
+| Blank slide, no build error | Non-existent prop passed to a component (e.g., `section` on `SectionOpenerSlide`) | Check exact prop names in `slides/tech-talks/template.md` — the component silently ignores unknown props, producing an empty slide |
+| `[plugin vite:vue] ... Unexpected end of input` | Unbalanced single/double quotes in a `:prop='...'` attribute | Check for unescaped `'` characters; use `&#39;` inside single-quoted outer props |
+
 ### `Permission denied` on Linux/macOS
 
 ```bash

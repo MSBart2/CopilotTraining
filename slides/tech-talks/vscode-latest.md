@@ -33,8 +33,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
-
+# Title
 <TitleSlide
   title="What's New in Copilot for VS Code"
   subtitle="v1.110 – v1.120: The Agent Platform Goes Mainstream"
@@ -44,8 +43,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Core Question -->
-
+# Core Question
 <CoreQuestionSlide
   question="What just changed in Copilot — and do I need to think differently?"
   subtext="Ten releases. One underlying shift."
@@ -62,8 +60,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Table of Contents -->
-
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "🤖", title: "The Agent Platform",      subtitle: "Sessions, Autopilot, Agents Window",  blurb: "How the fleet works and why the Agents Window changes everything", slide: 4  },
@@ -75,8 +72,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Part 1 — The Agent Platform -->
-
+# Part 1 — The Agent Platform
 <SectionOpenerSlide
   :partNumber="1"
   title="The Agent Platform"
@@ -91,8 +87,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Four Agent Session Types -->
-
+# Four Agent Session Types
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="🗂️"
@@ -109,8 +104,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Autopilot Permission Levels -->
-
+# Autopilot Permission Levels
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🤖"
@@ -126,8 +120,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Background Agents + Git Worktree -->
-
+# Background Agents + Git Worktree
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="⚙️"
@@ -156,8 +149,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Subagents and Parallelism -->
-
+# Subagents and Parallelism
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="🔀"
@@ -186,8 +178,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Agents Window Capstone -->
-
+# Agents Window Capstone
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="🪟"
@@ -204,8 +195,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Part 2 — Your Models, Your Rules -->
-
+# Part 2 — Your Models, Your Rules
 <SectionOpenerSlide
   :partNumber="2"
   title="Your Models, Your Rules"
@@ -220,8 +210,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: BYOK + Thinking Effort -->
-
+# BYOK + Thinking Effort
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="🔑"
@@ -237,8 +226,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Chat Customizations + Org Governance -->
-
+# Chat Customizations + Org Governance
 <FourCardGridSlide
   :partNumber="2"
   pillIcon="📋"
@@ -255,8 +243,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Part 3 — Responsible Scale -->
-
+# Part 3 — Responsible Scale
 <SectionOpenerSlide
   :partNumber="3"
   title="Responsible Scale"
@@ -271,8 +258,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Trust Architecture -->
-
+# Trust Architecture
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🔒"
@@ -288,8 +274,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: OTel + Billing Climax -->
-
+# OTel + Billing Climax
 <HeroStatSlide
   :partNumber="3"
   pillIcon="📡"
@@ -308,8 +293,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Part 4 — In Your Workflow -->
-
+# Part 4 — In Your Workflow
 <SectionOpenerSlide
   :partNumber="4"
   title="In Your Workflow"
@@ -324,8 +308,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Commit Attribution Revert -->
-
+# Commit Attribution Revert
 <BeforeAfterPanelsSlide
   :partNumber="4"
   pillIcon="↩️"
@@ -354,8 +337,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Browser Tab Sharing -->
-
+# Browser Tab Sharing
 <AITerminalTranscriptSlide
   :partNumber="4"
   pillIcon="🌐"
@@ -379,8 +361,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Chat UX Quick Wins -->
-
+# Chat UX Quick Wins
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="⚡"
@@ -396,8 +377,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Copilot Memory -->
-
+# Copilot Memory
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="🧠"
@@ -428,8 +408,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Before and After -->
-
+# Before and After
 <BeforeAfterSlide
   header="The Shift: Assistant to Agent Platform"
   :leftItems='[
@@ -453,8 +432,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
-
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
     "Open the Agents Window (View → Agents) and dispatch your first background task",
@@ -473,8 +451,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: References -->
-
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Release Notes", color: "cyan", items: [
@@ -494,8 +471,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Thank You -->
-
+# Thank You
 <ThankYouSlide
   title="The Agent Platform Is Here"
   subtitle="Ten releases. One shift: from AI you chat with to a fleet you orchestrate."

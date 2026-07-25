@@ -34,7 +34,7 @@ import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
 import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="From Issue to Pull Request"
   subtitle="GitHub Copilot&#39;s Coding Agent in Practice"
@@ -44,7 +44,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="What would you tackle if bounded implementation work cost minutes, not days?"
   subtext="The coding agent closes the gap between"
@@ -61,7 +61,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "🔄", title: "Delegation Loop",       subtitle: "From issue to draft PR end-to-end",        blurb: "The full loop, architecture, evidence bundle, separation of duties", slide: 4  },
@@ -73,7 +73,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Part 1 — Delegation Loop -->
+# Part 1 — Delegation Loop
 <SectionOpenerSlide
   :partNumber="1"
   title="Delegation Loop"
@@ -88,7 +88,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: The Three-Layer Architecture -->
+# The Three-Layer Architecture
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🏗️"
@@ -104,7 +104,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Inside the Sandbox -->
+# Inside the Sandbox
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="📦"
@@ -122,7 +122,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: The Evidence Bundle -->
+# The Evidence Bundle
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="📋"
@@ -140,7 +140,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Separation of Duties -->
+# Separation of Duties
 <HeroStatSlide
   :partNumber="1"
   pillIcon="🔐"
@@ -159,7 +159,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Part 2 — Writing Issues -->
+# Part 2 — Writing Issues
 <SectionOpenerSlide
   :partNumber="2"
   title="Writing Issues"
@@ -174,7 +174,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Anatomy of an Effective Issue -->
+# Anatomy of an Effective Issue
 <FourCardGridSlide
   :partNumber="2"
   pillIcon="📐"
@@ -191,7 +191,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Weak vs Effective Issue -->
+# Weak vs Effective Issue
 <BeforeAfterPanelsSlide
   :partNumber="2"
   pillIcon="📝"
@@ -220,7 +220,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Image-Based Issue Creation -->
+# Image-Based Issue Creation
 <HeroStatSlide
   :partNumber="2"
   pillIcon="📸"
@@ -239,7 +239,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Part 3 — Trust and Configuration -->
+# Part 3 — Trust and Configuration
 <SectionOpenerSlide
   :partNumber="3"
   title="Trust and Configuration"
@@ -254,7 +254,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: copilot-setup-steps.yml -->
+# copilot-setup-steps.yml
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="⚙️"
@@ -272,7 +272,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: The Agent Firewall -->
+# The Agent Firewall
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🔥"
@@ -288,7 +288,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Part 4 — Review Workflow -->
+# Part 4 — Review Workflow
 <SectionOpenerSlide
   :partNumber="4"
   title="Review Workflow"
@@ -303,7 +303,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Evidence-First Review -->
+# Evidence-First Review
 <FrameworkMappingRowsSlide
   :partNumber="4"
   pillIcon="📋"
@@ -320,7 +320,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Mobile Review Loop -->
+# Mobile Review Loop
 <WorkflowShowdownStepsSlide
   :partNumber="4"
   pillIcon="📱"
@@ -342,7 +342,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: What to Delegate Decision Tree -->
+# What to Delegate Decision Tree
 <FrameworkMappingRowsSlide
   :partNumber="4"
   pillIcon="🗺️"
@@ -362,7 +362,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
   header="From Deferred Backlog to Delegated Execution"
   :leftItems='["Bounded work deferred indefinitely — never prioritized in sprints", "Developer writes and also reviews their own bounded-scope code", "14-minute manual issue transcription from screenshots and alerts", "PR review requires pulling the branch and setting up a local environment"]'
@@ -376,7 +376,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Assign one bounded backlog issue to Copilot from github.com/copilot", "Read the evidence bundle before opening the diff on the resulting PR", "Note whether the PR quality reflects the issue quality"]'
   :thisWeek='["Commit .github/workflows/copilot-setup-steps.yml with your Node or Python version and npm ci", "Draft an issue template with acceptance criteria, scope boundaries, and context links", "Designate a second reviewer — the assigner cannot approve the resulting PR"]'
@@ -386,7 +386,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -404,7 +404,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="From Issue to Pull Request"
   subtitle="GitHub Copilot&#39;s Coding Agent in Practice"

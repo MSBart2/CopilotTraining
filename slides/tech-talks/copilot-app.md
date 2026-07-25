@@ -34,8 +34,7 @@ import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
 import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
-
+# Title
 <TitleSlide
   title="The GitHub Copilot App"
   subtitle="Running a Fleet of Agents"
@@ -45,8 +44,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Core Question -->
-
+# Core Question
 <CoreQuestionSlide
   question="How do we run five agents in parallel without losing control of the codebase?"
   subtext="The GitHub Copilot App ships a new desktop control plane for orchestrating autonomous agents."
@@ -63,8 +61,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: TOC -->
-
+# TOC
 <TocSlide
   :sections='[
     { icon: "🚢", title: "The Fleet Model", subtitle: "What is this? The paradigm shift.", blurb: "Dashboard, dispatch table, and when to reach for the fleet", slide: 4 },
@@ -76,8 +73,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 1 — The Fleet Model -->
-
+# Part 1 — The Fleet Model
 <SectionOpenerSlide
   :partNumber="1"
   title="The Fleet Model"
@@ -92,8 +88,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: VS Code vs Copilot App —— The Fork -->
-
+# VS Code vs Copilot App —— The Fork
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="🔀"
@@ -124,8 +119,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: My Work Dashboard -->
-
+# My Work Dashboard
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="📊"
@@ -142,8 +136,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Monday Morning Dispatch -->
-
+# Monday Morning Dispatch
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="🚀"
@@ -160,8 +153,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: When to Reach for the Fleet -->
-
+# When to Reach for the Fleet
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🗺️"
@@ -177,8 +169,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 2 — Safe Parallelism -->
-
+# Part 2 — Safe Parallelism
 <SectionOpenerSlide
   :partNumber="2"
   title="Safe Parallelism"
@@ -193,8 +184,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Trust by Design — Three Guarantees -->
-
+# Trust by Design — Three Guarantees
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="🔒"
@@ -210,8 +200,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: worktree-init.sh —— Pre-Initialize Your Fleet -->
-
+# worktree-init.sh —— Pre-Initialize Your Fleet
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="💻"
@@ -233,8 +222,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 3 — Control Surfaces -->
-
+# Part 3 — Control Surfaces
 <SectionOpenerSlide
   :partNumber="3"
   title="Control Surfaces"
@@ -249,8 +237,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Three Autonomy Modes -->
-
+# Three Autonomy Modes
 <MaturityJourneyRoadmapSlide
   :partNumber="3"
   pillIcon="🎛️"
@@ -268,8 +255,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Mode Selection Table -->
-
+# Mode Selection Table
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="📋"
@@ -289,8 +275,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Canvas — Live Work Surface -->
-
+# Canvas — Live Work Surface
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="🖼️"
@@ -321,8 +306,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Issue Quality = Agent Quality -->
-
+# Issue Quality = Agent Quality
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="📝"
@@ -345,8 +329,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: What Breaks -->
-
+# What Breaks
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="⚠️"
@@ -362,8 +345,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 4 — Sessions to Systems -->
-
+# Part 4 — Sessions to Systems
 <SectionOpenerSlide
   :partNumber="4"
   title="Sessions to Systems"
@@ -378,8 +360,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: CVE in 20 Minutes -->
-
+# CVE in 20 Minutes
 <ProblemSolutionOutcomeSlide
   :partNumber="4"
   pillIcon="🔐"
@@ -415,8 +396,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Sessions to Workflows to Pipelines -->
-
+# Sessions to Workflows to Pipelines
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="⚙️"
@@ -447,8 +427,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Agent Merge — When It Fits -->
-
+# Agent Merge — When It Fits
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🤝"
@@ -464,8 +443,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Before and After -->
-
+# Before and After
 <BeforeAfterSlide
   header="From Sequential Copilot to Agent Fleet"
   :leftItems='[
@@ -489,8 +467,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
-
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
     "Download the Copilot app from github.com/features/ai/github-app and sign in",
@@ -512,8 +489,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: References -->
-
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -533,8 +509,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Thank You -->
-
+# Thank You
 <ThankYouSlide
   title="The Fleet Is Ready"
   subtitle="Five agents, five issues, zero conflicts — and it all runs itself by next Monday"

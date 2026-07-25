@@ -1,4 +1,5 @@
-<!-- SLIDE: Spine Overview -->
+# Spine Overview
+
 <!-- SPINE: Shared foundation — imported by exec-delivery, exec-labor, exec-economics -->
 <!-- No frontmatter or script setup — components are imported by the parent deck -->
 
@@ -18,7 +19,7 @@
 
 ---
 
-<!-- SLIDE: Spine Decisions -->
+# Spine Decisions
 
 <FrameworkMappingRowsSlide
   :partNumber="1"
@@ -36,7 +37,7 @@
 
 ---
 
-<!-- SLIDE: Spine Connection -->
+# Spine Connection
 
 <ThreeColumnCardSlide
   :partNumber="1"

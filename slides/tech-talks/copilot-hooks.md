@@ -35,7 +35,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="GitHub Copilot Hooks"
   subtitle="Programmable Governance for Agent Workflows"
@@ -45,7 +45,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How do you govern AI agents without destroying their velocity?"
   subtext="Agents create files, run commands, and deploy changes autonomously. Manual gates destroy velocity, but"
@@ -62,7 +62,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "🔄", title: "Phase 1: Lifecycle Control", subtitle: "Eight moments, one mental model", blurb: "Map the events from SessionStart to Stop — build the governance scaffold", slide: 4 },
@@ -74,7 +74,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Part 1 — Phase 1: Lifecycle Control -->
+# Part 1 — Phase 1: Lifecycle Control
 <SectionOpenerSlide
   :partNumber="1"
   title="Phase 1: Lifecycle Control"
@@ -89,7 +89,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Eight Lifecycle Events — Session and Tool -->
+# Eight Lifecycle Events — Session and Tool
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="🔄"
@@ -108,7 +108,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Eight Lifecycle Events — Compaction and Subagents -->
+# Eight Lifecycle Events — Compaction and Subagents
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="🔄"
@@ -127,7 +127,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Hook Configuration Format -->
+# Hook Configuration Format
 <CodeWithFeaturesSlide
   :partNumber="1"
   pillIcon="📄"
@@ -145,7 +145,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Part 2 — Phase 2: PreToolUse Enforcement -->
+# Part 2 — Phase 2: PreToolUse Enforcement
 <SectionOpenerSlide
   :partNumber="2"
   title="Phase 2: PreToolUse Enforcement"
@@ -160,7 +160,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: PreToolUse Is Uniquely Powerful -->
+# PreToolUse Is Uniquely Powerful
 <HeroStatSlide
   :partNumber="2"
   pillIcon="⚡"
@@ -180,7 +180,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: PreToolUse Deny Response Format -->
+# PreToolUse Deny Response Format
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="🚫"
@@ -198,7 +198,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Security Denial in Action -->
+# Security Denial in Action
 <AITerminalTranscriptSlide
   :partNumber="2"
   pillIcon="🎬"
@@ -223,7 +223,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: deny vs ask — Three Risk Tiers -->
+# deny vs ask — Three Risk Tiers
 <TwoColPairedConceptsSlide
   :partNumber="2"
   pillIcon="🚦"
@@ -254,7 +254,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Part 3 — Phase 3: Observability & Audit Trail -->
+# Part 3 — Phase 3: Observability & Audit Trail
 <SectionOpenerSlide
   :partNumber="3"
   title="Phase 3: Observability & Audit"
@@ -269,7 +269,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: JSON Lines Audit Log -->
+# JSON Lines Audit Log
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="📋"
@@ -287,7 +287,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Four Compliance Benefits -->
+# Four Compliance Benefits
 <FourCardGridSlide
   :partNumber="3"
   pillIcon="📊"
@@ -305,7 +305,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Context Injection and Quality Gates -->
+# Context Injection and Quality Gates
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="💉"
@@ -336,7 +336,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Part 4 — Phase 4: Real-World Implementation Patterns -->
+# Part 4 — Phase 4: Real-World Implementation Patterns
 <SectionOpenerSlide
   :partNumber="4"
   title="Phase 4: Real-World Patterns"
@@ -351,7 +351,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Three Compliance Patterns -->
+# Three Compliance Patterns
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🏛️"
@@ -367,7 +367,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Four Implementation Patterns -->
+# Four Implementation Patterns
 <FrameworkMappingRowsSlide
   :partNumber="4"
   pillIcon="🏗️"
@@ -386,7 +386,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Manual Governance vs Hooks -->
+# Manual Governance vs Hooks
 <WorkflowShowdownStepsSlide
   :partNumber="4"
   pillIcon="⚖️"
@@ -409,7 +409,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Before / After -->
+# Before / After
 <BeforeAfterSlide
   header="From Post-Incident Review to Real-Time Prevention"
   :leftItems='["AI agents operate with no enforcement gates — violations found after damage", "Policy violations reconstructed through hours of post-incident log forensics", "CI catches quality violations after code is committed — rework cycles", "Manual approval gates required for sensitive operations — velocity destroyed"]'
@@ -423,7 +423,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Create .github/hooks/ and deploy the security-check script to one repository", "Add SessionStart and Stop hooks to start logging all agent sessions to audit.jsonl", "Trigger a sandbox denial — run an agent and verify the deny response works"]'
   :thisWeek='["Wire all 8 lifecycle hooks for a complete JSON Lines audit trail", "Add PostToolUse quality gates — prettier and ESLint enforcement after file edits", "Implement environment-aware policies: production=deny, staging=ask, development=allow"]'
@@ -433,7 +433,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -451,7 +451,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="GitHub Copilot Hooks"
   subtitle="Programmable Governance for Agent Workflows"

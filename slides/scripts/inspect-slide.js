@@ -166,7 +166,10 @@ function parseSlideDeck(filePath) {
   const afterFrontmatter = normalized.replace(/^---\n[\s\S]*?\n---\n/, "");
   const blocks = afterFrontmatter.split(/\n---\n/);
   return blocks.map((content, i) => {
-    const nameMatch = content.match(/<!--\s*SLIDE:\s*(.+?)\s*-->/);
+    // Slide name comes from the Markdown heading — "#" must be the first
+    // character of the line, so a "#" inside a code sample or prop string
+    // (which is never at column 0) can never be mistaken for a title.
+    const nameMatch = content.match(/^#\s+(.+)$/m);
     return {
       index: i + 1,
       name: nameMatch ? nameMatch[1].trim() : `Slide ${i + 1}`,

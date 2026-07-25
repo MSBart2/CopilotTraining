@@ -35,7 +35,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="Building Agent Systems"
   subtitle="Subagents, Teams, and Autonomous Execution"
@@ -45,7 +45,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="What mechanisms make multi-agent AI work, and how do I compose them into autonomous systems?"
   subtext="Single agents hit a ceiling: context fills, supervision is the bottleneck, quality degrades."
@@ -62,7 +62,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "🧱", title: "Subagents", subtitle: "The Building Block", blurb: "Context isolation, parallel execution, and the vocabulary to reason with", slide: 4 },
@@ -74,7 +74,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Part 1 — Subagents: The Building Block -->
+# Part 1 — Subagents: The Building Block
 <SectionOpenerSlide
   :partNumber="1"
   title="Subagents: The Building Block"
@@ -89,7 +89,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: The Agent Decision Tree -->
+# The Agent Decision Tree
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="🗺️"
@@ -109,7 +109,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Two Ways to Invoke a Subagent -->
+# Two Ways to Invoke a Subagent
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="📤"
@@ -141,7 +141,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Four Named Patterns -->
+# Four Named Patterns
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="📚"
@@ -159,7 +159,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Part 2 — Agent Teams: Organized Specialists -->
+# Part 2 — Agent Teams: Organized Specialists
 <SectionOpenerSlide
   :partNumber="2"
   title="Agent Teams: Organized Specialists"
@@ -174,7 +174,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: The Coordinator Pattern -->
+# The Coordinator Pattern
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="🎯"
@@ -191,7 +191,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Squad Memory Layers -->
+# Squad Memory Layers
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🧠"
@@ -210,7 +210,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Squad in Action -->
+# Squad in Action
 <AITerminalTranscriptSlide
   :partNumber="2"
   pillIcon="👥"
@@ -234,7 +234,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Part 3 — Autonomous Execution: Background Agents + Worktrees -->
+# Part 3 — Autonomous Execution: Background Agents + Worktrees
 <SectionOpenerSlide
   :partNumber="3"
   title="Autonomous Execution"
@@ -249,7 +249,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: 9.7 Hours Reclaimed Per Week -->
+# 9.7 Hours Reclaimed Per Week
 <HeroStatSlide
   :partNumber="3"
   pillIcon="📊"
@@ -269,7 +269,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Supervised vs Background Agent -->
+# Supervised vs Background Agent
 <WorkflowShowdownStepsSlide
   :partNumber="3"
   pillIcon="🔄"
@@ -292,7 +292,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Git Worktree Isolation -->
+# Git Worktree Isolation
 <BeforeAfterMetricsSlide
   :partNumber="3"
   pillIcon="🌿"
@@ -326,7 +326,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Three Parallel Patterns -->
+# Three Parallel Patterns
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🔀"
@@ -343,7 +343,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Part 4 — Agent Council: When Different Models Think Differently -->
+# Part 4 — Agent Council: When Different Models Think Differently
 <SectionOpenerSlide
   :partNumber="4"
   title="Agent Council"
@@ -358,7 +358,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Collaborative vs Adversarial -->
+# Collaborative vs Adversarial
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="🎭"
@@ -390,7 +390,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Council Catches the Auth Flaw -->
+# Council Catches the Auth Flaw
 <AITerminalTranscriptSlide
   :partNumber="4"
   pillIcon="🎯"
@@ -416,7 +416,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Council → Squad: Full Pipeline -->
+# Council → Squad: Full Pipeline
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🔗"
@@ -433,7 +433,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
   header="From Single Agent to Multi-Agent Architecture"
   :leftItems='["Single agent juggling research, planning, and implementation", "50–80% of context is irrelevant by execution time", "Continuous supervision required — cannot look away", "Multiple agents sharing workspace create file conflicts"]'
@@ -447,7 +447,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Try implicit subagent: Run a subagent to research X, return a structured summary", "Run 3 parallel subagents on a PR: security, performance, and testing in parallel", "Hand off one task to a background agent via VS Code session picker and review the branch"]'
   :thisWeek='["Install Squad with npx github:bradygaster/squad and form your first team", "Write charter.md files for each role: Lead, Dev, Tester", "Install AgentCouncil and run one adversarial debate on a real architecture decision"]'
@@ -457,7 +457,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 VS Code Documentation", color: "cyan", items: [
@@ -479,7 +479,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Building Agent Systems"
   subtitle="Subagents, Teams, and Autonomous Execution"

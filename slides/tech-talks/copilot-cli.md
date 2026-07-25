@@ -35,7 +35,6 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
 # Title
 <TitleSlide
   title="GitHub Copilot CLI: At the Point of Work"
@@ -46,7 +45,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Core Question -->
 # Core Question
 <CoreQuestionSlide
   question="What unlocks when AI follows you everywhere you work?"
@@ -64,7 +62,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Table of Contents -->
 # Table of Contents
 <TocSlide
   :sections='[
@@ -77,7 +74,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 1 — Think Before You Build -->
 # Part 1 — Think Before You Build
 <SectionOpenerSlide
   :partNumber="1"
@@ -95,7 +91,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: The 70% You're Missing -->
 # The 70% You're Missing
 <HeroStatSlide
   :partNumber="1"
@@ -116,7 +111,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Plan Mode — Questions Before Code -->
 # Plan Mode — Questions Before Code
 <WorkflowShowdownStepsSlide
   :partNumber="1"
@@ -140,7 +134,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Rubber Duck — The Automation Arc Begins -->
 # Rubber Duck — The Automation Arc Begins
 <TwoColPairedConceptsSlide
   :partNumber="1"
@@ -170,7 +163,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Four Operating Modes -->
 # Four Operating Modes
 <FourCardGridSlide
   :partNumber="1"
@@ -188,7 +180,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 2 — Work From Anywhere -->
 # Part 2 — Work From Anywhere
 <SectionOpenerSlide
   :partNumber="2"
@@ -206,7 +197,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Phone Steering Reveal -->
 # Phone Steering Reveal
 <AITerminalTranscriptSlide
   :partNumber="2"
@@ -230,7 +220,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: SSH vs Remote — Paradigm Shift -->
 # SSH vs Remote — Paradigm Shift
 <TwoColPairedConceptsSlide
   :partNumber="2"
@@ -262,7 +251,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: CI/CD Integration -->
 # CI/CD Integration
 <CodeWithFeaturesSlide
   :partNumber="2"
@@ -281,7 +269,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Permission Safety -->
 # Permission Safety
 <ThreeColumnCardSlide
   :partNumber="2"
@@ -298,7 +285,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 3 — Sessions That Learn -->
 # Part 3 — Sessions That Learn
 <SectionOpenerSlide
   :partNumber="3"
@@ -316,7 +302,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Context Foundation — The Session Never Forgets -->
 # Context Foundation — The Session Never Forgets
 <TwoColPairedConceptsSlide
   :partNumber="3"
@@ -346,7 +331,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: /chronicle in Action -->
 # /chronicle in Action
 <AITerminalTranscriptSlide
   :partNumber="3"
@@ -367,7 +351,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: /chronicle — AI That Gets Better the Way You Do -->
 # /chronicle — AI That Gets Better the Way You Do
 <ProblemSolutionOutcomeSlide
   :partNumber="3"
@@ -400,7 +383,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: The Bridge — You Taught It. Now It Executes. -->
 # The Bridge — You Taught It. Now It Executes.
 <AITerminalTranscriptSlide
   :partNumber="3"
@@ -420,7 +402,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 4 — Scale Beyond Yourself -->
 # Part 4 — Scale Beyond Yourself
 <SectionOpenerSlide
   :partNumber="4"
@@ -438,7 +419,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Scheduled Prompts — Earned Payoff -->
 # Scheduled Prompts — Earned Payoff
 <CodeWithFeaturesSlide
   :partNumber="4"
@@ -457,7 +437,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: /fleet and Cloud Delegation — Two Ways to Scale -->
 # /fleet and Cloud Delegation — Two Ways to Scale
 <TwoColPairedConceptsSlide
   :partNumber="4"
@@ -489,7 +468,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Ecosystem — Carry the Learning Across Your Team -->
 # Ecosystem — Carry the Learning Across Your Team
 <ThreeColumnCardSlide
   :partNumber="4"
@@ -506,7 +484,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Before and After -->
 # Before and After
 <BeforeAfterSlide
   header="From Scattered Attempts to Structured Intelligence"
@@ -531,7 +508,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
 # What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
@@ -554,7 +530,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: References -->
 # References
 <ReferencesSlide
   :groups='[
@@ -577,7 +552,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Thank You -->
 # Thank You
 <ThankYouSlide
   title="GitHub Copilot CLI"

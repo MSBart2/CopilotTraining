@@ -35,7 +35,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="Copilot Configuration Primitives"
   subtitle="Instructions · Skills · Custom Prompts · Agents"
@@ -45,7 +45,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How can I make GitHub Copilot actually understand my codebase?"
   subtext="Generic responses ignore your team&#39;s conventions. The fix is not better prompting — it&#39;s configuration."
@@ -55,7 +55,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   title="Copilot Configuration Primitives"
   subtitle="Instructions → Skills → Custom Prompts → Agents"
@@ -64,7 +64,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 1 Opener -->
+# Part 1 Opener
 <SectionOpenerSlide
   :partNumber="1"
   pillIcon="📋"
@@ -77,7 +77,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: The Three Instruction Surfaces -->
+# The Three Instruction Surfaces
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="📋"
@@ -89,7 +89,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Repo Instructions Code -->
+# Repo Instructions Code
 <CodeWithFeaturesSlide
   :partNumber="1"
   pillIcon="📋"
@@ -103,7 +103,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Path-scoped instructions -->
+# Path-scoped instructions
 <CodeWithFeaturesSlide
   :partNumber="1"
   pillIcon="📋"
@@ -117,7 +117,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: AGENTS.md -->
+# AGENTS.md
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="📋"
@@ -130,7 +130,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Instructions Architecture Stack -->
+# Instructions Architecture Stack
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="📋"
@@ -142,7 +142,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 2 Opener -->
+# Part 2 Opener
 <SectionOpenerSlide
   :partNumber="2"
   pillIcon="⚡"
@@ -155,7 +155,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: How Skills Work -->
+# How Skills Work
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="⚡"
@@ -167,7 +167,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Skill anatomy code -->
+# Skill anatomy code
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="⚡"
@@ -181,7 +181,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 3 Opener -->
+# Part 3 Opener
 <SectionOpenerSlide
   :partNumber="3"
   pillIcon="💬"
@@ -194,7 +194,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Prompt anatomy code -->
+# Prompt anatomy code
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="💬"
@@ -208,7 +208,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Skills vs Prompts contrast -->
+# Skills vs Prompts contrast
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="💬"
@@ -221,7 +221,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Part 4 Opener -->
+# Part 4 Opener
 <SectionOpenerSlide
   :partNumber="4"
   pillIcon="🤖"
@@ -234,7 +234,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Agent anatomy code -->
+# Agent anatomy code
 <CodeWithFeaturesSlide
   :partNumber="4"
   pillIcon="🤖"
@@ -248,7 +248,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Multi-agent orchestration -->
+# Multi-agent orchestration
 <FourCardGridSlide
   :partNumber="4"
   pillIcon="🤖"
@@ -260,7 +260,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Full primitive stack -->
+# Full primitive stack
 <MaturityJourneyRoadmapSlide
   :partNumber="4"
   pillIcon="🤖"
@@ -272,7 +272,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Decision tree — choosing the right primitive -->
+# Decision tree — choosing the right primitive
 <FrameworkMappingRowsSlide
   :partNumber="4"
   pillIcon="🤖"
@@ -284,7 +284,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: Before and After -->
+# Before and After
 <BeforeAfterSlide
   header="From Repeated Context to Inherited Knowledge"
   :leftItems='["Developer re-explains conventions in every chat session — minutes wasted, every day","Copilot suggests raw SQL when the project uses Prisma — zero codebase awareness","Different developers get different response quality based on how much context they include","Generic boilerplate: no types, console.log errors, wrong test framework"]'
@@ -294,7 +294,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Create .github/copilot-instructions.md with your build commands and coding standards","Ask Copilot to generate a first draft using the /init command in chat","Verify the References panel shows the file applied on your next request"]'
   :thisWeek='["Add one path-scoped .instructions.md for your most convention-heavy file pattern","Write one .prompt.md for a scaffolding workflow your team repeats — commit it to the repo","Audit whether any team conventions are buried in wikis that should be in instructions files"]'
@@ -304,14 +304,14 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[{"title":"📖 VS Code Documentation","color":"cyan","items":[{"label":"Customize AI in Visual Studio Code","href":"https://code.visualstudio.com/docs/copilot/copilot-customization","description":"Overview of all customization options — the canonical starting point"},{"label":"Use custom instructions in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/custom-instructions","description":"Instructions syntax, applyTo globs, and personal vs. workspace scoping"},{"label":"Use Agent Skills in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/agent-skills","description":"Skill structure, progressive loading, and the open standard"},{"label":"Use prompt files in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/prompt-files","description":"Prompt frontmatter schema, variable interpolation, and team sharing"},{"label":"Custom agents in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/custom-agents","description":"Agent file structure, tool restrictions, model selection, and handoffs"}]},{"title":"📖 GitHub Documentation","color":"purple","items":[{"label":"Adding repository custom instructions for GitHub Copilot","href":"https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot","description":"GitHub-side documentation for repository instructions"},{"label":"AGENTS.md open format","href":"https://agents.md/","description":"Open specification for the cross-agent AGENTS.md playbook format"}]}]'
 />
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Copilot Configuration Primitives"
   subtitle="Encode your codebase once. Every interaction inherits it."

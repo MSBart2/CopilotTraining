@@ -2,7 +2,6 @@
 import { isDark } from './components/useTheme'
 </script>
 
-<!-- SLIDE: Interactive Mode - Agent Environment -->
 # Interactive Mode - Agent Environment
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -42,7 +41,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Interactive Mode - Models & Subagents -->
 # Interactive Mode - Models & Subagents
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -85,7 +83,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Interactive Mode - Code -->
 # Interactive Mode - Code
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -125,7 +122,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Interactive Mode - Session -->
 # Interactive Mode - Session
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -169,7 +165,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Interactive Mode - Permissions -->
 # Interactive Mode - Permissions
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -211,7 +206,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Interactive Mode - Help & More -->
 # Interactive Mode - Help & More
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -256,7 +250,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Non-Interactive Mode (Scripting) -->
 # Non-Interactive Mode (Scripting)
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -287,7 +280,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Permissions Model -->
 # Permissions Model
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -333,7 +325,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: copilot init -->
 # copilot init
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -377,7 +368,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: copilot login -->
 # copilot login
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -425,7 +415,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: copilot plugin -->
 # copilot plugin
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -477,7 +466,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Configuration Settings -->
 # Configuration Settings
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -542,7 +530,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Environment Variables -->
 # Environment Variables
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -606,7 +593,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: BYOK - Custom Model Providers -->
 # BYOK - Custom Model Providers
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -663,7 +649,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: /fleet - Parallel Subagent Execution -->
 # /fleet - Parallel Subagent Execution
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>
@@ -727,7 +712,6 @@ import { isDark } from './components/useTheme'
 
 ---
 
-<!-- SLIDE: Where the Magic Lives - ~/.copilot -->
 # Where the Magic Lives - ~/.copilot
 <div class="h-full flex flex-col justify-start relative overflow-hidden px-14">
 <div class="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-pink-900/10 to-transparent"></div>

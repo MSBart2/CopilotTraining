@@ -35,7 +35,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 import FourCardGridSlide from './components/FourCardGridSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="The Agentic Economics"
   subtitle="Making the Business Case"
@@ -47,7 +47,7 @@ import FourCardGridSlide from './components/FourCardGridSlide.vue'
 src: ./exec-spine.md
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="What does it actually take to capture the agentic labor cost advantage?"
   subtext="The arbitrage is documented and real. Organizations that have approved AI pilots and seen nothing in their P&L are not outliers — they are the majority."
@@ -64,7 +64,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "💰", title: "The Labor Arbitrage Opportunity", subtitle: "The $5/hr Reframe", blurb: "The cost differential that changes the investment calculus for every CXO", slide: 6 },
@@ -76,7 +76,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 1 — The Labor Arbitrage Opportunity -->
+# Part 1 — The Labor Arbitrage Opportunity
 <SectionOpenerSlide
   :partNumber="1"
   title="The Labor Arbitrage Opportunity"
@@ -91,7 +91,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Two Labor Cost Regimes -->
+# Two Labor Cost Regimes
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="💰"
@@ -123,7 +123,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The Three-Bucket Decision Framework -->
+# The Three-Bucket Decision Framework
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🪣"
@@ -140,7 +140,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 2 — The Capture Problem -->
+# Part 2 — The Capture Problem
 <SectionOpenerSlide
   :partNumber="2"
   title="The Capture Problem"
@@ -155,7 +155,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The 5% Reality -->
+# The 5% Reality
 <HeroStatSlide
   :partNumber="2"
   pillIcon="📉"
@@ -174,7 +174,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Flying Blind and Confident -->
+# Flying Blind and Confident
 <BeforeAfterPanelsSlide
   :partNumber="2"
   pillIcon="🔬"
@@ -204,7 +204,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Five Barriers, One Diagnosis -->
+# Five Barriers, One Diagnosis
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🏗️"
@@ -224,7 +224,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Shadow AI: The Governance Risk -->
+# Shadow AI: The Governance Risk
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🛡️"
@@ -243,7 +243,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 3 — Quick Wins Economics: The Issue Lifecycle Pattern -->
+# Part 3 — Quick Wins Economics: The Issue Lifecycle Pattern
 <SectionOpenerSlide
   :partNumber="3"
   title="Quick Wins Economics"
@@ -258,7 +258,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The Issue Lifecycle Proof Point -->
+# The Issue Lifecycle Proof Point
 <HeroStatSlide
   :partNumber="3"
   pillIcon="⚡"
@@ -277,7 +277,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: The Wedge Principle -->
+# The Wedge Principle
 <ProblemSolutionOutcomeSlide
   :partNumber="3"
   pillIcon="🔐"
@@ -316,7 +316,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Governance Is the ROI Gate -->
+# Governance Is the ROI Gate
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🛡️"
@@ -333,7 +333,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Part 4 — The Leadership Calculation -->
+# Part 4 — The Leadership Calculation
 <SectionOpenerSlide
   :partNumber="4"
   title="The Leadership Calculation"
@@ -350,7 +350,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
   header="From Pilot Approval to P&L Impact"
   :leftItems='["Pilot approved — no P&L impact after 6 months", "Developers self-reporting productivity gains not visible in output", "Shadow AI in use with no governance or measurement", "Five structural barriers undiagnosed — blamed on the models"]'
@@ -364,7 +364,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Identify one automatable workflow in your engineering org", "Calculate its current cost per issue (time × loaded rate)", "Confirm it is measurable and approval-light"]'
   :thisWeek='["Map the five structural barriers in your current AI environment", "Run a verification-cost audit — what does human review of AI output cost today?", "Quantify shadow AI exposure using IBM&#39;s 20% breach attribution benchmark"]'
@@ -374,7 +374,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📊 Research & Data", color: "cyan", items: [
@@ -392,7 +392,7 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="The Agentic Economics"
   subtitle="Making the Business Case for Agentic AI Adoption"

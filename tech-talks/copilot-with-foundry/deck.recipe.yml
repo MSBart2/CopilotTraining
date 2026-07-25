@@ -1,0 +1,113 @@
+# deck.recipe.yml — talk generation guidance for copilot-with-foundry
+version: 1
+
+deck:
+  title: "GitHub Copilot with Microsoft Foundry: Organizational Memory for Coding Agents"
+  subtitle: "When does a Copilot agent need Foundry — and how do we wire it up?"
+  tagline: "Extend GitHub Copilot agents with organizational memory: the 5–10% of engineering work where intent matters most."
+
+  # arcToc: single line ≤ 80 chars, shown as TocSlide subtitle
+  arcToc: "Two Memories → Foundry IQ → Org Memory Pattern → Intent Problems"
+
+  # arcNarrative: prose rationale explaining WHY sections are ordered this way.
+  # Used by the generator as authoring guidance; never displayed on a slide.
+  arcNarrative: >
+    The talk opens with bypassFraudChecks() on a slide — just the code, annotated to show
+    exactly what a Copilot agent can and cannot tell you about it. That gap (implementation
+    facts vs. missing organizational intent) is described on-page before a single product
+    feature is introduced. Section 1 (The Two Memories) names the structural cause with
+    the 3-layer model, giving the audience vocabulary that every subsequent section uses.
+    Section 2 (Connecting Foundry IQ) wires the fix and forces an architectural decision
+    — managed identity as trust boundary, not auth plumbing — with a single azd callout
+    slide acknowledging the setup step without dwelling on it. The fraud bypass context
+    document appears here as a concrete index entry, making the abstract model tangible.
+    Section 3 (The Organizational Memory Pattern) is the payoff: show the March 2023
+    architecture review excerpt that explains why the code exists, then walk the
+    before/after as two annotated concept slides and step through the 6-part reasoning
+    loop. No live terminal — the explanation is the demo. Section 4 (Recognizing Intent
+    Problems) closes with the paired diagnostic: the signal words table plus its
+    counterpart, anchored by the 5-10% filter rule. The arc works because the opening
+    code snippet motivates everything without requiring infrastructure, and the explanation
+    of how Foundry recovers intent is more durable than any live terminal output.
+
+  # Ordered list of 4 section names (must match README ## headings)
+  sectionOrder:
+    - "The Two Memories"
+    - "Connecting Foundry IQ"
+    - "The Organizational Memory Pattern"
+    - "Recognizing Intent Problems"
+
+  # Per-section editorial guidance for the slide generator.
+  sectionModes:
+    "The Two Memories":
+      # high = 4–5 slides; load-bearing mental model section
+      emphasis: high
+      note: >
+        Open with the bypassFraudChecks() code snippet on a slide — just the code, no
+        preamble. Annotate it directly: describe what a GitHub Copilot agent CAN tell you
+        (PR history, author, linked issue) and what it CANNOT tell you (why this bypass
+        exists, whether it's still valid). This is the failure described on-page, not a
+        running terminal. Then introduce the 3-layer model as the explanation for the gap.
+        Must land: the 3-layer model (implementation / operational / organizational memory)
+        as a crystallization slide — the frame every subsequent section references. Cut:
+        product history, Foundry pricing, setup prerequisites. Structural moment: the
+        code-on-slide failure annotation followed immediately by the 3-layer reveal.
+
+    "Connecting Foundry IQ":
+      # medium-high = 3–4 slides
+      emphasis: medium-high
+      note: >
+        Open with a single prerequisite callout slide: azure.yaml manifest + azd up as a
+        callout box (≈2 min, link to docs, not a tutorial — acknowledges azd-naive
+        attendees and moves on). The fraud bypass context document must appear here as a
+        concrete index entry — this is where the abstract model becomes tangible material.
+        Dedicated callout slide required: managed identity as architectural trust boundary,
+        not auth plumbing. Frame it as an organizational governance decision: which agents
+        earn access to institutional knowledge? Must land: wiring sequence and identity
+        trust boundary. Cut: SDK deep dives, full azd walkthrough, error-handling edge
+        cases. Structural moment: managed identity callout slide — the governance decision
+        hiding inside the auth step.
+
+    "The Organizational Memory Pattern":
+      # high = 4–5 slides; peak engagement, concept walkthrough payoff
+      emphasis: high
+      note: >
+        Walk through how Foundry would change the answer to the opening code question.
+        Show the architecture review excerpt ("March 2023 — fraud service latency, legal
+        approved temporary bypass, pending migration") as a slide — this is the
+        organizational memory that explains the code's existence. Then show the before/after
+        as two annotated slides: what the agent said without Foundry IQ (implementation
+        facts only), and what it can say with Foundry IQ (implementation facts + intent
+        recovered). Walk the 6-step reasoning loop as a numbered diagram. Must land: the
+        before/after concept and the reasoning loop. Cut: live terminal output, SDK details,
+        edge-case error handling. Structural moment: the architecture review excerpt slide —
+        the document that explains why the weird code exists.
+
+    "Recognizing Intent Problems":
+      # medium = 2–3 slides; closing diagnostic tool
+      emphasis: medium
+      note: >
+        Deliver as a paired diagnostic tool, not a lecture. Signal words table (when to use
+        organizational memory) and "what not to index" counterpart (when not to) must appear
+        side-by-side or in immediate sequence — prevents cargo-culting. The 5-10% filter
+        rule is the decision criterion to leave with: if fewer than 5-10% of agent runs
+        would benefit from a given index entry, skip it. Must land: both sides of the
+        diagnostic. Cut: extended case studies, competitor comparisons, ROI calculations.
+        Structural moment: the two-sided diagnostic table walkthrough — give attendees a
+        tool they can apply before the week is out.
+
+  preamble: []
+  appendix: []
+
+  # 3–5 high-signal moments the generator must surface in the deck.
+  highlightMoments:
+    - "bypassFraudChecks() on a slide: the code GitHub Copilot can trace but cannot explain — PR history, author, linked issue vs. the 'why' that only organizational memory holds"
+    - "3-layer model reveal (The Two Memories): the crystallization slide naming implementation, operational, and organizational memory — the conceptual frame all three subsequent sections depend on"
+    - "The architecture review excerpt slide (Org Memory Pattern): the March 2023 decision document that explains the code's existence — organizational memory made visible and concrete"
+    - "Before/after concept slide (Org Memory Pattern): what the agent answers without Foundry IQ vs. with it — same code, same question, fundamentally different answer"
+    - "Paired diagnostic walkthrough (Recognizing Intent Problems): signal words table paired with 'what not to index' counterpart, anchored by the 5-10% filter rule — a two-sided decision tool"
+
+# RESOLVED: Static slide walkthrough — no live terminal or recording needed.
+# The bypassFraudChecks() code appears on slide 1 with inline annotations.
+# The architecture review excerpt appears as a dedicated slide in section 3.
+# The before/after comparison is two annotated concept slides, not a terminal diff.

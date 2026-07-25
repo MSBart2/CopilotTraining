@@ -35,7 +35,7 @@ import HeroStatSlide from './components/HeroStatSlide.vue'
 import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="GitHub Copilot SDK"
   subtitle="Build AI-Powered Tools for Your Workflows"
@@ -45,7 +45,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="What if shipping an AI automation took 10 lines of code — not a month of infrastructure work?"
   subtext="The Copilot SDK puts the full production agent runtime in your hands."
@@ -62,7 +62,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "🏗️", title: "Architecture & Capabilities", subtitle: "The production runtime you already trust", blurb: "JSON-RPC façade, language support, full capability map", slide: 4 },
@@ -74,7 +74,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Part 1 — Architecture & Capabilities -->
+# Part 1 — Architecture & Capabilities
 <SectionOpenerSlide
   :partNumber="1"
   title="Architecture & Capabilities"
@@ -89,7 +89,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: The Architecture Reveal -->
+# The Architecture Reveal
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="🏗️"
@@ -106,7 +106,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Language Support & Runtime Proof -->
+# Language Support & Runtime Proof
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🌐"
@@ -122,7 +122,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Full Capability Map -->
+# Full Capability Map
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="⚙️"
@@ -140,7 +140,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Part 2 — Getting Started -->
+# Part 2 — Getting Started
 <SectionOpenerSlide
   :partNumber="2"
   title="Getting Started"
@@ -155,7 +155,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: 10-Line Hello World -->
+# 10-Line Hello World
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="⚡"
@@ -173,7 +173,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: ROI Hook — Release Notes -->
+# ROI Hook — Release Notes
 <HeroStatSlide
   :partNumber="2"
   pillIcon="⏱️"
@@ -192,7 +192,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Part 3 — Integration Patterns -->
+# Part 3 — Integration Patterns
 <SectionOpenerSlide
   :partNumber="3"
   title="Integration Patterns"
@@ -207,7 +207,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Pattern 1+2 — CLI to Web API -->
+# Pattern 1+2 — CLI to Web API
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="🔌"
@@ -237,7 +237,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Pattern 3 — Scheduled Automation -->
+# Pattern 3 — Scheduled Automation
 <ProblemSolutionOutcomeSlide
   :partNumber="3"
   pillIcon="⏰"
@@ -266,7 +266,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Tool Permission Control -->
+# Tool Permission Control
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🔒"
@@ -282,7 +282,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Integration Patterns Summary -->
+# Integration Patterns Summary
 <WorkflowShowdownStepsSlide
   :partNumber="3"
   pillIcon="🗺️"
@@ -304,7 +304,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Part 4 — Advanced Features -->
+# Part 4 — Advanced Features
 <SectionOpenerSlide
   :partNumber="4"
   title="Advanced Features"
@@ -319,7 +319,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: BYOK + Model Routing -->
+# BYOK + Model Routing
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="💰"
@@ -348,7 +348,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Streaming for Long-Running Agents -->
+# Streaming for Long-Running Agents
 <CodeWithFeaturesSlide
   :partNumber="4"
   pillIcon="📡"
@@ -366,7 +366,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: MCP Integration -->
+# MCP Integration
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🔌"
@@ -382,7 +382,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: ROI Sweep — The Full Picture -->
+# ROI Sweep — The Full Picture
 <BeforeAfterMetricsSlide
   :partNumber="4"
   pillIcon="📊"
@@ -417,7 +417,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
   header="From AI Infrastructure Work to Shipping Automations"
   :leftItems='["Months building custom LLM orchestration layers", "Hand-rolling tool call loops and retry logic", "Managing conversation state and context windows", "No enterprise controls — approval blocked by InfoSec"]'
@@ -431,7 +431,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Install the SDK: pip install copilot-sdk or npm install @github/copilot-sdk", "Run the 10-line hello world against a real repo directory", "Read one CHANGELOG.md with run_agent — see the runtime in action"]'
   :thisWeek='["Pick one repetitive workflow: release notes, CI triage, or PR standards", "Implement the matching pattern: CLI tool, Web API, or cron script", "Demo the automation to your team — 15 minutes prep, instant buy-in"]'
@@ -441,7 +441,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Resources", color: "cyan", items: [
@@ -458,7 +458,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="GitHub Copilot SDK"
   subtitle="Build AI-Powered Tools for Your Workflows"

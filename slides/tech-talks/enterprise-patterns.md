@@ -35,7 +35,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="Scaling GitHub Copilot Across Organizations"
   subtitle="Enterprise Patterns for AI Adoption at Scale"
@@ -45,7 +45,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How do you turn 50 teams each reinventing the same patterns into one organization that compounds knowledge?"
   subtext="Individual Copilot success doesn&#39;t scale automatically —"
@@ -62,7 +62,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "📜", title: "Org-Wide Standards",    subtitle: "Define once, inherit everywhere",           blurb: "Custom instructions, monorepo playbooks, 500+ devs from one change", slide: 4  },
@@ -74,7 +74,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 1 — Organization-Wide Standards -->
+# Part 1 — Organization-Wide Standards
 <SectionOpenerSlide
   :partNumber="1"
   title="Organization-Wide Standards"
@@ -89,7 +89,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: The Reinvention Problem -->
+# The Reinvention Problem
 <HeroStatSlide
   :partNumber="1"
   pillIcon="⚠️"
@@ -108,7 +108,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Org Instructions vs Repo Instructions -->
+# Org Instructions vs Repo Instructions
 <BeforeAfterPanelsSlide
   :partNumber="1"
   pillIcon="📜"
@@ -137,7 +137,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: What to Standardize -->
+# What to Standardize
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="✅"
@@ -155,7 +155,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Standards Topology Decision -->
+# Standards Topology Decision
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="🗺️"
@@ -173,7 +173,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 2 — Organizational Skills & Knowledge Bases -->
+# Part 2 — Organizational Skills & Knowledge Bases
 <SectionOpenerSlide
   :partNumber="2"
   title="Skills & Knowledge Bases"
@@ -188,7 +188,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Org Skill Libraries (GA) -->
+# Org Skill Libraries (GA)
 <TwoColPairedConceptsSlide
   :partNumber="2"
   pillIcon="🧠"
@@ -217,7 +217,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Knowledge Bases (Enterprise Cloud) -->
+# Knowledge Bases (Enterprise Cloud)
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="📚"
@@ -233,7 +233,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Knowledge Multiplication -->
+# Knowledge Multiplication
 <HeroStatSlide
   :partNumber="2"
   pillIcon="📈"
@@ -252,7 +252,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 3 — Governance & Licensing -->
+# Part 3 — Governance & Licensing
 <SectionOpenerSlide
   :partNumber="3"
   title="Governance & Licensing"
@@ -267,7 +267,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Model Governance -->
+# Model Governance
 <FourCardGridSlide
   :partNumber="3"
   pillIcon="🎛️"
@@ -284,7 +284,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Flexible Licensing Strategy -->
+# Flexible Licensing Strategy
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="💰"
@@ -300,7 +300,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Compliance Automation -->
+# Compliance Automation
 <BeforeAfterMetricsSlide
   :partNumber="3"
   pillIcon="🛡️"
@@ -334,7 +334,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 4 — Adoption & Enablement -->
+# Part 4 — Adoption & Enablement
 <SectionOpenerSlide
   :partNumber="4"
   title="Adoption & Enablement"
@@ -349,7 +349,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Metrics Framework -->
+# Metrics Framework
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="📊"
@@ -365,7 +365,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Self-Service Onboarding -->
+# Self-Service Onboarding
 <FourCardGridSlide
   :partNumber="4"
   pillIcon="⚡"
@@ -383,7 +383,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Federated Governance Model -->
+# Federated Governance Model
 <BeforeAfterPanelsSlide
   :partNumber="4"
   pillIcon="🏛️"
@@ -412,7 +412,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: The 16× ROI Close -->
+# The 16× ROI Close
 <HeroStatSlide
   :partNumber="4"
   pillIcon="📈"
@@ -431,7 +431,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
   header="From Fragmented Adoption to Compounding Organizational Capability"
   :leftItems='["50 teams each spending 40 hours reinventing the same security rules and framework patterns", "Compliance knowledge trapped in senior engineers — lost when they change teams", "Leadership asks for ROI but receives anecdotes — blocks expansion budget approval", "Platform team becomes bottleneck — all 50 teams queue for configuration support"]'
@@ -445,7 +445,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Draft an org-level custom instruction with your top 3 security requirements", "Identify the one skill that if encoded would save every team 5+ hours this quarter", "Pull your current Copilot acceptance rate from the Metrics API — establish your baseline"]'
   :thisWeek='["Publish org-wide custom instructions to Organization Settings → Copilot → Policies", "Create one organizational Agent Skill for your most common compliance check", "Build a self-service onboarding README your teams can complete in 30 minutes"]'
@@ -455,7 +455,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -471,7 +471,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Scaling GitHub Copilot Across Organizations"
   subtitle="Enterprise Patterns for AI Adoption at Scale"

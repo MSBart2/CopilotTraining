@@ -36,7 +36,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="GitHub Copilot Code Review"
   subtitle="From Bottleneck to Accelerator"
@@ -46,7 +46,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="Why does code review block delivery instead of enabling it?"
   subtext="PRs wait days, senior engineers spend 30% of their time reviewing, and quality still varies. Copilot turns"
@@ -63,7 +63,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "⚡", title: "Configuration and Quick Start", subtitle: "Zero to first review in 5 min", blurb: "Rulesets setup, custom instructions, branch protection", slide: 4 },
@@ -75,7 +75,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 1 — Configuration and Quick Start -->
+# Part 1 — Configuration and Quick Start
 <SectionOpenerSlide
   :partNumber="1"
   title="Configuration and Quick Start"
@@ -90,7 +90,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Setup in Five Steps -->
+# Setup in Five Steps
 <WorkflowShowdownStepsSlide
   :partNumber="1"
   pillIcon="⚡"
@@ -113,7 +113,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Custom Instructions — Shape the Review -->
+# Custom Instructions — Shape the Review
 <CodeWithFeaturesSlide
   :partNumber="1"
   pillIcon="📄"
@@ -131,7 +131,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Branch Protection and Manual Requests -->
+# Branch Protection and Manual Requests
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="🚦"
@@ -162,7 +162,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 2 — Best Practices and Team Adoption -->
+# Part 2 — Best Practices and Team Adoption
 <SectionOpenerSlide
   :partNumber="2"
   title="Best Practices and Team Adoption"
@@ -177,7 +177,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Six Capability Categories -->
+# Six Capability Categories
 <FourCardGridSlide
   :partNumber="2"
   pillIcon="🏅"
@@ -195,7 +195,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Hybrid Analysis — Static + LLM -->
+# Hybrid Analysis — Static + LLM
 <BeforeAfterMetricsSlide
   :partNumber="2"
   pillIcon="🔬"
@@ -230,7 +230,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Phased Rollout -->
+# Phased Rollout
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="📅"
@@ -249,7 +249,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 3 — Measuring ROI and Business Impact -->
+# Part 3 — Measuring ROI and Business Impact
 <SectionOpenerSlide
   :partNumber="3"
   title="Measuring ROI and Business Impact"
@@ -264,7 +264,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: The ROI Calculator -->
+# The ROI Calculator
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="🧮"
@@ -295,7 +295,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: March 2026 Example Numbers -->
+# March 2026 Example Numbers
 <HeroStatSlide
   :partNumber="3"
   pillIcon="📈"
@@ -315,7 +315,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Quality Metrics Beyond Time -->
+# Quality Metrics Beyond Time
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="📊"
@@ -334,7 +334,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 4 — Compliance and Regulatory Guidance -->
+# Part 4 — Compliance and Regulatory Guidance
 <SectionOpenerSlide
   :partNumber="4"
   title="Compliance and Regulatory Guidance"
@@ -349,7 +349,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Compliance Instruction Files -->
+# Compliance Instruction Files
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="📄"
@@ -365,7 +365,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Deploy Compliance Instructions — Five Steps -->
+# Deploy Compliance Instructions — Five Steps
 <FrameworkMappingRowsSlide
   :partNumber="4"
   pillIcon="⚙️"
@@ -385,7 +385,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: The Audit Trail -->
+# The Audit Trail
 <FourCardGridSlide
   :partNumber="4"
   pillIcon="📋"
@@ -403,7 +403,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Before After -->
+# Before After
 <BeforeAfterSlide
   header="From Manual Bottleneck to Automated Accelerator"
   :leftItems='["PRs wait 3.2 days on average for first review", "Senior engineers spend 30% of time on mechanical checks", "Security violations caught inconsistently under deadline pressure", "Compliance audits require manual sampling across PRs"]'
@@ -417,7 +417,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Enable Copilot Code Review via Rulesets on one repository", "Create .github/copilot-instructions.md with your top 5 review rules", "Open the Time Savings Calculator with your last month of PR data"]'
   :thisWeek='["Add language-specific instruction files for your primary stack", "Enable required status check on main — block merges on critical findings", "Share calculator output with engineering leadership as a conversation starter"]'
@@ -427,7 +427,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -444,7 +444,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="GitHub Copilot Code Review"
   subtitle="From Bottleneck to Accelerator"

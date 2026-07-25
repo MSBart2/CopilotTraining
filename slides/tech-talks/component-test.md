@@ -40,7 +40,7 @@ import MaturityLevelDrilldownSlide from './components/MaturityLevelDrilldownSlid
 import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="Component Test Deck"
   subtitle="Visual validation for all 21 components"
@@ -50,7 +50,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: BeforeAfterMetrics Opener -->
+# BeforeAfterMetrics Opener
 <SectionOpenerSlide
   :partNumber="1"
   title="BeforeAfterMetricsSlide"
@@ -65,7 +65,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: BeforeAfterMetricsSlide -->
+# BeforeAfterMetricsSlide
 <BeforeAfterMetricsSlide
   :partNumber="1"
   pillIcon="⚡"
@@ -84,7 +84,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: BeforeAfterPanels Opener -->
+# BeforeAfterPanels Opener
 <SectionOpenerSlide
   :partNumber="2"
   title="BeforeAfterPanelsSlide"
@@ -99,7 +99,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: BeforeAfterPanelsSlide -->
+# BeforeAfterPanelsSlide
 <BeforeAfterPanelsSlide
   :partNumber="2"
   pillIcon="🔍"
@@ -121,7 +121,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: ProblemSolutionOutcome Opener -->
+# ProblemSolutionOutcome Opener
 <SectionOpenerSlide
   :partNumber="3"
   title="ProblemSolutionOutcomeSlide"
@@ -136,7 +136,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: ProblemSolutionOutcomeSlide -->
+# ProblemSolutionOutcomeSlide
 <ProblemSolutionOutcomeSlide
   :partNumber="3"
   pillIcon="🧠"
@@ -163,7 +163,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: TwoColPairedConcepts Opener -->
+# TwoColPairedConcepts Opener
 <SectionOpenerSlide
   :partNumber="4"
   title="TwoColPairedConceptsSlide"
@@ -178,7 +178,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: TwoColPairedConceptsSlide -->
+# TwoColPairedConceptsSlide
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="🧠"
@@ -200,7 +200,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: TwoColPairedConceptsSlide — with code prop -->
+# TwoColPairedConceptsSlide — with code prop
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="⚙️"
@@ -231,7 +231,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: ThreeColumnCard Opener -->
+# ThreeColumnCard Opener
 <SectionOpenerSlide
   :partNumber="1"
   title="ThreeColumnCardSlide"
@@ -246,7 +246,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: ThreeColumnCardSlide -->
+# ThreeColumnCardSlide
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🤖"
@@ -263,7 +263,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: FourCardGrid Opener -->
+# FourCardGrid Opener
 <SectionOpenerSlide
   :partNumber="2"
   title="FourCardGridSlide"
@@ -278,7 +278,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: FourCardGridSlide -->
+# FourCardGridSlide
 <FourCardGridSlide
   :partNumber="2"
   pillIcon="⚙️"
@@ -296,7 +296,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: CodeWithFeatures Opener -->
+# CodeWithFeatures Opener
 <SectionOpenerSlide
   :partNumber="3"
   title="CodeWithFeaturesSlide"
@@ -311,7 +311,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: CodeWithFeaturesSlide — left layout -->
+# CodeWithFeaturesSlide — left layout
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="⚙️"
@@ -330,7 +330,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: CodeWithFeaturesSlide — top layout -->
+# CodeWithFeaturesSlide — top layout
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="🤖"
@@ -349,7 +349,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: HeroStat Opener -->
+# HeroStat Opener
 <SectionOpenerSlide
   :partNumber="4"
   title="HeroStatSlide"
@@ -364,7 +364,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: HeroStatSlide -->
+# HeroStatSlide
 <HeroStatSlide
   :partNumber="4"
   pillIcon="📊"
@@ -384,7 +384,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Section — WorkflowShowdownStepsSlide -->
+# Section — WorkflowShowdownStepsSlide
 <SectionOpenerSlide
   :partNumber="1"
   title="WorkflowShowdownStepsSlide"
@@ -399,7 +399,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: WorkflowShowdownStepsSlide — Part 1 -->
+# WorkflowShowdownStepsSlide — Part 1
 <WorkflowShowdownStepsSlide
   :partNumber="1"
   pillIcon="🎯"
@@ -434,7 +434,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: WorkflowShowdownStepsSlide — Part 2 (section 2 colors) -->
+# WorkflowShowdownStepsSlide — Part 2 (section 2 colors)
 <WorkflowShowdownStepsSlide
   :partNumber="2"
   pillIcon="🔍"
@@ -464,7 +464,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Section — MaturityJourneyRoadmapSlide -->
+# Section — MaturityJourneyRoadmapSlide
 <SectionOpenerSlide
   :partNumber="2"
   title="MaturityJourneyRoadmapSlide"
@@ -479,7 +479,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: MaturityJourneyRoadmapSlide — 5 stages -->
+# MaturityJourneyRoadmapSlide — 5 stages
 <MaturityJourneyRoadmapSlide
   :partNumber="2"
   pillIcon="📐"
@@ -499,7 +499,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: MaturityJourneyRoadmapSlide — 3 stages (palette distribution) -->
+# MaturityJourneyRoadmapSlide — 3 stages (palette distribution)
 <MaturityJourneyRoadmapSlide
   :partNumber="3"
   pillIcon="🚀"
@@ -516,7 +516,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Section — AITerminalTranscriptSlide -->
+# Section — AITerminalTranscriptSlide
 <SectionOpenerSlide
   :partNumber="3"
   title="AITerminalTranscriptSlide"
@@ -531,7 +531,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: AITerminalTranscriptSlide -->
+# AITerminalTranscriptSlide
 <AITerminalTranscriptSlide
   :partNumber="3"
   pillIcon="🎯"
@@ -556,7 +556,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: AITerminalTranscriptSlide — second instance (section 4 colors) -->
+# AITerminalTranscriptSlide — second instance (section 4 colors)
 <AITerminalTranscriptSlide
   :partNumber="4"
   pillIcon="⚡"
@@ -581,7 +581,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Section — MaturityLevelDrilldownSlide -->
+# Section — MaturityLevelDrilldownSlide
 <SectionOpenerSlide
   :partNumber="4"
   title="MaturityLevelDrilldownSlide"
@@ -596,7 +596,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: MaturityLevelDrilldownSlide — L1 -->
+# MaturityLevelDrilldownSlide — L1
 <MaturityLevelDrilldownSlide
   :partNumber="1"
   pillIcon="📐"
@@ -612,7 +612,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: MaturityLevelDrilldownSlide — L2 (different section color) -->
+# MaturityLevelDrilldownSlide — L2 (different section color)
 <MaturityLevelDrilldownSlide
   :partNumber="2"
   pillIcon="📐"
@@ -628,7 +628,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Section — FrameworkMappingRowsSlide -->
+# Section — FrameworkMappingRowsSlide
 <SectionOpenerSlide
   :partNumber="1"
   title="FrameworkMappingRowsSlide"
@@ -643,7 +643,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: FrameworkMappingRowsSlide — 5 rows -->
+# FrameworkMappingRowsSlide — 5 rows
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="🧠"
@@ -663,7 +663,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: FrameworkMappingRowsSlide — section 3 colors -->
+# FrameworkMappingRowsSlide — section 3 colors
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="🔑"
@@ -681,7 +681,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Section — Structure Components -->
+# Section — Structure Components
 <SectionOpenerSlide
   :partNumber="4"
   title="Structure Components"
@@ -696,7 +696,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: CoreQuestionSlide -->
+# CoreQuestionSlide
 <CoreQuestionSlide
   question="What mechanisms make multi-agent AI work, and how do I compose them into autonomous systems?"
   subtext="Single agents hit a ceiling: context fills, supervision is the bottleneck, quality degrades."
@@ -713,7 +713,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: TocSlide -->
+# TocSlide
 <TocSlide
   :sections='[
     { icon: "🧱", title: "Subagents", subtitle: "The Building Block", blurb: "Context isolation, parallel execution, and the vocabulary to reason with", slide: 4 },
@@ -725,7 +725,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: BeforeAfterSlide -->
+# BeforeAfterSlide
 <BeforeAfterSlide
   header="From Single Agent to Multi-Agent Architecture"
   :leftItems='["Single agent juggling research, planning, and implementation", "50–80% of context is irrelevant by execution time", "Continuous supervision required — cannot look away", "Multiple agents sharing workspace create file conflicts"]'
@@ -739,7 +739,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: WhatYouCanDoTodaySlide -->
+# WhatYouCanDoTodaySlide
 <WhatYouCanDoTodaySlide
   :today='["Try implicit subagent: Run a subagent to research X, return a structured summary", "Run 3 parallel subagents on a PR: security, performance, and testing in parallel", "Hand off one task to a background agent via VS Code session picker and review the branch"]'
   :thisWeek='["Install Squad with npx github:bradygaster/squad and form your first team", "Write charter.md files for each role: Lead, Dev, Tester", "Install AgentCouncil and run one adversarial debate on a real architecture decision"]'
@@ -749,7 +749,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: ReferencesSlide -->
+# ReferencesSlide
 <ReferencesSlide
   :groups='[
     { title: "📖 VS Code Documentation", color: "cyan", items: [
@@ -767,7 +767,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Thank You"
   subtitle="Component Test Deck — All 18 Components"

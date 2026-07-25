@@ -34,7 +34,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="Copilot Plugins & APM"
   subtitle="Composable AI Extensions"
@@ -44,7 +44,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How do I extend Copilot and share that setup across my whole team?"
   subtext="Custom capabilities should travel with your code, not live on one developer's machine."
@@ -54,7 +54,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   title="Copilot Plugins & APM"
   subtitle="WHY it matters → HOW to explore → CODIFY as infrastructure → ACT today"
@@ -63,7 +63,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 1 Opener -->
+# Part 1 Opener
 <SectionOpenerSlide
   :partNumber="1"
   pillIcon="💡"
@@ -76,7 +76,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Two Scopes Two Tools -->
+# Two Scopes Two Tools
 <TwoColPairedConceptsSlide
   :partNumber="1"
   pillIcon="💡"
@@ -89,7 +89,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: What Becomes Possible -->
+# What Becomes Possible
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="💡"
@@ -101,7 +101,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 2 Opener -->
+# Part 2 Opener
 <SectionOpenerSlide
   :partNumber="2"
   pillIcon="⌨️"
@@ -114,7 +114,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Install Update Remove -->
+# Install Update Remove
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="⌨️"
@@ -126,7 +126,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: CLI vs VS Code UI -->
+# CLI vs VS Code UI
 <TwoColPairedConceptsSlide
   :partNumber="2"
   pillIcon="⌨️"
@@ -139,7 +139,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Marketplace and Community -->
+# Marketplace and Community
 <FourCardGridSlide
   :partNumber="2"
   pillIcon="⌨️"
@@ -151,7 +151,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 3 Opener -->
+# Part 3 Opener
 <SectionOpenerSlide
   :partNumber="3"
   pillIcon="📄"
@@ -164,7 +164,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: apm.yml anatomy -->
+# apm.yml anatomy
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="📄"
@@ -178,7 +178,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Per-Repository Configuration -->
+# Per-Repository Configuration
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="📄"
@@ -190,7 +190,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: The Lockfile -->
+# The Lockfile
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="📄"
@@ -204,7 +204,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Lockfile Workflow -->
+# Lockfile Workflow
 <WorkflowShowdownStepsSlide
   :partNumber="3"
   pillIcon="📄"
@@ -220,7 +220,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 4 Opener -->
+# Part 4 Opener
 <SectionOpenerSlide
   :partNumber="4"
   pillIcon="🚀"
@@ -233,7 +233,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Plugin Ecosystem Value -->
+# Plugin Ecosystem Value
 <CodeWithFeaturesSlide
   :partNumber="4"
   pillIcon="🚀"
@@ -247,7 +247,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Framework mapping — two scopes -->
+# Framework mapping — two scopes
 <FrameworkMappingRowsSlide
   :partNumber="4"
   pillIcon="🚀"
@@ -259,7 +259,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Before and After -->
+# Before and After
 <BeforeAfterSlide
   header="From Manual Config to Reproducible Infrastructure"
   :leftItems='["New contributor spends 30 min following a Copilot setup wiki","Plugins installed vary by developer — behavior is inconsistent","No version control on agent configuration — drift is invisible","Different repos have no shared plugin standard or manifest"]'
@@ -269,7 +269,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Run apm marketplace browse and pick one plugin to try","Install it with copilot plugin install and use it in your next chat session","Note whether it would be valuable for your whole team"]'
   :thisWeek='["Author an apm.yml for your most active repository","Run apm install and commit both apm.yml and apm-lock.yml","Open a PR and review the lockfile diff with a teammate"]'
@@ -279,14 +279,14 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[{"title":"📖 Official Documentation","color":"cyan","items":[{"label":"Agent plugins for Copilot customization","href":"https://code.visualstudio.com/docs/copilot/customization/agent-plugins","description":"Plugin concepts, installation, and VS Code integration"},{"label":"APM - Agent Package Manager","href":"https://microsoft.github.io/apm/introduction/what-is-apm/","description":"Manifest schema, lockfile mechanics, and CLI reference"}]},{"title":"🔧 Repositories and Community","color":"purple","items":[{"label":"Official Copilot Plugins Repository","href":"https://github.com/github/copilot-plugins","description":"First-party plugins, manifest schema, and contribution guidelines"},{"label":"Awesome GitHub Copilot","href":"https://github.com/github/awesome-copilot","description":"Community-curated plugins, skills, MCP servers, and workflows"}]}]'
 />
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Copilot Plugins & APM"
   subtitle="Agent configuration is infrastructure — version it, review it, share it."

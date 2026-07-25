@@ -35,7 +35,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="GitHub Agentic Workflows"
   subtitle="Repository Automation with AI Agents"
@@ -45,7 +45,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How do I automate repository tasks that require judgment — without writing complex YAML workflows?"
   subtext="Manual triage, repetitive reviews, and hand-assembled reports cost every team hours per week."
@@ -62,7 +62,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   subtitle="Why It Matters → Architecture & Safety → Patterns by Path → Your Path Forward"
   :sections='[
@@ -75,7 +75,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 1 — Why Agentic Workflows Matter -->
+# Part 1 — Why Agentic Workflows Matter
 <SectionOpenerSlide
   :partNumber="1"
   title="Why Agentic Workflows Matter"
@@ -90,7 +90,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: YAML Maintenance vs. Markdown Intent -->
+# YAML Maintenance vs. Markdown Intent
 <WorkflowShowdownStepsSlide
   :partNumber="1"
   pillIcon="✍️"
@@ -113,7 +113,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Which Problem Is Yours? -->
+# Which Problem Is Yours?
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🛤️"
@@ -129,7 +129,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Zero to Deployed Workflow -->
+# Zero to Deployed Workflow
 <AITerminalTranscriptSlide
   :partNumber="1"
   pillIcon="⚡"
@@ -154,7 +154,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Four Mental Model Shifts -->
+# Four Mental Model Shifts
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="🧠"
@@ -171,7 +171,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 2 — Architecture & Safe Execution -->
+# Part 2 — Architecture & Safe Execution
 <SectionOpenerSlide
   :partNumber="2"
   title="Architecture & Safe Execution"
@@ -186,7 +186,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Three-Phase Workflow Lifecycle -->
+# Three-Phase Workflow Lifecycle
 <MaturityJourneyRoadmapSlide
   :partNumber="2"
   pillIcon="🔄"
@@ -204,7 +204,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: A Workflow in Its Natural State -->
+# A Workflow in Its Natural State
 <CodeWithFeaturesSlide
   :partNumber="2"
   pillIcon="📄"
@@ -223,7 +223,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Why AI Cannot Write Directly -->
+# Why AI Cannot Write Directly
 <ProblemSolutionOutcomeSlide
   :partNumber="2"
   pillIcon="🛡️"
@@ -259,7 +259,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Safe Output Validation Pipeline -->
+# Safe Output Validation Pipeline
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="✅"
@@ -279,7 +279,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Five Pattern Families -->
+# Five Pattern Families
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🗂️"
@@ -299,7 +299,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 3 — Patterns by Path & Maturity -->
+# Part 3 — Patterns by Path & Maturity
 <SectionOpenerSlide
   :partNumber="3"
   title="Patterns by Path & Maturity"
@@ -314,7 +314,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Path A — Triage at Scale -->
+# Path A — Triage at Scale
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🏷️"
@@ -330,7 +330,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Path B — Visibility & Synthesis -->
+# Path B — Visibility & Synthesis
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="📊"
@@ -346,7 +346,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Path C — Orchestration -->
+# Path C — Orchestration
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🤖"
@@ -362,7 +362,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 4 — Your Path Forward -->
+# Part 4 — Your Path Forward
 <SectionOpenerSlide
   :partNumber="4"
   title="Your Path Forward"
@@ -377,7 +377,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Your Maturity Progression Contract -->
+# Your Maturity Progression Contract
 <MaturityJourneyRoadmapSlide
   :partNumber="4"
   pillIcon="📈"
@@ -396,7 +396,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Monday Morning Action Plan -->
+# Monday Morning Action Plan
 <FrameworkMappingRowsSlide
   :partNumber="4"
   pillIcon="🚀"
@@ -415,7 +415,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Before & After -->
+# Before & After
 <BeforeAfterSlide
   header="From Scripted Steps to Adaptive Intent"
   :leftItems='[
@@ -439,7 +439,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
     "Install: gh extension install github/gh-aw and run gh aw version",
@@ -461,7 +461,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -481,7 +481,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="GitHub Agentic Workflows"
   subtitle="Repository automation that judges, adapts, and compounds — while you sleep."

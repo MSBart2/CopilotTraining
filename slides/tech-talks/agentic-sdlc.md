@@ -33,7 +33,7 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="Agentic SDLC"
   subtitle="Designing the SDLC Your Agents Deserve"
@@ -43,7 +43,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How do you know if your SDLC is ready for agents — and what do you build first?"
   subtext="Most teams add agents to an SDLC designed for humans and wonder why throughput doesn&#39;t scale. The answer is not the agent — it is the pipeline around it."
@@ -60,7 +60,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Overview -->
+# Overview
 <TocSlide
   :sections='[
     { icon: "📐", title: "Maturity Model", blurb: "L1 Functional → L5 Autonomous — know exactly where your org sits today", slide: 4 },
@@ -72,7 +72,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 1 — Maturity Model -->
+# Part 1 — Maturity Model
 <SectionOpenerSlide
   :partNumber="1"
   title="Maturity Model"
@@ -87,7 +87,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: L1–L5 Maturity Assessment -->
+# L1–L5 Maturity Assessment
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="📐"
@@ -106,7 +106,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: The L5 Breakpoint -->
+# The L5 Breakpoint
 <HeroStatSlide
   :partNumber="1"
   pillIcon="⚡"
@@ -126,7 +126,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Instruction Hierarchy -->
+# Instruction Hierarchy
 <MaturityJourneyRoadmapSlide
   :partNumber="1"
   pillIcon="📜"
@@ -146,7 +146,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 2 — PR Workflows -->
+# Part 2 — PR Workflows
 <SectionOpenerSlide
   :partNumber="2"
   title="PR Workflows"
@@ -161,7 +161,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: How Review Mode Shifts by Level -->
+# How Review Mode Shifts by Level
 <FrameworkMappingRowsSlide
   :partNumber="2"
   pillIcon="🔀"
@@ -180,7 +180,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: L3 vs L5 Review Habits -->
+# L3 vs L5 Review Habits
 <WorkflowShowdownStepsSlide
   :partNumber="2"
   pillIcon="🔀"
@@ -203,7 +203,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Governance Pyramid Inversion -->
+# Governance Pyramid Inversion
 <BeforeAfterMetricsSlide
   :partNumber="2"
   pillIcon="🔺"
@@ -238,7 +238,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Context-Aware Agent Validation -->
+# Context-Aware Agent Validation
 <TwoColPairedConceptsSlide
   :partNumber="2"
   pillIcon="🤖"
@@ -269,7 +269,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 3 — Trust Manufacturing -->
+# Part 3 — Trust Manufacturing
 <SectionOpenerSlide
   :partNumber="3"
   title="Trust Manufacturing"
@@ -284,7 +284,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: CI Manufacturing Principles -->
+# CI Manufacturing Principles
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="🏭"
@@ -303,7 +303,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: The 10-Minute Threshold -->
+# The 10-Minute Threshold
 <HeroStatSlide
   :partNumber="3"
   pillIcon="⏱️"
@@ -323,7 +323,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Part 4 — Implementation Roadmap -->
+# Part 4 — Implementation Roadmap
 <SectionOpenerSlide
   :partNumber="4"
   title="Implementation Roadmap"
@@ -338,7 +338,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Phase 1 — Standardized Foundation (L3) -->
+# Phase 1 — Standardized Foundation (L3)
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="⚙️"
@@ -370,7 +370,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Phase 2 — Optimized Governance (L4) -->
+# Phase 2 — Optimized Governance (L4)
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="🤖"
@@ -402,7 +402,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Phase 3 — Autonomous Scale (L5) -->
+# Phase 3 — Autonomous Scale (L5)
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="🚀"
@@ -434,7 +434,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Before and After -->
+# Before and After
 <BeforeAfterSlide
   header="What Changes When the SDLC Is Agent-Ready"
   :leftItems='[
@@ -458,7 +458,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
     "Run the L1–L5 maturity assessment for your team — platform and adoption both"
@@ -479,7 +479,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 AgentRC Framework", color: "cyan", items: [
@@ -499,7 +499,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Agentic SDLC"
   subtitle="Designing the SDLC Your Agents Deserve"

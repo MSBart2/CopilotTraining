@@ -20,8 +20,8 @@ Four quick checks — then immediately start writing.
 
 1. **README exists** — Confirm `tech-talks/{topic}/README.md` exists. If not, stop: "No README.md found. Generate it first via the Tech Talk Generator agent."
 2. **Not archived** — Read only the README frontmatter. If `status: archived`, stop. Also refuse if the existing slide file has `status: archived`. Do **not** read the body of any existing `slides/tech-talks/{slug}.md` — it will be overwritten and must not influence generation.
-3. **Read deck recipe + SECTIONS.md** — Look for `tech-talks/{topic}/deck.recipe.yml`.
-   - **If it exists:** read it. It has everything needed for Phase A. Also read `slides/SECTIONS.md` now — you'll need the section value to write correct frontmatter in Phase A.
+3. **Read deck recipe + SECTIONS.md + template.md** — Look for `tech-talks/{topic}/deck.recipe.yml`.
+   - **If it exists:** read it. Also read `slides/SECTIONS.md` and `slides/tech-talks/template.md` simultaneously — all three are required before writing Phase A. `SECTIONS.md` provides the `section:` frontmatter value; `template.md` provides every structural component schema and the correct import paths.
    - **If missing:** stop. Say: "No `deck.recipe.yml` found for this talk. Run the deck-recipe-review skill to create one, then re-invoke this agent."
    - Do **not** overwrite an existing recipe unless the user explicitly asks.
 4. **Clear the output file** — Before writing a single slide, run:
@@ -30,7 +30,7 @@ Four quick checks — then immediately start writing.
    ```
    This must happen before Phase A. Do not write into an existing file.
 
-→ **All gates passed? Go directly to Phase A.** Do not read the README or template yet.
+→ **All gates passed? Go directly to Phase A.** Do not read the README yet.
 
 ---
 
@@ -38,11 +38,24 @@ Four quick checks — then immediately start writing.
 
 The recipe contains everything needed to write the full structural skeleton. Start immediately.
 
-> **HARD STOP — no additional reads before writing.**
-> Pre-flight loaded the recipe and SECTIONS.md. That is all Phase A needs.
-> Do NOT read the README, component `.vue` files, sibling decks, template.md, or memory files before writing the skeleton.
-> If you find yourself reaching for any of those — stop. Write the skeleton first. Those reads happen at the start of Phase B.
-> The user is watching the file. It must change within seconds of pre-flight completing.
+> **Pre-flight loaded the recipe, SECTIONS.md, and template.md.** Use the schemas from the quick-reference below. Do NOT read the README, component `.vue` files, sibling decks, or memory files before writing — those reads happen in Phase B.
+
+### Structural component schema quick-reference
+
+Structural components import from `./components/structure/ComponentName.vue`. Body components from `./components/ComponentName.vue`.
+
+| Component | Required props |
+|-----------|---------------|
+| `TitleSlide` | `title`, `subtitle`, `tagline`, `meta` |
+| `CoreQuestionSlide` | `question`, `subtext`, `highlight`, `:cards='[{icon?, title, description}]'` — 6 cards; first 3 have `icon` (audience), last 3 are stats (no `icon`) |
+| `TocSlide` | `:sections='[{icon, title, subtitle, blurb, slide}]'` — exactly 4 sections |
+| `SectionOpenerSlide` | `:partNumber`, `title`, `subtitle`, `:cards='[{icon, title, blurb}]'` (3 cards), `:terminal='{context, detail}'` — NO `section`, NO `progressDots` |
+| `BeforeAfterSlide` | `header`, `:leftItems='["..."]'` (4), `:rightItems='["..."]'` (4), `:metrics='[{value, detail}]'` (3) |
+| `WhatYouCanDoTodaySlide` | `:today='["..."]'`, `:thisWeek='["..."]'`, `:thisMonth='["..."]'`, `footer="..."` |
+| `ReferencesSlide` | `:groups='[{title, color, items: [{href?, label, description}]}]'` |
+| `ThankYouSlide` | `title`, `subtitle`, `:cards="[{value, detail}]"` (2–4 cards), `prompt` |
+
+**Prop syntax rule:** All array/object props use **single outer quotes** (`:prop='[...]'`). String values inside use double quotes. Keys are unquoted JS: `{title: "foo"}` not `{"title": "foo"}`.
 
 Write the scaffold in one pass:
 
@@ -95,16 +108,16 @@ Write the scaffold in one pass:
 
 ---
 
-## Phase B Pre-read: Component Schema Reference
+## Phase B Pre-read: Body Component Reference
 
-> **CRITICAL: Before writing ANY body slide, you MUST read this first.**
+> **Before writing any body slide, review `slides/tech-talks/template.md` for the Tier-1 body component schemas.**
 
-Read **`slides/tech-talks/template.md`** to build a mental map of all 13 Tier-1 components:
+Template.md was already loaded in pre-flight for structural component schemas. In Phase B, your goal is the body-content Tier-1 components (BeforeAfterMetricsSlide, CodeWithFeaturesSlide, etc.):
 - Each component has an **exact prop name and structure** documented with working examples
 - Study the escaping rules and usage patterns
 - This is your authoritative source — do not guess at prop names or structures
 
-**Only AFTER you have `template.md` loaded in context should you write any component tags.**
+**Only AFTER you have the body component schemas in context should you write any body slide.**
 
 ---
 
@@ -112,7 +125,7 @@ Read **`slides/tech-talks/template.md`** to build a mental map of all 13 Tier-1 
 
 Now read everything that Phase B needs — **all in one parallel pass before writing any body slides**. Issue all reads simultaneously, not sequentially:
 
-- **`slides/tech-talks/template.md`** — component catalog, prop schemas, import block, escaping rules. Do not read `slides/TEMPLATE.md`.
+- **`slides/tech-talks/template.md`** — already loaded in pre-flight for structural schemas; re-read now to focus on the Tier-1 body component schemas you are about to write. Do not read `slides/TEMPLATE.md`.
 - **`memories/infra/facts.md`**, `discoveries.md`, `advice.md` — confirmed build rules and gotchas. If the topic has a bench entry (e.g., `memories/agent_architecture/facts.md`), read that too.
 - **Topic bench `preferences.md`** — if a `memories/{topic}/preferences.md` or `memories/{section}/preferences.md` exists (e.g., `memories/exec-talks/preferences.md`), read it now. Voice, tone, and framing rules live here and override default assumptions. For exec-talks this is **mandatory** — it contains banned patterns and preferred voice rules that must be applied to every prop value.
 - **`tech-talks/{topic}/README.md`** — full read. Extract: core question, personas, before/after comparisons with metrics, key capabilities ranked by novelty and audience impact, references frontmatter.
@@ -161,8 +174,12 @@ N         — ThankYouSlide
 
 6. Fill `CoreQuestionSlide` cards with real personas and stats from the README.
 7. Fill `ReferencesSlide` from README references frontmatter.
-8. Count all `<!-- SLIDE: -->` markers to get actual opener slide numbers.
-9. Update `TocSlide` with real `slide` values.
+8. Get real slide numbers by scanning the live deck — do not hand-count:
+   ```powershell
+   node scripts/inspect-slide.js {slug} scan
+   ```
+   Run from `slides/`. This starts (or reuses) a live Slidev dev session and reports every slide's number and name, derived the same way Slidev itself parses the deck. Each "Part N" opener line gives you the correct `slide:` value for `TocSlide`.
+9. Update `TocSlide` with real `slide` values from step 8.
 10. Run final build. Confirm `[OK]`.
 
 If a build fails at any point, fix before proceeding.
@@ -191,9 +208,27 @@ updated: { YYYY-MM-DD }
 
 ### Import block
 
-One `<script setup>` block at the top, immediately after frontmatter. Import only components the deck uses. See `slides/tech-talks/template.md` for the full canonical block.
+One `<script setup>` block at the top, immediately after frontmatter. Import only components the deck uses.
 
-**Critical:** Do NOT place a `---` separator between `</script>` and the first slide (`<!-- SLIDE: Title -->`). The `</script>` block flows directly into the first slide with only a blank line.
+- **Structural components** (TitleSlide, CoreQuestionSlide, TocSlide, SectionOpenerSlide, BeforeAfterSlide, WhatYouCanDoTodaySlide, ReferencesSlide, ThankYouSlide): `import X from './components/structure/X.vue'`
+- **Body content components** (all 13 Tier-1 components): `import X from './components/X.vue'`
+
+See `slides/tech-talks/template.md` for the full canonical block (loaded in pre-flight).
+
+**Critical:** Do NOT place a `---` separator between `</script>` and the first slide (`# Title`). The `</script>` block flows directly into the first slide with only a blank line.
+
+### Slide heading requirement
+
+Every slide **must** start with a Markdown heading (`#` as the first character of the line) naming the slide, with no blank line before the component tag:
+
+```markdown
+# Core Question
+<CoreQuestionSlide
+  ...
+/>
+```
+
+This makes every slide self-describing in Slidev's own navigator/overview (no visual effect — the heading renders behind the component). It also lets `scripts/inspect-slide.js` derive slide names and numbers directly, instead of hand-counting.
 
 ### Component selection
 
@@ -238,9 +273,10 @@ Section openers do **not** get progress dots.
 
 ### Prop escaping rules
 
-- Apostrophes inside single-quoted array props (`:prop='[...]'`) → use `&#39;`
-- Never use `&quot;` or `\"` inside any prop value — Vue decodes entities before JS parses, breaking the build
-- Use double quotes inside JSON arrays (single quotes outside, double inside)
+- All array/object props use **single outer quotes**: `:prop='[{key: "value"}]'` — this is the universal convention
+- String values inside use **double quotes**; keys are **unquoted JS**: `{title: "foo"}` not `{"title": "foo"}`
+- Apostrophes inside single-quoted outer props → use `&#39;` inside the double-quoted string value: `{description: "agent&#39;s key"}`
+- Never use `&quot;`, `&#34;`, or `\"` inside any prop value — Vue decodes `&quot;`/`&#34;` before JS parses, breaking string boundaries; `\"` also confuses the parser
 - Always leave a blank line between `/>` and the next `---` separator
 
 ---
@@ -288,9 +324,9 @@ Run through this before handing off.
 ### Structure
 
 - [ ] Slide 1: `TitleSlide` with `title`, `subtitle`, `tagline`, `meta`
-- [ ] Slide 2: `CoreQuestionSlide` with exactly 6 cards (3 audience with `icon` + 3 stats)
-- [ ] Slide 3: `TocSlide` with exactly 4 sections; `slide` values are actual counted numbers
-- [ ] Each Part N: `SectionOpenerSlide` with `partNumber`, exactly 3 `cards`, and `:terminal`
+- [ ] Slide 2: `CoreQuestionSlide` with `question`, `subtext`, `highlight` + exactly 6 cards (3 audience with `icon`, 3 stats without `icon`)
+- [ ] Slide 3: `TocSlide` with exactly 4 sections each having `icon`, `title`, `subtitle`, `blurb`, `slide`; `slide` values come from `inspect-slide.js {slug} scan`, not estimates
+- [ ] Each Part N: `SectionOpenerSlide` with `partNumber`, `title`, `subtitle`, exactly 3 `cards` (with `blurb` not `description`), and `:terminal='{context, detail}'` — no `section` prop
 - [ ] N-3: `BeforeAfterSlide` with exactly 4 left items, 4 right items, exactly 3 metrics
 - [ ] N-2: `WhatYouCanDoTodaySlide` with `today`, `thisWeek`, `thisMonth`, `footer`
 - [ ] N-1: `ReferencesSlide` — `href` for external links, omit for cross-references
@@ -321,15 +357,17 @@ Run through this before handing off.
 
 ## Common mistakes
 
-- `<!-- SLIDE: Name -->` required on **every** slide including slide 1 — missing it shifts all TOC counts off by one
-- `---` separator always on its own line — never `---<!-- SLIDE:` on the same line
-- **Blank line required after `---`** — always leave an empty line between the `---` separator and the `<!-- SLIDE: Name -->` comment that follows it. Missing this blank line causes Slidev to misparse the slide boundary.
+- `# Name` heading required on **every** slide including slide 1 — missing it shifts all TOC counts off by one and the slide falls back to a generic `Slide N` name in tooling
+- `---` separator always on its own line — never `---# Heading` on the same line
+- **Blank line required after `---`** — always leave an empty line between the `---` separator and the `# Name` heading that follows it. Missing this blank line causes Slidev to misparse the slide boundary.
+- **No blank line between `# Heading` and the component tag** — the heading is followed immediately by the component, not a blank line then the component.
 - No per-slide frontmatter (`layout:`, `class:`, `transition:`) — CSS only
 - `SectionOpenerSlide` requires `:terminal` — omitting it causes a silent blank slide
 - `ThankYouSlide` props are `title`, `subtitle`, `cards`, `prompt` — no `message`, no `links`
-- TOC `slide` numbers must be counted from the final deck, not estimated from the outline
+- TOC `slide` numbers must come from `node scripts/inspect-slide.js {slug} scan`, not estimated from the outline or hand-counted
 - UTF-8 BOM breaks frontmatter — write files with `UTF8Encoding($false)` if using PowerShell
 - **Guessing at component props** — Every body component is documented in `slides/tech-talks/template.md` with working examples. If you don't see it there, the prop doesn't exist. **Always check template.md BEFORE writing any component tags.**
 - **BeforeAfterSlide vs BeforeAfterMetricsSlide** — These are different components with different props. Check template.md to determine which one the content calls for, then verify the exact prop schema.
-- **Section openers don't use universal body props** — `SectionOpenerSlide` requires `partNumber`, `section`, `title`, `subtitle`, `cards`, but NOT `pillIcon`, `pillLabel`, or `progressDots`. Verify in template.md before adding any props.
+- **Section openers don't use universal body props** — `SectionOpenerSlide` accepts `partNumber`, `title`, `subtitle`, `:cards` (with `blurb` not `description`), and `:terminal='{context, detail}'`. It does NOT accept `section`, `pillIcon`, `pillLabel`, or `progressDots`. Passing `section` or `:terminal="true"` produces a silent blank slide.
+- **Import path split is load-bearing** — structural components live in `./components/structure/`; body components in `./components/`. Mixing these paths produces a module-not-found error at build time.
 - **Adding props that don't exist breaks the build silently** — Vue components validate strict prop definitions. If you add a prop that doesn't exist on the component, Slidev will fail or ignore it. Always cross-reference with template.md working examples.

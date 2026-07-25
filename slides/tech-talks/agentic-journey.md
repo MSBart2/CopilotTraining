@@ -36,7 +36,7 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="The Agentic Journey"
   subtitle="Incremental Path from Issue to PR Automation"
@@ -46,7 +46,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How do you move from experimenting with AI to trusting it in your SDLC?"
   subtext="Most teams are stuck between all-in paralysis and experiment-forever drift."
@@ -63,7 +63,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "📥", title: "Agentic Intake",    subtitle: "Triage automation without touching code", blurb: "Duplicate detection, auto-labeling, and the state machine spine", slide: 4  },
@@ -75,7 +75,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 1 — Agentic Intake -->
+# Part 1 — Agentic Intake
 <SectionOpenerSlide
   :partNumber="1"
   title="Agentic Intake"
@@ -90,7 +90,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: The Label State Machine -->
+# The Label State Machine
 <MaturityJourneyRoadmapSlide
   :partNumber="1"
   pillIcon="🗺️"
@@ -110,7 +110,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Triage: Before and After -->
+# Triage: Before and After
 <BeforeAfterMetricsSlide
   :partNumber="1"
   pillIcon="⏱️"
@@ -144,7 +144,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Duplicate Detection in Action -->
+# Duplicate Detection in Action
 <AITerminalTranscriptSlide
   :partNumber="1"
   pillIcon="🔍"
@@ -168,7 +168,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 2 — Agentic Planning -->
+# Part 2 — Agentic Planning
 <SectionOpenerSlide
   :partNumber="2"
   title="Agentic Planning"
@@ -183,7 +183,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Planning Workflow Comparison -->
+# Planning Workflow Comparison
 <WorkflowShowdownStepsSlide
   :partNumber="2"
   pillIcon="📋"
@@ -206,7 +206,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Historical Context Impact -->
+# Historical Context Impact
 <HeroStatSlide
   :partNumber="2"
   pillIcon="📊"
@@ -226,7 +226,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Three Planning Beats -->
+# Three Planning Beats
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="📑"
@@ -242,7 +242,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: The /approve-plan Gate -->
+# The /approve-plan Gate
 <ProblemSolutionOutcomeSlide
   :partNumber="2"
   pillIcon="✅"
@@ -278,7 +278,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 3 — Agentic Coding -->
+# Part 3 — Agentic Coding
 <SectionOpenerSlide
   :partNumber="3"
   title="Agentic Coding"
@@ -293,7 +293,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: What the Coding Agent Delivers -->
+# What the Coding Agent Delivers
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="⚙️"
@@ -309,7 +309,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Externalized Prompt Architecture -->
+# Externalized Prompt Architecture
 <TwoColPairedConceptsSlide
   :partNumber="3"
   pillIcon="📝"
@@ -340,7 +340,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Implementation Time Savings -->
+# Implementation Time Savings
 <BeforeAfterMetricsSlide
   :partNumber="3"
   pillIcon="🚀"
@@ -375,7 +375,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 4 — Code Review -->
+# Part 4 — Code Review
 <SectionOpenerSlide
   :partNumber="4"
   title="Code Review"
@@ -390,7 +390,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Four Automated Review Dimensions -->
+# Four Automated Review Dimensions
 <FourCardGridSlide
   :partNumber="4"
   pillIcon="🔍"
@@ -408,7 +408,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Code Review Time Savings -->
+# Code Review Time Savings
 <BeforeAfterMetricsSlide
   :partNumber="4"
   pillIcon="⏱️"
@@ -442,7 +442,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Graduation Signals -->
+# Graduation Signals
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🎓"
@@ -458,7 +458,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
   header="From Manual SDLC to Compounding Automation"
   :leftItems='["30 min triage per issue, 40 min per duplicate", "2-4 hour ad-hoc planning with missed context", "8-12 hour implementations with scope drift", "2-4 hour code review with inconsistent coverage"]'
@@ -472,7 +472,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Copy 4 YAML workflow files into your repo", "Configure secrets for GitHub Copilot agent access", "Create your first intake issue to test the pipeline"]'
   :thisWeek='["Review and approve your first agent-generated execution plan", "Validate a Copilot-coded PR against your quality bar", "Measure triage time before and after for one sprint"]'
@@ -482,7 +482,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -498,7 +498,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="The Agentic Journey"
   subtitle="Incremental Path from Issue to PR Automation"

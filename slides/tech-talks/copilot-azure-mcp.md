@@ -39,7 +39,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="GitHub Copilot + Azure Skills Plugin"
   subtitle="Conversational Azure Prototyping and Deployment"
@@ -49,7 +49,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Core Question -->
+# Core Question
 <CoreQuestionSlide
   question="How do I prototype and deploy Azure solutions conversationally?"
   subtext="Azure developers spend 45+ minutes per cycle switching between portal, docs, and CLI"
@@ -66,7 +66,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
     { icon: "💬", title: "Live Azure Context", subtitle: "Terminal as Azure interface", blurb: "Query live subscription state from any conversation", slide: 4 },
@@ -78,7 +78,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 1 — Live Azure Context -->
+# Part 1 — Live Azure Context
 <SectionOpenerSlide
   :partNumber="1"
   title="Live Azure Context in the Terminal"
@@ -93,7 +93,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Portal vs Terminal -->
+# Portal vs Terminal
 <BeforeAfterPanelsSlide
   :partNumber="1"
   pillIcon="🔄"
@@ -116,7 +116,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Live Discovery Demo -->
+# Live Discovery Demo
 <AITerminalTranscriptSlide
   :partNumber="1"
   pillIcon="💬"
@@ -149,7 +149,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Workflow Vocabulary -->
+# Workflow Vocabulary
 <ThreeColumnCardSlide
   :partNumber="1"
   pillIcon="🗺️"
@@ -165,7 +165,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 2 — The Prototype Loop -->
+# Part 2 — The Prototype Loop
 <SectionOpenerSlide
   :partNumber="2"
   title="The Prototype Loop"
@@ -180,7 +180,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Three Environments Comparison -->
+# Three Environments Comparison
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="⚖️"
@@ -196,7 +196,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Traditional vs Plan Mode -->
+# Traditional vs Plan Mode
 <WorkflowShowdownStepsSlide
   :partNumber="2"
   pillIcon="🔄"
@@ -219,7 +219,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Plan Mode in Action -->
+# Plan Mode in Action
 <AITerminalTranscriptSlide
   :partNumber="2"
   pillIcon="🗣️"
@@ -253,7 +253,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: The 8-Minute Number -->
+# The 8-Minute Number
 <HeroStatSlide
   :partNumber="2"
   pillIcon="⏱️"
@@ -273,7 +273,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 3 — Azure Skills Plugin -->
+# Part 3 — Azure Skills Plugin
 <SectionOpenerSlide
   :partNumber="3"
   title="Azure Skills Plugin: The Brain Layer"
@@ -288,7 +288,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Three-Layer Architecture -->
+# Three-Layer Architecture
 <FrameworkMappingRowsSlide
   :partNumber="3"
   pillIcon="🏗️"
@@ -306,7 +306,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: 21 Skills by Lifecycle Phase -->
+# 21 Skills by Lifecycle Phase
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🗂️"
@@ -322,7 +322,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Plugin Installation -->
+# Plugin Installation
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="📦"
@@ -341,7 +341,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: The azure-rbac Bridge -->
+# The azure-rbac Bridge
 <BeforeAfterPanelsSlide
   :partNumber="3"
   pillIcon="🔑"
@@ -364,7 +364,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 4 — Guardrails -->
+# Part 4 — Guardrails
 <SectionOpenerSlide
   :partNumber="4"
   title="Guardrails and Trust Boundaries"
@@ -379,7 +379,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Reader vs Contributor — When to Use Each -->
+# Reader vs Contributor — When to Use Each
 <TwoColPairedConceptsSlide
   :partNumber="4"
   pillIcon="⚖️"
@@ -402,7 +402,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: The Trust Escalation Path -->
+# The Trust Escalation Path
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🛤️"
@@ -419,7 +419,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Before and After -->
+# Before and After
 <BeforeAfterSlide
   title="The Infrastructure Workflow Transformation"
   :leftItems='[
@@ -443,7 +443,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
     "Install Azure MCP Server (npm, pip, or Docker — ~10 minutes)",
@@ -465,7 +465,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
@@ -484,7 +484,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="Infrastructure Becomes Conversational"
   subtitle="GitHub Copilot + Azure Skills Plugin"
