@@ -126,6 +126,22 @@ shows
 8. Frontend shows success message, refreshes list
 ```
 
+### Active-Show Context (`/api/quotes`, `/api/characters`)
+
+Requests to these two routes don't carry an explicit `show_id` — the active show is resolved implicitly by a middleware layer and threaded through the request. The same concept is named differently at every layer; this table is the rosetta stone so no one (human or Copilot) has to rediscover it by reading five files:
+
+| Layer | Name Used | File |
+|---|---|---|
+| Request signal | `X-Show-Slug` header | client request |
+| Middleware/interceptor | `universe` | `middleware/universeContext.*` |
+| Service/controller variable | `activeSeries` | route/controller for `/quotes`, `/characters` |
+| API response field | `program.programId` | JSON response body |
+| Frontend state | `currentShow` | homepage component |
+
+> ⚠️ Not to be confused with the `docs/[show]-universe.md` canon file from Exercise 1.6 — same word, unrelated concept. That file is static show lore; `universe` here is a request-scoped context flag.
+
+Every other route (`/api/shows`, `/api/episodes`, `/auth`) takes `show_id` explicitly and does **not** go through this middleware — this is a partial rollout, not a repo-wide convention. Check the route registration (not just the controller) before assuming a route has this behavior.
+
 ## Security Considerations
 
 | Concern | Mitigation |

@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-05-14
+updated: 2026-07-27
 ---
 
 # Module 1: Instructions
@@ -341,7 +341,7 @@ repo/
 
 | # | Exercise | Lead | Support | Time | Topic |
 |---|----------|------|---------|------|-------|
-| [1.1](exercise-1.1.md) | Create ARCHITECTURE.md | David | All | 10 min | Documentation as Leverage |
+| [1.1](exercise-1.1.md) | Create ARCHITECTURE.md | David | All | 12 min | Documentation as Leverage |
 | [1.2](exercise-1.2.md) | Create copilot-instructions.md | Sarah | All | 10 min | 🪄 The Magic File |
 
 ### Part 2: Path-Based Instructions and Agent Playbooks
@@ -353,7 +353,7 @@ repo/
 | [1.5](exercise-1.5.md) | File-Type Specialized Guidance | Marcus | Elena, David | 12 min | Tests, Docker, Docs |
 | [1.6](exercise-1.6.md) | Define Your Universe | Sarah | David | 15 min | Show-specific domain context + pointer pattern |
 
-**Total Time**: ~73 minutes
+**Total Time**: ~75 minutes
 
 ---
 
@@ -403,6 +403,7 @@ Before moving to Module 2, verify:
 
 ### Part 1: Magic File Foundation
 - [ ] `fanhub/docs/ARCHITECTURE.md` exists and includes: tech stack, folder structure, data flow
+- [ ] Data flow includes the active-show terminology map (verified against actual code, not just Copilot's first draft)
 - [ ] `.github/copilot-instructions.md` exists with: coding conventions, library preferences, error patterns
 - [ ] Copilot suggestions follow your documented patterns (test with a simple prompt)
 - [ ] Team agrees on both documents (no "but I prefer..." objections)
