@@ -19,6 +19,7 @@ updated: 2026-06-10
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import WhatYouCanDoTodaySlide from './components/structure/WhatYouCanDoTodaySlide.vue'
@@ -49,6 +50,18 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
     { icon: '📝', title: '14 lines', description: 'of TypeScript to connect' },
     { icon: '🔒', title: '3 lines', description: 'of policy to secure automation' }
   ]"
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Full Agents in Any Editor", takeaway: "Connect any compatible editor to Copilot agent capabilities.", whyItMatters: "Editor choice no longer limits the agent experience." },
+    { title: "Production Permissions", takeaway: "Choose access strategies that separate exploration from execution.", whyItMatters: "Teams can enable autonomy without granting blanket access." },
+    { title: "Composed Agent Systems", takeaway: "Coordinate focused agents across repositories and contexts.", whyItMatters: "Independent agents create parallel progress with less coordination." }
+  ]'
 />
 
 ---

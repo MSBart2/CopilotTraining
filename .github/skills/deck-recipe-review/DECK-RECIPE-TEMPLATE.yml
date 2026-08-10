@@ -12,6 +12,20 @@ deck:
   subtitle: "[Compelling Subtitle]"
   tagline: "[One-line promise or focus]"
 
+  # agenda: exactly 3 attendee-facing outcomes shown after the Core Question and before the TOC.
+  # Each point is distinct from the four-section navigation: describe what attendees will
+  # see or learn, then why the outcome matters in their work.
+  agenda:
+    - title: "[Outcome 1]"
+      takeaway: "[What attendees will see or learn — ≤150 chars]"
+      whyItMatters: "[Practical relevance — ≤150 chars]"
+    - title: "[Outcome 2]"
+      takeaway: "[What attendees will see or learn — ≤150 chars]"
+      whyItMatters: "[Practical relevance — ≤150 chars]"
+    - title: "[Outcome 3]"
+      takeaway: "[What attendees will see or learn — ≤150 chars]"
+      whyItMatters: "[Practical relevance — ≤150 chars]"
+
   # arcToc: short → chain displayed as the TocSlide subtitle. One line, ≤ 80 chars.
   arcToc: "[Section 1] → [Section 2] → [Section 3] → [Section 4]"
 

@@ -19,6 +19,7 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -56,6 +57,18 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
     { title: "12 min → 45 sec", description: "Copy-to-Excel chart workflow collapses to inline bar chart — 90 min/day reclaimed in data-heavy workflows" },
     { title: "6 component types", description: "Charts, tables, forms, trees, cards, custom — one decision tree maps any use case to the right type" },
     { title: "type: component", description: "Return one field differently in your MCP tool response — VS Code renders an interactive iframe in chat" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Visual Chat Workspaces", takeaway: "Compose cards, tables, charts, forms, and boards inline in chat.", whyItMatters: "Data exploration becomes more useful than a text stream alone." },
+    { title: "Two-Way Interaction", takeaway: "Use callbacks to respond when people click, filter, or submit.", whyItMatters: "The interface becomes a collaborative conversation, not a report." },
+    { title: "Reusable Patterns", takeaway: "Start with proven dashboard, drill-down, form, and tree patterns.", whyItMatters: "Teams deliver common workflows without rebuilding primitives." }
   ]'
 />
 

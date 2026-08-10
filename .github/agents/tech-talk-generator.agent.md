@@ -139,7 +139,7 @@ After the user responds:
 
 ### Deck Recipe Artifact
 
-After the README is complete and approved, invoke the **deck-recipe-review skill** (`.github/skills/deck-recipe-review/SKILL.md`) to create `tech-talks/{topic}/deck.recipe.yml`. The skill runs an Agent Council to analyze the talk structure, determine section weighting and narrative arc, and write the recipe file.
+After the README is complete and approved, invoke the **deck-recipe-review skill** (`.github/skills/deck-recipe-review/SKILL.md`) to create `tech-talks/{topic}/deck.recipe.yml`. The skill runs an Agent Council to analyze the talk structure, determine section weighting and narrative arc, and write the recipe file. The recipe must include exactly three `deck.agenda` outcomes (`title`, `takeaway`, `whyItMatters`) for the deck opening; derive them from the reader-first README rather than adding presentation choreography to it.
 
 Do **not** write the recipe yourself — the skill owns this step.
 

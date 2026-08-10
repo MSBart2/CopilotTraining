@@ -19,6 +19,7 @@ updated: 2026-04-24
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -59,6 +60,18 @@ src: ./exec-spine.md
     { title: "$5/hr vs $130/hr", description: "Agent vs senior engineer — a 20-65x fully-loaded labor cost differential" },
     { title: "5% material ROI rate", description: "McKinsey QuantumBlack 2024: only 5% of AI pilots deliver bottom-line improvement" },
     { title: "3.6-day payback", description: "Issue lifecycle automation — $1M annual savings for a 50-person team" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "The Arbitrage", takeaway: "Examine the operating-cost gap between agents and developers.", whyItMatters: "Value depends on how organizations capture the savings." },
+    { title: "Capture the Savings", takeaway: "Choose the mechanisms that turn efficiency into P and L outcomes.", whyItMatters: "Faster work alone does not automatically improve economics." },
+    { title: "Start With a Wedge", takeaway: "Prove ROI on a high-volume, low-complexity workflow.", whyItMatters: "Small credible wins fund the next investment." }
   ]'
 />
 

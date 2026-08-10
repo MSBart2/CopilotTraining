@@ -8,6 +8,18 @@ deck:
   tagline: "Real-time control and compliance at every agent lifecycle moment"
 
 
+
+  agenda:
+    - title: "Prevent Unsafe Actions"
+      takeaway: "Use PreToolUse hooks to stop risky tool calls before execution."
+      whyItMatters: "Architectural prevention is cheaper than incident response."
+    - title: "Audit Every Lifecycle"
+      takeaway: "Capture hook activity as an automatic evidence trail."
+      whyItMatters: "Compliance proof is available when it is needed."
+    - title: "Proven Controls"
+      takeaway: "Apply concrete patterns from regulated environments."
+      whyItMatters: "Teams can begin with tested controls instead of inventing policy."
+
   arcToc: "Establish the mechanism → show the hook that prevents vs. observes → prove the audit trail → land real patterns"
   arcNarrative: >
     Establish the mechanism → show the one hook that prevents vs. observes →

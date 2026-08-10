@@ -50,6 +50,8 @@ $PROP_EXTRACTORS = @{
     'DESC_MAX'       = @{ type = 'match'; pattern = 'description:\s*"([^"]+)"' }
     'CARD_TITLE_MAX' = @{ type = 'match'; pattern = 'title:\s*"([^"]+)"' }
     'CARD_BLURB_MAX' = @{ type = 'match'; pattern = 'blurb:\s*"([^"]+)"' }
+    'TAKEAWAY_MAX'   = @{ type = 'match'; pattern = 'takeaway:\s*"([^"]+)"' }
+    'WHY_IT_MATTERS_MAX' = @{ type = 'match'; pattern = 'whyItMatters:\s*"([^"]+)"' }
     'ROW_MAX'        = @{ type = 'count'; pattern = 'label:\s*"[^"]+"' }
     'SECTIONS_MAX'   = @{ type = 'count'; pattern = 'icon:\s*"[^"]+"' }
     'CARDS_MAX'      = @{ type = 'count'; pattern = 'icon:\s*"[^"]+"' }
@@ -140,6 +142,25 @@ function Invoke-PropLint {
                             & $warn $off "$compName '$slideTitle': $constName exceeded ($cnt items, max $max)"
                         }
                     }
+                }
+            }
+        }
+    }
+
+    # Agenda slides require a complete, exactly-three-item promise to attendees.
+    foreach ($m in [regex]::Matches($content, "(?s)<AgendaSlide\b.*?/>")) {
+        $block = $m.Value
+        $offset = $m.Index
+        $items = [regex]::Matches($block, '(?s)\{[^{}]*\}')
+        if ($items.Count -ne 3) {
+            & $warn $offset "AgendaSlide: items must contain exactly 3 entries (got $($items.Count))"
+            continue
+        }
+
+        for ($index = 0; $index -lt $items.Count; $index++) {
+            foreach ($field in @('title', 'takeaway', 'whyItMatters')) {
+                if ($items[$index].Value -notmatch "\b$field\s*:") {
+                    & $warn ($offset + $items[$index].Index) "AgendaSlide: items[$index].$field is required"
                 }
             }
         }

@@ -14,6 +14,18 @@ deck:
   tagline: "Build the toolkit that makes every future feature faster."
 
   # arcToc: short → chain displayed as the TocSlide subtitle. One line, ≤ 80 chars.
+
+  agenda:
+    - title: "Context That Compounds"
+      takeaway: "Generate workspace context once so every later interaction starts informed."
+      whyItMatters: "Shared context shortens onboarding and reduces false starts."
+    - title: "Team Knowledge as Tools"
+      takeaway: "Package prompts and skills as versioned assets anyone can invoke."
+      whyItMatters: "Useful expertise becomes durable team infrastructure."
+    - title: "Plans Before Code"
+      takeaway: "Review plans as testable hypotheses before implementation begins."
+      whyItMatters: "The cheapest time to change direction is before code exists."
+
   arcToc: "Context First → Build the Toolkit → Plan, Risk, and Ship → The Compounding Effect"
 
   # arcNarrative: prose rationale explaining WHY the sections are ordered this way.

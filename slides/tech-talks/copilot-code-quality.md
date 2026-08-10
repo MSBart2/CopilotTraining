@@ -19,6 +19,7 @@ updated: 2026-07-24
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -41,6 +42,18 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
   subtitle="Turning Maintainability Into a Merge Gate"
   tagline="Coverage, maintainability, and reliability become a status check your merge depends on."
   meta="CopilotTraining · Tech Talk"
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Quality as a Gate", takeaway: "Make quality signals enforceable status checks on pull requests.", whyItMatters: "Metrics matter when they protect the merge decision." },
+    { title: "Observe Before Enforce", takeaway: "Use evaluation mode to tune rules before blocking work.", whyItMatters: "Teams build trust while reducing rollout surprises." },
+    { title: "Predictable Rollout", takeaway: "Plan adoption and cost by repository and committer.", whyItMatters: "Deliberate enablement makes quality infrastructure sustainable." }
+  ]'
 />
 
 ---

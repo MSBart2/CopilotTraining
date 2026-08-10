@@ -7,6 +7,18 @@ deck:
   title: "GitHub Copilot ACP"
   subtitle: "Your Tool Just Got an AI Agent"
   tagline: "One flag. Any editor. Full agent capabilities."
+
+  agenda:
+    - title: "Full Agents in Any Editor"
+      takeaway: "Connect any compatible editor to Copilot agent capabilities."
+      whyItMatters: "Editor choice no longer limits the agent experience."
+    - title: "Production Permissions"
+      takeaway: "Choose access strategies that separate exploration from execution."
+      whyItMatters: "Teams can enable autonomy without granting blanket access."
+    - title: "Composed Agent Systems"
+      takeaway: "Coordinate focused agents across repositories and contexts."
+      whyItMatters: "Independent agents create parallel progress with less coordination."
+
   arcToc: "Zed Developer → Platform Engineer → Multi-Agent Orchestrator → Ship Safely"
   arcNarrative: >
     The talk opens with a concrete builder story, not topology: a Zed developer who

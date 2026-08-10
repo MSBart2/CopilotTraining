@@ -16,6 +16,18 @@ deck:
   tagline: "From one Copilot collaborator to a fleet of autonomous agents — managed from one place"
 
   # arcToc: displayed as TocSlide subtitle. One line, ≤ 80 chars.
+
+  agenda:
+    - title: "Parallel Worktrees"
+      takeaway: "Run independent agents in isolated worktrees without collisions."
+      whyItMatters: "Teams gain parallelism without merge-conflict choreography."
+    - title: "Autonomy by Confidence"
+      takeaway: "Select Interactive, Plan, or Autopilot based on task risk."
+      whyItMatters: "Oversight can grow with trust instead of being all or nothing."
+    - title: "Repeatable Pipelines"
+      takeaway: "Turn successful sessions into scheduled or event-driven workflows."
+      whyItMatters: "A proven workflow becomes compounding automation."
+
   arcToc: "Fleet Model → Trust by Design → Control Surfaces → Sessions to Systems"
 
   # arcNarrative: prose rationale explaining the section sequencing logic.

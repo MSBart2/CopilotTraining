@@ -19,6 +19,7 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -58,6 +59,18 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
     { title: "3.2 days average", description: "Time a PR sits before first review — not complex code, but overwhelmed reviewers" },
     { title: "40-60% faster", description: "PR review cycle time reduction with Copilot Code Review enabled" },
     { title: "90%+ reduction", description: "Security violations reaching production when automated detection is active" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Review Capacity", takeaway: "Offload routine security, logic, and style checks to Copilot.", whyItMatters: "Human reviewers regain time for architecture and judgment." },
+    { title: "Evidence for ROI", takeaway: "Measure review time recovery across a team.", whyItMatters: "Credible numbers turn an experiment into an investment case." },
+    { title: "Compliance at Scale", takeaway: "Apply policy and audit patterns in regulated repositories.", whyItMatters: "Strong evidence paths make adoption possible in high-trust settings." }
   ]'
 />
 

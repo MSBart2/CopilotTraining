@@ -19,6 +19,7 @@ updated: 2026-06-04
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -57,6 +58,18 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
     { title: "~70% of dev time", description: "is outside the editor — debugging, deployments, log analysis, CI triage" },
     { title: "45 min → 8 min", description: "Docker debug collapse with Plan Mode + Rubber Duck cross-model review" },
     { title: "30 sec standup", description: "Generated from session history by /chronicle — everyday value, no extra work" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "AI at the Point of Work", takeaway: "Use Plan Mode and independent review where the work actually happens.", whyItMatters: "Fewer context switches and better early decisions keep terminal work moving." },
+    { title: "Sessions That Learn", takeaway: "Turn session history and project context into guidance that improves over time.", whyItMatters: "Teams pay the context-setting cost once instead of repeating it in every session." },
+    { title: "Automation You Can Grow Into", takeaway: "Move from guided plans to remote and scheduled execution as confidence grows.", whyItMatters: "A gradual autonomy path makes higher-leverage work practical without losing control." }
   ]'
 />
 

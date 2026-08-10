@@ -19,6 +19,7 @@ updated: 2026-07-24
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -56,6 +57,18 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
     { title: "5–10%", description: "of coding agent work benefits from organizational memory — the rest stays in GitHub" },
     { title: "40%+", description: "relevance improvement with Foundry IQ agentic retrieval vs. traditional RAG" },
     { title: "3 layers", description: "of agent context: implementation, operational, and organizational memory" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Code and Intent", takeaway: "Pair implementation history with the organizational reasons behind it.", whyItMatters: "Agents avoid optimizing away decisions that exist for a reason." },
+    { title: "Organizational Memory", takeaway: "Query indexed docs, decisions, and architecture with Foundry IQ.", whyItMatters: "Agents can act with context beyond a single repository." },
+    { title: "Durable Decisions", takeaway: "Make reasoning accessible beyond the people who made it.", whyItMatters: "Onboarding and continuity improve as teams change." }
   ]'
 />
 

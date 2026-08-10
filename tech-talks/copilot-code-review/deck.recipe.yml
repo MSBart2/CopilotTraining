@@ -8,6 +8,18 @@ deck:
   tagline: Reduce PR review time while maintaining code quality and compliance
 
 
+
+  agenda:
+    - title: "Review Capacity"
+      takeaway: "Offload routine security, logic, and style checks to Copilot."
+      whyItMatters: "Human reviewers regain time for architecture and judgment."
+    - title: "Evidence for ROI"
+      takeaway: "Measure review time recovery across a team."
+      whyItMatters: "Credible numbers turn an experiment into an investment case."
+    - title: "Compliance at Scale"
+      takeaway: "Apply policy and audit patterns in regulated repositories."
+      whyItMatters: "Strong evidence paths make adoption possible in high-trust settings."
+
   arcToc: "Configure fast → Master the signal → Prove the value → Scale to enterprise"
   arcNarrative: >
     Opens with a 5-minute setup win, builds capability understanding, lands ROI proof before

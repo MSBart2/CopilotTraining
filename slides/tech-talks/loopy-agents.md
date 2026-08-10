@@ -19,6 +19,7 @@ updated: 2026-07-02
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -54,6 +55,18 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
     { "title": "8× code output", "description": "Anthropic teams with loop-managed autonomy — Claude writes >80% of merged production code" },
     { "title": "18 min advisory to PR", "description": "Security fix fully automated: scan → fix → critic → verified PR, zero human prompts" },
     { "title": "Most agentic failures", "description": "Trace to missing circuit breakers and watchdogs — the controls teams skip first" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Reliable Loops", takeaway: "Design agents to reason, act, and verify until outcomes are proven.", whyItMatters: "Reliability comes from the loop, not a hopeful prompt." },
+    { title: "Topology Choices", takeaway: "Match multi-agent patterns to the shape of the problem.", whyItMatters: "The right composition determines whether scaling helps." },
+    { title: "Production Controls", takeaway: "Add audit, metrics, and rollback to autonomous systems.", whyItMatters: "Operators need the same control standards used for infrastructure." }
   ]'
 />
 

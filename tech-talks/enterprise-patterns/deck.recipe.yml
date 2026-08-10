@@ -11,6 +11,18 @@ deck:
   title: "Scaling GitHub Copilot Across Organizations"
   subtitle: "Enterprise Patterns for AI Adoption at Scale"
   tagline: "One change, all repos, instantly — from pilot teams to org-wide capability"
+
+  agenda:
+    - title: "Standards at Scale"
+      takeaway: "Propagate organization-wide instructions across repositories."
+      whyItMatters: "Consistency becomes structural instead of aspirational."
+    - title: "Shared Skill Libraries"
+      takeaway: "Publish vetted expertise as reusable organizational assets."
+      whyItMatters: "One teams insight compounds across every other team."
+    - title: "ROI Instrumentation"
+      takeaway: "Measure adoption, quality, and time recovery centrally."
+      whyItMatters: "Leadership can invest from evidence instead of anecdotes."
+
   arcToc: "Standards → Skills & Knowledge → Governance & Licensing → Adoption & Enablement"
 
   arcNarrative: >

@@ -19,6 +19,7 @@ updated: 2026-04-27
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -61,6 +62,18 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
     { title: "45 min → 8 min", description: "Prototype-to-deploy cycle with live Azure context vs. portal tab-switching" },
     { title: "200+ live Azure tools", description: "Direct SDK calls across 40+ services — resource queries, config reads, deployments" },
     { title: "21 workflow skills", description: "Curated deployment logic — azure-prepare, azure-validate, azure-deploy, and more" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Live Azure Context", takeaway: "Query and reason over current Azure resources conversationally.", whyItMatters: "Live state replaces portal hopping and stale assumptions." },
+    { title: "Faster Prototype Loops", takeaway: "Plan, validate, and deploy infrastructure in one conversation.", whyItMatters: "Shorter iteration makes infrastructure experiments practical." },
+    { title: "Guardrailed Deployment", takeaway: "Combine skills, MCP tools, and validation for safe execution.", whyItMatters: "Conversational infrastructure remains grounded in proven workflows." }
   ]'
 />
 

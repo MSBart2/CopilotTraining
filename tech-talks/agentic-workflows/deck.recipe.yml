@@ -16,6 +16,18 @@ deck:
   tagline: "Write repository automation in natural language, execute with security-first AI agents"
 
   # arcToc: ≤80 chars, displayed as TocSlide subtitle
+
+  agenda:
+    - title: "Intent-Driven Workflows"
+      takeaway: "Describe outcomes and let agents adapt to repository context."
+      whyItMatters: "Automation stays useful when the surrounding state changes."
+    - title: "Security by Design"
+      takeaway: "Explore safe outputs and sandboxed, read-only defaults."
+      whyItMatters: "Teams can automate without treating governance as an afterthought."
+    - title: "A Practical Starting Point"
+      takeaway: "Locate the workflow and maturity path that fits the team."
+      whyItMatters: "Every attendee leaves with a credible next action."
+
   arcToc: "Why It Matters → Architecture & Safety → Patterns by Path → Your Path Forward"
 
   arcNarrative: >

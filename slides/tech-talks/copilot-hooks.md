@@ -19,6 +19,7 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -57,6 +58,18 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
     { title: "8 lifecycle events", description: "Complete coverage from SessionStart to Stop — no action escapes the governance scaffold" },
     { title: "PreToolUse only", description: "The only hook that can deny execution before it happens — all others observe after" },
     { title: "<2 seconds", description: "Synchronous hook execution time — governance without velocity loss or timeout risk" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Prevent Unsafe Actions", takeaway: "Use PreToolUse hooks to stop risky tool calls before execution.", whyItMatters: "Architectural prevention is cheaper than incident response." },
+    { title: "Audit Every Lifecycle", takeaway: "Capture hook activity as an automatic evidence trail.", whyItMatters: "Compliance proof is available when it is needed." },
+    { title: "Proven Controls", takeaway: "Apply concrete patterns from regulated environments.", whyItMatters: "Teams can begin with tested controls instead of inventing policy." }
   ]'
 />
 

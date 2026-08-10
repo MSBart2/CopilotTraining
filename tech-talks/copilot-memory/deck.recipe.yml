@@ -8,6 +8,18 @@ deck:
   tagline: "Stop re-explaining your coding style every session"
 
 
+
+  agenda:
+    - title: "Stateful Assistance"
+      takeaway: "Persist useful preferences so sessions begin with shared context."
+      whyItMatters: "Less repetition keeps developers focused on the work."
+    - title: "Three Memory Layers"
+      takeaway: "Separate personal preference, team knowledge, and organization policy."
+      whyItMatters: "Correct placement keeps memory useful and trustworthy."
+    - title: "Memory Hygiene"
+      takeaway: "Curate and audit stored context as it evolves."
+      whyItMatters: "Signal-rich memory avoids stale or conflicting guidance."
+
   arcToc: "Hook (stateless pain) → Mechanism → Activation → Decision framework"
   arcNarrative: >
     Hook (stateless pain) → mechanism (how memory works) → activation (enable + manage) →

@@ -18,6 +18,17 @@ deck:
   subtitle: "Close Every Gap Between You and the Work"
   tagline: "Think anywhere. Steer anywhere. Learn always. Act autonomously."
 
+  agenda:
+    - title: "AI at the Point of Work"
+      takeaway: "Use Plan Mode and independent review where the work actually happens."
+      whyItMatters: "Fewer context switches and better early decisions keep terminal work moving."
+    - title: "Sessions That Learn"
+      takeaway: "Turn session history and project context into guidance that improves over time."
+      whyItMatters: "Teams pay the context-setting cost once instead of repeating it in every session."
+    - title: "Automation You Can Grow Into"
+      takeaway: "Move from guided plans to remote and scheduled execution as confidence grows."
+      whyItMatters: "A gradual autonomy path makes higher-leverage work practical without losing control."
+
   arcToc: "Think Before You Build → Work From Anywhere → Sessions That Learn → Scale Beyond Yourself"
 
   arcNarrative: >

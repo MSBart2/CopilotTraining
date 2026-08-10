@@ -19,6 +19,7 @@ updated: 2026-05-13
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -55,6 +56,18 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
     { title: "10 releases covered", description: "v1.110 (Feb 2026) through v1.120 (May 13, 2026) — weekly cadence since v1.111" },
     { title: "93% cache hit rate",  description: "Token cost controls shipped before usage-based billing launched in June 2026" },
     { title: "4 agent session types", description: "Local, Background, Cloud, Claude — each with a distinct execution context and trust model" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Manage the Fleet", takeaway: "See active sessions, background tasks, and agent state together.", whyItMatters: "Parallel agents need a native operational view." },
+    { title: "Observe Production Agents", takeaway: "Track telemetry, token use, and MCP consumption.", whyItMatters: "Visibility prevents cost and performance surprises." },
+    { title: "Grow Trust Gradually", takeaway: "Move from chat to planning, background work, and automation.", whyItMatters: "Teams can increase autonomy without changing their platform." }
   ]'
 />
 

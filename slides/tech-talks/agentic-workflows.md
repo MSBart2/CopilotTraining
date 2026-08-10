@@ -19,6 +19,7 @@ updated: 2026-05-05
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -57,6 +58,18 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
     { title: "30×", description: "reduction in workflow definition length — 8-line Markdown vs. 240-line YAML" },
     { title: "100+", description: "workflows running continuously in Peli&#39;s Agent Factory on github/gh-aw" },
     { title: "0", description: "direct writes — AI reads everything, validation pipeline executes mutations" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Intent-Driven Workflows", takeaway: "Describe outcomes and let agents adapt to repository context.", whyItMatters: "Automation stays useful when the surrounding state changes." },
+    { title: "Security by Design", takeaway: "Explore safe outputs and sandboxed, read-only defaults.", whyItMatters: "Teams can automate without treating governance as an afterthought." },
+    { title: "A Practical Starting Point", takeaway: "Locate the workflow and maturity path that fits the team.", whyItMatters: "Every attendee leaves with a credible next action." }
   ]'
 />
 

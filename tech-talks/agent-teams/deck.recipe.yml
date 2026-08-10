@@ -10,6 +10,18 @@ deck:
   title: "Building Agent Systems"
   subtitle: "Subagents, Teams, and Autonomous Execution"
   tagline: "Compose AI agents into systems that handle complex tasks, run autonomously, and improve over time"
+
+  agenda:
+    - title: "Context Isolation"
+      takeaway: "Give specialists focused context so exploration stays signal-rich."
+      whyItMatters: "Isolated work avoids the quality loss of one overloaded agent."
+    - title: "Parallel Specialists"
+      takeaway: "Compose research, design, implementation, and review into a team."
+      whyItMatters: "Specialization compresses coordination time without losing depth."
+    - title: "Model Deliberation"
+      takeaway: "Compare independent model perspectives on the same decision."
+      whyItMatters: "Disagreement exposes risks a single reasoning path can miss."
+
   arcToc: "Primitive + Grammar → Composition → Autonomy → Deliberation"
   arcNarrative: >
     S1 does two jobs at once: it diagnoses the single-agent ceiling (context pollution

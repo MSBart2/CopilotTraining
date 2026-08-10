@@ -7,6 +7,18 @@ deck:
   tagline: "Extend GitHub Copilot agents with organizational memory: the 5–10% of engineering work where intent matters most."
 
   # arcToc: single line ≤ 80 chars, shown as TocSlide subtitle
+
+  agenda:
+    - title: "Code and Intent"
+      takeaway: "Pair implementation history with the organizational reasons behind it."
+      whyItMatters: "Agents avoid optimizing away decisions that exist for a reason."
+    - title: "Organizational Memory"
+      takeaway: "Query indexed docs, decisions, and architecture with Foundry IQ."
+      whyItMatters: "Agents can act with context beyond a single repository."
+    - title: "Durable Decisions"
+      takeaway: "Make reasoning accessible beyond the people who made it."
+      whyItMatters: "Onboarding and continuity improve as teams change."
+
   arcToc: "Two Memories → Foundry IQ → Org Memory Pattern → Intent Problems"
 
   # arcNarrative: prose rationale explaining WHY sections are ordered this way.

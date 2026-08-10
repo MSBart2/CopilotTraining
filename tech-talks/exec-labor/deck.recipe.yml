@@ -12,6 +12,18 @@ deck:
   tagline: "AI addressed the 33%. Here is where the other 67% lives — and what it costs to leave it untouched."
 
   # arcToc: single line ≤ 80 chars — displayed on the overview slide
+
+  agenda:
+    - title: "The Unreached Work"
+      takeaway: "Map the coordination and knowledge work beyond code generation."
+      whyItMatters: "Strategy expands when leaders see where agent value is emerging."
+    - title: "Three Leverage Zones"
+      takeaway: "Assess depth, breadth, and supervision reduction separately."
+      whyItMatters: "Different zones need different readiness and investment choices."
+    - title: "AI as Multiplier"
+      takeaway: "Use DORA findings to examine organizational foundations first."
+      whyItMatters: "Agents amplify strengths and dysfunction in equal measure."
+
   arcToc: "The Hidden Labor Bill → The Three Leverage Zones → The Handoff Pattern → The Decision"
 
   # arcNarrative: prose rationale for sequencing — used by the generator as authoring

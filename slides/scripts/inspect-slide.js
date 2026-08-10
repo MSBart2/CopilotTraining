@@ -134,17 +134,23 @@ async function waitForPort(p, timeoutMs) {
 
 function startSlidevDev(file, p) {
   const relFile = path.relative(SLIDES_DIR, file).replace(/\\/g, "/");
+  const slidevCli = path.join(
+    SLIDES_DIR,
+    "node_modules",
+    "@slidev",
+    "cli",
+    "bin",
+    "slidev.mjs",
+  );
   console.error(`[harness] Starting slidev dev: ${relFile} on port ${p}`);
 
-  // On Windows, shell:true is required for npx to resolve correctly
   const child = spawn(
-    "npx",
-    ["slidev", "--remote=", relFile, "--port", String(p)],
+    process.execPath,
+    [slidevCli, relFile, "--remote", "--port", String(p)],
     {
       cwd: SLIDES_DIR,
       detached: true,
       stdio: "ignore",
-      shell: true,
     },
   );
   child.unref();
@@ -455,7 +461,16 @@ async function inspectSlide(slideNumber, p, slides) {
 
   await page.emulateMedia({ colorScheme: "dark", reducedMotion: "reduce" });
 
-  await page.goto(url, { waitUntil: "networkidle", timeout: 15_000 });
+  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 15_000 });
+
+  // Wait for Slidev to replace its loading shell with a visible slide before capture.
+  await page.waitForFunction(
+    () =>
+      [...document.querySelectorAll(".slidev-layout")].some(
+        (element) => element.clientHeight > 0,
+      ),
+    { timeout: 15_000 },
+  );
 
   // Extra wait for Slidev transitions/animations
   await page.waitForTimeout(800);
@@ -572,7 +587,16 @@ async function inspectSlide(slideNumber, p, slides) {
     return candidates[0] || null;
   });
 
+  const renderedSlideText = await page.evaluate(() => {
+    const layout = [...document.querySelectorAll(".slidev-layout")].find(
+      (element) => element.clientHeight > 0,
+    );
+    return layout?.innerText || "";
+  });
+
   // Screenshot
+  await page.setViewportSize({ width: VIEWPORT.width, height: VIEWPORT.height });
+  await page.waitForTimeout(300);
   fs.mkdirSync(HARNESS_DIR, { recursive: true });
   const screenshotPath = path.join(
     HARNESS_DIR,
@@ -582,7 +606,7 @@ async function inspectSlide(slideNumber, p, slides) {
   console.error(`[harness] Screenshot saved: ${screenshotPath}`);
 
   await browser.close();
-  return { overflow, screenshotPath, renderedTotal };
+  return { overflow, screenshotPath, renderedTotal, renderedSlideText };
 }
 
 // ── Main ──────────────────────────────────────────────────────────────────────
@@ -813,7 +837,7 @@ async function inspectSlide(slideNumber, p, slides) {
   const syntaxAnalysis = validateHTMLSyntax(slideInfo);
 
   // 3. Screenshot + overflow detection
-  const { overflow, screenshotPath, renderedTotal } = await inspectSlide(
+  const { overflow, screenshotPath, renderedTotal, renderedSlideText } = await inspectSlide(
     slideNum,
     port,
     slides,
@@ -827,9 +851,10 @@ async function inspectSlide(slideNumber, p, slides) {
     const footerMatch = renderedTotal.match(/(\d+)\s*\/\s*(\d+)/);
     if (footerMatch) {
       const renderedSlideTotal = parseInt(footerMatch[2], 10);
-      if (renderedSlideTotal !== totalSlides) {
+      const visibleSlideMatches = renderedSlideText.includes(slideInfo.name);
+      if (renderedSlideTotal !== totalSlides && !visibleSlideMatches) {
         wrongDeck = true;
-        wrongDeckWarning = `Slidev dev is serving a deck with ${renderedSlideTotal} slides, but "${deckSlug}" has ${totalSlides} slides. The screenshot is from the WRONG DECK. Start slidev dev with: npm exec slidev -- dev ${path.relative(SLIDES_DIR, deckFile)} --port ${port}`;
+        wrongDeckWarning = `Slidev dev is serving a deck with ${renderedSlideTotal} slides, but "${deckSlug}" has ${totalSlides} source slides and does not show "${slideInfo.name}". The screenshot is from the WRONG DECK. Start Slidev with: npx slidev ${path.relative(SLIDES_DIR, deckFile)} --port ${port}`;
       }
     }
   }

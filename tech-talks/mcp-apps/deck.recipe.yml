@@ -10,6 +10,18 @@ deck:
   title: "MCP Apps"
   subtitle: "Rich Interactive UI in Chat"
   tagline: "Transform chat from text stream to visual workspace with inline charts, tables, and forms"
+
+  agenda:
+    - title: "Visual Chat Workspaces"
+      takeaway: "Compose cards, tables, charts, forms, and boards inline in chat."
+      whyItMatters: "Data exploration becomes more useful than a text stream alone."
+    - title: "Two-Way Interaction"
+      takeaway: "Use callbacks to respond when people click, filter, or submit."
+      whyItMatters: "The interface becomes a collaborative conversation, not a report."
+    - title: "Reusable Patterns"
+      takeaway: "Start with proven dashboard, drill-down, form, and tree patterns."
+      whyItMatters: "Teams deliver common workflows without rebuilding primitives."
+
   arcToc: "Palette → Build → Patterns → Integrate"
   arcNarrative: >
     Open by establishing the visual vocabulary — six component types developers can reach for — so

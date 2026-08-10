@@ -10,6 +10,18 @@ deck:
   title: "From Issue to Pull Request"
   subtitle: "GitHub Copilot's Coding Agent in Practice"
   tagline: "What if filing an issue was the same as fixing it?"
+
+  agenda:
+    - title: "Delegate From the Browser"
+      takeaway: "Assign work from GitHub web, VS Code, or mobile into agent PRs."
+      whyItMatters: "More roles can hand off work without losing context."
+    - title: "Match the Environment"
+      takeaway: "Configure the runtime agents use with setup steps."
+      whyItMatters: "Generated changes are more likely to pass the real build."
+    - title: "Govern the Network"
+      takeaway: "Use firewall controls to bound agent access."
+      whyItMatters: "Autonomy becomes practical in repositories with sensitive systems."
+
   arcToc: "Delegation Loop → Writing Issues → Trust and Configuration → Review Workflow"
   arcNarrative: >
     S1 establishes the three-layer mental model (Intelligence / Environment / Governance)

@@ -19,6 +19,7 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -57,6 +58,18 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
     { title: "16× ROI", description: "180 hours platform investment → 2,900+ hours saved year one (50 teams × 40 hrs reinvention avoided)" },
     { title: "50 reinventions", description: "Without org standards, every team rebuilds the same security rules, framework patterns, and quality checks" },
     { title: "30% cost reduction", description: "Usage-based licensing vs. seat-only — the CFO number that unlocks expansion budget" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Standards at Scale", takeaway: "Propagate organization-wide instructions across repositories.", whyItMatters: "Consistency becomes structural instead of aspirational." },
+    { title: "Shared Skill Libraries", takeaway: "Publish vetted expertise as reusable organizational assets.", whyItMatters: "One teams insight compounds across every other team." },
+    { title: "ROI Instrumentation", takeaway: "Measure adoption, quality, and time recovery centrally.", whyItMatters: "Leadership can invest from evidence instead of anecdotes." }
   ]'
 />
 

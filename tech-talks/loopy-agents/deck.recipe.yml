@@ -15,6 +15,18 @@ deck:
   tagline: "Autonomous by design. Verifiable by default."
 
   # arcToc: one line ≤ 80 chars, displayed as TocSlide subtitle.
+
+  agenda:
+    - title: "Reliable Loops"
+      takeaway: "Design agents to reason, act, and verify until outcomes are proven."
+      whyItMatters: "Reliability comes from the loop, not a hopeful prompt."
+    - title: "Topology Choices"
+      takeaway: "Match multi-agent patterns to the shape of the problem."
+      whyItMatters: "The right composition determines whether scaling helps."
+    - title: "Production Controls"
+      takeaway: "Add audit, metrics, and rollback to autonomous systems."
+      whyItMatters: "Operators need the same control standards used for infrastructure."
+
   arcToc: "The Loop → Multi-Agent Design → Production Controls → Wiring It Together"
 
   # arcNarrative: prose rationale for section ordering. Generator authoring guidance only.

@@ -19,6 +19,7 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -56,6 +57,18 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
     { title: "12 minutes", description: "Total human time — complete lodash upgrade across 23 files, the agent handled the rest" },
     { title: "95% detail capture", description: "Image-based issue creation vs ~60% manually — 14-minute transcription → 2 minutes visual" },
     { title: "Draft PR, never merge", description: "Platform-enforced: the person who assigned the issue cannot approve the resulting PR" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Delegate From the Browser", takeaway: "Assign work from GitHub web, VS Code, or mobile into agent PRs.", whyItMatters: "More roles can hand off work without losing context." },
+    { title: "Match the Environment", takeaway: "Configure the runtime agents use with setup steps.", whyItMatters: "Generated changes are more likely to pass the real build." },
+    { title: "Govern the Network", takeaway: "Use firewall controls to bound agent access.", whyItMatters: "Autonomy becomes practical in repositories with sensitive systems." }
   ]'
 />
 

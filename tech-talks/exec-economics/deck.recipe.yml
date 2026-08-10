@@ -12,6 +12,18 @@ deck:
   tagline: "What it takes to turn the $2/hour opportunity into P&L reality"
 
   # arcToc: single line ≤ 80 chars — displayed on the overview slide
+
+  agenda:
+    - title: "The Arbitrage"
+      takeaway: "Examine the operating-cost gap between agents and developers."
+      whyItMatters: "Value depends on how organizations capture the savings."
+    - title: "Capture the Savings"
+      takeaway: "Choose the mechanisms that turn efficiency into P and L outcomes."
+      whyItMatters: "Faster work alone does not automatically improve economics."
+    - title: "Start With a Wedge"
+      takeaway: "Prove ROI on a high-volume, low-complexity workflow."
+      whyItMatters: "Small credible wins fund the next investment."
+
   arcToc: "Arbitrage → Capture Problem → Profitable Wedge → Leadership Calculation"
 
   preamble:

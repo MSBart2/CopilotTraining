@@ -18,6 +18,18 @@ deck:
   tagline: "From one AI you chat with to a fleet of autonomous agents you orchestrate"
 
   # arcToc: ≤80 chars — becomes TocSlide subtitle
+
+  agenda:
+    - title: "Manage the Fleet"
+      takeaway: "See active sessions, background tasks, and agent state together."
+      whyItMatters: "Parallel agents need a native operational view."
+    - title: "Observe Production Agents"
+      takeaway: "Track telemetry, token use, and MCP consumption."
+      whyItMatters: "Visibility prevents cost and performance surprises."
+    - title: "Grow Trust Gradually"
+      takeaway: "Move from chat to planning, background work, and automation."
+      whyItMatters: "Teams can increase autonomy without changing their platform."
+
   arcToc: "Agent Platform → Your Models, Your Rules → Responsible Scale → In Your Workflow"
 
   arcNarrative: >

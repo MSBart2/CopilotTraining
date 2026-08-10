@@ -147,7 +147,8 @@ Single orchestrator prompt with all three Phase 2 improved versions. Ask for:
 3. **`arcNarrative`** — a prose paragraph: what each section sets up for the next, where peak engagement lands, and why the ordering beats alternatives
 4. **Concrete `sectionOrder`** with `sectionModes` (emphasis + one-line note per section)
 5. **Updated `highlightMoments`** list — what to drop, what to add
-6. **One open decision** — the single thing the user must resolve before slides can be generated
+6. **`agenda`** — exactly 3 concise entries with `title`, `takeaway`, and `whyItMatters`, derived from the core question, artifacts, and highlight moments rather than restating the section navigation
+7. **One open decision** — the single thing the user must resolve before slides can be generated
 
 ---
 
@@ -161,6 +162,7 @@ Write the **complete** `deck.recipe.yml` file — all fields. Source them as fol
 | `deck.title` | README H1 title |
 | `deck.subtitle` | README subtitle line or guiding question, condensed |
 | `deck.tagline` | README one-line promise / focus (from intro block) |
+| `deck.agenda` | Council Phase 3 output; exactly 3 attendee-facing outcomes |
 | `deck.arcToc` | Council Phase 3 output |
 | `deck.arcNarrative` | Council Phase 3 output |
 | `deck.sectionOrder` | Council Phase 3 output |
@@ -184,6 +186,7 @@ Use `DECK-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 - [ ] No section has been promoted to `high` that the council flagged as risky without noting the risk
 - [ ] `arcToc` is a single line ≤ 80 chars using ` → ` separators between section names
 - [ ] `arcNarrative` is a prose paragraph explaining the sequencing logic (from the council synthesis)
+- [ ] `agenda` contains exactly 3 entries, each with `title`, `takeaway`, and `whyItMatters`; entries promise outcomes rather than repeat the TOC
 - [ ] The open decision is documented in the file — don't silently absorb it
 - [ ] `highlightMoments` list is 3-5 items (not more — dilutes focus)
 - [ ] **After approval**: Tech Talk Slide Generator agent will regenerate all slides using the Vue component system — you don't need to update individual slides

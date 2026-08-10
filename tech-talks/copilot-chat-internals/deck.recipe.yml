@@ -8,6 +8,18 @@ deck:
   tagline: "Transform AI debugging from guesswork into systematic investigation"
 
 
+
+  agenda:
+    - title: "Make Context Visible"
+      takeaway: "Inspect prompts, tools, context files, and agent behavior."
+      whyItMatters: "AI failures become diagnosable instead of mysterious."
+    - title: "Understand Compaction"
+      takeaway: "See what context arrived, what was prioritized, and what did not."
+      whyItMatters: "Teams can design prompts and files around real context limits."
+    - title: "Validate Customization"
+      takeaway: "Catch broken instructions, skills, and agent configuration early."
+      whyItMatters: "Setup errors are cheap to fix before they disrupt work."
+
   arcToc: "Reveal → Inspect → Configure → Systematize"
   arcNarrative: >
     Reveal (real-time observability hook) → Inspect (deep request pipeline)

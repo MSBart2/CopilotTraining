@@ -14,6 +14,18 @@ deck:
   toc:
     enabled: true
 
+
+  agenda:
+    - title: "One Team Setup"
+      takeaway: "Install instructions, skills, plugins, and MCP servers from a manifest."
+      whyItMatters: "Configuration stops drifting across contributors."
+    - title: "Configuration as Code"
+      takeaway: "Version agent setup through apm.yml and lock files."
+      whyItMatters: "Teams can review and reproduce their exact agent environment."
+    - title: "Faster Discovery"
+      takeaway: "Find vetted extensions through a shared marketplace."
+      whyItMatters: "Useful capabilities become easier to evaluate and adopt."
+
   arcToc: "WHY the shift matters → HOW to explore the ecosystem → CODIFY as team infrastructure → ACT with concrete next steps"
   arcNarrative: >
     WHY the shift matters → HOW to explore the ecosystem → CODIFY as team

@@ -12,6 +12,18 @@ deck:
   tagline: "Agentic AI multiplies developer throughput — but only if you build the cockpit first."
 
   # arcToc: one line ≤ 80 chars, section names joined by →
+
+  agenda:
+    - title: "Throughput With Control"
+      takeaway: "Pair agent velocity with instrumentation, audit trails, and quality gates."
+      whyItMatters: "Safe delivery needs organizational infrastructure, not just tools."
+    - title: "The Cockpit"
+      takeaway: "Use observability and control surfaces to guide autonomous work."
+      whyItMatters: "Leaders need reliable instruments for go or no-go decisions."
+    - title: "Humans Set Direction"
+      takeaway: "Keep people accountable for intent while agents execute."
+      whyItMatters: "The model amplifies leadership control rather than replacing it."
+
   arcToc: "The Shift → The Flight Model → The Risk → The Decision"
 
   preamble:

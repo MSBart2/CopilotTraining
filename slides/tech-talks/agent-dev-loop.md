@@ -19,6 +19,7 @@ updated: 2026-06-30
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -56,6 +57,18 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
     { title: "Onboarding to first merged PR", description: "Down from 5 days to 2 when AGENTS.md gives Copilot project context from day one" },
     { title: "Mid-sprint context switches", description: "Eliminated when evaluate-issue flags ticket gaps before a developer picks up the work" },
     { title: "Architectural risks in review", description: "/review-plan catches undiscovered gaps before a line of implementation code is written" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Context That Compounds", takeaway: "Generate workspace context once so every later interaction starts informed.", whyItMatters: "Shared context shortens onboarding and reduces false starts." },
+    { title: "Team Knowledge as Tools", takeaway: "Package prompts and skills as versioned assets anyone can invoke.", whyItMatters: "Useful expertise becomes durable team infrastructure." },
+    { title: "Plans Before Code", takeaway: "Review plans as testable hypotheses before implementation begins.", whyItMatters: "The cheapest time to change direction is before code exists." }
   ]'
 />
 

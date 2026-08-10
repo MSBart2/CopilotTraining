@@ -19,6 +19,7 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -50,6 +51,18 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
   subtext="Custom capabilities should travel with your code, not live on one developer's machine."
   highlight="apm.yml is the missing piece — agent configuration as code."
   :cards='[{"icon":"👩‍💻","title":"Developers","description":"Engineers who want domain-specific Copilot capabilities beyond the default — testing, code review, or architecture tools."},{"icon":"🏗️","title":"Platform Teams","description":"Teams responsible for standardizing developer tooling who need reproducible Copilot configuration across all contributors."},{"icon":"🧑‍🔧","title":"DevOps Engineers","description":"Engineers automating onboarding who want git clone && apm install to fully hydrate a new contributor with the right AI context."},{"icon":"📦","title":"Manual setup today","description":"Every new contributor manually configures their Copilot plugins, instructions, and MCP servers from a wiki page — or not at all."},{"icon":"⚡","title":"5 minutes","description":"Time to author an apm.yml that eliminates all manual setup for every future contributor on your team."},{"icon":"🔒","title":"Lockfile guarantee","description":"apm-lock.yml ensures every developer gets identical plugin versions — zero configuration drift across machines."}]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "One Team Setup", takeaway: "Install instructions, skills, plugins, and MCP servers from a manifest.", whyItMatters: "Configuration stops drifting across contributors." },
+    { title: "Configuration as Code", takeaway: "Version agent setup through apm.yml and lock files.", whyItMatters: "Teams can review and reproduce their exact agent environment." },
+    { title: "Faster Discovery", takeaway: "Find vetted extensions through a shared marketplace.", whyItMatters: "Useful capabilities become easier to evaluate and adopt." }
+  ]'
 />
 
 ---

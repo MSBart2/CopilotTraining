@@ -5,6 +5,18 @@ deck:
   subtitle: "Conversational Azure Prototyping and Deployment"
   tagline: "From 45 minutes of portal clicks to 8 minutes of live-context conversation"
 
+
+  agenda:
+    - title: "Live Azure Context"
+      takeaway: "Query and reason over current Azure resources conversationally."
+      whyItMatters: "Live state replaces portal hopping and stale assumptions."
+    - title: "Faster Prototype Loops"
+      takeaway: "Plan, validate, and deploy infrastructure in one conversation."
+      whyItMatters: "Shorter iteration makes infrastructure experiments practical."
+    - title: "Guardrailed Deployment"
+      takeaway: "Combine skills, MCP tools, and validation for safe execution."
+      whyItMatters: "Conversational infrastructure remains grounded in proven workflows."
+
   arcToc: "Live Context → Prototype Loop → Skills Plugin Stack → Guardrails"
 
   arcNarrative: >

@@ -7,6 +7,18 @@ deck:
   title: "Copilot Configuration Primitives: Making AI Understand Your Codebase"
   subtitle: "Instructions · Skills · Custom Prompts · Agents"
   tagline: "Encode your codebase once. Every Copilot interaction inherits it."
+
+  agenda:
+    - title: "Instructions First"
+      takeaway: "Create a small custom instruction file for immediate context gains."
+      whyItMatters: "Fast wins create momentum for deeper customization."
+    - title: "Skills as Knowledge"
+      takeaway: "Package expertise into callable team capabilities."
+      whyItMatters: "Knowledge persists beyond any one expert or role."
+    - title: "Specialized Agents"
+      takeaway: "Compose instructions, skills, prompts, and execution into collaborators."
+      whyItMatters: "Focused capabilities change AI from a tool into a teammate."
+
   arcToc: "Instructions → Skills → Custom Prompts → Agents"
   arcNarrative: >
     Instructions open the talk with the fastest ROI in the stack: one file, five minutes,

@@ -12,6 +12,18 @@ deck:
   subtitle: "Turning Maintainability Into a Merge Gate"
   tagline: "Coverage, maintainability, and reliability become a status check your merge depends on — and a line item you can actually predict."
 
+
+  agenda:
+    - title: "Quality as a Gate"
+      takeaway: "Make quality signals enforceable status checks on pull requests."
+      whyItMatters: "Metrics matter when they protect the merge decision."
+    - title: "Observe Before Enforce"
+      takeaway: "Use evaluation mode to tune rules before blocking work."
+      whyItMatters: "Teams build trust while reducing rollout surprises."
+    - title: "Predictable Rollout"
+      takeaway: "Plan adoption and cost by repository and committer."
+      whyItMatters: "Deliberate enablement makes quality infrastructure sustainable."
+
   arcToc: "Coverage Gates → Autofix in the PR Loop → Reading the Bill → Rolling Out Without Surprises"
 
   arcNarrative: >

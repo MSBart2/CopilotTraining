@@ -19,6 +19,7 @@ updated: 2026-06-16
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -56,6 +57,18 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
     { title: "0 branch conflicts", description: "Isolated worktrees make parallel agent work safe by design, not coordination" },
     { title: "20 min CVE → PR", description: "Plan mode maps blast radius; Autopilot executes — with a full audit trail" },
     { title: "5× task throughput", description: "Dispatch five agents to five independent backlog items simultaneously" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Parallel Worktrees", takeaway: "Run independent agents in isolated worktrees without collisions.", whyItMatters: "Teams gain parallelism without merge-conflict choreography." },
+    { title: "Autonomy by Confidence", takeaway: "Select Interactive, Plan, or Autopilot based on task risk.", whyItMatters: "Oversight can grow with trust instead of being all or nothing." },
+    { title: "Repeatable Pipelines", takeaway: "Turn successful sessions into scheduled or event-driven workflows.", whyItMatters: "A proven workflow becomes compounding automation." }
   ]'
 />
 

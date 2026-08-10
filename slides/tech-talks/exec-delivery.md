@@ -20,6 +20,7 @@ updated: 2026-04-24
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -57,6 +58,18 @@ src: ./exec-spine.md
     { title: "Only 5% of AI pilots", description: "Deliver material bottom-line improvement — McKinsey QuantumBlack, 2024" },
     { title: "55% faster task completion", description: "GitHub / Microsoft Research, 2022 — with AI coding assistance" },
     { title: "$4.88M average breach cost", description: "IBM 2024 — before SEC disclosure obligations and regulatory fines" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Throughput With Control", takeaway: "Pair agent velocity with instrumentation, audit trails, and quality gates.", whyItMatters: "Safe delivery needs organizational infrastructure, not just tools." },
+    { title: "The Cockpit", takeaway: "Use observability and control surfaces to guide autonomous work.", whyItMatters: "Leaders need reliable instruments for go or no-go decisions." },
+    { title: "Humans Set Direction", takeaway: "Keep people accountable for intent while agents execute.", whyItMatters: "The model amplifies leadership control rather than replacing it." }
   ]'
 />
 

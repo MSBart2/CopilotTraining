@@ -19,6 +19,18 @@ deck:
   tagline: "Three lenses. One investment decision. A closed, honest case."
 
   # arcToc: one line ≤ 80 chars, section names joined by →
+
+  agenda:
+    - title: "Three Strategic Lenses"
+      takeaway: "Examine the investment case through adoption, economics, and control."
+      whyItMatters: "Leaders need a complete view before committing resources."
+    - title: "An Honest Decision"
+      takeaway: "Surface benefits, constraints, and the evidence behind both."
+      whyItMatters: "Trust comes from a case that names its boundaries."
+    - title: "A Clear Next Move"
+      takeaway: "Translate the analysis into an explicit investment choice."
+      whyItMatters: "Strategy matters when it changes what happens next."
+
   arcToc: "The 67% Problem → The Honest Constraints → The Business Case → The Ask"
 
   # arcNarrative: sequencing rationale for an executive audience

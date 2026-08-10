@@ -19,6 +19,7 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -57,6 +58,18 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
     { title: "2 hours → ~15 minutes", description: "Release notes automation — first pattern most teams ship" },
     { title: "45 min per failed CI run", description: "Manual test-failure analysis eliminated by the scheduler pattern" },
     { title: "30 min/PR → zero", description: "Code standards enforcement automated end-to-end" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Use the Runtime", takeaway: "Build on the production-tested Copilot runtime instead of rebuilding it.", whyItMatters: "Teams can focus on their automation problem, not agent plumbing." },
+    { title: "Embed Anywhere", takeaway: "Integrate agents into applications, pipelines, and internal tools.", whyItMatters: "AI capability reaches the workflows where teams already operate." },
+    { title: "Stack the Leverage", takeaway: "Combine SDK agents with existing automation systems.", whyItMatters: "Connected automation compounds more than isolated one-off tools." }
   ]'
 />
 

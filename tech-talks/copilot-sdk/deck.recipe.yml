@@ -12,6 +12,18 @@ deck:
   title: "GitHub Copilot SDK"
   subtitle: "Build AI-Powered Tools for Your Workflows"
   tagline: "Stop building AI infrastructure. Start building the thing that matters."
+
+  agenda:
+    - title: "Use the Runtime"
+      takeaway: "Build on the production-tested Copilot runtime instead of rebuilding it."
+      whyItMatters: "Teams can focus on their automation problem, not agent plumbing."
+    - title: "Embed Anywhere"
+      takeaway: "Integrate agents into applications, pipelines, and internal tools."
+      whyItMatters: "AI capability reaches the workflows where teams already operate."
+    - title: "Stack the Leverage"
+      takeaway: "Combine SDK agents with existing automation systems."
+      whyItMatters: "Connected automation compounds more than isolated one-off tools."
+
   arcToc: "Architecture & Capabilities → Getting Started → Integration Patterns → Advanced Features"
   arcNarrative: >
     S1 earns credibility by revealing the SDK's core secret: it is not a new runtime but a

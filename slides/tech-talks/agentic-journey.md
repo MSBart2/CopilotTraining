@@ -19,6 +19,7 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -58,6 +59,18 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
     { title: "30 min → 3 min", description: "Triage time per issue with AI duplicate detection and auto-labeling" },
     { title: "60% better estimates", description: "When agents mine historical PRs before generating execution plans" },
     { title: "2-3 hour setup", description: "Copy 4 YAML files, configure secrets, create an issue — you are live" }
+  ]'
+/>
+
+---
+
+<!-- SLIDE: Agenda -->
+# Agenda
+<AgendaSlide
+  :items='[
+    { title: "Incremental Adoption", takeaway: "Prove value with one bounded workflow before adding automation.", whyItMatters: "Teams build confidence without an all-at-once transformation." },
+    { title: "Visible State", takeaway: "Use labels to make the automated delivery pipeline observable.", whyItMatters: "Everyone can see progress and bottlenecks without status meetings." },
+    { title: "Graduation Signals", takeaway: "Advance each phase only when its measures prove readiness.", whyItMatters: "Clear checkpoints keep automation supervised and adaptable." }
   ]'
 />
 
