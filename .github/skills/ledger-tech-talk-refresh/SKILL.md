@@ -145,8 +145,11 @@ After a talk passes every required gate, update only its selected decisions in `
 - Verified no content obligation: `status: rejected`
 - Keep `materiality` as adjudicated unless verification proves it wrong.
 - Replace `reason` with a concise outcome that names the updated section or explains rejection.
+- Never leave an implemented item in `proposal-created` or otherwise active status when the content has already been merged.
 
 Leave the parent event `status: adjudicated`. Do not modify unrelated decisions.
+
+This is the cleanup step that prevents the feed report from turning into stale backlog. The report is regenerated; the ledger is the durable state that ensures old work is closed instead of lingering as repeat work.
 
 Then:
 

@@ -70,6 +70,22 @@ Quick orientation for agents. Full docs: `AGENTS.md`
 
 ---
 
+## Announcement Feed Refresh — Critical Rules
+
+When a tech talk needs updating from the Microsoft Developer Changelog:
+
+1. Run `npm run content:route` to synthesize the fresh feed report.
+2. Review `.github/content-routing/ledger.json` for talk-specific `proposal-created` items.
+3. Verify the announcement against first-party docs before making any README change.
+4. Run the `content-refresh` skill to produce `tech-talks/<topic>/content.refresh.yml`.
+5. Apply only approved changes to the talk README.
+6. If the change affects the thesis, demo, or structure, run `deck-recipe-refresh` and regenerate the deck.
+7. Close the ledger item with `accepted` or `rejected` after validation.
+
+The full guide is in [docs/announcement-feed/README.md](docs/announcement-feed/README.md).
+
+---
+
 ## Slide Generation — Critical Rules
 
 ### Separator Rule (CRITICAL)

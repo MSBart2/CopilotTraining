@@ -26,6 +26,18 @@ The final `README.md` is the canonical, reader-first artifact for the talk. It f
 
 Create a tech talk interactively in VS Code using Copilot Chat agents. This gives you more control — you can review and iterate between phases.
 
+### First Step for Existing Talks: Check the Announcement Feed
+
+Before editing a live talk, start with the feed-driven refresh workflow. This is the first step for stale or partially outdated talks:
+
+```bash
+npm run content:route
+```
+
+Then review `.github/content-routing/latest-report.md` and `.github/content-routing/ledger.json`. If a talk is affected, invoke the `content-refresh` skill to draft a `content.refresh.yml`, or use the `ledger-tech-talk-refresh` skill to process the queued update end to end.
+
+This workflow is the repo's standard way to identify announcement-driven updates before we write README changes or regenerate slides.
+
 ### How to Start
 
 Open Copilot Chat and invoke:

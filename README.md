@@ -44,9 +44,22 @@ Use the [live site](https://msbart2.github.io/CopilotTraining/) for the easiest 
 ## For Contributors
 
 - [tech-talks/README.md](tech-talks/README.md) — tech talk authoring workflow
+- [docs/announcement-feed/README.md](docs/announcement-feed/README.md) — feed-driven refresh workflow for existing tech talks
+- [.github/skills/content-refresh/SKILL.md](.github/skills/content-refresh/SKILL.md) — verify feed items and draft a talk refresh plan
+- [.github/skills/ledger-tech-talk-refresh/SKILL.md](.github/skills/ledger-tech-talk-refresh/SKILL.md) — intake routing queue, approval flow, and full talk refresh execution
 - [slides/TEMPLATE.md](slides/TEMPLATE.md) — slide design patterns
 - [AGENTS.md](AGENTS.md) — repo-wide Copilot guidance
 - [workshop/README.md](workshop/README.md) — workshop narrative and module structure
+
+### First step for existing tech talks
+
+When a live talk may be stale, start with the announcement-feed refresh workflow before writing anything:
+
+```bash
+npm run content:route
+```
+
+Then review the generated report and the routing ledger, and use the `content-refresh` or `ledger-tech-talk-refresh` skill to decide whether a talk needs a README, recipe, or slide refresh.
 
 ## License
 

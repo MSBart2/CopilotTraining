@@ -51,6 +51,49 @@ Keep subagent prompts minimal — agents already have this file and their own `.
 
 ---
 
+## Announcement-Driven Tech Talk Refresh
+
+Use the announcement feed to keep existing tech talks current without rewriting them as release notes.
+
+### Source hierarchy
+
+1. Microsoft Developer Changelog RSS feed — discovery and routing source
+2. Linked first-party docs or release notes — factual source of truth
+3. Existing talk README and recipe — compare against current claims
+4. `.github/content-routing/ledger.json` — approved work queue and decision log
+
+### Standard flow
+
+1. Run `npm run content:route` from the repo root to refresh `.github/content-routing/latest-report.md` and `.github/content-routing/latest-report.json`.
+2. Read the generated report and `.github/content-routing/ledger.json` for relevant `proposal-created` items.
+3. Verify each candidate against the linked announcement and first-party docs.
+4. Create or update `tech-talks/<topic>/content.refresh.yml` using the `content-refresh` skill.
+5. After approval, patch the talk README as a reader-first article, not a changelog dump.
+6. If the update changes the thesis or structure, run the `deck-recipe-refresh` skill and regenerate the deck.
+7. Normalize the ledger status to `accepted` or `rejected` after validation completes.
+
+### When to use it
+
+Use this workflow for:
+
+- new product announcements that materially affect a live talk,
+- status changes such as GA, preview, deprecation, or retirement,
+- demo or setup changes that invalidate existing instructions,
+- removing stale references that no longer match current behavior.
+
+### Guardrails
+
+- Do not treat feed entries as fact without a first-party source.
+- Do not append an announcement dump to a README.
+- Do not update archived talks.
+- Do not regenerate slides before the README and recipe are approved.
+- Do not leave an implemented feed decision in `proposal-created` state. Closing it in the ledger is required before the report is considered clean.
+- Treat `.github/content-routing/latest-report.*` as a transient snapshot, not the durable backlog. The ledger is the source of truth.
+
+See [docs/announcement-feed/README.md](docs/announcement-feed/README.md) for the full operating guide.
+
+---
+
 ## Slide Generation
 
 Two agents — pick by category:

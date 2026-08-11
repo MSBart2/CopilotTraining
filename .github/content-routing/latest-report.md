@@ -1,12 +1,34 @@
 # Content refresh routing inbox
 
-Generated: 2026-08-11T16:36:53.103Z
-Feed last built: 2026-08-11T12:00:06.000Z
-Window starts: 2026-08-04T16:36:52.000Z
+Generated: 2026-08-11T18:19:51.568Z
+Feed last built: 2026-08-11T16:00:05.000Z
+Window starts: 2026-08-04T18:19:50.394Z
 
-Scanned 29 entries: 2 need review, 6 were previously adjudicated, 9 had no talk match, 12 were out of scope.
+Scanned 28 entries: 3 need review, 6 were previously adjudicated, 9 had no talk match, 10 were out of scope.
 
 > Candidate ranking creates awareness. A talk receives work only after editorial adjudication finds that the announcement changes its thesis, workflow, decision guidance, demo, setup, status, or boundary.
+
+## Visual Studio Code 1.133 (Insiders)
+
+- Published: 2026-08-11
+- Source: https://code.visualstudio.com/updates/v1_133
+- Disposition: **review**
+- Topics: vscode-copilot
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
+| [ ] | `tech-talks/copilot-chat-internals` | vscode-copilot: depends | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends | Keep VS Code customization discovery and configuration behavior accurate. |
+
+## Per-model token breakdown in the usage report
+
+- Published: 2026-08-11
+- Source: https://github.blog/changelog/2026-08-11-per-model-token-breakdown-in-the-usage-report
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
 
 ## Copilot on web expands conversation controls
 
@@ -106,14 +128,6 @@ No candidate talk crossed the V1 routing threshold.
 
 No candidate talk crossed the V1 routing threshold.
 
-## Secret scanning coverage updates
-
-- Published: 2026-08-07
-- Source: https://github.blog/changelog/2026-08-07-secret-scanning-coverage-updates
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
 ## GitHub Code Quality no longer adds Copilot as a reviewer
 
 - Published: 2026-08-07
@@ -194,8 +208,4 @@ No candidate talk crossed the V1 routing threshold.
 - Disposition: **no-match**
 
 No candidate talk crossed the V1 routing threshold.
-
-## Anomalies
-
-- Visual Studio Code 1.133 (Insiders): future-dated
 

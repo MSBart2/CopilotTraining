@@ -1,20 +1,127 @@
 {
-  "generatedAt": "2026-08-11T16:36:53.103Z",
+  "generatedAt": "2026-08-11T18:19:51.568Z",
   "feed": {
     "title": "Microsoft Developer Changelog",
-    "lastBuildDate": "2026-08-11T12:00:06.000Z"
+    "lastBuildDate": "2026-08-11T16:00:05.000Z"
   },
-  "since": "2026-08-04T16:36:52.000Z",
+  "since": "2026-08-04T18:19:50.394Z",
   "summary": {
-    "scanned": 29,
-    "review": 2,
+    "scanned": 28,
+    "review": 3,
     "adjudicated": 6,
     "noMatch": 9,
-    "outOfScope": 12,
-    "anomalies": 1,
-    "duplicates": 0
+    "outOfScope": 10,
+    "anomalies": 0,
+    "duplicates": 2
   },
   "events": [
+    {
+      "id": "263ee686f9010c60",
+      "title": "Visual Studio Code 1.133 (Insiders)",
+      "source": "https://code.visualstudio.com/updates/v1_133",
+      "published": "2026-08-11T17:00:00.000Z",
+      "categories": [
+        "Launched",
+        "Developer Tools",
+        "Visual Studio Code"
+      ],
+      "description": "Learn what's new in Visual Studio Code 1.133 (Insiders)...",
+      "topics": [
+        {
+          "id": "vscode-copilot",
+          "signals": [
+            "visual studio code"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "talk": "vscode-latest",
+          "score": 17,
+          "relationships": [
+            {
+              "topic": "vscode-copilot",
+              "role": "explains",
+              "obligation": "Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model.",
+              "matchedSignals": [
+                "visual studio code"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "code",
+            "what"
+          ]
+        },
+        {
+          "talk": "copilot-chat-internals",
+          "score": 12,
+          "relationships": [
+            {
+              "topic": "vscode-copilot",
+              "role": "depends",
+              "obligation": "Keep VS Code chat debugging surfaces and diagnostics accurate.",
+              "matchedSignals": [
+                "visual studio code"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "code",
+            "what"
+          ]
+        },
+        {
+          "talk": "agent-dev-loop",
+          "score": 11,
+          "relationships": [
+            {
+              "topic": "vscode-copilot",
+              "role": "depends",
+              "obligation": "Keep the end-to-end VS Code agent workflow and demos executable.",
+              "matchedSignals": [
+                "visual studio code"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "code"
+          ]
+        },
+        {
+          "talk": "copilot-primitives",
+          "score": 10,
+          "relationships": [
+            {
+              "topic": "vscode-copilot",
+              "role": "depends",
+              "obligation": "Keep VS Code customization discovery and configuration behavior accurate.",
+              "matchedSignals": [
+                "visual studio code"
+              ]
+            }
+          ],
+          "profileSignals": []
+        }
+      ],
+      "disposition": "review"
+    },
+    {
+      "id": "e2c12c7d81cd527a",
+      "title": "Per-model token breakdown in the usage report",
+      "source": "https://github.blog/changelog/2026-08-11-per-model-token-breakdown-in-the-usage-report",
+      "published": "2026-08-11T14:41:52.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Management and Governance",
+        "AI + Machine Learning"
+      ],
+      "description": "You can now see a per-model breakdown of the tokens behind your AI credits in the usage report. For each model, the AI usage report shows the input, output, cache… The post Per-model token breakdown in the usage report appeared first on The GitHub Blog...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
     {
       "id": "95567e89edde9f22",
       "title": "Copilot on web expands conversation controls",
@@ -701,21 +808,6 @@
       "disposition": "no-match"
     },
     {
-      "id": "7300441cc929c28e",
-      "title": "Secret scanning coverage updates",
-      "source": "https://github.blog/changelog/2026-08-07-secret-scanning-coverage-updates",
-      "published": "2026-08-07T16:54:47.000Z",
-      "categories": [
-        "GitHub",
-        "Launched",
-        "Security"
-      ],
-      "description": "This release expands secret scanning's coverage with more secrets blocked by push protection, one new secret scanning partner, and richer metadata on alerts. Secret scanning partnership program Lovable Labs is… The post Secret scanning coverage updates appeared first on The GitHub Blog...",
-      "topics": [],
-      "candidates": [],
-      "disposition": "no-match"
-    },
-    {
       "id": "dc0c8a462d44c79d",
       "title": "GitHub Code Quality no longer adds Copilot as a reviewer",
       "source": "https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer",
@@ -1169,7 +1261,7 @@
       }
     },
     {
-      "id": "2eeb40fd1d1e26b5",
+      "id": "65ba03839b9fba70",
       "title": "Visual Studio Code 1.132",
       "source": "https://code.visualstudio.com/updates/v1_132",
       "published": "2026-08-05T17:00:00.000Z",
@@ -1293,14 +1385,19 @@
       "disposition": "no-match"
     }
   ],
-  "anomalies": [
+  "anomalies": [],
+  "duplicates": [
     {
-      "id": "ac2c12ae17941141",
-      "title": "Visual Studio Code 1.133 (Insiders)",
-      "source": "https://code.visualstudio.com/updates/v1_133",
-      "published": "2026-08-11T17:00:00.000Z",
-      "reason": "future-dated"
+      "id": "7daab45ddf0faccd",
+      "title": "GitHub Mobile: Fix failing Actions checks with Copilot cloud agent",
+      "source": "https://github.blog/changelog/2026-07-23-github-mobile-fix-failing-actions-checks-with-copilot-cloud-agent",
+      "duplicateOf": "7daab45ddf0faccd"
+    },
+    {
+      "id": "6151a27d9cc13c03",
+      "title": "GitHub Mobile: Improved filters and sorting for Copilot sessions",
+      "source": "https://github.blog/changelog/2026-07-10-github-mobile-improved-filters-and-sorting-for-copilot-sessions",
+      "duplicateOf": "6151a27d9cc13c03"
     }
-  ],
-  "duplicates": []
+  ]
 }
