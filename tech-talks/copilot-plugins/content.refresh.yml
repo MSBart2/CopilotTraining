@@ -1,0 +1,55 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/copilot-plugins"
+  cutoff: "2026-04-17"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    Team-specialized managed settings add a governed distribution path for plugins
+    and marketplaces alongside APM. The update should explain that enterprise
+    enabledPlugins and extraKnownMarketplaces form an additive floor that teams can
+    extend, without incorrectly presenting this as apm.yml inheritance.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "08658e29b45a99aa"
+      title: "Enterprise team specialization for managed settings"
+      published: "2026-08-03"
+      source: "https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "Sharing Plugins Across Teams"
+      action: add
+      summary: >
+        In enterprise managed settings, enabledPlugins and extraKnownMarketplaces
+        are additive: teams can layer role-specific plugins and marketplaces on top
+        of the enterprise baseline without weakening it. Team files live under
+        copilot/teams/ and are assigned with team-mappings.json.
+      limitations:
+        - "This is an enterprise managed-settings capability, not an apm.yml merge rule."
+        - "Current managed-settings enforcement covers VS Code, Copilot CLI, the Copilot App, and Copilot cloud agent for Business or Enterprise licenses."
+        - "Users in multiple teams receive least-restrictive team values beneath non-overridable enterprise decisions."
+      recipeImpact: confirm
+      slideImpact: done
+
+  ignored: []
+  removals: []
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Does additive enterprise/team plugin distribution require a new governance
+      highlight, or can it remain a bounded companion to the APM packaging story?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

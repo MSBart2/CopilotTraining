@@ -1,0 +1,55 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/copilot-code-review"
+  cutoff: "2026-04-10"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    Lite and Balanced effort levels add a missing risk-based control to the talk's
+    configuration and adoption guidance. The current arc remains useful, but it
+    needs the GA names, inheritance behavior, per-review choice, and visible audit
+    signal.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "c1edd61c12df50a0"
+      title: "Copilot code review effort levels are generally available"
+      published: "2026-08-07"
+      source: "https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: headline
+      targetSection: "Configuration and Quick Start"
+      action: add
+      summary: >
+        Reviewers can choose Lite for routine changes and Balanced for larger,
+        complex, or sensitive changes. Organization administrators can set a
+        default inherited by repositories without their own setting, while a
+        per-review choice affects only that review. Timeline events and the pull
+        request overview identify the effort used.
+      limitations:
+        - "Low and Medium preview settings carry forward as Lite and Balanced."
+        - "Lite and Balanced are available on Copilot Pro, Pro+, Max, Business, and Enterprise plans."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored: []
+  removals: []
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Does risk-based review effort become a new highlight, or can it remain a
+      configuration and adoption decision inside the current recipe?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

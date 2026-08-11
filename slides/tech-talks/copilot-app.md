@@ -9,11 +9,11 @@ info: |
 drawings:
   persist: false
 transition: slide-left
-title: The GitHub Copilot App — Running a Fleet of Agents
+title: The GitHub Copilot App
 mdc: true
-section: Agentic Systems
+section: "Agentic Systems"
 status: active
-updated: 2026-06-16
+updated: 2026-08-11
 ---
 
 <script setup>
@@ -26,21 +26,21 @@ import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
 import WhatYouCanDoTodaySlide from './components/structure/WhatYouCanDoTodaySlide.vue'
 import ReferencesSlide from './components/structure/ReferencesSlide.vue'
 import ThankYouSlide from './components/structure/ThankYouSlide.vue'
+import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
-import FourCardGridSlide from './components/FourCardGridSlide.vue'
 import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
-import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
-import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlide.vue'
+import FourCardGridSlide from './components/FourCardGridSlide.vue'
 import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
-import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlide.vue'
+import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
+import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
 </script>
 
-# Title
+# The GitHub Copilot App
 <TitleSlide
   title="The GitHub Copilot App"
   subtitle="Running a Fleet of Agents"
   tagline="From one Copilot collaborator to a fleet of autonomous agents — managed from one place"
-  meta="Agentic Systems · 2026-06-16"
+  meta="Agentic Systems · Senior Engineers / Tech Leads / Engineering Managers · 45 min"
 />
 
 ---
@@ -48,39 +48,39 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 # Core Question
 <CoreQuestionSlide
   question="How do we run five agents in parallel without losing control of the codebase?"
-  subtext="The GitHub Copilot App ships a new desktop control plane for orchestrating autonomous agents."
-  highlight="What changes when you can run five in parallel?"
+  subtext="Most teams treat Copilot as one assistant at a time — but the backlog doesn&#39;t move one task at a time."
+  highlight="The fleet model changes the unit of work from task-I&#39;m-doing to task-I&#39;m-delegating."
   :cards='[
-    { icon: "👩‍💻", title: "Senior Engineer", description: "How do I delegate routine work without losing visibility into what agents are doing?" },
-    { icon: "🧑‍💼", title: "Tech Lead", description: "Can I run five agents in parallel on our backlog without creating chaos?" },
-    { icon: "📊", title: "Eng Manager", description: "Is fleet delegation safe, auditable, and enforceable at organizational scale?" },
-    { title: "0 branch conflicts", description: "Isolated worktrees make parallel agent work safe by design, not coordination" },
-    { title: "20 min CVE → PR", description: "Plan mode maps blast radius; Autopilot executes — with a full audit trail" },
-    { title: "5× task throughput", description: "Dispatch five agents to five independent backlog items simultaneously" }
+    { icon: "🧑‍💻", title: "Senior Engineers", description: "Dispatch routine work while staying in flow on architecture decisions" },
+    { icon: "👩‍✈️", title: "Tech Leads", description: "Coordinate a fleet of agents across the sprint backlog from one view" },
+    { icon: "🏗️", title: "Engineering Managers", description: "Set autonomy policy and audit every agent action across the org" },
+    { title: "Serial bottleneck", description: "Teams with one agent finish one task at a time — throughput is capped at one" },
+    { title: "5 issues, 1 morning", description: "Five agents can process five independent tickets before the first standup" },
+    { title: "PR ready in 20 min", description: "CVE patch and regression tests — Plan mode, two agents, full audit trail" }
   ]'
 />
 
 ---
 
-<!-- SLIDE: Agenda -->
 # Agenda
 <AgendaSlide
   :items='[
-    { title: "Parallel Worktrees", takeaway: "Run independent agents in isolated worktrees without collisions.", whyItMatters: "Teams gain parallelism without merge-conflict choreography." },
-    { title: "Autonomy by Confidence", takeaway: "Select Interactive, Plan, or Autopilot based on task risk.", whyItMatters: "Oversight can grow with trust instead of being all or nothing." },
-    { title: "Repeatable Pipelines", takeaway: "Turn successful sessions into scheduled or event-driven workflows.", whyItMatters: "A proven workflow becomes compounding automation." }
+    { title: "Parallel Worktrees", takeaway: "Run independent agents in isolated worktrees without branch collisions.", whyItMatters: "Teams gain parallelism without merge-conflict choreography or custom locking." },
+    { title: "Autonomy by Confidence", takeaway: "Select Interactive, Plan, or Autopilot based on task risk and clarity.", whyItMatters: "Oversight can grow with trust instead of being all-or-nothing from day one." },
+    { title: "Repeatable Pipelines", takeaway: "Turn successful sessions into scheduled or event-driven workflows.", whyItMatters: "A proven workflow becomes compounding automation — dispatched without manual triggers." }
   ]'
 />
 
 ---
 
-# TOC
+# Table of Contents
 <TocSlide
+  arcToc="Fleet Model → Trust by Design → Control Surfaces → Sessions to Systems"
   :sections='[
-    { icon: "🚢", title: "The Fleet Model", subtitle: "What is this? The paradigm shift.", blurb: "Dashboard, dispatch table, and when to reach for the fleet", slide: 4 },
-    { icon: "🔒", title: "Safe Parallelism", subtitle: "Is it safe? Yes — by construction.", blurb: "Worktrees, sandboxes, and policy: three guarantees", slide: 9 },
-    { icon: "🎛️", title: "Control Surfaces", subtitle: "How much control do I keep?", blurb: "Modes, Canvas, issue briefs, and what breaks", slide: 12 },
-    { icon: "⚙️", title: "Sessions to Systems", subtitle: "What does done look like at scale?", blurb: "CVE in 20 min, repeatable workflows, Agent Merge", slide: 18 }
+    { icon: "🚀", title: "The Fleet Model", subtitle: "What agent-native means at team scale", blurb: "Dashboard, dispatch table, and the decision tree for when to reach for the fleet", slide: 5 },
+    { icon: "🛡️", title: "Safe Parallelism", subtitle: "Worktrees, sandboxes, and branch isolation", blurb: "How five agents work concurrently without touching each other&#39;s files", slide: 10 },
+    { icon: "🎛️", title: "Control Surfaces", subtitle: "Modes, Canvas, and the issue brief", blurb: "The dial, the handbrake, and the quality lever — all five control slides", slide: 13 },
+    { icon: "⚙️", title: "Sessions to Systems", subtitle: "Repeatable workflows and Agent Merge", blurb: "CVE response, workflow anatomy, and the Monday dispatch that runs itself", slide: 19 }
   ]'
 />
 
@@ -90,59 +90,66 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 <SectionOpenerSlide
   :partNumber="1"
   title="The Fleet Model"
-  subtitle="Problem before product: serial bottleneck → fleet reveal → coordinator role shift"
+  subtitle="The coordinator shift: from one agent at a time to a backlog dispatch queue"
   :cards='[
-    { icon: "📊", title: "My Work Dashboard", blurb: "All sessions, PRs, automations in one view" },
-    { icon: "🚀", title: "The Dispatch Table", blurb: "Four agents on four issues simultaneously" },
-    { icon: "🗺️", title: "When to Use the Fleet", blurb: "One task → VS Code; two+ → Copilot App" }
+    { icon: "🖥️", title: "My Work Dashboard", blurb: "All sessions, PRs, CI, and automations in one coordinator view" },
+    { icon: "📋", title: "Dispatch Table", blurb: "Four agents, four issues, all running simultaneously this morning" },
+    { icon: "🌿", title: "Decision Tree", blurb: "When one task → VS Code; two or more → the fleet model" }
   ]'
-  :terminal='{ context: "Dispatching four agents simultaneously from My Work", detail: "Four PRs by 10am — zero supervision required" }'
+  :terminal='{ context: "Five agents, five issues:", detail: "zero conflicts — parallel is safe by design" }'
 />
 
 ---
 
-# VS Code vs Copilot App —— The Fork
-<TwoColPairedConceptsSlide
+# VS Code or Copilot App? Start With the Bottleneck
+<BeforeAfterMetricsSlide
   :partNumber="1"
   pillIcon="🔀"
-  pillLabel="The Fleet Model · The Fork"
+  pillLabel="Fleet Model: The Fork"
   title="Already Using Copilot in VS Code? Here&#39;s the Fork"
-  :left='{
+  :before='{
     header: "VS Code Agent Mode",
-    icon: "💻",
     items: [
-      { title: "Single focused task", detail: "Deep in-context, flow-state work on one branch" },
-      { title: "One session at a time", detail: "Per developer, per working directory" },
-      { title: "Extension-based", detail: "Already installed — no separate app needed" },
-      "Best when approach is clear and scope is bounded"
+      { title: "Best For", detail: "Single focused task in active codebase" },
+      { title: "Session Count", detail: "One session at a time" },
+      { title: "Environment", detail: "Developer&#39;s working directory" },
+      { title: "Automation", detail: "Per-session, manual trigger" },
+      { title: "Dashboard", detail: "Chat panel inside the editor" },
+      "Already in VS Code via extension"
     ]
   }'
-  :right='{
+  :after='{
     header: "GitHub Copilot App",
-    icon: "🚢",
     items: [
-      { title: "Parallel fleet dispatch", detail: "Multiple independent tasks running simultaneously" },
-      { title: "Multiple isolated sessions", detail: "Each agent in its own git worktree" },
-      { title: "Standalone desktop install", detail: "My Work dashboard as the coordination surface" },
-      "Best when two or more tasks can run independently"
+      { title: "Best For", detail: "Parallel fleet management, multi-repo" },
+      { title: "Session Count", detail: "Multiple concurrent sessions" },
+      { title: "Environment", detail: "Isolated worktrees, cloud sandboxes" },
+      { title: "Automation", detail: "Repeatable workflows, Agent Merge" },
+      { title: "Dashboard", detail: "My Work unified view across repos" },
+      "Standalone desktop install required"
     ]
   }'
+  :metrics='[
+    { value: "1→5", label: "concurrent agents" },
+    { value: "5×", label: "throughput on routine tasks" },
+    { value: "20 min", label: "CVE patch + tests, Plan mode" }
+  ]'
   :progressDots='{ current: 1, total: 4, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-# My Work Dashboard
+# My Work: The Fleet Dashboard
 <FourCardGridSlide
   :partNumber="1"
-  pillIcon="📊"
-  pillLabel="The Fleet Model · My Work"
-  title="My Work: The Coordinator&#39;s View"
+  pillIcon="🖥️"
+  pillLabel="Fleet Model: Dashboard"
+  title="My Work — The Coordinator View"
   :cards='[
-    { icon: "⚡", title: "Active Sessions", description: "Every live agent with its task description, elapsed time, current mode, and status" },
-    { icon: "🔀", title: "Open PRs", description: "All pull requests created by agent sessions, surfaced for review without tab-switching" },
-    { icon: "🔄", title: "Automations", description: "Background workflow runs with last-run status and next scheduled execution time" },
-    { icon: "🔔", title: "Notifications", description: "Agent needs input, hit a blocker, or completed a PR — everything in one place" }
+    { icon: "🤖", title: "Active Sessions", description: "Task, elapsed time, mode, and current agent status — across all repos" },
+    { icon: "🔀", title: "Open PRs", description: "Every session-generated PR in one view; no tab-switching to check status" },
+    { icon: "⏱️", title: "Background Automations", description: "Last and next run timestamps for scheduled workflows" },
+    { icon: "🔔", title: "Notifications", description: "Alerts when an agent needs input, hits a blocker, or opens a PR" }
   ]'
   :progressDots='{ current: 2, total: 4, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
@@ -150,33 +157,48 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 ---
 
 # Monday Morning Dispatch
-<FourCardGridSlide
+<FrameworkMappingRowsSlide
   :partNumber="1"
-  pillIcon="🚀"
-  pillLabel="The Fleet Model · Dispatch Table"
-  title="Monday Morning — Four Agents, Four Issues, One Dashboard"
-  :cards='[
-    { icon: "🔵", title: "Agent 1 · Plan", description: "Fix checkout accessibility violations — PR reviewed before any code applies to the branch" },
-    { icon: "🟣", title: "Agent 2 · Autopilot", description: "Update all npm dev dependencies — PR with updated package.json and lock file" },
-    { icon: "🟣", title: "Agent 3 · Autopilot", description: "Generate unit tests for auth/ module — PR with full coverage for each exported function" },
-    { icon: "🟡", title: "Agent 4 · Interactive", description: "Triage last week&#39;s untagged issues — labels and priorities applied, ready to confirm" }
+  pillIcon="📋"
+  pillLabel="Fleet Model: Dispatch"
+  title="Four Agents, Four Issues, One Morning"
+  subtitle="The dispatch table — four independent tasks running simultaneously"
+  :rows='[
+    { label: "Agent 1", description: "Fix accessibility violations in checkout — fixes reviewed before apply", tag: "Plan" },
+    { label: "Agent 2", description: "Update npm dev deps — PR with package.json and lock file", tag: "Autopilot" },
+    { label: "Agent 3", description: "Generate unit tests for auth/ — PR per exported function", tag: "Autopilot" },
+    { label: "Agent 4", description: "Triage untagged issues — labels and priorities ready to confirm", tag: "Interactive" }
   ]'
+  footnote="All four run simultaneously. Each produces a reviewable artifact — plan, PR, or action list."
   :progressDots='{ current: 3, total: 4, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-# When to Reach for the Fleet
-<ThreeColumnCardSlide
+# When to Reach for the Fleet Model
+<TwoColPairedConceptsSlide
   :partNumber="1"
-  pillIcon="🗺️"
-  pillLabel="The Fleet Model · Decision Tree"
+  pillIcon="🌿"
+  pillLabel="Fleet Model: Decision Tree"
   title="When to Reach for the Fleet Model"
-  :columns='[
-    { icon: "1️⃣", title: "One Task", description: "Stay in VS Code agent mode. No need to switch apps — flow state matters more than fleet capacity.", items: ["In-context editing", "Single branch focus", "Extension already active"] },
-    { icon: "2️⃣", title: "Two or More Tasks", description: "Open the Copilot App and dispatch in parallel. Then choose the right mode for each task.", items: ["Ambiguous → Interactive", "Scoped → Plan", "Routine → Autopilot"] },
-    { icon: "🔄", title: "Recurring Pattern", description: "Convert a validated session into a repeatable workflow. The dispatch becomes a scheduled automation.", items: ["Trigger: cron or event", "Versioned in the repo", "Agent Merge optional"] }
-  ]'
+  :left='{
+    header: "Stay in VS Code",
+    icon: "🖊️",
+    items: [
+      { title: "One active task", detail: "Single focused work in your codebase — no need to switch apps" },
+      { title: "Tight real-time collab", detail: "Same file set, interactive edits with teammates" },
+      { title: "Free tier", detail: "Technical preview requires Pro, Pro+, Business, or Enterprise" }
+    ]
+  }'
+  :right='{
+    header: "Open the Copilot App",
+    icon: "🚀",
+    items: [
+      { title: "Two or more independent tasks", detail: "Parallel dispatch is the native unit of the fleet model" },
+      { title: "Multi-repo coordination", detail: "Single view across all connected repositories" },
+      { title: "Recurring automation", detail: "Convert sessions into scheduled or event-triggered workflows" }
+    ]
+  }'
   :progressDots='{ current: 4, total: 4, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
@@ -186,49 +208,45 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 <SectionOpenerSlide
   :partNumber="2"
   title="Safe Parallelism"
-  subtitle="Trust by Design: three guarantees that make fleet delegation safe by construction"
+  subtitle="Five agents, five worktrees — isolation by construction, not coordination"
   :cards='[
-    { icon: "🌿", title: "Worktree Isolation", blurb: "One branch per agent — no collision possible" },
-    { icon: "📦", title: "Sandbox Containment", blurb: "Agents can&#39;t escape their permitted scope" },
-    { icon: "🛡️", title: "Policy Control", blurb: "Org admins set scope, merge, and audit rules" }
+    { icon: "🌿", title: "Worktree Isolation", blurb: "One branch, one directory per agent — no collision possible" },
+    { icon: "📦", title: "Sandbox Containment", blurb: "Cloud or local runtimes, bounded scope, no lateral movement" },
+    { icon: "🔐", title: "Policy Control", blurb: "Org admins configure sandbox types and Agent Merge eligibility" }
   ]'
-  :terminal='{ context: "git worktree add — one command per agent session", detail: "Parallel by construction, not coordination" }'
+  :terminal='{ context: "git worktree add -b agent-session-2 ../repo-agent-2 origin/main", detail: "five isolated directories, one shared history" }'
 />
 
 ---
 
-# Trust by Design — Three Guarantees
+# Trust by Design: Three Safety Layers
 <ThreeColumnCardSlide
   :partNumber="2"
-  pillIcon="🔒"
-  pillLabel="Safe Parallelism · Trust by Design"
-  title="Three Guarantees — One Proof That Parallel Is Safe"
+  pillIcon="🛡️"
+  pillLabel="Safe Parallelism: Architecture"
+  title="Trust by Design — Three Safety Layers"
   :columns='[
-    { icon: "🌿", title: "Worktree Isolation", description: "Each agent gets its own branch and directory. File collisions are impossible by construction.", items: ["git worktree add per session", "Each agent on its own branch", "No file-collision risk"] },
-    { icon: "📦", title: "Sandbox Containment", description: "Agents can&#39;t reach beyond their permitted scope — in cloud or local runtimes.", items: ["Cloud: isolated compute", "Local: bounded to workspace", "No lateral movement"] },
-    { icon: "🛡️", title: "Policy Control", description: "Org admins set permitted environments, merge eligibility, and audit scope once.", items: ["Permitted environment types", "Merge eligibility per repo", "Full audit log"] }
+    { icon: "🌿", title: "Worktree Isolation", description: "One branch, one dir per agent — safe by construction, no collision possible between sessions.", items: ["Shared .git history", "Independent working dirs", "Normal PR on finish"] },
+    { icon: "📦", title: "Sandbox Containment", description: "Cloud: fully isolated compute. Local: bounded scope, admin-configurable. No lateral movement.", items: ["Cloud: isolated compute", "Local: bounded scope", "Admin-configured access"] },
+    { icon: "🔐", title: "Policy Control", description: "Org admins configure sandbox types, Agent Merge eligibility, and audit scope per repo.", items: ["Sandbox type policy", "Merge eligibility rules", "Full audit log"] }
   ]'
   :progressDots='{ current: 1, total: 2, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-# worktree-init.sh —— Pre-Initialize Your Fleet
+# Initializing Parallel Worktrees
 <CodeWithFeaturesSlide
   :partNumber="2"
-  pillIcon="💻"
-  pillLabel="Safe Parallelism · Take-Home Script"
-  title="worktree-init.sh — Pre-Initialize Your Fleet"
+  pillIcon="📜"
+  pillLabel="Safe Parallelism: worktree-init.sh"
+  title="worktree-init.sh — Pre-Initialize for Fleet Sessions"
   codePosition="left"
-  :code='{
-    language: "bash",
-    filename: "worktree-init.sh",
-    content: "#!/usr/bin/env bash\nN=${1:-4}; PREFIX=${2:-copilot}\nTS=$(date +%H%M)\nREPO=$(basename $(git rev-parse --show-toplevel))\n\ngit fetch origin main -q\n\nfor i in $(seq 1 $N); do\n  git worktree add \\\n    -b ${PREFIX}-${TS}-${i} \\\n    ../${REPO}-${PREFIX}-${i} origin/main\n  echo \"  \u2713 Worktree $i ready\"\ndone"
-  }'
+  :code='{ language: "bash", filename: "worktree-init.sh", content: "#!/usr/bin/env bash\n# Usage: ./worktree-init.sh <repo> <n> [prefix]\nset -euo pipefail\nREPO_PATH=\"${1:?}\"\nN_AGENTS=\"${2:?}\"\nPREFIX=\"${3:-agent}\"\nTIMESTAMP=$(date +%Y%m%d-%H%M)\ncd \"$REPO_PATH\"\ngit fetch origin main --quiet\nfor i in $(seq 1 \"$N_AGENTS\"); do\n  BRANCH=\"${PREFIX}-${TIMESTAMP}-${i}\"\n  DIR=\"../$(basename \"$REPO_PATH\")-${PREFIX}-${i}\"\n  git worktree add -b \"$BRANCH\" \"$DIR\" origin/main\n  echo \"  ✓ Worktree $i: $DIR\"\ndone" }'
   :features='[
-    { icon: "🔀", title: "Isolated branches", description: "Each worktree gets its own branch, named with session timestamp and index" },
-    { icon: "📁", title: "Separate directories", description: "Agent sessions point to different root directories — no file collisions possible" },
-    { icon: "🚀", title: "Scales to N agents", description: "Pass the agent count and each gets a ready worktree before any session starts" }
+    { icon: "🌿", title: "One branch per agent", description: "Each worktree gets its own branch from origin/main" },
+    { icon: "📂", title: "Independent directories", description: "Agents cannot overwrite each other&#39;s working files" },
+    { icon: "🔀", title: "Normal PRs on finish", description: "Each session branch closes as a standard pull request" }
   ]'
   :progressDots='{ current: 2, total: 2, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
@@ -239,103 +257,83 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 <SectionOpenerSlide
   :partNumber="3"
   title="Control Surfaces"
-  subtitle="Autonomy is a dial, not a switch — modes, Canvas, handbrake, and what breaks"
+  subtitle="Autonomy is a dial, not a switch — five slides to calibrate and control the fleet"
   :cards='[
-    { icon: "🎛️", title: "Three Autonomy Modes", blurb: "Interactive, Plan, Autopilot — dial per task" },
-    { icon: "🖼️", title: "Canvas + Handbrake", blurb: "Escalate mid-session without canceling worktree" },
-    { icon: "📝", title: "Issue = Agent Brief", blurb: "The brief you write is the spec it executes" }
+    { icon: "🎛️", title: "Three Modes", blurb: "Interactive → Plan → Autopilot, matched to task risk" },
+    { icon: "🖼️", title: "Canvas + Handbrake", blurb: "Shift to Interactive mid-session without losing the worktree" },
+    { icon: "📝", title: "Issue Brief", blurb: "Issue quality = agent quality — the upstream lever" }
   ]'
-  :terminal='{ context: "Setting the autonomy dial before every session dispatch", detail: "Interactive → Plan → Autopilot — right mode, right task" }'
+  :terminal='{ context: "Autonomy is a dial, not a switch —", detail: "Interactive, Plan, and Autopilot give the right trust level per task" }'
 />
 
 ---
 
-# Three Autonomy Modes
-<MaturityJourneyRoadmapSlide
+# The Autonomy Dial
+<ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🎛️"
-  pillLabel="Control Surfaces · Autonomy Modes"
-  title="Three Modes, One Decision: Set the Dial Per Task"
-  subtitle="Interactive → Plan → Autopilot"
-  :stages='[
-    { label: "Supervised", name: "Interactive", description: "Proposes each step and waits for your approval — ideal for novel, ambiguous, or risky tasks.", icon: "👁️" },
-    { label: "Planned", name: "Plan", description: "Drafts a complete approach for review. Executes autonomously once you approve the plan.", icon: "📋" },
-    { label: "Autonomous", name: "Autopilot", description: "Executes end-to-end — researches, implements, and opens a PR without checkpoints.", icon: "🚀" }
+  pillLabel="Control Surfaces: Modes"
+  title="Autonomy Is a Dial, Not a Switch"
+  :columns='[
+    { icon: "👁️", title: "Interactive", description: "Agent proposes each step and waits for approval. Best for exploratory or ambiguous tasks.", items: ["Step-by-step approval", "Transparent work log", "Best: unclear approach"] },
+    { icon: "📋", title: "Plan", description: "Agent writes a complete plan; human reviews and approves before any code changes begin.", items: ["Full plan before code", "Approve before execute", "Best: scope clear, plan wanted"] },
+    { icon: "🤖", title: "Autopilot", description: "Agent executes end-to-end, opens a PR when done. Best for routine well-specified tasks.", items: ["Fire and review PR", "Low blast radius tasks", "EM policy controls scope"] }
   ]'
-  caption="Autonomy is a dial, not a switch — set it per task, per session"
+  :insight='{ icon: "🏛️", text: "EM Policy: sandbox types · Agent Merge eligibility per repo · audit log with session ID, user, timestamp" }'
   :progressDots='{ current: 1, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Mode Selection Table
+# Mode Selection Quick Reference
 <FrameworkMappingRowsSlide
   :partNumber="3"
-  pillIcon="📋"
-  pillLabel="Control Surfaces · Mode Selection"
-  title="Pick the Mode by Task Characteristics"
-  subtitle="Use this as your pre-dispatch checklist"
+  pillIcon="📊"
+  pillLabel="Control Surfaces: Mode Guide"
+  title="autonomy-mode-guide.md — Take-Home Artifact #1"
+  subtitle="Match task characteristics to mode — the CVE row connects directly to S4"
   :rows='[
-    { label: "Unclear", description: "Interactive proposes each step for approval before any code is written", tag: "Interactive" },
-    { label: "Ambiguous", description: "Scope unmapped — Plan drafts approach for team review first", tag: "Plan" },
-    { label: "High risk", description: "Auth, migrations, deploys — use Interactive or Plan; never Autopilot", tag: "Interactive / Plan" },
-    { label: "Routine", description: "Test gen, dep updates, triage — clear criteria make Autopilot safe", tag: "Autopilot" },
-    { label: "Security CVE", description: "Plan maps blast radius, then Autopilot patches — sequenced control", tag: "Plan → Autopilot" }
+    { label: "Exploratory", description: "Approach unclear → agent proposes, human approves each step", tag: "Interactive" },
+    { label: "Well-Scoped", description: "Scope clear, plan review wanted — e.g., OAuth2 feature add", tag: "Plan" },
+    { label: "CVE/Security", description: "High blast radius: Plan mode analyzes usages, drafts plan first", tag: "Plan" },
+    { label: "Routine", description: "Known pattern, low blast radius — dep updates, tests, triage", tag: "Autopilot" },
+    { label: "New Pattern", description: "Untested task type — run Interactive or Plan first", tag: "Interactive" }
   ]'
-  footnote="EM policy note: environment type, Agent Merge eligibility, and audit log scope are org-admin settings — not per-session choices"
+  footnote="If the approach is non-obvious, default to Plan mode — scope mismatches become PR surprises in Autopilot"
   :progressDots='{ current: 2, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Canvas — Live Work Surface
-<TwoColPairedConceptsSlide
+# Canvas: The Coordination Surface
+<ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="🖼️"
-  pillLabel="Control Surfaces · Canvas"
-  title="Canvas: Not a Chat Window — a Live Work Surface"
-  :left='{
-    header: "What a Canvas Contains",
-    icon: "📋",
-    items: [
-      { title: "Task brief", detail: "Written by you, editable during the session" },
-      { title: "PR diff view", detail: "Real-time review of agent edits as they accumulate" },
-      { title: "Terminal stream", detail: "Live output from the agent&#39;s running commands" },
-      { title: "Deployment status", detail: "CI checks and pipeline state as they change" }
-    ]
-  }'
-  :right='{
-    header: "Pull the Handbrake",
-    icon: "🛑",
-    items: [
-      { title: "Mid-session escalation", detail: "Autopilot → Interactive without canceling the worktree" },
-      { title: "Add a context note", detail: "Write something the agent reads on its next step" },
-      { title: "Cancel cleanly", detail: "Abandon the worktree — zero commits, zero cleanup required" },
-      "MCP tools accessible directly from Canvas"
-    ]
-  }'
+  pillLabel="Control Surfaces: Canvas"
+  title="Canvas — Coordinate, Steer, and Inspect the Fleet"
+  :columns='[
+    { icon: "📄", title: "What a Canvas Contains", description: "A live bidirectional workspace — plan, PR diff, terminal stream, CI state.", items: ["Plan or task brief", "PR diff view (real-time)", "Terminal stream", "CI + deployment state"] },
+    { icon: "🛑", title: "The Handbrake", description: "Pull the handbrake: shift Autopilot to Interactive mid-session without canceling the worktree.", items: ["Shift to Interactive mid-session", "Add context notes to steer", "MCP: external tool access", "Cancel cleanly — no commits"] },
+    { icon: "🔭", title: "Operator Controls", description: "Visibility and navigation across the fleet — no new autonomy modes.", items: ["Auto model attribution per request", "Credit/cache details when available", "Direct entry into shared sessions", "/side explores without disrupting main"] }
+  ]'
   :progressDots='{ current: 3, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Issue Quality = Agent Quality
+# The Issue Brief: Upstream Quality Lever
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="📝"
-  pillLabel="Control Surfaces · Issue Brief"
+  pillLabel="Control Surfaces: Issue Brief"
   title="Issue Quality = Agent Quality"
   codePosition="left"
-  :code='{
-    language: "markdown",
-    filename: "issue-brief-template.md",
-    content: "## Objective\nOne paragraph: what we want and why.\n\n## Acceptance Criteria\n- [ ] Criterion 1 — concrete and testable\n- [ ] Criterion 2 — concrete and testable\n\n## Scope\nIn scope: src/auth/, tests/auth/\nOut of scope: do not touch src/legacy/\n\n## Autonomy Mode\n- [ ] Interactive  - [ ] Plan  - [x] Autopilot"
-  }'
+  :code='{ language: "markdown", filename: "issue-brief-template.md", content: "## Objective\nOne paragraph: what we want achieved and why.\nBe specific — agents parse this as primary context.\n\n## Acceptance Criteria\n- [ ] Criterion 1 — concrete and testable\n- [ ] Criterion 2 — concrete and testable\n\n## Scope\n**In scope:** explicit file paths or modules\n**Out of scope:** explicit exclusions\n\n## Autonomy Mode\n- [ ] Interactive\n- [ ] Plan\n- [x] Autopilot" }'
   :features='[
-    { icon: "🎯", title: "Objective drives intent", description: "One paragraph with what and why — agents need context, not just commands" },
-    { icon: "✅", title: "Criteria are test cases", description: "Binary, verifiable conditions — the agent measures its output against these" },
-    { icon: "🚧", title: "Scope prevents drift", description: "Explicit in-scope and out-of-scope — missing exclusions are the most common source of PR surprises" },
-    { icon: "🎛️", title: "Mode as a contract", description: "Declare the autonomy mode in the brief — sets expectations before the session begins" }
+    { icon: "🎯", title: "Objective section", description: "Agents parse this as primary context before execution begins" },
+    { icon: "✅", title: "Acceptance criteria", description: "Binary, verifiable conditions — agents know when they&#39;re done" },
+    { icon: "🚧", title: "Scope exclusions", description: "Explicit out-of-scope prevents surprise file edits" },
+    { icon: "⏱️", title: "3-minute investment", description: "Three minutes in the brief is the upstream determinant of output quality" }
   ]'
   :progressDots='{ current: 4, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
@@ -346,12 +344,12 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 <ThreeColumnCardSlide
   :partNumber="3"
   pillIcon="⚠️"
-  pillLabel="Control Surfaces · What Breaks"
-  title="What Breaks — Name It Before You Scale"
+  pillLabel="Control Surfaces: Failure Modes"
+  title="What Breaks — Three Causal Failure Modes"
   :columns='[
-    { icon: "🤯", title: "Autopilot on Ambiguous Scope", description: "Scope mismatches become PR surprises, not mid-session conversations. No in-session recovery path.", items: ["No recovery path mid-session", "Wrong assumptions surface in the diff", "Fix: use Plan when approach is unclear"] },
-    { icon: "📝", title: "Unstructured Issue Brief", description: "Low-quality brief = low-quality agent output, regardless of mode or capability.", items: ["Agent infers missing intent", "Acceptance criteria missing = drift", "Fix: three minutes on the brief"] },
-    { icon: "🚫", title: "Skipping Canvas Escalation", description: "No handbrake = no recovery path when Autopilot veers. The worktree must be abandoned.", items: ["Work lost on wrong-approach branch", "Worktree discarded, restart required", "Fix: watch the terminal stream early"] }
+    { icon: "🤖", title: "Autopilot on Ambiguous Tasks", description: "Unclear scope → decisions you&#39;d want to intercept. Scope mismatches become PR surprises.", items: ["Use Plan when approach unclear", "Ambiguity → surprise PRs"] },
+    { icon: "📄", title: "Unstructured Issue Brief", description: "No acceptance criteria → two-sentence PR regardless of mode. Issue quality = agent quality.", items: ["Invest 3 min in the brief", "Issue quality = agent quality"] },
+    { icon: "🖼️", title: "Skipping Canvas Escalation", description: "No recovery path when the agent veers — Canvas handbrake is the only mid-course correction.", items: ["Open Canvas for Autopilot", "Pull the handbrake early"] }
   ]'
   :progressDots='{ current: 5, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
@@ -362,119 +360,112 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 <SectionOpenerSlide
   :partNumber="4"
   title="Sessions to Systems"
-  subtitle="CVE in 20 minutes, then weekly deps on autopilot — delegation becomes infrastructure"
+  subtitle="The CVE payoff, workflow anatomy, and the Monday dispatch that runs itself"
   :cards='[
-    { icon: "🔐", title: "CVE in 20 Minutes", blurb: "Plan maps blast radius, Autopilot patches it" },
-    { icon: "⚙️", title: "Repeatable Workflows", blurb: "Sessions converted to scheduled automations" },
-    { icon: "🔀", title: "Agent Merge", blurb: "CI, reviews, and merge handled autonomously" }
+    { icon: "🔒", title: "CVE Response", blurb: "Plan mode, two agents, patch and tests in 20 minutes" },
+    { icon: "⚙️", title: "Workflow Anatomy", blurb: "agent-workflow.yml structure and Agent Merge lifecycle" },
+    { icon: "📅", title: "Monday Dispatch", blurb: "The proven session pattern that now runs automatically" }
   ]'
-  :terminal='{ context: "Converting a validated session into a scheduled workflow", detail: "cron: 0 9 * * MON — the Monday dispatch runs itself" }'
+  :terminal='{ context: "CVE in session management:", detail: "Plan mode · two agents · PR ready in 20 min · full audit trail" }'
 />
 
 ---
 
-# CVE in 20 Minutes
-<ProblemSolutionOutcomeSlide
+# CVE Response: High-Stakes in Plan Mode
+<WorkflowShowdownStepsSlide
   :partNumber="4"
-  pillIcon="🔐"
-  pillLabel="Sessions to Systems · CVE Response"
-  title="Security CVE — 20 Minutes from Alert to PR"
-  :problem='{
-    header: "The Situation",
-    items: [
-      "CVE flagged in dependency scanner for a transitive npm package",
-      "Impact surface unknown — upgrade could break callsites across multiple modules",
-      { title: "Risk of blind patching", detail: "Can&#39;t Autopilot without knowing the blast radius first" }
-    ]
-  }'
-  :solution='{
-    header: "The Two-Phase Response",
-    items: [
-      { title: "Phase 1 — Plan mode", detail: "Maps all usages of the affected package; produces blast-radius analysis for review" },
-      "Team reviews analysis, approves approach (2 minutes)",
-      { title: "Phase 2 — Autopilot", detail: "Applies the upgrade, runs test suite, generates regression tests for affected paths" }
-    ]
-  }'
-  :outcome='{
-    header: "The Outcome",
-    items: [
-      "PR with upgrade, regression tests, and full audit log of every agent action",
-      "Audit trail meets security review requirements — no additional documentation needed",
-      "Full remediation before the incident response call ends"
-    ],
-    metrics: [{ value: "20min", label: "alert to merged PR with patch and tests" }]
-  }'
+  pillIcon="🔒"
+  pillLabel="Sessions to Systems: CVE Use Case"
+  title="CVE Response — Plan Mode, Two-Agent Sequence"
+  subtitle="High-stakes autonomous work with a full audit trail"
+  leftLabel="Without the Fleet Model"
+  rightLabel="With Plan Mode + Two Agents"
+  :steps='[
+    { left: { label: "CVE flagged", note: "Engineer pulls from main and starts investigation" }, right: { label: "CVE flagged", note: "Agent 1 dispatched in Plan mode immediately" } },
+    { left: { label: "Manual impact analysis", note: "Dev reads every usage of affected package — 30–90 min" }, right: { label: "Agent 1: impact analysis", note: "Analyzes all usages, drafts remediation plan for review" } },
+    { left: { label: "Patch and test manually", note: "Careful edits to avoid regressions — context-heavy work" }, right: { label: "Agent 2: patch + tests", note: "After plan approved — upgrade and regression tests in Autopilot" } },
+    { left: { label: "PR ready", note: "2–3 hours after CVE flagged" }, right: { label: "PR + audit trail ready", note: "~20 min — patch, tests, full agent action log" } }
+  ]'
+  :outcomeLeft='{ icon: "⏳", label: "2–3 hours — manual context switching" }'
+  :outcomeRight='{ icon: "✅", label: "~20 min — before incident response call ends" }'
+  summaryMetric="2–3 hours → 20 min · full audit trail for security review"
   :progressDots='{ current: 1, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-# Sessions to Workflows to Pipelines
-<TwoColPairedConceptsSlide
+# Workflow Anatomy and Agent Merge
+<CodeWithFeaturesSlide
   :partNumber="4"
   pillIcon="⚙️"
-  pillLabel="Sessions to Systems · Automation"
-  title="Sessions → Workflows → Autonomous Pipelines"
-  :left='{
-    header: "Repeatable Workflows",
-    icon: "🔄",
-    items: [
-      { title: "Convert any validated session", detail: "Save the pattern as a versioned workflow definition in the repo" },
-      { title: "Trigger: schedule or event", detail: "cron: every Monday 09:00 UTC — or on issue labeled agent-task" },
-      { title: "mode + auto_merge", detail: "mode: autopilot + auto_merge: true → fully unattended" },
-      "Versioned in agent-workflow.yml alongside the code"
-    ]
-  }'
-  :right='{
-    header: "Agent Merge",
-    icon: "🔀",
-    items: [
-      { title: "CI fails → agent fixes", detail: "Re-reads failure output, pushes corrected commit, re-triggers CI" },
-      { title: "Review comment → agent updates", detail: "Interprets feedback, makes changes, re-requests review" },
-      { title: "Conditions met → agent merges", detail: "CI green + required approvals + no unresolved comments" },
-      "Enabled per workflow or per session — never on by default"
-    ]
-  }'
+  pillLabel="Sessions to Systems: Workflow"
+  title="agent-workflow.yml + Agent Merge Lifecycle"
+  codePosition="left"
+  :code='{ language: "yaml", filename: "agent-workflow.yml", content: "name: Weekly Dependency Update\ntrigger:\n  schedule:\n    cron: \"0 9 * * MON\"\n  manual: true\n\nsession:\n  mode: autopilot\n  environment: cloud-sandbox\n  branch_prefix: \"agent/deps-update\"\n\ntask: |\n  Update all dev dependencies to latest minor\n  versions. Run npm test and npm run lint.\n  If any test fails, revert that package.\n\npr:\n  title: \"chore: weekly dev dependency update\"\n  labels: [dependencies, automated]\n  auto_merge: true\n  merge_conditions:\n    ci_checks_pass: true\n    approvals_required: 0" }'
+  :features='[
+    { icon: "📅", title: "Schedule + manual trigger", description: "Runs every Monday 09:00 UTC automatically; also dispatchable manually" },
+    { icon: "🔀", title: "Agent Merge lifecycle", description: "Agent monitors CI, handles reviewer feedback, merges when conditions are met" },
+    { icon: "🗂️", title: "Versioned in repo", description: "Workflow definitions are auditable and rollback-able like any config change" },
+    { icon: "👤", title: "Human in the loop", description: "Keep human merge step for novel features, security paths, or uncertain-scope sessions" }
+  ]'
   :progressDots='{ current: 2, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-# Agent Merge — When It Fits
-<ThreeColumnCardSlide
+# The Monday Dispatch Runs Itself
+<BeforeAfterMetricsSlide
   :partNumber="4"
-  pillIcon="🤝"
-  pillLabel="Sessions to Systems · Agent Merge"
-  title="Agent Merge — When It Fits and When It Doesn&#39;t"
-  :columns='[
-    { icon: "✅", title: "Fully Automatable", description: "Routine tasks with unambiguous criteria — dep updates, doc gen, test backfill, triage.", items: ["CI green = done", "No human review required", "auto_merge: true"] },
-    { icon: "🔍", title: "Human Approves, Agent Merges", description: "Engineer reviews and approves the PR; Agent Merge handles the mechanical CI-to-merge step.", items: ["approvals_required: 1", "Agent waits for conditions", "Merges when all gates pass"] },
-    { icon: "🚫", title: "Keep a Human in the Loop", description: "Novel features, security changes, or sessions where task scope was uncertain at dispatch.", items: ["Architecture decisions", "Auth or payments code", "Any Interactive session output"] }
+  pillIcon="📅"
+  pillLabel="Sessions to Systems: Payoff"
+  title="The Monday Dispatch Now Runs Itself"
+  :before='{
+    header: "Before",
+    items: [
+      { title: "Manual dispatch every Monday", detail: "Tech lead triggers each task individually" },
+      { title: "One agent at a time", detail: "Sequential work — throughput capped at one" },
+      { title: "CVE response: 2–3 hours", detail: "Manual impact analysis before any patching" },
+      { title: "Recurring patterns repeated manually", detail: "No way to save and rerun a session" }
+    ]
+  }'
+  :after='{
+    header: "After",
+    items: [
+      { title: "Workflows trigger automatically", detail: "Dep updates run every Monday at 09:00 UTC" },
+      { title: "Five agents, five issues", detail: "Fleet dispatch surfaces completed work in parallel" },
+      { title: "CVE response: ~20 minutes", detail: "Plan mode + two agents + audit trail, ready to review" },
+      { title: "Sessions saved as workflows", detail: "Proven patterns become permanent automation library" }
+    ]
+  }'
+  :metrics='[
+    { value: "5×", label: "throughput on routine tasks" },
+    { value: "~20 min", label: "CVE patch + regression tests" },
+    { value: "0 manual", label: "triggers for recurring workflows" }
   ]'
   :progressDots='{ current: 3, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-# Before and After
+# Before / After
 <BeforeAfterSlide
-  header="From Sequential Copilot to Agent Fleet"
+  header="From Serial Bottleneck to Fleet Coordination"
   :leftItems='[
-    "One agent at a time — sequential context switching between tasks and branches",
-    "Manual PR and CI monitoring across multiple windows and tabs",
-    "Recurring maintenance tasks triggered and supervised by hand",
-    "Parallel work risks branch conflicts without careful coordination"
+    "One Copilot session at a time — throughput capped at one",
+    "Manual context switching between three open terminal sessions",
+    "CVE response: 2–3 hours of manual impact analysis before patching",
+    "Recurring tasks manually triggered every time they come up"
   ]'
   :rightItems='[
-    "Multiple parallel agent sessions, each in an isolated git worktree",
-    "My Work dashboard surfaces all sessions, PRs, and CI status in one view",
-    "Repeatable workflows run on schedule or on GitHub events automatically",
-    "Worktree isolation makes parallel work safe by design, not coordination"
+    "Five agents, five issues, zero conflicts — fleet dispatched in parallel",
+    "My Work dashboard surfaces all sessions, PRs, and CI in one view",
+    "CVE response: ~20 min — Plan mode, two agents, full audit trail",
+    "Proven session patterns converted to scheduled, event-driven workflows"
   ]'
   :metrics='[
-    { value: "0", detail: "branch conflicts across parallel agent sessions" },
-    { value: "20min", detail: "CVE alert → PR with patch and regression tests" },
-    { value: "5×", detail: "throughput on independent backlog tasks" }
+    { value: "5×", detail: "throughput on routine and well-scoped backlog work" },
+    { value: "20 min", detail: "CVE patch and regression tests — before the incident call ends" },
+    { value: "0 collisions", detail: "five parallel agents, isolated worktrees, safe by design" }
   ]'
 />
 
@@ -483,21 +474,24 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 # What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
-    "Download the Copilot app from github.com/features/ai/github-app and sign in",
-    "Open My Work and explore the unified dashboard layout",
-    "Start one Plan-mode session on a well-specified issue to see the proposal flow"
+    "Download the Copilot App from github.com/features/ai/github-app",
+    "Sign in (Pro, Pro+, Business, or Enterprise required)",
+    "Explore My Work — sessions, PRs, automations in one view",
+    "Start one Plan-mode session on a good-first-agent-task issue"
   ]'
   :thisWeek='[
-    "Pre-initialize two parallel worktrees and dispatch two agents simultaneously",
+    "Run worktree-init.sh to pre-initialize two parallel worktrees",
+    "Dispatch two agents — one Plan, one Autopilot — to independent issues",
     "Review both PRs and compare how each session logged its reasoning",
-    "Draft your first issue brief using Objective / Acceptance Criteria / Scope / Mode"
+    "Draft your first issue-brief-template.md and measure autonomy quality"
   ]'
   :thisMonth='[
-    "Audit your backlog for agent-ready tickets — clear criteria, independent of active dev",
-    "Configure your first repeatable workflow for a recurring maintenance task",
-    "Enable Agent Merge on a low-risk workflow — the Monday dispatch runs itself"
+    "Audit the backlog for agent-ready tickets with clear acceptance criteria",
+    "Configure a first repeatable workflow for a recurring maintenance task",
+    "Test Agent Merge on a low-risk automated workflow",
+    "Share autonomy-mode-guide.md with the team and align on mode norms"
   ]'
-  footer="The Monday morning dispatch that ran manually in the dispatch table — now runs itself."
+  footer="The Monday dispatch that took 2 hours manually now runs itself — start with one issue today."
 />
 
 ---
@@ -506,17 +500,19 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
-      { href: "https://docs.github.com/en/copilot/concepts/agents/github-copilot-app", label: "About the GitHub Copilot app — GitHub Docs", description: "Core concepts, availability, autonomy modes, and policy configuration" },
-      { href: "https://docs.github.com/en/copilot/how-tos/github-copilot-app/getting-started", label: "Getting started with the GitHub Copilot app", description: "Prerequisites, installation, and first session walkthrough" },
-      { href: "https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/", label: "GitHub Copilot app: The agent-native desktop experience", description: "Launch announcement with capability overview and design rationale" },
-      { href: "https://github.com/features/ai/github-app", label: "GitHub Copilot app product page", description: "Download and subscription access" },
-      { href: "https://git-scm.com/docs/git-worktree", label: "Git worktrees reference — Git Documentation", description: "Official git worktree command reference" }
-    ] },
-    { title: "🛠️ Related Tech Talks", color: "purple", items: [
-      { label: "Agent Teams", description: "Architectural patterns behind multi-agent systems the Copilot App builds on" },
-      { label: "Agentic Workflows", description: "Trigger/automation patterns for GitHub Actions and Copilot" },
-      { label: "MCP Apps", description: "Extending agent capabilities via Model Context Protocol tools" }
-    ] }
+      { href: "https://docs.github.com/en/copilot/concepts/agents/github-copilot-app", label: "About the GitHub Copilot app — GitHub Docs", description: "Core concepts, autonomy modes, policy configuration, and how the app differs from VS Code" },
+      { href: "https://docs.github.com/en/copilot/how-tos/github-copilot-app/getting-started", label: "Getting started with the GitHub Copilot app — GitHub Docs", description: "Prerequisites, installation steps, and first session walkthrough" }
+    ]},
+    { title: "📣 Blog Posts & Announcements", color: "blue", items: [
+      { href: "https://github.blog/news-insights/product-news/github-copilot-app-the-agent-native-desktop-experience/", label: "GitHub Copilot app: The agent-native desktop experience — GitHub Blog", description: "Launch announcement with Canvas and Agent Merge detail, and design rationale" },
+      { href: "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3", label: "GitHub Copilot weekly releases - August 3: Copilot App controls", description: "Auto model attribution, credit/cache details, /side exploration, and session navigation" },
+      { href: "https://github.com/features/ai/github-app", label: "GitHub Copilot app product page", description: "Download, subscription access, and feature summary" }
+    ]},
+    { title: "🛠️ Related Tech Talks", color: "indigo", items: [
+      { label: "Agent Teams", description: "Architectural patterns behind multi-agent systems the Copilot App makes accessible without custom code" },
+      { label: "Agentic Workflows", description: "Designing trigger and automation patterns for GitHub Actions and Copilot together" },
+      { label: "MCP Apps", description: "Extending agent capabilities via Model Context Protocol tools that integrate with the Copilot App" }
+    ]}
   ]'
 />
 
@@ -524,12 +520,13 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
 
 # Thank You
 <ThankYouSlide
-  title="The Fleet Is Ready"
-  subtitle="Five agents, five issues, zero conflicts — and it all runs itself by next Monday"
+  title="The GitHub Copilot App"
+  subtitle="Running a Fleet of Agents — From one collaborator to a coordinated fleet"
   :cards="[
-    { value: '5 agents, 0 conflicts', detail: 'Isolated worktrees make parallel agent work safe by design, not careful coordination' },
-    { value: 'Autonomy is a dial', detail: 'Interactive, Plan, and Autopilot — set the right trust level per task, per session' },
-    { value: 'Pull the handbrake', detail: 'Canvas escalation from Autopilot mid-session — the safety net that makes Autopilot worth trying' }
+    { value: 'Five agents, zero conflicts', detail: 'Isolated worktrees make parallel work safe by design, not coordination' },
+    { value: 'Autonomy is a dial', detail: 'Interactive → Plan → Autopilot — the right trust level per task' },
+    { value: 'Pull the handbrake', detail: 'Canvas shifts Autopilot to Interactive mid-session without losing the worktree' },
+    { value: 'Issue quality = agent quality', detail: 'Three minutes in the brief is the upstream lever for autonomous output' }
   ]"
-  prompt="What&#39;s the first ticket you&#39;re dispatching to an agent tomorrow morning?"
+  prompt="Which task on your backlog is most ready for the fleet model right now?"
 />

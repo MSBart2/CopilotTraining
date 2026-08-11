@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "updated": "2026-08-11",
+  "events": {
+    "5c82c9f4d4b61705": {
+      "title": "GitHub Copilot weekly releases — August 3",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "copilot-cli", "materiality": "content", "status": "accepted", "reason": "The CLI capability and Sessions That Learn sections now cover sidebar controls, experimental /worktree, Git-free /rewind, and live tool durations." },
+        { "talk": "copilot-app", "materiality": "content", "status": "accepted", "reason": "How It Works and Control Surfaces now cover completed-request model and credit visibility, shared-session entry, /side exploration, and faster session navigation." },
+        { "talk": "vscode-latest", "materiality": "content", "status": "accepted", "reason": "VS Code 1.132 content was incorporated by the 2026-08-10 refresh." },
+        { "talk": "enterprise-patterns", "materiality": "none", "status": "no-impact", "reason": "The desktop app features do not change this talk's enterprise operating model." },
+        { "talk": "exec-delivery", "materiality": "none", "status": "no-impact", "reason": "The release details do not change the executive delivery thesis." }
+      ]
+    },
+    "d95bfbf8a05e2cd0": {
+      "title": "Copilot impact dashboard adds a return on investment section",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "exec-economics", "materiality": "content", "status": "accepted", "reason": "The 20% goal and Leadership Calculation now use the impact dashboard as a directional cohort checkpoint while keeping internal ROI assumptions explicitly modeled." },
+        { "talk": "enterprise-patterns", "materiality": "content", "status": "accepted", "reason": "Adoption & Enablement now covers the impact dashboard, required policy and permission, directional ROI inputs, and the 28-day cohort correction." },
+        { "talk": "exec-strategy", "materiality": "reference", "status": "accepted", "reason": "The dashboard is supporting evidence for investment governance, but it does not change the board-level thesis." },
+        { "talk": "copilot-cli", "materiality": "none", "status": "no-impact", "reason": "Organization ROI reporting does not alter CLI behavior or deployment." },
+        { "talk": "vscode-latest", "materiality": "none", "status": "no-impact", "reason": "Organization ROI reporting does not constrain editor capabilities." }
+      ]
+    },
+    "c1edd61c12df50a0": {
+      "title": "Copilot code review effort levels are generally available",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "copilot-code-review", "materiality": "content", "status": "accepted", "reason": "Configuration and Quick Start now teaches Lite/Balanced risk calibration, organization inheritance, per-review scope, visible effort labels, and plan availability." },
+        { "talk": "agentic-sdlc", "materiality": "none", "status": "no-impact", "reason": "Review depth controls do not change the CI trust-factory architecture." },
+        { "talk": "copilot-web", "materiality": "none", "status": "no-impact", "reason": "The coding-agent PR lifecycle does not depend on selecting review effort." }
+      ]
+    },
+    "3456a948813162ca": {
+      "title": "Copilot usage metrics API adds agent app activity",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "enterprise-patterns", "materiality": "content", "status": "accepted", "reason": "Adoption & Enablement now teaches stable agent_id joins, job and session aggregation, omission behavior, and the non-additive interaction-count boundary." },
+        { "talk": "exec-economics", "materiality": "reference", "status": "accepted", "reason": "Per-agent adoption is useful evidence, but it does not change the economics model." },
+        { "talk": "copilot-app", "materiality": "none", "status": "no-impact", "reason": "Admin usage telemetry is separate from the app's operational My Work observability." },
+        { "talk": "exec-delivery", "materiality": "none", "status": "no-impact", "reason": "The API fields do not change the operating model." },
+        { "talk": "vscode-latest", "materiality": "none", "status": "no-impact", "reason": "The metrics API does not constrain VS Code behavior." }
+      ]
+    },
+    "dc0c8a462d44c79d": {
+      "title": "GitHub Code Quality no longer adds Copilot as a reviewer",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "copilot-code-quality", "materiality": "content", "status": "accepted", "reason": "How It Works now separates Code Quality Autofix from independently enabled and billed Copilot code review." },
+        { "talk": "copilot-code-review", "materiality": "reference", "status": "accepted", "reason": "Its manual ruleset setup remains valid, but the Code Quality comparison should state that review is independently enabled and billed." },
+        { "talk": "agentic-sdlc", "materiality": "none", "status": "no-impact", "reason": "The integration reversal does not change the broader quality-gate architecture." }
+      ]
+    },
+    "73031e03ee6fc323": {
+      "title": "Kimi K3 is now available in GitHub Copilot",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "enterprise-patterns", "materiality": "none", "status": "no-impact", "reason": "A model arrival does not change governance guidance without a policy or migration consequence." },
+        { "talk": "vscode-latest", "materiality": "none", "status": "no-impact", "reason": "The talk explains model choice rather than maintaining a model catalog." },
+        { "talk": "copilot-app", "materiality": "none", "status": "no-impact", "reason": "The talk does not enumerate available models." },
+        { "talk": "copilot-cli", "materiality": "none", "status": "no-impact", "reason": "The talk explains selection mechanics rather than maintaining a model catalog." },
+        { "talk": "copilot-sdk", "materiality": "none", "status": "no-impact", "reason": "The SDK integration contract is unchanged." }
+      ]
+    },
+    "6bafac63f31723b2": {
+      "title": "Visual Studio Code 1.132",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "vscode-latest", "materiality": "content", "status": "accepted", "reason": "Release 1.132 was incorporated and validated in the 2026-08-10 refresh." },
+        { "talk": "agent-dev-loop", "materiality": "none", "status": "no-impact", "reason": "The release does not invalidate its repository-to-feature workflow." },
+        { "talk": "copilot-chat-internals", "materiality": "none", "status": "no-impact", "reason": "No debugging contract used by this talk changed." },
+        { "talk": "copilot-primitives", "materiality": "none", "status": "no-impact", "reason": "No customization primitive used by this talk changed." }
+      ]
+    },
+    "063796b73edb0af6": {
+      "title": "Code coverage automatic enablement in Code Quality settings",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "copilot-code-quality", "materiality": "content", "status": "accepted", "reason": "Coverage setup now includes the public-preview agent-generated least-privilege PR and preserves manual workflow customization." },
+        { "talk": "agentic-sdlc", "materiality": "none", "status": "no-impact", "reason": "The generated workflow still implements the same coverage gate architecture." },
+        { "talk": "copilot-code-review", "materiality": "none", "status": "no-impact", "reason": "Coverage enablement belongs to Code Quality, not Copilot code review." }
+      ]
+    },
+    "6b4ff9d6d9d0c351": {
+      "title": "Customize the reasoning level for Copilot cloud agent",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "copilot-web", "materiality": "content", "status": "accepted", "reason": "The Delegation Loop now presents reasoning as a per-run quality, token, and premium-credit control for supporting models." },
+        { "talk": "agentic-journey", "materiality": "reference", "status": "accepted", "reason": "Reasoning level is a useful task-risk control but does not alter the staged adoption path." },
+        { "talk": "copilot-app", "materiality": "none", "status": "no-impact", "reason": "The announcement is for cloud-agent task launch, not app autonomy modes." },
+        { "talk": "copilot-cli", "materiality": "none", "status": "no-impact", "reason": "CLI reasoning controls are a separate surface already covered by the talk." },
+        { "talk": "vscode-latest", "materiality": "none", "status": "no-impact", "reason": "Cloud-agent reasoning does not change editor BYOK or model-provider behavior." }
+      ]
+    },
+    "08658e29b45a99aa": {
+      "title": "Enterprise team specialization for managed settings",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "enterprise-patterns", "materiality": "content", "status": "accepted", "reason": "Multi-Team Coordination now defines the locked enterprise floor, overridable keys, team mappings, least-restrictive merge, and additive plugin-list behavior." },
+        { "talk": "copilot-plugins", "materiality": "content", "status": "accepted", "reason": "Sharing Plugins Across Teams now separates APM packaging from the additive managed-settings enterprise floor, team mappings, and merge boundaries." },
+        { "talk": "copilot-primitives", "materiality": "reference", "status": "accepted", "reason": "Managed settings provide distribution context, but they do not change the four repository primitives." },
+        { "talk": "copilot-hooks", "materiality": "none", "status": "no-impact", "reason": "The announcement does not change hook events or semantics." }
+      ]
+    },
+    "ce763e534cb962ef": {
+      "title": "Trigger Copilot automations with comments",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "agentic-workflows", "materiality": "content", "status": "accepted", "reason": "Architecture and ChatOps now distinguish gh-aw Markdown workflows compiled to Actions from cloud-agent Automations configured in Agents > Automations." },
+        { "talk": "copilot-web", "materiality": "content", "status": "accepted", "reason": "Triggering the Agent now distinguishes configured issue and PR comment automations from comments that refine an existing draft PR." },
+        { "talk": "agentic-journey", "materiality": "reference", "status": "accepted", "reason": "The trigger is a useful incremental adoption option, but it does not restructure the issue-to-PR path." },
+        { "talk": "agentic-sdlc", "materiality": "none", "status": "no-impact", "reason": "The new trigger does not change repository or CI infrastructure requirements." },
+        { "talk": "copilot-app", "materiality": "none", "status": "no-impact", "reason": "The automation is configured on GitHub rather than changing app fleet controls." }
+      ]
+    },
+    "b625c840a2369df1": {
+      "title": "Upcoming August 2026 model deprecations in GitHub Copilot",
+      "status": "adjudicated",
+      "decisions": [
+        { "talk": "copilot-cli", "materiality": "content", "status": "accepted", "reason": "Model Selection now uses supported-catalog and policy-aware guidance without retiring Sonnet or Opus defaults." },
+        { "talk": "vscode-latest", "materiality": "content", "status": "accepted", "reason": "Open Model Workbench now uses durable currently-supported frontier-model guidance and cites the September retirement notice." },
+        { "talk": "enterprise-patterns", "materiality": "content", "status": "accepted", "reason": "Governance & Licensing now requires supported replacement-model policy enablement and selector verification before migrations." },
+        { "talk": "copilot-app", "materiality": "none", "status": "no-impact", "reason": "The talk does not name the retiring models." },
+        { "talk": "copilot-sdk", "materiality": "none", "status": "no-impact", "reason": "The talk does not pin integrations to the retiring models." }
+      ]
+    }
+  }
+}

@@ -1,9 +1,8 @@
-# VERDICT (3-agent council): Four canonical sections in Standards → Knowledge → Governance →
-# Enablement order form the tightest problem-to-proof arc for this audience; S1 and S4 both
-# earn high emphasis as the talk's foundational organizing claim and 16x ROI payoff respectively,
-# while S2 (medium-high, ~3 slides) and S3 (medium-high, ~3 slides) sustain momentum through
-# enterprise differentiators and compliance control. One mandatory rename action: the slide Part 4
-# header "Scaling & Measurement" must become "Adoption & Enablement" to match this recipe and README.
+# REFRESH DATE: 2026-08-10
+# COUNCIL DECISION: REVISE
+# RATIONALE: Preserve the thesis, section order, weighting, and demos while separating shared
+# knowledge from the managed-settings control plane, adding migration readiness, and grounding
+# ROI in product-backed directional metrics.
 
 version: 1
 
@@ -20,28 +19,27 @@ deck:
       takeaway: "Publish vetted expertise as reusable organizational assets."
       whyItMatters: "One teams insight compounds across every other team."
     - title: "ROI Instrumentation"
-      takeaway: "Measure adoption, quality, and time recovery centrally."
-      whyItMatters: "Leadership can invest from evidence instead of anecdotes."
+      takeaway: "Use impact-dashboard ROI and agent-app activity metrics with explicit caveats."
+      whyItMatters: "Leadership gets product-backed evidence without claiming audited attribution."
 
   arcToc: "Standards → Skills & Knowledge → Governance & Licensing → Adoption & Enablement"
 
   arcNarrative: >
-    Open with the organizing problem: 50 teams each reinventing the same security rules, coding
-    standards, and framework patterns — 40+ hours of waste per team, zero consistency, siloed
-    tribal knowledge that walks out the door. S1 resolves the fragmentation with org-wide custom
-    instructions that propagate to every repo in a single change, establishing the standards
-    foundation for everything that follows. S2 multiplies rather than fragments institutional
-    knowledge — Agent Skills encode domain expertise centrally (security validation, compliance
-    checks, architecture review) while Knowledge Bases index related services so the cross-repo
-    knowledge graph becomes the coordination mechanism; this is where the "50 reinventions" problem
-    compounds into compounding capability instead. S3 controls risk and proves compliance-readiness
-    to regulated-industry buyers: model governance policies, 30-40% cost reduction through
-    usage-based licensing, and audit trails that satisfy finance, healthcare, and government
-    requirements. S4 closes with the ROI proof that converts leaders from skeptics to sponsors —
-    metrics framework replacing anecdotes, 30-minute self-service onboarding removing platform
-    bottleneck, federated governance model, and the anchor number: 16x ROI from 180 hours of
-    platform investment into 2,900+ hours saved in year one. Peak engagement lands at the S1
-    "one change reaches 500+ developers" reveal and again at the S4 16x ROI close.
+    Open with the organizing problem: 50 teams each reinvent security rules, coding standards,
+    and framework patterns, wasting 40+ hours per team while knowledge remains fragmented. S1
+    resolves that fragmentation with organization-wide instructions that propagate a standards
+    floor to every repository. S2 then multiplies institutional knowledge: Agent Skills encode
+    reusable expertise and Knowledge Bases provide cross-repository context. Keep those knowledge
+    mechanisms distinct from the managed-settings control plane; knowledge helps teams understand
+    and act, while managed settings govern which enterprise choices teams may specialize. S3 makes
+    the investment defensible through model policy, licensing, compliance controls, and a concise
+    supported-model migration-readiness callout: enable and verify an approved replacement before
+    affected workflows depend on it. S4 closes on adoption and proof. Give managed-settings
+    coordination a dedicated slide showing the enterprise floor, permitted team specialization,
+    and bounded merge behavior, then pair self-service enablement with product-backed evidence.
+    Use impact-dashboard ROI directionally, join agent activity on stable agent_id, and avoid
+    double counting nested and top-level interactions. Preserve the 16x platform-investment
+    example as illustrative context, not audited attribution.
 
   sectionOrder:
     - "Organization-Wide Standards"
@@ -63,46 +61,43 @@ deck:
     "Organizational Skills & Knowledge Bases":
       emphasis: medium-high
       note: >
-        Agent Skills (GA) and Knowledge Bases (Enterprise Cloud only) are genuine enterprise
-        differentiators — encode domain expertise centrally for security validation, compliance
-        checks, and architecture review that all teams consume by reference. Needs ~3 slides to
-        cleanly separate GA capabilities (any Enterprise customer) from Enterprise Cloud-only
-        Knowledge Bases; audience segmentation matters here for credibility. IMPORTANT: the
-        README 🎬 "Multi-Team Coordination" section is fully absorbed into this section — the
-        shared knowledge graph linking related services across repos IS the coordination
-        mechanism; do not create a separate Multi-Team Coordination slide or section. The "whoa"
-        moment: knowledge compounds with use rather than fragmenting into individual repos.
+        Agent Skills (GA) and Knowledge Bases (Enterprise Cloud only) encode reusable expertise
+        and cross-repository context. Keep the audience segmentation and roughly three-slide
+        treatment, but do not present shared knowledge as the enterprise control plane. Knowledge
+        helps teams understand and act across domains; managed settings separately define the
+        enterprise floor and the team-specific choices administrators permit. Preserve the
+        knowledge-compounds-with-use moment, then hand off managed-settings coordination to its
+        dedicated slide in Adoption & Enablement.
 
     "Governance & Licensing":
       emphasis: medium-high
       note: >
         Critical trust-builder for regulated industries and cost-conscious engineering leaders.
-        Cover model governance policies (which models teams access, auto-selection), flexible
-        licensing with 30-40% cost reduction via usage-based entitlements, and compliance
-        automation with audit trails, content filtering, and data residency. Must land before
-        the ROI section to explain the control layer that makes the investment defensible. The
-        "whoa" moment: 30-40% cost reduction versus seat-only licensing is a hard number that
-        CFOs and procurement teams respond to.
+        Cover model access and auto-selection policies, flexible licensing with the existing
+        30-40% cost-reduction claim, and compliance automation with audit trails, content
+        filtering, and data residency. Add supported-model migration readiness as a concise
+        callout, not a new section: enable an approved replacement in policy and verify it appears
+        in affected model selectors before workflows depend on it. Land this control layer before
+        ROI so the investment remains defensible.
 
     "Adoption & Enablement":
       emphasis: high
       note: >
-        The ROI payoff and closing climax. Metrics framework (acceptance rate target 55-65%,
-        active users target 80%+, PR velocity, review time, cost per feature), self-service
-        30-minute quick start that removes platform as bottleneck, and the federated governance
-        model (platform team sets standards floor, domain teams customize ceiling, community
-        shares). Anchor on 16x ROI: 180 hours platform investment → 2,900+ hours saved year 1.
-        The "whoa" moment: 16x return is the number that converts skeptical engineering leaders.
-        MANDATORY RENAME ACTION: the slide Part 4 header currently reads "Scaling & Measurement"
-        — it must be renamed to "Adoption & Enablement" to match this recipe and the canonical
-        README 🎬 section name before this deck is published.
+        The adoption and evidence payoff. Keep the self-service 30-minute quick start and existing
+        metrics framework, but give managed-settings coordination a dedicated slide: enterprise
+        administrators lock the floor, mark permitted overrides, map team specializations, and
+        preserve additive or least-restrictive behavior only within that boundary. Follow with
+        product-backed measurement: treat impact-dashboard ROI as directional rather than audited
+        attribution; join agent-app history on stable agent_id; and never add nested
+        user_initiated_interaction_count to the top-level total. Preserve the 16x example as
+        illustrative platform-investment context and the existing Adoption & Enablement rename.
 
   highlightMoments:
     - "16x ROI: 180 hours platform investment → 2,900+ hours saved year 1 (50 teams × 40 hrs reinvention avoided)"
     - "One org-wide instruction change reaches 500+ developers instantly — no per-repo config needed"
-    - "50 teams = 50 reinventions without org-wide standards — the organizing problem this talk solves"
+    - "Managed settings establish the enterprise floor while permitted team specialization preserves autonomy"
     - "Agent Skills (GA) vs Knowledge Bases (Enterprise Cloud only) — audience segmentation that matters"
-    - "Metrics replacing anecdotes: 55-65% acceptance rate target, 80%+ active users, cost-per-feature"
+    - "Product-backed directional ROI plus stable-ID agent activity — evidence without double counting or audited-attribution claims"
 
 # OPEN DECISION: Should the S1 opening slide ("The Traditional Problem") be promoted to a
 # standalone framing slide before S1, or does it serve well as S1's entry slide? Current

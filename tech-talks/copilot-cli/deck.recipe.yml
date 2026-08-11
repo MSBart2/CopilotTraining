@@ -1,15 +1,8 @@
-# VERDICT: No structural change required. The 4-section gap spine holds — Intent → Geography
-# → Memory → Scale — but the new content (Rubber Duck, Scheduled Prompts, /goal, /voice,
-# disableBypassPermissionsMode, worktree-from-PR, per-MCP token visibility) reveals a SECOND
-# dimension that was previously implicit: a progression of automation depth running through
-# every section. The talk now teaches both dimensions simultaneously: WHERE Copilot's value
-# flows (the gap spine) and HOW its autonomy deepens (human-explicit Plan Mode → automated-
-# explicit Rubber Duck → automated-implicit Scheduled Prompts via S3→S4 bridge). One elegant
-# intervention: a bridge slide between S3 close and S4 open that makes the transition from
-# "session learned your patterns" to "now it executes them" visible. Rubber Duck is NOT an S1
-# add-on — it's the FIRST INSTANCE of the automation-depth arc; without it, the progression
-# has a missing step. Scheduled Prompts feel earned, not tacked on, because S3 just proved
-# the session learned, and the bridge shows it acting on what it learned.
+# REFRESH DATE: 2026-08-10
+# COUNCIL DECISION: REVISE
+# RATIONALE: Preserve the four-section Intent → Geography → Memory → Scale spine and its
+# established demos, but update the learning-and-recovery arc for concurrent sessions,
+# Git-free rewind, live observability, isolated worktrees, and durable model selection.
 
 version: 1
 
@@ -23,43 +16,35 @@ deck:
       takeaway: "Use Plan Mode and independent review where the work actually happens."
       whyItMatters: "Fewer context switches and better early decisions keep terminal work moving."
     - title: "Sessions That Learn"
-      takeaway: "Turn session history and project context into guidance that improves over time."
-      whyItMatters: "Teams pay the context-setting cost once instead of repeating it in every session."
+      takeaway: "Manage concurrent sessions, recover without Git, and turn history into better guidance."
+      whyItMatters: "Visible, recoverable history keeps parallel work understandable and reusable."
     - title: "Automation You Can Grow Into"
       takeaway: "Move from guided plans to remote and scheduled execution as confidence grows."
       whyItMatters: "A gradual autonomy path makes higher-leverage work practical without losing control."
 
-  arcToc: "Think Before You Build → Work From Anywhere → Sessions That Learn → Scale Beyond Yourself"
+  arcToc: "Plan First → Steer Anywhere → Learn & Recover → Scale Beyond You"
 
   arcNarrative: >
-    The talk reveals two dimensions of Copilot's evolution layered onto the same arc: WHERE
-    its value flows (Intent → Geography → Memory → Scale) and HOW its autonomy deepens
-    (human-explicit → automated-explicit → automated-implicit). S1 closes the Intent gap
-    with Plan Mode's discovery frame — what unlocks when AI follows you into the ~70% of
-    your day outside the editor (Atlassian DevEx 2025) — delivering the visceral 8 attempts
-    → 2 / 45 min → 8 min Docker collapse, now reinforced by Rubber Duck reviewing the
-    primary model's plan with a different model family. This is the talk's first step in
-    the automation progression: human-expert asking (Plan Mode) + AI-expert reviewing
-    (Rubber Duck) = better before any code runs. S2 closes the Geography gap with skeptic-
-    first sequencing: a 60-second phone-steering cold open of an AI session running on a
-    production server, then architecture backfill (--remote, modes, CI/CD); permission-
-    safety lands here as an anchor (per-tool approval, never blanket --yolo; enterprise
-    teams enforce with permissions.disableBypassPermissionsMode), and /voice is a polish
-    callout for accessibility. S3 closes the Memory gap and is the talk's emotional center:
-    auto-compaction is a one-slide trust prologue (with per-MCP token visibility surfaced
-    in /context as part of the transparency stack), then /chronicle headlines — standup in
-    30 seconds, personalized usage tips, and the climactic "AI proposes specific
-    improvements to your own .github/copilot-instructions.md." A BRIDGE slide closes S3:
-    a scheduled job running unattended with the caption "you taught it how you work; now
-    it executes." The progression visibly transitions from learning to executing here.
-    S4 closes the Scale gap as earned synthesis: Scheduled Prompts feel like the natural
-    conclusion of a journey, not a surprise — automated execution of patterns S3 proved
-    were learned. /fleet fan-out parallelizes the learned preferences, cloud delegation
-    frees both terminal and IDE, and custom agents/plugins (with worktree-from-PR as a
-    concrete ecosystem moment) carry the chronicle's instruction improvements forward
-    across the whole team. Talk close: "You started by asking better questions before
-    writing code. You ended with an AI system shaped by how your team actually works —
-    and it executes without asking."
+    The talk keeps the same four-part Intent → Geography → Memory → Scale spine while
+    making continuity and recovery explicit. S1 closes the Intent gap with Plan Mode's
+    discovery frame and the visceral 8 attempts → 2 / 45 min → 8 min Docker collapse,
+    reinforced by independent review before code runs. S2 closes the Geography gap with
+    the preserved skeptic-first sequence: a 60-second phone-steering cold open, then
+    architecture backfill across --remote, operating modes, permissions, and CI/CD. S3
+    closes the Memory gap by pairing forward continuity with backward recovery:
+    auto-compaction carries the conversation forward; Git-free /rewind restores the
+    conversation and Copilot-modified files while preserving later edits. The Sessions
+    sidebar makes concurrent histories manageable, while /context, /usage, per-MCP token
+    visibility, and live tool-call durations make context cost and active work legible.
+    /chronicle then converts durable history into a 30-second standup, personalized usage
+    guidance, and improvements to .github/copilot-instructions.md. The preserved live
+    S3→S4 bridge turns learned patterns into scheduled execution. S4 closes the Scale gap
+    with a deliberate ladder: sidebar-managed sessions, isolated /worktree exploration,
+    /fleet fan-out, then cloud delegation that frees both terminal and IDE. Scheduled
+    Prompts, custom agents, plugins, and the distinct PR worktree flow extend that ladder
+    without confusing local isolation with PR review. Talk close: "You started by asking
+    better questions before writing code. You ended with an AI system shaped by how your
+    team actually works — and it executes without asking."
 
   sectionOrder:
     - "Think Before You Build"
@@ -79,10 +64,11 @@ deck:
         Rubber Duck as the visible co-reviewer. Show the Plan Mode Q&A, then the
         implementation, then the review layer that catches what single-model reasoning
         can miss. The 8 attempts → 2 collapse is more credible because Plan Mode asks
-        the right questions, then Rubber Duck (default-on since v1.0.58, powered by a
-        different model family — GPT-5.4 when primary is Claude) reviews for traps the
-        first model would walk into. Closes ~75% of the quality gap between mid-tier
-        and top-tier models. Make this the talk's FIRST hint of the automation
+        the right questions, then Rubber Duck reviews for traps the first pass would
+        miss. Do not name or imply a default model: model availability changes and can
+        be constrained by enterprise policy. Teach /model as the durable workflow for
+        selecting a currently supported option, checking its request multiplier, and
+        confirming that organization policy permits it. Make this the talk's FIRST hint of the automation
         progression: human-expert asking + AI-expert reviewing = better before any code
         runs. Mention /goal as a one-line alias in the autopilot/Plan Mode walk-through
         ("/goal keeps the agent anchored to a single objective"). The structured Q&A
@@ -128,13 +114,14 @@ deck:
         they've learned from your preferences. Progression frame: S1 taught you to ask
         better questions, S2 taught you to steer from anywhere, S3 teaches you that the
         session learns as it works — and that learning becomes the foundation for
-        automation in S4. /chronicle HEADLINES — do NOT lead with compaction. Flow:
-        (1) auto-compaction as one-slide trust prologue only — "the session never
-        forgets, even across 95% token limits; /context and /usage let you monitor
-        token flow" — foundational trust-building, not a feature to demo. Mention per-
-        MCP-server token visibility here as part of the transparency stack ("you can
-        now see which MCP servers consumed your context budget"). (2) /chronicle
-        standup demo — generate yesterday's standup from session history in 30 seconds
+        automation in S4. /chronicle HEADLINES — but first use one compact trust
+        prologue, not a feature tour: auto-compaction provides forward continuity;
+        Git-free /rewind provides backward recovery by restoring the conversation and
+        Copilot-modified files while preserving later edits. In the same prologue, open
+        the Sessions sidebar with <, use n to create and x to close a session, and show
+        /context, /usage, per-MCP token visibility, and live tool-call durations as one
+        transparency stack. Then move immediately to: (2) /chronicle standup demo —
+        generate yesterday's standup from session history in 30 seconds
         (everyday-value moment; audience immediately sees themselves using this).
         (3) /chronicle tips — AI surfaces personalized usage patterns from your own
         history, learning your problem-solving style. (4) CLIMAX: /chronicle proposes
@@ -170,14 +157,17 @@ deck:
         summarize overnight PRs" or "/every 30min check pod health in staging, alert me
         via remote session if anything's unhealthy." Frame as the EARNED PAYOFF of the
         S3→S4 bridge, not a surprise feature. Note experimental status (requires
-        /experimental on) honestly; pair with --remote and /fleet for power.
-        (2) /fleet fan-out — show explicit parallelization across subagents in separate
+        /experimental on) honestly. Build the scale ladder from sidebar-managed
+        concurrent sessions to isolated work to orchestration: first show the
+        experimental /worktree command starting a separate conversation in a new local
+        worktree without disrupting the current workspace. Distinguish it explicitly
+        from creating a worktree for an existing pull request through the /pr screen;
+        they are separate entry points and workflows. (2) /fleet fan-out — show explicit parallelization across subagents in separate
         context windows with results merged automatically (clearest visual of scale).
         Frame: "once you've approved a plan in S1, /fleet executes it without you in
         the loop." (3) Cloud delegation (& prefix) follows: delegate long-running work
         to GitHub's coding agent, both terminal and IDE stay completely free. (4) Custom
-        agents and plugins close as ecosystem reach; brief mention of worktree-from-PR
-        (v1.0.60) as a concrete example of what team-specific workflows enable. Talk
+        agents and plugins close as ecosystem reach. Talk
         close: "You started by asking better questions before writing code. You learned
         that your patterns matter. You ended with an AI system shaped by how your team
         actually works — and it executes without asking." Target ~4-5 content slides.
@@ -188,13 +178,13 @@ deck:
   appendix:
     - src: ./copilot-cli-reference.md
 
-  # 5 high-signal moments — ordered by section appearance, including the new bridge moment
+  # 5 high-signal moments — ordered by section appearance
   highlightMoments:
-    - "Docker debugging collapse with Rubber Duck review: 8 attempts → 2, 45 min → 8 min — Plan Mode asks the right questions, Rubber Duck (different model family) catches what single-model reasoning misses (S1 — visceral intent-gap before/after with the new quality multiplier)"
+    - "Docker debugging collapse with independent review: 8 attempts → 2, 45 min → 8 min — Plan Mode asks the right questions before implementation, then a review pass catches what one reasoning path can miss (S1)."
     - "Phone-steering cold open: 60 seconds of a phone controlling a production server session before any explanation (S2 — skeptic reveal for CLI power users)"
-    - "/chronicle instruction proposals: AI proposes specific improvements to your own .github/copilot-instructions.md — pause, let it land (S3 — talk's emotional peak, AI shaped by how you work)"
-    - "S3→S4 BRIDGE (LIVE) — patterns to execution: `/every 1m tell me I'm awesome` started before the talk fires live on screen during this slide, caption 'you taught it how you work; now it executes' — playful command keeps stakes low, live arrival proves autonomous execution is real (the elegant connector that makes S4 feel earned)"
-    - "Scheduled Prompts in action: /every weekday at 9am summarize overnight PRs — automated execution of patterns S3 proved were learned, paired with /fleet parallel fan-out as the scale payoff (S4 — earned synthesis)"
+    - "Trust prologue: auto-compaction carries work forward, Git-free /rewind recovers backward, and the Sessions sidebar plus live duration and token views keep concurrent work legible (S3)."
+    - "/chronicle turns durable history into a 30-second standup and instruction improvements, then the LIVE S3→S4 bridge fires `/every 1m tell me I'm awesome` under the caption 'you taught it how you work; now it executes.'"
+    - "Scale ladder: sidebar-managed sessions → experimental /worktree isolation → /fleet fan-out → cloud delegation, with /pr worktree creation shown as a distinct review flow (S4)."
 
 # RESOLVED DECISION: Bridge slide execution method — Path A (live execution).
 # Speaker choice: kick off "/every 1m tell me I'm awesome" at the START of the talk and
@@ -215,7 +205,7 @@ deck:
 #   - Keep tone playful — this is the rare moment in the talk where levity reinforces
 #     the message (autonomous execution can be delightful, not just productive).
 
-# OPEN DECISION (PRESERVED FROM PRIOR RECIPE — already resolved): Section 2 opens with
+# RESOLVED DECISION: Section 2 opens with
 # mobile-first (Path A). 60-second phone-steering demo with zero context, then "let me
 # show you why that works" modes backfill. Confirmed; do not revisit unless audience
 # profile changes (predominantly existing Copilot users → modes-first is defensible).

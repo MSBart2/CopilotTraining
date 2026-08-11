@@ -1,0 +1,56 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/agentic-workflows"
+  cutoff: "2026-05-05"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    The talk already teaches comment-triggered gh-aw ChatOps. GitHub now also
+    supports comment-triggered Copilot cloud-agent Automations, so the content
+    must distinguish two similarly triggered systems with different configuration,
+    execution, and governance models.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "ce763e534cb962ef"
+      title: "Trigger Copilot automations with comments"
+      published: "2026-08-03"
+      source: "https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "ChatOps via Comment Commands"
+      action: update
+      summary: >
+        Copilot cloud-agent Automations can now run from configured text in issue
+        or pull-request comments. Add a boundary callout: gh-aw comment workflows
+        are Markdown-defined repository automations compiled to GitHub Actions,
+        while cloud-agent Automations are configured in the repository Agents tab
+        and delegate agent tasks such as documentation, investigation, or follow-up work.
+      limitations:
+        - "Cloud-agent Automations require an eligible Copilot plan; Business and Enterprise also require the cloud-agent policy."
+        - "Do not present configured cloud-agent trigger text as built-in gh-aw slash commands."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored: []
+  removals:
+    - "Remove any wording that collapses gh-aw comment triggers and Copilot cloud-agent Automations into one product mechanism."
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Is a product-boundary callout sufficient, or does the comment-trigger pattern
+      need explicit comparison time in the current architecture section?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

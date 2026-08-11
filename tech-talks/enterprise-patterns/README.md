@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-03-23
+updated: 2026-08-10
 section: "Platform Teams"
 references:
   - url: https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization
@@ -15,6 +15,18 @@ references:
   - url: https://agents.md/
     label: "AGENTS.md open format"
     verified: 2026-03-23
+  - url: https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section
+    label: "Copilot impact dashboard adds a return on investment section"
+    verified: 2026-08-10
+  - url: https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity
+    label: "Copilot usage metrics API adds agent app activity"
+    verified: 2026-08-10
+  - url: https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings
+    label: "Enterprise team specialization for managed settings"
+    verified: 2026-08-10
+  - url: https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot
+    label: "Upcoming September 2026 model deprecations in GitHub Copilot"
+    verified: 2026-08-10
 ---
 
 # Scaling GitHub Copilot Across Organizations
@@ -431,7 +443,7 @@ Copilot Knowledge Bases solve the multi-repository context problem. In microserv
 
 **Auto model selection benefits:**
 - Route routine tasks to cost-effective models
-- Reserve premium models (Claude Opus, GPT-4.1) for complex analysis
+- Reserve supported higher-reasoning models for complex analysis
 - Respect organizational policies automatically
 - Audit model usage across organization for cost tracking
 
@@ -440,17 +452,21 @@ Copilot Knowledge Bases solve the multi-repository context problem. In microserv
 **Governance policies:**
 ```
 Organization Settings → Copilot Policies
-  ├── Allowed models: GPT-4.1, Claude Sonnet 4
-  ├── Restricted models: Claude Opus 4 (requires approval)
+  ├── Allowed models: Currently supported, organization-approved models
+  ├── Restricted models: Higher-cost supported models (requires approval)
   ├── Auto-selection: Enabled for routine tasks
   └── Audit logging: All model usage tracked
 ```
 
 **Cost optimization patterns:**
 - Routine code completion: Fast, cost-effective models
-- Documentation generation: Balanced models (Sonnet)
-- Architecture analysis: Premium models (Opus) with budget controls
+- Documentation generation: Supported balanced-capability models
+- Architecture analysis: Supported higher-reasoning models with budget controls
 - Code review automation: Task-appropriate model selection
+
+### September 1 Model Migration Readiness
+
+Treat model retirement as a policy-readiness check, not a one-time cleanup task. Before September 1 migrations, enable a durable, supported replacement model in Copilot model policies and verify that the replacement appears in the model selectors used by each affected workflow. Prefer capability and support-status wording in standards and runbooks over pinning guidance to model names that will age quickly. No action is required to remove retired models after retirement; the operational work is ensuring an approved supported model is available before teams depend on it.
 
 ### Narrative
 
@@ -531,7 +547,7 @@ Enterprise Copilot deployments require governance frameworks addressing access, 
 
 *Self-service patterns that enable 50+ teams simultaneously*
 
-### Adoption Metrics and ROI Measurement
+### Measuring Adoption and ROI
 
 ### What to Measure
 
@@ -583,9 +599,22 @@ Onboarding Time:         45 days → 28 days
 Cost per Feature:        -31% (normalized)
 ```
 
+**Product-backed ROI view:**
+- Use the enterprise or organization Copilot impact dashboard ROI section to compare early-phase and agent-first developer cohorts
+- Enable the Copilot usage metrics policy and grant the viewer **View Copilot Metrics** permission before relying on the dashboard
+- Model cost per developer per month, payroll share, and pull requests per developer; use the salary control to align the model with local compensation assumptions
+- Treat the result as directional: costs are based on AI-credit estimates and salary is a modeling input, not an audited savings figure
+- Interpret trends using the corrected 28-day cohort, which includes every active user in the window; the correction does not change API or NDJSON exports
+
+**Agent app activity:**
+- Use `totals_by_3rd_party_agent` in enterprise and organization usage reports to attribute recognized agent app activity
+- Join reporting history on stable `agent_id`; display names are mutable labels
+- Track job starts and aggregate `session_count` to understand agent use, but do not add nested `user_initiated_interaction_count` to the top-level field of the same name
+- Account for report shape: per-user entries omit `session_count`, unidentified agents are omitted, and the array is absent when there is no agent activity
+
 ### Narrative
 
-Measuring Copilot ROI requires tracking leading, intermediate, and lagging indicators. Usage metrics (acceptance rate, active users) show adoption health. Productivity metrics (PR velocity, review time) demonstrate efficiency gains. Business metrics (time to market, cost per feature) justify investment to CFO. Most organizations track acceptance rate (target: 55-65%) and active users (target: 80%+ utilization of licensed seats). Intermediate metrics like PR velocity and review time show concrete productivity improvements: teams shipping 40% more features with same headcount, code reviews completing 30% faster. Quarterly reporting combines these into business case: "Copilot investment of $X delivered $Y in productivity gains, reducing cost per feature 31% while improving developer satisfaction." Data-driven ROI storytelling secures continued investment and expansion.
+Measuring Copilot ROI requires tracking leading, intermediate, and lagging indicators. Usage metrics show adoption health, productivity metrics expose workflow movement, and business metrics connect those changes to investment decisions. The impact dashboard adds a consistent directional model for enterprise and organization reporting, while usage reports separate recognized agent app activity from top-level interaction totals. Use both as evidence, not attribution proof: pair cohort trends and agent activity with delivery context before making investment claims. This produces a more defensible narrative than anecdotes while preserving the caveats behind the estimates.
 
 ---
 
@@ -767,11 +796,6 @@ Scaling Copilot adoption requires self-service enablement—teams onboard withou
 
 *Balance central control with team autonomy*
 
-<!-- 🎬 MAJOR SECTION: Multi-Team Coordination -->
-## Multi-Team Coordination: Federated Governance That Scales
-
-*Balance central control with team autonomy*
-
 ### The Scaling Challenge
 
 **Uncoordinated adoption risks:**
@@ -786,21 +810,21 @@ Scaling Copilot adoption requires self-service enablement—teams onboard withou
 - Platform team overwhelmed with support requests
 - Innovation stalls waiting for standardization
 
-### Federated Governance Model
+### Managed Settings: Enterprise Floor, Team Specialization
 
-**Platform team responsibilities:**
-- Define organization-wide standards (instructions, security policies)
-- Maintain shared skill libraries and Knowledge Bases
-- Provide onboarding kit and templates
-- Track metrics and report ROI
-- Govern model access and compliance
+**Enterprise configuration:**
+- Mark only selected managed-setting keys as overridable; every non-overridable enterprise choice remains locked
+- Store team-specific settings under `copilot/teams/` and map each file to GitHub team slugs through `team-mappings.json`
+- Treat enterprise values as the policy floor: team specialization can adjust only the keys the enterprise administrator permits
 
-**Team responsibilities:**
-- Customize repository instructions for domain-specific needs
-- Build team-specific agent skills for specialized workflows
-- Contribute successful patterns back to platform team
-- Follow review standards and compliance requirements
-- Measure and report team-level metrics
+**Merge behavior:**
+- When a user belongs to multiple mapped teams, supported settings resolve to the least restrictive value allowed beneath the enterprise policy
+- `enabledPlugins` and `extraKnownMarketplaces` are additive: teams can extend the enterprise baseline but cannot shrink it
+- Validate the effective result for users with multiple team memberships rather than assuming one team file wins
+
+**Enforcement boundary:**
+- Managed team specialization currently applies in VS Code, Copilot CLI, the Copilot App, and Copilot cloud agent
+- Enforcement requires GitHub Copilot Business or Enterprise licensing; do not present team mappings as a control for unsupported surfaces or license tiers
 
 ### Community of Practice
 
@@ -816,7 +840,7 @@ Scaling Copilot adoption requires self-service enablement—teams onboard withou
 - Provide platform team support to high-adoption teams
 - Create career development opportunities for AI expertise
 
-Successful enterprise adoption requires balancing central governance with team autonomy. The federated model divides responsibility: platform team provides baseline standards, shared libraries, and compliance frameworks; individual teams customize for domain-specific needs and contribute innovations back. Community of Practice prevents knowledge silos: monthly pattern-sharing sessions, internal skill catalogs, async collaboration channels. This approach scales innovation—50 teams experiment independently within governance guardrails, successful patterns promote to organization level, everyone benefits from collective learning. The alternative (centralized control) creates bottlenecks; pure autonomy creates chaos. Federated governance with community knowledge sharing achieves both consistency and velocity.
+Successful enterprise adoption requires balancing central governance with team autonomy. Managed settings make that boundary explicit: enterprise administrators lock the policy floor, identify overridable keys, and map team specializations through versioned files. Least-restrictive merging lets multi-team users receive permitted capabilities without bypassing locked choices, while additive plugin and marketplace lists preserve the enterprise baseline. Community of Practice still carries discoveries across teams, but the control plane is now concrete, reviewable, and bounded by supported surfaces and licensing.
 
 ### Knowledge Multiplication Effect
 

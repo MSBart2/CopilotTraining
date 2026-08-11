@@ -1,0 +1,205 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/vscode-latest"
+  cutoff: "2026-05-13"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    The structural refresh through VS Code 1.132 is complete and remains recorded
+    below. A follow-up announcement now schedules Claude Sonnet 4.5, used in one
+    model-choice example, for removal on September 1. The durable open-model story
+    remains valid, but the named example and visible deck claim need replacement.
+  userEmphasis:
+    - "Treat BYOK and open source model support as a headline capability."
+
+  accepted:
+    - title: "Remote agent host and Agent Host Protocol"
+      published: "2026-05-20"
+      source: "https://code.visualstudio.com/updates/v1_121"
+      verified: "2026-08-10"
+      releaseStatus: preview
+      importance: headline
+      targetSection: "Agent Infrastructure"
+      action: replace
+      summary: >
+        The Agents window can run durable sessions on owned remote machines through
+        an agent host built on the Copilot SDK, coordinated through the open Agent
+        Host Protocol and accessible after the initiating client disconnects.
+      limitations:
+        - "Remote agents and parts of the agent-host rollout remain preview capabilities."
+      recipeImpact: restructure
+      slideImpact: regenerate
+
+    - title: "BYOK without GitHub sign-in and open model endpoints"
+      published: "2026-05-28"
+      source: "https://code.visualstudio.com/updates/v1_122"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: headline
+      targetSection: "Open Model Workbench"
+      action: replace
+      summary: >
+        VS Code can use Anthropic, Azure, Gemini, OpenAI, Ollama, OpenRouter, and
+        compatible custom endpoints for chat, tools, and MCP without GitHub sign-in.
+        Custom Endpoint is Stable, utility models are independently configurable,
+        and supported models can use one-million-token context windows.
+      limitations:
+        - "Inline suggestions and next edit suggestions still require GitHub sign-in."
+        - "Provider availability, cost, and model capabilities vary."
+      recipeImpact: restructure
+      slideImpact: replace-demo
+
+    - title: "Parallel sessions, multi-chat, and live subagent activity"
+      published: "2026-07-30"
+      source: "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases"
+      verified: "2026-08-10"
+      releaseStatus: preview
+      importance: headline
+      targetSection: "Parallel Agent Work"
+      action: replace
+      summary: >
+        The Agents window supports side-by-side sessions, multiple chats per session,
+        peer-chat forks, grouping, reordering, worktrees across harnesses, and live
+        subagent status with direct access to child conversations.
+      limitations:
+        - "The Agents window remains in public preview."
+      recipeImpact: restructure
+      slideImpact: regenerate
+
+    - title: "Agentic browser tools are generally available"
+      published: "2026-07-08"
+      source: "https://github.blog/changelog/2026-07-08-github-copilot-in-visual-studio-code-june-2026-releases"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: headline
+      targetSection: "Closed-Loop Delivery"
+      action: replace
+      summary: >
+        Agentic browser tools are enabled by default and support navigation,
+        inspection, screenshots, device emulation, remote browsing, and validation.
+        VS Code 1.132 adds comments attached to specific page elements.
+      limitations: []
+      recipeImpact: restructure
+      slideImpact: replace-demo
+
+    - title: "Side chats and live session activity in VS Code 1.132"
+      published: "2026-08-05"
+      source: "https://code.visualstudio.com/updates/v1_132"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "Parallel Agent Work"
+      action: add
+      summary: >
+        The /btw command opens a contextual side chat without interrupting the active
+        turn, while live pills expose changes, previews, subagents, and browser work.
+      limitations: []
+      recipeImpact: revise
+      slideImpact: regenerate
+
+    - title: "Review agent work inside the Agents window"
+      published: "2026-07-30"
+      source: "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases"
+      verified: "2026-08-10"
+      releaseStatus: preview
+      importance: headline
+      targetSection: "Closed-Loop Delivery"
+      action: add
+      summary: >
+        Developers can review files and diffs beside chat, comment on agent edits,
+        edit Markdown with agent-actionable comments, and respond to failed CI checks
+        or new pull-request review comments from the session.
+      limitations:
+        - "Hybrid Markdown editing remains experimental."
+      recipeImpact: restructure
+      slideImpact: regenerate
+
+    - title: "Observable cost and enterprise controls"
+      published: "2026-07-08"
+      source: "https://github.blog/changelog/2026-07-08-github-copilot-in-visual-studio-code-june-2026-releases"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "Boundaries and Control"
+      action: update
+      summary: >
+        VS Code exposes session and subagent credit usage, model costs, richer
+        OpenTelemetry signals, managed settings, and safer handling of sensitive
+        terminal prompts. Enterprise MCP allowlists add centralized server controls.
+      limitations:
+        - "Some controls depend on Copilot plan and organization policy."
+      recipeImpact: revise
+      slideImpact: regenerate
+
+    - ledgerEventId: "b625c840a2369df1"
+      title: "Upcoming September 2026 model deprecations in GitHub Copilot"
+      published: "2026-07-31"
+      source: "https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot"
+      verified: "2026-08-10"
+      releaseStatus: deprecated
+      importance: supporting
+      targetSection: "Open Model Workbench"
+      action: replace
+      summary: >
+        Claude Sonnet 4.5 is scheduled for removal from GitHub Copilot experiences
+        on September 1, 2026. Replace it in the frontier-model example with durable
+        guidance to choose a currently supported model; the BYOK and provider-choice
+        thesis does not depend on a particular catalog entry.
+      limitations:
+        - "Enterprise replacement models may need to be enabled through model policy before they appear in VS Code."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored:
+    - title: "Copilot code review effort levels are generally available"
+      source: "https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available"
+      reason: "Code-review depth is not a VS Code editor workflow update."
+      relatedTalks:
+        - "tech-talks/copilot-code-review"
+    - title: "Copilot impact dashboard adds a return on investment section"
+      source: "https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section"
+      reason: "Organization impact reporting belongs in adoption and economics content."
+      relatedTalks:
+        - "tech-talks/exec-economics"
+    - title: "Kimi K3 is now available in GitHub Copilot"
+      source: "https://github.blog/changelog/2026-08-06-kimi-k3-is-now-available-in-github-copilot"
+      reason: "Individual model arrivals date quickly; the durable story is provider and OSS model openness."
+      relatedTalks: []
+    - title: "GitHub Copilot weekly releases - August 3 CLI changes"
+      source: "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3"
+      reason: "CLI session sidebar, /worktree, and /rewind belong in the Copilot CLI talk."
+      relatedTalks:
+        - "tech-talks/copilot-cli"
+
+  removals:
+    - "Remove the release-by-release catalog as the organizing spine."
+    - "Replace the commit-attribution revert highlight; it no longer represents the highest-value current workflow."
+    - "Replace browser tab sharing with the GA browser build-review-validate loop."
+    - "Compress model-specific Claude coverage into the broader harness and model-choice story."
+    - "Remove Claude Sonnet 4.5 from the current frontier-model example."
+
+  anomalies:
+    - title: "Visual Studio Code 1.133 (Insiders)"
+      source: "https://code.visualstudio.com/updates/v1_133"
+      reason: >
+        The feed lists a publication date of August 11, 2026 while the feed was checked
+        on August 10. Exclude until the item is no longer future-dated and its status is confirmed.
+
+  recipeReview:
+    required: true
+    question: >
+      Does the new evidence require changing the talk's thesis, section order,
+      weighting, highlights, or demos?
+
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

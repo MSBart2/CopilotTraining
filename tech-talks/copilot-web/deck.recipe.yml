@@ -1,3 +1,4 @@
+# Refresh 2026-08-10 | Council: REVISE | Preserve the issue-to-PR spine; add start-time trigger and reasoning controls.
 # VERDICT: Four sections follow an earn-trust-then-delegate arc that peaks at S2 (the most
 # immediately actionable skill) and closes with S4's "What to Delegate" decision tree as
 # the durable take-home artifact — ordering is correct and complete.
@@ -12,9 +13,9 @@ deck:
   tagline: "What if filing an issue was the same as fixing it?"
 
   agenda:
-    - title: "Delegate From the Browser"
-      takeaway: "Assign work from GitHub web, VS Code, or mobile into agent PRs."
-      whyItMatters: "More roles can hand off work without losing context."
+    - title: "Choose the Trigger and Effort"
+      takeaway: "Start directly or via configured comment automation, then tune reasoning per run."
+      whyItMatters: "Match quality to complexity while making token and premium-request credit use explicit."
     - title: "Match the Environment"
       takeaway: "Configure the runtime agents use with setup steps."
       whyItMatters: "Generated changes are more likely to pass the real build."
@@ -25,8 +26,10 @@ deck:
   arcToc: "Delegation Loop → Writing Issues → Trust and Configuration → Review Workflow"
   arcNarrative: >
     S1 establishes the three-layer mental model (Intelligence / Environment / Governance)
-    as shared vocabulary — every downstream section borrows it, so it must land completely
-    before S2 begins. S2 converts that model into the most immediately learnable skill
+    and start-time controls — direct delegation or configured comment automation, plus
+    per-run reasoning for a supporting model — as shared vocabulary. Every downstream
+    section borrows it, so it must land completely before S2 begins. S2 converts that
+    model into the most immediately learnable skill
     in the talk: writing issues that produce high-quality PRs, with image-based creation
     as the "whoa" moment that makes the stat (14 min → 2 min, 95% detail) visceral.
     S3 is the credibility bridge — it answers the "but is it safe?" objection that
@@ -56,8 +59,13 @@ deck:
         structural backbone all other sections reference by name — introduce it here with
         a visual diagram, not prose. For mixed audiences (devs, tech leads, PMs) fold a
         brief orientation callout into the first loop slide rather than a standalone
-        slide, preserving hook momentum. The "whoa" moment: the agent opens a draft PR
-        and can never merge — and the person who filed the issue cannot approve it
+        slide, preserving hook momentum. Make the start-time controls and boundaries exact:
+        an Agents > Automations issue/PR trigger starts a configured run, while a comment
+        on an existing draft PR refines that task. At task start, per-run reasoning is a
+        quality/cost dial: higher reasoning consumes more tokens and premium-request credits;
+        it appears only for supporting models and requires a paid Copilot plan that includes
+        cloud agent. The "whoa" moment: the agent opens a draft PR and can never merge —
+        and the person who assigned the issue cannot approve it
         (GitHub-enforced separation of duties). Cut any deep-dive into model internals;
         the loop cycle and the draft-PR boundary are the only mechanics that must land.
 
@@ -105,7 +113,7 @@ deck:
         loop; this section assumes S1 is fully loaded in the audience's working memory.
 
   highlightMoments:
-    - "Separation of duties is GitHub-enforced: the person who filed the issue cannot approve the resulting PR — by platform constraint, not policy"
+    - "Separation of duties is GitHub-enforced: the person who assigned the issue cannot approve the resulting PR — by platform constraint, not policy"
     - "Image-based issue creation: 14-minute manual transcription → 2-minute visual workflow with 95% detail capture"
     - "Agent Firewall blocked-call log is embedded in the evidence bundle — auditability is an artifact feature, not an audit step"
     - "Mobile review loop: read evidence bundle, invoke @review-enforcer, approve in under 3 minutes from a phone"

@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-04-06
+updated: 2026-08-10
 section: "Developers"
 references:
   - url: https://code.visualstudio.com/docs/copilot/copilot-coding-agent
@@ -21,6 +21,12 @@ references:
   - url: https://github.blog/ai-and-ml/github-copilot/onboarding-your-ai-peer-programmer-setting-up-github-copilot-coding-agent-for-success/
     label: "Onboarding your AI peer programmer"
     verified: 2026-04-06
+  - url: https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments
+    label: "Trigger Copilot automations with comments"
+    verified: 2026-08-10
+  - url: https://github.blog/changelog/2026-08-03-customize-the-reasoning-level-for-copilot-cloud-agent
+    label: "Customize the reasoning level for Copilot cloud agent"
+    verified: 2026-08-10
 ---
 
 # From Issue to Pull Request: GitHub Copilot's Coding Agent in Practice
@@ -79,7 +85,7 @@ What makes this durable rather than just clever: the agent respects everything t
 
 ### What It Does
 
-The GitHub Copilot coding agent is an autonomous AI developer that runs inside GitHub Actions.[^1] Triggered by assigning an issue to Copilot, it analyzes the codebase, makes changes across files, runs the test suite, and opens a draft PR — all in a sandboxed, ephemeral environment with no access to production systems.
+The GitHub Copilot coding agent is an autonomous AI developer that runs inside GitHub Actions.[^1] Started through direct delegation or a repository-configured automation, it analyzes the codebase, makes changes across files, runs the test suite, and opens a draft PR — all in a sandboxed, ephemeral environment with no access to production systems.
 
 ### Key Capabilities
 
@@ -199,7 +205,7 @@ Q: What kind of task is this?
 | Aspect | Coding Agent | IDE Copilot | Web Copilot Chat |
 |--------|-------------|-------------|-----------------|
 | **Best For** | Delegated autonomous tasks | Interactive implementation | Review, triage, coordination |
-| **Trigger** | Assign issue / chat command | In-editor interaction | Browser / mobile chat |
+| **Trigger** | Direct delegation / repository automation | In-editor interaction | Browser / mobile chat |
 | **Output** | Complete draft PR | Inline code suggestions | Text responses, issue/PR creation |
 | **Human Involvement** | Review & approve | Real-time collaboration | Conversational |
 | **Setup Required** | `copilot-setup-steps.yml` recommended | VS Code extension | Zero (browser only) |
@@ -214,12 +220,11 @@ The coding agent's core workflow is a closed loop that starts with a well-formed
 
 ### Triggering the Agent
 
-Three trigger paths produce the same outcome:
+Direct delegation remains the clearest path for one bounded issue:
 
 **From github.com/copilot or any GitHub issue page:**
 1. Open the issue
 2. In the Assignees section, select **Copilot**
-3. Alternatively, type `/assigntopilot` in an issue comment
 
 **From VS Code:**
 1. Open GitHub Copilot Chat (`Ctrl+Shift+I`)
@@ -230,7 +235,13 @@ Three trigger paths produce the same outcome:
 1. Open the issue in the GitHub app
 2. Tap **Assignees → Copilot**
 
-All three paths create the same asynchronous session. The agent works independently; there's no need to stay connected.
+Repository owners can also configure cloud-agent **Automations** under **Agents → Automations**. An automation starts when an issue or pull-request comment contains the trigger text that the owner specified. That makes recurring handoffs possible where work is discovered: request a documentation update, investigate an error reported in a thread, or create a follow-up issue. Trigger text is configured per automation; there is no universal slash command. For Copilot Business and Copilot Enterprise, an administrator must enable the Copilot cloud agent policy before these automations are available.[^11]
+
+These automation trigger comments start a new configured run. They are distinct from comments left on an existing agent-authored draft PR, which refine that in-progress implementation and cause the agent to push follow-up commits.
+
+At cloud-agent task start, choose a reasoning level beside the supported model when the model offers that control. Higher reasoning can improve quality on complex work, but it uses more tokens and therefore more premium-request credits for that run. Reasoning levels are available only for supporting models, and cloud-agent task controls require a paid Copilot plan that includes the cloud agent.[^12]
+
+Each path creates an asynchronous session. The agent works independently; there's no need to stay connected.
 
 ### What Happens Inside the Sandbox
 
@@ -499,6 +510,8 @@ In most cases, a clean evidence bundle (passing tests, no firewall alerts, coher
 ### Iterating via PR Comments
 
 If the PR needs changes, leave comments directly in the PR — the agent reads them and pushes new commits:[^2]
+
+Unlike an automation trigger comment, this feedback does not start a separate configured automation; it refines the existing draft PR and its active task.
 
 **Comments that work well:**
 ```
@@ -775,6 +788,10 @@ The rule that the assigner cannot approve has one practical implication: teams w
 [^9]: **[Using GitHub Copilot Chat in GitHub.com](https://docs.github.com/en/copilot/github-copilot-chat/copilot-chat-in-github/using-github-copilot-chat-in-githubcom)** — Image-based issue creation and web interface capabilities
 
 [^10]: **[Power user's guide to Copilot on GitHub.com](https://github.blog/ai-and-ml/github-copilot/how-to-use-github-copilot-on-github-com-a-power-users-guide/)** — Advanced web interface patterns including multi-model selection and cross-repo analysis
+
+[^11]: **[Trigger Copilot automations with comments](https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments)** — Changelog: repository-configured issue and pull-request comment triggers, example automations, and policy requirements
+
+[^12]: **[Customize the reasoning level for Copilot cloud agent](https://github.blog/changelog/2026-08-03-customize-the-reasoning-level-for-copilot-cloud-agent)** — Changelog: per-run reasoning controls, supported-model availability, and token and premium-request tradeoffs
 
 ---
 

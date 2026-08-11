@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "roles": {
+    "explains": 10,
+    "applies": 7,
+    "governs": 6,
+    "depends": 5,
+    "references": 1
+  },
+  "topics": [
+    {
+      "id": "vscode-copilot",
+      "signals": ["visual studio code", "vs code", "agents window", "browser tools", "agent host protocol", "open source ai editor"],
+      "talks": [
+        { "talk": "vscode-latest", "role": "explains", "obligation": "Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model." },
+        { "talk": "agent-dev-loop", "role": "depends", "obligation": "Keep the end-to-end VS Code agent workflow and demos executable." },
+        { "talk": "copilot-chat-internals", "role": "depends", "obligation": "Keep VS Code chat debugging surfaces and diagnostics accurate." },
+        { "talk": "copilot-primitives", "role": "depends", "obligation": "Keep VS Code customization discovery and configuration behavior accurate." }
+      ]
+    },
+    {
+      "id": "model-choice",
+      "signals": ["byok", "bring your own key", "model policy", "model enablement", "model deprecation", "models deprecated", "available in github copilot", "custom model", "custom endpoint", "ollama", "model management", "reasoning level"],
+      "talks": [
+        { "talk": "vscode-latest", "role": "explains", "obligation": "Explain editor model choice, provider setup, local models, and sign-in boundaries." },
+        { "talk": "copilot-cli", "role": "applies", "obligation": "Explain model selection, provider configuration, and reasoning controls for CLI sessions." },
+        { "talk": "copilot-sdk", "role": "applies", "obligation": "Keep SDK model-provider, authentication, and BYOK integration guidance accurate." },
+        { "talk": "enterprise-patterns", "role": "governs", "obligation": "Cover organization model policy, cost, access, and data-governance consequences." },
+        { "talk": "exec-economics", "role": "depends", "obligation": "Keep model-cost and consumption assumptions accurate when economics change." }
+      ]
+    },
+    {
+      "id": "copilot-cli",
+      "signals": ["copilot cli", "cli", "cli sessions", "remote control", "/worktree", "/rewind", "terminal-native"],
+      "talks": [
+        { "talk": "copilot-cli", "role": "explains", "obligation": "Explain current CLI commands, session lifecycle, steering, and remote workflows." },
+        { "talk": "copilot-acp", "role": "depends", "obligation": "Keep CLI server and ACP protocol integration behavior accurate." },
+        { "talk": "vscode-latest", "role": "references", "obligation": "Reference CLI behavior only where it changes cross-client agent continuity." }
+      ]
+    },
+    {
+      "id": "copilot-app",
+      "signals": ["github copilot app", "copilot desktop app", "desktop app", "agent app activity", "agent apps"],
+      "talks": [
+        { "talk": "copilot-app", "role": "explains", "obligation": "Explain Copilot app availability, parallel work, controls, and review workflows." },
+        { "talk": "enterprise-patterns", "role": "governs", "obligation": "Cover app access policy, managed settings, and organization rollout." },
+        { "talk": "exec-delivery", "role": "applies", "obligation": "Keep the multi-agent operating model grounded in available product surfaces." }
+      ]
+    },
+    {
+      "id": "cloud-agent",
+      "signals": ["copilot cloud agent", "copilot coding agent", "coding agent", "agent automation", "fix failing actions", "fix pull request comments", "fix merge conflicts"],
+      "talks": [
+        { "talk": "copilot-web", "role": "explains", "obligation": "Explain issue-to-PR delegation, review, iteration, and coding-agent controls." },
+        { "talk": "agentic-journey", "role": "applies", "obligation": "Keep the incremental issue-to-PR automation path current." },
+        { "talk": "copilot-app", "role": "applies", "obligation": "Explain how cloud-agent work appears in the app's multi-agent workflow." },
+        { "talk": "agentic-sdlc", "role": "depends", "obligation": "Keep CI and repository infrastructure guidance compatible with agent execution." }
+      ]
+    },
+    {
+      "id": "copilot-code-review",
+      "signals": ["copilot code review", "review effort", "review comments", "security reviews"],
+      "talks": [
+        { "talk": "copilot-code-review", "role": "explains", "obligation": "Explain code-review configuration, depth, customization, findings, and response workflows." },
+        { "talk": "agentic-sdlc", "role": "applies", "obligation": "Keep the automated review and CI trust-factory workflow accurate." },
+        { "talk": "copilot-web", "role": "depends", "obligation": "Keep coding-agent response-to-review workflows accurate." }
+      ]
+    },
+    {
+      "id": "code-quality",
+      "signals": ["github code quality", "code coverage automatic", "coverage workflow", "maintainability", "reliability score"],
+      "talks": [
+        { "talk": "copilot-code-quality", "role": "explains", "obligation": "Explain Code Quality setup, coverage, findings, rulesets, billing, and product boundaries." },
+        { "talk": "copilot-code-review", "role": "references", "obligation": "Distinguish Code Quality from Copilot code review when their integration changes." },
+        { "talk": "agentic-sdlc", "role": "applies", "obligation": "Keep quality gates and coverage automation accurate." }
+      ]
+    },
+    {
+      "id": "mcp",
+      "signals": ["mcp server", "mcp servers", "model context protocol", "mcp specification", "mcp now", "mcp allowlist"],
+      "talks": [
+        { "talk": "copilot-azure-mcp", "role": "applies", "obligation": "Keep Azure MCP installation, trust, tools, and workflow guidance accurate." },
+        { "talk": "mcp-apps", "role": "depends", "obligation": "Keep MCP Apps protocol, host support, security, and UI behavior accurate." },
+        { "talk": "copilot-primitives", "role": "references", "obligation": "Clarify MCP's boundary relative to repository customization primitives." },
+        { "talk": "copilot-plugins", "role": "depends", "obligation": "Keep plugin-bundled MCP configuration and portability behavior accurate." }
+      ]
+    },
+    {
+      "id": "customization",
+      "signals": ["agent skills", "custom instructions", "managed settings", "plugins", "hooks support", "agent customization"],
+      "talks": [
+        { "talk": "copilot-primitives", "role": "explains", "obligation": "Explain instructions, skills, prompts, and agents as distinct configuration primitives." },
+        { "talk": "copilot-plugins", "role": "applies", "obligation": "Explain packaging and distributing customization bundles." },
+        { "talk": "copilot-hooks", "role": "applies", "obligation": "Keep hook availability, events, and governance behavior accurate." },
+        { "talk": "enterprise-patterns", "role": "governs", "obligation": "Cover organization-wide distribution and enforcement of configuration." }
+      ]
+    },
+    {
+      "id": "copilot-sdk",
+      "signals": ["copilot sdk", "agent host protocol", "agent client protocol", "sdk agent"],
+      "talks": [
+        { "talk": "copilot-sdk", "role": "explains", "obligation": "Explain SDK runtime, APIs, authentication, tools, models, and production integration." },
+        { "talk": "copilot-acp", "role": "depends", "obligation": "Distinguish ACP integration from direct SDK embedding." },
+        { "talk": "vscode-latest", "role": "applies", "obligation": "Explain how the SDK underpins portable VS Code agent infrastructure." },
+        { "talk": "copilot-app", "role": "depends", "obligation": "Keep app harness and runtime claims accurate." }
+      ]
+    },
+    {
+      "id": "agentic-workflows",
+      "signals": ["copilot automations", "agentic workflows", "trigger copilot automations", "workflow automation", "github actions"],
+      "talks": [
+        { "talk": "agentic-workflows", "role": "explains", "obligation": "Explain repository-native agent workflow triggers, permissions, outputs, and safety." },
+        { "talk": "agentic-journey", "role": "applies", "obligation": "Keep the staged issue-to-PR automation path current." },
+        { "talk": "agentic-sdlc", "role": "depends", "obligation": "Keep CI/CD infrastructure and agent workflow boundaries accurate." }
+      ]
+    },
+    {
+      "id": "enterprise-governance",
+      "signals": ["enterprise managed", "managed copilot settings", "model policy targeting", "usage metrics", "impact dashboard", "return on investment", "cost centers", "copilot policy"],
+      "talks": [
+        { "talk": "enterprise-patterns", "role": "explains", "obligation": "Explain enterprise rollout, policy, controls, measurement, and federated governance." },
+        { "talk": "exec-economics", "role": "applies", "obligation": "Keep Copilot cost, utilization, and ROI measurement guidance accurate." },
+        { "talk": "exec-strategy", "role": "applies", "obligation": "Keep board-level investment and control guidance grounded in available evidence." },
+        { "talk": "vscode-latest", "role": "governs", "obligation": "Mention enterprise controls only when they constrain editor capabilities." },
+        { "talk": "copilot-cli", "role": "governs", "obligation": "Mention managed settings only when they alter CLI behavior or deployment." }
+      ]
+    },
+    {
+      "id": "observability",
+      "signals": ["opentelemetry", "otel", "trace data", "telemetry export"],
+      "talks": [
+        { "talk": "copilot-chat-internals", "role": "applies", "obligation": "Explain available diagnostics and traces for debugging Copilot interactions." },
+        { "talk": "copilot-cli", "role": "applies", "obligation": "Keep CLI telemetry configuration and behavior accurate." },
+        { "talk": "vscode-latest", "role": "applies", "obligation": "Keep VS Code agent observability and managed export claims accurate." },
+        { "talk": "enterprise-patterns", "role": "governs", "obligation": "Cover organization telemetry ownership, approved collectors, and controls." }
+      ]
+    },
+    {
+      "id": "foundry",
+      "signals": ["microsoft foundry", "foundry agent", "foundry iq", "hosted agents", "agent framework"],
+      "talks": [
+        { "talk": "copilot-with-foundry", "role": "explains", "obligation": "Explain when Copilot needs Foundry and how organizational knowledge is connected." },
+        { "talk": "copilot-azure-mcp", "role": "applies", "obligation": "Keep Foundry-related Azure skills and MCP workflows accurate." },
+        { "talk": "agent-teams", "role": "references", "obligation": "Reference Foundry orchestration only when it changes the multi-agent mechanism comparison." }
+      ]
+    }
+  ]
+}

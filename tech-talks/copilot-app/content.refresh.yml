@@ -1,0 +1,53 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/copilot-app"
+  cutoff: "2026-06-16"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    The fleet-control story omits new session-level visibility and branching
+    controls: Auto attribution and credit/cache details, direct shared-session
+    entry, and /side exploration. These strengthen the existing control-center
+    section without changing the talk's operating model.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "5c82c9f4d4b61705"
+      title: "GitHub Copilot weekly releases - August 3: Copilot App controls"
+      published: "2026-08-07"
+      source: "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "How It Works: The GitHub Copilot App"
+      action: add
+      summary: >
+        Auto now identifies the model that handled a completed request and shows
+        AI credit and cache details when available. Users can jump into shared
+        sessions or use /side to explore a parallel question without disrupting
+        the main task, and session start and switching are more efficient.
+      limitations:
+        - "Credit and cache details appear when available."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored: []
+  removals: []
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Should model and credit visibility or side exploration earn visible deck
+      emphasis, or remain supporting controls in the existing fleet model?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

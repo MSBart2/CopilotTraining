@@ -1,162 +1,230 @@
 # deck.recipe.yml — VS Code Latest talk guidance
 #
-# COUNCIL VERDICT (3-agent collaborative council, May 13 2026):
-# The six candidate sections collapse to four. Core problem: sections 1 and 2 split
-# one platform story by abstraction level (control model vs. session types); Claude as
-# a standalone section treats a model configuration option as a product category.
-# The novel synthesis is Section 3 — security + OpenTelemetry + token economics answer
-# one enterprise adoption question ("can my org deploy this?"), not three concerns.
-# Peak engagement lands in Section 1 (Agents Window capstone) and Section 3 (billing
-# moment as OTel payoff). Billing lands as Section 3 climax, not a talk opener.
-# Commit attribution revert opens Section 4 as the "VS Code listens" humanizing beat.
+# REFRESH: 2026-08-10
+# COUNCIL DECISION: RESTRUCTURE — high confidence
+# RATIONALE: The release catalog and fleet metaphor no longer fit portable agent hosts,
+# open model choice, parallel work, and closed-loop delivery. Preserve the README's four-
+# pillar order, make Open Model Workbench the sole high-emphasis section, and close on the
+# GA browser validation loop. Label Preview and Experimental material explicitly.
+# FOLLOW-UP: 2026-08-10 — PRESERVE. The September model retirement only replaces a
+# named README example; the recipe already uses durable supported-model language.
 
 version: 1
 
 deck:
-  title: "What's New in Copilot for VS Code"
-  subtitle: "v1.110 – v1.120: The Agent Platform Goes Mainstream"
-  tagline: "From one AI you chat with to a fleet of autonomous agents you orchestrate"
-
-  # arcToc: ≤80 chars — becomes TocSlide subtitle
+  title: "VS Code Copilot 1.121–1.132"
+  subtitle: "Portable Agent Infrastructure, Open Models, and a Closed Review Loop"
+  tagline: "Bring any model — including local Ollama — with no GitHub sign-in required"
 
   agenda:
-    - title: "Manage the Fleet"
-      takeaway: "See active sessions, background tasks, and agent state together."
-      whyItMatters: "Parallel agents need a native operational view."
-    - title: "Observe Production Agents"
-      takeaway: "Track telemetry, token use, and MCP consumption."
-      whyItMatters: "Visibility prevents cost and performance surprises."
-    - title: "Grow Trust Gradually"
-      takeaway: "Move from chat to planning, background work, and automation."
-      whyItMatters: "Teams can increase autonomy without changing their platform."
+    - title: "Run Any Model You Choose"
+      takeaway: "Configure BYOK providers, local Ollama models, and a Stable Custom Endpoint in the model picker without a GitHub sign-in."
+      whyItMatters: "Model choice, cost, and data residency become configuration decisions your team controls."
+    - title: "Detach Agents From the Window"
+      takeaway: "See how the Copilot SDK and the Agent Host Protocol let a session run on a machine you own and survive disconnect."
+      whyItMatters: "Long-running work stops being tied to one laptop and one open editor."
+    - title: "Close the Loop In-Window"
+      takeaway: "Watch an agent build, emulate a device, screenshot, take element-anchored feedback, and route review back into the same session."
+      whyItMatters: "Validation and review stop costing a context switch on every iteration."
 
-  arcToc: "Agent Platform → Your Models, Your Rules → Responsible Scale → In Your Workflow"
+  arcToc: "Agent Infrastructure → Open Models → Parallel Work → Closed-Loop Delivery"
 
   arcNarrative: >
-    The talk traces one architectural shift across ten weekly VS Code releases: Copilot
-    evolving from a conversational assistant into a coordinated fleet of autonomous agents.
-    Section 1 establishes the new platform — four session types, Autopilot mode, Git-worktree
-    parallelism, and the Agents Window moving to Stable preview as the capstone that signals
-    mainstream readiness; peak engagement lands here on the "leave the room" moment where the
-    audience recalibrates what "using Copilot" means. Section 2 answers the immediate follow-
-    up: the platform is powerful, but can it know my models, my rules, my team's conventions?
-    BYOK and custom instructions answer the same ownership question at different layers, and
-    Claude's thinking tokens land here as a configurable reasoning dial, not a separate product.
-    Section 3 is the enterprise unlock — security, OTel tracing, and token economics together
-    answer "can my org say yes to this?"; the 93% prompt cache hit rate is the Section 3
-    climax, revealed after OTel traces show exactly what the agent consumed, making the billing
-    context a payoff rather than an opener. Section 4 grounds everything in daily developer
-    texture: the commit attribution revert opens (humanizing the arc after governance-heavy
-    Section 3), browser tab sharing and inline diffs are the new everyday capabilities, and
-    Copilot Memory closes on the warmest beat — it gets smarter the longer you use it.
+    The talk follows the README's own order because that order is the argument, not just
+    a table of contents. Agent Infrastructure comes first as the substrate: the Copilot
+    SDK and the open Agent Host Protocol separate the session from the window, so an
+    agent can run on a machine the team owns and be reconnected later. It is deliberately
+    the shortest of the two opening sections — it must establish the mental model, not
+    exhaust the protocol, and it is Preview, so it earns explanation rather than a live
+    demo. Open Model Workbench is the peak of the talk and the only high-emphasis
+    section. It is where the audience recalibrates: BYOK now works without GitHub
+    sign-in, Ollama is a first-class provider, Custom Endpoint is Stable, utility models
+    are separately configurable, and supported models expose 1M-token contexts — all GA,
+    all demonstrable live. It also carries the one firm boundary of the whole talk:
+    inline suggestions and next edit suggestions still require GitHub sign-in. Placing it
+    second rather than first is intentional — the audience has just been told the harness
+    is portable, and the natural next question is "portable running what?" The answer is
+    "any model you choose, including one running on your own machine," which lands harder
+    as a payoff than as an opener. Parallel Agent Work is deliberately compressed, and
+    that compression is the recipe's main act of restraint. Multiple sessions, multiple
+    chats per session, peer forks, and worktrees across harnesses are genuinely
+    significant, but the Agents window is Preview and multi-session live demos are the
+    most fragile thing in the release window. The section runs on the two GA beats —
+    /btw side chats and live activity pills — plus a clear structural claim about
+    isolated worktrees, and it hands the recovered time to the closing section. Closed-
+    Loop Delivery is the climax because it is where the audience can act tomorrow: GA
+    browser tools on by default, device emulation and screenshots attached to the chat
+    turn, and element-specific comments in v1.132 give a complete build-validate-fix loop
+    that requires no Preview surface at all. In-window diff review, CI failure handling,
+    and PR comment response extend that loop and are shown as the Preview direction of
+    travel, with hybrid Markdown editing named as experimental. Boundaries and Control is
+    never its own section; cost visibility, OpenTelemetry, managed settings, MCP
+    allowlists, and sensitive-terminal-prompt handling appear inside the sections they
+    actually constrain, with plan dependence stated where relevant. The talk ends on a
+    working loop rather than a governance checklist.
 
   sectionOrder:
-    - "The Agent Platform"
-    - "Your Models, Your Rules"
-    - "Responsible Scale"
-    - "In Your Workflow"
+    - "Agent Infrastructure"
+    - "Open Model Workbench"
+    - "Parallel Agent Work"
+    - "Closed-Loop Delivery"
 
   sectionModes:
-    "The Agent Platform":
-      # high = 4–5 content slides
-      # Draws from README: "Autopilot & Agent Autonomy" + "Agent Sessions & Orchestration"
-      # + Claude-as-session-type only from "Claude & Anthropic Integration"
+    "Agent Infrastructure":
+      emphasis: medium
+      note: >
+        2–3 slides. This section builds the mental model and then gets out of the way —
+        do not let protocol detail crowd out the Open Model Workbench peak that follows.
+        Slide 1: the decoupling claim. The Copilot SDK is the runtime agent harnesses are
+        built on, and the Agent Host Protocol is an open protocol where an agent host owns
+        authoritative session state, synchronizes it to connected clients, and sequences
+        mutations; because it is open, other clients and hosts can implement it. The line
+        that must land: the session is no longer the same thing as the window. Slide 2:
+        remote machine execution as a concrete three-step flow — open the Agents window,
+        connect its remote tab via an existing ~/.ssh/config entry, a user@host value, or
+        a running dev tunnel, and VS Code installs or connects to its CLI server and starts
+        the agent host there. State plainly that the host persists after the VS Code window
+        closes and that progress, tool outputs, and session memory remain available on
+        reconnect; v1.132 allows the same session to be connected from multiple VS Code
+        windows. Label this Preview explicitly — remote agents and parts of the AHP rollout
+        are preview, while host registration and multi-client session UX continue to
+        evolve. No live reconnect demo is required; prepared or
+        recorded evidence is the default because this surface is Preview. Optional slide 3:
+        the local-versus-remote decision guide, compressed to the two decisive branches —
+        interactive and exploratory work stays local; long-running autonomous work or work
+        needing environment parity and controlled access goes remote. Mention here, in one
+        line only, that the agent host can run Copilot, Claude, and Codex harnesses in a
+        dedicated process — harness portability is the point; no model or vendor gets its
+        own slide. Cut: AHP message-level mechanics, harness-by-harness comparison, and any
+        implication that remote hosts are ready for production-critical workflows.
+
+    "Open Model Workbench":
       emphasis: high
       note: >
-        The platform claim must land first — give this section full time. Open with the four
-        session types (Local, Background, Cloud, Claude) as a visual taxonomy: what each one
-        is for, when to use it. Treat Claude as one harness choice in the list, not a marquee
-        feature. Lead into Autopilot mode and the permission levels dial (Default → Bypass →
-        Full Autopilot); the phrase "the agent works while you switch context" must appear.
-        Cover background agents and Git-worktree isolation in 90 seconds — the "your workspace
-        is untouched" reassurance matters, the details do not. Include nested subagents and
-        Explore subagent as the parallelism architecture in one slide. Remote Copilot CLI
-        (v1.118) and session management (fork, sort, compact) as fleet-management affordances.
-        CAPSTONE: Agents Window moving from Insiders-only to Stable preview in v1.120 — frame
-        as the structural signal that this platform is production-ready, not experimental. The
-        demo beat: dispatch a task under Full Autopilot, context-switch, return to the Agents
-        Window tracking two parallel background sessions with completed diffs. Skip OpenTelemetry
-        here — it belongs in Section 3. Cut any slide that does not serve the session type
-        taxonomy, Autopilot, or the Agents Window capstone.
+        4–5 slides. This is the peak of the talk and the only high-emphasis section; give
+        it the most time and the strongest live demo. Open with the headline as a status
+        claim, not a feature list: BYOK is GA and needs no GitHub sign-in — Anthropic,
+        Azure, Gemini, OpenAI, Ollama, OpenRouter, or any compatible custom endpoint works
+        for chat, tool execution, and MCP, with billing and rate limits going through the
+        provider rather than Copilot quotas. PRIMARY LIVE DEMO (GA, must be live): open the
+        model picker, choose Manage Models…, add a provider, and watch the models appear in
+        the picker. Dedicate a full slide to local and open models via Ollama — install
+        Ollama, pull a model, select Manage Models… → Ollama, and VS Code discovers locally
+        available models automatically; local models work with all chat features, tool
+        execution, and MCP with no network request leaving the machine. Name the audience
+        this unlocks: teams with air-gap requirements, sensitive codebases, or constrained
+        data residency. This is the moment the audience should feel the ceiling move; do
+        not bury it in a bullet list with the hosted providers. Next slide: Stable Custom
+        Endpoint plus utility models as the team-scale story — Custom Endpoint is Stable as
+        of v1.122 and connects endpoints implementing the Chat Completions, Responses, or
+        Messages API families, so an internal gateway for cost control, logging, or
+        compliance can carry all VS Code Copilot chat traffic with no client-side code
+        change; utility models are independently configurable via chat.utilityModel and
+        chat.utilitySmallModel, so a fast local or lower-cost model can handle titles,
+        summaries, commit messages, rename suggestions, and intent detection while a
+        frontier model handles primary work. Show the settings block. Then 1M-token
+        contexts on supported models as an architectural decision for large-codebase tasks,
+        with the honest tradeoff stated: very long contexts increase latency and provider
+        cost, and /compact and background compaction remain the counterweight. THE ONE FIRM
+        BOUNDARY, stated once and clearly: inline suggestions and next edit suggestions
+        still require GitHub sign-in and a Copilot subscription — BYOK covers chat, agents,
+        tool calls, and MCP, not the completions engine. Weave the relevant control thread
+        here, not in a separate section: session and subagent credit usage and model costs
+        are visible in the Agents window, and some controls depend on Copilot plan and
+        organization policy. Cut: provider-by-provider capability tables, pricing
+        comparisons, individual model arrivals, and any standalone vendor focus.
 
-    "Your Models, Your Rules":
-      # medium = 2–3 content slides
-      # Draws from README: "Agent Customization" + thinking tokens/effort from "Claude & Anthropic Integration"
-      emphasis: medium
+    "Parallel Agent Work":
+      emphasis: medium-low
       note: >
-        BYOK (v1.117) and custom instructions answer the same ownership question at different
-        layers — model choice and behavioral constraints — present them together as one theme.
-        Demo the BYOK flow in 90 seconds: model picker → Manage Models → add Anthropic or
-        Azure OpenAI key → models appear instantly → select thinking effort (Low/Medium/High).
-        Thinking effort is a configurable dial, not a Claude-only concept; v1.120 extended it
-        to all BYOK models — frame as "one picker controls all your models." Chat Customizations
-        editor is the unified management surface: tabs for instructions, agents, skills, plugins.
-        Agent Skills GA is the team knowledge story — one SKILL.md, automatically applied, now
-        with isolated execution contexts (v1.118). Agent Plugins as the marketplace story.
-        Org-wide instructions + enterprise org restrictions (v1.118) as the governance layer.
-        Close with /init and /create-* as the bootstrap affordances. Do not give Claude its own
-        slide. Monorepo customization discovery, agent-scoped hooks, and the debug panel are
-        one bullet each — no dedicated slides. Move fast; this section builds ownership, not
-        revelation.
+        1–2 slides, deliberately compressed — the time saved here funds the closing
+        section. The structural claim first: the Agents window has moved from a monitoring
+        dashboard to a workspace, running multiple sessions side by side, each with its own
+        worktree, tool context, and model configuration, with grouping, reordering, and
+        filtering; multiple chats per session and peer-chat forks let a developer branch
+        from any point in a conversation while sharing the session's worktree and tool
+        state; and worktree isolation now holds across local, remote, and Copilot SDK
+        harnesses so the review-and-merge workflow is the same wherever the session ran.
+        Give one concrete pattern — two sessions on two approaches to the same problem,
+        each in its own worktree, compared by diff when both finish — and move on. Label
+        this cluster Preview and say the limit out loud: cross-host session management,
+        peer-fork merge conflict resolution, and group-level settings are still evolving,
+        so treat the Agents window as high-capability preview rather than a stable
+        production substrate. Do not attempt a live multi-session demo; it is the most
+        fragile beat available and it competes with the Open Model Workbench demo for the
+        audience's attention. The demonstrable beat here is GA and small: /btw opens a
+        contextual side chat that runs alongside an active agent turn without pausing it,
+        sharing the primary chat's context and prompt cache, and live activity pills surface
+        changes, previews, subagents, and browsers at a glance and clear when the turn
+        completes. Those two are safe to show live and are the honest takeaway — parallel
+        work is now legible, not just possible. Cut: session grouping UI tours, fork merge
+        semantics, and any claim that parallel orchestration is production-ready.
 
-    "Responsible Scale":
-      # medium = 2–3 content slides (individual-contributors audience — compressed path)
-      # Draws from README: "Security & Trust" + OpenTelemetry from "Agent Sessions & Orchestration"
-      # + token efficiency/prompt caching from "Chat UX & Productivity"
-      emphasis: medium
-      note: >
-        COMPRESSED PATH (individual-contributors audience): 8 minutes, OTel + billing story
-        only — skip sandbox config details and the Grafana/Jaeger deep-dive. Open with one
-        slide: trust architecture in 60 seconds — MCP sandboxing, terminal sandboxing, and
-        command risk assessment (v1.120) as a bullet list with one sentence each; name what
-        each prevents, move on. YOLO mode and auto-approval in a single sentence: "the override
-        path exists; scope it carefully." Then OpenTelemetry (v1.119) in one slide: what it
-        emits, why it matters ("the org can see what the agent consumed"). CLIMAX: billing
-        moment as the OTel payoff. Stat: "93% prompt cache hit rate. Shipped in the same
-        release cycle as June 2026 usage-based billing. They built your cost controls before
-        they built the meter." Terminal output compression (v1.120) as one bullet — cost-
-        control infrastructure, no dedicated slide. Reduced trust interruptions (v1.119) as
-        the closing signal. Do not linger; the audience is individual contributors — the
-        framing is "this is safe and affordable" not "here's how to govern your org's fleet."
-
-    "In Your Workflow":
-      # medium-high = 3–4 content slides (expanded — individual-contributors audience gets more time here)
-      # Draws from README: "Chat UX & Productivity" — curated
-      # (token efficiency already used in S3; terminal compression in S3 — do not repeat)
+    "Closed-Loop Delivery":
       emphasis: medium-high
       note: >
-        EXPANDED PATH (individual-contributors audience): time recovered from compressed S3
-        goes here. OPEN with the commit attribution revert story (v1.118 added, v1.119 reverted
-        after community pushback). Spend 90 seconds on the story, not the feature: "They added
-        it, the community said no, they reverted in seven days. That's the relationship." This
-        humanizes the arc after Section 3 and resets the tone. Then the highest-impact everyday
-        features: agent-browser tab sharing (v1.119) is the demo priority — the agent requests
-        access to your live browser tab, you approve, it reads the DOM, applies a CSS fix,
-        confirms the result without you alt-tabbing; this is the most cinematic new behavior
-        in the release window. Inline diffs in chat (v1.119) and Markdown diff preview (v1.120)
-        as review-without-leaving-chat beats. Incremental chat rendering (v1.117), simplified
-        #codebase semantic search (v1.114), /troubleshoot previous sessions, Copy Final
-        Response as one quick-wins slide with bullets only. CLOSE: two-beat Copilot Memory
-        sequence — first beat: return to a project, Memory surfaces yesterday's context
-        without a prompt; second beat (live demo): open a new project cold, let Memory surface
-        context the audience has never explicitly set, show that it inferred from prior sessions.
-        Zero setup. This is the warmest beat in the talk: it gets smarter the longer you use
-        it. Give it a full two minutes. Let it land quietly and do not follow it with a slide.
+        3–4 slides and the practical climax of the talk. Everything the audience can do
+        tomorrow with no Preview dependency lives here. Lead with the status fact: agentic
+        browser tools are GA and enabled by default as of the June 2026 release, with no
+        configuration flag required — navigation, page reading, screenshots, click, hover,
+        type, dialog handling, element dragging, Playwright automation sequences, device
+        emulation, and remote browsing against a browser on the host running the session.
+        Note that agent-opened pages run in private in-memory sessions and existing tabs
+        must be explicitly shared. CLIMAX AND PRIMARY CLOSING DEMO (GA, run it live): the
+        agent opens a localhost page in the integrated browser, emulates a device preset or
+        custom viewport, screenshots the result, and the screenshot is attached to the chat
+        turn that produced it — the validation evidence becomes part of the conversation
+        record. Then the v1.132 element-specific comments beat: select one or more elements
+        in the integrated browser, anchor a separate comment to each, and send that precise
+        visual feedback back to the agent. That sequence — implement, emulate, screenshot,
+        annotate the exact elements, re-validate — is the single most compelling live moment
+        available in this release window and it should be the last thing the audience sees
+        working. Follow with one slide on where the loop is heading, clearly marked Preview:
+        files and diffs from a session are reviewable inside the Agents window with per-file
+        apply, revert, or cherry-pick and inline comments that the agent acts on in later
+        turns; failed CI check details surface in the session so the agent can read the
+        failure, apply a fix, and re-run checks; and pull request review comments arriving on
+        the branch can be answered, applied, or marked addressed without leaving the window.
+        Name hybrid Markdown editing as Experimental in one sentence and do not demo it.
+        Close the control thread here rather than in a separate section: OpenTelemetry
+        signals from agent sessions export tool call latency, turn count, and subagent depth
+        as structured spans; managed settings let organizations enforce baseline
+        configuration; enterprise MCP allowlists centrally control which MCP servers sessions
+        can reach; and sensitive terminal prompts for passwords, passphrases, PINs, and
+        verification codes are intercepted, with auto-approve flows cancelling the command
+        and instructing the model not to retry or request the secret. State that some of
+        these depend on Copilot plan and organization policy. End on the working loop, not
+        the policy list.
 
   preamble: []
   appendix: []
 
-  # 3–5 high-signal moments the generator must surface
-  # (BeforeAfterSlide items, ThankYouSlide cards, WhatYouCanDoTodaySlide actions)
   highlightMoments:
-    - "Agents Window stable preview (v1.120): dispatch a task under Full Autopilot, context-switch, return to two parallel background sessions with completed diffs — VS Code worked while you were gone"
-    - "BYOK live: add Anthropic or Azure OpenAI key in the model picker, select thinking effort (Low/Medium/High) from the same UI for all models — including BYOK models in v1.120"
-    - "93% prompt cache hit rate shipped in the same release cycle as June 2026 usage-based billing: open an OTel trace, see exactly what the agent consumed, then see how caching cut that cost by ~40%"
-    - "Agent-browser tab sharing (v1.119): agent requests access to your live Chrome tab, you approve, it reads the DOM and fixes a CSS error — no alt-tab, no copy-paste, confirmed in the chat thread"
-    - "Commit attribution revert: v1.118 added Co-authored-by: Copilot to all commits by default; community pushed back; v1.119 reverted to opt-in within seven days — the team ships fast and listens faster"
+    - "BYOK is GA without a GitHub sign-in: add an Anthropic, Azure, Gemini, OpenAI, Ollama, OpenRouter, or compatible custom endpoint key in Manage Models… and it drives chat, tool execution, and MCP with billing and rate limits handled by the provider instead of Copilot quotas."
+    - "Ollama is a first-class provider, so VS Code discovers locally pulled open models automatically and runs chat, tools, and MCP against them with no network request leaving the machine — the practical unlock for air-gapped teams and sensitive codebases."
+    - "Custom Endpoint is Stable and utility models are independently configurable, so a team can route every VS Code Copilot chat call through its own gateway while chat.utilityModel and chat.utilitySmallModel hand titles, summaries, and commit messages to a cheap local model and reserve the frontier model for real work."
+    - "The Copilot SDK and the open Agent Host Protocol detach the session from the window: a Preview remote agent host started over SSH or a dev tunnel keeps running after VS Code closes, and v1.132 lets the same session be connected from multiple windows."
+    - "GA browser tools close the loop live — the agent opens a localhost page, emulates a device, screenshots it into the chat turn as permanent evidence, and in v1.132 takes comments anchored to the exact elements that still need work, all without leaving the session."
 
-# DECISION (resolved): Individual-contributors audience.
-# Section 3 runs compressed (~8 min): OTel + billing story only; sandbox config omitted.
-# Section 4 runs expanded: second Copilot Memory live demo added as the closing beat.
-# If audience composition changes, flip Responsible Scale back to emphasis: high,
-# revert In Your Workflow to emphasis: medium, and restore the full S3 note above.
+# REJECTED CANDIDATES (did not earn slide time)
+# - Reordering to lead with Open Model Workbench: the user emphasis is satisfied by force
+#   ranking (sole `high`, primary live demo, metadata and agenda lead). Diverging from
+#   README order would desync the deck from the canonical source for no evidentiary gain.
+# - A fifth "Boundaries and Control" section: cost visibility, OTel, managed settings, MCP
+#   allowlists, and sensitive prompt handling are qualifiers on other capabilities, not a
+#   standalone narrative. They are woven into the sections they constrain.
+# - Release-by-release catalog spine: removed by the approved refresh; it organizes by
+#   changelog rather than by operating model.
+# - Commit-attribution revert highlight: removed by the approved refresh; no longer
+#   represents the highest-value current workflow.
+# - Browser tab-sharing demo: superseded by the GA build-validate-review loop with device
+#   emulation and element comments.
+# - Standalone Claude / single-vendor section: model and harness choice is now the story;
+#   harness portability is one line in Agent Infrastructure.
+# - Live multi-session, peer-fork, or remote-reconnect demos: Preview surfaces with the
+#   highest failure risk in the deck. Shown as prepared evidence instead.
+# - "Fleet" framing carried over from the prior recipe: the 1.121–1.132 evidence is about
+#   portability, model openness, and closing the loop, not about scale of orchestration.
+# - VS Code 1.133: excluded as future-dated and unconfirmed per the refresh anomaly.
+# - Individual model arrivals and non-editor changelog items (code review effort levels,
+#   impact dashboard ROI, CLI session changes): out of scope, routed to other talks.

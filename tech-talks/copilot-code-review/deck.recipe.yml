@@ -1,4 +1,4 @@
-# deck.recipe.yml — Copilot Code Review talk guidance
+# Refresh 2026-08-10 | Council: REVISE | Add risk-calibrated review effort without changing the arc.
 
 version: 1
 
@@ -11,7 +11,7 @@ deck:
 
   agenda:
     - title: "Review Capacity"
-      takeaway: "Offload routine security, logic, and style checks to Copilot."
+      takeaway: "Match Lite or Balanced effort to change risk, then offload routine checks."
       whyItMatters: "Human reviewers regain time for architecture and judgment."
     - title: "Evidence for ROI"
       takeaway: "Measure review time recovery across a team."
@@ -22,8 +22,9 @@ deck:
 
   arcToc: "Configure fast → Master the signal → Prove the value → Scale to enterprise"
   arcNarrative: >
-    Opens with a 5-minute setup win, builds capability understanding, lands ROI proof before
-    introducing compliance depth — so the audience is already convinced before complexity arrives.
+    Opens with a 5-minute setup win and risk-calibrated Lite or Balanced review effort, builds
+    capability understanding, lands ROI proof before introducing compliance depth — so the audience
+    is already convinced before complexity arrives.
   sectionOrder:
     - Configuration and Quick Start           # Part 1: 4 slides — zero-to-first-review in 5 min
     - Best Practices and Team Adoption        # Part 2: 3 slides — six capabilities + hybrid analysis
@@ -35,7 +36,10 @@ deck:
       emphasis: high
       note: >
         Opens with a live 5-minute setup walk-through that gives the audience an immediate
-        win — credibility through speed before any conceptual depth is introduced.
+        win — credibility through speed before any conceptual depth is introduced. Covers Low and
+        Medium carry-forward to Lite and Balanced, inherited organization defaults with repository
+        override, per-review-only selection, visible timeline and pull request labels, and availability
+        on Copilot Pro, Pro+, Max, Business, and Enterprise plans.
     "Best Practices and Team Adoption":
       emphasis: medium-high
       note: >
@@ -54,7 +58,7 @@ deck:
 
   highlightMoments:
     - Code review shifts from bottleneck to accelerator — AI handles style so humans focus on substance
-    - Six capability categories deliver comprehensive, high-signal review feedback on every PR automatically
+    - Lite and Balanced match review depth to change risk, inherit organization defaults with repository override, and leave visible timeline and pull request audit signals
     - 40-60% reduction in PR review cycle time with an interactive calculator that generates exec-ready savings
     - 90%+ reduction in security violations reaching production via automated detection and inline remediation
     - Custom instruction files enforce HIPAA, PCI-DSS, and SOC2 requirements with a full audit trail
@@ -62,7 +66,7 @@ deck:
   # Closing / supporting slides
   references:
     enabled: true
-    mode: standard # Full reference list with 16 citations
+    mode: standard # Full reference list with 17 citations
 
   thankYou:
     enabled: true

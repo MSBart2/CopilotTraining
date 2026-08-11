@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-04-10
+updated: 2026-08-10
 section: "Developers"
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/code-review
@@ -12,6 +12,9 @@ references:
   - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/use-code-review
     label: "Using Copilot Code Review"
     verified: 2026-04-10
+  - url: https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available
+    label: "Copilot code review effort levels are generally available"
+    verified: 2026-08-10
 ---
 
 # GitHub Copilot Code Review: From Bottleneck to Accelerator
@@ -208,6 +211,15 @@ Enable Copilot Code Review via GitHub Rulesets:
 6. Click **Create**
 
 **That's it!** Copilot will now automatically review all PRs targeting your selected branch(es).
+
+### Choose Review Effort
+
+Copilot code review offers two generally available effort levels: **Lite** for routine changes and **Balanced** for larger, complex, or sensitive changes[^17]. These replace the preview names **Low** and **Medium**; existing configurations carry forward as Lite and Balanced, respectively.
+
+- Organization administrators can set a default effort level. Repositories without their own setting inherit that organization default.
+- A reviewer can choose an effort level when requesting a review. That choice applies only to that review and does not change repository or organization settings.
+- The pull request timeline and overview show which effort level Copilot used, making the choice visible during review and later auditing.
+- Lite and Balanced are available with Copilot Pro, Pro+, Max, Business, and Enterprise plans.
 
 ### Custom Guidance with `.github/copilot-instructions.md`
 
@@ -1111,6 +1123,8 @@ See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for complete navigation help.
 ### Interactive Tools
 
 [^16]: **GitHub Copilot Code Review Time Savings Calculator** — https://copilot-code-review--clee1211.github.app/ — Interactive calculator that combines PR analytics, review-time assumptions, and developer cost inputs into cycle-time, labor-savings, cost-savings, and executive-summary outputs
+
+[^17]: **Copilot code review effort levels are generally available** — https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available — GA names, configuration migration, organization inheritance, per-review scope, visibility, and plan availability for Lite and Balanced effort
 
 ---
 

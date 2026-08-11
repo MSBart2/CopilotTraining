@@ -36,6 +36,27 @@ This must appear as the final block in the file, after `ThankYouSlide`. It is no
 
 ---
 
+## copilot-web.md: Deck regenerated — trigger distinction + reasoning level framing (2026-08-11)
+
+`schema_version: 1` | `date: 2026-08-11`
+
+**Slide count:** 25 slides. Section opener slide numbers: Part 1=5, Part 2=10, Part 3=15, Part 4=18.
+
+**Section arc (recipe-driven):**
+- Part 1 "Delegation Loop" (cyan, 4 body): FrameworkMappingRows (three-layer model: Intelligence/Environment/Governance) → TwoColPaired (direct delegation vs configured automation) → ThreeColumnCard (reasoning levels: default/higher/requirements) → HeroStat (2 required reviewers / draft-PR-only / assigner≠approver)
+- Part 2 "Writing Issues" (blue, 4 body): ProblemSolutionOutcome (vague→structured→consistent PRs) → BeforeAfterPanels (underspecified vs structured issue side-by-side) → HeroStat (2 min image-based creation, 95% detail capture) → ThreeColumnCard (acceptance criteria/scope/context+constraints)
+- Part 3 "Trust and Configuration" (indigo, 2 body): CodeWithFeatures (copilot-setup-steps.yml: job name contract + runs before firewall) → CodeWithFeatures (Agent Firewall blocked-call log + three allowlist levels)
+- Part 4 "Review Workflow" (purple, 3 body): BeforeAfterMetrics (without vs with evidence bundle; <3 min/30 min/2-3 min) → FrameworkMappingRows (What to Delegate: well-bounded/design-only/multi-repo/local-or-DB, labels max 13 chars) → HeroStat (12 min lodash upgrade, 23 files)
+
+**Three non-negotiable framing points:**
+1. **Trigger distinction is load-bearing.** Automation trigger comments (Agents → Automations) START a new configured run. Comments left on an existing draft PR REFINE that in-progress implementation. These are different interactions — do not collapse them.
+2. **Reasoning level boundary.** Higher reasoning = more tokens + more premium-request credits per run. Supporting models only. Requires a paid Copilot plan that includes the cloud agent. Do not imply it applies to all models or all plans.
+3. **Separation of duties.** The person who assigned the issue cannot approve the resulting PR — enforced by GitHub, not configurable. The agent always opens a draft PR and can never merge. Platform invariants, not policies.
+
+**Source:** `slides/tech-talks/copilot-web.md`, `tech-talks/copilot-web/deck.recipe.yml`
+
+---
+
 ## copilot-chat-internals.md: Deck structure and section mapping (2026-04-22)
 
 `schema_version: 1` | `date: 2026-04-22`

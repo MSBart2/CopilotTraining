@@ -1,0 +1,76 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/copilot-code-quality"
+  cutoff: "2026-07-24"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    Code Quality setup changed in two directions: enabling the product no longer
+    opts repositories into Copilot review, while coverage setup can now begin with
+    an agent-generated pull request. The gate model remains intact, but the setup
+    path and product boundary must be corrected.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "dc0c8a462d44c79d"
+      title: "GitHub Code Quality no longer adds Copilot as a reviewer"
+      published: "2026-08-07"
+      source: "https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer"
+      verified: "2026-08-10"
+      releaseStatus: retired
+      importance: headline
+      targetSection: "How It Works: GitHub Code Quality"
+      action: replace
+      summary: >
+        Enabling Code Quality no longer creates a ruleset that automatically
+        requests Copilot code review. GitHub disabled the generated ruleset's
+        automatic review, new-push review, and draft review settings when the
+        ruleset still matched GitHub's original version.
+      limitations:
+        - "Edited generated rulesets and user-authored rulesets were not changed."
+        - "Teams can independently enable automatic Copilot review with a repository or organization ruleset; it remains billed to the Copilot plan."
+        - "The change applies to Code Quality on GitHub Enterprise Cloud and GitHub Team."
+      recipeImpact: confirm
+      slideImpact: regenerate
+    - ledgerEventId: "063796b73edb0af6"
+      title: "Code coverage automatic enablement in Code Quality settings"
+      published: "2026-08-04"
+      source: "https://github.blog/changelog/2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings"
+      verified: "2026-08-10"
+      releaseStatus: preview
+      importance: supporting
+      targetSection: "Feeding the Gate: The Coverage Upload Workflow"
+      action: add
+      summary: >
+        Code Quality settings can start an agent that opens a reviewable pull
+        request containing a least-privilege workflow that builds the project,
+        runs tests, generates coverage, and uploads the report to GitHub.
+      limitations:
+        - "Automatic coverage enablement is in public preview for Code Quality users on github.com."
+        - "Code Quality is available for GitHub Enterprise Cloud and Team, not GitHub Enterprise Server."
+        - "Manual workflow authoring remains valid when teams need custom build or coverage behavior."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored: []
+  removals:
+    - "Remove any implication that Code Quality enablement automatically enables Copilot code review."
+    - "Replace manual workflow authoring as the only coverage onboarding path."
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Can the current coverage-gate and rollout arc absorb the new generated-PR
+      setup path and the corrected Code Review boundary without reordering?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

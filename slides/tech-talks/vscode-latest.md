@@ -4,16 +4,16 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## What's New in Copilot for VS Code
+  ## VS Code Copilot 1.121–1.132
   CopilotTraining Tech Talk
 drawings:
   persist: false
 transition: slide-left
-title: What's New in Copilot for VS Code
+title: VS Code Copilot 1.121–1.132
 mdc: true
 section: Developers
 status: active
-updated: 2026-05-13
+updated: 2026-08-10
 ---
 
 <script setup>
@@ -26,36 +26,39 @@ import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
 import WhatYouCanDoTodaySlide from './components/structure/WhatYouCanDoTodaySlide.vue'
 import ReferencesSlide from './components/structure/ReferencesSlide.vue'
 import ThankYouSlide from './components/structure/ThankYouSlide.vue'
-import FourCardGridSlide from './components/FourCardGridSlide.vue'
-import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
-import HeroStatSlide from './components/HeroStatSlide.vue'
-import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
+import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
+import FourCardGridSlide from './components/FourCardGridSlide.vue'
+import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
+import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
 import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vue'
+import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 </script>
 
+<!-- SLIDE: Title -->
 # Title
 <TitleSlide
-  title="What's New in Copilot for VS Code"
-  subtitle="v1.110 – v1.120: The Agent Platform Goes Mainstream"
-  tagline="From one AI you chat with to a fleet of autonomous agents you orchestrate"
-  meta="10 releases · May 2026"
+  title="VS Code Copilot 1.121–1.132"
+  subtitle="Portable Infrastructure, Open Models, and a Closed Review Loop"
+  tagline="Bring any model — including local Ollama — with no GitHub sign-in required"
+  meta="CopilotTraining Tech Talk · 45–60 minutes"
 />
 
 ---
 
+<!-- SLIDE: Core Question -->
 # Core Question
 <CoreQuestionSlide
-  question="What just changed in Copilot — and do I need to think differently?"
-  subtext="Ten releases. One underlying shift."
-  highlight="From AI you chat with to a fleet of agents you orchestrate."
+  question="How does VS Code Copilot evolve from a window-bound chat to portable agent infrastructure?"
+  subtext="Releases 1.121–1.132 change how agents are deployed, which models they use, and how review happens."
+  highlight="Which capability is your team ready to act on tomorrow?"
   :cards='[
-    { icon: "👩‍💻", title: "Individual Contributors", description: "Developers using Copilot daily who want to unlock the new autonomous capabilities" },
-    { icon: "🏗️", title: "Engineering Leads",         description: "Team leads evaluating how to safely deploy background agents across the org" },
-    { icon: "🧪", title: "Early Adopters",             description: "Developers already running background sessions who want the full platform picture" },
-    { title: "10 releases covered", description: "v1.110 (Feb 2026) through v1.120 (May 13, 2026) — weekly cadence since v1.111" },
-    { title: "93% cache hit rate",  description: "Token cost controls shipped before usage-based billing launched in June 2026" },
-    { title: "4 agent session types", description: "Local, Background, Cloud, Claude — each with a distinct execution context and trust model" }
+    { icon: "👩‍💻", title: "Developer", description: "Which new models and local options can I use without changing my GitHub account?" },
+    { icon: "🧑‍💼", title: "Tech Lead", description: "How do parallel sessions, worktrees, and remote hosts change how we assign agent work?" },
+    { icon: "🏗️", title: "Platform Engineer", description: "What controls exist for model gateways, MCP allowlists, and org-wide policy enforcement?" },
+    { title: "BYOK GA in June 2026", description: "No GitHub sign-in needed for chat, tools, and MCP with any compatible provider" },
+    { title: "Ollama: first-class provider", description: "Local models auto-discovered; zero network requests for air-gapped teams" },
+    { title: "Browser tools on by default", description: "GA in June 2026 — device emulation, screenshots, element comments included" }
   ]'
 />
 
@@ -65,433 +68,424 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 # Agenda
 <AgendaSlide
   :items='[
-    { title: "Manage the Fleet", takeaway: "See active sessions, background tasks, and agent state together.", whyItMatters: "Parallel agents need a native operational view." },
-    { title: "Observe Production Agents", takeaway: "Track telemetry, token use, and MCP consumption.", whyItMatters: "Visibility prevents cost and performance surprises." },
-    { title: "Grow Trust Gradually", takeaway: "Move from chat to planning, background work, and automation.", whyItMatters: "Teams can increase autonomy without changing their platform." }
+    { title: "Run Any Model You Choose", takeaway: "Configure BYOK providers, local Ollama, and a Stable Custom Endpoint without a GitHub sign-in.", whyItMatters: "Model choice, cost, and data residency become configuration decisions your team controls." },
+    { title: "Detach Agents From the Window", takeaway: "See how the Copilot SDK and Agent Host Protocol let a session run on a machine you own and survive disconnect.", whyItMatters: "Long-running work stops being tied to one laptop and one open editor." },
+    { title: "Close the Loop In-Window", takeaway: "Watch an agent build, emulate a device, screenshot, take element-anchored feedback, and route review back.", whyItMatters: "Validation and review stop costing a context switch on every iteration." }
   ]'
 />
 
 ---
 
+<!-- SLIDE: Table of Contents -->
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "🤖", title: "The Agent Platform",      subtitle: "Sessions, Autopilot, Agents Window",  blurb: "How the fleet works and why the Agents Window changes everything", slide: 4  },
-    { icon: "🔑", title: "Your Models, Your Rules", subtitle: "BYOK, thinking effort, customization", blurb: "One picker for all your models; one editor for all your rules",        slide: 10 },
-    { icon: "🔒", title: "Responsible Scale",       subtitle: "Trust, OTel, cost controls",           blurb: "Safety rails, observability, and 93% cache hit before billing",       slide: 13 },
-    { icon: "🌐", title: "In Your Workflow",        subtitle: "Browser tabs, Memory, quick wins",     blurb: "The most cinematic new capability and the warmest closing beat",       slide: 16 }
+    { icon: "🔌", title: "Agent Infrastructure", subtitle: "AHP + SDK: sessions persist beyond the window", blurb: "Decouple the session from the window; run agents on owned remote hosts", slide: 5 },
+    { icon: "🔑", title: "Open Model Workbench", subtitle: "BYOK GA, Ollama, Custom Endpoint, utility models", blurb: "Any compatible model for chat, tools, and MCP — no GitHub sign-in required", slide: 8 },
+    { icon: "🪟", title: "Parallel Agent Work", subtitle: "Multiple sessions, /btw, and live activity pills", blurb: "The Agents window evolves from dashboard to multi-session workspace", slide: 13 },
+    { icon: "🌐", title: "Closed-Loop Delivery", subtitle: "GA browser tools with device emulation", blurb: "Build, validate, and review without leaving the Agents window session", slide: 16 }
   ]'
 />
 
 ---
 
-# Part 1 — The Agent Platform
+<!-- SLIDE: Part 1 — Agent Infrastructure -->
+# Part 1 — Agent Infrastructure
 <SectionOpenerSlide
   :partNumber="1"
-  title="The Agent Platform"
-  subtitle="Four session types, Autopilot mode, and an Agents Window now in Stable preview"
+  title="Agent Infrastructure"
+  subtitle="The Copilot SDK and Agent Host Protocol detach the session from the window so agents run on infrastructure you own"
   :cards='[
-    { icon: "🗂️", title: "Four Session Types", blurb: "Local, Background, Cloud, Claude — each with its own execution context" },
-    { icon: "🤖", title: "Autopilot Mode",      blurb: "Auto-approve, auto-retry, task_complete — leave the room" },
-    { icon: "🪟", title: "Agents Window",        blurb: "Stable preview in v1.120 — dispatch and monitor sessions" }
+    { icon: "🔌", title: "Agent Host Protocol", blurb: "Open spec: host owns state, clients sync and disconnect" },
+    { icon: "🖥️", title: "Remote Machine Host", blurb: "SSH or dev tunnel; session persists after VS Code closes" },
+    { icon: "🛠️", title: "Copilot SDK Runtime", blurb: "Copilot, Claude, Codex harnesses in one dedicated process" }
   ]'
-  :terminal='{ context: "v1.120: Agents Window moves to Stable preview", detail: "From Insiders-only → production-ready in one release cycle" }'
+  :terminal='{ context: "Preview: The session is no longer the window", detail: "session persists on remote infra → reconnect on completion" }'
 />
 
 ---
 
-# Four Agent Session Types
-<FourCardGridSlide
+<!-- SLIDE: Session Is No Longer the Window -->
+# Session Is No Longer the Window
+<TwoColPairedConceptsSlide
   :partNumber="1"
-  pillIcon="🗂️"
-  pillLabel="The Agent Platform: Session Types"
-  title="Four Ways to Run an Agent"
-  :cards='[
-    { icon: "💬", title: "Local",      description: "Interactive in Chat view — real-time planning, exploration, and file edits in your current workspace" },
-    { icon: "⚙️", title: "Background", description: "Autonomous multi-file tasks in an isolated Git worktree — your workspace stays completely untouched" },
-    { icon: "☁️", title: "Cloud",      description: "GitHub-hosted infrastructure for cross-repo operations at scale — runs independently of your machine" },
-    { icon: "🧠", title: "Claude",     description: "Anthropic&#39;s SDK with thinking tokens — deep reasoning for architecture and complex refactors" }
-  ]'
-  :progressDots='{ current: 1, total: 5, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
+  pillIcon="🔌"
+  pillLabel="Agent Infrastructure · The Decoupling"
+  title="Session Is No Longer the Window"
+  :left='{
+    header: "Before AHP",
+    icon: "💻",
+    items: [
+      { title: "Close VS Code → agent stops", detail: "Session lifetime = window lifetime" },
+      "Context is lost on disconnect",
+      "One active session per open window",
+      "Long autonomous tasks compete with active work"
+    ]
+  }'
+  :right='{
+    header: "With AHP (Preview)",
+    icon: "🔌",
+    items: [
+      { title: "Host persists after VS Code closes", detail: "Reconnect to a running session any time" },
+      "Multi-client: same session, multiple windows",
+      "Long tasks run on infrastructure your team owns",
+      "Progress, tool outputs, and memory survive disconnect"
+    ]
+  }'
+  :progressDots='{ current: 1, total: 2, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-# Autopilot Permission Levels
+<!-- SLIDE: Remote Machine Execution: Three Steps -->
+# Remote Machine Execution: Three Steps
 <ThreeColumnCardSlide
   :partNumber="1"
-  pillIcon="🤖"
-  pillLabel="The Agent Platform: Autopilot"
-  title="Three Levels of Agent Autonomy"
+  pillIcon="🖥️"
+  pillLabel="Agent Infrastructure · Remote Execution"
+  title="Connect a Remote Agent Host in Three Steps"
   :columns='[
-    { icon: "🟡", title: "Default Approvals", description: "Agents use configured approval settings — dialogs appear before destructive tool calls", items: ["Visible at every step", "Safe for exploration"] },
-    { icon: "🟠", title: "Bypass Approvals",  description: "Auto-approves all tool calls, auto-retries errors — no dialogs, but you are still in the room", items: ["Good for trusted tasks", "Faster iteration"] },
-    { icon: "🟢", title: "Full Autopilot",    description: "Auto-approves, auto-retries, auto-responds, continues until task_complete — leave the room", items: ["Enable with sandboxing", "v1.112: works in CLI too"] }
+    { icon: "1️⃣", title: "Open Agents Window", description: "Go to the Remote tab inside the Agents window in VS Code stable preview", items: ["No separate tooling required"] },
+    { icon: "2️⃣", title: "Connect via SSH or Tunnel", description: "Use an existing ~/.ssh/config entry, user@host string, or a running dev tunnel", items: ["Any existing SSH config works"] },
+    { icon: "3️⃣", title: "Host Starts on Remote", description: "VS Code installs its CLI server and starts the agent host on the target machine", items: ["Host persists after VS Code closes", "v1.132: connect from multiple windows"] }
   ]'
-  :progressDots='{ current: 2, total: 5, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
+  :progressDots='{ current: 2, total: 2, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-# Background Agents + Git Worktree
-<TwoColPairedConceptsSlide
-  :partNumber="1"
-  pillIcon="⚙️"
-  pillLabel="The Agent Platform: Background Agents"
-  title="Your Workspace Is Untouched"
-  :left='{
-    header: "Your Active Workspace",
-    icon: "🖥️",
-    items: [
-      { title: "You keep coding",       detail: "No files change, no distractions" },
-      "All current edits are safe",
-      { title: "You control the merge", detail: "Review the diff when the agent is done" }
-    ]
-  }'
-  :right='{
-    header: "The Agent Worktree",
-    icon: "⚙️",
-    items: [
-      { title: "Isolated Git worktree",  detail: "Created automatically per session" },
-      "Changes committed per turn to the worktree",
-      { title: "Parallel sessions OK",   detail: "Each gets its own isolated branch" }
-    ]
-  }'
-  :progressDots='{ current: 3, total: 5, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
-/>
-
----
-
-# Subagents and Parallelism
-<TwoColPairedConceptsSlide
-  :partNumber="1"
-  pillIcon="🔀"
-  pillLabel="The Agent Platform: Subagents"
-  title="Delegation and Parallelism"
-  :left='{
-    header: "Explore Subagent",
-    icon: "🔍",
-    items: [
-      { title: "Read-only research specialist", detail: "All codebase exploration for the Plan agent" },
-      "Runs on fast models — Claude Haiku 4.5, Gemini 3 Flash",
-      { title: "Clean main context",            detail: "Search tool calls stay out of your conversation" }
-    ]
-  }'
-  :right='{
-    header: "Nested Subagents (v1.113)",
-    icon: "🌳",
-    items: [
-      { title: "Orchestrators spawn specialists", detail: "Each in their own context window" },
-      "Independent subtasks run in parallel",
-      { title: "Recursive delegation",            detail: "Subagents can invoke other subagents" }
-    ]
-  }'
-  :progressDots='{ current: 4, total: 5, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
-/>
-
----
-
-# Agents Window Capstone
-<FourCardGridSlide
-  :partNumber="1"
-  pillIcon="🪟"
-  pillLabel="The Agent Platform: Agents Window"
-  title="Agents Window — Stable Preview (v1.120)"
-  :cards='[
-    { icon: "🚀", title: "Dispatch",           description: "Send tasks to any agent harness — Local, Background, Cloud, or Claude — from one dedicated panel" },
-    { icon: "👁️", title: "Monitor",            description: "Track all parallel session status, diffs, and completions in real time without switching tabs" },
-    { icon: "🔄", title: "Sync Before Work",   description: "New upstream sync button pulls latest changes into the worktree before agent work begins" },
-    { icon: "📋", title: "Review and Discard", description: "Completed sessions show all edits by default; discard selectively from the Changes panel" }
-  ]'
-  :progressDots='{ current: 5, total: 5, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
-/>
-
----
-
-# Part 2 — Your Models, Your Rules
+<!-- SLIDE: Part 2 — Open Model Workbench -->
+# Part 2 — Open Model Workbench
 <SectionOpenerSlide
   :partNumber="2"
-  title="Your Models, Your Rules"
-  subtitle="BYOK, thinking effort, and unified customization — ownership at every layer"
+  title="Open Model Workbench"
+  subtitle="BYOK is GA and needs no GitHub sign-in — any compatible provider drives chat, tools, and MCP"
   :cards='[
-    { icon: "🔑", title: "Bring Your Own Key", blurb: "Add Anthropic or Azure OpenAI keys — models appear instantly in the picker" },
-    { icon: "🎛️", title: "Thinking Effort",    blurb: "Low / Medium / High — now for all BYOK models in v1.120, not just Claude" },
-    { icon: "📋", title: "Chat Customizations", blurb: "One editor: instructions, agents, skills, and plugins in one place" }
+    { icon: "🔑", title: "BYOK Without Sign-In", blurb: "Any provider key — GA, no GitHub account needed" },
+    { icon: "🏠", title: "Local via Ollama", blurb: "Pull models locally; zero network requests, air-gap ready" },
+    { icon: "🔧", title: "Custom + Utility", blurb: "Stable gateway endpoint + per-task model tuning" }
   ]'
-  :terminal='{ context: "v1.120: thinking effort extended to all BYOK models", detail: "One reasoning dial controls all your models" }'
+  :terminal='{ context: "PRIMARY DEMO: model picker → Manage Models… → add provider", detail: "models appear instantly — billing and rate limits via provider" }'
 />
 
 ---
 
-# BYOK + Thinking Effort
+<!-- SLIDE: BYOK is GA: Three Provider Paths -->
+# BYOK is GA: Three Provider Paths
 <ThreeColumnCardSlide
   :partNumber="2"
   pillIcon="🔑"
-  pillLabel="Your Models, Your Rules: BYOK"
-  title="Bring Your Own Key — 90-Second Setup"
+  pillLabel="Open Model Workbench · Provider Paths"
+  title="BYOK is GA: No GitHub Sign-In Required"
   :columns='[
-    { icon: "📌", title: "Open the Picker",    description: "Model picker → Manage Models… → pick a provider: OpenAI, Anthropic, Azure OpenAI, Google, or Ollama", items: ["Admin enables BYOK policy first", "No VS Code settings needed"] },
-    { icon: "🔑", title: "Add Your Key",        description: "Paste the API key — all models for that key appear instantly as selectable options in the picker", items: ["Billing goes to your provider", "Rate limits from your plan"] },
-    { icon: "🎛️", title: "Set Thinking Effort", description: "Select Low / Medium / High in the same picker — extended to all BYOK models in v1.120", items: ["Low: fast answers", "High: complex reasoning"] }
+    { icon: "☁️", title: "Cloud Providers", description: "Anthropic, Azure OpenAI, Gemini, OpenAI, OpenRouter — add key in Manage Models…", items: ["Billing and rate limits via provider", "No Copilot quota consumed"] },
+    { icon: "🏠", title: "Local via Ollama", description: "VS Code auto-discovers pulled Ollama models — zero network requests leave the machine", items: ["Air-gap and data-residency safe", "Full chat, tools, and MCP support"] },
+    { icon: "⚠️", title: "One Firm Boundary", description: "Inline completions and NES still require GitHub sign-in — BYOK covers chat and agents only", items: ["No BYOK path for ghost-text completions", "Plan inline suggestions separately"] }
   ]'
-  :progressDots='{ current: 1, total: 2, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :progressDots='{ current: 1, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-# Chat Customizations + Org Governance
+<!-- SLIDE: Local Models via Ollama -->
+# Local Models via Ollama
+<CodeWithFeaturesSlide
+  :partNumber="2"
+  pillIcon="🏠"
+  pillLabel="Open Model Workbench · Local Models"
+  title="Local Models via Ollama: Zero Network Requests"
+  codePosition="left"
+  :code='{ language: "bash", filename: "terminal", content: "# 1. Install Ollama (ollama.com)\n# 2. Pull models locally\nollama pull llama3.2\nollama pull codestral\n\n# 3. In VS Code:\n# model picker → Manage Models… → Ollama\n# VS Code discovers pulled models automatically" }'
+  :features='[
+    { icon: "🔍", title: "Auto-Discovery", description: "VS Code finds all locally pulled Ollama models without manual registration" },
+    { icon: "🔒", title: "Air-Gap Ready", description: "Zero network requests — data residency guaranteed for sensitive codebases" },
+    { icon: "🛠️", title: "Full Feature Parity", description: "All chat features, tool execution, and MCP work with local Ollama models" }
+  ]'
+  :progressDots='{ current: 2, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Stable Custom Endpoint and Utility Models -->
+# Stable Custom Endpoint and Utility Models
+<CodeWithFeaturesSlide
+  :partNumber="2"
+  pillIcon="🔧"
+  pillLabel="Open Model Workbench · Custom + Utility"
+  title="Stable Custom Endpoint and Utility Model Tuning"
+  codePosition="left"
+  :code='{ language: "json", filename: "settings.json", content: "{\n  // Route all VS Code Copilot chat through\n  // your own gateway — Chat: Manage Language Models\n  // Add → Custom Endpoint → choose API family\n\n  // Split utility tasks to a cheaper model\n  \"chat.utilityModel\": \"[configured-model-id]\",\n  \"chat.utilitySmallModel\": \"[fast-local-model-id]\"\n}" }'
+  :features='[
+    { icon: "🌐", title: "Custom Endpoint (Stable)", description: "Any Chat Completions, Responses, or Messages API gateway — stable since v1.122" },
+    { icon: "⚡", title: "Utility Model Split", description: "Frontier model for primary work; fast local model for titles, summaries, and commits" },
+    { icon: "💰", title: "Cost and Compliance", description: "Route all chat traffic through your internal gateway for logging and cost control" }
+  ]'
+  :progressDots='{ current: 3, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Model Selection: Four Paths -->
+# Model Selection: Four Paths
 <FourCardGridSlide
   :partNumber="2"
-  pillIcon="📋"
-  pillLabel="Your Models, Your Rules: Customization"
-  title="One Surface. All Your Rules."
+  pillIcon="🗺️"
+  pillLabel="Open Model Workbench · Model Selection"
+  title="Model Selection: Four Paths for Four Needs"
   :cards='[
-    { icon: "📄", title: "Instructions",   description: "/init bootstraps instructions from your codebase. /create-* builds skills and agents from chat" },
-    { icon: "🤝", title: "Agent Skills",   description: "GA by default — one SKILL.md per domain, isolated context (v1.118), auto-applied automatically" },
-    { icon: "🔌", title: "Plugins",        description: "Bundles of skills, commands, MCP servers, and hooks from Extensions view — search with @agentPlugins" },
-    { icon: "🏢", title: "Org Governance", description: "Org-level instructions and org restrictions (v1.118) enforce standards across all developers" }
+    { icon: "💬", title: "Interactive Chat", description: "Frontier model via Copilot or BYOK provider key" },
+    { icon: "📚", title: "Large Codebase Analysis", description: "BYOK provider with 1M-token context + direct API access" },
+    { icon: "⚡", title: "Utility Sub-Tasks", description: "Fast local or low-cost model for titles, summaries, commit messages" },
+    { icon: "🔒", title: "Sensitive or Air-Gap", description: "Ollama local model — zero data leaves the machine" }
   ]'
-  :progressDots='{ current: 2, total: 2, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :progressDots='{ current: 4, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-# Part 3 — Responsible Scale
+<!-- SLIDE: Part 3 — Parallel Agent Work -->
+# Part 3 — Parallel Agent Work
 <SectionOpenerSlide
   :partNumber="3"
-  title="Responsible Scale"
-  subtitle="Trust architecture, OTel observability, and cost controls built before the billing meter started"
+  title="Parallel Agent Work"
+  subtitle="The Agents window evolves from a monitor to a workspace — multiple sessions, side chats, and live activity at a glance"
   :cards='[
-    { icon: "🔒", title: "Trust Architecture",    blurb: "MCP and terminal sandboxing plus command risk assessment as safety rails" },
-    { icon: "📡", title: "OpenTelemetry Tracing", blurb: "End-to-end spans per session — audit trails for your platform" },
-    { icon: "💰", title: "93% Cache Hit Rate",    blurb: "Shipped in the same release cycle as June 2026 usage-based billing" }
+    { icon: "🪟", title: "Multiple Sessions", blurb: "Each session: isolated worktree, tools, and model config" },
+    { icon: "💬", title: "/btw Side Chats", blurb: "Ask lateral questions; main agent turn keeps running" },
+    { icon: "👁️", title: "Live Activity Pills", blurb: "Surface changes, previews, subagents, browsers at a glance" }
   ]'
-  :terminal='{ context: "Individual-contributors path — compressed to 8 minutes", detail: "Safety rails named · OTel in one slide · billing as the climax" }'
+  :terminal='{ context: "Preview: Agents window as multi-session workspace", detail: "/btw and activity pills are GA in v1.132" }'
 />
 
 ---
 
-# Trust Architecture
-<ThreeColumnCardSlide
+<!-- SLIDE: /btw and Live Activity Pills -->
+# /btw and Live Activity Pills
+<TwoColPairedConceptsSlide
   :partNumber="3"
-  pillIcon="🔒"
-  pillLabel="Responsible Scale: Trust Architecture"
-  title="Three Safety Rails Before Execution"
-  :columns='[
-    { icon: "🗂️", title: "MCP Server Sandboxing",  description: "MCP servers run in OS-level sandbox on macOS and Linux — filesystem and network access blocked", items: ["Enable per-server in mcp.json", "VS Code prompts for extra access"] },
-    { icon: "💻", title: "Terminal Sandboxing",     description: "Terminal: workspace-only files; network blocked by default; allowlist for trusted domains", items: ["macOS: sandbox-exec", "Linux: Landlock/seccomp"] },
-    { icon: "⚠️", title: "Command Risk Assessment", description: "v1.120: commands assessed before execution — warnings for destructive operations", items: ["No config needed", "Works in Autopilot mode too"] }
-  ]'
+  pillIcon="💬"
+  pillLabel="Parallel Agent Work · GA Features"
+  title="/btw Side Chats and Live Activity Pills"
+  :left='{
+    header: "/btw Side Chat (GA v1.132)",
+    icon: "💬",
+    items: [
+      { title: "Opens without pausing the active turn", detail: "Main agent keeps executing while you type" },
+      "Shares context and prompt cache with main chat",
+      "Captures observations without interrupting the task",
+      { title: "/btw should we use the builder pattern here?", detail: "Ask mid-tool-chain; main turn keeps running" }
+    ]
+  }'
+  :right='{
+    header: "Live Activity Pills (GA v1.132)",
+    icon: "👁️",
+    items: [
+      { title: "Changes, Previews, Subagents, Browsers", detail: "All visible at a glance in the Agents window" },
+      "Navigate directly to an active subagent or browser",
+      "Pills clear when a turn completes — no noise accumulation",
+      { title: "Replaces manual polling for Autopilot sessions", detail: "No need to check the terminal and come back" }
+    ]
+  }'
   :progressDots='{ current: 1, total: 2, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# OTel + Billing Climax
-<HeroStatSlide
+<!-- SLIDE: Agents Window: Dashboard to Workspace -->
+# Agents Window: Dashboard to Workspace
+<BeforeAfterPanelsSlide
   :partNumber="3"
-  pillIcon="📡"
-  pillLabel="Responsible Scale: Cost Controls"
-  title="They Built the Cost Controls Before the Meter"
-  subtitle="93% prompt cache hit rate — shipped in the same release cycle as June 2026 usage-based billing"
-  :hero='{ value: "93%", label: "prompt cache hit rate across all agent sessions", source: "VS Code v1.118 telemetry — shipped before usage-based billing launched" }'
-  :supporting='[
-    { icon: "📡", title: "OpenTelemetry Tracing (v1.119)", description: "End-to-end spans, tool call latency, audit trails — plug into Datadog, Grafana, or any platform" },
-    { icon: "💾", title: "Prompt Caching + Compaction",    description: "Cache-stable prompts and background compaction reduce token spend automatically — no config needed" },
-    { icon: "💰", title: "June 2026: Usage-Based Billing", description: "~40% cost reduction from caching before billing launched. OTel shows what the agent consumed." }
-  ]'
-  :insight='{ icon: "🔑", text: "OTel is enterprise trust infrastructure, not session debugging — this is what lets teams deploy agents without hand-holding." }'
+  pillIcon="🪟"
+  pillLabel="Parallel Agent Work · Window Evolution"
+  title="Agents Window: From Dashboard to Workspace"
+  :before='{
+    header: "Dashboard (before v1.121)",
+    items: [
+      "One session visible at a time",
+      "No lateral questions during an active agent turn",
+      "Manual check to see what the agent is doing",
+      "Worktree scoped to a single harness type"
+    ]
+  }'
+  :after='{
+    header: "Workspace (v1.121–1.132, Preview)",
+    items: [
+      "Multiple sessions side-by-side with grouping and filter",
+      "/btw side chat without interrupting the active turn",
+      "Live pills surface changes, subagents, and browsers",
+      "Worktrees work across local, remote, and SDK harnesses"
+    ]
+  }'
   :progressDots='{ current: 2, total: 2, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Part 4 — In Your Workflow
+<!-- SLIDE: Part 4 — Closed-Loop Delivery -->
+# Part 4 — Closed-Loop Delivery
 <SectionOpenerSlide
   :partNumber="4"
-  title="In Your Workflow"
-  subtitle="From a 7-day community reversal to a browser that thinks alongside you"
+  title="Closed-Loop Delivery"
+  subtitle="GA browser tools close the build-validate-review cycle without leaving the Agents window session"
   :cards='[
-    { icon: "↩️", title: "They Listened",       blurb: "Added v1.118, reverted in 7 days after community feedback" },
-    { icon: "🌐", title: "Browser Tab Sharing", blurb: "Agent reads your live DOM, applies fixes, confirms — no alt-tab required" },
-    { icon: "🧠", title: "Copilot Memory",      blurb: "Surfaces prior context automatically — zero setup required" }
+    { icon: "🌐", title: "GA Browser Tools", blurb: "Navigation, screenshot, interaction — GA, no config needed" },
+    { icon: "📸", title: "Device Emulation", blurb: "Device presets; screenshots attach to the chat turn" },
+    { icon: "💬", title: "Element Comments", blurb: "Select elements in v1.132, anchor a comment per element" }
   ]'
-  :terminal='{ context: "Expanded path: time from compressed S3 goes here", detail: "Commit attribution story · browser demo · Memory two-beat close" }'
+  :terminal='{ context: "CLIMAX DEMO: implement → emulate → screenshot → annotate elements → re-validate", detail: "all inside one session, no context switch" }'
 />
 
 ---
 
-# Commit Attribution Revert
-<BeforeAfterPanelsSlide
-  :partNumber="4"
-  pillIcon="↩️"
-  pillLabel="In Your Workflow: Community Trust"
-  title="They Added It. The Community Said No. They Reverted in 7 Days."
-  :before='{
-    header: "v1.118 — Shipped",
-    items: [
-      { title: "Co-authored-by: Copilot", detail: "Added to every AI-assisted commit by default" },
-      "Enabled via git.addAICoAuthor = true",
-      "On by default — no opt-in required",
-      "Community reaction: immediate and loud"
-    ]
-  }'
-  :after='{
-    header: "v1.119 — Reverted",
-    items: [
-      { title: "Reverted to opt-in",   detail: "Seven days after v1.118 shipped" },
-      "git.addAICoAuthor now defaults to false",
-      "The setting still exists for those who want it",
-      { title: "The relationship",     detail: "They ship fast and listen faster" }
-    ]
-  }'
-  :progressDots='{ current: 1, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
-/>
-
----
-
-# Browser Tab Sharing
-<AITerminalTranscriptSlide
+<!-- SLIDE: Browser Validation Before vs After -->
+# Browser Validation Before vs After
+<WorkflowShowdownStepsSlide
   :partNumber="4"
   pillIcon="🌐"
-  pillLabel="In Your Workflow: Browser Tab Sharing"
-  title="The Agent Reads Your Live DOM"
-  subtitle="No alt-tab, no copy-paste, no screenshot — the agent sees what you see"
-  :transcript='[
-    { type: "prompt",   text: "copilot" },
-    { type: "user",     text: "The button color looks wrong on the live page. Fix it." },
-    { type: "thinking", label: "🤔 Agent: checking available browser tabs..." },
-    { type: "response", lines: ["I can see 1 browser tab open (localhost:3000).", "Can I access it to inspect the DOM directly?"] },
-    { type: "user",     text: "Yes, share it." },
-    { type: "divider" },
-    { type: "thinking", label: "🔍 Reading DOM via readPage..." },
-    { type: "response", lines: ["Found: .btn-primary { color: #1a7fba }", "Expected: #0969da (GitHub blue)", "Applying fix to Button.css..."] },
-    { type: "outcome",  text: "CSS patched. Tab reloaded. Button color confirmed correct." }
+  pillLabel="Closed-Loop Delivery · Before vs After"
+  title="Browser Validation: Before vs After GA Tools"
+  subtitle="Closing the loop without leaving the session"
+  leftLabel="Manual Browser Validation"
+  rightLabel="With GA Browser Tools"
+  :steps='[
+    { left: { label: "Code the UI change", note: "Edit in the editor" }, right: { label: "Code the UI change", note: "Edit in the editor" } },
+    { left: { label: "Open browser manually", note: "Switch to a separate browser tab" }, right: { label: "Agent opens localhost page", note: "Browser opens in the integrated panel" } },
+    { left: { label: "Resize manually for mobile", note: "Approximate the device viewport" }, right: { label: "Agent emulates device preset", note: "iPhone 15, Galaxy S24, or custom viewport" } },
+    { left: { label: "Annotate in external tool", note: "Screenshot, paste, mark up separately" }, right: { label: "Screenshot attaches to chat turn", note: "Validation evidence is part of the conversation" } },
+    { left: { label: "Copy feedback back into chat", note: "Describe the issues in words" }, right: { label: "Select elements, anchor a comment each", note: "Precise per-element feedback (v1.132)" } }
   ]'
-  footerMetric="Zero alt-tabs. Zero copy-paste. Confirmed in the chat thread."
-  :progressDots='{ current: 2, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+  :outcomeLeft='{ icon: "🔄", label: "3–5 context switches per iteration" }'
+  :outcomeRight='{ icon: "✅", label: "Full loop inside one session" }'
+  summaryMetric="3–5 context switches per iteration → 0"
+  :progressDots='{ current: 1, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-# Chat UX Quick Wins
+<!-- SLIDE: The Closing Demo: Emulate, Screenshot, Annotate -->
+# The Closing Demo: Emulate, Screenshot, Annotate
+<AITerminalTranscriptSlide
+  :partNumber="4"
+  pillIcon="📸"
+  pillLabel="Closed-Loop Delivery · Live Demo"
+  title="The Closing Demo: Emulate, Screenshot, Annotate"
+  subtitle="Implement → emulate → screenshot → element comment → re-validate, all in one session"
+  :transcript='[
+    { type: "prompt", text: "agent" },
+    { type: "user", text: "Implement the mobile login form and validate it on iPhone 15" },
+    { type: "thinking", label: "Copilot agent — browser tools active:" },
+    { type: "response", lines: ["Opening http://localhost:3000/login...", "Emulating iPhone 15 (390x844 viewport)..."] },
+    { type: "divider" },
+    { type: "outcome", text: "Screenshot attached to this turn: login-mobile.png" },
+    { type: "user", text: "[element comment on .btn-submit] Tap area is 28px — needs 44x44px min for accessibility" },
+    { type: "divider" },
+    { type: "outcome", text: "Applied: min-height: 44px; padding: 12px on .btn-submit" },
+    { type: "outcome", text: "Screenshot attached: login-mobile-v2.png — tap area confirmed" }
+  ]'
+  footerMetric="implement → emulate → screenshot → annotate elements → re-validate: all in one session"
+  :progressDots='{ current: 2, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Where the Loop Is Heading (Preview) -->
+# Where the Loop Is Heading (Preview)
 <ThreeColumnCardSlide
   :partNumber="4"
-  pillIcon="⚡"
-  pillLabel="In Your Workflow: Chat UX"
-  title="Quick Wins You Will Use Every Day"
+  pillIcon="🔭"
+  pillLabel="Closed-Loop Delivery · Preview Direction"
+  title="Where the Loop Is Heading (Preview)"
   :columns='[
-    { icon: "↔️", title: "Inline Diffs (v1.119)",  description: "Code changes visible as diffs in the chat thread — no tab-switching to review", items: ["No separate diff view needed", "Markdown diff preview in v1.120"] },
-    { icon: "🔍", title: "#codebase Search",        description: "Purely semantic — no fuzzy fallback. Unified index, consistent results, managed by VS Code", items: ["Simplified in v1.114", "Reindex if you had local indexes"] },
-    { icon: "📋", title: "Copy Final Response",     description: "Right-click → Copy Final Response for clean Markdown only. /troubleshoot #session for past sessions", items: ["Right-click in chat", "Works across session history"] }
+    { icon: "📋", title: "In-Window Diff Review", description: "Apply, revert, or cherry-pick per file; inline comments the agent acts on in later turns", items: ["Preview in Agents window"] },
+    { icon: "🔄", title: "CI Feedback in Session", description: "Failed check details surface in the session — read, fix, and re-run without tab-switching", items: ["Preview: CI response in-window"] },
+    { icon: "💬", title: "PR Comment Response", description: "PR review comments surface on the branch; respond, apply, or mark addressed in-window", items: ["Preview: PR feedback in-session"] }
   ]'
-  :progressDots='{ current: 3, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+  :progressDots='{ current: 3, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-# Copilot Memory
-<TwoColPairedConceptsSlide
-  :partNumber="4"
-  pillIcon="🧠"
-  pillLabel="In Your Workflow: Copilot Memory"
-  title="It Gets Smarter the Longer You Use It"
-  :left='{
-    header: "Returning to a Project",
-    icon: "🔄",
-    items: [
-      { title: "Open the project cold",         detail: "No prompt, no context dump needed" },
-      "Memory surfaces prior context automatically",
-      { title: "Plans persist across sessions", detail: "Even after context compaction" },
-      "Preferences, conventions, decisions — all remembered"
-    ]
-  }'
-  :right='{
-    header: "Zero Setup Required",
-    icon: "✨",
-    items: [
-      { title: "Enable once",         detail: "github.copilot.chat.copilotMemory.enabled: true" },
-      "Infers from prior sessions — no explicit save needed",
-      { title: "Cold-open inference", detail: "New project benefits from patterns across others" },
-      "Gets smarter the longer you use it"
-    ]
-  }'
-  :progressDots='{ current: 4, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
-/>
-
----
-
-# Before and After
+<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
-  header="The Shift: Assistant to Agent Platform"
+  header="From Window-Bound Sessions to Portable Agent Infrastructure"
   :leftItems='[
-    "One conversation, one task at a time",
-    "You write the plan, Copilot executes steps on request",
-    "Context resets between sessions",
-    "Monitor every file change manually"
+    "Agent stops when the VS Code window closes",
+    "One provider; GitHub sign-in required for chat and tools",
+    "Manual browser validation with context switches per iteration",
+    "CI failures and PR review require separate browser tabs"
   ]'
   :rightItems='[
-    "Parallel sessions dispatched from the Agents Window",
-    "Full Autopilot: auto-approve, auto-retry, until task_complete",
-    "Copilot Memory surfaces prior context automatically",
-    "OTel traces audit every tool call end-to-end"
+    "Agent host persists on remote infrastructure after disconnect",
+    "Any BYOK provider or local Ollama model — no GitHub sign-in",
+    "GA browser: device emulation, element comments inside the session",
+    "CI failures and PR comments surfaced inside the Agents window"
   ]'
   :metrics='[
-    { value: "93%",    detail: "prompt cache hit rate — cost controls before billing launched" },
-    { value: "4",      detail: "agent session types: Local, Background, Cloud, Claude" },
-    { value: "v1.120", detail: "Agents Window stable — from Insiders-only to production-ready" }
+    { value: "6+", detail: "BYOK provider types including local Ollama" },
+    { value: "GA", detail: "browser tools with device emulation since June 2026" },
+    { value: "0", detail: "GitHub sign-in required for chat, tools, and MCP" }
   ]'
 />
 
 ---
 
+<!-- SLIDE: What You Can Do Today -->
 # What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
-    "Open the Agents Window (View → Agents) and dispatch your first background task",
-    "Enable Full Autopilot on a low-risk refactor — see how far it goes unsupervised"
+    "Open model picker → Manage Models… → add a BYOK provider key",
+    "Pull an Ollama model locally and connect it in VS Code",
+    "Run a UI task and validate it using GA browser tools"
   ]'
   :thisWeek='[
-    "Add a BYOK model key and compare thinking effort levels on a complex architectural decision",
-    "Add a .github/copilot-instructions.md to your repo — org-level context, zero runtime cost"
+    "Configure utility models to split frontier vs. background tasks",
+    "Try /btw for a lateral question during a long agent turn",
+    "Set up a remote agent host via SSH for a long-running task"
   ]'
   :thisMonth='[
-    "Enable OpenTelemetry tracing and review agent cost before your first usage-based billing cycle",
-    "Build a team SKILL.md for your most-repeated coding pattern — deploy to everyone at once"
+    "Evaluate Custom Endpoint for team-wide cost and compliance routing",
+    "Explore Agents window parallel sessions for independent concurrent tasks",
+    "Review session diffs in-window and respond to CI feedback in-session"
   ]'
-  footer="v1.120 is generally available now — start with the Agents Window and work backward."
+  footer="The session is no longer the window — portable agents, open models, and closed-loop review are all available today."
 />
 
 ---
 
+<!-- SLIDE: References -->
 # References
 <ReferencesSlide
   :groups='[
-    { title: "📖 Release Notes", color: "cyan", items: [
-      { href: "https://code.visualstudio.com/updates/v1_120", label: "VS Code v1.120 — May 13, 2026",   description: "Agents Window stable, command risk assessment, terminal compression, BYOK thinking effort" },
-      { href: "https://code.visualstudio.com/updates/v1_119", label: "VS Code v1.119 — May 6, 2026",    description: "Browser tab sharing, OpenTelemetry tracing, inline diffs, commit attribution revert" },
-      { href: "https://code.visualstudio.com/updates/v1_118", label: "VS Code v1.118 — April 29, 2026", description: "Remote Copilot CLI, 93% prompt cache hit rate, enterprise org restrictions" },
-      { href: "https://code.visualstudio.com/updates/v1_117", label: "VS Code v1.117 — April 22, 2026", description: "BYOK for Enterprise, incremental chat rendering, agent session sorting" },
-      { href: "https://code.visualstudio.com/updates/v1_110", label: "VS Code v1.110 – v1.115",          description: "Agent Plugins, Autopilot mode, Agents companion app, MCP sandboxing, background agents" }
+    { title: "📖 Official Documentation", color: "cyan", items: [
+      { href: "https://code.visualstudio.com/updates/v1_132", label: "VS Code release notes: August 5, 2026 (v1.132)", description: "Full release notes including element comments and multi-window agent sessions" },
+      { href: "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases", label: "GitHub Copilot in VS Code: July 2026 releases", description: "/btw side chats, live activity pills, and Agents window workspace updates" },
+      { href: "https://github.blog/changelog/2026-07-08-github-copilot-in-visual-studio-code-june-2026-releases", label: "GitHub Copilot in VS Code: June 2026 releases", description: "GA browser tools, BYOK without sign-in, Stable Custom Endpoint" },
+      { href: "https://code.visualstudio.com/updates/v1_122", label: "VS Code release notes: May 28, 2026 (v1.122)", description: "Stable Custom Endpoint and 1M-token context support" },
+      { href: "https://code.visualstudio.com/updates/v1_121", label: "VS Code release notes: May 20, 2026 (v1.121)", description: "Agent Host Protocol and Copilot SDK remote agent host introduced" },
+      { href: "https://code.visualstudio.com/docs/copilot/overview", label: "GitHub Copilot in VS Code documentation", description: "Complete reference for all Copilot features in VS Code" },
+      { href: "https://code.visualstudio.com/docs/copilot/agents/background-agents", label: "Background Agents documentation", description: "Remote agent host setup, connection, and reconnect patterns" }
     ] },
-    { title: "📚 Documentation", color: "purple", items: [
-      { href: "https://code.visualstudio.com/docs/copilot/overview",                   label: "GitHub Copilot in VS Code", description: "Official documentation and setup guide" },
-      { href: "https://code.visualstudio.com/docs/copilot/agents/background-agents",   label: "Background Agents",         description: "Git worktree isolation, session management, review workflow" },
-      { href: "https://code.visualstudio.com/docs/copilot/customization/agent-skills", label: "Agent Skills",              description: "Creating and deploying SKILL.md files for your team" }
+    { title: "🛠️ Related Content", color: "purple", items: [
+      { label: "Copilot SDK Talk", description: "Deep dive into the Copilot SDK harness and Agent Host Protocol" },
+      { label: "MCP Apps Talk", description: "Connecting MCP servers to VS Code Copilot sessions and workflows" },
+      { href: "https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot", label: "Upcoming September 2026 model deprecations in GitHub Copilot", description: "Context for why this talk uses durable frontier-model guidance instead of named catalog entries" }
     ] }
   ]'
 />
 
 ---
 
+<!-- SLIDE: Thank You -->
 # Thank You
 <ThankYouSlide
-  title="The Agent Platform Is Here"
-  subtitle="Ten releases. One shift: from AI you chat with to a fleet you orchestrate."
+  title="VS Code Copilot 1.121–1.132"
+  subtitle="Portable Agent Infrastructure, Open Models, and a Closed Review Loop"
   :cards="[
-    { value: 'Agents Window', detail: 'Stable preview in v1.120 — dispatch, monitor, and parallelize autonomous sessions from one dedicated panel' },
-    { value: '93% cache hit', detail: 'Cost controls shipped before the billing meter — OTel traces show exactly what the agent consumed' },
-    { value: 'Browser tabs',  detail: 'Agent reads your live DOM and fixes what it sees — no alt-tab, no copy-paste, confirmed in the chat thread' }
+    { value: 'BYOK GA', detail: 'Any model, no GitHub sign-in — chat, tools, and MCP' },
+    { value: 'Ollama', detail: 'Local models, zero network requests, air-gap ready' },
+    { value: 'AHP', detail: 'Session outlives the window — remote hosts, multi-client' },
+    { value: 'Browser GA', detail: 'Emulate, screenshot, element comments — no context switch' }
   ]"
-  prompt="What would you hand to an agent this week?"
+  prompt="Which capability changes how your team works first — model choice, remote agents, or the browser validation loop?"
 />

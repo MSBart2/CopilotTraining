@@ -1,0 +1,51 @@
+version: 1
+
+refresh:
+  talk: "[tech-talks/topic]"
+  cutoff: "[YYYY-MM-DD]"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "[YYYY-MM-DD]"
+    lastBuildDate: "[RFC 822 timestamp]"
+  status: proposed
+  approved: null
+  updateLevel: content
+  rationale: >
+    [Why this is a reference, content, or structural update.]
+  userEmphasis: []
+
+  accepted:
+    - title: "[Announcement title]"
+      published: "[YYYY-MM-DD]"
+      source: "[First-party URL]"
+      verified: "[YYYY-MM-DD]"
+      releaseStatus: "[preview|experimental|ga|deprecated|retired]"
+      importance: "[headline|supporting|reference]"
+      targetSection: "[Existing or proposed README section]"
+      action: "[add|replace|remove|update]"
+      summary: "[Verified behavior and practical impact]"
+      limitations: []
+      recipeImpact: "[none|confirm|restructure]"
+      slideImpact: "[none|regenerate|replace-demo]"
+
+  ignored:
+    - title: "[Announcement title]"
+      source: "[URL]"
+      reason: "[Why it belongs elsewhere or does not affect this talk]"
+      relatedTalks: []
+
+  removals: []
+  anomalies: []
+
+  recipeReview:
+    required: true
+    question: >
+      Does the new evidence require changing the talk's thesis, section order,
+      weighting, highlights, or demos?
+
+  validation:
+    firstPartySourcesVerified: false
+    readmePatched: false
+    recipeApproved: false
+    slidesRegenerated: false
+    deckBuildPassed: false

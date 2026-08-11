@@ -4,6 +4,36 @@ Confirmed facts specific to the tech-talk content pipeline, workflow, and catalo
 
 ---
 
+## copilot-code-review deck regenerated — Lite/Balanced effort + calculator anchor (2026-08-10)
+
+`schema_version: 1` | `date: 2026-08-10`
+
+`tech-talks/copilot-code-review/` is a complete, building tech-talk in the **Developers** section. 25 slides.
+
+**Three non-negotiable framing points** (from content refresh 2026-08-10 + approved recipe):
+1. **Lite and Balanced are the GA names (not Low and Medium).** Low/Medium carry forward to Lite/Balanced for existing configurations. These effort levels are available on Copilot Pro, Pro+, Max, Business, and Enterprise. Org admins set a default; repos inherit; individual reviews can override per-review (applies only to that review). PR timeline and overview show which effort level was used.
+2. **The interactive time-savings calculator is the ROI anchor, not YAML or SQL.** The calculator at https://copilot-code-review--clee1211.github.app/ takes real PR analytics + review-time assumptions and produces cycle-time improvement, hours saved, and a prewritten executive summary. The key distinction: it separates cycle-time (days open) from review effort (minutes spent) — that makes the savings claim defensible to engineering leadership and finance.
+3. **"Best Practices and Team Adoption" is deliberately kept as Part 2** (not "The Solution: GitHub Copilot Code Review"). Practitioner audience framing: "adopt → measure" flows more naturally than "solution → adopt." If future presenter audiences skew decision-maker, swap to "The Solution" framing per the recipe OPEN DECISION note.
+
+**Deck structure:** Configuration and Quick Start (high, 4 slides) → Best Practices and Adoption (medium-high, 3 slides) → ROI and Business Impact (high, 4 slides) → Compliance and Regulatory Guidance (medium, 2 slides). 78.9% cycle-time improvement stat at Part 3 (HeroStatSlide) is the persuasion peak.
+
+---
+
+## copilot-code-quality deck regenerated — billing boundary + onboarding framing (2026-08-10)
+
+`schema_version: 1` | `date: 2026-08-10`
+
+`tech-talks/copilot-code-quality/` is a complete, building tech-talk in the **Developers** section. 24 slides.
+
+**Three non-negotiable framing points** (from content refresh + revised recipe):
+1. **Code Quality does NOT auto-enable Copilot review.** GitHub disabled auto-review in GitHub-generated rulesets; edited/user-authored rulesets were untouched. Copilot review requires its own repository or org ruleset and is billed to the Copilot plan, not the Code Quality per-committer charge.
+2. **Agent-generated coverage PR is optional onboarding.** In public preview on github.com, Code Quality settings can open a reviewable PR with a least-privilege workflow. Manual workflow authoring remains the full-control path and is never blocked.
+3. **Active-committer billing is org-wide, not per-repo.** 50 committers across 12 repos = same bill as 50 committers on 1 repo. The "same 50 people" insight is the key educational moment for platform teams.
+
+**Deck structure:** Coverage Gates (high, 4 slides) → Autofix + Review Boundary (medium, 2 slides) → Reading the Bill (high, 4 slides) → Rolling Out Without Surprises (medium, 2 slides). $500+/month worked example at Part 3 slide 2 (HeroStatSlide) is the number audiences repeat.
+
+---
+
 ## copilot-app deck complete — Trust Ladder framing (2026-06-16)
 
 `schema_version: 1` | `date: 2026-06-16`

@@ -601,7 +601,7 @@ The first `---` separator belongs **after** the TitleSlide closing `/>`, not bef
 
 All tech-talk components use **hardcoded styles only** — no style props are accepted or passed from deck files. Never add `backgroundClass`, `headingClass`, `pillClass`, or similar style-string props. Put all color/gradient decisions inside the component's constants.
 
-**TitleSlide current props:** `title` (required), `subtitle` (required), `tagline` (default `""`), `meta` (default `""`).
+**TitleSlide current props:** `title`, `subtitle`, `tagline`, and `meta` are all required. Missing values render the component's visual validation guard even when the Slidev build passes.
 
 ---
 

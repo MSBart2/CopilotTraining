@@ -1,0 +1,111 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/enterprise-patterns"
+  cutoff: "2026-03-23"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    Four announcements turn the talk's abstract governance and measurement
+    guidance into concrete product mechanisms: directional ROI cards, per-agent
+    usage fields, team-specialized managed settings, and model-migration policy.
+    These strengthen existing pillars without replacing the central thesis.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "d95bfbf8a05e2cd0"
+      title: "Copilot impact dashboard adds a return on investment section"
+      published: "2026-08-07"
+      source: "https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "Measuring Adoption and ROI"
+      action: add
+      summary: >
+        Enterprise and organization dashboards now compare early-phase and
+        agent-first developers using cost per developer per month, payroll share,
+        and pull requests per developer, with a salary modeling control.
+      limitations:
+        - "The Copilot usage metrics policy must be enabled and the viewer needs View Copilot Metrics permission."
+        - "Costs are AI-credit estimates and salary is a modeling input; GitHub says to treat the result as directional."
+        - "The dashboard cohort correction covers every active user in the 28-day window and does not change API or NDJSON exports."
+      recipeImpact: confirm
+      slideImpact: regenerate
+    - ledgerEventId: "3456a948813162ca"
+      title: "Copilot usage metrics API adds agent app activity"
+      published: "2026-08-07"
+      source: "https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "Measuring Adoption and ROI"
+      action: add
+      summary: >
+        The optional totals_by_3rd_party_agent array identifies recognized agent
+        apps with stable agent_id, display name, job starts, and aggregate session
+        counts across enterprise and organization usage reports.
+      limitations:
+        - "Join on agent_id because display names can change."
+        - "Do not add nested user_initiated_interaction_count to the top-level field of the same name."
+        - "Per-user entries omit session_count; unidentified agents are omitted; absent activity omits the array."
+      recipeImpact: confirm
+      slideImpact: regenerate
+    - ledgerEventId: "08658e29b45a99aa"
+      title: "Enterprise team specialization for managed settings"
+      published: "2026-08-03"
+      source: "https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: headline
+      targetSection: "Multi-Team Coordination: Federated Governance That Scales"
+      action: replace
+      summary: >
+        Enterprise administrators can mark managed-setting keys overridable, map
+        files under copilot/teams/ to team slugs with team-mappings.json, and let
+        teams specialize permitted values while non-overridable enterprise choices
+        remain locked. Multiple team settings combine using the least restrictive
+        value beneath the enterprise policy.
+      limitations:
+        - "enabledPlugins and extraKnownMarketplaces are additive, so teams can grow but not shrink the enterprise baseline."
+        - "Current enforcement covers VS Code, Copilot CLI, the Copilot App, and Copilot cloud agent for Business or Enterprise licenses."
+      recipeImpact: confirm
+      slideImpact: regenerate
+    - ledgerEventId: "b625c840a2369df1"
+      title: "Upcoming September 2026 model deprecations in GitHub Copilot"
+      published: "2026-07-31"
+      source: "https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot"
+      verified: "2026-08-10"
+      releaseStatus: deprecated
+      importance: supporting
+      targetSection: "Governance & Licensing: Control, Compliance, and Cost Optimization"
+      action: add
+      summary: >
+        Enterprise administrators may need to enable replacement models in Copilot
+        model policies before September 1 migrations; users should verify the
+        replacement appears in model selectors before workflows depend on it.
+      limitations:
+        - "No action is required to remove deprecated models after retirement."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored: []
+  removals:
+    - "Replace generic federated-governance prose with the concrete enterprise-floor and team-specialization mechanism."
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Do concrete team-policy inheritance and product-backed ROI evidence require
+      reweighting the existing governance and measurement sections?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

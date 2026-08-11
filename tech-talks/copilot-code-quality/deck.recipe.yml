@@ -1,3 +1,4 @@
+# Council refresh: 2026-08-10 | REVISE | Preserve the arc; clarify generated coverage setup, Autofix/review boundaries, and billing.
 # deck.recipe.yml — talk generation guidance
 #
 # Guides slide generation from README.md. Use this file to name and order sections,
@@ -24,7 +25,7 @@ deck:
       takeaway: "Plan adoption and cost by repository and committer."
       whyItMatters: "Deliberate enablement makes quality infrastructure sustainable."
 
-  arcToc: "Coverage Gates → Autofix in the PR Loop → Reading the Bill → Rolling Out Without Surprises"
+  arcToc: "Coverage Gates → Autofix Loop → Reading the Bill → Staged Rollout"
 
   arcNarrative: >
     The arc opens with the single most concrete "whoa" moment — a Cobertura coverage
@@ -55,17 +56,24 @@ deck:
         Centerpiece moment: a Cobertura upload turning into a real failing
         `code-quality/coverage` status check via a ruleset in active mode. Show the
         evaluate → active enforcement toggle explicitly — it's the safety-net concept
-        the whole talk returns to. Use the ruleset JSON and workflow YAML as the visual
-        anchors; skip deep YAML line-by-line narration, focus on the before/after (coverage
-        as a weekly report vs. coverage as a merge condition).
+        the whole talk returns to. On github.com, public-preview automatic enablement can
+        open an agent-generated, reviewable PR with a least-privilege coverage workflow;
+        manual workflow YAML remains the customization path for teams needing custom build
+        or coverage behavior. Use the ruleset JSON and workflow YAML as the visual anchors;
+        skip deep YAML line-by-line narration, focus on the before/after (coverage as a
+        weekly report vs. coverage as a merge condition).
     "Copilot Autofix in the PR Loop":
       emphasis: medium
       note: >
-        Single most important insight: findings, Autofix suggestions, and human approval
-        all happen inside the same PR — nothing auto-merges. Mention the CodeQL + AI-assisted
-        detection combination briefly but don't over-explain the internals (that content
-        lives in the README's Behind the Scenes section, not the deck). Cut deep taxonomy
-        of maintainability vs. reliability categories; keep to one clear distinction slide.
+        Single most important insight: Code Quality Autofix suggestions and human approval
+        happen inside the same PR — nothing auto-merges — but Copilot code review is an
+        independent capability. Code Quality does not auto-enable Copilot review; GitHub
+        changed only untouched generated rulesets, while edited generated and user-authored
+        rulesets remain unchanged. Teams can enable review independently with a repository
+        or organization ruleset. Mention the CodeQL + AI-assisted detection combination
+        briefly but don't over-explain the internals (that content lives in the README's
+        Behind the Scenes section, not the deck). Cut deep taxonomy of maintainability vs.
+        reliability categories; keep to one clear distinction slide.
     "Reading the Bill":
       emphasis: high
       note: >
@@ -74,7 +82,8 @@ deck:
         metric is the worked example (50 committers → $500+/month before AI usage) — make
         this a dedicated slide, it's the number this audience will repeat afterward.
         Emphasize active-committer counting is org-wide, not per-repo, since that's the
-        most commonly misunderstood point.
+        most commonly misunderstood point. Copilot code review is enabled independently
+        and billed to the Copilot plan, not included in the Code Quality per-committer charge.
     "Rolling Out Without Surprises":
       emphasis: medium
       note: >
@@ -92,7 +101,7 @@ deck:
     - "A 4% coverage drop now fails a `code-quality/coverage` status check directly on the PR — not discovered three sprints later in an incident postmortem."
     - "Evaluate-mode rulesets show exactly which historical PRs would have been blocked before any ruleset actually blocks a merge — the safety net for rolling out a new gate."
     - "Billing counts active committers once per org — not per repo — so a 50-person org already sees roughly $500+/month in base license cost before any AI credit or Actions-minute usage."
-    - "GitHub reports internally that roughly two-thirds of findings are resolved before merge, with Copilot Autofix turning a finding into an applied fix without leaving the PR."
+    - "Code Quality Autofix and Copilot code review share the PR surface but remain independent: Code Quality does not auto-enable review, which requires its own repository or organization ruleset and is billed to the Copilot plan."
     - "The recommended rollout is Enable → Evaluate → Active, repo group by repo group — not an org-wide flip on day one."
 
 # RESOLVED: Target audience confirmed as developers (not admin-heavy). Ordering stays

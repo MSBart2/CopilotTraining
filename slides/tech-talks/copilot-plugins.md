@@ -11,9 +11,9 @@ drawings:
 transition: slide-left
 title: Copilot Plugins & APM
 mdc: true
-section: Customization & Context
+section: Platform Teams
 status: active
-updated: 2026-04-22
+updated: 2026-08-11
 ---
 
 <script setup>
@@ -28,11 +28,13 @@ import ReferencesSlide from './components/structure/ReferencesSlide.vue'
 import ThankYouSlide from './components/structure/ThankYouSlide.vue'
 import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
 import FourCardGridSlide from './components/FourCardGridSlide.vue'
-import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
+import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
-import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
+import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vue'
+import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
-import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
+import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlide.vue'
+import HeroStatSlide from './components/HeroStatSlide.vue'
 </script>
 
 # Title
@@ -40,22 +42,28 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
   title="Copilot Plugins & APM"
   subtitle="Composable AI Extensions"
   tagline="Install once, configure everywhere"
-  meta="GitHub Copilot · Customization & Context"
+  meta="Platform Teams · 25 min"
 />
 
 ---
 
 # Core Question
 <CoreQuestionSlide
-  question="How do I extend Copilot and share that setup across my whole team?"
-  subtext="Custom capabilities should travel with your code, not live on one developer's machine."
-  highlight="apm.yml is the missing piece — agent configuration as code."
-  :cards='[{"icon":"👩‍💻","title":"Developers","description":"Engineers who want domain-specific Copilot capabilities beyond the default — testing, code review, or architecture tools."},{"icon":"🏗️","title":"Platform Teams","description":"Teams responsible for standardizing developer tooling who need reproducible Copilot configuration across all contributors."},{"icon":"🧑‍🔧","title":"DevOps Engineers","description":"Engineers automating onboarding who want git clone && apm install to fully hydrate a new contributor with the right AI context."},{"icon":"📦","title":"Manual setup today","description":"Every new contributor manually configures their Copilot plugins, instructions, and MCP servers from a wiki page — or not at all."},{"icon":"⚡","title":"5 minutes","description":"Time to author an apm.yml that eliminates all manual setup for every future contributor on your team."},{"icon":"🔒","title":"Lockfile guarantee","description":"apm-lock.yml ensures every developer gets identical plugin versions — zero configuration drift across machines."}]'
+  question="How do I extend Copilot and share that configuration across every team clone?"
+  subtext="Every team has custom instructions, skills, and integrations — but configuration scatters across developer machines."
+  highlight="APM turns your agent setup into infrastructure that travels with the repo."
+  :cards='[
+    { icon: "🧰", title: "Platform Engineers", description: "Standardize Copilot config across every service repo" },
+    { icon: "👩‍💻", title: "Developers", description: "Inherit the team&#39;s full AI context on first clone" },
+    { icon: "🔒", title: "Enterprise Architects", description: "Govern the baseline while teams extend it safely" },
+    { title: "Manual setup overhead", description: "New contributors spend hours configuring plugins before writing a line of code" },
+    { title: "Configuration drift", description: "Developer A and Developer B have different plugin versions by Friday" },
+    { title: "Plugin proliferation", description: "700+ extensions in the VS Code marketplace — no vetted fast-path" }
+  ]'
 />
 
 ---
 
-<!-- SLIDE: Agenda -->
 # Agenda
 <AgendaSlide
   :items='[
@@ -69,232 +77,426 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 
 # Table of Contents
 <TocSlide
-  title="Copilot Plugins & APM"
-  subtitle="WHY it matters → HOW to explore → CODIFY as infrastructure → ACT today"
-  :sections='[{"icon":"💡","title":"The Opportunity","blurb":"Paradigm shift from per-developer to per-repository AI config","slide":4},{"icon":"⌨️","title":"CLI-First Plugin Management","blurb":"Discover, install, update, and remove plugins from the terminal","slide":7},{"icon":"📄","title":"Building an APM Manifest","blurb":"apm.yml, lockfile discipline, and full config orchestration","slide":11},{"icon":"🚀","title":"What You Can Do Today","blurb":"Concrete action ladder — try, codify, and share this week","slide":16}]'
+  :sections='[
+    { icon: "💡", title: "The Opportunity", subtitle: "Per-developer config → per-repository config", blurb: "Why the packaging shift matters before any CLI syntax", slide: 5 },
+    { icon: "⌨️", title: "CLI-First Plugin Management", subtitle: "Browse, install, and explore from the terminal", blurb: "Live ecosystem exploration sets the CLI-first tone", slide: 9 },
+    { icon: "📦", title: "Building an APM Manifest", subtitle: "apm.yml + lockfile as team infrastructure", blurb: "Codify configuration; add governance companion beat", slide: 14 },
+    { icon: "🚀", title: "What You Can Do Today", subtitle: "Concrete action ladder from plugin to full team", blurb: "Every attendee leaves with a step to take now", slide: 19 }
+  ]'
 />
 
 ---
 
-# Part 1 Opener
+# Part 1 — The Opportunity
 <SectionOpenerSlide
   :partNumber="1"
-  pillIcon="💡"
-  pillLabel="The Opportunity"
   title="The Opportunity"
-  subtitle="Frame the paradigm shift — per-developer configuration to per-repository configuration — before any CLI commands appear."
-  :cards='[{"icon":"🔄","title":"Paradigm shift","blurb":"From individual machine config to repository-scoped agent setup committed with your code."},{"icon":"📦","title":"Composable stack","blurb":"Plugins, instructions, skills, and MCP servers — one manifest, one install command."},{"icon":"🤝","title":"Team inheritance","blurb":"New contributors clone and run apm install — they inherit the accumulated AI context instantly."}]'
-  :terminal='{"context":"$ git clone repo && apm install","detail":"Full team AI context in one command"}'
+  subtitle="Frame the paradigm shift — per-developer → per-repository configuration — before any CLI commands appear."
+  :cards='[
+    { icon: "🔄", title: "Paradigm Shift", blurb: "From scattered machines to versioned repo config" },
+    { icon: "🛒", title: "Ecosystem Ready", blurb: "Marketplace + community catalog waiting to explore" },
+    { icon: "⚡", title: "Zero Onboarding", blurb: "git clone && apm install = full AI context" }
+  ]'
+  :terminal='{ context: "The question teams are asking:", detail: "git clone → full Copilot context in one command?" }'
 />
 
 ---
 
-# Two Scopes Two Tools
+# Two Tools, Two Scopes
 <TwoColPairedConceptsSlide
   :partNumber="1"
-  pillIcon="💡"
-  pillLabel="The Opportunity"
-  title="Two Tools. Two Scopes."
-  :left='{"header":"🔌 copilot plugin","items":["Manages individual plugins for personal use","Perfect for exploration and ad-hoc capability testing","Changes are immediate — no restart required","Scoped to your user account, not the repository"]}'
-  :right='{"header":"📦 APM — Agent Package Manager","items":["Orchestrates your full agent configuration stack","Plugins + instructions + skills + MCP servers in one pass","apm.yml lives in the repo — versioned alongside your code","apm-lock.yml guarantees identical setup across all contributors"]}'
-  :progressDots='{"current":1,"total":2,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+  pillIcon="🔧"
+  pillLabel="The Opportunity: Two Tools"
+  title="copilot plugin vs APM — Same Ecosystem, Different Jobs"
+  :left='{
+    header: "copilot plugin",
+    icon: "👤",
+    items: [
+      { title: "Personal exploration", detail: "Install, try, remove — no team impact" },
+      "Immediate activation — no manifest needed",
+      { title: "30-second workflow", detail: "copilot plugin install <name>" },
+      "Scoped to your user account"
+    ]
+  }'
+  :right='{
+    header: "APM (apm install)",
+    icon: "👥",
+    items: [
+      { title: "Team infrastructure", detail: "apm.yml committed alongside code" },
+      "Lockfile pins exact versions for everyone",
+      { title: "One-command onboarding", detail: "git clone && apm install" },
+      "Plugins, instructions, skills, MCP — one pass"
+    ]
+  }'
+  :progressDots='{ current: 1, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-# What Becomes Possible
+# The Paradigm Shift
+<BeforeAfterPanelsSlide
+  :partNumber="1"
+  pillIcon="🔄"
+  pillLabel="The Opportunity: Shift"
+  title="Per-Developer Configuration → Per-Repository Configuration"
+  :before='{
+    header: "Per-Developer (Before)",
+    items: [
+      "Setup instructions live in a wiki page",
+      { title: "Manual configuration", detail: "Every new clone → every developer does it again" },
+      "Plugin versions drift silently across machines",
+      "AI context is personal, not shared"
+    ]
+  }'
+  :after='{
+    header: "Per-Repository (After)",
+    items: [
+      "apm.yml committed next to the code",
+      { title: "Automatic hydration", detail: "git clone && apm install — done" },
+      "Lockfile enforces identical versions for all",
+      "AI context is team knowledge, version-controlled"
+    ]
+  }'
+  :progressDots='{ current: 2, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
+/>
+
+---
+
+# What Is Now Possible
 <FourCardGridSlide
   :partNumber="1"
   pillIcon="💡"
-  pillLabel="The Opportunity"
-  title="What Becomes Possible"
-  :cards='[{"icon":"🔍","title":"Marketplace discovery","description":"Browse vetted plugins with apm marketplace browse — no UI required, results in seconds."},{"icon":"⚡","title":"One-command onboarding","description":"git clone && apm install fully hydrates a contributor with team plugins, instructions, and MCP servers."},{"icon":"🔒","title":"Lockfile discipline","description":"apm-lock.yml freezes exact versions — zero configuration drift between developer machines or CI."},{"icon":"🧩","title":"Full stack in one file","description":"apm.yml unifies plugins, instructions, skills, and MCP servers as a single versioned artifact."}]'
-  :progressDots='{"current":2,"total":2,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+  pillLabel="The Opportunity: Now Possible"
+  title="Four Capabilities Unlocked Today"
+  :cards='[
+    { icon: "🛒", title: "Marketplace Discovery", description: "apm marketplace browse — vetted plugins from the CLI without leaving your terminal" },
+    { icon: "📦", title: "One Manifest, Everything", description: "apm.yml declares plugins, instructions, skills, and MCP servers in a single versioned file" },
+    { icon: "🔒", title: "Lockfile Reproducibility", description: "apm-lock.yml pins exact versions — identical AI config on every machine, every time" },
+    { icon: "🌐", title: "Cross-Editor Portability", description: "Plugins work in VS Code, Copilot CLI, and any ACP-compatible client — install once, use everywhere" }
+  ]'
+  :progressDots='{ current: 3, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-# Part 2 Opener
+# Part 2 — CLI-First Plugin Management
 <SectionOpenerSlide
   :partNumber="2"
-  pillIcon="⌨️"
-  pillLabel="CLI Management"
   title="CLI-First Plugin Management"
-  subtitle="Discover the ecosystem, install with one command, and set the CLI-first tone for the rest of the talk."
-  :cards='[{"icon":"🔍","title":"Browse marketplace","description":"apm marketplace browse surfaces vetted plugins without leaving the terminal."},{"icon":"⬇️","title":"Install and verify","description":"copilot plugin install adds a capability immediately — active in your next chat."},{"icon":"🔄","title":"Update and remove","description":"Keep plugins current or clean up with copilot plugin update and uninstall."}]'
-  :terminal='{"context":"$ apm marketplace browse --category code-review","detail":"Discovering plugins without leaving the terminal"}'
+  subtitle="Live-demo apm marketplace browse and copilot plugin install; hands-on ecosystem contact that sets the CLI-first tone."
+  :cards='[
+    { icon: "🔍", title: "Marketplace Browse", blurb: "Find vetted plugins without leaving the terminal" },
+    { icon: "📥", title: "One-Command Install", blurb: "copilot plugin install — immediate activation" },
+    { icon: "🔁", title: "Update & Remove", blurb: "Full lifecycle management from the same CLI" }
+  ]'
+  :terminal='{ context: "From exploration to team config:", detail: "copilot plugin install → lock into apm.yml" }'
 />
 
 ---
 
-# Install Update Remove
+# Discovering Plugins
+<CodeWithFeaturesSlide
+  :partNumber="2"
+  pillIcon="🔍"
+  pillLabel="CLI-First: Discovery"
+  title="apm marketplace browse — Vetted Extensions at the Terminal"
+  codePosition="left"
+  :code='{ language: "bash", filename: "terminal", content: "# List all vetted plugins\napm marketplace browse\n\n# Filter by category\napm marketplace browse --category code-review\napm marketplace browse --category testing\n\n# Search by keyword\napm marketplace browse --search security\n\n# See what you have installed\ncopilot plugin list" }'
+  :features='[
+    { icon: "📋", title: "Category Filtering", description: "Narrow by code-review, testing, integrations, and more" },
+    { icon: "🔎", title: "Keyword Search", description: "Find plugins by name, description, or capability" },
+    { icon: "📊", title: "Inventory Check", description: "copilot plugin list shows installed versions and scope" }
+  ]'
+  :progressDots='{ current: 1, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+/>
+
+---
+
+# Installing Your First Plugin
+<AITerminalTranscriptSlide
+  :partNumber="2"
+  pillIcon="📥"
+  pillLabel="CLI-First: Install Demo"
+  title="From Browse to Running — Under 60 Seconds"
+  subtitle="No UI navigation, no extension marketplace search, no restart required"
+  :transcript='[
+    { type: "prompt", text: "apm marketplace browse --category code-review" },
+    { type: "response", lines: ["code-review-assistant  v1.2.3  Review PRs for security, style, and architecture", "test-coverage-guard   v0.8.1  Flag PRs that reduce test coverage below threshold", "dependency-auditor    v1.0.0  Surface vulnerable or outdated dependencies in PRs"] },
+    { type: "divider" },
+    { type: "prompt", text: "copilot plugin install code-review-assistant" },
+    { type: "thinking", label: "⏳ Installing:" },
+    { type: "response", lines: ["✓ Resolved code-review-assistant@1.2.3", "✓ Plugin registered with Copilot runtime", "✓ Available in VS Code, CLI, and ACP clients immediately"] },
+    { type: "divider" },
+    { type: "outcome", text: "Plugin active — no restart required" },
+    { type: "outcome", text: "Next: lock it into apm.yml for the whole team" }
+  ]'
+  footerMetric="30 seconds from browse to running"
+  :progressDots='{ current: 2, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+/>
+
+---
+
+# Three Discovery Paths
 <ThreeColumnCardSlide
   :partNumber="2"
-  pillIcon="⌨️"
-  pillLabel="CLI Management"
-  title="Install, Update, Remove — All from the CLI"
-  :columns='[{"icon":"⬇️","title":"Install","description":"Add a plugin to your environment instantly.","items":["copilot plugin install code-review-assistant","Active in Copilot Chat immediately","No restart or reload required"]},{"icon":"🔄","title":"Update","description":"Pull the latest version of an installed plugin.","items":["copilot plugin update code-review-assistant","copilot plugin update --all for bulk refresh","Review changes before merging to apm.yml"]},{"icon":"🗑️","title":"Uninstall","description":"Remove a plugin you no longer need.","items":["copilot plugin uninstall code-review-assistant","copilot plugin list to verify removal","Removes from user account, not team manifest"]}]'
-  :progressDots='{"current":1,"total":3,"activeColor":"bg-blue-400 shadow-lg shadow-blue-500/50"}'
+  pillIcon="🗺️"
+  pillLabel="CLI-First: Discovery Sources"
+  title="Where to Find Plugins Before You Build"
+  :columns='[
+    { icon: "🏪", title: "Official Marketplace", description: "apm marketplace browse — GitHub and Microsoft maintained, vetted, and signed", items: ["First-party quality bar", "Category and keyword search", "Contribution guide for new plugins"] },
+    { icon: "⭐", title: "Awesome GitHub Copilot", description: "Community-curated list of plugins, skills, MCP servers, and workflows", items: ["Third-party and niche integrations", "Skills files and instruction templates", "Community-validated use cases"] },
+    { icon: "📂", title: "github/copilot-plugins", description: "First-party source code, manifest schema docs, and plugin contribution guidelines", items: ["Build your own plugin here", "Official schema reference", "Issue tracker for bugs and requests"] }
+  ]'
+  :progressDots='{ current: 3, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-# CLI vs VS Code UI
+# When to Use Each Tool
 <TwoColPairedConceptsSlide
   :partNumber="2"
-  pillIcon="⌨️"
-  pillLabel="CLI Management"
-  title="CLI or VS Code UI — Same Registry"
-  :left='{"header":"⌨️ CLI — Fastest Path","items":["apm marketplace browse for discovery","copilot plugin install for immediate activation","Scriptable — composable with other shell commands","No context switch from your current workflow"]}'
-  :right='{"header":"🖥️ VS Code UI — Visual Browsing","items":["Copilot sidebar > Plugins section for exploration","Browse, install, or remove plugins visually","Same plugin registry — changes sync with CLI immediately","Best for first-time exploration of the ecosystem"]}'
-  :progressDots='{"current":2,"total":3,"activeColor":"bg-blue-400 shadow-lg shadow-blue-500/50"}'
+  pillIcon="⚖️"
+  pillLabel="CLI-First: Scope Decision"
+  title="copilot plugin for Exploration, APM for Infrastructure"
+  :left='{
+    header: "Use copilot plugin when...",
+    icon: "🧪",
+    items: [
+      "You are evaluating a plugin personally",
+      { title: "Ad-hoc capability test", detail: "Try it, discard it, no team impact" },
+      "You want immediate activation without a manifest",
+      "Personal customization outside any repo"
+    ]
+  }'
+  :right='{
+    header: "Graduate to APM when...",
+    icon: "🏗️",
+    items: [
+      "The plugin proves valuable for the team",
+      { title: "Commit apm.yml", detail: "Lock it in so every clone gets it" },
+      "You want CI to validate the lockfile",
+      "Different repos need different plugin profiles"
+    ]
+  }'
+  :progressDots='{ current: 4, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-# Marketplace and Community
-<FourCardGridSlide
-  :partNumber="2"
-  pillIcon="⌨️"
-  pillLabel="CLI Management"
-  title="Where to Find Plugins"
-  :cards='[{"icon":"🏪","title":"Official marketplace","description":"apm marketplace browse — first-party plugins maintained by GitHub and Microsoft."},{"icon":"⭐","title":"Awesome Copilot","description":"Community-curated list at github/awesome-copilot — plugins, skills, MCP servers, and workflows."},{"icon":"🔧","title":"copilot-plugins repo","description":"github/copilot-plugins — first-party source code, manifest schema, and contribution guidelines."},{"icon":"🔍","title":"Category filters","description":"--category code-review, testing, integrations — narrow results to your immediate need."}]'
-  :progressDots='{"current":3,"total":3,"activeColor":"bg-blue-400 shadow-lg shadow-blue-500/50"}'
-/>
-
----
-
-# Part 3 Opener
+# Part 3 — Building an APM Manifest
 <SectionOpenerSlide
   :partNumber="3"
-  pillIcon="📄"
-  pillLabel="APM Manifest"
   title="Building an APM Manifest"
-  subtitle="apm.yml to the lockfile — plugins, instructions, skills, and MCP servers as versioned, reproducible infrastructure."
-  :cards='[{"icon":"📄","title":"apm.yml","blurb":"The single source of truth for your entire agent configuration stack."},{"icon":"🔒","title":"apm-lock.yml","blurb":"Lockfile freezes exact versions — treat it like package-lock.json."},{"icon":"🤝","title":"apm install","blurb":"One command hydrates any fresh clone with the full team agent setup."}]'
-  :terminal='{"context":"$ apm install","detail":"Full team agent stack in one command"}'
+  subtitle="Walk a complete apm.yml, close with the lockfile capstone, then add the bounded managed-settings governance companion."
+  :cards='[
+    { icon: "📄", title: "apm.yml Anatomy", blurb: "Plugins, instructions, skills, MCP in one file" },
+    { icon: "🔒", title: "Lockfile Pattern", blurb: "apm-lock.yml treats AI config like package-lock" },
+    { icon: "🏢", title: "Managed Settings", blurb: "Enterprise floor — separate from apm.yml, additive" }
+  ]'
+  :terminal='{ context: "The lockfile is non-negotiable:", detail: "works-on-my-machine impossible for AI config" }'
 />
 
 ---
 
-# apm.yml anatomy
+# The Complete apm.yml
 <CodeWithFeaturesSlide
   :partNumber="3"
   pillIcon="📄"
-  pillLabel="APM Manifest"
-  title="A Complete apm.yml"
-  :code='{"language":"yaml","content":"version: 1\n\nplugins:\n  - name: code-review-assistant\n    version: ^1.0.0\n  - name: test-generator\n    version: ^2.1.0\n\ninstructions:\n  - path: .github/copilot-instructions.md\n\nskills:\n  - path: .github/skills/testing/SKILL.md\n\nmcpServers:\n  - name: github-mcp\n    source: npm:@modelcontextprotocol/server-github\n    version: ^1.2.0","filename":"apm.yml"}'
+  pillLabel="APM Manifest: Anatomy"
+  title="apm.yml — Everything Your Team&#39;s Agent Needs"
   codePosition="left"
-  :features='[{"icon":"🔌","title":"Plugins","description":"Named plugins with semver ranges — resolved to exact versions in the lockfile."},{"icon":"📋","title":"Instructions and skills","description":"Path references to your .github/ files — loaded automatically on apm install."},{"icon":"🌐","title":"MCP servers","description":"npm, GitHub, or local sources — live integrations resolved alongside plugins."}]'
-  :progressDots='{"current":1,"total":4,"activeColor":"bg-indigo-400 shadow-lg shadow-indigo-500/50"}'
+  :code='{ language: "yaml", filename: "apm.yml", content: "version: 1\n\nplugins:\n  - name: code-review-assistant\n    version: ^1.0.0\n  - name: test-generator\n    version: ^2.1.0\n\ninstructions:\n  - path: .github/copilot-instructions.md\n\nskills:\n  - path: .github/skills/testing/SKILL.md\n\nmcpServers:\n  - name: github-mcp\n    source: npm:@modelcontextprotocol/server-github\n    version: ^1.2.0" }'
+  :features='[
+    { icon: "🔌", title: "Plugins", description: "Version-ranged dependencies resolved at apm install time" },
+    { icon: "📝", title: "Instructions + Skills", description: "Instructions and skills files hydrated alongside plugins" },
+    { icon: "🌐", title: "MCP Servers", description: "Live integrations from npm, GitHub, or local paths" },
+    { icon: "🔁", title: "Reproducible", description: "One apm install gives every clone identical AI context" }
+  ]'
+  :progressDots='{ current: 1, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Per-Repository Configuration
-<ThreeColumnCardSlide
+# The Lockfile Pattern
+<BeforeAfterMetricsSlide
   :partNumber="3"
-  pillIcon="📄"
-  pillLabel="APM Manifest"
-  title="Per-Repository Configuration"
-  :columns='[{"icon":"🧪","title":"Test-heavy repo","description":"Full quality stack for a service with high coverage requirements.","items":["test-generator plugin","coverage-analyzer plugin","Testing SKILL.md","GitHub MCP for PR context"]},{"icon":"🔍","title":"API platform","description":"Architecture and documentation tooling for a public API project.","items":["api-design-assistant plugin","openapi-validator plugin","Architecture SKILL.md","AWS Docs MCP server"]},{"icon":"🔐","title":"Security-critical","description":"Compliance-aware setup for a regulated or high-risk codebase.","items":["security-scanner plugin","compliance-checker plugin","Security SKILL.md","Dependency audit MCP"]}]'
-  :progressDots='{"current":2,"total":4,"activeColor":"bg-indigo-400 shadow-lg shadow-indigo-500/50"}'
+  pillIcon="🔒"
+  pillLabel="APM Manifest: Lockfile"
+  title="apm-lock.yml — Treat AI Config Like package-lock.json"
+  :before='{
+    header: "Without Lockfile",
+    items: [
+      { title: "^1.0.0 resolves differently on Monday vs Friday", detail: "New plugin release = different behavior" },
+      "Developer A gets 1.2.3, Developer B gets 1.3.0",
+      { title: "No review record", detail: "Plugin upgrades happen silently" },
+      "Debugging: which version are you running?"
+    ]
+  }'
+  :after='{
+    header: "With apm-lock.yml",
+    items: [
+      { title: "1.2.3 pinned for everyone", detail: "Exact version, hash, and download URL frozen" },
+      "apm install always produces identical results",
+      { title: "Lockfile diff in every PR", detail: "Plugin upgrades are explicit, reviewable changes" },
+      "apm install --frozen-lockfile fails if drifted"
+    ]
+  }'
+  :metrics='[
+    { value: "100%", label: "version consistency" },
+    { value: "0", label: "silent upgrades" },
+    { value: "1 PR", label: "per plugin change" }
+  ]'
+  :insight='{ icon: "🎯", text: "Commit both apm.yml and apm-lock.yml — they are a pair, not a choice." }'
+  :progressDots='{ current: 2, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# The Lockfile
-<CodeWithFeaturesSlide
+# APM vs Managed Settings
+<TwoColPairedConceptsSlide
   :partNumber="3"
-  pillIcon="📄"
-  pillLabel="APM Manifest"
-  title="The Lockfile — Your Version Control for AI"
-  :code='{"language":"yaml","content":"# apm-lock.yml — generated by apm install\nversion: 1\nlockfileVersion: 1\n\nplugins:\n  code-review-assistant:\n    version: 1.2.3\n    resolved: https://registry.apm.dev/...\n    integrity: sha512-abc123...\n  test-generator:\n    version: 2.1.4\n    resolved: https://registry.apm.dev/...\n    integrity: sha512-def456...","filename":"apm-lock.yml"}'
-  codePosition="left"
-  :features='[{"icon":"📌","title":"Exact versions","description":"1.2.3 not ^1.0.0 — every developer gets the identical plugin build."},{"icon":"🔗","title":"Resolved URLs","description":"Download location is locked — reproducible even if the registry changes."},{"icon":"🛡️","title":"Integrity hashes","description":"sha512 checksum detects tampering or corruption before install completes."}]'
-  :progressDots='{"current":3,"total":4,"activeColor":"bg-indigo-400 shadow-lg shadow-indigo-500/50"}'
+  pillIcon="🏢"
+  pillLabel="APM Manifest: Governance Companion"
+  title="APM Packages Config — Managed Settings Govern the Floor"
+  :left='{
+    header: "APM (apm.yml)",
+    icon: "📦",
+    items: [
+      { title: "Project-scoped packaging", detail: "Lives in the repo, travels with the code" },
+      "Plugins, instructions, skills, MCP — one manifest",
+      { title: "Team installs via apm install", detail: "Every clone gets identical AI context" },
+      "Teams own their config — no enterprise dependency"
+    ],
+    code: { language: "yaml", content: "# apm.yml — per-repository\nplugins:\n  - name: code-review-assistant" }
+  }'
+  :right='{
+    header: "Managed Settings",
+    icon: "🏢",
+    items: [
+      { title: "Enterprise-wide governance", detail: "Additive floor beneath team customization" },
+      "enabledPlugins + extraKnownMarketplaces — additive keys",
+      { title: "Teams extend via copilot/teams/", detail: "Least-restrictive merges; enterprise is non-overridable" },
+      "VS Code, CLI, Copilot App, cloud agent — Business/Enterprise"
+    ],
+    code: { language: "json", content: "// team-mappings.json\n{ \"backend-team\": \"teams/backend.json\" }" }
+  }'
+  :progressDots='{ current: 3, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Lockfile Workflow
-<WorkflowShowdownStepsSlide
+# The Complete Onboarding
+<HeroStatSlide
   :partNumber="3"
-  pillIcon="📄"
-  pillLabel="APM Manifest"
-  title="With vs. Without the Lockfile"
-  leftLabel="No lockfile committed"
-  rightLabel="apm-lock.yml committed"
-  :steps='[{"left":{"label":"apm install resolves ^1.0.0"},"right":{"label":"apm install uses locked 1.2.3"}},{"left":{"label":"Dev A gets 1.2.3 on Monday"},"right":{"label":"Dev A gets 1.2.3"}},{"left":{"label":"Dev B gets 1.3.0 on Friday"},"right":{"label":"Dev B gets 1.2.3"}},{"left":{"label":"Agents behave differently"},"right":{"label":"Identical behavior guaranteed"}}]'
-  :outcomeLeft='{"icon":"😤","label":"Configuration drift — debug across machines"}'
-  :outcomeRight='{"icon":"✅","label":"Reproducible — every clone is identical"}'
-  :progressDots='{"current":4,"total":4,"activeColor":"bg-indigo-400 shadow-lg shadow-indigo-500/50"}'
+  pillIcon="🚀"
+  pillLabel="APM Manifest: Onboarding"
+  title="git clone && apm install"
+  subtitle="The complete Copilot onboarding — no wiki page, no Slack message, no manual steps"
+  :hero='{ value: "0", label: "manual setup steps for a new contributor to get full AI context", source: "" }'
+  :supporting='[
+    { icon: "🔌", title: "Plugins installed", description: "Exact versions from lockfile, identical to every teammate" },
+    { icon: "📝", title: "Instructions loaded", description: "Team conventions and custom context ready immediately" },
+    { icon: "🧠", title: "Skills available", description: "Domain-specific workflows active from the first session" },
+    { icon: "🌐", title: "MCP servers running", description: "Live integrations wired — GitHub, AWS docs, whatever the team uses" }
+  ]'
+  :insight='{ icon: "💡", text: "APM packages reproducible project configuration. This is infrastructure — commit it." }'
+  :progressDots='{ current: 4, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Part 4 Opener
+# Part 4 — What You Can Do Today
 <SectionOpenerSlide
   :partNumber="4"
-  pillIcon="🚀"
-  pillLabel="Act Today"
   title="What You Can Do Today"
-  subtitle="Try one plugin locally, add apm.yml to one repo, review the lockfile diff on the next PR."
-  :cards='[{"icon":"⚡","title":"Try it now","blurb":"Install one plugin with copilot plugin install in the next 5 minutes."},{"icon":"📄","title":"Codify this week","blurb":"Author an apm.yml for your most active repo and commit it with the lockfile."},{"icon":"🤝","title":"Share this month","blurb":"Walk a teammate through apm install on a fresh clone — measure the time saved."}]'
-  :terminal='{"context":"$ copilot plugin install code-review-assistant","detail":"Active in your next Copilot Chat session"}'
+  subtitle="Concrete action ladder: one plugin, one apm.yml commit, one lockfile diff — all doable within the hour."
+  :cards='[
+    { icon: "🎯", title: "Try Locally", blurb: "One plugin in 15 minutes, no team approval needed" },
+    { icon: "📋", title: "First Manifest", blurb: "One repo, one apm.yml, commit and share" },
+    { icon: "✅", title: "Lockfile PRs", blurb: "Review diff on the next plugin update" }
+  ]'
+  :terminal='{ context: "The complete onboarding:", detail: "git clone && apm install — zero manual steps" }'
 />
 
 ---
 
-# Plugin Ecosystem Value
-<CodeWithFeaturesSlide
+# The Adoption Journey
+<MaturityJourneyRoadmapSlide
   :partNumber="4"
-  pillIcon="🚀"
-  pillLabel="Act Today"
-  title="The Onboarding Equation"
-  :code='{"language":"bash","content":"# New contributor — fully configured in one pass\ngit clone https://github.com/your-org/your-repo\ncd your-repo\napm install\n\n# Copilot now has:\n#   ✓ Team plugins (exact locked versions)\n#   ✓ Project instructions from .github/\n#   ✓ Skills and MCP servers\n#   ✓ Zero manual configuration","filename":"onboarding.sh"}'
-  codePosition="left"
-  :features='[{"icon":"⏱️","title":"5 min to author","description":"Write apm.yml once — every future contributor benefits on their first git clone."},{"icon":"🔒","title":"Lockfile non-negotiable","description":"Commit apm-lock.yml alongside apm.yml — without it, plugin versions drift silently."},{"icon":"📈","title":"Compounds over time","description":"Every plugin, skill, and MCP server added to apm.yml compounds team productivity."}]'
-  :progressDots='{"current":1,"total":2,"activeColor":"bg-purple-400 shadow-lg shadow-purple-500/50"}'
+  pillIcon="🗺️"
+  pillLabel="What You Can Do Today: Journey"
+  title="From First Plugin to Team Infrastructure"
+  subtitle="Each stage unlocks the next — start anywhere, the path is linear"
+  :stages='[
+    { label: "L1", name: "Explore", description: "apm marketplace browse + copilot plugin install one plugin locally", icon: "🔍", isTarget: false },
+    { label: "L2", name: "Manifest", description: "Create apm.yml in one repo, run apm install, commit both files", icon: "📄", isTarget: true },
+    { label: "L3", name: "Team", description: "Share with teammates — verify identical setup on their next clone", icon: "👥", isTarget: false },
+    { label: "L4", name: "CI Gate", description: "Add --frozen-lockfile validation to pull request checks", icon: "✅", isTarget: false },
+    { label: "L5", name: "Scale", description: "Extend to all repos; evaluate managed settings for enterprise floor", icon: "🏢", isTarget: false }
+  ]'
+  caption="L2 is the leverage point — one committed apm.yml changes the onboarding story for everyone"
+  :progressDots='{ current: 1, total: 2, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-# Framework mapping — two scopes
-<FrameworkMappingRowsSlide
+# Three Teams Who Did It
+<ThreeColumnCardSlide
   :partNumber="4"
-  pillIcon="🚀"
-  pillLabel="Act Today"
-  title="The Right Tool for Each Scope"
-  :rows='[{"label":"Explore","description":"apm marketplace browse — discover vetted plugins without leaving the terminal.","tag":"Any time"},{"label":"Try it","description":"copilot plugin install — personal, immediate, no manifest change needed.","tag":"Today"},{"label":"Prove it","description":"Use the plugin for a week; validate it solves a real team problem.","tag":"This week"},{"label":"Codify it","description":"Add to apm.yml with a semver range; run apm install; commit the lockfile.","tag":"This week"},{"label":"Share it","description":"Open a PR — the lockfile diff shows exactly what changed in the agent stack.","tag":"This month"}]'
-  :progressDots='{"current":2,"total":2,"activeColor":"bg-purple-400 shadow-lg shadow-purple-500/50"}'
+  pillIcon="🏆"
+  pillLabel="What You Can Do Today: Use Cases"
+  title="Real Patterns Teams Are Running Now"
+  :columns='[
+    { icon: "👥", title: "Standardized Reviews", description: "code-review-assistant in every repo — new hires get consistent review on first clone, no setup doc", items: ["One apm.yml template", "Lockfile in every repo", "0 manual onboarding steps"] },
+    { icon: "🔀", title: "Multi-Project Dev", description: "Three repos, three apm.yml files — each project gets purpose-fit plugins on apm install", items: ["Context switches with cd", "No global plugin sprawl", "Each repo owns its config"] },
+    { icon: "🤖", title: "CI Lockfile Guard", description: "PR CI runs --frozen-lockfile — plugin upgrades become explicit, reviewable like any dependency bump", items: ["apm install --frozen-lockfile", "Fails on any drift", "Plugin changes need PR review"] }
+  ]'
+  :progressDots='{ current: 2, total: 2, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-# Before and After
+# Before/After
 <BeforeAfterSlide
-  header="From Manual Config to Reproducible Infrastructure"
-  :leftItems='["New contributor spends 30 min following a Copilot setup wiki","Plugins installed vary by developer — behavior is inconsistent","No version control on agent configuration — drift is invisible","Different repos have no shared plugin standard or manifest"]'
-  :rightItems='["git clone && apm install — full AI context in under a minute","Lockfile guarantees identical plugin versions across all machines","apm-lock.yml diffs in PRs make changes explicit and reviewable","Each repo carries its own apm.yml — the right tools for each codebase"]'
-  :metrics='[{"value":"0 min","detail":"Manual Copilot setup for new contributors"},{"value":"1 cmd","detail":"Full team AI config hydration"},{"value":"100%","detail":"Version consistency across all machines"}]'
+  header="From Scattered Config to Reproducible Infrastructure"
+  :leftItems='["Manual plugin setup docs in a wiki", "Different plugin versions per developer", "New hire spends hours on Copilot setup", "No review process for plugin changes"]'
+  :rightItems='["apm.yml commits live alongside code", "apm-lock.yml pins exact versions team-wide", "git clone && apm install — zero manual steps", "Lockfile diffs reviewed in every PR"]'
+  :metrics='[
+    { value: "0", detail: "manual setup steps for new contributors" },
+    { value: "100%", detail: "version consistency across all team machines" },
+    { value: "1 PR", detail: "to review and approve any plugin change" }
+  ]'
 />
 
 ---
 
 # What You Can Do Today
 <WhatYouCanDoTodaySlide
-  :today='["Run apm marketplace browse and pick one plugin to try","Install it with copilot plugin install and use it in your next chat session","Note whether it would be valuable for your whole team"]'
-  :thisWeek='["Author an apm.yml for your most active repository","Run apm install and commit both apm.yml and apm-lock.yml","Open a PR and review the lockfile diff with a teammate"]'
-  :thisMonth='["Roll out apm.yml to two or three repos with different profiles","Add a skill or MCP server to the manifest and measure the impact","Make apm install part of your repository onboarding documentation"]'
-  footer="apm.yml is infrastructure — commit it, review it in PRs, and treat lockfile diffs like dependency updates."
+  :today='["Run apm marketplace browse in your terminal", "Install one plugin: copilot plugin install <name>", "Test it in Copilot Chat or CLI immediately"]'
+  :thisWeek='["Create apm.yml in one repo you own", "Run apm install and commit the lockfile", "Have a teammate clone and verify identical setup"]'
+  :thisMonth='["Add CI lockfile validation step to one pipeline", "Expand apm.yml with instructions and skills", "Audit team plugins — standardize across repos"]'
+  footer="Configuration as code starts with a single apm.yml commit — everything else follows from that habit."
 />
 
 ---
 
 # References
 <ReferencesSlide
-  :groups='[{"title":"📖 Official Documentation","color":"cyan","items":[{"label":"Agent plugins for Copilot customization","href":"https://code.visualstudio.com/docs/copilot/customization/agent-plugins","description":"Plugin concepts, installation, and VS Code integration"},{"label":"APM - Agent Package Manager","href":"https://microsoft.github.io/apm/introduction/what-is-apm/","description":"Manifest schema, lockfile mechanics, and CLI reference"}]},{"title":"🔧 Repositories and Community","color":"purple","items":[{"label":"Official Copilot Plugins Repository","href":"https://github.com/github/copilot-plugins","description":"First-party plugins, manifest schema, and contribution guidelines"},{"label":"Awesome GitHub Copilot","href":"https://github.com/github/awesome-copilot","description":"Community-curated plugins, skills, MCP servers, and workflows"}]}]'
+  :groups='[
+    { title: "📖 Official Documentation", color: "cyan", items: [
+      { href: "https://code.visualstudio.com/docs/copilot/customization/agent-plugins", label: "Agent plugins for Copilot customization", description: "Plugin concepts, installation, and VS Code integration" },
+      { href: "https://microsoft.github.io/apm/introduction/what-is-apm/", label: "APM - Agent Package Manager", description: "Manifest schema, lockfile mechanics, and CLI reference" },
+      { href: "https://github.com/github/copilot-plugins", label: "Official Copilot Plugins Repository", description: "First-party plugins, manifest schema, and contribution guide" }
+    ]},
+    { title: "🌐 Community & Ecosystem", color: "blue", items: [
+      { href: "https://github.com/github/awesome-copilot", label: "Awesome GitHub Copilot", description: "Community-curated plugins, skills, MCP servers, and workflows" },
+      { href: "https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings", label: "Enterprise team specialization for managed settings", description: "Additive team plugin settings, enterprise precedence, supported clients" }
+    ]},
+    { title: "🔗 Related Talks", color: "indigo", items: [
+      { label: "Copilot Primitives", description: "Instructions, skills, and MCP servers that APM orchestrates" },
+      { label: "Copilot CLI", description: "Plugin management from the command line in depth" }
+    ]}
+  ]'
 />
 
 ---
@@ -302,7 +504,11 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 # Thank You
 <ThankYouSlide
   title="Copilot Plugins & APM"
-  subtitle="Agent configuration is infrastructure — version it, review it, share it."
-  :cards='[{"icon":"📄","value":"apm.yml","detail":"Commit your agent stack alongside your code — one source of truth"},{"icon":"🔒","value":"apm-lock.yml","detail":"Freeze versions — eliminate configuration drift across the team"},{"icon":"⚡","value":"1 command","detail":"git clone && apm install — full AI context for every contributor"}]'
-  prompt="Try one plugin today. Author your first apm.yml this week. Share it on the next PR."
+  subtitle="Composable AI Extensions — Install once, configure everywhere"
+  :cards="[
+    { value: 'apm.yml', detail: 'Infrastructure: commit it with your code, not in a wiki page' },
+    { value: 'apm-lock.yml', detail: 'Non-negotiable: no more works-on-my-machine AI config' },
+    { value: 'git clone && apm install', detail: 'Complete onboarding: zero manual steps, full AI context' }
+  ]"
+  prompt="What plugin or capability would you lock into your team&#39;s apm.yml first?"
 />

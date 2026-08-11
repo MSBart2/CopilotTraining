@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-04-17
+updated: 2026-08-10
 section: "Platform Teams"
 references:
   - url: https://code.visualstudio.com/docs/copilot/customization/agent-plugins
@@ -15,6 +15,9 @@ references:
   - url: https://github.com/github/awesome-copilot
     label: "Awesome GitHub Copilot - Community Curated List"
     verified: 2026-04-17
+  - url: https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings
+    label: "Enterprise team specialization for managed settings"
+    verified: 2026-08-10
 ---
 
 # Copilot Plugins & APM: Composable AI Extensions
@@ -456,6 +459,18 @@ If you're building a custom plugin, start here for the manifest schema and examp
 
 ---
 
+## Sharing Plugins Across Teams
+
+APM remains the repository-level packaging layer: an `apm.yml` manifest and its lockfile make a project's plugins and agent configuration reproducible. Enterprise managed settings provide a separate distribution companion for organizations that need a governed baseline plus role-specific additions.[^5]
+
+In managed settings, `enabledPlugins` and `extraKnownMarketplaces` are additive enterprise keys. The enterprise baseline applies everywhere, while teams can layer on the additional plugins and marketplaces their roles require; teams cannot weaken or subtract from that baseline. Team settings files live under `copilot/teams/` and are assigned to one or more team slugs through `team-mappings.json`.
+
+For users who belong to multiple teams, team-level settings combine using the least-restrictive value for each key, then apply beneath non-overridable enterprise decisions. GitHub currently enforces these managed settings in VS Code, Copilot CLI, the Copilot App, and Copilot cloud agent for users with Copilot Business or Copilot Enterprise licenses.
+
+> **Important:** This is enterprise managed-settings behavior, not `apm.yml` merge or inheritance. APM packages a reproducible project configuration; managed settings govern the enterprise baseline and permitted team additions.
+
+---
+
 ## Real-World Use Cases
 
 ### Use Case 1: Standardized Code Review Agent Across Teams
@@ -673,3 +688,4 @@ The `--frozen-lockfile` flag fails if the lockfile doesn't match `apm.yml`. Pull
 [^2]: **[APM - Agent Package Manager](https://microsoft.github.io/apm/introduction/what-is-apm/)** — Official APM documentation covering manifest schema and lockfile mechanics
 [^3]: **[Awesome GitHub Copilot](https://github.com/github/awesome-copilot)** — Community-curated list of plugins, skills, and integrations
 [^4]: **[Official Copilot Plugins Repository](https://github.com/github/copilot-plugins)** — First-party plugin source code and contribution guidelines
+[^5]: **[Enterprise team specialization for managed settings](https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings)** — GitHub changelog release covering additive team plugin settings, enterprise precedence, and supported clients

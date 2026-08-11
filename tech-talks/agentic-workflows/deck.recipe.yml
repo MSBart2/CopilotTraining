@@ -7,6 +7,9 @@
 # Architecture + Safe Outputs into one trust-building section, and deploy a Path×Maturity
 # matrix as Section 3's spine — surfacing all 10 use cases visually so audience members
 # can self-locate before the CTA lands.
+#
+# COUNCIL REVISE (2026-08-10): Preserve the arc; add one execution-boundary beat
+# and relabel the Path C Level 2 pattern as Comment Workflows (gh-aw).
 
 version: 1
 
@@ -84,7 +87,11 @@ deck:
         pattern families (Continuous Improvement, Monitoring/Insights, Orchestration,
         Quality/Safety, Release/Delivery) to their primary use-case examples — this slide
         transitions the audience from "I understand the mechanism" to "I know the vocabulary
-        for Section 3."
+        for Section 3." Add at most one execution-boundary beat: gh-aw comment workflows are
+        repo-owned, version-controlled Markdown compiled to Actions and governed by safe
+        outputs; Copilot cloud-agent Automations are configured in Agents > Automations,
+        delegate tasks on configured trigger text, require an eligible plan, and are controlled
+        by Business/Enterprise admin policy. Do not characterize runtime beyond the README.
     "Patterns by Path & Maturity":
       emphasis: medium
       note: >
@@ -93,7 +100,7 @@ deck:
         (prototype/quick win), Level 2 (production-ready), Level 3 (advanced/multi-agent).
         Distribute all 10 use cases across the 9 cells: Path A L1=Issue Triage, L2=PR Review,
         L3=Dependency Audit; Path B L1=Weekly Health Report, L2=Release Notes, L3=Weekly
-        Research Digest; Path C L1=CI Failure Diagnosis, L2=ChatOps Commands,
+        Research Digest; Path C L1=CI Failure Diagnosis, L2=Comment Workflows (gh-aw),
         L3=Multi-Agent Orchestration + Code Simplification. Include the Agent Factory
         philosophy (specialize not monolith; 100+ workflows in continuous production) as
         framing before the matrix. Surface 1 failure mode per path (Path A: too many ops

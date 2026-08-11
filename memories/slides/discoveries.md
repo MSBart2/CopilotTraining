@@ -4,6 +4,39 @@ Breakthroughs — patterns that solved persistent problems in Slidev slide autho
 
 ---
 
+## inspect-slide.js reuses stale dev server on port 3030 (2026-08-11)
+
+`schema_version: 1` | `date: 2026-08-11`
+
+`inspect-slide.js {slug} scan` connects to port 3030 if already occupied — even if the running server is serving a DIFFERENT deck. The script reports the correct slide count from the markdown file but screenshots and DOM analysis reflect the stale deck.
+
+**Symptom:** Scan says `Scanning N slides in 'my-deck'` but slide 1 screenshot shows a different deck title. All OVERFLOW and MISSING DOTS results from that run are from the wrong deck.
+
+**Fix:** Before every `inspect-slide.js scan` invocation, kill port 3030 first:
+```powershell
+Get-NetTCPConnection -LocalPort 3030 -ErrorAction SilentlyContinue |
+  Select-Object -ExpandProperty OwningProcess | Sort-Object -Unique |
+  ForEach-Object { Stop-Process -Id $_ -Force -ErrorAction SilentlyContinue }
+```
+
+---
+
+## inspect-slide.js MISSING DOTS false positives for structural closing slides (2026-08-10)
+
+`schema_version: 1` | `date: 2026-08-10`
+
+The `inspect-slide.js scan` checker flags "MISSING DOTS" on ALL slides that follow a Part N section opener — including the structural closing slides (BeforeAfterSlide, WhatYouCanDoTodaySlide, ReferencesSlide, ThankYouSlide). These are false positives: those components do not accept `progressDots` and are exempt by design.
+
+Additionally, the MISSING DOTS warning fires on body slides even when `progressDots` is correctly passed. Screenshot visual inspection confirmed the dots ARE rendered (e.g., "1 of 4" visible in top-right chrome). The inspector's Playwright selector does not find the progress dots rendered inside the component's shadow-style DOM.
+
+**Decision:** Ignore MISSING DOTS warnings from `inspect-slide.js scan` for:
+- Structural closing slides (slides N-3 through N)
+- Body slides that visually show dots in their screenshots
+
+**Use screenshot visual inspection as the ground truth** for dots presence, not the inspector warning.
+
+---
+
 ## `CARDS_MAX`/`SECTIONS_MAX` prop-lint false positive when a card component also has an `insight` prop (2026-07-24)
 
 `schema_version: 1` | `date: 2026-07-24`

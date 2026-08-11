@@ -1,8 +1,11 @@
 ---
 status: active
-updated: 2026-05-05
+updated: 2026-08-10
 section: "Agentic Systems"
 references:
+  - url: https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments
+    label: "GitHub Changelog: Trigger Copilot automations with comments"
+    verified: 2026-08-10
   - url: https://github.blog/ai-and-ml/automate-repository-tasks-with-github-agentic-workflows/
     label: "GitHub Blog: Automate repository tasks with GitHub Agentic Workflows"
     verified: 2026-03-05
@@ -1168,6 +1171,10 @@ Respond to slash commands posted in issue or PR comments.
 If no recognized command is found, call noop.
 ```
 
+**Product boundary: two comment-triggered mechanisms.** The `gh-aw` example above is a repository Markdown workflow compiled to GitHub Actions; its slash commands are conventions defined by that workflow. Copilot cloud-agent **Automations** are configured under **Agents > Automations** in repository settings and delegate agent tasks when configured text appears in an issue or pull-request comment. That text can initiate documentation, investigation, or follow-up work, but it is repository-specific trigger text, not a set of built-in `gh-aw` slash commands.[^19]
+
+Cloud-agent Automations require an eligible Copilot plan. For Copilot Business and Enterprise, an administrator must also enable the cloud-agent policy.[^19]
+
 **Value:** Power-user automation available to anyone with comment access. Triage, summarization, and ownership routing happen in-thread without dashboards or terminal access.
 
 ---
@@ -1389,6 +1396,8 @@ Format as a readable weekly briefing with source links.
 [^17]: Erik Lieben: [Dependency Updates That Understand Your Code](https://www.eriklieben.com/posts/agentic-dev-workflow-dependency-management/)
 
 [^18]: Shing Lyu: [Automating Weekly Research with GitHub Agentic Workflows](https://shinglyu.com/blog/2026/04/15/automating-weekly-research-with-github-agentic-workflows.html)
+
+[^19]: GitHub Changelog: [Trigger Copilot automations with comments](https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments)
 
 ---
 

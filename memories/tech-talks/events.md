@@ -24,6 +24,29 @@ New tech-talk added: **GitHub Code Quality: Turning Maintainability Into a Merge
 
 ---
 
+## copilot-cli: council-revised deck refresh (2026-08-10)
+
+`schema_version: 1` | `date: 2026-08-10`
+
+Complete regeneration of `slides/tech-talks/copilot-cli.md` (27 slides, appendix via src:) from the council-revised `deck.recipe.yml` (REVISE decision). Same 4-section Intent → Geography → Memory → Scale spine, updated for concurrent session controls, Git-free /rewind, /worktree experimental, live tool durations, and the scale ladder.
+
+**Key decisions made this session:**
+- Trust beat is ONE compact FourCardGridSlide (auto-compaction, /rewind, Sessions sidebar, live tool durations) — not a feature tour. Single slide, 4 cards, no insight prop.
+- Scale ladder uses MaturityJourneyRoadmapSlide (4 stages: Sidebar → /worktree experimental → /fleet → & delegate); caption distinguishes /worktree from /pr worktree.
+- /worktree marked explicitly experimental in both the stage description and the slide label.
+- Phone-steering choreography preserved: cold open first (AITerminalTranscriptSlide), architecture backfill second (TwoColPairedConceptsSlide).
+- Live S3→S4 bridge is AITerminalTranscriptSlide with the "/every 1m tell me I'm awesome" live-firing demo.
+- No model names printed anywhere — /model taught as the durable workflow.
+- TocSlide slide numbers: S1=5, S2=10, S3=14, S4=19 (27 total slides including appendix)
+
+**Component map:**
+- S1 body (4 slides): HeroStatSlide, WorkflowShowdownStepsSlide, AITerminalTranscriptSlide, FourCardGridSlide
+- S2 body (3 slides): AITerminalTranscriptSlide, TwoColPairedConceptsSlide, CodeWithFeaturesSlide
+- S3 body (4 slides): FourCardGridSlide (trust prologue), AITerminalTranscriptSlide (/chronicle standup), ThreeColumnCardSlide (/chronicle features), AITerminalTranscriptSlide (bridge)
+- S4 body (3 slides): MaturityJourneyRoadmapSlide (scale ladder), CodeWithFeaturesSlide (/fleet), ThreeColumnCardSlide (ecosystem)
+
+---
+
 ## copilot-cli: full deck regeneration with dual-arc narrative (2026-06-04)
 
 `schema_version: 1` | `date: 2026-06-04`

@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-04-24
+updated: 2026-08-10
 section: "Executive Talks"
 references:
   - url: https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier
@@ -33,6 +33,9 @@ references:
   - url: https://cloud.google.com/resources/content/dora-roi-of-ai-assisted-software-development
     label: "DORA: ROI of AI-Assisted Development, 2025"
     verified: 2026-04-24
+  - url: https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section
+    label: "GitHub Changelog: Copilot impact dashboard adds a return on investment section, 2026"
+    verified: 2026-08-10
 ---
 
 # The Agentic Economics: Making the Business Case
@@ -172,11 +175,21 @@ Here's a reasonable, achievable target:
 
 > **"We want 20% of our engineering labor to cost $2/hour within 18 months."**
 
+### Directional Dashboard Checkpoint
+
+Use GitHub's enterprise or organization **Copilot impact dashboard** alongside the internal scenario below to check whether the operating model is moving in the intended direction. Compare early-phase and agent-first cohorts using:
+
+- **Monthly Copilot cost per developer**, calculated from AI-credit consumption
+- **Payroll share**, estimated from a selectable salary assumption
+- **Average pull requests per developer per month**
+
+These dashboard results represent **potential, directional impact**, not realized savings or causal proof. The salary value is a model input, not payroll data, and the dashboard does not supply a fixed error margin for these estimates. Access requires the Copilot usage metrics policy and **View Copilot Metrics** permission. Corrected 28-day cohort counts apply only to the dashboard; they do not change the usage API or NDJSON exports.
+
 Let's make this concrete.
 
 ### The Math
 
-For a 50-person engineering team as a concrete baseline:
+For a 50-person engineering team, use this internal scenario rather than treating it as a GitHub baseline:
 - **Total labor hours:** 50 engineers × 2,000 hours/year = 100,000 hours/year*
 - **Current cost at $100/hr average:** $10,000,000/year
 - **20% target:** 20,000 hours/year moved to agents

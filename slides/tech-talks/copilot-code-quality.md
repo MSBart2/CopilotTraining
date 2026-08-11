@@ -13,7 +13,7 @@ title: GitHub Code Quality
 mdc: true
 section: Developers
 status: active
-updated: 2026-07-24
+updated: 2026-08-10
 ---
 
 <script setup>
@@ -26,27 +26,43 @@ import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
 import WhatYouCanDoTodaySlide from './components/structure/WhatYouCanDoTodaySlide.vue'
 import ReferencesSlide from './components/structure/ReferencesSlide.vue'
 import ThankYouSlide from './components/structure/ThankYouSlide.vue'
-import FourCardGridSlide from './components/FourCardGridSlide.vue'
+import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
 import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
-import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
-import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
-import HeroStatSlide from './components/HeroStatSlide.vue'
 import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
+import HeroStatSlide from './components/HeroStatSlide.vue'
+import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
 import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlide.vue'
+import FourCardGridSlide from './components/FourCardGridSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
+# Title
 <TitleSlide
   title="GitHub Code Quality"
   subtitle="Turning Maintainability Into a Merge Gate"
-  tagline="Coverage, maintainability, and reliability become a status check your merge depends on."
-  meta="CopilotTraining · Tech Talk"
+  tagline="Coverage, maintainability, and reliability become a status check your merge depends on — and a predictable line item."
+  meta="GitHub Code Quality · GA July 20, 2026 · Developers, Repo Admins, Platform Teams"
 />
 
 ---
 
-<!-- SLIDE: Agenda -->
+# Core Question
+<CoreQuestionSlide
+  question="How does GitHub Code Quality turn code metrics into an enforceable merge gate?"
+  subtext="Quality dashboards tell you what happened. Rulesets"
+  highlight="determine what gets to merge."
+  :cards='[
+    { icon: "👩‍💻", title: "Developer", description: "See coverage deltas and Autofix suggestions before your PR merges" },
+    { icon: "🧰", title: "Repo Admin", description: "Wire coverage and quality thresholds into rulesets — no custom pipeline" },
+    { icon: "🏗️", title: "Platform Team", description: "Govern enablement, predict per-committer cost, and roll out safely" },
+    { title: "GA: July 20, 2026", description: "Every team from the preview now has a real billing decision to make" },
+    { title: "~⅔ resolved before merge", description: "GitHub-reported finding resolution rate for Code Quality findings" },
+    { title: "$10/committer/month", description: "Org-wide active-committer billing — the number driving every rollout decision" }
+  ]'
+/>
+
+---
+
 # Agenda
 <AgendaSlide
   :items='[
@@ -58,124 +74,141 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Core Question -->
-<CoreQuestionSlide
-  question="How does GitHub Code Quality turn quality signals into an enforceable merge gate?"
-  subtext="GitHub Code Quality went GA in July 2026 with coverage gates and Autofix —"
-  highlight="and a new per-committer bill to plan for."
-  :cards='[
-    { icon: "🧑‍💻", title: "Developers", description: "See coverage deltas and Autofix suggestions right inside every PR" },
-    { icon: "🛡️", title: "Repo Admins", description: "Turn maintainability and coverage into a merge requirement via rulesets" },
-    { icon: "🏢", title: "Platform Teams", description: "Roll out org-wide without surprise per-committer billing" },
-    { title: "$10/committer", description: "Base license cost per active committer per month, org-wide" },
-    { title: "67.3%", description: "Self-reported share of findings resolved before merge" },
-    { title: "GA: Jul 20, 2026", description: "Public preview ended; usage-based billing now active" }
-  ]'
-/>
-
----
-
-<!-- SLIDE: Table of Contents -->
+# Table of Contents
 <TocSlide
   :sections='[
-    { icon: "📊", title: "Coverage Gates", subtitle: "Cobertura reports become a merge condition", blurb: "See a ruleset turn a coverage drop into a failing PR check", slide: 4 },
-    { icon: "🤖", title: "Autofix in the PR Loop", subtitle: "Findings, fixes, and human approval in one place", blurb: "Walk through the scan-to-merge review flow", slide: 9 },
-    { icon: "💳", title: "Reading the Bill", subtitle: "Active committers, AI credits, and Actions minutes", blurb: "Work through a real worked-example cost estimate", slide: 13 },
-    { icon: "🚦", title: "Rolling Out Without Surprises", subtitle: "Enable, evaluate, then enforce — safely", blurb: "Get a concrete staged rollout you can run this week", slide: 18 },
+    { icon: "🔍", title: "Coverage-Aware Quality Gates", subtitle: "From Cobertura upload to a failing status check", blurb: "Build the quality gate the merge button actually checks", slide: 5 },
+    { icon: "🤖", title: "Copilot Autofix in the PR Loop", subtitle: "Suggestions in the PR, not a follow-up ticket", blurb: "Understand Autofix and the Copilot review boundary", slide: 10 },
+    { icon: "💰", title: "Reading the Bill", subtitle: "$10/committer/month and what the rest adds up to", blurb: "Model the cost before you flip the org-wide switch", slide: 13 },
+    { icon: "🚦", title: "Rolling Out Without Surprises", subtitle: "Enable → Evaluate → Active in repeatable phases", blurb: "Leave with a concrete rollout checklist for this week", slide: 18 }
   ]'
 />
 
 ---
 
-<!-- SLIDE: Part 1 — Coverage-Aware Quality Gates -->
+# Part 1 — Coverage-Aware Quality Gates
 <SectionOpenerSlide
   :partNumber="1"
   title="Coverage-Aware Quality Gates"
-  subtitle="Cobertura coverage reports become a real, enforceable PR status check"
+  subtitle="Cobertura upload + evaluate/active ruleset = coverage as a real merge condition"
   :cards='[
-    { icon: "📈", title: "Coverage on Every PR", blurb: "Delta shown inline, no separate dashboard" },
-    { icon: "🔐", title: "Ruleset Enforcement", blurb: "Minimum coverage as a real merge gate" },
-    { icon: "🧪", title: "Evaluate Mode First", blurb: "See what would fail before anything blocks" },
+    { icon: "📊", title: "Coverage Delta on Every PR", blurb: "Cobertura XML upload shows the coverage delta on each PR" },
+    { icon: "🔒", title: "Ruleset-Enforced Threshold", blurb: "80% minimum becomes a status check the PR can&#39;t bypass" },
+    { icon: "🛡️", title: "Evaluate Before Blocking", blurb: "See what would fail without blocking anyone yet" }
   ]'
-  :terminal='{ context: "A PR drops coverage by 4%...", detail: "...and the merge check fails before anyone reviews it" }'
+  :terminal='{ context: "PR drops 4% below threshold in active mode", detail: "code-quality/coverage → fail" }'
 />
 
 ---
 
-<!-- SLIDE: Four Pieces of the Coverage Gate -->
-<FourCardGridSlide
+# Coverage Stops Being a Dashboard Number
+<BeforeAfterMetricsSlide
   :partNumber="1"
-  pillIcon="📈"
-  pillLabel="Coverage Gates: Overview"
-  title="Four Pieces of the Coverage Gate"
-  :cards='[
-    { icon: "🧾", title: "Cobertura Upload", description: "CI emits a Cobertura XML report from any test framework" },
-    { icon: "📊", title: "PR Coverage Delta", description: "Code Quality shows the percentage change directly on the PR" },
-    { icon: "🧪", title: "Evaluate Mode", description: "Ruleset reports what would fail without blocking anything" },
-    { icon: "🔒", title: "Active Mode", description: "Same ruleset now blocks merge below the threshold" }
+  pillIcon="📊"
+  pillLabel="Coverage Gates: Before & After"
+  title="Coverage Stops Being a Dashboard Number"
+  :before='{
+    header: "Before Code Quality",
+    items: [
+      "Coverage dashboard checked weekly at best",
+      "Regressions found in incident postmortems",
+      { title: "No PR-level signal", detail: "Coverage is a repo-level badge, not a PR delta" },
+      "Coverage target is a team norm, not a gate"
+    ]
+  }'
+  :after='{
+    header: "After Code Quality",
+    items: [
+      "Coverage delta shown inline on every PR",
+      { title: "Regression caught before merge", detail: "4% drop fails the status check" },
+      "Threshold enforced by a ruleset — not honor system",
+      "Copilot Autofix suggests a fix inside the PR"
+    ]
+  }'
+  :metrics='[
+    { value: "Per PR", label: "coverage delta reported" },
+    { value: "Pre-merge", label: "regression caught" },
+    { value: "0 sprints", label: "to discover in postmortem" }
   ]'
-  :insight='{ icon: "🎯", text: "Key Insight: evaluate mode is the safety net between never gating and always gating." }'
+  :insight='{ icon: "💡", text: "The same 80% target that lived in a team doc becomes a status check the merge button reads." }'
   :progressDots='{ current: 1, total: 4, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: coverage-ruleset.json -->
+# The Coverage Upload Workflow
 <CodeWithFeaturesSlide
   :partNumber="1"
-  pillIcon="🔐"
-  pillLabel="Ruleset: Coverage Threshold"
-  title="coverage-ruleset.json — Evaluate First, Active Later"
+  pillIcon="⚙️"
+  pillLabel="Coverage Gates: Upload Workflow"
+  title="Feeding the Gate: Coverage Upload in CI"
   codePosition="left"
-  :code='{ language: "json", filename: "coverage-ruleset.json", content: "{\n  \"name\": \"Require 80% coverage on main\",\n  \"target\": \"branch\",\n  \"enforcement\": \"evaluate\",\n  \"rules\": [\n    {\n      \"type\": \"code_quality\",\n      \"parameters\": { \"minimum_coverage_percentage\": 80 }\n    }\n  ]\n}" }'
+  :code='{ language: "yaml", filename: "quality-gate-workflow.yml", content: "name: CI\non:\n  pull_request:\npermissions:\n  contents: read\n  code-quality: write\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: pytest --cov=. --cov-report=xml\n      - uses: actions/upload-code-coverage@v1\n        with:\n          file: cobertura.xml\n          language: Python" }'
   :features='[
-    { icon: "🧪", title: "Evaluate Mode Ships First", description: "Enforcement starts as evaluate — nothing blocks until you flip it" },
-    { icon: "📏", title: "Reads the Coverage Delta", description: "minimum_coverage_percentage checks the number Cobertura already computed" },
-    { icon: "🔓", title: "One-Line Switch to Active", description: "Flip enforcement to active once evaluate-mode data looks trustworthy" }
+    { icon: "🔑", title: "Required Permission", description: "code-quality: write lets the upload step attach coverage to the PR" },
+    { icon: "📄", title: "Any Cobertura Framework", description: "pytest-cov, JaCoCo, nyc/Istanbul — any tool that emits Cobertura XML" },
+    { icon: "🏷️", title: "Per-Service Labels", description: "label field lets monorepos upload separate coverage reports per service" }
   ]'
   :progressDots='{ current: 2, total: 4, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: quality-gate-workflow.yml -->
-<CodeWithFeaturesSlide
+# Evaluate vs Active Enforcement
+<TwoColPairedConceptsSlide
   :partNumber="1"
-  pillIcon="🧾"
-  pillLabel="Coverage Upload Workflow"
-  title="quality-gate-workflow.yml — Feeding the Gate"
-  codePosition="left"
-  :code='{ language: "yaml", filename: "quality-gate-workflow.yml", content: "permissions:\n  contents: read\n  code-quality: write\n  pull-requests: read\n\njobs:\n  test:\n    steps:\n      - run: pytest --cov=. --cov-report=xml:cobertura.xml\n      - uses: actions/upload-code-coverage@v1\n        with:\n          file: cobertura.xml\n          language: Python\n          label: code-coverage/pytest" }'
-  :features='[
-    { icon: "🔑", title: "code-quality: write Required", description: "Without this permission the upload step fails silently" },
-    { icon: "🧬", title: "Any Cobertura-Compatible Tool", description: "pytest-cov, JaCoCo, or nyc/Istanbul all work the same way" },
-    { icon: "🏷️", title: "Labeled Uploads", description: "The label field keeps multiple coverage reports distinct in a monorepo" }
-  ]'
+  pillIcon="🛡️"
+  pillLabel="Coverage Gates: Enforcement Modes"
+  title="Two Enforcement Modes — One Field to Flip"
+  :left='{
+    header: "Evaluate Mode",
+    icon: "🔭",
+    items: [
+      { title: "Reports without blocking", detail: "Historical PRs flagged — no merges stopped" },
+      "Safe default for any new ruleset",
+      { title: "Tune before committing", detail: "Adjust threshold until false-positive rate is acceptable" },
+      "Switch to active with one field change"
+    ]
+  }'
+  :right='{
+    header: "Active Enforcement",
+    icon: "🔒",
+    items: [
+      { title: "Blocks merges on failure", detail: "Status check required by branch protection ruleset" },
+      "Exact violation shown to the PR author",
+      { title: "Instant rollback available", detail: "Switch back to evaluate with a single field change" },
+      "One threshold, one rule, one check"
+    ]
+  }'
   :progressDots='{ current: 3, total: 4, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: From Weekly Dashboard to Inline PR Check -->
-<BeforeAfterPanelsSlide
+# Agent-Generated PR vs Manual Workflow
+<TwoColPairedConceptsSlide
   :partNumber="1"
-  pillIcon="🔁"
-  pillLabel="Coverage: Before vs After"
-  title="From Weekly Dashboard to Inline PR Check"
-  :before='{
-    header: "Before",
+  pillIcon="🤖"
+  pillLabel="Coverage Gates: Setup Paths"
+  title="Two Paths to the First Coverage Upload"
+  :left='{
+    header: "Agent-Generated PR",
+    icon: "🤖",
     items: [
-      "Coverage checked in a separate dashboard",
-      "Reviewed weekly, after code already merged",
-      "“We should have 80% coverage” as a team norm"
+      { title: "Optional onboarding path", detail: "Agent opens a reviewable PR with a least-privilege workflow" },
+      "Standard upload steps, minimal permissions",
+      "Review and merge like any other PR",
+      "Available on github.com in public preview"
     ]
   }'
-  :after='{
-    header: "After",
+  :right='{
+    header: "Manual Workflow",
+    icon: "🛠️",
     items: [
-      "Coverage delta shown inline on every PR",
-      "Reviewed before merge, not after",
-      "80% coverage as a ruleset the PR cannot bypass in active mode"
+      "Full control over build steps and test setup",
+      { title: "Custom test matrices", detail: "Multi-language, monorepo, or non-standard coverage tooling" },
+      { title: "Always available", detail: "Manual authoring is never blocked by the agent path" },
+      "Bring your existing CI coverage pipeline"
     ]
   }'
   :progressDots='{ current: 4, total: 4, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
@@ -183,296 +216,274 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-<!-- SLIDE: Part 2 — Copilot Autofix in the PR Loop -->
+# Part 2 — Copilot Autofix in the PR Loop
 <SectionOpenerSlide
   :partNumber="2"
   title="Copilot Autofix in the PR Loop"
-  subtitle="Findings, one-click fixes, and human approval, all inside the PR"
+  subtitle="Autofix proposes the fix; humans approve it — Code Quality does not auto-enable Copilot review"
   :cards='[
-    { icon: "🔎", title: "Maintainability + Reliability", blurb: "CodeQL plus AI-assisted detection, one finding stream" },
-    { icon: "🩹", title: "One-Click Autofix", blurb: "Suggested fix applied without leaving the PR" },
-    { icon: "🗂️", title: "Default-Branch Backlog", blurb: "Legacy debt scored and assignable to Copilot" },
+    { icon: "🔍", title: "What Gets Found", blurb: "CodeQL plus AI-assisted detection on every PR diff" },
+    { icon: "✅", title: "One-Click Fix Suggestion", blurb: "Developer applies, human approves — nothing auto-merges" },
+    { icon: "🔗", title: "Default-Branch Backlog", blurb: "Scored backlog from default-branch scans, assignable to the agent" }
   ]'
-  :terminal='{ context: "A reliability finding posts on the PR with a suggested fix", detail: "Developer applies it, reviewer still approves before merge" }'
+  :terminal='{ context: "Code Quality finding in a PR", detail: "Autofix proposed → developer applies → human approves" }'
 />
 
 ---
 
-<!-- SLIDE: Maintainability vs Reliability Findings -->
+# The Autofix Review Flow
+<WorkflowShowdownStepsSlide
+  :partNumber="2"
+  pillIcon="🔧"
+  pillLabel="Autofix: Review Flow"
+  title="Finding Disposition: Without vs With Autofix"
+  subtitle="Autofix closes the loop inside the PR instead of opening a ticket"
+  leftLabel="Without Code Quality"
+  rightLabel="With Code Quality Autofix"
+  :steps='[
+    { left: { label: "PR opens with issues", note: "Reviewer manually spots maintainability problem" }, right: { label: "PR opens", note: "Code Quality scan posts finding with Autofix suggestion" } },
+    { left: { label: "Review comment added", note: "Author adds it to the follow-up ticket backlog" }, right: { label: "Developer reviews suggestion", note: "One click to apply the proposed fix" } },
+    { left: { label: "PR merges anyway", note: "Issue tracked in a ticket, not fixed" }, right: { label: "Human reviewer approves", note: "Fix reviewed and approved within the PR" } },
+    { left: { label: "Tech-debt ticket lingers", note: "Often never addressed" }, right: { label: "Finding resolved before merge", note: "~⅔ of findings resolved pre-merge" } }
+  ]'
+  :outcomeLeft='{ icon: "📋", label: "Finding becomes a ticket — often never resolved" }'
+  :outcomeRight='{ icon: "✓", label: "Finding resolved inside the PR" }'
+  summaryMetric="~⅔ of findings resolved before merge with Code Quality"
+  :progressDots='{ current: 1, total: 2, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+/>
+
+---
+
+# Autofix vs Copilot Code Review
 <TwoColPairedConceptsSlide
   :partNumber="2"
-  pillIcon="🔎"
-  pillLabel="Two Finding Categories"
-  title="Maintainability vs Reliability Findings"
+  pillIcon="⚖️"
+  pillLabel="Autofix: Feature Boundary"
+  title="Two Independent Features, One PR Surface"
   :left='{
-    header: "Maintainability",
-    icon: "🧩",
+    header: "Code Quality Autofix",
+    icon: "🔧",
     items: [
-      { title: "Complexity & duplication", detail: "Makes future changes harder" },
-      "Readability issues flagged with severity"
+      { title: "Bundled with Code Quality", detail: "Included with enablement — no separate setup" },
+      "Billed under Code Quality per-committer charge",
+      { title: "AI credits consumed", detail: "AI-assisted detection and Autofix generation only" },
+      "Proposals only — human approval required"
     ]
   }'
   :right='{
-    header: "Reliability",
-    icon: "🐛",
+    header: "Copilot Code Review",
+    icon: "🤖",
     items: [
-      { title: "Known bug patterns", detail: "The deterministic CodeQL query set" },
-      "AI-assisted detection for patterns outside existing CodeQL queries"
+      { title: "Independent enablement", detail: "Requires its own repository or organization ruleset" },
+      { title: "Not included in Code Quality", detail: "GitHub disabled auto-review in generated rulesets" },
+      "Billed to the Copilot plan, not Code Quality",
+      "Enable separately if and when your team is ready"
     ]
   }'
-  :progressDots='{ current: 1, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :progressDots='{ current: 2, total: 2, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: From Open PR to Approved Merge -->
-<FrameworkMappingRowsSlide
-  :partNumber="2"
-  pillIcon="🔁"
-  pillLabel="The Review Flow"
-  title="From Open PR to Approved Merge"
-  subtitle="Four steps, all inside the same pull request"
-  :rows='[
-    { label: "1. Scan", description: "PR opens or updates; Code Quality scans the diff", tag: "on: pull_request" },
-    { label: "2. Comment", description: "Findings post grouped by maintainability and reliability", tag: "severity" },
-    { label: "3. Autofix", description: "Developer applies the suggested fix with one click", tag: "one-click" },
-    { label: "4. Approve", description: "A human reviewer still approves before anything merges", tag: "required" }
-  ]'
-  footnote="Autofix proposes — it never merges on its own"
-  :progressDots='{ current: 2, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
-/>
-
----
-
-<!-- SLIDE: The Default Branch Gets Scanned Too -->
-<HeroStatSlide
-  :partNumber="2"
-  pillIcon="🗂️"
-  pillLabel="Working Off Quality Debt"
-  title="The Default Branch Gets Scanned Too"
-  subtitle="Legacy findings become a scored, assignable backlog"
-  :hero='{ value: "67.3%", label: "of findings self-reported resolved before merge, internally at GitHub", source: "Source: GitHub Changelog, July 2026 GA announcement" }'
-  :supporting='[
-    { icon: "📊", title: "Same Scoring Model", description: "Default-branch findings use the same maintainability and reliability scores as PR findings" },
-    { icon: "🤖", title: "Assignable to Copilot", description: "High-severity findings can be handed to the Copilot coding agent as a draft PR" },
-    { icon: "📈", title: "Org Dashboard Rollup", description: "Findings across every enabled repo roll up into one quality-debt view" }
-  ]'
-  :insight='{ icon: "🎯", text: "Key Insight: legacy debt becomes a queue you work off, not a wall you stare at." }'
-  :progressDots='{ current: 3, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
-/>
-
----
-
-<!-- SLIDE: Part 3 — Reading the Bill -->
+# Part 3 — Reading the Bill
 <SectionOpenerSlide
   :partNumber="3"
   title="Reading the Bill"
-  subtitle="Active committers, AI credits, and CodeQL compute — three independent line items"
+  subtitle="Three line items, one active-committer count, and the worked example that makes the number real"
   :cards='[
-    { icon: "🧑‍🤝‍🧑", title: "Active Committers", blurb: "$10/month per person, counted once org-wide" },
-    { icon: "🤖", title: "AI Credits", blurb: "Usage-based charge for AI-assisted detection and Autofix" },
-    { icon: "⚙️", title: "CodeQL Compute", blurb: "Scans run as GitHub Actions minutes" },
+    { icon: "💳", title: "Active Committer Fee", blurb: "$10/month per active committer across the org" },
+    { icon: "⚡", title: "AI Credits", blurb: "Usage-based charge for AI detection and Autofix" },
+    { icon: "⏱️", title: "CodeQL Compute", blurb: "Actions minutes for scan workflows" }
   ]'
-  :terminal='{ context: "A 50-person org enables Code Quality across 12 repos", detail: "The bill is still just 50 committers — not 12× that" }'
+  :terminal='{ context: "50 committers across 12 repos", detail: "~$500+/month base before AI credits" }'
 />
 
 ---
 
-<!-- SLIDE: What Actually Shows Up on the Invoice -->
+# Three Billing Components
 <ThreeColumnCardSlide
   :partNumber="3"
-  pillIcon="🧾"
-  pillLabel="The Three Line Items"
-  title="What Actually Shows Up on the Invoice"
+  pillIcon="💰"
+  pillLabel="Reading the Bill: Components"
+  title="Three Independent Line Items"
   :columns='[
-    { icon: "🧑‍🤝‍🧑", title: "Active Committers", description: "$10/month per person who pushed to an enabled repo in the trailing 90 days", items: ["Counted once per org, not per repo", "Bot accounts excluded"] },
-    { icon: "🤖", title: "AI Credits", description: "≈$0.01/credit for AI-assisted detection and Autofix generation", items: ["No separate Copilot subscription required"] },
-    { icon: "⚙️", title: "CodeQL Compute", description: "Scans run as GitHub Actions minutes, or self-hosted runner cost", items: ["Standalone charge, not bundled with GHAS"] }
+    { icon: "👥", title: "Active Committers", description: "$10/month per person who pushed to any enabled repo in the org in the trailing 90 days", items: ["Counted once org-wide", "Not per-repo", "90-day rolling window"] },
+    { icon: "🧠", title: "AI Credits", description: "~$0.01/credit for AI-assisted detection and Copilot Autofix generation runs", items: ["Scales with findings volume", "Not with repo count", "Separate from committer fee"] },
+    { icon: "⚙️", title: "CodeQL Compute", description: "GitHub Actions minutes consumed by scan workflows, or self-hosted runner cost", items: ["Uses existing Actions budget", "Runs on PR and push", "Default-branch scans too"] }
   ]'
   :progressDots='{ current: 1, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: 50 Active Committers, 12 Repos -->
+# The $500+/Month Number
 <HeroStatSlide
   :partNumber="3"
-  pillIcon="💵"
-  pillLabel="Worked Example"
-  title="50 Active Committers, 12 Repos"
-  subtitle="The base license cost is the same whether it is one repo or twelve"
-  :hero='{ value: "$500+/mo", label: "estimated base license cost before AI credits or Actions overage", source: "Source: cost-estimation-worksheet.md worked example" }'
+  pillIcon="📊"
+  pillLabel="Reading the Bill: Worked Example"
+  title="The Number This Audience Will Repeat"
+  subtitle="50 committers, 12 repos, one org"
+  :hero='{ value: "$500+", label: "per month base license cost for 50 active committers", source: "50 committers × $10/month — before AI credits or Actions minutes" }'
   :supporting='[
-    { icon: "🔢", title: "Org-Wide, Not Per-Repo", description: "The same 50 people enabled on 1 repo or 12 repos cost the same base license" },
-    { icon: "📉", title: "Disabling Shrinks the Count", description: "Removing a repo drops its unique committers out of the active count going forward" },
-    { icon: "📋", title: "Audit Before Billing Starts", description: "The highest-leverage cost control is knowing which repos are actually enabled" }
+    { icon: "🔢", title: "Org-wide, not per-repo", description: "Same 50 people across 12 repos = same bill as enabling on 1 repo" },
+    { icon: "⚡", title: "AI credits on top", description: "Scales with how many findings trigger AI analysis and Autofix — not with repo count" },
+    { icon: "🎛️", title: "Audit before enabling", description: "Disabling a repo removes its committers from the active count going forward" },
+    { icon: "🤖", title: "Copilot review billed separately", description: "Code review is a Copilot plan charge — it does not appear on the Code Quality bill" }
   ]'
-  :insight='{ icon: "🎯", text: "Key Insight: the bill tracks people, not repos — enablement scope is a real cost decision." }'
+  :insight='{ icon: "💡", text: "Auditing which repos are enabled before the billing period starts is the single highest-leverage cost control." }'
   :progressDots='{ current: 2, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Doing the Math Before You Enable -->
-<CodeWithFeaturesSlide
+# Active-Committer Counting Rules
+<FourCardGridSlide
   :partNumber="3"
-  pillIcon="🧮"
-  pillLabel="cost-estimation-worksheet.md"
-  title="Doing the Math Before You Enable"
-  codePosition="left"
-  :code='{ language: "text", filename: "cost-estimation-worksheet.md", content: "Org: 50 active committers across 12 enabled repos\n\nBase license:      50 committers x $10/month      = $500/month\nAI credits:        ~2,000 credits/month (estimate) = $20/month\nCodeQL compute:    ~1,500 Actions minutes/month     = billed at org rate\n\nEstimated total:   ~$520+/month before Actions overage" }'
-  :features='[
-    { icon: "🧑‍🤝‍🧑", title: "Count Committers First", description: "The active-committer number drives the largest line item by far" },
-    { icon: "🤖", title: "Estimate AI Credit Usage", description: "Scales with how many findings trigger AI-assisted analysis and Autofix" },
-    { icon: "⚙️", title: "Check Your Actions Rate", description: "CodeQL compute bills at whatever Actions-minute rate the org already pays" }
+  pillIcon="🔢"
+  pillLabel="Reading the Bill: Counting Rules"
+  title="How Active Committers Are Counted"
+  :cards='[
+    { icon: "📅", title: "90-Day Rolling Window", description: "Anyone who pushed a commit in the trailing 90 days counts, regardless of whether they push today" },
+    { icon: "🏢", title: "Org-Wide, Not Per-Repo", description: "The same developer across 10 repos counts once — enabling more repos does not multiply the charge" },
+    { icon: "🔌", title: "Disable to Remove Committers", description: "Disabling Code Quality on a repo removes those committers from the active count next billing cycle" },
+    { icon: "🚫", title: "Copilot Review Not Included", description: "Code review needs its own Copilot plan license — independent of Code Quality committer billing" }
   ]'
   :progressDots='{ current: 3, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: What to Audit Before the First Bill -->
-<FourCardGridSlide
+# Two Separate Bills
+<TwoColPairedConceptsSlide
   :partNumber="3"
-  pillIcon="🔍"
-  pillLabel="Before You Flip the Switch"
-  title="What to Audit Before the First Bill"
-  :cards='[
-    { icon: "📂", title: "Which Repos Are Enabled", description: "List every repo with Code Quality on before the billing period starts" },
-    { icon: "🧑‍💻", title: "Who Counts as a Committer", description: "Anyone who pushed in the trailing 90 days — check for stale bot accounts" },
-    { icon: "🔓", title: "Is It Bundled with GHAS", description: "No — Code Quality is a standalone charge, not part of Advanced Security" },
-    { icon: "🛑", title: "Can You Disable Low-Value Repos", description: "Disabling a repo removes its committers from the count going forward" }
-  ]'
-  :insight='{ icon: "💡", text: "A five-minute audit before the billing period starts is the cheapest cost control available." }'
+  pillIcon="⚖️"
+  pillLabel="Reading the Bill: Billing Boundary"
+  title="Code Quality and Copilot Review Are Billed Separately"
+  :left='{
+    header: "Code Quality Bill",
+    icon: "📋",
+    items: [
+      { title: "$10/active committer/month", detail: "Org-wide, 90-day trailing window" },
+      { title: "AI credits (~$0.01/credit)", detail: "AI-assisted detection and Autofix generation" },
+      { title: "CodeQL compute", detail: "Actions minutes for scan runs" },
+      "No Copilot review charge here"
+    ]
+  }'
+  :right='{
+    header: "Copilot Plan Bill",
+    icon: "🤖",
+    items: [
+      { title: "Copilot code review", detail: "Billed to the Copilot subscription, not Code Quality" },
+      { title: "Enabled independently", detail: "Repository or organization ruleset required" },
+      "Not auto-enabled when Code Quality turns on",
+      "A separate decision your team makes when ready"
+    ]
+  }'
   :progressDots='{ current: 4, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Part 4 — Rolling Out Without Surprises -->
+# Part 4 — Rolling Out Without Surprises
 <SectionOpenerSlide
   :partNumber="4"
   title="Rolling Out Without Surprises"
-  subtitle="Enable, evaluate, then enforce — repo group by repo group"
+  subtitle="Three phases from enablement to active enforcement — leave with a concrete rollout plan for this week"
   :cards='[
-    { icon: "🏛️", title: "Enterprise Policy First", blurb: "Owners allow it before any org or repo can turn it on" },
-    { icon: "🧪", title: "Evaluate Before Active", blurb: "See what would fail before anything actually blocks" },
-    { icon: "📈", title: "Staged, Not Org-Wide", blurb: "Roll out repo group by repo group, not all at once" },
+    { icon: "👁️", title: "Enable & Observe", blurb: "Enable on pilot repos; watch scores, no enforcement yet" },
+    { icon: "🔭", title: "Evaluate Mode", blurb: "Rulesets in evaluate — flag without blocking anything" },
+    { icon: "✅", title: "Active Enforcement", blurb: "Flip to active once the false-positive rate is acceptable" }
   ]'
-  :terminal='{ context: "A pilot repo group finishes evaluate mode with an acceptable false-positive rate", detail: "Enforcement flips to active — merges are now actually gated" }'
+  :terminal='{ context: "Rollout pattern across the preview cohort", detail: "Enable → Evaluate → Active, repo group by repo group" }'
 />
 
 ---
 
-<!-- SLIDE: Who Turns This On, and Where -->
-<FrameworkMappingRowsSlide
+# Enable → Evaluate → Active
+<MaturityJourneyRoadmapSlide
   :partNumber="4"
-  pillIcon="🏛️"
-  pillLabel="Enterprise-Level Enablement"
-  title="Who Turns This On, and Where"
-  subtitle="Three layers, each one narrowing the scope"
-  :rows='[
-    { label: "Enterprise", description: "Owners allow Code Quality for all or selected organizations", tag: "Policies" },
-    { label: "Organization", description: "Org admins enable it for specific repos within the allowed scope", tag: "Org Settings" },
-    { label: "Repository", description: "Repo admins can be delegated the ability to enable or disable it themselves", tag: "Repo Admin" }
+  pillIcon="🚦"
+  pillLabel="Rollout: Three Phases"
+  title="The Evaluate-First Rollout Pattern"
+  subtitle="Each phase builds confidence before the next one applies pressure"
+  :stages='[
+    { label: "Phase 1", name: "Enable & Observe", description: "Enable on pilot repos, add coverage workflow, watch quality scores — no enforcing rulesets", icon: "👁️", isTarget: false },
+    { label: "Phase 2", name: "Evaluate Mode", description: "Create rulesets with enforcement: evaluate — see what would have been blocked, tune thresholds", icon: "🔭", isTarget: false },
+    { label: "Phase 3", name: "Active Enforcement", description: "Switch to active for pilot repos, expand to remaining repo groups — never org-wide on day one", icon: "✅", isTarget: true }
   ]'
-  footnote="Nothing turns on below the enterprise policy layer — it is the master switch"
+  caption="Never skip evaluate mode — running it for at least one sprint prevents surprise merge blocks"
   :progressDots='{ current: 1, total: 2, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Enable & Observe → Evaluate → Active -->
-<MaturityJourneyRoadmapSlide
+# Enterprise Policy and Governance
+<ThreeColumnCardSlide
   :partNumber="4"
-  pillIcon="🚦"
-  pillLabel="The Rollout Checklist"
-  title="Enable & Observe → Evaluate → Active"
-  subtitle="Each stage is a deliberate, reversible decision, not a one-way flip"
-  :stages='[
-    { label: "Phase 1", name: "Enable & Observe", description: "Pilot repos only; add coverage upload; no enforcing rulesets yet", icon: "👀", isTarget: false },
-    { label: "Phase 2", name: "Evaluate Mode", description: "Rulesets report what would fail; tune thresholds on real PR history", icon: "🧪", isTarget: false },
-    { label: "Phase 3", name: "Active Enforcement", description: "Switch enforcement to active; expand to the next repo group", icon: "✅", isTarget: true }
+  pillIcon="🏢"
+  pillLabel="Rollout: Governance Layers"
+  title="Three Governance Layers for Deliberate Enablement"
+  :columns='[
+    { icon: "🏢", title: "Enterprise Policy", description: "Enterprise owners set whether Code Quality is allowed before any org can enable it", items: ["Allow for all orgs", "Allow for selected orgs", "Block repo-level override"] },
+    { icon: "🏗️", title: "Org-Level Enablement", description: "Org admins enable Code Quality per repo, within the enterprise policy", items: ["Choose pilot repos first", "Add coverage workflows", "Set up evaluate rulesets"] },
+    { icon: "🔒", title: "Repo-Level Control", description: "Repo admins enable or disable within what the org allows — the billing knob for each repo", items: ["Enable: starts committer counting", "Disable: removes from active count", "Controlled independently"] }
   ]'
-  caption="Repeat per repo group — do not flip the whole org at once"
   :progressDots='{ current: 2, total: 2, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Before/After -->
+# Before/After
 <BeforeAfterSlide
-  header="From Quality as a Report to Quality as a Gate"
-  :leftItems='[
-    "Coverage checked in a separate dashboard, reviewed weekly",
-    "Maintainability issues found long after merge, if at all",
-    "Legacy findings sit as an unstructured wall of technical debt",
-    "Enabling a new tool org-wide with no cost visibility"
-  ]'
-  :rightItems='[
-    "Coverage delta shown inline on every PR before merge",
-    "Autofix suggestions resolve findings inside the same PR",
-    "Default-branch backlog is scored, prioritized, and assignable",
-    "Active-committer billing audited before the first bill arrives"
-  ]'
+  header="From Periodic Audit to Merge-Time Gate"
+  :leftItems='["Coverage checked in a weekly dashboard", "Quality regressions found in postmortems", "No PR-level enforcement — team norms only", "Org-wide rollout risks unknown blocking rate"]'
+  :rightItems='["Coverage delta visible on every pull request", "Regressions caught before they merge", "Rulesets enforce thresholds at merge time", "Evaluate mode shows blast radius before going active"]'
   :metrics='[
-    { value: "80%", detail: "example minimum-coverage threshold enforceable via a ruleset" },
-    { value: "67.3%", detail: "self-reported share of findings resolved before merge" },
-    { value: "$10", detail: "per active committer per month, counted once org-wide" }
+    { value: "Per PR", detail: "coverage delta reported" },
+    { value: "Pre-merge", detail: "regression caught, not post-incident" },
+    { value: "Evaluate first", detail: "safe rollout path, every time" }
   ]'
 />
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
+# What You Can Do Today
 <WhatYouCanDoTodaySlide
-  :today='[
-    "Enable Code Quality on one pilot repo",
-    "Add the Cobertura coverage upload step to its CI workflow",
-    "Create a coverage ruleset in evaluate mode only"
-  ]'
-  :thisWeek='[
-    "Review a full sprint of evaluate-mode findings for false positives",
-    "Apply Autofix suggestions on any open PRs with findings",
-    "List every active committer the pilot repo would bill for"
-  ]'
-  :thisMonth='[
-    "Switch the pilot ruleset from evaluate to active enforcement",
-    "Expand to the next repo group using the same staged rollout",
-    "Audit every enabled repo org-wide before the next billing cycle"
-  ]'
-  footer="Coverage and quality only become a real gate once you flip evaluate to active — do that deliberately, one repo group at a time."
+  :today='["Enable Code Quality on one low-risk pilot repo", "Check if your CI produces Cobertura XML today", "Review which repos should count toward billing"]'
+  :thisWeek='["Add coverage upload workflow (or accept agent PR)", "Create a ruleset in evaluate mode at 80% coverage", "Run one full sprint in evaluate, log blocked PRs"]'
+  :thisMonth='["Flip pilot ruleset to active enforcement", "Expand to remaining org repos in groups", "Set up org dashboard review as a recurring cadence"]'
+  footer="Quality gates that used to require custom pipeline work are now one ruleset away."
 />
 
 ---
 
-<!-- SLIDE: References -->
+# References
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
-        { href: "https://docs.github.com/en/code-security/concepts/code-quality/code-quality", label: "GitHub Code Quality - Concepts", description: "Core concepts for PR and default-branch scanning" },
-        { href: "https://docs.github.com/en/code-security/how-tos/maintain-quality-code/enable-code-quality", label: "Enabling GitHub Code Quality", description: "Repo and org-level enablement steps" },
-        { href: "https://docs.github.com/en/code-security/how-tos/maintain-quality-code/set-up-code-coverage", label: "Setting up code coverage", description: "Cobertura upload configuration and permissions" },
-        { href: "https://docs.github.com/en/code-security/how-tos/maintain-quality-code/set-pr-thresholds", label: "Setting code quality thresholds for pull requests", description: "Ruleset parameters for coverage and quality scores" },
-        { href: "https://docs.github.com/en/billing/concepts/product-billing/github-code-quality", label: "GitHub Code Quality billing", description: "Active-committer pricing, AI credits, Actions minutes" }
+      { href: "https://docs.github.com/en/code-security/concepts/code-quality/code-quality", label: "GitHub Code Quality - Concepts", description: "Core concepts for PR and default-branch scanning" },
+      { href: "https://docs.github.com/en/code-security/how-tos/maintain-quality-code/enable-code-quality", label: "Enabling GitHub Code Quality", description: "Step-by-step repo and org enablement" },
+      { href: "https://docs.github.com/en/code-security/tutorials/improve-code-quality/catch-issues-before-merge", label: "Catch Issues Before Merge", description: "Ruleset-based merge gating walkthrough" },
+      { href: "https://docs.github.com/en/billing/concepts/product-billing/github-code-quality", label: "Code Quality Billing", description: "Active-committer pricing, AI credits, and Actions minutes" }
     ] },
-    { title: "📰 Announcements", color: "purple", items: [
-        { href: "https://github.blog/changelog/2026-07-20-github-code-quality-is-now-generally-available/", label: "GitHub Code Quality is now generally available", description: "GA announcement and reported resolution rate" },
-        { href: "https://docs.github.com/en/code-security/tutorials/improve-code-quality/catch-issues-before-merge", label: "Preventing code quality issues from reaching your default branch", description: "Ruleset-based merge gating walkthrough" }
+    { title: "📣 Changelog Announcements", color: "blue", items: [
+      { href: "https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer", label: "Code Quality No Longer Adds Copilot as a Reviewer", description: "Boundary between Code Quality and Copilot review enablement" },
+      { href: "https://github.blog/changelog/2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings", label: "Automatic Coverage Enablement", description: "Agent-generated coverage workflow pull request in public preview" }
     ] }
   ]'
 />
 
 ---
 
-<!-- SLIDE: Thank You -->
+# Thank You
 <ThankYouSlide
   title="GitHub Code Quality"
   subtitle="Turning Maintainability Into a Merge Gate"
   :cards="[
-    { value: '80%', detail: 'coverage threshold enforceable via a single ruleset' },
-    { value: '67.3%', detail: 'of findings self-reported resolved before merge' },
-    { value: '$10/committer', detail: 'the real cost of enabling this org-wide' },
+    { value: 'Coverage Gates', detail: 'Cobertura upload → per-PR delta → ruleset threshold → merge condition' },
+    { value: 'Autofix in the PR', detail: 'Proposals inside the PR; Code Quality and Copilot review are independent' },
+    { value: '$10/committer/month', detail: 'Org-wide active-committer billing plus AI credits and Actions minutes' },
+    { value: 'Enable → Evaluate → Active', detail: 'Three phases; evaluate mode first, every time, every repo group' }
   ]"
-  prompt="Which repo would you pilot first — and do you already know who counts as an active committer there?"
+  prompt="Which signal would your team enforce first — coverage threshold, maintainability score, or reliability score?"
 />

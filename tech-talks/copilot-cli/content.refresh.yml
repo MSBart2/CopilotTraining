@@ -1,0 +1,74 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/copilot-cli"
+  cutoff: "2026-06-04"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    Current CLI guidance omits the new concurrent-session controls, isolated
+    worktree flow, Git-free rewind behavior, and tool-duration visibility. It
+    also names models scheduled for removal on September 1, so the durable model
+    selection guidance and examples must replace stale defaults.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "5c82c9f4d4b61705"
+      title: "GitHub Copilot weekly releases - August 3: CLI session controls"
+      published: "2026-08-07"
+      source: "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "The Solution: GitHub Copilot CLI"
+      action: add
+      summary: >
+        The CLI now exposes a Sessions sidebar for concurrent sessions, Git-free
+        /rewind that restores the conversation and Copilot-modified files while
+        preserving later edits, live tool-call durations in the timeline, and an
+        experimental /worktree command that starts a separate conversation in an
+        isolated worktree without disrupting the current workspace.
+      limitations:
+        - "The /worktree command is experimental."
+      recipeImpact: confirm
+      slideImpact: regenerate
+    - ledgerEventId: "b625c840a2369df1"
+      title: "Upcoming September 2026 model deprecations in GitHub Copilot"
+      published: "2026-07-31"
+      source: "https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot"
+      verified: "2026-08-10"
+      releaseStatus: deprecated
+      importance: supporting
+      targetSection: "Advanced Reasoning Models"
+      action: replace
+      summary: >
+        Claude Sonnet 4.5 and Claude Opus 4.5 are among the models being removed
+        from Copilot experiences on September 1, 2026. Replace named defaults and
+        examples with durable model-selection guidance and a supported-model check.
+      limitations:
+        - "Replacement availability can depend on enterprise model policy."
+        - "The announcement lists a limited annual-plan exception for Claude Sonnet 4.6, not Sonnet 4.5."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored: []
+  removals:
+    - "Remove Claude Sonnet 4.5 as the stated default model."
+    - "Replace Claude Opus 4.5 and Sonnet 4.5 examples that imply continued availability after September 1."
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Can the current four-pillar CLI arc absorb concurrent sessions, worktrees,
+      rewind, and durable model-selection guidance without changing its order?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

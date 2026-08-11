@@ -13,7 +13,7 @@ title: GitHub Agentic Workflows
 mdc: true
 section: Agentic Systems
 status: active
-updated: 2026-05-05
+updated: 2026-08-11
 ---
 
 <script setup>
@@ -34,6 +34,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
 import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlide.vue'
 import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
+import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
 </script>
 
 # Title
@@ -79,10 +80,10 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 <TocSlide
   subtitle="Why It Matters → Architecture & Safety → Patterns by Path → Your Path Forward"
   :sections='[
-    { icon: "💡", title: "Why It Matters", subtitle: "Three paths, three flagship use cases", blurb: "Find your path in the first 12 slides", slide: 4 },
-    { icon: "🔐", title: "Architecture & Safety", subtitle: "Compiler-enforced security model", blurb: "Three-phase pipeline, safe outputs, pattern vocabulary", slide: 9 },
-    { icon: "🗺️", title: "Patterns by Path", subtitle: "10 use cases across a 3x3 matrix", blurb: "Find your cell — see which peers shipped it", slide: 15 },
-    { icon: "🚀", title: "Your Path Forward", subtitle: "Week-by-week progression by path", blurb: "Monday-morning action plan", slide: 19 }
+    { icon: "💡", title: "Why It Matters", subtitle: "Three paths, three flagship use cases", blurb: "Find your path in the first 12 slides", slide: 5 },
+    { icon: "🔐", title: "Architecture & Safety", subtitle: "Compiler-enforced security model", blurb: "Three-phase pipeline, safe outputs, pattern vocabulary", slide: 10 },
+    { icon: "🗺️", title: "Patterns by Path", subtitle: "10 use cases across a 3x3 matrix", blurb: "Find your cell — see which peers shipped it", slide: 17 },
+    { icon: "🚀", title: "Your Path Forward", subtitle: "Week-by-week progression by path", blurb: "Monday-morning action plan", slide: 21 }
   ]'
 />
 
@@ -212,7 +213,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
     { label: "Phase 3", name: "Execute", description: "Actions runs the lock file: sandboxed container → JSON output → validation pipeline → writes", icon: "🏃", isTarget: true }
   ]'
   caption="The lock file is a generated artifact — never edit it directly. Edit the .md source and recompile."
-  :progressDots='{ current: 1, total: 5, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :progressDots='{ current: 1, total: 6, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
@@ -231,7 +232,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
     { icon: "🛠️", title: "Tools declaration", description: "Only the GitHub APIs the agent needs — principle of least privilege" },
     { icon: "🗣️", title: "Markdown body = agent instructions", description: "Natural language — no step sequences, no conditionals, no error handling" }
   ]'
-  :progressDots='{ current: 2, total: 5, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :progressDots='{ current: 2, total: 6, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
@@ -267,7 +268,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
     ],
     metrics: [{ value: "0", label: "unchecked writes in any run" }]
   }'
-  :progressDots='{ current: 3, total: 5, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :progressDots='{ current: 3, total: 6, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
@@ -287,7 +288,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
     { label: "Audit", description: "Embed hidden gh-aw-workflow-id markers — every item searchable", tag: "Trace gate" }
   ]'
   footnote="Noop is the sixth implicit gate: every workflow must call noop when no action is needed — or the run fails silently."
-  :progressDots='{ current: 4, total: 5, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :progressDots='{ current: 4, total: 6, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
@@ -307,7 +308,39 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
     { label: "Orchestrated", description: "Multi-agent dispatch and synthesis — parallel workers, summary report", tag: "dispatch-workflow" }
   ]'
   footnote="Pattern = trigger type + safe-output type. Once you know the pattern, the workflow almost writes itself."
-  :progressDots='{ current: 5, total: 5, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :progressDots='{ current: 5, total: 6, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+/>
+
+---
+
+# Two Comment Trigger Mechanisms
+<TwoColPairedConceptsSlide
+  :partNumber="2"
+  pillIcon="🔀"
+  pillLabel="Architecture: Two Trigger Mechanisms"
+  title="Two Comment Trigger Mechanisms"
+  subtitle="Compiled repository workflow vs. configured cloud-agent task — different ownership, different trust model"
+  :left='{
+    header: "Comment Workflows (gh-aw)",
+    icon: "📝",
+    items: [
+      { title: "Repo-owned Markdown", detail: "Version-controlled, compiled to Actions via gh aw compile" },
+      { title: "Safe-output governed", detail: "AI reads comment → validation pipeline → scoped handler" },
+      { title: "Slash commands by convention", detail: "Your workflow Markdown defines what triggers what" },
+      "Audit trail: hidden gh-aw-workflow-id markers in every created item"
+    ]
+  }'
+  :right='{
+    header: "Cloud-Agent Automations",
+    icon: "⚙️",
+    items: [
+      { title: "Configured in Agents > Automations", detail: "Repository settings — not version-controlled Markdown" },
+      { title: "Trigger text delegates agent tasks", detail: "Configured text in issue or PR comment initiates work" },
+      { title: "Requires eligible Copilot plan", detail: "Business/Enterprise admin must enable the policy" },
+      "Initiates documentation, investigation, or follow-up — not gh-aw slash commands"
+    ]
+  }'
+  :progressDots='{ current: 6, total: 6, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
@@ -320,7 +353,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
   :cards='[
     { icon: "🏷️", title: "Path A: Triage at Scale", blurb: "L1: Issue Triage → L2: PR Review → L3: Dependency Audit" },
     { icon: "📊", title: "Path B: Visibility & Synthesis", blurb: "L1: Health Report → L2: Release Notes → L3: Research Digest" },
-    { icon: "🤖", title: "Path C: Orchestration", blurb: "L1: CI Failure → L2: ChatOps → L3: Multi-Agent" }
+    { icon: "🤖", title: "Path C: Orchestration", blurb: "L1: CI Failure → L2: Comment Workflows → L3: Multi-Agent" }
   ]'
   :terminal='{ context: "100+ workflows in Peli&#39;s Agent Factory — validated in continuous production", detail: "Specialize, don&#39;t monolith. Build many focused workflows." }'
 />
@@ -367,7 +400,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
   title="Path C: From Reaction to Coordination"
   :columns='[
     { icon: "🌱", title: "L1 — CI Failure Diagnosis", description: "on: workflow_run (failure) → analyze logs → create structured issue with root cause and next steps.", items: ["Safe outputs: create-issue (close-older)", "15 minutes to ship", "Failure mode: noop if not a known failure type"] },
-    { icon: "🌿", title: "L2 — ChatOps Commands", description: "on: issue_comment.created → detect /triage /summarize /suggest-owner → respond in-thread.", items: ["Safe outputs: add-comment, add-labels", "1 hour to ship", "Failure mode: noop if no command recognized"] },
+    { icon: "🌿", title: "L2 — Comment Workflows (gh-aw)", description: "Compiled to Actions → on issue_comment.created, AI reads, safe-output handler responds in-thread.", items: ["Safe outputs: add-comment, add-labels", "1 hour to ship", "Failure mode: noop if no command recognized"] },
     { icon: "🌳", title: "L3 — Multi-Agent Orchestration", description: "schedule: daily → dispatch worker workflows → collect results → synthesize coordinated report.", items: ["Safe outputs: dispatch-workflow, create-issue", "1 day to ship", "Failure mode: worker synchronization races"] }
   ]'
   :progressDots='{ current: 3, total: 3, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'

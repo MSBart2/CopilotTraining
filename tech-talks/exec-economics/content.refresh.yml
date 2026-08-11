@@ -1,0 +1,58 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/exec-economics"
+  cutoff: "2026-04-24"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    GitHub's impact dashboard provides an official directional measurement surface
+    for the talk's ROI argument. It should ground, not replace, the existing labor
+    model by showing spend and pull-request output together and by making the
+    dashboard's estimation limits explicit.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "d95bfbf8a05e2cd0"
+      title: "Copilot impact dashboard adds a return on investment section"
+      published: "2026-08-07"
+      source: "https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "The 20% at $2/Hour Goal"
+      action: add
+      summary: >
+        The enterprise and organization impact dashboards now compare early-phase
+        and agent-first cohorts using monthly Copilot cost per developer from AI
+        credit consumption, payroll share from a selectable salary assumption, and
+        average pull requests per developer per month.
+      limitations:
+        - "GitHub describes the ROI output as potential and directional, not realized savings or causal proof."
+        - "Salary is a modeling input rather than payroll data."
+        - "The Copilot usage metrics policy and View Copilot Metrics permission are required."
+        - "The corrected 28-day cohort counts affect the dashboard only, not usage API or NDJSON exports."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored: []
+  removals:
+    - "Do not relabel the talk's internal scenario assumptions as GitHub dashboard baselines."
+    - "Do not invent a fixed error margin for GitHub's directional estimates."
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Where should the official directional dashboard evidence reinforce the
+      existing leadership calculation without displacing the talk's honest caveats?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

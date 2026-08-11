@@ -1,0 +1,74 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/copilot-web"
+  cutoff: "2026-04-06"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-08-10"
+    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+  status: approved
+  approved: "2026-08-10"
+  updateLevel: content
+  rationale: >
+    The issue-to-PR talk currently presents issue assignment as the primary
+    delegation path and omits a per-run reasoning control. Comment-triggered
+    automations and reasoning level add two practical controls without changing
+    the human-reviewed draft-PR thesis.
+  userEmphasis: []
+
+  accepted:
+    - ledgerEventId: "6b4ff9d6d9d0c351"
+      title: "Customize the reasoning level for Copilot cloud agent"
+      published: "2026-08-03"
+      source: "https://github.blog/changelog/2026-08-03-customize-the-reasoning-level-for-copilot-cloud-agent"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "The Delegation Loop: From Issue Assignment to Draft PR"
+      action: add
+      summary: >
+        For supporting models, users can choose a reasoning level beside the model
+        when starting a cloud-agent task. Higher reasoning can improve complex
+        results but consumes more tokens and credits for that run.
+      limitations:
+        - "The control applies only to models that support reasoning levels."
+        - "Availability requires a paid Copilot plan that includes cloud agent."
+      recipeImpact: confirm
+      slideImpact: regenerate
+    - ledgerEventId: "ce763e534cb962ef"
+      title: "Trigger Copilot automations with comments"
+      published: "2026-08-03"
+      source: "https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments"
+      verified: "2026-08-10"
+      releaseStatus: ga
+      importance: supporting
+      targetSection: "Triggering the Agent"
+      action: add
+      summary: >
+        Repository owners can configure a Copilot cloud-agent automation to run
+        when an issue or pull-request comment contains specified trigger text,
+        enabling documentation updates, error investigation, and follow-up issue
+        creation from the conversation where work is discovered.
+      limitations:
+        - "Configuration lives under the repository Agents tab, then Automations."
+        - "Business and Enterprise users require the Copilot cloud agent policy to be enabled by an administrator."
+        - "The announcement does not define universal slash commands; trigger text is configured per automation."
+      recipeImpact: confirm
+      slideImpact: regenerate
+
+  ignored: []
+  removals:
+    - "Replace wording that implies issue assignment is the only cloud-agent trigger."
+  anomalies: []
+  recipeReview:
+    required: true
+    question: >
+      Can reasoning level and comment-triggered automations fit inside the current
+      delegation and trust sections without changing the issue-to-PR spine?
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

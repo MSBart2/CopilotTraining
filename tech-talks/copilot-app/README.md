@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-06-16
+updated: 2026-08-11
 section: "Agentic Systems"
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/github-copilot-app
@@ -15,6 +15,9 @@ references:
   - url: https://github.com/features/ai/github-app
     label: "GitHub Copilot app product page"
     verified: 2026-06-16
+  - url: https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3
+    label: "GitHub Copilot weekly releases - August 3: Copilot App controls"
+    verified: 2026-08-10
 ---
 
 # The GitHub Copilot App: Running a Fleet of Agents
@@ -352,6 +355,12 @@ For Business and Enterprise plans, organization administrators control autonomy 
 - **Audit log**: Every agent action is recorded — file edits, terminal commands, PR opens — in GitHub's audit log with session identifier, dispatching user, and timestamp
 
 The audit trail is comprehensive and retroactively searchable, meaning compliance teams can reconstruct exactly what any agent session did, when, and on whose behalf.
+
+---
+
+### Operator Visibility and Side Exploration
+
+Supporting controls make the fleet easier to inspect and navigate without changing its operating model. Auto identifies the model used after a completed request; AI credit and cache details appear when available. Direct entry into shared sessions keeps collaboration close at hand; `/side` explores a parallel question without disrupting the main task. Session start and switching are more efficient, keeping attention moving across the fleet while the three autonomy modes, worktree isolation, and existing policy controls continue to define how work runs.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-06-04
+updated: 2026-08-10
 section: "Developers"
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli
@@ -42,6 +42,12 @@ references:
   - url: https://github.com/github/copilot-cli/releases
     label: "GitHub Copilot CLI release notes"
     verified: 2026-05-01
+  - url: https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3
+    label: "GitHub Copilot weekly releases: August 3 CLI updates"
+    verified: 2026-08-10
+  - url: https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot
+    label: "Upcoming September 2026 model deprecations in GitHub Copilot"
+    verified: 2026-08-10
 
 ---
 
@@ -99,6 +105,9 @@ GitHub Copilot CLI brings conversational AI directly into terminal workflows —
 - **Programmatic Mode**: Single-command execution for scripts and pipelines — designed for headless CI/CD automation
 - **Cloud Delegation**: Background execution frees terminal for other work — delegate large tasks with `&` prefix
 - **Remote Sessions (`--remote`)**: Start a session on any machine (including over SSH), steer it from GitHub.com or GitHub Mobile via URL/QR code — the session lives where the problem is, you steer from wherever you are
+- **Concurrent Session Controls**: Open the Sessions sidebar with `<`, create and close sessions with `n` and `x`, and move among active conversations without leaving the CLI
+- **Isolated Worktree Exploration (Experimental)**: `/worktree` starts a separate conversation in a new worktree so exploratory changes do not disrupt the current workspace
+- **Recover Without Git**: `/rewind` restores the conversation and files Copilot changed while preserving later edits, even when the workspace is not a Git repository
 - **Built-in Agents**: Specialized agents (Explore, Task, Plan, Code-review) automatically handle common patterns
 - **`/fleet` Fan-Out**: Explicitly decompose a plan into parallel subtasks — orchestrator assigns work to subagents, each in their own context window; results are merged back automatically
 - **IDE Bridge via `/ide`**: Open any file in VS Code mid-session — CLI context and conversation stay alive; use terminal and IDE simultaneously
@@ -650,19 +659,31 @@ copilot --resume SESSION-ID # Resume a specific session by ID
 /rename NEW_NAME            # Give the current session a meaningful name
 ```
 
+For concurrent work, press `<` to open the Sessions sidebar. Use `n` to start a
+session, `x` to close the current session, and the sidebar navigation to switch
+among active conversations. Press `>` to close the sidebar.
+
+Two recovery and isolation controls extend the session model:
+
+- **`/rewind` without Git:** Restore the conversation and files Copilot changed while preserving edits made afterward. This works even when the workspace is not a Git repository.
+- **`/worktree` (experimental):** Create an isolated worktree and begin a separate conversation for changes that should not disrupt the current workspace.
+
 **Session storage:** Data lives in `~/.copilot/session-state/` — private to your machine and user account. Delete that directory to clear history.
 
 See also: [Using GitHub Copilot CLI session data](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle)
 
 ### Model Selection and Premium Request Cost
 
-**Default model:** Claude Sonnet 4.5. Change model at any time:
+Use `/model` to choose a currently supported model for the task. Do not treat a
+specific catalog entry as a permanent default: GitHub retires models across
+Copilot experiences, and enterprise administrators may need to enable replacement
+models through Copilot model policy before they appear in the selector.
 
 ```bash
 /model   # Opens model picker showing all available models with their multiplier
 ```
 
-The multiplier next to each model (`1x`, `2x`, etc.) shows how many premium requests one prompt consumes. Example: `Claude Sonnet 4.5 (1x)` means each prompt costs 1 premium request. Higher-capability models have higher multipliers. Use `/model` before starting a session to select the right cost/quality tradeoff for your task.
+The multiplier next to each model (`1x`, `2x`, etc.) shows how many premium requests one prompt consumes. Higher-capability models can have higher multipliers. Use `/model` before starting a session to select the right cost/quality tradeoff and verify that organization policy permits the replacement model your workflow expects.
 
 ### Shell & Output Improvements
 
@@ -670,6 +691,7 @@ The multiplier next to each model (`1x`, `2x`, etc.) shows how many premium requ
 - **Clean history:** Shell commands are excluded from Bash/PowerShell history files
 - **Tab title:** Current AI intent shows in terminal tab — useful for monitoring multiple sessions
 - **Faster output:** Median completion time down ~45%; richer diffs and edit timelines
+- **Live tool-call durations:** The timeline shows elapsed time for active tool calls, making slow commands visible while a turn runs
 - **Platform polish:** Improved Windows/PowerShell ergonomics and accessibility shortcuts
 
 ---
@@ -807,7 +829,7 @@ While Copilot routes multiple agent types automatically from a single prompt, `/
 | **Speed** | Parallel subtasks complete in the time of the longest, not the sum |
 | **Context isolation** | Each subagent has its own window — no context pollution between tasks |
 | **Specialization** | Custom agents (`@test-writer`, `@security-reviewer`) are automatically used for matching subtasks |
-| **Model selection** | Subagents default to low-cost models; specify per-subtask: `Use Claude Opus 4.5 to analyze...` |
+| **Model selection** | Subagents default to low-cost models; request a currently supported higher-reasoning model only when a subtask warrants it |
 
 **When to use `/fleet`:**
 - Large tasks with multiple independent steps (refactor N files, update N dependencies)

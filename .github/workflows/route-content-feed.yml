@@ -1,0 +1,91 @@
+name: Route Content Feed
+
+on:
+  schedule:
+    - cron: "20 6 * * *"
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: Feed lookback window in days
+        required: false
+        default: "7"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: content-feed-routing
+  cancel-in-progress: true
+
+jobs:
+  route:
+    runs-on: ubuntu-latest
+    env:
+      LOOKBACK_DAYS: ${{ inputs.lookback_days || '7' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: "24"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test content routing
+        run: npm run test:content-routing
+
+      - name: Route feed entries
+        run: npm run content:route
+
+      - name: Upload routing report
+        uses: actions/upload-artifact@v4
+        with:
+          name: content-routing-report
+          path: |
+            .github/content-routing/latest-report.json
+            .github/content-routing/latest-report.md
+          retention-days: 30
+
+      - name: Update routing inbox issue
+        uses: actions/github-script@v8
+        env:
+          REPORT_PATH: .github/content-routing/latest-report.md
+        with:
+          script: |
+            const fs = require("fs");
+            const title = "[Content refresh] Feed routing inbox";
+            const marker = "<!-- content-routing-inbox -->";
+            const report = fs.readFileSync(process.env.REPORT_PATH, "utf8");
+            const maxBodyLength = 60000;
+            const clipped = report.length > maxBodyLength
+              ? `${report.slice(0, maxBodyLength)}\n\n_Report clipped; download the workflow artifact for the full result._\n`
+              : report;
+            const body = `${marker}\n${clipped}`;
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              per_page: 100
+            });
+            const existing = issues.find((issue) => issue.title === title && issue.body?.includes(marker));
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body
+              });
+            }

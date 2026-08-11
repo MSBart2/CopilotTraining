@@ -1,4 +1,6 @@
 # deck.recipe.yml — Copilot Plugins & APM talk slide generation guidance
+# COUNCIL REVISE (2026-08-10): Preserve the APM packaging thesis and arc; add
+# enterprise managed settings as a bounded, separate governance companion.
 
 version: 1
 
@@ -58,7 +60,13 @@ deck:
       note: >
         Walk through a complete apm.yml with plugins, instructions, skills, and MCP servers,
         then close with the lockfile pattern as the natural capstone of "configuration as code" —
-        treat apm-lock.yml like package-lock.json, not an implementation detail.
+        treat apm-lock.yml like package-lock.json, not an implementation detail. Add a bounded
+        companion beat: enterprise managed settings are separate governance, not apm.yml merge
+        or inheritance. enabledPlugins and extraKnownMarketplaces establish an additive enterprise
+        floor; teams extend it through files under copilot/teams/ mapped by team-mappings.json.
+        Users in multiple teams receive least-restrictive team values beneath non-overridable
+        enterprise decisions. This is supported only in VS Code, Copilot CLI, Copilot App, and
+        Copilot cloud agent for Business or Enterprise.
     "What You Can Do Today":
       emphasis: medium-high
       note: >
@@ -72,6 +80,7 @@ deck:
     - "apm.yml is infrastructure: commit it to version control alongside your code, not in a wiki page"
     - "Lockfiles make 'works on my machine' impossible for AI configuration — apm-lock.yml is non-negotiable"
     - "The complete onboarding: git clone && apm install gives every contributor identical AI context, zero manual steps"
+    - "APM packages reproducible project configuration; managed settings govern a separate additive enterprise floor that teams can extend — never present this as apm.yml merge or inheritance"
 
   # References section
   references:

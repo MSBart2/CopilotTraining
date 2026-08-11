@@ -1,17 +1,23 @@
 ---
 status: active
-updated: 2026-07-24
+updated: 2026-08-10
 section: "Developers"
 references:
   - url: https://docs.github.com/en/code-security/concepts/code-quality/code-quality
     label: "GitHub Code Quality - Concepts"
-    verified: 2026-07-24
+    verified: 2026-08-10
   - url: https://docs.github.com/en/code-security/how-tos/maintain-quality-code/enable-code-quality
     label: "Enabling GitHub Code Quality"
-    verified: 2026-07-24
+    verified: 2026-08-10
   - url: https://docs.github.com/en/code-security/tutorials/improve-code-quality/catch-issues-before-merge
     label: "Preventing code quality issues from reaching your default branch"
-    verified: 2026-07-24
+    verified: 2026-08-10
+  - url: https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer
+    label: "GitHub Code Quality no longer adds Copilot as a reviewer"
+    verified: 2026-08-10
+  - url: https://github.blog/changelog/2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings
+    label: "Code coverage automatic enablement in Code Quality settings"
+    verified: 2026-08-10
 ---
 
 # GitHub Code Quality: Turning Maintainability Into a Merge Gate
@@ -64,6 +70,8 @@ The rollout pattern showing up across teams is a on-ramp, not a flip of a switch
 ### What It Does
 
 GitHub Code Quality analyzes pull requests and the default branch for maintainability and reliability issues, using CodeQL plus AI-assisted detection, and layers test coverage reporting on top. Findings surface as PR comments with Copilot Autofix suggestions; rulesets turn any of these signals into a merge requirement[^2].
+
+Enabling Code Quality does not automatically enable Copilot code review. GitHub disabled automatic review, review on new pushes, and draft review in GitHub-generated rulesets that still matched the original generated configuration. Edited generated rulesets and user-authored rulesets were left untouched. Teams can independently enable Copilot review with a repository or organization ruleset; that review remains billed to the Copilot plan[^12].
 
 ### Key Capabilities
 
@@ -200,7 +208,9 @@ Once a workflow uploads a Cobertura XML report, Code Quality attaches a coverage
 
 ### Feeding the Gate: The Coverage Upload Workflow
 
-The ruleset is only as good as the coverage data feeding it. A minimal Actions workflow producing that data:
+The ruleset is only as good as the coverage data feeding it. In public preview for Code Quality users on github.com, Code Quality settings can start an agent that opens a reviewable pull request with a least-privilege workflow. The generated workflow builds the project, runs tests, produces coverage, and uploads the report to GitHub while requesting only the permissions needed for those tasks[^13].
+
+The generated pull request is an onboarding path, not a replacement for custom CI. Teams that need specific build steps, test matrices, coverage tooling, or upload behavior can still author the workflow manually. A minimal manual Actions workflow producing that data:
 
 ```yaml
 name: CI
@@ -401,6 +411,8 @@ gh api repos/OWNER/REPO/code-quality/findings --jq '.[] | select(.severity=="hig
 
 [^8]: **[GitHub Code Quality generally available July 20, 2026](https://github.blog/changelog/2026-06-16-github-code-quality-generally-available-july-20-2026/)** — Advance notice of the GA date
 [^9]: **[Code coverage on pull requests is now in public preview](https://github.blog/changelog/2026-05-26-code-coverage-in-pull-requests-is-now-in-public-preview/)** — Origin of the coverage feature ahead of GA
+[^12]: **[GitHub Code Quality no longer adds Copilot as a reviewer](https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer)** — Code Quality and Copilot review enablement, ruleset migration, and billing boundary
+[^13]: **[Code coverage automatic enablement in Code Quality settings](https://github.blog/changelog/2026-08-04-code-coverage-automatic-enablement-in-code-quality-settings)** — Public-preview agent-generated coverage workflow pull request
 
 ### Tutorials & Guides
 
