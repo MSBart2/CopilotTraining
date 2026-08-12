@@ -1,13 +1,13 @@
 # deck.recipe.yml — VS Code Latest talk guidance
 #
-# REFRESH: 2026-08-10
-# COUNCIL DECISION: RESTRUCTURE — high confidence
-# RATIONALE: The release catalog and fleet metaphor no longer fit portable agent hosts,
-# open model choice, parallel work, and closed-loop delivery. Preserve the README's four-
-# pillar order, make Open Model Workbench the sole high-emphasis section, and close on the
-# GA browser validation loop. Label Preview and Experimental material explicitly.
-# FOLLOW-UP: 2026-08-10 — PRESERVE. The September model retirement only replaces a
-# named README example; the recipe already uses durable supported-model language.
+# REFRESH: 2026-08-12
+# COUNCIL DECISION: RESTRUCTURE — high confidence (prior 2026-08-10)
+# FOLLOW-UP: 2026-08-12 — ADJUST. Author feedback: many teams still do not open the
+# Agents window, and daily Vision paste (e.g. Excel clipboard → image attachment) is
+# under-taught. Raise Parallel Agent Work to medium with an awareness/how-to-open lead;
+# add Copilot Vision paste as a GA beat inside Closed-Loop Delivery. Keep Open Model
+# Workbench as the sole high-emphasis peak and the GA browser loop as climax.
+# PRIOR: 2026-08-10 — PRESERVE for model-retirement wording only.
 
 version: 1
 
@@ -20,12 +20,12 @@ deck:
     - title: "Run Any Model You Choose"
       takeaway: "Configure BYOK providers, local Ollama models, and a Stable Custom Endpoint in the model picker without a GitHub sign-in."
       whyItMatters: "Model choice, cost, and data residency become configuration decisions your team controls."
-    - title: "Detach Agents From the Window"
-      takeaway: "See how the Copilot SDK and the Agent Host Protocol let a session run on a machine you own and survive disconnect."
-      whyItMatters: "Long-running work stops being tied to one laptop and one open editor."
+    - title: "Open the Agents Window"
+      takeaway: "Leave side-chat-only habits: open the dedicated Agents window and run multi-session work with live activity."
+      whyItMatters: "Most of the parallel and review story is invisible until this surface is open."
     - title: "Close the Loop In-Window"
-      takeaway: "Watch an agent build, emulate a device, screenshot, take element-anchored feedback, and route review back into the same session."
-      whyItMatters: "Validation and review stop costing a context switch on every iteration."
+      takeaway: "Paste vision evidence, emulate a device, screenshot, take element-anchored feedback, and route review back into the same session."
+      whyItMatters: "Validation and context handoff stop costing a context switch on every iteration."
 
   arcToc: "Agent Infrastructure → Open Models → Parallel Work → Closed-Loop Delivery"
 
@@ -34,34 +34,21 @@ deck:
     a table of contents. Agent Infrastructure comes first as the substrate: the Copilot
     SDK and the open Agent Host Protocol separate the session from the window, so an
     agent can run on a machine the team owns and be reconnected later. It is deliberately
-    the shortest of the two opening sections — it must establish the mental model, not
-    exhaust the protocol, and it is Preview, so it earns explanation rather than a live
-    demo. Open Model Workbench is the peak of the talk and the only high-emphasis
-    section. It is where the audience recalibrates: BYOK now works without GitHub
-    sign-in, Ollama is a first-class provider, Custom Endpoint is Stable, utility models
-    are separately configurable, and supported models expose 1M-token contexts — all GA,
-    all demonstrable live. It also carries the one firm boundary of the whole talk:
-    inline suggestions and next edit suggestions still require GitHub sign-in. Placing it
-    second rather than first is intentional — the audience has just been told the harness
-    is portable, and the natural next question is "portable running what?" The answer is
-    "any model you choose, including one running on your own machine," which lands harder
-    as a payoff than as an opener. Parallel Agent Work is deliberately compressed, and
-    that compression is the recipe's main act of restraint. Multiple sessions, multiple
-    chats per session, peer forks, and worktrees across harnesses are genuinely
-    significant, but the Agents window is Preview and multi-session live demos are the
-    most fragile thing in the release window. The section runs on the two GA beats —
-    /btw side chats and live activity pills — plus a clear structural claim about
-    isolated worktrees, and it hands the recovered time to the closing section. Closed-
-    Loop Delivery is the climax because it is where the audience can act tomorrow: GA
-    browser tools on by default, device emulation and screenshots attached to the chat
-    turn, and element-specific comments in v1.132 give a complete build-validate-fix loop
-    that requires no Preview surface at all. In-window diff review, CI failure handling,
-    and PR comment response extend that loop and are shown as the Preview direction of
-    travel, with hybrid Markdown editing named as experimental. Boundaries and Control is
-    never its own section; cost visibility, OpenTelemetry, managed settings, MCP
-    allowlists, and sensitive-terminal-prompt handling appear inside the sections they
-    actually constrain, with plan dependence stated where relevant. The talk ends on a
-    working loop rather than a governance checklist.
+    short — mental model, not protocol tour — and Preview, so prepared evidence beats a
+    live reconnect demo. Open Model Workbench remains the peak and the only high-emphasis
+    section: BYOK without GitHub sign-in, Ollama, Stable Custom Endpoint, utility models,
+    and 1M-token contexts — all GA and demoable — plus the firm boundary that inline/NES
+    still need GitHub sign-in. Parallel Agent Work is no longer the most compressed
+    section. Author delivery feedback is that many practitioners never open the Agents
+    window at all, so the section now leads with awareness and open paths (title bar,
+    Command Palette, code --agents), then the workspace claim (multi-session, worktrees,
+    multi-chat), then the GA /btw and live-pills beats. Multi-session live demos stay
+    off-limits as fragile Preview choreography; opening the window and showing its layout
+    is the required awareness demo. Closed-Loop Delivery remains the practical climax:
+    Copilot Vision paste (GA) for everyday evidence handoff, GA browser tools with device
+    emulation and chat-attached screenshots, and v1.132 element comments. In-window diff
+    review, CI, and PR response stay Preview direction-of-travel. Boundaries stay woven
+    into the sections they constrain. End on a working loop, not a policy checklist.
 
   sectionOrder:
     - "Agent Infrastructure"
@@ -135,66 +122,44 @@ deck:
         comparisons, individual model arrivals, and any standalone vendor focus.
 
     "Parallel Agent Work":
-      emphasis: medium-low
+      emphasis: medium
       note: >
-        1–2 slides, deliberately compressed — the time saved here funds the closing
-        section. The structural claim first: the Agents window has moved from a monitoring
-        dashboard to a workspace, running multiple sessions side by side, each with its own
-        worktree, tool context, and model configuration, with grouping, reordering, and
-        filtering; multiple chats per session and peer-chat forks let a developer branch
-        from any point in a conversation while sharing the session's worktree and tool
-        state; and worktree isolation now holds across local, remote, and Copilot SDK
-        harnesses so the review-and-merge workflow is the same wherever the session ran.
-        Give one concrete pattern — two sessions on two approaches to the same problem,
-        each in its own worktree, compared by diff when both finish — and move on. Label
-        this cluster Preview and say the limit out loud: cross-host session management,
-        peer-fork merge conflict resolution, and group-level settings are still evolving,
-        so treat the Agents window as high-capability preview rather than a stable
-        production substrate. Do not attempt a live multi-session demo; it is the most
-        fragile beat available and it competes with the Open Model Workbench demo for the
-        audience's attention. The demonstrable beat here is GA and small: /btw opens a
-        contextual side chat that runs alongside an active agent turn without pausing it,
-        sharing the primary chat's context and prompt cache, and live activity pills surface
-        changes, previews, subagents, and browsers at a glance and clear when the turn
-        completes. Those two are safe to show live and are the honest takeaway — parallel
-        work is now legible, not just possible. Cut: session grouping UI tours, fork merge
-        semantics, and any claim that parallel orchestration is production-ready.
+        3–4 slides. Lead with awareness, not orchestration depth — the delivery problem is
+        that many people never open the Agents window. Slide 1 (required): Open It. Show
+        the open paths live or as a crisp callout — title bar Open in Agents, Command
+        Palette "Chat: Open Agents Window", code --agents, welcome-page entry, and the
+        optional browser Agents surface. State that it is a dedicated VS Code window beside
+        the editor, sharing sessions/settings/keybindings with the side Chat view so
+        context is not forked. Slide 2: what the window is for — sessions list across
+        workspaces, Chat + Changes + Files for the active session, customizations panel —
+        and the one-line contrast with side chat (code-adjacent vs agent-first). Slide 3:
+        workspace claim compressed — multiple sessions side by side with isolated
+        worktrees, multi-chat / peer forks as a structural claim, one concrete pattern
+        (two approaches, two worktrees, compare diffs). Label Preview limits out loud.
+        Slide 4 (or combined with 3): GA /btw side chats and live activity pills as the
+        safe live beats. Do not run a multi-session endurance demo. Cut: fork merge
+        semantics, grouping UI tours, production-orchestration claims.
 
     "Closed-Loop Delivery":
       emphasis: medium-high
       note: >
-        3–4 slides and the practical climax of the talk. Everything the audience can do
-        tomorrow with no Preview dependency lives here. Lead with the status fact: agentic
-        browser tools are GA and enabled by default as of the June 2026 release, with no
-        configuration flag required — navigation, page reading, screenshots, click, hover,
-        type, dialog handling, element dragging, Playwright automation sequences, device
-        emulation, and remote browsing against a browser on the host running the session.
-        Note that agent-opened pages run in private in-memory sessions and existing tabs
-        must be explicitly shared. CLIMAX AND PRIMARY CLOSING DEMO (GA, run it live): the
-        agent opens a localhost page in the integrated browser, emulates a device preset or
-        custom viewport, screenshots the result, and the screenshot is attached to the chat
-        turn that produced it — the validation evidence becomes part of the conversation
-        record. Then the v1.132 element-specific comments beat: select one or more elements
-        in the integrated browser, anchor a separate comment to each, and send that precise
-        visual feedback back to the agent. That sequence — implement, emulate, screenshot,
-        annotate the exact elements, re-validate — is the single most compelling live moment
-        available in this release window and it should be the last thing the audience sees
-        working. Follow with one slide on where the loop is heading, clearly marked Preview:
-        files and diffs from a session are reviewable inside the Agents window with per-file
-        apply, revert, or cherry-pick and inline comments that the agent acts on in later
-        turns; failed CI check details surface in the session so the agent can read the
-        failure, apply a fix, and re-run checks; and pull request review comments arriving on
-        the branch can be answered, applied, or marked addressed without leaving the window.
-        Name hybrid Markdown editing as Experimental in one sentence and do not demo it.
-        Close the control thread here rather than in a separate section: OpenTelemetry
-        signals from agent sessions export tool call latency, turn count, and subagent depth
-        as structured spans; managed settings let organizations enforce baseline
-        configuration; enterprise MCP allowlists centrally control which MCP servers sessions
-        can reach; and sensitive terminal prompts for passwords, passphrases, PINs, and
-        verification codes are intercepted, with auto-approve flows cancelling the command
-        and instructing the model not to retry or request the secret. State that some of
-        these depend on Copilot plan and organization policy. End on the working loop, not
-        the policy list.
+        4–5 slides and the practical climax. Everything the audience can do tomorrow with
+        no Preview dependency lives here. Open with a short GA Vision beat before the
+        browser climax: Copilot Vision is GA (v1.128) — paste, drag-drop, or attach images
+        and PDFs in ask/plan/agent modes on all Copilot plans. Call out the everyday
+        pattern author feedback highlighted: copy a large Excel range (or other clipboard
+        content that includes image data), paste into Chat, and it attaches as vision
+        context instead of a wall of cells. Pair with integrated-browser Add Screenshot /
+        Add Element / Add Console Logs to Chat for human-driven evidence. Then the status
+        fact: agentic browser tools are GA and on by default — navigation, screenshots,
+        interaction, device emulation, remote browsing; agent pages are private in-memory
+        and existing tabs must be shared. CLIMAX DEMO (GA, live): agent opens localhost,
+        emulates a device, screenshots into the chat turn, then v1.132 element comments
+        (Ctrl+Alt+C / ⌥⌘C). That implement → emulate → screenshot → annotate → re-validate
+        loop is the last working thing the audience should see. One Preview direction slide:
+        in-window diff review, CI failure response, PR comment response; hybrid Markdown
+        experimental, one sentence, no demo. Weave control thread (OTel, managed settings,
+        MCP allowlists, sensitive prompts) here. End on the working loop, not policy.
 
   preamble: []
   appendix: []
@@ -203,7 +168,8 @@ deck:
     - "BYOK is GA without a GitHub sign-in: add an Anthropic, Azure, Gemini, OpenAI, Ollama, OpenRouter, or compatible custom endpoint key in Manage Models… and it drives chat, tool execution, and MCP with billing and rate limits handled by the provider instead of Copilot quotas."
     - "Ollama is a first-class provider, so VS Code discovers locally pulled open models automatically and runs chat, tools, and MCP against them with no network request leaving the machine — the practical unlock for air-gapped teams and sensitive codebases."
     - "Custom Endpoint is Stable and utility models are independently configurable, so a team can route every VS Code Copilot chat call through its own gateway while chat.utilityModel and chat.utilitySmallModel hand titles, summaries, and commit messages to a cheap local model and reserve the frontier model for real work."
-    - "The Copilot SDK and the open Agent Host Protocol detach the session from the window: a Preview remote agent host started over SSH or a dev tunnel keeps running after VS Code closes, and v1.132 lets the same session be connected from multiple windows."
+    - "Open the Agents window — title bar Open in Agents, Chat: Open Agents Window, or code --agents — and leave side-chat-only agent habits; it is the dedicated multi-workspace surface for sessions, changes, and parallel work."
+    - "Copilot Vision is GA: paste an Excel range, mockup, or PDF into Chat and attach visual evidence instead of a wall of text; pair with browser Add Screenshot / Element to Chat when you already have the page open."
     - "GA browser tools close the loop live — the agent opens a localhost page, emulates a device, screenshots it into the chat turn as permanent evidence, and in v1.132 takes comments anchored to the exact elements that still need work, all without leaving the session."
 
 # REJECTED CANDIDATES (did not earn slide time)

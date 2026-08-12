@@ -1,32 +1,44 @@
 ---
 status: active
-updated: 2026-08-10
+updated: 2026-08-12
 section: "Developers"
 references:
   - url: https://code.visualstudio.com/updates/v1_132
     label: "VS Code release notes: August 5, 2026 (v1.132)"
-    verified: 2026-08-10
+    verified: 2026-08-12
   - url: https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases
     label: "GitHub Copilot in VS Code: July 2026 releases"
-    verified: 2026-08-10
+    verified: 2026-08-12
   - url: https://github.blog/changelog/2026-07-08-github-copilot-in-visual-studio-code-june-2026-releases
     label: "GitHub Copilot in VS Code: June 2026 releases"
-    verified: 2026-08-10
+    verified: 2026-08-12
+  - url: https://code.visualstudio.com/updates/v1_128
+    label: "VS Code release notes: July 8, 2026 (v1.128)"
+    verified: 2026-08-12
   - url: https://code.visualstudio.com/updates/v1_122
     label: "VS Code release notes: May 28, 2026 (v1.122)"
-    verified: 2026-08-10
+    verified: 2026-08-12
   - url: https://code.visualstudio.com/updates/v1_121
     label: "VS Code release notes: May 20, 2026 (v1.121)"
-    verified: 2026-08-10
+    verified: 2026-08-12
   - url: https://code.visualstudio.com/docs/copilot/overview
     label: "GitHub Copilot in VS Code documentation"
-    verified: 2026-08-10
+    verified: 2026-08-12
+  - url: https://code.visualstudio.com/docs/agents/agents-window
+    label: "Use the Agents window (Preview)"
+    verified: 2026-08-12
   - url: https://code.visualstudio.com/docs/copilot/agents/background-agents
     label: "Background Agents documentation"
-    verified: 2026-08-10
+    verified: 2026-08-12
+  - url: https://code.visualstudio.com/docs/chat/copilot-chat-context
+    label: "Add context to chat (vision, browser context)"
+    verified: 2026-08-12
+  - url: https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/
+    label: "Copilot vision is generally available"
+    verified: 2026-08-12
   - url: https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot
     label: "Upcoming September 2026 model deprecations in GitHub Copilot"
-    verified: 2026-08-10
+    verified: 2026-08-12
 ---
 
 # VS Code Copilot 1.121–1.132: Agent Infrastructure, Open Models, and Closed-Loop Delivery
@@ -56,8 +68,8 @@ references:
 
 - **Portable agent infrastructure** — The Copilot SDK and Agent Host Protocol (AHP) let agent sessions run on owned remote machines and survive the originating VS Code window closing.
 - **Open model choice** — Supported BYOK providers, local Ollama models, and compatible custom endpoints work in chat, tools, and MCP without a GitHub sign-in.
-- **Parallel agent work** — Multiple sessions, multiple chats per session, peer forks, and live activity visibility make concurrent agent workflows practical in the Agents window.
-- **Closed-loop delivery** — GA browser tools, in-window diff review, element-specific comments, and direct CI/PR feedback responses close the build-validate-review cycle without leaving the agent session.
+- **Agents window as the agent surface** — A dedicated VS Code window for agent-first work across workspaces; multi-session, multi-chat, peer forks, and live activity pills once people actually open it.
+- **Closed-loop delivery** — GA browser tools, Copilot Vision paste, in-window diff review, element-specific comments, and CI/PR feedback responses close the build-validate-review cycle without leaving the agent session.
 
 ### The Emerging Practice
 
@@ -65,7 +77,7 @@ The central question VS Code 1.121–1.132 answers is not "what new features shi
 
 Model choice and economics follow from the same logic. When any compatible endpoint works — including local Ollama models and provider API keys without GitHub sign-in — the model picker becomes infrastructure configuration rather than a subscription-tier boundary. The 1M-token context windows available on supported models stop being a "nice to have" and start being a practical architectural decision for large-codebase tasks. The one firm boundary: inline suggestions and next-edit suggestions (NES) still require GitHub sign-in. That's the boundary worth knowing before designing any offline or air-gapped workflow.
 
-Parallel work and closed-loop review make this practical at scale. The Agents window running multiple sessions side-by-side, with `/btw` for contextual side chats and live activity pills for subagent and browser visibility, means a developer can direct several concurrent efforts without losing orientation. When those efforts touch the browser or produce PRs, the review workflow stays in the same window — device-emulated screenshots, element comments, inline diff review, and CI/PR response all resolve without context switching.
+Parallel work and closed-loop review make this practical at scale — but only if people open the surface built for it. Many developers still run agents only from the side Chat view and never discover the **Agents window**: a dedicated VS Code window optimized for agent-first work across workspaces. Once that window is open, multiple sessions side-by-side, `/btw` side chats, and live activity pills make concurrent effort legible. When those efforts touch the browser or produce PRs, the review workflow stays in-session — device-emulated screenshots, element comments, inline diff review, and CI/PR response all resolve without context switching. Everyday context handoff got easier too: **Copilot Vision** is GA, so pasted images and PDFs attach as multimodal context instead of forcing a wall of text into the prompt.
 
 ---
 
@@ -75,8 +87,8 @@ Parallel work and closed-loop review make this practical at scale. The Agents wi
 |---|---|---|
 | **Agent Infrastructure** | AHP + Copilot SDK: sessions persist beyond the originating window; run on owned remote hosts | Preview |
 | **Open Model Workbench** | BYOK without GitHub sign-in; Stable Custom Endpoint; Ollama; 1M-token contexts | GA (with noted limits) |
-| **Parallel Agent Work** | Multi-session, multi-chat, peer forks, `/btw` side chats, live activity pills | Preview (Agents window) |
-| **Closed-Loop Delivery** | GA browser tools with device emulation, element comments, in-window review, CI/PR feedback | GA + Preview mix |
+| **Parallel Agent Work** | Agents window as the primary surface; multi-session, multi-chat, peer forks, `/btw`, live pills | Preview (Agents window) |
+| **Closed-Loop Delivery** | GA browser tools, Copilot Vision paste, element comments, in-window review, CI/PR feedback | GA + Preview mix |
 
 ---
 
@@ -222,13 +234,36 @@ Q: What will the model do in this session?
 ---
 
 <!-- 🎬 MAJOR SECTION: Parallel Agent Work -->
-## Parallel Agent Work: Multiple Sessions, Peer Forks, and Live Activity
+## Parallel Agent Work: Open the Agents Window First
 
-The Agents window started as a dashboard for monitoring agent sessions. In releases 1.121–1.132, it becomes the workspace for running multiple concurrent efforts with full visibility into what each session is doing.[^4]
+The highest-leverage feature many teams still skip is not a model or a tool — it is a **window**. The side Chat view is fine for code-adjacent questions. The **Agents window** is the surface built for agent-first work: start and monitor sessions across workspaces, review changes beside the conversation, and run concurrent efforts without burying them in one editor sidebar.[^6]
+
+### Open It (Awareness Before Features)
+
+If the audience takes nothing else from this section, take this: open the Agents window once and keep it available.
+
+| How | Action |
+|---|---|
+| Title bar | Select **Open in Agents** |
+| Command Palette | **Chat: Open Agents Window** (`Ctrl+Shift+P` / `⇧⌘P`) |
+| CLI | `code --agents` |
+| Welcome | **Try out the new Agents window** on the VS Code welcome page |
+| Browser | [insiders.vscode.dev/agents](https://insiders.vscode.dev/agents) for Agents-window-from-any-device setups |
+
+The Agents window opens as a **dedicated VS Code window** alongside the main editor. Both surfaces share the same sessions, settings, and keybindings — moving between code-first and agent-first work does not fork context.[^6]
+
+What you get that the side Chat view does not emphasize:
+
+- **Sessions list** across workspaces (local folders, GitHub repos, SSH / dev-tunnel remotes), grouped by workspace by default
+- **Chat + Changes + Files** for the active session in one place
+- **Customizations panel** for agents, skills, and related workflow setup
+- **Multi-session orchestration** without opening a separate editor window per project
+
+> **Preview boundary:** The Agents window remains public preview. Host registration, cross-host session management, and some multi-chat behaviors continue to evolve. Treat it as the recommended agent surface to explore now, not as a frozen production control plane.[^6]
 
 ### Multiple Sessions Side-by-Side
 
-The Agents window supports multiple active sessions running simultaneously, each with its own worktree, tool context, and model configuration. Sessions can be grouped, reordered, and filtered. Common patterns:
+Once the window is open, the payoff is concurrent work with isolation. Multiple active sessions can run simultaneously, each with its own worktree, tool context, and model configuration. Sessions can be grouped, reordered, and filtered. Common patterns:
 
 - Run a **spec-writing session** and a **test-generation session** simultaneously for the same feature
 - Keep a **long-running refactoring session** in the background while working interactively on a different module
@@ -322,6 +357,20 @@ Device emulation lets agents validate responsive layouts and mobile-specific beh
 
 Screenshots are attached directly to the chat turn that produced them, making the validation evidence part of the conversation record.[^3]
 
+### Copilot Vision: Paste Evidence Instead of Walls of Text
+
+Copilot Vision is generally available as of VS Code 1.128. Attach images and PDFs to Chat by pasting, dragging and dropping, or using the context menu — in ask, plan, and agent modes. Vision is available on Free, Pro, Pro+, Business, and Enterprise Copilot plans with no admin opt-in required.[^7][^8]
+
+Practical pattern: stop dumping huge tabular or visual context as plain text. Copy a range from Excel (or any app that places image data on the clipboard), paste into Chat, and VS Code attaches it as an image for the model to read. The same path works for UI mockups, error dialogs, whiteboard photos, and PDFs. That is usually faster and more faithful than pasting thousands of cells or re-describing a layout in prose.
+
+From the integrated browser toolbar you can also push page context into the prompt without leaving VS Code:[^9]
+
+- **Add Screenshot to Chat** — capture the current viewport as an image attachment
+- **Add Element to Chat** — include selected elements with styles and screenshots
+- **Add Console Logs to Chat** — attach runtime output for debugging
+
+Use agent browser tools when the agent should drive the page. Use Vision paste / Add-to-Chat when **you** already have the evidence and want the model to reason about it on the next turn.
+
 ### Element-Specific Comments (v1.132)
 
 Developers can select one or more elements in the integrated browser, attach a comment to each, and send that precise visual feedback to the agent.[^5]
@@ -392,14 +441,18 @@ Enterprise controls in the June 2026 release complement the open model and paral
 - ✅ **Remote agent sessions** for long-running, environment-parity work — start on laptop, continue on owned infrastructure
 - ✅ **BYOK with local or provider models** for tasks where model choice, cost control, or data residency matters
 - ✅ **Utility model tuning** — assign a fast local model to background chat tasks and a frontier model to primary work
+- ✅ **Open the Agents window** as the default agent surface — title bar **Open in Agents**, Command Palette, or `code --agents`
 - ✅ **Parallel sessions in the Agents window** for concurrent efforts on independent tasks in the same repo
 - ✅ **`/btw` for lateral questions** during long agent turns — redirect mid-flight without stopping the main task
 - ✅ **GA browser tools for frontend validation** — close the build-screenshot-fix loop inside the session
+- ✅ **Copilot Vision paste** for tables, mockups, and screenshots — attach the evidence instead of pasting a wall of text
 - ✅ **In-window diff review** with actionable comments — review and redirect from the same surface that did the work
 
 ### Move Away From 🔄
 
+- 🔄 **Only using the side Chat view for agent work** — the Agents window is the multi-session, multi-workspace surface
 - 🔄 **Manual agent polling** — live pills and session grouping replace "check the terminal and come back"
+- 🔄 **Pasting huge Excel ranges or logs as plain text** — Vision paste / file attach preserves structure the model can actually use
 - 🔄 **Per-session model configuration** — utility model settings and BYOK provider defaults persist once configured
 - 🔄 **Switching to the browser to validate changes** — device emulation and element comments keep validation in-window
 - 🔄 **Separate PR review contexts** — CI failures and review comments surfaced in the Agents window session remove the need to context-switch to the PR tab
@@ -420,6 +473,9 @@ Enterprise controls in the June 2026 release complement the open model and paral
 
 ```
 Q: What does the workflow need?
+├─ A dedicated place to run and track agents (not just side chat)
+│  └─ Open the Agents window — preview; title bar, Command Palette, or code --agents
+│
 ├─ Long-running autonomous task on owned infra or with env parity
 │  └─ Remote agent host (AHP) — preview; session persists without VS Code
 │
@@ -432,6 +488,9 @@ Q: What does the workflow need?
 ├─ Lateral question during an active agent turn
 │  └─ /btw side chat — GA in v1.132; opens without pausing the main turn
 │
+├─ Visual evidence (Excel range, mockup, error dialog, PDF) instead of pasted text
+│  └─ Copilot Vision paste — GA in v1.128; paste/drag image or PDF into chat
+│
 ├─ Frontend validation with device emulation
 │  └─ GA browser tools — on by default; device emulation included
 │
@@ -442,9 +501,11 @@ Q: What does the workflow need?
 ### Use This When
 
 - The team runs VS Code 1.121+ and has access to the Agents window (Stable preview channel or later)
+- Developers currently only use the side Chat view and need a multi-session agent surface
 - Model choice, cost visibility, or data residency requirements make BYOK or local models the right fit
 - Tasks are large enough (> 30 min, > 5 files, multiple sub-tasks) to benefit from parallelism or remote execution
 - Frontend workflows need browser validation without leaving the development context
+- Context often arrives as screenshots, spreadsheets, or PDFs rather than clean source text
 
 ### Not the Right Fit When
 
@@ -490,7 +551,9 @@ Q: What does the workflow need?
 
 **15 minutes:**
 - [ ] Update VS Code to 1.132 to get `/btw`, live pills, and element comments
+- [ ] Open the **Agents window** once (title bar **Open in Agents**, Command Palette **Chat: Open Agents Window**, or `code --agents`) and start a session there instead of only in side chat
 - [ ] Open **Manage Models…** in the chat model picker and add an Ollama endpoint or BYOK provider key — no GitHub Copilot subscription required
+- [ ] Paste an Excel range or a UI screenshot into Chat and confirm Copilot Vision attaches it as an image instead of a text dump
 - [ ] Confirm browser tools are active: open a localhost URL in the integrated browser and ask the agent to screenshot and describe the page
 - [ ] Try `"workbench.browser.enableChatTools": true` if browser tools aren't responding (they default to on in 1.132)
 
@@ -498,6 +561,7 @@ Q: What does the workflow need?
 - [ ] Pull a local model with Ollama and configure `chat.utilityModel` or `chat.utilitySmallModel` to use the model for background chat tasks
 - [ ] Start a multi-session Agents window setup: two sessions on separate tasks in the same repo, each in its own worktree
 - [ ] Use `/btw` during an active agent turn to ask a lateral question — confirm it runs without pausing the main conversation
+- [ ] From the integrated browser toolbar, try **Add Screenshot to Chat** and **Add Element to Chat** on a localhost page
 - [ ] Run a frontend task with device emulation: implement a component, ask the agent to screenshot it in mobile and desktop modes, and review the element comments
 
 **2–4 hours:**
@@ -532,11 +596,21 @@ See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for full navigation.
 
 [^5]: **[VS Code Release Notes: August 5, 2026 (v1.132)](https://code.visualstudio.com/updates/v1_132)** — `/btw` side chat, live activity pills, element-specific browser comments
 
-[^6]: **[GitHub Copilot in VS Code Documentation](https://code.visualstudio.com/docs/copilot/overview)** — Comprehensive reference for Copilot features, agent types, customization, and settings
+[^6]: **[Use the Agents window (Preview)](https://code.visualstudio.com/docs/agents/agents-window)** — Dedicated agent-first window, open paths (`Open in Agents`, Command Palette, `code --agents`), multi-workspace sessions list, Changes/Files panels
 
-[^7]: **[Background Agents Documentation](https://code.visualstudio.com/docs/copilot/agents/background-agents)** — Worktree isolation, background session lifecycle, and review workflow
+[^7]: **[Copilot vision is generally available](https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/)** — Image and PDF attachments in chat; available on all Copilot plans
+
+[^8]: **[VS Code Release Notes: July 8, 2026 (v1.128)](https://code.visualstudio.com/updates/v1_128)** — Copilot Vision GA (paste, drag-and-drop, context menu); Agents window multi-chat and quick chats
+
+[^9]: **[Add context to chat](https://code.visualstudio.com/docs/chat/copilot-chat-context)** — Vision attachments; integrated browser **Add Screenshot / Element / Console Logs to Chat**
+
+[^10]: **[GitHub Copilot in VS Code Documentation](https://code.visualstudio.com/docs/copilot/overview)** — Comprehensive reference for Copilot features, agent types, customization, and settings
+
+[^11]: **[Background Agents Documentation](https://code.visualstudio.com/docs/copilot/agents/background-agents)** — Worktree isolation, background session lifecycle, and review workflow
 
 ### Official Documentation
 
-- 📖 [GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/overview) — Core Copilot feature reference [^6]
-- 📖 [Background Agents](https://code.visualstudio.com/docs/copilot/agents/background-agents) — Worktree isolation and session lifecycle [^7]
+- 📖 [Use the Agents window](https://code.visualstudio.com/docs/agents/agents-window) — Agent-first window and multi-session orchestration [^6]
+- 📖 [Add context to chat](https://code.visualstudio.com/docs/chat/copilot-chat-context) — Vision and browser context attachments [^9]
+- 📖 [GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/overview) — Core Copilot feature reference [^10]
+- 📖 [Background Agents](https://code.visualstudio.com/docs/copilot/agents/background-agents) — Worktree isolation and session lifecycle [^11]

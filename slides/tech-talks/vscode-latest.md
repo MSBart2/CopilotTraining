@@ -13,7 +13,7 @@ title: VS Code Copilot 1.121–1.132
 mdc: true
 section: Developers
 status: active
-updated: 2026-08-10
+updated: 2026-08-12
 ---
 
 <script setup>
@@ -56,9 +56,9 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
     { icon: "👩‍💻", title: "Developer", description: "Which new models and local options can I use without changing my GitHub account?" },
     { icon: "🧑‍💼", title: "Tech Lead", description: "How do parallel sessions, worktrees, and remote hosts change how we assign agent work?" },
     { icon: "🏗️", title: "Platform Engineer", description: "What controls exist for model gateways, MCP allowlists, and org-wide policy enforcement?" },
-    { title: "BYOK GA in June 2026", description: "No GitHub sign-in needed for chat, tools, and MCP with any compatible provider" },
-    { title: "Ollama: first-class provider", description: "Local models auto-discovered; zero network requests for air-gapped teams" },
-    { title: "Browser tools on by default", description: "GA in June 2026 — device emulation, screenshots, element comments included" }
+    { title: "Open the Agents window", description: "Dedicated agent-first surface — still missed by teams stuck in side chat" },
+    { title: "BYOK GA + Ollama", description: "No GitHub sign-in needed for chat, tools, and MCP; local models auto-discovered" },
+    { title: "Vision paste + browser loop", description: "Attach Excel/screenshots as images; GA browser tools with element comments" }
   ]'
 />
 
@@ -69,8 +69,8 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <AgendaSlide
   :items='[
     { title: "Run Any Model You Choose", takeaway: "Configure BYOK providers, local Ollama, and a Stable Custom Endpoint without a GitHub sign-in.", whyItMatters: "Model choice, cost, and data residency become configuration decisions your team controls." },
-    { title: "Detach Agents From the Window", takeaway: "See how the Copilot SDK and Agent Host Protocol let a session run on a machine you own and survive disconnect.", whyItMatters: "Long-running work stops being tied to one laptop and one open editor." },
-    { title: "Close the Loop In-Window", takeaway: "Watch an agent build, emulate a device, screenshot, take element-anchored feedback, and route review back.", whyItMatters: "Validation and review stop costing a context switch on every iteration." }
+    { title: "Open the Agents Window", takeaway: "Leave side-chat-only habits: open the dedicated Agents window and run multi-session work with live activity.", whyItMatters: "Most of the parallel and review story is invisible until this surface is open." },
+    { title: "Close the Loop In-Window", takeaway: "Paste vision evidence, emulate a device, screenshot, take element-anchored feedback, and route review back.", whyItMatters: "Validation and context handoff stop costing a context switch on every iteration." }
   ]'
 />
 
@@ -82,8 +82,8 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
   :sections='[
     { icon: "🔌", title: "Agent Infrastructure", subtitle: "AHP + SDK: sessions persist beyond the window", blurb: "Decouple the session from the window; run agents on owned remote hosts", slide: 5 },
     { icon: "🔑", title: "Open Model Workbench", subtitle: "BYOK GA, Ollama, Custom Endpoint, utility models", blurb: "Any compatible model for chat, tools, and MCP — no GitHub sign-in required", slide: 8 },
-    { icon: "🪟", title: "Parallel Agent Work", subtitle: "Multiple sessions, /btw, and live activity pills", blurb: "The Agents window evolves from dashboard to multi-session workspace", slide: 13 },
-    { icon: "🌐", title: "Closed-Loop Delivery", subtitle: "GA browser tools with device emulation", blurb: "Build, validate, and review without leaving the Agents window session", slide: 16 }
+    { icon: "🪟", title: "Parallel Agent Work", subtitle: "Open the Agents window; multi-session + /btw", blurb: "Awareness first — then multi-session workspace, side chats, live pills", slide: 13 },
+    { icon: "🌐", title: "Closed-Loop Delivery", subtitle: "Vision paste + GA browser validation loop", blurb: "Attach evidence, emulate, screenshot, annotate — without leaving the session", slide: 17 }
   ]'
 />
 
@@ -248,13 +248,62 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <SectionOpenerSlide
   :partNumber="3"
   title="Parallel Agent Work"
-  subtitle="The Agents window evolves from a monitor to a workspace — multiple sessions, side chats, and live activity at a glance"
+  subtitle="First open the Agents window — then multi-session work, side chats, and live activity become obvious"
   :cards='[
-    { icon: "🪟", title: "Multiple Sessions", blurb: "Each session: isolated worktree, tools, and model config" },
-    { icon: "💬", title: "/btw Side Chats", blurb: "Ask lateral questions; main agent turn keeps running" },
-    { icon: "👁️", title: "Live Activity Pills", blurb: "Surface changes, previews, subagents, browsers at a glance" }
+    { icon: "🚪", title: "Open It", blurb: "Title bar, Command Palette, or code --agents" },
+    { icon: "🪟", title: "Multi-Session Workspace", blurb: "Isolated worktrees, tools, and model config per session" },
+    { icon: "💬", title: "/btw + Live Pills", blurb: "Lateral questions and at-a-glance activity without polling" }
   ]'
-  :terminal='{ context: "Preview: Agents window as multi-session workspace", detail: "/btw and activity pills are GA in v1.132" }'
+  :terminal='{ context: "Most teams still only use side chat", detail: "Open the Agents window before teaching parallel features" }'
+/>
+
+---
+
+<!-- SLIDE: Open the Agents Window -->
+# Open the Agents Window
+<FourCardGridSlide
+  :partNumber="3"
+  pillIcon="🚪"
+  pillLabel="Parallel Agent Work · Awareness"
+  title="Open the Agents Window First"
+  :cards='[
+    { icon: "📍", title: "Title Bar", description: "Select Open in Agents in the VS Code title bar — always one click away" },
+    { icon: "⌨️", title: "Command Palette", description: "Chat: Open Agents Window via Ctrl+Shift+P / ⇧⌘P" },
+    { icon: "💻", title: "CLI", description: "code --agents from the terminal — scriptable entry point" },
+    { icon: "🌐", title: "Browser / Welcome", description: "Welcome-page link or insiders.vscode.dev/agents" }
+  ]'
+  :insight='{ text: "Dedicated VS Code window beside the editor — same sessions as side Chat, agent-first layout" }'
+  :progressDots='{ current: 1, total: 3, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+<!-- SLIDE: Agents Window: Dashboard to Workspace -->
+# Agents Window: Dashboard to Workspace
+<BeforeAfterPanelsSlide
+  :partNumber="3"
+  pillIcon="🪟"
+  pillLabel="Parallel Agent Work · Window Evolution"
+  title="Agents Window: From Side Chat to Workspace"
+  :before='{
+    header: "Side Chat Only (common habit)",
+    items: [
+      "One conversation buried in the editor sidebar",
+      "No multi-workspace sessions list",
+      "Hard to track concurrent agent work",
+      "Changes and files live in other panels"
+    ]
+  }'
+  :after='{
+    header: "Agents Window (Preview workspace)",
+    items: [
+      "Dedicated window: sessions across workspaces",
+      "Chat + Changes + Files for the active session",
+      "Multiple sessions side-by-side with isolated worktrees",
+      "/btw side chats and live activity pills"
+    ]
+  }'
+  :progressDots='{ current: 2, total: 3, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
@@ -286,37 +335,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
       { title: "Replaces manual polling for Autopilot sessions", detail: "No need to check the terminal and come back" }
     ]
   }'
-  :progressDots='{ current: 1, total: 2, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
-/>
-
----
-
-<!-- SLIDE: Agents Window: Dashboard to Workspace -->
-# Agents Window: Dashboard to Workspace
-<BeforeAfterPanelsSlide
-  :partNumber="3"
-  pillIcon="🪟"
-  pillLabel="Parallel Agent Work · Window Evolution"
-  title="Agents Window: From Dashboard to Workspace"
-  :before='{
-    header: "Dashboard (before v1.121)",
-    items: [
-      "One session visible at a time",
-      "No lateral questions during an active agent turn",
-      "Manual check to see what the agent is doing",
-      "Worktree scoped to a single harness type"
-    ]
-  }'
-  :after='{
-    header: "Workspace (v1.121–1.132, Preview)",
-    items: [
-      "Multiple sessions side-by-side with grouping and filter",
-      "/btw side chat without interrupting the active turn",
-      "Live pills surface changes, subagents, and browsers",
-      "Worktrees work across local, remote, and SDK harnesses"
-    ]
-  }'
-  :progressDots='{ current: 2, total: 2, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+  :progressDots='{ current: 3, total: 3, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
@@ -326,13 +345,45 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <SectionOpenerSlide
   :partNumber="4"
   title="Closed-Loop Delivery"
-  subtitle="GA browser tools close the build-validate-review cycle without leaving the Agents window session"
+  subtitle="Vision paste for everyday evidence — then GA browser tools close the build-validate-review loop"
   :cards='[
-    { icon: "🌐", title: "GA Browser Tools", blurb: "Navigation, screenshot, interaction — GA, no config needed" },
-    { icon: "📸", title: "Device Emulation", blurb: "Device presets; screenshots attach to the chat turn" },
+    { icon: "🖼️", title: "Copilot Vision (GA)", blurb: "Paste Excel, mockups, PDFs — attach evidence, not walls of text" },
+    { icon: "🌐", title: "GA Browser Tools", blurb: "Navigation, screenshot, interaction — on by default" },
     { icon: "💬", title: "Element Comments", blurb: "Select elements in v1.132, anchor a comment per element" }
   ]'
-  :terminal='{ context: "CLIMAX DEMO: implement → emulate → screenshot → annotate elements → re-validate", detail: "all inside one session, no context switch" }'
+  :terminal='{ context: "CLIMAX DEMO: implement → emulate → screenshot → annotate elements → re-validate", detail: "Vision paste for human evidence; browser tools for agent validation" }'
+/>
+
+---
+
+<!-- SLIDE: Copilot Vision: Paste Evidence -->
+# Copilot Vision: Paste Evidence
+<TwoColPairedConceptsSlide
+  :partNumber="4"
+  pillIcon="🖼️"
+  pillLabel="Closed-Loop Delivery · Vision GA"
+  title="Paste Evidence Instead of Walls of Text"
+  :left='{
+    header: "Copilot Vision (GA v1.128)",
+    icon: "🖼️",
+    items: [
+      { title: "Paste, drag-drop, or attach images and PDFs", detail: "Ask, plan, and agent modes" },
+      "Available on Free, Pro, Pro+, Business, and Enterprise",
+      { title: "Excel range → image attachment", detail: "Clipboard image data attaches as vision context" },
+      "Same path for mockups, error dialogs, whiteboards"
+    ]
+  }'
+  :right='{
+    header: "Browser Add-to-Chat",
+    icon: "🌐",
+    items: [
+      { title: "Add Screenshot to Chat", detail: "Capture the current viewport as an image" },
+      { title: "Add Element to Chat", detail: "Selected elements with styles and screenshots" },
+      { title: "Add Console Logs to Chat", detail: "Runtime output without copy-paste sprawl" },
+      "You already have the page — attach it and ask"
+    ]
+  }'
+  :progressDots='{ current: 1, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
@@ -357,7 +408,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
   :outcomeLeft='{ icon: "🔄", label: "3–5 context switches per iteration" }'
   :outcomeRight='{ icon: "✅", label: "Full loop inside one session" }'
   summaryMetric="3–5 context switches per iteration → 0"
-  :progressDots='{ current: 1, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+  :progressDots='{ current: 2, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
@@ -383,7 +434,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
     { type: "outcome", text: "Screenshot attached: login-mobile-v2.png — tap area confirmed" }
   ]'
   footerMetric="implement → emulate → screenshot → annotate elements → re-validate: all in one session"
-  :progressDots='{ current: 2, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+  :progressDots='{ current: 3, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
@@ -400,7 +451,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
     { icon: "🔄", title: "CI Feedback in Session", description: "Failed check details surface in the session — read, fix, and re-run without tab-switching", items: ["Preview: CI response in-window"] },
     { icon: "💬", title: "PR Comment Response", description: "PR review comments surface on the branch; respond, apply, or mark addressed in-window", items: ["Preview: PR feedback in-session"] }
   ]'
-  :progressDots='{ current: 3, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+  :progressDots='{ current: 4, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
@@ -410,20 +461,20 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <BeforeAfterSlide
   header="From Window-Bound Sessions to Portable Agent Infrastructure"
   :leftItems='[
-    "Agent stops when the VS Code window closes",
+    "Agents only used from the side Chat view",
     "One provider; GitHub sign-in required for chat and tools",
-    "Manual browser validation with context switches per iteration",
-    "CI failures and PR review require separate browser tabs"
+    "Paste walls of Excel/text instead of visual evidence",
+    "Manual browser validation with context switches per iteration"
   ]'
   :rightItems='[
-    "Agent host persists on remote infrastructure after disconnect",
+    "Agents window open as the multi-session agent surface",
     "Any BYOK provider or local Ollama model — no GitHub sign-in",
-    "GA browser: device emulation, element comments inside the session",
-    "CI failures and PR comments surfaced inside the Agents window"
+    "Vision paste for Excel/mockups; browser Add Screenshot to Chat",
+    "GA browser loop with device emulation and element comments"
   ]'
   :metrics='[
-    { value: "6+", detail: "BYOK provider types including local Ollama" },
-    { value: "GA", detail: "browser tools with device emulation since June 2026" },
+    { value: "Open", detail: "Agents window — title bar, palette, or code --agents" },
+    { value: "GA", detail: "Vision paste + browser tools with device emulation" },
     { value: "0", detail: "GitHub sign-in required for chat, tools, and MCP" }
   ]'
 />
@@ -434,21 +485,21 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 # What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='[
-    "Open model picker → Manage Models… → add a BYOK provider key",
-    "Pull an Ollama model locally and connect it in VS Code",
-    "Run a UI task and validate it using GA browser tools"
+    "Open the Agents window (title bar, Command Palette, or code --agents)",
+    "Paste an Excel range or screenshot into Chat — Vision attaches it as an image",
+    "Open model picker → Manage Models… → add a BYOK or Ollama provider"
   ]'
   :thisWeek='[
-    "Configure utility models to split frontier vs. background tasks",
-    "Try /btw for a lateral question during a long agent turn",
-    "Set up a remote agent host via SSH for a long-running task"
+    "Try /btw during a long agent turn; watch live activity pills",
+    "Use browser Add Screenshot / Element to Chat on a localhost page",
+    "Run a UI task and validate it with GA browser device emulation"
   ]'
   :thisMonth='[
     "Evaluate Custom Endpoint for team-wide cost and compliance routing",
-    "Explore Agents window parallel sessions for independent concurrent tasks",
+    "Run parallel Agents window sessions for independent concurrent tasks",
     "Review session diffs in-window and respond to CI feedback in-session"
   ]'
-  footer="The session is no longer the window — portable agents, open models, and closed-loop review are all available today."
+  footer="Open the Agents window, bring any model, and close the loop with vision + browser evidence."
 />
 
 ---
@@ -458,12 +509,12 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
-      { href: "https://code.visualstudio.com/updates/v1_132", label: "VS Code release notes: August 5, 2026 (v1.132)", description: "Full release notes including element comments and multi-window agent sessions" },
+      { href: "https://code.visualstudio.com/updates/v1_132", label: "VS Code release notes: August 5, 2026 (v1.132)", description: "Element comments, /btw, live pills, multi-window agent sessions" },
+      { href: "https://code.visualstudio.com/docs/agents/agents-window", label: "Use the Agents window (Preview)", description: "How to open it, multi-workspace sessions, Changes/Files panels" },
+      { href: "https://code.visualstudio.com/updates/v1_128", label: "VS Code release notes: July 8, 2026 (v1.128)", description: "Copilot Vision GA — paste images and PDFs into Chat" },
+      { href: "https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/", label: "Copilot vision is generally available", description: "Supported formats and plan availability for image/PDF attachments" },
+      { href: "https://code.visualstudio.com/docs/chat/copilot-chat-context", label: "Add context to chat", description: "Vision attachments and browser Add Screenshot / Element to Chat" },
       { href: "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases", label: "GitHub Copilot in VS Code: July 2026 releases", description: "/btw side chats, live activity pills, and Agents window workspace updates" },
-      { href: "https://github.blog/changelog/2026-07-08-github-copilot-in-visual-studio-code-june-2026-releases", label: "GitHub Copilot in VS Code: June 2026 releases", description: "GA browser tools, BYOK without sign-in, Stable Custom Endpoint" },
-      { href: "https://code.visualstudio.com/updates/v1_122", label: "VS Code release notes: May 28, 2026 (v1.122)", description: "Stable Custom Endpoint and 1M-token context support" },
-      { href: "https://code.visualstudio.com/updates/v1_121", label: "VS Code release notes: May 20, 2026 (v1.121)", description: "Agent Host Protocol and Copilot SDK remote agent host introduced" },
-      { href: "https://code.visualstudio.com/docs/copilot/overview", label: "GitHub Copilot in VS Code documentation", description: "Complete reference for all Copilot features in VS Code" },
       { href: "https://code.visualstudio.com/docs/copilot/agents/background-agents", label: "Background Agents documentation", description: "Remote agent host setup, connection, and reconnect patterns" }
     ] },
     { title: "🛠️ Related Content", color: "purple", items: [
@@ -482,10 +533,10 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
   title="VS Code Copilot 1.121–1.132"
   subtitle="Portable Agent Infrastructure, Open Models, and a Closed Review Loop"
   :cards="[
+    { value: 'Agents Window', detail: 'Open it — multi-session agent surface most teams still skip' },
     { value: 'BYOK GA', detail: 'Any model, no GitHub sign-in — chat, tools, and MCP' },
-    { value: 'Ollama', detail: 'Local models, zero network requests, air-gap ready' },
-    { value: 'AHP', detail: 'Session outlives the window — remote hosts, multi-client' },
+    { value: 'Vision GA', detail: 'Paste Excel/screenshots/PDFs instead of walls of text' },
     { value: 'Browser GA', detail: 'Emulate, screenshot, element comments — no context switch' }
   ]"
-  prompt="Which capability changes how your team works first — model choice, remote agents, or the browser validation loop?"
+  prompt="Which changes your team first — opening the Agents window, model choice, or vision + browser evidence?"
 />
