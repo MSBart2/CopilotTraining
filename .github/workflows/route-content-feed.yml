@@ -31,11 +31,14 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
+          # No root package-lock.json is committed (gitignored), so do not enable
+          # cache: npm — setup-node fails hard when the lockfile is missing.
           node-version: "24"
-          cache: npm
 
       - name: Install dependencies
-        run: npm install
+        # content-router only needs production deps (fast-xml-parser).
+        # Skip root devDependencies (playwright) — those belong to slides tooling.
+        run: npm install --omit=dev
 
       - name: Test content routing
         run: npm run test:content-routing
