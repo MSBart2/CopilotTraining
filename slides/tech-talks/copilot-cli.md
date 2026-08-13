@@ -19,7 +19,6 @@ updated: 2026-08-10
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -63,24 +62,13 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "AI at the Point of Work", takeaway: "Use Plan Mode and independent review where the work actually happens.", whyItMatters: "Fewer context switches and better early decisions keep terminal work moving." },
-    { title: "Sessions That Learn", takeaway: "Manage concurrent sessions, recover without Git, and turn history into better guidance.", whyItMatters: "Visible, recoverable history keeps parallel work understandable and reusable." },
-    { title: "Automation You Can Grow Into", takeaway: "Move from guided plans to remote and scheduled execution as confidence grows.", whyItMatters: "A gradual autonomy path makes higher-leverage work practical without losing control." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "🎯", title: "Think Before You Build", subtitle: "Plan Mode, Rubber Duck, and four operating modes", blurb: "Understand intent before any code runs — stop guessing, start asking", slide: 5 },
-    { icon: "📱", title: "Work From Anywhere", subtitle: "Phone steering, --remote, and CI/CD automation", blurb: "AI follows the problem wherever it lives — steer from any device", slide: 10 },
-    { icon: "🧠", title: "Sessions That Learn", subtitle: "Auto-compaction, /rewind, /chronicle, live bridge", blurb: "Sessions carry work forward, recover backward, and evolve your instructions", slide: 14 },
-    { icon: "🚀", title: "Scale Beyond Yourself", subtitle: "/fleet, cloud delegation, scheduled execution", blurb: "From one terminal to parallel agents acting on a schedule you defined", slide: 19 }
+    { icon: "🎯", title: "Think Before You Build", subtitle: "Plan Mode, Rubber Duck, and four operating modes", blurb: "Understand intent before any code runs — stop guessing, start asking", slide: 4 },
+    { icon: "📱", title: "Work From Anywhere", subtitle: "Phone steering, --remote, and CI/CD automation", blurb: "AI follows the problem wherever it lives — steer from any device", slide: 9 },
+    { icon: "🧠", title: "Sessions That Learn", subtitle: "Auto-compaction, /rewind, /chronicle, live bridge", blurb: "Sessions carry work forward, recover backward, and evolve your instructions", slide: 13 },
+    { icon: "🚀", title: "Scale Beyond Yourself", subtitle: "/fleet, cloud delegation, scheduled execution", blurb: "From one terminal to parallel agents acting on a schedule you defined", slide: 18 }
   ]'
 />
 

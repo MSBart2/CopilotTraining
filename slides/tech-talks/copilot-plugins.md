@@ -19,7 +19,6 @@ updated: 2026-08-11
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -64,24 +63,13 @@ import HeroStatSlide from './components/HeroStatSlide.vue'
 
 ---
 
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "One Team Setup", takeaway: "Install instructions, skills, plugins, and MCP servers from a manifest.", whyItMatters: "Configuration stops drifting across contributors." },
-    { title: "Configuration as Code", takeaway: "Version agent setup through apm.yml and lock files.", whyItMatters: "Teams can review and reproduce their exact agent environment." },
-    { title: "Faster Discovery", takeaway: "Find vetted extensions through a shared marketplace.", whyItMatters: "Useful capabilities become easier to evaluate and adopt." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "💡", title: "The Opportunity", subtitle: "Per-developer config → per-repository config", blurb: "Why the packaging shift matters before any CLI syntax", slide: 5 },
-    { icon: "⌨️", title: "CLI-First Plugin Management", subtitle: "Browse, install, and explore from the terminal", blurb: "Live ecosystem exploration sets the CLI-first tone", slide: 9 },
-    { icon: "📦", title: "Building an APM Manifest", subtitle: "apm.yml + lockfile as team infrastructure", blurb: "Codify configuration; add governance companion beat", slide: 14 },
-    { icon: "🚀", title: "What You Can Do Today", subtitle: "Concrete action ladder from plugin to full team", blurb: "Every attendee leaves with a step to take now", slide: 19 }
+    { icon: "💡", title: "The Opportunity", subtitle: "Per-developer config → per-repository config", blurb: "Why the packaging shift matters before any CLI syntax", slide: 4 },
+    { icon: "⌨️", title: "CLI-First Plugin Management", subtitle: "Browse, install, and explore from the terminal", blurb: "Live ecosystem exploration sets the CLI-first tone", slide: 8 },
+    { icon: "📦", title: "Building an APM Manifest", subtitle: "apm.yml + lockfile as team infrastructure", blurb: "Codify configuration; add governance companion beat", slide: 13 },
+    { icon: "🚀", title: "What You Can Do Today", subtitle: "Concrete action ladder from plugin to full team", blurb: "Every attendee leaves with a step to take now", slide: 18 }
   ]'
 />
 

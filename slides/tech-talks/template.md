@@ -21,19 +21,20 @@ Tech talks are practitioner-facing. They should feel concrete, current, and capa
 
 ## Deck Structure
 
-Every tech-talk deck has 7 fixed slides — 4 opening, 3 closing — with content slides in between.
+Every tech-talk deck has 6 fixed slides — 3 opening, 3 closing — with content slides in between.
 
 ```
 Slide 1 — Title              ← TitleSlide
 Slide 2 — Core Question      ← CoreQuestionSlide (REQUIRED)
-Slide 3 — Agenda             ← AgendaSlide (REQUIRED)
-Slide 4 — Table of Contents  ← TocSlide (REQUIRED)
+Slide 3 — Table of Contents  ← TocSlide (REQUIRED)
 ...content slides...
 N-3     — Before/After       ← BeforeAfterSlide (REQUIRED)
 N-2     — What You Can Do Today  ← WhatYouCanDoTodaySlide (REQUIRED)
 N-1     — References             ← ReferencesSlide (REQUIRED)
 N       — Thank You              ← ThankYouSlide (REQUIRED)
 ```
+
+Do **not** add an Agenda slide. Outcome framing belongs in Core Question / TOC; a separate AgendaSlide is retired.
 
 All component imports go in a single `<script setup>` block at the top of the deck. Import only what the deck uses:
 
@@ -42,7 +43,6 @@ All component imports go in a single `<script setup>` block at the top of the de
 // Required scaffold (all decks)
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -67,7 +67,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 </script>
 ```
 
-## Opening Slides (1–4)
+## Opening Slides (1–3)
 
 ### Slide 1 — Title
 
@@ -105,25 +105,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 - Exactly 6 cards required
 - `title` ≤ 40 chars · `description` ≤ 90 chars · `question` ≤ 100 chars · `subtext`+`highlight` ≤ 160 chars
 
-### Slide 3 — Agenda (REQUIRED)
-
-```html
-<!-- SLIDE: Agenda -->
-<AgendaSlide
-  :items='[
-    { title: "First Outcome", takeaway: "What attendees will see or learn.", whyItMatters: "The practical relevance for their work." },
-    { title: "Second Outcome", takeaway: "What attendees will see or learn.", whyItMatters: "The practical relevance for their work." },
-    { title: "Third Outcome", takeaway: "What attendees will see or learn.", whyItMatters: "The practical relevance for their work." }
-  ]'
-/>
-```
-
-- Exactly 3 entries required, each with `title`, `takeaway`, and `whyItMatters`
-- `title` ≤ 30 chars; `takeaway` and `whyItMatters` ≤ 110 chars
-- Distill the three highest-value outcomes from the core question, artifacts, and highlight moments; do not mechanically restate the four-part TOC
-- No `partNumber`, progress dots, or navigation props: Agenda is an opening promise, not a numbered section
-
-### Slide 4 — Table of Contents (REQUIRED)
+### Slide 3 — Table of Contents (REQUIRED)
 
 ```html
 <!-- SLIDE: Table of Contents -->
@@ -138,6 +120,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 ```
 
 - Exactly 4 sections required
+- `slide` values point at section openers (Title=1, Core Question=2, TOC=3, first opener typically 4)
 - `slide` must be the actual slide number of that section's Part opener — count after generating
 - `title` ≤ 40 chars · `subtitle` ≤ 80 chars · `blurb` ≤ 100 chars
 - Outer attribute uses single quotes; inner JSON uses double quotes

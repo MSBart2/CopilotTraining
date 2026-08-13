@@ -19,7 +19,6 @@ updated: 2026-08-11
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -63,24 +62,13 @@ import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
 
 ---
 
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Choose the Trigger and Effort", takeaway: "Start directly or via configured comment automation, then tune reasoning per run.", whyItMatters: "Match quality to complexity while making token and premium-request credit use explicit." },
-    { title: "Match the Environment", takeaway: "Configure the runtime agents use with setup steps.", whyItMatters: "Generated changes are more likely to pass the real build." },
-    { title: "Govern the Network", takeaway: "Use firewall controls to bound agent access.", whyItMatters: "Autonomy becomes practical in repositories with sensitive systems." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "🔄", title: "Delegation Loop", subtitle: "The full loop from trigger to reviewed draft PR", blurb: "Mental model for all downstream sections", slide: 5 },
-    { icon: "📝", title: "Writing Issues", subtitle: "Structure issues to maximize PR quality", blurb: "The most learnable skill you can apply today", slide: 10 },
-    { icon: "🔒", title: "Trust and Configuration", subtitle: "CI parity, firewall controls, and audit trail", blurb: "Answer the safety objection with evidence", slide: 15 },
-    { icon: "✅", title: "Review Workflow", subtitle: "Evidence-first review from any device", blurb: "Framework for what to delegate and what to keep", slide: 18 }
+    { icon: "🔄", title: "Delegation Loop", subtitle: "The full loop from trigger to reviewed draft PR", blurb: "Mental model for all downstream sections", slide: 4 },
+    { icon: "📝", title: "Writing Issues", subtitle: "Structure issues to maximize PR quality", blurb: "The most learnable skill you can apply today", slide: 9 },
+    { icon: "🔒", title: "Trust and Configuration", subtitle: "CI parity, firewall controls, and audit trail", blurb: "Answer the safety objection with evidence", slide: 14 },
+    { icon: "✅", title: "Review Workflow", subtitle: "Evidence-first review from any device", blurb: "Framework for what to delegate and what to keep", slide: 17 }
   ]'
 />
 

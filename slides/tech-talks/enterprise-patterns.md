@@ -19,7 +19,6 @@ updated: 2026-08-11
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -65,24 +64,13 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 ---
 
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Standards at Scale", takeaway: "Propagate organization-wide instructions across repositories.", whyItMatters: "Consistency becomes structural instead of aspirational." },
-    { title: "Shared Skill Libraries", takeaway: "Publish vetted expertise as reusable organizational assets.", whyItMatters: "One team&#39;s insight compounds across every other team." },
-    { title: "ROI Instrumentation", takeaway: "Use impact-dashboard ROI and agent-app activity metrics with explicit caveats.", whyItMatters: "Leadership gets product-backed evidence without claiming audited attribution." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "📐", title: "Organization-Wide Standards", subtitle: "Define once, propagate to all repos", blurb: "Org instructions, monorepo playbooks, polyrepo topology", slide: 5 },
-    { icon: "🧠", title: "Skills & Knowledge Bases", subtitle: "Encode expertise as reusable org assets", blurb: "Agent Skills (GA) vs Knowledge Bases (Enterprise Cloud only)", slide: 10 },
-    { icon: "🔒", title: "Governance & Licensing", subtitle: "Model policies, licensing, compliance", blurb: "Migration readiness, cost optimization, audit trails", slide: 14 },
-    { icon: "📊", title: "Adoption & Enablement", subtitle: "Control plane, ROI, self-service onboarding", blurb: "Product-backed evidence, stable agent_id activity", slide: 18 }
+    { icon: "📐", title: "Organization-Wide Standards", subtitle: "Define once, propagate to all repos", blurb: "Org instructions, monorepo playbooks, polyrepo topology", slide: 4 },
+    { icon: "🧠", title: "Skills & Knowledge Bases", subtitle: "Encode expertise as reusable org assets", blurb: "Agent Skills (GA) vs Knowledge Bases (Enterprise Cloud only)", slide: 9 },
+    { icon: "🔒", title: "Governance & Licensing", subtitle: "Model policies, licensing, compliance", blurb: "Migration readiness, cost optimization, audit trails", slide: 13 },
+    { icon: "📊", title: "Adoption & Enablement", subtitle: "Control plane, ROI, self-service onboarding", blurb: "Product-backed evidence, stable agent_id activity", slide: 17 }
   ]'
 />
 

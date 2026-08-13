@@ -19,7 +19,6 @@ updated: 2026-08-10
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -63,24 +62,13 @@ import FourCardGridSlide from './components/FourCardGridSlide.vue'
 
 ---
 
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Quality as a Gate", takeaway: "Make quality signals enforceable status checks on pull requests.", whyItMatters: "Metrics matter when they protect the merge decision." },
-    { title: "Observe Before Enforce", takeaway: "Use evaluation mode to tune rules before blocking work.", whyItMatters: "Teams build trust while reducing rollout surprises." },
-    { title: "Predictable Rollout", takeaway: "Plan adoption and cost by repository and committer.", whyItMatters: "Deliberate enablement makes quality infrastructure sustainable." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "🔍", title: "Coverage-Aware Quality Gates", subtitle: "From Cobertura upload to a failing status check", blurb: "Build the quality gate the merge button actually checks", slide: 5 },
-    { icon: "🤖", title: "Copilot Autofix in the PR Loop", subtitle: "Suggestions in the PR, not a follow-up ticket", blurb: "Understand Autofix and the Copilot review boundary", slide: 10 },
-    { icon: "💰", title: "Reading the Bill", subtitle: "$10/committer/month and what the rest adds up to", blurb: "Model the cost before you flip the org-wide switch", slide: 13 },
-    { icon: "🚦", title: "Rolling Out Without Surprises", subtitle: "Enable → Evaluate → Active in repeatable phases", blurb: "Leave with a concrete rollout checklist for this week", slide: 18 }
+    { icon: "🔍", title: "Coverage-Aware Quality Gates", subtitle: "From Cobertura upload to a failing status check", blurb: "Build the quality gate the merge button actually checks", slide: 4 },
+    { icon: "🤖", title: "Copilot Autofix in the PR Loop", subtitle: "Suggestions in the PR, not a follow-up ticket", blurb: "Understand Autofix and the Copilot review boundary", slide: 9 },
+    { icon: "💰", title: "Reading the Bill", subtitle: "$10/committer/month and what the rest adds up to", blurb: "Model the cost before you flip the org-wide switch", slide: 12 },
+    { icon: "🚦", title: "Rolling Out Without Surprises", subtitle: "Enable → Evaluate → Active in repeatable phases", blurb: "Leave with a concrete rollout checklist for this week", slide: 17 }
   ]'
 />
 

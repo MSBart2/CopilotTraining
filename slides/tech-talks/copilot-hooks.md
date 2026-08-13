@@ -19,7 +19,6 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -63,25 +62,13 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
 
 ---
 
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Prevent Unsafe Actions", takeaway: "Use PreToolUse hooks to stop risky tool calls before execution.", whyItMatters: "Architectural prevention is cheaper than incident response." },
-    { title: "Audit Every Lifecycle", takeaway: "Capture hook activity as an automatic evidence trail.", whyItMatters: "Compliance proof is available when it is needed." },
-    { title: "Proven Controls", takeaway: "Apply concrete patterns from regulated environments.", whyItMatters: "Teams can begin with tested controls instead of inventing policy." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
     { icon: "🔄", title: "Phase 1: Lifecycle Control", subtitle: "Eight moments, one mental model", blurb: "Map the events from SessionStart to Stop — build the governance scaffold", slide: 4 },
-    { icon: "⚡", title: "Phase 2: PreToolUse", subtitle: "The only hook that prevents execution", blurb: "Deny dangerous operations in <2 seconds before damage occurs", slide: 7 },
-    { icon: "🔍", title: "Phase 3: Audit Trail", subtitle: "JSON Lines logging and jq compliance", blurb: "Complete lifecycle coverage — 100% audit trail with zero sampling", slide: 12 },
-    { icon: "🏗️", title: "Phase 4: Real-World Patterns", subtitle: "HIPAA, SOC2, and quality gate configs", blurb: "Copy-paste patterns deployable within hours of this session", slide: 16 },
+    { icon: "⚡", title: "Phase 2: PreToolUse", subtitle: "The only hook that prevents execution", blurb: "Deny dangerous operations in <2 seconds before damage occurs", slide: 8 },
+    { icon: "🔍", title: "Phase 3: Audit Trail", subtitle: "JSON Lines logging and jq compliance", blurb: "Complete lifecycle coverage — 100% audit trail with zero sampling", slide: 13 },
+    { icon: "🏗️", title: "Phase 4: Real-World Patterns", subtitle: "HIPAA, SOC2, and quality gate configs", blurb: "Copy-paste patterns deployable within hours of this session", slide: 17 },
   ]'
 />
 

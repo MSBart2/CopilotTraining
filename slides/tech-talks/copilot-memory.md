@@ -19,7 +19,6 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -52,18 +51,6 @@ import BeforeAfterMetricsSlide from './components/BeforeAfterMetricsSlide.vue'
   subtext="Every developer using Copilot hits the same wall:"
   highlight="The AI forgets everything when you close the chat."
   :cards='[{"icon":"👩‍💻","title":"Daily Copilot Users","description":"Developers who open VS Code every day and reset Copilot context from scratch each time — forfeiting continuity between sessions."},{"icon":"🧑‍🔧","title":"Team Leads and Architects","description":"Leads enforcing team patterns and style guides who want Copilot aligned by default — not just when someone remembers to re-explain it."},{"icon":"🏗️","title":"Platform and DevOps Engineers","description":"Engineers with strong tool and workflow preferences who want Copilot to adapt to their stack without manual prompting every session."},{"icon":"📊","title":"5–10 min","description":"Time spent re-establishing context per session for most developers who do not use persistent memory."},{"icon":"⚡","title":"2 minutes","description":"Time to write the preferences that eliminate that re-establishment cost permanently — a one-time investment."},{"icon":"🧠","title":"Semantic retrieval","description":"Memory activates by meaning — not keywords. Writing once covers every future session that shares the same intent."}]'
-/>
-
----
-
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Stateful Assistance", takeaway: "Persist useful preferences so sessions begin with shared context.", whyItMatters: "Less repetition keeps developers focused on the work." },
-    { title: "Three Memory Layers", takeaway: "Separate personal preference, team knowledge, and organization policy.", whyItMatters: "Correct placement keeps memory useful and trustworthy." },
-    { title: "Memory Hygiene", takeaway: "Curate and audit stored context as it evolves.", whyItMatters: "Signal-rich memory avoids stale or conflicting guidance." }
-  ]'
 />
 
 ---

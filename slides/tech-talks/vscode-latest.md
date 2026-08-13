@@ -19,7 +19,6 @@ updated: 2026-08-12
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -64,26 +63,14 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 
 ---
 
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Run Any Model You Choose", takeaway: "Configure BYOK providers, local Ollama, and a Stable Custom Endpoint without a GitHub sign-in.", whyItMatters: "Model choice, cost, and data residency become configuration decisions your team controls." },
-    { title: "Open the Agents Window", takeaway: "Leave side-chat-only habits: open the dedicated Agents window and run multi-session work with live activity.", whyItMatters: "Most of the parallel and review story is invisible until this surface is open." },
-    { title: "Close the Loop In-Window", takeaway: "Paste vision evidence, emulate a device, screenshot, take element-anchored feedback, and route review back.", whyItMatters: "Validation and context handoff stop costing a context switch on every iteration." }
-  ]'
-/>
-
----
-
 <!-- SLIDE: Table of Contents -->
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "🔌", title: "Agent Infrastructure", subtitle: "AHP + SDK: sessions persist beyond the window", blurb: "Decouple the session from the window; run agents on owned remote hosts", slide: 5 },
-    { icon: "🔑", title: "Open Model Workbench", subtitle: "BYOK GA, Ollama, Custom Endpoint, utility models", blurb: "Any compatible model for chat, tools, and MCP — no GitHub sign-in required", slide: 8 },
-    { icon: "🪟", title: "Parallel Agent Work", subtitle: "Open the Agents window; multi-session + /btw", blurb: "Awareness first — then multi-session workspace, side chats, live pills", slide: 13 },
-    { icon: "🌐", title: "Closed-Loop Delivery", subtitle: "Vision paste + GA browser validation loop", blurb: "Attach evidence, emulate, screenshot, annotate — without leaving the session", slide: 17 }
+    { icon: "🔌", title: "Agent Infrastructure", subtitle: "AHP + SDK: sessions persist beyond the window", blurb: "Decouple the session from the window; run agents on owned remote hosts", slide: 4 },
+    { icon: "🔑", title: "Open Model Workbench", subtitle: "BYOK GA, Ollama, Custom Endpoint, utility models", blurb: "Any compatible model for chat, tools, and MCP — no GitHub sign-in required", slide: 7 },
+    { icon: "🪟", title: "Parallel Agent Work", subtitle: "Open the Agents window; multi-session + /btw", blurb: "Awareness first — then multi-session workspace, side chats, live pills", slide: 12 },
+    { icon: "🌐", title: "Closed-Loop Delivery", subtitle: "Vision paste + GA browser validation loop", blurb: "Attach evidence, emulate, screenshot, annotate — without leaving the session", slide: 16 }
   ]'
 />
 

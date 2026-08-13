@@ -19,7 +19,6 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -52,18 +51,6 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
   subtext="Generic responses ignore your team&#39;s conventions. The fix is not better prompting — it&#39;s configuration."
   highlight="Four primitives. Committed to the repo. Every interaction inherits your team&#39;s knowledge."
   :cards='[{"icon":"👩‍💻","title":"Individual contributors","description":"Developers who paste the same context into every chat session and want Copilot to just know their project conventions."},{"icon":"🏗️","title":"Team leads","description":"Engineering leads who want consistent, team-wide Copilot behavior — not per-developer variation in response quality."},{"icon":"🧑‍🔧","title":"Platform engineers","description":"Infrastructure engineers automating workflows who need Copilot to understand domain-specific tools and constraints."},{"icon":"🔄","title":"Repeated context today","description":"The average developer re-explains the same project conventions to Copilot in every single chat session — minutes wasted, every day."},{"icon":"⚡","title":"5-minute setup","description":"One copilot-instructions.md file transforms Copilot from generic assistant to team-aware partner — visible improvement on the first request."},{"icon":"📈","title":"Progressive stack","description":"Instructions to Skills to Prompts to Agents — each primitive builds on the last, adding capability without replacing what came before."}]'
-/>
-
----
-
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Instructions First", takeaway: "Create a small custom instruction file for immediate context gains.", whyItMatters: "Fast wins create momentum for deeper customization." },
-    { title: "Skills as Knowledge", takeaway: "Package expertise into callable team capabilities.", whyItMatters: "Knowledge persists beyond any one expert or role." },
-    { title: "Specialized Agents", takeaway: "Compose instructions, skills, prompts, and execution into collaborators.", whyItMatters: "Focused capabilities change AI from a tool into a teammate." }
-  ]'
 />
 
 ---

@@ -19,7 +19,6 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -58,18 +57,6 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
     { title: "300–500 LOC ceiling", description: "Single agents hit a hard wall before most real features are complete" },
     { title: "50–80% irrelevant context", description: "One agent juggling research + planning + implementation by execution time" },
     { title: "5–10× throughput gain", description: "Background agents with worktrees vs. supervised single-agent execution" }
-  ]'
-/>
-
----
-
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Context Isolation", takeaway: "Give specialists focused context so exploration stays signal-rich.", whyItMatters: "Isolated work avoids the quality loss of one overloaded agent." },
-    { title: "Parallel Specialists", takeaway: "Compose research, design, implementation, and review into a team.", whyItMatters: "Specialization compresses coordination time without losing depth." },
-    { title: "Model Deliberation", takeaway: "Compare independent model perspectives on the same decision.", whyItMatters: "Disagreement exposes risks a single reasoning path can miss." }
   ]'
 />
 

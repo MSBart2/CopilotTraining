@@ -19,7 +19,6 @@ updated: 2026-04-24
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -56,18 +55,6 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
     { title: "50× code volume", description: "Habits for 300 lines/day collapse at 15,000 — the L5 breakpoint every team hits" },
     { title: "96× faster", description: "Same agent work: 3 days in a polyrepo vs. 45 min in a monorepo" },
     { title: "5× throughput", description: "8-min CI delivers 15 features/day vs. 3/day at 60 min — same agents" }
-  ]'
-/>
-
----
-
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "A New Velocity Model", takeaway: "See why agent output changes the economics of the delivery system.", whyItMatters: "Traditional line-by-line review cannot absorb agent-scale volume." },
-    { title: "Maturity as Roadmap", takeaway: "Use five maturity levels to sequence capability and governance.", whyItMatters: "A shared roadmap prevents both stalled pilots and rushed autonomy." },
-    { title: "Outcome Governance", takeaway: "Move validation to the few human checkpoints that matter most.", whyItMatters: "Control improves when effort targets intent, risk, and merge outcomes." }
   ]'
 />
 

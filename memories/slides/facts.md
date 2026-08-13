@@ -361,17 +361,16 @@ When running `slidev tech-talks/agentic-journey.md`, Slidev treats `tech-talks/`
 
 ---
 
-## Tech-talk Agenda opening contract (2026-08-10)
+## Tech-talk opening contract — AgendaSlide retired (2026-08-12)
 
-`AgendaSlide` is the required third opening slide for generated tech-talks: Title → Core Question → Agenda → TOC. It receives exactly three `{ title, takeaway, whyItMatters }` entries from `deck.agenda`; the agenda promises three high-value outcomes and does not duplicate the four-part `TocSlide` navigation.
+Required opening scaffold is Title → Core Question → TOC. **Do not emit `AgendaSlide`.** Outcome framing belongs in Core Question cards and TOC blurbs; `deck.agenda` in recipes may remain as authoring guidance but is not a slide.
 
-- Display-safe limits: `title` ≤30 chars; `takeaway` and `whyItMatters` ≤110 chars.
-- Agenda is structural infrastructure: retrofits preserve existing deck `updated:` dates.
-- Component card titles use a `div[role="heading"]`, not `h2`, because global tech-talk heading CSS overrides `h2` font sizing and can clip the card rationale.
+- Retrofits that only remove Agenda slides preserve existing deck `updated:` dates (infra change).
+- TOC `slide:` values shift down by 1 vs the old 4-slide opener (first section opener is typically slide 4).
 - `inspect-slide.js` starts the installed `@slidev/cli/bin/slidev.mjs` entrypoint directly and waits for a visible `.slidev-layout`; Slidev source files can import appendix slides, so its deck identity check also confirms the visible slide name.
 - Components must be in `tech-talks/components/`, NOT `slides/components/`
 
-Without this pattern, components only render on slide 1; slides 2+ fail with `[Vue warn]: Failed to resolve component: TitleSlide`.
+Without the correct import/setup pattern, components only render on slide 1; slides 2+ fail with `[Vue warn]: Failed to resolve component: TitleSlide`.
 
 ---
 

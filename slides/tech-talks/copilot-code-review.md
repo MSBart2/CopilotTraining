@@ -19,7 +19,6 @@ updated: 2026-08-10
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -65,24 +64,13 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Review Capacity", takeaway: "Match Lite or Balanced effort to change risk, then offload routine checks.", whyItMatters: "Human reviewers regain time for architecture and judgment." },
-    { title: "Evidence for ROI", takeaway: "Measure review time recovery across a team.", whyItMatters: "Credible numbers turn an experiment into an investment case." },
-    { title: "Compliance at Scale", takeaway: "Apply policy and audit patterns in regulated repositories.", whyItMatters: "Strong evidence paths make adoption possible in high-trust settings." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "⚡", title: "Configuration and Quick Start", subtitle: "Zero to first review in 5 minutes", blurb: "Rulesets, Lite/Balanced effort, org defaults, custom instructions", slide: 5 },
-    { icon: "🎯", title: "Best Practices and Adoption", subtitle: "Six capabilities, hybrid analysis, phased rollout", blurb: "Equip teams to own the rollout and frame it for stakeholders", slide: 10 },
-    { icon: "📊", title: "ROI and Business Impact", subtitle: "Interactive calculator, cycle-time metrics", blurb: "Turn real PR analytics into exec-ready savings numbers", slide: 14 },
-    { icon: "🔒", title: "Compliance Patterns", subtitle: "HIPAA, PCI-DSS, SOC2 instruction files", blurb: "Encode regulatory requirements with a full audit trail", slide: 19 }
+    { icon: "⚡", title: "Configuration and Quick Start", subtitle: "Zero to first review in 5 minutes", blurb: "Rulesets, Lite/Balanced effort, org defaults, custom instructions", slide: 4 },
+    { icon: "🎯", title: "Best Practices and Adoption", subtitle: "Six capabilities, hybrid analysis, phased rollout", blurb: "Equip teams to own the rollout and frame it for stakeholders", slide: 9 },
+    { icon: "📊", title: "ROI and Business Impact", subtitle: "Interactive calculator, cycle-time metrics", blurb: "Turn real PR analytics into exec-ready savings numbers", slide: 13 },
+    { icon: "🔒", title: "Compliance Patterns", subtitle: "HIPAA, PCI-DSS, SOC2 instruction files", blurb: "Encode regulatory requirements with a full audit trail", slide: 18 }
   ]'
 />
 

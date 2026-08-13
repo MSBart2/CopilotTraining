@@ -716,10 +716,10 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 # TocSlide
 <TocSlide
   :sections='[
-    { icon: "🧱", title: "Subagents", subtitle: "The Building Block", blurb: "Context isolation, parallel execution, and the vocabulary to reason with", slide: 4 },
-    { icon: "👥", title: "Agent Teams", subtitle: "Organized Specialists", blurb: "Squad: persistent role specialists that compound knowledge across sessions", slide: 8 },
-    { icon: "🚀", title: "Autonomous Execution", subtitle: "Background Agents + Worktrees", blurb: "Hand off to background agents — 85 active minutes become 27", slide: 12 },
-    { icon: "🎭", title: "Agent Council", subtitle: "When Models Think Differently", blurb: "Claude + GPT + Gemini in collaborative or adversarial deliberation", slide: 17 },
+    { icon: "🧱", title: "Subagents", subtitle: "The Building Block", blurb: "Context isolation, parallel execution, and the vocabulary to reason with", slide: 2 },
+    { icon: "👥", title: "Agent Teams", subtitle: "Organized Specialists", blurb: "Squad: persistent role specialists that compound knowledge across sessions", slide: 4 },
+    { icon: "🚀", title: "Autonomous Execution", subtitle: "Background Agents + Worktrees", blurb: "Hand off to background agents — 85 active minutes become 27", slide: 6 },
+    { icon: "🎭", title: "Agent Council", subtitle: "When Models Think Differently", blurb: "Claude + GPT + Gemini in collaborative or adversarial deliberation", slide: 8 },
   ]'
 />
 

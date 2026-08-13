@@ -20,7 +20,6 @@ updated: 2026-04-24
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -63,25 +62,13 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Throughput With Control", takeaway: "Pair agent velocity with instrumentation, audit trails, and quality gates.", whyItMatters: "Safe delivery needs organizational infrastructure, not just tools." },
-    { title: "The Cockpit", takeaway: "Use observability and control surfaces to guide autonomous work.", whyItMatters: "Leaders need reliable instruments for go or no-go decisions." },
-    { title: "Humans Set Direction", takeaway: "Keep people accountable for intent while agents execute.", whyItMatters: "The model amplifies leadership control rather than replacing it." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "✈️", title: "The Shift", subtitle: "From Coders to Captains", blurb: "Business stakes and the reframe that changes the calculus for enterprise AI investment", slide: 6 },
-    { icon: "🎛️", title: "The Flight Model", subtitle: "Roles, Instruments, Multiplier", blurb: "The operating model in three slides — and the math that makes it worth building", slide: 10 },
-    { icon: "⚖️", title: "The Risk", subtitle: "Liability Charter", blurb: "Six governance categories, the ROI chain, and why mature DevSecOps is already the cockpit", slide: 14 },
-    { icon: "🎯", title: "The Decision", subtitle: "Three Named Asks", blurb: "Named owners, timelines, and exactly what leadership is authorizing today", slide: 17 },
+    { icon: "✈️", title: "The Shift", subtitle: "From Coders to Captains", blurb: "Business stakes and the reframe that changes the calculus for enterprise AI investment", slide: 5 },
+    { icon: "🎛️", title: "The Flight Model", subtitle: "Roles, Instruments, Multiplier", blurb: "The operating model in three slides — and the math that makes it worth building", slide: 9 },
+    { icon: "⚖️", title: "The Risk", subtitle: "Liability Charter", blurb: "Six governance categories, the ROI chain, and why mature DevSecOps is already the cockpit", slide: 13 },
+    { icon: "🎯", title: "The Decision", subtitle: "Three Named Asks", blurb: "Named owners, timelines, and exactly what leadership is authorizing today", slide: 16 },
   ]'
 />
 

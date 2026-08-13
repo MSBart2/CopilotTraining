@@ -48,7 +48,6 @@ Structural components import from `./components/structure/ComponentName.vue`. Bo
 |-----------|---------------|
 | `TitleSlide` | `title`, `subtitle`, `tagline`, `meta` |
 | `CoreQuestionSlide` | `question`, `subtext`, `highlight`, `:cards='[{icon?, title, description}]'` — 6 cards; first 3 have `icon` (audience), last 3 are stats (no `icon`) |
-| `AgendaSlide` | `:items='[{title, takeaway, whyItMatters}]'` — exactly 3 outcomes |
 | `TocSlide` | `:sections='[{icon, title, subtitle, blurb, slide}]'` — exactly 4 sections |
 | `SectionOpenerSlide` | `:partNumber`, `title`, `subtitle`, `:cards='[{icon, title, blurb}]'` (3 cards), `:terminal='{context, detail}'` — NO `section`, NO `progressDots` |
 | `BeforeAfterSlide` | `header`, `:leftItems='["..."]'` (4), `:rightItems='["..."]'` (4), `:metrics='[{value, detail}]'` (3) |
@@ -92,13 +91,12 @@ Write the scaffold in one pass:
    './components/TwoColPairedConceptsSlide.vue'
    ```
 4. `CoreQuestionSlide` — always next; use placeholder cards (3 persona + 3 stat) — fill in Phase B
-5. `AgendaSlide` — always after CoreQuestionSlide; use the 3 `deck.agenda` entries verbatim
-6. `TocSlide` — sections from `deck.sectionOrder`; `slide: 0` placeholder — update after Phase B
-7. One `SectionOpenerSlide` per `deck.sectionOrder` entry; subtitle from `sectionModes[].note`; placeholder cards — immediately followed by `<!-- Phase B: {emphasis} — {N} body slides -->`
-8. `BeforeAfterSlide` — derive left/right items and metrics from `deck.highlightMoments`
-9. `WhatYouCanDoTodaySlide` — derive today/thisWeek/thisMonth from `deck.highlightMoments`
-10. `ReferencesSlide` — use a single placeholder item; fill in Phase B after reading README
-11. `ThankYouSlide` — 3 strongest `deck.highlightMoments` as summary cards
+5. `TocSlide` — sections from `deck.sectionOrder`; `slide: 0` placeholder — update after Phase B. **Do not emit an AgendaSlide** (retired; outcomes live in Core Question / TOC).
+6. One `SectionOpenerSlide` per `deck.sectionOrder` entry; subtitle from `sectionModes[].note`; placeholder cards — immediately followed by `<!-- Phase B: {emphasis} — {N} body slides -->`
+7. `BeforeAfterSlide` — derive left/right items and metrics from `deck.highlightMoments`
+8. `WhatYouCanDoTodaySlide` — derive today/thisWeek/thisMonth from `deck.highlightMoments`
+9. `ReferencesSlide` — use a single placeholder item; fill in Phase B after reading README
+10. `ThankYouSlide` — 3 strongest `deck.highlightMoments` as summary cards
 11. **Appendix** — if `deck.appendix` exists, emit one `src:` block per entry after the ThankYouSlide separator:
     ```
     ---
@@ -149,8 +147,7 @@ Identify the single "I didn't know it could do that" moment → make it the cent
 ```
 Slide 1   — TitleSlide
 Slide 2   — CoreQuestionSlide  (exactly 6 cards)
-Slide 3   — AgendaSlide        (3 outcomes from deck.agenda)
-Slide 4   — TocSlide           (4 sections, slide numbers filled in at end)
+Slide 3   — TocSlide           (4 sections, slide numbers filled in at end)
 Part 1    — SectionOpenerSlide (partNumber=1, cyan)
 ...body slides per sectionModes emphasis budget...
 Part 2    — SectionOpenerSlide (partNumber=2, blue)
@@ -213,7 +210,7 @@ updated: { YYYY-MM-DD }
 
 One `<script setup>` block at the top, immediately after frontmatter. Import only components the deck uses.
 
-- **Structural components** (TitleSlide, CoreQuestionSlide, AgendaSlide, TocSlide, SectionOpenerSlide, BeforeAfterSlide, WhatYouCanDoTodaySlide, ReferencesSlide, ThankYouSlide): `import X from './components/structure/X.vue'`
+- **Structural components** (TitleSlide, CoreQuestionSlide, TocSlide, SectionOpenerSlide, BeforeAfterSlide, WhatYouCanDoTodaySlide, ReferencesSlide, ThankYouSlide): `import X from './components/structure/X.vue'`
 - **Body content components** (all 13 Tier-1 components): `import X from './components/X.vue'`
 
 See `slides/tech-talks/template.md` for the full canonical block (loaded in pre-flight).
@@ -328,8 +325,8 @@ Run through this before handing off.
 
 - [ ] Slide 1: `TitleSlide` with `title`, `subtitle`, `tagline`, `meta`
 - [ ] Slide 2: `CoreQuestionSlide` with `question`, `subtext`, `highlight` + exactly 6 cards (3 audience with `icon`, 3 stats without `icon`)
-- [ ] Slide 3: `AgendaSlide` with exactly 3 `{title, takeaway, whyItMatters}` entries from `deck.agenda`
-- [ ] Slide 4: `TocSlide` with exactly 4 sections each having `icon`, `title`, `subtitle`, `blurb`, `slide`; `slide` values come from `inspect-slide.js {slug} scan`, not estimates
+- [ ] Slide 3: `TocSlide` with exactly 4 sections each having `icon`, `title`, `subtitle`, `blurb`, `slide`; `slide` values come from `inspect-slide.js {slug} scan`, not estimates
+- [ ] No `AgendaSlide` — retired; do not import or emit it
 - [ ] Each Part N: `SectionOpenerSlide` with `partNumber`, `title`, `subtitle`, exactly 3 `cards` (with `blurb` not `description`), and `:terminal='{context, detail}'` — no `section` prop
 - [ ] N-3: `BeforeAfterSlide` with exactly 4 left items, 4 right items, exactly 3 metrics
 - [ ] N-2: `WhatYouCanDoTodaySlide` with `today`, `thisWeek`, `thisMonth`, `footer`

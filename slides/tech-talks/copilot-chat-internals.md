@@ -19,7 +19,6 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -60,18 +59,6 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
     { title: "v1.110 — Feb 2026", description: "Real-time event stream and chart visualization newly available" }
   ]'
 />
----
-
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Make Context Visible", takeaway: "Inspect prompts, tools, context files, and agent behavior.", whyItMatters: "AI failures become diagnosable instead of mysterious." },
-    { title: "Understand Compaction", takeaway: "See what context arrived, what was prioritized, and what did not.", whyItMatters: "Teams can design prompts and files around real context limits." },
-    { title: "Validate Customization", takeaway: "Catch broken instructions, skills, and agent configuration early.", whyItMatters: "Setup errors are cheap to fix before they disrupt work." }
-  ]'
-/>
-
 ---
 
 # Table of Contents

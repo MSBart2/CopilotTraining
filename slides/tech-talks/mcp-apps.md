@@ -19,7 +19,6 @@ updated: 2026-04-22
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -62,25 +61,13 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Visual Chat Workspaces", takeaway: "Compose cards, tables, charts, forms, and boards inline in chat.", whyItMatters: "Data exploration becomes more useful than a text stream alone." },
-    { title: "Two-Way Interaction", takeaway: "Use callbacks to respond when people click, filter, or submit.", whyItMatters: "The interface becomes a collaborative conversation, not a report." },
-    { title: "Reusable Patterns", takeaway: "Start with proven dashboard, drill-down, form, and tree patterns.", whyItMatters: "Teams deliver common workflows without rebuilding primitives." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   :sections='[
     { icon: "🎨", title: "Component Types",   subtitle: "The visual palette — 6 types",              blurb: "Charts, tables, forms, trees, cards, custom — and when to use each",      slide: 4  },
     { icon: "🔨", title: "Building MCP Apps", subtitle: "Server structure and the pivotal moment",    blurb: "type: component, callback lifecycle, security model",                      slide: 8  },
     { icon: "🗺️", title: "Real-World Patterns", subtitle: "Four canonical scenarios",               blurb: "Dashboard, drill-down, form workflow, tree navigation",                    slide: 13 },
-    { icon: "🔗", title: "Integration",       subtitle: "Agents, skills, and memory",                blurb: "MCP Apps as first-class platform capability in agentic workflows",         slide: 17 }
+    { icon: "🔗", title: "Integration",       subtitle: "Agents, skills, and memory",                blurb: "MCP Apps as first-class platform capability in agentic workflows",         slide: 18 }
   ]'
 />
 

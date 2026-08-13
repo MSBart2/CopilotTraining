@@ -19,7 +19,6 @@ updated: 2026-08-11
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -67,26 +66,14 @@ src: ./exec-spine.md
 
 ---
 
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "The Arbitrage", takeaway: "Examine the operating-cost gap between agents and developers.", whyItMatters: "Value depends on how organizations capture the savings." },
-    { title: "Capture the Savings", takeaway: "Choose the mechanisms that turn efficiency into P&L outcomes.", whyItMatters: "Faster work alone does not automatically improve economics." },
-    { title: "Start With a Wedge", takeaway: "Prove ROI on a high-volume, low-complexity workflow.", whyItMatters: "Small credible wins fund the next investment." }
-  ]'
-/>
-
----
-
 <!-- SLIDE: Table of Contents -->
 # Table of Contents
 <TocSlide
   :sections='[
-    { icon: "💰", title: "The Arbitrage", subtitle: "Cost arbitrage and the work spectrum", blurb: "Cost gap and the three categories of work it reframes", slide: 6 },
-    { icon: "🔍", title: "The Capture Problem", subtitle: "Infrastructure gaps block P&L capture", blurb: "Five barriers, one root cause", slide: 9 },
-    { icon: "⚡", title: "Quick Wins", subtitle: "Issue lifecycle as the proof point", blurb: "One workflow, 3.6-day payback, self-funding", slide: 14 },
-    { icon: "🧮", title: "The Calculation", subtitle: "Investment scenario and governance asks", blurb: "J-curve, dashboard checkpoint, three leadership asks", slide: 18 }
+    { icon: "💰", title: "The Arbitrage", subtitle: "Cost arbitrage and the work spectrum", blurb: "Cost gap and the three categories of work it reframes", slide: 5 },
+    { icon: "🔍", title: "The Capture Problem", subtitle: "Infrastructure gaps block P&L capture", blurb: "Five barriers, one root cause", slide: 8 },
+    { icon: "⚡", title: "Quick Wins", subtitle: "Issue lifecycle as the proof point", blurb: "One workflow, 3.6-day payback, self-funding", slide: 13 },
+    { icon: "🧮", title: "The Calculation", subtitle: "Investment scenario and governance asks", blurb: "J-curve, dashboard checkpoint, three leadership asks", slide: 17 }
   ]'
 />
 

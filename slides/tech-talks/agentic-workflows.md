@@ -19,7 +19,6 @@ updated: 2026-08-11
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -64,26 +63,14 @@ import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vu
 
 ---
 
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Intent-Driven Workflows", takeaway: "Describe outcomes and let agents adapt to repository context.", whyItMatters: "Automation stays useful when the surrounding state changes." },
-    { title: "Security by Design", takeaway: "Explore safe outputs and sandboxed, read-only defaults.", whyItMatters: "Teams can automate without treating governance as an afterthought." },
-    { title: "A Practical Starting Point", takeaway: "Locate the workflow and maturity path that fits the team.", whyItMatters: "Every attendee leaves with a credible next action." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   subtitle="Why It Matters → Architecture & Safety → Patterns by Path → Your Path Forward"
   :sections='[
-    { icon: "💡", title: "Why It Matters", subtitle: "Three paths, three flagship use cases", blurb: "Find your path in the first 12 slides", slide: 5 },
-    { icon: "🔐", title: "Architecture & Safety", subtitle: "Compiler-enforced security model", blurb: "Three-phase pipeline, safe outputs, pattern vocabulary", slide: 10 },
-    { icon: "🗺️", title: "Patterns by Path", subtitle: "10 use cases across a 3x3 matrix", blurb: "Find your cell — see which peers shipped it", slide: 17 },
-    { icon: "🚀", title: "Your Path Forward", subtitle: "Week-by-week progression by path", blurb: "Monday-morning action plan", slide: 21 }
+    { icon: "💡", title: "Why It Matters", subtitle: "Three paths, three flagship use cases", blurb: "Find your path in the first 12 slides", slide: 4 },
+    { icon: "🔐", title: "Architecture & Safety", subtitle: "Compiler-enforced security model", blurb: "Three-phase pipeline, safe outputs, pattern vocabulary", slide: 9 },
+    { icon: "🗺️", title: "Patterns by Path", subtitle: "10 use cases across a 3x3 matrix", blurb: "Find your cell — see which peers shipped it", slide: 16 },
+    { icon: "🚀", title: "Your Path Forward", subtitle: "Week-by-week progression by path", blurb: "Monday-morning action plan", slide: 20 }
   ]'
 />
 

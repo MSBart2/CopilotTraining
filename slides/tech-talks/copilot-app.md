@@ -19,7 +19,6 @@ updated: 2026-08-11
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -62,25 +61,14 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 ---
 
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "Parallel Worktrees", takeaway: "Run independent agents in isolated worktrees without branch collisions.", whyItMatters: "Teams gain parallelism without merge-conflict choreography or custom locking." },
-    { title: "Autonomy by Confidence", takeaway: "Select Interactive, Plan, or Autopilot based on task risk and clarity.", whyItMatters: "Oversight can grow with trust instead of being all-or-nothing from day one." },
-    { title: "Repeatable Pipelines", takeaway: "Turn successful sessions into scheduled or event-driven workflows.", whyItMatters: "A proven workflow becomes compounding automation — dispatched without manual triggers." }
-  ]'
-/>
-
----
-
 # Table of Contents
 <TocSlide
   arcToc="Fleet Model → Trust by Design → Control Surfaces → Sessions to Systems"
   :sections='[
-    { icon: "🚀", title: "The Fleet Model", subtitle: "What agent-native means at team scale", blurb: "Dashboard, dispatch table, and the decision tree for when to reach for the fleet", slide: 5 },
-    { icon: "🛡️", title: "Safe Parallelism", subtitle: "Worktrees, sandboxes, and branch isolation", blurb: "How five agents work concurrently without touching each other&#39;s files", slide: 10 },
-    { icon: "🎛️", title: "Control Surfaces", subtitle: "Modes, Canvas, and the issue brief", blurb: "The dial, the handbrake, and the quality lever — all five control slides", slide: 13 },
-    { icon: "⚙️", title: "Sessions to Systems", subtitle: "Repeatable workflows and Agent Merge", blurb: "CVE response, workflow anatomy, and the Monday dispatch that runs itself", slide: 19 }
+    { icon: "🚀", title: "The Fleet Model", subtitle: "What agent-native means at team scale", blurb: "Dashboard, dispatch table, and the decision tree for when to reach for the fleet", slide: 4 },
+    { icon: "🛡️", title: "Safe Parallelism", subtitle: "Worktrees, sandboxes, and branch isolation", blurb: "How five agents work concurrently without touching each other&#39;s files", slide: 9 },
+    { icon: "🎛️", title: "Control Surfaces", subtitle: "Modes, Canvas, and the issue brief", blurb: "The dial, the handbrake, and the quality lever — all five control slides", slide: 12 },
+    { icon: "⚙️", title: "Sessions to Systems", subtitle: "Repeatable workflows and Agent Merge", blurb: "CVE response, workflow anatomy, and the Monday dispatch that runs itself", slide: 18 }
   ]'
 />
 

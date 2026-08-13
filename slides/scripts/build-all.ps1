@@ -147,23 +147,9 @@ function Invoke-PropLint {
         }
     }
 
-    # Agenda slides require a complete, exactly-three-item promise to attendees.
+    # AgendaSlide is retired for tech-talks (Title → Core Question → TOC).
     foreach ($m in [regex]::Matches($content, "(?s)<AgendaSlide\b.*?/>")) {
-        $block = $m.Value
-        $offset = $m.Index
-        $items = [regex]::Matches($block, '(?s)\{[^{}]*\}')
-        if ($items.Count -ne 3) {
-            & $warn $offset "AgendaSlide: items must contain exactly 3 entries (got $($items.Count))"
-            continue
-        }
-
-        for ($index = 0; $index -lt $items.Count; $index++) {
-            foreach ($field in @('title', 'takeaway', 'whyItMatters')) {
-                if ($items[$index].Value -notmatch "\b$field\s*:") {
-                    & $warn ($offset + $items[$index].Index) "AgendaSlide: items[$index].$field is required"
-                }
-            }
-        }
+        & $warn $m.Index "AgendaSlide is retired — remove this slide (outcomes belong in Core Question / TOC)"
     }
 
     return $lintWarnings

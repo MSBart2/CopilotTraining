@@ -19,7 +19,6 @@ updated: 2026-04-24
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
-import AgendaSlide from './components/structure/AgendaSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
@@ -58,18 +57,6 @@ src: ./exec-spine.md
     { title: "67%", description: "Engineering labor outside the code editor — untouched by today&#39;s AI investment" },
     { title: "$4.44M", description: "$4.44M average breach cost before regulatory fines — what governance agents address" },
     { title: "12x", description: "SQL injection remediation speed improvement via Copilot Autofix (Octoverse 2024)" }
-  ]'
-/>
-
----
-
-<!-- SLIDE: Agenda -->
-# Agenda
-<AgendaSlide
-  :items='[
-    { title: "The Unreached Work", takeaway: "Map the coordination and knowledge work beyond code generation.", whyItMatters: "Strategy expands when leaders see where agent value is emerging." },
-    { title: "Three Leverage Zones", takeaway: "Assess depth, breadth, and supervision reduction separately.", whyItMatters: "Different zones need different readiness and investment choices." },
-    { title: "AI as Multiplier", takeaway: "Use DORA findings to examine organizational foundations first.", whyItMatters: "Agents amplify strengths and dysfunction in equal measure." }
   ]'
 />
 
