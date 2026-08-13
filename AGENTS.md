@@ -109,3 +109,23 @@ Key invariants (all categories):
 - No per-slide frontmatter (`layout:`, `class:`, `transition:`) — use CSS
 - Every slide including slide 1 needs `<!-- SLIDE: Name -->` comment
 - Run `node slides/scripts/sync-index-dates.mjs` after any slide change
+
+---
+
+## Shipping slides (Deploy agent)
+
+Homepage **Agenda** / **PDF** chips resolve to files under
+`slides/companions/<category>/<slug>/`. GitHub Pages **only copies** those
+files into `dist/` — it never runs `generate-agendas` or `export-pdf`.
+
+Before committing slide or companion changes, use the **Deploy** agent
+(`.github/agents/deploy.agent.md`):
+
+1. `cd slides && npm run check-companions -- --strict` (hard gate)
+2. Regen stale agendas + compact PDFs for the dirty scope
+3. `npm run sync-index` if decks changed
+4. Re-check, then **snarky commit** including `slides/companions/**`
+5. **Refuse** commit when companions are missing/older than their decks
+6. Push only when explicitly asked
+
+Do not commit deck-only changes that leave companions untracked or stale.

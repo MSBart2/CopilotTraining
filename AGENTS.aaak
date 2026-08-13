@@ -161,6 +161,18 @@ references:  # optional but recommended
 
 ---
 
+## Shipping / Companions (Deploy agent)
+
+- Artifacts live in `slides/companions/<category>/<slug>/` (`agenda.md`, `agenda.html`, `deck.pdf`)
+- CI **copies only** — never `generate-agendas` / `export-pdf` in Actions
+- Before commit: **Deploy** agent (`.github/agents/deploy.agent.md`)
+- Hard gate: `cd slides && npm run check-companions -- --strict`
+- Regen: `npm run generate-agendas` + `npm run export-pdf` (compact)
+- Snarky commit including companions; **block** deck-only commits when stale
+- Push only when user asks
+
+---
+
 ## Before-Submit Voice Checklist
 
 - [ ] **Outcomes, not learning** — Shows what was built/validated

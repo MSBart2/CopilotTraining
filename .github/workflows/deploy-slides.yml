@@ -210,6 +210,18 @@ jobs:
           mkdir -p dist/tech-talks
           cp tech-talks/sdp-logo.png dist/tech-talks/sdp-logo.png
 
+          # Ship pre-inspected companions (agenda.html / agenda.md / deck.pdf).
+          # Do NOT generate agendas or PDFs in CI — authors build those locally
+          # via the Deploy agent / npm run generate-agendas + export-pdf.
+          # Companions must be committed under slides/companions/ to ship.
+          node scripts/copy-companions.mjs
+
+          # Soft report only (CI cannot regenerate PDFs if stale).
+          node scripts/check-companions.mjs || true
+
+          # Hard check: every file under companions/ must land in dist/.
+          node scripts/verify-companions-dist.mjs
+
           BUILT=${#LABELS[@]}
           echo "📊 ${BUILT} built, ${SKIPPED} skipped (up to date)"
 
@@ -228,3 +240,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+

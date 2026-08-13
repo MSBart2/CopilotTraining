@@ -341,6 +341,18 @@ Write-Host ""
 Write-Host "[DOC] Copying index-custom.html to dist root..." -ForegroundColor Gray
 Copy-Item "$SlidesDir/index-custom.html" "$OutputDir/index.html" -Force
 
+# Copy pre-built agenda/PDF companions only — never generate in CI/build
+Write-Host "[DOC] Copying companion agenda/PDF artifacts into dist..." -ForegroundColor Gray
+Push-Location $SlidesDir
+try {
+    node "$SlidesDir/scripts/copy-companions.mjs"
+    if ($LASTEXITCODE -ne 0) { throw "copy-companions failed" }
+    node "$SlidesDir/scripts/verify-companions-dist.mjs"
+    if ($LASTEXITCODE -ne 0) { throw "verify-companions-dist failed" }
+} finally {
+    Pop-Location
+}
+
 $TotalElapsedSeconds = [math]::Round(((Get-Date) - $StartTime).TotalSeconds, 1)
 $TotalMinutes = [math]::Floor($TotalElapsedSeconds / 60)
 $RemainingSeconds = $TotalElapsedSeconds % 60

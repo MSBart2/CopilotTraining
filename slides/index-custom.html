@@ -635,6 +635,78 @@
         box-shadow: 0 0 14px rgba(251, 191, 36, 0.8), 0 0 28px rgba(251, 191, 36, 0.3);
       }
     }
+
+        /* ── Card shell (deck cards enhanced by JS) ── */
+    .card-shell {
+      position: relative;
+      cursor: pointer;
+      min-height: 100%;
+    }
+
+    .card-title-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.4rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .card-title-row h2 {
+      margin-bottom: 0;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-title-link {
+      text-decoration: none;
+      color: inherit;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-body-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      flex: 1;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .card-chip {
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--badge-color);
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      border-radius: 999px;
+      padding: 0.18rem 0.45rem;
+      line-height: 1.2;
+      transition: all 0.15s ease;
+    }
+
+    .card-chip:hover {
+      color: #fff;
+      background: rgba(59, 130, 246, 0.85);
+      border-color: rgba(59, 130, 246, 0.95);
+    }
+
+    .card-chip.is-missing {
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    .grid {
+      grid-auto-rows: minmax(clamp(100px, 11vw, 160px), auto);
+    }
   </style>
 </head>
 
@@ -671,40 +743,40 @@
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
-          <a href="/CopilotTraining/tech-talks/agent-dev-loop/" class="card">
+          <a href="tech-talks/agent-dev-loop/" class="card">
             <h2>The Agent Dev Loop</h2>
             <p>From repo to feature with Copilot in VS Code. AGENTS.md, prompts, skills, and risk-reviewed plans — build the toolkit that makes every feature faster.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-chat-internals/" class="card">
+          <a href="tech-talks/copilot-chat-internals/" class="card">
             <h2>Copilot Chat Internals</h2>
             <p>Under the hood diagnostics. Chat Debug View, customization diagnostics, and extension logs for systematic
               troubleshooting.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-cli/" class="card">
+          <a href="tech-talks/copilot-cli/" class="card">
             <h2>Copilot CLI</h2>
             <p>Close every gap — intent, geography, memory, and scale. Plan Mode, Rubber Duck, Git-free /rewind,
               Sessions sidebar, /chronicle, live S3→S4 bridge, /fleet fan-out, and cloud delegation.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-web/" class="card">
+          <a href="tech-talks/copilot-web/" class="card">
             <h2>Copilot Web</h2>
             <p>Delegate issues to the coding agent and get back draft PRs. Covers trigger modes, reasoning controls, CI-parity setup, Agent Firewall, and evidence-bundle review.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-code-review/" class="card">
+          <a href="tech-talks/copilot-code-review/" class="card">
             <h2>Copilot Code Review</h2>
             <p>Accelerating PR velocity with AI-powered review. 40-60% faster cycle times, custom compliance rulesets,
               and measurable ROI.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/vscode-latest/" class="card">
+          <a href="tech-talks/vscode-latest/" class="card">
             <h2>What's New in VS Code</h2>
             <p>v1.121–v1.132: Portable agent infrastructure (AHP + Copilot SDK), BYOK with no GitHub sign-in, local
               Ollama models, Stable Custom Endpoint, parallel sessions, and GA browser tools with device emulation.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-primitives/" class="card">
+          <a href="tech-talks/copilot-primitives/" class="card">
             <h2>Copilot Primitives</h2>
             <p>The 4 configuration primitives. Instructions, prompts, skills, and agents — make Copilot understand your
               codebase better.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-code-quality/" class="card">
+          <a href="tech-talks/copilot-code-quality/" class="card">
             <h2>GitHub Code Quality</h2>
             <p>Coverage-aware merge gates and Copilot Autofix, now GA. Turning maintainability checks into a real
               blocking check on the PR — plus what the per-committer bill actually looks like.</p>
@@ -721,32 +793,32 @@
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
-          <a href="/CopilotTraining/tech-talks/copilot-memory/" class="card">
+          <a href="tech-talks/copilot-memory/" class="card">
             <h2>Copilot Memory</h2>
             <p>Cross-session context persistence. Store preferences, project context, and workflow patterns that persist
               across all conversations.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-hooks/" class="card">
+          <a href="tech-talks/copilot-hooks/" class="card">
             <h2>Copilot Hooks</h2>
             <p>Programmable governance for AI agents. Real-time prevention, audit trails, and compliance enforcement at
               execution time.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-plugins/" class="card">
+          <a href="tech-talks/copilot-plugins/" class="card">
             <h2>Copilot Plugins & APM</h2>
             <p>Composable AI extensions. Discover and install plugins from the CLI, then version your entire agent
               configuration with APM manifests and lockfiles.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-sdk/" class="card">
+          <a href="tech-talks/copilot-sdk/" class="card">
             <h2>Copilot SDK</h2>
             <p>Stop building AI infrastructure. Production Copilot agent runtime in 10 lines — CLI tools, Web APIs, and
               scheduled automations shipping this sprint.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/mcp-apps/" class="card">
+          <a href="tech-talks/mcp-apps/" class="card">
             <h2>MCP Apps</h2>
             <p>Rich UI in chat responses. Transform chat from text-only to interactive visual experiences with
               component-based MCP tools.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/enterprise-patterns/" class="card">
+          <a href="tech-talks/enterprise-patterns/" class="card">
             <h2>Enterprise Patterns</h2>
             <p>Scaling Copilot across organizations. From team silos to standardized foundations with measurable ROI.
             </p>
@@ -764,46 +836,46 @@
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
-          <a href="/CopilotTraining/tech-talks/agent-teams/" class="card">
+          <a href="tech-talks/agent-teams/" class="card">
             <h2>Agent Teams</h2>
             <p>From subagents to autonomous teams. The complete stack: context isolation, role specialists (Squad),
               background agents + worktrees, and multi-model deliberation (AgentCouncil).</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-acp/" class="card">
+          <a href="tech-talks/copilot-acp/" class="card">
             <h2>Copilot ACP</h2>
             <p>The Agent Client Protocol for universal AI integration. Use Copilot's agentic capabilities in any editor,
               tool, or workflow — not just VS Code.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-app/" class="card">
+          <a href="tech-talks/copilot-app/" class="card">
             <h2>GitHub Copilot App</h2>
             <p>From one assistant to an agent fleet — parallel dispatch, worktree isolation, Canvas control, and Agent
               Merge. Five agents, five issues, zero branch conflicts.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-azure-mcp/" class="card">
+          <a href="tech-talks/copilot-azure-mcp/" class="card">
             <h2>GitHub Copilot + Azure Skills Plugin</h2>
             <p>Conversational Azure prototyping and deployment. 21 curated skills + 200+ live tools — from 45 minutes of
               portal clicks to 8 minutes of live-context conversation.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/copilot-with-foundry/" class="card">
+          <a href="tech-talks/copilot-with-foundry/" class="card">
             <h2>GitHub Copilot with Microsoft Foundry</h2>
             <p>GitHub answers "What?" — Foundry answers "Why?" Extend Copilot agents with organizational memory to recover the intent behind legacy code the 5–10% of the time it matters most.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/agentic-workflows/" class="card">
+          <a href="tech-talks/agentic-workflows/" class="card">
             <h2>GitHub Agentic Workflows</h2>
             <p>Repository automation with AI agents. Write workflows in Markdown, compiled to secure GitHub Actions with
               safe-output validation.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/agentic-journey/" class="card">
+          <a href="tech-talks/agentic-journey/" class="card">
             <h2>Agentic Journey</h2>
             <p>From "assign to copilot" to full SDLC transformation. The 5-phase incremental path with 4-workflow
               architecture and historical context search.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/agentic-sdlc/" class="card">
+          <a href="tech-talks/agentic-sdlc/" class="card">
             <h2>Agentic SDLC</h2>
             <p>Level 5 infrastructure for AI velocity. Rewire repositories, PR workflows, and CI/CD to scale from 2-3
               features/week to 10-15/day with autonomous agents.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/loopy-agents/" class="card">
+          <a href="tech-talks/loopy-agents/" class="card">
             <h2>Loop Engineering</h2>
             <p>Agents that loop until the goal is verifiably met — then stop. Copilot Automations as the native trigger, shared state for multi-agent coordination, and the three production controls most teams skip.</p>
           </a>
@@ -819,17 +891,17 @@
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
-          <a href="/CopilotTraining/tech-talks/exec-delivery/" class="card">
+          <a href="tech-talks/exec-delivery/" class="card">
             <h2>Agentic Delivery</h2>
             <p>No instruments, no delivery. The enterprise agentic imperative — why verification infrastructure is the
               real investment.</p>
           </a>
-          <a href="/CopilotTraining/tech-talks/exec-economics/" class="card">
+          <a href="tech-talks/exec-economics/" class="card">
             <h2>Agentic Economics</h2>
             <p>The $2–5/hour agent reality. Making the business case — ROI math, the J-curve, and three concrete asks.
             </p>
           </a>
-          <a href="/CopilotTraining/tech-talks/exec-labor/" class="card">
+          <a href="tech-talks/exec-labor/" class="card">
             <h2>Agentic Labor</h2>
             <p>AI tools addressed 33% of the labor problem. The multiplier model for capturing the other 67%.</p>
           </a>
@@ -847,43 +919,43 @@
         </div>
       </div>
       <div class="grid">
-        <a href="/CopilotTraining/workshop/00-orientation/" class="card">
+        <a href="workshop/00-orientation/" class="card">
           <h2>00 - Orientation</h2>
           <p>The Challenge: Build FanHub in 8 hours. Meet the team, understand the messy codebase, embrace the
             constraint.</p>
         </a>
 
-        <a href="/CopilotTraining/workshop/01-instructions/" class="card">
+        <a href="workshop/01-instructions/" class="card">
           <h2>01 - Instructions</h2>
           <p>The magic file. Stop Copilot from guessing—document your architecture and patterns so AI suggestions are
             consistent.</p>
         </a>
 
-        <a href="/CopilotTraining/workshop/02-agent-plan-mode/" class="card">
+        <a href="workshop/02-agent-plan-mode/" class="card">
           <h2>02 - Agent Plan Mode</h2>
           <p>From implementation to orchestration. Let AI research dependencies and plan multi-file features before
             coding.</p>
         </a>
 
-        <a href="/CopilotTraining/workshop/03-04-combined/" class="card">
+        <a href="workshop/03-04-combined/" class="card">
           <h2>03+04 - From Prompts to Skills</h2>
           <p>Build reusable prompts then graduate them to agent skills. Turn repeated patterns into team-wide functions
             and packaged domain capabilities.</p>
         </a>
 
-        <a href="/CopilotTraining/workshop/05-mcp-servers/" class="card">
+        <a href="workshop/05-mcp-servers/" class="card">
           <h2>05 - MCP Servers</h2>
           <p>Beyond static files. Connect Copilot to live databases, APIs, and external tools as first-class context
             sources.</p>
         </a>
 
-        <a href="/CopilotTraining/workshop/06-custom-agents/" class="card">
+        <a href="workshop/06-custom-agents/" class="card">
           <h2>06 - Custom Agents</h2>
           <p>End context-switching overhead. Bundle tools, skills, and instructions into role-based presets you switch
             instantly.</p>
         </a>
 
-        <a href="/CopilotTraining/workshop/fanhub-unplugged/" class="card">
+        <a href="workshop/fanhub-unplugged/" class="card">
           <h2>FanHub Unplugged</h2>
           <p>60-minute agent-directed sprint. You hold the vision, the agent implements. Four paths: Bug Blitz, Rebrand,
             Build New, or Delight Mode.</p>
@@ -966,9 +1038,16 @@
     })();
 
     //
-    // SOURCE OF TRUTH: the "updated:" field in each slide's YAML frontmatter.
-    // To regenerate this map, run:   node slides/scripts/sync-index-dates.mjs
+    // SOURCE OF TRUTH: slide frontmatter "updated:"
+    // Regenerate: node slides/scripts/sync-index-dates.mjs
+    // Agenda/PDF companions live under slides/companions/ and are linked, not embedded.
     const SLIDE_DATES = {
+      '00-orientation': '2026-04-01',
+      '01-instructions': '2026-04-01',
+      '02-agent-plan-mode': '2026-04-01',
+      '03-04-combined': '2026-04-01',
+      '05-mcp-servers': '2026-03-31',
+      '06-custom-agents': '2026-03-31',
       'agent-dev-loop': '2026-06-30',
       'agent-teams': '2026-04-22',
       'agentic-journey': '2026-04-22',
@@ -993,16 +1072,107 @@
       'exec-delivery': '2026-04-24',
       'exec-economics': '2026-08-11',
       'exec-labor': '2026-04-24',
+      'fanhub-unplugged': '2026-04-27',
       'loopy-agents': '2026-07-02',
       'mcp-apps': '2026-04-22',
       'vscode-latest': '2026-08-12',
     };
 
+    function parseDeckHref(href) {
+      if (!href || href.startsWith('http') || href.startsWith('mailto:')) return null;
+      const clean = href.replace(/^\/CopilotTraining\//, '').replace(/^\//, '').replace(/\/$/, '');
+      const parts = clean.split('/').filter(Boolean);
+      if (parts.length < 2) return null;
+      return { category: parts[0], slug: parts[parts.length - 1], href: clean + '/' };
+    }
+
+    function softLink(el, href, missingHint) {
+      el.href = href;
+      fetch(href, { method: 'HEAD' }).then((res) => {
+        if (!res.ok) {
+          el.classList.add('is-missing');
+          el.title = missingHint;
+        }
+      }).catch(() => {
+        el.classList.add('is-missing');
+        el.title = missingHint;
+      });
+      el.addEventListener('click', (e) => e.stopPropagation());
+    }
+
+    function enhanceDeckCard(card) {
+      const parsed = parseDeckHref(card.getAttribute('href'));
+      if (!parsed) return;
+
+      const { category, slug, href } = parsed;
+      const h2 = card.querySelector('h2');
+      const p = card.querySelector('p');
+      if (!h2) return;
+
+      const shell = document.createElement('div');
+      shell.className = card.className + ' card-shell';
+      shell.dataset.slug = slug;
+      shell.dataset.category = category;
+
+      const titleRow = document.createElement('div');
+      titleRow.className = 'card-title-row';
+
+      const titleLink = document.createElement('a');
+      titleLink.className = 'card-title-link';
+      titleLink.href = href;
+      titleLink.appendChild(h2.cloneNode(true));
+
+      const actions = document.createElement('div');
+      actions.className = 'card-actions';
+
+      const agenda = document.createElement('a');
+      agenda.className = 'card-chip card-agenda';
+      agenda.textContent = 'Agenda';
+      agenda.setAttribute('aria-label', `Open agenda for ${slug}`);
+      softLink(
+        agenda,
+        `${category}/${slug}/agenda.html`,
+        'Agenda not published yet — generate locally: npm run generate-agendas -- ' + slug,
+      );
+
+      const pdf = document.createElement('a');
+      pdf.className = 'card-chip card-pdf';
+      pdf.textContent = 'PDF';
+      pdf.setAttribute('aria-label', `Download PDF for ${slug}`);
+      softLink(
+        pdf,
+        `${category}/${slug}/deck.pdf`,
+        'PDF not published yet — export locally: npm run export-pdf -- ' + slug,
+      );
+
+      actions.appendChild(agenda);
+      actions.appendChild(pdf);
+      titleRow.appendChild(titleLink);
+      titleRow.appendChild(actions);
+      shell.appendChild(titleRow);
+
+      if (p) {
+        const bodyLink = document.createElement('a');
+        bodyLink.className = 'card-body-link';
+        bodyLink.href = href;
+        bodyLink.appendChild(p.cloneNode(true));
+        shell.appendChild(bodyLink);
+      }
+
+      shell.addEventListener('click', (e) => {
+        if (e.target.closest('.card-chip, a')) return;
+        window.location.href = href;
+      });
+
+      card.replaceWith(shell);
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const now = new Date();
       const oneWeek = 7 * 24 * 60 * 60 * 1000;
 
-      // Inject count badges into each section header
+      document.querySelectorAll('a.card[href]').forEach(enhanceDeckCard);
+
       document.querySelectorAll('.section').forEach(section => {
         const count = section.querySelectorAll('.card').length;
         if (!count) return;
@@ -1013,20 +1183,18 @@
         if (header) header.appendChild(badge);
       });
 
-
-      document.querySelectorAll('.card[href]').forEach(card => {
-        // Extract slug from href:  /CopilotTraining/tech-talks/copilot-cli/ → copilot-cli
-        const match = card.getAttribute('href').match(/\/([\w-]+)\/?$/);
-        if (!match) return;
-        const slug = match[1];
+      document.querySelectorAll('.card').forEach(card => {
+        const slug = card.dataset.slug || (() => {
+          const link = card.getAttribute('href') || card.querySelector('a')?.getAttribute('href') || '';
+          const m = link.match(/\/?([\w-]+)\/?$/);
+          return m ? m[1] : null;
+        })();
+        if (!slug) return;
         const dateStr = SLIDE_DATES[slug];
         if (!dateStr) return;
-
         const updated = new Date(dateStr + 'T00:00:00');
         if (now - updated < oneWeek) {
-          // Add glowing card treatment
           card.classList.add('card-new');
-          // Add NEW badge to title
           const badge = document.createElement('span');
           badge.className = 'badge-new';
           badge.textContent = 'NEW';

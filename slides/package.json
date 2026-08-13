@@ -9,8 +9,14 @@
     "build-all": "bash scripts/build-all.sh",
     "build-all:verbose": "bash scripts/build-all.sh -v",
     "export": "slidev export",
-    "export-pdf": "slidev export --format pdf",
+    "export-pdf": "node scripts/export-pdfs.mjs",
     "export-pptx": "slidev export --format pptx",
+    "generate-agendas": "node scripts/generate-agendas.mjs",
+    "copy-companions": "node scripts/copy-companions.mjs",
+        "check-companions": "node scripts/check-companions.mjs",
+        "verify-companions-dist": "node scripts/verify-companions-dist.mjs",
+        "sync-index": "node scripts/sync-index-dates.mjs",
+        "preview:index": "node scripts/preview-index.mjs",
     "generate": "node scripts/generate-slides.js",
     "test:404": "node scripts/test-404-redirect.mjs",
     "inspect": "node scripts/inspect-slide.js",
@@ -24,6 +30,8 @@
     "playwright": "^1.59.1"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "playwright-chromium": "^1.62.1",
+    "sharp": "^0.35.3"
   }
 }

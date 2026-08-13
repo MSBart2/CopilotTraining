@@ -110,9 +110,28 @@ Built decks are in `slides/dist/<category>/<deck-name>/`.
 
 ## Previewing Locally
 
-After building:
+### Homepage + companions (fast)
+
+From `slides/`:
 
 ```powershell
+npm run sync-index
+npm run generate-agendas -- copilot-cli --from-slides  # timed agenda from TocSlide
+npm run generate-agendas -- copilot-cli --html-only    # after hand-tuning agenda.md
+npm run export-pdf -- copilot-cli                      # optional deck.pdf
+npm run preview:index                                 # http://127.0.0.1:8080/
+```
+
+Agendas are a simple timed run-of-show (`Agenda (45 min)` + numbered items),
+seeded from the Slidev deck. Edit `agenda.md` for real room timing, then
+`--html-only`. Companions live under `slides/companions/<category>/<slug>/`
+and are **not** built in CI — `copy-companions` only copies files that already
+exist.
+
+### Full site after a build
+
+```powershell
+.\build.ps1 Tech-talks
 cd dist
 python -m http.server 8080
 ```
@@ -141,3 +160,18 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 - Archived decks (status: archived in frontmatter) are skipped
 - Exit code reflects success/failure for automation
 - Output is color-coded for readability (Cyan/Green/Yellow/Red)
+
+## Companion artifacts (agenda + PDF)
+
+Local-only generation. CI/build copies committed files under `slides/companions/`.
+
+| Script | npm | Purpose |
+|--------|-----|---------|
+| `generate-agendas.mjs` | `npm run generate-agendas` | Timed agenda.md + agenda.html from deck TOC |
+| `export-pdfs.mjs` | `npm run export-pdf` | Compact deck.pdf (JPEG pipeline; `--native` opt-in) |
+| `copy-companions.mjs` | `npm run copy-companions` | Mirror companions into `dist/<cat>/<slug>/` |
+| `check-companions.mjs` | `npm run check-companions` | Missing/stale vs deck mtime (`--strict` exits 1) |
+| `verify-companions-dist.mjs` | `npm run verify-companions-dist` | Fail if copy dropped a file |
+| `preview-index.mjs` | `npm run preview:index` | Local homepage + companions |
+
+Ship gate: **Deploy** agent (`.github/agents/deploy.agent.md`). See `slides/companions/README.md`.
