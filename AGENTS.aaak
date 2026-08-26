@@ -74,13 +74,13 @@ Quick orientation for agents. Full docs: `AGENTS.md`
 
 When a tech talk needs updating from the Microsoft Developer Changelog:
 
-1. Run `npm run content:route` to synthesize the fresh feed report.
-2. Review `.github/content-routing/ledger.json` for talk-specific `proposal-created` items.
-3. Verify the announcement against first-party docs before making any README change.
+1. Run `npm run content:route -- --since <README updated>`. Default 7-day lookback is too short.
+2. Review the ledger, but do not stop a named-talk refresh when it is empty.
+3. Verify against first-party docs **and** product release notes / command reference.
 4. Run the `content-refresh` skill to produce `tech-talks/<topic>/content.refresh.yml`.
 5. Apply only approved changes to the talk README.
-6. If the change affects the thesis, demo, or structure, run `deck-recipe-refresh` and regenerate the deck.
-7. Close the ledger item with `accepted` or `rejected` after validation.
+6. Cheap path: leave recipe + patch or skip slides unless the plan is structural / restructure / replace-demo.
+7. Close selected ledger items only. Do not invent ledger rows for an empty inbox.
 
 The full guide is in [docs/announcement-feed/README.md](docs/announcement-feed/README.md).
 

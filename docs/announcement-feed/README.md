@@ -28,14 +28,16 @@ Use the feed as the discovery channel, not as final evidence.
 Run the router from the repo root:
 
 ```bash
-npm run content:route
+npm run content:route -- --since <README-updated-date>
 ```
 
-This reads the feed, compares it to the coverage registry, and writes the latest routing report.
+This reads the feed, compares it to the coverage registry, and writes the latest routing report. Default lookback is 7 days — always pass `--since` for a named talk whose README is older than that.
 
 ### 2) Review the ledger and pick a talk
 
 Open `.github/content-routing/ledger.json` and select proposals for one talk or for all talks. Only work on `proposal-created` items that match the talk's scope.
+
+A named talk with no `proposal-created` rows is **not** current. Continue with `content-refresh` from the README cutoff and first-party product sources. Stop only when the user asked for `all` and the inbox is empty.
 
 ### 3) Verify the evidence
 
@@ -79,17 +81,19 @@ Then:
 
 ### 6) Refresh the deck recipe when needed
 
-If the content or structure changes materially, run the recipe review workflow:
+Skip Agent Council when `recipeReview.required` is false and every `recipeImpact` is `none` or `confirm`.
+
+If the content or structure changes materially (`recipeReview.required: true`), run:
 
 ```text
 deck-recipe-refresh
 ```
 
-That produces or refreshes `tech-talks/<topic>/deck.recipe.yml` based on the README and accepted evidence.
+That produces or refreshes `tech-talks/<topic>/deck.recipe.yml` based on the README and accepted evidence. Compact council is the default; full 3-phase council is for structural / restructure / replace-demo only.
 
-### 7) Regenerate slides and validate
+### 7) Update slides and validate
 
-If the talk's recipe or narrative changes, regenerate the slide deck and validate the single deck build:
+If an existing slide already covers the fact, **patch** it. Wipe-and-regenerate only when the recipe skeleton or a centerpiece demo changed. Then validate the single deck build:
 
 ```bash
 node slides/scripts/sync-index-dates.mjs
@@ -127,7 +131,8 @@ After a talk passes validation:
 - If verification changes the scope, pause and ask for approval.
 - Archived content is never modified.
 - Latest report files are transient snapshots; they are regenerated and should not be treated as a permanent backlog.
-- Any implemented announcement must be closed in `.github/content-routing/ledger.json` as `accepted`, `rejected`, or `no-impact` before the work is considered complete.
+- Any implemented announcement that came from the ledger must be closed as `accepted`, `rejected`, or `no-impact`. A named-talk refresh that started with an empty inbox must not invent ledger rows.
+- Do not start Agent Council or wipe a deck to confirm a recipe you already intend to keep.
 
 ## Quick checklist
 
@@ -137,9 +142,9 @@ Before editing a talk, confirm:
 - [ ] relevant feed item is verified against first-party docs
 - [ ] the change materially affects this talk
 - [ ] the refresh plan is proposed or approved
-- [ ] recipe is refreshed when needed
-- [ ] slides are regenerated only after content approval
-- [ ] ledger status is updated after validation
+- [ ] recipe is refreshed only when `recipeReview.required` is true
+- [ ] existing slides are patched unless the recipe skeleton or a demo changed
+- [ ] ledger status is updated only for selected inbox items
 
 ## Related references
 

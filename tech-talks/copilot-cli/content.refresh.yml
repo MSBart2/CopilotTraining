@@ -2,73 +2,104 @@ version: 1
 
 refresh:
   talk: "tech-talks/copilot-cli"
-  cutoff: "2026-06-04"
+  cutoff: "2026-08-25"
   feed:
     url: "https://developer.microsoft.com/api/changelog/rss"
-    checked: "2026-08-10"
-    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+    checked: "2026-08-25"
+    lastBuildDate: "Tue, 25 Aug 2026 20:00:07 GMT"
   status: approved
-  approved: "2026-08-10"
+  approved: "2026-08-25"
   updateLevel: content
   rationale: >
-    Current CLI guidance omits the new concurrent-session controls, isolated
-    worktree flow, Git-free rewind behavior, and tool-duration visibility. It
-    also names models scheduled for removal on September 1, so the durable model
-    selection guidance and examples must replace stale defaults.
-  userEmphasis: []
+    Same-day named-talk refresh after the 2026-08-25 apply. Microsoft feed since
+    the README cutoff has no CLI news. First-party chronicle and command-reference
+    pages now name /chronicle improve (not instructions) and document /chronicle
+    standup as a schedulable exception. Those are wording/accuracy patches inside
+    the existing S3 climax. Thesis, section order, and phone-steering demo stay.
+  userEmphasis:
+    - "Refresh the copilot-cli deck using the cheap path — no council, no wipe."
 
   accepted:
-    - ledgerEventId: "5c82c9f4d4b61705"
-      title: "GitHub Copilot weekly releases - August 3: CLI session controls"
-      published: "2026-08-07"
-      source: "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3"
-      verified: "2026-08-10"
+    - title: "/chronicle improve replaced /chronicle instructions"
+      published: "2026-08-25"
+      source: "https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle"
+      verified: "2026-08-25"
       releaseStatus: ga
       importance: supporting
-      targetSection: "The Solution: GitHub Copilot CLI"
-      action: add
-      summary: >
-        The CLI now exposes a Sessions sidebar for concurrent sessions, Git-free
-        /rewind that restores the conversation and Copilot-modified files while
-        preserving later edits, live tool-call durations in the timeline, and an
-        experimental /worktree command that starts a separate conversation in an
-        isolated worktree without disrupting the current workspace.
-      limitations:
-        - "The /worktree command is experimental."
-      recipeImpact: confirm
-      slideImpact: regenerate
-    - ledgerEventId: "b625c840a2369df1"
-      title: "Upcoming September 2026 model deprecations in GitHub Copilot"
-      published: "2026-07-31"
-      source: "https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot"
-      verified: "2026-08-10"
-      releaseStatus: deprecated
-      importance: supporting
-      targetSection: "Advanced Reasoning Models"
+      targetSection: "Session History and `/chronicle`"
       action: replace
       summary: >
-        Claude Sonnet 4.5 and Claude Opus 4.5 are among the models being removed
-        from Copilot experiences on September 1, 2026. Replace named defaults and
-        examples with durable model-selection guidance and a supported-model check.
+        First-party chronicle how-to and CLI command reference now list
+        standup, tips, cost tips, search, improve, reindex, and skills
+        subcommands. The talk still names /chronicle instructions as the S3
+        climax. Replace that command with /chronicle improve. Keep the same
+        climax: propose and apply updates to .github/copilot-instructions.md.
       limitations:
-        - "Replacement availability can depend on enterprise model policy."
-        - "The announcement lists a limited annual-plan exception for Claude Sonnet 4.6, not Sonnet 4.5."
+        - "improve is scoped to the current repository or working directory."
+        - "Do not promote cost tips, search, or skills subcommands into new slides."
       recipeImpact: confirm
-      slideImpact: regenerate
+      slideImpact: patch
+    - title: "/chronicle standup is a documented schedulable slash command"
+      published: "2026-08-25"
+      source: "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference"
+      verified: "2026-08-25"
+      releaseStatus: experimental
+      importance: supporting
+      targetSection: "Scheduled Prompts: `/every` and `/after`"
+      action: update
+      summary: >
+        Command reference examples schedule /chronicle standup. Schedule-prompts
+        how-to still says built-in slash commands such as /clear cannot be
+        scheduled. Tighten the talk so the ban is not absolute: user-invocable
+        skills plus documented schedulable slash commands such as /chronicle
+        standup. Do not invent a catalog of every schedulable command.
+      limitations:
+        - "/every and /after remain experimental and session-scoped."
+        - "Most built-in slash commands still cannot be scheduled."
+      recipeImpact: none
+      slideImpact: none
 
-  ignored: []
+  ignored:
+    - title: "Visual Studio Code 1.135 (Insiders)"
+      source: "https://code.visualstudio.com/updates/v1_135"
+      reason: >
+        Feed review item for vscode-latest and chat internals. Does not change
+        Copilot CLI commands, sessions, or --remote steering.
+      relatedTalks:
+        - "tech-talks/vscode-latest"
+        - "tech-talks/copilot-chat-internals"
+    - title: "1.0.81-* prerelease line"
+      source: "https://github.com/github/copilot-cli/releases"
+      reason: >
+        Latest stable remains v1.0.80. Crash-restore, copilot app, defaultMode,
+        and Ctrl+Space voice stay off the talk until a stable release or docs.
+      relatedTalks: []
+    - title: "security-review built-in agent in the command reference"
+      source: "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference"
+      reason: >
+        Command reference lists security-review; the practitioner how-to roster
+        still lists six agents. Do not expand the roster until the how-to page
+        or a stable weekly agrees.
+      relatedTalks: []
+
   removals:
-    - "Remove Claude Sonnet 4.5 as the stated default model."
-    - "Replace Claude Opus 4.5 and Sonnet 4.5 examples that imply continued availability after September 1."
-  anomalies: []
+    - "Replace `/chronicle instructions` with `/chronicle improve` in README and deck."
+    - "Replace the absolute 'built-in slash commands cannot be scheduled' line."
+
+  anomalies:
+    - "npm run content:route -- --since DATE still swallows --since. Use node scripts/content-router.mjs --since DATE."
+    - "No copilot-cli decisions are proposal-created in ledger.json. Do not invent ledger rows."
+    - "Latest stable CLI release is still v1.0.80 (2026-08-14). 1.0.81-* is prerelease."
+
   recipeReview:
-    required: true
+    required: false
     question: >
-      Can the current four-pillar CLI arc absorb concurrent sessions, worktrees,
-      rewind, and durable model-selection guidance without changing its order?
+      Not required. Command rename and schedule-exception wording stay inside
+      the existing S3 climax.
+
   validation:
     firstPartySourcesVerified: true
     readmePatched: true
-    recipeApproved: true
-    slidesRegenerated: true
+    recipeApproved: false
+    slidesRegenerated: false
     deckBuildPassed: true

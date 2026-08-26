@@ -16,7 +16,15 @@ Dispatch 3 subagents in parallel with distinct cognitive roles, then orchestrate
 - High-stakes output where mistakes are costly
 - User wants creative synthesis or rigorous stress-testing
 
-**Don't use for:** Simple one-line fixes, file lookups, or tasks where speed matters more than depth.
+**Don't use for:** Simple one-line fixes, file lookups, content-refresh `confirm`/`patch` work, or tasks where speed matters more than depth.
+
+## Intensity
+
+Default for recipe refresh is **compact**: Phase 1 draft (3 agents in parallel) + orchestrator synthesis. Skip Phase 2 improve.
+
+Use the full 3-phase protocol only when the caller says `council: full`, or the task is `structural` / `restructure` / `replace-demo` / greenfield recipe review.
+
+If a subagent or model call fails: retry that one agent once, then synthesize from whatever drafts returned. Do not restart the whole council.
 
 ## Mode Detection
 
@@ -45,10 +53,10 @@ If no trigger matches, default to **collaborative**.
 
 | Role | Agent | Default Model | Fallback |
 |------|-------|---------------|----------|
-| **Alpha** | Deep Explorer / Drafter | claude-opus-4.6 | gpt-5.4 |
-| **Beta** | Practical Builder / Validator | gpt-5.4 | gemini-3.1-pro |
-| **Gamma** | Elegant Minimalist / Devil's Advocate | gemini-3.1-pro | claude-opus-4.6 |
-| **Orchestrator** | Synthesizer / Judge | claude-opus-4.6 | gpt-5.4 |
+| **Alpha** | Deep Explorer / Drafter | Claude Opus 5 (copilot) | GPT-5.5 (copilot) |
+| **Beta** | Practical Builder / Validator | GPT-5.5 (copilot) | Gemini 3.7 Flash (copilot) |
+| **Gamma** | Elegant Minimalist / Devil's Advocate | Gemini 3.7 Flash (copilot) | Claude Opus 5 (copilot) |
+| **Orchestrator** | Synthesizer / Judge | Claude Opus 5 (copilot) | GPT-5.5 (copilot) |
 
 Each subagent uses a **different model family** to maximize cognitive diversity.
 
@@ -81,7 +89,7 @@ Dispatch all three subagents **at the same time**:
 ```
 task(
   agent_type: "general-purpose",
-  model: "claude-opus-4.6",
+  model: "Claude Opus 5 (copilot)",
   prompt: "You are Alpha on an Agent Council (Collaborative mode).
 Your role: Generate a comprehensive, creative response.
 
@@ -99,7 +107,7 @@ Be expansive. This is brainstorming — breadth over polish."
 ```
 task(
   agent_type: "general-purpose",
-  model: "gpt-5.4",
+  model: "GPT-5.5 (copilot)",
   prompt: "You are Beta on an Agent Council (Collaborative mode).
 Your role: Ground the problem in reality while finding opportunities.
 
@@ -117,7 +125,7 @@ Be constructive. Find opportunities, not just constraints."
 ```
 task(
   agent_type: "general-purpose",
-  model: "gemini-3.1-pro",
+  model: "Gemini 3.7 Flash (copilot)",
   prompt: "You are Gamma on an Agent Council (Collaborative mode).
 Your role: Find the most elegant, minimal solution and open new angles.
 
@@ -179,7 +187,7 @@ Where `{agent_strength}` is:
 ```
 task(
   agent_type: "general-purpose",
-  model: "claude-opus-4.6",
+  model: "Claude Opus 5 (copilot)",
   prompt: "You are the Orchestrator on an Agent Council (Collaborative mode — Synthesis).
 
 Three agents brainstormed independently, then read each other's work and
@@ -243,7 +251,7 @@ Dispatch all three subagents **at the same time**:
 ```
 task(
   agent_type: "general-purpose",
-  model: "claude-opus-4.6",
+  model: "Claude Opus 5 (copilot)",
   prompt: "You are Alpha on an Agent Council (Adversarial mode).
 Your dual role: Create a comprehensive response AND red-team your own work.
 
@@ -265,7 +273,7 @@ Be thorough in both the draft AND the self-critique."
 ```
 task(
   agent_type: "general-purpose",
-  model: "gpt-5.4",
+  model: "GPT-5.5 (copilot)",
   prompt: "You are Beta on an Agent Council (Adversarial mode).
 Your role: Independent fact-checking and validation of the task requirements.
 
@@ -290,7 +298,7 @@ Output your independent response followed by a '## Validation Notes' section."
 ```
 task(
   agent_type: "general-purpose",
-  model: "gemini-3.1-pro",
+  model: "Gemini 3.7 Flash (copilot)",
   prompt: "You are Gamma on an Agent Council (Adversarial mode).
 Your role: Propose the most elegant, efficient solution AND play devil's advocate.
 
@@ -355,7 +363,7 @@ Be ruthless. Your job is to break this argument, not to be polite."
 ```
 task(
   agent_type: "general-purpose",
-  model: "claude-opus-4.6",
+  model: "Claude Opus 5 (copilot)",
   prompt: "You are the Orchestrator on an Agent Council (Adversarial mode — Verdict).
 
 A leading position was stress-tested by two opposing agents. Your job:

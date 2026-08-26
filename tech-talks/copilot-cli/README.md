@@ -1,53 +1,68 @@
 ---
 status: active
-updated: 2026-08-10
+updated: 2026-08-25
 section: "Developers"
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli
     label: "About GitHub Copilot CLI"
-    verified: 2026-03-17
+    verified: 2026-08-25
+  - url: https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes
+    label: "About cloud and local sandboxes for GitHub Copilot"
+    verified: 2026-08-25
+  - url: https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference
+    label: "GitHub Copilot CLI command reference"
+    verified: 2026-08-25
+  - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/schedule-prompts
+    label: "Scheduling prompts in GitHub Copilot CLI"
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet
     label: "Running tasks in parallel with /fleet"
-    verified: 2026-03-17
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli
     label: "Use Copilot CLI"
-    verified: 2026-02-10
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli
     label: "Install Copilot CLI"
-    verified: 2026-02-10
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-instructions
     label: "Copilot CLI custom instructions"
-    verified: 2026-02-10
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#add-an-mcp-server
     label: "Add an MCP server to Copilot CLI"
-    verified: 2026-02-10
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing
     label: "Finding and installing plugins for Copilot CLI"
-    verified: 2026-02-23
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-cli-plugins
     label: "About plugins for Copilot CLI"
-    verified: 2026-02-23
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/steer-remotely
     label: "Steering a GitHub Copilot CLI session from another device"
-    verified: 2026-04-17
+    verified: 2026-08-25
   - url: https://github.blog/changelog/2026-04-13-remote-control-cli-sessions-on-web-and-mobile-in-public-preview/
     label: "Remote control CLI sessions on web and mobile (public preview)"
-    verified: 2026-04-17
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle
     label: "Using GitHub Copilot CLI session data (/chronicle)"
-    verified: 2026-05-01
+    verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/chronicle
     label: "About GitHub Copilot CLI session data"
-    verified: 2026-05-01
+    verified: 2026-08-25
   - url: https://github.com/github/copilot-cli/releases
     label: "GitHub Copilot CLI release notes"
-    verified: 2026-05-01
+    verified: 2026-08-25
   - url: https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3
     label: "GitHub Copilot weekly releases: August 3 CLI updates"
-    verified: 2026-08-10
+    verified: 2026-08-25
+  - url: https://github.blog/changelog/2026-08-13-github-copilot-weekly-releases-august-10
+    label: "GitHub Copilot weekly releases: August 10 CLI workflow controls"
+    verified: 2026-08-25
+  - url: https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app
+    label: "Agent Plugins 1.0 in VS Code, Copilot CLI, and the Copilot app"
+    verified: 2026-08-25
   - url: https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot
     label: "Upcoming September 2026 model deprecations in GitHub Copilot"
-    verified: 2026-08-10
+    verified: 2026-08-25
 
 ---
 
@@ -100,30 +115,30 @@ GitHub Copilot CLI brings conversational AI directly into terminal workflows —
 ### Key Capabilities
 
 - **Plan Mode**: Collaborative planning with clarifying questions before implementation — catch misunderstandings early, reduce iteration cycles
-- **Configurable Reasoning Models**: Choose GPT-5.2-Codex and tune reasoning effort (low → extra high), with Ctrl+T to reveal reasoning steps
+- **Configurable Reasoning Models**: Choose a currently supported reasoning model and tune effort (low → extra high), with Ctrl+T to reveal reasoning steps
 - **Interactive Mode**: Terminal-native conversations with context maintained across commands — perfect for "figure this out" scenarios
 - **Programmatic Mode**: Single-command execution for scripts and pipelines — designed for headless CI/CD automation
 - **Cloud Delegation**: Background execution frees terminal for other work — delegate large tasks with `&` prefix
 - **Remote Sessions (`--remote`)**: Start a session on any machine (including over SSH), steer it from GitHub.com or GitHub Mobile via URL/QR code — the session lives where the problem is, you steer from wherever you are
 - **Concurrent Session Controls**: Open the Sessions sidebar with `<`, create and close sessions with `n` and `x`, and move among active conversations without leaving the CLI
 - **Isolated Worktree Exploration (Experimental)**: `/worktree` starts a separate conversation in a new worktree so exploratory changes do not disrupt the current workspace
-- **Recover Without Git**: `/rewind` restores the conversation and files Copilot changed while preserving later edits, even when the workspace is not a Git repository
-- **Built-in Agents**: Specialized agents (Explore, Task, Plan, Code-review) automatically handle common patterns
+- **Recover Without Git**: `/rewind` (alias `/undo`) opens a picker to an earlier user turn — conversation only, or conversation plus Copilot-changed files, skipping files you edited yourself. Git is not required
+- **Built-in Agents**: Specialized agents (Explore, Task, General purpose, Code review, Research, Rubber Duck) handle common patterns; `/tasks` manages running subagents
 - **`/fleet` Fan-Out**: Explicitly decompose a plan into parallel subtasks — orchestrator assigns work to subagents, each in their own context window; results are merged back automatically
-- **IDE Bridge via `/ide`**: Open any file in VS Code mid-session — CLI context and conversation stay alive; use terminal and IDE simultaneously
+- **IDE and App Bridges**: `/ide` opens a file in VS Code mid-session; `/app` hands the live session and folder to the GitHub Copilot desktop app (1.1.3+)
 - **Automatic Context Management**: Auto-compaction at 95% token limit enables virtually infinite sessions — the foundation that makes sessions worth reconnecting to
 - **Repository Memory**: AI remembers team conventions, patterns, and preferences across sessions
 - **Performance & UX Upgrades**: Faster, more concise responses with improved diff/timeline views and better Windows/PowerShell support
-- **MCP Registry Integration**: Discover and connect external tools/agents via GitHub MCP Registry with organization-level controls
-- **Plugin Ecosystem**: Install community and team-created plugins from marketplaces — extend CLI functionality with specialized capabilities
-- **`/chronicle` Session Insights**: Review your session history to generate standup reports, surface personalized usage tips, and get suggestions for improving `.github/copilot-instructions.md` — Copilot learns from how you actually work
+- **MCP Servers**: Discover and connect external tools via MCP. CLI cannot currently honor organization policies for "MCP servers in Copilot" or "MCP Registry URL"
+- **Plugin Ecosystem**: Agent Plugins 1.0 is GA — one package can ship portable skills and MCP config, plus Copilot-specific agents, commands, and hooks
+- **`/chronicle` Session Insights**: Review your session history to generate standup reports, surface personalized usage tips, and run `/chronicle improve` for suggested updates to `.github/copilot-instructions.md` — Copilot learns from how you actually work
 - **Rubber Duck (Adversarial Reviewer)**: A second built-in subagent — powered by a *different* model family than your primary agent — that automatically reviews plans and implementations at key checkpoints. When you're using Claude as orchestrator, Rubber Duck uses GPT-5.4 to catch what one model misses. Now **enabled by default**. Closes ~75% of the quality gap between mid-tier and top-tier models on complex multi-file tasks. Disable with `builtInAgents.rubberDuck: false` in config if latency matters more than review quality
 - **Scheduled Prompts (`/every`, `/after`)**: Recurring autonomous workflows via experimental scheduled prompts — `"/every weekday at 9am summarize overnight PRs"` turns the CLI into a recurring agent runner. Requires `/experimental on`
 - **`/voice`**: Dictate prompts using local speech-to-text via Foundry Local — hands-free operation for long coding sessions or accessibility workflows
 
 ### Architecture Overview
 
-The session is the durable entity — terminals are viewports that connect and disconnect from it. Four modes cover distinct workflows: **Interactive** for collaborative problem-solving with persistent context; **Plan Mode** (Shift+Tab) for clarifying requirements before any code is written; **Programmatic** (`copilot -p`) for headless CI/CD execution; **Remote** (`copilot --remote`) for steering sessions from any device via web or mobile. Specialized built-in agents (Explore, Task, Plan, Code-review, and Rubber Duck) are routed automatically. Cloud delegation (`&` prefix) offloads long-running work to GitHub's coding agent, freeing both your terminal and IDE. Auto-compaction and repository memory make sessions virtually infinite and cross-session aware. Scheduled Prompts (`/every`, `/after`) enable fully autonomous recurring workflows without any human trigger.
+The session is the durable entity — terminals are viewports that connect and disconnect from it. Four modes cover distinct workflows: **Interactive** for collaborative problem-solving with persistent context; **Plan Mode** (Shift+Tab) for clarifying requirements before any code is written; **Programmatic** (`copilot -p`) for headless CI/CD execution; **Remote** (`copilot --remote`) for steering sessions from any device via web or mobile. Specialized built-in agents (Explore, Task, General purpose, Code review, Research, and Rubber Duck) are routed automatically. Cloud delegation (`&` prefix) offloads long-running work to GitHub's coding agent, freeing both your terminal and IDE. Auto-compaction and repository memory make sessions virtually infinite and cross-session aware. Scheduled Prompts (`/every`, `/after`) enable fully autonomous recurring workflows without any human trigger.
 
 **Official Documentation:**
 - 📖 [About GitHub Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/about-copilot-cli) — Core concepts and capabilities
@@ -158,7 +173,7 @@ The session is the durable entity — terminals are viewports that connect and d
 - **Programmatic CI/CD automation** — GitHub Actions workflow using `copilot -p` for build failure analysis
 - **Context management commands** — `/compact`, `/context`, `/usage` for monitoring token usage
 - **Cloud delegation example** — Using `&` prefix for background codebase analysis
-- **Reasoning configuration** — Selecting GPT-5.2-Codex and tuning reasoning effort for depth vs speed
+- **Reasoning configuration** — Selecting a currently supported reasoning model and tuning effort for depth vs speed
 
 ### Supporting Files
 
@@ -166,8 +181,8 @@ The session is the durable entity — terminals are viewports that connect and d
 
 - **[Custom instructions guide](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-instructions)** — Repository-specific behavior configuration. Note: all custom instruction files now **combine** (additive merge) instead of falling back to the highest-priority file — user-level + repo-level + org-level instructions are all applied together
 - **[MCP server setup](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#add-an-mcp-server)** — Extending functionality with external tools
-- **[Configure an MCP registry](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-mcp-usage/configure-mcp-registry)** — Organization-wide discovery and governance for MCP tools
-- **[Built-in agents reference](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)** — Explore, Task, Plan, Code-review agent details
+- **[Configure an MCP registry](https://docs.github.com/en/copilot/how-tos/administer-copilot/manage-mcp-usage/configure-mcp-registry)** — Organization-wide discovery and governance for MCP tools. Copilot CLI cannot currently honor the "MCP servers in Copilot" or "MCP Registry URL" organization policies
+- **[Built-in agents reference](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-agents)** — Explore, Task, General purpose, Code review, Research, and Rubber Duck
 
 ---
 
@@ -205,7 +220,7 @@ Each capability in this talk removes a different kind of distance between you an
 ### Move Against (Active Resistance Required)
 
 - 🛑 **Pasting secrets into prompts**: Credentials, tokens, and API keys typed into CLI sessions travel to GitHub's API as prompt content — the same way any other context does. It feels natural to give Copilot what it needs to help, but this is a data exposure risk. Use environment variables or secret managers; reference the name, not the value
-- 🛑 **`--yolo` outside sandboxed environments**: Permission prompts feel like friction when you're in flow. `--allow-all-tools` or `--yolo` removes that friction instantly — and grants the agent permission to run any shell command, edit any file, make any API call with your current credentials. If you're authenticated to production, the agent has production access. Approve per-tool or per-session, never blanket. Enterprise teams can **enforce this policy** with `permissions.disableBypassPermissionsMode: true` in config — this prevents any user from enabling `--yolo` or `/allow-all` in org-managed environments
+- 🛑 **`--yolo` without a documented sandbox**: Permission prompts feel like friction when you're in flow. `--allow-all-tools` or `--yolo` removes that friction instantly — and grants the agent permission to run any shell command, edit any file, make any API call with your current credentials. If you're authenticated to production, the agent has production access. Approve per-tool or per-session, never blanket. Prefer first-party local sandboxing (`/sandbox enable`, experimental) when you need broader autonomy on your machine, or `copilot --cloud --experimental` when the whole session should run in a billed GitHub-hosted environment. Enterprise teams can **enforce this policy** with `permissions.disableBypassPermissionsMode` in managed settings — this prevents users from enabling `--yolo` or `/allow-all` in org-managed environments
 - 🛑 **Skipping Plan Mode because you're in a hurry**: When the deadline is close and you think you know what you need, Plan Mode feels like overhead. It isn't — it's most valuable precisely when you're rushing. The sessions that spiral into 8 failed attempts almost always started with "I'll just jump in." One minute of clarifying questions saves thirty minutes of rework
 - 🛑 **Leaving remote sessions unattended without guardrails**: A persistent `--remote` session with broad permissions on a production machine is powerful and dangerous. Always scope permissions with `--allow-tool`, set session timeouts, and use [Copilot Hooks](../copilot-hooks/) for governance. Never use `--yolo` on a remote production session
 
@@ -360,12 +375,12 @@ Apply this fix? (y/n)
 
 ### Advanced Reasoning Models
 
-**GPT-5.2-Codex** optimized for code generation is available with configurable reasoning effort:
+Currently supported reasoning models expose configurable effort. Do not treat a catalog name as a permanent default — GitHub retires models, and enterprise policy may hide replacements until an administrator enables them.
 
 - **Low**: Fast responses for straightforward queries
 - **Medium**: Balanced speed and depth (default)
 - **High**: Extended reasoning for complex problems
-- **Extra High**: Maximum depth for critical architectural decisions
+- **Extra High / Max**: Maximum depth for critical architectural decisions (highest documented Anthropic tier is `max`)
 
 **Toggle reasoning visibility:**
 Press **Ctrl+T** to show/hide the model's thought process. Setting persists across sessions — useful for understanding how Copilot approaches complex problems and learning optimal prompting patterns.
@@ -480,6 +495,27 @@ copilot --yolo              # Maximum autonomy (alias for --allow-all)
 [Esc] "No, don't edit that file — it's auto-generated from schema"
 # AI adapts without stopping
 ```
+
+### Local and Cloud Sandboxes (Public Preview)
+
+`--yolo` is a permission choice. Sandboxing is a containment choice. First-party docs now document both, and they are not interchangeable.
+
+**Local sandboxing** (experimental, off by default unless enterprise policy requires it) restricts the filesystem, network, and system access of commands and tools the agent runs on your machine. Enable it in a session with `/sandbox enable`. The setting persists for later interactive and programmatic use until you run `/sandbox disable`. Isolation is lighter-weight OS containment via Microsoft eXecution Container (MXC) — not a VM or container. Built-in file tools honor the policy on a best-effort basis because they run in-process. Local sandboxing is included in the Copilot seat at no extra charge.
+
+```bash
+$ copilot --experimental
+> /sandbox enable
+> /sandbox status
+> /sandbox policy
+```
+
+**Cloud sandboxing** (experimental) runs the *entire* interactive session in an isolated, billed GitHub-hosted Linux environment. Start it with `copilot --cloud --experimental`. You cannot combine `--cloud` with `-p` or `-i`. Organization and enterprise Cloud Sandbox access is disabled by default. Resume a stopped session from another device; compute, memory, and snapshot storage are metered.
+
+```bash
+copilot --cloud --experimental   # Isolated interactive session in GitHub-hosted infra
+```
+
+See [About cloud and local sandboxes](https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes).
 
 ### Example: CI/CD Build Failure Automation
 
@@ -636,7 +672,7 @@ Every interactive session is saved locally — prompts, responses, tools used, a
 |---------|-------------|
 | `/chronicle standup` | Generates a standup report from recent session activity |
 | `/chronicle tips` | Reviews usage patterns and surfaces personalized improvement suggestions |
-| `/chronicle instructions` | Analyzes sessions and suggests additions to `.github/copilot-instructions.md` |
+| `/chronicle improve` | Analyzes this repo's sessions and suggests additions to `.github/copilot-instructions.md` |
 
 Open-ended questions work too:
 
@@ -663,10 +699,26 @@ For concurrent work, press `<` to open the Sessions sidebar. Use `n` to start a
 session, `x` to close the current session, and the sidebar navigation to switch
 among active conversations. Press `>` to close the sidebar.
 
-Two recovery and isolation controls extend the session model:
+Two recovery and isolation controls extend the session model. They solve different problems.
 
-- **`/rewind` without Git:** Restore the conversation and files Copilot changed while preserving edits made afterward. This works even when the workspace is not a Git repository.
-- **`/worktree` (experimental):** Create an isolated worktree and begin a separate conversation for changes that should not disrupt the current workspace.
+**`/rewind` (alias `/undo`) is session-turn recovery.** It does not require Git. Open the picker and roll back to an earlier user turn:
+
+- **Conversation only** — rewind the chat, leave files as they are.
+- **Conversation + files** — also restore files Copilot changed in that turn *and* later discarded turns to their pre-change contents. Files you have edited yourself are skipped.
+
+File changes are tracked per turn across editing tools, shell commands, and sub-agents. That is why a dirty tree, or a folder that is not a Git repository, can still recover: rewind is not `git checkout` or `git revert`.
+
+```bash
+# Wrong-turn recovery without Git
+> /rewind
+# Pick the turn before the bad refactor
+# Choose Conversation + files — Copilot's edits roll back;
+# the README paragraph you typed after that turn stays
+```
+
+**`/worktree` (experimental) is isolation, and it requires Git.** It creates a new worktree and a separate conversation so exploratory changes do not disrupt the current workspace. Use `/worktree` when you want a clean branch of the tree. Use `/rewind` when you want to undo a Copilot turn in the tree you already have.
+
+How-to pages do not yet dedicate a `/rewind` section. The first-party source is the [CLI command reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference).
 
 **Session storage:** Data lives in `~/.copilot/session-state/` — private to your machine and user account. Delete that directory to clear history.
 
@@ -680,10 +732,15 @@ Copilot experiences, and enterprise administrators may need to enable replacemen
 models through Copilot model policy before they appear in the selector.
 
 ```bash
-/model   # Opens model picker showing all available models with their multiplier
+/model              # Session-scoped picker (default; --session / -s)
+/config model       # Durable default for future sessions
+/model --global     # Same durable default as /config model
+/model --repo       # Pin the default in repository settings
 ```
 
-The multiplier next to each model (`1x`, `2x`, etc.) shows how many premium requests one prompt consumes. Higher-capability models can have higher multipliers. Use `/model` before starting a session to select the right cost/quality tradeoff and verify that organization policy permits the replacement model your workflow expects.
+The multiplier next to each model (`1x`, `2x`, etc.) shows how many premium requests one prompt consumes. Higher-capability models can have higher multipliers. `/model` changes the current session only unless you persist a default. Verify that organization policy permits the replacement model your workflow expects.
+
+Optional BYOK: custom providers via `COPILOT_PROVIDER_*` environment variables (`copilot help providers`). The model must support tool calling and streaming.
 
 ### Shell & Output Improvements
 
@@ -701,9 +758,9 @@ The multiplier next to each model (`1x`, `2x`, etc.) shows how many premium requ
 
 *Copilot automatically delegates to expert agents based on your request*
 
-### Four Agent Types
+### Built-in Agent Roster
 
-Copilot CLI includes built-in agents that handle common patterns automatically — you don't explicitly call them, Copilot routes tasks based on intent.
+Copilot CLI includes built-in agents that handle common patterns automatically — you don't explicitly call them, Copilot routes tasks based on intent. Official how-to docs currently list Explore, Task, General purpose, Code review, Research, and Rubber Duck.
 
 #### Explore Agent
 
@@ -721,12 +778,12 @@ Copilot CLI includes built-in agents that handle common patterns automatically �
 > "Run the test suite and tell me if anything failed"
 ```
 
-#### Plan Agent
+#### General Purpose Agent
 
-**Purpose:** Analyze dependencies and create multi-step implementation strategies you review before execution.
+**Purpose:** Full-capability helper for complex multi-step work that does not match a specialist. Runs in a separate context window.
 
 ```bash
-> "Plan how to refactor the API to support versioning"
+> "Work through this multi-file refactor and keep the main session clean"
 ```
 
 #### Code-Review Agent
@@ -737,13 +794,28 @@ Copilot CLI includes built-in agents that handle common patterns automatically �
 /review
 ```
 
-#### IDE Bridge (`/ide`)
+#### Research Agent
 
-**Purpose:** Open any file in VS Code from an active CLI session — terminal context, conversation, and reasoning all stay alive. Terminal for analysis, IDE for editing, simultaneously.
+**Purpose:** Broader investigation across GitHub search and web sources, with citations. Use when the answer is not already in the working tree.
+
+```bash
+/research how other services in this org handle token refresh
+```
+
+Use `/tasks` to inspect and manage running subagents and shell commands while a turn is in progress. Queue follow-up prompts or supported slash commands with Ctrl+Q / Ctrl+Enter so they run after the current task finishes.
+
+For headless plan-then-implement, start with `copilot -p --plan --mode autopilot "..."` (or `COPILOT_PLAN_THEN_AUTOPILOT`). The session plans first, then continues into autopilot without waiting for a human to approve the transition. Do not mix `/autopilot` / `/goal` with Plan Mode as if they were the same control.
+
+#### IDE Bridge (`/ide`) and App Bridge (`/app`)
+
+**Purpose:** Keep the CLI conversation alive while you open the work in another surface. `/ide` opens a file in VS Code. `/app` opens the current session and folder in the GitHub Copilot desktop app (requires app 1.1.3 or later).
 
 ```bash
 /ide src/users/api.py
 # VS Code opens the file — CLI session continues uninterrupted
+
+/app
+# Same session and folder open in the Copilot desktop app
 ```
 
 #### Rubber Duck (Adversarial Reviewer)
@@ -756,7 +828,7 @@ Copilot CLI includes built-in agents that handle common patterns automatically �
 
 **Configuration:**
 ```json
-// ~/.copilot/config.json
+// ~/.copilot/settings.json
 { "builtInAgents": { "rubberDuck": false } }   // disable if latency matters more than review quality
 ```
 
@@ -801,7 +873,9 @@ $ copilot --experimental
 - **`/fleet`** — Fan out the scheduled work across multiple subtasks in parallel
 - **Cloud delegation** — Delegate the scheduled work to GitHub's coding agent so your terminal stays free
 
-**Current scope:** Requires `--experimental` / `/experimental on`. Scheduled entries persist for the session; use `/session` to manage them. The schedule manager is visible in the footer hint bar.
+**Current scope:** Requires `--experimental` / `/experimental on`. Schedules are session-scoped and fire only while that interactive session is running. Reopening with `--continue` or `--resume` restarts them, measuring the next interval from the moment you reopen. List and delete with `/every` or `/after` and no arguments — not `/session`. User-invocable skills can be scheduled. Most built-in slash commands cannot (`/clear` is the documented example); `/chronicle standup` is a documented exception. Minimum interval is 10 seconds; maximum is 1 day.
+
+When no interactive session is open, use an external scheduler (cron or Task Scheduler) plus `copilot -p "YOUR PROMPT"`.
 
 ### /fleet: Explicit Fan-Out Mode
 
@@ -878,7 +952,7 @@ For more information, see [Creating custom agents](https://docs.github.com/en/co
 
 ### What Plugins Are
 
-Plugins are packages that extend Copilot CLI's functionality beyond its built-in capabilities. They can add new tools, specialized workflows, or domain-specific knowledge. Plugins are installed from marketplaces or directly from Git repositories.
+Plugins are packages that extend Copilot CLI beyond its built-in capabilities. **Agent Plugins 1.0 is GA** in Copilot CLI, VS Code, and the Copilot app: one package can ship portable skills and MCP config, with Copilot-specific agents, commands, and hooks under `com.github.copilot/`. Existing non-1.0 plugins remain supported.
 
 ```bash
 # Browse and install from a marketplace
@@ -892,7 +966,7 @@ $ copilot
 
 **Outcome:** Extend Copilot CLI with specialized domain capabilities without writing custom agents — leverage the community ecosystem.
 
-For plugin management, creating plugins, or hosting your own marketplace, see [Finding and Installing Plugins](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing).
+This talk stays consumer-facing. For packaging, marketplaces, and authoring, see [Copilot Plugins](../copilot-plugins/) and [Finding and Installing Plugins](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing).
 
 ---
 
@@ -1100,7 +1174,8 @@ $ copilot
 - [ ] Install Copilot CLI: `gh copilot` (auto-installs on first run) or `npm install -g @github/copilot`
 - [ ] Try interactive mode: `copilot` and ask about your current project — "Explain how this module works" or "What library should I use for X?"
 - [ ] Test Plan Mode: Press Shift+Tab, then describe a new feature you're about to build
-- [ ] Try `/ide <filename>` from within a session — opens the file in VS Code while your CLI conversation stays alive (CLI + IDE simultaneously)
+- [ ] Try `/ide <filename>` from within a session — opens the file in VS Code while your CLI conversation stays alive. If you have Copilot app 1.1.3+, try `/app` to hand the same session to the desktop app
+- [ ] After a wrong-turn edit, run `/rewind` and choose Conversation + files — confirm Copilot's files restore and any later edit you typed stays
 
 **Developer Short-Term (1 hour):**
 - [ ] Use Copilot CLI to scaffold your next new project or module interactively
@@ -1109,11 +1184,12 @@ $ copilot
 - [ ] Create `.github/copilot-instructions.md` with your project conventions so Copilot learns your style
 - [ ] Run `/context` and `/usage` to understand session management and auto-compaction — also run `/mcp` if you use MCP servers to see per-server token usage
 - [ ] Try `/voice` if you have Foundry Local installed — dictate a prompt hands-free
-- [ ] Run `/chronicle standup` after a productive session — verify it reflects what you actually did; use `/chronicle instructions` to get Copilot's read on what's worth adding to your `.github/copilot-instructions.md`
+- [ ] Run `/chronicle standup` after a productive session — verify it reflects what you actually did; use `/chronicle improve` to get Copilot's read on what's worth adding to your `.github/copilot-instructions.md`
 
 **DevOps Short-Term (1 hour):**
 - [ ] Add Copilot CLI to one CI/CD pipeline for build failure analysis — use `copilot -p "Analyze build failure" --allow-tool 'shell(gh)'`
-- [ ] Try a scheduled prompt: `copilot --experimental` then `/every 30min "Check pod health in staging and alert me if anything is unhealthy"` — then close your laptop
+- [ ] Try a scheduled prompt: `copilot --experimental` then `/every 30m "Check pod health in staging and alert me if anything is unhealthy"` — list or delete it with bare `/every`. Closing the laptop stops session-scoped schedules; use cron/`copilot -p` when no session is open
+- [ ] Enable local sandboxing in a trusted repo: `copilot --experimental` then `/sandbox enable` — or try `copilot --cloud --experimental` if org Cloud Sandbox access is on
 - [ ] Try `--remote` on a staging server: SSH in, run `copilot --remote`, scan the QR code on your phone, and steer from there
 - [ ] Analyze logs on a remote machine without downloading them — `copilot --remote` + "Analyze the last 24 hours of error logs"
 - [ ] Run a long-running agentic task with `& <task>` (security audit, doc generation) — confirm your IDE and terminal stay free while the agent runs in the cloud
@@ -1129,8 +1205,8 @@ $ copilot
 
 - **[Copilot Hooks](../copilot-hooks/)** — Add validation, logging, and security scanning at key execution points in CLI workflows
 - **[MCP Apps](../mcp-apps/)** — Extend Copilot CLI with external tools and data sources via Model Context Protocol
-- **[Terminal Sandboxing](../terminal-sandboxing/)** — Secure execution environments for untrusted Copilot CLI operations
-- **[Context Engineering Foundations](../context-engineering-foundations/)** — Optimize prompt design for better Copilot CLI results
+- **[Cloud and local sandboxes](https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes)** — First-party local (`/sandbox enable`) and cloud (`copilot --cloud`) isolation for Copilot CLI (public preview)
+- **[Copilot Plugins](../copilot-plugins/)** — Authoring and marketplace depth for Agent Plugins 1.0
 
 ### Decision Flow
 
@@ -1155,13 +1231,15 @@ See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for complete navigation help.
 - 📖 **[Using GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli)** — Command syntax, options, workflows, and slash commands
 - 📖 **[Installing GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli)** — Setup instructions for npm, Homebrew, WinGet, and install scripts
 - 📖 **[Steering a session remotely](https://docs.github.com/en/copilot/how-tos/copilot-cli/steer-remotely)** — Using `--remote` to monitor and steer sessions from web and mobile
-- 📖 **[Using GitHub Copilot CLI session data](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle)** — `/chronicle` for standup reports, personalized tips, and instructions suggestions
+- 📖 **[Using GitHub Copilot CLI session data](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle)** — `/chronicle` for standup reports, personalized tips, and `/chronicle improve` suggestions
 - 📖 **[About GitHub Copilot CLI session data](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/chronicle)** — How session history is stored and used
+- 📖 **[About cloud and local sandboxes](https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes)** — Local `/sandbox` and `copilot --cloud` (public preview)
+- 📖 **[Scheduling prompts](https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/schedule-prompts)** — Session-scoped `/every` and `/after` (experimental)
 
 **Additional Resources:**
 - 🎓 [Copilot CLI Best Practices](https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices) — Optimization patterns and anti-patterns
 - 🎓 [Adding Custom Instructions for Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/add-custom-instructions) — Repository-specific behavior configuration
-- 🔧 [GitHub Copilot CLI Command Reference](https://docs.github.com/en/copilot/reference/cli-command-reference) — Complete slash command and option reference
+- 🔧 [GitHub Copilot CLI Command Reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference) — Complete slash command and option reference, including `/rewind`
 - 🔧 [Copilot CLI ACP Server](https://docs.github.com/en/copilot/reference/acp-server) — Using Copilot CLI via Agent Client Protocol
 - 🔌 [Finding and Installing Plugins](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing) — Plugin discovery, installation, and marketplace management
 - 🔌 [About Plugins for Copilot CLI](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-cli-plugins) — Plugin concepts and capabilities

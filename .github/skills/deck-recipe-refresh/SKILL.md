@@ -1,6 +1,6 @@
 ---
 name: deck-recipe-refresh
-description: "Use after an approved content refresh changes an existing tech talk. Runs a collaborative Agent Council to preserve or revise the current deck recipe from the updated README and content.refresh.yml. Triggers: refresh recipe, changelog recipe review, council approve recipe, update existing deck recipe."
+description: "Use after an approved content refresh when recipeReview.required is true, or when the user asks to refresh an existing recipe. Default is a compact one-pass council. Full 3-phase council only for structural / restructure / replace-demo. Triggers: refresh recipe, changelog recipe review, council approve recipe, update existing deck recipe."
 infer: true
 ---
 
@@ -9,6 +9,10 @@ infer: true
 Review an existing tech-talk recipe after feed-driven content changes. Unlike `deck-recipe-review`, this workflow uses the current recipe as an intentional baseline and changes it only when new evidence improves the talk.
 
 The output is always a complete `deck.recipe.yml`, suitable for deterministic slide regeneration.
+
+## Skip this skill
+
+Do not run this skill when `content.refresh.yml` has `recipeReview.required: false` and every accepted `recipeImpact` is `none` or `confirm`. Stamp `refresh.validation.recipeApproved: true`, leave the recipe, and continue.
 
 ## Pre-Flight
 
@@ -28,9 +32,16 @@ Stop when:
 
 Do not read the existing slide deck. The README, refresh plan, and recipe are the authoritative inputs.
 
+## Council intensity
+
+- Compact (default when this skill runs): one parallel draft pass + orchestrator synthesis. No improve round.
+- Full: three-phase collaborative council. Use only for `updateLevel: structural`, `recipeImpact: restructure`, or `slideImpact: replace-demo`.
+
+Pass `council: compact` or `council: full` in the Agent Council task.
+
 ## Council Question
 
-Run the Agent Council in collaborative mode. Give every council member the same extracted context and ask:
+Give every council member the same extracted context and ask:
 
 > Does the approved evidence require changing the talk's thesis, section order,
 > weighting, highlights, agenda, or demos? Preserve intentional decisions unless
@@ -80,7 +91,11 @@ A `structural` refresh does not force `restructure`; it forces explicit council 
 
 ## Post-Recipe Workflow
 
-Invoke the Tech Talk Slide Generator with the talk path. After generation:
+- `preserve`: do not regenerate slides. Patch existing slides only if a visible claim is now false.
+- `revise` with `slideImpact: patch`: edit the existing deck; do not wipe it.
+- `restructure` or `slideImpact: regenerate|replace-demo`: invoke Tech Talk Slide Generator with the talk path.
+
+After any slide change:
 
 1. Run the single-deck build.
 2. Run `node slides/scripts/sync-index-dates.mjs` from the repository root.

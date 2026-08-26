@@ -1,6 +1,6 @@
 ---
 name: content-refresh
-description: "Use when refreshing existing tech talks from the Microsoft Developer Changelog feed. Produces an evidence-backed content.refresh.yml that maps relevant announcements to README changes and recipe-review impact. Triggers: refresh content, changelog update, feed update, latest news, content refresh plan."
+description: "Use when refreshing existing tech talks from the Microsoft Developer Changelog feed. Produces an evidence-backed content.refresh.yml that maps relevant announcements to README changes and recipe-review impact. Triggers: refresh content, changelog update, feed update, latest news, content refresh plan. Named-talk refresh continues even when the ledger has no proposal-created items."
 infer: true
 ---
 
@@ -8,12 +8,33 @@ infer: true
 
 Turn Microsoft Developer Changelog entries into a small, reviewable update plan for an existing tech talk. This workflow updates existing content; it does not use the greenfield Tech Talk Generator research brief.
 
+## Cheap path (default)
+
+Most refreshes are README wording. Do not start a council or wipe the deck unless the evidence forces it.
+
+| Highest accepted impact | Recipe | Slides | Council |
+|---|---|---|---|
+| `reference` + `slideImpact: none` | leave recipe | leave deck | no |
+| `content` + `recipeImpact: none\|confirm` + `slideImpact: none\|patch` | date/wording only, no council | patch existing slides or skip | no |
+| `content` + `recipeImpact: revise` or `slideImpact: regenerate` | compact recipe refresh | targeted regen or patch | compact council only if recipe fields change |
+| `structural`, any `headline`, `recipeImpact: restructure`, or `slideImpact: replace-demo` | full recipe refresh | full deck regen | full council |
+
+Never treat an empty 7-day feed report or an empty ledger as "this talk is current."
+
 ## Inputs
 
 - Talk path: `tech-talks/<topic>/`
 - Feed: `https://developer.microsoft.com/api/changelog/rss`
 - Optional cutoff date. If omitted, use the README `updated` date.
 - Optional user emphasis, such as "call out BYOK and open source models."
+- Ledger is optional. A named-talk request proceeds from the README cutoff even when `.github/content-routing/ledger.json` has no `proposal-created` items.
+
+## Discovery
+
+1. Run `npm run content:route -- --since <cutoff>` from the repo root. Default `LOOKBACK_DAYS=7` is too short for a talk last updated more than a week ago.
+2. Read `latest-report.md` as a hint, not a gate.
+3. Also check the talk's first-party product sources newer than the cutoff. For Copilot CLI that is the [CLI command reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference), [github/copilot-cli releases](https://github.com/github/copilot-cli/releases), and the weekly GitHub changelog posts. Do not stop at the Microsoft Developer Changelog.
+4. Fetch each first-party URL once; retry once on network failure; then proceed with whatever sources succeeded. Do not loop on `fetch_webpage`.
 
 ## Source Policy
 
@@ -45,14 +66,18 @@ Assign each verified candidate:
 Assign one update level for the talk:
 
 - `reference`: References or status only. No recipe review or slide regeneration.
-- `content`: README content changes fit the existing narrative. Council confirms or adjusts the recipe before slide regeneration.
-- `structural`: The thesis, section order, weighting, highlights, or demo changes. Council explicitly re-evaluates the recipe before slide regeneration.
+- `content`: README content changes fit the existing narrative. Patch the deck or leave it unless a slide claim is now false.
+- `structural`: The thesis, section order, weighting, highlights, or demo changes. Full recipe review and deck regen.
 
 Escalate to `structural` when any `headline` item changes the operating model, replaces a centerpiece demo, or invalidates a recipe highlight.
 
+Set `recipeReview.required: true` only for `structural`, `recipeImpact: restructure`, or `slideImpact: replace-demo`. Otherwise `false`.
+
+Prefer `slideImpact: patch` when an existing slide already names the feature and only copy/status must change. Use `regenerate` only when the recipe or section skeleton must change. Use `none` when the deck already states the fact.
+
 ## Output
 
-Create or overwrite `tech-talks/<topic>/content.refresh.yml` using `CONTENT-REFRESH-TEMPLATE.yml` from this skill folder.
+Create or overwrite `tech-talks/<topic>/content.refresh.yml` using `CONTENT-REFRESH-TEMPLATE.yml` from this skill folder. If the file already exists, edit it in place — `create_file` fails on an existing path.
 
 The plan must:
 
@@ -68,12 +93,14 @@ Present a concise summary and wait for approval before editing the README. A dir
 
 ## Apply an Approved Plan
 
-1. Patch the README as a reader-first technical article. Do not append a changelog dump.
-2. Update frontmatter `updated` and verified references.
-3. Preserve unrelated material and working artifacts unless the plan replaces them.
-4. If update level is `reference`, stop after validating links and content structure.
-5. If update level is `content` or `structural`, invoke the `deck-recipe-refresh` skill.
-6. After the refreshed recipe is approved, invoke the Tech Talk Slide Generator and validate the generated deck.
+1. Set `refresh.status: approved` and `refresh.approved: YYYY-MM-DD` before editing the README.
+2. Patch the README as a reader-first technical article. Do not append a changelog dump.
+3. Update frontmatter `updated` and verified references.
+4. Preserve unrelated material and working artifacts unless the plan replaces them.
+5. Follow the cheap-path table. Do not invoke Agent Council or wipe `slides/tech-talks/<slug>.md` for confirm/patch work.
+6. If `recipeReview.required` is true, invoke `deck-recipe-refresh`.
+7. If `slideImpact` is `patch`, edit the existing deck in place and run a single-deck build. If `regenerate` or `replace-demo`, invoke the Tech Talk Slide Generator only after the recipe is settled.
+8. One network or subagent failure: retry once, then continue with local files. Do not regenerate the same deck twice because a fetch failed.
 
 ## Quality Gate
 

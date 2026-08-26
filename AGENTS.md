@@ -64,13 +64,13 @@ Use the announcement feed to keep existing tech talks current without rewriting 
 
 ### Standard flow
 
-1. Run `npm run content:route` from the repo root to refresh `.github/content-routing/latest-report.md` and `.github/content-routing/latest-report.json`.
-2. Read the generated report and `.github/content-routing/ledger.json` for relevant `proposal-created` items.
-3. Verify each candidate against the linked announcement and first-party docs.
+1. Run `npm run content:route -- --since <README updated>` from the repo root. Default 7-day lookback is not enough for an older talk.
+2. Read the generated report and `.github/content-routing/ledger.json`. An empty ledger is not a stop for a named talk.
+3. Verify candidates against first-party docs **and** the product's own release notes / command reference. The Microsoft feed is discovery only.
 4. Create or update `tech-talks/<topic>/content.refresh.yml` using the `content-refresh` skill.
 5. After approval, patch the talk README as a reader-first article, not a changelog dump.
-6. If the update changes the thesis or structure, run the `deck-recipe-refresh` skill and regenerate the deck.
-7. Normalize the ledger status to `accepted` or `rejected` after validation completes.
+6. Follow the cheap-path table in `content-refresh`. Council + full deck regen only for structural / restructure / replace-demo. Confirm/patch work stays in the existing deck.
+7. Normalize any selected ledger status to `accepted` or `rejected` after validation. Do not invent ledger rows for a named-talk refresh that started with an empty inbox.
 
 ### When to use it
 

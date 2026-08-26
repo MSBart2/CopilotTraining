@@ -1,6 +1,6 @@
 ---
 name: ledger-tech-talk-refresh
-description: "Refresh existing tech talks from proposal-created decisions in .github/content-routing/ledger.json. Use for implementing the routing inbox, applying ledger proposals, refreshing impacted talks, processing the content refresh queue, or closing feed-driven talk updates. Orchestrates content.refresh.yml, README updates, Agent Council recipe review, slide regeneration, deck validation, and ledger closure."
+description: "Refresh existing tech talks from proposal-created decisions in .github/content-routing/ledger.json, or from a named talk even when the ledger is empty. Use for implementing the routing inbox, applying ledger proposals, refreshing impacted talks, processing the content refresh queue, or closing feed-driven talk updates. Orchestrates content.refresh.yml and README updates; council and full slide regen only when the plan requires them."
 argument-hint: "[talk slug|all] [plan-only|apply]"
 ---
 
@@ -26,9 +26,9 @@ An explicit `all apply` invocation approves every generated talk plan in that se
 Invoke existing repository workflows rather than reproducing them:
 
 1. `content-refresh` for evidence verification and `content.refresh.yml`
-2. `deck-recipe-refresh` for content or structural recipe review
-3. `Tech Talk Slide Generator` for slide regeneration
-4. `build-slidev-decks` for single-deck validation
+2. `deck-recipe-refresh` only when `recipeReview.required` is true
+3. Existing-deck patch for `slideImpact: patch`; Tech Talk Slide Generator only for `regenerate` or `replace-demo`
+4. `build-slidev-decks` for single-deck validation when slides changed
 5. `workbench` for relevant cross-talk context and end-of-session learning
 
 ## Queue Selection
@@ -49,7 +49,10 @@ For `all`, process talks serially. Prioritize:
 
 Within the same priority, prefer the talk that explains the feature before talks that apply, govern, depend on, or reference it. Do not edit the same ledger or generated index concurrently.
 
-If no matching proposals remain, report that the target is current and stop.
+If no matching proposals remain:
+
+- Named talk: do **not** stop. Hand off to `content-refresh` with cutoff = README `updated`, run `npm run content:route -- --since <cutoff>`, and check first-party product sources. An empty ledger means "no adjudicated inbox item," not "the talk is current."
+- `all` with no named talk: report that the inbox is empty and stop.
 
 ## Pre-Flight Per Talk
 
@@ -119,21 +122,21 @@ Complete one talk end to end before starting the next:
 5. Validate that the README still answers one clear central question.
 6. Set `refresh.validation.readmePatched: true` only after focused content validation.
 
-Branch by update level:
+Branch by the cheap-path table in `content-refresh`:
 
-- `reference`: Validate links and content structure; recipe and slide regeneration are not required unless visible slide claims changed.
-- `content`: Invoke `deck-recipe-refresh`, then regenerate the deck.
-- `structural`: Invoke `deck-recipe-refresh` with explicit thesis, order, weighting, highlight, and demo reconsideration, then regenerate the deck.
+- `reference` or `slideImpact: none`: validate README links; leave recipe and deck unless a visible slide claim is now false.
+- `content` with `recipeImpact: none|confirm` and `slideImpact: none|patch`: no council. Patch the existing deck if needed. Single-deck build only.
+- `content` with `recipeImpact: revise` or `slideImpact: regenerate`: compact recipe refresh, then targeted slide work. Do not wipe the deck unless the recipe skeleton changed.
+- `structural`, `headline`, `recipeImpact: restructure`, or `slideImpact: replace-demo`: full `deck-recipe-refresh` (council required), then Tech Talk Slide Generator, then single-deck build.
 
-For content or structural updates:
+Never invoke a 3-phase Agent Council to confirm a recipe you already intend to keep.
 
-1. Obtain the Agent Council recipe decision.
-2. Write and validate the complete `deck.recipe.yml`.
-3. Invoke `Tech Talk Slide Generator` with the talk path.
-4. Follow repository Slidev instructions.
-5. Invoke `build-slidev-decks` for the single deck.
-6. Run `node slides/scripts/sync-index-dates.mjs` from the repository root.
-7. Update all applicable `content.refresh.yml` validation flags.
+When slides change:
+
+1. Follow repository Slidev instructions.
+2. Invoke `build-slidev-decks` for the single deck.
+3. Run `node slides/scripts/sync-index-dates.mjs` from the repository root.
+4. Update all applicable `content.refresh.yml` validation flags. Set `slidesRegenerated: true` only after a full regen; for a patch, leave it false and rely on `deckBuildPassed`.
 
 Do not mark ledger work complete when any required validation is false or unavailable.
 

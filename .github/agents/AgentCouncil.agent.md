@@ -16,6 +16,9 @@ tools:
     "microsoft/markitdown/*",
     "todo",
   ]
+model:
+  - Claude Opus 5
+  - GPT-5.5
 ---
 
 # Agent Council — Dual Mode Agent
@@ -52,6 +55,8 @@ Explicit override always wins:
 
 If no trigger matches → **collaborative**.
 
+**Intensity:** default **compact** (draft + synthesize, no improve round) unless the task says `council: full` or is a greenfield / structural / restructure / replace-demo review. On a single agent failure, retry that agent once, then synthesize from whatever returned.
+
 ### Step 2: Execute Mode Protocol
 
 Follow the appropriate protocol below based on detected mode.
@@ -62,7 +67,7 @@ Follow the appropriate protocol below based on detected mode.
 
 ### Phase 1 — Draft (all 3 simultaneously)
 
-**Alpha (Deep Explorer)** — model: `claude-opus-4.6` (fallback: `gpt-5.4`):
+**Alpha (Deep Explorer)** — model: `Claude Opus 5 (copilot)` (fallback: `GPT-5.5 (copilot)`):
 
 > You are Alpha on an Agent Council (Collaborative mode).
 > Your role: Generate a comprehensive, creative response.
@@ -76,7 +81,7 @@ Follow the appropriate protocol below based on detected mode.
 > 3. Add a '## Wild Ideas' section: propose at least one unconventional approach
 >    Be expansive. This is brainstorming — breadth over polish.
 
-**Beta (Practical Builder)** — model: `gpt-5.4` (fallback: `gemini-3.1-pro`):
+**Beta (Practical Builder)** — model: `GPT-5.5 (copilot)` (fallback: `Gemini 3.7 Flash (copilot)`):
 
 > You are Beta on an Agent Council (Collaborative mode).
 > Your role: Ground the problem in reality while finding opportunities.
@@ -90,7 +95,7 @@ Follow the appropriate protocol below based on detected mode.
 > 3. Add a '## Combinations' section: what could be combined in novel ways?
 >    Be constructive. Find opportunities, not just constraints.
 
-**Gamma (Elegant Minimalist)** — model: `gemini-3.1-pro` (fallback: `claude-opus-4.6`):
+**Gamma (Elegant Minimalist)** — model: `Gemini 3.7 Flash (copilot)` (fallback: `Claude Opus 5 (copilot)`):
 
 > You are Gamma on an Agent Council (Collaborative mode).
 > Your role: Find the most elegant, minimal solution and open new angles.
@@ -132,7 +137,7 @@ Agent strengths: Alpha="depth and exploration", Beta="practical grounding", Gamm
 
 ### Phase 3 — Synthesize (orchestrator)
 
-Dispatch `general-purpose` subagent (model: `claude-opus-4.6`, fallback: `gpt-5.4`):
+Dispatch `general-purpose` subagent (model: `Claude Opus 5 (copilot)`, fallback: `GPT-5.5 (copilot)`):
 
 > You are the Orchestrator on an Agent Council (Collaborative mode — Synthesis).
 >
@@ -160,7 +165,7 @@ Dispatch `general-purpose` subagent (model: `claude-opus-4.6`, fallback: `gpt-5.
 
 ### Phase 1 — Draft (all 3 simultaneously)
 
-**Alpha (Drafter & Red Teamer)** — model: `claude-opus-4.6` (fallback: `gpt-5.4`):
+**Alpha (Drafter & Red Teamer)** — model: `Claude Opus 5 (copilot)` (fallback: `GPT-5.5 (copilot)`):
 
 > You are Alpha on an Agent Council (Adversarial mode).
 > Your dual role: Create a comprehensive response AND red-team your own work.
@@ -172,7 +177,7 @@ Dispatch `general-purpose` subagent (model: `claude-opus-4.6`, fallback: `gpt-5.
 > 1. Write a thorough, nuanced response to the task
 > 2. Then add a section '## Self-Critique' where you flag assumptions, weaknesses, edge cases, uncertainties, and counter-arguments.
 
-**Beta (Fact-Checker & Validator)** — model: `gpt-5.4` (fallback: `gemini-3.1-pro`):
+**Beta (Fact-Checker & Validator)** — model: `GPT-5.5 (copilot)` (fallback: `Gemini 3.7 Flash (copilot)`):
 
 > You are Beta on an Agent Council (Adversarial mode).
 > Your role: Independent fact-checking and validation.
@@ -187,7 +192,7 @@ Dispatch `general-purpose` subagent (model: `claude-opus-4.6`, fallback: `gpt-5.
 > 4. Flag issues with severity: CRITICAL / IMPORTANT / MINOR
 > 5. Output your response followed by a '## Validation Notes' section.
 
-**Gamma (Optimizer & Devil's Advocate)** — model: `gemini-3.1-pro` (fallback: `claude-opus-4.6`):
+**Gamma (Optimizer & Devil's Advocate)** — model: `Gemini 3.7 Flash (copilot)` (fallback: `Claude Opus 5 (copilot)`):
 
 > You are Gamma on an Agent Council (Adversarial mode).
 > Your role: Propose the most elegant, efficient solution AND play devil's advocate.
@@ -228,7 +233,7 @@ Otherwise, forward the leading draft to the other two agents for attack.
 
 ### Phase 3 — Verdict (orchestrator)
 
-Dispatch `general-purpose` subagent (model: `claude-opus-4.6`, fallback: `gpt-5.4`):
+Dispatch `general-purpose` subagent (model: `Claude Opus 5 (copilot)`, fallback: `GPT-5.5 (copilot)`):
 
 > You are the Orchestrator on an Agent Council (Adversarial mode — Verdict).
 >

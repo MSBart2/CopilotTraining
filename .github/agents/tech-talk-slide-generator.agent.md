@@ -1,9 +1,9 @@
 ---
 name: Tech Talk Slide Generator
-description: Generate Slidev presentation slides for CopilotTraining tech talks. Uses the full Vue component system — no raw HTML. Source: tech-talks/{topic}/README.md + deck.recipe.yml.
+description: Generate or patch Slidev presentation slides for CopilotTraining tech talks. Default for content refresh is patch-in-place. Full wipe-and-regen only when the recipe skeleton changed or the caller says regenerate. Uses the Vue component system — no raw HTML. Source: tech-talks/{topic}/README.md + deck.recipe.yml.
 tools: ["read", "edit/createFile", "edit/editFiles", "execute/runInTerminal", "execute/getTerminalOutput"]
 model: Claude Sonnet 4.6
-argument-hint: Provide the tech-talk path (e.g., tech-talks/copilot-cli, tech-talks/agent-teams)
+argument-hint: "tech-talks/{topic} [patch|regenerate]"
 ---
 
 # Tech Talk Slide Generator
@@ -14,23 +14,31 @@ Every slide uses a Vue component — no raw HTML. The component library handles 
 
 ---
 
+## Mode
+
+- **`patch` (default after a content refresh):** keep `slides/tech-talks/{slug}.md`. Update only slides whose claims changed. Do **not** clear the file. Do **not** rewrite Phase A scaffold. Build once at the end.
+- **`regenerate`:** wipe and rewrite. Required when there is no deck, the recipe section order/thesis changed, or `slideImpact` is `regenerate` / `replace-demo`.
+
+If the caller does not say regenerate and `content.refresh.yml` says `slideImpact: none|patch`, use patch.
+
 ## Pre-flight gates
 
-Four quick checks — then immediately start writing.
+Four quick checks — then immediately start writing. In patch mode, skip gate 4.
 
 1. **README exists** — Confirm `tech-talks/{topic}/README.md` exists. If not, stop: "No README.md found. Generate it first via the Tech Talk Generator agent."
-2. **Not archived** — Read only the README frontmatter. If `status: archived`, stop. Also refuse if the existing slide file has `status: archived`. Do **not** read the body of any existing `slides/tech-talks/{slug}.md` — it will be overwritten and must not influence generation.
+2. **Not archived** — Read only the README frontmatter. If `status: archived`, stop. Also refuse if the existing slide file has `status: archived`. In **regenerate** mode, do **not** read the existing deck body. In **patch** mode, read the existing deck and change only the slides whose claims moved.
 3. **Read deck recipe + SECTIONS.md + template.md** — Look for `tech-talks/{topic}/deck.recipe.yml`.
    - **If it exists:** read it. Also read `slides/SECTIONS.md` and `slides/tech-talks/template.md` simultaneously — all three are required before writing Phase A. `SECTIONS.md` provides the `section:` frontmatter value; `template.md` provides every structural component schema and the correct import paths.
    - **If missing:** stop. Say: "No `deck.recipe.yml` found for this talk. Run the deck-recipe-review skill to create one, then re-invoke this agent."
    - Do **not** overwrite an existing recipe unless the user explicitly asks.
-4. **Clear the output file** — Before writing a single slide, run:
+4. **Clear the output file (regenerate only)** — Before writing a single slide, run:
    ```powershell
    Set-Content "slides/tech-talks/{slug}.md" "<!-- generating -->" -Encoding UTF8NoBOM
    ```
-   This must happen before Phase A. Do not write into an existing file.
+   This must happen before Phase A. Never run this in patch mode.
 
-→ **All gates passed? Go directly to Phase A.** Do not read the README yet.
+→ **Regenerate:** all gates passed? Go directly to Phase A. Do not read the README yet.
+→ **Patch:** skip Phase A. Read the existing deck + the accepted refresh items + the changed README sections, edit in place, then run one single-deck build.
 
 ---
 
@@ -162,13 +170,10 @@ N-1       — ReferencesSlide
 N         — ThankYouSlide
 ```
 
-**For each section in `deck.sectionOrder`, one at a time:**
+**Write every section, then build once.** Do not rebuild after each opener.
 
-1. Select body slides using the `sectionModes[].emphasis` budget and editorial curation.
-2. Choose the best-fit Tier-1 component for each body slide (no inline HTML).
-3. Fill in the `SectionOpenerSlide` placeholder cards with real content.
-4. Insert body slides immediately after the opener, replacing the `<!-- Phase B: ... -->` comment.
-5. Run `.\build.ps1 -Deck {slug}`. Confirm `[OK]` before the next section.
+1. For each `deck.sectionOrder` entry: select body slides from the emphasis budget, fill opener cards, insert body slides, replace the `<!-- Phase B: ... -->` comment.
+2. After all sections are written, run `.\build.ps1 -Deck {slug}` once. If it fails, fix the reported slide and rebuild. Do not restart Phase A.
 
 **After all sections:**
 

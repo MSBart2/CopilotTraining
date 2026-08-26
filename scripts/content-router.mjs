@@ -13,8 +13,10 @@ const valueFor = (name, fallback = null) => {
 const root = resolve(import.meta.dirname, "..");
 const feedUrl = valueFor("--feed", "https://developer.microsoft.com/api/changelog/rss");
 const outputDir = resolve(root, valueFor("--output-dir", ".github/content-routing"));
-const sinceArg = valueFor("--since");
-const sinceDays = Number.parseInt(valueFor("--since-days", process.env.LOOKBACK_DAYS ?? "7"), 10);
+// npm treats --since as its own config and does not forward it. Honor
+// npm_config_since so `npm run content:route -- --since DATE` still works.
+const sinceArg = valueFor("--since") ?? process.env.npm_config_since ?? process.env.CONTENT_ROUTE_SINCE;
+const sinceDays = Number.parseInt(valueFor("--since-days", process.env.LOOKBACK_DAYS ?? process.env.npm_config_since_days ?? "7"), 10);
 const since = sinceArg ?? new Date(Date.now() - sinceDays * 86400000).toISOString();
 
 const xml = /^https?:/i.test(feedUrl)
