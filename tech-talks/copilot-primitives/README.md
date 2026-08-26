@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-03-23
+updated: 2026-08-26
 section: "Developers"
 references:
   - url: https://code.visualstudio.com/docs/copilot/copilot-customization
@@ -87,26 +87,26 @@ GitHub Copilot supports four core configuration building blocks, and teams incre
 
 - **Instructions**: Always-on guardrails — coding standards, project structure, and build procedures injected into every request automatically[^2]
 - **AGENTS.md**: Agent playbook — open-format setup, testing, and local operating guidance that many coding agents understand[^13]
-- **Skills**: On-demand capability packs — specialized knowledge with scripts and resources, loaded only when relevant[^4]
-- **Prompts**: Reusable task templates — standardized workflows invoked via `/command` syntax in chat[^3]
+- **Prompts**: Proven task recipes — freeze a solved workflow as a team `/command`[^3]
+- **Skills**: Graduated capabilities — the same recipe plus scripts and templates the agent can run[^4]
 - **Agents**: Specialized AI personas — constrained tools, instructions, and model preferences for specific roles[^5]
 
 ### Architecture Overview
 
-The primitives form a progressive stack. GitHub instructions are the foundation — always present, zero-effort. `AGENTS.md` complements them with a predictable place for commands, test steps, and nearest-directory workflow guidance. Skills add specialized capabilities loaded on-demand by AI relevance matching. Prompts encode repeatable workflows triggered by the developer. Agents sit at the top, orchestrating the other primitives into constrained personas with specific tool access.
+The primitives form a progressive stack. GitHub instructions are the foundation — always present, zero-effort. `AGENTS.md` complements them with a predictable place for commands, test steps, and nearest-directory workflow guidance. Custom prompts come next: that is how most developers actually work. They solve a messy task in chat, then freeze the working recipe as a `/command`. Skills are the graduation step, not the first automation — add scripts and templates only after the prompt is proven. Agents sit at the top, composing the other primitives into constrained personas.
 
-Each primitive builds on the ones below it. An agent can reference instructions and invoke skills. A prompt can specify which agent to run with. Instructions form the shared baseline that everything else inherits[^3].
+Each primitive builds on the ones below it. A prompt should link to instructions instead of copying them. A skill packages a proven prompt. An agent can inherit instructions, invoke prompts, and load skills behind a tool boundary[^3].
 
 ```
 ┌────────────────────────────────────────────┐
-│  Agents (.agent.md)                        │  ← Orchestration
-│  Constrained personas, tools, handoffs     │
+│  Agents (.agent.md)                        │  ← Personas
+│  Constrained tools, handoffs               │
 ├────────────────────────────────────────────┤
-│  Prompts (.prompt.md)                      │  ← Task Templates
-│  Reusable workflows, /commands             │
+│  Skills (SKILL.md + scripts + templates)   │  ← Graduation
+│  Auto-load and/or /skill, runnable packs   │
 ├────────────────────────────────────────────┤
-│  Skills (SKILL.md + resources)             │  ← Capabilities
-│  On-demand expertise, scripts, examples    │
+│  Prompts (.prompt.md)                      │  ← Solved workflows
+│  Human-triggered team /commands            │
 ├────────────────────────────────────────────┤
 │  AGENTS.md                                 │  ← Agent Playbook
 │  Commands, tests, local workflow guidance  │
@@ -148,9 +148,9 @@ Each primitive builds on the ones below it. An agent can reference instructions 
 ### Move Toward (Embrace These Patterns)
 
 - ✅ **File-based configuration over manual context**: Encode conventions in `.github/` once instead of repeating them in every prompt → Copilot automatically applies your standards to every interaction[^2]
-- ✅ **Progressive enhancement**: Start with one `copilot-instructions.md`, add skills and agents only when clear need emerges → Avoids over-engineering, delivers value immediately
+- ✅ **Progressive enhancement**: Start with one `copilot-instructions.md`, freeze a solved task as a prompt, then graduate to a skill → Avoids over-engineering, delivers value immediately
 - ✅ **Team-shared AI knowledge in version control**: Configuration files become reviewable institutional knowledge → New team members get project-aware AI from day one
-- ✅ **Layered context**: Instructions for baseline, skills for capabilities, agents for orchestration → Each layer serves a different purpose without duplication
+- ✅ **Layered context**: Instructions for baseline, prompts for solved tasks, skills for runnable packs, agents for personas → Each layer serves a different purpose without duplication
 
 ### Move Away From (Retire These Habits)
 
@@ -187,13 +187,13 @@ Q: What kind of customization do you need?
 │  → Use: AGENTS.md
 │  └─ Best for: Monorepos, subproject playbooks, cross-agent portability
 │
-├─ "Reusable capabilities across projects and tools"
-│  → Use: Skills (.github/skills/*/SKILL.md)
-│  └─ Best for: Testing workflows, deployment scripts, portable expertise
-│
-├─ "Standardized workflows the team can invoke"
+├─ "A solved workflow the team should share as a /command"
 │  → Use: Prompts (.github/prompts/*.prompt.md)
 │  └─ Best for: Component scaffolding, code review checklists, PR templates
+│
+├─ "The recipe is proven and now needs scripts, templates, or auto-load"
+│  → Use: Skills (.github/skills/*/SKILL.md)
+│  └─ Best for: Testing workflows, deployment scripts, portable expertise
 │
 └─ "Specialized AI persona with constrained tools"
    → Use: Agents (.github/agents/*.agent.md)
@@ -202,16 +202,16 @@ Q: What kind of customization do you need?
 
 ### Comparison with Related Primitives
 
-| Aspect | **Repo Instructions** | **Path Instructions** | **AGENTS.md** | **Skills** | **Prompts** | **Agents** |
-|--------|------------------------|-----------------------|----------------|------------|-------------|------------|
-| **Loading** | Always-on | Conditional by `applyTo` | Nearest relevant file in supporting agents | On-demand (AI matches) | User invokes (`/`) | User selects |
-| **Scope** | Whole repository | Matching files only | Repo or subproject | When relevant | Single task | Full session |
-| **File Path** | `.github/copilot-instructions.md` | `.github/instructions/*.instructions.md` | `AGENTS.md` | `.github/skills/*/SKILL.md` | `.github/prompts/*.prompt.md` | `.github/agents/*.agent.md` |
-| **Can Include** | Markdown text | Markdown + frontmatter | Markdown playbook text | Scripts, examples, resources | Variables, tool specs | Tool restrictions, handoffs |
-| **Best For** | Repo constitution | File-pattern precision | Commands, tests, local workflow rules | Specialized capabilities | Repeatable workflows | Role-based personas |
-| **Portability** | GitHub / VS Code guidance | GitHub / VS Code guidance | Cross-agent/open convention | VS Code + CLI + coding agent | VS Code | VS Code |
-| **Typical Selector** | "Always in this repo" | "Only for these files" | "Only in this directory tree" | "When this task appears" | "When I run this command" | "When I want this persona" |
-| **Setup Time** | 5 minutes | 10 minutes | 10 minutes | 15 minutes | 10 minutes | 20 minutes |
+| Aspect | **Repo Instructions** | **Path Instructions** | **AGENTS.md** | **Prompts** | **Skills** | **Agents** |
+|--------|------------------------|-----------------------|----------------|-------------|------------|------------|
+| **Loading** | Always-on | Conditional by `applyTo` | Nearest relevant file in supporting agents | User invokes (`/`) | On-demand and/or `/skill` | User selects |
+| **Scope** | Whole repository | Matching files only | Repo or subproject | Single task | When relevant or invoked | Full session |
+| **File Path** | `.github/copilot-instructions.md` | `.github/instructions/*.instructions.md` | `AGENTS.md` | `.github/prompts/*.prompt.md` | `.github/skills/*/SKILL.md` | `.github/agents/*.agent.md` |
+| **Can Include** | Markdown text | Markdown + frontmatter | Markdown playbook text | Variables, tool specs | Scripts, examples, templates | Tool restrictions, handoffs |
+| **Best For** | Repo constitution | File-pattern precision | Commands, tests, local workflow rules | Proven team recipes | Graduated runnable packs | Role-based personas |
+| **Portability** | GitHub / VS Code guidance | GitHub / VS Code guidance | Cross-agent/open convention | VS Code | VS Code + CLI + coding agent | VS Code |
+| **Typical Selector** | "Always in this repo" | "Only for these files" | "Only in this directory tree" | "When I run this command" | "When this task appears" | "When I want this persona" |
+| **Setup Time** | 5 minutes | 10 minutes | 10 minutes | 10 minutes | 15 minutes | 20 minutes |
 
 ---
 
@@ -249,7 +249,7 @@ This repository uses TypeScript with strict type checking enabled.
 - Always run `npm install` before building
 - Build: `npm run build`
 - Tests are in `__tests__/` directories co-located with source files
-- Use Jest for testing with the config in `jest.config.js`
+- Use Vitest — never Mocha or Jest
 - Run tests: `npm test`
 
 ## Coding Standards
@@ -326,10 +326,78 @@ In a polyrepo, a single root `AGENTS.md` may be enough. In a monorepo, nested fi
 
 ---
 
-<!-- 🎬 MAJOR SECTION: Skills -->
-## Skills: On-Demand Expertise
+<!-- 🎬 MAJOR SECTION: Custom Prompts -->
+## Custom Prompts: Solved Workflows
 
-Skills are directories containing a `SKILL.md` file plus supporting scripts, examples, and resources. Unlike instructions that are always active, skills are loaded on-demand when Copilot determines they're relevant to your current task[^4].
+Prompt files are Markdown templates that freeze a workflow you already solved in chat. Unlike instructions (always-on), prompts are explicitly invoked by developers using `/command` syntax. That is the usual next step after `/init` — not a skill folder invented from a blank buffer[^3].
+
+### How Prompts Work
+
+Create a `.prompt.md` file in `.github/prompts/`, or run `/create-prompt` after a chat that already produced the right files. The result becomes a slash command. Type `/` in chat, select your prompt, and fill the parameters[^3]:
+
+```
+/component
+```
+
+### Prompt File Structure
+
+```markdown
+---
+name: component
+description: Generate a React component with TypeScript, tests, and docs
+tools: ['editFiles', 'createFile']
+agent: agent
+---
+
+# Component Generator
+
+Create a new React component: ${input:componentName:Component name}
+
+## Files to Create
+
+src/components/${input:componentName}/
+  ${input:componentName}.tsx
+  ${input:componentName}.types.ts
+  ${input:componentName}.module.css
+  __tests__/
+    ${input:componentName}.test.tsx
+  index.ts
+
+## Requirements
+- Use functional components with hooks
+- Include TypeScript props interface with JSDoc
+- Follow conventions in [coding standards](../../copilot-instructions.md)
+- Add unit tests using Vitest
+```
+
+See the full prompt in [`examples/component.prompt.md`](examples/component.prompt.md).
+
+### What Makes Prompts Powerful
+
+Prompts can reference instructions files via Markdown links, ensuring consistency without duplication. They support `${input:variableName}`, `${selection}`, and `${file}`, and they can specify which agent and tools to use[^3]:
+
+```markdown
+---
+tools: ['editFiles', 'search', 'readFile']
+agent: agent
+model: Claude Sonnet 4 (copilot)
+---
+```
+
+**Key Points:**
+- Prompts are human-triggered recipes — freeze them after the chat already worked
+- Link to `copilot-instructions.md`. Do not copy the constitution into every prompt
+- Support variables: `${selection}`, `${file}`, `${input:name:placeholder}`
+- Specify tools and agent to constrain this one task
+- Store in `.github/prompts/` (workspace) or user profile (global)
+- A skill can also appear as `/skill`. Stay on a prompt until you have scripts or need auto-load
+
+---
+
+<!-- 🎬 MAJOR SECTION: Skills -->
+## Skills: Graduate the Proven Prompt
+
+Skills are directories containing a `SKILL.md` file plus supporting scripts, examples, and resources. Graduate a prompt into a skill after the recipe is proven — especially when the agent needs a script or template it can actually run. By default a skill can both auto-load and appear as `/skill`[^4].
 
 ### How Skills Work: Progressive Loading
 
@@ -348,12 +416,13 @@ This means you can have dozens of skills installed without impacting context —
 ```
 .github/skills/
   test-runner/
-    SKILL.md              # Instructions + metadata
-    test-template.ts      # Template test file
+    SKILL.md                 # Instructions + metadata
     scripts/
-      run-tests.sh        # Test execution script
+      run-tests.sh           # Linked from SKILL.md — actually executed
+    assets/
+      test-template.ts       # Linked from SKILL.md — new tests start here
     examples/
-      api-test.ts         # Example test for reference
+      api-test.ts            # Example test for reference
 ```
 
 ### Example: Test Runner Skill
@@ -376,8 +445,8 @@ description: Run tests, analyze failures, and suggest fixes for unit and
 ## Process
 1. Identify the endpoint under test from route files in `src/routes/`
 2. Check existing tests in `tests/api/` for patterns
-3. Use the test template in [template](./test-template.ts)
-4. Run tests with `npm run test:api`
+3. Run [scripts/run-tests.sh](scripts/run-tests.sh)
+4. Start new files from [assets/test-template.ts](assets/test-template.ts)
 ```
 
 See the full skill definition in [`examples/test-runner-skill.md`](examples/test-runner-skill.md).
@@ -387,79 +456,11 @@ See the full skill definition in [`examples/test-runner-skill.md`](examples/test
 Agent Skills work across VS Code, GitHub Copilot CLI, and GitHub Copilot coding agent[^7]. Skills you write for VS Code automatically work in the terminal and in GitHub's automated coding workflows. The specification is maintained at [agentskills.io](https://agentskills.io/).
 
 **Key Points:**
-- Skills are loaded on-demand, not always active (saves context budget)
-- Can include executable scripts, test templates, and reference examples
+- Default is both auto-load and `/skill`. Set `user-invocable: false` to hide the slash command, or `disable-model-invocation: true` for slash-only
+- Unlinked files in the folder are invisible — reference every script and template from `SKILL.md`
 - Portable across VS Code, Copilot CLI, and Copilot coding agent[^7]
 - Store project skills in `.github/skills/`, personal skills in `~/.copilot/skills/`
-
----
-
-<!-- 🎬 MAJOR SECTION: Custom Prompts -->
-## Custom Prompts: Reusable Workflows
-
-Prompt files are Markdown templates that encode repeatable development workflows. Unlike instructions (always-on) or skills (AI-activated), prompts are explicitly invoked by developers using `/command` syntax in chat[^3].
-
-### How Prompts Work
-
-Create a `.prompt.md` file in `.github/prompts/`, and it becomes available as a slash command. Type `/` in chat, select your prompt, and optionally provide parameters[^3]:
-
-```
-/component MyButtonGroup
-```
-
-### Prompt File Structure
-
-```markdown
----
-name: component
-description: Generate a React component with TypeScript, tests, and docs
-tools: ['editFiles', 'createFile']
-agent: agent
----
-
-# Component Generator
-
-Create a new React component following our team's standards.
-
-## Files to Create
-
-Generate the following structure:
-
-src/components/{{componentName}}/
-  {{componentName}}.tsx           # Component implementation
-  {{componentName}}.types.ts      # TypeScript interfaces
-  {{componentName}}.module.css    # CSS Modules styles
-  __tests__/
-    {{componentName}}.test.tsx    # Unit tests
-  index.ts                        # Barrel export
-
-## Requirements
-- Use functional components with hooks
-- Include TypeScript props interface with JSDoc
-- Follow conventions in [coding standards](../../copilot-instructions.md)
-- Add unit tests using Vitest
-```
-
-See the full prompt in [`examples/component.prompt.md`](examples/component.prompt.md).
-
-### What Makes Prompts Powerful
-
-Prompts can reference instructions files via Markdown links, ensuring consistency without duplication. They support variable interpolation (`${input:variableName}`, `${selection}`, `${file}`) and can specify which agent and tools to use[^3]:
-
-```markdown
----
-tools: ['editFiles', 'search', 'readFile']
-agent: agent
-model: Claude Sonnet 4 (copilot)
----
-```
-
-**Key Points:**
-- Prompts are user-invoked — they only run when you type `/command`
-- Can reference instructions files to reuse conventions without duplication
-- Support variables: `${selection}`, `${file}`, `${input:name:placeholder}`
-- Specify tools and agent to constrain execution
-- Store in `.github/prompts/` (workspace) or user profile (global)
+- Use `/create-skill` after the prompt already works. Do not invent a capability from a blank folder
 
 ---
 
@@ -553,11 +554,11 @@ Most teams should follow this progression:
 
 | Week | Action | Impact |
 |------|--------|--------|
-| **Week 1** | Add `copilot-instructions.md` with project basics | Immediate: project-aware responses |
-| **Week 2** | Add path-specific `.instructions.md` files | Targeted: language-specific conventions |
-| **Week 3** | Create first prompt for your most common task | Consistent: standardized team workflows |
-| **Month 2** | Add skills for capabilities that span projects | Portable: cross-tool expertise |
-| **Month 3** | Create agents for complex orchestration needs | Advanced: multi-step autonomous workflows |
+| **Week 1** | Run `/init` and trim `copilot-instructions.md` | Immediate: project-aware responses |
+| **Week 2** | Add path-specific `.instructions.md` files with `applyTo` | Targeted: language-specific conventions |
+| **Week 3** | `/create-prompt` on a task the team already solved | Consistent: shared `/command` |
+| **Month 2** | `/create-skill` — add a script and a template | Portable: the agent can run the pack |
+| **Month 3** | `/create-agent` for a read-only Planner and one handoff | Constrained: tool boundaries as architecture |
 
 ### Common Mistakes
 

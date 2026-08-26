@@ -1,24 +1,28 @@
 ---
 name: component
 description: Generate a React component with TypeScript, tests, and documentation
+tools: ["editFiles", "createFile"]
+agent: agent
 ---
 
 # Component Generator
 
-Create a new React component following our team's standards and best practices.
+Create a new React component: ${input:componentName:Component name}
+
+Follow conventions in [coding standards](../copilot-instructions.md).
 
 ## Files to Create
 
 Generate the following file structure:
 
 ```
-src/components/{{componentName}}/
-  {{componentName}}.tsx           # Component implementation
-  {{componentName}}.types.ts      # TypeScript interfaces
-  {{componentName}}.module.css    # Component styles (CSS Modules)
+src/components/${input:componentName}/
+  ${input:componentName}.tsx           # Component implementation
+  ${input:componentName}.types.ts      # TypeScript interfaces
+  ${input:componentName}.module.css    # Component styles (CSS Modules)
   __tests__/
-    {{componentName}}.test.tsx    # Unit tests
-  index.ts                        # Barrel export
+    ${input:componentName}.test.tsx    # Unit tests
+  index.ts                             # Barrel export
 ```
 
 ## Component Template Requirements
@@ -27,18 +31,18 @@ src/components/{{componentName}}/
 
 ````typescript
 import React from 'react';
-import { {{componentName}}Props } from './{{componentName}}.types';
-import styles from './{{componentName}}.module.css';
+import { ${input:componentName}Props } from './${input:componentName}.types';
+import styles from './${input:componentName}.module.css';
 
 /**
  * [Brief description of component purpose]
  *
  * @example
  * ```tsx
- * <{{componentName}} prop1="value" />
+ * <${input:componentName} prop1="value" />
  * ```
  */
-export const {{componentName}}: React.FC<{{componentName}}Props> = ({
+export const ${input:componentName}: React.FC<${input:componentName}Props> = ({
   // Destructure props here
 }) => {
   return (
@@ -53,9 +57,9 @@ export const {{componentName}}: React.FC<{{componentName}}Props> = ({
 
 ```typescript
 /**
- * Props for the {{componentName}} component
+ * Props for the ${input:componentName} component
  */
-export interface {{componentName}}Props {
+export interface ${input:componentName}Props {
   /**
    * [Prop description]
    */
@@ -74,22 +78,22 @@ export interface {{componentName}}Props {
 ```typescript
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { {{componentName}} } from '../{{componentName}}';
+import { ${input:componentName} } from '../${input:componentName}';
 
-describe('{{componentName}}', () => {
+describe('${input:componentName}', () => {
   it('renders with default props', () => {
-    render(<{{componentName}} prop1="test" />);
+    render(<${input:componentName} prop1="test" />);
     expect(screen.getByRole('[role]')).toBeInTheDocument();
   });
 
   it('handles user interactions', async () => {
     const user = userEvent.setup();
-    render(<{{componentName}} prop1="test" />);
+    render(<${input:componentName} prop1="test" />);
     // Test interactions
   });
 
   it('is accessible', () => {
-    const { container } = render(<{{componentName}} prop1="test" />);
+    const { container } = render(<${input:componentName} prop1="test" />);
     // Run axe accessibility tests
   });
 });
@@ -111,7 +115,7 @@ describe('{{componentName}}', () => {
 Import using barrel export:
 
 ```typescript
-import { {{componentName}} } from '@/components/{{componentName}}';
+import { ${input:componentName} } from '@/components/${input:componentName}';
 ```
 
-Component name: {{componentName}}
+Component name: ${input:componentName}

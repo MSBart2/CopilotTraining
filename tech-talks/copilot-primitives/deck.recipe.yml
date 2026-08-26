@@ -1,111 +1,90 @@
-# VERDICT: Four-section progressive stack is the right architecture — absorbing "Choosing the
-# Right Primitive" into S4 makes Agents the talk's earned climax, not a detached fifth wheel.
-# Two pre-build bugs must be resolved: S2 is missing a section opener slide (build-blocking),
-# and S3 needs an anatomy slide before the existing example slide or it reads as an orphan.
-version: 1
+# VERDICT: Prompts precede Skills. Teams solve a repeated task as a /command
+# first, then graduate the proven workflow into a skill the agent can load.
+# Four live /create-* demos are the teaching spine, not product news.
+version: 2
 deck:
   title: "Copilot Configuration Primitives: Making AI Understand Your Codebase"
-  subtitle: "Instructions · Skills · Custom Prompts · Agents"
-  tagline: "Encode your codebase once. Every Copilot interaction inherits it."
+  subtitle: "Instructions · Custom Prompts · Skills · Agents"
+  tagline: "Encode the convention once. Graduate the workflow when it is proven."
 
   agenda:
     - title: "Instructions First"
-      takeaway: "Create a small custom instruction file for immediate context gains."
-      whyItMatters: "Fast wins create momentum for deeper customization."
-    - title: "Skills as Knowledge"
-      takeaway: "Package expertise into callable team capabilities."
-      whyItMatters: "Knowledge persists beyond any one expert or role."
-    - title: "Specialized Agents"
-      takeaway: "Compose instructions, skills, prompts, and execution into collaborators."
-      whyItMatters: "Focused capabilities change AI from a tool into a teammate."
+      takeaway: "Write a small always-on file, then let /init draft the rest."
+      whyItMatters: "Every later primitive inherits this baseline."
+    - title: "Prompts as Solved Workflows"
+      takeaway: "Turn a repeated task into a team /command with /create-prompt."
+      whyItMatters: "Most teams should solve the problem as a prompt before they automate it."
+    - title: "Skills as Proven Capabilities"
+      takeaway: "Graduate a working prompt into a skill with scripts and templates."
+      whyItMatters: "The agent can then load the same workflow without a human slash command."
+    - title: "Agents as Constrained Personas"
+      takeaway: "Compose the stack into a role with tool boundaries and a handoff."
+      whyItMatters: "Constraint is the architecture — not a workaround."
 
-  arcToc: "Instructions → Skills → Custom Prompts → Agents"
+  arcToc: "Instructions → Custom Prompts → Skills → Agents"
   arcNarrative: >
-    Instructions open the talk with the fastest ROI in the stack: one file, five minutes,
-    immediate improvement — every attendee can do this today, which earns the trust needed
-    to spend the next 22 minutes going deeper. Skills shift the register from passive to
-    active, introducing AI relevance matching as the mechanism that makes specialized
-    expertise load without explicit invocation — this is where the talk pivots from
-    "configuration as text" to "configuration as capability." Custom Prompts arrives as
-    the team-sharing unlock: tribal knowledge crystallised into /commands that any
-    developer can invoke without re-explaining context, bridging the individual gains of
-    S1-S2 into collective workflow. Agents close as the synthesis peak, composing all
-    prior primitives into constrained personas where tool restrictions are the design, not
-    a workaround — and the decision tree that closes S4 lands as earned payoff, sending
-    every attendee home with a clear answer to "which primitive do I reach for next?"
-    Peak audience engagement arrives in S4 when the planner-to-implementer handoff makes
-    the composition model visceral. This ordering beats "decision tree first" because
-    attendees need to experience each primitive before the decision tree is meaningful.
+    Instructions still open the talk because they are the fastest ROI and the
+    shared baseline every later file inherits. Custom Prompts now come second:
+    that is how most developers actually work — they solve a messy task in chat,
+    then freeze the working recipe as a /command. Skills arrive third as the
+    graduation step, not the first automation. A skill is what you write after
+    the prompt has been proven: add scripts and templates, then let the agent
+    load it by relevance (or keep it slash-only). Agents close the talk as the
+    composition peak — personas that inherit instructions, invoke prompts, and
+    load skills behind a tool boundary. Peak engagement is the live /create-*
+    sequence: /init, /create-prompt, /create-skill, /create-agent. The decision
+    tree lands only after the audience has watched a workflow move up the stack.
   sectionOrder:
     - "Instructions"
-    - "Skills"
     - "Custom Prompts"
+    - "Skills"
     - "Agents"
   sectionModes:
     "Instructions":
       emphasis: high
       note: >
-        Foundation section — the 5-minute setup hook must land in the first 30 seconds of this
-        section; delay kills momentum. Cover all three instruction surfaces in sequence: (1)
-        .github/copilot-instructions.md — always-on, whole-repo baseline; (2)
-        .github/instructions/*.instructions.md with applyTo glob — scoped to file patterns;
-        (3) AGENTS.md — nearest-directory agent playbook, cross-tool portable. Show the
-        architecture stack diagram here (Instructions → AGENTS.md → Skills → Prompts → Agents)
-        as it frames the entire rest of the talk. The "whoa" moment: VS Code surfaces which
-        instruction files were applied in the References panel — make this visible on screen so
-        attendees see the system is actually working. Do NOT compress below 4 slides; this is
-        the conceptual foundation everything else inherits.
-    "Skills":
-      emphasis: medium
-      note: >
-        ⚠ REQUIRED ACTION — MISSING SECTION OPENER SLIDE. The current deck jumps directly to
-        "Skills Scripts" with no Part 2 opener, breaking the section cadence established in S1.
-        A section opener slide MUST be added before this deck can build cleanly. The opener
-        must cover: Skills are GA as of v1.109 (production-ready, not experimental); AI relevance
-        matching loads the right skill without explicit invocation; skills encode specialized
-        expertise via scripts + resource templates. Key contrast to drive home: Instructions =
-        what Copilot knows (passive); Skills = what Copilot can do (active). The "whoa" moment
-        is AI relevance matching — the developer does nothing and the right capability pack
-        loads. Two content slides (Scripts, Templates) are the right depth once the opener
-        exists. Do not pad; 6 minutes is the correct budget for this section.
+        Foundation. Cover three surfaces: copilot-instructions.md, path-scoped
+        .instructions.md with applyTo, and root AGENTS.md as the portable
+        playbook. Nested AGENTS.md is experimental — prefer applyTo for folder
+        rules. Add a writing-practice beat (one idea per line, include why,
+        show preferred vs avoided, skip linter rules). applyTo gotcha: no glob
+        means the file is not auto-applied. Live demo: /init drafts the
+        always-on file from the workspace. Verify via the References panel.
     "Custom Prompts":
-      emphasis: medium-low
+      emphasis: high
       note: >
-        ⚠ THIN SECTION — one content slide (Component Generator example) exists for a named
-        section in a 30-min talk. An anatomy slide is required before the example: cover
-        .github/prompts/ file structure, frontmatter schema (description, mode, tools), /command
-        binding syntax, and variable interpolation. Two slides maximum given time budget. The
-        "whoa" moment is team sharing: one developer writes the prompt once, every developer on
-        the team gets the /command — tribal knowledge becomes a shared workflow. Lean into the
-        contrast with Skills: Skills load automatically by relevance; Prompts are explicitly
-        invoked by the developer. If time is severely constrained at rehearsal, collapse to one
-        high-density slide treating this section as a bridge beat — but prefer two slides so the
-        anatomy has a home separate from the example.
+        This is now the second act, not a thin bridge. Prompts are how a team
+        captures a solved workflow. Anatomy first: .github/prompts/, frontmatter
+        (name, agent, tools, model), input variables, selection, file, and
+        Markdown links back to instructions — never copy the constitution into
+        the prompt. Live demo: /create-prompt. Do not oversell prompts as the
+        only slash surface; skills can also appear as /commands. The contrast
+        is intent: a prompt is a human-triggered recipe. Graduation to a skill
+        is the next section's job.
+    "Skills":
+      emphasis: high
+      note: >
+        Graduation section. Open with Prompt to Skill: solve thoroughly as a
+        prompt, then package the proven steps plus scripts and templates.
+        Show three-level loading. MUST show a real skill pack, not a mention:
+        SKILL.md plus scripts/run-tests.sh plus a test template. Cover
+        invocation controls: default is both auto-load and /skill;
+        user-invocable false for background knowledge;
+        disable-model-invocation true for slash-only. Live demo:
+        /create-skill, preferably extracted from the prompt just shown.
     "Agents":
       emphasis: high
       note: >
-        Synthesis peak and talk climax — the section where all prior primitives compose into
-        something greater. Cover Planner Agent (read-only tools, constrained to planning tasks)
-        and the handoff mechanism to an implementer agent; the key architectural insight is that
-        tool constraints enforce role separation by design — a read-only Planner cannot
-        accidentally edit files, making the constraint the architecture. Cover Advanced Patterns
-        (model selection per agent, multi-agent orchestration). Close this section with the
-        "Choosing the Right Primitive" synthesis beat as a dedicated slide: the decision tree
-        (Passive context → Instructions; Repeatable workflow → Custom Prompts; Active capability
-        → Skills; Full persona/tool set → Agents) plus the progressive-layering model diagram.
-        This closing beat absorbs the former standalone S5 and must feel earned — it lands
-        because the audience has just experienced all four primitives. The "whoa" moment: the
-        Planner-to-implementer handoff visualised — tool boundary as the architectural boundary.
-        Do not let this section run short; it carries the talk's payoff.
+        Synthesis peak. Planner with read-only tools and a handoff is the
+        architecture lesson. Live demo: /create-agent. Close with the
+        composition stack and the decision tree (always-on, then prompt,
+        then skill, then persona). Do not start teams on agents.
   highlightMoments:
-    - "5-minute setup in S1: one file at .github/copilot-instructions.md and every subsequent Copilot interaction inherits your team's conventions — zero ongoing maintenance."
-    - "AGENTS.md as cross-tool contract in S1: not a Copilot-specific format — any coding agent that reads AGENTS.md gets the same playbook, making it institutional knowledge that outlasts any single tool."
-    - "AI relevance matching in S2 (Skills GA, v1.109): Copilot loads the right capability pack without the developer doing anything — specialized expertise on demand with zero invocation friction."
-    - "Team /commands in S3: one developer writes a prompt file, every developer on the team gets the slash command with full context — tribal knowledge becomes shared infrastructure."
-    - "Planner-to-implementer handoff in S4: tool constraints enforcing role separation by design — the read-only boundary is the architecture, not a workaround, and the decision tree closes the talk with a durable next-step for every attendee."
+    - "/init in S1: one command drafts always-on instructions from the repo that is already on disk."
+    - "Writing practice in S1: include why, show examples, skip anything a linter already enforces."
+    - "/create-prompt in S2: freeze a solved chat recipe as a team /command with input parameters."
+    - "Graduation in S3: a prompt becomes a skill only after the workflow is proven — then add scripts and templates the agent can actually run."
+    - "Invocation controls in S3: skills are not prompt-or-skill. Default is both. Lock auto-load or slash as a design choice."
+    - "/create-agent in S4: a read-only Planner cannot edit files. The tool list is the architecture."
+    - "Decision tree closer: start with instructions, solve with a prompt, graduate to a skill, constrain with an agent."
 
-# OPEN DECISION: Whether the "Choosing the Right Primitive" closing beat in S4 warrants its own
-# dedicated slide or folds into an Advanced Patterns summary panel. Council recommendation:
-# dedicated slide — the decision tree needs visual isolation to function as the talk's takeaway
-# and the progressive-stack diagram deserves its own frame. Confirm with speaker at first
-# rehearsal before finalizing slide count.

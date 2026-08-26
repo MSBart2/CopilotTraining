@@ -7,7 +7,7 @@ This repository uses TypeScript with strict type checking enabled.
 - Always run `npm install` before building
 - Build: `npm run build`
 - Tests are in `__tests__/` directories co-located with source files
-- Use Jest for testing with the config in `jest.config.js`
+- Use Vitest — never Mocha or Jest
 - Run tests: `npm test`
 - Required: tests must pass before committing
 
