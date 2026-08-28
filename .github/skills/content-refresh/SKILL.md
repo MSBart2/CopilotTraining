@@ -10,14 +10,14 @@ Turn Microsoft Developer Changelog entries into a small, reviewable update plan 
 
 ## Cheap path (default)
 
-Most refreshes are README wording. Do not start a council or wipe the deck unless the evidence forces it.
+Most refreshes are README wording. Do not start a cross-model recipe review or wipe the deck unless the evidence forces it.
 
-| Highest accepted impact | Recipe | Slides | Council |
+| Highest accepted impact | Recipe | Slides | Cross-model review |
 |---|---|---|---|
 | `reference` + `slideImpact: none` | leave recipe | leave deck | no |
-| `content` + `recipeImpact: none\|confirm` + `slideImpact: none\|patch` | date/wording only, no council | patch existing slides or skip | no |
-| `content` + `recipeImpact: revise` or `slideImpact: regenerate` | compact recipe refresh | targeted regen or patch | compact council only if recipe fields change |
-| `structural`, any `headline`, `recipeImpact: restructure`, or `slideImpact: replace-demo` | full recipe refresh | full deck regen | full council |
+| `content` + `recipeImpact: none\|confirm` + `slideImpact: none\|patch` | date/wording only, no review | patch existing slides or skip | no |
+| `content` + `recipeImpact: revise` or `slideImpact: regenerate` | compact recipe refresh | targeted regen or patch | Rubber Duck gate only if recipe fields change |
+| `structural`, any `headline`, `recipeImpact: restructure`, or `slideImpact: replace-demo` | full recipe refresh | full deck regen | Rubber Duck gate required |
 
 Never treat an empty 7-day feed report or an empty ledger as "this talk is current."
 
@@ -97,7 +97,7 @@ Present a concise summary and wait for approval before editing the README. A dir
 2. Patch the README as a reader-first technical article. Do not append a changelog dump.
 3. Update frontmatter `updated` and verified references.
 4. Preserve unrelated material and working artifacts unless the plan replaces them.
-5. Follow the cheap-path table. Do not invoke Agent Council or wipe `slides/tech-talks/<slug>.md` for confirm/patch work.
+5. Follow the cheap-path table. Do not invoke cross-model recipe review or wipe `slides/tech-talks/<slug>.md` for confirm/patch work.
 6. If `recipeReview.required` is true, invoke `deck-recipe-refresh`.
 7. If `slideImpact` is `patch`, edit the existing deck in place and run a single-deck build. If `regenerate` or `replace-demo`, invoke the Tech Talk Slide Generator only after the recipe is settled.
 8. One network or subagent failure: retry once, then continue with local files. Do not regenerate the same deck twice because a fetch failed.

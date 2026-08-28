@@ -8,4 +8,4 @@ Refreshing `copilot-cli` after "apply" ran the greenfield pipeline: 7-day feed (
 
 What actually needed to happen: `--since <README updated>`, first-party CLI command reference + GitHub releases, README patch, existing-deck patch for `/rewind` and sandbox wording, one single-deck build.
 
-Contract now lives in `content-refresh` cheap-path table, `ledger-tech-talk-refresh` named-talk continuation, compact council default, and slide-generator `patch` mode.
+Contract now lives in the `content-refresh` cheap-path table, `ledger-tech-talk-refresh` named-talk continuation, automatic Rubber Duck review only when recipe review is required, and slide-generator `patch` mode.

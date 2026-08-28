@@ -1,14 +1,9 @@
 ---
 name: Exec Talk Generator
 description: Research and generate executive-audience thought leadership for CopilotTraining exec-talks. Creates comprehensive README.md from URLs or requirements using exec-talk structure and voice rules.
-tools: ["read", "github/web_search", "edit/createFile", "edit/editFiles"]
+tools: ["read", "github/web_search", "edit/createFile", "edit/editFiles", "agent/runSubagent"]
 model: Claude Sonnet 4.6
 argument-hint: Provide URLs to research or describe the exec talk topic — framed for C-level/VP decision makers
-handoffs:
-  - label: Review Recipe
-    agent: AgentCouncil
-    prompt: Run the exec-recipe-review skill on the exec talk I just created
-    send: false
 ---
 
 # Exec Talk Generator Agent
@@ -277,67 +272,11 @@ Reference related talks by name when relevant.]
 - **No more than 4 levels of heading** — H1 title, H2 sections, H3 subsections, H4 only for labeled boxes
 - **Cite inline AND in the References section** — don't just footnote; mention the source in the sentence
 
-### 4. Write deck.recipe.yml
+### 4. Create the reviewed recipe
 
-After the README, create `tech-talks/{slug}/deck.recipe.yml`:
+After the README is complete and approved, you **must invoke the exec-recipe-review skill** (`.github/skills/exec-recipe-review/SKILL.md`). Do not write the recipe directly, leave it as a handoff, or ask the user to remember this step. The skill owns the complete recipe and requires an independent cross-model Rubber Duck critique before writing it.
 
-```yaml
-# exec.recipe.yml — executive talk generation guidance
-#
-# Guides slide generation from tech-talks/{slug}/README.md.
-# Produced by Exec Talk Generator.
-
-version: 1
-
-deck:
-  title: "[Full deck title]"
-  subtitle: "[One-sentence subtitle]"
-  tagline: "[≤80 chars — the single most important takeaway for the audience]"
-
-  # arcToc: section names joined by →, ≤ 80 chars total
-  arcToc: "[Part 1] → [Part 2] → [Part 3] → [Part 4]"
-
-  preamble:
-    - src: ./exec-spine.md
-
-  arcNarrative: >
-    [2–3 sentences describing the executive decision journey this deck takes the audience on.
-    What do they believe at the start? What do they understand by the end?
-    What are they ready to approve or direct?]
-
-  sections:
-    - id: part1
-      title: "[Part 1 title]"
-      slideCount: 3
-      purpose: "[What business reality or data this section establishes]"
-      keySlide: "[The one slide that must land]"
-
-    - id: part2
-      title: "[Part 2 title]"
-      slideCount: 3
-      purpose: "[What this section helps the executive evaluate or decide]"
-      keySlide: "[The one slide that must land]"
-
-    - id: part3
-      title: "[Part 3 title]"
-      slideCount: 3
-      purpose: "[What investment or action framework this provides]"
-      keySlide: "[The one slide that must land]"
-
-    - id: part4
-      title: "[Part 4 title]"
-      slideCount: 3
-      purpose: "[What the executive is ready to do after this section]"
-      keySlide: "[The one slide that must land]"
-
-  closing:
-    beforeAfterMetrics: true    # exec-talks use BeforeAfterMetricsSlide, not BeforeAfterSlide
-    whatYouCanDoToday: true
-    references: true
-    thankYou: true
-```
-
-**Slide count guidance:** Aim for 3–4 body slides per section, 4 sections maximum, plus 4 closing slides. Total body content ≤ 20 slides (exec-spine adds 6 fixed slides).
+**Slide count guidance:** The reviewed recipe should aim for 3–4 body slides per section, 4 sections maximum, plus 4 closing slides. Total body content should remain ≤ 20 slides (exec-spine adds 6 fixed slides).
 
 ---
 
@@ -351,5 +290,5 @@ Before delivering the README, verify:
 - [ ] All section titles describe what the audience gains, not what they risk losing
 - [ ] "What Leaders Can Do Next" has ≥2 immediate, concrete, exec-authorizable actions
 - [ ] References frontmatter block is populated with all primary sources
-- [ ] deck.recipe.yml uses `BeforeAfterMetricsSlide: true` (not BeforeAfterSlide)
+- [ ] exec-recipe-review skill was invoked and the reviewed recipe preserves `BeforeAfterMetricsSlide: true` (not BeforeAfterSlide)
 - [ ] No implementation artifacts (config files, code blocks) in the README

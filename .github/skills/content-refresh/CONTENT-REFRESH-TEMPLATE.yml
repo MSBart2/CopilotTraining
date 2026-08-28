@@ -41,7 +41,7 @@ refresh:
     required: false
     question: >
       Required only for structural / restructure / replace-demo. Otherwise leave
-      false and skip Agent Council.
+      false and skip cross-model recipe review.
 
   validation:
     firstPartySourcesVerified: false

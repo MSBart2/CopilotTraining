@@ -1,22 +1,22 @@
 ---
 name: exec-recipe-review
 description: >
-  Review an exec-talk's README and produce an exec.recipe.yml. Uses a 3-agent collaborative
-  council to analyze section weighting, executive audience fit, narrative arc, and action
-  clarity. Always overwrites any existing recipe. Triggers: "review the talk", "create the
-  recipe", "is this landing for execs", "section weighting", "coverage gap", "recipe",
-  "executive framing".
+  Review an exec-talk's README and produce an exec.recipe.yml. Requires an independent
+  cross-model Rubber Duck critique of section weighting, executive audience fit, narrative
+  arc, and action clarity. Always overwrites any existing recipe. Triggers: "review the talk",
+  "create the recipe", "is this landing for execs", "section weighting", "coverage gap",
+  "recipe", "executive framing".
 infer: true
 ---
 
 # Exec Recipe Review Skill
 
-Read the exec-talk README, analyze its structure with an Agent Council, and write `exec.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Slide Generator when building exec-talk decks.
+Read the exec-talk README, analyze its structure with a primary reviewer plus an independent cross-model Rubber Duck critique, and write `exec.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Slide Generator when building exec-talk decks.
 
 **Key Constraints:**
-- **Max 4 sections** — Council should consolidate, not expand. Exec talks are tighter than tech talks. Each section earns ~8–12 slides in a 30–45 min briefing.
+- **Max 4 sections** — Review should consolidate, not expand. Exec talks are tighter than tech talks. Each section earns ~8–12 slides in a 30–45 min briefing.
 - **Executive audience is the filter** — Every section must be evaluated through the lens of a CXO, VP, or transformation lead. If a section teaches implementation, it needs to be reframed as business implications or cut.
-- **Slide generator ensures consistency** — Once you commit a recipe, the [Slide Generator agent](../../agents/slide-generator.agent.md) generates all slides using the cockpit HTML template system with uniform structure. Focus the council on *decision clarity and business credibility*, not slide-level details.
+- **Slide generator ensures consistency** — Once you commit a recipe, the [Slide Generator agent](../../agents/slide-generator.agent.md) generates all slides using the cockpit HTML template system with uniform structure. Focus the review on *decision clarity and business credibility*, not slide-level details.
 - **Recipe schema** — Read `.github/skills/exec-recipe-review/EXEC-RECIPE-TEMPLATE.yml` to understand all valid fields before writing the output file.
 
 ---
@@ -35,14 +35,14 @@ Read the exec-talk README, analyze its structure with an Agent Council, and writ
 
 ## Pre-Flight: Gather Source Material
 
-Before dispatching the council, read BOTH of these. The council prompt must include the full context — agents cannot read files themselves.
+Before starting the review, read BOTH of these. The Rubber Duck brief must include the full context — the independent reviewer must not be expected to read files itself.
 
 ```
 1. exec-talks/<topic>/README.md                                           — full section content + key metrics
 2. .github/skills/exec-recipe-review/EXEC-RECIPE-TEMPLATE.yml            — recipe schema (all valid fields)
 ```
 
-Do **not** read the existing `slides/exec-talks/<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten and should not constrain the council's reasoning.
+Do **not** read the existing `slides/exec-talks/<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten and should not constrain the review.
 
 From these, extract:
 - The `## ` H2 headings from the README — these are the candidate sections
@@ -53,7 +53,7 @@ From these, extract:
 
 ---
 
-## Council Dispatch: Phase 1 (All 3 Parallel)
+## Primary Analysis
 
 Dispatch all three agents simultaneously. Each gets the SAME full context block (see template below) with a different cognitive role.
 
@@ -81,69 +81,38 @@ KNOWN MATERIAL:
 - [Any competitive data, cost figures, or risk framing that exists]
 ```
 
-### Alpha Prompt (Deep Explorer)
+### Primary Review Prompt
 
 ```
-You are Alpha on an Agent Council (Collaborative mode).
-Your role: Generate a comprehensive, creative response.
-
 [CONTEXT BLOCK]
 
 Analyze: Is the current section structure the best use of this talk's time with a C-suite audience?
 What should change and why?
 
-1. Write a thorough response exploring the problem space deeply
-2. Add '## Open Questions': what needs to be answered before slides can be written?
-3. Add '## Wild Ideas': at least one unconventional structural approach
-Be expansive — breadth over polish.
-```
-
-### Beta Prompt (Practical Builder)
-
-```
-You are Beta on an Agent Council (Collaborative mode).
-Your role: Ground the problem in reality while finding opportunities.
-
-[CONTEXT BLOCK]
-
-Analyze: Is the current section structure the best use of this talk's time with a C-suite audience?
-
-1. Write your response focused on practical, validated approaches
-2. Add '## Building Blocks': what business content already exists that could fill gaps?
-3. Add '## Combinations': what sections could be merged or reframed for executive credibility?
-Output a concrete recommended sectionOrder with emphasis levels and rationale.
-Be constructive. Find opportunities, not just constraints.
-```
-
-### Gamma Prompt (Elegant Minimalist)
-
-```
-You are Gamma on an Agent Council (Collaborative mode).
-Your role: Find the most elegant, minimal solution and open new angles.
-
-[CONTEXT BLOCK]
-
-Analyze: What is the single structural change that would most sharpen this talk for executives?
-
-1. Write the simplest viable restructuring
-2. Add '## Alternative Angles': reframe the problem from 2 different executive perspectives
-3. Add '## What If': propose one boundary-pushing variation (e.g., reorder to lead with risk/urgency)
-Be concrete about the new sectionOrder and what changes in highlightMoments.
+1. Identify the strongest executive decision journey and the single highest-value structural improvement.
+2. Protect sourced claims, business credibility, quantified outcomes, and decision clarity.
+3. Reframe or remove implementation detail and content that has not earned executive airtime.
+4. Produce a concrete `sectionOrder`, emphasis levels, and highlight changes with rationale.
+5. Flag open questions and at least one credible alternate structure for the independent reviewer to challenge.
 ```
 
 ---
 
-## Council Dispatch: Phase 2 (All 3 Parallel Improve)
+## Mandatory Rubber Duck Gate
 
-After all three Phase 1 responses return, dispatch all three again simultaneously. Each agent gets the other two drafts and writes an IMPROVED version.
+Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
-Key instruct for each: *"Steal the best ideas from the other two shamelessly. Look for novel syntheses. Keep your natural strength but enrich it. Maintain the executive audience lens — if an idea adds implementation depth, reject it."*
+1. In Copilot CLI, explicitly delegate the primary recommendation and the complete context block to the built-in **Rubber Duck** agent.
+2. Require Rubber Duck to independently attack the proposed business question, decision journey, section order, weighting, credibility, urgency, action clarity, and content that has not earned executive airtime.
+3. Do not role-play Rubber Duck in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
+4. Outside Copilot CLI, launch one review subagent using a different model family from the primary model and give it the same adversarial brief.
+5. If no independent cross-model reviewer is available or delegation does not occur, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
 
 ---
 
-## Council Dispatch: Phase 3 (Orchestrator Synthesis)
+## Reconciliation and Final Recipe Direction
 
-Single orchestrator prompt with all three Phase 2 improved versions. Ask for:
+Reconcile the primary analysis with the independent critique. Rubber Duck is advisory, but every material objection must be accepted or rejected with a content-based reason before producing:
 
 1. **Verdict** (2-3 sentences) — the core structural problem and fix for this executive audience
 2. **`arcToc`** — one line ≤ 80 chars, section names joined by ` → ` (use "The X" naming pattern if appropriate)
@@ -164,15 +133,15 @@ Write the **complete** `exec.recipe.yml` file — all fields. Source them as fol
 | `deck.title` | README H1 title |
 | `deck.subtitle` | README subtitle line or guiding question, condensed |
 | `deck.tagline` | README one-line promise / focus (from intro block) |
-| `deck.arcToc` | Council Phase 3 output |
-| `deck.arcNarrative` | Council Phase 3 output |
-| `deck.sectionOrder` | Council Phase 3 output |
-| `deck.sectionModes` | Council Phase 3 output |
-| `deck.highlightMoments` | Council Phase 3 output |
+| `deck.arcToc` | Reconciled review output |
+| `deck.arcNarrative` | Reconciled review output |
+| `deck.sectionOrder` | Reconciled review output |
+| `deck.sectionModes` | Reconciled review output |
+| `deck.highlightMoments` | Reconciled review output |
 | `deck.preamble` | **Always** `[{ src: "./exec-spine.md" }]` for exec talks — every exec deck imports the shared series context slide. Do NOT set to `[]`. |
 | `deck.appendix` | `[]` unless the talk has explicit appendix content |
 
-Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field names, YAML structure, and inline comments. If there is an open decision from the council, append it as a YAML comment at the end of the file: `# OPEN DECISION: [question] — [paths and consequences]`.
+Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field names, YAML structure, and inline comments. If there is an open decision from the review, append it as a YAML comment at the end of the file: `# OPEN DECISION: [question] — [paths and consequences]`.
 
 **Post-Recipe Workflow:**
 1. Commit updated `exec.recipe.yml`
@@ -184,7 +153,7 @@ Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 
 ## Quality Checks Before Committing
 
-- [ ] **Max 4 sections** — Council output has exactly 4 or fewer sections. If more, consolidate.
+- [ ] **Max 4 sections** — Reconciled output has exactly 4 or fewer sections. If more, consolidate.
 - [ ] Every section in the new `sectionOrder` exists as a `## ` heading in the README
 - [ ] No section has been marked `high` that contains primarily implementation detail — reframe or cut
 - [ ] `arcToc` is a single line ≤ 80 chars using ` → ` separators between section names
@@ -215,6 +184,6 @@ Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 
 - "we're spending two sections on the operating model — review the exec talk and see if that's the best use of time"
 - "we never explain the cost of not acting — is it worth adding a section?"
-- "council: does the agentic-delivery talk structure land for a CXO audience?"
+- "does the agentic-delivery talk structure land for a CXO audience?"
 - "review the exec recipe before we regenerate slides"
 - "is this the best use of our time with VPs who only have 30 minutes?"

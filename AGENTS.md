@@ -69,7 +69,7 @@ Use the announcement feed to keep existing tech talks current without rewriting 
 3. Verify candidates against first-party docs **and** the product's own release notes / command reference. The Microsoft feed is discovery only.
 4. Create or update `tech-talks/<topic>/content.refresh.yml` using the `content-refresh` skill.
 5. After approval, patch the talk README as a reader-first article, not a changelog dump.
-6. Follow the cheap-path table in `content-refresh`. Council + full deck regen only for structural / restructure / replace-demo. Confirm/patch work stays in the existing deck.
+6. Follow the cheap-path table in `content-refresh`. Cross-model recipe review + full deck regen only for structural / restructure / replace-demo. Confirm/patch work stays in the existing deck.
 7. Normalize any selected ledger status to `accepted` or `rejected` after validation. Do not invent ledger rows for a named-talk refresh that started with an empty inbox.
 
 ### When to use it

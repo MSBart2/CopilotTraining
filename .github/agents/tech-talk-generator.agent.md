@@ -1,18 +1,9 @@
 ---
 name: Tech Talk Generator
 description: Research and generate technical deep-dive content for CopilotTraining tech talks. Creates comprehensive README.md from URLs or requirements using TEMPLATE.md structure.
-tools: ["read", "github/web_search", "edit/createFile", "edit/editFiles"]
+tools: ["read", "github/web_search", "edit/createFile", "edit/editFiles", "agent/runSubagent"]
 model: Claude Sonnet 4.6
 argument-hint: Provide URLs to research or describe the tech talk topic (uses web_search for reliability)
-handoffs:
-  - label: Tech Review Recipe
-    agent: AgentCouncil
-    prompt: Run the deck-recipe-review skill on the tech talk I just created/updated
-    send: false
-  - label: Exec Review Recipe
-    agent: AgentCouncil
-    prompt: Run the exec-recipe-review skill on the exec talk I just created/updated
-    send: false
 ---
 
 # Tech Talk Generator Agent
@@ -139,7 +130,7 @@ After the user responds:
 
 ### Deck Recipe Artifact
 
-After the README is complete and approved, invoke the **deck-recipe-review skill** (`.github/skills/deck-recipe-review/SKILL.md`) to create `tech-talks/{topic}/deck.recipe.yml`. The skill runs an Agent Council to analyze the talk structure, determine section weighting and narrative arc, and write the recipe file. The recipe must include exactly three `deck.agenda` outcomes (`title`, `takeaway`, `whyItMatters`) for the deck opening; derive them from the reader-first README rather than adding presentation choreography to it.
+After the README is complete and approved, you **must invoke the deck-recipe-review skill** (`.github/skills/deck-recipe-review/SKILL.md`) to create `tech-talks/{topic}/deck.recipe.yml`. Do not leave this as a handoff or ask the user to remember it. The skill requires an independent cross-model Rubber Duck critique before it writes the recipe. The recipe must include exactly three `deck.agenda` outcomes (`title`, `takeaway`, `whyItMatters`) for the deck opening; derive them from the reader-first README rather than adding presentation choreography to it.
 
 Do **not** write the recipe yourself — the skill owns this step.
 

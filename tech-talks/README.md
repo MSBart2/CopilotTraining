@@ -62,7 +62,7 @@ The agent follows a research-first workflow and pauses at the structure-selectio
 #### Phase 3: Build
 - Agent locks the selected structure and generates `README.md`
 - Sets frontmatter (`status`, `updated`, `section`)
-- **Invokes the deck-recipe-review skill** to run an Agent Council and produce `deck.recipe.yml`
+- **Invokes the deck-recipe-review skill** to run a mandatory Rubber Duck critique and produce `deck.recipe.yml`
 - **⏸️ Pauses** — shows the completed talk and recipe, offers handoff to slides
 
 ### Generating Slides (Separate Step)
@@ -93,7 +93,7 @@ That means the agent does the background reading first, then gives you a small, 
 The three-agent pipeline is:
 
 1. **Tech Talk Generator** — writes `README.md`, then invokes the deck-recipe-review skill as its final step
-2. **Deck Recipe Review skill** — runs an Agent Council to analyze the README, determine section weighting and narrative arc (`arcToc`, `arcNarrative`), and writes `deck.recipe.yml`
+2. **Deck Recipe Review skill** — runs a primary analysis plus mandatory cross-model Rubber Duck critique, determines section weighting and narrative arc (`arcToc`, `arcNarrative`), and writes `deck.recipe.yml`
 3. **Tech Talk Slide Generator** — reads `deck.recipe.yml` to scaffold the full slide structure in Phase A, then fills body content from the README in Phase B
 
 The recipe is always freshly generated from the README — it is never patched from a prior version. To revise a talk's structure, re-run the deck-recipe-review skill, then re-invoke the slide generator.

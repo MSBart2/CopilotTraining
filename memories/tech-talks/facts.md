@@ -60,29 +60,29 @@ This pattern is reusable for any talk that introduces new infrastructure tooling
 
 ---
 
-## Content refresh cheap path vs greenfield pipeline (2026-08-25)
+## Content refresh cheap path vs reviewed recipe pipeline (2026-08-27)
 
-`schema_version: 1` | `date: 2026-08-25`
+`schema_version: 1` | `date: 2026-08-27`
 
-The 3-stage council + wipe-and-regen sequence is **greenfield only** (new talk or `slideImpact: replace-demo` / `recipeImpact: restructure`).
+Cross-model recipe review + wipe-and-regen is **greenfield or structural only** (new talk or `slideImpact: replace-demo` / `recipeImpact: restructure`).
 
 Named-talk refresh (`content-refresh` / `ledger-tech-talk-refresh`):
 
 - Empty ledger ≠ talk is current. Continue from README `updated` + first-party product sources.
 - Route with `npm run content:route -- --since <cutoff>`. Default 7-day lookback misses older talks.
-- `recipeReview.required: false` unless structural / restructure / replace-demo. No Agent Council to confirm a recipe you already intend to keep.
+- `recipeReview.required: false` unless structural / restructure / replace-demo. Do not run cross-model review to confirm a recipe you already intend to keep.
 - Default slide work is **patch** the existing deck. File-clear (`<!-- generating -->`) is regenerate-only.
-- Compact council = draft + synthesize, no improve round. Full 3-phase only for structural work.
+- Required recipe reviews use primary analysis + an automatic independent Rubber Duck critique + reconciliation. If Rubber Duck is unavailable, use a different-model-family subagent or fail closed.
 - One network/subagent failure: retry once, then proceed. Do not restart the whole refresh.
 
-## Tech-talk pipeline: 3-stage sequence with deck-recipe-review skill (2026-04-22)
+## Tech-talk pipeline: 3-stage sequence with deck-recipe-review skill (updated 2026-08-27)
 
-`schema_version: 1` | `date: 2026-04-22`
+`schema_version: 1` | `date: 2026-08-27`
 
 The **greenfield** tech-talk authoring pipeline is a strict 3-stage sequence:
 
 1. **Tech Talk Generator** — writes `README.md`. Final step invokes the deck-recipe-review skill. Does NOT create `deck.recipe.yml` itself.
-2. **Deck Recipe Review skill** — owns recipe creation entirely. Runs a 3-agent Agent Council. Produces a **complete, fresh** `deck.recipe.yml` with ALL fields. Always overwrites — never patches.
+2. **Deck Recipe Review skill** — owns recipe creation entirely. Runs primary analysis, requires an independent cross-model Rubber Duck critique, reconciles the feedback, and produces a **complete, fresh** `deck.recipe.yml` with ALL fields. Always overwrites — never patches. The generic AgentCouncil agent and skill were retired; callers must not ask the user to invoke review manually.
 3. **Tech Talk Slide Generator** — reads `deck.recipe.yml` as the sole Phase A input. If recipe is missing, **hard stops**: "Run the deck-recipe-review skill first."
 
 **Key change from prior workflow:** File-clear gate promoted to pre-flight in slide generator: `Set-Content ... "<!-- generating -->"` runs BEFORE Phase A, not inside it. Refresh work must not use this wipe unless `slideImpact` is `regenerate` or `replace-demo`.

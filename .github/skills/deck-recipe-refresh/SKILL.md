@@ -1,6 +1,6 @@
 ---
 name: deck-recipe-refresh
-description: "Use after an approved content refresh when recipeReview.required is true, or when the user asks to refresh an existing recipe. Default is a compact one-pass council. Full 3-phase council only for structural / restructure / replace-demo. Triggers: refresh recipe, changelog recipe review, council approve recipe, update existing deck recipe."
+description: "Use after an approved content refresh when recipeReview.required is true, or when the user asks to refresh an existing recipe. Preserves the current recipe as a baseline and requires an independent cross-model Rubber Duck critique before structural changes are finalized. Triggers: refresh recipe, changelog recipe review, approve recipe, update existing deck recipe."
 infer: true
 ---
 
@@ -32,16 +32,14 @@ Stop when:
 
 Do not read the existing slide deck. The README, refresh plan, and recipe are the authoritative inputs.
 
-## Council intensity
+## Review depth
 
-- Compact (default when this skill runs): one parallel draft pass + orchestrator synthesis. No improve round.
-- Full: three-phase collaborative council. Use only for `updateLevel: structural`, `recipeImpact: restructure`, or `slideImpact: replace-demo`.
+- Compact (default when this skill runs): primary analysis, independent Rubber Duck critique, then reconciliation.
+- Full: primary analysis must include at least one credible alternate structure before the Rubber Duck critique. Use only for `updateLevel: structural`, `recipeImpact: restructure`, or `slideImpact: replace-demo`.
 
-Pass `council: compact` or `council: full` in the Agent Council task.
+## Review Question
 
-## Council Question
-
-Give every council member the same extracted context and ask:
+Give the primary reviewer and Rubber Duck the same extracted context and ask:
 
 > Does the approved evidence require changing the talk's thesis, section order,
 > weighting, highlights, agenda, or demos? Preserve intentional decisions unless
@@ -57,15 +55,17 @@ The context must include:
 - User emphasis from the refresh plan
 - Constraints from the standard recipe review skill
 
-## Council Roles
+## Mandatory Rubber Duck Gate
 
-Use the standard three-agent collaborative council, with these review lenses:
+Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
-- Alpha: identify how the product model and technical thesis changed.
-- Beta: protect practical demos, audience usefulness, and factual release status.
-- Gamma: minimize churn; identify the smallest recipe change that fully reflects the evidence.
+1. Produce a primary recommendation that identifies how the product model or technical thesis changed, protects practical demos and factual release status, and minimizes unnecessary churn.
+2. In Copilot CLI, explicitly delegate the recommendation and the complete extracted context to the built-in **Rubber Duck** agent. Require an independent adversarial critique of the thesis, section order, weighting, highlights, agenda, and demos.
+3. Do not role-play Rubber Duck in the primary model. Wait for the separate review and reconcile its objections explicitly before finalizing.
+4. Outside Copilot CLI, launch one review subagent using a different model family from the primary model and give it the same adversarial brief.
+5. If no independent cross-model reviewer is available or the delegation does not occur, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
 
-The synthesis must return:
+The reconciled result must return:
 
 1. `decision`: `preserve`, `revise`, or `restructure`
 2. A short rationale tied to accepted refresh items
@@ -79,12 +79,12 @@ The synthesis must return:
 - `revise`: Keep the section order and thesis; adjust emphasis, notes, agenda, or highlights.
 - `restructure`: Change the thesis or section order because a headline update changes the operating model or centerpiece workflow.
 
-A `structural` refresh does not force `restructure`; it forces explicit council consideration.
+A `structural` refresh does not force `restructure`; it forces explicit cross-model consideration.
 
 ## Write and Report
 
 1. Overwrite `tech-talks/<topic>/deck.recipe.yml` with the complete synthesized recipe.
-2. Add a concise header comment containing the refresh date, council decision, and rationale.
+2. Add a concise header comment containing the refresh date, review decision, and rationale.
 3. Validate YAML and the standard recipe quality checks.
 4. Set `refresh.validation.recipeApproved: true` in `content.refresh.yml`.
 5. Report the decision and material recipe changes before slide generation.
