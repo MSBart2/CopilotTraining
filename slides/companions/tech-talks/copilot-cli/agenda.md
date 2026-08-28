@@ -1,19 +1,19 @@
 ---
-title: "GitHub Copilot CLI: AI at the Point of Work"
-subtitle: "Close Every Gap Between You and the Work"
+title: "GitHub Copilot CLI — AI at the Point of Work"
+subtitle: "AI at the Point of Work"
 slug: copilot-cli
 category: tech-talks
 duration: 45
-updated: 2026-08-26
+updated: 2026-08-28
 ---
 
-# GitHub Copilot CLI: AI at the Point of Work
+# GitHub Copilot CLI — AI at the Point of Work
 
 Agenda (45 min)
 
-1. Think Before You Build (10 min)
-2. Work From Anywhere (9 min)
-3. Sessions That Learn (9 min)
-4. Scale Beyond Yourself (11 min)
+1. Plan Mode (2 min)
+2. Operating Modes (2 min)
+3. Context Management (2 min)
+4. Remote Sessions (33 min)
 5. Before/After & What You Can Do Today (4 min)
 6. References (2 min)
