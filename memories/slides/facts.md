@@ -4,6 +4,14 @@ Confirmed, locked facts about Slidev infrastructure, build rules, and structural
 
 ---
 
+## index theme overrides must redeclare the full palette (2026-09-15)
+
+`schema_version: 1` | `date: 2026-09-15`
+
+When adding a late visual-refresh `:root` block to `slides/index-custom.html`, redeclare the complete `[data-theme="light"]` palette after it. A partial light override can leave dark text and card variables winning the cascade, producing nearly invisible headings on white cards. Explicitly reset legacy gradient text properties such as `background` and `-webkit-text-fill-color` for light-mode headings.
+
+---
+
 ## Component content validator limits — character maximums per component (2026-06-16)
 
 `schema_version: 1` | `date: 2026-06-16`

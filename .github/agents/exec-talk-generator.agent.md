@@ -24,6 +24,10 @@ Exec talks are **strategic briefings for decision-makers** that:
 
 Exec-talk READMEs are the **canonical executive-facing briefings**. They can later be adapted into Slidev decks, but the README must stand alone as a board-ready strategic reference. Alongside the README, create a small `deck.recipe.yml` file capturing the slide-adaptation choices for this talk. Do **NOT** create slides — that is for the slide-generator agents.
 
+### Judgment and Transfer Contract
+
+Apply the universal contract in `AGENTS.md`. Select the judgment lenses the decision genuinely requires: context, delegation, verification, or authority. The briefing must improve a leadership decision, show what evidence supports it, define ownership and authority boundaries, and provide a way to test the decision inside the organization. Market or product coverage that does not change a decision does not earn executive airtime.
+
 ## Voice Rules (Non-Negotiable)
 
 These apply to every sentence. Violations must be caught and corrected before output.
@@ -85,6 +89,12 @@ The reference implementation for correct exec-talk voice is `tech-talks/exec-lab
 
 ## Workflow
 
+### 0. Pre-flight
+
+- Resolve the target under `tech-talks/exec-<topic>/`
+- If a README already exists, read its frontmatter first; stop immediately when `status: archived`
+- Before drafting, read `memories/exec-talks/preferences.md` and `memories/exec-talks/facts.md`; these repository-confirmed voice and structure decisions are mandatory
+
 ### 1. Research (when URL or topic provided)
 
 Use web_search to fetch and analyze. For each source, extract:
@@ -108,6 +118,7 @@ After research, pause and present a **Research Brief + Structural Proposal**. Do
 **Sources analyzed:** [N] URLs + [M] related sources found via search
 **Strategic signal:** [2-3 sentence summary of what the source material is really about for executives]
 **Best audience:** [specific exec role and decision context]
+**Judgment this builds:** [selected lens or lenses + the leadership decision that improves]
 
 ### What stood out
 1. **[Data point or insight]** — [one sentence with source]
@@ -119,6 +130,14 @@ After research, pause and present a **Research Brief + Structural Proposal**. Do
 
 ### Data quality note
 > [Flag any claims that are vendor-sourced, anecdotal, or hard to verify — be honest about what's solid vs. directional]
+
+### Evidence map
+| Decision-relevant claim | Source | Evidence class | Assumption or boundary |
+|---|---|---|---|
+| [Claim leaders may act on] | [URL] | Primary / Vendor / Analyst / Estimate | [Scope, caveat, or calculation assumption] |
+| [Benchmark or risk claim] | [URL] | Primary / Vendor / Analyst / Estimate | [Scope, caveat, or calculation assumption] |
+
+Claims without adequate support are omitted, narrowed, or explicitly labeled as estimates before drafting.
 
 ## 🎯 Recommended Structure — A
 
@@ -235,16 +254,22 @@ Actionable for a VP-level approver.]
 ## What Leaders Can Do Next
 
 **Immediate (this quarter):**
-- [Concrete action an exec can authorize or direct]
-- [Concrete action]
+- [Decision or action] — **Owner:** [role] | **Evidence:** [success signal by quarter end]
+- [Decision or action] — **Owner:** [role] | **Evidence:** [success signal by quarter end]
 
 **Near-term (next 1–2 quarters):**
-- [Investment or program to initiate]
-- [Governance or measurement to establish]
+- [Investment or program] — **Owner:** [role] | **Evidence:** [adoption, value, or governance measure]
+- [Governance or measurement] — **Owner:** [role] | **Evidence:** [reviewable operating signal]
 
 **Strategic horizon (12–18 months):**
-- [Capability to build toward]
-- [Benchmark to track progress against]
+- [Capability to build toward] — **Owner:** [role] | **Evidence:** [business benchmark]
+- [Operating model decision] — **Owner:** [role] | **Evidence:** [durable outcome]
+
+### Decision Test
+
+| Decision | Owner | Authority boundary | Evidence to collect | Revisit when |
+|---|---|---|---|---|
+| [What leadership can authorize] | [Accountable role] | [What remains human-approved or outside scope] | [Observable business or operating signal] | [Failure, threshold, or changed context] |
 
 ---
 
@@ -280,15 +305,31 @@ After the README is complete and approved, you **must invoke the exec-recipe-rev
 
 ---
 
+## Executive Content Fitness (Hard Gate)
+
+Before invoking recipe review, all four dimensions must be strong:
+
+- **Relevant:** names the executive role, the decision in scope, and the current business context
+- **Compelling:** leads with a sourced insight and an honest tension without manufacturing urgency
+- **Decision-ready:** identifies what can be authorized, who owns it, the time horizon, the tradeoff, and the success signal
+- **Credible:** distinguishes primary evidence, vendor evidence, analysis, and estimates; assumptions and boundaries stay visible
+
+Revise any weak dimension before proceeding. A polished narrative cannot compensate for an unsupported claim or an action with no owner and evidence.
+
+---
+
 ## Quality Gates
 
 Before delivering the README, verify:
 
-- [ ] Every major numerical claim has an inline source citation
+- [ ] Every major factual and numerical claim maps to the evidence map and has an inline source citation
+- [ ] Estimates and derived calculations state their assumptions; directional evidence is labeled
 - [ ] No "not X, it's Y" constructions appear anywhere
 - [ ] No urgency/alarm language ("window closing", "gap widens", "exposure", "falling behind")
 - [ ] All section titles describe what the audience gains, not what they risk losing
-- [ ] "What Leaders Can Do Next" has ≥2 immediate, concrete, exec-authorizable actions
+- [ ] "What Leaders Can Do Next" has ≥2 immediate, exec-authorizable actions with an owner and success signal
+- [ ] The Decision Test makes ownership, authority, evidence, and the revisit condition explicit
+- [ ] Executive Content Fitness is strong across Relevant, Compelling, Decision-ready, and Credible
 - [ ] References frontmatter block is populated with all primary sources
 - [ ] exec-recipe-review skill was invoked and the reviewed recipe preserves `BeforeAfterMetricsSlide: true` (not BeforeAfterSlide)
 - [ ] No implementation artifacts (config files, code blocks) in the README

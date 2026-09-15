@@ -10,6 +10,12 @@ Generate module README.md with exercise planning for CopilotTraining workshop mo
 
 ---
 
+## Judgment and Transfer Contract
+
+Apply the universal contract in `AGENTS.md`. Select the one or two judgment lenses the module genuinely develops, then plan how participants make a decision, inspect evidence, encounter a boundary, and transfer the practice to a bounded task in their own work. Do not use feature coverage or persona count as a substitute for transfer.
+
+---
+
 ## When to Use This Skill
 
 - Creating a new training module from scratch
@@ -39,7 +45,7 @@ Every module must deliver on these three goals:
 Each module README.md (~100-150 lines) contains:
 
 1. **Story So Far** — Progression from previous modules
-2. **Why This Matters** — Relevance to ALL personas (Sarah, David, Marcus, Elena, Rafael)
+2. **Why This Matters** — Relevance to all six personas (Sarah, Marcus, David, Elena, Rafael, Jessica)
 3. **What You'll Learn** — Brief capability overview
 4. **📋 Exercise Planning Table** — Detailed exercise specifications
 5. **What This Feature Does** — Technical overview
@@ -88,6 +94,7 @@ If the user provides a URL (blog post, docs page, announcement):
    - What artifacts would learners create?
    - What before/after metrics would be compelling?
    - Which persona should lead each exercise?
+   - How will Jessica demonstrate understanding while accelerating learning?
 
 4. **Find official docs:**
    - Primary documentation URL
@@ -109,7 +116,7 @@ Use [TEMPLATE.md](TEMPLATE.md) as the base structure. The template includes all 
 - Introduce the new challenge this module addresses
 - Add Integration Note connecting to specific artifacts from previous module
 
-**2. Why This Matters (All 5 Personas)**
+**2. Why This Matters (All 6 Personas)**
 
 - Write one outcome-focused statement per persona
 - Include specific metrics or measurable improvements
@@ -254,22 +261,26 @@ Choose support personas based on realistic collaboration:
 4. Note official documentation links
 5. Plan exercises that demonstrate value
 
-### 2. Generate README.md
+### 2. Confirm the Training Design
+
+Before writing, present the audience need, sourced capability truth, one honest boundary, the proposed exercises, and the evidence each exercise will produce. Wait for approval unless the user explicitly asks to skip review.
+
+### 3. Generate README.md
 
 Using [TEMPLATE.md](TEMPLATE.md), create:
 
 - **Story So Far** — Connection to previous modules
-- **Why This Matters** — Individual statements for ALL 5 personas
+- **Why This Matters** — Individual statements for all six personas
 - **What You'll Learn** — Brief capability overview
 - **📋 Exercise Planning Table** — Detailed specifications for 2-3 exercises
 - **What This Feature Does** — Technical overview with official docs
 - **Next Up** — Preview of next module
 
-### 3. Validate Against Checklist
+### 4. Validate Against Checklist
 
 - [ ] README.md is ~100-150 lines
 - [ ] Story So Far connects to previous module's artifacts
-- [ ] Why This Matters includes ALL personas (Sarah, David, Marcus, Elena, Rafael)
+- [ ] Why This Matters includes all personas (Sarah, Marcus, David, Elena, Rafael, Jessica)
 - [ ] Exercise planning table includes all required columns
 - [ ] Each exercise has:
   - [ ] Clear lead persona (⭐) and support personas (🤝)
@@ -277,9 +288,13 @@ Using [TEMPLATE.md](TEMPLATE.md), create:
   - [ ] Brief solution description
   - [ ] Target improvement metrics (before→after format)
   - [ ] Artifacts that will be created
+   - [ ] Baseline participants will record
+   - [ ] Target explicitly labeled as a target
+   - [ ] Command, inspection, or behavior that validates the result
 - [ ] "What This Feature Does" includes 2-3 official documentation links
 - [ ] Next Up preview included
 - [ ] Section separators (`---`) between major sections
+- [ ] Training Fitness is strong: relevant audience need, actionable validation loops, and one compelling transformation
 
 ---
 
@@ -296,9 +311,9 @@ Plan these exercises:
 
 **Result:**
 
-- `modules/04-custom-instructions/README.md` with:
+- `workshop/04-custom-instructions/README.md` with:
   - Story connecting to Module 3's prompt libraries
-  - Why This Matters for all 5 personas
+   - Why This Matters for all six personas
   - Exercise planning table with 3 rows (detailed specifications)
   - Technical overview with official docs links
   - Next Up preview to Module 5

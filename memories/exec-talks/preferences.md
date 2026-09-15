@@ -84,3 +84,11 @@ Never frame inaction as threat. Never imply the audience is falling behind or at
 These patterns were removed from `slides/tech-talks/exec-labor.md` and the replacement style is visible there. Use exec-labor as the reference for correct exec-talk voice.
 
 **Still to retrofit:** `slides/tech-talks/exec-delivery.md`, `slides/tech-talks/exec-economics.md`, and the corresponding `tech-talks/exec-*/README.md` files.
+
+---
+
+## Executive content fitness is decision quality (2026-09-15)
+
+`schema_version: 1` | `date: 2026-09-15`
+
+An executive briefing is ready when it is relevant, compelling, decision-ready, and credible. Decision-ready actions name what can be authorized, an owner, a time horizon, a tradeoff, and an observable success signal. Credibility requires an evidence map that distinguishes primary evidence, vendor evidence, analysis, and estimates while keeping assumptions visible. Timing context explains what changed and which decision is available; it must not manufacture urgency or threaten leaders with inaction.

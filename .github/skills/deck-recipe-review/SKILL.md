@@ -13,6 +13,7 @@ infer: true
 Read the tech-talk README, analyze its structure with a primary reviewer plus an independent cross-model Rubber Duck critique, and write `deck.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Tech Talk Slide Generator.
 
 **Key Constraints:**
+- **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the practitioner decision, observable proof, boundary, and own-work transfer when consolidating the README. A section that only inventories features has not earned slide time.
 - **Max 4 sections** — Review should consolidate, not expand. Each section gets ~12-15 slides in 60-min talks.
 - **Slide generator ensures consistency** — Once you commit a recipe, the [Tech Talk Slide Generator agent](../../agents/tech-talk-slide-generator.agent.md) generates all slides using the Vue component system with uniform structure (title, toc, section openers, closers, references). Focus the review on *narrative logic and audience fit*, not slide-level details.
 - **Recipe schema** — Read `.github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml` to understand all valid fields before writing the output file.
@@ -94,10 +95,11 @@ What should change and why?
 
 1. Identify the strongest narrative arc and the single highest-value structural improvement.
 2. Protect practical artifacts, audience outcomes, and technical accuracy.
-3. Identify content to consolidate, demote, or remove rather than only adding material.
-4. Produce a concrete `sectionOrder`, emphasis levels, agenda, and highlight changes with rationale.
-5. Flag open questions and at least one credible alternate structure for the independent reviewer to challenge.
-6. Rewrite every recommendation in direct-positive, possibility-led language suitable for reuse by the slide generator.
+3. Identify which judgment lens or lenses the arc develops and where the audience proves or transfers that judgment.
+4. Identify content to consolidate, demote, or remove rather than only adding material.
+5. Produce a concrete `sectionOrder`, emphasis levels, agenda, and highlight changes with rationale.
+6. Flag open questions and at least one credible alternate structure for the independent reviewer to challenge.
+7. Rewrite every recommendation in direct-positive, possibility-led language suitable for reuse by the slide generator.
 ```
 
 ---

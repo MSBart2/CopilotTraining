@@ -9,11 +9,20 @@ Quick orientation for agents. Full docs: `AGENTS.md`
 |------|-----------|---------|
 | **Workshop** | `workshop/` | Hands-on modules with personas, exercises, metrics (15y → newcomers) |
 | **Tech-talks** | `tech-talks/` | Technical deep-dives, 30-60 min presentations |
-| **Exec-talks** | `exec-talks/` | Strategic thought leadership for decision-makers |
+| **Exec-talks** | `tech-talks/exec-*` | Strategic thought leadership for decision-makers |
 
 ---
 
 ## Content Guidelines
+
+### Education North Star
+
+Great Copilot education helps capable people form better judgment about **context, delegation, verification, and authority**, then lets them prove that judgment in their own work.
+
+- Select the judgment lenses the topic genuinely needs; do not force all four everywhere.
+- Require a decision, observable evidence, a boundary or escalation path, and transfer to real work.
+- Treat the audience as capable peers calibrating a practice, not converts waiting to be convinced.
+- Full Judgment and Transfer Contract: `AGENTS.md`.
 
 ### Workshop
 - **Persona-driven:** Sarah, Marcus, David, Elena, Rafael, Jessica

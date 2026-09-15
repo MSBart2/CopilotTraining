@@ -707,26 +707,495 @@
     .grid {
       grid-auto-rows: minmax(clamp(100px, 11vw, 160px), auto);
     }
+
+    /* ── 2026 catalog refresh ─────────────────────────────────── */
+    :root {
+      --bg-gradient: #090d14;
+      --text: #f4f7fb;
+      --text-muted: #a9b4c4;
+      --text-dim: #758196;
+      --section-bg: rgba(13, 19, 29, 0.86);
+      --section-border: rgba(148, 163, 184, 0.16);
+      --section-shadow: rgba(0, 0, 0, 0.32);
+      --section-divider: rgba(148, 163, 184, 0.14);
+      --card-bg: rgba(17, 25, 38, 0.84);
+      --card-border: rgba(148, 163, 184, 0.18);
+      --card-hover-bg: rgba(23, 34, 51, 0.96);
+      --card-h2: #f8fafc;
+      --card-p: #a9b4c4;
+      --chip-bg: rgba(148, 163, 184, 0.08);
+      --chip-border: rgba(148, 163, 184, 0.18);
+      --chip-color: #b8c3d2;
+      --hero-bg: transparent;
+      --hero-border: rgba(148, 163, 184, 0.18);
+      --section-desc: #c4cedb;
+    }
+
+    [data-theme="light"] {
+      --bg-gradient: #edf1f5;
+      --text: #111827;
+      --text-muted: #526074;
+      --text-dim: #6b778a;
+      --section-bg: rgba(255, 255, 255, 0.82);
+      --section-border: rgba(15, 23, 42, 0.14);
+      --section-shadow: rgba(15, 23, 42, 0.1);
+      --section-divider: rgba(15, 23, 42, 0.12);
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --card-border: rgba(15, 23, 42, 0.16);
+      --card-hover-bg: #ffffff;
+      --card-h2: #111827;
+      --card-p: #526074;
+      --chip-bg: rgba(15, 23, 42, 0.055);
+      --chip-border: rgba(15, 23, 42, 0.16);
+      --chip-color: #465468;
+      --hero-bg: transparent;
+      --hero-border: rgba(15, 23, 42, 0.16);
+      --section-desc: #3c4a5e;
+    }
+
+    body {
+      position: relative;
+      padding: 1.5rem clamp(1rem, 3vw, 3rem) 4rem;
+      background-color: #090d14;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+        linear-gradient(135deg, #090d14 0%, #111827 55%, #0b1018 100%);
+      background-size: 32px 32px, 32px 32px, 100% 100%;
+      background-attachment: fixed;
+      font-family: "Aptos", "Segoe UI Variable", "Trebuchet MS", sans-serif;
+    }
+
+    [data-theme="light"] body {
+      background-color: #edf1f5;
+      background-image:
+        linear-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.045) 1px, transparent 1px),
+        linear-gradient(135deg, #f4f7fa 0%, #e8edf3 100%);
+    }
+
+    .container {
+      max-width: 1540px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1.25rem;
+      margin: 0 0 0.9rem;
+      padding: 1.15rem 0 1.4rem;
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid var(--hero-border);
+      border-radius: 0;
+    }
+
+    .hero-logo-wrap {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      background: #f5b800;
+      border: 1px solid #ffd24d;
+      border-radius: 6px;
+      box-shadow: 5px 5px 0 rgba(34, 211, 238, 0.26);
+    }
+
+    .hero-logo {
+      width: 43px;
+      opacity: 1;
+    }
+
+    .eyebrow {
+      margin-bottom: 0.3rem;
+      color: #22d3ee;
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      background: none;
+      color: var(--text);
+      -webkit-text-fill-color: currentColor;
+      font-family: "Aptos Display", "Segoe UI Variable Display", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.9rem, 4vw, 3.15rem);
+      font-weight: 760;
+      line-height: 1;
+      letter-spacing: 0;
+    }
+
+    [data-theme="light"] h1 {
+      background: none;
+      color: #111827;
+      -webkit-text-fill-color: #111827;
+    }
+
+    .subtitle {
+      max-width: 790px;
+      margin-top: 0.55rem;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+    }
+
+    .hero-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .library-status {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: var(--text-muted);
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.7rem;
+      white-space: nowrap;
+    }
+
+    .library-status::before {
+      width: 7px;
+      height: 7px;
+      content: "";
+      background: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.12);
+    }
+
+    .theme-toggle {
+      min-width: 42px;
+      min-height: 42px;
+      justify-content: center;
+      padding: 0.55rem 0.7rem;
+      border-radius: 6px;
+    }
+
+    .catalog-nav {
+      position: sticky;
+      top: 0.75rem;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      margin-bottom: 1.25rem;
+      overflow: hidden;
+      background: var(--section-border);
+      border: 1px solid var(--section-border);
+      border-radius: 7px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(16px);
+    }
+
+    .catalog-nav a {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.72rem 0.9rem;
+      background: rgba(12, 18, 28, 0.94);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background 0.18s ease, color 0.18s ease;
+    }
+
+    [data-theme="light"] .catalog-nav a {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .catalog-nav a:hover,
+    .catalog-nav a:focus-visible {
+      background: var(--card-hover-bg);
+      color: var(--text);
+      outline: none;
+    }
+
+    .catalog-nav-index {
+      color: #22d3ee;
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.68rem;
+    }
+
+    .section {
+      margin-bottom: 1.25rem;
+      padding: clamp(1rem, 2vw, 1.5rem);
+      border-radius: 8px;
+      box-shadow: 0 12px 38px var(--section-shadow);
+      scroll-margin-top: 5rem;
+    }
+
+    .section.tech-talks,
+    .section.workshop,
+    .section.exec-talks,
+    .section.repos {
+      background: var(--section-bg);
+    }
+
+    .section-header {
+      align-items: flex-start;
+      margin-bottom: 1.3rem;
+      padding-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: "Aptos Display", "Segoe UI Variable Display", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.2rem, 2vw, 1.65rem);
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+
+    .section-description {
+      max-width: 760px;
+      margin-top: 0.3rem;
+      line-height: 1.45;
+    }
+
+    .sub-group {
+      --group-accent: #22d3ee;
+      margin: 0 0 1.5rem;
+      padding-left: 1rem;
+      border-left: 2px solid color-mix(in srgb, var(--group-accent) 65%, transparent);
+    }
+
+    #platform-teams { --group-accent: #fbbf24; }
+    #agentic-systems { --group-accent: #4ade80; }
+    #executive-talks { --group-accent: #60a5fa; }
+
+    .sub-group-header {
+      margin-bottom: 0.8rem;
+      padding-left: 0;
+    }
+
+    .sub-group-label {
+      padding: 0;
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      color: var(--group-accent) !important;
+      font-size: 0.73rem;
+      letter-spacing: 0.12em;
+    }
+
+    [data-theme="light"] .section.tech-talks .sub-group-label {
+      background: transparent;
+      border: 0;
+    }
+
+    .sub-group-desc {
+      color: var(--text-muted);
+    }
+
+    .grid {
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      grid-auto-rows: auto;
+      gap: 0.7rem;
+    }
+
+    .card,
+    .card-shell {
+      position: relative;
+      min-height: 146px;
+      padding: 1rem 1rem 0.95rem;
+      overflow: hidden;
+      border-radius: 6px;
+      box-shadow: none;
+    }
+
+    .card::before,
+    .card-shell::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      content: "";
+      background: var(--group-accent, #22d3ee);
+      opacity: 0.62;
+      transform: scaleX(0.18);
+      transform-origin: left;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .card:hover,
+    .card-shell:hover {
+      transform: translateY(-2px);
+      border-color: color-mix(in srgb, var(--group-accent, #22d3ee) 52%, transparent) !important;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .card:hover::before,
+    .card-shell:hover::before {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .card h2 {
+      font-family: "Aptos Display", "Segoe UI Variable Display", "Trebuchet MS", sans-serif;
+      font-size: 1rem;
+      font-weight: 720;
+      line-height: 1.2;
+    }
+
+    .card p {
+      margin-top: 0.45rem;
+      color: var(--card-p);
+      font-size: 0.79rem;
+      line-height: 1.5;
+      -webkit-line-clamp: 4;
+    }
+
+    .card-title-row {
+      align-items: center;
+    }
+
+    .card-chip {
+      border-radius: 4px;
+      font-size: 0.57rem;
+    }
+
+    .card-chip:hover,
+    .card-chip:focus-visible {
+      background: var(--group-accent, #3b82f6);
+      border-color: var(--group-accent, #3b82f6);
+      color: #071018;
+      outline: none;
+    }
+
+    .section-count-badge {
+      border-radius: 4px;
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0;
+    }
+
+    .section.repos .grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    @media (max-width: 760px) {
+      body {
+        padding: 0.9rem 0.75rem 2.5rem;
+        background-size: 24px 24px, 24px 24px, 100% 100%;
+      }
+
+      .hero {
+        position: relative;
+        display: block;
+        padding-right: 3.2rem;
+      }
+
+      .hero-logo-wrap {
+        display: none;
+      }
+
+      .hero-controls {
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      .library-status {
+        display: none;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+        line-height: 1.05;
+      }
+
+      .subtitle {
+        font-size: 0.82rem;
+      }
+
+      .catalog-nav {
+        top: 0.4rem;
+      }
+
+      .catalog-nav a {
+        justify-content: center;
+        padding: 0.68rem 0.35rem;
+        font-size: 0.68rem;
+      }
+
+      .catalog-nav-index,
+      .sub-group-desc,
+      .section-count-badge,
+      #themeLabel {
+        display: none;
+      }
+
+      .section {
+        padding: 0.95rem;
+      }
+
+      .section-header {
+        display: block;
+      }
+
+      .section-icon {
+        display: none;
+      }
+
+      .sub-group {
+        padding-left: 0.7rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .card-shell {
+        min-height: 132px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
+    }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <div class="hero">
-      <img src="./tech-talks/sdp-logo.png" alt="SDP Logo" class="hero-logo" />
-      <div class="hero-text">
-        <h1>CopilotTraining</h1>
-        <p class="subtitle">Tech talks, executive briefs, and hands-on workshop modules for scaling GitHub Copilot
-          across your teams.</p>
+    <header class="hero">
+      <div class="hero-logo-wrap">
+        <img src="./tech-talks/sdp-logo.png" alt="SDP Logo" class="hero-logo" />
       </div>
-      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
-        <span id="themeIcon">☀️</span>
-        <span id="themeLabel">Light</span>
-      </button>
-    </div>
+      <div class="hero-text">
+        <p class="eyebrow">Copilot practice library</p>
+        <h1>Build better judgment with AI.</h1>
+        <p class="subtitle">Choose a technical deep dive, leadership briefing, or hands-on module. Each path is built around context, delegation, verification, and authority.</p>
+      </div>
+      <div class="hero-controls">
+        <span class="library-status">Current curriculum</span>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+          <span id="themeIcon">☀️</span>
+          <span id="themeLabel">Light</span>
+        </button>
+      </div>
+    </header>
+
+    <nav class="catalog-nav" aria-label="Catalog sections">
+      <a href="#tech-talks"><span class="catalog-nav-index">01</span>Tech talks</a>
+      <a href="#workshop"><span class="catalog-nav-index">02</span>Workshop</a>
+      <a href="#related-repos"><span class="catalog-nav-index">03</span>Related repos</a>
+    </nav>
 
     <!-- Tech Talks Section -->
-    <div class="section tech-talks">
+    <div class="section tech-talks" id="tech-talks">
       <div class="section-header">
         <span class="section-icon">🔬</span>
         <div>
@@ -735,7 +1204,7 @@
         </div>
       </div>
       <!-- Developers -->
-      <div class="sub-group">
+      <div class="sub-group" id="developers">
         <div class="sub-group-header">
           <span class="sub-group-icon">👩‍💻</span>
           <span class="sub-group-label">Developers</span>
@@ -789,7 +1258,7 @@
       </div>
 
       <!-- Platform Teams -->
-      <div class="sub-group">
+      <div class="sub-group" id="platform-teams">
         <div class="sub-group-header">
           <span class="sub-group-icon">🧰</span>
           <span class="sub-group-label">Platform Teams</span>
@@ -831,7 +1300,7 @@
       </div>
 
       <!-- Agentic Systems -->
-      <div class="sub-group">
+      <div class="sub-group" id="agentic-systems">
         <div class="sub-group-header">
           <span class="sub-group-icon">🤖</span>
           <span class="sub-group-label">Agentic Systems</span>
@@ -887,7 +1356,7 @@
       </div>
 
       <!-- Executive -->
-      <div class="sub-group">
+      <div class="sub-group" id="executive-talks">
         <div class="sub-group-header">
           <span class="sub-group-icon">💼</span>
           <span class="sub-group-label">Executive</span>
@@ -914,7 +1383,7 @@
     </div>
 
     <!-- Workshop Section -->
-    <div class="section workshop">
+    <div class="section workshop" id="workshop">
       <div class="section-header">
         <span class="section-icon">🎓</span>
         <div>
@@ -968,7 +1437,7 @@
     </div>
 
     <!-- Related Repos Section -->
-    <div class="section repos">
+    <div class="section repos" id="related-repos">
       <div class="section-header">
         <span class="section-icon">🔗</span>
         <div>

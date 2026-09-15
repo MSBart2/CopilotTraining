@@ -14,6 +14,12 @@ Every slide uses a Vue component — no raw HTML. The component library handles 
 
 ---
 
+## Judgment and Transfer Contract
+
+Apply the universal contract in `AGENTS.md`. Preserve the reviewed recipe's practitioner decision, selected judgment lenses, observable proof, boundary, and own-work transfer. A slide that only inventories features does not earn space. Never compress away the evidence or limitation that makes a claim trustworthy.
+
+---
+
 ## Mode
 
 - **`patch` (default after a content refresh):** keep `slides/tech-talks/{slug}.md`. Update only slides whose claims changed. Do **not** clear the file. Do **not** rewrite Phase A scaffold. Build once at the end.
@@ -134,7 +140,7 @@ Template.md was already loaded in pre-flight for structural component schemas. I
 Now read everything that Phase B needs — **all in one parallel pass before writing any body slides**. Issue all reads simultaneously, not sequentially:
 
 - **`slides/tech-talks/template.md`** — already loaded in pre-flight for structural schemas; re-read now to focus on the Tier-1 body component schemas you are about to write. Do not read `slides/TEMPLATE.md`.
-- **`memories/infra/facts.md`**, `discoveries.md`, `advice.md` — confirmed build rules and gotchas. If the topic has a bench entry (e.g., `memories/agent_architecture/facts.md`), read that too.
+- **Available drawers under `memories/slides/`** — confirmed build rules and gotchas. Also read `memories/tech-talks/facts.md`; if the topic has a bench entry (e.g., `memories/agent_architecture/facts.md`), read that too.
 - **Topic bench `preferences.md`** — if a `memories/{topic}/preferences.md` or `memories/{section}/preferences.md` exists (e.g., `memories/exec-talks/preferences.md`), read it now. Voice, tone, and framing rules live here and override default assumptions. For exec-talks this is **mandatory** — it contains banned patterns and preferred voice rules that must be applied to every prop value.
 - **`tech-talks/{topic}/README.md`** — full read. Extract: core question, personas, before/after comparisons with metrics, key capabilities ranked by novelty and audience impact, references frontmatter.
 
@@ -317,7 +323,7 @@ Run `node slides/scripts/sync-index-dates.mjs` from `slides/` to update the "NEW
 Before handing off, run the **Content Change → Workbench Update Protocol** in `.github/skills/workbench/SKILL.md`.
 
 - If the session changed content framing, audience targeting, ordering constraints, or why an alternative was rejected → write to the matching topic bench (e.g., `memories/agent_architecture/discoveries.md`).
-- If changes were Slidev/component patterns only → write to `memories/infra/`.
+- If changes were Slidev/component patterns only → write to `memories/slides/`.
 - If neither applies → write nothing.
 
 ---

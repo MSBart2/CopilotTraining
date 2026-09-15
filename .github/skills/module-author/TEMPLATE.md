@@ -1,3 +1,8 @@
+---
+status: active
+updated: YYYY-MM-DD
+---
+
 # Module N: [Feature Name]
 
 ## ⏰ [Situation/Theme]
@@ -50,6 +55,8 @@ Now, in **Module N**, they [new challenge that this module's capability solves].
 
 **Rafael (Product Visionary):** [What business value or stakeholder communication this enables]
 
+**Jessica (Eager Junior):** [How this accelerates learning while making understanding visible]
+
 ---
 
 💡 **Understanding [Key Tool/Feature/Concept]**
@@ -60,7 +67,10 @@ Now, in **Module N**, they [new challenge that this module's capability solves].
 - [What it does / enables]
 - [How it works / when to use it]
 - [Why it matters for this module]
-- [W� Key Concepts
+
+---
+
+## Key Concepts
 
 ### [Main Concept Title]
 
@@ -88,15 +98,9 @@ Now, in **Module N**, they [new challenge that this module's capability solves].
 
 ---
 
-## �hat makes it powerful]
+## What You'll Build and Validate
 
-[Final sentence tying it back to the learning journey.]
-
----
-
-## What You'll Learn
-
-**[Feature name in bold]** [1-2 sentences explaining what this capability does and why it matters]. You'll [what you'll configure/build/leverage], and measure [what concrete outcomes you'll demonstrate].
+**[Feature name in bold]** [1-2 sentences explaining what this capability does and why it matters]. Participants will [what they will configure/build/use], record [baseline evidence], and validate [the observable outcome].
 
 **Time:** ~XX minutes | **Exercises:** N
 
@@ -108,9 +112,9 @@ The exercises below use this module's capabilities to solve real problems. Each 
 
 | # | Exercise | Lead | Support | Problem | Solution | Key Metrics | Artifacts |
 |---|----------|------|---------|---------|----------|-------------|-----------|
-| [N.1](exercise-N.1.md) | [Action-Oriented Title] | [Persona] | [P2], [P3] | [Issue]: [time], [count], [rounds/cycles] | [Brief solution using capability] | [before→after metrics] | [File paths created] |
-| [N.2](exercise-N.2.md) | [Action-Oriented Title] | [Persona] | [P2] | [Issue]: [time], [count], [rounds/cycles] | [Brief solution using capability] | [before→after metrics] | [File paths created] |
-| [N.3](exercise-N.3.md) | [Action-Oriented Title] | [Persona] | [P2], [P3] | [Issue]: [time], [count], [rounds/cycles] | [Brief solution using capability] | [before→after metrics] | [File paths created] |
+| [N.1](exercise-N.1.md) | [Action-Oriented Title] | [Persona] | [P2], [P3] | [Issue plus baseline to record] | [Brief solution using capability] | [target + validation method] | [File paths created] |
+| [N.2](exercise-N.2.md) | [Action-Oriented Title] | [Persona] | [P2] | [Issue plus baseline to record] | [Brief solution using capability] | [target + validation method] | [File paths created] |
+| [N.3](exercise-N.3.md) | [Action-Oriented Title] | [Persona] | [P2], [P3] | [Issue plus baseline to record] | [Brief solution using capability] | [target + validation method] | [File paths created] |
 
 ---
 
@@ -136,7 +140,7 @@ The exercises below use this module's capabilities to solve real problems. Each 
 
 ## ➡️ Next Module
 
-**[Module N+1: Title](../../../exec-talks/agentic-delivery/README.md)** — [1 sentence describing next capability and its value]
+**[Module N+1: Title](../NN-next-module/README.md)** — [1 sentence describing next capability and its value]
 
 > *"[Quote that teases the next challenge or opportunity—often a question or realization]"*  
 > — [Persona], [context about what they're about to discover]

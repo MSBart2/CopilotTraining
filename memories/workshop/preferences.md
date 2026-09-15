@@ -41,3 +41,11 @@ For the workshop module recap slides (`The Team, Before ...` / `The Team, After 
 - **Do not recolor the quote cards on After slides.** Keeping the cards neutral preserves the persona accent colors and avoids making the quotes look visually inconsistent.
 
 The key decision is that the Before treatment is a warning signal, while the After treatment should feel composed and credible rather than celebratory or "gold star" cheesy.
+
+---
+
+## Planned metrics are targets until validated
+
+**Date:** 2026-09-15
+
+Workshop plans pair each target improvement with a baseline and a learner-run validation method. Generated exercises must not present precise planned improvements as observed results; participants produce the evidence by running or inspecting the artifact, then interpret the result and make or explain one adjustment.

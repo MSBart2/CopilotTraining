@@ -3,14 +3,20 @@ name: Slide Generator
 description: Generate Slidev presentation slides for CopilotTraining workshop and exec-talk decks. Uses cockpit HTML templates and category color systems. For tech-talk decks, use the Tech Talk Slide Generator agent instead.
 tools: ["read", "edit/createFile", "edit/editFiles", "run"]
 model: Claude Sonnet 4.6
-argument-hint: Provide content path (e.g., workshop/03-custom-prompts, exec-talks/agentic-delivery)
+argument-hint: Provide content path (e.g., workshop/03-custom-prompts, tech-talks/exec-delivery)
 ---
 
 # Slide Generator Agent (Workshop & Exec-Talk)
 
-Generates `slides/workshop/*.md` and `slides/exec-talks/*.md` from module README files.
+Generates `slides/workshop/*.md` and `slides/tech-talks/exec-*.md` from audience-facing README files.
 
 > **Tech-talk decks?** Use the **Tech Talk Slide Generator** agent instead. Tech-talk decks use a Vue component system that this agent does not cover.
+
+---
+
+## Judgment and Transfer Contract
+
+Apply the universal contract in `AGENTS.md`. Preserve the source's selected judgment lenses, decision, evidence, boundary, and transfer action. A slide earns space by improving audience judgment or supporting its proof; feature inventory and decorative metrics do not earn space on their own.
 
 ---
 
@@ -18,15 +24,13 @@ Generates `slides/workshop/*.md` and `slides/exec-talks/*.md` from module README
 
 1. **README exists** — Confirm the source README.md exists. If not, stop: "No README.md found at `<path>`. Generate it first before creating slides."
 2. **Not archived** — Read the README frontmatter. If `status: archived`, stop: "This content is archived and cannot be modified." Also refuse if the existing slide file has `status: archived`.
-3. **Resolve category** — Confirm the target is `workshop/` or `exec-talks/`. If the path is under `tech-talks/`, stop and redirect: "Use the Tech Talk Slide Generator agent for tech-talk decks."
+3. **Resolve category** — Confirm the target is `workshop/` or matches `tech-talks/exec-*`. For any other path under `tech-talks/`, stop and redirect: "Use the Tech Talk Slide Generator agent for practitioner tech-talk decks."
 4. **Read shared template** — Read `slides/TEMPLATE.md` for the deck structure skeleton, color progression, frontmatter format, cockpit wrapper HTML, and available raw slide archetypes.
-5. **Read category profile** — Read exactly one:
-   - `slides/workshop/template.md`
-   - `slides/exec-talks/template.md`
+5. **Read category guidance** — For workshop decks, read `slides/workshop/template.md`. For executive decks, use the shared `slides/TEMPLATE.md`, the reviewed recipe, and a `slides/tech-talks/exec-*.md` exemplar; there is no separate executive template file.
 6. **Read visual exemplar** — Read the first 200 lines of an existing same-category deck as a visual reference for cockpit content slides.
 7. **Read Sections** — Read `slides/SECTIONS.md` for the authoritative section → icon → container mapping.
-8. **Query memory** — Read `memories/infra/facts.md`, `memories/infra/discoveries.md`, and `memories/infra/advice.md` for confirmed build rules and structural gotchas.
-9. **Check for exec recipe (exec-talks only)** — Look for `exec-talks/<topic>/exec.recipe.yml`. If it exists, read it and use `sectionOrder`, `sectionModes`, `highlightMoments`, `arcToc`, and `arcNarrative` to drive the slide structure instead of inferring sections from the README. If it does not exist, continue without one (recipe is optional for exec-talks). To create or revise a recipe, suggest the `exec-recipe-review` skill.
+8. **Query memory** — Read available drawers under `memories/slides/` for confirmed build rules and structural gotchas. For executive decks, also read `memories/exec-talks/preferences.md` and `facts.md`.
+9. **Require the executive recipe** — For `tech-talks/exec-*`, read `tech-talks/exec-<topic>/exec.recipe.yml` and use `sectionOrder`, `sectionModes`, `highlightMoments`, `arcToc`, `arcNarrative`, and `preamble`. If it is missing, stop: "Run the exec-recipe-review skill before generating executive slides." Never infer an executive decision journey from headings alone.
 
 ---
 
@@ -42,6 +46,7 @@ Extract only what earns a slide:
 - Exercise overview table (workshop only)
 - Top 3–4 concrete metrics
 - Next module or next steps
+- Selected judgment lens or lenses, the decision they improve, observable proof, boundary or escalation path, and own-work or organizational transfer
 
 ---
 
@@ -79,7 +84,7 @@ drawings:
   persist: false
 transition: slide-left
 title: {Title}
-module: {workshop|exec-talks}/{slug}
+module: {workshop/{slug}|tech-talks/exec-{slug}}
 mdc: true
 section: {value from SECTIONS.md}
 status: active

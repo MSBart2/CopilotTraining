@@ -14,6 +14,7 @@ infer: true
 Read the exec-talk README, analyze its structure with a primary reviewer plus an independent cross-model Rubber Duck critique, and write `exec.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Slide Generator when building exec-talk decks.
 
 **Key Constraints:**
+- **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the leadership decision, evidence, ownership, authority boundary, and organizational test when consolidating the README. Context that does not change a decision has not earned executive airtime.
 - **Max 4 sections** — Review should consolidate, not expand. Exec talks are tighter than tech talks. Each section earns ~8–12 slides in a 30–45 min briefing.
 - **Executive audience is the filter** — Every section must be evaluated through the lens of a CXO, VP, or transformation lead. If a section teaches implementation, it needs to be reframed as business implications or cut.
 - **Slide generator ensures consistency** — Once you commit a recipe, the [Slide Generator agent](../../agents/slide-generator.agent.md) generates all slides using the cockpit HTML template system with uniform structure. Focus the review on *decision clarity and business credibility*, not slide-level details.
@@ -26,7 +27,7 @@ Read the exec-talk README, analyze its structure with a primary reviewer plus an
 - After a new exec-talk README is complete
 - User wants to revise section structure, business framing, or action clarity
 - User questions whether a section earns its airtime ("are we spending too long on X")
-- User notices a business angle is missing ("we never explain the cost of not acting")
+- User notices a business angle is missing ("we never explain the investment and readiness signals")
 - User asks to "review the talk" or check if the structure matches the executive audience
 
 **Not for:** Minor wording tweaks, slide-level fixes, or tech-talk decks (use `deck-recipe-review` for those).
@@ -38,11 +39,12 @@ Read the exec-talk README, analyze its structure with a primary reviewer plus an
 Before starting the review, read BOTH of these. The Rubber Duck brief must include the full context — the independent reviewer must not be expected to read files itself.
 
 ```
-1. exec-talks/<topic>/README.md                                           — full section content + key metrics
+1. tech-talks/exec-<topic>/README.md                                     — full section content + key metrics
 2. .github/skills/exec-recipe-review/EXEC-RECIPE-TEMPLATE.yml            — recipe schema (all valid fields)
+3. memories/exec-talks/preferences.md                                    — mandatory voice and framing rules
 ```
 
-Do **not** read the existing `slides/exec-talks/<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten and should not constrain the review.
+Do **not** read the existing `slides/tech-talks/exec-<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten and should not constrain the review.
 
 From these, extract:
 - The `## ` H2 headings from the README — these are the candidate sections
@@ -73,6 +75,8 @@ CONSTRAINTS:
 - Max 4 sections (no exceptions — consolidate, don't expand)
 - Audience is executives: every section must land as business implication, not implementation detail
 - Slide generator will apply cockpit HTML templates for structural consistency
+- Use factual, opportunity-framed language; do not manufacture urgency, threaten with inaction,
+  or use cost-of-delay pressure
 
 USER CONCERN: [Exact concern — what's taking too much space / what's missing / what's not landing]
 
@@ -91,9 +95,10 @@ What should change and why?
 
 1. Identify the strongest executive decision journey and the single highest-value structural improvement.
 2. Protect sourced claims, business credibility, quantified outcomes, and decision clarity.
-3. Reframe or remove implementation detail and content that has not earned executive airtime.
-4. Produce a concrete `sectionOrder`, emphasis levels, and highlight changes with rationale.
-5. Flag open questions and at least one credible alternate structure for the independent reviewer to challenge.
+3. Identify which judgment lens or lenses the arc develops and where leaders can test the decision in their organization.
+4. Reframe or remove implementation detail and content that has not earned executive airtime.
+5. Produce a concrete `sectionOrder`, emphasis levels, and highlight changes with rationale.
+6. Flag open questions and at least one credible alternate structure for the independent reviewer to challenge.
 ```
 
 ---
@@ -103,7 +108,7 @@ What should change and why?
 Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
 1. In Copilot CLI, explicitly delegate the primary recommendation and the complete context block to the built-in **Rubber Duck** agent.
-2. Require Rubber Duck to independently attack the proposed business question, decision journey, section order, weighting, credibility, urgency, action clarity, and content that has not earned executive airtime.
+2. Require Rubber Duck to independently attack the proposed business question, decision journey, section order, weighting, credibility, timing context, action clarity, voice compliance, and content that has not earned executive airtime.
 3. Do not role-play Rubber Duck in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
 4. Outside Copilot CLI, launch one review subagent using a different model family from the primary model and give it the same adversarial brief.
 5. If no independent cross-model reviewer is available or delegation does not occur, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
@@ -116,7 +121,7 @@ Reconcile the primary analysis with the independent critique. Rubber Duck is adv
 
 1. **Verdict** (2-3 sentences) — the core structural problem and fix for this executive audience
 2. **`arcToc`** — one line ≤ 80 chars, section names joined by ` → ` (use "The X" naming pattern if appropriate)
-3. **`arcNarrative`** — a prose paragraph: what each section establishes for the executive, where credibility and urgency peak, and why the ordering drives a decision
+3. **`arcNarrative`** — a prose paragraph: what each section establishes for the executive, where credibility and decision relevance peak, and why the ordering supports a decision
 4. **Concrete `sectionOrder`** with `sectionModes` (emphasis + one-line note per section)
 5. **Updated `highlightMoments`** list — what to drop, what to add (quantified business metrics preferred)
 6. **One open decision** — the single thing the user must resolve before slides can be generated
@@ -161,6 +166,7 @@ Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 - [ ] The open decision is documented in the file — don't silently absorb it
 - [ ] `highlightMoments` list is 3-5 items with quantified metrics where possible
 - [ ] No `highlightMoments` entry describes a tool command, code pattern, or implementation step
+- [ ] A final voice scan finds no second-person address, alarmist urgency, cost-of-inaction pressure, or "not X, it's Y" rhetorical flips
 - [ ] **After approval**: Slide Generator agent will regenerate all slides using the cockpit HTML system — you don't need to update individual slides
 - [ ] `deck.preamble` is `[{ src: "./exec-spine.md" }]` — never `[]` for exec talks
 
@@ -171,7 +177,7 @@ Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 | Anti-Pattern | Signal | Exec Fix |
 |---|---|---|
 | Implementation section | Section covers a tool, CLI, or configuration step rather than a business outcome | Reframe as "What this means for your platform team" or absorb into the stakes section |
-| Missing urgency | No section answers "why now" or "cost of not acting" | Add a stakes/imperative section before the action close |
+| Missing timing context | No section explains what changed, which decision is now available, or what readiness signals matter | Add sourced market or capability context before the action close |
 | Passive closing section | Last section = "Resources" or "References" — leaders leave with no decision | Reframe as "What Leadership Must Authorize" or "Three Decisions This Quarter" |
 | Metric-free talk | Key points are directional but not quantified | Audit README for any numbers; if none exist, flag as an open decision |
 | All sections equal weight | All `high` or all `medium` | Force a ranking — the credibility peak and the urgency section should be highest emphasis |
@@ -183,7 +189,7 @@ Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 ## Example Invocations
 
 - "we're spending two sections on the operating model — review the exec talk and see if that's the best use of time"
-- "we never explain the cost of not acting — is it worth adding a section?"
+- "we never explain the investment and readiness signals — is it worth adding a section?"
 - "does the agentic-delivery talk structure land for a CXO audience?"
 - "review the exec recipe before we regenerate slides"
 - "is this the best use of our time with VPs who only have 30 minutes?"

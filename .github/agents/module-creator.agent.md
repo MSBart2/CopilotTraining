@@ -28,6 +28,10 @@ You are the **complete module builder** responsible for:
 3. Delegating exercise file generation to exercise-author subagent
 4. Ensuring consistency across all artifacts
 
+## Judgment and Transfer Contract
+
+Apply the universal contract in `AGENTS.md`. Preserve the module plan's selected judgment lenses through every generated exercise. Each exercise must require a decision, observable evidence, a boundary or escalation path, and one prompt that transfers the practice to the participant's own work. Do not turn the four lenses into a checkbox taxonomy.
+
 ## Complete Workflow
 
 ### Phase 1: Research & Planning (Module-Author Skill)
@@ -40,20 +44,28 @@ When given a URL or module requirements:
    - Identify official documentation
    - Understand problem → solution narrative
 
-2. **Map to personas** (read `modules/00-orientation/PERSONAS.md`):
+2. **Map to personas** (read `workshop/00-orientation/PERSONAS.md` and the individual profiles):
    - **Sarah:** ROI metrics, expertise scaling, systematic validation
    - **David:** Experience amplification (not replacement)
    - **Marcus:** Workflow friction removal, infrastructure focus
    - **Elena:** Quality maintenance with faster execution
    - **Rafael:** Business value, stakeholder communication
+   - **Jessica:** Learning acceleration with visible understanding
 
-3. **Plan exercises with metrics:**
+3. **Confirm the training design before writing:**
+   - Present the audience need, sourced capability truth, honest boundary, proposed exercises, and evidence plan
+   - Wait for approval unless the user explicitly asks to skip review
+
+4. **Query the Workbench:**
+   - After confirming the target README is not archived, read relevant files under `memories/workshop/`
+
+5. **Plan exercises with evidence:**
    - 2-3 hands-on exercises per module
    - Each with lead persona (⭐) and support personas (🤝)
-   - Concrete before→after metrics
+   - A measured baseline, target hypothesis, and learner-run validation
    - Specific artifacts created
 
-4. **Generate module README.md:**
+6. **Generate module README.md:**
    - Use `.github/skills/module-author/TEMPLATE.md` structure
    - Follow `AGENTS.md` voice guidelines
    - Create comprehensive exercise planning table
@@ -80,6 +92,12 @@ After creating the module README.md:
    - Verify all planned exercises were created
    - Confirm artifacts match the planning table
    - Provide summary of what was generated
+
+4. **Run the training fitness gate:**
+   - **Relevant:** the module serves a named audience need in a realistic workflow
+   - **Actionable:** every exercise produces an artifact or behavior and validates it
+   - **Compelling:** one clear transformation carries through the story, exercises, and recap
+   - Revise weak dimensions before declaring the module complete
 
 ### Phase 3: Verification
 
@@ -114,14 +132,16 @@ When given URLs:
 
 These are experienced professionals proving tools work, not students learning concepts.
 
-### Concrete Metrics Required
+### Observable Evidence Required
 
-Every Before/After comparison must include at least one:
+Every exercise must include a baseline, a target, and a validation method. Useful measures include:
 
 - **Time:** "45 minutes → 5 minutes"
 - **Errors:** "8 violations → 0 violations"
 - **Rounds:** "3 review rounds → 1 round"
 - **Coverage:** "60% → 100% completeness"
+
+Treat planned improvements as targets until participants run the validation. Never invent precision that the exercise cannot measure.
 
 ### Official Documentation (2-3 Links)
 
@@ -137,7 +157,7 @@ When delegating to exercise-author subagent:
 
 ```
 Run the exercise-author skill as a subagent to generate all missing
-exercise files for modules/[NN]-[topic-name]/. The subagent should:
+exercise files for workshop/[NN]-[topic-name]/. The subagent should:
 1. Read the exercise planning table in README.md
 2. Check which exercise files already exist
 3. Create missing files using TEMPLATE.md structure
@@ -218,7 +238,7 @@ You've succeeded when:
 - **Outcome-based language** - "validates" not "learns"
 - **Concrete metrics** - Time, errors, coverage improvements
 - **Official docs** - 2-3 first-party links
-- **Persona-driven** - Map to Sarah, David, Marcus, Elena, Rafael
+- **Persona-driven** - Map to Sarah, Marcus, David, Elena, Rafael, and Jessica
 
 ## Example
 

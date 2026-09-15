@@ -8,6 +8,10 @@ infer: true
 
 You generate missing exercise files from a module's README.md planning table.
 
+## Judgment and Transfer Contract
+
+Apply the universal contract in `AGENTS.md`. Preserve the plan's selected judgment lenses through an attempt → inspect → adjust → rerun → validate loop. End with a bounded own-work application, observable evidence, and a review owner. Do not force every lens into every exercise.
+
 ## When to Use This Skill
 
 Invoke this skill when:
@@ -19,14 +23,14 @@ Invoke this skill when:
 **Example invocations:**
 
 - "@exercise-author create missing exercises for module 99"
-- "Generate all exercise files for modules/10-agentic-sdlc/"
+- "Generate all exercise files for workshop/06-custom-agents/"
 - "Look at module 5 and create any exercises that don't exist yet"
 
 ## How It Works
 
 ### Step 1: Read Module README.md
 
-1. Locate the module directory (e.g., `modules/99-agent-skills-vscode/`)
+1. Locate the module directory (e.g., `workshop/04-agent-skills/`)
 2. Read the `README.md` file
 3. Find the "📋 Exercise Planning Table" section
 4. Parse each row to extract:
@@ -72,8 +76,10 @@ For each missing exercise file:
    - 📚 Official Docs: 2-3 relevant documentation links
    - 🔗 What You Built: List artifacts with purposes
    - ➡️ Next Up: Link to next exercise or module
+   - A validation loop in which participants run or inspect the result, record what happened, and explain one adjustment
+   - Apply It to Your Work: choose the two relevant judgment prompts and name one bounded real-work application
 
-4. **Create the file** at `modules/[module-dir]/[exercise-filename]`
+4. **Create the file** at `workshop/[module-dir]/[exercise-filename]`
 
 ## Important Guidelines
 
@@ -87,15 +93,18 @@ Every Before/After comparison must include:
 
 Use the metrics from the planning table's "Key Metrics" column.
 
+Treat planned improvements as targets until the participant runs the exercise. Include the baseline measurement and the exact command, inspection, or behavior used to validate the target. Never invent an observed result.
+
 ### Persona Voice Authenticity
 
-Write in the persona's voice (see `modules/00-orientation/PERSONAS.md`):
+Write in the persona's voice (see `workshop/00-orientation/PERSONAS.md` and its linked profiles):
 
 - **Sarah (Skeptical Senior)**: ROI-focused, validates with metrics, "I tested this by..."
 - **David (Seasoned Architect)**: Expertise validation, AI amplifies experience
 - **Marcus (DevOps Developer)**: Infrastructure focus, workflow friction removal
 - **Elena (Quality Champion)**: Quality validation, edge case coverage
 - **Rafael (Product Visionary)**: Business value, stakeholder communication
+- **Jessica (Eager Junior)**: Quiet determination, learning through explanation and visible evidence
 
 ### File Structure
 
@@ -188,13 +197,13 @@ User says: "@exercise-author create missing exercises for module 99"
 
 You:
 
-1. Read `modules/99-agent-skills-vscode/README.md`
+1. Read `workshop/04-agent-skills/README.md`
 2. Parse exercise planning table
 3. Check which files exist:
    - `exercise-01.md` ✅ exists
    - `exercise-02.md` ❌ missing
    - `exercise-03.md` ❌ missing
-4. Create `modules/99-agent-skills-vscode/exercise-02.md` using planning table data + TEMPLATE.md structure
+4. Create `workshop/04-agent-skills/exercise-02.md` using planning table data + TEMPLATE.md structure
 5. **Detect file creation instructions** in exercise-02.md:
    - Step 2 says "Create `.github/skills/bug-analyzer/SKILL.md`"
    - Artifacts list includes `.github/skills/bug-analyzer/examples/sample-bug.js`
@@ -203,7 +212,7 @@ You:
    - Create `examples/completed-config/.github/skills/bug-analyzer/examples/sample-bug.js` with realistic bug example
    - Add metadata comments linking back to Module 99, Exercise 2
 7. **Add Compare Your Work section** to exercise-02.md Success Criteria
-8. Create `modules/99-agent-skills-vscode/exercise-03.md` (repeat steps 5-7)
+8. Create `workshop/04-agent-skills/exercise-03.md` (repeat steps 5-7)
 9. Report: "Created 2 missing exercises and 3 example files"
 
 ## Quality Checklist
@@ -218,5 +227,7 @@ Before creating each file, verify:
 - [ ] Official docs links are first-party (GitHub, VS Code, Microsoft)
 - [ ] Persona voice is authentic to their background
 - [ ] Before/After transformation shows measurable improvement
+- [ ] Participants produce evidence, interpret it, and make or explain one adjustment
+- [ ] "Apply It to Your Work" transfers the practice to a bounded task, evidence signal, and review owner
 - [ ] **Example files generated** for all artifacts users create
 - [ ] **Compare Your Work sections** added when files are created

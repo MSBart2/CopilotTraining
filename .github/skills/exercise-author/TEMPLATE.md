@@ -1,3 +1,8 @@
+---
+status: active
+updated: YYYY-MM-DD
+---
+
 # Exercise N: [Feature Name]
 
 ## 🔨 Exercise
@@ -39,7 +44,7 @@
 
 3. **[Step title]**
    
-   [Final step with detailed instructions]
+   [Run or inspect the result. Record the observed evidence, compare it with the target, and explain or make one adjustment.]
 
 #### ✅ Success Criteria
 
@@ -50,6 +55,17 @@
 > 📂 **Compare Your Work**: [`examples/completed-config/path`](../../examples/completed-config/path)
 >
 > **Note:** Only include this section when the exercise creates files that have reference implementations in examples/completed-config/. Omit if the exercise is purely exploratory or doesn't create artifacts.
+
+#### Apply It to Your Work
+
+Choose the two prompts most relevant to this exercise; omit the others rather than forcing every lens:
+
+- **Context:** What differs between FanHub and a real repository that would change this approach?
+- **Delegation:** Which part can Copilot handle, and which judgment stays with the team?
+- **Verification:** What evidence would make the result acceptable, and what failure would trigger another iteration?
+- **Authority:** Who can approve, reject, or escalate this change?
+
+**First real application:** [Name one bounded task in the participant's own work, the evidence to collect, and the person who reviews the result.]
 
 #### 📚 Official Docs
 

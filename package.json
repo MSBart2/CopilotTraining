@@ -1,7 +1,8 @@
 {
   "scripts": {
     "content:route": "node scripts/content-router.mjs",
-    "test:content-routing": "node --test scripts/content-routing.test.mjs"
+    "test:content-routing": "node --test scripts/content-routing.test.mjs",
+    "test:content-generation": "node --test scripts/content-generation.test.mjs"
   },
   "dependencies": {
     "fast-xml-parser": "^5.2.5"

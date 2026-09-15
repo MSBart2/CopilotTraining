@@ -10,11 +10,43 @@ Three content types, each with dedicated agents:
 
 - **`workshop/`** — Hands-on training modules with personas, exercises, and metrics → use `module-planner` or `module-creator` agents
 - **`tech-talks/`** — Technical deep-dives for practitioners → use `Tech Talk Generator` agent
-- **`exec-talks/`** — Executive thought leadership for strategic decision-making → use `Exec Talk Generator` agent
+- **`tech-talks/exec-*`** — Executive thought leadership for strategic decision-making → use `Exec Talk Generator` agent
 
 ---
 
 ## Content Rules (apply everywhere)
+
+### Education North Star
+
+> Great Copilot education helps capable people form better judgment about context, delegation, verification, and authority, then lets them prove that judgment in their own work.
+
+Treat the audience as capable peers calibrating a new way of working, not converts waiting to be convinced. Product knowledge earns space when it improves a decision or enables useful practice.
+
+### Judgment and Transfer Contract
+
+Each artifact must develop at least one relevant judgment lens. Select the lenses the topic genuinely needs; do not force all four into every section.
+
+| Lens | Question the audience becomes better able to answer |
+|---|---|
+| **Context** | What information, environment, and constraints make this task ready for Copilot? |
+| **Delegation** | What can be handed off, what stays human-led, and how is the handoff bounded? |
+| **Verification** | What observable evidence makes the result acceptable, and how do we recover when it is wrong? |
+| **Authority** | Who may propose, execute, approve, reject, or escalate this work? |
+
+Content proves transfer when the audience can:
+
+1. make a decision rather than repeat a feature description,
+2. produce or inspect observable evidence,
+3. recognize a boundary, failure signal, or escalation path, and
+4. adapt the decision to a real repository, workflow, or organization.
+
+Apply the contract by format:
+
+- **Workshop:** use an attempt → inspect → adjust → rerun → validate loop. Planned metrics are targets until participants produce evidence. End with an explicit transfer question about their own work.
+- **Tech talk:** teach a decision model, demonstrate it through a working artifact, validate the outcome, and name when the pattern stops fitting. Leave practitioners with a concrete application to their own repository or workflow.
+- **Executive talk:** clarify the decision, owner, authority boundary, tradeoff, and success signal. Distinguish sourced facts, observed results, estimates, and proposed targets.
+
+Avoid feature inventories that do not improve judgment, frictionless success stories, conversion narratives, and claims whose confidence is unclear.
 
 **Archived content is frozen.** Any file with `status: archived` in frontmatter must never be modified by any agent. Stop and inform the user.
 
@@ -101,7 +133,7 @@ Two agents — pick by category:
 | Category | Agent |
 |---|---|
 | `tech-talks/` | **Tech Talk Slide Generator** — Vue components, no raw HTML |
-| `workshop/` or `exec-talks/` | **Slide Generator** — cockpit HTML templates |
+| `workshop/` or `tech-talks/exec-*` | **Slide Generator** — cockpit HTML templates |
 
 Key invariants (all categories):
 

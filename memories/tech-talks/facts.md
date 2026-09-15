@@ -112,3 +112,11 @@ The **greenfield** tech-talk authoring pipeline is a strict 3-stage sequence:
 When regenerating a tech-talk README, always check for `tech-talks/<slug>/research.md`. If it exists, instruct Tech Talk Generator to use it as primary source. research.md contains facts verified from official URLs.
 
 The `copilot-code-review` README had pervasive hallucinations (fictional `copilot-review.yml` config schema, non-existent cross-references). Fixed by complete regeneration from `research.md`. Any deck with a `research.md` file has gone through hallucination-antidote treatment.
+
+---
+
+## Generation quality contract: traceable claims and observable actions (2026-09-15)
+
+`schema_version: 1` | `date: 2026-09-15`
+
+Greenfield tech-talk research includes an evidence map linking major claims and mechanisms to first-party sources, confidence, and boundaries. Existing `research.md` remains the verified baseline when present. The canonical "What You Can Do Today" section requires an expected signal and validation method at each commitment level; the 2–4 hour pilot also names a stopping, rollback, or redirect boundary.

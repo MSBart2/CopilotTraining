@@ -10,7 +10,7 @@ The Workbench is the project-level semantic memory store for CopilotTraining aut
 
 **Cardinal rule: the Workbench suggests; repo files confirm.**
 
-The store is organized as **benches** (top-level domain folders under `memories/`) containing **drawers** (typed `.md` files inside each bench). Filenames drop the prefixes — a fact drawer in the infra bench is `memories/infra/facts.md`.
+The store is organized as **benches** (top-level domain folders under `memories/`) containing **drawers** (typed `.md` files inside each bench). Filenames drop the prefixes — a fact drawer in the slides bench is `memories/slides/facts.md`.
 
 ---
 
@@ -45,7 +45,7 @@ After completing content work, record drawer entries for anything future session
 
 **Never write during a session mid-stream.** Drawer writes happen at session END only — after the work is saved and verified.
 
-**Write mechanism: always use `replace_string_in_file` or `multi_replace_string_in_file` to edit the drawer `.md` files directly** (e.g. `memories/infra/facts.md`). Never use the `memory` tool with `/memories/` paths — that routes to Copilot's personal memory service, not the workspace files, and the entries will be invisible in the repo.
+**Write mechanism: always edit the drawer `.md` files directly** (e.g. `memories/slides/facts.md`). Never use the `memory` tool with `/memories/` paths — that routes to Copilot's personal memory service, not the workspace files, and the entries will be invisible in the repo.
 
 ---
 
@@ -96,7 +96,7 @@ When you update a content artifact, ask:
 
 1. **Does this change a confirmed fact?** → Update or add `facts` entry
 2. **Does this retire or archive something?** → Write `events` with date and rationale
-3. **Does this affect a cross-reference?** → Update the cross-reference table in `slides/facts`
+3. **Does this affect a cross-reference?** → Update the cross-reference table in `memories/slides/facts.md`
 4. **Did you discover something new that would save time next session?** → Write `discoveries` or `advice`
 5. **Topic-specific gate — did this session change anything about *this deck's content* that an agent reading only the deck would miss?** (framing decisions, audience misreads, ordering constraints, why a section was rejected) → Write to the matching topic bench (e.g. `agent_architecture/discoveries.md`). If the answer is just "we used component X" or "we fixed a Slidev gotcha," that belongs in `slides`, not the topic bench.
 
@@ -106,9 +106,9 @@ If none of the above apply, no write is needed. **Empty topic benches are accept
 
 ## Cross-Reference Table
 
-Maintained in `slides/facts`. Topics covered in multiple artifacts — check for drift when updating either.
+Maintained in `memories/slides/facts.md`. Topics covered in multiple artifacts — check for drift when updating either.
 
-For cross-cutting topics (MCP, agent mode, CLI, custom instructions, memory), use the **`topics/` bench** instead — each has a dedicated drawer with full coverage maps and drift risk notes. The `infra/facts` table below covers artifact-pair relationships not captured by a topic drawer:
+For cross-cutting topics (MCP, agent mode, CLI, custom instructions, memory), use the **`topics/` bench** instead — each has a dedicated drawer with full coverage maps and drift risk notes. The `memories/slides/facts.md` table covers artifact-pair relationships not captured by a topic drawer:
 
 - **MCP transport:** `05-mcp-servers`, `mcp-apps` → see `topics/mcp.md`
 - **Instructions files:** `01-instructions`, `copilot-primitives` → see `topics/custom-instructions.md`

@@ -1,6 +1,6 @@
 # exec.recipe.yml — executive talk generation guidance
 #
-# Guides slide generation from exec-talks/<topic>/README.md.
+# Guides slide generation from tech-talks/exec-<topic>/README.md.
 # Use this file to name and order sections, set the slide budget per section,
 # and surface authoring priorities the generator should follow.
 # Complex narrative content belongs in README.md; structural editorial
@@ -65,10 +65,10 @@ deck:
         [The action close — what leadership must authorize, invest in, or decide. Should
         reference 2–3 concrete next steps. Tie back to the opening frame.]
 
-  # Optional: slide files to import immediately after the TitleSlide.
-  # Each entry becomes a `src:` import block in the generated deck.
-  # Leave empty [] if the talk has no preamble imports.
-  preamble: []
+  # Required shared executive-series context immediately after the TitleSlide.
+  # Every executive deck imports this spine; never remove or replace it with [].
+  preamble:
+    - src: "./exec-spine.md"
 
   # Optional: slide files to append after the final slide.
   # Each entry becomes a `src:` import block at the end of the generated deck.
@@ -81,7 +81,7 @@ deck:
   # Avoid implementation details — frame from business impact or risk.
   highlightMoments:
     - "[Most compelling business metric or competitive framing — with a number]"
-    - "[Key risk or cost-of-inaction insight — quantified if possible]"
+    - "[Key investment, readiness, or governance insight — quantified if possible]"
     - "[Strategic differentiator or operating model implication — concrete]"
     - "[Optional: fourth moment if warranted — must earn its place]"
     - "[Optional: fifth moment if warranted — must earn its place]"

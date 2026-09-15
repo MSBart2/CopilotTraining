@@ -22,7 +22,17 @@ Tech talks are **practitioner-focused technical deep-dives** that:
 
 Tech-talk READMEs are the **canonical practitioner-facing deep dives**. They can later be adapted into Slidev decks, but the README itself must stay reader-first and useful on GitHub or in docs portals. Alongside the README, create a small per-talk `deck.recipe.yml` file that captures the initial slide-adaptation choices for this one talk. Do **NOT** create slides—that's for slide-generator or slide-manager agents.
 
+### Judgment and Transfer Contract
+
+Apply the universal contract in `AGENTS.md`. Select the one or two judgment lenses the topic genuinely needs: context, delegation, verification, or authority. The talk must improve a practitioner decision, prove the model through an artifact and observable evidence, expose a boundary, and end with application to the reader's own repository or workflow. Feature coverage that does not improve that judgment does not earn space.
+
 ## Workflow
+
+### 0. Pre-flight
+
+- Resolve the target under `tech-talks/<topic>/`
+- If a README already exists, read its frontmatter first; stop immediately when `status: archived`
+- If `research.md` exists, treat it as the verified factual baseline and reconcile newer first-party evidence against it
 
 ### 1. Research (when URL provided)
 
@@ -47,11 +57,20 @@ After research, pause and present a **Research Brief + Structural Proposal** for
 **Sources analyzed:** [N] URLs + [M] related doc pages found via search
 **Topic signal:** [2-3 sentence explanation of what the source material is really about]
 **Best audience:** [who this talk is really for]
+**Judgment this builds:** [selected lens or lenses + the practitioner decision that improves]
 
 ### What stood out
 1. **[Insight]** — [one sentence]
 2. **[Insight]** — [one sentence]
 3. **[Insight]** — [one sentence]
+
+### Evidence map
+| Claim or mechanism | First-party source | Confidence | Boundary or unknown |
+|---|---|---|---|
+| [Claim the talk depends on] | [URL] | Verified / Directional | [Limit, scope, or unresolved point] |
+| [Architecture or workflow claim] | [URL] | Verified / Directional | [Limit, scope, or unresolved point] |
+
+Claims without adequate support are omitted, narrowed, or labeled as interpretation before drafting.
 
 ### Tension worth exploring
 > [One honest tradeoff, boundary, or surprising angle]
@@ -119,13 +138,15 @@ After the user responds:
 
 1. Incorporate the user's selected outline, toggle choices, or structural edits
 2. Read `tech-talks/TEMPLATE.md` for complete structure (can be done in parallel with research)
-3. **Query Memory** — Read `memories/infra/facts.md` and `advice.md` for confirmed voice and framing patterns. If the topic maps to a content bench (e.g., `agent_architecture`), read that drawer too. Apply before drafting any section.
-   3a. **Workbench Update (session end)** — After the README and recipe are written, run the **Content Change → Workbench Update Protocol** in `.github/skills/workbench/SKILL.md`. Pay particular attention to question 5 (topic-specific gate): if this session produced a non-obvious framing or structural decision specific to this talk's content — something a future agent reading only the README would miss — write a short entry to the matching topic bench. Generic voice/build lessons go to `infra`. If neither applies, write nothing.
+   - If the target talk already has `research.md`, use it as the primary verified factual source and reconcile newer first-party evidence against it
+3. **Query Memory** — Read `memories/tech-talks/facts.md` and `discoveries.md` for confirmed pipeline and framing patterns. If the topic maps to a content bench (e.g., `agent_architecture`), read that drawer too. Apply before drafting any section.
+   3a. **Workbench Update (session end)** — After the README and recipe are written, run the **Content Change → Workbench Update Protocol** in `.github/skills/workbench/SKILL.md`. Pay particular attention to question 5 (topic-specific gate): if this session produced a non-obvious framing or structural decision specific to this talk's content — something a future agent reading only the README would miss — write a short entry to the matching topic bench. Pipeline and tech-talk framing lessons go to `tech-talks`; slide/build lessons go to `slides`. If neither applies, write nothing.
 4. Frame ONE clear question this talk answers
 5. Verify content fitness rubric (all must be 🟢 before proceeding)
 6. Download images if found: `python3 scripts/download-images.py <source_url> <output_dir> --limit 7`
    — copies into `images/` subdirectory and generates a markdown snippet for the Visual Assets section
-7. Fill all required sections (in template order): The Opportunity, How It Works, Visual Assets, Key Artifacts, Mental Model Shift (with Core Insight one-liner), Decision Tree, Major Sections (with 🎬 markers), Real-World Use Cases, What You Can Do Today (15min/1hr/2-4hr), Related Patterns, References (numbered footnotes `[^n]`)
+7. Fill all required sections (in template order): The Opportunity, How It Works, Key Artifacts, Mental Model Shift (with Core Insight one-liner), Decision Tree, Major Sections (with 🎬 markers), Real-World Use Cases, What You Can Do Today (15min/1hr/2-4hr), Related Patterns, References (numbered footnotes `[^n]`).
+   Visual Assets and Behind the Scenes are optional; include them only when they improve understanding.
 8. Keep the README reader-first: no slide sequence tables, no speaker notes, no TOC explanations, and no visible "this becomes a slide" prose
 
 ### Deck Recipe Artifact
@@ -147,8 +168,11 @@ Do **not** write the recipe yourself — the skill owns this step.
 - [ ] Move-Toward (✅) / Move-Away (🔄) / Move-Against (🛑) patterns are concrete (not vague advice)
 - [ ] Use cases show measurable before/after outcomes
 - [ ] Actionable items are time-bounded (15min/1hr/2-4hr divisions)
+- [ ] Each action names the expected signal and how to validate it; higher-commitment actions include a boundary or rollback condition
+- [ ] "Apply It to Your Work" names a candidate task, decisive context, delegation and authority boundary, and evidence
 - [ ] Decision tree includes "when NOT to use" guidance
 - [ ] References section uses numbered footnotes `[^n]` with minimum 2 first-party links
+- [ ] Every major factual, workflow, and architecture claim maps to the evidence map and an inline citation; directional claims are labeled
 - [ ] Code examples are syntactically correct
 - [ ] Research Brief was shown and the structure was approved before drafting
 - [ ] deck-recipe-review skill was invoked and `deck.recipe.yml` was created

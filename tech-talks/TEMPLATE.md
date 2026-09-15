@@ -113,7 +113,7 @@ These comments stay invisible to readers while giving downstream tooling lightwe
 
 ---
 
-## �️ Visual Assets
+## Visual Assets
 
 *Optional but highly recommended: Include diagrams, screenshots, and visual aids from source documentation*
 
@@ -161,7 +161,7 @@ tech-talks/
 
 ---
 
-## �📦 Key Artifacts
+## Key Artifacts
 
 **Every tech talk must include working artifacts.** These are the actual files, configurations, or code samples that demonstrate the feature in action.
 
@@ -351,7 +351,36 @@ Q: [Top-level question about use case fit]
 
 ---
 
-## � References
+## What You Can Do Today
+
+### 15 Minutes — Prove the Core Behavior
+
+- **Try:** [Small, low-risk action using the primary artifact]
+- **Expected signal:** [Specific output, file change, or behavior to observe]
+- **Validate:** [Command or inspection that confirms the result]
+
+### 1 Hour — Integrate It into Real Work
+
+- **Build:** [Workflow integration using realistic project context]
+- **Expected signal:** [Observable improvement or decision evidence]
+- **Validate:** [Test, comparison, or review that confirms the outcome]
+
+### 2–4 Hours — Run a Bounded Pilot
+
+- **Pilot:** [Team or production-like trial with a clear scope]
+- **Success measure:** [Metric or acceptance criterion to collect]
+- **Boundary:** [Condition that pauses, rolls back, or redirects the pattern]
+
+### Apply It to Your Work
+
+- **Candidate task:** [A real repository or workflow decision this model can improve]
+- **Decisive context:** [The files, runtime state, policy, or domain knowledge the task requires]
+- **Delegation and authority:** [What Copilot may do, what remains human-led, and who approves the result]
+- **Evidence:** [The observable signal that determines whether to keep, adjust, or stop the pattern]
+
+---
+
+## References
 
 Numbered references cited inline throughout the content using `[^n]` footnote syntax. Collect them here so readers can trace the sources behind major claims, examples, and architecture details.
 
@@ -415,6 +444,8 @@ Before marking this talk as complete:
 - [ ] **Move-Toward/Away/Against is concrete**: Specific patterns, not vague advice
 - [ ] **Use cases have outcomes**: Each shows measurable before/after
 - [ ] **Actionable items are time-bounded**: Clear 15min/1hr/2-4hr divisions
+- [ ] **Actions are observable**: Each action names an expected signal and validation method; the pilot includes a boundary
+- [ ] **Transfer is explicit**: Readers can apply the model to a real task with decisive context, authority, and evidence
 - [ ] **Decision tree prevents misuse**: Clear "when NOT to use" guidance
 - [ ] **Official documentation linked**: Minimum 2 official doc references in "📖 References" section
 - [ ] **References throughout**: 8-15 numbered `[^n]` references with inline citations
