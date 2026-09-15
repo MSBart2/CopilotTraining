@@ -1,0 +1,18 @@
+flowchart TD
+    Start["What must exist when<br/>this work is done?"] --> Intent{"Understand, review,<br/>change, or scale?"}
+    Intent -->|Understand or shape| WebChat["GitHub.com Chat<br/>Explain, map, refine"]
+    Intent -->|Review or accept| CodeReview["Copilot Code Review<br/>Findings for human acceptance"]
+    Intent -->|Create or change| Execute{"Where is the decisive<br/>context?"}
+    Execute -->|Files, UI, diagnostics| VSCode["VS Code Copilot"]
+    Execute -->|Shell, host, runtime| CLI["Copilot CLI"]
+    Execute -->|Bounded issue| CodingAgent["Copilot coding agent<br/>Draft pull request"]
+    Intent -->|Scale or repeat| Scale{"Coordinate work or<br/>embed capability?"}
+    Scale -->|Many independent streams| App["GitHub Copilot app"]
+    Scale -->|Inside an app or service| SDK["Copilot SDK"]
+    VSCode --> Handoff["Hand work across surfaces<br/>when its execution boundary changes"]
+    CLI --> Handoff
+    WebChat --> Handoff
+    CodeReview --> Handoff
+    CodingAgent --> Handoff
+    App --> Handoff
+    SDK --> Handoff

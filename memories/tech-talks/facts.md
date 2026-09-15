@@ -4,6 +4,22 @@ Confirmed facts specific to the tech-talk content pipeline, workflow, and catalo
 
 ---
 
+## surfaces adoption roadmap separates engagement from maturity (2026-09-14)
+
+`schema_version: 1` | `date: 2026-09-14`
+
+`tech-talks/surfaces/adoption-roadmap.yml` is the canonical prescriptive curriculum map for four 28-day engagement phases: Phase 0 Activate, Phase 1 Standardize, Phase 2 Delegate, and Phase 3 Orchestrate. Engagement telemetry chooses a likely starting point; advancement requires observable work evidence. Maturity is assessed per workflow rather than assigned permanently to a person, and governance begins in Phase 0.
+
+The reviewed 45-minute deck arc is `Map the Surfaces → Start by Role → Build Adoption Maturity → Compose the Surfaces`. The opening must show seven experiences across three zones before teaching the router. VS Code, CLI, and the GitHub Copilot app are local control surfaces; the app coordinates both local and GitHub-hosted execution. GitHub Chat, coding agent, and Copilot Code Review are three distinct GitHub-hosted jobs. VS Code agent mode plus the Agents window owns multi-session work close to code; the local Copilot app owns fleet coordination across sessions, PRs, repositories, and automations. Composition is the closing payoff, and the maturity section teaches one capability scorecard while the full branch catalog stays in `adoption-roadmap.yml`. The 28-day window is a configurable cadence aligned with the supplied engagement report; teams define local sample size, acceptance, quality, and escalation thresholds.
+
+Cross-functional onboarding reuses the control × execution matrix as the stable visual, then overlays numbered PM, documentation, design, platform operations, delivery leadership, and embedded-product routes before teaching an outcome-first decision tree. Role is only a starting clue: the desired artifact and decisive context choose the surface. Platform operations is CLI-first when host or runtime evidence is decisive; platform product work is SDK-first only when the team owns an embedded trigger, tools, policy, and runtime contract. All role guidance must name a low-risk first task, a reviewable artifact, its human reviewer, and the signal to hand off to another surface.
+
+The production incident composition route ends after the CLI diagnosis and validated VS Code fix restore service. Coding-agent delegation is never a redundant second fix; it is an optional, separate prevention issue with portable context, such as regression coverage and a runbook update, delivered as a draft pull request.
+
+Executive curriculum links resolve under `tech-talks/exec-*`; the retired `exec-talks/` directory must not be restored in roadmap references.
+
+---
+
 ## copilot-code-review deck regenerated — Lite/Balanced effort + calculator anchor (2026-08-10)
 
 `schema_version: 1` | `date: 2026-08-10`

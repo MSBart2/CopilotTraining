@@ -4,6 +4,14 @@
 
 ---
 
+## 🪜 Choose by Adoption Phase
+
+Use the [Copilot Adoption and Maturity Roadmap](surfaces/README.md#4-build-adoption-maturity) when prescribing a sequence rather than selecting one talk. It maps four 28-day engagement signals — passive, code-first, agent-first, and multi-agent — to core training paths, role-specific branches, and observable exit evidence.
+
+The machine-readable curriculum is in [adoption-roadmap.yml](surfaces/adoption-roadmap.yml). Engagement identifies a likely starting point; demonstrated outcomes determine advancement.
+
+---
+
 ## 🧱 The Foundation: Chat + Primitives
 
 Every Copilot journey starts with two essentials:

@@ -1,0 +1,82 @@
+version: 1
+
+deck:
+  title: "Which Copilot Where?"
+  subtitle: "A Practical Surface Router"
+  tagline: "Route eligible work by decisive context, review ownership, and the capability the team needs next."
+
+  agenda:
+    - title: "Choose the Surface"
+      takeaway: "Route a task using execution location, decisive context, delivery artifact, and review owner."
+      whyItMatters: "The work begins where its strongest context and controls already live."
+    - title: "Prescribe the Next Step"
+      takeaway: "Connect role moments and capability evidence to a focused training path."
+      whyItMatters: "Teams invest in the next workflow capability they can demonstrate and review."
+    - title: "Design the Handoff"
+      takeaway: "Compose local, GitHub-hosted, and embedded surfaces across one task lifecycle."
+      whyItMatters: "Each phase keeps its context, controls, and acceptance contract visible."
+
+  arcToc: "Map → Start → Build Maturity → Compose"
+
+  arcNarrative: >
+    Map the Surfaces establishes the seven surface experiences, overlays six role journeys,
+    and turns them into four discriminating questions. Start by Role gives each role a
+    low-risk first task, reviewable artifact, and handoff signal. Cross-functional moments
+    make acceptance ownership visible. Build Adoption
+    Maturity converts engagement signals into evidence-led training paths with one
+    configurable capability scorecard. Compose the Surfaces delivers the peak through
+    three lifecycle handoffs, showing how work moves as its context and review boundary
+    change.
+
+  sectionOrder:
+    - "Map the Surfaces"
+    - "Start by Role"
+    - "Build Adoption Maturity"
+    - "Compose the Surfaces"
+
+  sectionModes:
+    "Map the Surfaces":
+      emphasis: high
+      note: >
+        Open with a matrix that separates where the human controls work from where
+        agent execution or analysis happens. Give all seven experiences a one-line
+        when-to-use rule. Place the Copilot app in the local desktop row and show its
+        reach into local and GitHub-hosted environments. Show Chat, coding agent, and
+        Code Review as three jobs controlled from GitHub.com with distinct execution.
+        Overlay PM, documentation, design, platform operations, delivery leadership, and
+        embedded-product journeys. Distinguish CLI-first runtime work, app-first fleet
+        coordination, and SDK-first product ownership, then land the outcome-first router.
+    "Start by Role":
+      emphasis: medium
+      note: >
+        Use paired onboarding playbooks for PM and documentation, test and design, then
+        fleet owners and embedded-product owners. Give each role a low-risk first task,
+        reviewable artifact, human acceptance owner, and one signal for when to move.
+    "Build Adoption Maturity":
+      emphasis: medium
+      note: >
+        Frame telemetry as a starting locator and capability evidence as the advancement
+        gate. Show the four phases in one roadmap and teach one scorecard with baseline,
+        reviewed artifacts, quality guardrail, and next-phase target. Keep the six branch
+        catalogs in adoption-roadmap.yml and describe the 28-day cadence as configurable.
+    "Compose the Surfaces":
+      emphasis: high
+      note: >
+        Make lifecycle composition the closing payoff. Walk one production diagnosis
+        from CLI evidence through a VS Code fix and explicit incident closure. Show
+        coding-agent delegation only as an optional, separate prevention issue for
+        regression coverage and runbook updates. Then compare the three reusable
+        handoff patterns and close on acceptance ownership at every transition.
+
+  preamble: []
+
+  appendix: []
+
+  highlightMoments:
+    - "Seven Copilot experiences become visible across local, GitHub, and embedded zones."
+    - "Four discriminating questions route work by embedding, execution, decisive context, and delegation shape."
+    - "Six visual role journeys expand into sixteen reusable scenario tests with explicit outcomes and handoffs."
+    - "Four adoption phases advance through reviewed capability evidence and locally defined quality thresholds."
+    - "Three lifecycle patterns show where work moves when context, control, or delivery boundaries change."
+
+# OPEN DECISION: Use a prepared production-incident walkthrough or route a live audience task — the prepared path protects timing and repeatability; the live path increases participation and requires flexible facilitation.

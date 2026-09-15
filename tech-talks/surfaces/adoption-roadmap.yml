@@ -1,0 +1,116 @@
+version: 1
+
+principles:
+  engagement_is_a_starting_signal: true
+  advancement_requires_evidence: true
+  governance_begins_at_phase_zero: true
+  maturity_is_assessed_per_workflow: true
+  defaultReviewCadenceDays: 28
+  reviewCadenceIsConfigurable: true
+  localThresholdsRequired:
+    - minimum_sample_size
+    - acceptance_signal
+    - quality_guardrail
+    - escalation_limit
+
+phases:
+  - id: phase_0
+    name: Activate
+    telemetryLabel: passive
+    telemetrySignal: licensed_but_not_engaged
+    capabilityObjective: complete_one_relevant_task_with_human_review
+    corePath:
+      - workshop/00-orientation
+      - tech-talks/vscode-latest
+      - tech-talks/surfaces
+    exitEvidence:
+      - real_task_completed
+      - output_reviewed_by_human
+      - surface_choice_can_be_explained
+
+  - id: phase_1
+    name: Standardize
+    telemetryLabel: code_first
+    telemetrySignal: code_completion_or_ide_agent_use_on_two_days
+    capabilityObjective: make_interactive_assistance_repeatable_and_repository_aware
+    corePath:
+      - workshop/01-instructions
+      - workshop/02-agent-plan-mode
+      - tech-talks/agent-dev-loop
+      - tech-talks/copilot-code-review
+    exitEvidence:
+      - shared_repository_instructions_exist
+      - plan_led_change_passes_tests
+      - change_passes_human_review
+
+  - id: phase_2
+    name: Delegate
+    telemetryLabel: agent_first
+    telemetrySignal: one_github_based_agent_surface_used
+    capabilityObjective: delegate_bounded_work_with_explicit_context_and_controls
+    corePath:
+      - tech-talks/copilot-primitives
+      - workshop/03-custom-prompts
+      - workshop/04-agent-skills
+      - tech-talks/copilot-cli
+      - tech-talks/agentic-journey
+    exitEvidence:
+      - bounded_task_has_acceptance_criteria
+      - asynchronous_work_produces_reviewable_artifact
+      - handoff_and_escalation_rules_are_documented
+
+  - id: phase_3
+    name: Orchestrate
+    telemetryLabel: multi_agent
+    telemetrySignal: two_agent_surfaces_or_copilot_app_used
+    capabilityObjective: coordinate_parallel_work_as_a_governed_system
+    corePath:
+      - workshop/06-custom-agents
+      - tech-talks/copilot-app
+      - tech-talks/agent-teams
+      - tech-talks/agentic-workflows
+      - tech-talks/agentic-sdlc
+    exitEvidence:
+      - independent_workstreams_integrate_cleanly
+      - quality_and_policy_are_measured
+      - cost_and_throughput_are_measured
+
+branches:
+  implementation_quality:
+    path:
+      - tech-talks/copilot-code-quality
+      - tech-talks/copilot-code-review
+    outcome: changes_meet_quality_and_review_gates
+
+  runtime_and_incidents:
+    path:
+      - tech-talks/copilot-cli
+      - tech-talks/copilot-azure-mcp
+    outcome: evidence_becomes_reproducible_diagnosis_and_bounded_remediation
+
+  security_and_policy:
+    path:
+      - tech-talks/copilot-hooks
+      - tech-talks/enterprise-patterns
+    outcome: access_approvals_and_audit_evidence_are_explicit
+
+  platform_capability:
+    path:
+      - workshop/05-mcp-servers
+      - tech-talks/mcp-apps
+      - tech-talks/copilot-sdk
+    outcome: proven_workflow_becomes_governed_reusable_service
+
+  team_throughput:
+    path:
+      - tech-talks/copilot-app
+      - tech-talks/agent-teams
+      - tech-talks/agentic-workflows
+    outcome: parallel_work_has_ownership_isolation_integration_and_review
+
+  leadership_decisions:
+    path:
+      - tech-talks/exec-delivery
+      - tech-talks/exec-economics
+      - tech-talks/exec-labor
+    outcome: leaders_choose_investments_controls_and_success_measures

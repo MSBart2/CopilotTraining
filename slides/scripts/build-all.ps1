@@ -53,6 +53,7 @@ $PROP_EXTRACTORS = @{
     'TAKEAWAY_MAX'   = @{ type = 'match'; pattern = 'takeaway:\s*"([^"]+)"' }
     'WHY_IT_MATTERS_MAX' = @{ type = 'match'; pattern = 'whyItMatters:\s*"([^"]+)"' }
     'ROW_MAX'        = @{ type = 'count'; pattern = 'label:\s*"[^"]+"' }
+    'MATRIX_ROW_MAX' = @{ type = 'count'; pattern = 'icon:\s*"[^"]+"' }
     'SECTIONS_MAX'   = @{ type = 'count'; pattern = 'icon:\s*"[^"]+"' }
     'CARDS_MAX'      = @{ type = 'count'; pattern = 'icon:\s*"[^"]+"' }
     'HEADER_MAX'     = @{ type = 'attr';  pattern = 'header="([^"]+)"' }

@@ -1,0 +1,223 @@
+version: 1
+
+dimensions:
+  - controlLocation
+  - executionLocation
+  - requiredContext
+  - interaction
+  - autonomy
+  - delivery
+  - reviewOwner
+
+surfaces:
+  vscode:
+    name: VS Code Copilot
+    controlLocation:
+      - vscode_editor
+      - vscode_agents_window
+    executionLocation:
+      - local_workspace
+      - connected_development_environment
+      - github_hosted_environment
+    requiredContext:
+      - editor_buffers
+      - workspace_files
+      - symbols
+      - diagnostics
+      - visual_diffs
+    interaction:
+      - interactive
+      - agent_workflow
+    autonomy:
+      - suggestion
+      - planned_execution
+      - bounded_agent_execution
+    delivery:
+      - explanation
+      - reviewed_workspace_change
+    reviewOwner: immediate_human_in_editor
+    bestFor:
+      - code_shaping_with_visual_review
+      - multi_file_implementation
+      - diagnostics_guided_refactoring
+    boundaries:
+      - terminal_heavy_runtime_investigation
+      - unattended_event_driven_automation
+
+  cli:
+    name: GitHub Copilot CLI
+    controlLocation:
+      - terminal
+    executionLocation:
+      - local_shell
+      - remote_host_shell
+    requiredContext:
+      - filesystem
+      - shell_state
+      - runtime_tools
+      - host_local_data
+    interaction:
+      - interactive
+      - planned
+      - programmatic
+    autonomy:
+      - planned_execution
+      - bounded_agent_execution
+    delivery:
+      - diagnosis
+      - command_result
+      - file_change
+      - delegated_work
+    reviewOwner: immediate_human_at_prompt
+    bestFor:
+      - runtime_diagnosis
+      - terminal_native_development
+      - host_local_operations
+    boundaries:
+      - visual_diff_centered_review
+      - custom_product_experience
+
+  app:
+    name: GitHub Copilot app
+    controlLocation:
+      - local_desktop_app
+    executionLocation:
+      - local_environment
+      - github_hosted_environment
+    requiredContext:
+      - repositories
+      - issues
+      - agent_sessions
+      - parallel_workstreams
+    interaction:
+      - desktop_orchestration
+      - session_management
+    autonomy:
+      - interactive_session
+      - planned_execution
+      - delegated_execution
+    delivery:
+      - managed_session
+      - pull_request
+    reviewOwner: session_coordinator
+    bestFor:
+      - parallel_session_coordination
+      - multi_task_oversight
+      - agent_work_review
+    boundaries:
+      - single_small_interactive_task
+      - headless_host_only_environment
+
+  githubChat:
+    name: GitHub.com Chat
+    controlLocation:
+      - github_com
+    executionLocation:
+      - github_managed_service
+    requiredContext:
+      - repositories
+      - issues
+      - pull_requests
+      - github_activity
+    interaction:
+      - conversational_exploration
+    autonomy:
+      - explanation
+    delivery:
+      - answer
+      - summary
+      - navigation
+    reviewOwner: none_for_non_mutating_output
+    bestFor:
+      - repository_understanding
+      - issue_and_pull_request_exploration
+      - low_setup_context_gathering
+    boundaries:
+      - host_local_execution
+      - direct_workspace_mutation
+
+  codeReview:
+    name: GitHub Copilot Code Review
+    controlLocation:
+      - github_com
+      - supported_ide
+    executionLocation:
+      - github_managed_service
+    requiredContext:
+      - pull_request
+      - changed_files
+      - repository_instructions
+    interaction:
+      - requested_review
+      - automatic_review
+    autonomy:
+      - analysis_and_feedback
+    delivery:
+      - review_findings
+      - suggested_fixes
+    reviewOwner: human_pull_request_reviewer
+    bestFor:
+      - pull_request_quality_feedback
+      - security_and_test_gap_detection
+      - review_before_human_approval
+    boundaries:
+      - final_business_logic_approval
+      - host_local_runtime_validation
+
+  codingAgent:
+    name: GitHub Copilot coding agent
+    controlLocation:
+      - github_com
+      - vscode_agents_window
+      - copilot_desktop_app
+    executionLocation:
+      - github_hosted_environment
+    requiredContext:
+      - github_repository
+      - bounded_issue
+      - repository_configuration
+    interaction:
+      - asynchronous_delegation
+      - pull_request_feedback
+    autonomy:
+      - bounded_agent_execution
+    delivery:
+      - draft_pull_request
+      - implementation_evidence
+    reviewOwner: pull_request_reviewer
+    bestFor:
+      - issue_to_pull_request_work
+      - bounded_repository_maintenance
+      - asynchronous_implementation
+    boundaries:
+      - hidden_local_dependencies
+      - immediate_turn_by_turn_steering
+
+  sdk:
+    name: GitHub Copilot SDK
+    controlLocation:
+      - application_defined_ui_or_api
+    executionLocation:
+      - application_defined_runtime
+    requiredContext:
+      - application_defined_data
+      - custom_tools
+      - domain_events
+    interaction:
+      - api_driven
+      - event_driven
+      - application_defined
+    autonomy:
+      - application_controlled
+    delivery:
+      - application_defined_response
+      - domain_action
+      - workflow_event
+    reviewOwner: application_defined
+    bestFor:
+      - embedded_agent_products
+      - recurring_domain_automation
+      - custom_tool_and_policy_integration
+    boundaries:
+      - one_off_interactive_work
+      - workflows_without_product_ownership

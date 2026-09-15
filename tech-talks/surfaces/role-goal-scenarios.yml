@@ -1,0 +1,240 @@
+version: 1
+
+scenarios:
+  - id: developer_refactor
+    role: software_developer
+    goal: refactor_across_workspace
+    constraints:
+      - interactive_review
+      - editor_diagnostics
+      - multi_file_change
+    route: vscode
+    outcome: reviewed_workspace_diff
+    handoff:
+      when: validation_requires_runtime_investigation
+      to: cli
+
+  - id: devops_live_failure
+    role: devops_engineer
+    goal: diagnose_live_service_failure
+    constraints:
+      - host_local_logs
+      - shell_tools
+      - immediate_steering
+    route: cli
+    outcome: diagnosis_and_validated_commands
+    handoff:
+      when: root_cause_becomes_portable_repository_change
+      to: vscode
+
+  - id: platform_runtime_operations
+    role: platform_operations_team
+    when: while_diagnosing_infrastructure_or_service_behavior
+    goal: prove_root_cause_before_encoding_remediation
+    constraints:
+      - remote_host_state
+      - shell_tools
+      - runtime_evidence
+      - immediate_steering
+    route: cli
+    outcome:
+      - validated_diagnosis
+      - reproducible_commands
+      - remediation_boundary
+    handoff:
+      when: remediation_becomes_reviewable_infrastructure_change
+      to: vscode
+
+  - id: lead_parallel_backlog
+    role: technical_lead
+    goal: coordinate_independent_backlog_items
+    inputs:
+      issueCount: 5
+    constraints:
+      - bounded_issues
+      - parallel_execution
+      - centralized_review
+    route: app
+    outcome: coordinated_pull_request_set
+    handoff:
+      when: pull_requests_are_ready
+      to: vscode
+
+  - id: product_repository_exploration
+    role: product_role
+    goal: understand_repository_and_delegate_issue
+    constraints:
+      - browser_access
+      - repository_context
+      - asynchronous_delivery
+    route:
+      - githubChat
+      - codingAgent
+    outcome:
+      - repository_brief
+      - refined_issue
+      - draft_pull_request
+
+  - id: platform_embedded_triage
+    role: platform_engineer
+    goal: add_agentic_triage_to_internal_portal
+    constraints:
+      - custom_trigger
+      - domain_tools
+      - application_policy
+      - structured_response
+    route: sdk
+    outcome: embedded_triage_workflow
+    proofPath:
+      - cli
+      - sdk
+
+  - id: developer_bounded_issue
+    role: software_developer
+    goal: complete_well_scoped_repository_task_asynchronously
+    constraints:
+      - issue_has_acceptance_criteria
+      - repository_context_is_sufficient
+      - pull_request_delivery
+    route: codingAgent
+    outcome: draft_pull_request
+
+  - id: product_refine_issue
+    role: product_manager
+    when: before_prioritizing_unfamiliar_repository_work
+    goal: understand_behavior_and_define_bounded_issue
+    constraints:
+      - repository_context
+      - no_local_checkout
+      - evidence_before_delegation
+    route: githubChat
+    outcome:
+      - repository_brief
+      - refined_issue
+    handoff:
+      when: issue_has_acceptance_criteria
+      to: codingAgent
+
+  - id: incident_live_response
+    role: incident_commander
+    when: during_live_service_event
+    goal: establish_cause_and_remediation_boundary
+    constraints:
+      - host_local_logs
+      - runtime_tools
+      - immediate_steering
+    route: cli
+    outcome:
+      - diagnosis
+      - validated_commands
+      - remediation_boundary
+    handoff:
+      when: remediation_becomes_portable_repository_change
+      to: vscode
+
+  - id: security_alert_workflow
+    role: security_analyst
+    when: while_proving_recurring_alert_triage
+    goal: define_reproducible_investigation
+    constraints:
+      - security_tooling
+      - local_evidence
+      - human_decision_points
+    route: cli
+    outcome: validated_triage_playbook
+    handoff:
+      when: workflow_is_stable_and_event_driven
+      to: sdk
+
+  - id: manager_parallel_delivery
+    role: engineering_manager
+    when: when_multiple_bounded_items_are_ready
+    goal: coordinate_delivery_and_review
+    inputs:
+      issueCount: 5
+    constraints:
+      - parallel_execution
+      - progress_visibility
+      - pull_request_delivery
+    route: app
+    outcome: coordinated_pull_request_set
+
+  - id: writer_stale_documentation
+    role: technical_writer
+    when: after_bounded_product_change
+    goal: update_and_verify_repository_documentation
+    constraints:
+      - bounded_scope
+      - repository_context
+      - pull_request_review
+    route: codingAgent
+    outcome: documentation_pull_request
+    handoff:
+      when: editorial_refinement_is_needed
+      to: vscode
+
+  - id: support_customer_report
+    role: support_engineer
+    when: while_triaging_customer_report
+    goal: connect_report_to_repository_behavior
+    constraints:
+      - repository_context
+      - explanation_before_execution
+      - escalation_artifact
+    route: githubChat
+    outcome:
+      - repository_explanation
+      - reproduction_path
+      - escalation_ready_issue
+    handoff:
+      when: reproduction_requires_local_runtime
+      to: cli
+
+  - id: quality_acceptance_review
+    role: quality_engineer
+    when: before_agent_generated_change_is_merged
+    goal: produce_acceptance_evidence_and_review_decision
+    constraints:
+      - pull_request_or_changed_code
+      - review_findings
+      - human_acceptance
+    route: codeReview
+    outcome:
+      - review_findings
+      - review_decision
+    handoff:
+      when: finding_requires_reproduction
+      to: vscode
+
+  - id: designer_interface_change
+    role: product_designer
+    when: while_tracing_design_intent_into_an_existing_interface
+    goal: implement_and_validate_accessible_interface_change
+    constraints:
+      - repository_context_before_editing
+      - visual_feedback
+      - design_system_tokens
+      - human_visual_acceptance
+    route:
+      - githubChat
+      - vscode
+      - codeReview
+    outcome:
+      - implementation_map
+      - reviewed_ui_change
+      - visual_acceptance_evidence
+
+  - id: platform_scale_workflow
+    role: platform_owner
+    when: while_proving_workflow_for_many_teams
+    goal: validate_tools_policy_and_outputs_before_productizing
+    constraints:
+      - interactive_steering
+      - domain_tools
+      - application_policy
+      - structured_outputs
+    route: vscode
+    outcome: validated_interactive_workflow
+    handoff:
+      when: workflow_is_proven_and_should_serve_many_teams
+      to: sdk
