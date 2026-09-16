@@ -158,6 +158,6 @@ Before committing slide or companion changes, use the **Deploy** agent
 3. `npm run sync-index` if decks changed
 4. Re-check, then **snarky commit** including `slides/companions/**`
 5. **Refuse** commit when companions are missing/older than their decks
-6. Push only when explicitly asked
+6. Push the current branch after a successful commit; never force-push
 
 Do not commit deck-only changes that leave companions untracked or stale.

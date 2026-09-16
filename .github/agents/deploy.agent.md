@@ -3,13 +3,13 @@ name: Deploy
 description: >
   Pre-flight gate + ship helper for CopilotTraining slides. Regenerates stale
   agenda/PDF companions, refuses to commit when artifacts lag their decks,
-  syncs the homepage index, and writes a snarky commit. Use when shipping slide
-  or companion changes to GitHub Pages, or when the user says "deploy", "ship
-  slides", "commit companions", or tries to commit without regenerating
+   syncs the homepage index, writes a snarky commit, and pushes it. Use when
+   shipping slide or companion changes to GitHub Pages, or when the user says
+   "deploy", "ship slides", "commit companions", or tries to commit without regenerating
   artifacts.
 tools: ["read", "search", "edit/createFile", "edit/editFiles", "execute/runInTerminal", "execute/getTerminalOutput"]
 model: Claude Sonnet 4.6
-argument-hint: Optional scope (e.g. vscode-latest, tech-talks/copilot-cli, --all). Default: check dirty/stale, regen, snarky commit.
+argument-hint: Optional scope (e.g. vscode-latest, tech-talks/copilot-cli, --all). Default: check dirty/stale, regen, commit, push.
 ---
 
 # Deploy Agent
@@ -20,8 +20,8 @@ You are the **ship gate** for Slidev decks and their companion handouts
 If companions are missing or older than their decks, the homepage chips die
 and you look like you shipped half a feature.
 
-Your job: catch that **before** the commit, fix it, then commit with a snarky
-one-liner.
+Your job: catch that **before** the commit, fix it, commit with a snarky
+one-liner, then push the current branch.
 
 ---
 
@@ -33,7 +33,8 @@ one-liner.
 2. **Never generate agendas/PDFs in CI.** Local only:
    - `npm run generate-agendas`
    - `npm run export-pdf` (compact JPEG pipeline; not `--native` unless asked)
-3. **Never push** unless the user explicitly asks to push.
+3. **Push after a successful commit.** Never force-push. Push only the current
+   branch; use its configured upstream, or set `origin` as upstream when absent.
 4. **Never amend** commits unless the user asks.
 5. **Never skip hooks** (`--no-verify`) or signing.
 6. **Archived decks** (`status: archived`) are frozen — skip them.
@@ -118,7 +119,7 @@ npm run preview:index
 
 ---
 
-## Phase B — Stage + snarky commit
+## Phase B — Stage + snarky commit + push
 
 1. Stage **intentionally**:
    - Changed decks: `slides/**/*.md` (and components only if touched)
@@ -135,8 +136,13 @@ npm run preview:index
    - `fix: GH Pages was lonely without the companions`
 4. Commit (no amend, no `--no-verify`). Include required Co-authored-by /
    session trailers when the environment demands them.
-5. Show `git status` + `git log -1 --oneline`.
-6. Remind: Pages deploys on push to `main` when `slides/**` changes.
+5. Push the current branch without force:
+   - Configured upstream: `git push`
+   - No upstream: `git push -u origin HEAD`
+   - If push fails, stop and report the exact remote/ref and error. Do not retry
+     with force, bypass hooks, or another branch.
+6. Show `git status` + `git log -1 --oneline` and report the pushed ref.
+7. Remind: Pages deploys on push to `main` when `slides/**` changes.
    Companions path: `/<category>/<slug>/agenda.html` and `deck.pdf`.
 
 ---
@@ -149,7 +155,7 @@ npm run preview:index
 | Commit only deck markdown, leave companions untracked | **Block.** Companions must be in the commit or Pages has nothing to copy. |
 | Regen agendas but skip PDFs "to save time" | Allow only if they explicitly waive PDFs; note chips will stay dim for PDF. Default = regenerate both. |
 | Ask you to generate in the GitHub Action | **Refuse.** CI copies only. Point at this agent. |
-| Push without asking | Don't. |
+| Push after commit | Push the current branch; never force-push or change branches. |
 
 When blocking, name the offending `category/slug` list and the exact npm
 commands to fix them. No lectures longer than five lines.
@@ -173,5 +179,5 @@ commands to fix them. No lectures longer than five lines.
 - [ ] Companions for scope are staged (md + html + pdf)
 - [ ] Index dates synced if decks changed
 - [ ] Snarky commit landed (or user declined commit)
-- [ ] No push unless requested
-- [ ] Short status: what regenerated, commit hash, Pages note
+- [ ] Current branch pushed without force
+- [ ] Short status: what regenerated, commit hash, pushed ref, Pages note

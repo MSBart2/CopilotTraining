@@ -178,7 +178,7 @@ references:  # optional but recommended
 - Hard gate: `cd slides && npm run check-companions -- --strict`
 - Regen: `npm run generate-agendas` + `npm run export-pdf` (compact)
 - Snarky commit including companions; **block** deck-only commits when stale
-- Push only when user asks
+- Push the current branch after a successful commit; never force-push
 
 ---
 
