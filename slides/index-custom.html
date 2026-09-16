@@ -775,7 +775,7 @@
     }
 
     .container {
-      max-width: 1540px;
+      max-width: 2400px;
     }
 
     .hero {
@@ -895,10 +895,10 @@
       display: flex;
       align-items: center;
       gap: 0.65rem;
-      padding: 0.72rem 0.9rem;
+      padding: 0.85rem 1rem;
       background: rgba(12, 18, 28, 0.94);
       color: var(--text-muted);
-      font-size: 0.78rem;
+      font-size: 0.84rem;
       font-weight: 700;
       text-decoration: none;
       transition: background 0.18s ease, color 0.18s ease;
@@ -918,16 +918,46 @@
     .catalog-nav-index {
       color: #22d3ee;
       font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-      font-size: 0.68rem;
+      font-size: 0.72rem;
     }
 
     .onboarding-path {
       --group-accent: #f5b800;
       margin-bottom: 1.25rem;
-      padding: 1rem 1.25rem;
+      padding: 1.15rem 1.35rem;
       border-top: 1px solid rgba(245, 184, 0, 0.4);
       border-bottom: 1px solid rgba(245, 184, 0, 0.22);
       scroll-margin-top: 5rem;
+    }
+
+    #start-here:target,
+    #tech-talks:target,
+    #workshop:target,
+    #related-repos:target {
+      position: relative;
+      z-index: 1;
+      outline: 1px solid color-mix(in srgb, var(--target-accent) 72%, transparent);
+      outline-offset: 4px;
+      box-shadow:
+        0 0 0 5px color-mix(in srgb, var(--target-accent) 12%, transparent),
+        0 0 34px color-mix(in srgb, var(--target-accent) 34%, transparent),
+        0 16px 48px var(--section-shadow);
+      animation: target-halo 620ms ease-out;
+    }
+
+    #start-here { --target-accent: #f5b800; }
+    #tech-talks { --target-accent: #22d3ee; }
+    #workshop { --target-accent: #fb923c; }
+    #related-repos { --target-accent: #a855f7; }
+
+    @keyframes target-halo {
+      from {
+        outline-offset: 10px;
+        box-shadow:
+          0 0 0 12px color-mix(in srgb, var(--target-accent) 22%, transparent),
+          0 0 58px color-mix(in srgb, var(--target-accent) 54%, transparent),
+          0 16px 48px var(--section-shadow);
+      }
     }
 
     .onboarding-heading {
@@ -939,13 +969,13 @@
     }
 
     .onboarding-heading h2 {
-      font-size: 1rem;
+      font-size: 1.1rem;
       font-weight: 760;
     }
 
     .onboarding-heading p {
       color: var(--text-muted);
-      font-size: 0.78rem;
+      font-size: 0.84rem;
     }
 
     .onboarding-steps {
@@ -959,7 +989,8 @@
     .onboarding-step {
       position: relative;
       min-width: 0;
-      padding: 0.8rem 1.6rem 0.8rem 0.85rem;
+      min-height: 92px;
+      padding: 1rem 1.8rem 1rem 1rem;
       background: rgba(12, 18, 28, 0.94);
       color: var(--text);
       text-decoration: none;
@@ -998,20 +1029,20 @@
     .onboarding-number {
       color: #f5b800;
       font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-      font-size: 0.62rem;
+      font-size: 0.68rem;
     }
 
     .onboarding-label {
-      margin-top: 0.18rem;
-      font-size: 0.82rem;
+      margin-top: 0.25rem;
+      font-size: 0.9rem;
       font-weight: 740;
     }
 
     .onboarding-detail {
-      margin-top: 0.25rem;
+      margin-top: 0.35rem;
       color: var(--text-muted);
-      font-size: 0.7rem;
-      line-height: 1.35;
+      font-size: 0.76rem;
+      line-height: 1.45;
     }
 
     .section {
@@ -1084,16 +1115,16 @@
     }
 
     .grid {
-      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
       grid-auto-rows: auto;
-      gap: 0.7rem;
+      gap: clamp(1rem, 1.25vw, 2rem);
     }
 
     .card,
     .card-shell {
       position: relative;
-      min-height: 146px;
-      padding: 1rem 1rem 0.95rem;
+      min-height: 174px;
+      padding: 1.15rem 1.2rem 1.1rem;
       overflow: hidden;
       border-radius: 6px;
       box-shadow: none;
@@ -1129,16 +1160,16 @@
 
     .card h2 {
       font-family: "Aptos Display", "Segoe UI Variable Display", "Trebuchet MS", sans-serif;
-      font-size: 1rem;
+      font-size: 1.08rem;
       font-weight: 720;
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .card p {
-      margin-top: 0.45rem;
+      margin-top: 0.6rem;
       color: var(--card-p);
-      font-size: 0.79rem;
-      line-height: 1.5;
+      font-size: 0.88rem;
+      line-height: 1.55;
       -webkit-line-clamp: 4;
     }
 
@@ -1148,7 +1179,7 @@
 
     .card-chip {
       border-radius: 4px;
-      font-size: 0.57rem;
+      font-size: 0.62rem;
     }
 
     .card-chip:hover,
@@ -1167,7 +1198,86 @@
     }
 
     .section.repos .grid {
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+    }
+
+    @media (min-width: 1800px) {
+      .catalog-nav a {
+        gap: 0.8rem;
+        padding: 1rem 1.2rem;
+        font-size: 0.92rem;
+      }
+
+      .catalog-nav-index {
+        font-size: 0.78rem;
+      }
+
+      .onboarding-path {
+        padding: 1.4rem 1.6rem;
+      }
+
+      .onboarding-heading {
+        margin-bottom: 1rem;
+      }
+
+      .onboarding-heading h2 {
+        font-size: 1.25rem;
+      }
+
+      .onboarding-heading p {
+        font-size: 0.92rem;
+      }
+
+      .onboarding-step {
+        min-height: 112px;
+        padding: 1.25rem 2.1rem 1.2rem 1.2rem;
+      }
+
+      .onboarding-number {
+        font-size: 0.74rem;
+      }
+
+      .onboarding-label {
+        font-size: 1rem;
+      }
+
+      .onboarding-detail {
+        font-size: 0.84rem;
+        line-height: 1.5;
+      }
+
+      .grid,
+      .section.repos .grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      }
+
+      .card,
+      .card-shell {
+        min-height: 205px;
+        padding: 1.4rem 1.45rem 1.3rem;
+      }
+
+      .card h2 {
+        font-size: 1.2rem;
+      }
+
+      .card p {
+        margin-top: 0.7rem;
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      .card-chip {
+        font-size: 0.66rem;
+      }
+
+      .sub-group-label {
+        font-size: 0.8rem;
+      }
+
+      .sub-group-desc {
+        font-size: 0.84rem;
+      }
     }
 
     @media (max-width: 760px) {
