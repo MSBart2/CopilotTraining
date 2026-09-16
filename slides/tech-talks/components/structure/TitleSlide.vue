@@ -39,50 +39,43 @@
     <div class="font-mono text-red-300 text-base text-center leading-relaxed max-w-2xl">{{ validationError }}</div>
   </div>
   <template v-else>
-  <!-- Full-height container with flexbox centering -->
+  <!-- Full-height editorial title composition -->
   <div class="sv-title-slide">
     <!-- Ambient gradient background -->
     <div class="sv-title-bg bg-gradient-to-br" :class="t.bg"></div>
 
-    <!-- Animated blur orb -->
-    <div class="sv-title-orb bg-gradient-to-r" :class="t.orb"></div>
+    <div class="sv-title-grid"></div>
+    <div class="sv-title-rule" :class="t.rule"></div>
 
-    <!-- Logo section with glow effect -->
-    <div class="sv-title-logo">
-      <!-- Logo glow (blurred copy behind) -->
-      <div class="sv-title-logo-glow">
-        <img src="../../sdp-logo.png" class="w-64" alt="" />
+    <!-- Compact brand lockup -->
+    <div class="sv-title-brand">
+      <img src="../../sdp-logo.png" class="sv-title-logo" alt="SDP Logo" />
+      <div class="sv-title-brand-copy">
+        <span>CopilotTraining</span>
+        <span>Technical briefing</span>
       </div>
-      <!-- Main logo (sharp, on top) -->
-      <img src="../../sdp-logo.png" class="w-64 relative" alt="SDP Logo" />
     </div>
 
-    <!-- Main title with gradient text effect -->
-    <h1 class="sv-title-heading !text-5xl !font-bold !mt-8 bg-gradient-to-r bg-clip-text text-transparent" :class="t.heading">
-      {{ title }}
-    </h1>
+    <div class="sv-title-content">
+      <!-- Main title with gradient text effect -->
+      <h1 class="sv-title-heading bg-gradient-to-r bg-clip-text text-transparent" :class="t.heading">
+        {{ title }}
+      </h1>
 
-    <!-- Subtitle pill (theme-colored background) -->
-    <div class="sv-title-pill-wrap">
-      <span class="sv-title-pill bg-gradient-to-r shadow-lg" :class="t.pill">
+      <div class="sv-title-subtitle" :class="t.subtitle">
         {{ subtitle }}
-      </span>
+      </div>
+
+      <!-- Optional tagline text -->
+      <div class="sv-title-tagline">
+        {{ tagline }}
+      </div>
     </div>
 
-    <!-- Optional tagline text -->
-    <div class="sv-title-tagline">
-      {{ tagline }}
+    <div class="sv-title-meta">
+      <span>{{ meta }}</span>
+      <span class="sv-title-meta-mark" :class="t.metaMark"></span>
     </div>
-
-    <!-- Decorative divider -->
-    <div class="sv-title-divider bg-gradient-to-r from-transparent to-transparent" :class="t.divider"></div>
-  </div>
-
-  <!-- Bottom-right metadata (speaker info, date, etc.) -->
-  <div class="sv-title-meta">
-    <span class="text-sm opacity-50">
-      {{ meta }}
-    </span>
   </div>
   </template>
 </template>
@@ -122,17 +115,17 @@ if (props.tagline?.length > TAGLINE_MAX)
 
 const DARK_THEME = {
   bg:      'from-cyan-900/20 via-blue-900/10 to-indigo-900/20',
-  orb:     'from-cyan-500/20 via-blue-500/20 to-indigo-500/20',
   heading: 'from-cyan-400 via-blue-400 to-indigo-400',
-  pill:    'from-cyan-600/80 to-blue-600/80 shadow-cyan-500/25',
-  divider: 'via-cyan-400',
+  subtitle: 'text-slate-100 border-cyan-400/60',
+  rule: 'bg-cyan-400',
+  metaMark: 'bg-cyan-400',
 }
 const LIGHT_THEME = {
   bg:      'from-cyan-100/30 via-blue-50/20 to-indigo-50/10',
-  orb:     'from-cyan-300/20 via-blue-200/20 to-indigo-200/10',
   heading: 'from-cyan-600 via-blue-600 to-indigo-600',
-  pill:    'from-cyan-500 to-blue-500 shadow-cyan-300/50',
-  divider: 'via-cyan-500',
+  subtitle: 'text-slate-800 border-cyan-500/70',
+  rule: 'bg-cyan-500',
+  metaMark: 'bg-cyan-500',
 }
 
 const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME);

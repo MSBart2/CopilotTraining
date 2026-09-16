@@ -12,8 +12,8 @@ transition: slide-left
 title: The Agentic Economics
 mdc: true
 section: Executive Talks
-status: active
-updated: 2026-08-11
+status: archived
+updated: 2026-09-16
 ---
 
 <script setup>

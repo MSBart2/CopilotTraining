@@ -4,7 +4,7 @@ subtitle: "Designing the SDLC Your Agents Deserve"
 slug: agentic-sdlc
 category: tech-talks
 duration: 45
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Agentic SDLC

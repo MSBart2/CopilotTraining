@@ -4,6 +4,14 @@ Milestones for executive-audience talk decks and infrastructure.
 
 ---
 
+## Three executive talks consolidated into The Agentic Operating Model (2026-09-16)
+
+`schema_version: 1` | `date: 2026-09-16`
+
+`exec-delivery`, `exec-economics`, and `exec-labor` were archived after their distinct material was consolidated into active `exec-strategy`, retitled **The Agentic Operating Model**. The replacement preserves one decision journey: authorize a bounded operating-model pilot, test external claims against an independent local baseline, retain explicit human authority, use fully burdened economics, and apply a falsifiable scale-once / adjust-once / stop gate. The catalog now exposes one executive card. The shared executive spine was retired because a single active briefing no longer justified a shared preamble.
+
+---
+
 ## exec-labor tone rewrite: alarmism and inversions removed (2026-04-24)
 
 `schema_version: 1` | `date: 2026-04-24`

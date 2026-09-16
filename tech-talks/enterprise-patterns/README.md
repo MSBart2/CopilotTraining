@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-09-15
+updated: 2026-09-16
 section: "Verify and Govern"
 audience: [platform-engineer, security, architect, engineering-leader]
 level: strategic
@@ -1010,9 +1010,9 @@ Team Adoption:
 
 ### Complementary Features
 
-- **[Agentic Journey](../agentic-journey/)** — Issue-to-PR automation workflows that leverage org standards
+- **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** — Issue-to-PR automation workflows that leverage org standards
 - **[Agentic SDLC](../agentic-sdlc/)** — Full Gen-4 transformation when ready to graduate beyond enterprise patterns
-- **[Agent Teams](../agent-teams/)** — Specialized agent coordination patterns for complex workflows
+- **[Multi-Agent Coordination](../multi-agent-coordination/)** — Specialized agent coordination patterns for complex workflows
 
 ### Decision Flow
 

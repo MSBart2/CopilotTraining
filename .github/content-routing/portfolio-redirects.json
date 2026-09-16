@@ -42,6 +42,27 @@
       "target": "agentic-lifecycle",
       "reason": "The issue-to-PR state machine is now owned by Agentic Lifecycle Orchestration.",
       "decisionId": "adoption-pathway"
+    },
+    {
+      "source": "agent-teams",
+      "status": "merged",
+      "target": "multi-agent-coordination",
+      "reason": "Specialist composition, isolation, handoffs, and integration now share one coordination decision model.",
+      "decisionId": "multi-agent-coordination"
+    },
+    {
+      "source": "copilot-app",
+      "status": "merged",
+      "target": "multi-agent-coordination",
+      "reason": "Fleet operation is now taught as a concrete surface within the broader split-steer-integrate model.",
+      "decisionId": "multi-agent-coordination"
+    },
+    {
+      "source": "agentic-workflows",
+      "status": "merged",
+      "target": "agentic-lifecycle",
+      "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by Agentic Lifecycle Orchestration.",
+      "decisionId": "workflow-lifecycle"
     }
   ]
 }

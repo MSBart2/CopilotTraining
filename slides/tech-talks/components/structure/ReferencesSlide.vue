@@ -126,7 +126,7 @@ const spanCls  = (c) => (colors.value[c] || colors.value.cyan).span;
     </div>
     <template v-else>
     <!-- Ambient gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br" :class="t.ambientBg"></div>
+    <div class="absolute inset-0 bg-gradient-to-br" :class="[t.ambientBg, isDark ? 'sv-slide-surface-dark' : 'sv-slide-surface-light']"></div>
 
     <!-- Animated blur orb in top-right -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl rounded-full blur-3xl" :class="t.orb"></div>
@@ -134,7 +134,7 @@ const spanCls  = (c) => (colors.value[c] || colors.value.cyan).span;
     <!-- ===== HEADER SECTION ===== -->
     <!-- Section label pill + divider -->
     <div class="relative z-10 flex items-center gap-3 mb-4">
-      <span class="px-4 py-1 bg-gradient-to-r rounded-full text-white text-xs font-semibold tracking-wide shadow-lg" :class="t.pill">
+      <span class="sv-section-kicker px-4 py-1 bg-gradient-to-r text-white text-xs font-semibold tracking-wide" :class="t.pill">
         📚 References
       </span>
       <div class="flex-1 h-px bg-gradient-to-r" :class="t.divider"></div>
@@ -158,7 +158,7 @@ const spanCls  = (c) => (colors.value[c] || colors.value.cyan).span;
               v-for="item in group.items"
               :key="item.label"
               class="p-2 rounded border"
-              :class="t.itemBg"
+              :class="[t.itemBg, isDark ? 'sv-card-surface-dark' : 'sv-card-surface-light']"
               :style="t.itemBgStyle"
             >
               <!-- Reference link -->

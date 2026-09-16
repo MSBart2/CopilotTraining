@@ -15,6 +15,19 @@
 5. **File order.** Top doc comment block → `<script setup>` (imports, theme, props) → `<template>`. No exceptions.
 6. **Required props.** No silent fallback `default: ''`. If content is structurally required by the visual, mark it `required: true`.
 
+## Visual Language
+
+The component system follows the same restrained visual direction as `index-custom.html`:
+
+1. **Neutral surfaces, sectional accents.** Dark cards use a shared slate surface; light cards use white. Section colors belong on borders, labels, rules, and key text rather than flooding whole panels.
+2. **Editorial hierarchy.** Titles are left-led, high contrast, and materially larger than supporting copy. Compact uppercase kickers orient the audience without becoming decorative pills.
+3. **Crisp geometry.** Cards and labels use modest corner radii. Avoid capsule-shaped text containers except for true statuses or compact metadata.
+4. **No decorative glow circles.** Do not add blurred orbs, bokeh, or logo glows. Use subtle gradients, hairlines, or grid texture to create depth.
+5. **Purposeful gradients.** Reserve gradients for title text, section transitions, and restrained canvas atmosphere. Content panels remain readable neutral surfaces.
+6. **Sparse decoration.** Icons support scanning but should not compete with the evidence, artifact, or decision shown on the slide.
+
+The shared implementation lives in `slides/style.css` and `slides/tech-talks/components/useSectionTheme.ts`. Component-specific styles should build on those primitives instead of reintroducing a separate visual theme.
+
 ---
 
 ## Existing Structural Components (already built — out of scope)

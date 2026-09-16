@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-07-02
+updated: 2026-09-16
 section: "Delegate and Coordinate"
 audience: [platform-engineer, architect, security]
 level: advanced
@@ -8,7 +8,7 @@ duration: 45
 format: core-talk
 decision: "How should an autonomous loop verify progress and stop safely?"
 prerequisites: [agent-teams]
-related: [agentic-workflows, copilot-hooks, agentic-sdlc]
+related: [agentic-lifecycle, copilot-hooks, agentic-sdlc]
 references:
   - url: https://github.com/cobusgreyling/loop-engineering
     label: "loop-engineering: Practical patterns, starters & CLI tools for loop engineering with AI coding agents"
@@ -999,8 +999,8 @@ goal:
 
 ## Related Patterns
 
-- **[Agent Teams](../agent-teams/README.md)** — How to compose Copilot agents into collaborative groups; loop engineering provides the production-control layer that makes agent teams reliable in unattended operation
-- **[Agentic Workflows](../agentic-workflows/README.md)** — Static DAG-based workflows; loop engineering extends this with dynamic, verification-driven execution and adaptive topology
+- **[Multi-Agent Coordination](../multi-agent-coordination/)** — How to compose isolated workstreams; loop engineering provides the production-control layer for unattended operation
+- **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** — Evidence-gated repository workflows; loop engineering extends this with dynamic, verification-driven execution and adaptive topology
 - **[MCP Apps](../mcp-apps/README.md)** — Model Context Protocol as the tool layer inside a loop's execution layer; MCP tools are what loop agents invoke when they act
 
 ---

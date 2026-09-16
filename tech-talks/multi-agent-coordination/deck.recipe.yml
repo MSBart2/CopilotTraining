@@ -1,0 +1,76 @@
+# REVIEW: Copilot CLI Rubber Duck was unavailable in VS Code. Claude Opus 5
+# supplied the independent adversarial review used in this reconciliation.
+
+version: 1
+
+deck:
+  title: "Multi-Agent Coordination"
+  subtitle: "Split, Steer, and Integrate Isolated Workstreams"
+  tagline: "Create parallel value through explicit contracts and named integration ownership"
+
+  agenda:
+    - title: "Decide Before Dispatch"
+      takeaway: "Apply coupling and integration risk to one real task and select a coordination shape."
+      whyItMatters: "Every workstream earns its overhead through stable inputs and reviewable outputs."
+    - title: "Hand Over a Contract"
+      takeaway: "Give each workstream scope, evidence, autonomy, and escalation fields in one file."
+      whyItMatters: "The same brief travels across subagents, background sessions, and the Copilot app."
+    - title: "Reunify Under One Owner"
+      takeaway: "Watch an integration record catch a seven-day assumption against a fourteen-day contract."
+      whyItMatters: "A named integrator validates combined behavior and records the acceptance decision."
+
+  arcToc: "Choose the Shape → Contract the Work → Isolate and Steer → Integrate"
+  arcNarrative: >
+    Shape selection establishes whether concurrency has earned its coordination cost. The
+    coordination contract then turns that choice into bounded roles, writable scopes,
+    evidence, autonomy, and escalation rules. Isolation and fleet state make those
+    workstreams observable across several operating surfaces. Integration supplies the peak
+    when one record catches a seven-day client assumption against the accepted fourteen-day
+    contract, resolves the conflict, validates combined behavior, and records human acceptance.
+
+  sectionOrder:
+    - "Choose a Coordination Shape"
+    - "Define Roles, Handoffs, and Authority"
+    - "Isolate and Steer Workstreams"
+    - "Integrate Results Deliberately"
+
+  sectionModes:
+    "Choose a Coordination Shape":
+      emphasis: medium-high
+      note: >
+        Merge coupling, integration risk, and the topology matrix into one decision model.
+        Show the hybrid shape where one sequential contract decision unlocks four concurrent
+        workstreams. Keep deliberation focused on producing a recorded decision.
+    "Define Roles, Handoffs, and Authority":
+      emphasis: medium-high
+      note: >
+        Make coordination-contract.yml the portable centerpiece. Show one workstream block
+        with objective, inputs, writable scope, output, evidence, autonomy, and escalation.
+        Map session modes to operator authority while branch protection and named reviewers
+        retain acceptance authority.
+    "Isolate and Steer Workstreams":
+      emphasis: medium
+      note: >
+        Use two slides: the smallest-sufficient isolation layer with residual risk, then the
+        six fleet-state questions that trigger operator decisions. Use the Copilot app as the
+        visible operating surface and name portability to subagents and background sessions.
+    "Integrate Results Deliberately":
+      emphasis: high
+      note: >
+        Open on returned evidence, then reveal the seven-day versus fourteen-day divergence
+        and its resolution. Compress the five integration gates into one visual and close on
+        recorded acceptance by the named integrator. Treat failed integration as evidence
+        that improves the original split decision.
+
+  preamble: []
+  appendix: []
+
+  highlightMoments:
+    - "Task coupling and integration risk keep a tightly coupled refactor in one stream."
+    - "One sequential contract decision unlocks four concurrent workstreams."
+    - "One coordination contract carries scope, evidence, autonomy, and escalation across three hosts."
+    - "Session modes shape execution while branch protection and named reviewers retain merge authority."
+    - "The integration record catches a seven-day assumption against a fourteen-day contract before merge."
+
+# OPEN DECISION RESOLVED: Use the GitHub Copilot app for the fleet-state walkthrough because
+# it preserves the approved operating-surface evidence while the decision model remains portable.

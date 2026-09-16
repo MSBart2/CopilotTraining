@@ -3,15 +3,14 @@ theme: default
 class: text-center
 highlighter: shiki
 lineNumbers: false
-info: Agentic Lifecycle Orchestration — CopilotTraining Tech Talk
-drawings:
-  persist: false
+info: Agentic Lifecycle Orchestration - CopilotTraining Tech Talk
+drawings: { persist: false }
 transition: slide-left
 title: Agentic Lifecycle Orchestration
 mdc: true
 section: Delegate and Coordinate
 status: active
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 <script setup>
@@ -23,417 +22,320 @@ import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
 import WhatYouCanDoTodaySlide from './components/structure/WhatYouCanDoTodaySlide.vue'
 import ReferencesSlide from './components/structure/ReferencesSlide.vue'
 import ThankYouSlide from './components/structure/ThankYouSlide.vue'
-import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
-import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlide.vue'
-import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
-import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
-import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
 import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vue'
+import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
+import FourCardGridSlide from './components/FourCardGridSlide.vue'
 import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
+import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
+import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
+import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
 </script>
 
-<!-- SLIDE: Title -->
 # Agentic Lifecycle Orchestration
+<!-- SLIDE: Title -->
 <TitleSlide
 	title="Agentic Lifecycle Orchestration"
 	subtitle="Evidence-Gated Handoffs from Issue to Pull Request"
 	tagline="Make every transition inspectable, authorized, recoverable, and owned"
-	meta="CopilotTraining Tech Talk"
+	meta="CopilotTraining · Practitioner Tech Talk"
 />
 
 ---
 
-<!-- SLIDE: Core Question -->
 # Core Question
+<!-- SLIDE: Core Question -->
 <CoreQuestionSlide
-	question="How should independently governed workflows hand work off across an issue-to-PR lifecycle?"
-	subtext="Treat every workflow source as an uncompiled candidate until the target repository proves compatibility."
-	highlight="Compile first. Then inspect authority, evidence, recovery, and ownership."
+	question="Which recurring repository judgments belong in workflows?"
+	subtext="Qualify each handoff by evidence, mutation boundaries, and authority."
+	highlight="A candidate lifecycle earns trust only after target-repository validation."
 	:cards='[
-		{ icon: "🔧", title: "Developer", description: "Trace bounded implementation authority from plan to pull request." },
-		{ icon: "👥", title: "Team Lead", description: "Keep approval and merge decisions with named humans." },
-		{ icon: "🛡️", title: "Platform Engineer", description: "Compile candidates and inspect generated workflow locks." },
-		{ title: "4 candidates", description: "Workflow sources remain explicitly uncompiled before adoption." },
-		{ title: "1 exact approval", description: "Only the named maintainer approval advances implementation." },
-		{ title: "0 hidden transitions", description: "No-op and blocked states remain visible in repository evidence." }
+		{ icon: "🔧", title: "Developer", description: "See where implementation authority begins and stops" },
+		{ icon: "👥", title: "Team Lead", description: "Assign owners to evidence-gated handoffs" },
+		{ icon: "🛡️", title: "Platform Engineer", description: "Inspect compilation, permissions, and safe outputs" },
+		{ title: "4 workflow sources", description: "Candidate phases from intake through review" },
+		{ title: "1 exact approval", description: "A fresh plan advances only at an authorized gate" },
+		{ title: "0 runtime claims", description: "Transitions remain expected until repository validation" }
 	]'
 />
 
 ---
 
-<!-- SLIDE: Table of Contents -->
 # Table of Contents
+<!-- SLIDE: Table of Contents -->
 <TocSlide
 	:sections='[
-		{ icon: "🧭", title: "Lifecycle Contract", subtitle: "Make the state machine visible", blurb: "Label candidates, evidence, stops, owners, and compatibility gates.", slide: 4 },
-		{ icon: "📋", title: "Intake", subtitle: "Turn an issue into an approved contract", blurb: "Follow issue #482 from evidence to one exact approval.", slide: 8 },
-		{ icon: "🔐", title: "Coding and Review", subtitle: "Preserve authority through merge", blurb: "Expose no-op, blocked recovery, review, and human acceptance.", slide: 12 },
-		{ icon: "📏", title: "Measure and Recover", subtitle: "Measure handoffs locally", blurb: "Compile, inspect, and pilot one handoff before expansion.", slide: 17 }
+		{ icon: "🧭", title: "Select Judgments", subtitle: "Choose bounded workflow work", blurb: "Separate recurring judgment from deterministic automation", slide: 4 },
+		{ icon: "🔎", title: "Visible State", subtitle: "Expose evidence and ownership", blurb: "Narrate issue #482 through inspectable candidate states", slide: 8 },
+		{ icon: "🔐", title: "Preserve Authority", subtitle: "Gate mutation and acceptance", blurb: "Compare authorized progress with an expected no-op", slide: 12 },
+		{ icon: "📏", title: "Measure and Recover", subtitle: "Keep stops in the system", blurb: "Define local timing, recovery, and pilot evidence", slide: 16 }
 	]'
 />
 
 ---
 
-<!-- SLIDE: Part 1 — Make the State Machine Visible -->
-# Part 1 — Make the State Machine Visible
+# Part 1: Select Workflow-Owned Judgments
+<!-- SLIDE: Part 1 — Select Workflow-Owned Judgments -->
 <SectionOpenerSlide
 	:partNumber="1"
-	title="Make the State Machine Visible"
-	subtitle="Define the lifecycle contract while all four workflow sources remain uncompiled candidates."
+	title="Select Workflow-Owned Judgments"
+	subtitle="Qualify each candidate by trigger, permissions, mutation boundaries, compilation, and safe outputs."
 	:cards='[
-		{ icon: "🧩", title: "Candidate Sources", blurb: "Four sources, not yet runtime proof" },
-		{ icon: "🔎", title: "Visible State", blurb: "Evidence, stop, and owner per handoff" },
-		{ icon: "⚙️", title: "Compile Gate", blurb: "Compatibility before adoption" }
+		{ icon: "🎯", title: "Trigger", blurb: "Name the bounded event" },
+		{ icon: "🔒", title: "Authority", blurb: "Constrain reads and writes" },
+		{ icon: "⚙️", title: "Compile", blurb: "Inspect generated permissions" }
 	]'
-	:terminal='{ context: "Platform owner compiles and reviews generated locks", detail: "candidate source → compatible workflow" }'
+	:terminal='{ context: "Candidate lifecycle", detail: "4 sources · 0 compiled claims" }'
 />
 
 ---
 
-<!-- SLIDE: Four Independently Governed Phases -->
-# Four Independently Governed Phases
-<FrameworkMappingRowsSlide
+# Four Bounded Judgments
+<!-- SLIDE: Four Bounded Judgments -->
+<FourCardGridSlide
 	:partNumber="1"
 	pillIcon="🧭"
-	pillLabel="Lifecycle Contract"
-	title="Each Phase Emits Evidence Before It Hands Off"
-	subtitle="A label exposes state; evidence and named authority permit the transition"
-	:rows='[
-		{ label: "Intake", description: "Issue input → intake marker → triaged or visible stop", tag: "triage owner" },
-		{ label: "Planning", description: "Intake evidence → fresh plan → planned or visible stop", tag: "plan approver" },
-		{ label: "Coding", description: "Exact approval → draft PR → in-review or visible stop", tag: "impl owner" },
-		{ label: "Review", description: "Plan + diff + CI → COMMENT → reviewed or visible stop", tag: "CODEOWNER" }
-	]'
-	footnote="Success labels accumulate; any stop label takes precedence"
+	pillLabel="Selection · Candidate phases"
+	title="One Decision per Workflow"
+	:cards='[{ icon: "📥", title: "Intake", description: "Is one issue specific, non-duplicative, and routable enough to plan?" }, { icon: "📝", title: "Planning", description: "Is the proposed scope executable, testable, reversible, and owned?" }, { icon: "💻", title: "Coding", description: "Was only the latest authorized plan implemented in one repository?" }, { icon: "🔎", title: "Review", description: "Is the evidence ready for deterministic checks and human acceptance?" }]'
 	:progressDots='{ current: 1, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: State Is Not Authority -->
-# State Is Not Authority
-<BeforeAfterPanelsSlide
+# Bound Every Phase
+<!-- SLIDE: Bound Every Phase -->
+<FrameworkMappingRowsSlide
 	:partNumber="1"
-	pillIcon="🔎"
-	pillLabel="Lifecycle Contract"
-	title="Labels Record Milestones; They Never Grant Authority Alone"
-	:before='{ header: "Implied transition", items: ["A label appears", "The next workflow assumes permission", "Missing evidence moves downstream", "A failed phase retries invisibly"] }'
-	:after='{ header: "Evidence-gated handoff", items: ["State label and evidence agree", "Named actor holds the next decision", "Stop reason remains visible", "Recovery requires a new workflow run"] }'
+	pillIcon="🔒"
+	pillLabel="Selection · Five questions"
+	title="A Workflow Must Explain Its Authority"
+	subtitle="Recurrence alone is not enough"
+	:rows='[{ label: "Input", description: "Name the event and repository evidence trusted by this phase", tag: "bounded" }, { label: "Decision", description: "Assign one recurring judgment that cannot be a deterministic step", tag: "owned" }, { label: "Evidence", description: "Emit a durable comment, label, pull request, or review result", tag: "visible" }, { label: "Stop", description: "Stop on missing context, failed checks, drift, or absent authority", tag: "explicit" }, { label: "Recovery", description: "Name the person or team able to supply the next evidence", tag: "routable" }]'
+	footnote="Deterministic builds stay in Actions; unbounded judgment stays human-led"
 	:progressDots='{ current: 2, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Uncompiled Candidate Sources -->
-# Uncompiled Candidate Sources
+# Compile Before Trust
+<!-- SLIDE: Compile Before Trust -->
 <CodeWithFeaturesSlide
 	:partNumber="1"
 	pillIcon="⚙️"
-	pillLabel="Compatibility Boundary"
-	title="Four Workflow Sources Are Explicitly Uncompiled Candidates"
+	pillLabel="Selection · Compatibility gate"
+	title="Source Intent Is Not Executable Proof"
 	codePosition="left"
-	:code='{ language: "text", filename: "candidate sources", content: "workflows/1-intake.md\nworkflows/2-planning.md\nworkflows/3-coding.md\nworkflows/4-review.md" }'
-	:features='[
-		{ icon: "📌", title: "Candidate status", description: "No source is presented as runtime evidence before target-repository compilation." },
-		{ icon: "🔒", title: "Generated locks", description: "The platform owner reviews permissions and commits source plus .lock.yml." },
-		{ icon: "🧭", title: "Schema ownership", description: "The platform owner tracks gh-aw schema changes and recompiles." }
-	]'
+	:code='{ language: "text", filename: "target repository", content: "1. Copy four .md sources to .github/workflows/\n2. Run: gh aw compile\n3. Inspect four generated .lock.yml files\n4. Commit source and lock files together" }'
+	:features='[{ icon: "📄", title: "Candidate source", description: "Markdown records triggers, read access, instructions, and declared safe outputs" }, { icon: "🔐", title: "Generated permissions", description: "Lock files expose the actual jobs and write-capable handlers for review" }, { icon: "🧪", title: "Runtime gate", description: "Only a bounded target-repository run can validate transition behavior" }]'
 	:progressDots='{ current: 3, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Part 2 — Turn an Issue into an Approved Contract -->
-# Part 2 — Turn an Issue into an Approved Contract
+# Part 2: Make the State Machine Visible
+<!-- SLIDE: Part 2 — Make the State Machine Visible -->
 <SectionOpenerSlide
 	:partNumber="2"
-	title="Turn an Issue into an Approved Contract"
-	subtitle="Follow issue #482 from intake evidence to a fresh plan and its named approval boundary."
+	title="Make the State Machine Visible"
+	subtitle="Follow issue #482 from intake evidence to a bounded plan and stop at the approval gate."
 	:cards='[
-		{ icon: "📥", title: "Intake Evidence", blurb: "Issue state becomes inspectable" },
-		{ icon: "📝", title: "Fresh Plan", blurb: "Artifact defines bounded work" },
-		{ icon: "✅", title: "Exact Approval", blurb: "Named maintainer grants authority" }
+		{ icon: "📥", title: "Intake", blurb: "Evidence qualifies entry" },
+		{ icon: "📝", title: "Plan", blurb: "Scope and rollback stay visible" },
+		{ icon: "⛔", title: "Stop", blurb: "Approval blocks mutation" }
 	]'
-	:terminal='{ context: "Issue comment and plan artifact form the handoff", detail: "#482 → approved implementation contract" }'
+	:terminal='{ context: "Narrated candidate walkthrough", detail: "Issue #482 · evidence before transition" }'
 />
 
 ---
 
-<!-- SLIDE: Intake Evidence for Issue 482 -->
-# Intake Evidence for Issue 482
-<AITerminalTranscriptSlide
+# The Visible Contract
+<!-- SLIDE: The Visible Contract -->
+<FrameworkMappingRowsSlide
 	:partNumber="2"
-	pillIcon="📥"
-	pillLabel="Issue #482 · Intake"
-	title="Intake Decides Whether the Issue Is Ready to Plan"
-	subtitle="Specific, non-duplicative, routable input becomes durable evidence"
-	:transcript='[
-		{ type: "prompt", text: "issue #482 opened with acceptance criteria" },
-		{ type: "thinking", label: "Intake candidate inspects issue fields and repository paths" },
-		{ type: "response", lines: ["Candidate duplicates: none found", "Type: bug", "Area: payments", "Routing owner: payments team"] },
-		{ type: "divider" },
-		{ type: "outcome", text: "intake result=pass; next owner=issue triage owner" },
-		{ type: "outcome", text: "lifecycle:triaged records the milestone" }
-	]'
-	footerMetric="Missing reproduction or ownership → visible needs-input / blocked"
+	pillIcon="🔎"
+	pillLabel="State · Handoff contract"
+	title="A Label Shows State; Evidence Permits Motion"
+	subtitle="Stop labels take precedence over accumulated success milestones"
+	:rows='[{ label: "Intake", description: "Issue input produces intake evidence or a visible stop", tag: "triaged" }, { label: "Planning", description: "Intake evidence produces a bounded plan or a visible stop", tag: "planned" }, { label: "Coding", description: "Fresh plan plus authorized approval produces one draft PR", tag: "in-review" }, { label: "Review", description: "Plan, approval, diff, and checks produce advisory evidence", tag: "reviewed" }]'
+	footnote="State + required evidence + next-owner authority must agree"
 	:progressDots='{ current: 1, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Planning Produces the Contract -->
-# Planning Produces the Contract
-<CodeWithFeaturesSlide
+# Issue 482 Enters the Candidate Lifecycle
+<!-- SLIDE: Issue 482 Enters the Candidate Lifecycle -->
+<AITerminalTranscriptSlide
 	:partNumber="2"
-	pillIcon="📝"
-	pillLabel="Issue #482 · Planning"
-	title="Planned Means a Fresh Contract Exists, Not That Coding May Start"
-	codePosition="left"
-	:code='{ language: "markdown", filename: "plan approval boundary", content: "### Approval\nNamed plan approver: @maintainer\nComment exactly `/approve-plan` to authorize this plan." }'
-	:features='[
-		{ icon: "📋", title: "Bounded scope", description: "Names files, tests, exclusions, expected signals, risk, and rollback." },
-		{ icon: "🕒", title: "Fresh evidence", description: "Coding must use the latest plan rather than a superseded artifact." },
-		{ icon: "👤", title: "Named authority", description: "Only @maintainer with repository authority can authorize this plan." }
-	]'
+	pillIcon="🎙️"
+	pillLabel="State · Narrated candidate"
+	title="Issue #482: Intake Produces Planning Evidence"
+	subtitle="A walkthrough of intended artifacts, not an executed workflow"
+	:transcript='[{ type: "prompt", text: "candidate walkthrough: issue #482" }, { type: "user", text: "Issue arrives with acceptance criteria" }, { type: "thinking", label: "Narrator:" }, { type: "response", lines: ["Intake checks specificity, duplicates, and routing", "Evidence names inspected issue fields and repository paths", "A stop records needs-input or blocked with a recovery owner"] }, { type: "divider" }, { type: "response", lines: ["Expected pass artifact: structured intake comment", "Expected milestone: lifecycle:triaged", "Next owner: issue triage owner"] }]'
+	footerMetric="Candidate narration · no gh-aw workflow executed"
 	:progressDots='{ current: 2, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Candidate Deployment Shape -->
-# Candidate Deployment Shape
+# Issue 482 Becomes a Reviewable Plan
+<!-- SLIDE: Issue 482 Becomes a Reviewable Plan -->
 <CodeWithFeaturesSlide
 	:partNumber="2"
-	pillIcon="🗂️"
-	pillLabel="Issue #482 · Reference"
-	title="Eight Source Files and Seven Labels Make the Contract Inspectable"
+	pillIcon="📝"
+	pillLabel="State · Planning evidence"
+	title="The Plan Ends at the Approval Block"
 	codePosition="left"
-	:code='{ language: "text", filename: "uncompiled candidate", content: ".github/workflows/\n├── 1-intake.md\n├── 2-planning.md\n├── 3-coding.md\n└── 4-review.md\n\ninstructions/\n├── intake.md\n├── planning.md\n├── coding.md\n└── review.md" }'
-	:features='[
-		{ icon: "✅", title: "Milestones", description: "triaged · planned · in-review · reviewed" },
-		{ icon: "⛔", title: "Stops", description: "needs-input · changes-requested · blocked" },
-		{ icon: "⚙️", title: "Still candidates", description: "Compilation must generate and validate four matching lock files." }
-	]'
+	:code='{ language: "markdown", filename: "issue #482 · candidate plan", content: "## Scope\n- Named files and bounded change\n## Exclusions\n- Work outside the issue contract\n## Validation\n- Exact repository commands and signals\n## Rollback\n- Revert the bounded pull request\n## Approval\nNamed plan approver: @maintainer\nComment exactly /approve-plan" }'
+	:features='[{ icon: "📐", title: "Bounded scope", description: "Files, exclusions, validation, risk, and rollback remain inspectable" }, { icon: "👤", title: "Named authority", description: "The planned label records a milestone; it does not approve work" }, { icon: "⛔", title: "Consequential stop", description: "Coding authority begins only after a fresh plan and exact authorized command" }]'
 	:progressDots='{ current: 3, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Part 3 — Preserve Authority Through Merge -->
-# Part 3 — Preserve Authority Through Merge
+# Part 3: Preserve Authority from Approval to Merge
+<!-- SLIDE: Part 3 — Preserve Authority from Approval to Merge -->
 <SectionOpenerSlide
 	:partNumber="3"
 	title="Preserve Authority Through Merge"
-	subtitle="Contrast authorized progress with visible no-op, blocked recovery, agent comment, and human merge acceptance."
+	subtitle="Compare the authorized path with an expected no-op, then retain human merge acceptance."
 	:cards='[
-		{ icon: "🔑", title: "Approval Gate", blurb: "Only exact authority advances" },
-		{ icon: "⛔", title: "Visible Stops", blurb: "No-op and blocked are evidence" },
-		{ icon: "👤", title: "Human Merge", blurb: "CODEOWNER accepts or rejects" }
+		{ icon: "✅", title: "Approve", blurb: "One exact command advances" },
+		{ icon: "🚫", title: "No-op", blurb: "Unauthorized state stays put" },
+		{ icon: "👤", title: "Accept", blurb: "CODEOWNER retains merge" }
 	]'
-	:terminal='{ context: "Automation proposes and checks; named people decide", detail: "COMMENT ≠ approval ≠ merge" }'
+	:terminal='{ context: "Expected behavior until validation", detail: "Authority changes state · requests do not" }'
 />
 
 ---
 
-<!-- SLIDE: Exact Approval or Visible No-op -->
-# Exact Approval or Visible No-op
+# Approval Carries Authority
+<!-- SLIDE: Approval Carries Authority -->
 <WorkflowShowdownStepsSlide
 	:partNumber="3"
-	pillIcon="🔑"
-	pillLabel="Issue #482 · Approval Gate"
-	title="The Same Command Has Different Results When Authority Differs"
-	subtitle="The transition depends on exact text, fresh evidence, and actor authority"
-	leftLabel="Unauthorized request"
-	rightLabel="@maintainer approval"
-	:steps='[
-		{ left: { label: "Post /approve-plan", note: "Actor lacks repository authority" }, right: { label: "Post /approve-plan", note: "Exact command from @maintainer" } },
-		{ left: { label: "Verify contract", note: "Authority check fails" }, right: { label: "Verify contract", note: "planned label + latest plan are fresh" } },
-		{ left: { label: "Emit noop", note: "Reason is observable" }, right: { label: "Start coding", note: "Only approved scope is delegated" } },
-		{ left: { label: "Leave state unchanged", note: "No branch, PR, or partial write" }, right: { label: "Record approval URL", note: "Draft PR carries provenance" } }
-	]'
-	:outcomeLeft='{ icon: "0", label: "repository state changes" }'
-	:outcomeRight='{ icon: "1", label: "bounded implementation authorized" }'
-	summaryMetric="Exact command + fresh plan + named authority"
-	:progressDots='{ current: 1, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+	pillIcon="🔐"
+	pillLabel="Authority · Expected transition"
+	title="The Same Command, Different Authority"
+	subtitle="Both paths remain expected until exercised in a target repository"
+	leftLabel="Unauthorized requester"
+	rightLabel="Named maintainer"
+	:steps='[{ left: { label: "Posts /approve-plan", note: "Actor lacks repository approval authority" }, right: { label: "Posts /approve-plan", note: "Actor is the named authorized maintainer" } }, { left: { label: "Gate checks evidence", note: "Plan exists but actor authority fails" }, right: { label: "Gate checks evidence", note: "Latest plan, command, freshness, and authority agree" } }, { left: { label: "Repository stays put", note: "No partial implementation or state transition" }, right: { label: "Coding may begin", note: "Only the approved plan receives implementation authority" } }]'
+	:outcomeLeft='{ icon: "0", label: "Expected no-op; repository state unchanged" }'
+	:outcomeRight='{ icon: "1", label: "Expected transition into bounded coding" }'
+	summaryMetric="Candidate behavior · target-repository validation required"
+	:progressDots='{ current: 1, total: 3, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Coding Returns One Draft PR -->
-# Coding Returns One Draft PR
+# One Draft Pull Request
+<!-- SLIDE: One Draft Pull Request -->
 <CodeWithFeaturesSlide
 	:partNumber="3"
-	pillIcon="🛠️"
-	pillLabel="Issue #482 · Coding"
-	title="Implementation Authority Ends at One Bounded Draft Pull Request"
+	pillIcon="📦"
+	pillLabel="Authority · Safe output"
+	title="Coding Returns Evidence, Not Merge Authority"
 	codePosition="left"
-	:code='{ language: "yaml", filename: "candidate safe output", content: "safe-outputs:\n  create-pull-request:\n    title-prefix: [lifecycle]\n    labels: [agent-generated, lifecycle:in-review]\n    draft: true\n    max: 1" }'
-	:features='[
-		{ icon: "📎", title: "Approval evidence", description: "The PR records approver, approval URL, linked issue, and latest plan." },
-		{ icon: "🧪", title: "Validation evidence", description: "Exact commands and results travel with files changed and deviations." },
-		{ icon: "🛑", title: "No forced progress", description: "Failed checks, stale approval, or scope drift stop implementation." }
-	]'
-	:progressDots='{ current: 2, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+	:code='{ language: "yaml", filename: "candidate source declaration", content: "safe-outputs:\n  create-pull-request:\n    title-prefix: [lifecycle]\n    labels:\n      - agent-generated\n      - lifecycle:in-review\n    draft: true\n    max: 1" }'
+	:features='[{ icon: "1", title: "One bounded PR", description: "The declared output caps creation at one draft pull request" }, { icon: "🧾", title: "Evidence payload", description: "Issue, approval URL, changed files, commands, results, and owner travel together" }, { icon: "⛔", title: "Stop on drift", description: "Failed checks, stale approval, unavailable environment, or scope expansion block coding" }]'
+	:progressDots='{ current: 2, total: 3, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Blocked State Has a Recovery Owner -->
-# Blocked State Has a Recovery Owner
-<ProblemSolutionOutcomeSlide
-	:partNumber="3"
-	pillIcon="⛔"
-	pillLabel="Issue #482 · Recovery"
-	title="A Failed Integration Check Stops Visibly Before Review Reruns"
-	:problem='{ header: "Visible stop", items: ["Required integration check fails", "lifecycle:blocked takes precedence", "Stop evidence names the failing signal"] }'
-	:solution='{ header: "Owned recovery", items: ["Implementation owner repairs the defect", "Human-authored change supplies new evidence", "Owner removes the stop label and starts a new run"] }'
-	:outcome='{ header: "Recoverable handoff", items: ["Review reruns against fresh evidence", "No discussion silently restarts work", "Resume timestamp enters the recovery ledger"] }'
-	:progressDots='{ current: 3, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
-/>
-
----
-
-<!-- SLIDE: Agent Advises Human Accepts -->
-# Agent Advises Human Accepts
+# Review Advises; Humans Accept
+<!-- SLIDE: Review Advises; Humans Accept -->
 <TwoColPairedConceptsSlide
 	:partNumber="3"
 	pillIcon="👤"
-	pillLabel="Issue #482 · Review"
-	title="Agent Review Synthesizes Evidence; a Human Owns Merge Acceptance"
-	:left='{ header: "Agent review submits COMMENT", icon: "🤖", items: ["Compare diff with approved plan", "Map acceptance criteria to checks", "Report findings and residual risk", "Set reviewed only when evidence is ready"] }'
-	:right='{ header: "CODEOWNER or named reviewer decides", icon: "👤", items: ["Accept or reject residual risk", "Return drift to planning", "Return defects to coding", "Merge only when repository rules agree"] }'
-	:progressDots='{ current: 4, total: 4, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+	pillLabel="Authority · Acceptance boundary"
+	title="Reviewed Does Not Mean Merge Permitted"
+	:left='{ header: "Workflow evidence", icon: "🔎", items: [{ title: "COMMENT", detail: "Reports findings without submitting APPROVE" }, "Maps acceptance criteria to the diff", "Inspects deterministic check results", "Routes drift, defects, and missing evidence"] }'
+	:right='{ header: "Repository authority", icon: "🛡️", items: [{ title: "Deterministic gates", detail: "Tests, rulesets, and security controls remain enforced" }, "CODEOWNER or named reviewer accepts residual risk", "Human can return work to coding or planning", "Configured merge policy makes the final gate"] }'
+	:progressDots='{ current: 3, total: 3, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
+# Part 4: Measure the Handoffs Locally
 <!-- SLIDE: Part 4 — Measure the Handoffs Locally -->
-# Part 4 — Measure the Handoffs Locally
 <SectionOpenerSlide
 	:partNumber="4"
 	title="Measure the Handoffs Locally"
-	subtitle="Define local timing and recovery evidence, then compile and pilot one handoff before expanding."
+	subtitle="Keep stopped runs in the denominator, assign recovery owners, and pilot one handoff."
 	:cards='[
-		{ icon: "⏱️", title: "Local Timing", blurb: "Repository supplies the measures" },
-		{ icon: "📒", title: "Recovery Ledger", blurb: "Every stop names an owner" },
-		{ icon: "🧪", title: "Pilot Decision", blurb: "Inspect one handoff first" }
+		{ icon: "⏱️", title: "Timing", blurb: "Define clocks locally" },
+		{ icon: "🧾", title: "Ledger", blurb: "Record stop and owner" },
+		{ icon: "🧪", title: "Pilot", blurb: "Validate before expansion" }
 	]'
-	:terminal='{ context: "First audience action", detail: "compile → inspect → pilot" }'
+	:terminal='{ context: "First adoption actions", detail: "Compile · inspect permissions · pilot" }'
 />
 
 ---
 
-<!-- SLIDE: Measure Timing and Recovery Locally -->
-# Measure Timing and Recovery Locally
-<TwoColPairedConceptsSlide
+# Define the Local Clocks
+<!-- SLIDE: Define the Local Clocks -->
+<FrameworkMappingRowsSlide
 	:partNumber="4"
-	pillIcon="📏"
-	pillLabel="Pilot Evidence"
-	title="Use Repository Timestamps, Sample Sizes, and Every Stopped Run"
-	:left='{ header: "Timing definitions", icon: "⏱️", items: ["Intake: issue created → intake marker", "Planning: intake pass → plan marker", "Coding: authorized approval → draft PR", "Review: PR sync → review marker"] }'
-	:right='{ header: "Recovery ledger", icon: "📒", items: ["Phase, timestamp, and stop reason", "Owner able to recover work", "Evidence required to resume", "Resume timestamp or final disposition"] }'
+	pillIcon="⏱️"
+	pillLabel="Measurement · Timing definitions"
+	title="Measure Handoffs with Repository Timestamps"
+	subtitle="Report medians, sample sizes, and quality companions"
+	:rows='[{ label: "Intake", description: "Issue creation to intake marker; track routing corrections", tag: "created→intake" }, { label: "Planning", description: "Intake pass to plan marker; track revision and scope drift", tag: "intake→plan" }, { label: "Coding", description: "Authorized approval to draft PR; track checks and deviations", tag: "approve→PR" }, { label: "Review", description: "PR sync to review marker; track changes and escaped defects", tag: "sync→review" }]'
+	footnote="Stopped runs stay in the denominator"
 	:progressDots='{ current: 1, total: 2, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
-<!-- SLIDE: Compile Before You Pilot -->
-# Compile Before You Pilot
-<CodeWithFeaturesSlide
+# Recover, Compile, Pilot
+<!-- SLIDE: Recover, Compile, Pilot -->
+<ThreeColumnCardSlide
 	:partNumber="4"
-	pillIcon="⚙️"
-	pillLabel="First Audience Action"
-	title="Compilation Is the Compatibility Gate"
-	codePosition="left"
-	:code='{ language: "bash", filename: "target repository", content: "gh aw compile" }'
-	:features='[
-		{ icon: "1", title: "Compile four sources", description: "Use the target repository installed gh-aw release." },
-		{ icon: "2", title: "Inspect four locks", description: "Review read-only jobs, safe outputs, permissions, and schema fit." },
-		{ icon: "3", title: "Pilot one handoff", description: "Proceed only when all four candidate sources compile successfully." }
-	]'
-	:insight='{ icon: "🛑", text: "Stop on schema mismatch, undeclared write path, missing artifact, unowned recovery, or merge bypass." }'
+	pillIcon="🧪"
+	pillLabel="Measurement · Adoption sequence"
+	title="Evidence Before Expansion"
+	:columns='[{ icon: "🧾", title: "Record recovery", description: "For every stop, capture phase, reason, owner, resume evidence, and disposition" }, { icon: "⚙️", title: "Compile and inspect", description: "Compile all four sources; reject schema mismatch or undeclared generated write access" }, { icon: "🔬", title: "Pilot one handoff", description: "Exercise authorized and unauthorized paths in a low-risk target repository" }]'
 	:progressDots='{ current: 2, total: 2, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
 
+# Before and After
 <!-- SLIDE: Before/After -->
-# Before/After
 <BeforeAfterSlide
-	header="From Implied Automation to Evidence-Gated Handoffs"
-	:leftItems='[
-		"Workflow sources treated as runnable",
-		"Approval inferred from conversational intent",
-		"Stops disappear into logs or retries",
-		"Automation appears to own merge acceptance"
-	]'
-	:rightItems='[
-		"Four sources labeled uncompiled candidates",
-		"One exact maintainer approval grants coding authority",
-		"No-op and blocked recovery remain visible",
-		"Agent comments; CODEOWNER retains merge ownership"
-	]'
-	:metrics='[
-		{ value: "4", detail: "candidate sources compiled together" },
-		{ value: "1", detail: "exact approval boundary" },
-		{ value: "0", detail: "state changes from unauthorized requests" }
-	]'
+	header="From Implicit Handoffs to an Inspectable Candidate Lifecycle"
+	:leftItems='["Repository judgment mixed with deterministic automation", "Transitions inferred from comments and labels", "Mutation authority unclear at each phase", "Failures disappear outside the workflow story"]'
+	:rightItems='["Four bounded sources expose phase ownership", "Required evidence agrees before state advances", "Approval and merge acceptance stay human-owned", "Blocked state names evidence and recovery owner"]'
+	:metrics='[{ value: "4", detail: "candidate workflow sources" }, { value: "1", detail: "exact authorized approval command" }, { value: "0", detail: "runtime claims before validation" }]'
 />
 
 ---
 
-<!-- SLIDE: What You Can Do Today -->
 # What You Can Do Today
+<!-- SLIDE: What You Can Do Today -->
 <WhatYouCanDoTodaySlide
-	:today='[
-		"Compile all four candidate workflow sources",
-		"Inspect generated lock files and permissions",
-		"Confirm exact approval and merge owners"
-	]'
-	:thisWeek='[
-		"Pilot issue #482 through one handoff",
-		"Record visible no-op and blocked-state evidence",
-		"Assign recovery to a named implementation owner"
-	]'
-	:thisMonth='[
-		"Measure label-to-run latency locally",
-		"Review cost and recovery evidence",
-		"Expand only after the compatibility gate holds"
-	]'
-	footer="Compilation is the compatibility gate and the first action, not a footnote after adoption."
+	:today='["Inventory recurring repository judgments", "Name evidence and authority for each transition", "Keep issue #482 framed as a candidate walkthrough"]'
+	:thisWeek='["Compile all four workflow sources", "Inspect generated permissions and safe outputs", "Review instructions with the platform owner"]'
+	:thisMonth='["Pilot one handoff in a target repository", "Exercise authorized and unauthorized transitions", "Expand only from observed evidence"]'
+	footer="Compilation and generated-permission inspection come before any runtime claim."
 />
 
 ---
 
-<!-- SLIDE: References -->
 # References
+<!-- SLIDE: References -->
 <ReferencesSlide
-	:groups='[
-		{ title: "Official documentation", color: "cyan", items: [
-			{ href: "https://github.github.com/gh-aw/introduction/overview/", label: "GitHub Agentic Workflows overview", description: "Markdown workflow model and core concepts." },
-			{ href: "https://github.github.com/gh-aw/introduction/how-they-work/", label: "How Agentic Workflows work", description: "Compilation, lock files, execution, and audit markers." },
-			{ href: "https://github.github.com/gh-aw/introduction/architecture/", label: "Security architecture", description: "Read-only agent execution and isolated write handling." },
-			{ href: "https://github.github.com/gh-aw/reference/safe-outputs/", label: "Safe outputs", description: "Constrained repository output types and validation." }
-		] },
-		{ title: "GitHub governance", color: "purple", items: [
-			{ href: "https://docs.github.com/en/copilot/concepts/coding-agent/coding-agent", label: "Copilot coding agent", description: "Repository tasks return through pull requests for review." },
-			{ href: "https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions", label: "GitHub Actions workflow syntax", description: "Events, permissions, expressions, and execution semantics." },
-			{ href: "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners", label: "About code owners", description: "File ownership and human review routing." }
-		] }
-	]'
+	:groups='[{ title: "GitHub Agentic Workflows", color: "cyan", items: [{ href: "https://github.github.com/gh-aw/introduction/overview/", label: "Overview", description: "Markdown workflow model and core concepts" }, { href: "https://github.github.com/gh-aw/introduction/how-they-work/", label: "How workflows work", description: "Compilation, lock files, execution, and audit markers" }, { href: "https://github.github.com/gh-aw/introduction/architecture/", label: "Security architecture", description: "Read-only reasoning and isolated write handling" }, { href: "https://github.github.com/gh-aw/reference/safe-outputs/", label: "Safe outputs", description: "Constrained repository output types and validation" }] }, { title: "Repository governance", color: "purple", items: [{ href: "https://docs.github.com/en/copilot/concepts/coding-agent/coding-agent", label: "Copilot coding agent", description: "Repository tasks delivered through pull requests" }, { href: "https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions", label: "Actions workflow syntax", description: "Events, permissions, expressions, and execution" }, { href: "https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners", label: "CODEOWNERS", description: "File ownership and review routing" }] }]'
 />
 
 ---
 
-<!-- SLIDE: Thank You -->
 # Thank You
+<!-- SLIDE: Thank You -->
 <ThankYouSlide
 	title="Agentic Lifecycle Orchestration"
 	subtitle="Evidence-Gated Handoffs from Issue to Pull Request"
-	:cards='[
-		{ value: "Compile", detail: "Prove four candidate sources are compatible before adoption." },
-		{ value: "Authorize", detail: "Require one exact maintainer approval for implementation." },
-		{ value: "Keep ownership human", detail: "Expose stops and leave merge acceptance with the CODEOWNER." }
-	]'
-	prompt="Which single handoff will you compile, inspect, and pilot first?"
+	:cards='[{ value: "Inspect", detail: "State, evidence, and authority must agree" }, { value: "Authorize", detail: "One exact approval advances a fresh plan" }, { value: "Recover", detail: "Blocked work retains evidence and an owner" }]'
+	prompt="Which single handoff should your repository compile and validate first?"
 />

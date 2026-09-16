@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-04-24
+updated: 2026-09-16
 section: "Verify and Govern"
 audience: [platform-engineer, architect, engineering-leader]
 level: advanced
@@ -1608,8 +1608,8 @@ Machine-readable artifacts proving checks ran and passed:
 
 ### Complementary Features
 
-- **[Agentic Journey](../agentic-journey/)** — Incremental issue-to-PR automation when you're not ready for full SDLC transformation
-- **[Agent Teams](../agent-teams/)** — Specialized multi-agent coordination patterns for complex workflows
+- **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** — Evidence-gated issue-to-PR automation before full SDLC transformation
+- **[Multi-Agent Coordination](../multi-agent-coordination/)** — Specialized multi-agent coordination patterns for complex workflows
 - **[Parallel Execution](../parallel-execution/)** — Worktree-based independence for multiple agents working simultaneously
 - **[Copilot Hooks](../copilot-hooks/)** — Governance mechanisms and agent behavior controls
 

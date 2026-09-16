@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-09-15
+updated: 2026-09-16
 section: "Verify and Govern"
 audience: [platform-engineer, security]
 level: advanced
@@ -8,7 +8,7 @@ duration: 45
 format: core-talk
 decision: "Which agent actions should policy allow or deny at execution time?"
 prerequisites: [copilot-primitives]
-related: [agentic-workflows, agentic-sdlc, enterprise-patterns]
+related: [agentic-lifecycle, agentic-sdlc, enterprise-patterns]
 references:
   - url: https://code.visualstudio.com/docs/copilot/customization/hooks
     label: "Agent hooks configuration in VS Code"

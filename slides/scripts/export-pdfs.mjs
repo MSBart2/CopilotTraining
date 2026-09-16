@@ -85,7 +85,7 @@ function discoverDecks() {
     for (const file of readdirSync(dir).filter((f) => f.endsWith(".md"))) {
       const slug = basename(file, ".md");
       if (
-        ["global-top", "global-bottom", "template", "exec-spine"].includes(slug)
+        ["global-top", "global-bottom", "template"].includes(slug)
       )
         continue;
       if (slug.endsWith("-reference") || slug === "component-test") continue;

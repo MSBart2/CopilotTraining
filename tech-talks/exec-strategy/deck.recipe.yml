@@ -1,162 +1,92 @@
-# exec.recipe.yml — executive talk generation guidance
-#
-# Guides slide generation from exec-talks/agentic-strategy/README.md.
-# Produced by exec-recipe-review skill (Agent Council synthesis, 2026-04-23).
-#
-# This is the SYNTHESIS deck — designed for board/executive committee sessions
-# where all three standalone talks (agentic-delivery, agentic-labor, agentic-economics)
-# are represented in one coherent investment argument.
-#
-# Target: ~20 slides. Live delivery time: 45–60 minutes.
-# The standalones remain the right choice for functional executive 1:1s.
-# This deck is for the room where CFO, CTO, CISO, and board members are all present.
+# exec.recipe.yml - executive talk generation guidance
+# Fresh review completed 2026-09-16 with independent Rubber Duck and cross-model critiques.
 
 version: 1
 
 deck:
-  title: "The Agentic Investment Case: A Board Briefing"
-  subtitle: "A synthesis briefing for executive committees authorizing enterprise agentic AI investment"
-  tagline: "Three lenses. One investment decision. A closed, honest case."
-
-  # arcToc: one line ≤ 80 chars, section names joined by →
+  title: "The Agentic Operating Model"
+  subtitle: "Where agents create value, where humans retain authority, and how leadership proves the return"
+  tagline: "One controlled pilot. One decision record. Scale once, adjust once, or stop."
 
   agenda:
-    - title: "Three Strategic Lenses"
-      takeaway: "Examine the investment case through adoption, economics, and control."
-      whyItMatters: "Leaders need a complete view before committing resources."
-    - title: "An Honest Decision"
-      takeaway: "Surface benefits, constraints, and the evidence behind both."
-      whyItMatters: "Trust comes from a case that names its boundaries."
-    - title: "A Clear Next Move"
-      takeaway: "Translate the analysis into an explicit investment choice."
-      whyItMatters: "Strategy matters when it changes what happens next."
+    - title: "Authorize the Test"
+      takeaway: "Define the decision, owner, authority boundary, and local commitments first."
+      whyItMatters: "Leadership can evaluate the complete authorization before examining supporting detail."
+    - title: "Earn the Evidence"
+      takeaway: "Use external variance to design a credible local test."
+      whyItMatters: "Current studies do not directly test bounded agent execution."
+    - title: "Make the Gate Real"
+      takeaway: "Predeclare thresholds, measurement custody, and stop conditions."
+      whyItMatters: "A falsifiable gate turns a pilot into a controlled decision process."
 
-  arcToc: "The 67% Problem → The Honest Constraints → The Business Case → The Ask"
+  arcToc: "The Decision -> The Evidence -> Guardrails and Economics -> The Gate"
 
-  # arcNarrative: sequencing rationale for an executive audience
   arcNarrative: >
-    The synthesis deck opens where the Labor talk opens — with the diagnostic reframe that
-    recontextualizes all existing AI investment: developers spend 30–33% of time writing code,
-    and AI tools have addressed only that minority. This lands harder in a board room than any
-    ROI number because it tells the CFO, CTO, and CISO simultaneously that the investment thesis
-    they authorized is incomplete. Section 1 consolidates the problem frame and the operating
-    model (the Delivery talk's Coder→Captain reframe and the Labor map), establishing what
-    "capturing the 67%" actually requires in practice. Section 2 — The Honest Constraints —
-    is the credibility engine that makes the board trust the analysis. It arrives before the
-    full ROI math, not after. The verification LOSS case (-$3 without automation), the 5%
-    pilot success rate, and the five structural barriers are presented as the conditions under
-    which proceeding works — not as arguments against it. Section 3 delivers the business case
-    math, sequenced to build trust: quick-win proof point first, tiered roadmap, the 20% goal
-    with full investment math, and the J-curve showing Year 1 net-negative explicitly. The
-    $1→$6 IBM/Ponemon ROI figure is reconciled here: it is the long-run programmatic return;
-    the J-curve is the 24-month project-level cash flow. Both are true; both are shown. Section
-    4 closes with a single consolidated executive ask — three items, not nine — that synthesizes
-    the action asks from all three standalone talks into one coherent set of leadership decisions.
-    The arc moves a skeptical board from "we've already done AI" to "we've done the minority of
-    it" to "here's why most organizations fail to capture the rest" to "here's the math and the
-    ask."
+    The briefing states the authorization first so an executive who leaves early can still
+    identify the decision, owner, authority boundary, and required local fields. The Evidence
+    then earns credibility by showing outcome variance and naming the central limitation: current
+    research does not directly test bounded agent execution with post-hoc verification. Guardrails
+    and Economics establish the controlled downside, retained human authority, and fully burdened
+    local scenario without drifting into implementation design or universal ROI. The Gate receives
+    the strongest emphasis because the investment becomes decision-ready only when local thresholds,
+    measurement custody, stop conditions, and the single-adjustment limit are explicit. This order
+    turns three overlapping executive arguments into one authorization for a falsifiable operating-model
+    test.
 
-  # Ordered list of sections (max 4). Match sectionModes keys exactly.
   sectionOrder:
-    - "The 67% Problem"
-    - "The Honest Constraints"
-    - "The Business Case"
-    - "The Ask"
+    - "The Decision"
+    - "The Evidence"
+    - "The Guardrails and Economics"
+    - "The Gate"
 
-  # Per-section editorial guidance for the slide generator.
   sectionModes:
-    "The 67% Problem":
-      # high = 4–5 slides, medium = 2–3, medium-low = 1–2
-      emphasis: high
-      note: >
-        Open with the Labor talk's diagnostic reframe — this is a stronger board opener than
-        the Delivery talk's aviation metaphor, which works better mid-deck. Slide 1: McKinsey
-        2023 — developers spend only 30–33% of time writing code. AI tools have addressed the
-        minority. This recontextualizes all prior AI investment without invalidating it. Slide 2:
-        The Delivery reframe — developers become pilots, AI is autopilot. Aviation vocabulary
-        slide (one diagram: FAA/ATC/Ground Crew/Pilots/Autopilot mapped to enterprise roles).
-        Establish it here so it can be assumed for the rest of the deck. Slide 3: The Exposure
-        Ledger — five labor categories as a CFO risk table (Discovery, Planning, Governance,
-        Knowledge, Validation), one dollar exposure per row. Governance row must include the
-        SEC 4-day disclosure rule and $4.88M IBM breach cost — this lands for the board's audit
-        committee function. Slide 4: The Multiplier — one developer supervising 3–4 concurrent
-        agentic sessions = $20M delivery capacity in a $10M org. "The limit is instrument
-        monitoring capacity, not typing speed." This is the "why this matters beyond cost"
-        moment for the CTO in the room. Four slides total. Cut: individual category deep-dives,
-        extended aviation metaphor narration, DORA 208x (save for Section 3 close).
-
-    "The Honest Constraints":
-      emphasis: high
-      note: >
-        The board credibility engine. Arrives before the ROI math — not after. This sequencing
-        is not modesty; it is the structural choice that earns the board's trust for Section 3.
-        A board that sees constraints before ROI believes the ROI. Slide 1: The verification
-        LOSS case — one full slide, numbers displayed prominently. Without automation: agent
-        ($3) + human review ($200) = $203 vs. $200 human-only. Net: -$3. With automation:
-        $28.10 total, 86% savings. This is a shock slide. Use it as designed — do not soften
-        it or bury it in a table. Executives remember the -$3. Slide 2: The five structural
-        barriers (No Instrumentation, Tribal Knowledge, Approval Bottlenecks, Undefined
-        Boundaries, Fragmented Tooling) — framed as infrastructure debt, not technology
-        problems. Slide 3: Market failure data — only 5% of AI pilots deliver material
-        bottom-line improvement; 65% cite organizational complexity as top barrier; 25% AI
-        code error rate; 45% fail security without verification. Frame as: "These are not
-        arguments against proceeding. They are the conditions under which proceeding works."
-        Slide 4 (optional, if CISO is in room): The No-Fly Zones governance charter — six
-        categories requiring human authorization, each mapped to a liability figure. Can be
-        cut if the board briefing skips CISO-level depth. Three to four slides total.
-
-    "The Business Case":
-      emphasis: high
-      note: >
-        The math, sequenced to build trust before asking for money. Slide 1: Quick win first —
-        issue lifecycle automation, $10,200 investment → $1,001,000 annual savings → 3.6-day
-        payback. This exists to give the most skeptical board member permission to start. It
-        proves the economics are real before the large infrastructure number appears. Slide 2:
-        The tiered opportunity — Tier 1 ($167K/yr, 0–3 months), Tier 2 ($424K/yr, 3–6 months),
-        Tier 3 ($894K/yr, 6–12 months). $1.49M/yr combined for a 50-engineer team. Present as
-        a capital allocation menu, not an implementation plan. Slide 3: The 20% goal — 50-person
-        team, $1.94M annual savings, $800K–$1.6M infrastructure investment, 12–18 month payback.
-        Only 13% achieve sub-12-month payback — keep this line, it reinforces Section 2's
-        credibility. Slide 4: The J-curve (mandatory) — Year 1: –$425K. Year 2: +$1.06M.
-        Year 3: +$2.55M cumulative. Show the net-negative Year 1 explicitly. Then bridge to
-        the IBM/Ponemon figure: "The $1→$6 long-run return is the programmatic ceiling;
-        the J-curve is the 24-month path to get there. Both are true." This reconciliation is
-        REQUIRED — a CFO and CTO in the same room will otherwise notice the apparent conflict.
-        Slide 5 (closing beat): Scale multiplier — same $1M infrastructure, 10x returns at 500
-        engineers. The DORA 208x deployment gap closes here as the competitive urgency signal:
-        "The gap widens every quarter this investment is deferred." Five slides total.
-
-    "The Ask":
+    "The Decision":
       emphasis: medium
       note: >
-        Three consolidated asks — synthesized from the three standalone talk closes into one
-        coherent leadership decision set. Do NOT reproduce nine separate asks from three talks.
-        Slide 1: Executive summary table (Opportunity / Investment / Constraints /
-        Recommendation) — the leave-behind. Slide 2: The three asks with named owners and
-        timelines: (1) Authorize proof-of-concept pilot — $110K, 90 days, one team, issue
-        lifecycle automation, VP Engineering owns, baseline metrics defined before launch;
-        (2) Commission infrastructure readiness assessment — 60 days, VP Engineering, three
-        questions: which instruments do we have, what are the gaps, what is our governance
-        policy for agent authority; (3) Set the right success metrics — iteration count and
-        verification overhead are the leading indicators, not agent API cost alone. Two slides
-        total. Do NOT soften into prose. The board's job is to authorize; give them three
-        specific things to authorize.
+        Open with the complete decision on one page: authorizing body, CTO sponsor, VP Engineering
+        owner, one team and workflow, local budget ceiling, cross-functional capacity, bounded
+        non-human permissions, independent measurement custody, and a dated return aligned to a
+        real planning cycle. Explain that leadership is pre-authorizing a controlled decision
+        process. Keep the charter readable; do not reproduce every README row.
+    "The Evidence":
+      emphasis: high
+      note: >
+        Juxtapose the commercially interested GitHub and Accenture positive outcomes with METR's
+        independent small-cohort slowdown. State only the defensible inference: outcomes vary by
+        task, context, and intervention. Make the evidence gap explicit: both studies concern
+        assistant-era work under human authorship, while this pilot tests bounded agent execution.
+        Preserve the closed four-part evidence vocabulary and label Control, Coordination, and
+        Context as an editorial decision framework. Keep the excluded conclusions visible.
+    "The Guardrails and Economics":
+      emphasis: medium
+      note: >
+        Compress the operating model to executive-owned content: least privilege, reviewable
+        evidence, retained authority for production and risk acceptance, named control owners,
+        and immediate stop on boundary or control failure. Show a fully burdened local scenario
+        and downside case using organization-specific inputs. Do not recreate the detailed handoff,
+        six-instrument, or formula tables, and do not invent a budget, savings figure, or universal ROI.
+    "The Gate":
+      emphasis: high
+      note: >
+        Make falsifiability the credibility peak. The dated threshold memo must declare minimum
+        outcome volume, comparability, one workflow-specific primary outcome, economic and
+        directional thresholds, guardrail floors, independent measurement custody, an arbiter,
+        and the calendar return date before assisted execution. Scale requires every threshold;
+        Adjust is available once only when its directional floor holds and controls remain intact;
+        Stop covers every other result and any immediate-stop condition. End on the single recorded
+        authorization, not a list of recommendations.
 
-  # 3–5 high-signal moments the generator must surface in the deck.
+  preamble: []
+
+  appendix: []
+
   highlightMoments:
-    - "AI tools have addressed 33% of software delivery labor. The other 67% — triage, planning, compliance, documentation, validation — has no AI coverage. Your competitors are moving on it now."
-    - "Without automated verification: agent ($3) + human review ($200) = $203. Human-only cost: $200. Net result: –$3. Automated verification is the mechanism that makes agent economics work."
-    - "Only 5% of AI pilots deliver material bottom-line improvement. 65% cite organizational complexity — not technology — as the top barrier."
-    - "Year 1: –$425,000. Year 2: +$1,061,000. The J-curve is honest — and it is the business case. The $1→$6 long-run IBM/Ponemon return is the ceiling; this is the 24-month path to get there."
-    - "DORA 2023: elite teams deploy 208x more frequently. The gap widens every quarter infrastructure investment is deferred. This is not a technology decision with unlimited time."
+    - "The authorization buys one controlled decision process: one team, one workflow, independent measurement, and a dated scale-once, adjust-once, or stop gate."
+    - "Assistant-era studies report materially different outcomes; neither directly tests bounded agent execution with post-hoc human verification."
+    - "Local authorization rests on four distinct evidence classes: external observation, internal baseline, modeled scenario, and proposed threshold."
+    - "Any authority-boundary or control failure stops the pilot immediately; adjustment is available once and only above a predeclared directional floor."
+    - "Enterprise ROI, universal productivity, headcount reduction, and autonomous production authority remain explicitly outside the pilot's conclusions."
 
-# OPEN DECISION: Should the CISO-focused No-Fly Zones slide (Section 2, Slide 4) be included
-# or moved to an appendix? If the board has audit committee responsibility for cybersecurity
-# (common post-SEC 2023 rules), include it. If the board session is purely investment-focused
-# and the CISO will receive agentic-delivery separately, move it to the appendix.
-#
-# NOTE ON ROI RECONCILIATION: The $1→$6 IBM/Ponemon figure (agentic-delivery) and the
-# J-curve (agentic-economics) must be explicitly reconciled on Slide 4 of The Business Case.
-# They are not contradictory — different timeframes, different aggregation levels — but a CFO
-# and CTO in the same room will notice both without a bridge. The reconciliation slide is
-# non-optional in this deck.
+# OPEN DECISION: Will a live delivery use the reusable blank charter or an organization-specific
+# completed charter? The reusable version supports portfolio use; a live authorization requires
+# local budget, thresholds, outcome volume, signatory, and return date before assisted execution.

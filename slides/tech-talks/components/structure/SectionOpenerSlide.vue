@@ -216,16 +216,16 @@ const theme = computed(() => (isDark.value ? DARK_THEMES : LIGHT_THEMES)[props.p
     </div>
     <template v-else>
     <!-- Ambient gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br" :class="theme.ambientBg"></div>
+    <div class="absolute inset-0 bg-gradient-to-br" :class="[theme.ambientBg, isDark ? 'sv-slide-surface-dark' : 'sv-slide-surface-light']"></div>
 
     <!-- Animated blur orb (centered) -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-r rounded-full blur-3xl" :class="theme.orb"></div>
 
     <!-- ===== CENTER CONTENT ===== -->
-    <div class="relative z-10 flex flex-col items-center text-center">
+    <div class="relative z-10 flex w-full max-w-4xl flex-col items-start px-16 text-left">
       <!-- ===== PART PILL ===== -->
       <!-- Part number indicator -->
-      <div class="mb-4 px-4 py-1.5 bg-gradient-to-r rounded-full border text-sm font-medium tracking-widest uppercase" :class="theme.pill">
+      <div class="sv-section-kicker mb-4 px-4 py-1.5 bg-gradient-to-r border text-sm font-medium tracking-widest uppercase" :class="theme.pill">
         Part {{ partNumber }}
       </div>
 
@@ -243,13 +243,13 @@ const theme = computed(() => (isDark.value ? DARK_THEMES : LIGHT_THEMES)[props.p
 
       <!-- ===== DIVIDER ===== -->
       <!-- Decorative separator line -->
-      <div class="w-24 h-0.5 bg-gradient-to-r from-transparent to-transparent mb-6" :class="theme.divider"></div>
+      <div class="w-full h-px bg-gradient-to-r from-transparent to-transparent mb-6" :class="theme.divider"></div>
 
       <!-- ===== CONTEXT CARDS ===== -->
       <!-- Three supporting context cards -->
-      <div class="grid grid-cols-3 gap-3 text-sm max-w-3xl">
+      <div class="grid w-full grid-cols-3 gap-3 text-sm">
         <!-- Context card -->
-        <div v-for="(card, i) in cards" :key="i" class="px-4 py-3 rounded-xl border" :class="[theme.cards[i].bg, theme.cards[i].border]">
+        <div v-for="(card, i) in cards" :key="i" class="px-4 py-3 rounded-xl border" :class="[theme.cards[i].bg, theme.cards[i].border, isDark ? 'sv-card-surface-dark' : 'sv-card-surface-light']">
           <!-- Card icon -->
           <div class="text-2xl mb-1">
             {{ card.icon }}
@@ -269,7 +269,7 @@ const theme = computed(() => (isDark.value ? DARK_THEMES : LIGHT_THEMES)[props.p
 
       <!-- ===== TERMINAL CONTEXT ===== -->
       <!-- Terminal/console-style context box -->
-      <div class="mt-5 font-mono text-xs bg-gray-950/90 border border-gray-700/50 rounded-lg px-5 py-3 text-left max-w-xl">
+      <div class="mt-5 w-full font-mono text-xs bg-gray-950/90 border border-gray-700/50 rounded-lg px-5 py-3 text-left">
         <!-- Context line (before state) -->
         <span class="text-gray-300">
           {{ terminal.context }}

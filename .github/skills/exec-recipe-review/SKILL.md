@@ -143,7 +143,7 @@ Write the **complete** `exec.recipe.yml` file — all fields. Source them as fol
 | `deck.sectionOrder` | Reconciled review output |
 | `deck.sectionModes` | Reconciled review output |
 | `deck.highlightMoments` | Reconciled review output |
-| `deck.preamble` | **Always** `[{ src: "./exec-spine.md" }]` for exec talks — every exec deck imports the shared series context slide. Do NOT set to `[]`. |
+| `deck.preamble` | `[]` for a self-contained briefing; use `src` entries only when a real shared context deck exists |
 | `deck.appendix` | `[]` unless the talk has explicit appendix content |
 
 Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field names, YAML structure, and inline comments. If there is an open decision from the review, append it as a YAML comment at the end of the file: `# OPEN DECISION: [question] — [paths and consequences]`.
@@ -168,7 +168,7 @@ Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 - [ ] No `highlightMoments` entry describes a tool command, code pattern, or implementation step
 - [ ] A final voice scan finds no second-person address, alarmist urgency, cost-of-inaction pressure, or "not X, it's Y" rhetorical flips
 - [ ] **After approval**: Slide Generator agent will regenerate all slides using the cockpit HTML system — you don't need to update individual slides
-- [ ] `deck.preamble` is `[{ src: "./exec-spine.md" }]` — never `[]` for exec talks
+- [ ] `deck.preamble` is `[]` unless the briefing intentionally imports an existing context deck
 
 ---
 

@@ -121,7 +121,7 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
     </div>
     <template v-else>
     <!-- Ambient gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br" :class="t.ambientBg"></div>
+    <div class="absolute inset-0 bg-gradient-to-br" :class="[t.ambientBg, isDark ? 'sv-slide-surface-dark' : 'sv-slide-surface-light']"></div>
 
     <!-- Animated blur orb in top-right -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl rounded-full blur-3xl" :class="t.orb"></div>
@@ -129,7 +129,7 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
     <!-- ===== HEADER SECTION ===== -->
     <!-- Section label pill + divider -->
     <div class="relative z-10 flex items-center gap-3 mb-3">
-      <span class="px-4 py-1 bg-gradient-to-r rounded-full text-white text-xs font-semibold tracking-wide shadow-lg" :class="t.pill">
+      <span class="sv-section-kicker px-4 py-1 bg-gradient-to-r text-white text-xs font-semibold tracking-wide" :class="t.pill">
         ✅ What You Can Do Today
       </span>
       <div class="flex-1 h-px bg-gradient-to-r" :class="t.divider"></div>
@@ -142,7 +142,7 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
         <!-- Column for each timeframe -->
         <div v-for="(col, i) in COLUMNS" :key="i" class="flex flex-col">
           <!-- Column container -->
-          <div class="p-4 bg-gradient-to-br rounded-xl border flex-1 relative overflow-hidden" :class="[colStyles[i].bg, colStyles[i].border]">
+          <div class="p-4 bg-gradient-to-br rounded-xl border flex-1 relative overflow-hidden" :class="[colStyles[i].bg, colStyles[i].border, isDark ? 'sv-card-surface-dark' : 'sv-card-surface-light']">
             <!-- Large icon watermark (background) -->
             <div class="absolute top-1 right-2 text-7xl opacity-10 select-none pointer-events-none leading-none">
               {{ col.icon }}
@@ -168,7 +168,7 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
 
       <!-- ===== FOOTER SECTION ===== -->
       <!-- Key takeaway message card -->
-      <div class="mt-3 p-3 bg-gradient-to-br rounded-xl border" :class="t.footerCard">
+      <div class="mt-3 p-3 bg-gradient-to-br rounded-xl border" :class="[t.footerCard, isDark ? 'sv-card-surface-dark' : 'sv-card-surface-light']">
         <!-- Footer heading icon -->
         <div class="font-bold mb-1 text-base" :class="t.footerTitle">
           🔑 Key Takeaway

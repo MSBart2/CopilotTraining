@@ -4,7 +4,7 @@ subtitle: "Rich Interactive UI in Chat"
 slug: mcp-apps
 category: tech-talks
 duration: 12
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # MCP Apps

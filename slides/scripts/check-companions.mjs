@@ -50,7 +50,6 @@ const SKIP = new Set([
   "global-top",
   "global-bottom",
   "template",
-  "exec-spine",
   "component-test",
 ]);
 

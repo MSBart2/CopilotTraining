@@ -301,7 +301,7 @@ Reference related talks by name when relevant.]
 
 After the README is complete and approved, you **must invoke the exec-recipe-review skill** (`.github/skills/exec-recipe-review/SKILL.md`). Do not write the recipe directly, leave it as a handoff, or ask the user to remember this step. The skill owns the complete recipe and requires an independent cross-model Rubber Duck critique before writing it.
 
-**Slide count guidance:** The reviewed recipe should aim for 3–4 body slides per section, 4 sections maximum, plus 4 closing slides. Total body content should remain ≤ 20 slides (exec-spine adds 6 fixed slides).
+**Slide count guidance:** The reviewed recipe should aim for 3–4 body slides per section, 4 sections maximum, plus closing slides. Total content should remain ≤ 25 slides.
 
 ---
 

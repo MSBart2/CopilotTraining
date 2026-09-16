@@ -29,14 +29,14 @@ test("collects only practitioner catalog slugs", () => {
 
 test("discovers the active practitioner portfolio", () => {
   const inventory = collectPortfolio(root);
-  assert.equal(inventory.counts.totalTalks, 27);
-  assert.equal(inventory.counts.practitionerTalks, 21);
-  assert.equal(inventory.counts.archivedTalks, 6);
-  assert.equal(inventory.counts.deployedTalks, 21);
+  assert.equal(inventory.counts.totalTalks, 28);
+  assert.equal(inventory.counts.practitionerTalks, 19);
+  assert.equal(inventory.counts.archivedTalks, 9);
+  assert.equal(inventory.counts.deployedTalks, 19);
   assert.equal(inventory.counts.candidateTalks, 0);
-  assert.equal(inventory.counts.catalogCards, 21);
+  assert.equal(inventory.counts.catalogCards, 19);
   assert.equal(inventory.counts.validTalks, inventory.counts.totalTalks);
-  assert.equal(inventory.redirects.length, 6);
+  assert.equal(inventory.redirects.length, 9);
   assert.equal(new Set(inventory.talks.map(({ slug }) => slug)).size, inventory.counts.totalTalks);
   assert.deepEqual(inventoryErrors(inventory), []);
 });

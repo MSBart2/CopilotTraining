@@ -4,7 +4,7 @@ subtitle: "Evidence and Authority Before Merge"
 slug: pr-trust-stack
 category: tech-talks
 duration: 45
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # PR Trust Stack

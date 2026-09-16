@@ -1,6 +1,6 @@
 ---
-status: active
-updated: 2026-04-24
+status: archived
+updated: 2026-09-16
 section: "Executive Talks"
 references:
   - url: https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/

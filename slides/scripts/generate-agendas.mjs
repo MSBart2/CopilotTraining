@@ -702,7 +702,7 @@ function discoverDecks() {
     for (const ent of readdirSync(dir, { withFileTypes: true })) {
       if (!ent.isFile() || !ent.name.endsWith(".md")) continue;
       const slug = ent.name.replace(/\.md$/, "");
-      if (["template", "component-test", "exec-spine"].includes(slug)) continue;
+      if (["template", "component-test"].includes(slug)) continue;
       if (slug.endsWith("-reference")) continue;
       if (slugFilter && slug !== slugFilter) continue;
       out.push({ slug, category, deckPath: join(dir, ent.name) });

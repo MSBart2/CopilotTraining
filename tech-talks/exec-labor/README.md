@@ -1,6 +1,6 @@
 ﻿---
-status: active
-updated: 2026-04-24
+status: archived
+updated: 2026-09-16
 section: "Executive Talks"
 references:
   - url: https://www.mckinsey.com/capabilities/mckinsey-digital/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier

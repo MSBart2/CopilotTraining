@@ -4,7 +4,7 @@ subtitle: "Build AI-Powered Tools for Your Workflows"
 slug: copilot-sdk
 category: tech-talks
 duration: 45
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # GitHub Copilot SDK

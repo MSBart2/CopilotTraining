@@ -92,3 +92,11 @@ These patterns were removed from `slides/tech-talks/exec-labor.md` and the repla
 `schema_version: 1` | `date: 2026-09-15`
 
 An executive briefing is ready when it is relevant, compelling, decision-ready, and credible. Decision-ready actions name what can be authorized, an owner, a time horizon, a tradeoff, and an observable success signal. Credibility requires an evidence map that distinguishes primary evidence, vendor evidence, analysis, and estimates while keeping assumptions visible. Timing context explains what changed and which decision is available; it must not manufacture urgency or threaten leaders with inaction.
+
+---
+
+## Executive posture differs deliberately from practitioner talks (2026-09-16)
+
+`schema_version: 1` | `date: 2026-09-16`
+
+Executive briefings advise an investment or authorizing body. Lead with the decision, business outcome, accountable owner, authority boundary, tradeoff, and observable gate. Technical mechanisms earn airtime only when they change an investment, control, or accountability decision. Distinguish external observation, internal baseline, modeled scenario, and proposed threshold. Preserve third-person, factual, opportunity-framed language; avoid tutorials, feature inventories, labor-unit framing, unsupported ROI, and disconnected asks.

@@ -17,7 +17,7 @@ GitHub Copilot CLI (`gh copilot`) is a terminal-native Copilot integration that 
 | `slides/tech-talks/copilot-cli.md` | Primary | Dedicated talk — `gh copilot suggest/explain`, shell integration, workflows |
 | `slides/tech-talks/copilot-azure-mcp.md` | Major section | Part 1 uses `az` and `gh` CLI as the entry point before introducing MCP; CLI fluency is a prerequisite |
 | `slides/tech-talks/vscode-latest.md` | Secondary | Terminal suggestions, terminal context in chat, explain-in-terminal — separate from `gh copilot` |
-| `slides/tech-talks/agent-teams.md` | Mention | CLI commands as a tool-use surface for coordinated agents |
+| `slides/tech-talks/multi-agent-coordination.md` | Mention | CLI and background sessions as operating surfaces for coordinated workstreams |
 | `slides/tech-talks/agentic-sdlc.md` | Mention | CLI as part of the agentic developer toolkit in the SDLC section |
 
 ---

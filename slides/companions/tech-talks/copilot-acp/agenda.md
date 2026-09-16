@@ -4,7 +4,7 @@ subtitle: "Your Tool Just Got an AI Agent"
 slug: copilot-acp
 category: tech-talks
 duration: 45
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # GitHub Copilot ACP

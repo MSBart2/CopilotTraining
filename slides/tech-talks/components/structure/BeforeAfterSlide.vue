@@ -118,7 +118,7 @@ const metricStyles = computed(() => isDark.value ? DARK_THEME.metricContainers :
     </div>
     <template v-else>
     <!-- Ambient gradient background -->
-    <div :class="['absolute inset-0 bg-gradient-to-br', t.ambientBg]"></div>
+    <div :class="['absolute inset-0 bg-gradient-to-br', t.ambientBg, isDark ? 'sv-slide-surface-dark' : 'sv-slide-surface-light']"></div>
 
     <!-- Animated blur orb in top-right -->
     <div :class="['absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl rounded-full blur-3xl', t.orb]"></div>
@@ -126,7 +126,7 @@ const metricStyles = computed(() => isDark.value ? DARK_THEME.metricContainers :
     <!-- ===== HEADER SECTION ===== -->
     <!-- Section label pill + divider -->
     <div class="relative z-10 flex items-center gap-3 mb-4">
-      <span :class="['px-4 py-1 bg-gradient-to-r', t.pill, 'rounded-full text-white text-xs font-semibold tracking-wide shadow-lg']">
+      <span :class="['sv-section-kicker px-4 py-1 bg-gradient-to-r', t.pill, 'text-white text-xs font-semibold tracking-wide']">
         📊 The Value Recap
       </span>
       <div class="flex-1 h-px bg-gradient-to-r from-blue-400/50 to-transparent"></div>

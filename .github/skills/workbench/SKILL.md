@@ -72,7 +72,7 @@ Queries and writes should target the appropriate bench:
 | `agentic_sdlc`          | Workflows, Journey, SDLC, Enterprise Patterns talks                   |
 | `workshop`              | All workshop modules + persona decisions + module milestones          |
 | `slides`                | Slidev patterns, Vue component schemas, build gotchas, prop linter rules |
-| `exec-talks`            | exec-spine structure, TOC indexing, exec-talk voice rules, deck milestones |
+| `exec-talks`            | Executive decision structure, voice rules, TOC indexing, and deck milestones |
 | `tech-talks`            | Tech-talk pipeline, component catalog exclusions, content milestones  |
 | `rmathis`               | Editorial voice, framing philosophy, author taste decisions           |
 

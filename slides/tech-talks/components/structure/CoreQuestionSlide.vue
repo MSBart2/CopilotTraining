@@ -128,14 +128,14 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
     </div>
     <template v-else>
     <!-- Ambient gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br" :class="t.ambientBg"></div>
+    <div class="absolute inset-0 bg-gradient-to-br" :class="[t.ambientBg, isDark ? 'sv-slide-surface-dark' : 'sv-slide-surface-light']"></div>
 
     <!-- Animated blur orb in top-right -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl rounded-full blur-3xl" :class="t.orb"></div>
 
     <!-- Header pill and divider line -->
     <div class="relative z-10 flex items-center gap-3 mb-4">
-      <span class="px-4 py-1 bg-gradient-to-r rounded-full text-white text-xs font-semibold tracking-wide shadow-lg" :class="t.pill">
+      <span class="sv-section-kicker px-4 py-1 bg-gradient-to-r text-white text-xs font-semibold tracking-wide" :class="t.pill">
         🤔 The Core Question
       </span>
       <div class="flex-1 h-px bg-gradient-to-r" :class="t.divider"></div>
@@ -143,7 +143,7 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
 
     <!-- Central question card -->
     <div class="relative z-10">
-      <div class="p-6 bg-gradient-to-br rounded-xl border max-w-4xl mx-auto mb-5" :class="t.questionCard">
+      <div class="p-6 bg-gradient-to-br rounded-xl border max-w-4xl mx-auto mb-5" :class="[t.questionCard, isDark ? 'sv-card-surface-dark' : 'sv-card-surface-light']">
         <!-- Question text in quotes -->
         <div class="text-2xl font-bold mb-3 line-clamp-2" :class="t.questionText">
           "{{ question }}"
@@ -163,7 +163,7 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
         v-for="(card, i) in cards"
         :key="i"
         class="relative p-4 bg-gradient-to-br rounded-lg border overflow-hidden"
-        :class="[cardStyles[i].bg, cardStyles[i].border]"
+        :class="[cardStyles[i].bg, cardStyles[i].border, isDark ? 'sv-card-surface-dark' : 'sv-card-surface-light']"
       >
         <!-- Large icon watermark (background) -->
         <div class="absolute bottom-1 right-2 text-5xl opacity-10 select-none pointer-events-none leading-none">

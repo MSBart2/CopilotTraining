@@ -57,3 +57,21 @@ decisions:
     approvedBy: repository-owner
     approvedOn: 2026-09-15
     rationale: Retire conditionally after durable guidance is accepted by owners and redirects, builds, and companions validate.
+
+  multi-agent-coordination:
+    question: Should Multi-Agent Coordination replace Agent Teams and GitHub Copilot App?
+    state: approved
+    evidence:
+      - .github/content-routing/coverage/wp11-multi-agent-coordination.yml
+    approvedBy: repository-owner
+    approvedOn: 2026-09-15
+    rationale: Unify composition patterns with the Copilot App operating surface; preserve source talks until the replacement, redirects, build, and companions validate.
+
+  workflow-lifecycle:
+    question: Should Agentic Lifecycle absorb GitHub Agentic Workflows?
+    state: approved
+    evidence:
+      - .github/content-routing/coverage/wp12-workflow-lifecycle.yml
+    approvedBy: repository-owner
+    approvedOn: 2026-09-15
+    rationale: Make lifecycle orchestration the canonical owner for workflow selection, compilation, safe outputs, handoffs, stops, and recovery; preserve the source until the expanded replacement validates.

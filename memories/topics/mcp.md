@@ -19,8 +19,8 @@ MCP is an open protocol for connecting AI models to external data sources and to
 | `slides/tech-talks/copilot-acp.md` | Secondary | ACP builds on MCP primitives; MCP tool calls are how ACP agents act |
 | `slides/tech-talks/copilot-sdk.md` | Secondary | SDK includes MCP server/client APIs; Part 2 covers integration |
 | `slides/tech-talks/vscode-latest.md` | Secondary | MCP server configuration UI, discovery improvements in recent releases |
-| `slides/tech-talks/agent-teams.md` | Mention | MCP servers as the tool-access layer for coordinated agents |
-| `slides/tech-talks/copilot-memory.md` | Mention | Memory MCP server (`@memory`) is the primary delivery mechanism |
+| `slides/tech-talks/multi-agent-coordination.md` | Mention | MCP servers can provide bounded tool access to specialist workstreams |
+| `slides/tech-talks/context-engineering.md` | Mention | Memory placement and delivery are context-engineering decisions |
 | `workshop/05-mcp-servers/` | Primary | Hands-on workshop: build and configure MCP servers |
 
 ---

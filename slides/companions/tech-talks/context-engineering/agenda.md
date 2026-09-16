@@ -4,7 +4,7 @@ subtitle: "Place Context, Inspect Delivery, Prove Compliance"
 slug: context-engineering
 category: tech-talks
 duration: 45
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Copilot Context Engineering

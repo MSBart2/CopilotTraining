@@ -1,229 +1,146 @@
 ---
 status: active
-updated: 2026-04-23
+updated: 2026-09-16
 section: "Executive Talks"
+references:
+  - url: https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/
+    label: "GitHub and Accenture: assistant-era enterprise build and pull-request outcomes, 2024"
+    verified: 2026-04-24
+  - url: https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/
+    label: "METR: randomized study of AI assistance for experienced open-source developers, 2025"
+    verified: 2026-04-24
+  - url: https://cloud.google.com/resources/content/dora-roi-of-ai-assisted-software-development
+    label: "DORA: commercially interested outcome-based ROI framework for AI-assisted delivery, 2025"
+    verified: 2026-04-24
+  - url: https://getdx.com/blog/how-top-companies-measure-ai-impact-in-engineering/
+    label: "DX: commercially interested review of engineering AI measurement practices, 2024"
+    verified: 2026-04-24
+  - url: https://airc.nist.gov/Home
+    label: "NIST AI RMF: governance vocabulary for oversight, monitoring, and accountability, 2023"
+    verified: 2026-04-24
 ---
 
-# The Agentic Investment Case: A Board Briefing
+# The Agentic Operating Model
 
-*A synthesis briefing for executive committees and boards authorizing enterprise agentic AI investment*
+*Where agents create value, where humans retain authority, and how leadership proves the return*
 
----
-
-## Framing Note
-
-This talk synthesizes three executive briefing lines into a single coherent investment argument. It is designed for settings where a full executive committee or board needs the complete picture in one session — not a deep-dive on any single dimension, but a closed, self-reinforcing case that covers the opportunity, the operating model, the honest constraints, and a single consolidated ask.
-
-The three source perspectives:
-- **Agentic Delivery** — the operating model: how human/AI authority is structured for safe, multiplied throughput
-- **Agentic Labor** — the diagnostic: where the 67% of delivery labor invisible to current AI investment actually lives
-- **Agentic Economics** — the business case: the honest math, including the infrastructure prerequisites and the J-curve
-
-Each is a standalone briefing for functional executives. This deck is the synthesis for the room where all of them are present.
-
----
-
-## The 67% Problem
-
-Most organizations that have invested in AI coding tools believe they've addressed the developer productivity question. They've addressed roughly one-third of it.
-
-Developers spend only 30–33% of their working time writing new code. The rest — issue triage, planning, compliance review, documentation, test strategy, knowledge transfer, dependency management — is the structured information processing that *surrounds* code. AI tools that accelerate code-writing address the minority of the actual labor problem.
-
-**The organizations moving fastest in 2026 are not those with the most developers. They're those who have reclaimed the 67% of delivery labor currently invisible to AI investment.**
-
-This is not an indictment of your current AI spend. It's a reframe of what "AI-enabled delivery" actually requires — and what your competitors who started 18 months ago are already compounding.
+*A 30-45 minute decision briefing for C-suite leaders, VPs, and transformation leaders considering a controlled operating-model pilot.*
 
 ---
 
-## The Shift: Developers Become Pilots
+## The Decision
 
-The analogy that clarifies the operating model: a commercial airline pilot doesn't hand-fly the aircraft for most of the journey. The autopilot handles the mechanical work of maintaining heading and altitude. The pilot plans the mission, makes go/no-go calls, monitors instruments, intervenes when something goes wrong, and takes responsibility for every landing.
+The reusable authorization template below defines the fields required for a controlled decision process. The final authorization is one decision: approve the completed charter and controlled pilot, leading to **scale once, adjust once, or stop**.
 
-**Agentic AI is the autopilot. Your developers are becoming pilots.**
+| Charter field | Required completed entry |
+|---|---|
+| **Authorizing body and signatory** | Named executive committee, investment committee, or delegated executive, plus the accountable signatory |
+| **Executive sponsor** | CTO with responsibility for cross-functional sponsorship and escalation |
+| **Operational owner** | VP of Engineering accountable for workflow selection, execution, and results |
+| **Pilot scope** | One named team and one repeatable workflow |
+| **Timing** | Four-week baseline, followed by a 90-day pilot; exact launch and return dates recorded in the charter |
+| **Planning alignment** | Calendar return date aligned to the named annual operating plan, quarterly business review, or funding cycle used by the organization |
+| **Budget** | Local ceiling, named funding source, and approved treatment of internal labor and platform cost |
+| **Control capacity** | Named control owners and committed capacity for platform, security, compliance, release, and measurement duties |
+| **Agent authority** | Explicit tools, data, environments, actions, and workflow boundaries available to the agent |
+| **Retained human authority** | Named accountable humans for objectives, exceptions, production release, access changes, and risk acceptance |
+| **Measurement custody** | Finance, Strategy, or an independent data owner responsible for baseline integrity, scenario assumptions, and gate reporting |
+| **Return decision** | Scale once, adjust once, or stop, with a named tie-break authority |
 
-This reframe is not reassuring wordplay. It has structural implications:
+This portfolio briefing cannot invent organization-specific dollars, minimum sample counts, performance thresholds, guardrail floors, or capacity commitments. The authorizing body and Finance or the independent measurement custodian complete, approve, and publish those fields in a dated threshold memo after the baseline and before assisted execution begins. No blank threshold may reach launch.
 
-- **Autopilot without instruments is dangerous.** A pilot flying without altitude, heading, and fuel readings is not more productive — they're flying blind. Developers supervising agentic sessions without automated test health, security posture, compliance status, and deployment-window indicators are in the same position.
-- **One pilot can supervise multiple concurrent flights — but only with instruments.** A developer with excellent instruments can manage 3–4 concurrent agentic sessions simultaneously. Without instruments, they can barely manage one safely.
-- **The multiplier is real, and it is instrument-dependent.** A $10M engineering organization with the right instrument panel can deliver $20M of throughput capacity. Without it, adding agents adds risk, not capacity.
-
-The implication for enterprise leaders: your AI investment strategy is incomplete if it addresses only the AI tools. The instrument panel — the automated test infrastructure, security gates, compliance automation, observability tooling — is what determines whether the investment returns value or creates liability.
+The authorization is **pre-authorization of a controlled decision process**. Executive authority is required because the charter commits cross-functional capacity, assigns a budget and funding source, grants bounded permissions to non-human tools, and reserves defined authority for accountable humans. The charter records exact launch and return dates and aligns the gate with a real planning or funding cycle.
 
 ---
 
-## Where the Labor Actually Lives: The Exposure Ledger
+## The Evidence
 
-Before calculating what agents can save, it helps to see where the labor actually goes. The SDLC labor map reveals nine categories of delivery work. Five carry significant financial exposure when unaddressed by agents:
+GitHub and Accenture reported 84% more successful builds, 8.7% more pull requests per developer, and a 15% higher merge rate among Copilot users in an enterprise study.[^1] This **external observation** carries commercial interest from GitHub and Accenture and reflects the study's participating enterprise population, available work, and assistant-era conditions.
 
-| Labor Category | Current Exposure (50-person team) | Agent Leverage |
+METR's randomized study found that 16 experienced open-source developers working on mature repositories took 19% longer on eligible tasks with AI assistance, while participants had expected faster completion.[^2] This **external observation** comes from an independent, small expert cohort performing complex tasks in repositories they knew well.
+
+Both studies concern assistant-era interventions under human authorship. Neither directly tests bounded agent execution with post-hoc human verification. The evidence supports a narrow inference: outcomes vary by task, context, and intervention. The gap between assistant-era research and the proposed operating model supplies a positive reason for a bounded internal pilot with comparable work and independent measurement.
+
+DORA, part of Google Cloud, provides a commercially interested framework connecting AI-assisted development to delivery outcomes and organizational conditions.[^3] DX provides a commercially interested review of engineering measurement practices across outcome, quality, and developer-experience measures.[^4] These sources guide measurement design; local authorization rests on the completed **internal baseline**, the disclosed **modeled scenario**, and the approved **proposed threshold**.
+
+| Evidence vocabulary | Use in this briefing |
+|---|---|
+| **external observation** | Calibrates plausible outcomes and boundaries from cited research |
+| **internal baseline** | Records local workflow performance during the four weeks before assisted execution |
+| **modeled scenario** | Applies disclosed local assumptions to cost and value |
+| **proposed threshold** | Defines the approved test for scale, adjust, or stop |
+
+Control, Coordination, and Context form **an editorial decision framework for this briefing**, with no claim of external validation.
+
+| Editorial zone | Candidate work | Retained accountable expertise |
 |---|---|---|
-| **Discovery** | 20% of team capacity on issue triage/impact analysis (Atlassian 2023) | Very high — 30-min triage to <5 min |
-| **Planning** | 20–30% of project budgets lost to rework from inadequate planning (IDC 2023) | High — 2–4 hr investigation to minutes |
-| **Governance** | $4.88M average breach cost (IBM 2024) + GDPR up to 4% global revenue | Very high — manual 2–4 hrs/PR to automated 10 min |
-| **Knowledge** | 50–200% engineer replacement cost (SHRM); 3–6 week onboarding with outdated docs | High — documentation drift detected automatically |
-| **Validation** | $11,000/minute production outage cost (Gartner) | High — risk-weighted coverage vs. meaningless line-count |
+| **Control** | Checks, evidence collection, and policy-constrained preparation | Risk acceptance, exceptions, and release approval |
+| **Coordination** | Triage, dependency mapping, status synthesis, and release preparation | Priority, sequencing, and stakeholder commitments |
+| **Context** | Repository analysis, documentation comparison, and decision-history retrieval | Architecture, tradeoffs, and customer judgment |
 
-This is not a technology assessment. It is a financial exposure map. Every row represents a category of delivery risk your organization is currently carrying — some of it undefended, some of it only partially addressed by current tooling.
+Accountable developers remain experts responsible for acceptance and delivered outcomes. Product leaders retain priority and customer-outcome authority. Security and compliance leaders own mandatory controls and exceptions. Platform engineering owns enforceable verification. The VP of Engineering owns operational performance across the selected workflow.
 
-The governance row deserves particular attention. Since 2023, the SEC requires material cybersecurity incident disclosure within 4 business days. Manual compliance review — 2–4 hours per PR, inconsistently applied, without systematic audit trail generation — is not a defensible control at the pace of agentic delivery. This is a board governance question, not an engineering operations question.
+**Excluded conclusions:** enterprise ROI, universal productivity, headcount reduction, and autonomous production authority.
 
 ---
 
-## Why Most Organizations Don't Capture the Return
+## The Guardrails and Economics
 
-The labor opportunity is real. The financial case is sound. So why do only **5% of AI pilots deliver material bottom-line improvement**?
+NIST's AI Risk Management Framework supplies governance language for oversight, monitoring, and accountability.[^5] The pilot translates that language into a compact executive guardrail: agents receive least-privilege access to the named workflow, required checks produce reviewable evidence, accountable humans approve reserved actions, and control owners can halt execution.
 
-The answer is structural, and it explains both why organizations fail and what distinguishes the ones that succeed.
+Agents may gather context, propose plans, modify approved development assets, run approved checks, and prepare evidence within the charter. Humans retain authority for production deployment, production data or schema changes, security-control exceptions, new external dependencies, production configuration, access-control changes, external integrations, risk acceptance, and work outside the approved boundary. Tool permissions and delivery gates enforce the boundary; logs and review records evidence its operation.
 
-### The Verification Problem
+The threshold memo names owners and minimum floors for workflow acceptance, test health, security, compliance, performance, dependency policy, release readiness, evidence completeness, and human review. It also commits enough owner capacity to operate those controls throughout the pilot. Any authority-boundary or control breach triggers an immediate stop.
 
-The most important single data point for any executive authorizing agentic AI investment:
+The economic case is a local **modeled scenario** built from the four-week **internal baseline**. It uses fully burdened inputs and a downside case. Universal ROI remains an excluded conclusion.
 
-**Without automated verification infrastructure, adding agents can produce a net loss compared to human-only delivery.**
+| Input group | Required local inputs |
+|---|---|
+| **Cost** | Tooling; platform effort; enablement; agent operations; control operation; human review and rework; committed owner time; opportunity cost |
+| **Value** | Cost per validated outcome; capacity redeployment; flow; quality |
 
-The math is direct:
-- Agent produces output: ~$3/hour
-- Human reviews without automation: 2 hours × $100/hour = $200
-- Total cost: **$203**
-- Human-only cost for same task: **$200**
-- **Net result: –$3**
+| Scenario | Required treatment |
+|---|---|
+| **Local case** | Apply measured workflow volume, fully burdened cost, observed quality, and approved capacity-redeployment assumptions |
+| **Downside case** | Apply lower validated-outcome volume, higher review and rework, higher control cost, and delayed or unrealized capacity redeployment |
 
-With automated verification:
-- Agent produces output: ~$3
-- Automated checks: ~$0.10
-- Human spot-check: 15 minutes × $100/hour = $25
-- Total cost: **$28.10**
-- Savings vs. human-only: **86%**
-
-Automated verification is not an implementation detail. It is the mechanism that makes agent economics work. Every organization that has deployed agents without it has discovered this the hard way — and the 95% failure rate in AI pilots is substantially explained by this gap.
-
-### The Five Structural Barriers
-
-Beyond verification, five structural gaps prevent organizations from capturing the labor arbitrage:
-
-1. **No Instrumentation** — Agents need feedback loops. Without automated tests, security scans, and quality gates, every agent output requires manual review. The time cost of manual review consumes the efficiency gain.
-
-2. **Tribal Knowledge** — Critical context lives in people's heads, not documentation. Agents can only access what is written down. Organizations with poor knowledge infrastructure pay a context tax on every agentic task.
-
-3. **Approval Bottlenecks** — Human approval gates exist throughout the delivery pipeline. Even if an agent completes in 30 minutes, it waits 2 days in the review queue. Total delivery time is unchanged.
-
-4. **Undefined Boundaries** — Without clear governance policies about what agents can and cannot do autonomously, every task requires negotiating scope. The governance conversation replaces the productivity gain.
-
-5. **Fragmented Tooling** — Context is scattered across Jira, Slack, Confluence, GitHub, and email. Agents synthesize what they can access. Organizations with fragmented tooling give agents partial context and get partial results.
-
-### The Market Reality
-
-- **Only 5% of AI pilots deliver material bottom-line improvement** (industry data)
-- **65% of leaders cite organizational complexity — not technology — as the top barrier** to AI-driven productivity
-- **25% of AI-generated code has errors without proper verification**, and 45% fails standard security testing
-- Organizations without automated verification see **50–70% lower savings** due to manual review overhead
-
-This is not an argument against proceeding. It is the conditions under which proceeding works.
+Every assumption names an owner, source, date, and sensitivity range. Capacity value requires a documented destination such as higher-priority delivery, resilience work, customer response, or avoided external spend. Flow and quality enter the scenario only where they have a defensible local value relationship. The gate evaluates workflow-specific evidence and fully burdened economics.
 
 ---
 
-## The Operating Model: Human Authority + Agent Execution
+## The Gate
 
-For executive committees, the governance question is often the sharpest: *what authority does the agent have, and who is accountable when it goes wrong?*
+The authorizing body and Finance or the independent measurement custodian jointly own the dated threshold memo. They approve it after the four-week baseline and before assisted execution. The memo makes the day-90 decision falsifiable by declaring all of the following:
 
-The answer is a structured authorization model:
+| Gate field | Required declaration |
+|---|---|
+| **Completed-outcome minimum** | A numeric minimum supported by expected workflow event volume and sufficient for the declared decision |
+| **Comparability** | A task-comparability rule defined before launch, or a concurrent comparison cohort |
+| **Primary outcome** | One workflow-specific validated outcome with an accountable business owner |
+| **Decision threshold** | Numeric or categorical **proposed threshold** for the primary outcome and fully burdened economics |
+| **Directional floor** | A predeclared minimum signal eligible for one adjustment |
+| **Guardrail floors** | Quality, control, authority, and evidence-completeness floors that must hold throughout |
+| **Immediate stop** | Any authority-boundary breach or control failure |
+| **Arbiter** | Named signatory or committee chair who resolves a tied or disputed disposition |
 
-**Human authority required:** Pre-flight (task scoping, acceptance criteria, guardrail definition), Takeoff (agent initialization, boundary setting), Landing (output review, deployment sign-off). No code deploys without a human signing off.
+Measures must fit the event volume available during a four-week baseline. The selected workflow determines the primary outcome. Suitable examples include accepted change packages, resolved incidents, completed compliance reviews, or validated release decisions. `Time to validated customer outcome` applies only when the workflow produces enough attributable customer outcomes to establish a credible baseline.
 
-**Agent autonomy with human monitoring:** Cruise (code generation, test iteration, iteration on solutions, progress reporting). This is where AI delivers its value — and where instrument monitoring by the developer is non-negotiable.
+| Decision | Falsifiable disposition |
+|---|---|
+| **Scale once** | The primary **proposed threshold**, fully burdened economic threshold, completed-outcome minimum, comparability rule, and every guardrail floor are satisfied |
+| **Adjust once** | The predeclared directional floor is met, no authority or control failure occurred, and one bounded correction has a named owner, budget, and calendar return date |
+| **Stop** | Any immediate-stop condition occurs, a guardrail floor fails, the directional floor is missed, comparability is inadequate, or the single adjustment fails its return gate |
 
-Six categories of action require explicit human authorization at all times — no agent may perform these autonomously:
-- Production database schema changes
-- Security control bypasses
-- Unapproved external dependencies
-- Production configuration changes
-- Access control modifications
-- External system integrations
+The completed charter and threshold memo preserve the decision record, evidence classifications, scenario assumptions, control ownership, and return date. The authorizing body receives one final authorization request: approve the completed charter and controlled pilot, with the resulting decision limited to **scale once, adjust once, or stop**.
 
-These are not restrictions on AI productivity. They are the governance framework that makes agentic automation auditable and defensible to regulators, auditors, and insurers.
+### References
 
----
+[^1]: **[GitHub and Accenture enterprise study](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-in-the-enterprise-with-accenture/)** - Commercially interested enterprise study reporting assistant-era build and pull-request outcomes, 2024.
 
-## The Business Case: Honest Math
+[^2]: **[METR: Measuring the Impact of Early-2025 AI on Experienced Open-Source Developers](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)** - Independent randomized study reporting a 19% slowdown for 16 experienced open-source developers on eligible tasks, 2025.
 
-### Entry Point: Issue Lifecycle Automation
+[^3]: **[DORA: ROI of AI-Assisted Software Development](https://cloud.google.com/resources/content/dora-roi-of-ai-assisted-software-development)** - Commercially interested Google Cloud framework for outcome-based evaluation, 2025.
 
-Before committing to the full infrastructure investment, organizations should validate the model with a focused, low-risk proof of concept:
+[^4]: **[DX: How top companies measure AI impact in engineering](https://getdx.com/blog/how-top-companies-measure-ai-impact-in-engineering/)** - Commercially interested review of engineering AI measurement practices, 2024.
 
-**Automating the complete issue lifecycle** (discovery → planning → implementation → review validation) requires minimal infrastructure, delivers immediate value, and produces a clear ROI signal.
-
-For a 50-person engineering team:
-- Current cost of 20 issues/week × 10 hours/issue at $100/hour: **$1,040,000/year**
-- With issue lifecycle automation: **$39,000/year total** (agent + human oversight)
-- **Annual savings: $1,001,000**
-- **Investment: $10,200** (4–6 hours of workflow setup, ongoing API costs)
-- **Payback period: 3.6 days**
-
-This is the proof-of-concept that gives cautious executives permission to proceed — and generates the internal data for the infrastructure authorization.
-
-### The 20% Labor Shift Target
-
-With full infrastructure investment, the achievable target for a 50-person engineering team within 18 months:
-
-- **20% of engineering labor shifted to agent execution** ($2–5/hour vs. $100/hour human average)
-- **Annual savings: $1.94 million**
-- **Infrastructure investment: $800K–$1.6M** (one-time + first year; add 40–60% for legacy systems)
-- **Payback period: 12–18 months** (disciplined execution; only 13% of projects achieve sub-12-month payback)
-- **3-year ROI: 240–350%**
-
-### The J-Curve (What to Tell the CFO)
-
-**Year 1:** Net position –$425,000 (investment phase, savings ramping)
-**Year 2:** Net position +$1,061,000 (infrastructure complete, full savings realized)
-**Year 3:** Cumulative +$2,547,000
-
-The Year 1 net-negative position is not a problem to be hidden. It is the honest representation of an infrastructure investment with a 12–18 month payback. Organizations that present AI investments without the J-curve are selling, not advising. CFOs will trust the analysis more for seeing it.
-
-**At scale:** The infrastructure investment is largely fixed cost. For a 500-engineer organization, the same $1M investment delivers approximately $14.9M in annual savings — a 10x return on the same infrastructure spend.
-
----
-
-## The Competitive Window
-
-This is not a strategic question with unlimited time to decide.
-
-**DORA 2023:** Elite software delivery teams already deploy 208 times more frequently than low performers, with a 3x lower change failure rate. These are not pilot metrics — they are the operating baseline for organizations that began investing 18–24 months ago.
-
-The infrastructure advantage compounds. Organizations that establish agent-amplified delivery in 2025–2026 build institutional muscle memory — documented workflows, trained teams, calibrated governance policies, proven automation pipelines — that latecomers cannot compress into a shorter timeline. The technical tools are available to everyone. The organizational readiness is earned over time.
-
-**The competitive gap is widening every quarter that infrastructure investment is deferred.**
-
-Additionally: **62% of software engineers say access to modern tooling influences their decision to stay or leave** (Stack Overflow Developer Survey 2023). In a 15% annual attrition environment, tooling that removes friction retains talent. Friction compounds with every engineer who leaves.
-
----
-
-## The Investment Decision: Three Asks This Quarter
-
-This is not a technology question. It is a capital allocation and governance question that requires leadership authorization.
-
-**1. Authorize a proof-of-concept pilot**
-One team. Issue lifecycle automation. $110,000 investment (tooling + 1 FTE coordination). Baseline metrics defined before launch: issue resolution time, plan accuracy, rework rate. Success criteria established in advance. Timeline: 90 days. This generates the internal data for the scale decision — it is not the scale decision.
-
-**2. Commission an infrastructure readiness assessment**
-60-day assessment with VP Engineering. Answer three executive questions: (a) Which of the six instrument categories does our delivery pipeline currently have? (b) What are the gaps, and what is the estimated investment to close them? (c) What is our governance policy for agent authority — what can agents do without human approval, who is the Directly Responsible Individual for agent behavior in production? The absence of a governance policy is itself a governance risk: each team makes its own call, without audit trail, and without legal or compliance review.
-
-**3. Set the right success metrics**
-Measurement error is how most AI pilots declare success prematurely or abandon investments that would have paid off. The right leading indicators are: **iteration count per task** (fewer iterations = better requirements, better ROI) and **verification overhead** (time spent reviewing agent output relative to agent production time). These predict ROI. Agent API cost alone does not.
-
----
-
-## Sources
-
-- McKinsey Global Institute (2023). *The economic potential of generative AI.*
-- GitHub / Microsoft Research (2022). *The economic impact of the AI coding tools.*
-- IBM Security (2024). *Cost of a Data Breach Report.*
-- IBM / Ponemon Institute. *Cyber Resilience in the Age of AI.*
-- AICPA / Vanta (2024). *State of Trust Report.*
-- GDPR Article 83(4–5). Maximum fine structure.
-- SEC Cybersecurity Disclosure Rules (2023). 4-day material incident reporting.
-- Atlassian State of Teams Report (2022–2023). Developer time allocation.
-- IDC (2023). *The business value of developer productivity.* Sponsored by GitHub.
-- SHRM. *Employee replacement cost benchmarks.*
-- Gartner (2023). *IT outage cost benchmarks.*
-- DORA (2023). *Accelerate State of DevOps Report.*
-- Stack Overflow Developer Survey (2023).
+[^5]: **[NIST AI Risk Management Framework](https://airc.nist.gov/Home)** - Governance vocabulary for oversight, monitoring, and accountability, 2023.

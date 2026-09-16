@@ -65,10 +65,9 @@ deck:
         [The action close — what leadership must authorize, invest in, or decide. Should
         reference 2–3 concrete next steps. Tie back to the opening frame.]
 
-  # Required shared executive-series context immediately after the TitleSlide.
-  # Every executive deck imports this spine; never remove or replace it with [].
-  preamble:
-    - src: "./exec-spine.md"
+  # Optional context deck imported immediately after the TitleSlide.
+  # Leave empty when the briefing is self-contained.
+  preamble: []
 
   # Optional: slide files to append after the final slide.
   # Each entry becomes a `src:` import block at the end of the generated deck.

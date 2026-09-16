@@ -202,13 +202,24 @@ export function validatePartNumber(partNumber: number, componentName: string): v
 export function useSectionChrome(partNumber: () => number): ComputedRef<SectionChrome> {
     return computed(() => {
         const idx = Math.min(Math.max(partNumber() - 1, 0), 3)
-        return (isDark.value ? DARK_CHROME : LIGHT_CHROME)[idx]
+        const chrome = (isDark.value ? DARK_CHROME : LIGHT_CHROME)[idx]
+        return {
+            ...chrome,
+            ambientBg: isDark.value ? 'sv-slide-surface-dark' : 'sv-slide-surface-light',
+            orb: 'sv-orb-muted',
+            pill: `${chrome.pill} sv-section-kicker`,
+        }
     })
 }
 
 export function useSectionCards(partNumber: () => number): ComputedRef<SectionCard[]> {
     return computed(() => {
         const idx = Math.min(Math.max(partNumber() - 1, 0), 3)
-        return (isDark.value ? DARK_CARDS : LIGHT_CARDS)[idx]
+        const cards = (isDark.value ? DARK_CARDS : LIGHT_CARDS)[idx]
+        return cards.map(card => ({
+            ...card,
+            bg: isDark.value ? 'sv-card-surface-dark' : 'sv-card-surface-light',
+            bgColor: isDark.value ? 'rgba(15,23,42,0.78)' : 'rgba(255,255,255,0.94)',
+        }))
     })
 }

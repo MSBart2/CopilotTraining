@@ -4,7 +4,7 @@ subtitle: "AI at the Point of Work"
 slug: copilot-cli
 category: tech-talks
 duration: 45
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # GitHub Copilot CLI — AI at the Point of Work

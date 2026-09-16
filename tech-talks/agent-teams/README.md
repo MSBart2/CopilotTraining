@@ -1,6 +1,6 @@
 ---
-status: active
-updated: 2026-03-17
+status: archived
+updated: 2026-09-16
 section: "Delegate and Coordinate"
 audience: [developer, team-lead, architect]
 level: advanced

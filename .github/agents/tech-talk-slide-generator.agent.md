@@ -95,15 +95,7 @@ Write the scaffold in one pass:
    src: {entry.src}
    ---
    ```
-   **Do NOT read preamble files** — their component requirements are already listed here. For `exec-spine.md`, add these imports to `<script setup>` (in addition to whatever the body slides need):
-   ```html
-   import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
-   import FrameworkMappingRowsSlide from
-   './components/FrameworkMappingRowsSlide.vue' import HeroStatSlide from
-   './components/HeroStatSlide.vue' import ThreeColumnCardSlide from
-   './components/ThreeColumnCardSlide.vue' import TwoColPairedConceptsSlide from
-   './components/TwoColPairedConceptsSlide.vue'
-   ```
+   Read each declared preamble before generation and import the components it uses into `<script setup>`.
 4. `CoreQuestionSlide` — always next; use placeholder cards (3 persona + 3 stat) — fill in Phase B
 5. `TocSlide` — sections from `deck.sectionOrder`; `slide: 0` placeholder — update after Phase B. **Do not emit an AgendaSlide** (retired; outcomes live in Core Question / TOC).
 6. One `SectionOpenerSlide` per `deck.sectionOrder` entry; subtitle from `sectionModes[].note`; placeholder cards — immediately followed by `<!-- Phase B: {emphasis} — {N} body slides -->`

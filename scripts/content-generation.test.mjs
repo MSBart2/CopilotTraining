@@ -58,10 +58,10 @@ test("executive machinery uses the live tech-talks/exec-* source path", async ()
   }
 });
 
-test("executive recipe template always imports the shared spine", async () => {
+test("executive recipe template allows a self-contained briefing", async () => {
   const template = await read(".github/skills/exec-recipe-review/EXEC-RECIPE-TEMPLATE.yml");
-  assert.match(template, /preamble:\s*\r?\n\s+- src: "\.\/exec-spine\.md"/);
-  assert.doesNotMatch(template, /preamble:\s*\[\]/);
+  assert.match(template, /preamble:\s*\[\]/);
+  assert.doesNotMatch(template, /exec-spine/);
 });
 
 test("tech-talk generator distinguishes required and optional sections", async () => {

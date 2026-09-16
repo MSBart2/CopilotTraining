@@ -1,15 +1,15 @@
 ---
 status: active
 portfolioState: deployed
-updated: 2026-09-15
+updated: 2026-09-16
 section: "Delegate and Coordinate"
 audience: [developer, team-lead, platform-engineer]
 level: advanced
-duration: 50
+duration: 55
 format: core-talk
-decision: "How should independently governed workflows hand work off across an issue-to-PR lifecycle?"
-prerequisites: [agent-dev-loop, copilot-web, agentic-workflows]
-related: [surfaces, agent-teams, agentic-sdlc]
+decision: "Which recurring repository judgments belong in workflows, and how can they hand work off safely across an issue-to-PR lifecycle?"
+prerequisites: [agent-dev-loop, copilot-web]
+related: [surfaces, multi-agent-coordination, agentic-sdlc]
 references:
   - url: https://github.github.com/gh-aw/introduction/overview/
     label: "GitHub Agentic Workflows overview"
@@ -37,9 +37,9 @@ references:
 # Agentic Lifecycle Orchestration
 
 > **The Question This Talk Answers:**
-> *"How should independently governed workflows hand work off across an issue-to-PR lifecycle?"*
+> *"Which recurring repository judgments belong in workflows, and how can they hand work off safely across an issue-to-PR lifecycle?"*
 
-**Duration:** 50 minutes | **Target Audience:** Developers / Team Leads / Platform Engineers
+**Duration:** 55 minutes | **Target Audience:** Developers / Team Leads / Platform Engineers
 
 ---
 
@@ -47,9 +47,9 @@ references:
 
 | Criterion | Assessment | Notes |
 |---|---|---|
-| **Relevant** | 🟢 High | Teams automating intake, planning, coding, and review need one explicit handoff contract across independently triggered workflows. |
-| **Compelling** | 🟢 High | Labels make state visible, while evidence and named owners prevent a label from becoming accidental authority. |
-| **Actionable** | 🟢 High | Four workflow/instruction pairs, a compilation gate, recovery paths, and local measurement definitions support a bounded repository pilot. |
+| **Relevant** | 🟢 High | Teams need to select recurring repository judgments carefully, then coordinate them through explicit handoff contracts. |
+| **Compelling** | 🟢 High | Markdown captures intent, generated locks expose executable permissions, and evidence plus named owners keep state from becoming accidental authority. |
+| **Actionable** | 🟢 High | Four uncompiled workflow/instruction pairs, a compilation gate, recovery paths, and local measurement definitions support a bounded repository pilot. |
 
 **Overall Status:** 🟢 Ready to use
 
@@ -61,6 +61,9 @@ references:
 
 - **Coordinate judgment without one privileged agent**
   Four focused workflows can own intake, planning, coding, and review while sharing only visible repository artifacts.
+
+- **Select automation by judgment, not novelty**
+  Recurring decisions with bounded inputs, constrained outputs, and repository-native authority are candidates; deterministic builds and unbounded production actions stay elsewhere.
 
 - **Make every transition inspectable**
   Labels identify the current milestone; comments, approval records, pull-request evidence, and Actions logs explain why work moved.[^1][^2]
@@ -77,7 +80,7 @@ A lifecycle becomes reliable when each phase can answer five questions: What inp
 
 The useful unit is not a long-running autonomous agent. It is a chain of independently governed workflows connected by durable repository state. Intake can improve without changing coding. Review can tighten without granting planning new authority. A failed phase stops visibly rather than leaking partial work into the next phase.
 
-This talk owns that integrated orchestration contract. Surface choice remains with [Which Copilot Where?](../surfaces/). Reusable context remains with [The Agent Dev Loop](../agent-dev-loop/). Bounded implementation remains with [From Issue to Pull Request](../copilot-web/). Workflow authoring depth remains with [GitHub Agentic Workflows](../agentic-workflows/). Specialist composition and delivery infrastructure remain with [Agent Teams](../agent-teams/) and [Agentic SDLC](../agentic-sdlc/).
+This talk owns workflow-selection judgment and the integrated orchestration contract. Surface choice remains with [Which Copilot Where?](../surfaces/). Reusable context remains with [The Agent Dev Loop](../agent-dev-loop/). Bounded implementation remains with [From Issue to Pull Request](../copilot-web/). Specialist composition and delivery infrastructure remain with [Multi-Agent Coordination](../multi-agent-coordination/) and [Agentic SDLC](../agentic-sdlc/).
 
 ---
 
@@ -115,7 +118,7 @@ flowchart LR
 
 ### Implementation Boundary
 
-The four files under [`workflows/`](workflows/) are source templates, not generated lock files. A repository pilot copies them to `.github/workflows/`, compiles them with its installed `gh-aw` release, reviews the generated `.lock.yml` files, and commits both forms. Safe-output schemas can change; successful compilation is the compatibility gate.
+The four files under [`workflows/`](workflows/) are uncompiled source candidates, not generated lock files. `gh aw` is unavailable in the current authoring environment, so no lock files were generated and no workflow was executed. A repository pilot copies the sources to `.github/workflows/`, compiles them with its installed `gh-aw` release, reviews the generated `.lock.yml` files, and commits both forms. Safe-output schemas can change; successful compilation is the compatibility gate, and a bounded run is the runtime-validation gate.
 
 The earlier lifecycle example invoked `copilot -p @file` in Actions and parsed prose with shell commands. No current first-party source in this work package substantiates that executor/authentication pattern. These replacements use the documented gh-aw compilation and safe-output model instead. They remain candidates until compiled and exercised in the target repository.
 
@@ -186,15 +189,17 @@ Repository labels required by the candidate are `lifecycle:triaged`, `lifecycle:
 ### Decision Tree
 
 ```text
-Q: Does one repository task need several independently governed judgments?
-├─ No, the task is one bounded implementation
-│  └─ Route to From Issue to Pull Request
-├─ Yes, and each phase has observable evidence and a named owner
-│  └─ Use lifecycle orchestration
-├─ Yes, but phases need parallel isolated specialists
-│  └─ Route composition to Agent Teams; retain lifecycle gates
-└─ Yes, but CI, ownership, or rulesets cannot enforce acceptance
-   └─ Build the trust infrastructure in Agentic SDLC first
+Q: Is this a recurring repository judgment rather than a deterministic step?
+├─ No
+│  └─ Use conventional GitHub Actions or the existing deterministic tool
+├─ Yes, but inputs, outputs, or repository authority cannot be bounded
+│  └─ Keep the judgment human-led
+└─ Yes, with bounded inputs, outputs, and authority
+  └─ Does one task need several independently governed judgments?
+    ├─ No → Route one bounded implementation to From Issue to Pull Request
+    ├─ Yes, with observable evidence and named owners → Use lifecycle orchestration
+    ├─ Yes, with parallel isolated specialists → Use Multi-Agent Coordination inside retained lifecycle gates
+    └─ Yes, without enforceable CI, ownership, or rulesets → Build Agentic SDLC trust infrastructure first
 ```
 
 ### Use This Pattern When
@@ -213,8 +218,26 @@ Q: Does one repository task need several independently governed judgments?
 
 ---
 
+<!-- 🎬 MAJOR SECTION: Workflow Selection -->
+## 1. Select Workflow-Owned Judgments
+
+A workflow earns a place in the lifecycle when the judgment recurs, its input scope can be named, its output can be constrained, and repository policy identifies who may accept or recover the result. The four phases qualify because each answers one bounded question: Is this issue eligible? Is this plan executable? Was the approved scope implemented? Is the evidence ready for human acceptance?
+
+Trigger choice is part of that boundary. An event trigger starts from one concrete repository transition; a schedule asks the workflow to discover work across a time window. This lifecycle uses events because every phase needs the exact issue, comment, label, or pull request that caused the handoff. A scheduled scan would widen input scope and make causality harder to inspect.
+
+| Phase | Trigger choice | Read permissions | Allowed mutation boundary |
+|---|---|---|---|
+| Intake | `issues.opened` supplies one new issue | contents and issues | at most one comment and two labels from the intake allowlist |
+| Planning | `issues.labeled` exposes the triage handoff | contents, issues, pull requests | at most one plan comment and two labels from the planning allowlist |
+| Coding | `issue_comment.created` carries the exact approval command | contents, issues, pull requests | one draft pull request, one comment, and at most one stop label |
+| Review | pull request open, reopen, or synchronize events expose a reviewable diff | contents, issues, pull requests | one comment review, bounded inline findings, and at most two review-state labels |
+
+The source frontmatter requests read access for the reasoning job and declares only the safe outputs each phase needs. Compilation is expected to materialize write-capable handler jobs separately.[^3][^4] Until generated lock files are available for inspection, that separation is a documented design claim rather than observed behavior in this repository.
+
+---
+
 <!-- 🎬 MAJOR SECTION: Lifecycle Contract -->
-## 1. Make the State Machine Visible
+## 2. Make the State Machine Visible
 
 The lifecycle keeps success milestones as durable labels and failure states as explicit stops.
 
@@ -240,7 +263,7 @@ The coding workflow verifies the exact command, `lifecycle:planned`, plan freshn
 ---
 
 <!-- 🎬 MAJOR SECTION: Intake and Planning -->
-## 2. Turn an Issue into an Approved Contract
+## 3. Turn an Issue into an Approved Contract
 
 ### Intake Owns Eligibility
 
@@ -269,7 +292,7 @@ A plan stops when validation is unavailable, ownership crosses an unrepresented 
 ---
 
 <!-- 🎬 MAJOR SECTION: Coding and Review -->
-## 3. Preserve Authority from Approval to Merge
+## 4. Preserve Authority from Approval to Merge
 
 ### Coding Owns Plan Execution
 
@@ -304,7 +327,7 @@ Plan drift returns to planning. Reparable defects return to coding. Missing owne
 ---
 
 <!-- 🎬 MAJOR SECTION: Measurement and Recovery -->
-## 4. Measure the Handoffs Locally
+## 5. Measure the Handoffs Locally
 
 The source lifecycle's timing and accuracy figures were illustrative, not repository measurements. This candidate starts with definitions, then lets the pilot establish its own baseline.
 
@@ -359,7 +382,7 @@ Changed files require a domain CODEOWNER and passing policy checks. Agent review
 
 - **Build:** Copy the four workflow sources to `.github/workflows/`, create the lifecycle labels, and compile each source with the installed `gh-aw` release.[^1][^2]
 - **Expected signal:** Four generated lock files expose read-only agent jobs and constrained write handlers.
-- **Validate:** Review compilation output and generated permissions; reject any undeclared write path or schema mismatch.
+- **Validate:** Review compilation output and generated permissions; reject any undeclared write path or schema mismatch. This step remains outstanding because `gh aw` is unavailable in the current authoring environment.
 
 ### 2–4 Hours — Run a Bounded Pilot
 
@@ -381,9 +404,10 @@ Changed files require a domain CODEOWNER and passing policy checks. Agent review
 - **[Which Copilot Where?](../surfaces/)** — Chooses the execution surface before a task enters this lifecycle.
 - **[The Agent Dev Loop](../agent-dev-loop/)** — Builds the reusable repository context that planning consumes.
 - **[From Issue to Pull Request](../copilot-web/)** — Defines which implementation work is bounded enough to delegate.
-- **[GitHub Agentic Workflows](../agentic-workflows/)** — Owns workflow syntax, compilation, safe outputs, and operational debugging.
-- **[Agent Teams](../agent-teams/)** — Owns specialist composition when a phase needs isolated parallel workstreams.
+- **[Multi-Agent Coordination](../multi-agent-coordination/)** — Owns specialist composition when a phase needs isolated parallel workstreams.
 - **[Agentic SDLC](../agentic-sdlc/)** — Owns CI, rulesets, repository topology, and trust infrastructure at higher throughput.
+
+The former broad workflow catalog illustrated ten unrelated automation candidates. This replacement retires that inventory in favor of one inspectable lifecycle where trigger scope, permissions, outputs, evidence, stops, recovery, and human authority can be evaluated together.
 
 ---
 

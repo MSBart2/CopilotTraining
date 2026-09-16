@@ -4,6 +4,18 @@ Milestones for individual tech-talk content: creation, rewrites, conformance, an
 
 ---
 
+## Delegate and Coordinate consolidations promoted (2026-09-16)
+
+`schema_version: 1` | `date: 2026-09-16`
+
+- `multi-agent-coordination` became canonical for deciding when to split work, defining specialist contracts, isolating workstreams, operating parallel sessions, and integrating results under named authority. It replaces `agent-teams` and `copilot-app`.
+- `agentic-lifecycle` absorbed workflow selection, triggers, Markdown-to-lock compilation, generated permissions, and safe-output boundaries from `agentic-workflows` while retaining its evidence-gated issue-to-PR state machine.
+- Agentic Lifecycle's four gh-aw workflow sources remain explicitly uncompiled candidates until a target repository compiles and exercises them.
+
+All three source README/deck pairs are archived and frozen. Their routes are generated from `.github/content-routing/portfolio-redirects.json`.
+
+---
+
 ## Portfolio consolidations promoted (2026-09-15)
 
 `schema_version: 1` | `date: 2026-09-15`

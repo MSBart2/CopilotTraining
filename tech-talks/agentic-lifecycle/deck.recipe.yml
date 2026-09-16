@@ -9,70 +9,71 @@ deck:
   tagline: "Make every transition inspectable, authorized, recoverable, and owned"
 
   agenda:
-    - title: "Inspect Every Handoff"
-      takeaway: "Follow issue #482 through four transitions with state, evidence, and owners."
-      whyItMatters: "A stalled item exposes its phase, stop reason, and next owner."
-    - title: "Authorize Coding"
-      takeaway: "Use one exact approval from a named maintainer to begin implementation."
-      whyItMatters: "Plan authority stays explicit and partial work stays bounded."
-    - title: "Recover with an Owner"
-      takeaway: "Route a failed check through a visible blocked state before review reruns."
-      whyItMatters: "Every stop has evidence and someone authorized to clear it."
+    - title: "Choose Workflow Judgment"
+      takeaway: "Use recurrence, bounded inputs, constrained outputs, and authority to qualify four phases."
+      whyItMatters: "Deterministic steps stay in Actions and unbounded judgment stays human-led."
+    - title: "Watch Approval Carry Authority"
+      takeaway: "See issue #482 reach coding through one exact command from an authorized maintainer."
+      whyItMatters: "An unauthorized comment leaves repository state unchanged."
+    - title: "Recover in the Open"
+      takeaway: "Route a failed check through a visible blocked state with an owner and resume evidence."
+      whyItMatters: "Every stop exposes its phase, reason, and the person able to clear it."
 
-  arcToc: "Lifecycle Contract → Intake → Coding and Review → Measure and Recover"
+  arcToc: "Select Judgments → Visible State → Preserve Authority → Measure and Recover"
   arcNarrative: >
-    The lifecycle contract introduces the reusable state, evidence, success, stop, and owner
-    grammar with candidate status visible. Intake and planning apply that grammar to issue
-    #482 and produce the approved contract needed by implementation. Coding and review supply
-    the peak when an authorized approval advances the work, an unauthorized request produces
-    a visible no-op, and deterministic checks route acceptance to a named human. Measurement
-    and recovery close with locally observed timing definitions, an owner ledger, and the
-    compile gate that attendees run before adopting the pattern.
+    Workflow selection establishes why four bounded judgments belong in separate phases and
+    how source compilation, permissions, and safe outputs constrain their authority. The
+    visible state machine then follows issue #482 through intake evidence and a reviewable
+    plan to the approval boundary. Authority supplies the peak when one exact command advances
+    a fresh plan, an unauthorized request produces a visible no-op, and review routes evidence
+    to a named human. Measurement and recovery close with local timing definitions, an owner
+    ledger, and the compile gate required before a repository pilot.
 
   sectionOrder:
-    - "1. Make the State Machine Visible"
-    - "2. Turn an Issue into an Approved Contract"
-    - "3. Preserve Authority from Approval to Merge"
-    - "4. Measure the Handoffs Locally"
+    - "1. Select Workflow-Owned Judgments"
+    - "2. Make the State Machine Visible"
+    - "4. Preserve Authority from Approval to Merge"
+    - "5. Measure the Handoffs Locally"
 
   sectionModes:
-    "1. Make the State Machine Visible":
+    "1. Select Workflow-Owned Judgments":
       emphasis: medium-high
       note: >
-        Present the contract table, one compact state diagram, and the approval promise. Mark
-        all four workflow sources as uncompiled candidates. Name the platform owner who tracks
-        gh-aw schema changes, compiles sources, and reviews generated lock files.
-    "2. Turn an Issue into an Approved Contract":
+        Open on the five questions each workflow phase answers. Show trigger choice, read
+        permissions, mutation boundaries, source-to-lock compilation, and declared safe
+        outputs. Mark all four sources as uncompiled candidates and name the platform owner
+        who reviews generated permissions and tracks gh-aw schema changes.
+    "2. Make the State Machine Visible":
       emphasis: medium-high
       note: >
-        Follow issue #482 continuously from intake evidence to a fresh plan and named approval
-        boundary. Combine the eight-file tree and label inventory into one reference visual.
-        Keep the issue comment and plan artifact visible as the handoff contract.
-    "3. Preserve Authority from Approval to Merge":
+        Use the phase, trigger, evidence, success, stop, and next-owner table as the spine.
+        Follow issue #482 from intake evidence into a bounded plan with scope, exclusions,
+        commands, rollback, and a named approver. End on the approval block so the next
+        section opens at the consequential gate.
+    "4. Preserve Authority from Approval to Merge":
       emphasis: high
       note: >
         Fire the approval gate here. Compare the authorized transition with the observable
-        no-op from an unauthorized request, then route a failed check into a visible blocked
-        state with an implementation owner. Show agent review submitting COMMENT and a
-        CODEOWNER holding merge acceptance.
-    "4. Measure the Handoffs Locally":
+        expected no-op from an unauthorized request, then show the create-pull-request safe
+        output and draft-PR evidence. Close with review submitting COMMENT while deterministic
+        checks and a CODEOWNER retain merge acceptance. Keep candidate framing visible.
+    "5. Measure the Handoffs Locally":
       emphasis: medium-low
       note: >
-        Use two slides: local timing definitions plus the recovery ledger, then the compile
-        gate and pilot decision. Present cost and label-to-run latency as measurements the
-        target repository supplies. Close by asking attendees to compile, inspect, and pilot
-        one handoff before expanding the lifecycle.
+        Use two slides: local timing definitions with quality companions, then the recovery
+        ledger and bounded pilot. Keep stopped runs in the denominator. Close by asking
+        attendees to compile all four sources, inspect generated permissions, and pilot one
+        handoff before expanding the lifecycle.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "Four workflow sources and four instruction files make the proposed lifecycle independently inspectable."
+    - "State, required evidence, and next-owner authority agree before a transition advances."
+    - "Four workflow sources and four instruction files make the candidate lifecycle inspectable."
     - "One exact maintainer approval advances a fresh plan into implementation authority."
-    - "An unauthorized transition produces an observable no-op and leaves repository state unchanged."
+    - "An unauthorized transition is expected to produce a no-op and leave repository state unchanged."
     - "A blocked label, stop evidence, and named implementation owner create a recoverable handoff."
-    - "Successful compilation of four sources is the compatibility gate for the first repository pilot."
 
-# OPEN DECISION: Compile the four workflow sources with the target repository's installed
-# gh-aw release before presenting runtime behavior as observed evidence; retain candidate
-# framing and make compilation the first audience action until that result exists.
+# OPEN DECISION RESOLVED: Present issue #482 as a narrated candidate walkthrough. Runtime
+# behavior remains expected until a target repository compiles and exercises all four sources.

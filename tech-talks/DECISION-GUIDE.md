@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Tech Talks Decision Guide
@@ -39,11 +39,9 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 |---|---|---|
 | Turn solved work into reusable capability | [Agent Dev Loop](agent-dev-loop/) | Repository configuration and a validated plan |
 | Delegate one bounded repository task | [From Issue to Pull Request](copilot-web/) | A draft pull request with an evidence bundle |
-| Split work among specialists | [Agent Teams](agent-teams/) | Isolated workstreams with a named integration reviewer |
-| Automate recurring repository judgments | [GitHub Agentic Workflows](agentic-workflows/) | A triggered workflow with logged decisions and bounded output |
+| Split, steer, and integrate multi-agent work | [Multi-Agent Coordination](multi-agent-coordination/) | A coordination contract, isolated evidence, and a named integration owner |
 | Build loops that stop safely | [Loop Engineering](loopy-agents/) | Progress state, verification signal, limit, and escalation path |
-| Coordinate parallel sessions and fleets | [GitHub Copilot App](copilot-app/) | Parallel work with visible isolation, steering, and integration state |
-| Orchestrate intake through review | [Agentic Lifecycle Orchestration](agentic-lifecycle/) | A four-stage workflow with explicit handoffs and approval gates |
+| Automate recurring judgments across a lifecycle | [Agentic Lifecycle Orchestration](agentic-lifecycle/) | Compiled workflow candidates with explicit handoffs, safe outputs, and approval gates |
 
 ## Verify and Govern
 
@@ -63,10 +61,10 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
 | Package and distribute team capabilities | [Plugins and APM](copilot-plugins/) | A versioned manifest and lockfile change |
+| Act on live Azure state | [Azure MCP and Skills](copilot-azure-mcp/) | A least-privilege action with before-and-after evidence |
 | Own the agent runtime in an application | [Copilot SDK](copilot-sdk/) | An application-owned trigger, tools, identity, and runtime contract |
 | Connect an external client | [ACP](copilot-acp/) | A client session with explicit permission boundaries |
 | Return interactive UI through MCP | [MCP Apps](mcp-apps/) | A component response with a validated callback loop |
-| Act on live Azure state | [Azure MCP and Skills](copilot-azure-mcp/) | A least-privilege action with before-and-after evidence |
 | Add governed organizational knowledge | [Copilot with Foundry](copilot-with-foundry/) | A sourced organizational answer beyond repository context |
 
 ## Learning Paths
@@ -77,11 +75,11 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 ### Team Delegation
 
-[Which Copilot Where?](surfaces/) → [Agent Dev Loop](agent-dev-loop/) → [From Issue to Pull Request](copilot-web/) → [Agent Teams](agent-teams/) → [Loop Engineering](loopy-agents/)
+[Which Copilot Where?](surfaces/) → [Agent Dev Loop](agent-dev-loop/) → [From Issue to Pull Request](copilot-web/) → [Multi-Agent Coordination](multi-agent-coordination/) → [Loop Engineering](loopy-agents/)
 
 ### Repository Automation
 
-[Which Copilot Where?](surfaces/) → [GitHub Agentic Workflows](agentic-workflows/) → [PR Trust Stack](pr-trust-stack/) → [Copilot Hooks](copilot-hooks/) → [Agentic SDLC](agentic-sdlc/)
+[Which Copilot Where?](surfaces/) → [Agentic Lifecycle Orchestration](agentic-lifecycle/) → [PR Trust Stack](pr-trust-stack/) → [Copilot Hooks](copilot-hooks/) → [Agentic SDLC](agentic-sdlc/)
 
 ### Platform and Governance
 

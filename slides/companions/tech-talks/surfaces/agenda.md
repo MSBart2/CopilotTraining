@@ -4,7 +4,7 @@ subtitle: "A Practical Surface Router"
 slug: surfaces
 category: tech-talks
 duration: 45
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # Which Copilot Where?

@@ -4,7 +4,7 @@ subtitle: "Portable Infrastructure, Open Models, and a Closed Review Loop"
 slug: vscode-latest
 category: tech-talks
 duration: 45
-updated: 2026-09-15
+updated: 2026-09-16
 ---
 
 # VS Code Copilot 1.121–1.132

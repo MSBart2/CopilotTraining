@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-09-15
+updated: 2026-09-16
 section: "Extend and Embed"
 audience: [developer, platform-engineer, architect]
 level: advanced
@@ -1225,7 +1225,7 @@ Path('docs/API_REFERENCE.md').write_text(docs)
 - **[GitHub Copilot CLI](../copilot-cli/)** — Interactive terminal experience; SDK enables programmatic control of the same runtime
 - **[MCP Apps](../mcp-apps/)** — Extend SDK capabilities by connecting to internal systems and APIs
 - **[Agentic SDLC](../agentic-sdlc/)** — Full repository automation; SDK is the building block for custom agent workflows
-- **[Custom Agents](../agent-teams/)** — Specialized agents for specific domains; SDK provides the runtime to host them
+- **[Multi-Agent Coordination](../multi-agent-coordination/)** — Specialized workstreams and integration contracts; SDK provides a runtime for custom hosts
 
 ### Decision Flow
 

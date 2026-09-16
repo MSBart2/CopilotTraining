@@ -101,29 +101,24 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
 
 <template>
   <!-- Full-height centered container -->
-  <div class="h-full flex flex-col items-center justify-center relative overflow-hidden">
+  <div class="h-full flex flex-col items-start justify-center relative overflow-hidden px-16">
     <div v-if="validationError" class="absolute inset-0 bg-red-950 flex flex-col items-center justify-center z-50 p-12">
       <div class="text-red-400 text-4xl mb-4">⛔</div>
       <div class="font-mono text-red-300 text-base text-center leading-relaxed max-w-2xl">{{ validationError }}</div>
     </div>
     <template v-else>
     <!-- Ambient gradient background -->
-    <div class="absolute inset-0 bg-gradient-to-br" :class="t.ambientBg"></div>
+    <div class="absolute inset-0 bg-gradient-to-br" :class="[t.ambientBg, isDark ? 'sv-slide-surface-dark' : 'sv-slide-surface-light']"></div>
 
     <!-- Animated blur orb (centered) -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r rounded-full blur-3xl" :class="t.orb"></div>
 
     <!-- ===== CENTER CONTENT ===== -->
-    <div class="relative z-10 flex flex-col items-center text-center">
+    <div class="relative z-10 flex w-full max-w-4xl flex-col items-start text-left">
       <!-- ===== LOGO SECTION ===== -->
       <!-- Logo with glow effect -->
-      <div class="relative mb-2">
-        <!-- Blurred background logo (glow) -->
-        <div class="absolute inset-0 blur-2xl opacity-50">
-          <img src="../../sdp-logo.png" class="w-28" alt="" />
-        </div>
-        <!-- Main logo (sharp, on top) -->
-        <img src="../../sdp-logo.png" class="w-28 relative" alt="SDP Logo" />
+      <div class="relative mb-3">
+        <img src="../../sdp-logo.png" class="w-20 relative" alt="SDP Logo" />
       </div>
 
       <!-- ===== HEADING ===== -->
@@ -134,20 +129,20 @@ const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
 
       <!-- ===== SUBTITLE PILL ===== -->
       <!-- Tagline in pill format -->
-      <div class="mb-3">
-        <span class="px-6 py-1 bg-gradient-to-r rounded-full text-white text-sm font-medium shadow-lg" :class="t.pill">
+      <div class="mb-4">
+        <span class="sv-section-kicker px-4 py-1 bg-gradient-to-r text-white text-sm font-medium" :class="t.pill">
           {{ subtitle }}
         </span>
       </div>
 
       <!-- ===== CARDS SECTION ===== -->
       <!-- Grid of outcome/detail cards (2, 3, or 4 columns based on card count) -->
-      <div class="grid gap-2 max-w-3xl text-sm mb-3" :class="gridColsClass">
+      <div class="grid w-full gap-2 text-sm mb-4" :class="gridColsClass">
         <!-- Card item -->
         <div
           v-for="(card, index) in cards"
           :key="index"
-          :class="cardStyles[index % 4].card"
+          :class="[cardStyles[index % 4].card, isDark ? 'sv-card-surface-dark' : 'sv-card-surface-light']"
           class="p-2 rounded-xl border"
         >
           <!-- Card icon (large watermark) -->

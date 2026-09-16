@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-04-27
+updated: 2026-09-16
 section: "Extend and Embed"
 audience: [platform-engineer, architect, security]
 level: applied
@@ -1208,7 +1208,7 @@ Would you like me to update the Bicep file with these fixes?
 
 - **[GitHub Copilot CLI](../copilot-cli/README.md)** — Foundational understanding of terminal-native AI workflows, Plan Mode, and cloud delegation
 - **[MCP Apps](../mcp-apps/README.md)** — Building custom MCP servers for internal tools and proprietary systems
-- **[Agentic Workflows](../agentic-workflows/README.md)** — Delegating complex multi-step tasks to background agents with `/fleet` parallelization
+- **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** — Coordinating recurring repository judgments through evidence-gated workflows
 - **[MCP Servers](../mcp-servers/README.md)** — Deep dive on Model Context Protocol and how tools like the Azure MCP Server expose structured capabilities to agents
 
 ### Features That Work Together

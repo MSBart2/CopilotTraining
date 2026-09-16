@@ -12,8 +12,8 @@ transition: slide-left
 title: GitHub Agentic Workflows
 mdc: true
 section: Delegate and Coordinate
-status: active
-updated: 2026-08-11
+status: archived
+updated: 2026-09-16
 ---
 
 <script setup>
