@@ -4,7 +4,7 @@ subtitle: "Running a Fleet of Agents"
 slug: copilot-app
 category: tech-talks
 duration: 45
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # The GitHub Copilot App

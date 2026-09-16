@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: MCP Apps
 mdc: true
-section: Customization & Context
+section: Extend and Embed
 status: active
 updated: 2026-04-22
 ---

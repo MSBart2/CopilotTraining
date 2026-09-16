@@ -1,7 +1,14 @@
 ---
-status: active
-updated: 2026-08-26
-section: "Developers"
+status: archived
+updated: 2026-09-15
+section: "Choose and Configure"
+audience: [developer, team-lead]
+level: foundational
+duration: 40
+format: core-talk
+decision: "How should shared Copilot behavior be encoded?"
+prerequisites: [surfaces]
+related: [copilot-memory, copilot-chat-internals, copilot-plugins]
 references:
   - url: https://code.visualstudio.com/docs/copilot/copilot-customization
     label: "Customize AI in Visual Studio Code"
@@ -27,6 +34,12 @@ references:
   - url: https://agents.md/
     label: "AGENTS.md open format"
     verified: 2026-03-23
+  - url: https://code.visualstudio.com/updates/v1_122
+    label: "VS Code release notes: June 2026 (v1.122)"
+    verified: 2026-09-15
+  - url: https://code.visualstudio.com/docs/copilot/customization/language-models
+    label: "Configure language models in VS Code"
+    verified: 2026-09-15
 ---
 
 # Copilot Configuration Primitives: Making AI Understand Your Codebase
@@ -96,6 +109,10 @@ GitHub Copilot supports four core configuration building blocks, and teams incre
 The primitives form a progressive stack. GitHub instructions are the foundation — always present, zero-effort. `AGENTS.md` complements them with a predictable place for commands, test steps, and nearest-directory workflow guidance. Custom prompts come next: that is how most developers actually work. They solve a messy task in chat, then freeze the working recipe as a `/command`. Skills are the graduation step, not the first automation — add scripts and templates only after the prompt is proven. Agents sit at the top, composing the other primitives into constrained personas.
 
 Each primitive builds on the ones below it. A prompt should link to instructions instead of copying them. A skill packages a proven prompt. An agent can inherit instructions, invoke prompts, and load skills behind a tool boundary[^3].
+
+### Model and Provider Configuration Boundary
+
+Use **Manage Language Models** in VS Code when the decision is which provider or model backs chat, tools, and MCP interactions. Bring Your Own Key can support those experiences without GitHub sign-in; Stable Custom Endpoint is the durable custom-provider contract, and utility model settings let teams choose smaller models for supporting tasks. Keep the authentication boundary explicit: inline suggestions and next edit suggestions still require GitHub sign-in even when chat uses a BYOK provider.[^14][^15]
 
 ```
 ┌────────────────────────────────────────────┐
@@ -688,6 +705,8 @@ See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for complete navigation help.
 [^11]: **Custom instructions library** — https://docs.github.com/en/copilot/tutorials/customization-library/custom-instructions — Curated examples of working instructions
 [^12]: **VS Code Copilot Chat documentation** — https://code.visualstudio.com/docs/copilot/chat/copilot-chat — Chat interface and context management
 [^13]: **AGENTS.md open format** — https://agents.md/ — Open, cross-agent convention for setup, testing, and directory-local coding agent guidance
+[^14]: **VS Code release notes: June 2026 (v1.122)** — https://code.visualstudio.com/updates/v1_122 — Provider configuration, Stable Custom Endpoint, utility models, and authentication boundaries
+[^15]: **Configure language models in VS Code** — https://code.visualstudio.com/docs/copilot/customization/language-models — Manage Language Models and bring-your-own-key configuration
 
 ---
 

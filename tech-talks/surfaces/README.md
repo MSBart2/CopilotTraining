@@ -1,7 +1,14 @@
 ---
 status: active
-updated: 2026-09-14
-section: "Developers"
+updated: 2026-09-15
+section: "Choose and Configure"
+audience: [developer, team-lead, platform-engineer, architect]
+level: foundational
+duration: 45
+format: core-talk
+decision: "Which Copilot surface fits this work, context, and reviewer?"
+prerequisites: []
+related: [copilot-cli, copilot-web, copilot-app]
 references:
   - url: https://docs.github.com/en/copilot
     label: "GitHub Copilot documentation"
@@ -21,6 +28,9 @@ references:
   - url: https://docs.github.com/en/copilot/concepts/agents/code-review
     label: "GitHub Copilot Code Review"
     verified: 2026-09-14
+  - url: https://code.visualstudio.com/updates/v1_109
+    label: "VS Code release notes: v1.109"
+    verified: 2026-09-15
 ---
 
 # Which Copilot Where? A Practical Surface Router
@@ -393,6 +403,8 @@ This pattern fits several independent tasks with clear repository boundaries and
 
 ### Boundaries Worth Knowing
 
+**Ask Questions is a human-steering contract, not a destination in the surface map.** Use it when required information or execution authority is missing before the agent can proceed. Fixed options reduce ambiguity for bounded choices; preserve freeform input when the user may need to add context, reject the offered frame, or set a different boundary.[^11]
+
 | Boundary | Signal | Route adjustment |
 |----------|--------|------------------|
 | **Hidden local state** | Task depends on uncommitted files, local services, or machine credentials | Keep execution in VS Code or CLI |
@@ -508,3 +520,4 @@ Use the canonical [`surface-decision-tree.mmd`](surface-decision-tree.mmd) to ro
 [^8]: [GitHub Copilot documentation](https://docs.github.com/en/copilot) — Product-wide concepts, how-to guides, and reference material.
 [^9]: [Cloud and local sandboxes](https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes) — Execution isolation choices for agent workflows.
 [^10]: [About GitHub Copilot code review](https://docs.github.com/en/copilot/concepts/agents/code-review) — Pull-request and changed-code analysis with human review.
+[^11]: [VS Code release notes: v1.109](https://code.visualstudio.com/updates/v1_109) — Ask Questions interaction support for agent workflows.

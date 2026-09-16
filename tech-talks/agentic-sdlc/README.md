@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-04-24
-section: "Agentic Systems"
+section: "Verify and Govern"
+audience: [platform-engineer, architect, engineering-leader]
+level: advanced
+duration: 90
+format: core-talk
+decision: "What repository and CI infrastructure creates trustworthy agent throughput?"
+prerequisites: [agentic-workflows]
+related: [copilot-hooks, enterprise-patterns, loopy-agents]
 references:
   - url: https://github.com/microsoft/agentrc
     label: "Microsoft AgentRC repository"

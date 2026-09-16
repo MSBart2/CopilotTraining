@@ -4,7 +4,7 @@ subtitle: "Subagents, Teams, and Autonomous Execution"
 slug: agent-teams
 category: tech-talks
 duration: 45
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # Building Agent Systems

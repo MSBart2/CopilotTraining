@@ -338,9 +338,14 @@ while ($remaining.Count -gt 0) {
 }
 
 Write-Host ""
-# Copy index.html to dist root
-Write-Host "[DOC] Copying index-custom.html to dist root..." -ForegroundColor Gray
+# Copy index.html and 404.html to dist root
+Write-Host "[DOC] Copying index-custom.html and 404.html to dist root..." -ForegroundColor Gray
 Copy-Item "$SlidesDir/index-custom.html" "$OutputDir/index.html" -Force
+Copy-Item "$SlidesDir/404.html" "$OutputDir/404.html" -Force
+
+Write-Host "[DOC] Generating portfolio redirects..." -ForegroundColor Gray
+node "$SlidesDir/scripts/generate-portfolio-redirects.mjs"
+if ($LASTEXITCODE -ne 0) { throw "generate-portfolio-redirects failed" }
 
 # Copy pre-built agenda/PDF companions only — never generate in CI/build
 Write-Host "[DOC] Copying companion agenda/PDF artifacts into dist..." -ForegroundColor Gray

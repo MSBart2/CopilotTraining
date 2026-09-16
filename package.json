@@ -1,6 +1,9 @@
 {
   "scripts": {
     "content:route": "node scripts/content-router.mjs",
+    "portfolio:generate": "node scripts/portfolio-inventory.mjs",
+    "portfolio:check": "node scripts/portfolio-inventory.mjs --check",
+    "test:portfolio": "node --test scripts/portfolio-inventory.test.mjs",
     "test:content-routing": "node --test scripts/content-routing.test.mjs",
     "test:content-generation": "node --test scripts/content-generation.test.mjs"
   },

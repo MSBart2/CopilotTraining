@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2025-07-25
-section: "Agentic Systems"
+section: "Extend and Embed"
+audience: [developer, platform-engineer, architect]
+level: advanced
+duration: 45
+format: core-talk
+decision: "When should an external client connect to a Copilot agent?"
+prerequisites: [copilot-sdk]
+related: [mcp-apps, copilot-plugins]
 references:
   - url: https://docs.github.com/en/copilot/reference/acp-server
     label: "Copilot CLI ACP Server reference"

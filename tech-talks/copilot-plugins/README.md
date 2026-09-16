@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-08-10
-section: "Platform Teams"
+section: "Extend and Embed"
+audience: [developer, platform-engineer]
+level: applied
+duration: 25
+format: core-talk
+decision: "How should Copilot extensions and configuration be packaged and distributed?"
+prerequisites: [copilot-primitives]
+related: [copilot-sdk, mcp-apps]
 references:
   - url: https://code.visualstudio.com/docs/copilot/customization/agent-plugins
     label: "Agent plugins for Copilot customization"

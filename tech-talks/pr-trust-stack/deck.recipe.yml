@@ -1,0 +1,74 @@
+# REVIEW: Copilot CLI Rubber Duck was unavailable in VS Code. Claude Opus 5
+# supplied the independent adversarial review used in this reconciliation.
+
+version: 1
+
+deck:
+  title: "PR Trust Stack"
+  subtitle: "Evidence and Authority Before Merge"
+  tagline: "Give every pre-merge signal a role, an owner, and a governed path to action"
+
+  agenda:
+    - title: "Classify Signals"
+      takeaway: "Label each pre-merge signal advisory, approval-eligible, or blocking."
+      whyItMatters: "Reviewers know the action and owner attached to every result."
+    - title: "Promote a Gate"
+      takeaway: "Move one observed threshold from evaluate mode to active enforcement."
+      whyItMatters: "Repository evidence and rollback conditions govern activation."
+    - title: "Own Residual Risk"
+      takeaway: "Trace one PR record to its merge authority, exception path, and rationale."
+      whyItMatters: "Accountability remains visible when automation contributes evidence."
+
+  arcToc: "Classify Signals → Assemble Evidence → Promote Gates → Govern Risk"
+  arcNarrative: >
+    Signal classification answers what each result means and gives developers a concrete
+    accept, reject, or escalate decision. The committed evidence record then combines review
+    guidance, coverage, provenance, and dispositions without granting them equal authority.
+    Promotion supplies the peak: the same threshold moves from observed impact to active
+    enforcement through an explicit policy event. Governance closes on named residual-risk
+    ownership, scoped bypass authority, and a transfer exercise for one real pull request.
+
+  sectionOrder:
+    - "Classify the Signals Before Granting Authority"
+    - "Assemble One Reviewable Evidence Record"
+    - "Promote Proven Signals from Evaluate to Active"
+    - "Govern Enablement, Billing, and Residual Risk Separately"
+
+  sectionModes:
+    "Classify the Signals Before Granting Authority":
+      emphasis: medium-high
+      note: >
+        Give the signal contract and approval semantics dedicated space. Show a developer
+        accepting one finding, rejecting one with repository evidence, and escalating one to
+        a named owner. Keep scope, counting, and accountability visible for preview approvals.
+    "Assemble One Reviewable Evidence Record":
+      emphasis: medium-high
+      note: >
+        Use the four committed teaching artifacts as one evidence system. Give provenance one
+        dedicated visual and keep Cobertura mechanics compact. Label the workflow and ruleset
+        as inspectable teaching artifacts whose target-tenant schemas require validation.
+    "Promote Proven Signals from Evaluate to Active":
+      emphasis: high
+      note: >
+        Center the enforcement-state change on the same representative pull request. Show the
+        evidence window, threshold rationale, owner, exception path, and rollback condition as
+        required activation inputs. Let the team's pilot choose sample size and tolerance.
+    "Govern Enablement, Billing, and Residual Risk Separately":
+      emphasis: medium
+      note: >
+        Compress billing to the authoritative live sources in the boundary map. Give the named
+        residual-risk owner and governed bypass path a dedicated closing slide. End with an
+        attendee applying the signal contract to one pull request in their own repository.
+
+  preamble: []
+  appendix: []
+
+  highlightMoments:
+    - "One enforcement field moves a proven threshold from observed impact to an active merge gate."
+    - "One committed trust record holds accepted and rejected findings, blocking status, evidence, and a named residual-risk owner."
+    - "Four committed teaching artifacts make the complete evidence path independently inspectable."
+    - "Three approval questions separate policy scope, counting semantics, and accountability."
+    - "Bypass frequency becomes review evidence about the rule, its tests, and delivery pressure."
+
+# OPEN DECISION: Export the ruleset and permission schema from the presentation tenant for a
+# live rollout demo; retain the labeled teaching artifact when tenant access is unavailable.

@@ -4,7 +4,7 @@ subtitle: "Organizational Memory for Coding Agents"
 slug: copilot-with-foundry
 category: tech-talks
 duration: 45
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # GitHub Copilot with Microsoft Foundry

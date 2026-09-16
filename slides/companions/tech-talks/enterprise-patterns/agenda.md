@@ -4,7 +4,7 @@ subtitle: "Enterprise Patterns for AI Adoption at Scale"
 slug: enterprise-patterns
 category: tech-talks
 duration: 45
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # Scaling GitHub Copilot Across Organizations

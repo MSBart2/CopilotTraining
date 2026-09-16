@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Building Agent Systems
 mdc: true
-section: Agentic Engineering
+section: Delegate and Coordinate
 status: active
 updated: 2026-04-22
 ---

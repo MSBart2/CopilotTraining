@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Scaling GitHub Copilot Across Organizations
 mdc: true
-section: "Platform Teams"
+section: "Verify and Govern"
 status: active
 updated: 2026-08-11
 ---

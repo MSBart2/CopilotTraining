@@ -4,6 +4,20 @@ Milestones for individual tech-talk content: creation, rewrites, conformance, an
 
 ---
 
+## Portfolio consolidations promoted (2026-09-15)
+
+`schema_version: 1` | `date: 2026-09-15`
+
+Three replacement talks were promoted after README, recipe, deck, companion, coverage, catalog, and redirect validation:
+
+- `context-engineering` became canonical for configuration placement, memory lifecycle, context delivery inspection, and authority boundaries. It replaces `copilot-primitives`, `copilot-memory`, and `copilot-chat-internals`.
+- `pr-trust-stack` became canonical for AI review findings, deterministic quality signals, evaluate-first rollout, and merge authority. It replaces `copilot-code-review` and `copilot-code-quality`.
+- `agentic-lifecycle` became canonical for issue-to-PR lifecycle orchestration. It replaces `agentic-journey`; its gh-aw workflow sources remain explicitly uncompiled candidates until validated in a target repository.
+
+All six source README/deck pairs are archived and frozen. Their durable routes are generated from `.github/content-routing/portfolio-redirects.json` during slide builds.
+
+---
+
 ## copilot-code-quality tech-talk created (2026-07-24)
 
 `schema_version: 1` | `date: 2026-07-24`

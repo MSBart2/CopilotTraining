@@ -1,7 +1,14 @@
 ---
-status: active
-updated: 2026-02-01
-section: "Agentic Systems"
+status: archived
+updated: 2026-09-15
+section: "Delegate and Coordinate"
+audience: [developer, team-lead, engineering-leader]
+level: applied
+duration: 45
+format: core-talk
+decision: "How should an issue move through intake, planning, coding, and review?"
+prerequisites: [agent-dev-loop, copilot-web]
+related: [agentic-workflows, agentic-sdlc]
 references:
   - url: https://docs.github.com/en/copilot
     label: "GitHub Copilot documentation"

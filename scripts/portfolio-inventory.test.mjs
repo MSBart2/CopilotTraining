@@ -1,0 +1,42 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { join } from "node:path";
+import {
+  collectIndexSlugs,
+  collectPortfolio,
+  extractTitle,
+  inventoryErrors,
+  parseFrontmatter,
+} from "./portfolio-inventory-lib.mjs";
+
+const root = join(import.meta.dirname, "..");
+
+test("parses scalar frontmatter and titles", () => {
+  const content = `---\nstatus: active\nsection: "Choose and Configure"\nduration: 45\naudience:\n  - developer\n  - team-lead\n---\n\n# Example Talk\n`;
+  assert.deepEqual(parseFrontmatter(content), {
+    status: "active",
+    section: "Choose and Configure",
+    duration: 45,
+    audience: ["developer", "team-lead"],
+  });
+  assert.equal(extractTitle(content), "Example Talk");
+});
+
+test("collects only practitioner catalog slugs", () => {
+  const html = '<a href="tech-talks/copilot-cli/"></a><a href="tech-talks/exec-labor/"></a>';
+  assert.deepEqual(collectIndexSlugs(html), ["copilot-cli"]);
+});
+
+test("discovers the active practitioner portfolio", () => {
+  const inventory = collectPortfolio(root);
+  assert.equal(inventory.counts.totalTalks, 27);
+  assert.equal(inventory.counts.practitionerTalks, 21);
+  assert.equal(inventory.counts.archivedTalks, 6);
+  assert.equal(inventory.counts.deployedTalks, 21);
+  assert.equal(inventory.counts.candidateTalks, 0);
+  assert.equal(inventory.counts.catalogCards, 21);
+  assert.equal(inventory.counts.validTalks, inventory.counts.totalTalks);
+  assert.equal(inventory.redirects.length, 6);
+  assert.equal(new Set(inventory.talks.map(({ slug }) => slug)).size, inventory.counts.totalTalks);
+  assert.deepEqual(inventoryErrors(inventory), []);
+});

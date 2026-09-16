@@ -11,9 +11,9 @@ drawings:
 transition: slide-left
 title: Copilot Memory
 mdc: true
-section: Customization & Context
-status: active
-updated: 2026-04-22
+section: Choose and Configure
+status: archived
+updated: 2026-09-15
 ---
 
 <script setup>

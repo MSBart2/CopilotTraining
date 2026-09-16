@@ -21,7 +21,6 @@ phases:
     capabilityObjective: complete_one_relevant_task_with_human_review
     corePath:
       - workshop/00-orientation
-      - tech-talks/vscode-latest
       - tech-talks/surfaces
     exitEvidence:
       - real_task_completed
@@ -36,8 +35,9 @@ phases:
     corePath:
       - workshop/01-instructions
       - workshop/02-agent-plan-mode
+      - tech-talks/context-engineering
       - tech-talks/agent-dev-loop
-      - tech-talks/copilot-code-review
+      - tech-talks/pr-trust-stack
     exitEvidence:
       - shared_repository_instructions_exist
       - plan_led_change_passes_tests
@@ -49,11 +49,11 @@ phases:
     telemetrySignal: one_github_based_agent_surface_used
     capabilityObjective: delegate_bounded_work_with_explicit_context_and_controls
     corePath:
-      - tech-talks/copilot-primitives
       - workshop/03-custom-prompts
       - workshop/04-agent-skills
       - tech-talks/copilot-cli
-      - tech-talks/agentic-journey
+      - tech-talks/copilot-web
+      - tech-talks/agentic-lifecycle
     exitEvidence:
       - bounded_task_has_acceptance_criteria
       - asynchronous_work_produces_reviewable_artifact
@@ -78,8 +78,7 @@ phases:
 branches:
   implementation_quality:
     path:
-      - tech-talks/copilot-code-quality
-      - tech-talks/copilot-code-review
+      - tech-talks/pr-trust-stack
     outcome: changes_meet_quality_and_review_gates
 
   runtime_and_incidents:

@@ -1,0 +1,59 @@
+schemaVersion: 1
+updated: 2026-09-15
+
+states:
+  - pending
+  - pending-experiment
+  - approved
+  - rejected
+  - superseded
+
+decisions:
+  taxonomy:
+    question: Are the four decision families the canonical catalog axis?
+    state: approved
+    evidence:
+      - TECH-TALK-PORTFOLIO-PLAN.md#target-information-architecture
+    approvedBy: repository-owner
+    approvedOn: 2026-09-15
+    rationale: Use learner decision as the stable catalog axis; keep audience and maturity as metadata and pathway filters.
+
+  pr-trust-stack:
+    question: Should PR Trust Stack replace Code Review and Code Quality?
+    state: approved
+    evidence:
+      - TECH-TALK-PORTFOLIO-PLAN.md#experiment-a-pr-trust-stack
+      - .github/content-routing/coverage/wp5-pr-trust-stack.yml
+    approvedBy: repository-owner
+    approvedOn: 2026-09-15
+    rationale: Proceed with a conditional merge after first-party verification; preserve sources until the replacement and redirects validate.
+
+  context-clinics:
+    question: Should Configuration, Memory, and Debugging consolidate into one Context Engineering talk?
+    state: superseded
+    evidence:
+      - TECH-TALK-PORTFOLIO-PLAN.md#experiment-b-context-foundations
+      - .github/content-routing/coverage/wp6-context-clinics.yml
+    approvedBy: repository-owner
+    approvedOn: 2026-09-15
+    rationale: The repository owner requested stronger consolidation after reviewing the deployed catalog. Replace the three adjacent artifacts with one Context Engineering talk, preserving placement, encoding, diagnostics, lifecycle, and authority boundaries before archiving sources.
+
+  adoption-pathway:
+    question: Should Agentic Journey become a pathway rather than a standalone talk?
+    state: approved
+    evidence:
+      - TECH-TALK-PORTFOLIO-PLAN.md#experiment-c-adoption-story
+      - .github/content-routing/coverage/wp4-adoption-pathway.yml
+    approvedBy: repository-owner
+    approvedOn: 2026-09-15
+    rationale: Create a lifecycle-orchestration owner for the integrated four-workflow state machine before Agentic Journey is archived.
+
+  release-brief:
+    question: Should VS Code Latest become a rolling release brief?
+    state: approved
+    evidence:
+      - TECH-TALK-PORTFOLIO-PLAN.md#proposed-portfolio-disposition
+      - .github/content-routing/coverage/wp3-release-brief.yml
+    approvedBy: repository-owner
+    approvedOn: 2026-09-15
+    rationale: Retire conditionally after durable guidance is accepted by owners and redirects, builds, and companions validate.

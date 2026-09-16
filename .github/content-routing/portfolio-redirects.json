@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "redirects": [
+    {
+      "source": "copilot-primitives",
+      "status": "merged",
+      "target": "context-engineering",
+      "reason": "Configuration, memory placement, and diagnostics now share one context-engineering decision model.",
+      "decisionId": "context-clinics"
+    },
+    {
+      "source": "copilot-memory",
+      "status": "merged",
+      "target": "context-engineering",
+      "reason": "Durable memory placement and lifecycle boundaries are preserved in Context Engineering.",
+      "decisionId": "context-clinics"
+    },
+    {
+      "source": "copilot-chat-internals",
+      "status": "merged",
+      "target": "context-engineering",
+      "reason": "Context delivery inspection and troubleshooting are preserved in Context Engineering.",
+      "decisionId": "context-clinics"
+    },
+    {
+      "source": "copilot-code-review",
+      "status": "merged",
+      "target": "pr-trust-stack",
+      "reason": "AI review findings now sit inside one governed pre-merge evidence stack.",
+      "decisionId": "pr-trust-stack"
+    },
+    {
+      "source": "copilot-code-quality",
+      "status": "merged",
+      "target": "pr-trust-stack",
+      "reason": "Deterministic quality gates now sit inside one governed pre-merge evidence stack.",
+      "decisionId": "pr-trust-stack"
+    },
+    {
+      "source": "agentic-journey",
+      "status": "merged",
+      "target": "agentic-lifecycle",
+      "reason": "The issue-to-PR state machine is now owned by Agentic Lifecycle Orchestration.",
+      "decisionId": "adoption-pathway"
+    }
+  ]
+}

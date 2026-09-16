@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-03-17
-section: "Agentic Systems"
+section: "Delegate and Coordinate"
+audience: [developer, team-lead, architect]
+level: advanced
+duration: 60
+format: core-talk
+decision: "When should work be split among specialized agents?"
+prerequisites: [agent-dev-loop]
+related: [loopy-agents, copilot-app, agentic-sdlc]
 references:
   - url: https://code.visualstudio.com/docs/copilot/customization/custom-agents
     label: "Custom agents in VS Code"

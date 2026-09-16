@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-07-24
-section: "Agentic Systems"
+section: "Extend and Embed"
+audience: [platform-engineer, architect, engineering-leader]
+level: advanced
+duration: 45
+format: case-study
+decision: "When is repository context insufficient for organizational knowledge?"
+prerequisites: [copilot-sdk]
+related: [copilot-azure-mcp, enterprise-patterns]
 references:
   - url: https://learn.microsoft.com/en-us/azure/foundry/agents/quickstarts/quickstart-hosted-agent
     label: "Quickstart: Deploy your first hosted agent - Microsoft Foundry"

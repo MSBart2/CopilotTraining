@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-08-10
-section: "Agentic Systems"
+section: "Delegate and Coordinate"
+audience: [developer, team-lead, platform-engineer]
+level: advanced
+duration: 50
+format: core-talk
+decision: "Which recurring repository judgments should run as workflows?"
+prerequisites: [copilot-web]
+related: [copilot-hooks, agentic-sdlc]
 references:
   - url: https://github.blog/changelog/2026-08-03-trigger-copilot-automations-with-comments
     label: "GitHub Changelog: Trigger Copilot automations with comments"

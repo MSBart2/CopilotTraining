@@ -1,7 +1,14 @@
 ---
-status: active
-updated: 2026-08-10
-section: "Developers"
+status: archived
+updated: 2026-09-15
+section: "Verify and Govern"
+audience: [developer, team-lead, security]
+level: applied
+duration: 40
+format: core-talk
+decision: "How should AI findings enter human review?"
+prerequisites: [copilot-web]
+related: [copilot-code-quality, agentic-sdlc]
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/code-review
     label: "GitHub Copilot Code Review - Concepts"

@@ -1,7 +1,14 @@
 ---
 status: active
-updated: 2026-02-11
-section: "Platform Teams"
+updated: 2026-09-15
+section: "Verify and Govern"
+audience: [platform-engineer, security]
+level: advanced
+duration: 45
+format: core-talk
+decision: "Which agent actions should policy allow or deny at execution time?"
+prerequisites: [copilot-primitives]
+related: [agentic-workflows, agentic-sdlc, enterprise-patterns]
 references:
   - url: https://code.visualstudio.com/docs/copilot/customization/hooks
     label: "Agent hooks configuration in VS Code"
@@ -15,6 +22,15 @@ references:
   - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/coding-agent/use-hooks
     label: "Using hooks with coding agent"
     verified: 2026-02-11
+  - url: https://code.visualstudio.com/docs/copilot/security
+    label: "Security considerations for AI in VS Code"
+    verified: 2026-09-15
+  - url: https://code.visualstudio.com/updates/v1_121
+    label: "VS Code release notes: v1.121"
+    verified: 2026-09-15
+  - url: https://code.visualstudio.com/updates/v1_122
+    label: "VS Code release notes: v1.122"
+    verified: 2026-09-15
 ---
 
 # GitHub Copilot Hooks: Programmable Governance for Agent Workflows
@@ -213,6 +229,10 @@ Q: What's your governance requirement?
 | **Veto Power** | Yes (`PreToolUse` only) | Yes (blocks via OS) | No (suggestions only) |
 | **Setup Time** | 1-2 hours | 30 minutes | 15 minutes |
 | **Performance Impact** | <5s per action typical | None (native OS) | None |
+
+### Defense in Depth, Not Substitution
+
+Use deterministic hooks to inspect or block known action patterns, approval policy to retain human authority over consequential tools, and preview OS sandboxing to restrict filesystem and network effects if a command still runs. The VS Code sandbox is available on macOS and Linux, including WSL2, and is enabled with `chat.agent.sandbox.enabled`; it does not replace hooks or approval policy. Sensitive secret prompts remain a separate boundary: the user enters secrets directly in the terminal, and auto-approve flows cancel rather than supplying them.
 
 ---
 

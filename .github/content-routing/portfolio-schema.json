@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rmathis/CopilotTraining/portfolio-schema.json",
+  "title": "Generated practitioner tech-talk portfolio",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "generatedAt",
+    "source",
+    "counts",
+    "warnings",
+    "ghostDirectories",
+    "orphanedCards",
+    "talks"
+  ],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "source": { "const": "tech-talks/*/README.md" },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["practitionerTalks", "deployedTalks", "candidateTalks", "catalogCards", "validTalks"],
+      "properties": {
+        "practitionerTalks": { "type": "integer", "minimum": 0 },
+        "deployedTalks": { "type": "integer", "minimum": 0 },
+        "candidateTalks": { "type": "integer", "minimum": 0 },
+        "catalogCards": { "type": "integer", "minimum": 0 },
+        "validTalks": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "warnings": { "type": "array", "items": { "type": "string" } },
+    "ghostDirectories": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+    "orphanedCards": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+    "talks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/talk" }
+    }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "file": {
+      "type": "object",
+      "required": ["path", "exists"],
+      "properties": {
+        "path": { "type": "string" },
+        "exists": { "type": "boolean" },
+        "bytes": { "type": "integer", "minimum": 0 },
+        "modified": { "type": "string", "format": "date-time" }
+      }
+    },
+    "talk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "slug",
+        "title",
+        "status",
+        "portfolioState",
+        "updated",
+        "section",
+        "audience",
+        "level",
+        "duration",
+        "format",
+        "decision",
+        "prerequisites",
+        "related",
+        "deckSection",
+        "cataloged",
+        "files",
+        "errors"
+      ],
+      "properties": {
+        "slug": { "$ref": "#/$defs/slug" },
+        "title": { "type": ["string", "null"] },
+        "status": { "enum": ["active", "archived", null] },
+        "portfolioState": { "enum": ["deployed", "candidate"] },
+        "updated": {
+          "anyOf": [
+            { "type": "string", "format": "date" },
+            { "type": "null" }
+          ]
+        },
+        "section": {
+          "enum": ["Choose and Configure", "Delegate and Coordinate", "Verify and Govern", "Extend and Embed", null]
+        },
+        "audience": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "enum": ["developer", "team-lead", "platform-engineer", "security", "architect", "engineering-leader"] }
+        },
+        "level": { "enum": ["foundational", "applied", "advanced", "strategic"] },
+        "duration": { "type": "integer", "minimum": 20 },
+        "format": { "enum": ["core-talk", "clinic", "case-study", "release-brief"] },
+        "decision": { "type": "string", "minLength": 1 },
+        "prerequisites": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+        "related": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
+        "deckSection": {
+          "enum": ["Choose and Configure", "Delegate and Coordinate", "Verify and Govern", "Extend and Embed", null]
+        },
+        "cataloged": { "type": "boolean" },
+        "files": {
+          "type": "object",
+          "additionalProperties": { "$ref": "#/$defs/file" }
+        },
+        "errors": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

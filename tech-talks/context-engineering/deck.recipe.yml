@@ -1,0 +1,76 @@
+# REVIEW: Copilot CLI Rubber Duck was unavailable in VS Code. Claude Opus 5
+# supplied the independent adversarial review used in this reconciliation.
+
+version: 1
+
+deck:
+  title: "Copilot Context Engineering"
+  subtitle: "Place Context, Inspect Delivery, Prove Compliance"
+  tagline: "Give every context rule an owner, an evidence path, and an approval boundary"
+
+  agenda:
+    - title: "Place a Rule"
+      takeaway: "Classify one Orders API rule by owner, lifetime, selector, and reviewer."
+      whyItMatters: "Placement determines who may change the rule and who approves it."
+    - title: "Inspect Delivery"
+      takeaway: "Use loaded-customization and request-path evidence to locate a broken scope."
+      whyItMatters: "Diagnosis starts at the first broken stage and preserves useful context."
+    - title: "Prove Compliance"
+      takeaway: "Follow the evidence ladder from loaded file through tests and owner approval."
+      whyItMatters: "Each signal carries a precise claim before generated code can merge."
+
+  arcToc: "Place → Encode → Inspect → Verify and Promote"
+  arcNarrative: >
+    Placement establishes ownership, lifecycle, and producer responsibility for the Orders
+    rule. Encoding turns that decision into a small reviewable artifact with bounded tools
+    and named approval. Inspection then reveals the central distinction: loaded context is
+    delivery evidence, while compliance evidence comes from output inspection and independent
+    checks. Repair and verification provide the peak through the five-rung evidence ladder,
+    then promotion closes the loop with code-owner authority and an own-repository transfer.
+
+  sectionOrder:
+    - "Place Context by Owner and Lifecycle"
+    - "Encode with the Smallest Fitting Primitive"
+    - "Inspect Loaded Context and the Request Path"
+    - "Repair the Misroute, Then Verify Compliance"
+
+  sectionModes:
+    "Place Context by Owner and Lifecycle":
+      emphasis: medium
+      note: >
+        Let one classification table carry owner, lifetime, selector, and reviewer. Include
+        the platform producer decision: a named maintainer reviews conflicts, cadence, and
+        retirement. Keep personal memory control and sensitive-data rejection as concise
+        authority boundaries.
+    "Encode with the Smallest Fitting Primitive":
+      emphasis: medium
+      note: >
+        Center the committed repository instruction and its required evidence. Compress the
+        repeated primitive taxonomy to one selection rule. Show how tool access and merge
+        approval remain separately assigned.
+    "Inspect Loaded Context and the Request Path":
+      emphasis: high
+      note: >
+        Mark every diagnostic transcript as illustrative on the same slide. Use the broken
+        selector fixture to connect loaded-customization evidence with the request path, then
+        elevate transport success and answer correctness as separate signals. Keep MCP and
+        compaction details to boundary callouts.
+    "Repair the Misroute, Then Verify Compliance":
+      emphasis: high
+      note: >
+        Make the five-rung evidence ladder the centerpiece. Compare the committed broken and
+        fixed selectors, then move from eligible loading through tests, type checking, diff
+        review, and code-owner approval. Close with a transfer prompt that asks attendees to
+        classify and verify one rule in their own repository.
+
+  preamble: []
+  appendix: []
+
+  highlightMoments:
+    - "A five-rung evidence ladder states exactly what loading, request traces, tool results, executable checks, and owner approval each prove."
+    - "One selector change moves a valid Orders rule from ineligible context to observable delivery."
+    - "Three committed fixtures let attendees compare the promoted rule, the broken selector, and the repaired selector."
+    - "A shared rule gains a named maintainer, version history, executable checks, and code-owner approval."
+
+# OPEN DECISION: Choose live VS Code diagnostics when the presentation environment exposes
+# the required surfaces; use the labeled illustrative trace when tenant or build access varies.

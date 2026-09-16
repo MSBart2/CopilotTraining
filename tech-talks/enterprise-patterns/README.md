@@ -1,7 +1,14 @@
 ---
 status: active
-updated: 2026-08-10
-section: "Platform Teams"
+updated: 2026-09-15
+section: "Verify and Govern"
+audience: [platform-engineer, security, architect, engineering-leader]
+level: strategic
+duration: 60
+format: core-talk
+decision: "How should organizations standardize, govern, and measure Copilot adoption?"
+prerequisites: []
+related: [copilot-hooks, agentic-sdlc, copilot-plugins]
 references:
   - url: https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization
     label: "Managing Copilot in your organization"
@@ -27,6 +34,18 @@ references:
   - url: https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot
     label: "Upcoming September 2026 model deprecations in GitHub Copilot"
     verified: 2026-08-10
+  - url: https://code.visualstudio.com/docs/enterprise/ai-settings
+    label: "Configure AI settings for an enterprise"
+    verified: 2026-09-15
+  - url: https://code.visualstudio.com/docs/copilot/security
+    label: "Security considerations for AI in VS Code"
+    verified: 2026-09-15
+  - url: https://code.visualstudio.com/updates/v1_121
+    label: "VS Code release notes: v1.121"
+    verified: 2026-09-15
+  - url: https://code.visualstudio.com/updates/v1_122
+    label: "VS Code release notes: v1.122"
+    verified: 2026-09-15
 ---
 
 # Scaling GitHub Copilot Across Organizations
@@ -440,6 +459,10 @@ Copilot Knowledge Bases solve the multi-repository context problem. In microserv
 - Restrict high-cost models for specific use cases
 - Enforce compliance requirements (data residency, audit trails)
 - Set budget controls on premium model requests
+
+### Organization-Owned Telemetry and Tool Policy
+
+Treat observability and tool discovery as organization-owned contracts. Configure OpenTelemetry export centrally so security and platform teams define approved destinations, fields, retention, and access rather than leaving telemetry behavior to each repository. Govern MCP discovery through enterprise policy: restrict clients to a curated registry when approved tools should remain discoverable, or turn MCP off when no external tool execution is allowed. Repository configuration can narrow behavior, but it must not widen the organizational boundary.
 
 **Auto model selection benefits:**
 - Route routine tasks to cost-effective models

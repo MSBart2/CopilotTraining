@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: GitHub Copilot CLI — AI at the Point of Work
 mdc: true
-section: "Developers"
+section: "Choose and Configure"
 status: active
 updated: 2026-08-28
 ---

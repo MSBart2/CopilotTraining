@@ -13,6 +13,7 @@
     "export-pptx": "slidev export --format pptx",
     "generate-agendas": "node scripts/generate-agendas.mjs",
     "copy-companions": "node scripts/copy-companions.mjs",
+    "generate-portfolio-redirects": "node scripts/generate-portfolio-redirects.mjs",
         "check-companions": "node scripts/check-companions.mjs",
         "verify-companions-dist": "node scripts/verify-companions-dist.mjs",
         "sync-index": "node scripts/sync-index-dates.mjs",

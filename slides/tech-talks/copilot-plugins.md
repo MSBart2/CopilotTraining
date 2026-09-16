@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Copilot Plugins & APM
 mdc: true
-section: Platform Teams
+section: Extend and Embed
 status: active
 updated: 2026-08-11
 ---

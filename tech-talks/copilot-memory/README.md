@@ -1,7 +1,14 @@
 ---
-status: active
-updated: 2026-02-01
-section: "Platform Teams"
+status: archived
+updated: 2026-09-15
+section: "Choose and Configure"
+audience: [developer, team-lead]
+level: applied
+duration: 25
+format: clinic
+decision: "Where should durable personal knowledge live, and when should it expire?"
+prerequisites: [copilot-primitives]
+related: [copilot-chat-internals, copilot-with-foundry]
 references:
   - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/copilot-memory
     label: "Copilot Memory documentation"

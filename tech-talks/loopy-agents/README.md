@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-07-02
-section: "Agentic Systems"
+section: "Delegate and Coordinate"
+audience: [platform-engineer, architect, security]
+level: advanced
+duration: 45
+format: core-talk
+decision: "How should an autonomous loop verify progress and stop safely?"
+prerequisites: [agent-teams]
+related: [agentic-workflows, copilot-hooks, agentic-sdlc]
 references:
   - url: https://github.com/cobusgreyling/loop-engineering
     label: "loop-engineering: Practical patterns, starters & CLI tools for loop engineering with AI coding agents"

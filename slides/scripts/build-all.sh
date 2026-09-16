@@ -193,6 +193,9 @@ echo "📄 Copying index-custom.html and 404.html to dist root..."
 cp "${SLIDES_DIR}/index-custom.html" "${OUTPUT_DIR}/index.html"
 cp "${SLIDES_DIR}/404.html" "${OUTPUT_DIR}/404.html"
 
+echo "↪️  Generating portfolio redirects..."
+node "${SLIDES_DIR}/scripts/generate-portfolio-redirects.mjs"
+
 # Copy pre-built agenda/PDF companions only — never generate in CI/build
 echo "📎 Copying companion agenda/PDF artifacts into dist..."
 (cd "${SLIDES_DIR}" && node scripts/copy-companions.mjs && node scripts/verify-companions-dist.mjs)

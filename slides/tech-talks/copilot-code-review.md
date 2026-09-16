@@ -11,9 +11,9 @@ drawings:
 transition: slide-left
 title: GitHub Copilot Code Review
 mdc: true
-section: Developers
-status: active
-updated: 2026-08-10
+section: Verify and Govern
+status: archived
+updated: 2026-09-15
 ---
 
 <script setup>

@@ -1,0 +1,27 @@
+name: PR evidence
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  code-quality: write
+
+jobs:
+  test-and-cover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install test dependencies
+        run: pip install -r requirements.txt pytest pytest-cov
+      - name: Run tests and emit Cobertura XML
+        run: pytest --cov=src --cov-report=xml:coverage.xml
+      - name: Upload coverage
+        uses: actions/upload-code-coverage@v1
+        with:
+          file: coverage.xml
+          language: Python
+          label: code-coverage/pytest

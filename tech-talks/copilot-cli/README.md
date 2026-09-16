@@ -1,7 +1,14 @@
 ---
 status: active
-updated: 2026-08-25
-section: "Developers"
+updated: 2026-09-15
+section: "Choose and Configure"
+audience: [developer, platform-engineer]
+level: applied
+duration: 45
+format: core-talk
+decision: "When is the terminal the correct Copilot control surface?"
+prerequisites: [surfaces]
+related: [copilot-web, copilot-azure-mcp]
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli
     label: "About GitHub Copilot CLI"
@@ -657,6 +664,10 @@ See also: [Steering a session remotely](https://docs.github.com/en/copilot/how-t
 /context   # Visual token usage breakdown
 /usage     # Session statistics: duration, lines edited, token usage per model
 ```
+
+### Compaction Is a Quality Decision
+
+Compact when irrelevant history is consuming the context budget, not merely because a session is long. Before compaction, restate the task constraints and preserve the verification evidence needed to judge the result. After compaction, inspect the next plan or response for missing constraints, stale assumptions, and lost evidence; re-anchor the session before continuing when quality has drifted. Treat any token or cost reduction as workload-dependent rather than a universal savings claim.
 
 ### Repository Memory: Cross-Session Learning
 

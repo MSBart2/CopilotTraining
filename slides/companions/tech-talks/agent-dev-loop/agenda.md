@@ -4,7 +4,7 @@ subtitle: "From Repo to Feature with Copilot in VS Code"
 slug: agent-dev-loop
 category: tech-talks
 duration: 45
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # The Agent Dev Loop

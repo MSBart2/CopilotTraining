@@ -1,7 +1,14 @@
 ---
-status: active
-updated: 2026-03-05
-section: "Developers"
+status: archived
+updated: 2026-09-15
+section: "Choose and Configure"
+audience: [developer, team-lead, platform-engineer]
+level: applied
+duration: 25
+format: clinic
+decision: "How do I inspect the context Copilot used and diagnose unexpected behavior?"
+prerequisites: [copilot-primitives]
+related: [copilot-memory, copilot-hooks]
 references:
   - url: https://code.visualstudio.com/updates/v1_110
     label: "VS Code release notes: February 2026 (v1.110)"
@@ -414,6 +421,10 @@ VS Code 1.110 adds a visual context usage indicator showing percentage, token br
 **When to use `/compact`:** Context >80%, responses seem to "forget" earlier context, file reads being excluded.
 
 **When to use `/fork`:** Compare two approaches, checkpoint before risky experiments, branch at decision points.
+
+### Diagnose Quality Drift After Compaction
+
+A sudden loss of constraints, repeated questions, or conclusions that no longer cite earlier verification evidence is a context-loss symptom, not proof that the model changed. Inspect the supplied context in Chat Debug View, compare it with the task's required constraints and evidence, then re-anchor the conversation with the missing acceptance criteria before asking the agent to continue.
 
 ---
 

@@ -4,7 +4,7 @@ subtitle: "Composable AI Extensions"
 slug: copilot-plugins
 category: tech-talks
 duration: 45
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # Copilot Plugins & APM

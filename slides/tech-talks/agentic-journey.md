@@ -11,9 +11,9 @@ drawings:
 transition: slide-left
 title: The Agentic Journey
 mdc: true
-section: Agentic Engineering
-status: active
-updated: 2026-04-22
+section: Delegate and Coordinate
+status: archived
+updated: 2026-09-15
 ---
 
 <script setup>

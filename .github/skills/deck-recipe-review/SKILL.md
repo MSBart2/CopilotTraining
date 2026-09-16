@@ -104,21 +104,21 @@ What should change and why?
 
 ---
 
-## Mandatory Rubber Duck Gate
+## Mandatory Independent Review Gate
 
 Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
-1. In Copilot CLI, explicitly delegate the primary recommendation and the complete context block to the built-in **Rubber Duck** agent.
-2. Require Rubber Duck to independently attack the proposed thesis, section order, weighting, agenda, highlights, missing producer/consumer perspectives, content that has not earned slide time, and any recommendation that violates the tech-talk voice.
-3. Do not role-play Rubber Duck in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
-4. Outside Copilot CLI, launch one review subagent using a different model family from the primary model and give it the same adversarial brief.
-5. If no independent cross-model reviewer is available or delegation does not occur, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
+1. Prefer Copilot CLI: explicitly delegate the primary recommendation and the complete context block to the built-in **Rubber Duck** agent.
+2. When the work is running in VS Code and Copilot CLI or Rubber Duck is unavailable, launch one review subagent using a different model family from the primary model and give it the same complete adversarial brief. Record the unavailable CLI path and the substitute model in the reconciliation.
+3. Require the independent reviewer to attack the proposed thesis, section order, weighting, agenda, highlights, missing producer/consumer perspectives, content that has not earned slide time, and any recommendation that violates the tech-talk voice.
+4. Do not role-play the independent reviewer in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
+5. If neither Rubber Duck nor an independent cross-model reviewer is available, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
 
 ---
 
 ## Reconciliation and Final Recipe Direction
 
-Reconcile the primary analysis with the independent critique. Rubber Duck is advisory, but every material objection must be accepted or rejected with a content-based reason before producing. Rewrite inherited reviewer language into the direct-positive tech-talk voice; never copy contrastive phrasing into the recipe unchanged.
+Reconcile the primary analysis with the independent critique. The reviewer is advisory, but every material objection must be accepted or rejected with a content-based reason before producing. Rewrite inherited reviewer language into the direct-positive tech-talk voice; never copy contrastive phrasing into the recipe unchanged.
 
 1. **Verdict** (2-3 sentences) — the core structural problem and fix
 2. **`arcToc`** — one line ≤ 80 chars, section names joined by ` → `
@@ -161,7 +161,7 @@ Use `DECK-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 
 - [ ] **Max 4 sections** — Reconciled output has exactly 4 or fewer sections. If more, consolidate.
 - [ ] Every section in the new `sectionOrder` exists as a major section (`##`) in the README
-- [ ] No section has been promoted to `high` that Rubber Duck flagged as risky without noting the risk
+- [ ] No section has been promoted to `high` that the independent reviewer flagged as risky without noting the risk
 - [ ] `arcToc` is a single line ≤ 80 chars using ` → ` separators between section names
 - [ ] `arcNarrative` is a prose paragraph explaining the reconciled sequencing logic
 - [ ] `agenda` contains exactly 3 entries, each with `title`, `takeaway`, and `whyItMatters`; entries promise outcomes rather than repeat the TOC

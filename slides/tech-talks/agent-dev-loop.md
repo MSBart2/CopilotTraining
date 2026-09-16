@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: The Agent Dev Loop
 mdc: true
-section: Developers
+section: Delegate and Coordinate
 status: active
 updated: 2026-06-30
 ---

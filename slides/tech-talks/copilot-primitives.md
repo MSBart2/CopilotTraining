@@ -11,9 +11,9 @@ drawings:
 transition: slide-left
 title: Copilot Configuration Primitives
 mdc: true
-section: Customization & Context
-status: active
-updated: 2026-08-26
+section: Choose and Configure
+status: archived
+updated: 2026-09-15
 ---
 
 <script setup>

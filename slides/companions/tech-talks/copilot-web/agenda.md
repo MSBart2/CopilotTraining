@@ -4,7 +4,7 @@ subtitle: "GitHub Copilot's Coding Agent in Practice"
 slug: copilot-web
 category: tech-talks
 duration: 14
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # From Issue to Pull Request

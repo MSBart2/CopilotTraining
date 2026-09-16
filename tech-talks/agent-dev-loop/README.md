@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-06-30
-section: "Developers"
+section: "Delegate and Coordinate"
+audience: [developer, team-lead]
+level: applied
+duration: 45
+format: core-talk
+decision: "How does completed work become reusable team capability?"
+prerequisites: [copilot-primitives]
+related: [copilot-web, agent-teams]
 references:
   - url: https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode
     label: "Copilot agent mode in VS Code"

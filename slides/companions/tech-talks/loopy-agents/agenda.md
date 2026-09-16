@@ -4,7 +4,7 @@ subtitle: "Designing Agent Systems That Run Reliably"
 slug: loopy-agents
 category: tech-talks
 duration: 45
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # Loop Engineering

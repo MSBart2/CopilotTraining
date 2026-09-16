@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-02-01
-section: "Platform Teams"
+section: "Extend and Embed"
+audience: [developer, platform-engineer]
+level: advanced
+duration: 40
+format: clinic
+decision: "When does an MCP response need an interactive interface?"
+prerequisites: [copilot-sdk]
+related: [copilot-acp, copilot-azure-mcp]
 references:
   - url: https://code.visualstudio.com/blogs/2026/01/26/mcp-apps-support
     label: "MCP Apps support in VS Code"

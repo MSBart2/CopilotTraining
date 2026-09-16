@@ -880,7 +880,7 @@
       top: 0.75rem;
       z-index: 20;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1px;
       margin-bottom: 1.25rem;
       overflow: hidden;
@@ -919,6 +919,99 @@
       color: #22d3ee;
       font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
       font-size: 0.68rem;
+    }
+
+    .onboarding-path {
+      --group-accent: #f5b800;
+      margin-bottom: 1.25rem;
+      padding: 1rem 1.25rem;
+      border-top: 1px solid rgba(245, 184, 0, 0.4);
+      border-bottom: 1px solid rgba(245, 184, 0, 0.22);
+      scroll-margin-top: 5rem;
+    }
+
+    .onboarding-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .onboarding-heading h2 {
+      font-size: 1rem;
+      font-weight: 760;
+    }
+
+    .onboarding-heading p {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+
+    .onboarding-steps {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--section-border);
+      border: 1px solid var(--section-border);
+    }
+
+    .onboarding-step {
+      position: relative;
+      min-width: 0;
+      padding: 0.8rem 1.6rem 0.8rem 0.85rem;
+      background: rgba(12, 18, 28, 0.94);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    [data-theme="light"] .onboarding-step {
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .onboarding-step::after {
+      position: absolute;
+      top: 50%;
+      right: 0.55rem;
+      content: "→";
+      color: #f5b800;
+      transform: translateY(-50%);
+    }
+
+    .onboarding-step:last-child::after {
+      content: "✓";
+    }
+
+    .onboarding-step:hover,
+    .onboarding-step:focus-visible {
+      background: var(--card-hover-bg);
+      outline: 2px solid #f5b800;
+      outline-offset: -2px;
+    }
+
+    .onboarding-number,
+    .onboarding-label,
+    .onboarding-detail {
+      display: block;
+    }
+
+    .onboarding-number {
+      color: #f5b800;
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.62rem;
+    }
+
+    .onboarding-label {
+      margin-top: 0.18rem;
+      font-size: 0.82rem;
+      font-weight: 740;
+    }
+
+    .onboarding-detail {
+      margin-top: 0.25rem;
+      color: var(--text-muted);
+      font-size: 0.7rem;
+      line-height: 1.35;
     }
 
     .section {
@@ -1116,6 +1209,22 @@
         top: 0.4rem;
       }
 
+      .onboarding-heading {
+        display: block;
+      }
+
+      .onboarding-heading p {
+        margin-top: 0.3rem;
+      }
+
+      .onboarding-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .onboarding-step {
+        min-height: 78px;
+      }
+
       .catalog-nav a {
         justify-content: center;
         padding: 0.68rem 0.35rem;
@@ -1189,10 +1298,45 @@
     </header>
 
     <nav class="catalog-nav" aria-label="Catalog sections">
-      <a href="#tech-talks"><span class="catalog-nav-index">01</span>Tech talks</a>
-      <a href="#workshop"><span class="catalog-nav-index">02</span>Workshop</a>
-      <a href="#related-repos"><span class="catalog-nav-index">03</span>Related repos</a>
+      <a href="#start-here"><span class="catalog-nav-index">01</span>Start here</a>
+      <a href="#tech-talks"><span class="catalog-nav-index">02</span>Tech talks</a>
+      <a href="#workshop"><span class="catalog-nav-index">03</span>Workshop</a>
+      <a href="#related-repos"><span class="catalog-nav-index">04</span>Related repos</a>
     </nav>
+
+    <section class="onboarding-path" id="start-here" aria-labelledby="start-here-title">
+      <div class="onboarding-heading">
+        <h2 id="start-here-title">New to Copilot? Follow this path.</h2>
+        <p>One decision and one observable artifact at each step.</p>
+      </div>
+      <div class="onboarding-steps">
+        <a class="onboarding-step" href="tech-talks/surfaces/">
+          <span class="onboarding-number">01</span>
+          <span class="onboarding-label">Choose the surface</span>
+          <span class="onboarding-detail">Match the task to its context, control, and reviewer.</span>
+        </a>
+        <a class="onboarding-step" href="tech-talks/context-engineering/">
+          <span class="onboarding-number">02</span>
+          <span class="onboarding-label">Shape the context</span>
+          <span class="onboarding-detail">Give repository work durable, reviewable guidance.</span>
+        </a>
+        <a class="onboarding-step" href="tech-talks/agent-dev-loop/">
+          <span class="onboarding-number">03</span>
+          <span class="onboarding-label">Make success reusable</span>
+          <span class="onboarding-detail">Turn a solved task into team capability.</span>
+        </a>
+        <a class="onboarding-step" href="tech-talks/copilot-web/">
+          <span class="onboarding-number">04</span>
+          <span class="onboarding-label">Delegate bounded work</span>
+          <span class="onboarding-detail">Produce a draft pull request with acceptance evidence.</span>
+        </a>
+        <a class="onboarding-step" href="tech-talks/pr-trust-stack/">
+          <span class="onboarding-number">05</span>
+          <span class="onboarding-label">Verify before merge</span>
+          <span class="onboarding-detail">Disposition findings and keep acceptance human-owned.</span>
+        </a>
+      </div>
+    </section>
 
     <!-- Tech Talks Section -->
     <div class="section tech-talks" id="tech-talks">
@@ -1203,37 +1347,23 @@
           <p class="section-description">Technical deep-dives for practitioners on specific capabilities</p>
         </div>
       </div>
-      <!-- Developers -->
-      <div class="sub-group" id="developers">
+      <!-- Choose and Configure -->
+      <div class="sub-group" id="choose-and-configure">
         <div class="sub-group-header">
-          <span class="sub-group-icon">👩‍💻</span>
-          <span class="sub-group-label">Developers</span>
-          <span class="sub-group-desc">Daily tools for every developer on the team</span>
+          <span class="sub-group-icon">🧭</span>
+          <span class="sub-group-label">Choose and Configure</span>
+          <span class="sub-group-desc">Choose the right surface, context, and configuration for the work</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
-          <a href="tech-talks/agent-dev-loop/" class="card">
-            <h2>The Agent Dev Loop</h2>
-            <p>From repo to feature with Copilot in VS Code. AGENTS.md, prompts, skills, and risk-reviewed plans — build the toolkit that makes every feature faster.</p>
-          </a>
-          <a href="tech-talks/copilot-chat-internals/" class="card">
-            <h2>Copilot Chat Internals</h2>
-            <p>Under the hood diagnostics. Chat Debug View, customization diagnostics, and extension logs for systematic
-              troubleshooting.</p>
-          </a>
           <a href="tech-talks/copilot-cli/" class="card">
             <h2>Copilot CLI</h2>
             <p>Close every gap — intent, geography, memory, and scale. Plan Mode, Rubber Duck, Git-free /rewind,
               Sessions sidebar, /chronicle, live S3→S4 bridge, /fleet fan-out, and cloud delegation.</p>
           </a>
-          <a href="tech-talks/copilot-web/" class="card">
-            <h2>Copilot Web</h2>
-            <p>Delegate issues to the coding agent and get back draft PRs. Covers trigger modes, reasoning controls, CI-parity setup, Agent Firewall, and evidence-bundle review.</p>
-          </a>
-          <a href="tech-talks/copilot-code-review/" class="card">
-            <h2>Copilot Code Review</h2>
-            <p>Accelerating PR velocity with AI-powered review. 40-60% faster cycle times, custom compliance rulesets,
-              and measurable ROI.</p>
+          <a href="tech-talks/context-engineering/" class="card">
+            <h2>Copilot Context Engineering</h2>
+            <p>Place context by owner, inspect delivery through the request path, and prove compliance with independent evidence.</p>
           </a>
           <a href="tech-talks/vscode-latest/" class="card">
             <h2>What's New in VS Code</h2>
@@ -1244,113 +1374,114 @@
             <h2>Which Copilot Where?</h2>
             <p>Map seven Copilot experiences, choose where work starts, and hand it off when context or review boundaries change.</p>
           </a>
-          <a href="tech-talks/copilot-primitives/" class="card">
-            <h2>Copilot Primitives</h2>
-            <p>The 4 configuration primitives. Instructions, prompts, skills, and agents — make Copilot understand your
-              codebase better.</p>
-          </a>
-          <a href="tech-talks/copilot-code-quality/" class="card">
-            <h2>GitHub Code Quality</h2>
-            <p>Coverage-aware merge gates and Copilot Autofix, now GA. Turning maintainability checks into a real
-              blocking check on the PR — plus what the per-committer bill actually looks like.</p>
-          </a>
         </div>
       </div>
 
-      <!-- Platform Teams -->
-      <div class="sub-group" id="platform-teams">
+      <!-- Verify and Govern -->
+      <div class="sub-group" id="verify-and-govern">
         <div class="sub-group-header">
-          <span class="sub-group-icon">🧰</span>
-          <span class="sub-group-label">Platform Teams</span>
-          <span class="sub-group-desc">Govern, extend, and scale Copilot across your organization</span>
+          <span class="sub-group-icon">🛡️</span>
+          <span class="sub-group-label">Verify and Govern</span>
+          <span class="sub-group-desc">Decide what advises, what blocks, and who may approve or override</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
-          <a href="tech-talks/copilot-memory/" class="card">
-            <h2>Copilot Memory</h2>
-            <p>Cross-session context persistence. Store preferences, project context, and workflow patterns that persist
-              across all conversations.</p>
+          <a href="tech-talks/agentic-sdlc/" class="card">
+            <h2>Agentic SDLC</h2>
+            <p>Build repository and CI infrastructure that manufactures trustworthy evidence at agent speed.</p>
           </a>
           <a href="tech-talks/copilot-hooks/" class="card">
             <h2>Copilot Hooks</h2>
             <p>Programmable governance for AI agents. Real-time prevention, audit trails, and compliance enforcement at
               execution time.</p>
           </a>
-          <a href="tech-talks/copilot-plugins/" class="card">
-            <h2>Copilot Plugins & APM</h2>
-            <p>Composable AI extensions. Discover and install plugins from the CLI, then version your entire agent
-              configuration with APM manifests and lockfiles.</p>
-          </a>
-          <a href="tech-talks/copilot-sdk/" class="card">
-            <h2>Copilot SDK</h2>
-            <p>Stop building AI infrastructure. Production Copilot agent runtime in 10 lines — CLI tools, Web APIs, and
-              scheduled automations shipping this sprint.</p>
-          </a>
-          <a href="tech-talks/mcp-apps/" class="card">
-            <h2>MCP Apps</h2>
-            <p>Rich UI in chat responses. Transform chat from text-only to interactive visual experiences with
-              component-based MCP tools.</p>
-          </a>
           <a href="tech-talks/enterprise-patterns/" class="card">
             <h2>Enterprise Patterns</h2>
             <p>Scaling Copilot across organizations. From team silos to standardized foundations with measurable ROI.
             </p>
           </a>
+          <a href="tech-talks/pr-trust-stack/" class="card">
+            <h2>PR Trust Stack</h2>
+            <p>Assign every pre-merge signal a role, an owner, and a governed path from evidence to authority.</p>
+          </a>
         </div>
       </div>
 
-      <!-- Agentic Systems -->
-      <div class="sub-group" id="agentic-systems">
+      <!-- Delegate and Coordinate -->
+      <div class="sub-group" id="delegate-and-coordinate">
         <div class="sub-group-header">
-          <span class="sub-group-icon">🤖</span>
-          <span class="sub-group-label">Agentic Systems</span>
-          <span class="sub-group-desc">Composing autonomous agents and transforming the full software delivery
-            lifecycle</span>
+          <span class="sub-group-icon">🔀</span>
+          <span class="sub-group-label">Delegate and Coordinate</span>
+          <span class="sub-group-desc">Bound work, compose specialists, and choose the right degree of autonomy</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
+          <a href="tech-talks/agent-dev-loop/" class="card">
+            <h2>The Agent Dev Loop</h2>
+            <p>Turn solved repository work into reusable instructions, prompts, skills, and reviewed plans.</p>
+          </a>
+          <a href="tech-talks/copilot-web/" class="card">
+            <h2>From Issue to Pull Request</h2>
+            <p>Delegate bounded repository work and review the resulting draft pull request as an evidence bundle.</p>
+          </a>
           <a href="tech-talks/agent-teams/" class="card">
             <h2>Agent Teams</h2>
             <p>From subagents to autonomous teams. The complete stack: context isolation, role specialists (Squad),
               background agents + worktrees, and multi-model deliberation (AgentCouncil).</p>
-          </a>
-          <a href="tech-talks/copilot-acp/" class="card">
-            <h2>Copilot ACP</h2>
-            <p>The Agent Client Protocol for universal AI integration. Use Copilot's agentic capabilities in any editor,
-              tool, or workflow — not just VS Code.</p>
           </a>
           <a href="tech-talks/copilot-app/" class="card">
             <h2>GitHub Copilot App</h2>
             <p>From one assistant to an agent fleet — parallel dispatch, worktree isolation, Canvas control, and Agent
               Merge. Five agents, five issues, zero branch conflicts.</p>
           </a>
-          <a href="tech-talks/copilot-azure-mcp/" class="card">
-            <h2>GitHub Copilot + Azure Skills Plugin</h2>
-            <p>Conversational Azure prototyping and deployment. 21 curated skills + 200+ live tools — from 45 minutes of
-              portal clicks to 8 minutes of live-context conversation.</p>
-          </a>
-          <a href="tech-talks/copilot-with-foundry/" class="card">
-            <h2>GitHub Copilot with Microsoft Foundry</h2>
-            <p>GitHub answers "What?" — Foundry answers "Why?" Extend Copilot agents with organizational memory to recover the intent behind legacy code the 5–10% of the time it matters most.</p>
-          </a>
           <a href="tech-talks/agentic-workflows/" class="card">
             <h2>GitHub Agentic Workflows</h2>
             <p>Repository automation with AI agents. Write workflows in Markdown, compiled to secure GitHub Actions with
               safe-output validation.</p>
           </a>
-          <a href="tech-talks/agentic-journey/" class="card">
-            <h2>Agentic Journey</h2>
-            <p>From "assign to copilot" to full SDLC transformation. The 5-phase incremental path with 4-workflow
-              architecture and historical context search.</p>
-          </a>
-          <a href="tech-talks/agentic-sdlc/" class="card">
-            <h2>Agentic SDLC</h2>
-            <p>Level 5 infrastructure for AI velocity. Rewire repositories, PR workflows, and CI/CD to scale from 2-3
-              features/week to 10-15/day with autonomous agents.</p>
+          <a href="tech-talks/agentic-lifecycle/" class="card">
+            <h2>Agentic Lifecycle Orchestration</h2>
+            <p>Coordinate issue-to-PR handoffs with compiled workflow candidates, visible stops, and named human authority.</p>
           </a>
           <a href="tech-talks/loopy-agents/" class="card">
             <h2>Loop Engineering</h2>
             <p>Agents that loop until the goal is verifiably met — then stop. Copilot Automations as the native trigger, shared state for multi-agent coordination, and the three production controls most teams skip.</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Extend and Embed -->
+      <div class="sub-group" id="extend-and-embed">
+        <div class="sub-group-header">
+          <span class="sub-group-icon">🧩</span>
+          <span class="sub-group-label">Extend and Embed</span>
+          <span class="sub-group-desc">Add capabilities, interfaces, protocols, and governed domain context</span>
+          <span class="sub-group-line"></span>
+        </div>
+        <div class="grid">
+          <a href="tech-talks/copilot-plugins/" class="card">
+            <h2>Copilot Plugins & APM</h2>
+            <p>Package and distribute agent configuration as reproducible, reviewable team infrastructure.</p>
+          </a>
+          <a href="tech-talks/copilot-sdk/" class="card">
+            <h2>Copilot SDK</h2>
+            <p>Embed agent behavior in an application-owned runtime with explicit tools, identity, and policy.</p>
+          </a>
+          <a href="tech-talks/copilot-acp/" class="card">
+            <h2>Copilot ACP</h2>
+            <p>Connect external clients to Copilot agents while preserving session and permission boundaries.</p>
+          </a>
+          <a href="tech-talks/mcp-apps/" class="card">
+            <h2>MCP Apps</h2>
+            <p>Return an interactive interface when a text response cannot support the user’s next decision.</p>
+          </a>
+          <a href="tech-talks/copilot-azure-mcp/" class="card">
+            <h2>Azure MCP and Skills</h2>
+            <p>Apply domain tools to live Azure state with explicit identity, evidence, and least-privilege authority.</p>
+          </a>
+          <a href="tech-talks/copilot-with-foundry/" class="card">
+            <h2>GitHub Copilot with Microsoft Foundry</h2>
+            <p>Add governed organizational knowledge when repository context cannot explain intent.</p>
           </a>
         </div>
       </div>
@@ -1523,21 +1654,23 @@
       '06-custom-agents': '2026-03-31',
       'agent-dev-loop': '2026-06-30',
       'agent-teams': '2026-04-22',
-      'agentic-journey': '2026-04-22',
+      'agentic-journey': '2026-09-15',
+      'agentic-lifecycle': '2026-09-15',
       'agentic-sdlc': '2026-04-24',
       'agentic-workflows': '2026-08-11',
       'component-test': '2026-04-21',
+      'context-engineering': '2026-09-15',
       'copilot-acp': '2026-06-10',
       'copilot-app': '2026-08-11',
       'copilot-azure-mcp': '2026-04-27',
-      'copilot-chat-internals': '2026-04-22',
+      'copilot-chat-internals': '2026-09-15',
       'copilot-cli': '2026-08-28',
-      'copilot-code-quality': '2026-08-10',
-      'copilot-code-review': '2026-08-10',
+      'copilot-code-quality': '2026-09-15',
+      'copilot-code-review': '2026-09-15',
       'copilot-hooks': '2026-04-22',
-      'copilot-memory': '2026-04-22',
+      'copilot-memory': '2026-09-15',
       'copilot-plugins': '2026-08-11',
-      'copilot-primitives': '2026-08-26',
+      'copilot-primitives': '2026-09-15',
       'copilot-sdk': '2026-04-22',
       'copilot-web': '2026-08-11',
       'copilot-with-foundry': '2026-07-24',
@@ -1548,6 +1681,7 @@
       'fanhub-unplugged': '2026-04-27',
       'loopy-agents': '2026-07-02',
       'mcp-apps': '2026-04-22',
+      'pr-trust-stack': '2026-09-15',
       'surfaces': '2026-09-14',
       'vscode-latest': '2026-08-12',
     };

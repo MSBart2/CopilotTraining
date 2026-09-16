@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Which Copilot Where?
 mdc: true
-section: Developers
+section: Choose and Configure
 status: active
 updated: 2026-09-14
 ---

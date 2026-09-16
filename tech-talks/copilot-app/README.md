@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-08-11
-section: "Agentic Systems"
+section: "Delegate and Coordinate"
+audience: [developer, team-lead]
+level: advanced
+duration: 45
+format: core-talk
+decision: "When does work require fleet coordination across sessions?"
+prerequisites: [surfaces, copilot-web]
+related: [agent-teams, loopy-agents]
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/github-copilot-app
     label: "About the GitHub Copilot app - GitHub Docs"

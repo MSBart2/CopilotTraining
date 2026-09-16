@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-08-10
-section: "Developers"
+section: "Delegate and Coordinate"
+audience: [developer, team-lead]
+level: applied
+duration: 40
+format: core-talk
+decision: "What repository work is bounded enough to delegate through GitHub?"
+prerequisites: [agent-dev-loop]
+related: [agentic-workflows, copilot-code-review]
 references:
   - url: https://code.visualstudio.com/docs/copilot/copilot-coding-agent
     label: "GitHub Copilot coding agent - VS Code"

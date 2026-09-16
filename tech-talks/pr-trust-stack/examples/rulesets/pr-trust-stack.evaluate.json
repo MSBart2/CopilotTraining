@@ -1,0 +1,19 @@
+{
+  "name": "PR trust stack",
+  "target": "branch",
+  "enforcement": "evaluate",
+  "conditions": {
+    "ref_name": {
+      "include": ["refs/heads/main"],
+      "exclude": []
+    }
+  },
+  "rules": [
+    {
+      "type": "code_quality",
+      "parameters": {
+        "minimum_coverage_percentage": 80
+      }
+    }
+  ]
+}

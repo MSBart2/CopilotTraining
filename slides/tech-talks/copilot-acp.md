@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: GitHub Copilot ACP
 mdc: true
-section: "Agentic Systems"
+section: "Extend and Embed"
 status: active
 updated: 2026-06-10
 ---

@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Agentic SDLC
 mdc: true
-section: Agentic Engineering
+section: Verify and Govern
 status: active
 updated: 2026-04-24
 ---

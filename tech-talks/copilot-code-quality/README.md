@@ -1,7 +1,14 @@
 ---
-status: active
-updated: 2026-08-10
-section: "Developers"
+status: archived
+updated: 2026-09-15
+section: "Verify and Govern"
+audience: [developer, team-lead, platform-engineer]
+level: applied
+duration: 40
+format: core-talk
+decision: "Which deterministic quality signals should block merge?"
+prerequisites: [copilot-web]
+related: [copilot-code-review, agentic-sdlc]
 references:
   - url: https://docs.github.com/en/code-security/concepts/code-quality/code-quality
     label: "GitHub Code Quality - Concepts"

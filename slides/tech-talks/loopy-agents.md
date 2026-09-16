@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Loop Engineering
 mdc: true
-section: Agentic Systems
+section: Delegate and Coordinate
 status: active
 updated: 2026-07-02
 ---

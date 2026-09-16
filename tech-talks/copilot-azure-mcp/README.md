@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-04-27
-section: "Agentic Systems"
+section: "Extend and Embed"
+audience: [platform-engineer, architect, security]
+level: applied
+duration: 45
+format: case-study
+decision: "How should agents act on live domain state with least-privilege authority?"
+prerequisites: [copilot-cli]
+related: [mcp-apps, copilot-with-foundry]
 references:
   - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices
     label: "Best practices for GitHub Copilot CLI"

@@ -1,7 +1,14 @@
 ---
 status: active
 updated: 2026-08-12
-section: "Developers"
+section: "Choose and Configure"
+audience: [developer, team-lead]
+level: applied
+duration: 50
+format: release-brief
+decision: "Which recent VS Code Copilot changes alter a durable workflow decision?"
+prerequisites: [surfaces]
+related: [copilot-primitives, agent-dev-loop, copilot-app]
 references:
   - url: https://code.visualstudio.com/updates/v1_132
     label: "VS Code release notes: August 5, 2026 (v1.132)"

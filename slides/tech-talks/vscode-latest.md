@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: VS Code Copilot 1.121–1.132
 mdc: true
-section: Developers
+section: Choose and Configure
 status: active
 updated: 2026-08-12
 ---

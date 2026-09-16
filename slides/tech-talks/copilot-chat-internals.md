@@ -11,9 +11,9 @@ drawings:
 transition: slide-left
 title: Copilot Chat Internals
 mdc: true
-section: Copilot Tools
-status: active
-updated: 2026-04-22
+section: Choose and Configure
+status: archived
+updated: 2026-09-15
 ---
 
 <script setup>

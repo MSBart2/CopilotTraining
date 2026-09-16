@@ -1,7 +1,14 @@
 ---
 status: active
-updated: 2026-02-18
-section: "Platform Teams"
+updated: 2026-09-15
+section: "Extend and Embed"
+audience: [developer, platform-engineer, architect]
+level: advanced
+duration: 45
+format: core-talk
+decision: "When should an application own the agent runtime?"
+prerequisites: [surfaces]
+related: [copilot-acp, mcp-apps, copilot-plugins]
 references:
   - url: https://github.com/github/copilot-sdk
     label: "GitHub Copilot SDK repository"
@@ -24,6 +31,12 @@ references:
   - url: https://github.com/github/copilot-sdk/blob/main/docs/auth/index.md
     label: "Copilot SDK Authentication overview"
     verified: 2026-02-18
+    - url: https://code.visualstudio.com/updates/v1_121
+        label: "VS Code release notes: v1.121"
+        verified: 2026-09-15
+    - url: https://code.visualstudio.com/updates/v1_132
+        label: "VS Code release notes: v1.132"
+        verified: 2026-09-15
 ---
 
 # GitHub Copilot SDK: Build AI-Powered Tools for Your Workflows
@@ -96,6 +109,10 @@ The GitHub Copilot SDK (Technical Preview, January 2026) provides a programmable
 The SDK communicates with Copilot CLI running in server mode via JSON-RPC over stdio. When you create a `CopilotClient`, the SDK spawns (or connects to) the CLI process, manages the communication protocol, and streams results back to your application. This architecture means you get all of CLI's capabilities without rebuilding the agent runtime, and GitHub handles authentication, model management, and updates automatically.
 
 The separation is intentional: Copilot CLI is the agent runtime (planning, tools, memory), and the SDK is how you programmatically control that runtime from any application. Your code defines prompts and constraints, the SDK routes requests to CLI, and agents execute with the same reliability as interactive CLI sessions.
+
+### Runtime Ownership Decision
+
+Choose the SDK when the application must own runtime lifecycle, tools, policy, observability, and delivery. Choose editor-hosted agent UX when a person should steer work through editor context, diffs, diagnostics, and approvals. VS Code's remote Agent Host is evidence that the runtime can be portable beyond the local editor process; it does not collapse the protocol boundary. Coordinating an external client through the Agent Host Protocol remains a separate client, permission, and session design concern from embedding the Copilot runtime with the SDK.
 
 **Official Documentation:**
 - 📖 [GitHub Copilot SDK Repository](https://github.com/github/copilot-sdk) — Installation, API reference, and language-specific examples

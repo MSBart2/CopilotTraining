@@ -30,9 +30,10 @@ Top-level container class: `section tech-talks`
 
 | Section Name | Icon | Slug | Tagline | Contents |
 |---|---|---|---|---|
-| `Developers` | 👩‍💻 | `developers` | Daily tools for every developer on the team | Chat Internals, CLI, Web, Code Review, What's New in VS Code, Primitives |
-| `Platform Teams` | 🧰 | `platform-teams` | Govern, extend, and scale Copilot across your organization | Memory, Hooks, Plugins & APM, SDK, MCP Apps, Enterprise Patterns |
-| `Agentic Systems` | 🤖 | `agentic-systems` | Composing autonomous agents and transforming the full software delivery lifecycle | Agent Teams, ACP, CLI + Azure MCP, Agentic Workflows, Agentic Journey, Agentic SDLC |
+| `Choose and Configure` | 🧭 | `choose-and-configure` | Choose the right surface, context, and configuration for the work | Surfaces, Configuration, Memory, Debugging, CLI, release briefs |
+| `Delegate and Coordinate` | 🔀 | `delegate-and-coordinate` | Bound work, compose specialists, and choose the right degree of autonomy | Dev Loop, Issue to PR, Teams, Workflows, Loops, App, lifecycle orchestration |
+| `Verify and Govern` | 🛡️ | `verify-and-govern` | Decide what advises, what blocks, and who may approve or override | PR Trust Stack, Hooks, Agentic SDLC, Enterprise Patterns |
+| `Extend and Embed` | 🧩 | `extend-and-embed` | Add capabilities, interfaces, protocols, and governed domain context | Plugins, SDK, ACP, MCP Apps, Azure MCP, Foundry |
 
 ---
 
@@ -77,9 +78,10 @@ Deprecated cards remain in the HTML for link preservation and historical records
 
 ```
 <div class="section tech-talks">
-  <div class="sub-group">  ← Developers (👩‍💻)
-  <div class="sub-group">  ← Platform Teams (🧰)
-  <div class="sub-group">  ← Agentic Systems (🤖)
+  <div class="sub-group">  ← Choose and Configure (🧭)
+  <div class="sub-group">  ← Delegate and Coordinate (🔀)
+  <div class="sub-group">  ← Verify and Govern (🛡️)
+  <div class="sub-group">  ← Extend and Embed (🧩)
   <div class="sub-group">  ← Executive (💼) — executive framing talks inside tech-talks section
 
 <div class="section exec-talks">
@@ -102,5 +104,4 @@ When you add, rename, or deprecate a section:
 2. **Then update this file** — keep the table in sync with what's actually deployed
 3. **Agents pick up the change automatically** — they read this file at runtime
 
-> **Key rule:** The `section:` field in README frontmatter must exactly match a **Section Name** in the table above (case-sensitive).
-> If a README has `section: "Copilot Tools"`, it's placed in the `copilot-tools` sub-group.
+> **Key rule:** The `section:` field in README and slide frontmatter must exactly match a **Section Name** in the table above (case-sensitive). `npm run portfolio:check` rejects mismatches.

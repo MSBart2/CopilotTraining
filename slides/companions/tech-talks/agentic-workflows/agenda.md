@@ -4,7 +4,7 @@ subtitle: "Repository Automation with AI Agents"
 slug: agentic-workflows
 category: tech-talks
 duration: 45
-updated: 2026-08-13
+updated: 2026-09-15
 ---
 
 # GitHub Agentic Workflows

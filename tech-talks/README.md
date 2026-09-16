@@ -130,28 +130,22 @@ The Slide Generator does **not** require a visible slide-mapping section. For ne
 
 ---
 
-## 🗂️ Existing Tech Talks
+## 🗂️ Portfolio
 
-| Directory | Topic |
-|-----------|-------|
-| `agentrc-maturity/` | AgentRC maturity model for AI-ready SDLC |
-| `agent-teams/` | Multi-agent collaboration patterns |
-| `agentic-journey/` | The evolution toward agentic development |
-| `agentic-sdlc/` | AI across the software development lifecycle |
-| `context-engineering-foundations/` | Foundational context engineering patterns |
-| `copilot-chat/` | GitHub Copilot Chat fundamentals |
-| `copilot-chat-internals/` | Under-the-hood: debug view, system prompts |
-| `copilot-cli/` | Terminal-native AI with Copilot CLI |
-| `copilot-hooks/` | Pre/post-processing hooks for Copilot |
-| `copilot-acp/` | Agent Client Protocol for universal AI integration |
-| `copilot-memory/` | Copilot memory and persistent context |
-| `copilot-primitives/` | Core Copilot building blocks |
-| `copilot-sdk/` | Programmatic Copilot integration |
-| `copilot-web/` | Browser and mobile Copilot workflows |
-| `enterprise-patterns/` | Enterprise-scale adoption patterns |
-| `mcp-apps/` | Model Context Protocol applications |
-| `multi-step-tasks/` | Complex multi-step agent tasks |
-| `parallel-execution/` | Parallel agent execution strategies |
-| `terminal-sandboxing/` | Sandboxed terminal execution |
+Practitioner talks use four canonical decision families:
 
-For help choosing which talk to explore, see [DECISION-GUIDE.md](DECISION-GUIDE.md).
+| Family | Question |
+|---|---|
+| Choose and Configure | What context is needed, where should work run, and how should Copilot be configured? |
+| Delegate and Coordinate | What can be delegated, how should work be decomposed, and how much autonomy fits? |
+| Verify and Govern | What evidence permits work to proceed, and who may approve or stop it? |
+| Extend and Embed | When should Copilot gain a capability, interface, protocol boundary, or domain context? |
+
+The canonical talk metadata lives in each `tech-talks/<slug>/README.md`. [portfolio.generated.json](portfolio.generated.json) is the generated inventory used to reconcile READMEs, decks, catalog cards, and companions.
+
+```powershell
+npm run portfolio:generate
+npm run portfolio:check
+```
+
+For talk selection and role-based sequences, see [DECISION-GUIDE.md](DECISION-GUIDE.md).

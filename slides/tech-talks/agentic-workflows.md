@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: GitHub Agentic Workflows
 mdc: true
-section: Agentic Systems
+section: Delegate and Coordinate
 status: active
 updated: 2026-08-11
 ---
