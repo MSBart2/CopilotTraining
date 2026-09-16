@@ -3,16 +3,19 @@ name: Deploy
 description: >
   Pre-flight gate + ship helper for CopilotTraining slides. Regenerates stale
   agenda/PDF companions, refuses to commit when artifacts lag their decks,
-   syncs the homepage index, writes a snarky commit, and pushes it. Use when
-   shipping slide or companion changes to GitHub Pages, or when the user says
-   "deploy", "ship slides", "commit companions", or tries to commit without regenerating
+   syncs the homepage index, writes a snarky commit, and pushes it. Invoke as a
+   subagent when shipping slide or companion changes to GitHub Pages, or when
+   the user says "deploy", "ship slides", "commit companions", or tries to commit without regenerating
   artifacts.
 tools: ["read", "search", "edit/createFile", "edit/editFiles", "execute/runInTerminal", "execute/getTerminalOutput"]
-model: Claude Sonnet 4.6
+model: GPT-5.6 Luna
 argument-hint: Optional scope (e.g. vscode-latest, tech-talks/copilot-cli, --all). Default: check dirty/stale, regen, commit, push.
 ---
 
 # Deploy Agent
+
+Run this workflow in an isolated subagent invocation. The calling agent should
+delegate the complete shipping task here and wait for the final result.
 
 You are the **ship gate** for Slidev decks and their companion handouts
 (agenda + PDF). GitHub Pages **only copies** committed files under

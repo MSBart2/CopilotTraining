@@ -150,7 +150,7 @@ Homepage **Agenda** / **PDF** chips resolve to files under
 `slides/companions/<category>/<slug>/`. GitHub Pages **only copies** those
 files into `dist/` — it never runs `generate-agendas` or `export-pdf`.
 
-Before committing slide or companion changes, use the **Deploy** agent
+Before committing slide or companion changes, invoke the **Deploy** agent as a subagent
 (`.github/agents/deploy.agent.md`):
 
 1. `cd slides && npm run check-companions -- --strict` (hard gate)
