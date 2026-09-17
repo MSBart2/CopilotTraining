@@ -83,22 +83,9 @@ test("talk generators require traceable evidence and audience outcomes", async (
   assert.match(execGenerator, /owner and success signal/i);
 });
 
-test("talk machinery uses live Workbench benches", async () => {
-  const paths = [
-    ".github/agents/tech-talk-generator.agent.md",
-    ".github/agents/tech-talk-slide-generator.agent.md",
-    ".github/agents/slide-generator.agent.md",
-    ".github/skills/workbench/SKILL.md",
-  ];
-  for (const path of paths) {
-    const content = await read(path);
-    assert.doesNotMatch(content, /memories\/infra/, `${path} references the retired infra bench`);
-  }
-});
-
 test("executive review preserves the factual opportunity-framed voice", async () => {
   const review = await read(".github/skills/exec-recipe-review/SKILL.md");
-  assert.match(review, /memories\/exec-talks\/preferences\.md/);
+  assert.match(review, /AGENTS\.md/);
   assert.doesNotMatch(review, /Missing urgency|cost of not acting|cost of delay/i);
 });
 
@@ -121,6 +108,31 @@ test("universal instructions own the education north star", async () => {
     assert.match(instructions, new RegExp(`\\*\\*${lens}\\*\\*`));
   }
   assert.match(instructions, /attempt → inspect → adjust → rerun → validate/);
+  assert.match(instructions, /### Content Fitness Gate/);
+  for (const quality of ["Relevant", "Compelling", "Actionable"]) {
+    assert.match(instructions, new RegExp(`\\*\\*${quality}\\*\\*`));
+  }
+  assert.match(instructions, /### Universal Voice and Prose Contract/);
+  assert.match(instructions, /canonical source for editorial policy/i);
+});
+
+test("live content machinery has no deleted editorial dependencies", async () => {
+  const machinery = [
+    ...workshopMachinery,
+    ...executiveMachinery.slice(0, 3),
+    ".github/agents/tech-talk-generator.agent.md",
+    ".github/agents/tech-talk-slide-generator.agent.md",
+    ".github/skills/deck-recipe-review/SKILL.md",
+  ];
+  for (const path of machinery) {
+    const content = await read(path);
+    assert.doesNotMatch(content, /memories\//, `${path} references the deleted Workbench`);
+    assert.doesNotMatch(
+      content,
+      /(?:read|review|consult|see persona voice guidelines in)\s+`?\.github\/copilot-instructions\.md/i,
+      `${path} treats the deleted root copilot instructions as an editorial source`,
+    );
+  }
 });
 
 test("content planning and recipe review consume the judgment contract", async () => {

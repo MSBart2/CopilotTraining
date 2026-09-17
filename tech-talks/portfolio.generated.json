@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T03:24:35.750Z",
+  "generatedAt": "2026-09-17T13:59:51.348Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 28,
@@ -510,7 +510,7 @@
           "path": "tech-talks/context-engineering/README.md",
           "exists": true,
           "bytes": 23581,
-          "modified": "2026-09-17T03:23:22.365Z"
+          "modified": "2026-09-17T13:31:43.818Z"
         },
         "recipe": {
           "path": "tech-talks/context-engineering/deck.recipe.yml",
@@ -522,7 +522,7 @@
           "path": "slides/tech-talks/context-engineering.md",
           "exists": true,
           "bytes": 23642,
-          "modified": "2026-09-17T03:23:22.389Z"
+          "modified": "2026-09-17T13:31:43.818Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/context-engineering/agenda.md",
@@ -1223,19 +1223,19 @@
           "path": "tech-talks/copilot-primitives/README.md",
           "exists": true,
           "bytes": 43369,
-          "modified": "2026-09-17T03:19:55.221Z"
+          "modified": "2026-09-17T13:31:43.817Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-primitives/deck.recipe.yml",
           "exists": true,
           "bytes": 3871,
-          "modified": "2026-09-17T03:06:48.988Z"
+          "modified": "2026-09-17T13:31:43.838Z"
         },
         "deck": {
           "path": "slides/tech-talks/copilot-primitives.md",
           "exists": true,
           "bytes": 36359,
-          "modified": "2026-09-17T03:16:55.277Z"
+          "modified": "2026-09-17T13:31:43.815Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.md",
@@ -1681,7 +1681,7 @@
           "path": "tech-talks/multi-agent-coordination/README.md",
           "exists": true,
           "bytes": 26264,
-          "modified": "2026-09-17T03:19:55.218Z"
+          "modified": "2026-09-17T13:31:43.819Z"
         },
         "recipe": {
           "path": "tech-talks/multi-agent-coordination/deck.recipe.yml",
@@ -1812,7 +1812,7 @@
           "path": "tech-talks/surfaces/README.md",
           "exists": true,
           "bytes": 34032,
-          "modified": "2026-09-17T03:19:55.218Z"
+          "modified": "2026-09-17T13:31:43.817Z"
         },
         "recipe": {
           "path": "tech-talks/surfaces/deck.recipe.yml",
@@ -1877,7 +1877,7 @@
           "path": "tech-talks/vscode-latest/README.md",
           "exists": true,
           "bytes": 41568,
-          "modified": "2026-09-17T03:19:55.219Z"
+          "modified": "2026-09-17T13:31:43.817Z"
         },
         "recipe": {
           "path": "tech-talks/vscode-latest/deck.recipe.yml",

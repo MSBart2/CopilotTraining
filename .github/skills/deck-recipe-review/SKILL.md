@@ -57,7 +57,7 @@ From these, extract:
 
 ## Primary Analysis
 
-Dispatch all three agents simultaneously. Each gets the SAME full context block (see template below) with a different cognitive role.
+Perform one primary structural analysis using the complete context block below. The independent review gate that follows provides the separate adversarial perspective.
 
 ### Context Block Template
 

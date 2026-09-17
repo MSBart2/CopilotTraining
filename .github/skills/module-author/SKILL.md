@@ -55,9 +55,9 @@ Each module README.md (~100-150 lines) contains:
 
 ---
 
-## Core Principles (from copilot-instructions.md)
+## Core Principles
 
-Before generating, review `.github/copilot-instructions.md` for:
+Before generating, review `AGENTS.md` for the canonical education north star, content fitness gate, voice and prose contract, evidence discipline, and formatting requirements. Read `workshop/00-orientation/PERSONAS.md` and its linked profiles for:
 
 - Training philosophy (Syntax Wizards → Markdown Whisperers)
 - Persona characteristics and voice guidelines
@@ -121,7 +121,7 @@ Use [TEMPLATE.md](TEMPLATE.md) as the base structure. The template includes all 
 - Write one outcome-focused statement per persona
 - Include specific metrics or measurable improvements
 - Show how capability delivers value to each role
-- See persona voice guidelines in `.github/copilot-instructions.md`
+- See persona voice guidelines in `workshop/00-orientation/PERSONAS.md` and its linked profiles
 
 **3. Exercise Planning Table (2-3 exercises)**
 

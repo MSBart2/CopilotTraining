@@ -56,10 +56,7 @@ When given a URL or module requirements:
    - Present the audience need, sourced capability truth, honest boundary, proposed exercises, and evidence plan
    - Wait for approval unless the user explicitly asks to skip review
 
-4. **Query the Workbench:**
-   - After confirming the target README is not archived, read relevant files under `memories/workshop/`
-
-5. **Plan exercises with evidence:**
+4. **Plan exercises with evidence:**
    - 2-3 hands-on exercises per module
    - Each with lead persona (⭐) and support personas (🤝)
    - A measured baseline, target hypothesis, and learner-run validation

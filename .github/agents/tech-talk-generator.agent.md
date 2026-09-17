@@ -139,9 +139,7 @@ After the user responds:
 1. Incorporate the user's selected outline, toggle choices, or structural edits
 2. Read `tech-talks/TEMPLATE.md` for complete structure (can be done in parallel with research)
    - If the target talk already has `research.md`, use it as the primary verified factual source and reconcile newer first-party evidence against it
-3. **Query Memory** — Read `memories/tech-talks/facts.md` and `discoveries.md` for confirmed pipeline and framing patterns. If the topic maps to a content bench (e.g., `agent_architecture`), read that drawer too. Apply before drafting any section.
-   3a. **Workbench Update (session end)** — After the README and recipe are written, run the **Content Change → Workbench Update Protocol** in `.github/skills/workbench/SKILL.md`. Pay particular attention to question 5 (topic-specific gate): if this session produced a non-obvious framing or structural decision specific to this talk's content — something a future agent reading only the README would miss — write a short entry to the matching topic bench. Pipeline and tech-talk framing lessons go to `tech-talks`; slide/build lessons go to `slides`. If neither applies, write nothing.
-4. Frame ONE clear question this talk answers
+3. Frame ONE clear question this talk answers
 5. Verify content fitness rubric (all must be 🟢 before proceeding)
 6. Download images if found: `python3 scripts/download-images.py <source_url> <output_dir> --limit 7`
    — copies into `images/` subdirectory and generates a markdown snippet for the Visual Assets section

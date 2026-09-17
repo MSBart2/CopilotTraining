@@ -52,7 +52,6 @@ For every candidate announcement:
 1. Confirm `tech-talks/<topic>/README.md` exists and is not archived.
 2. Read the README frontmatter and major section markers.
 3. Read `deck.recipe.yml` when present to understand current editorial intent.
-4. Read relevant Workbench topic coverage maps when the update touches a cross-cutting topic.
 
 ## Triage
 

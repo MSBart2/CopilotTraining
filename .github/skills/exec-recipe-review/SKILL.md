@@ -36,12 +36,12 @@ Read the exec-talk README, analyze its structure with a primary reviewer plus an
 
 ## Pre-Flight: Gather Source Material
 
-Before starting the review, read BOTH of these. The Rubber Duck brief must include the full context — the independent reviewer must not be expected to read files itself.
+Before starting the review, read all three sources. The Rubber Duck brief must include the full context — the independent reviewer must not be expected to read files itself.
 
 ```
 1. tech-talks/exec-<topic>/README.md                                     — full section content + key metrics
 2. .github/skills/exec-recipe-review/EXEC-RECIPE-TEMPLATE.yml            — recipe schema (all valid fields)
-3. memories/exec-talks/preferences.md                                    — mandatory voice and framing rules
+3. AGENTS.md                                                             — canonical editorial policy and content fitness gate
 ```
 
 Do **not** read the existing `slides/tech-talks/exec-<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten and should not constrain the review.
@@ -57,7 +57,7 @@ From these, extract:
 
 ## Primary Analysis
 
-Dispatch all three agents simultaneously. Each gets the SAME full context block (see template below) with a different cognitive role.
+Perform one primary structural analysis using the complete context block below. The independent review gate that follows provides the separate adversarial perspective.
 
 ### Context Block Template
 

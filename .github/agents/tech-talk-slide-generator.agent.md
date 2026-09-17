@@ -132,8 +132,7 @@ Template.md was already loaded in pre-flight for structural component schemas. I
 Now read everything that Phase B needs — **all in one parallel pass before writing any body slides**. Issue all reads simultaneously, not sequentially:
 
 - **`slides/tech-talks/template.md`** — already loaded in pre-flight for structural schemas; re-read now to focus on the Tier-1 body component schemas you are about to write. Do not read `slides/TEMPLATE.md`.
-- **Available drawers under `memories/slides/`** — confirmed build rules and gotchas. Also read `memories/tech-talks/facts.md`; if the topic has a bench entry (e.g., `memories/agent_architecture/facts.md`), read that too.
-- **Topic bench `preferences.md`** — if a `memories/{topic}/preferences.md` or `memories/{section}/preferences.md` exists (e.g., `memories/exec-talks/preferences.md`), read it now. Voice, tone, and framing rules live here and override default assumptions. For exec-talks this is **mandatory** — it contains banned patterns and preferred voice rules that must be applied to every prop value.
+- **`AGENTS.md`** — apply the canonical editorial policy to every audience-facing prop value.
 - **`tech-talks/{topic}/README.md`** — full read. Extract: core question, personas, before/after comparisons with metrics, key capabilities ranked by novelty and audience impact, references frontmatter.
 
 Read all of these at the same time. Do not read one, then the next — fetch them all before synthesizing anything.
@@ -307,16 +306,6 @@ After the deck builds cleanly:
 ## Step 5: Sync dates
 
 Run `node slides/scripts/sync-index-dates.mjs` from `slides/` to update the "NEW" badge.
-
----
-
-## Step 6: Workbench update (session end)
-
-Before handing off, run the **Content Change → Workbench Update Protocol** in `.github/skills/workbench/SKILL.md`.
-
-- If the session changed content framing, audience targeting, ordering constraints, or why an alternative was rejected → write to the matching topic bench (e.g., `memories/agent_architecture/discoveries.md`).
-- If changes were Slidev/component patterns only → write to `memories/slides/`.
-- If neither applies → write nothing.
 
 ---
 

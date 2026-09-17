@@ -29,7 +29,6 @@ Invoke existing repository workflows rather than reproducing them:
 2. `deck-recipe-refresh` only when `recipeReview.required` is true
 3. Existing-deck patch for `slideImpact: patch`; Tech Talk Slide Generator only for `regenerate` or `replace-demo`
 4. `build-slidev-decks` for single-deck validation when slides changed
-5. `workbench` for relevant cross-talk context and end-of-session learning
 
 ## Queue Selection
 
@@ -62,8 +61,7 @@ Before generating a plan:
 2. Read frontmatter and stop if `status: archived`.
 3. Read major README sections and `deck.recipe.yml` when present.
 4. Read every selected ledger event, materiality, reason, and source from the latest routing report.
-5. Read relevant Workbench topic maps for cross-cutting subjects.
-6. Check for an existing `content.refresh.yml`:
+5. Check for an existing `content.refresh.yml`:
    - Merge still-relevant uncompleted evidence.
    - Preserve validated work already represented in the README.
    - Overwrite stale or superseded planning data using the current template.

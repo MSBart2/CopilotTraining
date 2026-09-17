@@ -461,22 +461,9 @@ Before marking this talk as complete:
 
 ### Voice and Tone
 
-- **Optimistic curiosity**: Lead with what's possible, not what's broken. Frame as discovery, not rescue.
-- **Respectful of audience expertise**: Assume readers are professionals who've been successful with existing approaches
-- **Illumination over comparison**: Show the new path directly; avoid "before was bad, after is good" framing
-- **Good news, not better news**: Tell the story of what's now achievable, not "this is better than the old way"
-- **Honest about boundaries**: Acknowledge limitations as useful guardrails, not failures
-- **Practical over theoretical**: Focus on "here's how" with concrete examples
+Apply the canonical **Universal Voice and Prose Contract** and **Content Fitness Gate** in `AGENTS.md`.
 
-**Language to avoid:**
-- Alarmist framing: "The Maintenance Tax", "The Hidden Cost", "What's Broken"
-- Deficit language: "Falls Short", "Inadequate", "Frustrating", "Pain Points"
-- Comparative negativity: "Unlike the old way", "No longer need to suffer through"
-
-**Language to embrace:**
-- Possibility framing: "What this unlocks", "Now possible", "This enables"
-- Discovery language: "Explore", "Try", "Experiment with"
-- Direct positive: "Here's how it works", "This is what you get"
+For practitioner tech talks, keep the register expert-to-expert and technical. Use concrete implementation examples, explain how and why the mechanism works, and give tradeoffs enough specificity to support a real engineering decision.
 
 ---
 

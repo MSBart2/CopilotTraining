@@ -93,7 +93,7 @@ The reference implementation for correct exec-talk voice is `tech-talks/exec-lab
 
 - Resolve the target under `tech-talks/exec-<topic>/`
 - If a README already exists, read its frontmatter first; stop immediately when `status: archived`
-- Before drafting, read `memories/exec-talks/preferences.md` and `memories/exec-talks/facts.md`; these repository-confirmed voice and structure decisions are mandatory
+- Before drafting, apply the universal editorial policy in `AGENTS.md` and the executive-specific voice rules in this agent
 
 ### 1. Research (when URL or topic provided)
 

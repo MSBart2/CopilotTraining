@@ -1,7 +1,5 @@
 # CopilotTraining Agent Instructions
 
-> **Quick reference:** `AGENTS.aaak` — condensed orientation for agents (sections, slide rules, personas, gotchas). Load it at session start for fast context without reading all the full docs.
-
 ---
 
 ## Repository Structure
@@ -48,6 +46,30 @@ Apply the contract by format:
 
 Avoid feature inventories that do not improve judgment, frictionless success stories, conversion narratives, and claims whose confidence is unclear.
 
+### Content Fitness Gate
+
+Every published talk or module must be all three:
+
+- **Relevant** — serves a named audience, a realistic workflow, and a decision that matters now.
+- **Compelling** — earns attention through a useful insight, honest tradeoff, or demonstration beyond product description.
+- **Actionable** — leaves the audience with a concrete artifact or next step, observable evidence, and a way to apply the practice in their own work.
+
+Revise or reconsider content that misses any dimension. Feature coverage, novelty, and presentation polish cannot compensate for a weak decision or missing transfer.
+
+### Universal Voice and Prose Contract
+
+`AGENTS.md` is the canonical source for editorial policy across workshops, practitioner tech talks, executive talks, and slides. Format-specific agents and templates may add audience or artifact constraints, but must not weaken or contradict this contract.
+
+- **Capable peers** — write for professionals calibrating a practice. Respect successful existing approaches and avoid conversion narratives.
+- **Optimistic curiosity** — lead with what becomes possible. Use opportunity and discovery framing without manufacturing urgency.
+- **Direct-positive prose** — state the desired behavior or useful claim directly. Avoid rhetorical flips such as "not X, but Y," comparative negativity, and deficit framing.
+- **Practical specificity** — prefer concrete decisions, artifacts, examples, and observable checks over abstractions or feature inventories.
+- **Honest boundaries** — name limitations, tradeoffs, failure signals, and escalation paths as useful operating constraints.
+- **Evidence discipline** — distinguish sourced facts, observed results, estimates, and proposed targets. Never invent metrics or present a target as an achieved result.
+- **Clear language** — front-load the point, use active voice, keep sentences purposeful, and remove prose that exists only to sound impressive.
+
+Avoid alarmism, shame, threat framing, unsupported superlatives, frictionless success stories, and claims whose confidence is unclear. Audience-specific refinements remain local: practitioner content stays expert-to-expert, executive content stays third-person and decision-oriented, and workshops preserve authentic persona voice through the repository persona source.
+
 **Archived content is frozen.** Any file with `status: archived` in frontmatter must never be modified by any agent. Stop and inform the user.
 
 **All content files require frontmatter:**
@@ -58,28 +80,6 @@ updated: YYYY-MM-DD
 ```
 
 Tech talks and exec talks also require `section:` matching a valid value from `slides/SECTIONS.md`.
-
----
-
-## Tone and Voice
-
-Respectful · Practical · Honest · Outcome-based. Full voice rules, persona quick reference, and before-submit checklist: `AGENTS.aaak`.
-
----
-
-## Workbench — Project Memory
-
-Institutional knowledge lives in `memories/` as Markdown files organized by **bench** (domain folder) and **drawer** (typed file). **Cardinal rule: the Workbench suggests; repo files confirm.**
-
-Agents query the relevant drawer after pre-flight gates complete, before content generation. Writes happen at session END only, after one-shot user approval. Full usage patterns: `@workbench` skill.
-
-**When anything doesn't go as expected — a command fails, a convention is unclear, behavior is surprising, or you're about to iterate through guesses — query the Workbench before proceeding.** It contains verified solutions, known gotchas, and prior decisions. Use `@workbench` as your first response to uncertainty, not a last resort.
-
----
-
-## Agent Invocation Guidelines
-
-Keep subagent prompts minimal — agents already have this file and their own `.agent.md` instructions. Full guidance: `AGENTS.aaak`.
 
 ---
 

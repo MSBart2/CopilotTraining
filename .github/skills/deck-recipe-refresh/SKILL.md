@@ -100,4 +100,3 @@ After any slide change:
 1. Run the single-deck build.
 2. Run `node slides/scripts/sync-index-dates.mjs` from the repository root.
 3. Update `content.refresh.yml` validation fields.
-4. Apply the Workbench end-of-session update protocol when a non-obvious editorial decision should persist.

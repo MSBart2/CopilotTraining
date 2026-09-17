@@ -29,8 +29,7 @@ Apply the universal contract in `AGENTS.md`. Preserve the source's selected judg
 5. **Read category guidance** — For workshop decks, read `slides/workshop/template.md`. For executive decks, use the shared `slides/TEMPLATE.md`, the reviewed recipe, and a `slides/tech-talks/exec-*.md` exemplar; there is no separate executive template file.
 6. **Read visual exemplar** — Read the first 200 lines of an existing same-category deck as a visual reference for cockpit content slides.
 7. **Read Sections** — Read `slides/SECTIONS.md` for the authoritative section → icon → container mapping.
-8. **Query memory** — Read available drawers under `memories/slides/` for confirmed build rules and structural gotchas. For executive decks, also read `memories/exec-talks/preferences.md` and `facts.md`.
-9. **Require the executive recipe** — For `tech-talks/exec-*`, read `tech-talks/exec-<topic>/exec.recipe.yml` and use `sectionOrder`, `sectionModes`, `highlightMoments`, `arcToc`, `arcNarrative`, and `preamble`. If it is missing, stop: "Run the exec-recipe-review skill before generating executive slides." Never infer an executive decision journey from headings alone.
+8. **Require the executive recipe** — For `tech-talks/exec-*`, read `tech-talks/exec-<topic>/exec.recipe.yml` and use `sectionOrder`, `sectionModes`, `highlightMoments`, `arcToc`, `arcNarrative`, and `preamble`. If it is missing, stop: "Run the exec-recipe-review skill before generating executive slides." Never infer an executive decision journey from headings alone.
 
 ---
 
@@ -127,12 +126,6 @@ Run `node slides/scripts/sync-index-dates.mjs` from `slides/`.
 
 - New slides: `status: active`, `updated: {today YYYY-MM-DD}`, `section: {value from SECTIONS.md}`
 - Updated slides: update `updated:` to today
-
----
-
-## Step 7: Workbench update (session end)
-
-Before handing off, run the **Content Change → Workbench Update Protocol** in `.github/skills/workbench/SKILL.md`.
 
 ---
 

@@ -91,8 +91,7 @@ Use the `module-author` skill to generate the module README.md:
 
 1. **Load the template:** Read `.github/skills/module-author/TEMPLATE.md`
 2. **Review requirements:** Check `AGENTS.md` for voice, metrics, and formatting rules
-3. **Query the Workbench:** After confirming the target README is not archived, read `memories/workshop/` for relevant facts and preferences before drafting
-4. **Create comprehensive planning table:** Each exercise row must include:
+3. **Create comprehensive planning table:** Each exercise row must include:
    - Exercise number and filename link
    - Lead persona (⭐) and support personas (🤝)
    - Problem with specific metrics
