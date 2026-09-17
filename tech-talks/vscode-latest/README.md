@@ -8,7 +8,7 @@ duration: 50
 format: release-brief
 decision: "Which recent VS Code Copilot changes alter a durable workflow decision?"
 prerequisites: [surfaces]
-related: [context-engineering, agent-dev-loop, multi-agent-coordination]
+related: [copilot-primitives, agent-dev-loop, multi-agent-coordination]
 references:
   - url: https://code.visualstudio.com/updates/v1_132
     label: "VS Code release notes: August 5, 2026 (v1.132)"

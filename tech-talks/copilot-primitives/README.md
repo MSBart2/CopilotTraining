@@ -1,14 +1,14 @@
 ---
-status: archived
-updated: 2026-09-15
+status: active
+updated: 2026-09-16
 section: "Choose and Configure"
-audience: [developer, team-lead]
+audience: [developer, team-lead, platform-engineer]
 level: foundational
-duration: 40
+duration: 50
 format: core-talk
 decision: "How should shared Copilot behavior be encoded?"
 prerequisites: [surfaces]
-related: [copilot-memory, copilot-chat-internals, copilot-plugins]
+related: [agent-dev-loop, copilot-hooks, enterprise-patterns]
 references:
   - url: https://code.visualstudio.com/docs/copilot/copilot-customization
     label: "Customize AI in Visual Studio Code"
@@ -47,7 +47,7 @@ references:
 > **The Question This Talk Answers:**
 > *"How can I make GitHub Copilot understand my codebase better?"*
 
-**Duration:** 30 minutes | **Target Audience:** Developers / Engineering Teams
+**Duration:** 50 minutes | **Target Audience:** Developers / Team Leads / Platform Engineers
 
 ---
 
@@ -57,7 +57,7 @@ references:
 |-----------|-----------|-------|
 | **Relevant** | 🟢 High | Every team using Copilot asks this exact question — these 4 primitives are the official answer |
 | **Compelling** | 🟢 High | Transforms Copilot from a generic coding assistant to a team-specific development partner through a progressive layering model |
-| **Actionable** | 🟢 High | Create your first instructions file in 5 minutes, see immediate improvement. Each primitive has production-ready examples |
+| **Actionable** | 🟢 High | Build and inspect one production-ready example for every primitive, then verify loading and output independently |
 
 **Overall Status:** 🟢 Ready to use
 
@@ -173,15 +173,48 @@ Use **Manage Language Models** in VS Code when the decision is which provider or
 
 - ⚠️ **Copy-pasting context into every prompt**: Instructions eliminate this repetitive work → Saves minutes per interaction, hundreds of hours per year across a team
 - ⚠️ **One-size-fits-all AI interaction**: Different tasks need different context levels → A planning task needs different tools than an implementation task
-- ⚠️ **Treating Copilot configuration as optional**: Default Copilot is 10x less effective than configured Copilot → Every team should at minimum have instructions
+- ⚠️ **Leaving shared conventions implicit**: Generic output forces the same corrections to recur → Encode stable conventions in the smallest fitting primitive
 
 ### Move Against (Active Resistance Required)
 
-- 🛑 **Over-engineering with agents first**: 80% of teams get most value from instructions alone → Premature complexity wastes setup time and can even reduce quality
-- 🛑 **Massive instruction files**: Keep instructions under 2 pages — bloated files consume context that should be used for your actual question → Quality degrades when instructions exceed token budget
+- 🛑 **Over-engineering with agents first**: Start with the smallest artifact that solves the repeated problem → Add orchestration after the workflow and evidence are stable
+- 🛑 **Massive instruction files**: Keep instructions concise and scoped → Preserve context capacity for the request, relevant code, and tool results
 - 🛑 **Task-specific content in instructions**: Instructions should be general conventions, not step-by-step workflows → Use prompts for task-specific workflows instead
 
 > **Example Transformation:** Before: Developer types "Add a user endpoint" and gets generic Express boilerplate with `var`, no types, and `console.log` error handling. After: Same prompt produces TypeScript endpoint with Prisma queries, custom error classes, JSDoc comments, and co-located test file — because instructions define the conventions and a prompt encodes the scaffolding workflow.
+
+---
+
+## Place, Load, and Prove the Context
+
+The primitive is only one part of the design. Before creating a file, classify the context so a stable team rule does not become a personal memory, a one-request detail does not become permanent policy, and a specialized role does not receive unnecessary tools.
+
+| Decision | Question | Example |
+|---|---|---|
+| **Owner** | Who may maintain and approve this context? | A code owner reviews repository instructions; an individual controls a personal preference |
+| **Lifetime** | How long should it remain useful? | One request, repeated task, repository lifetime, or organizational policy cycle |
+| **Selector** | Which requests should receive it? | Whole repository, matching files, explicit `/command`, relevant task, or selected agent |
+| **Evidence** | What observable signal proves success? | Loaded customization, tool trace, test result, diff, and required reviewer approval |
+
+Shared, repeated behavior proceeds into the primitive decision tree below. One-request facts stay in the request. Personal preferences stay user-controlled. Sensitive data, credentials, customer records, and production payloads stay outside prompts, memory, and repository examples.
+
+### Loaded Does Not Mean Followed
+
+Treat the evidence as a sequence of separate claims:
+
+1. **Eligible**: the selector matches the request.
+2. **Loaded**: the client reports that the customization was included.
+3. **Executed**: the expected files and tools were used.
+4. **Validated**: tests, type checks, or other deterministic checks pass.
+5. **Accepted**: the accountable reviewer approves the result.
+
+The References panel or diagnostic trace can prove delivery. It cannot prove that every instruction was followed or that the generated artifact is acceptable.[^16][^17]
+
+### Repair the First Broken Boundary
+
+When configured behavior fails, inspect the sequence in order: confirm the target file and request, check selector eligibility, inspect loaded customizations and tool activity, repair the first failed boundary, then rerun independent checks. Promote the context only after repeated value and owner approval.
+
+This verification loop keeps the tutorial practical: **place the context, encode it with the smallest primitive, inspect delivery, and prove the result.**
 
 ---
 
@@ -228,7 +261,6 @@ Q: What kind of customization do you need?
 | **Best For** | Repo constitution | File-pattern precision | Commands, tests, local workflow rules | Proven team recipes | Graduated runnable packs | Role-based personas |
 | **Portability** | GitHub / VS Code guidance | GitHub / VS Code guidance | Cross-agent/open convention | VS Code | VS Code + CLI + coding agent | VS Code |
 | **Typical Selector** | "Always in this repo" | "Only for these files" | "Only in this directory tree" | "When I run this command" | "When this task appears" | "When I want this persona" |
-| **Setup Time** | 5 minutes | 10 minutes | 10 minutes | 10 minutes | 15 minutes | 20 minutes |
 
 ---
 
@@ -336,8 +368,8 @@ In a polyrepo, a single root `AGENTS.md` may be enough. In a monorepo, nested fi
 
 **Key Points:**
 - Instructions are always-on — no manual activation required
-- Keep under 2 pages for optimal performance (context budget)
-- Personal instructions > repository instructions > organization instructions (priority order)
+- Keep instructions concise enough to leave room for the request, relevant code, and tool results
+- Remove conflicting guidance instead of depending on an assumed precedence order
 - Use the `/init` command to auto-generate instructions from your workspace[^2]
 - Use `AGENTS.md` when a directory needs local commands, tests, or cross-agent workflow guidance[^13]
 
@@ -397,7 +429,6 @@ Prompts can reference instructions files via Markdown links, ensuring consistenc
 ---
 tools: ['editFiles', 'search', 'readFile']
 agent: agent
-model: Claude Sonnet 4 (copilot)
 ---
 ```
 
@@ -549,8 +580,7 @@ This creates guided, sequential workflows: Plan → Implement → Review. Each a
 
 The database agent in [`examples/database.agent.md`](examples/database.agent.md) demonstrates a fully specified agent with:
 - Constrained tools (terminal, code_editor, database_query)
-- Specific model selection (claude-sonnet-4)
-- Temperature setting (0.3 for consistency)
+- A deliberate model selection boundary
 - Detailed persona instructions covering schema design, migrations, and query optimization
 
 **Key Points:**
@@ -582,10 +612,10 @@ Most teams should follow this progression:
 | Mistake | Why It Fails | What to Do Instead |
 |---------|-------------|-------------------|
 | Start with agents | Over-engineers simple problems | Start with instructions |
-| 5-page instructions file | Consumes context budget for actual work | Keep under 2 pages |
+| Oversized instructions file | Consumes context budget for actual work | Keep only stable, broadly useful rules |
 | Task-specific instructions | Bloats every request with irrelevant context | Use prompts for tasks |
 | Duplicating rules across files | Creates maintenance burden and conflicts | Reference instructions from prompts |
-| Skipping configuration entirely | Leaves 80% of Copilot's value unused | Spend 5 minutes on instructions |
+| Skipping configuration entirely | Repeats the same avoidable corrections | Start with one concise instructions file |
 
 ---
 
@@ -607,7 +637,7 @@ applyTo: "src/web/**/*.tsx"
 - Use React Query for data fetching
 ```
 
-**Outcome:** 40% reduction in code review style comments. Copilot matches the right framework conventions automatically.
+**Evidence:** Generate one change in each area and inspect whether the matching instruction file loaded and the framework-specific checks passed.
 
 ---
 
@@ -617,7 +647,7 @@ applyTo: "src/web/**/*.tsx"
 
 **The Solution:** `/test` prompt file generates tests following team standards. Test-runner skill analyzes failures and suggests fixes using project-specific patterns.
 
-**Outcome:** New developers write conformant tests from day one. 25% faster debugging of test failures through skill-guided analysis.
+**Evidence:** Compare generated tests against the team template, run the suite, and review whether failures are explained using repository-specific patterns.
 
 ---
 
@@ -627,7 +657,7 @@ applyTo: "src/web/**/*.tsx"
 
 **The Solution:** Database admin agent with constrained tools enforces Third Normal Form, generates up/down migrations, suggests indexes, and provides EXPLAIN ANALYZE.
 
-**Outcome:** Zero production migration rollbacks in 6 months. 60% faster schema review process.
+**Evidence:** Require migration checks, rollback instructions, query-plan evidence, and database-owner approval before acceptance.
 
 ---
 
@@ -637,7 +667,7 @@ applyTo: "src/web/**/*.tsx"
 
 **The Solution:** Instructions document architecture and conventions. `/onboard` prompt provides guided codebase tour. Copilot answers "where is X?" questions correctly from day one.
 
-**Outcome:** Onboarding time reduced from 2 weeks to 3 days for first meaningful commit.
+**Evidence:** Ask a new contributor to locate, change, test, and explain one bounded feature using only committed guidance; record the corrections still required.
 
 ---
 
@@ -671,7 +701,7 @@ applyTo: "src/web/**/*.tsx"
 ### Complementary Features
 
 - **[Copilot Chat: Context Mastery](../copilot-chat/)** — How to use #file, @workspace, and #codebase for per-request context alongside always-on instructions
-- **[Context Engineering Foundations](../context-engineering-foundations/)** — The deeper principles behind why context shapes AI output quality
+- **Place, Load, and Prove the Context** — The verification sequence in this talk covers ownership, selectors, delivery evidence, and acceptance
 - **[MCP Servers](../mcp-apps/)** — Extend Copilot with external tool access via Model Context Protocol — complements agents with external data sources
 
 ### Decision Flow
@@ -681,7 +711,7 @@ applyTo: "src/web/**/*.tsx"
 ```
 Q: What's your actual goal?
 ├─ Better per-request context → See: Copilot Chat (../copilot-chat/)
-├─ Understanding context theory → See: Context Engineering (../context-engineering-foundations/)
+├─ Placing and verifying shared context → Use: Place, Load, and Prove above
 ├─ External tool integration → See: MCP Servers (../mcp-apps/)
 └─ Full workflow automation → Combine: This talk + MCP Servers
 ```
@@ -707,6 +737,8 @@ See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for complete navigation help.
 [^13]: **AGENTS.md open format** — https://agents.md/ — Open, cross-agent convention for setup, testing, and directory-local coding agent guidance
 [^14]: **VS Code release notes: June 2026 (v1.122)** — https://code.visualstudio.com/updates/v1_122 — Provider configuration, Stable Custom Endpoint, utility models, and authentication boundaries
 [^15]: **Configure language models in VS Code** — https://code.visualstudio.com/docs/copilot/customization/language-models — Manage Language Models and bring-your-own-key configuration
+[^16]: **Chat Debug View** — https://code.visualstudio.com/docs/copilot/chat/chat-debug-view — Inspect request context, tool calls, and response details while diagnosing customization delivery
+[^17]: **Troubleshoot AI in VS Code** — https://code.visualstudio.com/docs/copilot/troubleshooting — Current diagnostic workflow and boundaries for Copilot behavior
 
 ---
 

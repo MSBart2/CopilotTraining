@@ -9,8 +9,8 @@ transition: slide-left
 title: Copilot Context Engineering
 mdc: true
 section: Choose and Configure
-status: active
-updated: 2026-09-15
+status: archived
+updated: 2026-09-16
 ---
 
 <script setup>

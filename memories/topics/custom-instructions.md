@@ -14,24 +14,24 @@ Custom instructions let developers and teams steer Copilot's behavior without mo
 
 | Artifact | Depth | Notes |
 |---|---|---|
-| `slides/tech-talks/context-engineering.md` | Primary | Canonical owner for context placement, selector scope, composition, and delivery evidence |
+| `slides/tech-talks/copilot-primitives.md` | Primary | Canonical practical guide for instruction placement, selector scope, composition, examples, and delivery evidence |
 | `slides/tech-talks/copilot-hooks.md` | Major section | Hooks fire before/after instruction processing; used to validate and augment instructions |
-| `slides/tech-talks/context-engineering.md` | Diagnostics | Context delivery inspection and troubleshooting are part of the canonical decision model |
 | `slides/tech-talks/enterprise-patterns.md` | Secondary | Org-level instruction governance — who owns `.github/copilot-instructions.md`, versioning |
 | `workshop/01-instructions/` | Primary | Hands-on workshop: writing effective instructions, prompt files, testing |
+| `slides/tech-talks/context-engineering.md` | Archived | Historical context model; redirects to `copilot-primitives` |
 
 ---
 
 ## Framing notes
 
-- **`context-engineering`** is the canonical reference for placing, composing, and verifying instruction context
+- **`copilot-primitives`** is the canonical reference for choosing, creating, and verifying instruction context alongside prompts, skills, and agents
 - **`copilot-hooks`** treats instructions as something hooks can intercept and modify — it assumes instruction familiarity and focuses on programmatic control
 - **`enterprise-patterns`** treats instructions as governance artifacts — ownership, review process, org-wide standardization
-- The distinction between repository-owned and user-owned instruction sources matters for enterprise deployment; `enterprise-patterns` and `context-engineering` are the primary places this is taught
+- The distinction between repository-owned and user-owned instruction sources matters for enterprise deployment; `enterprise-patterns` and `copilot-primitives` are the primary places this is taught
 - Prompt files (`.prompt.md`) are a newer addition and may not be consistently covered across all talks — check for staleness
 
 ## Drift risks
 
 - The VS Code settings key (`github.copilot.chat.codeGeneration.instructions`) has changed between releases; `vscode-latest` may contain updated names
 - The file location for prompt files has shifted (`.github/prompts/` vs other locations) — verify against current docs when updating any talk that covers them
-- Diagnostic surfaces change with Copilot and VS Code releases; reverify the inspection path when updating `context-engineering`
+- Diagnostic surfaces change with Copilot and VS Code releases; reverify the inspection path when updating `copilot-primitives`

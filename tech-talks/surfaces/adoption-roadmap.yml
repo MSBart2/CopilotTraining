@@ -35,7 +35,7 @@ phases:
     corePath:
       - workshop/01-instructions
       - workshop/02-agent-plan-mode
-      - tech-talks/context-engineering
+      - tech-talks/copilot-primitives
       - tech-talks/agent-dev-loop
       - tech-talks/pr-trust-stack
     exitEvidence:

@@ -1,6 +1,6 @@
 ---
-status: active
-updated: 2026-09-15
+status: archived
+updated: 2026-09-16
 portfolioState: deployed
 section: "Choose and Configure"
 audience: [developer, team-lead, platform-engineer]

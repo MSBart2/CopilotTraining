@@ -9,7 +9,7 @@ duration: 55
 format: core-talk
 decision: "When should work be split across agents, and how should isolated workstreams be steered and integrated?"
 prerequisites: [agent-dev-loop]
-related: [agent-dev-loop, agentic-lifecycle, agentic-sdlc, context-engineering]
+related: [agent-dev-loop, agentic-lifecycle, agentic-sdlc, copilot-primitives]
 references:
   - url: https://code.visualstudio.com/docs/copilot/agents/subagents
     label: "Subagents in VS Code"
@@ -481,7 +481,7 @@ Failed integration is useful evidence about the split. Repeated overlap points t
 - **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** - coordinates recurring repository judgments through evidence-gated handoffs.
 - **[The Agent Dev Loop](../agent-dev-loop/)** - turns one solved task into reusable repository capability before work is split.
 - **[Agentic SDLC](../agentic-sdlc/)** - extends coordination into repository policy, CI, review, and delivery systems.
-- **[Copilot Context Engineering](../context-engineering/)** - places and verifies the context each workstream needs.
+- **[Copilot Configuration Primitives](../copilot-primitives/)** - builds and verifies the instructions, prompts, skills, and agents each workstream needs.
 
 ---
 

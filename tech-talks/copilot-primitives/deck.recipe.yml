@@ -1,39 +1,32 @@
-# VERDICT: Prompts precede Skills. Teams solve a repeated task as a /command
-# first, then graduate the proven workflow into a skill the agent can load.
-# Four live /create-* demos are the teaching spine, not product news.
-version: 2
+# Reviewed 2026-09-16: preserve the four-primitives spine and add a compact
+# place-load-prove preamble. Independent review moved the live climax to skill graduation.
+version: 1
 deck:
   title: "Copilot Configuration Primitives: Making AI Understand Your Codebase"
-  subtitle: "Instructions · Custom Prompts · Skills · Agents"
+  subtitle: "Instructions, Custom Prompts, Skills, and Agents"
   tagline: "Encode the convention once. Graduate the workflow when it is proven."
 
   agenda:
-    - title: "Instructions First"
-      takeaway: "Write a small always-on file, then let /init draft the rest."
-      whyItMatters: "Every later primitive inherits this baseline."
-    - title: "Prompts as Solved Workflows"
-      takeaway: "Turn a repeated task into a team /command with /create-prompt."
-      whyItMatters: "Most teams should solve the problem as a prompt before they automate it."
-    - title: "Skills as Proven Capabilities"
-      takeaway: "Graduate a working prompt into a skill with scripts and templates."
-      whyItMatters: "The agent can then load the same workflow without a human slash command."
-    - title: "Agents as Constrained Personas"
-      takeaway: "Compose the stack into a role with tool boundaries and a handoff."
-      whyItMatters: "Constraint is the architecture — not a workaround."
+    - title: "Encode the smallest fitting primitive"
+      takeaway: "See one shared convention become repository, path-scoped, and directory guidance."
+      whyItMatters: "Teams choose the correct file and stop repeating stable context in each request."
+    - title: "Graduate solved work into capability"
+      takeaway: "Turn a working chat into a shared command, then add scripts and templates as a skill."
+      whyItMatters: "The team reuses proven work with observable execution evidence."
+    - title: "Prove configuration reached the result"
+      takeaway: "Trace eligibility through acceptance, then repair the first broken boundary."
+      whyItMatters: "Delivery, execution, validation, and approval remain independently observable."
 
   arcToc: "Instructions → Custom Prompts → Skills → Agents"
   arcNarrative: >
-    Instructions still open the talk because they are the fastest ROI and the
-    shared baseline every later file inherits. Custom Prompts now come second:
-    that is how most developers actually work — they solve a messy task in chat,
-    then freeze the working recipe as a /command. Skills arrive third as the
-    graduation step, not the first automation. A skill is what you write after
-    the prompt has been proven: add scripts and templates, then let the agent
-    load it by relevance (or keep it slash-only). Agents close the talk as the
-    composition peak — personas that inherit instructions, invoke prompts, and
-    load skills behind a tool boundary. Peak engagement is the live /create-*
-    sequence: /init, /create-prompt, /create-skill, /create-agent. The decision
-    tree lands only after the audience has watched a workflow move up the stack.
+    A three-slide preamble classifies owner, lifetime, selector, and evidence;
+    separates eligibility, loading, execution, validation, and acceptance; and
+    repairs one concrete selector failure. Instructions then establish the
+    reviewed baseline and prove delivery through a live /init demonstration.
+    Custom Prompts capture a solved workflow as a shared command. Skills form
+    the engagement peak by graduating that workflow into a runnable pack during
+    a live demonstration. Agents close the progression by composing the stack
+    behind explicit tools and a human-controlled handoff.
   sectionOrder:
     - "Instructions"
     - "Custom Prompts"
@@ -43,48 +36,36 @@ deck:
     "Instructions":
       emphasis: high
       note: >
-        Foundation. Cover three surfaces: copilot-instructions.md, path-scoped
-        .instructions.md with applyTo, and root AGENTS.md as the portable
-        playbook. Nested AGENTS.md is experimental — prefer applyTo for folder
-        rules. Add a writing-practice beat (one idea per line, include why,
-        show preferred vs avoided, skip linter rules). applyTo gotcha: no glob
-        means the file is not auto-applied. Live demo: /init drafts the
-        always-on file from the workspace. Verify via the References panel.
+        Use one anatomy beat for repository-wide and path-scoped instructions.
+        Give AGENTS.md one selector slide inside this section. Show shared
+        configuration as reviewed institutional knowledge with a named owner.
+        Run /init live and use the References panel as delivery evidence.
     "Custom Prompts":
-      emphasis: high
+      emphasis: medium
       note: >
-        This is now the second act, not a thin bridge. Prompts are how a team
-        captures a solved workflow. Anatomy first: .github/prompts/, frontmatter
-        (name, agent, tools, model), input variables, selection, file, and
-        Markdown links back to instructions — never copy the constitution into
-        the prompt. Live demo: /create-prompt. Do not oversell prompts as the
-        only slash surface; skills can also appear as /commands. The contrast
-        is intent: a prompt is a human-triggered recipe. Graduation to a skill
-        is the next section's job.
+        Show a complete .prompt.md anatomy with inputs, selection, file context,
+        tools, and links to instructions. Use a static /create-prompt transcript
+        to preserve time for the runnable graduation in the next section.
     "Skills":
       emphasis: high
       note: >
-        Graduation section. Open with Prompt to Skill: solve thoroughly as a
-        prompt, then package the proven steps plus scripts and templates.
-        Show three-level loading. MUST show a real skill pack, not a mention:
-        SKILL.md plus scripts/run-tests.sh plus a test template. Cover
-        invocation controls: default is both auto-load and /skill;
-        user-invocable false for background knowledge;
-        disable-model-invocation true for slash-only. Live demo:
-        /create-skill, preferably extracted from the prompt just shown.
+        Make prompt-to-skill graduation the climax. Show progressive loading,
+        SKILL.md, a referenced script, and a referenced template. Run the
+        /create-prompt to /create-skill graduation live and validate one output.
     "Agents":
-      emphasis: high
+      emphasis: medium
       note: >
-        Synthesis peak. Planner with read-only tools and a handoff is the
-        architecture lesson. Live demo: /create-agent. Close with the
-        composition stack and the decision tree (always-on, then prompt,
-        then skill, then persona). Do not start teams on agents.
+        Show one read-only planner anatomy with explicit tools and one handoff.
+        Use a static /create-agent transcript. Keep human approval outside the
+        agent tool list and close with the primitive selection decision model.
+
+  preamble: []
+  appendix: []
+
   highlightMoments:
-    - "/init in S1: one command drafts always-on instructions from the repo that is already on disk."
-    - "Writing practice in S1: include why, show examples, skip anything a linter already enforces."
-    - "/create-prompt in S2: freeze a solved chat recipe as a team /command with input parameters."
-    - "Graduation in S3: a prompt becomes a skill only after the workflow is proven — then add scripts and templates the agent can actually run."
-    - "Invocation controls in S3: skills are not prompt-or-skill. Default is both. Lock auto-load or slash as a design choice."
-    - "/create-agent in S4: a read-only Planner cannot edit files. The tool list is the architecture."
-    - "Decision tree closer: start with instructions, solve with a prompt, graduate to a skill, constrain with an agent."
+    - "One repository convention becomes broad, path-scoped, or directory guidance through an explicit selector decision."
+    - "A solved chat becomes a team command, then graduates into a runnable skill with a referenced script and template."
+    - "Skills load metadata first, instructions on a match, and resources during execution."
+    - "The evidence chain separates eligible, loaded, executed, validated, and accepted into observable claims."
+    - "A read-only planner and one implementation handoff make tool constraints visible as architecture."
 

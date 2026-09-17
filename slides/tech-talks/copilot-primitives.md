@@ -12,8 +12,8 @@ transition: slide-left
 title: Copilot Configuration Primitives
 mdc: true
 section: Choose and Configure
-status: archived
-updated: 2026-09-15
+status: active
+updated: 2026-09-16
 ---
 
 <script setup>
@@ -34,6 +34,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vue'
 </script>
 
+<!-- SLIDE: Title -->
 # Title
 <TitleSlide
   title="Copilot Configuration Primitives"
@@ -44,38 +45,85 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Core Question -->
 # Core Question
 <CoreQuestionSlide
   question="How can I make GitHub Copilot actually understand my codebase?"
-  subtext="Generic responses ignore your team&#39;s conventions. The fix is not better prompting — it is configuration."
-  highlight="Solve the task as a prompt. Graduate it to a skill. Constrain it with an agent."
-  :cards='[{"icon":"👩‍💻","title":"Individual contributors","description":"Developers who paste the same context into every chat session and want Copilot to just know their project conventions."},{"icon":"🏗️","title":"Team leads","description":"Engineering leads who want consistent, team-wide Copilot behavior — not per-developer variation in response quality."},{"icon":"🧑‍🔧","title":"Platform engineers","description":"Infrastructure engineers automating workflows who need Copilot to understand domain-specific tools and constraints."},{"icon":"🔄","title":"Repeated context today","description":"The average developer re-explains the same project conventions to Copilot in every single chat session — minutes wasted, every day."},{"icon":"⚡","title":"5-minute setup","description":"One copilot-instructions.md file transforms Copilot from generic assistant to team-aware partner — visible improvement on the first request."},{"icon":"📈","title":"Graduate, do not invent","description":"Instructions first. Prompt once the task is solved. Skill once scripts exist. Agent last."}]'
+  subtext="Generic responses miss conventions that the repository never made explicit. Shared, reviewable configuration supplies that context."
+  highlight="Choose the smallest primitive, show its anatomy, then prove delivery and acceptance separately."
+  :cards='[{"icon":"👩‍💻","title":"Individual contributors","description":"Create repeatable commands and capabilities without rebuilding context in every session."},{"icon":"🏗️","title":"Team leads","description":"Review shared behavior as version-controlled institutional knowledge with a named owner."},{"icon":"🧑‍🔧","title":"Platform engineers","description":"Bound selectors, tools, and approval so configuration can scale across teams."},{"icon":"📋","title":"Encode","description":"Turn one convention into repository, path-scoped, or directory guidance."},{"icon":"⚡","title":"Graduate","description":"Move a solved chat into a shared command, then a runnable skill."},{"icon":"✅","title":"Prove","description":"Trace eligibility through loading, execution, validation, and acceptance."}]'
 />
 
 ---
 
+<!-- SLIDE: Table of Contents -->
 # Table of Contents
 <TocSlide
   title="Copilot Configuration Primitives"
   subtitle="Instructions → Custom Prompts → Skills → Agents"
-  :sections='[{"icon":"📋","title":"Instructions","blurb":"Always-on foundation — the fastest ROI in the entire stack","slide":4},{"icon":"💬","title":"Custom Prompts","blurb":"Freeze a solved workflow as a team /command","slide":11},{"icon":"⚡","title":"Skills","blurb":"Graduate the prompt — add scripts the agent can run","slide":16},{"icon":"🤖","title":"Agents","blurb":"Constrained personas composing all prior primitives","slide":22}]'
+  :sections='[{"icon":"📋","title":"Instructions","blurb":"Always-on and scoped guidance with observable delivery","slide":4},{"icon":"💬","title":"Custom Prompts","blurb":"Freeze a solved workflow as a team /command","slide":14},{"icon":"⚡","title":"Skills","blurb":"Graduate the prompt with scripts and templates","slide":19},{"icon":"🤖","title":"Agents","blurb":"Compose the stack behind explicit tool boundaries","slide":25}]'
 />
 
 ---
 
+<!-- SLIDE: Part 1 — Instructions -->
 # Part 1 Opener
 <SectionOpenerSlide
   :partNumber="1"
   pillIcon="📋"
   pillLabel="Instructions"
   title="Instructions"
-  subtitle="The 5-minute setup hook. One file. Every Copilot interaction inherits your team&#39;s conventions from this moment on."
-  :cards='[{"icon":"🏗️","title":"Always-on baseline","blurb":"copilot-instructions.md is injected into every request automatically — no activation step."},{"icon":"🎯","title":"Three surfaces","blurb":"Repo-wide, path-scoped by applyTo, and root AGENTS.md as the portable playbook."},{"icon":"👁️","title":"Live /init","blurb":"Let Copilot draft the first file from the repo already on disk — then edit it."}]'
-  :terminal='{"context":"$ /init","detail":"Draft always-on instructions from the workspace."}'
+  subtitle="Place the context, prove delivery, then encode the shared baseline."
+  :cards='[{"icon":"🧭","title":"Place","blurb":"Classify owner, lifetime, selector, and evidence."},{"icon":"🔎","title":"Prove","blurb":"Trace eligibility through accountable acceptance."},{"icon":"🏗️","title":"Encode","blurb":"Use repository, path-scoped, or directory guidance."}]'
+  :terminal='{"context":"$ /init","detail":"Draft the baseline, inspect References, then validate the result."}'
 />
 
 ---
 
+<!-- SLIDE: Place Context Before Choosing a Primitive -->
+# Place Context Before Choosing a Primitive
+<FourCardGridSlide
+  :partNumber="1"
+  pillIcon="🧭"
+  pillLabel="Context Check · Placement"
+  title="Every Context Item Carries Four Decisions"
+  :cards='[{"icon":"👤","title":"Owner","description":"Name who maintains, reviews, and may approve the context."},{"icon":"🕒","title":"Lifetime","description":"Choose one request, a repeated task, repository lifetime, or a policy cycle."},{"icon":"🎯","title":"Selector","description":"Target the repository, matching files, a command, a relevant task, or an agent."},{"icon":"🧪","title":"Evidence","description":"Define the loaded signal, executable check, artifact review, and acceptance owner."}]'
+  :insight='{"icon":"🔐","text":"One-request facts stay in the request. Shared behavior earns a reviewed primitive."}'
+  :progressDots='{"current":1,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+/>
+
+---
+
+<!-- SLIDE: Delivery and Acceptance Are Separate Claims -->
+# Delivery and Acceptance Are Separate Claims
+<MaturityJourneyRoadmapSlide
+  :partNumber="1"
+  pillIcon="🔎"
+  pillLabel="Context Check · Evidence"
+  title="Trace Configuration from Eligibility to Acceptance"
+  subtitle="Each rung proves one claim and hands evidence to the next"
+  :stages='[{"icon":"🎯","label":"1","name":"Eligible","description":"The selector matches the request"},{"icon":"📥","label":"2","name":"Loaded","description":"The client included the artifact"},{"icon":"🛠️","label":"3","name":"Executed","description":"Expected files and tools were used"},{"icon":"🧪","label":"4","name":"Validated","description":"Independent checks passed"},{"icon":"✅","label":"5","name":"Accepted","isTarget":true,"description":"The accountable reviewer approved"}]'
+  caption="References proves delivery. Tests and review prove the result."
+  :progressDots='{"current":2,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+/>
+
+---
+
+<!-- SLIDE: Repair the First Broken Boundary -->
+# Repair the First Broken Boundary
+<FourCardGridSlide
+  :partNumber="1"
+  pillIcon="🔧"
+  pillLabel="Context Check · Repair"
+  title="A Valid Rule Can Miss the Request"
+  :cards='[{"icon":"🎯","title":"1 · Name the target","description":"The request edits src/orders/create-order.ts."},{"icon":"❌","title":"2 · Find the break","description":"applyTo targets src/payments/**/*.ts, so the valid rule is ineligible."},{"icon":"🔧","title":"3 · Repair the selector","description":"Change applyTo to src/orders/**/*.ts while preserving the rule."},{"icon":"✅","title":"4 · Prove the result","description":"Confirm loading, run Orders checks, inspect the diff, and obtain owner approval."}]'
+  :insight='{"icon":"🎯","text":"Inspect in order: target → selector → loaded context → tools → checks → review."}'
+  :progressDots='{"current":3,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+/>
+
+---
+
+<!-- SLIDE: Three Instruction Surfaces -->
 # The Three Instruction Surfaces
 <ThreeColumnCardSlide
   :partNumber="1"
@@ -83,11 +131,12 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
   pillLabel="Instructions"
   title="Three Instruction Surfaces — One for Each Scope"
   :columns='[{"icon":"🌐","title":"Repo-wide","description":"The whole-repository baseline — always active.","items":[".github/copilot-instructions.md","Applied to every request in this repo","Coding standards, build commands, file structure","No frontmatter needed — pure Markdown"]},{"icon":"🎯","title":"Path-scoped","description":"Activates only for matching file patterns.","items":[".github/instructions/*.instructions.md","applyTo glob in frontmatter — required","No applyTo means it is not auto-applied","Language rules, tests, framework patterns"]},{"icon":"📁","title":"AGENTS.md","description":"Portable agent playbook — open format.","items":["Root AGENTS.md is the default playbook","Setup, test, and PR commands live here","Cross-agent portable — not VS Code only","Nested files are still experimental"]}]'
-  :progressDots='{"current":1,"total":6,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+  :progressDots='{"current":4,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
 />
 
 ---
 
+<!-- SLIDE: Repository-Wide Instructions -->
 # Repo Instructions Code
 <CodeWithFeaturesSlide
   :partNumber="1"
@@ -96,12 +145,13 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
   title="A Production-Ready copilot-instructions.md"
   :code='{"language":"markdown","content":"# Repository Instructions\n\nThis repository uses TypeScript with strict type checking.\n\n## Build and Test\n- Build: `npm run build`\n- Tests co-located in `__tests__/` directories\n- Use Vitest — never Mocha or Jest\n- Run: `npm test`\n\n## Coding Standards\n- Prefer functional patterns\n- Explicit return types on all functions\n- JSDoc on every exported function\n- Named exports only — no default exports\n\n## Error Handling\n- Custom error classes extending Error\n- Structured logging via logger.error()\n- Never swallow errors silently","filename":".github/copilot-instructions.md"}'
   codePosition="left"
-  :features='[{"icon":"⚡","title":"Immediate effect","description":"Created this file? Every Copilot request in this repo now inherits your conventions — no restart or re-configuration."},{"icon":"📝","title":"Keep it under 2 pages","description":"Bloated instruction files consume context budget meant for your actual question. Distil to true conventions only."},{"icon":"🔍","title":"Verify via References","description":"After the first chat response, check the References panel in VS Code — instruction files used are listed there."}]'
-  :progressDots='{"current":2,"total":6,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+  :features='[{"icon":"⚡","title":"Immediate effect","description":"Created this file? Every eligible Copilot request in this repo now receives your conventions."},{"icon":"📝","title":"Keep it concise","description":"Preserve context capacity for the request, relevant code, and tool results."},{"icon":"🔍","title":"Verify via References","description":"After the first chat response, check the References panel in VS Code — instruction files used are listed there."}]'
+  :progressDots='{"current":5,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
 />
 
 ---
 
+<!-- SLIDE: Path-Scoped Instructions -->
 # Path-scoped instructions
 <CodeWithFeaturesSlide
   :partNumber="1"
@@ -111,11 +161,12 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
   :code='{"language":"markdown","content":"---\napplyTo: \"src/models/**/*.ts\"\n---\n\n# Database Model Instructions\n\nWhen working with database models:\n\n1. Use Prisma schema in `prisma/schema.prisma`\n2. Include JSDoc with field descriptions\n3. Define relationships with `@relation`\n4. Add indexes for foreign keys\n5. snake_case for DB columns, camelCase in TS\n6. Always include: `createdAt` and `updatedAt`","filename":".github/instructions/models.instructions.md"}'
   codePosition="left"
   :features='[{"icon":"🎯","title":"Surgical scoping","description":"applyTo glob means these rules activate only on matching files — never polluting other contexts."},{"icon":"⚠️","title":"No glob, no auto-load","description":"Omit applyTo and the file is not applied automatically. You can still attach it by hand."},{"icon":"➕","title":"Additive with repo-wide","description":"Path-scoped files combine with copilot-instructions.md when both selectors match."}]'
-  :progressDots='{"current":3,"total":6,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+  :progressDots='{"current":6,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
 />
 
 ---
 
+<!-- SLIDE: Write Instructions Economically -->
 # How to write instructions
 <FourCardGridSlide
   :partNumber="1"
@@ -123,11 +174,12 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
   pillLabel="Instructions"
   title="Write Instructions Like They Cost Tokens"
   :cards='[{"icon":"1️⃣","title":"One idea per line","description":"Each rule is a single statement. Split compound guidance into separate lines."},{"icon":"💡","title":"Include the why","description":"Use date-fns, not moment — moment is deprecated and inflates the bundle."},{"icon":"✅","title":"Show examples","description":"Preferred vs avoided snippets beat abstract style adjectives every time."},{"icon":"🧹","title":"Skip the linter","description":"Do not spend context on tabs, quotes, or import order. Tools already own that."}]'
-  :progressDots='{"current":4,"total":6,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+  :progressDots='{"current":7,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
 />
 
 ---
 
+<!-- SLIDE: AGENTS.md Playbook -->
 # AGENTS.md
 <TwoColPairedConceptsSlide
   :partNumber="1"
@@ -136,11 +188,12 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
   title="AGENTS.md — Cross-Tool Institutional Knowledge"
   :left='{"header":"📁 What goes in root AGENTS.md","items":["Setup and install commands for the repo","Test commands and linting steps for PRs","Repository navigation tips","PR title format and commit conventions","Commands agents should actually run"]}'
   :right='{"header":"🌐 Keep the playbook portable","items":["Open Markdown — not VS Code-specific","Any coding agent that reads AGENTS.md gets it","Prefer applyTo for folder-specific rules","Nested AGENTS.md is still experimental","Institutional knowledge that travels with the repo"]}'
-  :progressDots='{"current":5,"total":6,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+  :progressDots='{"current":8,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
 />
 
 ---
 
+<!-- SLIDE: Live Demo — /init -->
 # Live demo /init
 <AITerminalTranscriptSlide
   :partNumber="1"
@@ -159,11 +212,12 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
     { "type": "outcome", "text": "Check References. If the file is listed, it is working." }
   ]'
   footerMetric="5 minutes to a team-aware baseline"
-  :progressDots='{"current":6,"total":6,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
+  :progressDots='{"current":9,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
 />
 
 ---
 
+<!-- SLIDE: Part 2 — Custom Prompts -->
 # Part 2 Opener
 <SectionOpenerSlide
   :partNumber="2"
@@ -177,6 +231,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Prompt File Anatomy -->
 # Prompt anatomy code
 <CodeWithFeaturesSlide
   :partNumber="2"
@@ -191,12 +246,13 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-# Live demo /create-prompt
+<!-- SLIDE: Worked Transcript — /create-prompt -->
+# Worked example /create-prompt
 <AITerminalTranscriptSlide
   :partNumber="2"
   pillIcon="💬"
-  pillLabel="Custom Prompts · Live Demo"
-  title="Demo: /create-prompt From a Solved Chat"
+  pillLabel="Custom Prompts · Worked Transcript"
+  title="Worked Example: /create-prompt From a Solved Chat"
   subtitle="Do not invent the file from a blank buffer. Extract the recipe that just worked."
   :transcript='[
     { "type": "user", "text": "Scaffold a React component with types, CSS modules, and a Vitest file." },
@@ -213,6 +269,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Prompt to Skill Graduation -->
 # Prompt vs skill intent
 <TwoColPairedConceptsSlide
   :partNumber="2"
@@ -226,6 +283,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Keep Prompts Thin -->
 # Common prompt mistakes
 <ThreeColumnCardSlide
   :partNumber="2"
@@ -238,6 +296,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Part 3 — Skills -->
 # Part 3 Opener
 <SectionOpenerSlide
   :partNumber="3"
@@ -251,6 +310,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Progressive Skill Loading -->
 # How Skills Work
 <ThreeColumnCardSlide
   :partNumber="3"
@@ -263,6 +323,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Skill Pack Anatomy -->
 # Skill anatomy code
 <CodeWithFeaturesSlide
   :partNumber="3"
@@ -277,6 +338,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Skill Runner Script -->
 # Skill script
 <CodeWithFeaturesSlide
   :partNumber="3"
@@ -291,6 +353,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Skill Test Template -->
 # Skill template
 <CodeWithFeaturesSlide
   :partNumber="3"
@@ -305,6 +368,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Live Demo — /create-skill -->
 # Live demo /create-skill
 <AITerminalTranscriptSlide
   :partNumber="3"
@@ -327,6 +391,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Part 4 — Agents -->
 # Part 4 Opener
 <SectionOpenerSlide
   :partNumber="4"
@@ -340,6 +405,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Planner Agent Anatomy -->
 # Agent anatomy code
 <CodeWithFeaturesSlide
   :partNumber="4"
@@ -354,12 +420,13 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
-# Live demo /create-agent
+<!-- SLIDE: Worked Transcript — /create-agent -->
+# Worked example /create-agent
 <AITerminalTranscriptSlide
   :partNumber="4"
   pillIcon="🤖"
-  pillLabel="Agents · Live Demo"
-  title="Demo: /create-agent Last, Not First"
+  pillLabel="Agents · Worked Transcript"
+  title="Worked Example: /create-agent After the Stack Exists"
   subtitle="Generate the persona after the constitution, the prompt, and the skill already exist."
   :transcript='[
     { "type": "user", "text": "/create-agent a read-only planner that hands off to implementer" },
@@ -376,6 +443,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Configuration Stack -->
 # Full primitive stack
 <MaturityJourneyRoadmapSlide
   :partNumber="4"
@@ -389,6 +457,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Choosing the Right Primitive -->
 # Decision tree — choosing the right primitive
 <FrameworkMappingRowsSlide
   :partNumber="4"
@@ -401,6 +470,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: Before and After -->
 # Before and After
 <BeforeAfterSlide
   header="From Repeated Context to Inherited Knowledge"
@@ -411,6 +481,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: What You Can Do Today -->
 # What You Can Do Today
 <WhatYouCanDoTodaySlide
   :today='["Run /init and commit a trimmed .github/copilot-instructions.md","Verify the References panel lists that file on the next chat request","Write one rule with a why and a preferred vs avoided example"]'
@@ -421,13 +492,15 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
 
 ---
 
+<!-- SLIDE: References -->
 # References
 <ReferencesSlide
-  :groups='[{"title":"📖 VS Code Documentation","color":"cyan","items":[{"label":"Customize AI in Visual Studio Code","href":"https://code.visualstudio.com/docs/copilot/copilot-customization","description":"Overview of all customization options — the canonical starting point"},{"label":"Use custom instructions in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/custom-instructions","description":"Instructions syntax, applyTo globs, and personal vs. workspace scoping"},{"label":"Use Agent Skills in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/agent-skills","description":"Skill structure, progressive loading, and the open standard"},{"label":"Use prompt files in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/prompt-files","description":"Prompt frontmatter schema, variable interpolation, and team sharing"},{"label":"Custom agents in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/custom-agents","description":"Agent file structure, tool restrictions, model selection, and handoffs"}]},{"title":"📖 GitHub Documentation","color":"purple","items":[{"label":"Adding repository custom instructions for GitHub Copilot","href":"https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot","description":"GitHub-side documentation for repository instructions"},{"label":"AGENTS.md open format","href":"https://agents.md/","description":"Open specification for the cross-agent AGENTS.md playbook format"}]}]'
+  :groups='[{"title":"📖 VS Code Documentation","color":"cyan","items":[{"label":"Customize AI in Visual Studio Code","href":"https://code.visualstudio.com/docs/copilot/copilot-customization","description":"Overview of all customization options — the canonical starting point"},{"label":"Use custom instructions in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/custom-instructions","description":"Instructions syntax, applyTo globs, and personal vs. workspace scoping"},{"label":"Use Agent Skills in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/agent-skills","description":"Skill structure, progressive loading, and the open standard"},{"label":"Use prompt files in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/prompt-files","description":"Prompt frontmatter schema, variable interpolation, and team sharing"},{"label":"Custom agents in VS Code","href":"https://code.visualstudio.com/docs/copilot/customization/custom-agents","description":"Agent file structure, tool restrictions, model selection, and handoffs"},{"label":"Chat Debug View","href":"https://code.visualstudio.com/docs/copilot/chat/chat-debug-view","description":"Inspect request context, tool calls, and response details"},{"label":"Troubleshoot AI in VS Code","href":"https://code.visualstudio.com/docs/copilot/troubleshooting","description":"Diagnose customization and request-path failures"}]},{"title":"📖 GitHub Documentation","color":"purple","items":[{"label":"Adding repository custom instructions for GitHub Copilot","href":"https://docs.github.com/en/copilot/customizing-copilot/adding-repository-custom-instructions-for-github-copilot","description":"GitHub-side documentation for repository instructions"},{"label":"AGENTS.md open format","href":"https://agents.md/","description":"Open specification for the cross-agent AGENTS.md playbook format"}]}]'
 />
 
 ---
 
+<!-- SLIDE: Thank You -->
 # Thank You
 <ThankYouSlide
   title="Copilot Configuration Primitives"

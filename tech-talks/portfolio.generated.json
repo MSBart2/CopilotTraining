@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-16T16:45:55.707Z",
+  "generatedAt": "2026-09-17T03:24:35.750Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 28,
@@ -20,25 +20,25 @@
   "orphanedCards": [],
   "redirects": [
     {
-      "source": "copilot-primitives",
+      "source": "context-engineering",
       "status": "merged",
-      "target": "context-engineering",
-      "reason": "Configuration, memory placement, and diagnostics now share one context-engineering decision model.",
-      "decisionId": "context-clinics"
+      "target": "copilot-primitives",
+      "reason": "Context placement and verification now support the practical four-primitive configuration tutorial.",
+      "decisionId": "primitives-restoration"
     },
     {
       "source": "copilot-memory",
       "status": "merged",
-      "target": "context-engineering",
-      "reason": "Durable memory placement and lifecycle boundaries are preserved in Context Engineering.",
-      "decisionId": "context-clinics"
+      "target": "copilot-primitives",
+      "reason": "Owner, lifetime, selector, and evidence boundaries now sit inside Copilot Primitives.",
+      "decisionId": "primitives-restoration"
     },
     {
       "source": "copilot-chat-internals",
       "status": "merged",
-      "target": "context-engineering",
-      "reason": "Context delivery inspection and troubleshooting are preserved in Context Engineering.",
-      "decisionId": "context-clinics"
+      "target": "copilot-primitives",
+      "reason": "Delivery inspection and first-boundary repair now sit inside Copilot Primitives.",
+      "decisionId": "primitives-restoration"
     },
     {
       "source": "copilot-code-review",
@@ -482,9 +482,9 @@
     {
       "slug": "context-engineering",
       "title": "Copilot Context Engineering",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
-      "updated": "2026-09-15",
+      "updated": "2026-09-16",
       "section": "Choose and Configure",
       "audience": [
         "developer",
@@ -504,13 +504,13 @@
         "enterprise-patterns"
       ],
       "deckSection": "Choose and Configure",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/context-engineering/README.md",
           "exists": true,
-          "bytes": 23579,
-          "modified": "2026-09-16T01:01:24.022Z"
+          "bytes": 23581,
+          "modified": "2026-09-17T03:23:22.365Z"
         },
         "recipe": {
           "path": "tech-talks/context-engineering/deck.recipe.yml",
@@ -521,8 +521,8 @@
         "deck": {
           "path": "slides/tech-talks/context-engineering.md",
           "exists": true,
-          "bytes": 23640,
-          "modified": "2026-09-16T01:01:24.023Z"
+          "bytes": 23642,
+          "modified": "2026-09-17T03:23:22.389Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/context-engineering/agenda.md",
@@ -1195,64 +1195,65 @@
     {
       "slug": "copilot-primitives",
       "title": "Copilot Configuration Primitives: Making AI Understand Your Codebase",
-      "status": "archived",
+      "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-15",
+      "updated": "2026-09-16",
       "section": "Choose and Configure",
       "audience": [
         "developer",
-        "team-lead"
+        "team-lead",
+        "platform-engineer"
       ],
       "level": "foundational",
-      "duration": 40,
+      "duration": 50,
       "format": "core-talk",
       "decision": "How should shared Copilot behavior be encoded?",
       "prerequisites": [
         "surfaces"
       ],
       "related": [
-        "copilot-memory",
-        "copilot-chat-internals",
-        "copilot-plugins"
+        "agent-dev-loop",
+        "copilot-hooks",
+        "enterprise-patterns"
       ],
       "deckSection": "Choose and Configure",
-      "cataloged": false,
+      "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-primitives/README.md",
           "exists": true,
-          "bytes": 40695,
-          "modified": "2026-09-16T01:01:24.018Z"
+          "bytes": 43369,
+          "modified": "2026-09-17T03:19:55.221Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-primitives/deck.recipe.yml",
           "exists": true,
-          "bytes": 5460,
-          "modified": "2026-08-26T13:21:43.223Z"
+          "bytes": 3871,
+          "modified": "2026-09-17T03:06:48.988Z"
         },
         "deck": {
           "path": "slides/tech-talks/copilot-primitives.md",
           "exists": true,
-          "bytes": 32252,
-          "modified": "2026-09-16T01:01:24.018Z"
+          "bytes": 36359,
+          "modified": "2026-09-17T03:16:55.277Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.md",
           "exists": true,
           "bytes": 405,
-          "modified": "2026-08-26T15:09:56.459Z"
+          "modified": "2026-09-17T03:21:12.405Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.html",
           "exists": true,
           "bytes": 5899,
-          "modified": "2026-08-26T15:09:56.462Z"
+          "modified": "2026-09-17T03:21:12.409Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-primitives/deck.pdf",
           "exists": true,
-          "bytes": 2307068,
-          "modified": "2026-08-26T15:10:57.868Z"
+          "bytes": 2745832,
+          "modified": "2026-09-17T03:22:35.629Z"
         }
       },
       "errors": []
@@ -1671,7 +1672,7 @@
         "agent-dev-loop",
         "agentic-lifecycle",
         "agentic-sdlc",
-        "context-engineering"
+        "copilot-primitives"
       ],
       "deckSection": "Delegate and Coordinate",
       "cataloged": true,
@@ -1679,8 +1680,8 @@
         "readme": {
           "path": "tech-talks/multi-agent-coordination/README.md",
           "exists": true,
-          "bytes": 26227,
-          "modified": "2026-09-16T14:24:26.070Z"
+          "bytes": 26264,
+          "modified": "2026-09-17T03:19:55.218Z"
         },
         "recipe": {
           "path": "tech-talks/multi-agent-coordination/deck.recipe.yml",
@@ -1703,8 +1704,8 @@
         "agendaHtml": {
           "path": "slides/companions/tech-talks/multi-agent-coordination/agenda.html",
           "exists": true,
-          "bytes": 5961,
-          "modified": "2026-09-16T16:40:50.875Z"
+          "bytes": 5953,
+          "modified": "2026-09-16T20:28:09.714Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/multi-agent-coordination/deck.pdf",
@@ -1810,8 +1811,8 @@
         "readme": {
           "path": "tech-talks/surfaces/README.md",
           "exists": true,
-          "bytes": 34028,
-          "modified": "2026-09-16T14:24:26.068Z"
+          "bytes": 34032,
+          "modified": "2026-09-17T03:19:55.218Z"
         },
         "recipe": {
           "path": "tech-talks/surfaces/deck.recipe.yml",
@@ -1835,7 +1836,7 @@
           "path": "slides/companions/tech-talks/surfaces/agenda.html",
           "exists": true,
           "bytes": 5866,
-          "modified": "2026-09-16T16:45:47.725Z"
+          "modified": "2026-09-16T20:28:09.708Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/surfaces/deck.pdf",
@@ -1865,7 +1866,7 @@
         "surfaces"
       ],
       "related": [
-        "context-engineering",
+        "copilot-primitives",
         "agent-dev-loop",
         "multi-agent-coordination"
       ],
@@ -1875,8 +1876,8 @@
         "readme": {
           "path": "tech-talks/vscode-latest/README.md",
           "exists": true,
-          "bytes": 41569,
-          "modified": "2026-09-16T14:24:26.068Z"
+          "bytes": 41568,
+          "modified": "2026-09-17T03:19:55.219Z"
         },
         "recipe": {
           "path": "tech-talks/vscode-latest/deck.recipe.yml",

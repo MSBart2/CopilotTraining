@@ -74,7 +74,7 @@ These are catalog homes, not rigid learner sequences. A talk may be linked from 
 | Current talk | Decision | Disposition | Target artifact |
 |---|---|---|---|
 | `surfaces` | Where should this work happen? | **Keep as catalog entry point** | Which Copilot Where? |
-| `copilot-primitives` | How should shared Copilot behavior be encoded? | **Merge after replacement validation** | Copilot Context Engineering |
+| `copilot-primitives` | How should shared Copilot behavior be encoded? | **Keep as canonical Step 2** | Copilot Configuration Primitives |
 | `copilot-memory` | Where should durable knowledge live? | **Merge after replacement validation** | Copilot Context Engineering |
 | `copilot-chat-internals` | Why did Copilot behave this way? | **Merge after replacement validation** | Copilot Context Engineering |
 | `copilot-cli` | When is the terminal the correct control surface? | **Keep** | Copilot CLI |

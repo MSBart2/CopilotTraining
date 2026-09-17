@@ -4,6 +4,19 @@ Milestones for individual tech-talk content: creation, rewrites, conformance, an
 
 ---
 
+## Copilot Primitives restored as canonical Step 2 (2026-09-16)
+
+`schema_version: 1` | `date: 2026-09-16`
+
+- `copilot-primitives` is again the canonical practical guide for choosing, building, and verifying instructions, prompts, skills, and agents.
+- Three compact context checks (owner/lifetime, selector, and observable delivery evidence) were integrated into the practical sequence without replacing the tutorials.
+- `context-engineering` is archived and redirects to `copilot-primitives`; `copilot-memory` and `copilot-chat-internals` also route there as supporting context topics.
+- This reverses the September 15 Primitives-to-Context consolidation because replacement validation found that topic coverage did not preserve the practical tutorial artifacts.
+
+The restored README, recipe, 33-slide deck, agenda, PDF, catalog placement, coverage contract, and redirect set all passed their focused validation gates before archival.
+
+---
+
 ## Delegate and Coordinate consolidations promoted (2026-09-16)
 
 `schema_version: 1` | `date: 2026-09-16`

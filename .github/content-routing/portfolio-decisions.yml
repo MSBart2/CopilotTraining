@@ -36,7 +36,16 @@ decisions:
       - .github/content-routing/coverage/wp6-context-clinics.yml
     approvedBy: repository-owner
     approvedOn: 2026-09-15
-    rationale: The repository owner requested stronger consolidation after reviewing the deployed catalog. Replace the three adjacent artifacts with one Context Engineering talk, preserving placement, encoding, diagnostics, lifecycle, and authority boundaries before archiving sources.
+    rationale: This consolidation was later reversed by primitives-restoration after deployed review showed that the practical tutorials, comparisons, and examples had not survived.
+
+  primitives-restoration:
+    question: Should Copilot Primitives return as the canonical Step 2 configuration talk?
+    state: approved
+    evidence:
+      - .github/content-routing/coverage/wp13-primitives-restoration.yml
+    approvedBy: repository-owner
+    approvedOn: 2026-09-16
+    rationale: Restore the practical four-primitive tutorial and absorb the strongest context placement and verification guidance as three supporting concepts.
 
   adoption-pathway:
     question: Should Agentic Journey become a pathway rather than a standalone talk?

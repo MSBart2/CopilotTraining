@@ -12,7 +12,7 @@ Choose a talk by the decision you need to make. Use a pathway when you need a se
 Use this path when you are new to Copilot or introducing it to a team. Each step ends with evidence that makes the next step worthwhile.
 
 1. **Choose the surface** — [Which Copilot Where?](surfaces/) produces a routed task with named context and reviewer.
-2. **Shape the context** — [Copilot Context Engineering](context-engineering/) produces reviewed repository guidance with delivery evidence.
+2. **Configure shared behavior** — [Copilot Configuration Primitives](copilot-primitives/) builds and verifies instructions, prompts, skills, and agents.
 3. **Make success reusable** — [Agent Dev Loop](agent-dev-loop/) turns one solved task into a validated team capability.
 4. **Delegate bounded work** — [From Issue to Pull Request](copilot-web/) produces a draft pull request with acceptance evidence.
 5. **Verify before merge** — [PR Trust Stack](pr-trust-stack/) records accepted and rejected findings, deterministic checks, and the final human decision.
@@ -26,7 +26,7 @@ Stop at any step when its evidence is missing. Repair that boundary before addin
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
 | Choose the right Copilot surface | [Which Copilot Where?](surfaces/) | A routed task with named context, artifact, and reviewer |
-| Place, encode, and verify Copilot context | [Copilot Context Engineering](context-engineering/) | Versioned context plus load, output, and reviewer evidence |
+| Encode and verify shared Copilot behavior | [Copilot Configuration Primitives](copilot-primitives/) | Working instruction, prompt, skill, or agent plus delivery and acceptance evidence |
 | Work where shell and runtime state are decisive | [Copilot CLI](copilot-cli/) | A terminal-native result with observable command evidence |
 
 Release-specific VS Code changes are routed through [rolling release briefs](../.github/content-routing/release-briefs/) to their durable owners. The current [VS Code Latest](vscode-latest/) talk remains active until its approved retirement checklist is complete.
@@ -71,7 +71,7 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 ### Individual Developer
 
-[Which Copilot Where?](surfaces/) → [Copilot Context Engineering](context-engineering/) → [Agent Dev Loop](agent-dev-loop/) → choose [Copilot CLI](copilot-cli/) or [From Issue to Pull Request](copilot-web/) → verify the resulting evidence
+[Which Copilot Where?](surfaces/) → [Copilot Configuration Primitives](copilot-primitives/) → [Agent Dev Loop](agent-dev-loop/) → choose [Copilot CLI](copilot-cli/) or [From Issue to Pull Request](copilot-web/) → verify the resulting evidence
 
 ### Team Delegation
 

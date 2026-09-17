@@ -2,25 +2,25 @@
   "schemaVersion": 1,
   "redirects": [
     {
-      "source": "copilot-primitives",
+      "source": "context-engineering",
       "status": "merged",
-      "target": "context-engineering",
-      "reason": "Configuration, memory placement, and diagnostics now share one context-engineering decision model.",
-      "decisionId": "context-clinics"
+      "target": "copilot-primitives",
+      "reason": "Context placement and verification now support the practical four-primitive configuration tutorial.",
+      "decisionId": "primitives-restoration"
     },
     {
       "source": "copilot-memory",
       "status": "merged",
-      "target": "context-engineering",
-      "reason": "Durable memory placement and lifecycle boundaries are preserved in Context Engineering.",
-      "decisionId": "context-clinics"
+      "target": "copilot-primitives",
+      "reason": "Owner, lifetime, selector, and evidence boundaries now sit inside Copilot Primitives.",
+      "decisionId": "primitives-restoration"
     },
     {
       "source": "copilot-chat-internals",
       "status": "merged",
-      "target": "context-engineering",
-      "reason": "Context delivery inspection and troubleshooting are preserved in Context Engineering.",
-      "decisionId": "context-clinics"
+      "target": "copilot-primitives",
+      "reason": "Delivery inspection and first-boundary repair now sit inside Copilot Primitives.",
+      "decisionId": "primitives-restoration"
     },
     {
       "source": "copilot-code-review",

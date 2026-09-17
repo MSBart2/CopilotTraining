@@ -20,7 +20,7 @@ Agent Mode is GitHub Copilot's capability to autonomously plan and execute multi
 | `slides/tech-talks/copilot-acp.md` | Primary | ACP (Agent Communication Protocol) — how agents communicate and compose |
 | `slides/tech-talks/enterprise-patterns.md` | Major section | Agent governance, approval gates, org-scale adoption of agent mode |
 | `slides/tech-talks/vscode-latest.md` | Secondary | Agent mode UI improvements per VS Code release; new tool integrations |
-| `slides/tech-talks/context-engineering.md` | Secondary | Agents, skills, prompts, and instructions as context-placement choices |
+| `slides/tech-talks/copilot-primitives.md` | Major section | Step-by-step custom-agent guidance, tool constraints, handoffs, and comparison with instructions, prompts, and skills |
 | `slides/tech-talks/copilot-sdk.md` | Secondary | SDK APIs for building, invoking, and composing agents programmatically |
 | `slides/tech-talks/copilot-hooks.md` | Secondary | Hooks fire on agent lifecycle events; used for guardrails and audit |
 | `workshop/02-agent-plan-mode/` | Primary | Hands-on workshop: using agent plan mode for task planning |
