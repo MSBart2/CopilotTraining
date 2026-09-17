@@ -60,10 +60,20 @@ The context must include:
 Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
 1. Produce a primary recommendation that identifies how the product model or technical thesis changed, protects practical demos and factual release status, and minimizes unnecessary churn.
-2. In Copilot CLI, explicitly delegate the recommendation and the complete extracted context to the built-in **Rubber Duck** agent. Require an independent adversarial critique of the thesis, section order, weighting, highlights, agenda, and demos.
+2. In Copilot CLI, invoke the main CLI agent and explicitly require it to delegate the recommendation and complete extracted context to its internal **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
+	```powershell
+	$prompt = @'
+	You are the main GitHub Copilot CLI agent. Do not perform this review yourself.
+	Delegate the complete review brief below to your built-in Rubber Duck tool, wait for
+	its response, and return the critique with explicit evidence that delegation occurred.
+
+	[COMPLETE EXTRACTED CONTEXT AND ADVERSARIAL REVIEW PROMPT]
+	'@
+	copilot --prompt $prompt --no-ask-user
+	```
 3. Do not role-play Rubber Duck in the primary model. Wait for the separate review and reconcile its objections explicitly before finalizing.
 4. Outside Copilot CLI, launch one review subagent using a different model family from the primary model and give it the same adversarial brief.
-5. If no independent cross-model reviewer is available or the delegation does not occur, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
+5. Accept the CLI review only when its response explicitly confirms Rubber Duck delegation and includes the independent critique. If no independent cross-model reviewer is available or delegation evidence is absent, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
 
 The reconciled result must return:
 

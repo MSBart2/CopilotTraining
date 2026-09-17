@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-17T13:59:51.348Z",
+  "generatedAt": "2026-09-17T19:19:08.747Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 28,
@@ -138,7 +138,7 @@
           "path": "slides/companions/tech-talks/agent-dev-loop/agenda.html",
           "exists": true,
           "bytes": 5894,
-          "modified": "2026-09-16T13:40:51.100Z"
+          "modified": "2026-09-17T14:00:45.456Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agent-dev-loop/deck.pdf",
@@ -204,7 +204,7 @@
           "path": "slides/companions/tech-talks/agent-teams/agenda.html",
           "exists": true,
           "bytes": 5878,
-          "modified": "2026-09-15T20:34:35.984Z"
+          "modified": "2026-09-17T14:00:45.468Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agent-teams/deck.pdf",
@@ -270,7 +270,7 @@
           "path": "slides/companions/tech-talks/agentic-journey/agenda.html",
           "exists": true,
           "bytes": 5880,
-          "modified": "2026-08-13T15:56:29.934Z"
+          "modified": "2026-09-17T14:00:45.470Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-journey/deck.pdf",
@@ -337,7 +337,7 @@
           "path": "slides/companions/tech-talks/agentic-lifecycle/agenda.html",
           "exists": true,
           "bytes": 5924,
-          "modified": "2026-09-16T16:40:49.573Z"
+          "modified": "2026-09-17T14:00:45.472Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-lifecycle/deck.pdf",
@@ -403,7 +403,7 @@
           "path": "slides/companions/tech-talks/agentic-sdlc/agenda.html",
           "exists": true,
           "bytes": 5869,
-          "modified": "2026-09-16T13:41:14.775Z"
+          "modified": "2026-09-17T14:00:45.474Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-sdlc/deck.pdf",
@@ -468,7 +468,7 @@
           "path": "slides/companions/tech-talks/agentic-workflows/agenda.html",
           "exists": true,
           "bytes": 5901,
-          "modified": "2026-09-15T20:35:44.957Z"
+          "modified": "2026-09-17T14:00:45.476Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-workflows/deck.pdf",
@@ -534,7 +534,7 @@
           "path": "slides/companions/tech-talks/context-engineering/agenda.html",
           "exists": true,
           "bytes": 5912,
-          "modified": "2026-09-16T13:41:35.243Z"
+          "modified": "2026-09-17T14:00:45.477Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/context-engineering/deck.pdf",
@@ -599,7 +599,7 @@
           "path": "slides/companions/tech-talks/copilot-acp/agenda.html",
           "exists": true,
           "bytes": 5850,
-          "modified": "2026-09-16T13:41:57.775Z"
+          "modified": "2026-09-17T14:00:45.479Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-acp/deck.pdf",
@@ -664,7 +664,7 @@
           "path": "slides/companions/tech-talks/copilot-app/agenda.html",
           "exists": true,
           "bytes": 5875,
-          "modified": "2026-09-15T20:36:58.085Z"
+          "modified": "2026-09-17T14:00:45.481Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-app/deck.pdf",
@@ -729,7 +729,7 @@
           "path": "slides/companions/tech-talks/copilot-azure-mcp/agenda.html",
           "exists": true,
           "bytes": 5929,
-          "modified": "2026-09-16T13:42:17.244Z"
+          "modified": "2026-09-17T14:00:45.483Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-azure-mcp/deck.pdf",
@@ -794,7 +794,7 @@
           "path": "slides/companions/tech-talks/copilot-chat-internals/agenda.html",
           "exists": true,
           "bytes": 5898,
-          "modified": "2026-08-13T15:56:29.988Z"
+          "modified": "2026-09-17T14:00:45.485Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-chat-internals/deck.pdf",
@@ -858,7 +858,7 @@
           "path": "slides/companions/tech-talks/copilot-cli/agenda.html",
           "exists": true,
           "bytes": 5910,
-          "modified": "2026-09-16T13:42:39.720Z"
+          "modified": "2026-09-17T14:00:45.487Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-cli/deck.pdf",
@@ -923,7 +923,7 @@
           "path": "slides/companions/tech-talks/copilot-code-quality/agenda.html",
           "exists": true,
           "bytes": 5930,
-          "modified": "2026-08-13T15:56:30.001Z"
+          "modified": "2026-09-17T14:00:45.489Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-code-quality/deck.pdf",
@@ -988,7 +988,7 @@
           "path": "slides/companions/tech-talks/copilot-code-review/agenda.html",
           "exists": true,
           "bytes": 5927,
-          "modified": "2026-08-13T15:56:30.011Z"
+          "modified": "2026-09-17T14:00:45.490Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-code-review/deck.pdf",
@@ -1053,7 +1053,7 @@
           "path": "slides/companions/tech-talks/copilot-hooks/agenda.html",
           "exists": true,
           "bytes": 5917,
-          "modified": "2026-09-16T13:43:14.568Z"
+          "modified": "2026-09-17T14:00:45.492Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-hooks/deck.pdf",
@@ -1117,7 +1117,7 @@
           "path": "slides/companions/tech-talks/copilot-memory/agenda.html",
           "exists": true,
           "bytes": 5935,
-          "modified": "2026-08-13T15:56:30.025Z"
+          "modified": "2026-09-17T14:00:45.493Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-memory/deck.pdf",
@@ -1181,7 +1181,7 @@
           "path": "slides/companions/tech-talks/copilot-plugins/agenda.html",
           "exists": true,
           "bytes": 5904,
-          "modified": "2026-09-16T13:43:38.066Z"
+          "modified": "2026-09-17T14:00:45.494Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-plugins/deck.pdf",
@@ -1241,19 +1241,19 @@
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.md",
           "exists": true,
           "bytes": 405,
-          "modified": "2026-09-17T03:21:12.405Z"
+          "modified": "2026-09-17T14:01:56.555Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.html",
           "exists": true,
           "bytes": 5899,
-          "modified": "2026-09-17T03:21:12.409Z"
+          "modified": "2026-09-17T14:01:56.560Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-primitives/deck.pdf",
           "exists": true,
           "bytes": 2745832,
-          "modified": "2026-09-17T03:22:35.629Z"
+          "modified": "2026-09-17T14:02:21.290Z"
         }
       },
       "errors": []
@@ -1313,7 +1313,7 @@
           "path": "slides/companions/tech-talks/copilot-sdk/agenda.html",
           "exists": true,
           "bytes": 5899,
-          "modified": "2026-09-16T13:44:00.793Z"
+          "modified": "2026-09-17T14:00:45.498Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-sdk/deck.pdf",
@@ -1377,7 +1377,7 @@
           "path": "slides/companions/tech-talks/copilot-web/agenda.html",
           "exists": true,
           "bytes": 5897,
-          "modified": "2026-09-16T13:44:22.073Z"
+          "modified": "2026-09-17T14:00:45.499Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-web/deck.pdf",
@@ -1442,7 +1442,7 @@
           "path": "slides/companions/tech-talks/copilot-with-foundry/agenda.html",
           "exists": true,
           "bytes": 5958,
-          "modified": "2026-09-16T13:44:45.342Z"
+          "modified": "2026-09-17T14:00:45.500Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-with-foundry/deck.pdf",
@@ -1507,7 +1507,7 @@
           "path": "slides/companions/tech-talks/enterprise-patterns/agenda.html",
           "exists": true,
           "bytes": 5983,
-          "modified": "2026-09-16T13:46:08.055Z"
+          "modified": "2026-09-17T14:00:45.502Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/enterprise-patterns/deck.pdf",
@@ -1573,7 +1573,7 @@
           "path": "slides/companions/tech-talks/loopy-agents/agenda.html",
           "exists": true,
           "bytes": 5877,
-          "modified": "2026-09-16T13:46:31.185Z"
+          "modified": "2026-09-17T14:00:45.511Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/loopy-agents/deck.pdf",
@@ -1637,7 +1637,7 @@
           "path": "slides/companions/tech-talks/mcp-apps/agenda.html",
           "exists": true,
           "bytes": 5839,
-          "modified": "2026-09-16T13:46:54.458Z"
+          "modified": "2026-09-17T14:00:45.513Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/mcp-apps/deck.pdf",
@@ -1705,7 +1705,7 @@
           "path": "slides/companions/tech-talks/multi-agent-coordination/agenda.html",
           "exists": true,
           "bytes": 5953,
-          "modified": "2026-09-16T20:28:09.714Z"
+          "modified": "2026-09-17T14:04:21.283Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/multi-agent-coordination/deck.pdf",
@@ -1771,7 +1771,7 @@
           "path": "slides/companions/tech-talks/pr-trust-stack/agenda.html",
           "exists": true,
           "bytes": 5862,
-          "modified": "2026-09-16T13:47:17.489Z"
+          "modified": "2026-09-17T14:00:45.518Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/pr-trust-stack/deck.pdf",
@@ -1836,7 +1836,7 @@
           "path": "slides/companions/tech-talks/surfaces/agenda.html",
           "exists": true,
           "bytes": 5866,
-          "modified": "2026-09-16T20:28:09.708Z"
+          "modified": "2026-09-17T14:04:21.283Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/surfaces/deck.pdf",
@@ -1901,7 +1901,7 @@
           "path": "slides/companions/tech-talks/vscode-latest/agenda.html",
           "exists": true,
           "bytes": 5940,
-          "modified": "2026-09-16T13:48:05.247Z"
+          "modified": "2026-09-17T14:00:45.523Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/vscode-latest/deck.pdf",

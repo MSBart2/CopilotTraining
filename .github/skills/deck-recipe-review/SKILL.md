@@ -14,7 +14,7 @@ Read the tech-talk README, analyze its structure with a primary reviewer plus an
 
 **Key Constraints:**
 - **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the practitioner decision, observable proof, boundary, and own-work transfer when consolidating the README. A section that only inventories features has not earned slide time.
-- **Max 4 sections** — Review should consolidate, not expand. Each section gets ~12-15 slides in 60-min talks.
+- **Max 4 sections** — Review should consolidate, not expand. Budget emphasis within a 20-25 slide target for the complete deck and never exceed 30 slides.
 - **Slide generator ensures consistency** — Once you commit a recipe, the [Tech Talk Slide Generator agent](../../agents/tech-talk-slide-generator.agent.md) generates all slides using the Vue component system with uniform structure (title, toc, section openers, closers, references). Focus the review on *narrative logic and audience fit*, not slide-level details.
 - **Recipe schema** — Read `.github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml` to understand all valid fields before writing the output file.
 - **Tech-talk voice applies to recipe guidance** — Write every field and comment in direct-positive, possibility-led language because the slide generator may carry recipe wording into audience-facing content. Replace contrastive-negation constructions such as "not X, but Y," "rather than," "instead of," "unlike," and "no longer" with a direct statement of the desired behavior.
@@ -108,8 +108,18 @@ What should change and why?
 
 Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
-1. Prefer Copilot CLI: explicitly delegate the primary recommendation and the complete context block to the built-in **Rubber Duck** agent.
-2. When the work is running in VS Code and Copilot CLI or Rubber Duck is unavailable, launch one review subagent using a different model family from the primary model and give it the same complete adversarial brief. Record the unavailable CLI path and the substitute model in the reconciliation.
+1. Prefer Copilot CLI: invoke the main CLI agent and explicitly require it to delegate the primary recommendation and complete context block to its internal **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
+  ```powershell
+  $prompt = @'
+  You are the main GitHub Copilot CLI agent. Do not perform this review yourself.
+  Delegate the complete review brief below to your built-in Rubber Duck tool, wait for
+  its response, and return the critique with explicit evidence that delegation occurred.
+
+  [COMPLETE CONTEXT BLOCK AND ADVERSARIAL REVIEW PROMPT]
+  '@
+  copilot --prompt $prompt --no-ask-user
+  ```
+2. Accept the CLI review only when its response explicitly confirms Rubber Duck delegation and includes the independent critique. When Copilot CLI, Rubber Duck, or delegation evidence is unavailable, launch one review subagent using a different model family from the primary model and give it the same complete adversarial brief. Record the unavailable CLI path and the substitute model in the reconciliation.
 3. Require the independent reviewer to attack the proposed thesis, section order, weighting, agenda, highlights, missing producer/consumer perspectives, content that has not earned slide time, and any recommendation that violates the tech-talk voice.
 4. Do not role-play the independent reviewer in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
 5. If neither Rubber Duck nor an independent cross-model reviewer is available, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.

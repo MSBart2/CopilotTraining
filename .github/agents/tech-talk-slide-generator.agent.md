@@ -139,13 +139,13 @@ Read all of these at the same time. Do not read one, then the next — fetch the
 
 **Editorial curation — score content before choosing slides:**
 
-| Axis                | Question                                  | Signal                                                       |
-| ------------------- | ----------------------------------------- | ------------------------------------------------------------ |
-| **Novelty**         | New or surprising to a practitioner?      | Unique capabilities, recent additions, unexpected use cases  |
-| **Differentiation** | Only this tool can do it?                 | Avoid demos that apply to any AI assistant                   |
-| **Audience impact** | Developer thinks "I need that right now"? | Real time savings, workflow unblocking, capability unlocking |
+| Axis                    | Question                                             | Signal                                                              |
+| ----------------------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
+| **Decision value**      | Will this change a consequential practitioner choice? | Clear criteria, authority boundary, tradeoff, or escalation path    |
+| **Demonstration value** | Does an artifact make the mechanism and result visible? | Working configuration, command, workflow, output, or failure signal |
+| **Transfer value**      | Can the audience apply and verify this in its own work? | Concrete next step, expected evidence, boundary, and recovery path  |
 
-Identify the single "I didn't know it could do that" moment → make it the centerpiece of a section. Prefer novel content. Compress or skip table-stakes demos.
+Identify the single technical reveal, honest tension, or boundary that changes how the audience approaches the core decision → make it the centerpiece of a section. Product novelty alone does not earn slide time. Compress or skip material that does not advance the decision, proof, or transfer.
 
 **Target: 20-25 slides total (never exceed 30).** Fixed positions:
 

@@ -140,10 +140,14 @@ After the user responds:
 2. Read `tech-talks/TEMPLATE.md` for complete structure (can be done in parallel with research)
    - If the target talk already has `research.md`, use it as the primary verified factual source and reconcile newer first-party evidence against it
 3. Frame ONE clear question this talk answers
+4. Treat the template as a coverage checklist, not a prescribed narrative order
+   - Preserve the approved arc; combine or reposition template concerns when that improves the argument
+   - Give every major section a job in advancing the thesis, proving it, exposing a boundary, or enabling transfer
+   - Place the working artifact where it provides evidence for the central claim, not as an appendix to a feature tour
 5. Verify content fitness rubric (all must be 🟢 before proceeding)
 6. Download images if found: `python3 scripts/download-images.py <source_url> <output_dir> --limit 7`
    — copies into `images/` subdirectory and generates a markdown snippet for the Visual Assets section
-7. Fill all required sections (in template order): The Opportunity, How It Works, Key Artifacts, Mental Model Shift (with Core Insight one-liner), Decision Tree, Major Sections (with 🎬 markers), Real-World Use Cases, What You Can Do Today (15min/1hr/2-4hr), Related Patterns, References (numbered footnotes `[^n]`).
+7. Address the template's required concerns through the approved narrative: The Opportunity, How It Works, Key Artifacts, Mental Model Shift (with Core Insight one-liner), Decision Tree, Major Sections (with 🎬 markers), Real-World Use Cases, What You Can Do Today (15min/1hr/2-4hr), Related Patterns, References (numbered footnotes `[^n]`). A concern may be consolidated into a stronger section when it remains clear to readers.
    Visual Assets and Behind the Scenes are optional; include them only when they improve understanding.
 8. Keep the README reader-first: no slide sequence tables, no speaker notes, no TOC explanations, and no visible "this becomes a slide" prose
 
@@ -156,6 +160,9 @@ Do **not** write the recipe yourself — the skill owns this step.
 ### 4. Quality Validation
 
 - [ ] Question is specific and clear
+- [ ] One thesis and useful tension organize the narrative
+- [ ] Every major section advances the decision, proof, boundary, or transfer
+- [ ] Template coverage supports the approved arc instead of dictating section order
 - [ ] Content Fitness Rubric is all 🟢 (no 🟡 or 🔴)
 - [ ] Visual Assets section included if relevant images found (3-7 images)
 - [ ] Images in `images/` subdirectory with descriptive filenames and alt text

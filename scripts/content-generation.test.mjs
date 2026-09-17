@@ -18,6 +18,12 @@ const executiveMachinery = [
   ".github/skills/exec-recipe-review/EXEC-RECIPE-TEMPLATE.yml",
 ];
 
+const recipeReviewMachinery = [
+  ".github/skills/deck-recipe-review/SKILL.md",
+  ".github/skills/deck-recipe-refresh/SKILL.md",
+  ".github/skills/exec-recipe-review/SKILL.md",
+];
+
 async function read(path) {
   return readFile(new URL(`../${path}`, import.meta.url), "utf8");
 }
@@ -87,6 +93,15 @@ test("executive review preserves the factual opportunity-framed voice", async ()
   const review = await read(".github/skills/exec-recipe-review/SKILL.md");
   assert.match(review, /AGENTS\.md/);
   assert.doesNotMatch(review, /Missing urgency|cost of not acting|cost of delay/i);
+});
+
+test("recipe reviews invoke Rubber Duck through the main CLI agent", async () => {
+  for (const path of recipeReviewMachinery) {
+    const content = await read(path);
+    assert.match(content, /copilot --prompt \$prompt --no-ask-user/);
+    assert.match(content, /Rubber Duck is not a selectable custom agent/);
+    assert.match(content, /explicit evidence that delegation occurred/);
+  }
 });
 
 test("tech-talk template is clean and produces observable actions", async () => {

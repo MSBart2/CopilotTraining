@@ -27,7 +27,7 @@ test("collects only practitioner catalog slugs", () => {
   assert.deepEqual(collectIndexSlugs(html), ["copilot-cli"]);
 });
 
-test("discovers the active practitioner portfolio", () => {
+test("discovers the current consolidated practitioner portfolio", () => {
   const inventory = collectPortfolio(root);
   assert.equal(inventory.counts.totalTalks, 28);
   assert.equal(inventory.counts.practitionerTalks, 19);

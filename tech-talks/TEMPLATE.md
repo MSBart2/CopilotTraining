@@ -47,6 +47,10 @@ This template produces the **canonical, human-readable tech talk**. Keep visible
 - 3-6 major deep-dive sections with concrete examples
 - A clear mental model with a standalone core insight
 
+### Coverage and sequence
+
+Treat the sections below as coverage prompts. Choose, combine, and order them around the approved narrative arc so that each section advances the thesis, proves it through an artifact, exposes a boundary, or enables transfer. Do not preserve a template heading as a standalone section when its content serves the reader better inside another section.
+
 ### What does not belong in the README
 
 - Slide sequence tables

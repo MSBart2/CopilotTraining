@@ -107,11 +107,21 @@ What should change and why?
 
 Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
-1. In Copilot CLI, explicitly delegate the primary recommendation and the complete context block to the built-in **Rubber Duck** agent.
+1. In Copilot CLI, invoke the main CLI agent and explicitly require it to delegate the primary recommendation and complete context block to its internal **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
+  ```powershell
+  $prompt = @'
+  You are the main GitHub Copilot CLI agent. Do not perform this review yourself.
+  Delegate the complete review brief below to your built-in Rubber Duck tool, wait for
+  its response, and return the critique with explicit evidence that delegation occurred.
+
+  [COMPLETE CONTEXT BLOCK AND ADVERSARIAL REVIEW PROMPT]
+  '@
+  copilot --prompt $prompt --no-ask-user
+  ```
 2. Require Rubber Duck to independently attack the proposed business question, decision journey, section order, weighting, credibility, timing context, action clarity, voice compliance, and content that has not earned executive airtime.
 3. Do not role-play Rubber Duck in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
 4. Outside Copilot CLI, launch one review subagent using a different model family from the primary model and give it the same adversarial brief.
-5. If no independent cross-model reviewer is available or delegation does not occur, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
+5. Accept the CLI review only when its response explicitly confirms Rubber Duck delegation and includes the independent critique. If no independent cross-model reviewer is available or delegation evidence is absent, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
 
 ---
 
