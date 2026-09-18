@@ -755,7 +755,7 @@
 
     body {
       position: relative;
-      padding: 1.5rem clamp(1rem, 3vw, 3rem) 4rem;
+      padding: 2rem clamp(1.25rem, 4vw, 4.5rem) 6rem;
       background-color: #090d14;
       background-image:
         linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
@@ -775,7 +775,7 @@
     }
 
     .container {
-      max-width: 2400px;
+      max-width: 2100px;
     }
 
     .hero {
@@ -783,8 +783,8 @@
       grid-template-columns: auto minmax(0, 1fr) auto;
       align-items: center;
       gap: 1.25rem;
-      margin: 0 0 0.9rem;
-      padding: 1.15rem 0 1.4rem;
+      margin: 0 0 1.5rem;
+      padding: 1.5rem 0 1.75rem;
       background: transparent;
       border: 0;
       border-bottom: 1px solid var(--hero-border);
@@ -882,7 +882,7 @@
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1px;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.75rem;
       overflow: hidden;
       background: var(--section-border);
       border: 1px solid var(--section-border);
@@ -923,8 +923,8 @@
 
     .onboarding-path {
       --group-accent: #f5b800;
-      margin-bottom: 1.25rem;
-      padding: 1.15rem 1.35rem;
+      margin-bottom: 2.25rem;
+      padding: 1.5rem 1.65rem;
       border-top: 1px solid rgba(245, 184, 0, 0.4);
       border-bottom: 1px solid rgba(245, 184, 0, 0.22);
       scroll-margin-top: 5rem;
@@ -965,7 +965,7 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 1rem;
-      margin-bottom: 0.8rem;
+      margin-bottom: 1.1rem;
     }
 
     .onboarding-heading h2 {
@@ -989,8 +989,8 @@
     .onboarding-step {
       position: relative;
       min-width: 0;
-      min-height: 92px;
-      padding: 1rem 1.8rem 1rem 1rem;
+      min-height: 110px;
+      padding: 1.2rem 2rem 1.2rem 1.15rem;
       background: rgba(12, 18, 28, 0.94);
       color: var(--text);
       text-decoration: none;
@@ -1046,8 +1046,8 @@
     }
 
     .section {
-      margin-bottom: 1.25rem;
-      padding: clamp(1rem, 2vw, 1.5rem);
+      margin-bottom: 2.75rem;
+      padding: clamp(1.4rem, 2.4vw, 2rem);
       border-radius: 8px;
       box-shadow: 0 12px 38px var(--section-shadow);
       scroll-margin-top: 5rem;
@@ -1062,8 +1062,8 @@
 
     .section-header {
       align-items: flex-start;
-      margin-bottom: 1.3rem;
-      padding-bottom: 1rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 1.35rem;
     }
 
     .section-title {
@@ -1076,13 +1076,13 @@
     .section-description {
       max-width: 760px;
       margin-top: 0.3rem;
-      line-height: 1.45;
+      line-height: 1.55;
     }
 
     .sub-group {
       --group-accent: #22d3ee;
-      margin: 0 0 1.5rem;
-      padding-left: 1rem;
+      margin: 0 0 3.25rem;
+      padding-left: 1.25rem;
       border-left: 2px solid color-mix(in srgb, var(--group-accent) 65%, transparent);
     }
 
@@ -1091,8 +1091,18 @@
     #executive-talks { --group-accent: #60a5fa; }
 
     .sub-group-header {
-      margin-bottom: 0.8rem;
-      padding-left: 0;
+      position: sticky;
+      top: 4.5rem;
+      z-index: 10;
+      gap: 0.7rem;
+      margin-bottom: 1.35rem;
+      padding: 0.75rem 0.85rem;
+      background: color-mix(in srgb, var(--section-bg) 92%, var(--group-accent) 8%);
+      border: 1px solid color-mix(in srgb, var(--group-accent) 28%, transparent);
+      border-left: 3px solid var(--group-accent);
+      border-radius: 5px;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(14px);
     }
 
     .sub-group-label {
@@ -1101,30 +1111,38 @@
       border: 0;
       border-radius: 0;
       color: var(--group-accent) !important;
-      font-size: 0.73rem;
-      letter-spacing: 0.12em;
+      font-size: 0.88rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
     }
 
     [data-theme="light"] .section.tech-talks .sub-group-label {
       background: transparent;
       border: 0;
+      color: color-mix(in srgb, var(--group-accent) 52%, #0f172a) !important;
     }
 
     .sub-group-desc {
       color: var(--text-muted);
+      font-size: 0.86rem;
+      line-height: 1.45;
+    }
+
+    .sub-group-line {
+      display: none;
     }
 
     .grid {
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
       grid-auto-rows: auto;
-      gap: clamp(1rem, 1.25vw, 2rem);
+      gap: clamp(1.35rem, 1.5vw, 2rem);
     }
 
     .card,
     .card-shell {
       position: relative;
-      min-height: 174px;
-      padding: 1.15rem 1.2rem 1.1rem;
+      min-height: 190px;
+      padding: 1.4rem 1.45rem 1.3rem;
       overflow: hidden;
       border-radius: 6px;
       box-shadow: none;
@@ -1160,26 +1178,32 @@
 
     .card h2 {
       font-family: "Aptos Display", "Segoe UI Variable Display", "Trebuchet MS", sans-serif;
-      font-size: 1.08rem;
-      font-weight: 720;
+      font-size: 1rem;
+      font-weight: 680;
       line-height: 1.25;
     }
 
     .card p {
-      margin-top: 0.6rem;
+      margin-top: 0.75rem;
       color: var(--card-p);
       font-size: 0.88rem;
-      line-height: 1.55;
+      line-height: 1.65;
       -webkit-line-clamp: 4;
     }
 
     .card-title-row {
       align-items: center;
+      gap: 0.7rem;
+    }
+
+    .card-actions {
+      gap: 0.5rem;
     }
 
     .card-chip {
+      padding: 0.28rem 0.55rem;
       border-radius: 4px;
-      font-size: 0.62rem;
+      font-size: 0.66rem;
     }
 
     .card-chip:hover,
@@ -1213,7 +1237,7 @@
       }
 
       .onboarding-path {
-        padding: 1.4rem 1.6rem;
+        padding: 1.75rem 2rem;
       }
 
       .onboarding-heading {
@@ -1229,8 +1253,8 @@
       }
 
       .onboarding-step {
-        min-height: 112px;
-        padding: 1.25rem 2.1rem 1.2rem 1.2rem;
+        min-height: 126px;
+        padding: 1.45rem 2.25rem 1.4rem 1.35rem;
       }
 
       .onboarding-number {
@@ -1253,12 +1277,12 @@
 
       .card,
       .card-shell {
-        min-height: 205px;
-        padding: 1.4rem 1.45rem 1.3rem;
+        min-height: 225px;
+        padding: 1.65rem 1.7rem 1.55rem;
       }
 
       .card h2 {
-        font-size: 1.2rem;
+        font-size: 1.08rem;
       }
 
       .card p {
@@ -1272,24 +1296,25 @@
       }
 
       .sub-group-label {
-        font-size: 0.8rem;
+        font-size: 0.94rem;
       }
 
       .sub-group-desc {
-        font-size: 0.84rem;
+        font-size: 0.9rem;
       }
     }
 
     @media (max-width: 760px) {
       body {
-        padding: 0.9rem 0.75rem 2.5rem;
+        padding: 1.15rem 1rem 4rem;
         background-size: 24px 24px, 24px 24px, 100% 100%;
       }
 
       .hero {
         position: relative;
         display: block;
-        padding-right: 3.2rem;
+        margin-bottom: 1.25rem;
+        padding: 1.25rem 3.2rem 1.5rem 0;
       }
 
       .hero-logo-wrap {
@@ -1317,10 +1342,12 @@
 
       .catalog-nav {
         top: 0.4rem;
+        margin-bottom: 1.75rem;
       }
 
       .onboarding-heading {
         display: block;
+        margin-bottom: 1rem;
       }
 
       .onboarding-heading p {
@@ -1332,7 +1359,8 @@
       }
 
       .onboarding-step {
-        min-height: 78px;
+        min-height: 92px;
+        padding: 1.15rem 2.1rem 1.15rem 1.05rem;
       }
 
       .catalog-nav a {
@@ -1349,11 +1377,14 @@
       }
 
       .section {
-        padding: 0.95rem;
+        margin-bottom: 2rem;
+        padding: 1.2rem;
       }
 
       .section-header {
         display: block;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.15rem;
       }
 
       .section-icon {
@@ -1361,16 +1392,40 @@
       }
 
       .sub-group {
-        padding-left: 0.7rem;
+        margin-bottom: 2.75rem;
+        padding-left: 0.85rem;
+      }
+
+      .sub-group-header {
+        top: 4rem;
+        margin-bottom: 1rem;
+        padding: 0.75rem 0.8rem;
       }
 
       .grid {
         grid-template-columns: 1fr;
+        gap: 1.25rem;
       }
 
       .card,
       .card-shell {
-        min-height: 132px;
+        min-height: 150px;
+        padding: 1.25rem 1.2rem 1.15rem;
+      }
+
+      .card-title-row {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+
+      .card-title-link {
+        width: 100%;
+      }
+
+      .card-actions {
+        width: 100%;
+        margin-top: 0;
       }
     }
 
