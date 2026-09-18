@@ -1,6 +1,6 @@
 ---
 name: deck-recipe-refresh
-description: "Use after an approved content refresh when recipeReview.required is true, or when the user asks to refresh an existing recipe. Preserves the current recipe as a baseline and requires an independent cross-model Rubber Duck critique before structural changes are finalized. Triggers: refresh recipe, changelog recipe review, approve recipe, update existing deck recipe."
+description: "Use after an approved content refresh when recipeReview.required is true, or when the user asks to refresh an existing recipe. Preserves the current recipe as a baseline and requires an independent cross-model critique before structural changes are finalized. Triggers: refresh recipe, changelog recipe review, approve recipe, update existing deck recipe."
 infer: true
 ---
 
@@ -34,12 +34,12 @@ Do not read the existing slide deck. The README, refresh plan, and recipe are th
 
 ## Review depth
 
-- Compact (default when this skill runs): primary analysis, independent Rubber Duck critique, then reconciliation.
-- Full: primary analysis must include at least one credible alternate structure before the Rubber Duck critique. Use only for `updateLevel: structural`, `recipeImpact: restructure`, or `slideImpact: replace-demo`.
+- Compact (default when this skill runs): primary analysis, independent cross-model critique, then reconciliation.
+- Full: primary analysis must include at least one credible alternate structure before the independent critique. Use only for `updateLevel: structural`, `recipeImpact: restructure`, or `slideImpact: replace-demo`.
 
 ## Review Question
 
-Give the primary reviewer and Rubber Duck the same extracted context and ask:
+Give the primary reviewer and independent reviewer the same extracted context and ask:
 
 > Does the approved evidence require changing the talk's thesis, section order,
 > weighting, highlights, agenda, or demos? Preserve intentional decisions unless
@@ -55,12 +55,15 @@ The context must include:
 - User emphasis from the refresh plan
 - Constraints from the standard recipe review skill
 
-## Mandatory Rubber Duck Gate
+## Mandatory Independent Review Gate
 
 Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
 1. Produce a primary recommendation that identifies how the product model or technical thesis changed, protects practical demos and factual release status, and minimizes unnecessary churn.
-2. In Copilot CLI, invoke the main CLI agent and explicitly require it to delegate the recommendation and complete extracted context to its internal **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
+2. Select the review mechanism from the current host. Never launch one Copilot host from another:
+	- **VS Code:** launch one review subagent with `runSubagent`, explicitly selecting an available model from a different model family than the primary model. Give it the complete extracted context and adversarial brief. Do not invoke the `copilot` CLI from VS Code.
+	- **Copilot CLI:** ask the main CLI agent to delegate the complete brief to its built-in **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
+3. In Copilot CLI, use:
 	```powershell
 	$prompt = @'
 	You are the main GitHub Copilot CLI agent. Do not perform this review yourself.
@@ -71,9 +74,9 @@ Before writing the recipe, complete all of these steps without asking the user t
 	'@
 	copilot --prompt $prompt --no-ask-user
 	```
-3. Do not role-play Rubber Duck in the primary model. Wait for the separate review and reconcile its objections explicitly before finalizing.
-4. Outside Copilot CLI, launch one review subagent using a different model family from the primary model and give it the same adversarial brief.
-5. Accept the CLI review only when its response explicitly confirms Rubber Duck delegation and includes the independent critique. If no independent cross-model reviewer is available or delegation evidence is absent, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
+4. Do not role-play the independent reviewer in the primary model. Wait for the separate review and reconcile its objections explicitly before finalizing.
+5. Accept a review only when it comes from the selected independent mechanism and includes the requested critique. For CLI, require explicit Rubber Duck delegation evidence. For VS Code, record the subagent model in the reconciliation.
+6. If the host-native independent reviewer is unavailable, choose another available model family in the same host. If no cross-model reviewer is available, record the unavailable gate, continue the primary review, and mark the recipe `# REVIEW PENDING: independent cross-model critique unavailable`. Keep `refresh.validation.recipeApproved: false` until an independent review completes.
 
 The reconciled result must return:
 

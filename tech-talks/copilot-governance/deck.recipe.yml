@@ -1,0 +1,81 @@
+# Reviewed 2026-09-18 — revise: make Useful Autonomy, Clear Authority the governing posture; preserve the sequence and technical proof. Independent critique: Gemini 3.7 Flash.
+# deck.recipe.yml — talk generation guidance
+
+version: 1
+
+deck:
+  title: "Useful Autonomy, Clear Authority"
+  subtitle: "GitHub Copilot governance from tool request to protected merge"
+  tagline: "Clear decision rights let routine work move and consequential changes reach the right owner."
+
+  agenda:
+    - title: "Give runtime actions a clear route"
+      takeaway: "A Copilot CLI hook lets routine work proceed, requests confirmation for publication, and routes protected changes to their owner."
+      whyItMatters: "Developers keep momentum because each runtime decision produces a clear next move."
+    - title: "Place every decision at the right layer"
+      takeaway: "Enterprise settings, MCP allowlists, repository files, Actions, CODEOWNERS, and rulesets each enforce a specific decision."
+      whyItMatters: "Platform teams can point to where each control is configured, what it decides, and where its authority stops."
+    - title: "Carry evidence into explicit acceptance"
+      takeaway: "Repository guidance, automated checks, CODEOWNERS, and rulesets turn agent output into a reviewable pull request."
+      whyItMatters: "Service owners retain acceptance authority while developers benefit from delegated implementation."
+
+  arcToc: "Clear Runtime Routes → Decision Rights → Reviewable Evidence → Explicit Acceptance"
+
+  arcNarrative: >
+    Frame governance as the operating architecture that makes useful autonomy sustainable.
+    Begin with a developer completing middleware work because a visible Copilot CLI boundary
+    routes a routine edit forward, requests confirmation for publication, and directs protected
+    policy work to its owner. Map availability, context, external tools, execution, verification,
+    and approval to the layer and actor that owns each decision. Follow the same change into a
+    pull request where repository instructions and automated checks produce reviewable evidence.
+    Finish at the protected branch, where the service owner and active ruleset make acceptance
+    explicit and durable. Every section pairs work that can proceed with authority that remains clear.
+
+  sectionOrder:
+    - "Give Runtime Actions a Clear Route"
+    - "Place Every Decision at the Right Layer"
+    - "Carry Reviewable Evidence with the Change"
+    - "Keep Merge Authority Explicit and Durable"
+
+  sectionModes:
+    "Give Runtime Actions a Clear Route":
+      emphasis: high
+      note: >
+        Stay on the authentication middleware task. Lead with the successful bounded edit,
+        then run the three fixture outcomes together: allow for ordinary work, ask before
+        publication, and deny with a supported route for protected policy. Keep hook lifecycle
+        coverage to the PreToolUse contract required by this artifact.
+    "Place Every Decision at the Right Layer":
+      emphasis: high
+      note: >
+        Name the exact GitHub setting or repository file for every decision in the developer's task.
+        Show enterprise Copilot policy, MCP enablement and managed allow/deny settings,
+        .github/mcp.json, repository-wide and path-scoped instructions, the PreToolUse hook, change-evidence.yml,
+        CODEOWNERS, and repository rulesets. State what each control enforces and where its authority stops.
+    "Carry Reviewable Evidence with the Change":
+      emphasis: medium-high
+      note: >
+        Carry the same change into the pull request. Show repository guidance shaping the
+        explanation and edge cases, then show automated tests, lint, dependency review, and
+        configured scanning producing inspectable results. Keep advisory Copilot review visibly
+        separate from service-owner acceptance.
+    "Keep Merge Authority Explicit and Durable":
+      emphasis: high
+      note: >
+        Give central repository enforcement equal technical weight with the local runtime hook.
+        Use CODEOWNERS and the ruleset payload to show required checks, qualified approval,
+        force-push protection, and explicit bypass authority. Close by tracing the complete task
+        from admitted access through the service owner's merge decision and transfer the chain
+        to one consequential workflow from the audience's environment.
+
+  preamble: []
+  appendix: []
+
+  highlightMoments:
+    - "One fixture run produces three visible decisions: allow, ask, and deny."
+    - "A protected policy request preserves the middleware progress and returns a clear route to its owner."
+    - "The control map points to the exact hosted setting or repository file that enforces each decision."
+    - "Repository MCP configuration proposes a server; enterprise allow and deny policy decides whether it may run."
+    - "The protected branch waits for both reproducible evidence and authentication-service owner approval."
+
+# RECONCILIATION: Copilot CLI reached its timeout before returning a delegated review. Gemini 3.7 Flash supplied the independent cross-model critique. Accepted: lead with useful bounded execution, give local hooks and central merge controls equal weight, tie secondary controls to the developer workflow, and distinguish generated evidence from acceptance authority. The suggested sandbox expansion remains a fit criterion in the README because the CLI-to-ruleset chain already demonstrates the independent authority boundary for this talk.

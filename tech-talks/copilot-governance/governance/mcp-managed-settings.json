@@ -1,0 +1,15 @@
+{
+  "allowedMcpServers": [
+    { "serverUrl": "https://mcp.example.com/*" }
+  ],
+  "deniedMcpServers": [
+    {
+      "serverCommand": [
+        "npx",
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/"
+      ]
+    }
+  ]
+}

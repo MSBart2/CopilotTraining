@@ -1,0 +1,47 @@
+{
+  "workflow": "Bounded authentication middleware change",
+  "controls": [
+    {
+      "decision": "availability",
+      "owner": "enterprise AI administrator",
+      "enforcementSurface": "Enterprise account > Copilot > Policies",
+      "evidence": "effective policy for the organization and user",
+      "recovery": "correct enterprise policy or organization assignment"
+    },
+    {
+      "decision": "context",
+      "owner": "platform team and repository owner",
+      "enforcementSurface": ".github/copilot-instructions.md, path-scoped .github/instructions/*.instructions.md, and supported content exclusion in GitHub Copilot settings",
+      "evidence": "applicable repository guidance, path-scoped guidance, and excluded paths",
+      "recovery": "remove sensitive input and narrow the task context"
+    },
+    {
+      "decision": "external-tools",
+      "owner": "enterprise AI administrator and repository owner",
+      "enforcementSurface": "Copilot > Policies > MCP plus managed allowedMcpServers and deniedMcpServers; .github/mcp.json declares repository servers",
+      "evidence": "effective allow or deny result and loaded MCP server tools",
+      "recovery": "select an approved server or request an enterprise allowlist change"
+    },
+    {
+      "decision": "execution",
+      "owner": "platform security",
+      "enforcementSurface": ".github/hooks/governance.json invoking scripts/pre-tool-use.mjs for Copilot CLI PreToolUse",
+      "evidence": "structured allow, ask, or deny decision",
+      "recovery": "split the task or request the named human confirmation"
+    },
+    {
+      "decision": "verification",
+      "owner": "service engineering team",
+      "enforcementSurface": ".github/workflows/change-evidence.yml published as the required change-evidence check",
+      "evidence": "test, lint, scan, and unresolved-finding results",
+      "recovery": "repair the change and rerun the failed check"
+    },
+    {
+      "decision": "approval",
+      "owner": "authentication service owner",
+      "enforcementSurface": ".github/CODEOWNERS plus repository Settings > Rules > Rulesets",
+      "evidence": "code-owner approval and satisfied merge requirements",
+      "recovery": "revise the change or use the documented bypass authority"
+    }
+  ]
+}

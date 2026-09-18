@@ -53,6 +53,16 @@ Apply the contract by format:
 - **Tech talk:** teach a decision model, demonstrate it through a working artifact, validate the outcome, and name when the pattern stops fitting. Leave practitioners with a concrete application to their own repository or workflow.
 - **Executive talk:** clarify the decision, owner, authority boundary, tradeoff, and success signal. Distinguish sourced facts, observed results, estimates, and proposed targets.
 
+### Actor, Question, and Proof Contract
+
+Every teaching surface must make three things recoverable without relying on hidden presenter context:
+
+1. **Actor:** Name who or what acts when agency matters. Distinguish the practitioner request, Copilot or agent action, control decision, and human approval. Avoid agentless phrases such as "work proceeds" when the actor is Copilot.
+2. **Question and answer:** Every slide should answer one audience question. The headline may state the answer rather than use a question mark, but the question and the slide's answer must be unambiguous.
+3. **Proof:** When a slide claims behavior, show a representative input, action, or artifact together with its observable result on the same slide whenever practical. Label test-runner status separately from the domain result so terms such as `PASS`, `allow`, and `deny` cannot be mistaken for one another.
+
+Carry enough context onto each slide that a viewer can identify the actor, task, and consequence after entering mid-section. Use the preceding slide for narrative momentum, not for essential disambiguation.
+
 ### Tech Talk Narrative Contract
 
 A practitioner tech talk is a coherent argument for one consequential decision. The template supplies coverage prompts; it does not supply the narrative or require its headings to become the running order.

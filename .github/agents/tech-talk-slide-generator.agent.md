@@ -147,6 +147,14 @@ Read all of these at the same time. Do not read one, then the next — fetch the
 
 Identify the single technical reveal, honest tension, or boundary that changes how the audience approaches the core decision → make it the centerpiece of a section. Product novelty alone does not earn slide time. Compress or skip material that does not advance the decision, proof, or transfer.
 
+**Per-slide clarity gate — apply before choosing a component:**
+
+1. Write the audience question this slide answers in authoring notes or working memory. The visible headline may be the concise answer; it does not need a question mark.
+2. Name the actor wherever agency changes the meaning. Say `Copilot requests the tool`, `the hook decides`, or `the service owner approves`; do not rely on passive phrases such as `work proceeds`.
+3. Carry enough local context for a viewer entering on this slide to identify the actor, task, and consequence. Do not make the previous slide responsible for essential disambiguation.
+4. For a behavioral claim, show the representative input or action beside its observable output or decision whenever practical. Preserve real field names and values when displaying payloads.
+5. Separate verification status from the behavior being verified. For example, present `3/3 expected decisions verified` apart from the actual `allow`, `ask`, and `deny` results.
+
 **Target: 20-25 slides total (never exceed 30).** Fixed positions:
 
 ```
@@ -332,6 +340,14 @@ Run through this before handing off.
 - [ ] `partNumber` matches section position (1=cyan, 2=blue, 3=indigo, 4=purple)
 - [ ] All `&#39;` escaping applied inside single-quoted array props
 - [ ] No `&quot;` or `\"` in any prop value
+
+### Editorial clarity
+
+- [ ] Every slide has one unambiguous audience question and a visible answer; the headline may state the answer directly
+- [ ] Copilot, agent, practitioner, control, and approver are named wherever changing the actor changes the meaning
+- [ ] Each slide carries enough local context to identify the actor, task, and consequence
+- [ ] Behavioral examples show representative input or action with the observable result whenever practical
+- [ ] Test status is visually distinct from domain outcomes such as `allow`, `ask`, and `deny`
 
 ### Frontmatter & metadata
 

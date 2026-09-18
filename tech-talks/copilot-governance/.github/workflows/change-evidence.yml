@@ -1,0 +1,29 @@
+name: change-evidence
+
+on:
+  pull_request:
+    paths:
+      - "src/auth/**"
+      - "test/auth/**"
+      - ".github/copilot-instructions.md"
+      - ".github/instructions/auth.instructions.md"
+
+permissions:
+  contents: read
+
+jobs:
+  change-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Focused authentication tests
+        run: npm test -- --runInBand test/auth
+      - name: Lint
+        run: npm run lint
+      - name: Dependency review
+        uses: actions/dependency-review-action@v4

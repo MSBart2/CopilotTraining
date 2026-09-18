@@ -1,0 +1,11 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "type": "command",
+        "command": "node scripts/pre-tool-use.mjs",
+        "timeout": 5
+      }
+    ]
+  }
+}

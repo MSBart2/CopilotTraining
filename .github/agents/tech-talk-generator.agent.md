@@ -153,7 +153,7 @@ After the user responds:
 
 ### Deck Recipe Artifact
 
-After the README is complete and approved, you **must invoke the deck-recipe-review skill** (`.github/skills/deck-recipe-review/SKILL.md`) to create `tech-talks/{topic}/deck.recipe.yml`. Do not leave this as a handoff or ask the user to remember it. The skill requires an independent cross-model Rubber Duck critique before it writes the recipe. The recipe must include exactly three `deck.agenda` outcomes (`title`, `takeaway`, `whyItMatters`) for the deck opening; derive them from the reader-first README rather than adding presentation choreography to it.
+After the README is complete and approved, you **must invoke the deck-recipe-review skill** (`.github/skills/deck-recipe-review/SKILL.md`) to create `tech-talks/{topic}/deck.recipe.yml`. Do not leave this as a handoff or ask the user to remember it. The skill requires a host-native independent cross-model critique before it writes the recipe. The recipe must include exactly three `deck.agenda` outcomes (`title`, `takeaway`, `whyItMatters`) for the deck opening; derive them from the reader-first README rather than adding presentation choreography to it.
 
 Do **not** write the recipe yourself — the skill owns this step.
 

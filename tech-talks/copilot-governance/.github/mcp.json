@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "work-items": {
+      "type": "http",
+      "url": "https://mcp.example.com/work-items",
+      "tools": ["get_issue", "search_docs"]
+    }
+  }
+}

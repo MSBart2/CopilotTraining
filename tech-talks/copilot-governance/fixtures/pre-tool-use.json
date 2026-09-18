@@ -1,0 +1,37 @@
+[
+  {
+    "name": "allow bounded middleware edit",
+    "expectedDecision": "allow",
+    "input": {
+      "hookEventName": "PreToolUse",
+      "tool_name": "edit",
+      "tool_input": {
+        "path": "src/auth/middleware.ts",
+        "replacement": "return next();"
+      }
+    }
+  },
+  {
+    "name": "ask before publishing branch",
+    "expectedDecision": "ask",
+    "input": {
+      "hookEventName": "PreToolUse",
+      "tool_name": "shell",
+      "tool_input": {
+        "command": "git push origin feature/auth-timeout"
+      }
+    }
+  },
+  {
+    "name": "deny sensitive authentication policy edit",
+    "expectedDecision": "deny",
+    "input": {
+      "hookEventName": "PreToolUse",
+      "tool_name": "edit",
+      "tool_input": {
+        "path": "src/auth/policy/production.json",
+        "replacement": "{\"allowAnonymous\":true}"
+      }
+    }
+  }
+]

@@ -2,7 +2,7 @@
 name: exec-recipe-review
 description: >
   Review an exec-talk's README and produce an exec.recipe.yml. Requires an independent
-  cross-model Rubber Duck critique of section weighting, executive audience fit, narrative
+  cross-model critique of section weighting, executive audience fit, narrative
   arc, and action clarity. Always overwrites any existing recipe. Triggers: "review the talk",
   "create the recipe", "is this landing for execs", "section weighting", "coverage gap",
   "recipe", "executive framing".
@@ -11,7 +11,7 @@ infer: true
 
 # Exec Recipe Review Skill
 
-Read the exec-talk README, analyze its structure with a primary reviewer plus an independent cross-model Rubber Duck critique, and write `exec.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Slide Generator when building exec-talk decks.
+Read the exec-talk README, analyze its structure with a primary reviewer plus an independent cross-model critique, and write `exec.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Slide Generator when building exec-talk decks.
 
 **Key Constraints:**
 - **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the leadership decision, evidence, ownership, authority boundary, and organizational test when consolidating the README. Context that does not change a decision has not earned executive airtime.
@@ -36,7 +36,7 @@ Read the exec-talk README, analyze its structure with a primary reviewer plus an
 
 ## Pre-Flight: Gather Source Material
 
-Before starting the review, read all three sources. The Rubber Duck brief must include the full context — the independent reviewer must not be expected to read files itself.
+Before starting the review, read all three sources. The independent-review brief must include the full context — the reviewer must not be expected to read files itself.
 
 ```
 1. tech-talks/exec-<topic>/README.md                                     — full section content + key metrics
@@ -103,11 +103,14 @@ What should change and why?
 
 ---
 
-## Mandatory Rubber Duck Gate
+## Mandatory Independent Review Gate
 
 Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
 
-1. In Copilot CLI, invoke the main CLI agent and explicitly require it to delegate the primary recommendation and complete context block to its internal **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
+1. Select the review mechanism from the current host. Never launch one Copilot host from another:
+  - **VS Code:** launch one review subagent with `runSubagent`, explicitly selecting an available model from a different model family than the primary model. Give it the complete context block and adversarial review prompt. Do not invoke the `copilot` CLI from VS Code.
+  - **Copilot CLI:** ask the main CLI agent to delegate the complete brief to its built-in **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
+2. In Copilot CLI, use:
   ```powershell
   $prompt = @'
   You are the main GitHub Copilot CLI agent. Do not perform this review yourself.
@@ -118,16 +121,16 @@ Before writing the recipe, complete all of these steps without asking the user t
   '@
   copilot --prompt $prompt --no-ask-user
   ```
-2. Require Rubber Duck to independently attack the proposed business question, decision journey, section order, weighting, credibility, timing context, action clarity, voice compliance, and content that has not earned executive airtime.
-3. Do not role-play Rubber Duck in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
-4. Outside Copilot CLI, launch one review subagent using a different model family from the primary model and give it the same adversarial brief.
-5. Accept the CLI review only when its response explicitly confirms Rubber Duck delegation and includes the independent critique. If no independent cross-model reviewer is available or delegation evidence is absent, stop and report that the recipe review gate is blocked. Do not silently write an unreviewed recipe.
+3. Require the independent reviewer to attack the proposed business question, decision journey, section order, weighting, credibility, timing context, action clarity, voice compliance, and content that has not earned executive airtime.
+4. Do not role-play the independent reviewer in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
+5. Accept a review only when it comes from the selected independent mechanism and includes the requested critique. For CLI, require explicit Rubber Duck delegation evidence. For VS Code, record the subagent model in the reconciliation.
+6. If the host-native independent reviewer is unavailable, choose another available model family in the same host. If no cross-model reviewer is available, record the unavailable gate, perform the primary review, and mark the recipe `# REVIEW PENDING: independent cross-model critique unavailable`. This degraded path preserves progress while preventing the recipe from being treated as fully reviewed.
 
 ---
 
 ## Reconciliation and Final Recipe Direction
 
-Reconcile the primary analysis with the independent critique. Rubber Duck is advisory, but every material objection must be accepted or rejected with a content-based reason before producing:
+Reconcile the primary analysis with the independent critique. The reviewer is advisory, but every material objection must be accepted or rejected with a content-based reason before producing:
 
 1. **Verdict** (2-3 sentences) — the core structural problem and fix for this executive audience
 2. **`arcToc`** — one line ≤ 80 chars, section names joined by ` → ` (use "The X" naming pattern if appropriate)

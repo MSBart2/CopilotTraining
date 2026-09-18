@@ -1,0 +1,5 @@
+# Authentication service owners retain review authority for auth changes.
+/src/auth/ @octo-org/auth-service-owners
+/test/auth/ @octo-org/auth-service-owners
+/.github/workflows/ @octo-org/platform-security
+/.github/CODEOWNERS @octo-org/platform-security

@@ -16,8 +16,8 @@ Most refreshes are README wording. Do not start a cross-model recipe review or w
 |---|---|---|---|
 | `reference` + `slideImpact: none` | leave recipe | leave deck | no |
 | `content` + `recipeImpact: none\|confirm` + `slideImpact: none\|patch` | date/wording only, no review | patch existing slides or skip | no |
-| `content` + `recipeImpact: revise` or `slideImpact: regenerate` | compact recipe refresh | targeted regen or patch | Rubber Duck gate only if recipe fields change |
-| `structural`, any `headline`, `recipeImpact: restructure`, or `slideImpact: replace-demo` | full recipe refresh | full deck regen | Rubber Duck gate required |
+| `content` + `recipeImpact: revise` or `slideImpact: regenerate` | compact recipe refresh | targeted regen or patch | Independent review gate only if recipe fields change |
+| `structural`, any `headline`, `recipeImpact: restructure`, or `slideImpact: replace-demo` | full recipe refresh | full deck regen | Host-native independent review gate required |
 
 Never treat an empty 7-day feed report or an empty ledger as "this talk is current."
 

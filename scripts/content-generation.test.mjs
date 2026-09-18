@@ -95,12 +95,16 @@ test("executive review preserves the factual opportunity-framed voice", async ()
   assert.doesNotMatch(review, /Missing urgency|cost of not acting|cost of delay/i);
 });
 
-test("recipe reviews invoke Rubber Duck through the main CLI agent", async () => {
+test("recipe reviews use the independent reviewer native to the current host", async () => {
   for (const path of recipeReviewMachinery) {
     const content = await read(path);
+    assert.match(content, /Never launch one Copilot host from another/);
+    assert.match(content, /VS Code:[\s\S]*runSubagent/);
+    assert.match(content, /different model family/);
+    assert.match(content, /Do not invoke the `copilot` CLI from VS Code/);
     assert.match(content, /copilot --prompt \$prompt --no-ask-user/);
     assert.match(content, /Rubber Duck is not a selectable custom agent/);
-    assert.match(content, /explicit evidence that delegation occurred/);
+    assert.match(content, /REVIEW PENDING: independent cross-model critique unavailable/);
   }
 });
 
@@ -129,6 +133,19 @@ test("universal instructions own the education north star", async () => {
   }
   assert.match(instructions, /### Universal Voice and Prose Contract/);
   assert.match(instructions, /canonical source for editorial policy/i);
+  assert.match(instructions, /### Actor, Question, and Proof Contract/);
+  assert.match(instructions, /Name who or what acts when agency matters/);
+  assert.match(instructions, /Every slide should answer one audience question/);
+  assert.match(instructions, /show a representative input, action, or artifact together with its observable result/);
+});
+
+test("tech-talk slides enforce actor, question, and proof clarity", async () => {
+  const generator = await read(".github/agents/tech-talk-slide-generator.agent.md");
+  assert.match(generator, /Per-slide clarity gate/);
+  assert.match(generator, /Name the actor wherever agency changes the meaning/);
+  assert.match(generator, /viewer entering on this slide/);
+  assert.match(generator, /representative input or action beside its observable output or decision/);
+  assert.match(generator, /Separate verification status from the behavior being verified/);
 });
 
 test("live content machinery has no deleted editorial dependencies", async () => {
