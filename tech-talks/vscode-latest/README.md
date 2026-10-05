@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-09-16
+updated: 2026-09-25
 section: "Choose and Configure"
 audience: [developer, team-lead]
 level: applied
@@ -10,6 +10,18 @@ decision: "Which recent VS Code Copilot changes alter a durable workflow decisio
 prerequisites: [surfaces]
 related: [copilot-primitives, agent-dev-loop, multi-agent-coordination]
 references:
+  - url: https://code.visualstudio.com/updates/v1_139
+    label: "VS Code release notes: September 23, 2026 (v1.139)"
+    verified: 2026-09-25
+  - url: https://code.visualstudio.com/updates/v1_138
+    label: "VS Code release notes: September 16, 2026 (v1.138)"
+    verified: 2026-09-25
+  - url: https://code.visualstudio.com/docs/agents/run/agents-window
+    label: "Use the Agents window (Preview): signed-out access"
+    verified: 2026-09-25
+  - url: https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14
+    label: "GitHub Copilot weekly releases: September 14"
+    verified: 2026-09-25
   - url: https://code.visualstudio.com/updates/v1_132
     label: "VS Code release notes: August 5, 2026 (v1.132)"
     verified: 2026-08-12
@@ -48,7 +60,7 @@ references:
     verified: 2026-08-12
 ---
 
-# VS Code Copilot 1.121–1.132: Agent Infrastructure, Open Models, and Closed-Loop Delivery
+# VS Code Copilot Through 1.139: Agent Infrastructure, Open Models, and Closed-Loop Delivery
 
 > **The Question This Talk Answers:**
 > *"How does VS Code's Copilot platform evolve from a single-window conversation partner into portable agent infrastructure with open model choice and a closed review loop — and which capabilities are ready for our teams today?"*
@@ -61,7 +73,7 @@ references:
 
 | Criterion | Assessment | Notes |
 |-----------|-----------|-------|
-| **Relevant** | 🟢 High | Releases 1.121–1.132 change how Copilot agents are deployed, which models they use, and how review happens. Every VS Code Copilot team is affected. |
+| **Relevant** | 🟢 High | Releases through 1.139 change where agents run, which models they use, and how review happens. Teams can choose an execution environment that matches their project. |
 | **Compelling** | 🟢 High | The open-model story (BYOK with no GitHub sign-in) and the Agents window parallel-work model are architectural shifts, not incremental additions. |
 | **Actionable** | 🟢 High | GA browser tools, Stable Custom Endpoint, and BYOK are available today. Parallel sessions and remote hosts are preview but explorable now. |
 
@@ -74,15 +86,15 @@ references:
 ### What's Now Possible
 
 - **Portable agent infrastructure** — The Copilot SDK and Agent Host Protocol (AHP) let agent sessions run on owned remote machines and survive the originating VS Code window closing.
-- **Open model choice** — Supported BYOK providers, local Ollama models, and compatible custom endpoints work in chat, tools, and MCP without a GitHub sign-in.
+- **Open model choice** — Supported BYOK providers, local Ollama models, and compatible custom endpoints work in chat, tools, and MCP without a GitHub sign-in. Signed-out access to the separate Agents window has additional experimental settings.[^12]
 - **Agents window as the agent surface** — A dedicated VS Code window for agent-first work across workspaces; multi-session, multi-chat, peer forks, and live activity pills once people actually open it.
 - **Closed-loop delivery** — GA browser tools, Copilot Vision paste, in-window diff review, element-specific comments, and CI/PR feedback responses close the build-validate-review cycle without leaving the agent session.
 
 ### The Emerging Practice
 
-The central question VS Code 1.121–1.132 answers is not "what new features shipped" — it's how agentic development infrastructure matures. The Agent Host Protocol and Copilot SDK remove the coupling between one VS Code window and one live agent session. A remote session can persist when its client disconnects, and the agent host can synchronize the same session across multiple VS Code windows. This changes what "starting an agent" means: it can be a durable unit of work running on infrastructure our teams own.
+The central question the releases through VS Code 1.139 answer is how agentic development infrastructure matures. The Agent Host Protocol and Copilot SDK remove the coupling between one VS Code window and one live agent session. A remote session can persist when its client disconnects, and the agent host can synchronize the same session across multiple VS Code windows. This changes what "starting an agent" means: it can be a durable unit of work running on infrastructure our teams own. A Dev Container can now supply the project toolchain for a local or remote agent session, subject to rollout and host prerequisites.[^13][^14]
 
-Model choice and economics follow from the same logic. When any compatible endpoint works — including local Ollama models and provider API keys without GitHub sign-in — the model picker becomes infrastructure configuration rather than a subscription-tier boundary. The 1M-token context windows available on supported models stop being a "nice to have" and start being a practical architectural decision for large-codebase tasks. The one firm boundary: inline suggestions and next-edit suggestions (NES) still require GitHub sign-in. That's the boundary worth knowing before designing any offline or air-gapped workflow.
+Model choice and economics follow from the same logic. When a compatible endpoint works — including local Ollama models and provider API keys without GitHub sign-in for chat — the model picker becomes infrastructure configuration rather than a subscription-tier boundary. The 1M-token context windows available on supported models become a practical architectural decision for large-codebase tasks. Two boundaries matter for a signed-out workflow: inline suggestions and next-edit suggestions (NES) still require GitHub sign-in, and signed-out use of the desktop Agents window is experimental rather than the default setup.[^12]
 
 Parallel work and closed-loop review make this practical at scale — but only if people open the surface built for it. Many developers still run agents only from the side Chat view and never discover the **Agents window**: a dedicated VS Code window optimized for agent-first work across workspaces. Once that window is open, multiple sessions side-by-side, `/btw` side chats, and live activity pills make concurrent effort legible. When those efforts touch the browser or produce PRs, the review workflow stays in-session — device-emulated screenshots, element comments, inline diff review, and CI/PR response all resolve without context switching. Everyday context handoff got easier too: **Copilot Vision** is GA, so pasted images and PDFs attach as multimodal context instead of forcing a wall of text into the prompt.
 
@@ -93,7 +105,7 @@ Parallel work and closed-loop review make this practical at scale — but only i
 | Pillar | What Changed | Status |
 |---|---|---|
 | **Agent Infrastructure** | AHP + Copilot SDK: sessions persist beyond the originating window; run on owned remote hosts | Preview |
-| **Open Model Workbench** | BYOK without GitHub sign-in; Stable Custom Endpoint; Ollama; 1M-token contexts | GA (with noted limits) |
+| **Open Model Workbench** | BYOK chat without GitHub sign-in; Stable Custom Endpoint; Ollama; 1M-token contexts | GA for BYOK chat; signed-out Agents window experimental |
 | **Parallel Agent Work** | Agents window as the primary surface; multi-session, multi-chat, peer forks, `/btw`, live pills | Preview (Agents window) |
 | **Closed-Loop Delivery** | GA browser tools, Copilot Vision paste, element comments, in-window review, CI/PR feedback | GA + Preview mix |
 
@@ -127,7 +139,9 @@ The remote agent host runs as a separate process on an owned machine reachable t
 
 The host persists after the VS Code window closes. Progress, tool outputs, and session memory remain accessible on reconnect.
 
-> **Preview boundary:** Remote agents and parts of the AHP rollout are preview capabilities in v1.121. The protocol design is stable, but host registration and session migration UX continue to evolve.[^1]
+If the repository has a supported Dev Container configuration, the developer can select **Use Dev Container** from the remote folder menu so the agent builds and tests with the project's dependencies. VS Code 1.138 introduced this for local folders; 1.139 extends it to SSH, Tunnel, and WSL hosts. Enable `chat.agentHost.devContainer.enabled`, confirm Docker is available **on the remote host**, then start a small test session and inspect its toolchain before delegating a migration. Availability is rolling out gradually, so prepare a standard remote-host path if the menu is absent.[^13][^14]
+
+> **Preview boundary:** Remote agents and parts of the AHP rollout remain preview. Host registration and session migration UX continue to evolve; Dev Container sessions are on a gradual rollout and may need the setting enabled manually.[^1][^14]
 
 ### Copilot SDK and Harness Portability
 
@@ -150,7 +164,10 @@ Q: Where does the agent work need to run?
 │  └─ Remote host with Autopilot → session persists, reconnect on completion
 │
 ├─ Work needs CI environment or production secrets
-│  └─ Remote host on owned infrastructure → environment parity, access control
+│  └─ Remote host with approved access → inspect toolchain and permission boundaries
+│
+├─ Work needs the repo's development dependencies
+│  └─ Dev Container on local or remote host → verify Docker, configuration, rollout
 │
 └─ Work is blocked on an interactive terminal or browser
    └─ Local session with GA browser tools → closed-loop review stays in-window
@@ -159,7 +176,7 @@ Q: Where does the agent work need to run?
 ---
 
 <!-- 🎬 MAJOR SECTION: Open Model Workbench -->
-## Open Model Workbench: Bring Any Model, No Sign-In Required
+## Open Model Workbench: BYOK Chat Without GitHub Sign-In
 
 VS Code 1.122 makes the most consequential model-flexibility change yet: using Anthropic, Azure, Gemini, OpenAI, Ollama, OpenRouter, or any compatible custom endpoint no longer requires a GitHub account. Chat, tool execution, and MCP operate against whatever model is configured.[^2]
 
@@ -175,7 +192,7 @@ Any VS Code user can configure a provider key in the model picker — no GitHub 
 
 Billing and rate limits go through the provider — Copilot quotas don't apply to BYOK sessions.[^2]
 
-> **The one firm boundary:** Inline suggestions (ghost-text completions while typing) and next-edit suggestions (NES) still require GitHub sign-in and a Copilot subscription. BYOK applies to chat, agents, tool calls, and MCP — not to the completions engine.[^2]
+> **Two sign-in boundaries:** Inline suggestions (ghost-text completions while typing) and next-edit suggestions (NES) still require GitHub sign-in and a Copilot subscription. BYOK works for chat, tools, and MCP without that sign-in, but the separate **desktop Agents window** requires GitHub authentication by default. Signed-out use there is experimental: enable `chat.agentHost.allowSignedOutWhenUsable` with a usable provider, and `chat.agentHost.byokModels.enabled` for visible BYOK models in Agent Host sessions. The browser-based Agents window always requires GitHub sign-in.[^2][^12]
 
 ### Local Models via Ollama
 
@@ -219,6 +236,8 @@ Models with 1M-token context support can be used for large-codebase tasks that p
 Practical note: very long contexts increase latency and provider cost. The `/compact` command and background compaction remain available as cost-quality tradeoffs for models that perform better with focused contexts.[^2]
 
 ### Model Selection Decision Guide
+
+If the Copilot model picker exposes **efficiency**, **balance**, and **intelligence** auto-selection tiers, treat them as a rolling-out cost/quality/latency choice over the same available Copilot models, not as three new BYOK providers.[^15]
 
 ```
 Q: What will the model do in this session?
@@ -402,6 +421,8 @@ For Markdown files, the session supports hybrid editing: the developer edits Mar
 
 ### CI and PR Feedback Response
 
+Before CI can run, the developer can create a pull request from an Agent Host session in the Agents window: review the generated title and description, choose draft status, then create it directly or ask the agent to do so. **Agent Merge** is a separate experimental option behind `chat.agentMerge.enabled`; check which controls the installed build exposes before using it in a live demo.[^13]
+
 When a session's changes are pushed to a branch and CI runs, the Agents window surfaces failed check details directly in the session view. The agent can then:[^4]
 
 - Read the failure details (test output, lint errors, type errors)
@@ -421,6 +442,8 @@ Enterprise controls in the June 2026 release complement the open model and paral
 **OpenTelemetry signals:** Richer OTel trace data from agent sessions integrates with existing observability platforms. Tool call latency, turn count, and subagent depth are exported as structured spans.
 
 **Managed settings:** Organizations can enforce baseline VS Code Copilot settings through managed configuration, preventing individuals from overriding security-relevant defaults (sandbox settings, terminal approval behavior, sensitive prompt handling).
+
+**Signed-out agent-host access:** BYOK chat without GitHub sign-in does not automatically unlock the Agents window. The desktop signed-out path is experimental and setting-gated; browser access still requires GitHub sign-in. Verify the planned demo's account and model path before presenting.[^12]
 
 **MCP allowlists:** Enterprise MCP allowlists let organizations centrally control which MCP server endpoints agent sessions can connect to. Team-scoped allowlists appear in the Agents window session settings.
 
@@ -487,7 +510,7 @@ Q: What does the workflow need?
 │  └─ Remote agent host (AHP) — preview; session persists without VS Code
 │
 ├─ Any model, no GitHub sign-in, local execution
-│  └─ BYOK or Ollama endpoint — GA; configure in model picker
+│  └─ BYOK or Ollama endpoint — GA for chat; signed-out Agents window experimental
 │
 ├─ Concurrent work on independent tasks in the same repo
 │  └─ Agents window multi-session — preview; separate worktrees per session
@@ -507,7 +530,7 @@ Q: What does the workflow need?
 
 ### Use This When
 
-- The team runs VS Code 1.121+ and has access to the Agents window (Stable preview channel or later)
+- The team runs an up-to-date VS Code build and has access to the Agents window (Preview)
 - Developers currently only use the side Chat view and need a multi-session agent surface
 - Model choice, cost visibility, or data residency requirements make BYOK or local models the right fit
 - Tasks are large enough (> 30 min, > 5 files, multiple sub-tasks) to benefit from parallelism or remote execution
@@ -519,6 +542,7 @@ Q: What does the workflow need?
 - The primary need is inline code completions or next-edit suggestions — those require GitHub sign-in regardless of BYOK configuration
 - Production-grade automation is required — the Agents window is preview; use GitHub Actions with Copilot-enabled workflows for reliable CI-level parallelism
 - The team uses VS Code Remote SSH without the Agents window — the remote agent host is distinct from VS Code Remote and requires the AHP runtime on the target machine
+- The demo assumes signed-out access to the Agents window without enabling and verifying its experimental settings
 
 ---
 
@@ -557,7 +581,8 @@ Q: What does the workflow need?
 ## ✅ What You Can Do Today
 
 **15 minutes:**
-- [ ] Update VS Code to 1.132 to get `/btw`, live pills, and element comments
+- [ ] Update VS Code to 1.139 (or the latest stable patch) and check that `/btw`, live pills, and element comments are available
+- [ ] Confirm the demo's GitHub sign-in and BYOK settings before opening the Agents window
 - [ ] Open the **Agents window** once (title bar **Open in Agents**, Command Palette **Chat: Open Agents Window**, or `code --agents`) and start a session there instead of only in side chat
 - [ ] Open **Manage Models…** in the chat model picker and add an Ollama endpoint or BYOK provider key — no GitHub Copilot subscription required
 - [ ] Paste an Excel range or a UI screenshot into Chat and confirm Copilot Vision attaches it as an image instead of a text dump
@@ -572,7 +597,7 @@ Q: What does the workflow need?
 - [ ] Run a frontend task with device emulation: implement a component, ask the agent to screenshot it in mobile and desktop modes, and review the element comments
 
 **2–4 hours:**
-- [ ] If the team has a registered remote host or dev container, register it as an agent host and start a session through the AHP — test reconnection after disconnecting VS Code
+- [ ] If the team has a registered remote host, start a session through AHP and test reconnection after disconnecting VS Code; if using a Dev Container, check its configuration, remote Docker, and the rollout setting first
 - [ ] Enable managed settings in the GitHub organization Copilot policy and verify that terminal sandbox settings propagate to developer machines
 - [ ] Configure enterprise MCP allowlists in organization Copilot policy and confirm which MCP servers appear in the Agents window session settings
 - [ ] Set up OTel trace export from agent sessions and confirm spans appear in your observability platform (Datadog, Grafana, or equivalent)
@@ -614,6 +639,14 @@ See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for full navigation.
 [^10]: **[GitHub Copilot in VS Code Documentation](https://code.visualstudio.com/docs/copilot/overview)** — Comprehensive reference for Copilot features, agent types, customization, and settings
 
 [^11]: **[Background Agents Documentation](https://code.visualstudio.com/docs/copilot/agents/background-agents)** — Worktree isolation, background session lifecycle, and review workflow
+
+[^12]: **[Use the Agents window (Preview)](https://code.visualstudio.com/docs/agents/run/agents-window)** — Desktop signed-out access is experimental and setting-gated; browser access requires GitHub sign-in
+
+[^13]: **[VS Code Release Notes: September 16, 2026 (v1.138)](https://code.visualstudio.com/updates/v1_138)** — Local Dev Container sessions and in-window PR creation; optional Agent Merge is experimental
+
+[^14]: **[VS Code Release Notes: September 23, 2026 (v1.139)](https://code.visualstudio.com/updates/v1_139)** — Remote Dev Container sessions over SSH, Tunnel, or WSL; gradual rollout
+
+[^15]: **[GitHub Copilot weekly releases: September 14](https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14)** — Rolling-out auto model selection tiers use the same available model pool
 
 ### Official Documentation
 

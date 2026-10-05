@@ -2,7 +2,6 @@
 name: Tech Talk Generator
 description: Research and generate technical deep-dive content for CopilotTraining tech talks. Creates comprehensive README.md from URLs or requirements using TEMPLATE.md structure.
 tools: ["read", "github/web_search", "edit/createFile", "edit/editFiles", "agent/runSubagent"]
-model: Claude Sonnet 4.6
 argument-hint: Provide URLs to research or describe the tech talk topic (uses web_search for reliability)
 ---
 

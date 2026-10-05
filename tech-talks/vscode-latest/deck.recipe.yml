@@ -1,6 +1,6 @@
 # deck.recipe.yml — VS Code Latest talk guidance
 #
-# REFRESH: 2026-08-12
+# REFRESH: 2026-09-25 — current version and signed-out Agents window wording only
 # COUNCIL DECISION: RESTRUCTURE — high confidence (prior 2026-08-10)
 # FOLLOW-UP: 2026-08-12 — ADJUST. Author feedback: many teams still do not open the
 # Agents window, and daily Vision paste (e.g. Excel clipboard → image attachment) is
@@ -12,9 +12,9 @@
 version: 1
 
 deck:
-  title: "VS Code Copilot 1.121–1.132"
+  title: "VS Code Copilot through 1.139"
   subtitle: "Portable Agent Infrastructure, Open Models, and a Closed Review Loop"
-  tagline: "Bring any model — including local Ollama — with no GitHub sign-in required"
+  tagline: "BYOK chat without GitHub sign-in; Agents window access has separate requirements"
 
   agenda:
     - title: "Run Any Model You Choose"
@@ -37,8 +37,9 @@ deck:
     short — mental model, not protocol tour — and Preview, so prepared evidence beats a
     live reconnect demo. Open Model Workbench remains the peak and the only high-emphasis
     section: BYOK without GitHub sign-in, Ollama, Stable Custom Endpoint, utility models,
-    and 1M-token contexts — all GA and demoable — plus the firm boundary that inline/NES
-    still need GitHub sign-in. Parallel Agent Work is no longer the most compressed
+    and 1M-token contexts — demoable with noted limits — plus the boundaries that
+    inline/NES still need GitHub sign-in and signed-out Agents window access is
+    experimental. Parallel Agent Work is no longer the most compressed
     section. Author delivery feedback is that many practitioners never open the Agents
     window at all, so the section now leads with awareness and open paths (title bar,
     Command Palette, code --agents), then the workspace claim (multi-session, worktrees,
@@ -112,10 +113,11 @@ deck:
         frontier model handles primary work. Show the settings block. Then 1M-token
         contexts on supported models as an architectural decision for large-codebase tasks,
         with the honest tradeoff stated: very long contexts increase latency and provider
-        cost, and /compact and background compaction remain the counterweight. THE ONE FIRM
-        BOUNDARY, stated once and clearly: inline suggestions and next edit suggestions
-        still require GitHub sign-in and a Copilot subscription — BYOK covers chat, agents,
-        tool calls, and MCP, not the completions engine. Weave the relevant control thread
+        cost, and /compact and background compaction remain the counterweight. STATE BOTH
+        SIGN-IN BOUNDARIES: inline suggestions and next edit suggestions still require
+        GitHub sign-in and a Copilot subscription; signed-out desktop Agents window
+        access is experimental and setting-gated, while browser access requires sign-in.
+        BYOK chat, tool calls, and MCP do not require GitHub sign-in. Weave the control thread
         here, not in a separate section: session and subagent credit usage and model costs
         are visible in the Agents window, and some controls depend on Copilot plan and
         organization policy. Cut: provider-by-provider capability tables, pricing
@@ -156,9 +158,10 @@ deck:
         and existing tabs must be shared. CLIMAX DEMO (GA, live): agent opens localhost,
         emulates a device, screenshots into the chat turn, then v1.132 element comments
         (Ctrl+Alt+C / ⌥⌘C). That implement → emulate → screenshot → annotate → re-validate
-        loop is the last working thing the audience should see. One Preview direction slide:
-        in-window diff review, CI failure response, PR comment response; hybrid Markdown
-        experimental, one sentence, no demo. Weave control thread (OTel, managed settings,
+        loop is the last working thing the audience should see. One mixed-status handoff
+        slide: in-window diff review, CI failure response, PR comment response (Preview);
+        PR creation from Agent Host sessions, with optional Agent Merge experimental;
+        hybrid Markdown experimental, one sentence, no demo. Weave control thread (OTel, managed settings,
         MCP allowlists, sensitive prompts) here. End on the working loop, not policy.
 
   preamble: []

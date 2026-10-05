@@ -1,79 +1,90 @@
-# REVIEW: Copilot CLI Rubber Duck was unavailable in VS Code. Claude Opus 5
-# supplied the independent adversarial review used in this reconciliation.
-
+# REVIEW PENDING: independent critique completed; host did not expose the
+# reviewer's model family, so cross-model independence remains unverified.
 version: 1
 
 deck:
   title: "Agentic Lifecycle Orchestration"
-  subtitle: "Evidence-Gated Handoffs from Issue to Pull Request"
-  tagline: "Make every transition inspectable, authorized, recoverable, and owned"
+  subtitle: "From Issue-Only Intake to Repository-Grounded Research"
+  tagline: "Choose an issue, inspect the code, and earn the next handoff"
 
   agenda:
-    - title: "Choose Workflow Judgment"
-      takeaway: "Use recurrence, bounded inputs, constrained outputs, and authority to qualify four phases."
-      whyItMatters: "Deterministic steps stay in Actions and unbounded judgment stays human-led."
-    - title: "Watch Approval Carry Authority"
-      takeaway: "See issue #482 reach coding through one exact command from an authorized maintainer."
-      whyItMatters: "An unauthorized comment leaves repository state unchanged."
-    - title: "Recover in the Open"
-      takeaway: "Route a failed check through a visible blocked state with an owner and resume evidence."
-      whyItMatters: "Every stop exposes its phase, reason, and the person able to clear it."
+    - title: "Read a Complete Workflow"
+      takeaway: "Trace the complete revised Markdown source from request label and tools through its research body and guarded comment."
+      whyItMatters: "An author can widen evidence-gathering without widening the repository write target."
+    - title: "See the Run Change an Issue"
+      takeaway: "Follow issue #175 from an issue-only comment to Go tag evidence and a qualified research plan."
+      whyItMatters: "The concrete JSON response contract, not an abstract lifecycle, decides what can happen next."
+    - title: "Choose the Next Handoff"
+      takeaway: "Apply the candidate phase gates to #175 without presenting a plan, PR, or approval as observed."
+      whyItMatters: "The maintainer must choose key-presence policy before approving model changes."
 
-  arcToc: "Select Judgments → Visible State → Preserve Authority → Measure and Recover"
+  arcToc: "Author One Workflow → Inspect Its Run → Choose a Handoff → Pilot Your Own"
   arcNarrative: >
-    Workflow selection establishes why four bounded judgments belong in separate phases and
-    how source compilation, permissions, and safe outputs constrain their authority. The
-    visible state machine then follows issue #482 through intake evidence and a reviewable
-    plan to the approval boundary. Authority supplies the peak when one exact command advances
-    a fresh plan, an unauthorized request produces a visible no-op, and review routes evidence
-    to a named human. Measurement and recovery close with local timing definitions, an owner
-    ledger, and the compile gate required before a repository pilot.
+    Begin with FanHub issue #175 and the complete revised workflow source so the
+    audience sees the maintainer's label, safe-output guard, and full research body.
+    Place the real issue text and the initial issue-only comment before the
+    mechanism detail: no file paths were supplied, so no code was inspected.
+    Show the revised lock and historic compiler/runtime recovery concisely.
+    Make the technical peak a real Episode tag pair and its direct handler
+    response, then compare the two comments and inspect the second comment's
+    proposed tests, provisional 4–8 hour range, compatibility assumptions,
+    and separate PasswordHash finding. Carry issue #175 into the candidate
+    planning gate: no policy decision, approval, PR, or review has happened.
+    End with a bounded pilot and specific transfer evidence. Reserve the most
+    time for the complete source, the actual code evidence, and the next decision.
 
   sectionOrder:
-    - "1. Select Workflow-Owned Judgments"
-    - "2. Make the State Machine Visible"
-    - "4. Preserve Authority from Approval to Merge"
-    - "5. Measure the Handoffs Locally"
+    - "1. Author One Complete Workflow"
+    - "2. Compile, Run, and Inspect the Handoff"
+    - "3. Choose Which Handoff to Prove Next"
+    - "4. Pilot the Next Handoff and Measure Recovery"
 
   sectionModes:
-    "1. Select Workflow-Owned Judgments":
-      emphasis: medium-high
-      note: >
-        Open on the five questions each workflow phase answers. Show trigger choice, read
-        permissions, mutation boundaries, source-to-lock compilation, and declared safe
-        outputs. Mark all four sources as uncompiled candidates and name the platform owner
-        who reviews generated permissions and tracks gh-aw schema changes.
-    "2. Make the State Machine Visible":
-      emphasis: medium-high
-      note: >
-        Use the phase, trigger, evidence, success, stop, and next-owner table as the spine.
-        Follow issue #482 from intake evidence into a bounded plan with scope, exclusions,
-        commands, rollback, and a named approver. End on the approval block so the next
-        section opens at the consequential gate.
-    "4. Preserve Authority from Approval to Merge":
+    "1. Author One Complete Workflow":
       emphasis: high
       note: >
-        Fire the approval gate here. Compare the authorized transition with the observable
-        expected no-op from an unauthorized request, then show the create-pull-request safe
-        output and draft-PR evidence. Close with review submitting COMMENT while deterministic
-        checks and a CODEOWNER retain merge acceptance. Keep candidate framing visible.
-    "5. Measure the Handoffs Locally":
-      emphasis: medium-low
+        Show the complete revised FanHub workflow across legible source slides,
+        preserving every frontmatter field and the entire Markdown body. Ground
+        it in issue #175 and explain the issue-label filter, repository search,
+        read-only agent, triggering-issue comment target, and estimate boundary.
+    "2. Compile, Run, and Inspect the Handoff":
+      emphasis: high
       note: >
-        Use two slides: local timing definitions with quality companions, then the recovery
-        ledger and bounded pilot. Keep stopped runs in the denominator. Close by asking
-        attendees to compile all four sources, inspect generated permissions, and pilot one
-        handoff before expanding the lifecycle.
+        Start with the first comment's explicit no-code-inspected result.
+        Distinguish source revisions by commit and run link; consolidate
+        compiler correction and model recovery. Show actual Episode tags
+        beside a predicted zero-value JSON shape, labeled as a prediction
+        rather than an executed test. Link handler serialization, compare
+        both comments, then show the second comment's proposed tests,
+        estimate assumptions, and separate credential exposure. Neither
+        comment is an approved implementation.
+    "3. Choose Which Handoff to Prove Next":
+      emphasis: medium
+      note: >
+        Present intake, planning, coding, and review as four uncompiled candidates.
+        Compare their triggers, outputs, and human owners briefly. Use #175
+        throughout the hypothetical extension: the named Go API maintainer
+        must decide required, optional, and nullable response fields before
+        any plan approval. Mark all lifecycle markers, commands, PRs, and
+        reviews as proposed on every behavioral slide.
+    "4. Pilot the Next Handoff and Measure Recovery":
+      emphasis: medium
+      note: >
+        Give the audience concrete steps to copy, compile, inspect, label a
+        selected issue, and verify its comment. Removing and reapplying the
+        request label reruns research and posts another comment. Keep the
+        separate retry trigger gap in the candidate intake phase visible;
+        track stops and corrections alongside timing before expanding.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "State, required evidence, and next-owner authority agree before a transition advances."
-    - "Four workflow sources and four instruction files make the candidate lifecycle inspectable."
-    - "One exact maintainer approval advances a fresh plan into implementation authority."
-    - "An unauthorized transition is expected to produce a no-op and leave repository state unchanged."
-    - "A blocked label, stop evidence, and named implementation owner create a recoverable handoff."
+    - "The full revised Markdown file filters labeled issues, searches up to ten relevant files, and confines one comment to the triggering issue."
+    - "Compiler feedback on a quoted target and a safe-output key changed the first source before its run."
+    - "A failed default-model run and a successful gpt-5 run establish an observable recovery path."
+    - "The first comment names issue-only evidence; the second cites Episode tags and handlers, then estimates 4–8 person-hours with compatibility caveats."
+    - "The maintainer chooses a response-key contract before the proposed coding handoff can exist."
 
-# OPEN DECISION RESOLVED: Present issue #482 as a narrated candidate walkthrough. Runtime
-# behavior remains expected until a target repository compiles and exercises all four sources.
+# OPEN DECISION RESOLVED: FanHub issue #175 is the observed teaching artifact.
+# Its later lifecycle markers and the four candidate sources remain uncompiled and unexercised.

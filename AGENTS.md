@@ -29,6 +29,24 @@ This repository serves real people doing real work in real environments. Every a
 
 Academic framing, abstract taxonomies, and product-documentation tours do not earn space on their own. Include theory or feature detail only when it clarifies a real decision, explains observed behavior, or enables successful practice.
 
+### Relevant, Compelling, Actionable: Creation Lens and Publication Gate
+
+Apply these three tests from the first content decision onward. Use them to select the topic, shape the thesis, choose the artifact and proof, allocate time, and revise the draft. Reapply them as a hard gate before publication.
+
+Every talk or module must be all three:
+
+- **Relevant** — begins with a concrete practitioner role, team, or sourced person in a recognizable situation, facing a consequential decision in a realistic workflow. Establish who needs the judgment, when they need it, and what outcome the decision affects. Product breadth, novelty, and release timing alone do not establish relevance.
+- **Compelling** — earns attention by changing how the audience understands or approaches that decision. Use a useful insight, honest tension, consequential tradeoff, or working demonstration that offers more than a feature inventory or documentation tour.
+- **Actionable** — enables the audience to transfer the judgment into its own environment. Provide a decision method, usable artifact or concrete next step, observable evidence, and a boundary, recovery path, or escalation route when the result is wrong.
+
+Evaluate the content throughout creation and again before publication:
+
+1. **Relevant:** Can the artifact identify the practitioner role or team, workflow, decision, and consequence?
+2. **Compelling:** Can it state the insight that earns attention without listing product features?
+3. **Actionable:** Can the audience produce or inspect evidence in its own environment and know what to do when that evidence fails?
+
+Revise or reconsider content that misses any dimension. Feature coverage, novelty, and presentation polish cannot compensate for a weak decision or missing transfer.
+
 ### Judgment and Transfer Contract
 
 Each artifact must develop at least one relevant judgment lens. Select the lenses the topic genuinely needs; do not force all four into every section.
@@ -67,7 +85,7 @@ Carry enough context onto each slide that a viewer can identify the actor, task,
 
 A practitioner tech talk is a coherent argument for one consequential decision. The template supplies coverage prompts; it does not supply the narrative or require its headings to become the running order.
 
-- **Begin with a person in motion** — name the practitioner, the real workflow, the decision in front of them, and the consequence of that decision.
+- **Begin with a practitioner in motion** — identify the concrete role or team, the real workflow, the decision in front of them, and the consequence of that decision. Do not invent named personas for practitioner tech talks; use a real, authorized person only when the source material supports it.
 - **Build around one useful tension** — choose an honest tradeoff, boundary, or surprising mechanism that changes how the audience approaches the decision. Every section must advance that thesis.
 - **Give the section spine momentum** — use escalating audience questions or practitioner moves rather than a taxonomy of product parts, control types, or settings pages.
 - **Follow an earned arc** — move from situation and question → insight or decision model → technical mechanism → working artifact or demonstration → observable evidence and boundaries → transfer to the audience's work. A strong demonstration may serve as the cold open when seeing the result first makes the later architecture matter.
@@ -76,25 +94,15 @@ A practitioner tech talk is a coherent argument for one consequential decision. 
 - **Spend time according to value** — give the strongest insight and demonstration the most room. Consolidate supporting mechanics and remove sections that do not change a decision or strengthen proof.
 - **Use optimistic curiosity in an expert-to-expert register** — lead with what becomes possible, what the pattern unlocks, and how it works. Keep tradeoffs concrete and avoid alarmism, pain-led framing, and comparative negativity.
 
-For a new talk, approve a research brief and structural proposal before drafting. The proposal must identify the audience, question, thesis, tension, artifact, evidence, boundary, and intended transfer. Skip this gate only when the user explicitly requests it.
+For a new talk, approve a research brief and structural proposal before drafting. The proposal must identify the audience, question, thesis, tension, artifact, evidence, boundary, and intended transfer. It must also answer:
+
+- **Relevant:** Who faces what decision, in which workflow, with what consequence?
+- **Compelling:** What insight, tension, demonstration, or tradeoff changes how the audience approaches it?
+- **Actionable:** What can the audience apply or inspect, what evidence will it produce, and how will it recover when that evidence fails?
+
+Skip this gate only when the user explicitly requests it.
 
 Avoid feature inventories that do not improve judgment, frictionless success stories, conversion narratives, and claims whose confidence is unclear.
-
-### Content Fitness Gate
-
-Every published talk or module must be all three:
-
-- **Relevant** — begins with a named person or audience in a recognizable situation, facing a consequential decision in a realistic workflow. Establish who needs the judgment, when they need it, and what outcome the decision affects. Product breadth, novelty, and release timing alone do not establish relevance.
-- **Compelling** — earns attention by changing how the audience understands or approaches that decision. Use a useful insight, honest tension, consequential tradeoff, or working demonstration that offers more than a feature inventory or documentation tour.
-- **Actionable** — enables the audience to transfer the judgment into its own environment. Provide a decision method, usable artifact or concrete next step, observable evidence, and a boundary, recovery path, or escalation route when the result is wrong.
-
-Evaluate the gate with three questions:
-
-1. **Relevant:** Can the artifact name the person, workflow, decision, and consequence?
-2. **Compelling:** Can it state the insight that earns attention without listing product features?
-3. **Actionable:** Can the audience produce or inspect evidence in its own environment and know what to do when that evidence fails?
-
-Revise or reconsider content that misses any dimension. Feature coverage, novelty, and presentation polish cannot compensate for a weak decision or missing transfer.
 
 ### Universal Voice and Prose Contract
 

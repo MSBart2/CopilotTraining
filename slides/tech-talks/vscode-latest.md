@@ -4,16 +4,16 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## VS Code Copilot 1.121–1.132
+  ## VS Code Copilot through 1.139
   CopilotTraining Tech Talk
 drawings:
   persist: false
 transition: slide-left
-title: VS Code Copilot 1.121–1.132
+title: VS Code Copilot through 1.139
 mdc: true
 section: Choose and Configure
 status: active
-updated: 2026-08-12
+updated: 2026-09-25
 ---
 
 <script setup>
@@ -37,9 +37,9 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <!-- SLIDE: Title -->
 # Title
 <TitleSlide
-  title="VS Code Copilot 1.121–1.132"
+  title="VS Code Copilot through 1.139"
   subtitle="Portable Infrastructure, Open Models, and a Closed Review Loop"
-  tagline="Bring any model — including local Ollama — with no GitHub sign-in required"
+  tagline="BYOK chat without GitHub sign-in; Agents window access has separate requirements"
   meta="CopilotTraining Tech Talk · 45–60 minutes"
 />
 
@@ -49,14 +49,14 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 # Core Question
 <CoreQuestionSlide
   question="How does VS Code Copilot evolve from a window-bound chat to portable agent infrastructure?"
-  subtext="Releases 1.121–1.132 change how agents are deployed, which models they use, and how review happens."
+  subtext="Releases through 1.139 change where agents run, which models they use, and how review happens."
   highlight="Which capability is your team ready to act on tomorrow?"
   :cards='[
     { icon: "👩‍💻", title: "Developer", description: "Which new models and local options can I use without changing my GitHub account?" },
     { icon: "🧑‍💼", title: "Tech Lead", description: "How do parallel sessions, worktrees, and remote hosts change how we assign agent work?" },
     { icon: "🏗️", title: "Platform Engineer", description: "What controls exist for model gateways, MCP allowlists, and org-wide policy enforcement?" },
     { title: "Open the Agents window", description: "Dedicated agent-first surface — still missed by teams stuck in side chat" },
-    { title: "BYOK GA + Ollama", description: "No GitHub sign-in needed for chat, tools, and MCP; local models auto-discovered" },
+    { title: "BYOK GA + Ollama", description: "Signed-out chat works; desktop Agents window access is experimental" },
     { title: "Vision paste + browser loop", description: "Attach Excel/screenshots as images; GA browser tools with element comments" }
   ]'
 />
@@ -68,7 +68,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <TocSlide
   :sections='[
     { icon: "🔌", title: "Agent Infrastructure", subtitle: "AHP + SDK: sessions persist beyond the window", blurb: "Decouple the session from the window; run agents on owned remote hosts", slide: 4 },
-    { icon: "🔑", title: "Open Model Workbench", subtitle: "BYOK GA, Ollama, Custom Endpoint, utility models", blurb: "Any compatible model for chat, tools, and MCP — no GitHub sign-in required", slide: 7 },
+    { icon: "🔑", title: "Open Model Workbench", subtitle: "BYOK GA, Ollama, Custom Endpoint, utility models", blurb: "Use BYOK chat without sign-in; check Agents window access separately", slide: 7 },
     { icon: "🪟", title: "Parallel Agent Work", subtitle: "Open the Agents window; multi-session + /btw", blurb: "Awareness first — then multi-session workspace, side chats, live pills", slide: 12 },
     { icon: "🌐", title: "Closed-Loop Delivery", subtitle: "Vision paste + GA browser validation loop", blurb: "Attach evidence, emulate, screenshot, annotate — without leaving the session", slide: 16 }
   ]'
@@ -133,8 +133,8 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
   title="Connect a Remote Agent Host in Three Steps"
   :columns='[
     { icon: "1️⃣", title: "Open Agents Window", description: "Go to the Remote tab inside the Agents window in VS Code stable preview", items: ["No separate tooling required"] },
-    { icon: "2️⃣", title: "Connect via SSH or Tunnel", description: "Use an existing ~/.ssh/config entry, user@host string, or a running dev tunnel", items: ["Any existing SSH config works"] },
-    { icon: "3️⃣", title: "Host Starts on Remote", description: "VS Code installs its CLI server and starts the agent host on the target machine", items: ["Host persists after VS Code closes", "v1.132: connect from multiple windows"] }
+    { icon: "2️⃣", title: "Connect via SSH or Tunnel", description: "Use ~/.ssh/config, user@host, or a dev tunnel; select Use Dev Container for a configured project", items: ["Container: setting + Docker on remote host (gradual rollout)"] },
+    { icon: "3️⃣", title: "Host Starts on Remote", description: "VS Code installs its CLI server and starts the agent host on the target machine", items: ["Host persists after VS Code closes", "Reconnect and verify the project toolchain"] }
   ]'
   :progressDots='{ current: 2, total: 2, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
@@ -146,7 +146,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <SectionOpenerSlide
   :partNumber="2"
   title="Open Model Workbench"
-  subtitle="BYOK is GA and needs no GitHub sign-in — any compatible provider drives chat, tools, and MCP"
+  subtitle="BYOK chat is GA without GitHub sign-in; signed-out Agents window use is experimental"
   :cards='[
     { icon: "🔑", title: "BYOK Without Sign-In", blurb: "Any provider key — GA, no GitHub account needed" },
     { icon: "🏠", title: "Local via Ollama", blurb: "Pull models locally; zero network requests, air-gap ready" },
@@ -163,11 +163,11 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
   :partNumber="2"
   pillIcon="🔑"
   pillLabel="Open Model Workbench · Provider Paths"
-  title="BYOK is GA: No GitHub Sign-In Required"
+  title="BYOK Chat Is GA Without GitHub Sign-In"
   :columns='[
     { icon: "☁️", title: "Cloud Providers", description: "Anthropic, Azure OpenAI, Gemini, OpenAI, OpenRouter — add key in Manage Models…", items: ["Billing and rate limits via provider", "No Copilot quota consumed"] },
     { icon: "🏠", title: "Local via Ollama", description: "VS Code auto-discovers pulled Ollama models — zero network requests leave the machine", items: ["Air-gap and data-residency safe", "Full chat, tools, and MCP support"] },
-    { icon: "⚠️", title: "One Firm Boundary", description: "Inline completions and NES still require GitHub sign-in — BYOK covers chat and agents only", items: ["No BYOK path for ghost-text completions", "Plan inline suggestions separately"] }
+    { icon: "⚠️", title: "Two Sign-In Boundaries", description: "Inline/NES need GitHub sign-in; signed-out desktop Agents window use is experimental", items: ["Enable allowSignedOutWhenUsable + byokModels for Agent Host BYOK", "Browser Agents window always requires sign-in"] }
   ]'
   :progressDots='{ current: 1, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
@@ -259,7 +259,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
     { icon: "💻", title: "CLI", description: "code --agents from the terminal — scriptable entry point" },
     { icon: "🌐", title: "Browser / Welcome", description: "Welcome-page link or insiders.vscode.dev/agents" }
   ]'
-  :insight='{ text: "Dedicated VS Code window beside the editor — same sessions as side Chat, agent-first layout" }'
+  :insight='{ text: "Desktop sign-in is required by default; signed-out Agents window access is experimental and setting-gated" }'
   :progressDots='{ current: 1, total: 3, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
@@ -426,17 +426,17 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 
 ---
 
-<!-- SLIDE: Where the Loop Is Heading (Preview) -->
-# Where the Loop Is Heading (Preview)
+<!-- SLIDE: Review and PR Handoffs -->
+# Review and PR Handoffs
 <ThreeColumnCardSlide
   :partNumber="4"
   pillIcon="🔭"
-  pillLabel="Closed-Loop Delivery · Preview Direction"
-  title="Where the Loop Is Heading (Preview)"
+  pillLabel="Closed-Loop Delivery · Mixed Availability"
+  title="Review and PR Handoffs"
   :columns='[
     { icon: "📋", title: "In-Window Diff Review", description: "Apply, revert, or cherry-pick per file; inline comments the agent acts on in later turns", items: ["Preview in Agents window"] },
     { icon: "🔄", title: "CI Feedback in Session", description: "Failed check details surface in the session — read, fix, and re-run without tab-switching", items: ["Preview: CI response in-window"] },
-    { icon: "💬", title: "PR Comment Response", description: "PR review comments surface on the branch; respond, apply, or mark addressed in-window", items: ["Preview: PR feedback in-session"] }
+    { icon: "💬", title: "PR Handoff + Feedback", description: "Review the generated PR title, description, and draft choice; create directly or ask the agent", items: ["Agent Merge: experimental, opt-in", "PR feedback: preview in-session"] }
   ]'
   :progressDots='{ current: 4, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
@@ -455,14 +455,14 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
   ]'
   :rightItems='[
     "Agents window open as the multi-session agent surface",
-    "Any BYOK provider or local Ollama model — no GitHub sign-in",
+    "BYOK chat or local Ollama without GitHub sign-in",
     "Vision paste for Excel/mockups; browser Add Screenshot to Chat",
     "GA browser loop with device emulation and element comments"
   ]'
   :metrics='[
     { value: "Open", detail: "Agents window — title bar, palette, or code --agents" },
     { value: "GA", detail: "Vision paste + browser tools with device emulation" },
-    { value: "0", detail: "GitHub sign-in required for chat, tools, and MCP" }
+    { value: "Check", detail: "Signed-out Agents window is experimental; browser requires sign-in" }
   ]'
 />
 
@@ -484,9 +484,9 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
   :thisMonth='[
     "Evaluate Custom Endpoint for team-wide cost and compliance routing",
     "Run parallel Agents window sessions for independent concurrent tasks",
-    "Review session diffs in-window and respond to CI feedback in-session"
+    "Create a PR from an Agent Host session; review diffs and CI feedback in-window"
   ]'
-  footer="Open the Agents window, bring any model, and close the loop with vision + browser evidence."
+  footer="Check access and toolchain, open the Agents window, then validate with vision + browser evidence."
 />
 
 ---
@@ -496,18 +496,15 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <ReferencesSlide
   :groups='[
     { title: "📖 Official Documentation", color: "cyan", items: [
+      { href: "https://code.visualstudio.com/updates/v1_139", label: "VS Code 1.139: remote Dev Container agents", description: "SSH, Tunnel, WSL; gradual rollout and remote Docker prerequisite" },
+      { href: "https://code.visualstudio.com/updates/v1_138", label: "VS Code 1.138: create PR from agent session", description: "Review PR form; optional Agent Merge is experimental" },
       { href: "https://code.visualstudio.com/updates/v1_132", label: "VS Code release notes: August 5, 2026 (v1.132)", description: "Element comments, /btw, live pills, multi-window agent sessions" },
-      { href: "https://code.visualstudio.com/docs/agents/agents-window", label: "Use the Agents window (Preview)", description: "How to open it, multi-workspace sessions, Changes/Files panels" },
-      { href: "https://code.visualstudio.com/updates/v1_128", label: "VS Code release notes: July 8, 2026 (v1.128)", description: "Copilot Vision GA — paste images and PDFs into Chat" },
-      { href: "https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/", label: "Copilot vision is generally available", description: "Supported formats and plan availability for image/PDF attachments" },
-      { href: "https://code.visualstudio.com/docs/chat/copilot-chat-context", label: "Add context to chat", description: "Vision attachments and browser Add Screenshot / Element to Chat" },
-      { href: "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases", label: "GitHub Copilot in VS Code: July 2026 releases", description: "/btw side chats, live activity pills, and Agents window workspace updates" },
-      { href: "https://code.visualstudio.com/docs/copilot/agents/background-agents", label: "Background Agents documentation", description: "Remote agent host setup, connection, and reconnect patterns" }
+      { href: "https://code.visualstudio.com/docs/agents/run/agents-window", label: "Use the Agents window (Preview)", description: "Desktop signed-out settings and browser sign-in boundary" },
+      { href: "https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/", label: "Copilot vision is generally available", description: "Supported formats and plan availability for image/PDF attachments" }
     ] },
     { title: "🛠️ Related Content", color: "purple", items: [
       { label: "Copilot SDK Talk", description: "Deep dive into the Copilot SDK harness and Agent Host Protocol" },
-      { label: "MCP Apps Talk", description: "Connecting MCP servers to VS Code Copilot sessions and workflows" },
-      { href: "https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot", label: "Upcoming September 2026 model deprecations in GitHub Copilot", description: "Context for why this talk uses durable frontier-model guidance instead of named catalog entries" }
+      { label: "MCP Apps Talk", description: "Connecting MCP servers to VS Code Copilot sessions and workflows" }
     ] }
   ]'
 />
@@ -517,11 +514,11 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
 <!-- SLIDE: Thank You -->
 # Thank You
 <ThankYouSlide
-  title="VS Code Copilot 1.121–1.132"
+  title="VS Code Copilot through 1.139"
   subtitle="Portable Agent Infrastructure, Open Models, and a Closed Review Loop"
   :cards="[
     { value: 'Agents Window', detail: 'Open it — multi-session agent surface most teams still skip' },
-    { value: 'BYOK GA', detail: 'Any model, no GitHub sign-in — chat, tools, and MCP' },
+    { value: 'BYOK GA', detail: 'Chat without sign-in; Agents window signed-out use is experimental' },
     { value: 'Vision GA', detail: 'Paste Excel/screenshots/PDFs instead of walls of text' },
     { value: 'Browser GA', detail: 'Emulate, screenshot, element comments — no context switch' }
   ]"

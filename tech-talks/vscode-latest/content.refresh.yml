@@ -2,204 +2,157 @@ version: 1
 
 refresh:
   talk: "tech-talks/vscode-latest"
-  cutoff: "2026-05-13"
+  cutoff: "2026-09-16"
   feed:
     url: "https://developer.microsoft.com/api/changelog/rss"
-    checked: "2026-08-10"
-    lastBuildDate: "Mon, 10 Aug 2026 16:00:05 GMT"
+    checked: "2026-09-25"
+    lastBuildDate: "Fri, 25 Sep 2026 12:00:10 GMT"
   status: approved
-  approved: "2026-08-10"
+  approved: "2026-09-25"
   updateLevel: content
   rationale: >
-    The structural refresh through VS Code 1.132 is complete and remains recorded
-    below. A follow-up announcement now schedules Claude Sonnet 4.5, used in one
-    model-choice example, for removal on September 1. The durable open-model story
-    remains valid, but the named example and visible deck claim need replacement.
+    VS Code 1.139 is stable, but the talk and deck still advertise 1.121-1.132.
+    The four-part argument and existing BYOK/browser demo still fit. Correct the
+    Agents-window sign-in boundary and version framing, then add the remote
+    Dev Container and in-window PR handoffs as supporting steps. Patch existing
+    slides rather than replacing the demo or reweighting the sections.
   userEmphasis:
-    - "Treat BYOK and open source model support as a headline capability."
+    - "Prioritize changes needed for the Monday, 2026-09-28 delivery."
 
   accepted:
-    - title: "Remote agent host and Agent Host Protocol"
-      published: "2026-05-20"
-      source: "https://code.visualstudio.com/updates/v1_121"
-      verified: "2026-08-10"
-      releaseStatus: preview
-      importance: headline
-      targetSection: "Agent Infrastructure"
-      action: replace
-      summary: >
-        The Agents window can run durable sessions on owned remote machines through
-        an agent host built on the Copilot SDK, coordinated through the open Agent
-        Host Protocol and accessible after the initiating client disconnects.
-      limitations:
-        - "Remote agents and parts of the agent-host rollout remain preview capabilities."
-      recipeImpact: restructure
-      slideImpact: regenerate
-
-    - title: "BYOK without GitHub sign-in and open model endpoints"
-      published: "2026-05-28"
-      source: "https://code.visualstudio.com/updates/v1_122"
-      verified: "2026-08-10"
-      releaseStatus: ga
-      importance: headline
-      targetSection: "Open Model Workbench"
-      action: replace
-      summary: >
-        VS Code can use Anthropic, Azure, Gemini, OpenAI, Ollama, OpenRouter, and
-        compatible custom endpoints for chat, tools, and MCP without GitHub sign-in.
-        Custom Endpoint is Stable, utility models are independently configurable,
-        and supported models can use one-million-token context windows.
-      limitations:
-        - "Inline suggestions and next edit suggestions still require GitHub sign-in."
-        - "Provider availability, cost, and model capabilities vary."
-      recipeImpact: restructure
-      slideImpact: replace-demo
-
-    - title: "Parallel sessions, multi-chat, and live subagent activity"
-      published: "2026-07-30"
-      source: "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases"
-      verified: "2026-08-10"
-      releaseStatus: preview
-      importance: headline
-      targetSection: "Parallel Agent Work"
-      action: replace
-      summary: >
-        The Agents window supports side-by-side sessions, multiple chats per session,
-        peer-chat forks, grouping, reordering, worktrees across harnesses, and live
-        subagent status with direct access to child conversations.
-      limitations:
-        - "The Agents window remains in public preview."
-      recipeImpact: restructure
-      slideImpact: regenerate
-
-    - title: "Agentic browser tools are generally available"
-      published: "2026-07-08"
-      source: "https://github.blog/changelog/2026-07-08-github-copilot-in-visual-studio-code-june-2026-releases"
-      verified: "2026-08-10"
-      releaseStatus: ga
-      importance: headline
-      targetSection: "Closed-Loop Delivery"
-      action: replace
-      summary: >
-        Agentic browser tools are enabled by default and support navigation,
-        inspection, screenshots, device emulation, remote browsing, and validation.
-        VS Code 1.132 adds comments attached to specific page elements.
-      limitations: []
-      recipeImpact: restructure
-      slideImpact: replace-demo
-
-    - title: "Side chats and live session activity in VS Code 1.132"
-      published: "2026-08-05"
-      source: "https://code.visualstudio.com/updates/v1_132"
-      verified: "2026-08-10"
-      releaseStatus: ga
+    - title: "Agents window signed-out BYOK boundary"
+      published: "undated documentation; checked 2026-09-25"
+      source: "https://code.visualstudio.com/docs/agents/run/agents-window"
+      verified: "2026-09-25"
+      releaseStatus: experimental
       importance: supporting
-      targetSection: "Parallel Agent Work"
-      action: add
+      targetSection: "Open Model Workbench; Parallel Agent Work; Boundaries and Control"
+      action: replace
       summary: >
-        The /btw command opens a contextual side chat without interrupting the active
-        turn, while live pills expose changes, previews, subagents, and browser work.
-      limitations: []
-      recipeImpact: revise
-      slideImpact: regenerate
-
-    - title: "Review agent work inside the Agents window"
-      published: "2026-07-30"
-      source: "https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases"
-      verified: "2026-08-10"
-      releaseStatus: preview
-      importance: headline
-      targetSection: "Closed-Loop Delivery"
-      action: add
-      summary: >
-        Developers can review files and diffs beside chat, comment on agent edits,
-        edit Markdown with agent-actionable comments, and respond to failed CI checks
-        or new pull-request review comments from the session.
+        BYOK chat can work without GitHub sign-in, but signed-out use of the
+        desktop Agents window is experimental and requires
+        chat.agentHost.allowSignedOutWhenUsable; Agent Host BYOK models also
+        require chat.agentHost.byokModels.enabled. Browser-based Agents window
+        always requires GitHub sign-in. Qualify the no-sign-in tagline on the
+        deck and avoid demonstrating signed-out Agents window as a GA path.
       limitations:
-        - "Hybrid Markdown editing remains experimental."
-      recipeImpact: restructure
-      slideImpact: regenerate
+        - "A suitable provider or visible BYOK model must already be configured."
+        - "The browser-based Agents window always requires GitHub sign-in."
+      recipeImpact: confirm
+      slideImpact: patch
 
-    - title: "Observable cost and enterprise controls"
-      published: "2026-07-08"
-      source: "https://github.blog/changelog/2026-07-08-github-copilot-in-visual-studio-code-june-2026-releases"
-      verified: "2026-08-10"
-      releaseStatus: ga
+    - title: "Visual Studio Code 1.139: remote Dev Container agent sessions"
+      published: "2026-09-23"
+      source: "https://code.visualstudio.com/updates/v1_139"
+      verified: "2026-09-25"
+      releaseStatus: "gradual rollout (no GA status stated)"
       importance: supporting
-      targetSection: "Boundaries and Control"
+      targetSection: "Agent Infrastructure: Remote Hosts and a Portable Harness"
+      action: expand
+      summary: >
+        Agents-window sessions can use a project's Dev Container on SSH,
+        Tunnel, and WSL hosts, extending local Dev Container sessions from
+        1.138. Enable chat.agentHost.devContainer.enabled and select Use Dev
+        Container for a remote folder with a supported configuration and
+        Docker on the remote host. This strengthens the environment-parity
+        decision without changing the remote-host demo.
+      limitations:
+        - "Gradual rollout; feature may need manual enablement."
+        - "Docker and a supported Dev Container configuration are required."
+      recipeImpact: confirm
+      slideImpact: patch
+
+    - title: "Visual Studio Code 1.138: create pull requests from agent sessions"
+      published: "2026-09-16"
+      source: "https://code.visualstudio.com/updates/v1_138"
+      verified: "2026-09-25"
+      releaseStatus: "not specified (optional Agent Merge: experimental)"
+      importance: supporting
+      targetSection: "Closed-Loop Delivery: CI and PR Feedback Response"
+      action: expand
+      summary: >
+        Agent Host sessions can present a PR form with an editable generated
+        title and description and draft choice; the developer can create the
+        PR directly or ask the agent to do it. The optional Agent Merge path
+        is experimental and requires chat.agentMerge.enabled. Distinguish
+        creating a PR from Copilot code review and CI feedback.
+      limitations:
+        - "Do not describe optional Agent Merge as GA."
+      recipeImpact: confirm
+      slideImpact: patch
+
+    - title: "GitHub Copilot auto model selection tiers"
+      published: "2026-09-18"
+      source: "https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14"
+      verified: "2026-09-25"
+      releaseStatus: "gradual rollout (no GA status stated)"
+      importance: reference
+      targetSection: "Open Model Workbench: Model Selection Decision Guide"
       action: update
       summary: >
-        VS Code exposes session and subagent credit usage, model costs, richer
-        OpenTelemetry signals, managed settings, and safer handling of sensitive
-        terminal prompts. Enterprise MCP allowlists add centralized server controls.
+        Efficiency, balance, and intelligence tiers are rolling out in VS Code
+        for Copilot auto model selection. They weigh cost, quality, and response
+        time using the same available model pool; they are not BYOK providers.
+        Mention only if the live model picker exposes the tiers.
       limitations:
-        - "Some controls depend on Copilot plan and organization policy."
-      recipeImpact: revise
-      slideImpact: regenerate
-
-    - ledgerEventId: "b625c840a2369df1"
-      title: "Upcoming September 2026 model deprecations in GitHub Copilot"
-      published: "2026-07-31"
-      source: "https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot"
-      verified: "2026-08-10"
-      releaseStatus: deprecated
-      importance: supporting
-      targetSection: "Open Model Workbench"
-      action: replace
-      summary: >
-        Claude Sonnet 4.5 is scheduled for removal from GitHub Copilot experiences
-        on September 1, 2026. Replace it in the frontier-model example with durable
-        guidance to choose a currently supported model; the BYOK and provider-choice
-        thesis does not depend on a particular catalog entry.
-      limitations:
-        - "Enterprise replacement models may need to be enabled through model policy before they appear in VS Code."
-      recipeImpact: confirm
-      slideImpact: regenerate
+        - "Rolling out; availability differs by client and account."
+      recipeImpact: none
+      slideImpact: none
 
   ignored:
-    - title: "Copilot code review effort levels are generally available"
-      source: "https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available"
-      reason: "Code-review depth is not a VS Code editor workflow update."
-      relatedTalks:
-        - "tech-talks/copilot-code-review"
-    - title: "Copilot impact dashboard adds a return on investment section"
-      source: "https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section"
-      reason: "Organization impact reporting belongs in adoption and economics content."
-      relatedTalks:
-        - "tech-talks/exec-economics"
-    - title: "Kimi K3 is now available in GitHub Copilot"
-      source: "https://github.blog/changelog/2026-08-06-kimi-k3-is-now-available-in-github-copilot"
-      reason: "Individual model arrivals date quickly; the durable story is provider and OSS model openness."
+    - title: "VS Code 1.139 faster session-list loading and compact rows"
+      source: "https://code.visualstudio.com/updates/v1_139"
+      reason: "Useful polish, but the single-machine 645-session benchmark is not a general audience promise or a new workflow decision."
       relatedTalks: []
-    - title: "GitHub Copilot weekly releases - August 3 CLI changes"
-      source: "https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3"
-      reason: "CLI session sidebar, /worktree, and /rewind belong in the Copilot CLI talk."
+    - title: "VS Code 1.138 automations enabled by default and shareable"
+      source: "https://code.visualstudio.com/updates/v1_138"
+      reason: "Scheduling is an adjacent autonomous-workflow topic; status is inconsistent with current Stable documentation, so do not displace the main live demo."
+      relatedTalks:
+        - "tech-talks/agentic-workflows"
+    - title: "September 2026 Copilot-hosted model arrivals"
+      source: "https://github.blog/changelog/2026-09-22-claude-opus-5-5-is-now-available-in-github-copilot/"
+      reason: "Provider/model catalog changes do not alter the durable BYOK decision; avoid an ephemeral model roll call."
+      relatedTalks:
+        - "tech-talks/enterprise-patterns"
+    - title: "Upcoming October 19 Copilot model deprecations"
+      source: "https://github.blog/changelog/2026-09-18-upcoming-deprecation-of-selected-github-copilot-models-in-mid-october/"
+      reason: "No named model slated for retirement is used in the current talk or deck; retain durable currently-supported-model guidance."
       relatedTalks:
         - "tech-talks/copilot-cli"
+    - title: "Copilot code review settings and improved findings"
+      source: "https://github.blog/changelog/2026-09-23-copilot-code-review-more-ways-to-request-and-configure-reviews/"
+      reason: "GitHub PR review configuration is distinct from the editor's agent-session review loop."
+      relatedTalks:
+        - "tech-talks/copilot-code-review"
+    - title: "Default enablement policy for Business and Enterprise"
+      source: "https://github.blog/changelog/2026-09-24-default-enablement-of-copilot-features-for-copilot-business-and-enterprise/"
+      reason: "The policy takes effect October 22; current preview features remain opt-in. It does not change the Monday VS Code demo."
+      relatedTalks:
+        - "tech-talks/enterprise-patterns"
 
   removals:
-    - "Remove the release-by-release catalog as the organizing spine."
-    - "Replace the commit-attribution revert highlight; it no longer represents the highest-value current workflow."
-    - "Replace browser tab sharing with the GA browser build-review-validate loop."
-    - "Compress model-specific Claude coverage into the broader harness and model-choice story."
-    - "Remove Claude Sonnet 4.5 from the current frontier-model example."
-
+    - "Replace stale 1.121-1.132 'latest' title, update-to-1.132 checklist, and matching slide references with current 1.139 framing."
+    - "Qualify deck claims implying signed-out BYOK works in the Agents window without experimental settings."
   anomalies:
-    - title: "Visual Studio Code 1.133 (Insiders)"
-      source: "https://code.visualstudio.com/updates/v1_133"
+    - title: "Visual Studio Code 1.140 (Insiders)"
+      source: "https://code.visualstudio.com/updates/v1_140"
+      reason: "Feed flags a future-dated item; do not describe it as stable for September 28."
+    - title: "Automations default in Stable"
+      source: "https://code.visualstudio.com/docs/agents/run/automations"
       reason: >
-        The feed lists a publication date of August 11, 2026 while the feed was checked
-        on August 10. Exclude until the item is no longer future-dated and its status is confirmed.
+        VS Code 1.138 notes say automations are enabled by default; current
+        docs say off by default on Stable and on in Insiders, with gradual
+        rollout. Check the installed build before describing availability.
 
   recipeReview:
-    required: true
+    required: false
     question: >
-      Does the new evidence require changing the talk's thesis, section order,
-      weighting, highlights, or demos?
+      No section weighting, highlight, or centerpiece demo changes proposed.
+      Keep the existing recipe and patch only the dated or misleading claims.
 
   validation:
     firstPartySourcesVerified: true
     readmePatched: true
     recipeApproved: true
-    slidesRegenerated: true
+    slidesRegenerated: false
     deckBuildPassed: true

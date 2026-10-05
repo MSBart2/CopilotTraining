@@ -1,13 +1,13 @@
 ---
 status: active
-updated: 2026-09-15
+updated: 2026-10-05
 ---
 
 # Agentic Lifecycle Orchestration Research
 
 ## Research Brief
 
-**Decision:** Which recurring repository judgments belong in workflows, and how can they hand work off safely across an issue-to-PR lifecycle?
+**Decision:** How do I build and verify one GitHub Agentic Workflow, then connect bounded workflows across an issue-to-PR lifecycle?
 
 **Audience:** Developers, team leads, and platform engineers operating repository automation with explicit human authority boundaries.
 
@@ -54,7 +54,7 @@ GitHub Agentic Workflows (`gh-aw`) provides the supported mechanism used by the 
 - workflow markers and Actions logs provide an audit trail;
 - `noop` makes a deliberate stop observable.[^1][^2][^3][^4]
 
-The four files under `workflows/` are source templates, not generated lock files. `gh aw` is unavailable in the current authoring environment, so all four remain uncompiled candidates: no generated lock file was inspected and no runtime behavior was validated. A repository pilot copies them to `.github/workflows/`, compiles them with the locally installed `gh-aw` release, reviews the generated lock files, and commits both source and lock files. Safe-output keys can evolve; compilation is the compatibility check rather than an assumption in this talk, and a bounded execution is required before making runtime claims.
+The four files under `workflows/` are source templates, not generated lock files. They remain uncompiled candidates: no generated lock file or runtime result was inspected **for those four sources**. A separate, simpler FanHub workflow has now been compiled and run, as documented below. A lifecycle pilot still needs to copy the four sources and their instructions, compile each against its installed release, review the generated locks, and exercise the intended handoffs.
 
 The source-to-runtime chain has four distinct evidence states:
 
@@ -63,7 +63,23 @@ The source-to-runtime chain has four distinct evidence states:
 3. Repository review verifies the lock file's jobs and effective permissions against the source intent.
 4. A bounded run supplies runtime evidence through Actions logs and repository artifacts.
 
-Only the first state is present in this talk directory.
+Only the first state is present for the four lifecycle sources in this talk directory. The independent FanHub intake pilot has evidence for all four states.
+
+## 2026-10-05 FanHub Pilot Evidence
+
+The [complete source](examples/fanhub-intake-pilot.md), [committed FanHub source](https://github.com/MSBart2/FanHub/blob/9468f40/.github/workflows/gh-aw-intake-pilot.md), and [generated lock](https://github.com/MSBart2/FanHub/blob/9468f40/.github/workflows/gh-aw-intake-pilot.lock.yml) form an inspectable single-issue teaching example. `gh-aw v0.89.21` compiled the source with `--validate` on native Windows. The lock requests `contents: read`, `issues: read`, and `copilot-requests: write` for the agent job and separates safe-output writes into handler jobs.
+
+The [first run](https://github.com/MSBart2/FanHub/actions/runs/37343521333) failed in the agent job under the default `auto` model with `400 Unsupported Responses custom tool '(unknown)'`. The workflow initially used a numeric `target` and `max-labels` key that the installed compiler rejected; after quoting the target and dropping the key, compilation passed. Pinning `gpt-5` and recompiling resolved the observed runtime failure in this pilot.
+
+The [second run](https://github.com/MSBart2/FanHub/actions/runs/37344610247) completed all five jobs and posted a [pilot comment on issue #175](https://github.com/MSBart2/FanHub/issues/175#issuecomment-5999154557) plus the `gh-aw-pilot-reviewed` label. The comment reports issue-body evidence, asks for a serialization policy, and says it could not inspect code because the source permitted only paths identified in the issue. This is observed intake behavior; no four-phase transition, code change, plan approval, or PR review has been exercised. The source-to-result gap motivates teaching the full file before the larger lifecycle.
+
+## 2026-10-05 Reusable Research Revision
+
+The [revised source](examples/fanhub-issue-research.md) and [compiled FanHub lock](https://github.com/MSBart2/FanHub/blob/b757063/.github/workflows/gh-aw-intake-pilot.lock.yml) replace manual issue #175 dispatch with `issues.labeled` filtered by `names: [gh-aw-research-requested]`. The agent now searches up to ten relevant repository source, test, documentation, and caller files even when an issue names no paths. One safe-output comment is restricted by both `target: triggering` and `required-labels: [gh-aw-research-requested]`; there is no arbitrary issue target, PR creation, or code-writing output. The label remains on the issue, so a deliberate remove-and-reapply action is required for a new run.
+
+`gh-aw v0.89.21` compiled this revision with `--validate` and zero warnings. The generated lock guards pre-activation on the request label, gives the agent `contents: read`, `issues: read`, and `copilot-requests: write`, and gives a separate handler write permissions with the triggering-issue/required-label constraint. Treat the compiler result, the Actions run, and the issue comment as distinct proof levels. An effort range remains a provisional estimate, not an achieved measurement or approved plan.
+
+The [label-triggered run](https://github.com/MSBart2/FanHub/actions/runs/37349096029) completed six jobs and posted a [second issue #175 comment](https://github.com/MSBart2/FanHub/issues/175#issuecomment-5999739896). It identified six Go model files and four handler files, direct JSON response serialization, and no Go test files in the Go tree. It proposed serialization policy, tests, and compatibility review, with a conditional 4–8 person-hour estimate. An adjacent `PasswordHash` JSON exposure was verified in `go/backend/models/user.go` and `go/backend/handlers/auth_handler.go`; it needs separate maintainer triage, not automatic scope expansion. The comment cited two documentation paths in addition to ten code paths; the ten-file instruction was not a tool-enforced ceiling. The observation proves one research comment, not implementation, approval, or the four-phase lifecycle.
 
 ## Workflow-Selection Judgment
 
@@ -99,19 +115,19 @@ Labels are durable audit milestones, not proof by themselves. Each handoff also 
 | GitHub Actions events, permissions, and expressions control deterministic triggering | GitHub Actions workflow syntax[^6] | Verified | Compiled lock file remains the executable Actions artifact |
 | CODEOWNERS can identify review ownership | GitHub CODEOWNERS documentation[^7] | Verified | Rulesets and branch protection determine whether that review blocks merge |
 | Event and schedule triggers begin different input scopes | GitHub Actions workflow syntax[^6] | Verified | This lifecycle chooses events; it does not claim scheduled discovery was exercised |
-| The four candidate sources compile with the current `gh-aw` schema | No local compilation result | Unverified | `gh aw` is unavailable; compile all four in the target repository before adoption |
+| The four candidate sources compile with the current `gh-aw` schema | No compilation result for those four | Unverified | `gh aw` is installed; compile all four in a target repository before adoption |
 | The four candidate workflows execute the intended lifecycle | No local run result | Unverified | Run a bounded pilot after compilation; source inspection is not runtime validation |
 | Source workflow timing and accuracy figures generalize | No first-party or local evidence | Unsupported | Replaced with local measurement guidance |
 | `copilot -p @file` plus `COPILOT_GITHUB_TOKEN` is a supported CI executor | No current source supplied | Unsupported | Omitted; use a compiled gh-aw workflow or a separately validated executor adapter |
 
 ## Structural Proposal Selected
 
-The work package fixes the title, decision, preservation contract, and outputs, so the standard proposal pause is intentionally bypassed. The selected reader-first structure is:
+The reader-first structure now begins with one exercised artifact so the audience sees the mechanism before its proposed composition:
 
-1. establish the lifecycle contract and visible state machine;
-2. inspect four independently governed workflow and instruction pairs;
-3. make approval, stop, recovery, and reviewer ownership explicit;
-4. measure each handoff locally and route adjacent decisions to canonical talks.
+1. read the complete FanHub source with its frontmatter and instruction body;
+2. follow compilation, a failed runtime attempt, the successful run, and its limited issue evidence;
+3. compose four independently governed candidate phases and make approval, stop, and ownership explicit;
+4. pilot and measure the next handoff locally.
 
 ## Artifact Plan
 
@@ -119,6 +135,7 @@ The work package fixes the title, decision, preservation contract, and outputs, 
 - `workflows/2-planning.md` + `instructions/planning.md`
 - `workflows/3-coding.md` + `instructions/coding.md`
 - `workflows/4-review.md` + `instructions/review.md`
+- `examples/fanhub-intake-pilot.md` — compiled and exercised single-issue prerequisite
 
 Each workflow declares a trigger, read permissions, constrained outputs, a required instruction contract, and `noop` behavior. Each instruction names inputs, output evidence, stop conditions, recovery, and handoff owner.
 
