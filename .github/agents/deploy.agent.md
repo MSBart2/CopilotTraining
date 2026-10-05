@@ -61,6 +61,7 @@ one-liner, then push the current branch.
    cd slides
    npm run check-companions
    ```
+   CI installs slide dependencies from the committed `slides/package-lock.json` with `npm ci`; include lockfile updates when changing `slides/package.json`.
 4. Identify **scope**:
    - User named slug(s) → only those
    - Else: every deck that is dirty in git **or** reported missing/stale by

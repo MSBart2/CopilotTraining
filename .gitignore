@@ -2,6 +2,7 @@
 node_modules/
 **/node_modules/
 package-lock.json
+!slides/package-lock.json
 yarn.lock
 pnpm-lock.yaml
 
