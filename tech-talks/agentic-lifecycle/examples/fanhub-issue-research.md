@@ -3,6 +3,7 @@ on:
   issues:
     types: [labeled]
     names: [gh-aw-research-requested]
+runs-on-slim: ubuntu-latest
 permissions:
   contents: read
   issues: read

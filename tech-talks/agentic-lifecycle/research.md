@@ -1,9 +1,19 @@
 ---
 status: active
-updated: 2026-10-05
+updated: 2026-10-06
 ---
 
 # Agentic Lifecycle Orchestration Research
+
+## Current pilot evidence (2026-10-06)
+
+The [canonical talk](README.md) follows four [compiled, exercised FanHub sources](https://github.com/MSBart2/FanHub/tree/800c8ec/.github/workflows). A maintainer independently applies `gh-aw-research-requested`, `lifecycle:plan-requested`, and `lifecycle:implement-approved` to an issue, then `lifecycle:review-requested` to its draft PR. Status labels record results and do not start another workflow. The sources take their target from each label event; FanHub [issue #110](https://github.com/MSBart2/FanHub/issues/110) is the observed pilot, not a fixed target. The [complete research example](examples/fanhub-issue-research.md) matches the live source at that commit.
+
+The research [run](https://github.com/MSBart2/FanHub/actions/runs/37379341400) identified the CSS scope choice. The [revised plan](https://github.com/MSBart2/FanHub/issues/110#issuecomment-6004332537) followed a correction to an unrunnable solution command and named a working Frontend build and human approver. The implementation [run](https://github.com/MSBart2/FanHub/actions/runs/37483070499) produced [draft PR #193](https://github.com/MSBart2/FanHub/pull/193) with exactly the two approved layout files. The [Frontend build](https://github.com/MSBart2/FanHub/actions/runs/37492880031) and [CodeQL](https://github.com/MSBart2/FanHub/actions/runs/37492871610) passed on its current head. The advisory [review run](https://github.com/MSBart2/FanHub/actions/runs/37495235841) posted a `COMMENT` review and `lifecycle:reviewed`; it did not approve or merge. A local browser comparison matched the baseline layout at 1024px and 300px on three routes, while induced Blazor error recovery remains untested. A human still owns acceptance and merge.
+
+The following research brief and state-machine proposal record the **earlier, uncompiled local sketches** under `workflows/` and `instructions/`. Their automatic handoffs and issue-comment approval trigger are historical design notes; use the compiled FanHub sources and the canonical talk for the current manual-label procedure.
+
+## Historical proposal (through 2026-10-05)
 
 ## Research Brief
 

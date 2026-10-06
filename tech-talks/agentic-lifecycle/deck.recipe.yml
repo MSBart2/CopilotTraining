@@ -1,90 +1,89 @@
-# REVIEW PENDING: independent critique completed; host did not expose the
-# reviewer's model family, so cross-model independence remains unverified.
+# REVIEW PENDING: independent critique completed; the host did not expose
+# the reviewer's model family, so cross-model independence remains unverified.
 version: 1
 
 deck:
   title: "Agentic Lifecycle Orchestration"
-  subtitle: "From Issue-Only Intake to Repository-Grounded Research"
-  tagline: "Choose an issue, inspect the code, and earn the next handoff"
+  subtitle: "A Real Issue, a Reusable Workflow, and the Next Decision"
+  tagline: "Choose each label-driven handoff from issue to reviewed draft PR"
 
   agenda:
-    - title: "Read a Complete Workflow"
-      takeaway: "Trace the complete revised Markdown source from request label and tools through its research body and guarded comment."
-      whyItMatters: "An author can widen evidence-gathering without widening the repository write target."
-    - title: "See the Run Change an Issue"
-      takeaway: "Follow issue #175 from an issue-only comment to Go tag evidence and a qualified research plan."
-      whyItMatters: "The concrete JSON response contract, not an abstract lifecycle, decides what can happen next."
-    - title: "Choose the Next Handoff"
-      takeaway: "Apply the candidate phase gates to #175 without presenting a plan, PR, or approval as observed."
-      whyItMatters: "The maintainer must choose key-presence policy before approving model changes."
+    - title: "Build a bounded research handoff"
+      takeaway: "Read the complete workflow source, compile its lock, and inspect the comment on a selected issue."
+      whyItMatters: "The event and output guard let a maintainer request evidence on any issue."
+    - title: "Approve a plan that the repository can verify"
+      takeaway: "See a faulty build command corrected before a named approver requests implementation."
+      whyItMatters: "A scoped plan and working baseline make the next label meaningful."
+    - title: "Trace a tested fix into a human decision"
+      takeaway: "Follow the two-file draft PR, current-head checks, and advisory review."
+      whyItMatters: "A reviewer can inspect both working evidence and the remaining runtime uncertainty."
 
-  arcToc: "Author One Workflow → Inspect Its Run → Choose a Handoff → Pilot Your Own"
+  arcToc: "Request Research → Approve a Plan → Produce a Draft Fix → Review and Transfer"
   arcNarrative: >
-    Begin with FanHub issue #175 and the complete revised workflow source so the
-    audience sees the maintainer's label, safe-output guard, and full research body.
-    Place the real issue text and the initial issue-only comment before the
-    mechanism detail: no file paths were supplied, so no code was inspected.
-    Show the revised lock and historic compiler/runtime recovery concisely.
-    Make the technical peak a real Episode tag pair and its direct handler
-    response, then compare the two comments and inspect the second comment's
-    proposed tests, provisional 4–8 hour range, compatibility assumptions,
-    and separate PasswordHash finding. Carry issue #175 into the candidate
-    planning gate: no policy decision, approval, PR, or review has happened.
-    End with a bounded pilot and specific transfer evidence. Reserve the most
-    time for the complete source, the actual code evidence, and the next decision.
+    Open with the observed draft PR as a tangible destination, then rewind to
+    the maintainer's first label request. Show the complete research source
+    through trigger, guarded comment, and evidence instructions; its comment
+    sets up a scope choice. Give the corrected, reproducible plan a clear
+    approval checkpoint. Peak engagement lands on the two-file change, scoped
+    build, and current-head CI proof produced after a human implementation
+    request. Finish with a separate PR review request, advisory COMMENT,
+    a baseline comparison, and a reusable label-and-evidence loop. Keep
+    operational incident history in the README for readers who need it.
 
   sectionOrder:
-    - "1. Author One Complete Workflow"
-    - "2. Compile, Run, and Inspect the Handoff"
-    - "3. Choose Which Handoff to Prove Next"
-    - "4. Pilot the Next Handoff and Measure Recovery"
+    - "1. Request Research on Any Issue"
+    - "2. Turn Research into a Plan a Human Can Approve"
+    - "3. Implement, Validate, and Offer a Draft PR"
+    - "4. Request Advisory Review and Keep Acceptance Human"
 
   sectionModes:
-    "1. Author One Complete Workflow":
+    "1. Request Research on Any Issue":
       emphasis: high
       note: >
-        Show the complete revised FanHub workflow across legible source slides,
-        preserving every frontmatter field and the entire Markdown body. Ground
-        it in issue #175 and explain the issue-label filter, repository search,
-        read-only agent, triggering-issue comment target, and estimate boundary.
-    "2. Compile, Run, and Inspect the Handoff":
+        Show the complete live FanHub research workflow over legible code
+        slides. Connect event selection, read permissions, instruction body,
+        and one guarded comment to concrete practitioner decisions. Show
+        issue #110 as selected input and its scope question as observed output.
+        Include compile, label, and inspection commands. Keep #175 as a brief
+        example of a separate policy decision.
+    "2. Turn Research into a Plan a Human Can Approve":
+      emphasis: medium
+      note: >
+        Show the independent planning trigger and bounded outputs. Give the
+        corrected #110 plan its own proof moment: an unrunnable solution
+        command prompted a local baseline check, then a scoped Frontend build,
+        two-file acceptance, rollback, and named approver. A human applies
+        the implementation request to the issue after reading the latest plan.
+    "3. Implement, Validate, and Offer a Draft PR":
       emphasis: high
       note: >
-        Start with the first comment's explicit no-code-inspected result.
-        Distinguish source revisions by commit and run link; consolidate
-        compiler correction and model recovery. Show actual Episode tags
-        beside a predicted zero-value JSON shape, labeled as a prediction
-        rather than an executed test. Link handler serialization, compare
-        both comments, then show the second comment's proposed tests,
-        estimate assumptions, and separate credential exposure. Neither
-        comment is an approved implementation.
-    "3. Choose Which Handoff to Prove Next":
+        Explain the trusted approval-label event and actor check, plan
+        provenance, allowed .NET source, and one-draft-PR output. Show the
+        exact two-file move on PR #193, zero build errors and seven existing
+        warnings. Show how to identify a draft head and inspect its completed
+        checks; distinguish runner status from the actual draft artifact.
+        Keep runtime incident history and bot-token CI procedures in the
+        README as supporting operational detail.
+    "4. Request Advisory Review and Keep Acceptance Human":
       emphasis: medium
       note: >
-        Present intake, planning, coding, and review as four uncompiled candidates.
-        Compare their triggers, outputs, and human owners briefly. Use #175
-        throughout the hypothetical extension: the named Go API maintainer
-        must decide required, optional, and nullable response fields before
-        any plan approval. Mark all lifecycle markers, commands, PRs, and
-        reviews as proposed on every behavioral slide.
-    "4. Pilot the Next Handoff and Measure Recovery":
-      emphasis: medium
-      note: >
-        Give the audience concrete steps to copy, compile, inspect, label a
-        selected issue, and verify its comment. Removing and reapplying the
-        request label reruns research and posts another comment. Keep the
-        separate retry trigger gap in the candidate intake phase visible;
-        track stops and corrections alongside timing before expanding.
+        Show the PR-specific request label, verified approval provenance,
+        COMMENT-only review, and lifecycle:reviewed status. Pair the browser
+        baseline comparison with its clear result and unexercised error
+        recovery boundary. The draft remains open for the maintainer's
+        acceptance decision. Close with the four manual request commands,
+        the artifact each produces, and an own-repo question that yields
+        a label, named approver, and current-head check.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "The full revised Markdown file filters labeled issues, searches up to ten relevant files, and confines one comment to the triggering issue."
-    - "Compiler feedback on a quoted target and a safe-output key changed the first source before its run."
-    - "A failed default-model run and a successful gpt-5 run establish an observable recovery path."
-    - "The first comment names issue-only evidence; the second cites Episode tags and handlers, then estimates 4–8 person-hours with compatibility caveats."
-    - "The maintainer chooses a response-key contract before the proposed coding handoff can exist."
+    - "The complete research source selects any labeled issue and confines one comment to that issue."
+    - "The #110 plan corrected an unrunnable command before an approver requested the two-file fix."
+    - "Draft PR #193 moved only two layout files; the scoped build passed with zero errors and seven existing warnings."
+    - "Current-head Frontend and CodeQL checks passed; a reviewer can verify the draft SHA and completed checks."
+    - "The PR review posted COMMENT and lifecycle:reviewed; error recovery and acceptance remain with a person."
 
-# OPEN DECISION RESOLVED: FanHub issue #175 is the observed teaching artifact.
-# Its later lifecycle markers and the four candidate sources remain uncompiled and unexercised.
+# OPEN DECISION: The maintainer chooses whether to exercise Blazor error
+# recovery before accepting PR #193; the talk presents that check as pending.
