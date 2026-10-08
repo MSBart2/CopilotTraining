@@ -40,6 +40,7 @@ import { computed } from 'vue'
 import { isDark } from '../useTheme'
 
 const props = defineProps({
+  highContrast: { type: Boolean, default: false },
   sections: {
     type: Array,
     required: true,
@@ -82,6 +83,7 @@ const LIGHT_CARD_STYLES = [
   { bg: 'from-indigo-100 to-purple-200', border: 'border-indigo-400', hover: 'hover:border-indigo-600', titleGrad: 'from-indigo-700 to-purple-700', shadow: 'shadow-lg shadow-indigo-300/50', blurb: 'text-indigo-800', partNum: 'text-indigo-600/70' },
   { bg: 'from-purple-100 to-pink-200',   border: 'border-purple-400', hover: 'hover:border-purple-600', titleGrad: 'from-purple-700 to-pink-700',   shadow: 'shadow-lg shadow-purple-300/50', blurb: 'text-purple-800', partNum: 'text-purple-600/70' },
 ]
+const HIGH_CONTRAST_COLORS = ['text-cyan-300', 'text-blue-300', 'text-indigo-300', 'text-purple-300']
 
 // Structural/ambient theme classes
 const DARK_THEME = {
@@ -99,7 +101,15 @@ const LIGHT_THEME = {
   subtitleText: 'text-gray-600',
 }
 
-const cardStyles = computed(() => isDark.value ? DARK_CARD_STYLES : LIGHT_CARD_STYLES)
+const cardStyles = computed(() => {
+  const styles = isDark.value ? DARK_CARD_STYLES : LIGHT_CARD_STYLES
+  if (!isDark.value || !props.highContrast) return styles
+  return styles.map((style, i) => ({
+    ...style,
+    blurb: HIGH_CONTRAST_COLORS[i],
+    partNum: HIGH_CONTRAST_COLORS[i],
+  }))
+})
 const t = computed(() => isDark.value ? DARK_THEME : LIGHT_THEME)
 </script>
 

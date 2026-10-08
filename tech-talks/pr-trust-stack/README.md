@@ -1,528 +1,165 @@
 ---
 status: active
-portfolioState: deployed
-updated: 2026-09-15
+updated: 2026-10-08
 section: "Verify and Govern"
-audience:
-  - developer
-  - team-lead
-  - platform-engineer
-  - security
+audience: [developer, team-lead, platform-engineer]
 level: applied
 duration: 50
 format: core-talk
-decision: "Which signals should advise, which should block, and who accepts residual risk before merge?"
-prerequisites:
-  - copilot-web
-related:
-  - copilot-hooks
-  - agentic-sdlc
+decision: "How can a team join agentic delivery, advisory review, and an enforceable quality gate into a human-owned merge decision?"
+prerequisites: [agentic-lifecycle, copilot-code-review, copilot-code-quality]
+related: [agentic-sdlc, copilot-web]
 references:
+  - url: https://github.github.com/gh-aw/introduction/overview/
+    label: "GitHub Agentic Workflows overview"
+    verified: 2026-10-07
+  - url: https://github.github.com/gh-aw/reference/safe-outputs/
+    label: "GitHub Agentic Workflows safe outputs"
+    verified: 2026-10-07
   - url: https://docs.github.com/en/copilot/concepts/agents/code-review
     label: "About GitHub Copilot code review"
-    verified: 2026-09-15
-  - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/configure-automatic-review
+    verified: 2026-10-07
+  - url: https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review
     label: "Configure automatic Copilot code review"
-    verified: 2026-09-15
+    verified: 2026-10-07
   - url: https://docs.github.com/en/code-security/concepts/code-quality/code-quality
     label: "About GitHub Code Quality"
-    verified: 2026-09-15
-  - url: https://docs.github.com/en/code-security/how-tos/maintain-quality-code/set-up-code-coverage
-    label: "Set up code coverage"
-    verified: 2026-09-15
-  - url: https://docs.github.com/en/code-security/how-tos/maintain-quality-code/set-pr-thresholds
-    label: "Set Code Quality thresholds for pull requests"
-    verified: 2026-09-15
+    verified: 2026-10-07
+  - url: https://docs.github.com/en/code-security/how-tos/maintain-quality-code/enable-code-quality
+    label: "Enable GitHub Code Quality"
+    verified: 2026-10-07
+  - url: https://github.com/MSBart2/FanHub/pull/197
+    label: "FanHub scope-boundary example and automatic Copilot review"
+    verified: 2026-10-07
+  - url: https://github.com/MSBart2/FanHub/issues/95
+    label: "FanHub silent error issue and bounded maintainer decision"
+    verified: 2026-10-07
+  - url: https://github.com/MSBart2/FanHub/security/quality
+    label: "FanHub Code Quality default-branch findings"
+    verified: 2026-10-07
+  - url: https://github.com/MSBart2/FanHub/pull/193
+    label: "FanHub agentic lifecycle draft"
+    verified: 2026-10-08
+  - url: https://github.com/MSBart2/FanHub/pull/199
+    label: "FanHub coverage gate demonstration"
+    verified: 2026-10-08
+  - url: https://github.com/MSBart2/FanHub/pull/201
+    label: "FanHub Code Quality Autofix demonstration"
+    verified: 2026-10-08
 ---
 
-# PR Trust Stack: Evidence and Authority Before Merge
+# From Issue to Merge Decision
 
-> **The Question This Talk Answers:**
-> *"Which signals should advise, which should block, and who accepts residual risk before merge?"*
+> **Decision:** How can a team connect approved agentic work, independent review, a quality fix, and an enforceable gate without surrendering its merge decision?
 
-**Duration:** 50 minutes | **Target Audience:** Developers, Team Leads, Platform Engineers, Security Practitioners
+**Duration:** 50 minutes | **Audience:** Developers, team leads, and platform engineers
 
----
+A maintainer can approve a bounded issue and let an agent offer a draft while independent tools inspect it. The advantage comes when the teammate opening the PR can tell **which evidence is advice, which change needed a human click, which rule can stop a merge, and what remains unproved**. This capstone joins the [agentic lifecycle](../agentic-lifecycle/README.md), [Copilot Code Review](../copilot-code-review/README.md), and [Code Quality](../copilot-code-quality/README.md) talks at the merge decision. Deployment and production feedback are the next boundary, not observed outcomes here.
 
-## 📊 Content Fitness
+### Four proofs, not one synthetic PR
 
-| Criterion | Assessment | Notes |
+| FanHub artifact | Observed result | What it does **not** prove |
 |---|---|---|
-| **Relevant** | 🟢 High | Pull requests increasingly combine human review, AI review, quality findings, tests, and coverage. Teams need a precise contract for what each signal means. |
-| **Compelling** | 🟢 High | The key move is separating signal generation from authority: an insightful finding can remain advisory, while a narrow reproducible threshold can block. |
-| **Actionable** | 🟢 High | One PR, four committed teaching artifacts, an evaluate-to-active rollout, and a disposition record make the trust policy observable and testable. |
+| [Issue #110](https://github.com/MSBart2/FanHub/issues/110) → [draft #193](https://github.com/MSBart2/FanHub/pull/193) | A maintainer corrected the build command, approved a two-file CSS move, and the workflow offered a built draft; browser comparisons checked the layout. | A draft or passing build is not merge approval; Blazor error recovery was not exercised. |
+| [Draft #198](https://github.com/MSBart2/FanHub/pull/198) | Automatic Copilot review found an inert Retry and disappearing alert despite four reported passing component tests; a human tested the correction. | An advisory review is not an automatic gate or fresh review of every later head. |
+| [Draft #199](https://github.com/MSBart2/FanHub/pull/199) | An active, branch-scoped 27% coverage rule blocked a 26.7% head; two **manually written** tests brought the displayed result to 30% and the gate passed. | This rule did not govern #198 or #201; the tests were not Autofix. |
+| [Draft #201](https://github.com/MSBart2/FanHub/pull/201) | Code Quality flagged a generic catch, generated a `TryParse` changeset, and the author accepted it; new-head build and C# analyses passed. | No coverage gate or frontend test suite ran on this PR; Copilot Code Review did not generate the Autofix. |
 
-**Overall Status:** 🟢 Ready to use
+All four PRs remain draft and unmerged. These are independent demonstrations, not four heads of a single automated pipeline. Each check and finding belongs to its own branch and commit.
 
----
+### Who can do what?
 
-## The Opportunity
+The requesting human approves the current plan; the workflow may create a bounded draft. Copilot Code Review may comment automatically on eligible PRs; a human checks and disposes of its advice. Code Quality can post rules-based findings and propose Autofix; the author decides whether to commit the suggested change. **Only an active, correctly scoped ruleset with its required evidence can enforce a threshold.** A passing gate does not click Merge. Dedicated security checks are separate from this Code Quality maintainability/coverage story.
 
-### What's Now Possible
+The memorable result is a useful split: **#198's green component tests missed a broken browser action, while #199's configured gate actually blocked a merge**. #201 adds an AI-generated correction, but only after a person inspected and accepted it. Each is valuable because its limit is visible.
 
-- **Contextual review before human attention**
-  Copilot code review can surface repository-aware findings early enough for a developer to accept, reject, or investigate before requesting final review.[^1]
+## Why This Is Worth Trying
 
-- **Explicit approval semantics**
-  Copilot review remains advisory by default. Public-preview Copilot approvals may count toward required approvals only when that capability is explicitly enabled through the applicable repository, organization, or enterprise policy.[^1]
+| Test | What a practitioner gets |
+|---|---|
+| **Relevant** | A maintainer approves work and a reviewer needs evidence for a real merge decision on that PR's current head. |
+| **Compelling** | Advice can find a missed browser failure; a configured rule can block merge; a proposed fix still needs a human click. |
+| **Actionable** | Check the plan and diff, reproduce changed behavior, dispose of advice, inspect findings and ruleset status, then accept or hold the draft. |
 
-- **Reproducible merge gates**
-  GitHub Code Quality findings and coverage thresholds can participate in repository rulesets, with `evaluate` mode exposing impact before `active` enforcement blocks merges.[^4][^5]
+### One operating model, distinct evidence
 
-- **One visible evidence record**
-  Advisory findings, test results, coverage delta, gate status, human review, and any override can meet in the pull request timeline.
+The opening visual follows **human-approved issue → bounded draft → independent review and quality signals → human merge decision**. The second view maps FanHub's four separate PRs onto those decision points; it does not imply that #193 went through #199's gate or #201's Autofix. Where a runner is skipped, a finding is unanswered, or a behavior is untested, the PR stays draft until its owner chooses the next check.
 
-### The Emerging Practice
+<!-- 🎬 MAJOR SECTION: Authorize the Work -->
+## 1. Authorize the Work
 
-A pull request can carry more evidence than any one reviewer can generate manually: contextual observations from Copilot, repeatable checks from CI, maintainability and reliability findings from Code Quality, and an explicit coverage delta. The useful question is not whether all signals deserve equal weight. It is what authority each signal receives.
+On [FanHub issue #110](https://github.com/MSBart2/FanHub/issues/110), research identified layout rules worth moving to Blazor CSS isolation. The maintainer narrowed the job to `.main-content` and `.footer` in `MainLayout.razor` and `MainLayout.razor.css`. The first planning command, `dotnet build dotnet/FanHub.sln`, failed before compilation because the checked-in solution referenced missing projects. The human requested a corrected plan; `dotnet build dotnet/Frontend/Frontend.csproj --nologo --verbosity quiet` ran and produced zero errors with seven existing nullable warnings. A plausible-looking plan became an executable one **before** approval.
 
-A trust stack answers that question before a deadline does. Advisory findings focus attention. Required approvals establish whose judgment counts. Deterministic checks enforce agreed thresholds. A named human accepts the remaining domain, security, and operational risk. This separation lets teams add evidence without accidentally granting authority to every tool that can post a comment.
+The latest plan named the two files, build, browser comparison, rollback, and @rbmathis as approver. A status label recorded that the plan was ready; the maintainer checked it and applied a separate `lifecycle:implement-approved` request label. The trusted workflow verifies the label actor and plan provenance. This distinction matters: **the agent may plan, but a named person authorizes implementation**.
 
----
+Before piloting several requests, check file overlap, the acceptance check, and who approves each plan. Two or three independent issues are a reasonable proposed start; 10–15 is an **intake experiment**, not observed throughput.
 
-## How It Works: The PR Trust Stack
+<!-- 🎬 MAJOR SECTION: Inspect the Draft -->
+## 2. Inspect the Draft
 
-### What It Does
+The implementation workflow's safe output permits **one draft PR, never a merge**. [FanHub draft #193](https://github.com/MSBart2/FanHub/pull/193) changed the two approved layout files. A Frontend project build passed with zero errors and seven pre-existing warnings. Local baseline-to-draft browser comparisons of `/`, `/characters`, and `/episodes` at 1024px and 300px showed the relevant main-content and footer presentation unchanged. Those six comparisons exercise the promised visible result, while **Blazor error recovery remained unexercised**; the accepting reviewer owns that residual question.
 
-The stack assigns every pre-merge signal a semantic role and an owner. Copilot code review contributes contextual findings; approval policy determines whether any Copilot approval counts; Code Quality and CI contribute reproducible status; a human reviewer accepts or escalates residual risk.[^1][^3]
+Bot-created PR CI initially required human approval before the read-only build could run. A stopped run is neither a pass nor a failure of the changed behavior; the owner approves the safe check and inspects its result on the current head.
 
-### Key Capabilities
+The distinct [Home-page draft #198](https://github.com/MSBart2/FanHub/pull/198) shows why the next layer matters: four author-reported passing bUnit tests and a passing Frontend build still missed an inert browser Retry. Do not borrow #193's browser comparison or #198's focused tests as proof for the other PR. GitHub documents how [`GITHUB_TOKEN`-created PRs can produce approval-required downstream runs](https://docs.github.com/en/actions/concepts/security/github_token#when-github_token-triggers-workflow-runs).
 
-- **Advisory review**: Copilot comments are evaluated on their merits and explicitly dispositioned.
-- **Approval policy**: Required-review rules identify which approvals count. Copilot approvals count only under explicit preview enablement.
-- **Blocking evidence**: Active rulesets can enforce Code Quality findings or coverage thresholds.
-- **Safe rollout**: Evaluate mode reveals candidate blocks before enforcement begins.
-- **Auditable acceptance**: A concise PR record names accepted findings, rejected findings, blocks, overrides, and the residual-risk owner.
+<!-- 🎬 MAJOR SECTION: Review, Remediate, and Enforce -->
+## 3. Review, Remediate, and Enforce
 
-### Architecture Overview
+These tools become useful when a reviewer can name the producer, trigger, artifact, and limit of each result. Configure them before a batch of drafts, then show evidence on the actual branch and head.
 
-```text
-Pull request diff
-    |
-    +--> Copilot code review --------> advisory findings
-    |                                      |
-    |                                      +--> accept / reject / escalate
-    |
-    +--> CI tests --> Cobertura XML --> coverage delta
-    |
-    +--> Code Quality scan ----------> maintainability / reliability findings
-                                           |
-                                           +--> ruleset: evaluate or active
-
-Required approvals + active gates + human residual-risk decision
-                            |
-                         merge / stop
-```
-
-The paths are independently configured. Enabling Code Quality does not enable Copilot review. Enabling Copilot review does not turn its comments into blocking checks. Enabling public-preview Copilot approvals changes required-approval semantics only within the explicit policy scope.[^2][^8]
-
----
-
-## Key Artifacts
-
-### Primary Artifacts
-
-- **[`examples/.github/copilot-instructions.md`](examples/.github/copilot-instructions.md)** — Focuses advisory review on repository-specific risks and expected evidence.
-- **[`examples/.github/workflows/pr-evidence.yml`](examples/.github/workflows/pr-evidence.yml)** — Runs tests, emits Cobertura XML, and uploads coverage with least-privilege permissions.
-- **[`examples/rulesets/pr-trust-stack.evaluate.json`](examples/rulesets/pr-trust-stack.evaluate.json)** — Represents the quality gate in observation mode before active enforcement.
-- **[`examples/docs/pr-trust-record.md`](examples/docs/pr-trust-record.md)** — Records disposition, blocking status, override authority, and residual-risk acceptance.
-
-### Supporting Evidence
-
-- **Pull request timeline** — Shows review effort, comments, approvals, checks, and final merge decision.
-- **Ruleset evaluation results** — Shows which pull requests would have blocked under active enforcement.
-- **Product billing pages** — Confirm current Copilot and Code Quality commercial boundaries without relying on copied prices.[^9][^10]
-
----
-
-## 🎯 Mental Model Shift
-
-> **The Core Insight:** Trust comes from matching each signal to explicit authority, reproducible evidence, and a named risk owner.
-
-### Move Toward
-
-- ✅ **Typed signals**: Label each result advisory, approval-eligible, or blocking → reviewers know what action follows.
-- ✅ **Evaluate-first rulesets**: Observe candidate failures before activation → thresholds reflect repository evidence.
-- ✅ **Explicit disposition**: Record why a material finding was accepted, rejected, or escalated → disagreement becomes auditable judgment.
-- ✅ **Named residual-risk ownership**: Identify the person or team authorized to merge or stop → automation never becomes anonymous authority.
-
-### Move Away From
-
-- 🔄 **One green check as complete assurance**: Combine tests, coverage, quality findings, and domain review → each signal covers a known slice of risk.
-- 🔄 **Comment volume as review quality**: Track material findings and dispositions → attention moves to consequential evidence.
-- 🔄 **Immediate enforcement**: Gather evaluate-mode results first → active rules reflect observed impact.
-
-### Move Against
-
-- 🛑 **Treating advisory text as deterministic proof**: Contextual findings can be valuable without being reproducible → keep acceptance human-owned.
-- 🛑 **Letting preview defaults define authority**: Approval semantics can change materially under explicit preview enablement → document scope and inheritance.
-- 🛑 **Combining product controls or bills**: Copilot review and Code Quality have separate enablement and commercial models → audit each independently.
-
-> **What This Looks Like:** A pull request receives two Copilot findings. The developer accepts one and rejects the other with repository evidence. CI uploads a negative coverage delta, and an evaluate-mode rule reports that the PR would fail. After the threshold is validated and activated, the same regression blocks. A named human reviewer resolves the domain question and accepts the residual risk.
-
----
-
-## When to Use This Pattern
-
-### Decision Tree
-
-```text
-Q: What kind of uncertainty does the signal resolve?
-├─ Contextual or semantic judgment
-│  └─ Use advisory review; require explicit disposition for material findings
-│
-├─ Reproducible threshold with a clear remedy
-│  └─ Run in evaluate mode; activate after observed false-positive review
-│
-├─ Required-approval policy
-│  ├─ Human approval only → keep Copilot review advisory
-│  └─ Copilot approval eligible → enable preview policy explicitly and audit scope
-│
-└─ Domain, security, privacy, safety, or business acceptance
-   └─ Assign a qualified human residual-risk owner
-```
-
-### Use This Pattern When
-
-- multiple automated and human signals appear on the same pull request;
-- teams need a controlled path from observation to enforcement;
-- repository owners can name bypass and residual-risk authority;
-- coverage or Code Quality findings have clear, testable remediation; and
-- auditability matters across developer, platform, and security roles.
-
-### Don't Use This Pattern When
-
-- a repository has no stable CI baseline; establish reproducible tests before adding gates;
-- the team cannot name an owner for overrides and residual risk; keep signals advisory until authority is defined;
-- a preview feature cannot be accepted under organizational policy; retain human-only approval counting;
-- the target is GitHub Enterprise Server and the required Code Quality capability is unavailable; use supported CI checks and rulesets instead; or
-- a threshold has not been observed on representative pull requests; collect evaluate-mode evidence first.
-
-### Signal Contract
-
-| Signal | Default role | Can block? | Decision owner | Evidence retained |
-|---|---|---:|---|---|
-| Copilot review comment | Advisory | No, by itself | Developer and human reviewer | Comment plus disposition |
-| Copilot approval | Advisory by default | May count toward required approvals only under explicit preview enablement | Repository, organization, or enterprise policy owner | Approval event and policy scope |
-| Test result | Deterministic | Yes, through required checks | Repository owner | Workflow run and logs |
-| Coverage threshold | Deterministic | Yes, through active ruleset | Platform/repository owner | Cobertura result, delta, ruleset status |
-| Code Quality finding threshold | Deterministic within configured rule semantics | Yes, through active ruleset | Platform/security owner | Finding, severity, rule result |
-| Residual-risk acceptance | Human judgment | Authorizes merge or stop | Named qualified reviewer | Approval, rationale, override record |
-
----
-
-<!-- 🎬 MAJOR SECTION: Classify the Signals -->
-## Classify the Signals Before Granting Authority
-
-### Advisory Review Is a Hypothesis Queue
-
-Copilot code review examines the change and returns comments for consideration.[^1] The useful operating model is a queue of hypotheses:
-
-1. **Accept** when the finding is relevant and the proposed direction fits the repository.
-2. **Reject with evidence** when tests, constraints, or domain context invalidate the finding.
-3. **Escalate** when the finding touches security, architecture, privacy, or another owned domain.
-
-```markdown
-# docs/pr-trust-record.md
-
-## Advisory findings
-
-| Finding | Disposition | Evidence | Owner |
+| Signal | Setup and trigger | Artifact to inspect | Human follow-up |
 |---|---|---|---|
-| Missing authorization check | Accepted | Added policy test `denies_cross_tenant_read` | PR author |
-| Cache invalidation race | Rejected | Cache key is request-scoped; see ADR-014 | Service owner |
+| **Build and tests** | Project-specific CI or recorded local run on a known head | Command, result, and behavior covered | Exercise the uncovered request and recovery path |
+| **Copilot Code Review** | Request a PR review or configure automatic review for eligible drafts and pushes in a repository ruleset | `COMMENTED` review, inline threads, analyzed head | Verify each suggestion against the real code and approved scope; respond, test, and seek fresh review after a change |
+| **GitHub Code Quality** | Enable Code Quality; let rules-based CodeQL scan the default branch and eligible new PR activity | Dashboard rule, file/line, severity, branch/commit; any PR-specific result | Separate existing debt from a new regression; inspect the next scan |
+| **Code Quality Autofix** | Inspect a finding's generated Suggested changeset | Proposed code, author-accepted commit, new-head result | Reject or commit the fix, then verify its behavior; it does not commit itself |
+| **Active quality ruleset** | Set a scoped threshold and require the coverage upload check | PR coverage result and pass/block decision | Add tests or adjust the change; passing the gate does not merge the PR |
+| **Other CodeQL / CI** | Configure a separate code-scanning or build workflow | Check result on the PR head | Diagnose skipped or blocked jobs; a successful runner proves only its configured checks |
 
-## Blocking signals
+### Watch Copilot Find a Browser Gap on the Agent's Draft
 
-| Signal | State | Remediation |
+FanHub's [active ruleset](https://github.com/MSBart2/FanHub/settings/rules/24661887) requests automatic Copilot review for eligible drafts and new pushes targeting `main`, without adding a merge gate. The [review run on draft #198](https://github.com/MSBart2/FanHub/actions/runs/37666368734) started after PR creation. [Copilot's `COMMENTED` review on `ba0764f`](https://github.com/MSBart2/FanHub/pull/198#pullrequestreview-5446574440) left **two open inline findings**, each tied to the intended Retry behavior:
+
+1. [Enable interactivity](https://github.com/MSBart2/FanHub/pull/198#discussion_r4210466991): Home had no interactive render mode, and `Routes.razor` did not set one globally. Static SSR displayed the Retry button without wiring `@onclick`. **A passing bUnit click test did not cover this browser boundary.**
+2. [Keep the alert during retry](https://github.com/MSBart2/FanHub/pull/198#discussion_r4210467074): clearing `loadError` before the first awaited request removed the alert and made the disabled/“Retrying...” state unreachable. Leave the alert visible until both requests succeed.
+
+These corrections fit #95's approved Home-only error/retry behavior. The human added `@rendermode InteractiveServer`, a render-mode regression test, and a test that holds the quote response pending while the alert and disabled Retry remain visible. The render-mode test **failed against the initial draft**, then 6/6 tests passed locally on `edeadee`. A real local browser with a controllable API returned HTTP 503: the alert appeared and the server logged the exception. After the API returned 200, a click on Retry restored the quote and count, removed the alert, and kept the page at the same URL with **one total navigation**. The [PR follow-up comment](https://github.com/MSBart2/FanHub/pull/198#issuecomment-6044316557) records the evidence. This is a local mock-backed observation, not a claim that production was exercised.
+
+Keep the distinction between **advice and authority**: Copilot's `COMMENTED` review is not a human approval. On #198, the new-head Code Quality run completed, but its successful runner status alone cannot certify that every finding cleared. The original Copilot review remains tied to the initial head; one thread was still open, and no new-head Copilot review was observed.
+
+### Watch Code Quality Turn a Baseline Finding Into a Testable Request
+
+GitHub Code Quality was enabled for FanHub with the user's approval of its recurring and usage-based charges. Its [first scan](https://github.com/MSBart2/FanHub/actions/runs/37650878859) succeeded on **`main` at `800c8ec`**. The [dashboard](https://github.com/MSBart2/FanHub/security/quality) reports **71 maintainability and 9 reliability findings** across nine rule groups. Open the C# [“Poor error handling: empty catch block”](https://github.com/MSBart2/FanHub/security/quality/rules/cs%2Fempty-catch-block) reliability rule and inspect the **`Home.razor:332`** occurrence. A short code pattern has a concrete product consequence: a failed API call silently becomes zero characters or an absent quote. The human selects the issue and approves the intended UX; the tool did not design the fix or authorize the agent.
+
+Code Quality's rules-based CodeQL quality analysis is distinct from Copilot's contextual PR suggestions and FanHub's separate CodeQL code-scanning check. [GitHub's enablement guide](https://docs.github.com/en/code-security/how-tos/maintain-quality-code/enable-code-quality#scan-frequency-after-enablement) describes a default-branch scan and new PR/push activity. The [PR-specific quality run](https://github.com/MSBart2/FanHub/actions/runs/37666353555) **completed on draft #198's initial head `ba0764f`**. It reported a [generic catch in `Home.razor`](https://github.com/MSBart2/FanHub/pull/198#discussion_r4210467081) and **four** [test-client disposal findings](https://github.com/MSBart2/FanHub/pull/198#discussion_r4210466994), one per new bUnit test. The existing empty-catch finding came from `main` at `800c8ec`; this PR removed that exact pattern but introduced a broad catch and unmanaged test clients. **The new-PR scan and the old baseline have different provenance.**
+
+On `edeadee`, the human replaced the generic catch with specific HTTP, JSON, unsupported-content, and timeout catches, kept explicit logging, and made the bUnit service container own each `HttpClient`. The newly added test project's transitive AngleSharp 1.2.0 produced a NuGet vulnerability warning, so its package reference now selects patched 1.5.0; local tests no longer emit that warning. The [Code Quality rerun](https://github.com/MSBart2/FanHub/actions/runs/37667624143) **completed successfully on the new head**; inspect remaining PR findings before declaring them resolved. A successful scan alone cannot establish interactivity, logging, or Retry; the focused tests and induced-failure browser observation address those behaviors. PR #197, opened before quality enablement, had no PR-specific quality run after a close/reopen attempt; its older CodeQL security check does not fill that gap.
+
+Code Quality's **AI quality scans are off** in this pilot. Coverage requires its own workflow; the local [Python Cobertura example](examples/.github/workflows/pr-evidence.yml) and [evaluate-mode ruleset example](examples/rulesets/pr-trust-stack.evaluate.json) are illustrative, not the observed FanHub .NET coverage gate. FanHub subsequently configured a real **27% threshold and required upload check for an isolated demo base** in draft #199; it does not apply to #198 or #201.
+
+### Watch the Gate Enforce the Bar on a Separate PR
+
+On [FanHub draft #199](https://github.com/MSBart2/FanHub/pull/199), the first head passed six tests and uploaded Cobertura, but GitHub reported **26.7% against a branch-scoped 27% minimum**, so the active ruleset blocked merge. The author **manually added** two Home-page tests; eight tests then passed, GitHub displayed **30%**, and the same PR's gate passed. A quality result that was merely informative became a configured automatic merge condition. The corrected PR remains draft: the rule checks the threshold, while a person still accepts the change. The tests did not come from Autofix.
+
+### Watch a Human Accept an Autofix on Another PR
+
+On [FanHub draft #201](https://github.com/MSBart2/FanHub/pull/201), targeting `main`, Code Quality posted a [Generic catch clause finding](https://github.com/MSBart2/FanHub/pull/201#discussion_r4220907309) with a generated changeset. The first head used `int.Parse` and `catch (Exception)` in the Episodes season handler; the suggested `int.TryParse` preserves the fallback for invalid or overflowing input without swallowing unrelated exceptions. After inspection, the author clicked **Commit suggestions**, creating [Autofix commit `0b33cda`](https://github.com/MSBart2/FanHub/commit/0b33cdabbd5ab12cc59ea833c643cc47ba400689). The corrected head's build and C# analyses passed, and the original Code Quality finding became outdated. Copilot Code Review also commented on the catch, but **Code Quality generated the fix**. No frontend test suite ran on this `main`-targeting PR, and its branch has no coverage gate. The draft is unmerged.
+
+<!-- 🎬 MAJOR SECTION: Make the Merge Decision -->
+## 4. Make the Merge Decision
+
+The accepting reviewer brings the request, artifact, and signals together **on one PR head at a time**. #193 proves a bounded agent-created draft with a scoped build and browser comparison; #198 shows advisory review catching a missed behavior; #199 demonstrates actual merge enforcement; #201 demonstrates human-accepted AI remediation. None supplies the others' missing evidence. All remain draft and unmerged. Code Quality's maintainability/coverage findings do not replace a dedicated security review, dependency check, or secret scan; configure those separately if the repository needs them.
+
+| Question for any PR | Evidence to show | Next move when it fails |
 |---|---|---|
-| Coverage threshold | Blocked | Add branch test or request documented override |
+| Was this work authorized? | Approved plan version, request actor, scope | Return to the approver |
+| What did the agent deliver? | Draft diff, head SHA, changed behavior | Revise the draft or narrow scope |
+| What actually ran? | Behavioral test, CI, Code Review, Code Quality finding, Autofix, and gate **with distinct provenance** | Run the missing check, reproduce the failure, or investigate a finding |
+| Who accepts the result? | Human reviewer, residual risk, rollback/recovery route | Keep draft until that person decides |
 
-## Residual risk
+Start with **two or three independent issues**. Measure stops, review dispositions, would-block and actual gate results, rerun time, head freshness, and human triage capacity. Expand toward 10–15 only when a team can inspect the resulting queue and resolve its exceptions. These are proposed measurements, not pilot results. No unattended merge is part of this strategy.
 
-- Domain reviewer: @payments-owner
-- Security escalation required: no
-- Override used: no
-- Decision: accept for merge
-- Rationale: deterministic checks pass and domain behavior matches ADR-014
-```
+### Transfer This to Your Repository
 
-The record is intentionally small. It preserves consequential judgment without turning every minor comment into process overhead. Use the committed [review record](examples/docs/pr-trust-record.md) as the inspectable starting point.
-
-### Approval Is a Separate Policy Decision
-
-A review comment and an approval are different artifacts. Copilot review remains advisory by default. In the public-preview approval model, a Copilot approval may count toward required approvals only after explicit enablement at the repository, organization, or enterprise level.[^1]
-
-That creates three policy questions:
-
-- **Scope:** Which repositories inherit or override the setting?
-- **Counting:** Which required-approval rules recognize the Copilot approval?
-- **Accountability:** Which human role still owns domain and residual-risk acceptance?
-
-A preview approval can satisfy a configured count. It cannot establish that the team transferred legal, security, product, or operational accountability to the tool.
-
-### Tune Review Effort Without Changing Authority
-
-Lite and Balanced are the current effort levels. An organization default can flow to repositories, and an individual request can select an effort for that review.[^7] Effort changes analysis depth and consumption; it does not independently change whether the result advises, approves, or blocks.
-
----
-
-<!-- 🎬 MAJOR SECTION: Assemble the Evidence -->
-## Assemble One Reviewable Evidence Record
-
-### Guide the Advisory Layer
-
-Repository instructions can focus review attention on risks that matter locally:
-
-```markdown
-# .github/copilot-instructions.md
-
-## Pull request review focus
-
-- Trace authorization checks for every tenant-scoped data access change.
-- Ask for a regression test when a changed branch affects billing outcomes.
-- Flag logs that can contain credentials, tokens, payment data, or personal data.
-- Cite the repository file or changed behavior behind each material finding.
-- Treat architecture and policy conflicts as escalation points for named owners.
-```
-
-The committed [repository instructions](examples/.github/copilot-instructions.md) guide review. They are a teaching artifact, not an enforcement policy. A ruleset, required check, or qualified human approval owns enforcement.
-
-### Feed Coverage as Reproducible Evidence
-
-Code Quality accepts Cobertura XML produced by common test tools. A minimal Python workflow illustrates the contract:[^4]
-
-```yaml
-# .github/workflows/pr-evidence.yml
-name: PR evidence
-
-on:
-  pull_request:
-
-permissions:
-  contents: read
-  code-quality: write
-
-jobs:
-  test-and-cover:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-      - name: Install test dependencies
-        run: pip install -r requirements.txt pytest pytest-cov
-      - name: Run tests and emit Cobertura XML
-        run: pytest --cov=src --cov-report=xml:coverage.xml
-      - name: Upload coverage
-        uses: actions/upload-code-coverage@v1
-        with:
-          file: coverage.xml
-          language: Python
-          label: code-coverage/pytest
-```
-
-The committed [coverage workflow](examples/.github/workflows/pr-evidence.yml) makes the example independently inspectable. The expected evidence is a test result plus a visible coverage percentage and delta on the pull request. Polyglot repositories can emit labeled reports per language or service; aggregation behavior needs validation in the target repository before a shared threshold becomes active.
-
-### Read Findings by Provenance
-
-Code Quality combines CodeQL-backed and AI-assisted analysis in one product surface.[^3] Provenance still matters:
-
-| Evidence property | Deterministic rule | AI-assisted finding |
-|---|---|---|
-| Reproducibility | Expected for the same code and rule version | Can vary with model and context |
-| Best use | Enforce a narrow known condition | Surface context-sensitive maintainability or reliability risk |
-| Disposition | Fix, change threshold, or invoke governed bypass | Accept, reject, investigate, or escalate |
-| Authority | Ruleset policy | Human reviewer unless another explicit policy applies |
-
-The product can present both kinds of findings together. The team contract retains their distinct evidence semantics.
-
----
-
-<!-- 🎬 MAJOR SECTION: Promote Proven Gates -->
-## Promote Proven Signals from Evaluate to Active
-
-### Start with Observation
-
-A representative ruleset begins in `evaluate` mode:
-
-```json
-{
-  "name": "PR trust stack",
-  "target": "branch",
-  "enforcement": "evaluate",
-  "conditions": {
-    "ref_name": {
-      "include": ["refs/heads/main"],
-      "exclude": []
-    }
-  },
-  "rules": [
-    {
-      "type": "code_quality",
-      "parameters": {
-        "minimum_coverage_percentage": 80
-      }
-    }
-  ]
-}
-```
-
-The committed [evaluate-mode ruleset](examples/rulesets/pr-trust-stack.evaluate.json) is an instructional artifact. GitHub's current ruleset UI or REST schema is authoritative; exporting a generated rule or checking the current API avoids coupling rollout to a stale example.[^5]
-
-Evaluate mode answers four practical questions:
-
-- How many representative pull requests would block?
-- Which failures identify real risk?
-- Which failures come from missing or malformed evidence?
-- Which teams own remediation and exceptions?
-
-### Activate Only the Proven Rule
-
-After the pilot data supports the threshold, change the enforcement state to `active` through the supported UI or API. The rule now blocks matching merges when its condition fails.[^5][^6]
-
-```diff
--  "enforcement": "evaluate",
-+  "enforcement": "active",
-```
-
-Activation is a policy event. Record the evidence window, threshold rationale, owner, exception path, and rollback condition. A useful rollback condition is a sustained rate of false or unexplained blocks above the team's agreed tolerance.
-
-### Keep Bypass Authority Narrow
-
-A blocking rule needs an explicit exception model:
-
-- named roles permitted to bypass;
-- a required rationale attached to the pull request;
-- a time-bounded follow-up when risk is deferred;
-- security escalation for protected domains; and
-- periodic review of bypass frequency and causes.
-
-Frequent bypasses are evidence about the rule, the underlying tests, or delivery pressure. They are not proof that governance is working.
-
----
-
-<!-- 🎬 MAJOR SECTION: Govern the Boundary -->
-## Govern Enablement, Billing, and Residual Risk Separately
-
-### Enablement Boundaries
-
-| Capability | Enterprise control | Organization control | Repository control |
-|---|---|---|---|
-| Copilot code review | Copilot policy and feature availability | Defaults and automatic-review rulesets | Automatic review, repository rulesets, instructions |
-| Copilot approvals preview | Preview permission and policy scope | Explicit enablement/inheritance where available | Explicit enablement or inherited policy where available |
-| GitHub Code Quality | Enterprise allowance for organizations | Organization enablement and policy | Repository enablement, scans, coverage, and rulesets |
-
-The exact control inheritance can evolve, especially during public preview. A rollout record needs the observed settings from the target tenant, not an assumed hierarchy.
-
-### Billing Boundaries
-
-Copilot and Code Quality have separate billing documentation and accounting concepts.[^9][^10]
-
-- **Copilot code review** follows applicable Copilot entitlement and consumption rules, including review effort implications.
-- **Copilot approvals preview** belongs to the Copilot review capability and does not merge Code Quality billing into Copilot billing.
-- **Code Quality** has its own enablement and billing dimensions, including eligible committers, AI-assisted feature usage, and workflow compute where applicable.
-- **Coverage workflows** can consume GitHub Actions or self-hosted runner resources independently from product entitlement.
-
-Prices are intentionally absent here. Commercial terms change, tenant agreements differ, and the live GitHub billing pages plus organization usage data are the authoritative inputs.
-
-### Residual-Risk Acceptance
-
-No combination of advisory review and deterministic checks proves every relevant property. Human ownership remains decisive for:
-
-- business behavior and product intent;
-- architecture and long-term operability;
-- threat model and abuse cases;
-- privacy, safety, and regulatory interpretation;
-- production readiness and rollback; and
-- exceptions to policy.
-
-A merge-ready pull request identifies that owner directly. For routine changes, the code owner may fill the role. Sensitive paths can require a security, privacy, payments, or platform owner. Overrides belong to roles with explicit authority, not to whoever happens to be online.
-
----
-
-## Real-World Use Cases
-
-### Use Case 1: Coverage Regression with a Valid Domain Change
-
-**The Scenario:** A payment calculation change produces one useful Copilot finding, one irrelevant cache warning, and a coverage drop below the evaluated threshold.
-
-**How It Works:** The developer accepts the authorization finding, rejects the cache warning with an ADR citation, and adds the missing branch test. Evaluate mode records that the original revision would have blocked; the revised PR passes.
-
-**What We Get:** Two advisory dispositions, one measured gate outcome, and one named payments reviewer in a single PR record.
-
-### Use Case 2: Preview Approval in a Low-Risk Repository
-
-**The Scenario:** A platform team wants to test whether Copilot approvals can satisfy one required approval for generated documentation updates.
-
-**How It Works:** The enterprise and organization policy owners approve a repository-scoped preview. The team confirms required-approval counting, retains human ownership for sensitive paths, and audits every qualifying merge during the pilot.
-
-**What We Get:** A bounded set of pull requests showing whether approval counting behaves as configured, with a rollback path that returns to human-only approval counting.
-
-### Use Case 3: Security-Sensitive Override
-
-**The Scenario:** An urgent fix fails a coverage rule because the unavailable dependency cannot be exercised in CI.
-
-**How It Works:** The repository's named bypass role records the failing evidence, incident link, compensating validation, and follow-up test obligation. A security owner accepts the residual risk before merge.
-
-**What We Get:** A visible exception with owner, rationale, compensating evidence, and expiry, rather than a silent disabled gate.
-
----
-
-## What We Can Do Today
-
-### 15 Minutes — Classify Existing Signals
-
-- **Try:** Label every required pull-request check as advisory, approval-eligible, or blocking.
-- **Expected signal:** Each check has one semantic role and one owner.
-- **Validate:** A reviewer can explain what action follows a failure without opening external documentation.
-
-### 1 Hour — Build the Evidence PR
-
-- **Build:** Add focused Copilot instructions and a Cobertura-producing coverage workflow to a low-risk repository.
-- **Expected signal:** One pull request shows advisory findings, test status, coverage percentage, and coverage delta.
-- **Validate:** Accept one material finding, reject one with evidence, and confirm the coverage upload uses only required permissions.
-
-### 2–4 Hours — Run a Bounded Trust Pilot
-
-- **Pilot:** Configure one Code Quality or coverage rule in `evaluate` mode across a representative repository sample.
-- **Success measure:** Every candidate block is classified as valid, missing evidence, threshold mismatch, or false positive; owners and remediation are known.
-- **Boundary:** Keep the rule in evaluate mode or roll it back when unexplained blocks exceed the team's agreed tolerance. Keep Copilot approval counting disabled unless the preview, policy scope, and human accountability model are explicitly approved.
-
-### Apply It to Our Work
-
-- **Candidate task:** Select a pull request that changes production behavior and has meaningful test coverage.
-- **Decisive context:** Repository instructions, test and coverage output, Code Quality findings, approval policy, CODEOWNERS, and relevant architecture decisions.
-- **Delegation and authority:** Copilot proposes findings; CI and active rulesets enforce narrow conditions; qualified humans accept domain risk and authorize exceptions.
-- **Evidence:** A PR timeline containing one accepted advisory finding, one evidence-backed rejection, one evaluated or active gate result, and one named residual-risk decision.
-
----
-
-## Related Patterns
-
-- **[Copilot Hooks](../copilot-hooks/)** — Applies policy at agent execution boundaries before actions reach the repository.
-- **[Agentic SDLC](../agentic-sdlc/)** — Builds the repository and CI infrastructure that consistently produces trustworthy evidence.
-- **[From Issue to Pull Request](../copilot-web/)** — Supplies the bounded delegation model that precedes this pre-merge verification decision.
-
----
-
-## References
-
-### Official Documentation
-
-[^1]: [About GitHub Copilot code review](https://docs.github.com/en/copilot/concepts/agents/code-review) — Review behavior, current approval semantics, and capability boundaries.
-[^2]: [Configuring automatic code review by GitHub Copilot](https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/configure-automatic-review) — Repository and organization configuration.
-[^3]: [About GitHub Code Quality](https://docs.github.com/en/code-security/concepts/code-quality/code-quality) — Pull-request findings, default-branch analysis, and Code Quality concepts.
-[^4]: [Setting up code coverage for a repository](https://docs.github.com/en/code-security/how-tos/maintain-quality-code/set-up-code-coverage) — Cobertura upload contract and workflow permissions.
-[^5]: [Setting Code Quality thresholds for pull requests](https://docs.github.com/en/code-security/how-tos/maintain-quality-code/set-pr-thresholds) — Coverage and quality ruleset configuration.
-[^6]: [Preventing Code Quality issues from reaching the default branch](https://docs.github.com/en/code-security/tutorials/improve-code-quality/catch-issues-before-merge) — Evaluate-to-active enforcement workflow.
-[^7]: [Copilot code review effort levels are generally available](https://github.blog/changelog/2026-08-07-copilot-code-review-effort-levels-are-generally-available/) — Lite and Balanced effort, inheritance, and per-review selection.
-[^8]: [GitHub Code Quality no longer adds Copilot as a reviewer](https://github.blog/changelog/2026-08-07-github-code-quality-no-longer-adds-copilot-as-a-reviewer) — Separate review and Code Quality enablement.
-[^9]: [GitHub Copilot billing](https://docs.github.com/en/billing/concepts/product-billing/github-copilot) — Current Copilot billing concepts.
-[^10]: [GitHub Code Quality billing](https://docs.github.com/en/billing/concepts/product-billing/github-code-quality) — Current Code Quality billing concepts.
-
-### Portfolio Evidence
-
-[^11]: [PR Trust Stack coverage matrix](../../.github/content-routing/coverage/wp5-pr-trust-stack.yml) — Experiment source-content survival and required evidence.
-[^12]: [Tech-Talk Portfolio Plan](../../TECH-TALK-PORTFOLIO-PLAN.md) — Approved decision, audience, duration, and replacement contract.
+Take one issue from tomorrow's queue. Identify its person, consequence, and acceptance check; write an approved, runnable plan with a named human; constrain the agent's output to a draft. Inspect its diff and current-head build. Request or configure Copilot review, inspect Code Quality findings and any offered Autofix, and test a coverage rule in evaluate mode before making it active. Ask which evidence would earn this PR a human merge decision. When a check is missing or a risk exceeds scope, keep the draft and name its owner. After an eventual merge, a separate deployment and production-feedback loop begins; these FanHub demos do not claim to validate it.

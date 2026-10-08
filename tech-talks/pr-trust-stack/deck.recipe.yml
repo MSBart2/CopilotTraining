@@ -1,74 +1,88 @@
-# REVIEW: Copilot CLI Rubber Duck was unavailable in VS Code. Claude Opus 5
-# supplied the independent adversarial review used in this reconciliation.
-
+# REVIEW PENDING: An independent reviewer from a verified different model family is unavailable in this host.
 version: 1
 
 deck:
-  title: "PR Trust Stack"
-  subtitle: "Evidence and Authority Before Merge"
-  tagline: "Give every pre-merge signal a role, an owner, and a governed path to action"
+  title: "How to Trust an AI-Created PR"
+  subtitle: "Who hands off work, where proof appears, and when a human can accept it"
+  tagline: "Turn a bounded request and independent evidence into a human decision."
 
   agenda:
-    - title: "Classify Signals"
-      takeaway: "Label each pre-merge signal advisory, approval-eligible, or blocking."
-      whyItMatters: "Reviewers know the action and owner attached to every result."
-    - title: "Promote a Gate"
-      takeaway: "Move one observed threshold from evaluate mode to active enforcement."
-      whyItMatters: "Repository evidence and rollback conditions govern activation."
-    - title: "Own Residual Risk"
-      takeaway: "Trace one PR record to its merge authority, exception path, and rationale."
-      whyItMatters: "Accountability remains visible when automation contributes evidence."
+    - title: "Meet the people and the moment"
+      takeaway: "See who prepares, executes, reviews, and accepts a draft in a normal workday."
+      whyItMatters: "The five Ws make the operating strategy portable across repositories."
+    - title: "Watch one quality-led handoff"
+      takeaway: "Trace an existing empty-catch finding through a scoped issue, plan, and draft."
+      whyItMatters: "A real failure and a narrow human decision give the tools meaningful work."
+    - title: "Inspect independent proof"
+      takeaway: "Read Copilot review, Code Quality, tests, and the changed runtime behavior."
+      whyItMatters: "Each signal has a scope, owner, and next move for the accepting reviewer."
 
-  arcToc: "Classify Signals → Assemble Evidence → Promote Gates → Govern Risk"
+  arcToc: "Prepare the request → Inspect the draft → Run review and quality → Decide"
   arcNarrative: >
-    Signal classification answers what each result means and gives developers a concrete
-    accept, reject, or escalate decision. The committed evidence record then combines review
-    guidance, coverage, provenance, and dispositions without granting them equal authority.
-    Promotion supplies the peak: the same threshold moves from observed impact to active
-    enforcement through an explicit policy event. Governance closes on named residual-risk
-    ownership, scoped bypass authority, and a transfer exercise for one real pull request.
+    Begin with a developer preparing one request and a teammate returning to a
+    draft: establish who, what, when, where, and why before showing a workflow
+    label. Open the worked trace with Code Quality's existing Home-page reliability
+    finding, the visible failure, and the maintainer's Home-only scope decision.
+    Follow the approved plan into draft 198 on ba0764f. Four passing component
+    tests missed a static browser Retry; automatic Copilot review identified
+    the inert click and disappearing alert. A PR-specific Code Quality scan
+    separately identified a generic catch and four test-client disposal patterns.
+    Show the human's red/green render-mode test, correction on edeadee, and
+    mock-backed browser recovery without navigation. Use draft 197 only as
+    an example of findings outside approved scope. Finish with a human decision, then
+    transfer the method to a small pilot in the audience's repositories.
 
   sectionOrder:
-    - "Classify the Signals Before Granting Authority"
-    - "Assemble One Reviewable Evidence Record"
-    - "Promote Proven Signals from Evaluate to Active"
-    - "Govern Enablement, Billing, and Residual Risk Separately"
+    - "Prepare a Reviewable Request"
+    - "Inspect the Agent's Draft"
+    - "Put Review and Quality to Work"
+    - "Make the Human Call"
 
   sectionModes:
-    "Classify the Signals Before Granting Authority":
-      emphasis: medium-high
-      note: >
-        Give the signal contract and approval semantics dedicated space. Show a developer
-        accepting one finding, rejecting one with repository evidence, and escalating one to
-        a named owner. Keep scope, counting, and accountability visible for preview approvals.
-    "Assemble One Reviewable Evidence Record":
-      emphasis: medium-high
-      note: >
-        Use the four committed teaching artifacts as one evidence system. Give provenance one
-        dedicated visual and keep Cobertura mechanics compact. Label the workflow and ruleset
-        as inspectable teaching artifacts whose target-tenant schemas require validation.
-    "Promote Proven Signals from Evaluate to Active":
+    "Prepare a Reviewable Request":
       emphasis: high
       note: >
-        Center the enforcement-state change on the same representative pull request. Show the
-        evidence window, threshold rationale, owner, exception path, and rollback condition as
-        required activation inputs. Let the team's pilot choose sample size and tolerance.
-    "Govern Enablement, Billing, and Residual Risk Separately":
+        Give the five Ws and an everyday practitioner situation time to land
+        before showing issue IDs. Use a visual human-request-to-human-decision
+        route. Show Code Quality's baseline empty-catch finding, the actual
+        failed-home-page consequence, and the maintainer narrowing research
+        from three pages to Home with a logged error and Retry.
+    "Inspect the Agent's Draft":
       emphasis: medium
       note: >
-        Compress billing to the authoritative live sources in the boundary map. Give the named
-        residual-risk owner and governed bypass path a dedicated closing slide. End with an
-        attendee applying the signal contract to one pull request in their own repository.
+        Name the approved plan, verified human approval event, one-draft limit,
+        actual changed files, and head-specific checks. Contrast four author-reported
+        passing tests and the Frontend build with the inert click in the real browser. Show the artifact
+        and its scope before exploring tool settings.
+    "Put Review and Quality to Work":
+      emphasis: high
+      note: >
+        Protect substantial airtime for both tools: configuration and trigger,
+        actual result, inspected code or rule, limits, and the next human action.
+        Demonstrate Code Quality's Home.razor:332 reliability finding on main
+        at 800c8ec, then its five PR-specific findings on ba0764f. Show
+        Copilot's two first-head findings on draft 198 and the human's
+        tested correction. A successful rerun on edeadee is scan completion,
+        not a claim of zero new findings. Distinguish separate PR CodeQL
+        code-scanning and missing coverage.
+    "Make the Human Call":
+      emphasis: medium
+      note: >
+        Give a reviewer a concrete decision card: approved scope, changed
+        behavior, current-head checks, Copilot dispositions, Code Quality
+        provenance, and the observed mock-backed 503 → Retry recovery.
+        One original Copilot thread remains open despite the correction; a
+        new-head Copilot review is not observed. Retain draft status until
+        human acceptance. Offer a two-or-three-issue pilot and
+        label 10-15 issues as a proposed capacity target.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "One enforcement field moves a proven threshold from observed impact to an active merge gate."
-    - "One committed trust record holds accepted and rejected findings, blocking status, evidence, and a named residual-risk owner."
-    - "Four committed teaching artifacts make the complete evidence path independently inspectable."
-    - "Three approval questions separate policy scope, counting semantics, and accountability."
-    - "Bypass frequency becomes review evidence about the rule, its tests, and delivery pressure."
+    - "An existing Code Quality reliability finding points to the Home page's silent API failure."
+    - "A maintainer narrows a three-page research proposal to one page and an observable Retry."
+    - "Four passing component tests miss an inert browser Retry; automatic Copilot review catches it."
+    - "Code Quality flags five PR-specific patterns; a red/green test and browser recovery verify the human correction."
 
-# OPEN DECISION: Export the ruleset and permission schema from the presentation tenant for a
-# live rollout demo; retain the labeled teaching artifact when tenant access is unavailable.
+# OPEN DECISION: A verified different-model reviewer must critique weighting and narrative before this recipe is considered approved.

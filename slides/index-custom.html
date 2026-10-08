@@ -1045,6 +1045,80 @@
       line-height: 1.45;
     }
 
+    .delivery-path {
+      margin: 0.5rem 0 1.5rem;
+      padding: 1.15rem;
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 10px;
+      scroll-margin-top: 11rem;
+    }
+
+    .delivery-steps {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .delivery-step {
+      min-height: 104px;
+      padding-right: 1.6rem;
+    }
+
+    .delivery-path .onboarding-number,
+    .delivery-path .onboarding-step::after {
+      color: #22d3ee;
+    }
+
+    .delivery-path .onboarding-step:hover,
+    .delivery-path .onboarding-step:focus-visible {
+      outline-color: #22d3ee;
+    }
+
+    .delivery-step:last-child {
+      background: rgba(34, 211, 238, 0.09);
+    }
+
+    [data-theme="light"] .delivery-step:last-child {
+      background: rgba(3, 105, 161, 0.08);
+    }
+
+    [data-theme="light"] .delivery-path .onboarding-number {
+      color: #0369a1;
+    }
+
+    .section.tech-talks .card-capstone {
+      grid-column: 1 / -1;
+      min-height: 130px;
+      border-color: rgba(34, 211, 238, 0.55);
+      background: linear-gradient(110deg, rgba(34, 211, 238, 0.11), var(--card-bg) 72%);
+    }
+
+    [data-theme="light"] .section.tech-talks .card-capstone {
+      background: linear-gradient(110deg, rgba(3, 105, 161, 0.09), var(--card-bg) 72%);
+    }
+
+    .capstone-label {
+      align-self: flex-start;
+      margin-bottom: 0.5rem;
+      padding: 0.16rem 0.55rem;
+      border: 1px solid rgba(34, 211, 238, 0.5);
+      border-radius: 999px;
+      color: #67e8f9;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    [data-theme="light"] .capstone-label {
+      color: #075985;
+      border-color: rgba(3, 105, 161, 0.5);
+    }
+
+    @media (max-width: 1150px) {
+      .delivery-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
     .section {
       margin-bottom: 2.75rem;
       padding: clamp(1.4rem, 2.4vw, 2rem);
@@ -1358,6 +1432,15 @@
         grid-template-columns: 1fr;
       }
 
+      .delivery-path {
+        padding: 0.85rem;
+        scroll-margin-top: 14rem;
+      }
+
+      .delivery-steps {
+        grid-template-columns: 1fr;
+      }
+
       .onboarding-step {
         min-height: 92px;
         padding: 1.15rem 2.1rem 1.15rem 1.05rem;
@@ -1495,10 +1578,10 @@
           <span class="onboarding-label">Delegate bounded work</span>
           <span class="onboarding-detail">Produce a draft pull request with acceptance evidence.</span>
         </a>
-        <a class="onboarding-step" href="tech-talks/pr-trust-stack/">
+        <a class="onboarding-step" href="#issue-to-merge-path">
           <span class="onboarding-number">05</span>
-          <span class="onboarding-label">Verify before merge</span>
-          <span class="onboarding-detail">Disposition findings and keep acceptance human-owned.</span>
+          <span class="onboarding-label">Choose your verification path</span>
+          <span class="onboarding-detail">Explore review, quality, and the human merge decision.</span>
         </a>
       </div>
     </section>
@@ -1550,6 +1633,34 @@
           <span class="sub-group-desc">Decide what advises, what blocks, and who may approve or override</span>
           <span class="sub-group-line"></span>
         </div>
+        <div class="delivery-path" id="issue-to-merge-path" aria-labelledby="issue-to-merge-title">
+          <div class="onboarding-heading">
+            <h3 id="issue-to-merge-title">From issue to merge decision</h3>
+            <p>Four talks, four distinct FanHub proofs. Start where your decision is.</p>
+          </div>
+          <div class="onboarding-steps delivery-steps">
+            <a class="onboarding-step delivery-step" href="tech-talks/agentic-lifecycle/">
+              <span class="onboarding-number">01 · AUTHORIZE</span>
+              <span class="onboarding-label">Agentic Lifecycle</span>
+              <span class="onboarding-detail">Approve a plan; inspect an agent-created draft.</span>
+            </a>
+            <a class="onboarding-step delivery-step" href="tech-talks/copilot-code-review/">
+              <span class="onboarding-number">02 · INVESTIGATE</span>
+              <span class="onboarding-label">Copilot Code Review</span>
+              <span class="onboarding-detail">Test advisory findings against actual behavior.</span>
+            </a>
+            <a class="onboarding-step delivery-step" href="tech-talks/copilot-code-quality/">
+              <span class="onboarding-number">03 · ENFORCE</span>
+              <span class="onboarding-label">GitHub Code Quality</span>
+              <span class="onboarding-detail">Inspect Autofix; prove a configured gate.</span>
+            </a>
+            <a class="onboarding-step delivery-step" href="tech-talks/pr-trust-stack/">
+              <span class="onboarding-number">04 · SYNTHESIZE</span>
+              <span class="onboarding-label">From Issue to Merge Decision</span>
+              <span class="onboarding-detail">Join the evidence; keep acceptance human.</span>
+            </a>
+          </div>
+        </div>
         <div class="grid">
           <a href="tech-talks/agentic-sdlc/" class="card">
             <h2>Agentic SDLC</h2>
@@ -1569,9 +1680,18 @@
             <h2>GitHub Copilot Governance</h2>
             <p>Carry one bounded change through visible runtime decisions, reviewable evidence, and authorized merge.</p>
           </a>
-          <a href="tech-talks/pr-trust-stack/" class="card">
-            <h2>PR Trust Stack</h2>
-            <p>Assign every pre-merge signal a role, an owner, and a governed path from evidence to authority.</p>
+          <a href="tech-talks/copilot-code-review/" class="card">
+            <h2>Copilot Code Review</h2>
+            <p>Investigate advisory PR findings, test useful corrections, and keep approval with the human reviewer.</p>
+          </a>
+          <a href="tech-talks/copilot-code-quality/" class="card">
+            <h2>GitHub Code Quality</h2>
+            <p>Inspect a human-accepted Autofix and prove when a configured coverage rule blocks or unblocks merge.</p>
+          </a>
+          <a href="tech-talks/pr-trust-stack/" class="card card-capstone">
+            <span class="capstone-label">Capstone · Four-talk synthesis</span>
+            <h2>From Issue to Merge Decision</h2>
+            <p>Bring agentic delivery, Copilot review, and Code Quality evidence together for one human decision. Four separate FanHub PRs show the boundaries.</p>
           </a>
         </div>
       </div>
@@ -1603,7 +1723,7 @@
           </a>
           <a href="tech-talks/agentic-lifecycle/" class="card">
             <h2>Agentic Lifecycle Orchestration</h2>
-            <p>Coordinate issue-to-PR handoffs with compiled workflow candidates, visible stops, and named human authority.</p>
+            <p>Correct and approve a runnable plan, then inspect the bounded agent-created draft and current-head evidence.</p>
           </a>
         </div>
       </div>
@@ -1814,8 +1934,8 @@
       'copilot-azure-mcp': '2026-04-27',
       'copilot-chat-internals': '2026-09-15',
       'copilot-cli': '2026-08-28',
-      'copilot-code-quality': '2026-09-15',
-      'copilot-code-review': '2026-09-15',
+      'copilot-code-quality': '2026-10-08',
+      'copilot-code-review': '2026-10-08',
       'copilot-governance': '2026-09-17',
       'copilot-hooks': '2026-04-22',
       'copilot-memory': '2026-09-15',
@@ -1833,7 +1953,7 @@
       'loopy-agents': '2026-07-02',
       'mcp-apps': '2026-04-22',
       'multi-agent-coordination': '2026-09-16',
-      'pr-trust-stack': '2026-09-15',
+      'pr-trust-stack': '2026-10-08',
       'surfaces': '2026-09-14',
       'vscode-latest': '2026-09-25',
     };
@@ -1873,6 +1993,9 @@
       shell.className = card.className + ' card-shell';
       shell.dataset.slug = slug;
       shell.dataset.category = category;
+
+      const capstoneLabel = card.querySelector('.capstone-label');
+      if (capstoneLabel) shell.appendChild(capstoneLabel.cloneNode(true));
 
       const titleRow = document.createElement('div');
       titleRow.className = 'card-title-row';

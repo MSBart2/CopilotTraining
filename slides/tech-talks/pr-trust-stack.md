@@ -3,461 +3,453 @@ theme: default
 class: text-center
 highlighter: shiki
 lineNumbers: false
-info: "PR Trust Stack — CopilotTraining Tech Talk"
+info: "From Issue to Merge Decision — CopilotTraining Tech Talk"
 drawings: { persist: false }
 transition: slide-left
-title: PR Trust Stack
+title: From Issue to Merge Decision
 mdc: true
 section: Verify and Govern
 status: active
-updated: 2026-09-15
+updated: 2026-10-08
 ---
 
 <script setup>
 import TitleSlide from './components/structure/TitleSlide.vue'
-import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
-import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'
+import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
+import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
+import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
+import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
+import FourCardGridSlide from './components/FourCardGridSlide.vue'
+import MorningInboxEvidenceSlide from './components/MorningInboxEvidenceSlide.vue'
 import WhatYouCanDoTodaySlide from './components/structure/WhatYouCanDoTodaySlide.vue'
 import ReferencesSlide from './components/structure/ReferencesSlide.vue'
 import ThankYouSlide from './components/structure/ThankYouSlide.vue'
-import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlide.vue'
-import TwoColPairedConceptsSlide from './components/TwoColPairedConceptsSlide.vue'
-import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
-import FourCardGridSlide from './components/FourCardGridSlide.vue'
-import CodeWithFeaturesSlide from './components/CodeWithFeaturesSlide.vue'
-import HeroStatSlide from './components/HeroStatSlide.vue'
-import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.vue'
-import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlide.vue'
-import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vue'
-import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vue'
 </script>
 
-# PR Trust Stack
+# From Issue to Merge Decision
 <!-- SLIDE: Title -->
 <TitleSlide
-	title="PR Trust Stack"
-	subtitle="Evidence and Authority Before Merge"
-	tagline="Give every pre-merge signal a role, an owner, and a governed path to action"
-	meta="CopilotTraining · Verify and Govern"
+  title="From Issue to Merge Decision"
+  subtitle="Agentic workflows, Copilot review, and Code Quality together"
+  tagline="Bound the work · Inspect the draft · Enforce the bar · Keep acceptance human"
+  meta="CopilotTraining · Verify and Govern · 50 minutes"
 />
 
 ---
 
-# Core Question
-<!-- SLIDE: Core Question -->
-<CoreQuestionSlide
-	question="Which signals should advise, which should block, and who accepts residual risk?"
-	subtext="Classify evidence before automation acquires authority."
-	highlight="Every signal needs a role, owner, and escalation path."
-	:cards='[
-		{ icon: "🧑‍💻", title: "Developer", description: "Disposition findings with code, tests, constraints, or escalation" },
-		{ icon: "🧭", title: "Team Lead", description: "Decide which approvals count and which checks can block" },
-		{ icon: "🛡️", title: "Platform and Security", description: "Own narrow gates, exceptions, and protected-domain escalation" },
-		{ title: "4 committed artifacts", description: "One independently inspectable teaching path" },
-		{ title: "Evaluate → active", description: "Observe impact before granting merge authority" },
-		{ title: "1 named human owner", description: "Residual-risk acceptance never becomes anonymous" }
-	]'
-/>
+# The Request-to-Decision Map
+<!-- SLIDE: The Request-to-Decision Map -->
+<MorningInboxEvidenceSlide />
+
+---
+
+# Four FanHub Proof Points
+<!-- SLIDE: Four FanHub Proof Points -->
+<MorningInboxEvidenceSlide focus />
 
 ---
 
 # Table of Contents
 <!-- SLIDE: Table of Contents -->
 <TocSlide
-	subtitle="Classify Signals → Assemble Evidence → Promote Gates → Govern Risk"
-	:sections='[
-		{ icon: "🏷️", title: "Classify Signals", subtitle: "Define role before authority", blurb: "Accept, reject, or escalate with explicit ownership", slide: 4 },
-		{ icon: "📦", title: "Assemble Evidence", subtitle: "Commit one reviewable record", blurb: "Keep four artifacts inspectable without overstating validation", slide: 8 },
-		{ icon: "🚦", title: "Promote Gates", subtitle: "Move evaluate to active", blurb: "Use evidence, ownership, exceptions, and rollback", slide: 12 },
-		{ icon: "⚖️", title: "Govern Risk", subtitle: "Keep authority human-owned", blurb: "Separate enablement, billing, bypass, and residual risk", slide: 18 }
-	]'
+  highContrast
+  subtitle="Authorize → Deliver a draft → Review and enforce → Decide"
+  :sections='[
+    { icon: "🧭", title: "Authorize the Work", subtitle: "Agentic lifecycle", blurb: "Human approves a runnable, bounded plan", slide: 5 },
+    { icon: "📦", title: "Inspect the Draft", subtitle: "Agentic lifecycle", blurb: "Read the actual diff, build, and residual risk", slide: 9 },
+    { icon: "🔎", title: "Review and Enforce", subtitle: "Code review + Code Quality", blurb: "Advice, a human-accepted fix, and an automatic gate", slide: 13 },
+    { icon: "👤", title: "Make the Merge Decision", subtitle: "Join the evidence", blurb: "Know which PR proved what and what still needs a person", slide: 21 }
+  ]'
 />
 
 ---
 
-# Part 1 — Classify the Signals Before Granting Authority
-<!-- SLIDE: Part 1 — Classify the Signals Before Granting Authority -->
+# Part 1 — Authorize the Work
+<!-- SLIDE: Part 1 — Authorize the Work -->
 <SectionOpenerSlide
-	:partNumber="1"
-	title="Classify Before Authority"
-	subtitle="Define approval semantics, scope, counting, and accountability before a signal can affect merge."
-	:cards='[
-		{ icon: "💬", title: "Advise", blurb: "Human dispositions decide relevance" },
-		{ icon: "✅", title: "Approve", blurb: "Policy decides whether it counts" },
-		{ icon: "⛔", title: "Block", blurb: "Active rules enforce narrow proof" }
-	]'
-	:terminal='{ context: "Signal contract", detail: "Accept · reject · escalate" }'
+  :partNumber="1"
+  title="Authorize the Work"
+  subtitle="The lifecycle starts with a person choosing scope and a reproducible check."
+  :cards='[
+    { icon: "🔍", title: "Research", blurb: "Issue #110 identifies layout work" },
+    { icon: "🧭", title: "Plan", blurb: "Move only two CSS rules" },
+    { icon: "✅", title: "Authorize", blurb: "Human approves the corrected build path" }
+  ]'
+  :terminal='{ context: "FanHub issue #110 → draft PR #193", detail: "Request labels hand off artifacts; status labels cannot approve a plan" }'
 />
 
 ---
 
-# Give Every Signal One Semantic Role
-<!-- SLIDE: Signal Contract -->
-<FrameworkMappingRowsSlide
-	:partNumber="1"
-	pillIcon="🏷️"
-	pillLabel="Signal Contract"
-	title="Give Every Signal One Semantic Role"
-	subtitle="Generation and authority are separate decisions"
-	:rows='[
-		{ label: "Review note", description: "Contextual hypothesis; developer or reviewer dispositions it", tag: "ADVISORY" },
-		{ label: "Approval", description: "Counts only inside an explicitly enabled approval policy", tag: "POLICY" },
-		{ label: "Tests", description: "Reproducible status enforced through required checks", tag: "BLOCKING" },
-		{ label: "Coverage", description: "Delta or threshold enforced only by an active ruleset", tag: "BLOCKING" },
-		{ label: "Quality", description: "Rule semantics determine reproducibility and response", tag: "MIXED" },
-		{ label: "Residual risk", description: "Named qualified human authorizes merge or stop", tag: "HUMAN" }
-	]'
-	footnote="A tool can generate a signal without receiving authority"
-	:progressDots='{ current: 1, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
-/>
-
----
-
-# Treat Advisory Findings as a Hypothesis Queue
-<!-- SLIDE: Advisory Disposition -->
-<ThreeColumnCardSlide
-	:partNumber="1"
-	pillIcon="💬"
-	pillLabel="Advisory Review"
-	title="Treat Advisory Findings as a Hypothesis Queue"
-	:columns='[
-		{ icon: "✅", title: "Accept", description: "Finding fits the repository", items: ["Change code", "Add regression evidence", "Record the disposition"] },
-		{ icon: "🧾", title: "Reject", description: "Repository evidence invalidates it", items: ["Cite the test", "Link the constraint or ADR", "Keep disagreement inspectable"] },
-		{ icon: "↗️", title: "Escalate", description: "Finding crosses an owned boundary", items: ["Name security or architecture owner", "Stop silent acceptance", "Retain the decision"] }
-	]'
-	:progressDots='{ current: 2, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
-/>
-
----
-
-# Preview Approval Creates Three Human Policy Questions
-<!-- SLIDE: Approval Policy -->
-<ThreeColumnCardSlide
-	:partNumber="1"
-	pillIcon="✅"
-	pillLabel="Approval Semantics"
-	title="Preview Approval Creates Three Human Policy Questions"
-	:columns='[
-		{ icon: "🎯", title: "Scope", description: "Which repositories inherit or override enablement?" },
-		{ icon: "🔢", title: "Counting", description: "Which required-approval rules recognize a Copilot approval?" },
-		{ icon: "👤", title: "Accountability", description: "Which human still owns domain and residual-risk acceptance?" }
-	]'
-	:insight='{ icon: "⚖️", text: "A configured count does not transfer legal, security, product, or operational accountability." }'
-	:progressDots='{ current: 3, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
-/>
-
----
-
-# Part 2 — Assemble One Reviewable Evidence Record
-<!-- SLIDE: Part 2 — Assemble One Reviewable Evidence Record -->
-<SectionOpenerSlide
-	:partNumber="2"
-	title="Assemble One Reviewable Evidence Record"
-	subtitle="Join four committed artifacts while distinguishing teaching examples from tenant-validated configuration."
-	:cards='[
-		{ icon: "📄", title: "Four Artifacts", blurb: "Commit the complete teaching path" },
-		{ icon: "🔗", title: "Provenance", blurb: "Retain distinct evidence semantics" },
-		{ icon: "🧪", title: "Validation", blurb: "Confirm schemas in the target tenant" }
-	]'
-	:terminal='{ context: "Committed evidence", detail: "Inspectable does not mean deployable" }'
-/>
-
----
-
-# Four Committed Artifacts, Two Kinds of Confidence
-<!-- SLIDE: Four Committed Artifacts -->
-<FourCardGridSlide
-	:partNumber="2"
-	pillIcon="📦"
-	pillLabel="Evidence System"
-	title="Four Committed Artifacts, Two Kinds of Confidence"
-	:cards='[
-		{ icon: "🧭", title: "Review Instructions", description: "Teaching artifact: focuses advisory review; never grants enforcement authority" },
-		{ icon: "⚙️", title: "Coverage Workflow", description: "Teaching artifact: inspectable least-privilege Cobertura contract; validate runtime" },
-		{ icon: "🚦", title: "Evaluate Ruleset", description: "Teaching artifact: models observation; validate current target-tenant schema" },
-		{ icon: "🧾", title: "Trust Record", description: "Teaching artifact: captures disposition, gate state, override, and human owner" }
-	]'
-	:progressDots='{ current: 1, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
-/>
-
----
-
-# The Workflow Teaches a Contract, Not a Deployment Claim
-<!-- SLIDE: Coverage Workflow -->
+# What Makes the Request Runnable?
+<!-- SLIDE: Corrected Lifecycle Plan -->
 <CodeWithFeaturesSlide
-	:partNumber="2"
-	pillIcon="⚙️"
-	pillLabel="Artifact 2 · Teaching"
-	title="The Workflow Teaches a Contract, Not a Deployment Claim"
-	codePosition="left"
-	:code='{ language: "yaml", filename: "examples/.github/workflows/pr-evidence.yml", content: "permissions:\n  contents: read\n  code-quality: write\n\n- run: pytest --cov=src --cov-report=xml:coverage.xml\n- uses: actions/upload-code-coverage@v1\n  with:\n    file: coverage.xml\n    label: code-coverage/pytest" }'
-	:features='[
-		{ icon: "📚", title: "Teaching Artifact", description: "Committed, reviewable, and independently inspectable" },
-		{ icon: "🔬", title: "Target Validation", description: "Run tests; confirm upload, percentage, delta, and permissions" },
-		{ icon: "🧩", title: "Repository Boundary", description: "Validate aggregation before sharing a polyglot threshold" }
-	]'
-	:progressDots='{ current: 2, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :partNumber="1"
+  pillIcon="🧭"
+  pillLabel="FanHub #110 · Human-checked plan"
+  title="A Failed Build Command Changes the Plan"
+  codePosition="left"
+  :code='{ language: "text", filename: "FanHub #110 · revised plan", content: "Request: move inline layout CSS\nScope: .main-content + .footer only\n\nFirst command: dotnet build dotnet/FanHub.sln\n→ fails on missing project paths\n\nCorrected command:\ndotnet build dotnet/Frontend/Frontend.csproj\n→ 0 errors; 7 existing warnings" }'
+  :features='[
+    { icon: "👤", title: "Actor", description: "The maintainer tests the proposed command and asks for a corrected plan." },
+    { icon: "🧪", title: "Evidence", description: "A project build actually runs; existing warnings are recorded separately." },
+    { icon: "📌", title: "Boundary", description: "A plan-ready label records output; the human approval event authorizes implementation." }
+  ]'
+  :progressDots='{ current: 1, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-# One Surface Does Not Mean One Evidence Type
-<!-- SLIDE: Evidence Provenance -->
+# Who Authorizes the Agent?
+<!-- SLIDE: Human Approval Checkpoint -->
+<ThreeColumnCardSlide
+  :partNumber="1"
+  pillIcon="🧭"
+  pillLabel="FanHub #110 · Explicit approval"
+  title="The Human Approves Two Files and One Draft"
+  :columns='[
+    { icon: "🎯", title: "Scope", items: ["MainLayout.razor + isolated CSS", "Move only .main-content and .footer", "Preserve the visible layout"] },
+    { icon: "🧪", title: "Proof", items: ["Build Frontend.csproj", "Compare three routes at two widths", "Record what was not tested"] },
+    { icon: "👤", title: "Authority", items: ["Latest plan names @rbmathis", "Maintainer checks the revised plan", "Approval label requests one draft"] }
+  ]'
+  :insight='{ icon: "📌", text: "The agent can propose and implement; the named human decides when the plan is ready to run." }'
+  :progressDots='{ current: 2, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
+/>
+
+---
+
+# What Is Automatic, and What Stays Human?
+<!-- SLIDE: Authority Boundary -->
 <TwoColPairedConceptsSlide
-	:partNumber="2"
-	pillIcon="🔗"
-	pillLabel="Evidence Provenance"
-	title="One Surface Does Not Mean One Evidence Type"
-	:left='{
-		header: "Deterministic Rule",
-		icon: "📏",
-		items: [
-			{ title: "Expected reproducibility", detail: "Same code and rule version" },
-			{ title: "Best use", detail: "Enforce a narrow known condition" },
-			{ title: "Response", detail: "Fix, tune, or use governed bypass" }
-		]
-	}'
-	:right='{
-		header: "AI-Assisted Finding",
-		icon: "💡",
-		items: [
-			{ title: "Context dependent", detail: "Can vary with model and context" },
-			{ title: "Best use", detail: "Surface semantic or maintainability risk" },
-			{ title: "Response", detail: "Accept, reject, investigate, or escalate" }
-		]
-	}'
-	:insight='{ icon: "🧠", text: "The trust record retains provenance even when the product surface combines findings." }'
-	:progressDots='{ current: 3, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
+  :partNumber="1"
+  pillIcon="🔐"
+  pillLabel="Across all three services"
+  title="Which Actions Can GitHub Take Automatically?"
+  :left='{
+    header: "Automated after setup",
+    icon: "🤖",
+    items: [
+      { title: "Lifecycle", detail: "Offer a draft after verified approval" },
+      { title: "Review", detail: "Comment on an eligible PR" },
+      { title: "Quality", detail: "Block merge when an active rule fails" }
+    ]
+  }'
+  :right='{
+    header: "Human decisions",
+    icon: "👤",
+    items: [
+      { title: "Request", detail: "Approve scope and runnable checks" },
+      { title: "Correction", detail: "Inspect an Autofix before committing it" },
+      { title: "Acceptance", detail: "Review residual risk and decide on merge" }
+    ]
+  }'
+  :insight='{ icon: "🧠", text: "These are different controls: Copilot advice is not a gate, and an Autofix suggestion is not an automatic commit." }'
+  :progressDots='{ current: 3, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
 
 ---
 
-# Part 3 — Promote Proven Signals from Evaluate to Active
-<!-- SLIDE: Part 3 — Promote Proven Signals from Evaluate to Active -->
+# Part 2 — Inspect the Draft
+<!-- SLIDE: Part 2 — Inspect the Draft -->
 <SectionOpenerSlide
-	:partNumber="3"
-	title="Promote Proven Signals"
-	subtitle="Make activation an explicit policy event backed by evidence, ownership, exceptions, and rollback."
-	:cards='[
-		{ icon: "👀", title: "Evaluate", blurb: "Observe impact" },
-		{ icon: "📋", title: "Decision", blurb: "Review evidence" },
-		{ icon: "🔒", title: "Active", blurb: "Enforce deliberately" }
-	]'
-	:terminal='{ context: "Peak decision", detail: "Observed threshold → active merge gate" }'
+  :partNumber="2"
+  title="Inspect the Draft"
+  subtitle="The approved plan turns into an artifact a teammate can inspect."
+  :cards='[
+    { icon: "🤖", title: "Implement", blurb: "Move the two approved CSS rules" },
+    { icon: "📦", title: "Offer", blurb: "One draft, not a merge" },
+    { icon: "🧪", title: "Verify", blurb: "Read build and browser scope separately" }
+  ]'
+  :terminal='{ context: "FanHub issue #110 → draft PR #193", detail: "Two-file CSS move · Frontend build passed · no automatic acceptance" }'
 />
 
 ---
 
-# Authority Is Earned in Stages
-<!-- SLIDE: Promotion Journey -->
-<MaturityJourneyRoadmapSlide
-	:partNumber="3"
-	pillIcon="🚦"
-	pillLabel="Enforcement Journey"
-	title="Authority Is Earned in Stages"
-	subtitle="The team chooses sample size and tolerance; evidence decides promotion"
-	:stages='[
-		{ label: "1", name: "Evaluate", description: "Observe would-block outcomes on representative pull requests", icon: "👀" },
-		{ label: "2", name: "Classify", description: "Separate valid failures, missing evidence, mismatch, and noise", icon: "🏷️" },
-		{ label: "3", name: "Decide", description: "Record threshold rationale, owner, exception, and rollback", icon: "📋" },
-		{ label: "4", name: "Active", description: "Block matching merges when the proven condition fails", icon: "🔒", isTarget: true }
-	]'
-	caption="No representative evidence means no promotion"
-	:progressDots='{ current: 1, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
-/>
-
----
-
-# The Evaluate Ruleset Is Inspectable, Not Tenant-Authoritative
-<!-- SLIDE: Evaluate Artifact -->
+# What May the Workflow Create?
+<!-- SLIDE: Draft Output Boundary -->
 <CodeWithFeaturesSlide
-	:partNumber="3"
-	pillIcon="👀"
-	pillLabel="Artifact 3 · Teaching"
-	title="The Evaluate Ruleset Is Inspectable, Not Tenant-Authoritative"
-	codePosition="left"
-	:code='{ language: "json", filename: "examples/rulesets/pr-trust-stack.evaluate.json", content: "{\n  ‘name’: ‘PR trust stack’,\n  ‘target’: ‘branch’,\n  ‘enforcement’: ‘evaluate’,\n  ‘conditions’: { ‘ref_name’: {\n    ‘include’: [‘refs/heads/main’]\n  }},\n  ‘rules’: [{ ‘type’: ‘code_quality’,\n    ‘parameters’: { ‘minimum_coverage_percentage’: 80 }\n  }]\n}" }'
-	:features='[
-		{ icon: "📚", title: "Teaching Artifact", description: "Shows scope, candidate threshold, and observation state" },
-		{ icon: "🏢", title: "Target Tenant", description: "Generate or export the current schema through supported UI or API" },
-		{ icon: "🧪", title: "Validation Proof", description: "Retain would-block results from representative pull requests" }
-	]'
-	:progressDots='{ current: 2, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+  :partNumber="2"
+  pillIcon="📦"
+  pillLabel="Implementation · Safe Output"
+  title="The Approved Request Becomes a Draft, Not a Merge"
+  codePosition="left"
+  :code='{ language: "yaml", filename: "gh-aw-implement-approved.md · source excerpt", content: "on:\n  issues:\n    types: [labeled]\n    names: [lifecycle:implement-approved]\nsafe-outputs:\n  create-pull-request:\n    title-prefix: \"[lifecycle] \"\n    labels: [agent-generated, lifecycle:in-review]\n    draft: true\n    max: 1" }'
+  :features='[
+    { icon: "🔐", title: "Trusted approval", description: "A pre-agent check verifies the label actor and latest approved plan." },
+    { icon: "🛠️", title: "Actual change", description: "PR #193 moves two layout rules across MainLayout.razor and MainLayout.razor.css." },
+    { icon: "📬", title: "Output", description: "The workflow offers a draft; compare the diff to the plan before any review." }
+  ]'
+  :progressDots='{ current: 1, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-# Evaluate → Active
-<!-- SLIDE: Promotion Peak -->
-<HeroStatSlide
-	:partNumber="3"
-	pillIcon="🔒"
-	pillLabel="The Policy Event"
-	title="One Field Grants a Proven Threshold Merge Authority"
-	subtitle="The smallest configuration change carries the largest governance consequence"
-	:hero='{ value: "EVALUATE → ACTIVE", label: "observed impact becomes an enforced merge gate", source: "GitHub Code Quality ruleset enforcement states" }'
-	:supporting='[
-		{ icon: "📊", title: "Evidence Window", description: "Representative pull requests classified by outcome" },
-		{ icon: "📏", title: "Threshold Rationale", description: "Observed risk and remediation justify the number" },
-		{ icon: "👤", title: "Named Owner", description: "Human policy owner authorizes promotion" },
-		{ icon: "↩️", title: "Rollback Condition", description: "Agreed unexplained-block tolerance returns the rule to evaluate" }
-	]'
-	:insight='{ icon: "⚖️", text: "Activation is a human-owned policy event, not a configuration convenience." }'
-	:progressDots='{ current: 3, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+# What Did the Draft Actually Prove?
+<!-- SLIDE: Lifecycle Draft Evidence -->
+<CodeWithFeaturesSlide
+  :partNumber="2"
+  pillIcon="🧪"
+  pillLabel="FanHub #193 · Scoped delivery"
+  title="A Passing Build and a Visible Layout Comparison"
+  codePosition="left"
+  :code='{ language: "text", filename: "FanHub #193 · draft evidence", content: "Changed: MainLayout.razor\n         MainLayout.razor.css\n\nProject build: 0 errors\nWarnings: 7 existing nullable warnings\n\nBrowser comparison: baseline vs draft\nRoutes: /, /characters, /episodes\nWidths: 1024px and 300px\nMain content + footer matched" }'
+  :features='[
+    { icon: "📋", title: "Scope", description: "The diff touches exactly the two approved layout files." },
+    { icon: "👀", title: "Domain result", description: "Six baseline-to-draft viewport comparisons show the selected layout unchanged." },
+    { icon: "🧭", title: "Limit", description: "Blazor error recovery was not exercised; a build cannot settle that risk." }
+  ]'
+  :progressDots='{ current: 2, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-# The Same Regression Changes Consequence, Not Evidence
-<!-- SLIDE: Same PR Different Authority -->
-<WorkflowShowdownStepsSlide
-	:partNumber="3"
-	pillIcon="🧪"
-	pillLabel="Representative PR"
-	title="The Same Regression Changes Consequence, Not Evidence"
-	subtitle="Observation proves behavior before enforcement changes merge authority"
-	leftLabel="Evaluate Mode"
-	rightLabel="Active Mode"
-	:steps='[
-		{ left: { label: "Coverage falls below 80%", note: "Cobertura delta is visible" }, right: { label: "Coverage falls below 80%", note: "The same evidence is visible" } },
-		{ left: { label: "Rule reports would block", note: "Merge remains possible" }, right: { label: "Rule blocks merge", note: "Matching condition is enforced" } },
-		{ left: { label: "Team classifies cause", note: "Valid, missing, mismatch, or noise" }, right: { label: "Developer remediates", note: "Add test or invoke governed bypass" } },
-		{ left: { label: "Pilot record grows", note: "No authority granted yet" }, right: { label: "Decision is retained", note: "Status, rationale, and owner remain visible" } }
-	]'
-	:outcomeLeft='{ icon: "👀", label: "Observed impact; no merge block" }'
-	:outcomeRight='{ icon: "🔒", label: "Proven threshold; active merge gate" }'
-	summaryMetric="Same PR evidence · different enforcement authority"
-	:progressDots='{ current: 4, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+# What Remains Unproved?
+<!-- SLIDE: Honest Stops -->
+<ThreeColumnCardSlide
+  :partNumber="2"
+  pillIcon="↩️"
+  pillLabel="Keep the Evidence Honest"
+  title="A Draft Can Be Useful While a Risk Remains Open"
+  :columns='[
+    { icon: "🧪", title: "Runner", items: ["Bot PR CI initially required approval", "Maintainer approved the read-only build", "Build ran on the actual PR head"] },
+    { icon: "📦", title: "Artifact", items: ["Two-file diff matches the plan", "Layout matches at tested widths", "Error recovery is still unexercised"] },
+    { icon: "👤", title: "Decision", items: ["Ask for a focused runtime test", "Accept residual risk under policy", "Keep the draft while evidence is missing"] }
+  ]'
+  :insight='{ icon: "🔎", text: "PR #193 proves bounded delivery, not a merge. PR #198 separately shows why a passing test may miss browser behavior." }'
+  :progressDots='{ current: 3, total: 3, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 ---
 
-# Promotion Requires a Complete Activation Record
-<!-- SLIDE: Activation Record -->
-<FourCardGridSlide
-	:partNumber="3"
-	pillIcon="📋"
-	pillLabel="Activation Decision"
-	title="Promotion Requires a Complete Activation Record"
-	:cards='[
-		{ icon: "📊", title: "Evidence Window", description: "Sample and outcome classes chosen by the team, then retained" },
-		{ icon: "📏", title: "Threshold Rationale", description: "Why this condition represents real, remediable risk" },
-		{ icon: "🗝️", title: "Exception Path", description: "Named bypass roles, required rationale, expiry, and escalation" },
-		{ icon: "↩️", title: "Rollback Condition", description: "Sustained unexplained blocks above agreed tolerance" }
-	]'
-	:progressDots='{ current: 5, total: 5, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
-/>
-
----
-
-# Part 4 — Govern Enablement, Billing, and Residual Risk Separately
-<!-- SLIDE: Part 4 — Govern Enablement, Billing, and Residual Risk Separately -->
+# Part 3 — Review, Remediate, and Enforce
+<!-- SLIDE: Part 3 — Review, Remediate, and Enforce -->
 <SectionOpenerSlide
-	:partNumber="4"
-	title="Keep Authority Human-Owned"
-	subtitle="Keep product access, commercial terms, bypass authority, and risk acceptance as distinct decisions."
-	:cards='[
-		{ icon: "🔧", title: "Enablement", blurb: "Observe controls in the tenant" },
-		{ icon: "💳", title: "Billing", blurb: "Use live commercial sources" },
-		{ icon: "👤", title: "Risk Owner", blurb: "Name who may merge or stop" }
-	]'
-	:terminal='{ context: "Authority boundary", detail: "Automation informs · humans own risk" }'
+  :partNumber="3"
+  title="Review, Remediate, and Enforce"
+  subtitle="Three distinct FanHub PRs reveal what advice, a fix proposal, and a gate can each do."
+  :cards='[
+    { icon: "🔎", title: "#198 · Review", blurb: "Find the inert browser Retry" },
+    { icon: "📊", title: "#199 · Gate", blurb: "Block until coverage exceeds 27%" },
+    { icon: "🔧", title: "#201 · Autofix", blurb: "Inspect and commit a generated fix" }
+  ]'
+  :terminal='{ context: "Separate draft PRs, not sequential heads of one PR", detail: "Automatic review ≠ automatic remediation ≠ automatic merge gate" }'
 />
 
 ---
 
-# Keep Product Boundaries Separate
-<!-- SLIDE: Product Boundaries -->
-<FrameworkMappingRowsSlide
-	:partNumber="4"
-	pillIcon="🧭"
-	pillLabel="Boundary Map"
-	title="Keep Product Boundaries Separate"
-	subtitle="Observed tenant settings and live billing sources outrank copied assumptions"
-	:rows='[
-		{ label: "Review", description: "Enablement does not turn comments into blocking checks", tag: "COPILOT" },
-		{ label: "Approvals", description: "Preview counting needs explicit scope and policy ownership", tag: "PREVIEW" },
-		{ label: "Quality", description: "Enablement, findings, coverage, and rulesets are independent", tag: "CODE QUALITY" },
-		{ label: "Workflow", description: "Runner consumption remains separate from product entitlement", tag: "ACTIONS" },
-		{ label: "Billing", description: "Use live product pages plus organization usage data", tag: "LIVE SOURCE" }
-	]'
-	footnote="A rollout record captures observed controls from the target tenant"
-	:progressDots='{ current: 1, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+# When Does Review Arrive?
+<!-- SLIDE: Copilot Review Trigger -->
+<CodeWithFeaturesSlide
+  :partNumber="3"
+  pillIcon="🔎"
+  pillLabel="Copilot Code Review · PR Trigger"
+  title="A Ruleset Requests Copilot Review on Draft #198"
+  codePosition="left"
+  :code='{ language: "text", filename: "FanHub · active repository ruleset", content: "Target: main\nAutomatic Copilot review: on\nDraft pull requests: included\nNew pushes: included\n\nPR #198: bot-created draft · ba0764f\nAutomatic review: COMMENTED\nTwo open inline findings" }'
+  :features='[
+    { icon: "⚙️", title: "Setup", description: "A maintainer enables draft and new-push triggers; a manual review request also works." },
+    { icon: "📨", title: "Output", description: "Open the PR review and inline threads on the analyzed head, not just its check status." },
+    { icon: "👤", title: "Authority", description: "Suggestions invite response and tests. COMMENTED is advisory, never a human approval." }
+  ]'
+  :progressDots='{ current: 1, total: 7, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Bypass and Residual Risk Need Named Human Authority
-<!-- SLIDE: Human Authority -->
+# What Did Copilot Catch on the Agent's PR?
+<!-- SLIDE: Automatic Copilot Findings -->
+<CodeWithFeaturesSlide
+  :partNumber="3"
+  pillIcon="🔍"
+  pillLabel="PR #198 · Copilot Review on ba0764f"
+  title="Copilot Spots the Inert Retry Button"
+  codePosition="left"
+  :code='{ language: "text", filename: "PR #198 · COMMENTED · 2 findings", content: "Home.razor: button @onclick=LoadHomeDataAsync\nHome: no interactive render mode\nRoutes.razor: <Routes /> (static)\n→ click handler cannot run in browser\n\nRetry also clears loadError first\n→ alert and disabled state disappear\n\nAgent reports 4/4 component tests pass" }'
+  :features='[
+    { icon: "📨", title: "Actual review", description: "Automatic Copilot review returned COMMENTED with two findings on the bot-created draft." },
+    { icon: "🧩", title: "Why it matters", description: "bUnit can invoke a click even when the real route renders only static HTML." },
+    { icon: "👤", title: "Next", description: "Enable interactivity, keep the alert through Retry, then prove browser recovery." }
+  ]'
+  :progressDots='{ current: 2, total: 7, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+# What Does a Finding Change?
+<!-- SLIDE: Review Finding Disposition -->
+<FourCardGridSlide
+  :partNumber="3"
+  pillIcon="🔍"
+  pillLabel="PR #198 · Human Response"
+  title="A Failing Test and Browser Check Close the Gap"
+  :cards='[
+    { icon: "🧭", title: "Wire interaction", description: "Add InteractiveServer in the approved Home scope; keep alert visible while Retry runs." },
+    { icon: "🧪", title: "Test red → green", description: "Render-mode test failed on ba0764f; 6/6 focused tests pass locally on edeadee." },
+    { icon: "🌐", title: "Reproduce failure", description: "Mock API returns 503: browser shows alert and server logs the exception." },
+    { icon: "🔄", title: "Prove recovery", description: "Mock returns 200; Retry restores count and quote, clears alert, with one navigation total." }
+  ]'
+  :progressDots='{ current: 3, total: 7, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+# What Did Code Quality Actually Find?
+<!-- SLIDE: Code Quality Baseline -->
+<CodeWithFeaturesSlide
+  :partNumber="3"
+  pillIcon="📊"
+  pillLabel="Code Quality · MAIN at 800c8ec"
+  title="One Reliability Rule Finds a Silent Home-Page Failure"
+  codePosition="left"
+  :code='{ language: "text", filename: "Initial Code Quality scan · main · 800c8ec", content: "Rule: Poor error handling: empty catch block\nCategory: Reliability · severity: Note\nFile: dotnet/Frontend/.../Home.razor:332\n\ncatch { }\n→ failed API request goes unexplained\n\n71 maintainability + 9 reliability\nExisting default-branch findings" }'
+  :features='[
+    { icon: "⚙️", title: "Setup", description: "A maintainer enabled Code Quality; rules-based CodeQL scanned main after activation." },
+    { icon: "🔎", title: "Open live", description: "Security and quality → Code quality → Standard findings; inspect the Home.razor rule and location." },
+    { icon: "📌", title: "Human response", description: "Select issue #95, specify a friendly error and Retry, then verify the behavior." }
+  ]'
+  :progressDots='{ current: 4, total: 7, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+# What Is the Quality Signal on This PR?
+<!-- SLIDE: Code Quality PR Boundary -->
+<CodeWithFeaturesSlide
+  :partNumber="3"
+  pillIcon="⚙️"
+  pillLabel="Code Quality · PR #198 at ba0764f"
+  title="The PR Scan Finds New Patterns to Triage"
+  codePosition="left"
+  :code='{ language: "text", filename: "Rules-based PR scan · initial head", content: "main · 800c8ec (existing)\n  1 empty catch in Home.razor\n\nPR #198 · ba0764f (new)\n  1 generic catch in Home.razor\n  4 test HttpClient disposal findings\n\nedeadee: specific catches + DI clients\nNew-head quality run: completed" }'
+  :features='[
+    { icon: "📨", title: "Trigger and scope", description: "Code Quality independently scanned the new PR head; the baseline finding stays on main." },
+    { icon: "🔄", title: "Observed output", description: "Five inline findings identify a broad catch and four new test-client disposal patterns." },
+    { icon: "👤", title: "Rerun", description: "The edeadee scan completed successfully; inspect current findings, not only check status." }
+  ]'
+  :progressDots='{ current: 5, total: 7, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+# Can a Rule Block the PR Automatically?
+<!-- SLIDE: FanHub Coverage Gate -->
+<ThreeColumnCardSlide
+  :partNumber="3"
+  pillIcon="🔒"
+  pillLabel="Code Quality · FanHub #199"
+  title="The Coverage Rule Blocks, Then Unblocks, the Same PR"
+  :columns='[
+    { icon: "🔴", title: "First head · blocked", description: "4bd7844", items: ["Six tests pass; Cobertura uploads", "GitHub reports 26.7% below 27%", "Active branch-scoped gate blocks merge"] },
+    { icon: "🧪", title: "Human correction", description: "ab96e8b", items: ["Author manually adds two Home tests", "Eight tests pass on corrected head", "These tests were not Autofix"] },
+    { icon: "✅", title: "Rule passes", description: "PR stays draft", items: ["GitHub displays 30% coverage", "Configured requirement now passes", "Human acceptance still required"] }
+  ]'
+  :insight='{ icon: "📌", text: "github.com/MSBart2/FanHub/pull/199 · The 27% rule targets its isolated demo base, not PR #198 or #201." }'
+  :progressDots='{ current: 6, total: 7, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
+/>
+
+---
+
+# Can Code Quality Also Propose a Fix?
+<!-- SLIDE: FanHub Autofix -->
 <TwoColPairedConceptsSlide
-	:partNumber="4"
-	pillIcon="👤"
-	pillLabel="Human Authority"
-	title="Bypass and Residual Risk Need Named Human Authority"
-	:left='{
-		header: "Governed Bypass",
-		icon: "🗝️",
-		items: [
-			{ title: "Named role", detail: "Permission is narrow and explicit" },
-			{ title: "Required rationale", detail: "Failing evidence stays attached to the PR" },
-			{ title: "Time bound", detail: "Compensating validation and follow-up have an expiry" },
-			{ title: "Review frequency", detail: "Repeated bypasses challenge the rule or delivery system" }
-		]
-	}'
-	:right='{
-		header: "Residual-Risk Acceptance",
-		icon: "⚖️",
-		items: [
-			{ title: "Qualified owner", detail: "Code, security, privacy, payments, or platform" },
-			{ title: "Human judgment", detail: "Business intent and threat model remain owned" },
-			{ title: "Merge or stop", detail: "The decision includes rationale and escalation" },
-			{ title: "No anonymous authority", detail: "Automation informs but never accepts remaining risk" }
-		]
-	}'
-	:progressDots='{ current: 2, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+  :partNumber="3"
+  pillIcon="🔧"
+  pillLabel="Code Quality · FanHub #201"
+  title="An Author Accepts Code Quality Autofix"
+  :left='{
+    header: "First head · 294529d",
+    icon: "🔍",
+    items: [
+      { title: "Generic catch clause", detail: "Episodes uses int.Parse plus catch (Exception)" },
+      { title: "Code Quality finding", detail: "Offers a generated Suggested changeset" },
+      { title: "Build passes", detail: "Yet unrelated exceptions can be swallowed" }
+    ]
+  }'
+  :right='{
+    header: "Autofix head · 0b33cda",
+    icon: "✅",
+    items: [
+      { title: "Human clicks Commit suggestions", detail: "GitHub commits the generated TryParse fix" },
+      { title: "New-head checks", detail: "Build and C# analysis pass; finding is outdated" },
+      { title: "Limit", detail: "No frontend tests on main; PR remains draft" }
+    ]
+  }'
+  :insight='{ icon: "📌", text: "github.com/MSBart2/FanHub/pull/201 · Copilot Code Review also commented, but Code Quality produced this Autofix. No gate is configured on #201." }'
+  :progressDots='{ current: 7, total: 7, activeColor: "bg-indigo-400 shadow-lg shadow-indigo-500/50" }'
 />
 
 ---
 
-# Apply the Contract to One Real Pull Request
-<!-- SLIDE: Own Work Transfer -->
-<ProblemSolutionOutcomeSlide
-	:partNumber="4"
-	pillIcon="🎯"
-	pillLabel="Transfer to Your Repository"
-	title="Apply the Contract to One Real Pull Request"
-	:problem='{
-		header: "Choose the PR",
-		items: ["Changes production behavior", "Has meaningful test coverage", "Crosses a named domain boundary"]
-	}'
-	:solution='{
-		header: "Build the Record",
-		items: ["Accept one material finding", "Reject one with repository evidence", "Capture one evaluated or active gate result"]
-	}'
-	:outcome='{
-		header: "Validate Authority",
-		items: ["Reviewer explains every signal role", "Bypass path names an authorized human", "Residual-risk owner records merge or stop"],
-		metrics: [{ value: "1 PR", label: "observable trust contract" }]
-	}'
-	:insight='{ icon: "✅", text: "Done means the timeline shows evidence, disposition, gate state, and a named human decision." }'
-	:progressDots='{ current: 3, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+# Part 4 — Make the Merge Decision
+<!-- SLIDE: Part 4 — Make the Merge Decision -->
+<SectionOpenerSlide
+  :partNumber="4"
+  title="Make the Merge Decision"
+  subtitle="The accepting reviewer joins current-head evidence without treating distinct PRs as one run."
+  :cards='[
+    { icon: "📦", title: "Authority", blurb: "Match plan, diff, and head" },
+    { icon: "🔎", title: "Proof", blurb: "Distinguish advice, test, and gate" },
+    { icon: "👤", title: "Decision", blurb: "Accept, revise, or hold" }
+  ]'
+  :terminal='{ context: "Every FanHub example is still draft and unmerged", detail: "Passing a check never supplies the human merge decision" }'
 />
 
 ---
 
-# Before and After
-<!-- SLIDE: Before/After -->
-<BeforeAfterSlide
-	header="From Unranked Signals to Governed Merge Authority"
-	:leftItems='["Signals arrive without roles", "Evidence is scattered", "Thresholds activate by intuition", "Residual risk is implicit"]'
-	:rightItems='["Every signal has semantics", "Four artifacts form one record", "Evaluate precedes active", "A named human owns residual risk"]'
-	:metrics='[
-		{ value: "4", detail: "committed teaching artifacts" },
-		{ value: "2", detail: "explicit enforcement states" },
-		{ value: "1", detail: "named residual-risk owner" }
-	]'
+# How Does the Reviewer Sort the Evidence?
+<!-- SLIDE: Reviewer's Decision Queue -->
+<FourCardGridSlide
+  :partNumber="4"
+  pillIcon="📥"
+  pillLabel="Any Repository · One PR at a Time"
+  title="Which PR Proves Which Part of the Story?"
+  :cards='[
+    { icon: "🤖", title: "#193 · Lifecycle", description: "Issue #110 approval authorizes a scoped CSS draft; build and layout compare pass." },
+    { icon: "🔎", title: "#198 · Review", description: "Copilot finds inert Retry after four reported tests pass; human tests the correction." },
+    { icon: "📊", title: "#199 · Gate", description: "27% coverage rule blocks 26.7%; manually added tests take it to 30%." },
+    { icon: "🔧", title: "#201 · Autofix", description: "Code Quality proposes TryParse; the author commits it; scan and build rerun." }
+  ]'
+  :progressDots='{ current: 1, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+/>
+
+---
+
+# What Makes a Draft Ready for Acceptance?
+<!-- SLIDE: Morning Decision -->
+<FrameworkMappingRowsSlide
+  :partNumber="4"
+  pillIcon="👤"
+  pillLabel="The Morning Decision"
+  title="What Would Earn a Human Merge Decision?"
+  subtitle="Apply this checklist to one current PR head, not to evidence borrowed from other demos"
+  :rows='[
+    { label: "Authority", description: "Approved scope, event actor, and draft files match", tag: "SCOPE" },
+    { label: "Behavior", description: "Relevant test or runtime proof exercises the change", tag: "PROOF" },
+    { label: "Review", description: "Disposition of Copilot advice; re-review after fixes if needed", tag: "ADVICE" },
+    { label: "Quality", description: "Inspect Autofix and gate; run separate security checks", tag: "RULE" },
+    { label: "Head", description: "All required checks ran on the current commit", tag: "CI" },
+    { label: "Human", description: "Accept residual risk or keep draft; deployment is next", tag: "DECIDES" }
+  ]'
+  :progressDots='{ current: 2, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
+/>
+
+---
+
+# How Do We Test the Bigger Idea?
+<!-- SLIDE: Pilot Before Scale -->
+<ThreeColumnCardSlide
+  :partNumber="4"
+  pillIcon="🧪"
+  pillLabel="Pilot · Then Expand"
+  title="Pilot the Connected Loop Before Expanding It"
+  :columns='[
+    { icon: "1️⃣", title: "Authorize", items: ["Choose two or three bounded issues", "Approve runnable plans and owners", "Record what the agent may change"] },
+    { icon: "2️⃣", title: "Observe", items: ["Inspect each draft and current head", "Triage Copilot advice and quality findings", "Prove one rule blocks and unblocks"] },
+    { icon: "3️⃣", title: "Decide", items: ["Measure stops, rework, and reviewer time", "Keep human merge authority", "Hand off deployment to its own controls"] }
+  ]'
+  :insight='{ icon: "✅", text: "10–15 issues is a proposed intake target, not measured throughput. Deployment and production feedback are outside this demo." }'
+  :progressDots='{ current: 3, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 ---
@@ -465,10 +457,10 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 # What You Can Do Today
 <!-- SLIDE: What You Can Do Today -->
 <WhatYouCanDoTodaySlide
-	:today='["Classify one PR signal", "Name its decision owner", "Record one accepted or rejected finding"]'
-	:thisWeek='["Commit the four teaching artifacts", "Validate target-tenant schemas", "Define an evaluate window"]'
-	:thisMonth='["Review promotion evidence", "Activate one proven threshold", "Audit bypass frequency and rollback"]'
-	footer="Automation contributes evidence; people grant authority and accept residual risk."
+  :today='["Choose one issue and name the approver", "Correct the plan until its check runs", "Define what a draft may change"]'
+  :thisWeek='["Inspect one agent-created draft and head", "Request Copilot review and disposition", "Trial a Code Quality rule in evaluate mode"]'
+  :thisMonth='["Activate a tested gate and prove block → pass", "Inspect one Autofix before accepting it", "Define the post-merge deployment handoff"]'
+  footer="Automate the offer, advice, and enforceable bar; a human owns merge, then delivery continues."
 />
 
 ---
@@ -476,20 +468,22 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 # References
 <!-- SLIDE: References -->
 <ReferencesSlide
-	:groups='[
-		{ title: "Review and Quality", color: "cyan", items: [
-			{ href: "https://docs.github.com/en/copilot/concepts/agents/code-review", label: "Copilot code review", description: "Review behavior and approval semantics" },
-			{ href: "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/request-a-code-review/configure-automatic-review", label: "Automatic code review", description: "Repository and organization configuration" },
-			{ href: "https://docs.github.com/en/code-security/concepts/code-quality/code-quality", label: "GitHub Code Quality", description: "Findings and product boundaries" },
-			{ href: "https://docs.github.com/en/code-security/how-tos/maintain-quality-code/set-up-code-coverage", label: "Code coverage", description: "Cobertura upload contract" }
-		] },
-		{ title: "Enforcement and Boundaries", color: "purple", items: [
-			{ href: "https://docs.github.com/en/code-security/how-tos/maintain-quality-code/set-pr-thresholds", label: "PR thresholds", description: "Coverage and quality rulesets" },
-			{ href: "https://docs.github.com/en/code-security/tutorials/improve-code-quality/catch-issues-before-merge", label: "Catch issues before merge", description: "Evaluate-to-active workflow" },
-			{ href: "https://docs.github.com/en/billing/concepts/product-billing/github-copilot", label: "Copilot billing", description: "Current Copilot commercial concepts" },
-			{ href: "https://docs.github.com/en/billing/concepts/product-billing/github-code-quality", label: "Code Quality billing", description: "Current Code Quality commercial concepts" }
-		] }
-	]'
+  :groups='[
+    { title: "Observed FanHub Artifacts", color: "cyan", items: [
+      { href: "https://github.com/MSBart2/FanHub/issues/110", label: "Issue #110 · plan and approval", description: "Corrected build command and two-rule layout scope" },
+      { href: "https://github.com/MSBart2/FanHub/pull/193", label: "PR #193 · agentic draft", description: "Two-file layout fix, build, and browser comparison" },
+      { href: "https://github.com/MSBart2/FanHub/pull/198#pullrequestreview-5446574440", label: "PR #198 · Copilot review", description: "Four green tests missed the inert browser Retry" },
+      { href: "https://github.com/MSBart2/FanHub/pull/199", label: "PR #199 · coverage gate", description: "26.7% blocked, then 30% after manually added tests" },
+      { href: "https://github.com/MSBart2/FanHub/pull/201#discussion_r4220907309", label: "PR #201 · Code Quality Autofix", description: "Generic catch finding, generated TryParse, author-accepted commit" }
+    ] },
+    { title: "Workflow and Signal Boundaries", color: "purple", items: [
+      { href: "https://docs.github.com/en/code-security/concepts/code-quality/code-quality", label: "About Code Quality", description: "Default-branch and PR analysis have distinct scopes" },
+      { href: "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review", label: "Configure Copilot review", description: "Draft and new-push settings" },
+      { href: "https://docs.github.com/en/code-security/how-tos/maintain-quality-code/enable-code-quality", label: "Enable Code Quality", description: "Initial baseline scan and later activity" },
+      { href: "https://docs.github.com/en/code-security/how-tos/maintain-quality-code/restrict-code-coverage", label: "Restrict code coverage", description: "Configured threshold plus required upload check" },
+      { href: "https://github.github.com/gh-aw/reference/safe-outputs/", label: "Agentic safe outputs", description: "Bound the draft PR and advisory review" }
+    ] }
+  ]'
 />
 
 ---
@@ -497,12 +491,12 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 # Thank You
 <!-- SLIDE: Thank You -->
 <ThankYouSlide
-	title="PR Trust Stack"
-	subtitle="Evidence and Authority Before Merge"
-	:cards='[
-		{ value: "4 artifacts", detail: "One independently inspectable evidence path" },
-		{ value: "Evaluate → active", detail: "Promotion is a governed policy event" },
-		{ value: "Human-owned", detail: "Residual risk stays with named authority" }
-	]'
-	prompt="Which signal in your repository is ready to earn authority?"
+  title="From Issue to Merge Decision"
+  subtitle="Four separate drafts make the boundaries visible"
+  :cards='[
+    { value: "#193", detail: "Human approval → agent-created draft" },
+    { value: "#198", detail: "Copilot advice → tested human correction" },
+    { value: "#199 / #201", detail: "Automatic gate / human-accepted Autofix" }
+  ]'
+  prompt="Who accepts your next AI-created PR, and what happens after merge?"
 />
