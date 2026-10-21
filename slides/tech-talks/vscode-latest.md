@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: VS Code Copilot through 1.139
 mdc: true
-section: Choose and Configure
+section: Agents at Your Keyboard
 status: active
 updated: 2026-09-25
 ---

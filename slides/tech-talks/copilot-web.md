@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: From Issue to Pull Request
 mdc: true
-section: Delegate and Coordinate
+section: Agents on GitHub
 status: active
 updated: 2026-08-11
 ---

@@ -1,7 +1,7 @@
 ---
 status: active
 updated: 2026-09-16
-section: "Delegate and Coordinate"
+section: "Agents on GitHub"
 audience: [developer, team-lead]
 level: applied
 duration: 40

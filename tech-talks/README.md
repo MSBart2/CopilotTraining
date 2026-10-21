@@ -132,14 +132,17 @@ The Slide Generator does **not** require a visible slide-mapping section. For ne
 
 ## 🗂️ Portfolio
 
-Practitioner talks use four canonical decision families:
+Practitioner talks are grouped by **where the agent runs and who starts it**. Every talk applies the same four judgment lenses — context, delegation, verification, and authority — inside its own section.
 
-| Family | Question |
+| Section | Question |
 |---|---|
-| Choose and Configure | What context is needed, where should work run, and how should Copilot be configured? |
-| Delegate and Coordinate | What can be delegated, how should work be decomposed, and how much autonomy fits? |
-| Verify and Govern | What evidence permits work to proceed, and who may approve or stop it? |
+| Foundations | Which surface fits the work, and what shared context should every agent receive? |
+| Agents at Your Keyboard | What can a developer run, steer, and verify locally in VS Code or the CLI? |
+| Agents on GitHub | What work should GitHub's agents take on, and what evidence comes back for a person to decide? |
+| Trust and Govern | How ready is the repository, what may an agent do, and who may approve or stop the work? |
 | Extend and Embed | When should Copilot gain a capability, interface, protocol boundary, or domain context? |
+
+Archived talks keep their original section (`Choose and Configure`, `Delegate and Coordinate`, or `Verify and Govern`); those names are valid only on archived talks.
 
 The canonical talk metadata lives in each `tech-talks/<slug>/README.md`. [portfolio.generated.json](portfolio.generated.json) is the generated inventory used to reconcile READMEs, decks, catalog cards, and companions.
 

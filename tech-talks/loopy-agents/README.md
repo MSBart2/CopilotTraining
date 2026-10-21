@@ -1,7 +1,7 @@
 ---
 status: active
 updated: 2026-09-16
-section: "Delegate and Coordinate"
+section: "Agents at Your Keyboard"
 audience: [platform-engineer, architect, security]
 level: advanced
 duration: 45

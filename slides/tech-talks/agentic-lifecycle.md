@@ -9,7 +9,7 @@ transition: slide-left
 title: Agentic Lifecycle Orchestration
 duration: 55
 mdc: true
-section: Delegate and Coordinate
+section: Agents on GitHub
 status: active
 updated: 2026-10-06
 ---

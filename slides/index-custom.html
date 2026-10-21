@@ -1595,12 +1595,32 @@
           <p class="section-description">Technical deep-dives for practitioners on specific capabilities</p>
         </div>
       </div>
-      <!-- Choose and Configure -->
-      <div class="sub-group" id="choose-and-configure">
+      <!-- Foundations -->
+      <div class="sub-group" id="foundations">
         <div class="sub-group-header">
-          <span class="sub-group-icon">🧭</span>
-          <span class="sub-group-label">Choose and Configure</span>
-          <span class="sub-group-desc">Choose the right surface, context, and configuration for the work</span>
+          <span class="sub-group-icon">🧱</span>
+          <span class="sub-group-label">Foundations</span>
+          <span class="sub-group-desc">Choose the surface and encode the context every agent shares</span>
+          <span class="sub-group-line"></span>
+        </div>
+        <div class="grid">
+          <a href="tech-talks/surfaces/" class="card">
+            <h2>Which Copilot Where?</h2>
+            <p>Map seven Copilot experiences, choose where work starts, and hand it off when context or review boundaries change.</p>
+          </a>
+          <a href="tech-talks/copilot-primitives/" class="card">
+            <h2>Copilot Configuration Primitives</h2>
+            <p>Build instructions, prompts, skills, and agents step by step, compare when each fits, and verify the result.</p>
+          </a>
+        </div>
+      </div>
+
+      <!-- Agents at Your Keyboard -->
+      <div class="sub-group" id="agents-at-your-keyboard">
+        <div class="sub-group-header">
+          <span class="sub-group-icon">⌨️</span>
+          <span class="sub-group-label">Agents at Your Keyboard</span>
+          <span class="sub-group-desc">Run, steer, and verify agents locally in VS Code and the CLI</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
@@ -1609,28 +1629,32 @@
             <p>Close every gap — intent, geography, memory, and scale. Plan Mode, Rubber Duck, Git-free /rewind,
               Sessions sidebar, /chronicle, live S3→S4 bridge, /fleet fan-out, and cloud delegation.</p>
           </a>
-          <a href="tech-talks/copilot-primitives/" class="card">
-            <h2>Copilot Configuration Primitives</h2>
-            <p>Build instructions, prompts, skills, and agents step by step, compare when each fits, and verify the result.</p>
-          </a>
           <a href="tech-talks/vscode-latest/" class="card">
             <h2>What's New in VS Code</h2>
             <p>v1.121–v1.132: Portable agent infrastructure (AHP + Copilot SDK), BYOK with no GitHub sign-in, local
               Ollama models, Stable Custom Endpoint, parallel sessions, and GA browser tools with device emulation.</p>
           </a>
-          <a href="tech-talks/surfaces/" class="card">
-            <h2>Which Copilot Where?</h2>
-            <p>Map seven Copilot experiences, choose where work starts, and hand it off when context or review boundaries change.</p>
+          <a href="tech-talks/agent-dev-loop/" class="card">
+            <h2>The Agent Dev Loop</h2>
+            <p>Turn solved repository work into reusable instructions, prompts, skills, and reviewed plans.</p>
+          </a>
+          <a href="tech-talks/multi-agent-coordination/" class="card">
+            <h2>Multi-Agent Coordination</h2>
+            <p>Split work only when boundaries earn it, steer isolated workstreams through visible evidence, and integrate under named authority.</p>
+          </a>
+          <a href="tech-talks/loopy-agents/" class="card">
+            <h2>Loop Engineering</h2>
+            <p>Agents that loop until the goal is verifiably met — then stop. Copilot Automations as the native trigger, shared state for multi-agent coordination, and the three production controls most teams skip.</p>
           </a>
         </div>
       </div>
 
-      <!-- Verify and Govern -->
-      <div class="sub-group" id="verify-and-govern">
+      <!-- Agents on GitHub -->
+      <div class="sub-group" id="agents-on-github">
         <div class="sub-group-header">
-          <span class="sub-group-icon">🛡️</span>
-          <span class="sub-group-label">Verify and Govern</span>
-          <span class="sub-group-desc">Decide what advises, what blocks, and who may approve or override</span>
+          <span class="sub-group-icon">☁️</span>
+          <span class="sub-group-label">Agents on GitHub</span>
+          <span class="sub-group-desc">Hand work to agents GitHub runs, and inspect the evidence they return</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="delivery-path" id="issue-to-merge-path" aria-labelledby="issue-to-merge-title">
@@ -1662,23 +1686,13 @@
           </div>
         </div>
         <div class="grid">
-          <a href="tech-talks/agentic-sdlc/" class="card">
-            <h2>Agentic SDLC</h2>
-            <p>Build repository and CI infrastructure that manufactures trustworthy evidence at agent speed.</p>
+          <a href="tech-talks/copilot-web/" class="card">
+            <h2>From Issue to Pull Request</h2>
+            <p>Delegate bounded repository work and review the resulting draft pull request as an evidence bundle.</p>
           </a>
-          <a href="tech-talks/copilot-hooks/" class="card">
-            <h2>Copilot Hooks</h2>
-            <p>Programmable governance for AI agents. Real-time prevention, audit trails, and compliance enforcement at
-              execution time.</p>
-          </a>
-          <a href="tech-talks/enterprise-patterns/" class="card">
-            <h2>Enterprise Patterns</h2>
-            <p>Scaling Copilot across organizations. From team silos to standardized foundations with measurable ROI.
-            </p>
-          </a>
-          <a href="tech-talks/copilot-governance/" class="card">
-            <h2>GitHub Copilot Governance</h2>
-            <p>Carry one bounded change through visible runtime decisions, reviewable evidence, and authorized merge.</p>
+          <a href="tech-talks/agentic-lifecycle/" class="card">
+            <h2>Agentic Lifecycle Orchestration</h2>
+            <p>Correct and approve a runnable plan, then inspect the bounded agent-created draft and current-head evidence.</p>
           </a>
           <a href="tech-talks/copilot-code-review/" class="card">
             <h2>Copilot Code Review</h2>
@@ -1696,34 +1710,32 @@
         </div>
       </div>
 
-      <!-- Delegate and Coordinate -->
-      <div class="sub-group" id="delegate-and-coordinate">
+      <!-- Trust and Govern -->
+      <div class="sub-group" id="trust-and-govern">
         <div class="sub-group-header">
-          <span class="sub-group-icon">🔀</span>
-          <span class="sub-group-label">Delegate and Coordinate</span>
-          <span class="sub-group-desc">Bound work, compose specialists, and choose the right degree of autonomy</span>
+          <span class="sub-group-icon">🛡️</span>
+          <span class="sub-group-label">Trust and Govern</span>
+          <span class="sub-group-desc">Measure readiness, decide what blocks, and name who may approve or override</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
-          <a href="tech-talks/agent-dev-loop/" class="card">
-            <h2>The Agent Dev Loop</h2>
-            <p>Turn solved repository work into reusable instructions, prompts, skills, and reviewed plans.</p>
+          <a href="tech-talks/agentic-sdlc/" class="card">
+            <h2>Agentic SDLC</h2>
+            <p>Build repository and CI infrastructure that manufactures trustworthy evidence at agent speed.</p>
           </a>
-          <a href="tech-talks/copilot-web/" class="card">
-            <h2>From Issue to Pull Request</h2>
-            <p>Delegate bounded repository work and review the resulting draft pull request as an evidence bundle.</p>
+          <a href="tech-talks/copilot-hooks/" class="card">
+            <h2>Copilot Hooks</h2>
+            <p>Programmable governance for AI agents. Real-time prevention, audit trails, and compliance enforcement at
+              execution time.</p>
           </a>
-          <a href="tech-talks/multi-agent-coordination/" class="card">
-            <h2>Multi-Agent Coordination</h2>
-            <p>Split work only when boundaries earn it, steer isolated workstreams through visible evidence, and integrate under named authority.</p>
+          <a href="tech-talks/copilot-governance/" class="card">
+            <h2>GitHub Copilot Governance</h2>
+            <p>Carry one bounded change through visible runtime decisions, reviewable evidence, and authorized merge.</p>
           </a>
-          <a href="tech-talks/loopy-agents/" class="card">
-            <h2>Loop Engineering</h2>
-            <p>Agents that loop until the goal is verifiably met — then stop. Copilot Automations as the native trigger, shared state for multi-agent coordination, and the three production controls most teams skip.</p>
-          </a>
-          <a href="tech-talks/agentic-lifecycle/" class="card">
-            <h2>Agentic Lifecycle Orchestration</h2>
-            <p>Correct and approve a runnable plan, then inspect the bounded agent-created draft and current-head evidence.</p>
+          <a href="tech-talks/enterprise-patterns/" class="card">
+            <h2>Enterprise Patterns</h2>
+            <p>Scaling Copilot across organizations. From team silos to standardized foundations with measurable ROI.
+            </p>
           </a>
         </div>
       </div>

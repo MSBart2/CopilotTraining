@@ -2,7 +2,7 @@
 status: active
 portfolioState: deployed
 updated: 2026-09-16
-section: "Delegate and Coordinate"
+section: "Agents at Your Keyboard"
 audience: [developer, team-lead, architect, platform-engineer]
 level: advanced
 duration: 55

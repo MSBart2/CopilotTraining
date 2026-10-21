@@ -1,7 +1,7 @@
 ---
 status: active
 updated: 2026-09-16
-section: "Verify and Govern"
+section: "Trust and Govern"
 audience: [platform-engineer, security, architect, engineering-leader]
 level: strategic
 duration: 60

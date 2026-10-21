@@ -7,10 +7,20 @@ import {
 import { basename, join, relative } from "node:path";
 
 export const CURRENT_SECTIONS = [
+  "Foundations",
+  "Agents at Your Keyboard",
+  "Agents on GitHub",
+  "Trust and Govern",
+  "Extend and Embed",
+];
+// Archived READMEs whose decks still ship until copilot-on-github absorbs them (TAXONOMY-PLAN.md Phase 4).
+// Remove each slug once its deck is archived and its redirect points at copilot-on-github.
+export const STATUS_MISMATCH_EXCEPTIONS = new Set(["copilot-code-review", "copilot-code-quality"]);
+// Archived talks are frozen, so their pre-restructure sections remain valid for them only.
+export const LEGACY_SECTIONS = [
   "Choose and Configure",
   "Delegate and Coordinate",
   "Verify and Govern",
-  "Extend and Embed",
 ];
 export const AUDIENCES = [
   "developer",
@@ -147,7 +157,9 @@ export function collectPortfolio(root) {
       }
       if (isArchived && isCandidate) errors.push("Archived talk cannot remain a candidate");
       if (!readme.updated) errors.push("README updated date is missing");
-      if (!CURRENT_SECTIONS.includes(readme.section)) {
+      const sectionIsValid = CURRENT_SECTIONS.includes(readme.section)
+        || (isArchived && LEGACY_SECTIONS.includes(readme.section));
+      if (!sectionIsValid) {
         errors.push(`README section is invalid: ${readme.section ?? "missing"}`);
       }
       if (!Array.isArray(readme.audience) || readme.audience.length === 0) {
@@ -167,7 +179,9 @@ export function collectPortfolio(root) {
       if (!Array.isArray(readme.prerequisites)) errors.push("README prerequisites must be an array");
       if (!Array.isArray(readme.related)) errors.push("README related must be an array");
       if (!isCandidate && !files.deck.exists) errors.push("Slide deck is missing");
-      if (files.deck.exists && deck.status !== readme.status) {
+      const statusMismatchAllowed =
+        STATUS_MISMATCH_EXCEPTIONS.has(slug) && readme.status === "archived" && deck.status === "active";
+      if (files.deck.exists && deck.status !== readme.status && !statusMismatchAllowed) {
         errors.push(`Status mismatch: README=${readme.status}, deck=${deck.status ?? "missing"}`);
       }
       if (files.deck.exists && deck.section !== readme.section) {

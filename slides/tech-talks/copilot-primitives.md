@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Copilot Configuration Primitives
 mdc: true
-section: Choose and Configure
+section: Foundations
 status: active
 updated: 2026-09-16
 ---

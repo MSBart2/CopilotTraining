@@ -30,10 +30,15 @@ Top-level container class: `section tech-talks`
 
 | Section Name | Icon | Slug | Tagline | Contents |
 |---|---|---|---|---|
-| `Choose and Configure` | 🧭 | `choose-and-configure` | Choose the right surface, context, and configuration for the work | Surfaces, Configuration, Memory, Debugging, CLI, release briefs |
-| `Delegate and Coordinate` | 🔀 | `delegate-and-coordinate` | Bound work, compose specialists, and choose the right degree of autonomy | Dev Loop, Issue to PR, Teams, Workflows, Loops, App, lifecycle orchestration |
-| `Verify and Govern` | 🛡️ | `verify-and-govern` | Decide what advises, what blocks, and who may approve or override | PR Trust Stack, Hooks, Agentic SDLC, Enterprise Patterns |
+| `Foundations` | 🧱 | `foundations` | Choose the surface and encode the context every agent shares | Surfaces, Configuration Primitives, Custom Agents |
+| `Agents at Your Keyboard` | ⌨️ | `agents-at-your-keyboard` | Run, steer, and verify agents locally in VS Code and the CLI | CLI, What's New in VS Code, local SDLC orchestration |
+| `Agents on GitHub` | ☁️ | `agents-on-github` | Hand work to agents GitHub runs, and inspect the evidence they return | Coding agent, Code Review, Code Quality, GitHub Agentic Workflows |
+| `Trust and Govern` | 🛡️ | `trust-and-govern` | Measure readiness, decide what blocks, and name who may approve or override | Agentic SDLC, Hooks, Governance, Enterprise Patterns |
 | `Extend and Embed` | 🧩 | `extend-and-embed` | Add capabilities, interfaces, protocols, and governed domain context | Plugins, SDK, ACP, MCP Apps, Azure MCP, Foundry |
+
+> **Taxonomy:** sections answer *where the agent runs and who starts it*. The judgment lenses — Context, Delegation, Verification, Authority — apply inside every talk; they are not sections.
+>
+> **Legacy sections:** `Choose and Configure`, `Delegate and Coordinate`, and `Verify and Govern` remain valid **only** on archived talks, whose frontmatter is frozen. Active talks must use a section from the table above.
 
 ---
 
@@ -78,9 +83,10 @@ Deprecated cards remain in the HTML for link preservation and historical records
 
 ```
 <div class="section tech-talks">
-  <div class="sub-group">  ← Choose and Configure (🧭)
-  <div class="sub-group">  ← Delegate and Coordinate (🔀)
-  <div class="sub-group">  ← Verify and Govern (🛡️)
+  <div class="sub-group">  ← Foundations (🧱)
+  <div class="sub-group">  ← Agents at Your Keyboard (⌨️)
+  <div class="sub-group">  ← Agents on GitHub (☁️)
+  <div class="sub-group">  ← Trust and Govern (🛡️)
   <div class="sub-group">  ← Extend and Embed (🧩)
   <div class="sub-group">  ← Executive (💼) — executive framing talks inside tech-talks section
 

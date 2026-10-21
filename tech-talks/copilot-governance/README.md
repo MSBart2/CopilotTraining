@@ -2,7 +2,7 @@
 status: active
 portfolioState: candidate
 updated: 2026-09-18
-section: "Verify and Govern"
+section: "Trust and Govern"
 audience: [platform-engineer, security, architect]
 level: advanced
 duration: 60

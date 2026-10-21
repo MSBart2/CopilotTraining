@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-09-16
+updated: 2026-10-21
 ---
 
 # Tech Talks Decision Guide
@@ -19,39 +19,50 @@ Use this path when you are new to Copilot or introducing it to a team. Each step
 
 Stop at any step when its evidence is missing. Repair that boundary before adding more autonomy.
 
-## Choose and Configure
+Sections follow where the agent runs and who starts it. Every talk applies the same four judgment lenses — context, delegation, verification, and authority — inside its own scope.
 
-**Question:** What context does Copilot need, where should the work run, and how should the experience be configured?
+## Foundations
+
+**Question:** Which surface fits the work, and what shared context should every agent receive?
 
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
 | Choose the right Copilot surface | [Which Copilot Where?](surfaces/) | A routed task with named context, artifact, and reviewer |
 | Encode and verify shared Copilot behavior | [Copilot Configuration Primitives](copilot-primitives/) | Working instruction, prompt, skill, or agent plus delivery and acceptance evidence |
+
+## Agents at Your Keyboard
+
+**Question:** What can a developer run, steer, and verify locally in VS Code or the CLI?
+
+| Decision | Talk | Evidence you inspect or produce |
+|---|---|---|
 | Work where shell and runtime state are decisive | [Copilot CLI](copilot-cli/) | A terminal-native result with observable command evidence |
+| Track VS Code changes that alter a durable workflow decision | [What's New in VS Code](vscode-latest/) | A changed workflow with its first verification step |
+| Turn solved work into reusable capability | [Agent Dev Loop](agent-dev-loop/) | Repository configuration and a validated plan |
+| Split, steer, and integrate multi-agent work | [Multi-Agent Coordination](multi-agent-coordination/) | A coordination contract, isolated evidence, and a named integration owner |
+| Build loops that stop safely | [Loop Engineering](loopy-agents/) | Progress state, verification signal, limit, and escalation path |
 
 Release-specific VS Code changes are routed through [rolling release briefs](../.github/content-routing/release-briefs/) to their durable owners. The current [VS Code Latest](vscode-latest/) talk remains active until its approved retirement checklist is complete.
 
-## Delegate and Coordinate
+## Agents on GitHub
 
-**Question:** What work can be delegated, how should it be decomposed, and how much autonomy fits?
+**Question:** What work should GitHub's agents take on, and what evidence comes back for a person to decide?
 
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
-| Turn solved work into reusable capability | [Agent Dev Loop](agent-dev-loop/) | Repository configuration and a validated plan |
 | Delegate one bounded repository task | [From Issue to Pull Request](copilot-web/) | A draft pull request with an evidence bundle |
-| Split, steer, and integrate multi-agent work | [Multi-Agent Coordination](multi-agent-coordination/) | A coordination contract, isolated evidence, and a named integration owner |
-| Build loops that stop safely | [Loop Engineering](loopy-agents/) | Progress state, verification signal, limit, and escalation path |
 | Automate recurring judgments across a lifecycle | [Agentic Lifecycle Orchestration](agentic-lifecycle/) | Compiled workflow candidates with explicit handoffs, safe outputs, and approval gates |
+| Govern AI findings and deterministic merge evidence | [PR Trust Stack](pr-trust-stack/) | Dispositioned findings, evaluated checks, and a named merge authority |
 
-## Verify and Govern
+## Trust and Govern
 
-**Question:** What evidence permits work to proceed, who may approve it, and where must execution stop?
+**Question:** How ready is the repository, what may an agent do, and who may approve or stop the work?
 
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
-| Govern AI findings and deterministic merge evidence | [PR Trust Stack](pr-trust-stack/) | Dispositioned findings, evaluated checks, and a named merge authority |
-| Allow or deny agent actions | [Copilot Hooks](copilot-hooks/) | An execution boundary with an auditable allow, deny, or escalation result |
 | Manufacture trustworthy delivery evidence | [Agentic SDLC](agentic-sdlc/) | Repository and CI signals that gate or return agent work |
+| Allow or deny agent actions | [Copilot Hooks](copilot-hooks/) | An execution boundary with an auditable allow, deny, or escalation result |
+| Keep execution and merge authority explicit | [GitHub Copilot Governance](copilot-governance/) | Visible runtime decisions, reviewable evidence, and an authorized merge |
 | Standardize governance across teams | [Enterprise Patterns](enterprise-patterns/) | An operating model with owners, policy, rollout, and success measures |
 
 ## Extend and Embed

@@ -1,7 +1,7 @@
 ---
 status: active
 updated: 2026-09-16
-section: "Choose and Configure"
+section: "Foundations"
 audience: [developer, team-lead, platform-engineer]
 level: foundational
 duration: 50

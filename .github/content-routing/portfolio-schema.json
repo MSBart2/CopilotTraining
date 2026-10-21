@@ -84,7 +84,7 @@
           ]
         },
         "section": {
-          "enum": ["Choose and Configure", "Delegate and Coordinate", "Verify and Govern", "Extend and Embed", null]
+          "enum": ["Foundations", "Agents at Your Keyboard", "Agents on GitHub", "Trust and Govern", "Extend and Embed", "Choose and Configure", "Delegate and Coordinate", "Verify and Govern", null]
         },
         "audience": {
           "type": "array",
@@ -99,7 +99,7 @@
         "prerequisites": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
         "related": { "type": "array", "items": { "$ref": "#/$defs/slug" } },
         "deckSection": {
-          "enum": ["Choose and Configure", "Delegate and Coordinate", "Verify and Govern", "Extend and Embed", null]
+          "enum": ["Foundations", "Agents at Your Keyboard", "Agents on GitHub", "Trust and Govern", "Extend and Embed", "Choose and Configure", "Delegate and Coordinate", "Verify and Govern", null]
         },
         "cataloged": { "type": "boolean" },
         "files": {

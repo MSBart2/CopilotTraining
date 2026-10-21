@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: "Useful Autonomy, Clear Authority"
 mdc: true
-section: Verify and Govern
+section: Trust and Govern
 status: active
 updated: 2026-09-17
 ---
@@ -39,7 +39,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
   title="Useful Autonomy, Clear Authority"
   subtitle="GitHub Copilot governance from tool request to protected merge"
   tagline="Clear decision rights let routine work move and consequential changes reach the right owner."
-  meta="Practitioner tech talk · Verify and Govern"
+  meta="Practitioner tech talk · Trust and Govern"
 />
 
 ---

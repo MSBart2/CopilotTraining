@@ -1,7 +1,7 @@
 ---
 status: active
 updated: 2026-10-08
-section: "Verify and Govern"
+section: "Agents on GitHub"
 audience: [developer, team-lead, platform-engineer]
 level: applied
 duration: 50

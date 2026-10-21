@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Multi-Agent Coordination
 mdc: true
-section: Delegate and Coordinate
+section: Agents at Your Keyboard
 status: active
 updated: 2026-09-16
 ---

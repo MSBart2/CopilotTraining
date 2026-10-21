@@ -8,7 +8,7 @@ drawings: { persist: false }
 transition: slide-left
 title: From Issue to Merge Decision
 mdc: true
-section: Verify and Govern
+section: Agents on GitHub
 status: active
 updated: 2026-10-08
 ---
@@ -34,7 +34,7 @@ import ThankYouSlide from './components/structure/ThankYouSlide.vue'
   title="From Issue to Merge Decision"
   subtitle="Agentic workflows, Copilot review, and Code Quality together"
   tagline="Bound the work · Inspect the draft · Enforce the bar · Keep acceptance human"
-  meta="CopilotTraining · Verify and Govern · 50 minutes"
+  meta="CopilotTraining · Agents on GitHub · 50 minutes"
 />
 
 ---

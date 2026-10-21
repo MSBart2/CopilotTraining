@@ -2,7 +2,7 @@
 status: active
 portfolioState: deployed
 updated: 2026-10-06
-section: "Delegate and Coordinate"
+section: "Agents on GitHub"
 audience: [developer, team-lead, platform-engineer]
 level: advanced
 duration: 55

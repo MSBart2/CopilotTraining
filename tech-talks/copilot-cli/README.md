@@ -1,7 +1,7 @@
 ---
 status: active
 updated: 2026-09-15
-section: "Choose and Configure"
+section: "Agents at Your Keyboard"
 audience: [developer, platform-engineer]
 level: applied
 duration: 45

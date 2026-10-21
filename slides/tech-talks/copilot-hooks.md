@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: GitHub Copilot Hooks
 mdc: true
-section: Verify and Govern
+section: Trust and Govern
 status: active
 updated: 2026-04-22
 ---
