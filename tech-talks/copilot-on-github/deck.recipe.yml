@@ -1,0 +1,98 @@
+# Independent critique: rubber-duck subagent on gpt-5.6-sol (cross-model; primary is a Claude model).
+# Reconciliation:
+# - Accepted: authority is asymmetric. The team permits production, counts a review assessment, and
+#   enforces thresholds; the ladder marks the cloud agent's Enforce cell as platform-fixed.
+# - Accepted: "measure" scoped to rules and thresholds; section renamed; AI findings marked model-mediated.
+# - Accepted: "one setup shapes all three" replaced with a five-surface configuration map.
+# - Accepted: cold open on #210's final-head evidence bundle, then rewind through the timeline.
+# - Accepted: four roles (requester, PR owner, reviewer, platform owner) introduced up front.
+# - Accepted: PR-owner acceptance checklist in section 1; observed timings labeled as one run.
+# - Accepted: #201 Autofix moves to README only; #198 and #199 stay as short contrast cases.
+# - Accepted: decision record presented before the merge so the conclusion stands without a live action.
+# - Accepted: slide target 21-23; pricing detail stays in README and one summary line.
+version: 1
+
+deck:
+  title: "Copilot on GitHub"
+  subtitle: "Produce, Reason, Measure"
+  tagline: "Produce, reason, measure. Then a person decides."
+
+  agenda:
+    - title: "Trace each kind of evidence to its producer"
+      takeaway: "Follow #210 from assignment to final head and see which agent produced the patch, the assessment, and the measurement."
+      whyItMatters: "A reviewer who knows who produced each item, and on which head, knows what it can support."
+    - title: "Match evidence to the people who rely on it"
+      takeaway: "Read which commit each review analyzed, run what the review left unexecuted, and use rules for what rules measure."
+      whyItMatters: "Requester, PR owner, reviewer, and platform owner each consume different evidence at different moments."
+    - title: "Promote evidence into merge policy one step at a time"
+      takeaway: "Permit production, count an assessment, or enforce a threshold, each with an owner and a rollback condition."
+      whyItMatters: "Each promotion changes who holds authority, so the team chooses it deliberately and can reverse it."
+
+  arcToc: "Delegate → Reason About Intent → Measure → Decide What Gets Authority"
+
+  arcNarrative: >
+    Open on FanHub draft #210 at its decision point: four pieces of evidence on commit 02ddaf3 (the agent's
+    patch and tests, Copilot's approval assessment, a clean Code Quality run, and the maintainer's executed
+    test run) and four roles who rely on them. Then rewind. Section 1 follows the assignment of #7 to the cloud
+    agent, the draft opening twelve seconds later, and the fix arriving under four minutes, then gives the PR
+    owner an acceptance check and the platform-fixed boundary. Section 2 is the most transferable lesson: the
+    automatic review analyzed the plan-only head, the re-requested review recommended approval while stating
+    the tests were unexecuted, and the maintainer ran them; #198 then shows review catching an inert Retry that
+    passing tests missed, and the approval preview raises the authority question. Section 3 shows what rules and
+    thresholds measure, with #210's clean run and #199's gate blocking at 26.7% and passing at 30%. Section 4
+    is the climax for the platform owner: the evidence-by-role table, the configuration map, the asymmetric
+    promotion ladder, and #210's written decision record, closing with a first setting to promote in the
+    audience's own repository.
+
+  sectionOrder:
+    - "1. Delegate the Change"
+    - "2. Reason About Intent"
+    - "3. Measure Against Rules and Thresholds"
+    - "4. Decide What Gets Authority"
+
+  sectionModes:
+    "1. Delegate the Change":
+      emphasis: medium
+      note: >
+        Place the #210 final-head evidence table and the four-role table before this section's opener as the
+        cold open. Inside the section: the timeline (assigned 20:31:19, draft 12 seconds later, fix at 20:34:55,
+        labeled as one observed FanHub run) with the trace line; the delegate and keep-human-led grid paired
+        with the six-question PR-owner acceptance check; one compact slide for the runtime boundary and the
+        platform-fixed authority limits. Budget 3 slides.
+    "2. Reason About Intent":
+      emphasis: high
+      note: >
+        Give the plan-only-head discovery its own slide: two reviews, commit 919b158 versus 02ddaf3, and the
+        ruleset's review_on_push false. Pair the re-requested review quote with the maintainer's 8 of 8 test
+        output on one slide. Treat #198 as a short contrast case on one slide: four passing tests, an inert Retry
+        found by review, a render-mode test that failed against the original draft. Close with Fix with Copilot
+        and Copilot approvals (preview) as the authority question, labeled with preview status. Budget 4-5 slides.
+    "3. Measure Against Rules and Thresholds":
+      emphasis: medium
+      note: >
+        One slide for standard versus AI findings with reproducibility and gate capability; one slide for #210's
+        clean run beside what rules leave to tests and reviewers; one slide for #199's gate at 26.7% blocked and
+        30% passing, with Evaluate mode as the starting step. Mention findings-to-cloud-agent handoff in one line.
+        Budget 3 slides.
+    "4. Decide What Gets Authority":
+      emphasis: high
+      note: >
+        The climax for the platform owner. Five core slides: the evidence-by-role table; the five-surface
+        configuration map with excludeAgent as the shared-context example; the asymmetric promotion ladder with
+        the permit, count, and enforce verbs and one recovery principle (every promoted control has an owner and
+        a reversal path); #210's decision record (evidence available, absent, policy, judgment, action and
+        recovery); and the apply-it-to-your-work exercise. Fold cost into one line on the ladder slide and the
+        where-it-stops-fitting handoffs into the closing slide. Budget 5 slides.
+
+  preamble: []
+  appendix: []
+
+  highlightMoments:
+    - "On #210's final head, four kinds of evidence sat side by side: the agent's patch and tests, Copilot's assessment, a clean Code Quality run, and a person's executed test run."
+    - "The automatic review analyzed the plan-only commit; the implementation drew a review only after the maintainer re-requested one."
+    - "Copilot recommended approval and stated the tests were unexecuted; the maintainer ran them and saw 8 of 8 pass."
+    - "On #198, review found an inert Retry button that four passing component tests missed."
+    - "On #199, a 27% coverage rule blocked a 26.7% head and passed at 30% after two hand-written tests."
+
+# OPEN DECISION: Once #210 is merged, add its merge commit to the decision-record slide (README placeholder
+# <!-- MERGE-EVIDENCE -->). If it stays a draft, the decision-record slide ends at the chosen action and recovery path.

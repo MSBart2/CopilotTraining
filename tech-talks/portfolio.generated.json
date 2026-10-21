@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-21T21:04:37.827Z",
+  "generatedAt": "2026-10-21T21:35:45.598Z",
   "source": "tech-talks/*/README.md",
   "counts": {
-    "totalTalks": 29,
-    "practitionerTalks": 20,
+    "totalTalks": 30,
+    "practitionerTalks": 21,
     "archivedTalks": 9,
-    "deployedTalks": 19,
+    "deployedTalks": 20,
     "candidateTalks": 1,
-    "catalogCards": 22,
-    "validTalks": 29
+    "catalogCards": 23,
+    "validTalks": 30
   },
   "warnings": [
     "Directory has no README and is not a portfolio artifact: copilot-surface-router"
@@ -335,14 +335,14 @@
         "agendaHtml": {
           "path": "slides/companions/tech-talks/agentic-lifecycle/agenda.html",
           "exists": true,
-          "bytes": 5929,
-          "modified": "2026-10-06T18:42:36.633Z"
+          "bytes": 5950,
+          "modified": "2026-10-21T21:04:38.583Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-lifecycle/deck.pdf",
           "exists": true,
-          "bytes": 2091254,
-          "modified": "2026-10-06T18:42:55.029Z"
+          "bytes": 2303190,
+          "modified": "2026-10-21T21:05:14.420Z"
         }
       },
       "errors": []
@@ -1053,7 +1053,7 @@
           "path": "slides/companions/tech-talks/copilot-governance/agenda.html",
           "exists": true,
           "bytes": 5758,
-          "modified": "2026-10-21T15:55:29.562Z"
+          "modified": "2026-10-21T21:05:23.697Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-governance/deck.pdf",
@@ -1189,6 +1189,72 @@
           "exists": true,
           "bytes": 1699561,
           "modified": "2026-08-13T17:00:27.913Z"
+        }
+      },
+      "errors": []
+    },
+    {
+      "slug": "copilot-on-github",
+      "title": "Copilot on GitHub: Produce, Reason, Measure",
+      "status": "active",
+      "portfolioState": "deployed",
+      "updated": "2026-10-21",
+      "section": "Agents on GitHub",
+      "audience": [
+        "developer",
+        "team-lead",
+        "platform-engineer"
+      ],
+      "level": "applied",
+      "duration": 50,
+      "format": "core-talk",
+      "decision": "Which built-in GitHub agent fits each moment of a pull request, and what evidence does each one hand the person who decides?",
+      "prerequisites": [
+        "copilot-primitives"
+      ],
+      "related": [
+        "agentic-lifecycle",
+        "copilot-governance",
+        "copilot-hooks"
+      ],
+      "deckSection": "Agents on GitHub",
+      "cataloged": true,
+      "files": {
+        "readme": {
+          "path": "tech-talks/copilot-on-github/README.md",
+          "exists": true,
+          "bytes": 24143,
+          "modified": "2026-10-21T21:35:36.294Z"
+        },
+        "recipe": {
+          "path": "tech-talks/copilot-on-github/deck.recipe.yml",
+          "exists": true,
+          "bytes": 7069,
+          "modified": "2026-10-21T21:21:54.716Z"
+        },
+        "deck": {
+          "path": "slides/tech-talks/copilot-on-github.md",
+          "exists": true,
+          "bytes": 28450,
+          "modified": "2026-10-21T21:32:37.388Z"
+        },
+        "agendaMarkdown": {
+          "path": "slides/companions/tech-talks/copilot-on-github/agenda.md",
+          "exists": true,
+          "bytes": 455,
+          "modified": "2026-10-21T21:34:48.772Z"
+        },
+        "agendaHtml": {
+          "path": "slides/companions/tech-talks/copilot-on-github/agenda.html",
+          "exists": true,
+          "bytes": 6060,
+          "modified": "2026-10-21T21:34:52.583Z"
+        },
+        "deckPdf": {
+          "path": "slides/companions/tech-talks/copilot-on-github/deck.pdf",
+          "exists": true,
+          "bytes": 2094431,
+          "modified": "2026-10-21T21:35:25.557Z"
         }
       },
       "errors": []
@@ -1837,7 +1903,7 @@
           "path": "slides/companions/tech-talks/pr-trust-stack/agenda.html",
           "exists": true,
           "bytes": 5926,
-          "modified": "2026-10-21T15:54:57.575Z"
+          "modified": "2026-10-21T21:05:24.287Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/pr-trust-stack/deck.pdf",

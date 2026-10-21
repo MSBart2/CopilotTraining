@@ -130,6 +130,28 @@ The archived `copilot-code-review` and `copilot-code-quality` folders can't be e
 - **Closing beat — the merge decision:** each agent produced a different kind of evidence on its PR head; a person reviews it and decides. This replaces pr-trust-stack's capstone role. State the boundary once: Code Quality doesn't replace security review, dependency checks or secret scanning.
 - **Process:** `content-refresh`-style verification against current docs and changelog for all three features → recipe review (cross-model) → full deck generation.
 
+### Phase 1b — as implemented (2026-10-21)
+
+- **The talk:** new `tech-talks/copilot-on-github/` (50 min, section "Agents on GitHub", `portfolioState: deployed`).
+- **Sections:**
+  1. Delegate the Change
+  2. Reason About Intent
+  3. Measure Against Rules and Thresholds
+  4. Decide What Gets Authority
+- **Spine:** fresh FanHub run on #7, which produced draft #210.
+  - Assigned to the cloud agent; the draft opened 12 seconds later and the fix landed under four minutes.
+  - The automatic review saw only the plan-only head, because the ruleset has `review_on_push: false`. The re-requested review recommended approval and said the tests were unexecuted.
+  - The maintainer ran the tests: 8 of 8 pass. Code Quality ran clean.
+  - #198 and #199 come from pr-trust-stack as contrast cases. #201 (Autofix) is in the README only.
+- **Cross-model critique (rubber-duck, gpt-5.6-sol):**
+  - promotion framed as permit / count / enforce, with an asymmetric ladder;
+  - Measure scoped to rules and thresholds;
+  - a five-surface configuration map;
+  - roles and an acceptance check up front;
+  - a decision record before the merge.
+- **Deck:** 24 slides, build passes. Companions are generated, there's a homepage card in the Agents on GitHub grid, and the inventory counts are deployed 20, candidate 1, catalog cards 23.
+- **Open:** once #210 is squash-merged, replace the `<!-- MERGE-EVIDENCE -->` placeholder in the README with the merge SHA and time.
+
 ## Phase 2 — Foundations: new `custom-agents` talk
 
 - **Proposal gate:** follow the AGENTS.md rule for new talks (research brief + structural proposal approved before drafting). Start the talk as `portfolioState: candidate`.
