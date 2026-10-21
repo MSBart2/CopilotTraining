@@ -455,7 +455,7 @@ import ThreeColumnCardSlide from './components/ThreeColumnCardSlide.vue'
     { label: "Judgment", description: "One page and its tests; the tests exercise the reported symptom", tag: "person" },
     { label: "Action", description: "Mark ready and squash-merge; recovery: revert and reopen #7", tag: "action + recovery" }
   ]'
-  footnote="Chosen action, owned by a person: revert the squash commit and reopen #7 if the filter regresses"
+  footnote="Observed: squash-merged as 803254f by the maintainer; #7 closed. Recovery stays ready: revert 803254f and reopen #7"
   :progressDots='{ current: 4, total: 4, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 

@@ -150,7 +150,7 @@ The archived `copilot-code-review` and `copilot-code-quality` folders can't be e
   - roles and an acceptance check up front;
   - a decision record before the merge.
 - **Deck:** 24 slides, build passes. Companions are generated, there's a homepage card in the Agents on GitHub grid, and the inventory counts are deployed 20, candidate 1, catalog cards 23.
-- **Open:** once #210 is squash-merged, replace the `<!-- MERGE-EVIDENCE -->` placeholder in the README with the merge SHA and time.
+- **Merge:** #210 squash-merged as `803254f` on 2026-10-21 21:28:43Z, closing #7. The README and the decision-record slide cite it.
 
 ## Phase 2 — Foundations: new `custom-agents` talk
 

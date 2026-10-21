@@ -94,5 +94,4 @@ deck:
     - "On #198, review found an inert Retry button that four passing component tests missed."
     - "On #199, a 27% coverage rule blocked a 26.7% head and passed at 30% after two hand-written tests."
 
-# OPEN DECISION: Once #210 is merged, add its merge commit to the decision-record slide (README placeholder
-# <!-- MERGE-EVIDENCE -->). If it stays a draft, the decision-record slide ends at the chosen action and recovery path.
+# RESOLVED 2026-10-21: #210 squash-merged as 803254f; #7 closed. The decision-record slide footnote cites the merge.

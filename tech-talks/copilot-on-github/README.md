@@ -270,7 +270,7 @@ The maintainer wrote the decision down before acting:
 | **Judgment applied** | The change is confined to one page and its tests, and the tests exercise the reported symptom |
 | **Action and recovery** | Mark ready and squash-merge; revert the squash commit and reopen #7 if the filter regresses |
 
-<!-- MERGE-EVIDENCE --> The maintainer marked the draft ready and squash-merged it, closing #7.
+The maintainer marked the draft ready and squash-merged it as [`803254f`](https://github.com/MSBart2/FanHub/commit/803254f74e8fa4ffbd141b25fbe5605d3c4f5ccf) at 21:28:43Z on 2026-10-21; #7 closed two seconds later.
 
 ### Where it stops fitting
 
