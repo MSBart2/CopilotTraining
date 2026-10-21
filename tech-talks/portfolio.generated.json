@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-21T15:52:51.278Z",
+  "generatedAt": "2026-10-21T21:04:37.827Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 29,
@@ -58,7 +58,7 @@
       "source": "agentic-journey",
       "status": "merged",
       "target": "agentic-lifecycle",
-      "reason": "The issue-to-PR state machine is now owned by Agentic Lifecycle Orchestration.",
+      "reason": "The issue-to-PR state machine is now owned by GitHub Agentic Workflows.",
       "decisionId": "adoption-pathway"
     },
     {
@@ -79,7 +79,7 @@
       "source": "agentic-workflows",
       "status": "merged",
       "target": "agentic-lifecycle",
-      "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by Agentic Lifecycle Orchestration.",
+      "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by GitHub Agentic Workflows.",
       "decisionId": "workflow-lifecycle"
     }
   ],
@@ -283,27 +283,26 @@
     },
     {
       "slug": "agentic-lifecycle",
-      "title": "Agentic Lifecycle Orchestration",
+      "title": "GitHub Agentic Workflows: Reviewable Contracts for Repository Judgment Work",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-06",
+      "updated": "2026-10-21",
       "section": "Agents on GitHub",
       "audience": [
-        "developer",
+        "platform-engineer",
         "team-lead",
-        "platform-engineer"
+        "developer"
       ],
       "level": "advanced",
       "duration": 55,
       "format": "core-talk",
-      "decision": "How can a team turn an issue into a tested fix and reviewed draft PR through human-requested agentic workflows?",
+      "decision": "Which recurring repository work should become an agentic workflow, and what authority does each workflow need?",
       "prerequisites": [
-        "agent-dev-loop",
-        "copilot-web"
+        "copilot-primitives"
       ],
       "related": [
-        "surfaces",
-        "multi-agent-coordination",
+        "copilot-on-github",
+        "copilot-hooks",
         "agentic-sdlc"
       ],
       "deckSection": "Agents on GitHub",
@@ -312,26 +311,26 @@
         "readme": {
           "path": "tech-talks/agentic-lifecycle/README.md",
           "exists": true,
-          "bytes": 27464,
-          "modified": "2026-10-21T15:46:27.531Z"
+          "bytes": 24103,
+          "modified": "2026-10-21T20:37:09.329Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-lifecycle/deck.recipe.yml",
           "exists": true,
-          "bytes": 5180,
-          "modified": "2026-10-06T18:31:51.383Z"
+          "bytes": 8008,
+          "modified": "2026-10-21T20:37:50.038Z"
         },
         "deck": {
           "path": "slides/tech-talks/agentic-lifecycle.md",
           "exists": true,
-          "bytes": 27188,
-          "modified": "2026-10-06T18:41:59.107Z"
+          "bytes": 30622,
+          "modified": "2026-10-21T21:00:50.160Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/agentic-lifecycle/agenda.md",
           "exists": true,
-          "bytes": 439,
-          "modified": "2026-10-06T18:42:36.629Z"
+          "bytes": 461,
+          "modified": "2026-10-21T21:04:28.713Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/agentic-lifecycle/agenda.html",
@@ -378,8 +377,8 @@
         "readme": {
           "path": "tech-talks/agentic-sdlc/README.md",
           "exists": true,
-          "bytes": 79390,
-          "modified": "2026-10-21T15:46:27.779Z"
+          "bytes": 79383,
+          "modified": "2026-10-21T21:04:28.751Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-sdlc/deck.recipe.yml",
@@ -704,8 +703,8 @@
         "readme": {
           "path": "tech-talks/copilot-azure-mcp/README.md",
           "exists": true,
-          "bytes": 60658,
-          "modified": "2026-09-16T14:24:26.070Z"
+          "bytes": 60651,
+          "modified": "2026-10-21T21:04:28.756Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-azure-mcp/deck.recipe.yml",
@@ -1047,20 +1046,20 @@
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-governance/agenda.md",
           "exists": true,
-          "bytes": 403,
-          "modified": "2026-09-18T15:50:12.377Z"
+          "bytes": 421,
+          "modified": "2026-10-21T15:56:10.810Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/copilot-governance/agenda.html",
           "exists": true,
-          "bytes": 5928,
-          "modified": "2026-10-05T17:12:17.088Z"
+          "bytes": 5758,
+          "modified": "2026-10-21T15:55:29.562Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-governance/deck.pdf",
           "exists": true,
-          "bytes": 2460038,
-          "modified": "2026-09-18T15:50:38.127Z"
+          "bytes": 2459972,
+          "modified": "2026-10-21T15:55:50.831Z"
         }
       },
       "errors": []
@@ -1548,8 +1547,8 @@
         "readme": {
           "path": "tech-talks/enterprise-patterns/README.md",
           "exists": true,
-          "bytes": 62867,
-          "modified": "2026-10-21T15:46:28.038Z"
+          "bytes": 62860,
+          "modified": "2026-10-21T21:04:28.762Z"
         },
         "recipe": {
           "path": "tech-talks/enterprise-patterns/deck.recipe.yml",
@@ -1614,8 +1613,8 @@
         "readme": {
           "path": "tech-talks/loopy-agents/README.md",
           "exists": true,
-          "bytes": 59598,
-          "modified": "2026-10-21T15:46:27.345Z"
+          "bytes": 59591,
+          "modified": "2026-10-21T21:04:28.768Z"
         },
         "recipe": {
           "path": "tech-talks/loopy-agents/deck.recipe.yml",
@@ -1746,8 +1745,8 @@
         "readme": {
           "path": "tech-talks/multi-agent-coordination/README.md",
           "exists": true,
-          "bytes": 26263,
-          "modified": "2026-10-21T15:46:27.258Z"
+          "bytes": 26256,
+          "modified": "2026-10-21T21:04:28.773Z"
         },
         "recipe": {
           "path": "tech-talks/multi-agent-coordination/deck.recipe.yml",
@@ -1831,20 +1830,20 @@
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/pr-trust-stack/agenda.md",
           "exists": true,
-          "bytes": 1405,
-          "modified": "2026-10-08T17:17:32.800Z"
+          "bytes": 1432,
+          "modified": "2026-10-21T15:56:10.812Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/pr-trust-stack/agenda.html",
           "exists": true,
           "bytes": 5926,
-          "modified": "2026-10-08T17:19:17.506Z"
+          "modified": "2026-10-21T15:54:57.575Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/pr-trust-stack/deck.pdf",
           "exists": true,
-          "bytes": 2160805,
-          "modified": "2026-10-08T17:19:44.430Z"
+          "bytes": 2160828,
+          "modified": "2026-10-21T15:55:28.848Z"
         }
       },
       "errors": []

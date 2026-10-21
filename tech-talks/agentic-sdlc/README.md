@@ -1608,7 +1608,7 @@ Machine-readable artifacts proving checks ran and passed:
 
 ### Complementary Features
 
-- **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** — Evidence-gated issue-to-PR automation before full SDLC transformation
+- **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Evidence-gated issue-to-PR automation before full SDLC transformation
 - **[Multi-Agent Coordination](../multi-agent-coordination/)** — Specialized multi-agent coordination patterns for complex workflows
 - **[Parallel Execution](../parallel-execution/)** — Worktree-based independence for multiple agents working simultaneously
 - **[Copilot Hooks](../copilot-hooks/)** — Governance mechanisms and agent behavior controls

@@ -1,89 +1,108 @@
-# REVIEW PENDING: independent critique completed; the host did not expose
-# the reviewer's model family, so cross-model independence remains unverified.
+# Independent critique: rubber-duck subagent on gpt-5.6-sol (cross-model; primary is a Claude model).
+# Reconciliation:
+# - Accepted: open on #202 /triage; move #193 to the close as the multi-stage capstone.
+# - Accepted: three-part anchor scoping "only pen" to repository writes, with the lock as the reviewable artifact.
+# - Accepted: present min-integrity: none as an owned, version-specific exception with remaining
+#   controls and a review trigger; report the friction drop as an operational observation.
+# - Accepted: producer/owner framing (requester and contract owner) and a request-to-decision trace.
+# - Accepted: lock review model (people review source, CI checks lock drift, reviewers read lock diffs
+#   on permission or version changes).
+# - Adjusted: the reviewer weighted "Test the Contract" high; the #202 command case now lives in section 1,
+#   so section 3 carries the schedule and event patterns at medium and section 4 carries the climax.
+# - Moved to README only: engine alternatives, imports/sharing, per-failure detail beyond one table.
 version: 1
 
 deck:
-  title: "Agentic Lifecycle Orchestration"
-  subtitle: "A Real Issue, a Reusable Workflow, and the Next Decision"
-  tagline: "Choose each label-driven handoff from issue to reviewed draft PR"
+  title: "GitHub Agentic Workflows"
+  subtitle: "Reviewable Contracts for Repository Judgment Work"
+  tagline: "Frontmatter grants authority, safe outputs are the only pen, and the lock makes it reviewable"
 
   agenda:
-    - title: "Build a bounded research handoff"
-      takeaway: "Read the complete workflow source, compile its lock, and inspect the comment on a selected issue."
-      whyItMatters: "The event and output guard let a maintainer request evidence on any issue."
-    - title: "Approve a plan that the repository can verify"
-      takeaway: "See a faulty build command corrected before a named approver requests implementation."
-      whyItMatters: "A scoped plan and working baseline make the next label meaningful."
-    - title: "Trace a tested fix into a human decision"
-      takeaway: "Follow the two-file draft PR, current-head checks, and advisory review."
-      whyItMatters: "A reviewer can inspect both working evidence and the remaining runtime uncertainty."
+    - title: "Match recurring work to the right actor"
+      takeaway: "Sort jobs across Actions, an agentic workflow, and the Copilot cloud agent with three questions: judgment, initiator, smallest write."
+      whyItMatters: "Those three answers become the trigger and safe-outputs blocks of a workflow you can defend in review."
+    - title: "Read authority straight from the contract"
+      takeaway: "Walk the real /triage frontmatter block by block, then see 76 source lines compile to a 2,203-line lock."
+      whyItMatters: "Reviewers see exactly what the agent may read, call, and write before it ever runs."
+    - title: "Operate the boundary with evidence"
+      takeaway: "Use gh aw audit, self-filed [aw] issues, and an owned integrity exception to keep runs trustworthy and affordable."
+      whyItMatters: "Production trust comes from per-run evidence, named owners, and a recovery path for every failure."
 
-  arcToc: "Request Research → Approve a Plan → Produce a Draft Fix → Review and Transfer"
+  arcToc: "Choose the Judgment → Write the Contract → Test on Real Work → Operate"
+
   arcNarrative: >
-    Open with the observed draft PR as a tangible destination, then rewind to
-    the maintainer's first label request. Show the complete research source
-    through trigger, guarded comment, and evidence instructions; its comment
-    sets up a scope choice. Give the corrected, reproducible plan a clear
-    approval checkpoint. Peak engagement lands on the two-file change, scoped
-    build, and current-head CI proof produced after a human implementation
-    request. Finish with a separate PR review request, advisory COMMENT,
-    a baseline comparison, and a reusable label-and-evidence loop. Keep
-    operational incident history in the README for readers who need it.
+    Open on a single observed result: a maintainer comments /triage on user-style bug #202 and,
+    six minutes later, the issue carries four allowlisted labels, a comment citing the exact cache
+    lines in Episodes.js, and a pointer to duplicate #7. That result makes the core question concrete
+    and introduces the two actors: the requester who asks and decides, and the contract owner who
+    answers for authority. The actor grid and three questions turn the example into a method.
+    Section 2 opens the same workflow and shows that every behavior the audience just saw traces to
+    a frontmatter block, with safe outputs as the only repository write path and the compiled lock as
+    the reviewable artifact; the anchor lands here. Section 3 runs the method against the other two
+    trigger shapes: a scheduled digest whose missing row shows why read-derived claims get spot-checked,
+    and the label-driven event pattern that sets up the capstone. Section 4 is the climax for the
+    platform owner: the defensive layers, a real integrity exception recorded with owner, controls,
+    and a retest trigger, audit cost per run, failures that filed themselves as issues, and the #110
+    lifecycle ending at draft PR #193 awaiting a person. Close with fit boundaries and the three-question
+    worksheet so the audience leaves with a first workflow to stage in their own repository.
 
   sectionOrder:
-    - "1. Request Research on Any Issue"
-    - "2. Turn Research into a Plan a Human Can Approve"
-    - "3. Implement, Validate, and Offer a Draft PR"
-    - "4. Request Advisory Review and Keep Acceptance Human"
+    - "1. Choose the Judgment and Its Owner"
+    - "2. Write a Reviewable Authority Contract"
+    - "3. Test the Contract Against Real Work"
+    - "4. Operate the Boundary"
 
   sectionModes:
-    "1. Request Research on Any Issue":
-      emphasis: high
-      note: >
-        Show the complete live FanHub research workflow over legible code
-        slides. Connect event selection, read permissions, instruction body,
-        and one guarded comment to concrete practitioner decisions. Show
-        issue #110 as selected input and its scope question as observed output.
-        Include compile, label, and inspection commands. Keep #175 as a brief
-        example of a separate policy decision.
-    "2. Turn Research into a Plan a Human Can Approve":
+    "1. Choose the Judgment and Its Owner":
       emphasis: medium
       note: >
-        Show the independent planning trigger and bounded outputs. Give the
-        corrected #110 plan its own proof moment: an unrunnable solution
-        command prompted a local baseline check, then a scoped Frontend build,
-        two-file acceptance, rollback, and named approver. A human applies
-        the implementation request to the issue after reading the latest plan.
-    "3. Implement, Validate, and Offer a Draft PR":
+        Lead with the #202 /triage result as proof: the user-style bug title, the four labels with
+        reasons, the cited Episodes.js episodeCache lines, duplicate #7, and the maintainer's follow-up
+        (close #202, assign #7 to the cloud agent). Show the one-line trace from comment to maintainer
+        decision. Name the requester and the contract owner explicitly. Follow with the three-column
+        actor grid (Actions, agentic workflow, cloud agent) and the three questions. Budget 3–4 slides.
+    "2. Write a Reviewable Authority Contract":
       emphasis: high
       note: >
-        Explain the trusted approval-label event and actor check, plan
-        provenance, allowed .NET source, and one-draft-PR output. Show the
-        exact two-file move on PR #193, zero build errors and seven existing
-        warnings. Show how to identify a draft head and inspect its completed
-        checks; distinguish runner status from the actual draft artifact.
-        Keep runtime incident history and bot-token CI procedures in the
-        README as supporting operational detail.
-    "4. Request Advisory Review and Keep Acceptance Human":
+        Split triage.md across two legible code slides: frontmatter first, then the abbreviated body.
+        Pair them with the block-to-authority-question table. Make the point that the body steers and
+        the frontmatter enforces: an instruction to close the issue has no safe output to act through.
+        Show the compile command and the 76-line source to 2,203-line lock reveal with the four-part
+        review model (people review source, CI checks lock drift, reviewers read lock diffs on
+        permission or version changes, commit both together). Land the anchor on its own slide.
+        Budget 5–6 slides.
+    "3. Test the Contract Against Real Work":
       emphasis: medium
       note: >
-        Show the PR-specific request label, verified approval provenance,
-        COMMENT-only review, and lifecycle:reviewed status. Pair the browser
-        baseline comparison with its clear result and unexercised error
-        recovery boundary. The draft remains open for the maintainer's
-        acceptance decision. Close with the four manual request commands,
-        the artifact each produces, and an own-repo question that yields
-        a label, named approver, and current-head check.
+        Recap the command pattern in one line and spend the time on the schedule pattern: the digest
+        frontmatter (fuzzy schedule compiled to a scattered cron, create-issue max 1 with
+        close-older-issues) beside the observed digest #209 sections. Give the omitted lang:node row
+        its own callout as the reason to spot-check read-derived counts. Close with the three-row
+        "who decides the agent acts" table, introducing the label-driven event pattern that section 4
+        completes. Budget 3 slides.
+    "4. Operate the Boundary":
+      emphasis: high
+      note: >
+        This is the climax for the platform owner. One diagram slide for the six layers plus the
+        firewall and staged mode. One slide for the integrity exception as a four-row record
+        (observed, decision, remaining controls, review trigger) with the strict-mode compile message;
+        report the 47.75 to 0.17 AIC friction change as an operational observation. One slide pairing
+        the audit cost table (1.22 and 0.91 AIC per run) with the three self-filed [aw] failures and
+        their recoveries. One capstone slide for #110 to draft PR #193: four narrow contracts, honest
+        stops, and a draft awaiting a person. Finish with fit boundaries, the 15-minute / 1-hour /
+        2–4-hour ladder, and the three-question worksheet. Budget 6–7 slides; the user has approved
+        exceeding the default budget here when the content requires it, within the 30-slide cap.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "The complete research source selects any labeled issue and confines one comment to that issue."
-    - "The #110 plan corrected an unrunnable command before an approver requested the two-file fix."
-    - "Draft PR #193 moved only two layout files; the scoped build passed with zero errors and seven existing warnings."
-    - "Current-head Frontend and CodeQL checks passed; a reviewer can verify the draft SHA and completed checks."
-    - "The PR review posted COMMENT and lifecycle:reviewed; error recovery and acceptance remain with a person."
+    - "One /triage comment on user-style bug #202 produced four allowlisted labels, cited the exact Episodes.js cache lines, and found duplicate #7 for 1.22 AI credits."
+    - "Every behavior traces to frontmatter: 76 reviewed source lines compile to a 2,203-line lock whose only repository writes run in a separate safe-outputs job."
+    - "The daily digest #209 omitted its lang:node row, so read-derived counts get the same spot-check a colleague's summary would."
+    - "An integrity guard that rated every issue 'none' became an owned exception with remaining controls and a retest trigger, recorded beside the setting."
+    - "Four label-triggered contracts carried #110 to draft PR #193, which waits for a person exactly where the contracts end."
 
-# OPEN DECISION: The maintainer chooses whether to exercise Blazor error
-# recovery before accepting PR #193; the talk presents that check as pending.
+# OPEN DECISION: Show the #110 lifecycle as a single capstone slide (current plan, keeps the deck near
+# 24 slides) or give it a two-slide treatment with the implementation contract excerpt (adds depth for
+# teams planning multi-stage workflows, pushes the deck toward 26 slides).

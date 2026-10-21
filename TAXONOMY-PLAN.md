@@ -80,6 +80,17 @@ These steps differed from the plan above:
 - **Tie to copilot-on-github:** copilot-on-github covers built-in agents that someone invokes; this talk covers automation the team writes, triggered by repository events. Each talk links to the other once.
 - **Process:** structural change → `deck-recipe-review` (with cross-model critique) → full deck regeneration.
 
+### Phase 1 — as implemented (2026-10-21)
+
+- **New FanHub evidence on gh-aw v0.92.6, which is a pre-release:**
+  - `/triage` (slash command) on #202: 4 labels, cited code and duplicate #7, for 1.22 AI credits;
+  - `daily-backlog-digest` (schedule): digest #209, which closed the older #207.
+  - The #110 → #193 journey stays as the closing capstone; #202 opens the talk.
+- **Restructured into 4 sections:** Choose the Judgment and Its Owner, Write a Reviewable Authority Contract, Test the Contract Against Real Work, Operate the Boundary.
+- **Owned integrity exception:** the MCP gateway rated every FanHub issue `none`, even maintainer-authored ones, and `trusted-users` had no effect. The workflows therefore use `min-integrity: none` with an explicit bash allowlist, which strict mode requires. The talk presents this as an owned exception that gets retested after each upgrade. The bug has not been reported upstream.
+- **Pin `engine.model`:** the `auto` setting resolved to an unpriced model, and the run failed.
+- **Deck:** 27 slides, above the 20–25 target; the user approved loosening it. The agenda, PDF, homepage card and the title in related links were updated.
+
 ## Phase 1b — Agents on GitHub: new `copilot-on-github` talk (coding agent + code review + Code Quality)
 
 The archived `copilot-code-review` and `copilot-code-quality` folders can't be edited, so this is a new folder. `copilot-web` is archived and redirected here (Phase 4). Reuse its strongest material: guidance on writing delegable issues, `copilot-setup-steps`, and the firewall.

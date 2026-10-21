@@ -40,7 +40,7 @@
       "source": "agentic-journey",
       "status": "merged",
       "target": "agentic-lifecycle",
-      "reason": "The issue-to-PR state machine is now owned by Agentic Lifecycle Orchestration.",
+      "reason": "The issue-to-PR state machine is now owned by GitHub Agentic Workflows.",
       "decisionId": "adoption-pathway"
     },
     {
@@ -61,7 +61,7 @@
       "source": "agentic-workflows",
       "status": "merged",
       "target": "agentic-lifecycle",
-      "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by Agentic Lifecycle Orchestration.",
+      "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by GitHub Agentic Workflows.",
       "decisionId": "workflow-lifecycle"
     }
   ]

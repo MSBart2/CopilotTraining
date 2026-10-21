@@ -478,7 +478,7 @@ Failed integration is useful evidence about the split. Repeated overlap points t
 ## Related Patterns
 
 - **[Agent Development Loop](../agent-dev-loop/)** - keeps one delegated change observable from context through validation.
-- **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** - coordinates recurring repository judgments through evidence-gated handoffs.
+- **[GitHub Agentic Workflows](../agentic-lifecycle/)** - coordinates recurring repository judgments through evidence-gated handoffs.
 - **[The Agent Dev Loop](../agent-dev-loop/)** - turns one solved task into reusable repository capability before work is split.
 - **[Agentic SDLC](../agentic-sdlc/)** - extends coordination into repository policy, CI, review, and delivery systems.
 - **[Copilot Configuration Primitives](../copilot-primitives/)** - builds and verifies the instructions, prompts, skills, and agents each workstream needs.

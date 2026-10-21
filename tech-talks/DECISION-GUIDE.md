@@ -51,7 +51,7 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
 | Delegate one bounded repository task | [From Issue to Pull Request](copilot-web/) | A draft pull request with an evidence bundle |
-| Automate recurring judgments across a lifecycle | [Agentic Lifecycle Orchestration](agentic-lifecycle/) | Compiled workflow candidates with explicit handoffs, safe outputs, and approval gates |
+| Automate recurring judgments across a lifecycle | [GitHub Agentic Workflows](agentic-lifecycle/) | Compiled workflow candidates with explicit handoffs, safe outputs, and approval gates |
 | Govern AI findings and deterministic merge evidence | [PR Trust Stack](pr-trust-stack/) | Dispositioned findings, evaluated checks, and a named merge authority |
 
 ## Trust and Govern
@@ -90,7 +90,7 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 ### Repository Automation
 
-[Which Copilot Where?](surfaces/) → [Agentic Lifecycle Orchestration](agentic-lifecycle/) → [PR Trust Stack](pr-trust-stack/) → [Copilot Hooks](copilot-hooks/) → [Agentic SDLC](agentic-sdlc/)
+[Which Copilot Where?](surfaces/) → [GitHub Agentic Workflows](agentic-lifecycle/) → [PR Trust Stack](pr-trust-stack/) → [Copilot Hooks](copilot-hooks/) → [Agentic SDLC](agentic-sdlc/)
 
 ### Platform and Governance
 

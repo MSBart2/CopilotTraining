@@ -1010,7 +1010,7 @@ Team Adoption:
 
 ### Complementary Features
 
-- **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** — Issue-to-PR automation workflows that leverage org standards
+- **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Issue-to-PR automation workflows that leverage org standards
 - **[Agentic SDLC](../agentic-sdlc/)** — Full Gen-4 transformation when ready to graduate beyond enterprise patterns
 - **[Multi-Agent Coordination](../multi-agent-coordination/)** — Specialized agent coordination patterns for complex workflows
 

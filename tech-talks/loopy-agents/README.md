@@ -1000,7 +1000,7 @@ goal:
 ## Related Patterns
 
 - **[Multi-Agent Coordination](../multi-agent-coordination/)** — How to compose isolated workstreams; loop engineering provides the production-control layer for unattended operation
-- **[Agentic Lifecycle Orchestration](../agentic-lifecycle/)** — Evidence-gated repository workflows; loop engineering extends this with dynamic, verification-driven execution and adaptive topology
+- **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Evidence-gated repository workflows; loop engineering extends this with dynamic, verification-driven execution and adaptive topology
 - **[MCP Apps](../mcp-apps/README.md)** — Model Context Protocol as the tool layer inside a loop's execution layer; MCP tools are what loop agents invoke when they act
 
 ---
