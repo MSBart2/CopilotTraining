@@ -1,7 +1,7 @@
 ---
 status: active
 portfolioState: deployed
-updated: 2026-10-21
+updated: 2026-10-22
 section: "Agents on GitHub"
 audience: [platform-engineer, team-lead, developer]
 level: advanced

@@ -13,7 +13,7 @@ title: GitHub Agentic Workflows
 mdc: true
 section: "Agents on GitHub"
 status: active
-updated: 2026-10-21
+updated: 2026-10-22
 ---
 
 <script setup>
