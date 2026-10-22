@@ -100,15 +100,14 @@ jobs:
             echo "📋 No manifest — building all slides"
           fi
 
-          # Decide if a slide needs building: compare updated date vs manifest
+          # Decide if a slide needs building: compare date@content-hash stamp vs manifest
           needs_build() {
             local KEY="$1"
-            local CURRENT_DATE="$2"
+            local CURRENT_STAMP="$2"
             [ "$SHARED_FINGERPRINT" != "$PREV_SHARED_FINGERPRINT" ] && return 0  # shared dependency changed
             [ ! -d "dist/${KEY}" ] && return 0                    # No dist output
             [ -z "${PREV_UPDATED[$KEY]+x}" ] && return 0          # Not in manifest
-            [ -z "$CURRENT_DATE" ] && return 0                    # No updated field
-            [ "$CURRENT_DATE" != "${PREV_UPDATED[$KEY]}" ]        # Date changed
+            [ "$CURRENT_STAMP" != "${PREV_UPDATED[$KEY]}" ]       # Date or content changed
           }
 
           # Build with retry
@@ -161,12 +160,14 @@ jobs:
             BASENAME=$(basename "$SLIDE_FILE" .md)
             KEY="${CATEGORY}/${BASENAME}"
             CURRENT_UPDATED=$(get_updated "$SLIDE_FILE")
+            # Date plus content hash, so same-day edits still rebuild
+            CURRENT_STAMP="${CURRENT_UPDATED}@$(sha256sum "$SLIDE_FILE" | cut -c1-12)"
 
             # Always track in manifest
-            [ -n "$CURRENT_UPDATED" ] && NEW_MANIFEST["$KEY"]="$CURRENT_UPDATED"
+            NEW_MANIFEST["$KEY"]="$CURRENT_STAMP"
 
-            # Skip if updated date matches and dist exists
-            if ! needs_build "$KEY" "$CURRENT_UPDATED"; then
+            # Skip if date and content match and dist exists
+            if ! needs_build "$KEY" "$CURRENT_STAMP"; then
               echo "⏭️  ${KEY} (updated: ${CURRENT_UPDATED}) — up to date"
               SKIPPED=$((SKIPPED + 1))
               continue

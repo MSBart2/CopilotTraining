@@ -133,3 +133,16 @@ deck:
 # the daily credit cap is off when omitted) and a captured staged preview. Generating now keeps
 # momentum and needs a quick patch after rehearsal; waiting means one generation pass with observed
 # artifacts on the limits, staged, and demo slides.
+
+# RESTRUCTURE NOTE (2026-10-22, delivery feedback; no cross-model review run)
+# Delivered talk ran too much content, too deep, too fast, with too little why/when.
+# Deck cut from 65 to 34 slides: use cases first, then nugget slides (one visual,
+# 3-5 callouts) with depth moved into speaker notes.
+# Part 1 Why and When: difficult/dangerous/expensive framing, three-part test,
+#   two-slide use-case gallery (When / Why an agent / Trigger), Peli, IssueOps, handoff.
+# Part 2 Read the Contract: approved "What's in the File" + "Safe by Default" merged,
+#   because TocSlide / partNumber support exactly four parts.
+# Part 3 Build One Live; Part 4 Run and Troubleshoot.
+# Moved to notes: Body Asks to Close, Five Questions, Upgrade Discipline,
+#   Intent Becomes Evaluation, Map Your Work, FanHub 110->193 and Before/After.
+# Section weights below predate this restructure; refresh them at the next recipe review.
