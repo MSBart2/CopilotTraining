@@ -9,7 +9,7 @@ Verified baseline for the replacement talk that combines the distinct decisions 
 
 ## Research Question
 
-Which signals should advise, which should block, and who accepts the residual risk before merge?
+Which signals advise, which block, and who accepts the residual risk before merge?
 
 ## Approved Portfolio Direction
 

@@ -9,7 +9,7 @@ transition: slide-left
 title: From Issue to Merge Decision
 mdc: true
 section: Agents on GitHub
-status: active
+status: archived
 updated: 2026-10-08
 ---
 

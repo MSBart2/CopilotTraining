@@ -1,5 +1,5 @@
 ---
-status: active
+status: archived
 updated: 2026-09-16
 section: "Agents on GitHub"
 audience: [developer, team-lead]

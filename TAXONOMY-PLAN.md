@@ -200,6 +200,13 @@ Do this only after each replacement talk is `active` + `deployed`, because redir
    - retarget `copilot-code-review` and `copilot-code-quality` (both currently → pr-trust-stack) → `copilot-on-github`.
 3. Remove the archived talks' cards from `index-custom.html`, including the copilot-code-review and copilot-code-quality cards. Set those two decks to `status: archived` and delete the slugs from `STATUS_MISMATCH_EXCEPTIONS`.
 
+### Phase 4 — as implemented (2026-10-22)
+
+- **Archived:** repo-to-feature, unattended-agents, multi-agent-coordination, copilot-web and pr-trust-stack (README + deck), plus the copilot-code-review and copilot-code-quality decks. The existing archive convention is kept: no banner and no `updated` bump.
+- **Redirects:** 14 entries. The new and retargeted entries use decisionId `taxonomy-restructure`. The `agentic-workflows` reason already matched Phase 1, so it was left as-is.
+- **Validator:** `STATUS_MISMATCH_EXCEPTIONS` is now empty. Portfolio counts: 32 talks, 18 practitioner, 14 archived, 17 deployed, 18 catalog cards.
+- **Homepage:** seven cards removed. The "From issue to merge decision" delivery path is removed because every step pointed at an archived talk. Onboarding is now surfaces → copilot-primitives → custom-agents → local-agentic-sdlc → copilot-on-github. The orphaned delivery-path CSS stays; it is harmless.
+
 ## Phase 5 — Link hygiene across active talks
 
 Fix `prerequisites` / `related` and any inline links:

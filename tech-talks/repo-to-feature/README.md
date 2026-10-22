@@ -1,5 +1,5 @@
 ---
-status: active
+status: archived
 updated: 2026-10-22
 section: "Agents at Your Keyboard"
 audience: [developer, team-lead]

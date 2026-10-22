@@ -1,5 +1,5 @@
 ---
-status: active
+status: archived
 portfolioState: deployed
 updated: 2026-09-16
 section: "Agents at Your Keyboard"

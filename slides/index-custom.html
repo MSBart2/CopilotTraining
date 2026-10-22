@@ -1568,20 +1568,20 @@
           <span class="onboarding-label">Configure shared behavior</span>
           <span class="onboarding-detail">Choose, build, and verify instructions, prompts, skills, and agents.</span>
         </a>
-        <a class="onboarding-step" href="tech-talks/repo-to-feature/">
+        <a class="onboarding-step" href="tech-talks/custom-agents/">
           <span class="onboarding-number">03</span>
-          <span class="onboarding-label">Make success reusable</span>
-          <span class="onboarding-detail">Turn a solved task into team capability.</span>
+          <span class="onboarding-label">Design one portable agent</span>
+          <span class="onboarding-detail">Write one agent file and prove how it behaves in each runtime.</span>
         </a>
-        <a class="onboarding-step" href="tech-talks/copilot-web/">
+        <a class="onboarding-step" href="tech-talks/local-agentic-sdlc/">
           <span class="onboarding-number">04</span>
-          <span class="onboarding-label">Delegate bounded work</span>
-          <span class="onboarding-detail">Produce a draft pull request with acceptance evidence.</span>
+          <span class="onboarding-label">Run it at your keyboard</span>
+          <span class="onboarding-detail">Plan, implement, test, and review locally; let tests decide done.</span>
         </a>
-        <a class="onboarding-step" href="#issue-to-merge-path">
+        <a class="onboarding-step" href="tech-talks/copilot-on-github/">
           <span class="onboarding-number">05</span>
-          <span class="onboarding-label">Choose your verification path</span>
-          <span class="onboarding-detail">Explore review, quality, and the human merge decision.</span>
+          <span class="onboarding-label">Hand it to GitHub</span>
+          <span class="onboarding-detail">Delegate a pull request and weigh each agent's evidence before merge.</span>
         </a>
       </div>
     </section>
@@ -1642,18 +1642,6 @@
             <h2>Local Agentic SDLC</h2>
             <p>Run plan, implement, test, review, and integrate locally with an orchestrator and narrow role agents, let tests and a Stop hook decide done, and hand a person an integrated draft.</p>
           </a>
-          <a href="tech-talks/repo-to-feature/" class="card">
-            <h2>From Repo to Feature</h2>
-            <p>Guide one feature from an unfamiliar repo to a risk-reviewed plan, and leave behind reusable instructions, prompts, skills, and plans.</p>
-          </a>
-          <a href="tech-talks/unattended-agents/" class="card">
-            <h2>Unattended Agents</h2>
-            <p>Agents that repeat a task without you and stop on evidence. A manual kickoff or Copilot CLI /every runs each pass, shared state coordinates the crew, and three controls — each with a named enforcer — bound every run.</p>
-          </a>
-          <a href="tech-talks/multi-agent-coordination/" class="card">
-            <h2>Multi-Agent Coordination</h2>
-            <p>Split work only when boundaries earn it, steer isolated workstreams through visible evidence, and integrate under named authority.</p>
-          </a>
         </div>
       </div>
 
@@ -1665,39 +1653,7 @@
           <span class="sub-group-desc">Hand work to agents GitHub runs, and inspect the evidence they return</span>
           <span class="sub-group-line"></span>
         </div>
-        <div class="delivery-path" id="issue-to-merge-path" aria-labelledby="issue-to-merge-title">
-          <div class="onboarding-heading">
-            <h3 id="issue-to-merge-title">From issue to merge decision</h3>
-            <p>Four talks, four distinct FanHub proofs. Start where your decision is.</p>
-          </div>
-          <div class="onboarding-steps delivery-steps">
-            <a class="onboarding-step delivery-step" href="tech-talks/agentic-lifecycle/">
-              <span class="onboarding-number">01 · AUTHORIZE</span>
-              <span class="onboarding-label">Agentic Lifecycle</span>
-              <span class="onboarding-detail">Approve a plan; inspect an agent-created draft.</span>
-            </a>
-            <a class="onboarding-step delivery-step" href="tech-talks/copilot-code-review/">
-              <span class="onboarding-number">02 · INVESTIGATE</span>
-              <span class="onboarding-label">Copilot Code Review</span>
-              <span class="onboarding-detail">Test advisory findings against actual behavior.</span>
-            </a>
-            <a class="onboarding-step delivery-step" href="tech-talks/copilot-code-quality/">
-              <span class="onboarding-number">03 · ENFORCE</span>
-              <span class="onboarding-label">GitHub Code Quality</span>
-              <span class="onboarding-detail">Inspect Autofix; prove a configured gate.</span>
-            </a>
-            <a class="onboarding-step delivery-step" href="tech-talks/pr-trust-stack/">
-              <span class="onboarding-number">04 · SYNTHESIZE</span>
-              <span class="onboarding-label">From Issue to Merge Decision</span>
-              <span class="onboarding-detail">Join the evidence; keep acceptance human.</span>
-            </a>
-          </div>
-        </div>
         <div class="grid">
-          <a href="tech-talks/copilot-web/" class="card">
-            <h2>From Issue to Pull Request</h2>
-            <p>Delegate bounded repository work and review the resulting draft pull request as an evidence bundle.</p>
-          </a>
           <a href="tech-talks/agentic-lifecycle/" class="card">
             <h2>GitHub Agentic Workflows</h2>
             <p>Turn recurring repository judgment into a reviewable Markdown contract with bounded tools, safe outputs, and audited runs.</p>
@@ -1705,19 +1661,6 @@
           <a href="tech-talks/copilot-on-github/" class="card">
             <h2>Copilot on GitHub</h2>
             <p>Cloud agent produces, code review reasons, Code Quality measures. Decide which evidence earns merge authority.</p>
-          </a>
-          <a href="tech-talks/copilot-code-review/" class="card">
-            <h2>Copilot Code Review</h2>
-            <p>Investigate advisory PR findings, test useful corrections, and keep approval with the human reviewer.</p>
-          </a>
-          <a href="tech-talks/copilot-code-quality/" class="card">
-            <h2>GitHub Code Quality</h2>
-            <p>Inspect a human-accepted Autofix and prove when a configured coverage rule blocks or unblocks merge.</p>
-          </a>
-          <a href="tech-talks/pr-trust-stack/" class="card card-capstone">
-            <span class="capstone-label">Capstone · Four-talk synthesis</span>
-            <h2>From Issue to Merge Decision</h2>
-            <p>Bring agentic delivery, Copilot review, and Code Quality evidence together for one human decision. Four separate FanHub PRs show the boundaries.</p>
           </a>
         </div>
       </div>

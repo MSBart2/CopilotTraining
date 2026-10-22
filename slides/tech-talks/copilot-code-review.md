@@ -12,7 +12,7 @@ transition: slide-left
 title: GitHub Copilot Code Review
 mdc: true
 section: Verify and Govern
-status: active
+status: archived
 updated: 2026-10-08
 ---
 

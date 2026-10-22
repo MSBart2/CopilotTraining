@@ -13,9 +13,8 @@ export const CURRENT_SECTIONS = [
   "Trust and Govern",
   "Extend and Embed",
 ];
-// Archived READMEs whose decks still ship until copilot-on-github absorbs them (TAXONOMY-PLAN.md Phase 4).
-// Remove each slug once its deck is archived and its redirect points at copilot-on-github.
-export const STATUS_MISMATCH_EXCEPTIONS = new Set(["copilot-code-review", "copilot-code-quality"]);
+// Slugs allowed to ship an active deck while their README is archived. Empty since TAXONOMY-PLAN.md Phase 4.
+export const STATUS_MISMATCH_EXCEPTIONS = new Set();
 // Archived talks are frozen, so their pre-restructure sections remain valid for them only.
 export const LEGACY_SECTIONS = [
   "Choose and Configure",

@@ -12,7 +12,7 @@ transition: slide-left
 title: From Issue to Pull Request
 mdc: true
 section: Agents on GitHub
-status: active
+status: archived
 updated: 2026-08-11
 ---
 

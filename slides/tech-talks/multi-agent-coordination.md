@@ -12,7 +12,7 @@ transition: slide-left
 title: Multi-Agent Coordination
 mdc: true
 section: Agents at Your Keyboard
-status: active
+status: archived
 updated: 2026-09-16
 ---
 
@@ -48,7 +48,7 @@ import HeroStatSlide from './components/HeroStatSlide.vue'
 # Core Question
 <!-- SLIDE: Core Question -->
 <CoreQuestionSlide
-	question="When should work be split across agents, and how should isolated workstreams be integrated?"
+	question="When does work earn a split across agents, and how do isolated workstreams come back together?"
 	subtext="Concurrency earns its overhead only when boundaries are stable and combined behavior is observable."
 	highlight="Choose the shape, contract the work, then reunify it under one owner."
 	:cards='[

@@ -25,16 +25,16 @@
     {
       "source": "copilot-code-review",
       "status": "merged",
-      "target": "pr-trust-stack",
-      "reason": "AI review findings now sit inside one governed pre-merge evidence stack.",
-      "decisionId": "pr-trust-stack"
+      "target": "copilot-on-github",
+      "reason": "AI review findings now sit inside Copilot on GitHub, at the pull-request moment code review serves.",
+      "decisionId": "taxonomy-restructure"
     },
     {
       "source": "copilot-code-quality",
       "status": "merged",
-      "target": "pr-trust-stack",
-      "reason": "Deterministic quality gates now sit inside one governed pre-merge evidence stack.",
-      "decisionId": "pr-trust-stack"
+      "target": "copilot-on-github",
+      "reason": "Deterministic quality gates now sit inside Copilot on GitHub, at the pull-request moment Code Quality serves.",
+      "decisionId": "taxonomy-restructure"
     },
     {
       "source": "agentic-journey",
@@ -46,16 +46,16 @@
     {
       "source": "agent-teams",
       "status": "merged",
-      "target": "multi-agent-coordination",
-      "reason": "Specialist composition, isolation, handoffs, and integration now share one coordination decision model.",
-      "decisionId": "multi-agent-coordination"
+      "target": "local-agentic-sdlc",
+      "reason": "Specialist composition, isolation, and handoffs now run as one orchestrated local session in Local Agentic SDLC.",
+      "decisionId": "taxonomy-restructure"
     },
     {
       "source": "copilot-app",
       "status": "merged",
-      "target": "multi-agent-coordination",
-      "reason": "Fleet operation is now taught as a concrete surface within the broader split-steer-integrate model.",
-      "decisionId": "multi-agent-coordination"
+      "target": "local-agentic-sdlc",
+      "reason": "Parallel local sessions and worktrees are now taught inside the orchestrated run in Local Agentic SDLC.",
+      "decisionId": "taxonomy-restructure"
     },
     {
       "source": "agentic-workflows",
@@ -63,6 +63,41 @@
       "target": "agentic-lifecycle",
       "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by GitHub Agentic Workflows.",
       "decisionId": "workflow-lifecycle"
+    },
+    {
+      "source": "repo-to-feature",
+      "status": "merged",
+      "target": "local-agentic-sdlc",
+      "reason": "The plan artifact and the risk-before-code step now sit inside the local orchestrated run; instruction, prompt, and skill material lives in Copilot Primitives.",
+      "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "unattended-agents",
+      "status": "merged",
+      "target": "local-agentic-sdlc",
+      "reason": "Stop conditions, credit caps, verifiable completion, and local /every scheduling now sit inside Local Agentic SDLC.",
+      "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "multi-agent-coordination",
+      "status": "merged",
+      "target": "local-agentic-sdlc",
+      "reason": "The split test and the integration record now sit inside Local Agentic SDLC.",
+      "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "copilot-web",
+      "status": "merged",
+      "target": "copilot-on-github",
+      "reason": "Delegating to the cloud agent and reviewing its draft pull request now sit inside Copilot on GitHub.",
+      "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "pr-trust-stack",
+      "status": "merged",
+      "target": "copilot-on-github",
+      "reason": "Joining agent, review, and Code Quality evidence for one human merge decision now sits inside Copilot on GitHub.",
+      "decisionId": "taxonomy-restructure"
     }
   ]
 }

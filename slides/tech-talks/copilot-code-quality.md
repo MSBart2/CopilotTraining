@@ -12,7 +12,7 @@ transition: slide-left
 title: GitHub Code Quality
 mdc: true
 section: Verify and Govern
-status: active
+status: archived
 updated: 2026-10-08
 ---
 

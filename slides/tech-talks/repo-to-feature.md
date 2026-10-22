@@ -12,7 +12,7 @@ transition: slide-left
 title: From Repo to Feature
 mdc: true
 section: Agents at Your Keyboard
-status: active
+status: archived
 updated: 2026-10-22
 ---
 

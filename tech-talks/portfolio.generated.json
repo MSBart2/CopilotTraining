@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T21:40:39.221Z",
+  "generatedAt": "2026-10-22T21:50:19.331Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
-    "practitionerTalks": 23,
-    "archivedTalks": 9,
-    "deployedTalks": 22,
+    "practitionerTalks": 18,
+    "archivedTalks": 14,
+    "deployedTalks": 17,
     "candidateTalks": 1,
-    "catalogCards": 25,
+    "catalogCards": 18,
     "validTalks": 32
   },
   "warnings": [
@@ -43,16 +43,16 @@
     {
       "source": "copilot-code-review",
       "status": "merged",
-      "target": "pr-trust-stack",
-      "reason": "AI review findings now sit inside one governed pre-merge evidence stack.",
-      "decisionId": "pr-trust-stack"
+      "target": "copilot-on-github",
+      "reason": "AI review findings now sit inside Copilot on GitHub, at the pull-request moment code review serves.",
+      "decisionId": "taxonomy-restructure"
     },
     {
       "source": "copilot-code-quality",
       "status": "merged",
-      "target": "pr-trust-stack",
-      "reason": "Deterministic quality gates now sit inside one governed pre-merge evidence stack.",
-      "decisionId": "pr-trust-stack"
+      "target": "copilot-on-github",
+      "reason": "Deterministic quality gates now sit inside Copilot on GitHub, at the pull-request moment Code Quality serves.",
+      "decisionId": "taxonomy-restructure"
     },
     {
       "source": "agentic-journey",
@@ -64,16 +64,16 @@
     {
       "source": "agent-teams",
       "status": "merged",
-      "target": "multi-agent-coordination",
-      "reason": "Specialist composition, isolation, handoffs, and integration now share one coordination decision model.",
-      "decisionId": "multi-agent-coordination"
+      "target": "local-agentic-sdlc",
+      "reason": "Specialist composition, isolation, and handoffs now run as one orchestrated local session in Local Agentic SDLC.",
+      "decisionId": "taxonomy-restructure"
     },
     {
       "source": "copilot-app",
       "status": "merged",
-      "target": "multi-agent-coordination",
-      "reason": "Fleet operation is now taught as a concrete surface within the broader split-steer-integrate model.",
-      "decisionId": "multi-agent-coordination"
+      "target": "local-agentic-sdlc",
+      "reason": "Parallel local sessions and worktrees are now taught inside the orchestrated run in Local Agentic SDLC.",
+      "decisionId": "taxonomy-restructure"
     },
     {
       "source": "agentic-workflows",
@@ -81,6 +81,41 @@
       "target": "agentic-lifecycle",
       "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by GitHub Agentic Workflows.",
       "decisionId": "workflow-lifecycle"
+    },
+    {
+      "source": "repo-to-feature",
+      "status": "merged",
+      "target": "local-agentic-sdlc",
+      "reason": "The plan artifact and the risk-before-code step now sit inside the local orchestrated run; instruction, prompt, and skill material lives in Copilot Primitives.",
+      "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "unattended-agents",
+      "status": "merged",
+      "target": "local-agentic-sdlc",
+      "reason": "Stop conditions, credit caps, verifiable completion, and local /every scheduling now sit inside Local Agentic SDLC.",
+      "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "multi-agent-coordination",
+      "status": "merged",
+      "target": "local-agentic-sdlc",
+      "reason": "The split test and the integration record now sit inside Local Agentic SDLC.",
+      "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "copilot-web",
+      "status": "merged",
+      "target": "copilot-on-github",
+      "reason": "Delegating to the cloud agent and reviewing its draft pull request now sit inside Copilot on GitHub.",
+      "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "pr-trust-stack",
+      "status": "merged",
+      "target": "copilot-on-github",
+      "reason": "Joining agent, review, and Code Quality evidence for one human merge decision now sits inside Copilot on GitHub.",
+      "decisionId": "taxonomy-restructure"
     }
   ],
   "redirectErrors": [],
@@ -828,7 +863,7 @@
         "agentic-sdlc"
       ],
       "deckSection": "Verify and Govern",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-code-quality/README.md",
@@ -845,8 +880,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-code-quality.md",
           "exists": true,
-          "bytes": 22217,
-          "modified": "2026-10-08T15:32:31.064Z"
+          "bytes": 22219,
+          "modified": "2026-10-22T21:49:14.374Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-code-quality/agenda.md",
@@ -893,7 +928,7 @@
         "agentic-sdlc"
       ],
       "deckSection": "Verify and Govern",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-code-review/README.md",
@@ -910,8 +945,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-code-review.md",
           "exists": true,
-          "bytes": 26265,
-          "modified": "2026-10-08T15:07:26.352Z"
+          "bytes": 26267,
+          "modified": "2026-10-22T21:49:14.372Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-code-review/agenda.md",
@@ -1394,7 +1429,7 @@
     {
       "slug": "copilot-web",
       "title": "From Issue to Pull Request: GitHub Copilot's Coding Agent in Practice",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2026-09-16",
       "section": "Agents on GitHub",
@@ -1414,13 +1449,13 @@
         "pr-trust-stack"
       ],
       "deckSection": "Agents on GitHub",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-web/README.md",
           "exists": true,
-          "bytes": 45797,
-          "modified": "2026-10-22T21:29:46.580Z"
+          "bytes": 45800,
+          "modified": "2026-10-22T21:49:14.351Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-web/deck.recipe.yml",
@@ -1431,8 +1466,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-web.md",
           "exists": true,
-          "bytes": 25495,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 25498,
+          "modified": "2026-10-22T21:49:14.368Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-web/agenda.md",
@@ -1786,7 +1821,7 @@
     {
       "slug": "multi-agent-coordination",
       "title": "Multi-Agent Coordination: Split, Steer, Integrate",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2026-09-16",
       "section": "Agents at Your Keyboard",
@@ -1810,13 +1845,13 @@
         "copilot-primitives"
       ],
       "deckSection": "Agents at Your Keyboard",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/multi-agent-coordination/README.md",
           "exists": true,
-          "bytes": 26170,
-          "modified": "2026-10-22T21:30:14.111Z"
+          "bytes": 26172,
+          "modified": "2026-10-22T21:49:14.347Z"
         },
         "recipe": {
           "path": "tech-talks/multi-agent-coordination/deck.recipe.yml",
@@ -1827,8 +1862,8 @@
         "deck": {
           "path": "slides/tech-talks/multi-agent-coordination.md",
           "exists": true,
-          "bytes": 24813,
-          "modified": "2026-10-22T19:15:49.006Z"
+          "bytes": 24816,
+          "modified": "2026-10-22T21:49:14.364Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/multi-agent-coordination/agenda.md",
@@ -1854,7 +1889,7 @@
     {
       "slug": "pr-trust-stack",
       "title": "From Issue to Merge Decision",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2026-10-08",
       "section": "Agents on GitHub",
@@ -1877,13 +1912,13 @@
         "copilot-web"
       ],
       "deckSection": "Agents on GitHub",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/pr-trust-stack/README.md",
           "exists": true,
-          "bytes": 20863,
-          "modified": "2026-10-21T15:46:27.607Z"
+          "bytes": 20866,
+          "modified": "2026-10-22T21:49:14.353Z"
         },
         "recipe": {
           "path": "tech-talks/pr-trust-stack/deck.recipe.yml",
@@ -1894,8 +1929,8 @@
         "deck": {
           "path": "slides/tech-talks/pr-trust-stack.md",
           "exists": true,
-          "bytes": 26421,
-          "modified": "2026-10-21T15:48:23.578Z"
+          "bytes": 26424,
+          "modified": "2026-10-22T21:49:14.369Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/pr-trust-stack/agenda.md",
@@ -1921,7 +1956,7 @@
     {
       "slug": "repo-to-feature",
       "title": "From Repo to Feature: Building Team Tools as You Go",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2026-10-22",
       "section": "Agents at Your Keyboard",
@@ -1942,13 +1977,13 @@
         "multi-agent-coordination"
       ],
       "deckSection": "Agents at Your Keyboard",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/repo-to-feature/README.md",
           "exists": true,
-          "bytes": 33166,
-          "modified": "2026-10-22T21:30:23.692Z"
+          "bytes": 33168,
+          "modified": "2026-10-22T21:49:14.340Z"
         },
         "recipe": {
           "path": "tech-talks/repo-to-feature/deck.recipe.yml",
@@ -1959,8 +1994,8 @@
         "deck": {
           "path": "slides/tech-talks/repo-to-feature.md",
           "exists": true,
-          "bytes": 31661,
-          "modified": "2026-10-22T21:30:23.780Z"
+          "bytes": 31663,
+          "modified": "2026-10-22T21:49:14.358Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/repo-to-feature/agenda.md",
@@ -2051,7 +2086,7 @@
     {
       "slug": "unattended-agents",
       "title": "Unattended Agents: Loops That Run Without You and Stop on Their Own Terms",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2026-10-22",
       "section": "Agents at Your Keyboard",
@@ -2074,13 +2109,13 @@
         "agentic-sdlc"
       ],
       "deckSection": "Agents at Your Keyboard",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/unattended-agents/README.md",
           "exists": true,
-          "bytes": 62376,
-          "modified": "2026-10-22T21:30:14.116Z"
+          "bytes": 62378,
+          "modified": "2026-10-22T21:49:14.344Z"
         },
         "recipe": {
           "path": "tech-talks/unattended-agents/deck.recipe.yml",
@@ -2091,8 +2126,8 @@
         "deck": {
           "path": "slides/tech-talks/unattended-agents.md",
           "exists": true,
-          "bytes": 26697,
-          "modified": "2026-10-22T21:29:19.416Z"
+          "bytes": 26699,
+          "modified": "2026-10-22T21:49:14.362Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/unattended-agents/agenda.md",
