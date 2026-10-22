@@ -1,0 +1,173 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/loopy-agents"
+  cutoff: "2026-09-16"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-10-22"
+    lastBuildDate: "Thu, 22 Oct 2026 16:00:00 GMT"
+  status: approved
+  approved: "2026-10-22"
+  updateLevel: content
+  revised: "2026-10-22"
+  revisionNote: >
+    Presenter chose to keep the current approach (Copilot Automations trigger,
+    shared-state file, three topologies, production controls, security-advisory
+    pipeline) and fix only the claims that are false or overstated. The
+    structural gh-aw rebuild proposal (2026-10-21) is withdrawn and preserved
+    outside the repo as a session artifact.
+    2026-10-22 follow-up: presenter chose a local-only loop. The trigger is a
+    manual kickoff or Copilot CLI /every; all Copilot cloud agent Automation
+    and GitHub Actions trigger content is removed, because a file-based state
+    store does not persist across cloud runs (each run starts from the default
+    branch) and Automations run a prompt rather than a selected custom agent.
+  rationale: >
+    No feed items routed to this talk since 2026-09-16. A named-talk accuracy
+    check found claims a practitioner cannot reproduce as written: invalid
+    custom-agent tool names, blueprint YAML and Python presented as runnable,
+    an illustrative 18-minute timeline presented as an observed result,
+    unsourced use-case metrics, a name collision with GitHub Agentic Workflows,
+    and urgency/deficit framing. Every fix fits the existing narrative and
+    section order, so the recipe and deck are patched in place.
+  userEmphasis:
+    - "Keep the current approach; only fix what's broken."
+    - "Lean on agentic-lifecycle for gh-aw basics; cross-link rather than re-teach."
+
+  accepted:
+    - title: "Custom agent tool aliases"
+      source: "https://docs.github.com/en/copilot/reference/custom-agents-configuration"
+      verified: "2026-10-22"
+      releaseStatus: "ga"
+      importance: supporting
+      targetSection: "How It Works: The Simplest Starting Point"
+      action: replace
+      summary: >
+        Replace `tools: [read_file, write_file, github]` in the orchestrator and
+        worker agent examples with documented aliases (for example `read`,
+        `edit`, `search`, plus MCP server tools). Re-check how one custom agent
+        hands work to another on the surface the talk names, and phrase the
+        "invoke the worker" step to match documented behavior.
+      recipeImpact: none
+      slideImpact: patch
+
+    - title: "Blueprint artifacts labeled as blueprints"
+      source: "tech-talks/loopy-agents/README.md"
+      verified: "2026-10-22"
+      releaseStatus: "n/a"
+      importance: supporting
+      targetSection: "The Loop, Not the Prompt; Orchestration Topologies; Production Controls; Wiring It All Together"
+      action: update
+      summary: >
+        Keep loop-anatomy.yml, loop-topology.yml, copilot-loop-pipeline.yml,
+        the CircuitBreaker class, and loop-audit.sh as design blueprints. Add a
+        one-line label to each stating what it is (a design spec to adapt,
+        not a file any Copilot surface reads) and name where each control can
+        actually be enforced today: Actions timeout-minutes and concurrency,
+        branch protection and required review, and the gh-aw limits taught in
+        agentic-lifecycle (timeout-minutes, max-turns, stop-after, safe-output
+        max counts). Note that no first-party per-run USD cap exists, so
+        max_cost_usd is a design intent the orchestrator must enforce itself.
+      recipeImpact: none
+      slideImpact: patch
+
+    - title: "Shared-state file caveats"
+      source: "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/cloud-agent/create-automations"
+      verified: "2026-10-21"
+      releaseStatus: "ga"
+      importance: supporting
+      targetSection: "How It Works; Agent-to-Agent Communication"
+      action: update
+      summary: >
+        Keep loop-state.json as the teaching model. Add the operating
+        constraints: cloud-agent writes land on a PR branch rather than the
+        default branch, and concurrent runs can conflict, so serialize runs
+        and verify state against the repository at the start of each run.
+        Cross-link agentic-lifecycle for platform-managed memory and limits.
+      recipeImpact: none
+      slideImpact: patch
+
+    - title: "Security-advisory walkthrough labeled illustrative"
+      source: "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows"
+      verified: "2026-10-22"
+      releaseStatus: "n/a"
+      importance: supporting
+      targetSection: "Wiring It All Together: Runtime Walkthrough"
+      action: update
+      summary: >
+        Keep the walkthrough and the 18-minute timeline as the talk's anchor,
+        labeled as an illustrative design walkthrough, not an observed run.
+        Replace the `security_advisory.published` trigger with a trigger a
+        repository workflow can receive (for example a schedule or
+        workflow_dispatch that checks new Dependabot alerts), or state that
+        the webhook needs an app or relay to start the loop. Change
+        "Total human time: 0 minutes" so the human merge stays visible.
+      recipeImpact: confirm
+      slideImpact: patch
+
+    - title: "Copilot CLI /every as the loop trigger (replaces Automations)"
+      source: "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference"
+      verified: "2026-10-22"
+      releaseStatus: "experimental"
+      importance: supporting
+      targetSection: "The Trigger: What Makes It Loopy; Simplest Starting Point"
+      action: replace
+      summary: >
+        Trigger is a manual kickoff (copilot --agent=loop-orchestrator, one
+        prompt) or /every <interval> <prompt> inside the session; /after for a
+        one-time run; bare /every opens the schedule manager. Experimental and
+        session-scoped. Tool scope via --allow-tool / --deny-tool (deny wins).
+        Removed: Copilot cloud agent Automations, Actions schedule /
+        workflow_dispatch / repository_dispatch triggers.
+      recipeImpact: confirm
+      slideImpact: patch
+
+  removals:
+    - item: "Use-case metrics (~3 h/week reclaimed, zero production regressions, ~30% of PRs, review in under 5 minutes)"
+      reason: "Cited sources do not report them. Restate as expected benefits without numbers."
+    - item: "Comparison column 'Agentic Workflow (static DAG)'"
+      reason: >
+        Name collides with GitHub Agentic Workflows. Rename to 'Static DAG
+        pipeline' and add a 'GitHub Agentic Workflows' row that cross-links
+        agentic-lifecycle.
+    - item: "Urgency and deficit framing ('window is closing', 'Move Against (Active Resistance)', 'Total human time: 0 minutes')"
+      reason: "Conflicts with the AGENTS.md voice contract and hides the human-merge authority boundary."
+    - item: "Boris Cherny '8x / >80% merged code' figures"
+      reason: "Rest on secondary sources (explainx.ai, pebblous.ai). Keep the quote's idea; drop the numbers unless a first-party Anthropic source is found."
+    - item: "gim-home/herald in 'What We Can Do Today'"
+      reason: "Not a Copilot surface. Keep the lifecycle-state concept and its reference footnote."
+
+  ignored:
+    - title: "All routed feed items since 2026-09-16"
+      source: ".github/content-routing/latest-report.md (generated 2026-10-22)"
+      reason: "None routed to loopy-agents."
+      relatedTalks: [vscode-latest, copilot-cli, enterprise-patterns, agentic-lifecycle]
+    - title: "Rebuilding the loop runtime on GitHub Agentic Workflows"
+      source: "https://github.github.com/gh-aw/"
+      reason: "Presenter chose to keep the current approach. agentic-lifecycle owns gh-aw; this talk cross-links it."
+      relatedTalks: [agentic-lifecycle]
+
+  anomalies:
+    - "Deck frontmatter updated 2026-07-02 vs README 2026-09-16; the deck predates the last README edit."
+
+  resolved:
+    - "Tool aliases (verified 2026-10-22, custom-agents-configuration): read, edit, search, execute, agent (invokes a different custom agent; cloud agent maps it to custom-agent tools), github/*. web and todo are not applicable to cloud agent."
+    - "No Actions workflow event fires on a published security advisory (events-that-trigger-workflows, verified 2026-10-22). Superseded by the local-only pivot: the orchestrator polls Dependabot alerts with gh api on each /every pass."
+    - "Production controls regrouped by enforcer (2026-10-22): agents cannot read their own token use, so per-agent token budgets and max_cost_usd are removed. Spend cap is /goal --max-ai-credits N (CLI reference, verified 2026-10-22). The watchdog is the next pass's stale-lock check, which now escalates (stale_run) instead of taking over. Untested: /every scheduling /goal."
+    - "loop-audit removed (2026-10-22): loop-audit.sh always reported PASS (eval of yq exits 0 on false) and audited an unexecuted blueprint schema; the loop-engineering CLI is now @cobusgreyling/loop init/doctor/cost and lists no Copilot tool. Replaced with an evidence checklist; deck slide 17 deleted."
+    - "Local-only pivot (2026-10-22): cloud Automations dropped; loop-state.json persists between passes only in a local worktree. examples/loop-starter/automation-prompt.md deleted."
+    - "No first-party Anthropic source found for the Cherny quote (2026-10-22). Keep the idea attributed as reported by The New Stack; drop the 8x / >80% figures."
+
+  recipeReview:
+    required: false
+    note: >
+      Patch highlight wording only: label the 18-minute walkthrough as
+      illustrative and drop 'zero human prompts' where it implies no human
+      merge. Section order, weighting, and highlights are otherwise unchanged.
+
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesPatched: true
+    deckBuildPassed: true

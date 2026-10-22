@@ -6,6 +6,9 @@
 #   → "Multi-Agent Design" draws from ## Agent-to-Agent Communication
 #                                  AND ## Orchestration Topologies
 # Option B confirmed: three-slide simple-path sequence in "The Loop" section.
+# 2026-10-22 content refresh (content.refresh.yml): wording only — the 18-minute
+# walkthrough is labeled illustrative, the trigger is a scheduled alert check, and
+# the human merge stays visible. Section order, weighting, and highlights unchanged.
 
 version: 1
 
@@ -34,15 +37,15 @@ deck:
     The talk opens by answering the one question practitioners need before anything else:
     what IS a loopy agent? One sentence, one slide — the anchor for everything that follows.
     The trigger lands second: without a recurring fire mechanism, what we have is one-shot
-    orchestration; Copilot Automations (Agents tab → Create new) is the native answer and
-    showing the UI is the first concrete aha. The section closes with the three-slide
+    orchestration; Copilot CLI's /every command repeats one kickoff prompt on an interval,
+    and showing that session is the first concrete aha. The section closes with the three-slide
     simple-path sequence — orchestrator, worker, shared state — so practitioners see a
     complete working loop before the talk increases in complexity. Section 2 zooms into
     multi-agent coordination: structured handoff, lifecycle states (the Idle → Suspended
     transition is the "that's where my loop died" moment), and topology as a design decision
     rather than an accident. Section 3 is the safety layer practitioners skip most: three
     controls, plain-language first, code second. Section 4 leads with the outcome before
-    the machinery — the runtime walkthrough table (18 minutes, zero prompts, T+18 highlighted)
+    the machinery — the illustrative runtime walkthrough table (about 18 minutes to a reviewable draft PR, T+18 highlighted)
     before the agent-file diagram — so practitioners feel the pull before they see the
     construction. The arc (definition → trigger → structure → safety → proof) earns its
     length because each section is the prerequisite for the next.
@@ -61,15 +64,14 @@ deck:
         Slide 1 — definition only: "A loopy agent continues to act and verify in a cycle
         until the goal is demonstrably met — then stops." Let it sit before moving on.
         Slide 2 — trigger: without a recurring fire, this is one-shot orchestration; show
-        the Copilot Automation UI (Agents tab → Create new → schedule or event options).
-        This is the aha: the trigger is already built in. Slides 3–5 — three-slide
+        a Copilot CLI session: one pass by hand, then /every 1d with the same prompt, and
+        /every alone to manage schedules. This is the aha: the trigger is one command. Slides 3–5 — three-slide
         simple-path sequence: (3) orchestrator agent instructions with the five components
         (trigger, goal, execute, verify, control) labeled inline, (4) a worker agent file
         showing how it receives a task and writes results back — answers "how does the
         orchestrator invoke workers?", (5) loop-state.json as the shared brain. YAML
         blueprint is a brief tertiary slide labeled "same pattern, production scale" —
-        linked to README, not explained line by line. NPX commands earn one callout slide
-        as a readiness-check tool. Skip ReAct history.
+        linked to README, not explained line by line. Skip ReAct history.
 
     "Multi-Agent Design":
       emphasis: high
@@ -93,22 +95,22 @@ deck:
         reported production failures in agentic systems. Three controls, each earns a tight
         callout — plain-language rule first, implementation second: circuit breaker
         (iteration cap + timeout — "stop after N iterations regardless of goal state"),
-        bounded execution (budget note in task delegation), goal-watchdog (stall detection
-        — resolves the Idle → Suspended transition introduced in section 2). Close with
-        the loop-audit CLI: show the three FAIL-severity checks as a checklist practitioners
-        can screenshot and run against any loop, simple or structured. Code is secondary
+        bounded execution (the CLI's --max-ai-credits cap and --deny-tool), goal-watchdog (the next pass's stale-lock check
+        — resolves the Idle → Suspended transition introduced in section 2). Part 3 is a
+        single slide; the evidence checklist (history, goal evidence, critic verdict, PR
+        diff, status) lives in the README and the starter. Code is secondary
         to the plain-language rule throughout.
 
     "Wiring It Together":
       emphasis: medium-low
       note: >
         Lead with the outcome, not the machinery. First slide: the runtime walkthrough
-        table — "18 minutes, zero human prompts" as the header, T+18 min row highlighted.
+        table, labeled illustrative — "18 minutes to a reviewable PR, one human decision" as the header, T+18 min row highlighted.
         Let practitioners feel the pull before seeing the construction. Second slide: the
         agent-file diagram showing which .github/agents/ files participate, what each does,
         and how they share state — this is the "now I understand how to build it" moment.
-        Close with a single "What We Get" summary card: 18 minutes, zero human prompts,
-        full audit trail via trace_id. Do not show the full pipeline YAML on a slide —
+        Close with a single "What We Get" summary card: about 18 minutes to a draft PR
+        (illustrative), one human merge, full audit trail via trace_id. Do not show the full pipeline YAML on a slide —
         link to README. The section's job is to make practitioners say "I can build this
         today."
 
@@ -118,7 +120,6 @@ deck:
   # 3–5 high-signal moments the generator must surface in the deck.
   highlightMoments:
     - "Definition slide: 'A loopy agent continues to act and verify until the goal is demonstrably met — then stops.' One sentence. Most screenworthy slide in the deck."
-    - "Copilot Automation: Agents tab → Create new → 'every day at midnight' — the loop trigger is already built in, no infrastructure required"
-    - "18 minutes, zero human prompts: security advisory → scan → fix → critic → verified PR, fully automated"
-    - "The Idle → Suspended transition: most silent loop failures live here — the goal-watchdog is what catches them regardless of implementation"
-    - "npx @cobusgreyling/loop-audit . --suggest gives a Loop Readiness Score against any loop config — simple or structured"
+    - "Copilot CLI: one kickoff by hand, then '/every 1h' repeats the pass — the loop trigger is one command, no infrastructure required"
+    - "About 18 minutes (illustrative): critical alert → scan → fix → critic → draft PR passing CI, with one human merge decision"
+    - "The Idle → Suspended transition: most silent loop failures live here — the next pass's stale-lock check escalates them"

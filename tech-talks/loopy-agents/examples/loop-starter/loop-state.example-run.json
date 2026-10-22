@@ -1,0 +1,88 @@
+{
+  "loop": "security-advisory-response",
+  "version": "1.0",
+  "status": "awaiting_review",
+  "trace_id": "loop-GHSA-xxxx-xxxx-xxxx-2026-10-22",
+  "started_at": "2026-10-22T14:00:41Z",
+  "iteration_count": 6,
+  "max_iterations": 8,
+  "timeout_minutes": 45,
+  "lock": { "held_by": null, "acquired_at": null },
+  "advisory": {
+    "alert_number": 42,
+    "ghsa_id": "GHSA-xxxx-xxxx-xxxx",
+    "cve_id": "CVE-2026-00000",
+    "package": "@example/query-parser",
+    "ecosystem": "npm",
+    "severity": "high",
+    "vulnerable_range": "< 6.11.1",
+    "patched_version": "6.11.1"
+  },
+  "baseline": { "high_critical_count": 3, "audit_at": "2026-10-22T14:02:10Z" },
+  "goal": {
+    "description": "A draft PR resolves the advisory with passing checks and no new high or critical findings",
+    "conditions": {
+      "pr_opened": { "met": true, "evidence": "Draft PR #318 opened at 14:22Z with labels security, automated" },
+      "ci_passing": { "met": true, "evidence": "npm ci, npm run lint, npm test (412 passed, 0 failed, 3 skipped) — orchestrator run at 14:21Z" },
+      "cve_resolved": { "met": true, "evidence": "npm audit --json at 14:20Z: GHSA-xxxx-xxxx-xxxx absent; npm ls shows @example/query-parser@6.11.1 only" },
+      "no_new_cves": { "met": true, "evidence": "high+critical count 2 (baseline 3)" }
+    }
+  },
+  "tasks": { "pending": [], "complete": ["scan", "fix", "critique", "pr"] },
+  "critic": {
+    "confidence_threshold": 0.85,
+    "max_rejections": 2,
+    "rejections": 1,
+    "last_verdict": {
+      "verdict": "approve",
+      "confidence": 0.91,
+      "verified": ["resolution", "scope", "call_site_safety", "test_integrity", "reviewability"],
+      "feedback": [],
+      "notes_for_reviewer": "Transitive fix via overrides. Remove the override once @example/web-framework depends on @example/query-parser 6.11.1 directly."
+    }
+  },
+  "results": {
+    "affected_files_report": {
+      "advisory_confirmed": true,
+      "dependency_path": ["@example/web-framework@4.18.2", "@example/body-parser@1.20.1", "@example/query-parser@6.11.0"],
+      "direct_dependency": false,
+      "upgrade": { "package": "@example/query-parser", "from": "6.11.0", "to": "6.11.1", "via": "overrides", "breaking": false },
+      "call_sites": [
+        { "file": "src/api/search.js", "line": 14, "api": "parse", "uses_vulnerable_api": true }
+      ],
+      "tests_covering_call_sites": ["test/api/search.test.js"],
+      "notes": "Parsing depth is the vulnerable path; search.js parses user-supplied query strings."
+    },
+    "proposed_diff": {
+      "files_changed": ["package.json", "package-lock.json", "test/api/search.test.js"],
+      "summary": "Add overrides entry @example/query-parser@6.11.1; add regression test for nested query depth.",
+      "upgrade_applied": { "package": "@example/query-parser", "to": "6.11.1", "via": "overrides" },
+      "api_changes": [],
+      "changes_since_last_attempt": "Regression test now asserts the HTTP 400 response instead of parser internals, per critic feedback."
+    },
+    "test_results": {
+      "lint": "pass",
+      "targeted": { "command": "npx jest test/api/search.test.js", "passed": 9, "failed": 0 },
+      "full": { "command": "npm test", "passed": 412, "failed": 0, "skipped": 3 },
+      "regression_test_added": "test/api/search.test.js › rejects query strings nested past depth 5"
+    },
+    "pr": {
+      "title": "fix(deps): resolve GHSA-xxxx-xxxx-xxxx in @example/query-parser (6.11.0 → 6.11.1)",
+      "body": "(filled template — see pr-author-agent.agent.md)",
+      "draft": true,
+      "labels_requested": ["security", "automated"],
+      "review_routing": "CODEOWNERS: package.json and package-lock.json → @your-org/security-team"
+    }
+  },
+  "escalation": null,
+  "escalate_to": "@your-org/security-team",
+  "handled_advisories": ["GHSA-xxxx-xxxx-xxxx"],
+  "history": [
+    { "iteration": 1, "task": "scan", "agent": "vuln-scan-agent", "outcome": "success", "at": "2026-10-22T14:03:55Z" },
+    { "iteration": 2, "task": "fix", "agent": "fix-proposal-agent", "outcome": "success", "at": "2026-10-22T14:09:12Z" },
+    { "iteration": 3, "task": "critique", "agent": "security-critic-agent", "outcome": "reject (0.62): regression test asserts on parser internals", "at": "2026-10-22T14:11:40Z" },
+    { "iteration": 4, "task": "fix", "agent": "fix-proposal-agent", "outcome": "success", "at": "2026-10-22T14:15:03Z" },
+    { "iteration": 5, "task": "critique", "agent": "security-critic-agent", "outcome": "approve (0.91)", "at": "2026-10-22T14:17:26Z" },
+    { "iteration": 6, "task": "pr", "agent": "pr-author-agent", "outcome": "success", "at": "2026-10-22T14:18:50Z" }
+  ]
+}

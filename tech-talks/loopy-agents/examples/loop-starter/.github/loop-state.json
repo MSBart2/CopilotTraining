@@ -1,0 +1,39 @@
+{
+  "loop": "security-advisory-response",
+  "version": "1.0",
+  "status": "idle",
+  "trace_id": null,
+  "started_at": null,
+  "iteration_count": 0,
+  "max_iterations": 8,
+  "timeout_minutes": 45,
+  "lock": { "held_by": null, "acquired_at": null },
+  "advisory": null,
+  "baseline": { "high_critical_count": null, "audit_at": null },
+  "goal": {
+    "description": "A draft PR resolves the advisory with passing checks and no new high or critical findings",
+    "conditions": {
+      "pr_opened": { "met": false, "evidence": null },
+      "ci_passing": { "met": false, "evidence": null },
+      "cve_resolved": { "met": false, "evidence": null },
+      "no_new_cves": { "met": false, "evidence": null }
+    }
+  },
+  "tasks": { "pending": [], "complete": [] },
+  "critic": {
+    "confidence_threshold": 0.85,
+    "max_rejections": 2,
+    "rejections": 0,
+    "last_verdict": null
+  },
+  "results": {
+    "affected_files_report": null,
+    "proposed_diff": null,
+    "test_results": null,
+    "pr": null
+  },
+  "escalation": null,
+  "escalate_to": "@your-org/security-team",
+  "handled_advisories": [],
+  "history": []
+}
