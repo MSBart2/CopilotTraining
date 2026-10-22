@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-09-16
+updated: 2026-10-21
 section: "Foundations"
 audience: [developer, team-lead, platform-engineer]
 level: foundational
@@ -515,80 +515,27 @@ Agent Skills work across VS Code, GitHub Copilot CLI, and GitHub Copilot coding 
 <!-- 🎬 MAJOR SECTION: Agents -->
 ## Agents: Specialized AI Personas
 
-Custom agents combine instructions, tool restrictions, and model preferences into a specialized persona that you select from the agents dropdown in chat[^5]. Where instructions set the rules and prompts define tasks, agents define **who** the AI becomes for a session.
-
-### Why Constrain the AI?
-
-Different tasks need different capabilities. A planning agent should only read files (preventing accidental edits). A security reviewer needs search tools but not terminal access. A database admin needs terminal and SQL tools but shouldn't touch frontend code[^5].
-
-Agents let you configure exactly which tools are available — and which aren't.
-
-### Agent File Structure
+A custom agent is a Markdown file in `.github/agents/` that gives Copilot one job: a `description` that tells people and the model when to pick it, a `tools` list that bounds what it can touch, and a body that teaches the role and its output contract[^5]. Where instructions set the rules and prompts define tasks, an agent defines **who** the AI becomes for a session.
 
 ```markdown
 ---
 name: planner
-description: Generate implementation plans by researching the codebase.
-  Read-only — never modifies files.
-tools: ['search', 'readFile', 'listFiles', 'fetch']
-model: Claude Sonnet 4 (copilot)
-handoffs:
-  - label: Start Implementation
-    agent: agent
-    prompt: Implement the plan outlined above.
-    send: false
+description: Generate implementation plans by researching the codebase. Read-only.
+tools: ['read', 'search']
 ---
 
-# Planning Agent
-
-You are a senior software architect creating implementation plans.
-
-## Your Process
-1. Understand the requirement by asking clarifying questions
-2. Research the existing codebase using search and file reading
-3. Identify affected files and components
-4. Generate a step-by-step implementation plan with:
-   - Files to create or modify
-   - Key code changes described in detail
-   - Test strategy
-   - Potential risks or considerations
-
-## Rules
-- NEVER modify files — you are read-only
-- Always cite specific files and line numbers
-- Include effort estimates for each step
+You are a senior architect. Research the affected files, then return a
+step-by-step plan with files to change, test strategy, and risks. Never edit files.
 ```
 
-### Handoffs: Multi-Agent Workflows
-
-Agents support **handoffs** — suggested next steps that transition between agents with context preserved[^5]. After the planning agent finishes, a "Start Implementation" button appears that switches to the implementation agent with the plan as context:
-
-```yaml
-handoffs:
-  - label: Start Implementation
-    agent: agent
-    prompt: Implement the plan outlined above.
-    send: false
-  - label: Review Code
-    agent: security-reviewer
-    prompt: Review the implementation for security issues.
-```
-
-This creates guided, sequential workflows: Plan → Implement → Review. Each agent has its own tools and constraints, but context flows between them.
-
-### Example: Database Administrator Agent
-
-The database agent in [`examples/database.agent.md`](examples/database.agent.md) demonstrates a fully specified agent with:
-- Constrained tools (terminal, code_editor, database_query)
-- A deliberate model selection boundary
-- Detailed persona instructions covering schema design, migrations, and query optimization
+Reach for an agent when a role needs its own tool boundary — a read-only planner, a reviewer without terminal access, a test writer that edits only test files. The database agent in [`examples/database.agent.md`](examples/database.agent.md) shows a fully specified example.
 
 **Key Points:**
 - Agents constrain which tools the AI can use for a specific role
-- Handoffs enable guided multi-agent workflows (Plan → Implement → Review)
 - Agents can reference instructions and invoke skills
-- Subagents can run as delegated tasks within an agent session[^5]
-- Store in `.github/agents/` (workspace) or user profile (global)
+- Store in `.github/agents/` (repository), your user profile (personal), or an org `.github-private` repository
+
+> **Go deeper:** [Custom Agents: One File, Every Runtime](../custom-agents/) runs one agent file in VS Code, the Copilot CLI, and Copilot cloud agent, and shows how to prove which fields, tools, handoffs, and model each runtime actually loaded.
 
 ---
 

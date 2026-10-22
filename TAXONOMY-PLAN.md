@@ -160,6 +160,14 @@ The archived `copilot-code-review` and `copilot-code-quality` folders can't be e
 - **Covers:** anatomy (frontmatter, tools allow-list, model, handoffs); scope (repo, org, `.github-private`, user); how the agent is invoked; verification (inspecting what loaded); boundaries.
 - **Trim `copilot-primitives`:** cut its custom-agent material to a short definition plus a link to this talk.
 
+### Phase 2 — as implemented (2026-10-21)
+
+- **Anchor:** FanHub `test-writer.agent.md` (edits `*.test.js` only, runs Jest, five-line output contract) with a read-only `test-reviewer` handoff target ([df50ea1](https://github.com/MSBart2/FanHub/commit/df50ea1)). Each runtime ran the agent on one component: VS Code #213 → PR #216, CLI #212 → PR #215, cloud agent #211 → PR #214.
+- **Findings:** the CLI logged its model resolution to claude-sonnet-5.5. VS Code requests ran gpt-6.1-sol; the cause is unresolved and is presented as such. Handoffs and argument-hint worked only in a VS Code Local session. The cloud agent invoked test-writer as a subagent but couldn't run Jest without dependencies. After `copilot-setup-steps.yml` (e1675df) and an `@copilot` follow-up, the cloud reran: 6 of 6 passed (bf7e2c3).
+- **Structure:** a cross-model rubber-duck review folded "Place It Where It Should Load" into section 1. Final arc: Design the Portable Core → Run One File in Three Runtimes → Prove the Run and Place Each Requirement.
+- **Copilot-primitives:** the agents section is now a compact definition plus a "Go deeper" link. The heading is unchanged, so its recipe and deck stay aligned.
+- **Follow-up:** add the Local Agentic SDLC link to custom-agents once Phase 3 ships. FanHub PRs #214, #215 and #216 are open for review.
+
 ## Phase 3 — Agents at Your Keyboard: new `local-agentic-sdlc` talk
 
 - **Proposal gate:** same as Phase 2. Start the talk as a candidate.

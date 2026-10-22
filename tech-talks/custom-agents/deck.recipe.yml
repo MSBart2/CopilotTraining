@@ -1,0 +1,102 @@
+# Independent critique: rubber-duck subagent (cross-model; primary is a Claude model).
+# Reconciliation:
+# - Accepted: thesis reframed around runtime resolution plus verification. Evidence carries four labels:
+#   documented support, observed resolution, unresolved discrepancy, execution-environment dependency.
+# - Accepted: the VS Code model result is stated as "declared and executed model differed; cause unresolved."
+# - Accepted: the cloud test failure is framed as an execution-environment dependency of the cloud agent.
+# - Accepted: "Place It Where It Should Load" folds into section 1 as one publishing slide; 4 sections become 3.
+# - Accepted: cold open shows three outcome fragments and a question; the full table becomes the midpoint reveal.
+# - Accepted: documented field support and observed FanHub resolution sit on separate slides.
+# - Accepted: tool counts are labeled as each runtime's own expansion of six aliases.
+# - Accepted: the close becomes load, compare, place, rerun, with an owner column for each layer.
+# - Accepted: producer, developer, maintainer, reviewer, and team-lead ownership is carried in the recovery table.
+# - Accepted conditionally, now satisfied: the setup-steps recovery joins the highlights because the cloud rerun
+#   recorded 1 suite and 6 tests passing (session b48aa9f0, fix bf7e2c3), confirmed by a local rerun.
+# - Adjusted: "Where it stops fitting" stays as one line on the closing slide to route the audience to adjacent talks.
+version: 1
+
+deck:
+  title: "Custom Agents"
+  subtitle: "One File, Every Runtime"
+  tagline: "Design the portable core. Read the resolved run. Place each requirement where it lives."
+
+  agenda:
+    - title: "Design a portable agent contract"
+      takeaway: "Put role, tool boundary, method, and output contract in the shared core, then add runtime-specific fields on purpose."
+      whyItMatters: "Every supported runtime reads the body, so behavior placed there reaches every teammate."
+    - title: "Read the resolved run"
+      takeaway: "Verify agent identity, model, tools, checks, and summary from each runtime's own artifacts."
+      whyItMatters: "Declared configuration and executed behavior can differ, and the run's artifacts show which one happened."
+    - title: "Place each requirement in its owning layer"
+      takeaway: "Map each gap to the agent body, launch controls, runtime environment, review, or team policy, then rerun the same proof."
+      whyItMatters: "A targeted change in the right layer, owned by the right person, repairs the gap with a repeatable rerun."
+
+  arcToc: "Design the Portable Core → Run in Three Runtimes → Prove and Place"
+
+  arcNarrative: >
+    Open with one file, `.github/agents/test-writer.agent.md`, entering three runtimes, and three outcome
+    fragments: the CLI logged Claude Sonnet 5.5, VS Code requests ran gpt-6.1-sol, and the cloud agent invoked
+    test-writer and stopped at a missing React dependency. Ask the room which agent the team actually shipped.
+    Section 1 builds the mental model that answers it: when a role earns an agent file, how description, tools,
+    and body divide the work, why the body's output contract is the most portable behavior, and one compact slide
+    on publishing scope, precedence, and invocation controls. Section 2 is the climax: documented field support
+    first, then the full FanHub resolution table, then one slide per runtime, ending on the cloud recovery where a
+    setup workflow outside the profile turned a stopped run into 6 passing tests. Section 3 turns every
+    discrepancy into practice: the load report with its sources, the load-compare-place-rerun loop with an owner
+    per layer, one slide on composing a producer with a read-only checker, and an own-work exercise. Placing
+    design before evidence lets the audience predict the results, which makes the surprises land as lessons.
+
+  sectionOrder:
+    - "1. Design the Portable Core"
+    - "2. Run One File in Three Runtimes"
+    - "3. Prove the Run and Place Each Requirement"
+
+  sectionModes:
+    "1. Design the Portable Core":
+      emphasis: medium
+      note: >
+        Place the cold open before this section's opener: the same agent file entering VS Code, Copilot CLI, and
+        Copilot cloud agent, three outcome fragments (CLI resolved claude-sonnet-5.5; VS Code requests ran
+        gpt-6.1-sol; cloud invoked test-writer and stopped at Cannot find module 'react'), and the question
+        "Which agent did the team ship?" Inside the section: one slide for when a role earns an agent file
+        (the four-primitive table); one slide for the test-writer frontmatter with description selects, tools
+        bound, body teaches; one slide for the five-line output contract; one publishing slide covering scope
+        table, most-local precedence, default-branch discovery for the cloud, and target, user-invocable, and
+        disable-model-invocation, with the takeaway "identify the winning file before debugging the prompt."
+        Budget 4 slides.
+    "2. Run One File in Three Runtimes":
+      emphasis: high
+      note: >
+        The climax. Label each slide with its evidence type. Slide 1: documented field support matrix, labeled
+        documented support. Slide 2: the full FanHub resolution table, labeled observed resolution, with
+        unobserved cells marked as unobserved and tool counts captioned as each runtime's expansion of six
+        aliases. Slide 3: VS Code, with the handoff button and argument-hint in a Local session, the 23 and
+        10 tool lists, and the model discrepancy labeled cause unresolved. Slide 4: Copilot CLI with the exact
+        log line resolving the model and 10 passing tests. Slide 5: cloud agent first run, showing the PR line
+        "Custom agent used: test-writer", the stop at Cannot find module 'react', and the local 5 passed, 1 failed
+        result, labeled execution-environment dependency. Slide 6: the recovery, with copilot-setup-steps.yml,
+        the @copilot follow-up, and the cloud Jest output of 6 passed, with the memorable line "An agent profile
+        describes a role; the runtime supplies the environment." Budget 6 slides.
+    "3. Prove the Run and Place Each Requirement":
+      emphasis: high
+      note: >
+        One slide for the load report: five questions by three runtimes, with the debug source for each. One
+        slide for load, compare, place, rerun, using the recovery table with owning layer and owner columns.
+        One slide for composition: test-writer hands off to read-only test-reviewer; handoffs put a person
+        between steps, subagents let a coordinator call a named agent; authority over changes lives in rulesets,
+        hooks, permission flags, and the firewall. One closing slide with what to do this week, the own-work
+        question, and a single line routing to Local Agentic SDLC, GitHub Agentic Workflows, and Copilot on
+        GitHub. Budget 4 slides.
+
+  preamble: []
+  appendix: []
+
+  highlightMoments:
+    - "The same six tool aliases expanded to 23 tools in VS Code and 14 in the Copilot CLI, each runtime resolving the file in its own context."
+    - "The Copilot CLI logged its decision: Using model claude-sonnet-5.5 from custom agent test-writer."
+    - "VS Code requests ran gpt-6.1-sol while the agent declared Claude Sonnet 5.5, and only the request log showed it."
+    - "The cloud agent invoked test-writer and stopped at a missing React dependency; its summary carried the failure while the PR description covered the behaviors tested."
+    - "A setup workflow outside the profile let the cloud rerun execute Jest: 1 suite, 6 tests passed."
+
+# OPEN DECISION: VS Code model discrepancy — investigate the cause before presenting (cleaner story), or present
+#   it as an unresolved discrepancy (current choice; honest and still teaches reading the run).
