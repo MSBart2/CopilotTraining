@@ -1,108 +1,135 @@
 # Independent critique: rubber-duck subagent on gpt-5.6-sol (cross-model; primary is a Claude model).
 # Reconciliation:
-# - Accepted: open on #202 /triage; move #193 to the close as the multi-stage capstone.
-# - Accepted: three-part anchor scoping "only pen" to repository writes, with the lock as the reviewable artifact.
-# - Accepted: present min-integrity: none as an owned, version-specific exception with remaining
-#   controls and a review trigger; report the friction drop as an operational observation.
-# - Accepted: producer/owner framing (requester and contract owner) and a request-to-decision trace.
-# - Accepted: lock review model (people review source, CI checks lock drift, reviewers read lock diffs
-#   on permission or version changes).
-# - Adjusted: the reviewer weighted "Test the Contract" high; the #202 command case now lives in section 1,
-#   so section 3 carries the schedule and event patterns at medium and section 4 carries the climax.
-# - Moved to README only: engine alternatives, imports/sharing, per-failure detail beyond one table.
+# - Accepted: frame the authority chain in three inspectable layers: source declares, lock implements,
+#   run evidence shows it in effect. README core insight updated to match.
+# - Accepted: the climax is the narrowing, shown as three states (wizard intent, generated draft with
+#   broad authority highlighted, narrowed contract with staged evidence). Wizard speed is the setup.
+# - Accepted: outcome-oriented agenda; four highlight moments; actor labels on every trace.
+# - Accepted: a workflow-PR reviewer perspective (README "Apply it to your work" updated).
+# - Accepted: outcome efficiency shown with companion signals, compared within one workflow (README updated).
+# - Accepted: factual gates for volatile defaults, staged preview format, and experimental evals.
+# - Accepted: end section 3 with the complete first loop; section 4 covers reliability, cost, and promotion.
+# - Adjusted: the reviewer asked to compress section 1 and the pattern catalog. The user approved the
+#   full ~57-slide plan as a skippable deck; reference-grade slides are marked skippable below.
+# - Resolved by the user earlier: FanHub appears only in the closing 1–2 slides.
+# SLIDE BUDGET EXCEPTION (user-approved): ~57 slides, above the default 30-slide cap. The deck is built
+# to be skipped through; every slide tagged "skippable" can be passed in one click without losing the arc.
 version: 1
 
 deck:
   title: "GitHub Agentic Workflows"
-  subtitle: "Reviewable Contracts for Repository Judgment Work"
-  tagline: "Frontmatter grants authority, safe outputs are the only pen, and the lock makes it reviewable"
+  subtitle: "Read the Contract, Then Let the Agent Work"
+  tagline: "Frontmatter grants authority, safe outputs are the only write path, and every layer is inspectable"
 
   agenda:
-    - title: "Match recurring work to the right actor"
-      takeaway: "Sort jobs across Actions, an agentic workflow, and the Copilot cloud agent with three questions: judgment, initiator, smallest write."
-      whyItMatters: "Those three answers become the trigger and safe-outputs blocks of a workflow you can defend in review."
-    - title: "Read authority straight from the contract"
-      takeaway: "Walk the real /triage frontmatter block by block, then see 76 source lines compile to a 2,203-line lock."
-      whyItMatters: "Reviewers see exactly what the agent may read, call, and write before it ever runs."
-    - title: "Operate the boundary with evidence"
-      takeaway: "Use gh aw audit, self-filed [aw] issues, and an owned integrity exception to keep runs trustworthy and affordable."
-      whyItMatters: "Production trust comes from per-run evidence, named owners, and a recovery path for every failure."
+    - title: "Review a workflow's authority in five questions"
+      takeaway: "Trace who starts it, what it reads, what it can reach, what it writes, and what stops it, from source to lock to run."
+      whyItMatters: "Approve or narrow any workflow pull request, including one an agent or wizard wrote for you."
+    - title: "Pick a first job with a small, reversible write"
+      takeaway: "Use recur, judgment, and smallest write to choose work, with IssueOps triage as the model and a catalog for what comes next."
+      whyItMatters: "The first workflow sets the team's trust; a reversible write lets maintainers check it within a week."
+    - title: "Run staged, then promote on evidence"
+      takeaway: "Read the staged preview, gh aw audit, and Outcomes, and map each failure symptom to the block that owns it."
+      whyItMatters: "Promotion, revision, and retirement become decisions backed by run evidence."
 
-  arcToc: "Choose the Judgment → Write the Contract → Test on Real Work → Operate"
+  arcToc: "Read the Contract → Choose the Work → Generate a First Draft → Run and Read"
 
   arcNarrative: >
-    Open on a single observed result: a maintainer comments /triage on user-style bug #202 and,
-    six minutes later, the issue carries four allowlisted labels, a comment citing the exact cache
-    lines in Episodes.js, and a pointer to duplicate #7. That result makes the core question concrete
-    and introduces the two actors: the requester who asks and decides, and the contract owner who
-    answers for authority. The actor grid and three questions turn the example into a method.
-    Section 2 opens the same workflow and shows that every behavior the audience just saw traces to
-    a frontmatter block, with safe outputs as the only repository write path and the compiled lock as
-    the reviewable artifact; the anchor lands here. Section 3 runs the method against the other two
-    trigger shapes: a scheduled digest whose missing row shows why read-derived claims get spot-checked,
-    and the label-driven event pattern that sets up the capstone. Section 4 is the climax for the
-    platform owner: the defensive layers, a real integrity exception recorded with owner, controls,
-    and a retest trigger, audit cost per run, failures that filed themselves as issues, and the #110
-    lifecycle ending at draft PR #193 awaiting a person. Close with fit boundaries and the three-question
-    worksheet so the audience leaves with a first workflow to stage in their own repository.
+    Section 1 gives the audience a reading skill before anything else: one IssueOps triage file,
+    read block by block, with the paradox that the body can ask for closure while the frontmatter
+    grants no closure path. Every later slide uses that vocabulary, and the five-question checklist
+    closes the section as the tool the audience carries forward. Section 2 turns the skill toward
+    choice: the three-part test for work that earns a workflow, IssueOps triage and planning, the
+    stage decision (judgment workflows plus the Copilot cloud agent for code, with per-stage workflows
+    for audit-heavy teams), and a pattern catalog with primary use cases so practitioners can map
+    their own backlog. Section 3 is the climax. The wizard produces a draft in about a minute, and
+    the audience watches the five questions expose broad authority in that draft, then sees a
+    four-line safe-outputs change narrow it, compile, and show up in the staged preview. Section 3
+    ends with the complete first loop: compile, stage, trigger, inspect, accept or revise. Section 4
+    covers what happens after day one: audit and logs, cost guardrails, Outcomes, failure tracing
+    by owning block, upgrade discipline, fit boundaries, and a time-boxed ladder for the audience's
+    own repository. Two closing slides show the method on FanHub: a /triage run with cited evidence
+    and its audit, and a multi-stage run that ends at a draft pull request awaiting a person.
 
   sectionOrder:
-    - "1. Choose the Judgment and Its Owner"
-    - "2. Write a Reviewable Authority Contract"
-    - "3. Test the Contract Against Real Work"
-    - "4. Operate the Boundary"
+    - "1. Read the Contract"
+    - "2. Choose the Work"
+    - "3. Generate a First Draft"
+    - "4. Run It and Read the Evidence"
 
   sectionModes:
-    "1. Choose the Judgment and Its Owner":
-      emphasis: medium
-      note: >
-        Lead with the #202 /triage result as proof: the user-style bug title, the four labels with
-        reasons, the cited Episodes.js episodeCache lines, duplicate #7, and the maintainer's follow-up
-        (close #202, assign #7 to the cloud agent). Show the one-line trace from comment to maintainer
-        decision. Name the requester and the contract owner explicitly. Follow with the three-column
-        actor grid (Actions, agentic workflow, cloud agent) and the three questions. Budget 3–4 slides.
-    "2. Write a Reviewable Authority Contract":
+    "1. Read the Contract":
       emphasis: high
       note: >
-        Split triage.md across two legible code slides: frontmatter first, then the abbreviated body.
-        Pair them with the block-to-authority-question table. Make the point that the body steers and
-        the frontmatter enforces: an instruction to close the issue has no safe output to act through.
-        Show the compile command and the 76-line source to 2,203-line lock reveal with the four-part
-        review model (people review source, CI checks lock drift, reviewers read lock diffs on
-        permission or version changes, commit both together). Land the anchor on its own slide.
-        Budget 5–6 slides.
-    "3. Test the Contract Against Real Work":
+        Budget about 17 slides. Core path: the three-column toolbox (Actions run predefined steps,
+        agentic workflows exercise bounded judgment on a trigger, the Copilot cloud agent carries one
+        delegated implementation); the full triage file split across a frontmatter slide and a body
+        slide; the body-requests-closure paradox on its own slide; one slide each for on/roles,
+        permissions, limits, safe outputs, and staged mode; the authority chain diagram (source
+        declares → lock implements → run evidence shows it); compile to the lock with the four-part
+        review model; the five-question checklist as the section closer. Skippable reference slides:
+        engine table (lead with Copilot as the default, list claude, codex, pi, agy experimental,
+        gemini deprecated), tools table, network, the safe-output catalog by family, the trifecta
+        plus six layers, and three contracts side by side. Label the trifecta-to-layer column as
+        this talk's mapping. Attribute guardrail defaults to the cost guide by name. Show the staged
+        preview using the format from the staged mode docs, labeled as such, until the FanHub
+        rehearsal captures a real one.
+    "2. Choose the Work":
       emphasis: medium
       note: >
-        Recap the command pattern in one line and spend the time on the schedule pattern: the digest
-        frontmatter (fuzzy schedule compiled to a scattered cron, create-issue max 1 with
-        close-older-issues) beside the observed digest #209 sections. Give the omitted lang:node row
-        its own callout as the reason to spot-check read-derived counts. Close with the three-row
-        "who decides the agent acts" table, introducing the label-driven event pattern that section 4
-        completes. Budget 3 slides.
-    "4. Operate the Boundary":
+        Budget about 11 slides. Core path: the recur + judgment + smallest-write test; IssueOps
+        triage as a one-line flow from requester to maintainer; IssueOps planning into sub-issues
+        with group: true; the stage decision as a two-column comparison with the recommendation
+        stated plainly (start with judgment workflows plus the Copilot cloud agent; choose a
+        workflow per stage when each stage needs its own auditable authority) and the PAT
+        requirement named. Keep all four pattern-catalog slides, each with primary use cases;
+        they are skippable. Peli's Agent Factory gets one slide; label Repo Assist figures as
+        GitHub-published. Close with "Map your own work" and include one quick sorting example:
+        three recurring tasks, with the reason only one earns an agentic workflow. Point out that
+        the three answers are the wizard's inputs, which hands off to section 3.
+    "3. Generate a First Draft":
       emphasis: high
       note: >
-        This is the climax for the platform owner. One diagram slide for the six layers plus the
-        firewall and staged mode. One slide for the integrity exception as a four-row record
-        (observed, decision, remaining controls, review trigger) with the strict-mode compile message;
-        report the 47.75 to 0.17 AIC friction change as an operational observation. One slide pairing
-        the audit cost table (1.22 and 0.91 AIC per run) with the three self-filed [aw] failures and
-        their recoveries. One capstone slide for #110 to draft PR #193: four narrow contracts, honest
-        stops, and a draft awaiting a person. Finish with fit boundaries, the 15-minute / 1-hour /
-        2–4-hour ladder, and the three-question worksheet. Budget 6–7 slides; the user has approved
-        exceeding the default budget here when the content requires it, within the 30-slide cap.
+        Climax section. Budget about 10 slides. Three ways to start (skippable); the wizard's seven
+        steps; what it hands you (a prompt for your coding agent, run inside the target repository
+        so the agent sees its labels and code); intent becomes evaluation, labeled experimental and
+        kept off the minimum production path (skippable). The live demo slide carries the intent
+        text and a "recorded fallback" marker. The anchor lands as three states across one or two
+        slides: wizard intent, the generated draft with its broad safe-outputs highlighted, and the
+        narrowed contract with the four-line diff and the staged preview it produces. Present
+        "about a minute" as the wizard step time observed in the demo. Refine with the gh-aw skill,
+        then end on the complete first loop: compile, commit, run, read the staged preview, remove
+        staged after outputs match a maintainer's judgment on several real issues.
+    "4. Run It and Read the Evidence":
+      emphasis: medium
+      note: >
+        Budget about 12 slides. Lead with "a successful run confirms execution; the output and its
+        outcomes confirm useful work," and name the honest stops (noop, report-missing-tool,
+        report-missing-data). One slide each for gh aw audit and gh aw logs; cost guardrails with
+        defaults attributed to the cost guide; Outcomes with the acceptance table and outcome
+        efficiency shown beside acceptance rate, correction rate, and honest-stop rate, compared
+        within one workflow; evals and graders marked experimental (skippable); self-reported
+        failures; the symptom → owning block → fix table as the most reusable artifact; upgrade
+        discipline (skippable); where it stops fitting; the 15-minute / 1-hour / 2–4-hour ladder;
+        and "apply it to your work" with the workflow-PR reviewer's five answers plus the
+        largest-single-run-change question. Then two closing FanHub slides before references:
+        #202 /triage (four reasoned labels, cited lines, duplicate #7, 6 of 6 jobs, 1.22 AIC,
+        about six minutes, maintainer closes and assigns #7 to the cloud agent) and #110 → draft
+        PR #193 (four label-triggered contracts, three honest stops and their fixes, a draft that
+        waits for a person). Label both as observed results on gh-aw v0.92.6.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "One /triage comment on user-style bug #202 produced four allowlisted labels, cited the exact Episodes.js cache lines, and found duplicate #7 for 1.22 AI credits."
-    - "Every behavior traces to frontmatter: 76 reviewed source lines compile to a 2,203-line lock whose only repository writes run in a separate safe-outputs job."
-    - "The daily digest #209 omitted its lang:node row, so read-derived counts get the same spot-check a colleague's summary would."
-    - "An integrity guard that rated every issue 'none' became an owned exception with remaining controls and a retest trigger, recorded beside the setting."
-    - "Four label-triggered contracts carried #110 to draft PR #193, which waits for a person exactly where the contracts end."
+    - "The body asks the agent to close the issue, and the issue stays open: the frontmatter grants no closure path, so the system enforces the contract."
+    - "Five questions read any workflow, and in the live demo they expose broad authority in a wizard draft produced in about a minute."
+    - "A four-line safe-outputs change (allowlist, max, target, staged) narrows what the workflow can do, and the staged preview shows the narrower contract in effect."
+    - "On FanHub, /triage on #202 produced four reasoned labels, cited the cache lines, and found duplicate #7 for 1.22 AI credits, observed on gh-aw v0.92.6."
 
-# OPEN DECISION: Show the #110 lifecycle as a single capstone slide (current plan, keeps the deck near
-# 24 slides) or give it a two-slide treatment with the implementation contract excerpt (adds depth for
-# teams planning multi-stage workflows, pushes the deck toward 26 slides).
+# OPEN DECISION: Generate slides now with guardrail defaults attributed to the cost guide and the
+# staged preview shown in the docs' format, or wait for the FanHub rehearsal on a pinned gh-aw
+# version so those slides show the compiled lock's actual defaults (the frontmatter reference says
+# the daily credit cap is off when omitted) and a captured staged preview. Generating now keeps
+# momentum and needs a quick patch after rehearsal; waiting means one generation pass with observed
+# artifacts on the limits, staged, and demo slides.
