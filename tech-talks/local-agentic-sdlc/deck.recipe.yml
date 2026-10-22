@@ -1,0 +1,114 @@
+# Independent critique: rubber-duck subagent (cross-model; primary is a Claude model).
+# Reconciliation:
+# - Accepted: the contract has four visible fields (role ownership, completion evidence, budget and escalation,
+#   merge authority), repeated in the opening, the run ledger, and the pull request handoff.
+# - Accepted: the Stop hook is a labeled backstop. The section 3 climax is evidence-driven control: the predicted
+#   Router risk became 8 failing tests and the orchestrator routed it to test-writer.
+# - Accepted: section 1 opens with the real four-session run ledger and derives the contract from it.
+# - Accepted: section 2 drops to low emphasis and keeps only mechanisms that enforce the contract; sessionStart
+#   junction and snake_case input move to one compact gotcha slide.
+# - Accepted: section 4 shows what the reviewer of #217 receives, and frames the team lead as owner of budget and
+#   escalation policy.
+# - Accepted: ≈380 credits is presented as one observed run with its per-session breakdown and what it produced.
+#   Developer time and a manual baseline were unmeasured, and the deck says so.
+# - Accepted: the real-run ledger is the cold open; the staged block→allow demo appears in section 3 with a
+#   STAGED label beside the 11 allow / 0 block real record.
+# - Adjusted: section 1 budget stays near 5 slides by folding the split test and seams into one slide.
+version: 1
+
+deck:
+  title: "Local Agentic SDLC"
+  subtitle: "A Loop with a Contract"
+  tagline: "Roles own the work. Tests decide done. Budgets decide when to stop. A person decides what merges."
+
+  agenda:
+    - title: "Write a loop contract an agent can be held to"
+      takeaway: "Name role ownership, completion evidence, budget and escalation, and merge authority before the first run."
+      whyItMatters: "Each field becomes a check a person can verify from the run's own artifacts."
+    - title: "Let evidence steer the run"
+      takeaway: "Route every failing test to the role that owns the fix, and keep a Stop hook as the backstop for the run that skips the suite."
+      whyItMatters: "A predicted risk, a failing suite, and a reviewer finding each moved the FanHub run forward on evidence."
+    - title: "Hand a reviewer an integrated draft with its evidence"
+      takeaway: "Resolve named seams, record what happened, and open a draft pull request whose body is the integration record."
+      whyItMatters: "The reviewer receives plan, test counts, corrections, open risks, and budget history in one place, and keeps the merge decision."
+
+  arcToc: "Write the Contract → Build the Crew → Evidence Decides → Hand It Off"
+
+  arcNarrative: >
+    Open on the real FanHub run ledger: four Copilot CLI sessions took issues #4 and #5 from plans posted on the
+    issues, through two parallel worktrees, to integrated draft pull request #217 for about 380 AI credits. Ask
+    what made that run trustworthy. Section 1 answers with the loop contract derived from the ledger: four
+    fields, a plan that names risks before code, and a split test that names seams and their owner. Section 2
+    is compact: the orchestrator holds sequence with no edit tool and an agents allow-list, each role agent has one
+    boundary, worktrees isolate the workstreams, and permissions decide whether the loop can make progress.
+    Section 3 is the climax and shows evidence steering the run: the Router risk the plan predicted became 8
+    failing tests, the implementer reported it, and the orchestrator routed it to test-writer until 47 of 47
+    passed. Then the gate record of 11 allow and 0 block across real runs sits beside a clearly labeled staged
+    backstop, block on 7 failures then allow on 8 of 8, followed by the boundary that tests prove agreement and a
+    person judges intent, and the budget stop at 113.4 of 120 credits that handed control to a person. Section 4
+    pays off with the integration reviewer catching a contrast defect that only existed after both green
+    workstreams merged, then shows exactly what the reviewer of #217 receives and where the pattern hands off to
+    other talks. Leading with the real ledger earns trust first, so the staged demo reads as a teaching aid.
+
+  sectionOrder:
+    - "1. Write the Loop Contract First"
+    - "2. Build the Orchestrator and Its Crew"
+    - "3. Let Evidence Decide When to Stop"
+    - "4. Integrate, Then Hand It to a Person"
+
+  sectionModes:
+    "1. Write the Loop Contract First":
+      emphasis: medium
+      note: >
+        Place the cold open before this section's opener: the four-session run ledger (stage, command shape,
+        observed result, credits) labeled REAL, with the caption "one observed run; developer time and a manual
+        baseline were unmeasured." Inside the section: one slide for the four-field contract table with where each
+        field is enforced; one slide for the plan shape with risks before code, quoting the #5 router risk and the
+        #4 class-component risk; one slide for the split test with the three seams and their owner, plus the
+        line "related entities remain noninteractive" that made parallel work safe. Budget 4 slides plus the cold
+        open.
+    "2. Build the Orchestrator and Its Crew":
+      emphasis: low
+      note: >
+        Keep only mechanisms that enforce the contract. One slide for the orchestrator frontmatter: agents
+        allow-list, no edit tool, agent-scoped Stop hook. One slide for role boundaries that held in the run,
+        including the implementer reporting 8 failures and leaving tests to test-writer. One slide for one
+        worktree per workstream with the copilot --worktree command and budget flags. One compact gotcha slide:
+        shell(gh:*) missed a compound PowerShell command, so the working setup is --allow-all-tools with
+        --deny-tool 'shell(git push)'; a sessionStart hook links node_modules into fresh worktrees; agent-scoped
+        Stop hook input arrives in snake_case. Budget 4 slides.
+    "3. Let Evidence Decide When to Stop":
+      emphasis: high
+      note: >
+        The climax. Slide 1: the predicted Router risk becoming "useNavigate() may be used only in the context of
+        a <Router>", 8 failed, routed to test-writer, 47 of 47, labeled REAL. Slide 2: the Stop hook core and the
+        block decision with failing output as the next prompt. Slide 3: the gate record, 11 allow and 0 block
+        across real runs, with the reason: the orchestrator runs the suite before it stops. Slide 4: the staged
+        backstop with the two JSONL log lines, labeled STAGED. Slide 5: the boundary, the agent changed tests to
+        match the Series rename; tests prove agreement and a person judges intent. Slide 6: budgets table and
+        the 113.4 of 120 stop, with the person clarifying and resuming at 140 credits. Budget 6 slides.
+    "4. Integrate, Then Hand It to a Person":
+      emphasis: medium
+      note: >
+        Slide 1: the integration reviewer finding white headings on new white panels after two green workstreams
+        merged, the implementer fix, and the 4.5:1 contrast regression taking the suite from 95 to 96, labeled
+        REAL. Slide 2: seams resolved and the integration record fields. Slide 3: what the reviewer of #217
+        receives (plan comments, suite counts, corrections, open risks, budget history) and who owns what: the
+        reviewer owns merge, the team lead owns budget and escalation policy. Slide 4: where it stops fitting,
+        routing event-driven work to GitHub Agentic Workflows and assign-and-walk-away work to Copilot on GitHub,
+        plus small changes and slow verification. Slide 5: what to do today and the own-work question. Budget 5
+        slides.
+
+  preamble: []
+  appendix: []
+
+  highlightMoments:
+    - "REAL: four Copilot CLI sessions took two issues to integrated draft pull request #217 for about 380 AI credits, with every stage leaving an artifact a person can open."
+    - "REAL: the plan predicted the Router risk, the suite failed 8 of 8, and the orchestrator routed the fix to test-writer until 47 of 47 passed."
+    - "REAL: after two green workstreams merged, the reviewer caught unreadable headings and a 4.5:1 contrast regression test locked the fix."
+    - "REAL and STAGED: 11 allow and 0 block across real runs; a staged run shows block on 7 failures, then allow on 8 of 8. Tests prove agreement, and a person judges intent."
+    - "REAL: integration stopped at 113.4 of 120 credits, a person clarified and resumed, and the run ended in a draft for review."
+
+# OPEN DECISION: Cost framing. Present ≈380 credits as one observed run with no manual baseline (current choice;
+#   honest and transferable), or time a manual implementation of #4 and #5 first to add a comparison (stronger ROI
+#   story; requires a new measured run before slides).

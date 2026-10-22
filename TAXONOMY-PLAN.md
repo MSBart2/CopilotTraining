@@ -180,6 +180,13 @@ The archived `copilot-code-review` and `copilot-code-quality` folders can't be e
 - **Proof requirement:** build the orchestrator and subagents in FanHub and record a real run (session log, commits, PR) before drafting the slides.
 - **Link to copilot-cli:** copilot-cli covers the surface; this talk covers the orchestration pattern.
 
+### Phase 3 — as implemented (2026-10-21)
+
+- **Anchor changed:** FanHub issues #4 and #5 (character and episode detail pages) replaced #110. Two issues touching shared files gave a real split test and seam. The `sdlc-orchestrator` agent, a planner, an implementer, a test-writer and a reviewer ran in the CLI in autopilot mode. Each issue ran in its own `--worktree`, in parallel, followed by an integration worktree. The output is draft PR [#217](https://github.com/MSBart2/FanHub/pull/217), with 96 of 96 tests passing.
+- **Stop gate:** an agent-scoped Stop hook (`verify-before-stop.mjs`) runs Jest and blocks a finish up to three times per session. Agent-scoped hooks receive snake_case input keys. A repository `sessionStart` hook links `node_modules` into each fresh worktree.
+- **Structure:** Write the Loop Contract First → Build the Orchestrator and Its Crew → Let Evidence Decide When to Stop → Integrate, Then Hand It to a Person. The harvest from agent-dev-loop, loopy-agents and multi-agent-coordination is folded into those sections: the plan artifact, budgets and stop conditions, the split test, and the integration record.
+- **Custom-agents:** the hooks row is split into repository and agent scope, and it links forward to this talk.
+
 ## Phase 4 — Archive and redirect
 
 Do this only after each replacement talk is `active` + `deployed`, because redirect targets must be active and deployed.

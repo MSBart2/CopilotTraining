@@ -268,7 +268,8 @@ This is the heart of the talk. Every slide in this part carries its evidence lab
   :rows='[
     { label: "All three", description: "name, description, tools, target, and both invocation controls", tag: "VS Code · CLI · cloud" },
     { label: "model", description: "VS Code and the CLI read it; cloud docs list it for IDE use", tag: "VS Code · CLI" },
-    { label: "VS Code", description: "handoffs, agents, argument-hint (Local); hooks, reasoning-effort", tag: "VS Code only" },
+    { label: "VS Code", description: "handoffs, agents, argument-hint (Local); reasoning-effort", tag: "VS Code only" },
+    { label: "Agent-scoped hooks", description: "hooks in the agent file run in VS Code and the CLI", tag: "VS Code · CLI" },
     { label: "Copilot CLI", description: "include-custom-instructions for subagent runs", tag: "CLI only" },
     { label: "Cloud agent", description: "mcp-servers, metadata", tag: "cloud only" },
     { label: "Tool aliases", description: "web and todo resolve in VS Code and the CLI; cloud: not applicable", tag: "VS Code · CLI" }
@@ -589,7 +590,7 @@ Authority stays with the systems around the agent: rulesets and branch protectio
     header: "Where it stops fitting",
     icon: "🧭",
     items: [
-      { title: "Local Agentic SDLC (upcoming)", detail: "An orchestrator calling several agents in worktrees" },
+      { title: "Local Agentic SDLC", detail: "An orchestrator calling several agents in worktrees" },
       { title: "GitHub Agentic Workflows", detail: "Event-triggered judgment with safe outputs" },
       { title: "Copilot on GitHub", detail: "The PR decision across cloud agent, code review, and Code Quality" }
     ]
@@ -600,7 +601,7 @@ Authority stays with the systems around the agent: rulesets and branch protectio
 
 <!--
 This is the transfer exercise. Ask people to pick the agent now, before they leave the room, and write down their prediction.
-Route out once: a full local SDLC loop with an orchestrator is the upcoming Local Agentic SDLC talk; event-triggered agents belong to GitHub Agentic Workflows; the pull request decision lives in Copilot on GitHub.
+Route out once: a full local SDLC loop with an orchestrator is the Local Agentic SDLC talk; event-triggered agents belong to GitHub Agentic Workflows; the pull request decision lives in Copilot on GitHub.
 -->
 
 ---

@@ -9,7 +9,7 @@ duration: 45
 format: core-talk
 decision: "How should a team design one custom agent that behaves the way it intends in every runtime it reaches?"
 prerequisites: [copilot-primitives]
-related: [copilot-on-github, agentic-lifecycle, copilot-hooks]
+related: [local-agentic-sdlc, copilot-on-github, agentic-lifecycle, copilot-hooks]
 references:
   - url: https://docs.github.com/en/copilot/reference/custom-agents-configuration
     label: "Custom agents configuration reference"
@@ -155,7 +155,8 @@ The configuration reference states it directly: runtimes ignore tool names and f
 | `name`, `description`, `tools`, `target`, `user-invocable`, `disable-model-invocation` | ✅ | ✅ | ✅ |
 | `model` | ✅ | ✅ | Documented for IDE use |
 | `handoffs`, `agents`, `argument-hint` | ✅ Local session | — | — |
-| `hooks` (agent-scoped), `reasoning-effort` | ✅ | — | — |
+| `hooks` (agent-scoped) | ✅ | ✅ ([hooks reference](https://docs.github.com/en/copilot/reference/hooks-reference)) | — |
+| `reasoning-effort` | ✅ | — | — |
 | `include-custom-instructions` | — | ✅ subagent runs | — |
 | `mcp-servers`, `metadata` | — | — | ✅ |
 | `web`, `todo` tool aliases | ✅ | ✅ | Not applicable |
@@ -233,7 +234,7 @@ A custom agent shapes what the agent attempts. Authority over what it may change
 
 ### Where it stops fitting
 
-- **A full local SDLC loop** of research, plan, implement, review, and stop conditions, with an orchestrator calling several agents in worktrees, is the subject of the upcoming Local Agentic SDLC talk.
+- **A full local SDLC loop** of plan, implement, review, and stop conditions, with an orchestrator calling several agents in worktrees, is the subject of [Local Agentic SDLC](../local-agentic-sdlc/README.md).
 - **Event-triggered judgment** that runs on a schedule or a label, with safe outputs, belongs to [GitHub Agentic Workflows](../agentic-lifecycle/README.md).
 - **The pull request decision** across cloud agent, code review, and Code Quality is in [Copilot on GitHub](../copilot-on-github/README.md).
 
