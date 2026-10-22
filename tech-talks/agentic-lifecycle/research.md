@@ -32,7 +32,7 @@ The replacement owns orchestration only:
 | Concern | Canonical owner | Boundary retained here |
 |---|---|---|
 | Surface selection | `surfaces` | Route work before lifecycle enrollment |
-| Reusable repository context | `agent-dev-loop` | Require versioned context before planning |
+| Reusable repository context | `repo-to-feature` | Require versioned context before planning |
 | Bounded issue-to-PR delegation | `copilot-web` | Coding receives only an approved, bounded plan |
 | Recurring repository judgment | `agentic-lifecycle` | Select bounded judgments, triggers, permissions, and safe outputs as part of the lifecycle contract |
 | Specialist composition | `agent-teams` | Escalate when one lifecycle phase needs isolated parallel workstreams |

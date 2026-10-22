@@ -22,7 +22,7 @@ updated: 2026-10-21
 | 4 | Trust and Govern 🛡️ | `trust-and-govern` | Rules that apply whichever section the agent comes from | copilot-hooks, agentic-sdlc, copilot-governance, enterprise-patterns *(merge deferred)* |
 | 5 | Extend and Embed 🧩 | `extend-and-embed` | Agents built into other products | unchanged |
 
-**Archived by this plan:** agent-dev-loop, loopy-agents, multi-agent-coordination, copilot-web, pr-trust-stack. Total archived goes from 9 to 14.
+**Archived by this plan:** repo-to-feature, unattended-agents, multi-agent-coordination, copilot-web, pr-trust-stack. Total archived goes from 9 to 14.
 
 **Mirror anchor:** sections 2 and 3 both run FanHub issue #110 from research to a draft PR, once locally with custom agents and once on GitHub. The audience can compare the tradeoffs on the same task.
 
@@ -43,7 +43,7 @@ updated: 2026-10-21
 5. `slides/index-custom.html`: rebuild the tech-talk sub-groups into five groups and move the cards.
 6. Re-section the active talks that change section. Update `section:` and `updated:` in **both** the README and the deck frontmatter:
    - Foundations: surfaces, copilot-primitives
-   - Keyboard: copilot-cli, vscode-latest (agent-dev-loop, loopy-agents and multi-agent-coordination stay where they are until archived)
+   - Keyboard: copilot-cli, vscode-latest (repo-to-feature, unattended-agents and multi-agent-coordination stay where they are until archived)
    - GitHub: agentic-lifecycle (copilot-web stays where it is until archived)
    - Trust: copilot-hooks, agentic-sdlc, copilot-governance, enterprise-patterns (pr-trust-stack stays where it is until archived)
    - Extend: unchanged name. Verify only.
@@ -56,7 +56,7 @@ updated: 2026-10-21
 
 These steps differed from the plan above:
 
-- **Every active talk was re-sectioned now, including the ones that will be archived later.** The validator rejects legacy sections on active talks, so agent-dev-loop, loopy-agents and multi-agent-coordination moved to Agents at Your Keyboard. copilot-web and pr-trust-stack moved to **Agents on GitHub**, not Trust: pr-trust-stack is about the issue-to-merge flow, which belongs with the other GitHub-hosted agents.
+- **Every active talk was re-sectioned now, including the ones that will be archived later.** The validator rejects legacy sections on active talks, so repo-to-feature, unattended-agents and multi-agent-coordination moved to Agents at Your Keyboard. copilot-web and pr-trust-stack moved to **Agents on GitHub**, not Trust: pr-trust-stack is about the issue-to-merge flow, which belongs with the other GitHub-hosted agents.
 - **`updated:` was not bumped** on talks whose only change was the section. Content refresh uses that date as `--since`, so bumping it would hide feed items. Deck mtimes were restored so their companions don't show as stale.
 - **Rendered meta text was fixed** in two decks: pr-trust-stack and copilot-governance still showed the old section name in their title meta. Their PDFs and agenda HTML were regenerated. agenda.md was restored from git, because `--from-slides` overwrites hand-tuned agenda content.
 - **Temporary validator exception:** `STATUS_MISMATCH_EXCEPTIONS` in `scripts/portfolio-inventory-lib.mjs` allows copilot-code-review and copilot-code-quality to have an archived README with an active deck. Commit 5a35fe3 put their cards back on the homepage. **Remove the exception in Phase 4**, once those decks are archived and their redirects point to copilot-on-github.
@@ -155,7 +155,7 @@ The archived `copilot-code-review` and `copilot-code-quality` folders can't be e
 ## Phase 2 — Foundations: new `custom-agents` talk
 
 - **Proposal gate:** follow the AGENTS.md rule for new talks (research brief + structural proposal approved before drafting). Start the talk as `portfolioState: candidate`.
-- **Decision:** "How should a team design one custom agent that behaves correctly in every runtime it runs in?"
+- **Decision:** "How can a team design one custom agent that behaves correctly in every runtime it runs in?"
 - **Anchor artifact:** one `.agent.md` (e.g., a FanHub `reviewer` or `planner`) run in VS Code, the CLI, and the coding agent. Show what changes between runtimes: available tools, model selection, MCP, handoffs, being called as a subagent.
 - **Covers:** anatomy (frontmatter, tools allow-list, model, handoffs); scope (repo, org, `.github-private`, user); how the agent is invoked; verification (inspecting what loaded); boundaries.
 - **Trim `copilot-primitives`:** cut its custom-agent material to a short definition plus a link to this talk.
@@ -174,8 +174,8 @@ The archived `copilot-code-review` and `copilot-code-quality` folders can't be e
 - **Decision:** "How can a developer run research → plan → implement → review locally with custom agents, and know when to stop?"
 - **Anchor:** FanHub #110 run locally. An orchestrator agent calls planner, implementer, and reviewer subagents. Workstreams that need it run in their own worktrees. Hooks and verification commands decide when to continue and when to stop. Output: the same kind of draft PR as Phase 1.
 - **Harvest only what serves this decision:**
-  - agent-dev-loop: the plan artifact and the risk-before-code step. Its instruction, prompt, and skill material already lives in primitives.
-  - loopy-agents: stop conditions, budgets, verifiable completion. Drop the third-party loop-audit tooling and the YAML topology catalog.
+  - repo-to-feature: the plan artifact and the risk-before-code step. Its instruction, prompt, and skill material already lives in primitives.
+  - unattended-agents: stop conditions, budgets, verifiable completion. Drop the third-party loop-audit tooling and the YAML topology catalog.
   - multi-agent-coordination: the split test and the integration record.
 - **Proof requirement:** build the orchestrator and subagents in FanHub and record a real run (session log, commits, PR) before drafting the slides.
 - **Link to copilot-cli:** copilot-cli covers the surface; this talk covers the orchestration pattern.
@@ -184,16 +184,16 @@ The archived `copilot-code-review` and `copilot-code-quality` folders can't be e
 
 - **Anchor changed:** FanHub issues #4 and #5 (character and episode detail pages) replaced #110. Two issues touching shared files gave a real split test and seam. The `sdlc-orchestrator` agent, a planner, an implementer, a test-writer and a reviewer ran in the CLI in autopilot mode. Each issue ran in its own `--worktree`, in parallel, followed by an integration worktree. The output is draft PR [#217](https://github.com/MSBart2/FanHub/pull/217), with 96 of 96 tests passing.
 - **Stop gate:** an agent-scoped Stop hook (`verify-before-stop.mjs`) runs Jest and blocks a finish up to three times per session. Agent-scoped hooks receive snake_case input keys. A repository `sessionStart` hook links `node_modules` into each fresh worktree.
-- **Structure:** Write the Loop Contract First → Build the Orchestrator and Its Crew → Let Evidence Decide When to Stop → Integrate, Then Hand It to a Person. The harvest from agent-dev-loop, loopy-agents and multi-agent-coordination is folded into those sections: the plan artifact, budgets and stop conditions, the split test, and the integration record.
+- **Structure:** Write the Loop Contract First → Build the Orchestrator and Its Crew → Let Evidence Decide When to Stop → Integrate, Then Hand It to a Person. The harvest from repo-to-feature, unattended-agents and multi-agent-coordination is folded into those sections: the plan artifact, budgets and stop conditions, the split test, and the integration record.
 - **Custom-agents:** the hooks row is split into repository and agent scope, and it links forward to this talk.
 
 ## Phase 4 — Archive and redirect
 
 Do this only after each replacement talk is `active` + `deployed`, because redirect targets must be active and deployed.
 
-1. Set `status: archived` on agent-dev-loop, loopy-agents, multi-agent-coordination, copilot-web and pr-trust-stack (README + deck). These talks are still active, so this edit is allowed.
+1. Set `status: archived` on repo-to-feature, unattended-agents, multi-agent-coordination, copilot-web and pr-trust-stack (README + deck). These talks are still active, so this edit is allowed.
 2. `portfolio-redirects.json`:
-   - add agent-dev-loop, loopy-agents, multi-agent-coordination → `local-agentic-sdlc`;
+   - add repo-to-feature, unattended-agents, multi-agent-coordination → `local-agentic-sdlc`;
    - add copilot-web and pr-trust-stack → `copilot-on-github`;
    - **retarget** agent-teams and copilot-app (currently → multi-agent-coordination) → `local-agentic-sdlc`;
    - rewrite the `agentic-workflows` reason so it is accurate after Phase 1;
@@ -206,9 +206,9 @@ Fix `prerequisites` / `related` and any inline links:
 
 - agentic-sdlc: `prerequisites: [agentic-workflows]` (archived) → `[agentic-lifecycle]`
 - copilot-on-github: `prerequisites: [custom-agents]` (new talk)
-- agentic-lifecycle: `prerequisites: [agent-dev-loop, copilot-web]` → `[copilot-on-github]`; related: `multi-agent-coordination` → `local-agentic-sdlc`
+- agentic-lifecycle: `prerequisites: [repo-to-feature, copilot-web]` → `[copilot-on-github]`; related: `multi-agent-coordination` → `local-agentic-sdlc`
 - surfaces, copilot-cli: replace links to copilot-web → `copilot-on-github`; agentic-sdlc, copilot-governance, copilot-hooks: replace links to pr-trust-stack → `copilot-on-github`
-- surfaces, vscode-latest, copilot-primitives: replace links to agent-dev-loop and multi-agent-coordination
+- surfaces, vscode-latest, copilot-primitives: replace links to repo-to-feature and multi-agent-coordination
 - copilot-hooks, copilot-governance, copilot-with-foundry, agentic-sdlc: re-check related links
 
 Finally, grep the whole repo (agents, skills, workshop modules) for the archived slugs and old section names.

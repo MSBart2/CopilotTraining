@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-09-16
+updated: 2026-10-22
 section: "Agents at Your Keyboard"
 audience: [developer, team-lead]
 level: applied
@@ -8,7 +8,7 @@ duration: 45
 format: core-talk
 decision: "How does completed work become reusable team capability?"
 prerequisites: [copilot-primitives]
-related: [copilot-web, multi-agent-coordination]
+related: [unattended-agents, copilot-web, multi-agent-coordination]
 references:
   - url: https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode
     label: "Copilot agent mode in VS Code"
@@ -21,7 +21,7 @@ references:
     verified: 2026-06-30
 ---
 
-# The Agent Dev Loop: From Repo to Feature with Copilot in VS Code
+# From Repo to Feature: Building Team Tools as You Go
 
 > **The Question This Talk Answers:**
 > *"How do we go from opening an unfamiliar repo to a fully implemented, risk-reviewed feature — and build reusable team tools along the way?"*
@@ -34,9 +34,9 @@ references:
 
 | Criterion | Assessment | Notes |
 |-----------|-----------|-------|
-| **Relevant** | 🟢 High | Any team using Copilot in VS Code applies this loop immediately — no new tools, no infrastructure changes |
-| **Compelling** | 🟢 High | The loop produces lasting team assets (prompts, skills, plans) that compound in value across every feature |
-| **Actionable** | 🟢 High | Four working artifacts copy into any repo today; the full loop completes in under two hours |
+| **Relevant** | 🟢 High | Any team using Copilot in VS Code applies this workflow immediately — no new tools, no infrastructure changes |
+| **Compelling** | 🟢 High | The workflow produces lasting team assets (prompts, skills, plans) that compound in value across every feature |
+| **Actionable** | 🟢 High | Four working artifacts copy into any repo today; the full workflow completes in under two hours |
 
 **Overall Status:** 🟢 Ready to use
 
@@ -60,19 +60,19 @@ references:
 
 ### The Emerging Practice
 
-The most capable Copilot users aren't using it as faster autocomplete. They're running a loop: **orient → evaluate → build tools → plan → risk-check → implement**. Each pass through the loop produces both a working feature and a set of reusable artifacts — prompts and skills — that make the next iteration faster.
+The most capable Copilot users aren't using it as faster autocomplete. They're running a repeatable workflow: **orient → evaluate → build tools → plan → risk-check → implement**. Each pass through the workflow produces both a working feature and a set of reusable artifacts — prompts and skills — that make the next iteration faster.
 
-The nonogram puzzle SPA we walk through here is the vehicle, not the destination. It demonstrates that the loop works on any codebase, any domain, any team. The reusable assets accumulate across projects.
+The nonogram puzzle SPA we walk through here is the vehicle, not the destination. It demonstrates that the workflow works on any codebase, any domain, any team. The reusable assets accumulate across projects.
 
 What makes this pattern compelling is the compounding return. The first time a team encodes "how we add a page" as a skill, it costs a few minutes. Every subsequent developer who invokes that skill gets the benefit of accumulated conventions, skips the wrong turns, and ships consistent code — without a senior developer in the loop.
 
 ---
 
-## How It Works: The Agent Dev Loop
+## How It Works: Repo to Feature
 
 ### What It Does
 
-Copilot agent mode in VS Code supports a set of slash commands and customization files that turn Copilot into a project-aware collaborator.[^1] The agent dev loop chains five of these capabilities into a repeatable workflow that takes a developer from "I just cloned this repo" to "I have a merged, risk-reviewed feature."
+Copilot agent mode in VS Code supports a set of slash commands and customization files that turn Copilot into a project-aware collaborator.[^1] The repo-to-feature workflow chains five of these capabilities into a repeatable workflow that takes a developer from "I just cloned this repo" to "I have a merged, risk-reviewed feature."
 
 ### Key Capabilities
 
@@ -84,7 +84,7 @@ Copilot agent mode in VS Code supports a set of slash commands and customization
 
 ### Architecture Overview
 
-The loop has a natural sequence: context first, then evaluation, then tooling, then planning, then implementation. Each step feeds the next. The `AGENTS.md` generated during initialization improves every subsequent interaction. The prompts and skills created during feature work accumulate into a growing team toolkit.
+The workflow has a natural sequence: context first, then evaluation, then tooling, then planning, then implementation. Each step feeds the next. The `AGENTS.md` generated during initialization improves every subsequent interaction. The prompts and skills created during feature work accumulate into a growing team toolkit.
 
 All artifacts live in the repo. Prompts go in `.github/prompts/`. Skills live in `.github/skills/`. Plans are Markdown files committed alongside code. The entire workflow is version-controlled and shareable.[^3]
 
@@ -202,7 +202,7 @@ A vague ticket is a trap. "Puzzles don't show me what I've done wrong, only a 'k
 Ask Copilot to generate the prompt file:
 
 ```
-/create-prompt this prompt should evaluate a bug or issue or feature request
+/create-prompt build a prompt that evaluates a bug or issue or feature request
 for completeness and correctness.
 ```
 
@@ -263,7 +263,7 @@ Issue to evaluate:
 /evaluate-issue "Puzzles don't show me what I've done wrong, only a 'keep trying' message."
 ```
 
-Copilot responds with a structured evaluation — in this case identifying that the issue is missing expected behavior (what feedback *should* appear instead), reproduction steps, and severity. Those gaps go back to the reporter as specific questions, before a developer touches any code.
+Copilot responds with a structured evaluation — in this case identifying that the issue is missing expected behavior (what feedback the reporter expects to see instead), reproduction steps, and severity. Those gaps go back to the reporter as specific questions, before a developer touches any code.
 
 The pattern generalizes. This same prompt works for any issue in any project. The team doesn't carry the checklist in their heads — it's encoded in the file.
 
@@ -391,8 +391,8 @@ Each letter maps to a unique, deterministic puzzle generated from the letter's s
 ~8 files touched, ~200 lines net new code
 
 ## Open questions
-- Should invalid letter params (e.g., `/puzzle/alpha/1`) show an error page or redirect?
-- Should completed alphabet puzzles persist to localStorage?
+- Do invalid letter params (e.g., `/puzzle/alpha/1`) show an error page or redirect?
+- Do completed alphabet puzzles persist to localStorage?
 ```
 
 A plan like this makes the implementation reviewable before it starts. Any developer on the team can read it and flag issues — which is exactly the next step.
@@ -477,13 +477,13 @@ Running `/review-plan` against the alphabet puzzle plan above produces:
 **Recommendation:** No-go on current plan.
 **Rationale:** The determinism algorithm must be specified before Tasks 2–5 can be implemented correctly — resolving it now avoids rework across all downstream tasks.
 
-This is the loop's guard rail. The plan gets updated, the determinism question gets answered, and *then* implementation starts with confidence.
+This is the workflow's guard rail. The plan gets updated, the determinism question gets answered, and *then* implementation starts with confidence.
 
 ---
 
 ## 🎯 Mental Model Shift
 
-> **The Core Insight:** The agent dev loop's real output isn't the feature — it's the growing toolkit of prompts, skills, and plans that make every future feature faster and more consistent.
+> **The Core Insight:** The repo-to-feature workflow's real output isn't the feature — it's the growing toolkit of prompts, skills, and plans that make every future feature faster and more consistent.
 
 ### Move Toward (Embrace These Patterns)
 
@@ -543,7 +543,7 @@ Q: Does the feature follow a pattern used before?
 
 ### Comparison with Related Approaches
 
-| Aspect | Agent Dev Loop | Ad-hoc Copilot Chat | GitHub Copilot Coding Agent |
+| Aspect | Repo to Feature | Ad-hoc Copilot Chat | GitHub Copilot Coding Agent |
 |--------|---------------|---------------------|------------------------------|
 | **Best For** | Feature work on a known codebase | Exploration, one-off tasks | Issue-to-PR automation on simple, well-specified tasks |
 | **Key Asset** | Accumulated prompt/skill library | None (ephemeral) | GitHub Actions workflows |
@@ -559,25 +559,25 @@ Q: Does the feature follow a pattern used before?
 
 **Before:** A new developer spent the first week asking teammates "where does X go?" and "what's the naming convention for Y?" — interrupting others and shipping code that failed review for style violations.
 
-**With the loop:** Workspace analysis generates `AGENTS.md` on day one. Copilot answers convention questions inline. The first PR passes review on conventions; reviewers focus on logic, not style. **First merged PR: down from 5 days to 2.**
+**With the workflow:** Workspace analysis generates `AGENTS.md` on day one. Copilot answers convention questions inline. The first PR passes review on conventions; reviewers focus on logic, not style. **First merged PR: down from 5 days to 2.**
 
 ### Use Case 2: Taming a Backlog of Vague Tickets
 
 **Before:** A backlog of 40 tickets had 15 with incomplete information. Developers kept starting work, hitting gaps, and context-switching back to the reporter.
 
-**With the loop:** The `/evaluate-issue` prompt runs against each ticket in a batch. The 15 incomplete tickets are flagged with specific missing fields. Reporters fill the gaps in one pass. **Mid-sprint context switches from incomplete tickets: eliminated.**
+**With the workflow:** The `/evaluate-issue` prompt runs against each ticket in a batch. The 15 incomplete tickets are flagged with specific missing fields. Reporters fill the gaps in one pass. **Mid-sprint context switches from incomplete tickets: eliminated.**
 
 ### Use Case 3: Accelerating a Complex Feature
 
 **Before:** A developer estimated 3 days for a complex navigation feature. Midway through, they discovered an unresolved architectural question that required a design review, adding 2 days.
 
-**With the loop:** `/plan` surfaces the architectural question before implementation. The design review happens on the plan, not on partially-written code. **Architectural rework eliminated; feature shipped on the original estimate.**
+**With the workflow:** `/plan` surfaces the architectural question before implementation. The design review happens on the plan, not on partially-written code. **Architectural rework eliminated; feature shipped on the original estimate.**
 
 ### Use Case 4: Scaling a Skill Library
 
 **Before:** Three developers on a team each solved "add a new page" differently. Code review caught the inconsistencies, but added back-and-forth. A standards document existed but wasn't followed.
 
-**With the loop:** `/create-skill` turns the standard into the path of least resistance. All three developers invoke the same skill. **Page creation consistency: 100% the following sprint; structural review comments: zero.**
+**With the workflow:** `/create-skill` turns the standard into the path of least resistance. All three developers invoke the same skill. **Page creation consistency: 100% the following sprint; structural review comments: zero.**
 
 ---
 
@@ -607,9 +607,10 @@ Q: Does the feature follow a pattern used before?
 
 ## Related Patterns
 
-- **[The Agentic Journey](../agentic-journey/README.md)** — The GitHub Actions / PR automation complement to this talk: where the agent dev loop covers the VS Code interactive workflow, the Agentic Journey covers the async CI pipeline that picks up after a PR is opened
+- **[Unattended Agents](../unattended-agents/)** — The other half of Agents at Your Keyboard: this talk keeps you at every step of one feature; Unattended Agents runs a bounded loop on a schedule and hands you the result. The prompts and skills built here are what such a loop runs.
+- **[The Agentic Journey](../agentic-journey/README.md)** — The GitHub Actions / PR automation complement to this talk: where repo-to-feature covers the VS Code interactive workflow, the Agentic Journey covers the async CI pipeline that picks up after a PR is opened
 - **[Agent Architecture](../agent-architecture/README.md)** — How the underlying Copilot agent processes context, manages the conversation window, and selects tools — useful background for understanding why `AGENTS.md` quality directly affects suggestion accuracy
-- **[MCP Servers](../mcp-servers/README.md)** — Extending the loop with external tools: if skills encode team patterns, MCP servers encode external capabilities (databases, APIs, monitoring systems)
+- **[MCP Servers](../mcp-servers/README.md)** — Extending the workflow with external tools: if skills encode team patterns, MCP servers encode external capabilities (databases, APIs, monitoring systems)
 
 ---
 

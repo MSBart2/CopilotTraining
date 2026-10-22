@@ -7,7 +7,7 @@ level: applied
 duration: 40
 format: core-talk
 decision: "What repository work is bounded enough to delegate through GitHub?"
-prerequisites: [agent-dev-loop]
+prerequisites: [repo-to-feature]
 related: [agentic-lifecycle, pr-trust-stack]
 references:
   - url: https://code.visualstudio.com/docs/copilot/copilot-coding-agent
@@ -354,7 +354,7 @@ The auth is broken. Please fix it.
 
 ### Context
 - [Link to migration guide, related issue, or reference implementation]
-- [Relevant source files the agent should study first]
+- [Relevant source files for the agent to study first]
 
 ### Constraints
 - [Coding patterns to follow]

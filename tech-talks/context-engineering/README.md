@@ -9,7 +9,7 @@ duration: 55
 format: core-talk
 decision: "Where should Copilot context live, how should it be encoded, and how do we verify it was used?"
 prerequisites: [surfaces]
-related: [agent-dev-loop, copilot-hooks, enterprise-patterns]
+related: [repo-to-feature, copilot-hooks, enterprise-patterns]
 references:
   - url: https://code.visualstudio.com/docs/copilot/customization/custom-instructions
     label: "Use custom instructions in VS Code"
@@ -417,7 +417,7 @@ Choose one candidate task from the current repository where Copilot repeatedly m
 
 ## Related Patterns
 
-- **Agent Dev Loop:** Turns a verified solution into reusable team capability.
+- **From Repo to Feature:** Turns a verified solution into reusable team capability.
 - **Copilot Hooks:** Adds executable policy at tool boundaries where instructions alone are insufficient.
 - **Enterprise Patterns:** Governs ownership and rollout across repositories.
 - **Copilot with Foundry:** Fits organizational knowledge that exceeds repository context and needs a governed retrieval boundary.

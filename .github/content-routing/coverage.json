@@ -13,7 +13,7 @@
       "signals": ["visual studio code", "vs code", "agents window", "browser tools", "agent host protocol", "open source ai editor"],
       "talks": [
         { "talk": "vscode-latest", "role": "explains", "obligation": "Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model." },
-        { "talk": "agent-dev-loop", "role": "depends", "obligation": "Keep the end-to-end VS Code agent workflow and demos executable." },
+        { "talk": "repo-to-feature", "role": "depends", "obligation": "Keep the end-to-end VS Code agent workflow and demos executable." },
         { "talk": "copilot-chat-internals", "role": "depends", "obligation": "Keep VS Code chat debugging surfaces and diagnostics accurate." },
         { "talk": "copilot-primitives", "role": "depends", "obligation": "Keep VS Code customization discovery and configuration behavior accurate." }
       ]

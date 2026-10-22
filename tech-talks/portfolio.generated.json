@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T03:29:41.086Z",
+  "generatedAt": "2026-10-22T21:40:39.221Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -86,70 +86,6 @@
   "redirectErrors": [],
   "talks": [
     {
-      "slug": "agent-dev-loop",
-      "title": "The Agent Dev Loop: From Repo to Feature with Copilot in VS Code",
-      "status": "active",
-      "portfolioState": "deployed",
-      "updated": "2026-09-16",
-      "section": "Agents at Your Keyboard",
-      "audience": [
-        "developer",
-        "team-lead"
-      ],
-      "level": "applied",
-      "duration": 45,
-      "format": "core-talk",
-      "decision": "How does completed work become reusable team capability?",
-      "prerequisites": [
-        "copilot-primitives"
-      ],
-      "related": [
-        "copilot-web",
-        "multi-agent-coordination"
-      ],
-      "deckSection": "Agents at Your Keyboard",
-      "cataloged": true,
-      "files": {
-        "readme": {
-          "path": "tech-talks/agent-dev-loop/README.md",
-          "exists": true,
-          "bytes": 32789,
-          "modified": "2026-10-21T15:46:27.139Z"
-        },
-        "recipe": {
-          "path": "tech-talks/agent-dev-loop/deck.recipe.yml",
-          "exists": true,
-          "bytes": 6376,
-          "modified": "2026-08-10T14:24:34.616Z"
-        },
-        "deck": {
-          "path": "slides/tech-talks/agent-dev-loop.md",
-          "exists": true,
-          "bytes": 31619,
-          "modified": "2026-09-16T01:01:24.021Z"
-        },
-        "agendaMarkdown": {
-          "path": "slides/companions/tech-talks/agent-dev-loop/agenda.md",
-          "exists": true,
-          "bytes": 400,
-          "modified": "2026-09-16T13:40:51.096Z"
-        },
-        "agendaHtml": {
-          "path": "slides/companions/tech-talks/agent-dev-loop/agenda.html",
-          "exists": true,
-          "bytes": 5894,
-          "modified": "2026-10-22T03:27:02.124Z"
-        },
-        "deckPdf": {
-          "path": "slides/companions/tech-talks/agent-dev-loop/deck.pdf",
-          "exists": true,
-          "bytes": 2421817,
-          "modified": "2026-10-05T17:12:17.087Z"
-        }
-      },
-      "errors": []
-    },
-    {
       "slug": "agent-teams",
       "title": "Building Agent Systems: Subagents, Teams, and Autonomous Execution",
       "status": "archived",
@@ -166,10 +102,10 @@
       "format": "core-talk",
       "decision": "When should work be split among specialized agents?",
       "prerequisites": [
-        "agent-dev-loop"
+        "repo-to-feature"
       ],
       "related": [
-        "loopy-agents",
+        "unattended-agents",
         "copilot-app",
         "agentic-sdlc"
       ],
@@ -179,8 +115,8 @@
         "readme": {
           "path": "tech-talks/agent-teams/README.md",
           "exists": true,
-          "bytes": 44740,
-          "modified": "2026-09-16T14:24:26.068Z"
+          "bytes": 44746,
+          "modified": "2026-10-22T21:29:46.569Z"
         },
         "recipe": {
           "path": "tech-talks/agent-teams/deck.recipe.yml",
@@ -232,7 +168,7 @@
       "format": "core-talk",
       "decision": "How should an issue move through intake, planning, coding, and review?",
       "prerequisites": [
-        "agent-dev-loop",
+        "repo-to-feature",
         "copilot-web"
       ],
       "related": [
@@ -245,8 +181,8 @@
         "readme": {
           "path": "tech-talks/agentic-journey/README.md",
           "exists": true,
-          "bytes": 36017,
-          "modified": "2026-09-16T01:01:24.020Z"
+          "bytes": 36018,
+          "modified": "2026-10-22T21:29:46.572Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-journey/deck.recipe.yml",
@@ -283,10 +219,10 @@
     },
     {
       "slug": "agentic-lifecycle",
-      "title": "GitHub Agentic Workflows: Reviewable Contracts for Repository Judgment Work",
+      "title": "GitHub Agentic Workflows: Automate the Repository Chores That Take Judgment",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-21",
+      "updated": "2026-10-22",
       "section": "Agents on GitHub",
       "audience": [
         "platform-engineer",
@@ -296,7 +232,7 @@
       "level": "advanced",
       "duration": 55,
       "format": "core-talk",
-      "decision": "Which recurring repository work should become an agentic workflow, and what authority does each workflow need?",
+      "decision": "Which repository chores fit an agent, and how do you keep it in bounds?",
       "prerequisites": [
         "copilot-primitives"
       ],
@@ -311,38 +247,38 @@
         "readme": {
           "path": "tech-talks/agentic-lifecycle/README.md",
           "exists": true,
-          "bytes": 24103,
-          "modified": "2026-10-21T20:37:09.329Z"
+          "bytes": 57759,
+          "modified": "2026-10-22T19:15:00.462Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-lifecycle/deck.recipe.yml",
           "exists": true,
-          "bytes": 8008,
-          "modified": "2026-10-21T20:37:50.038Z"
+          "bytes": 7820,
+          "modified": "2026-10-22T19:17:11.410Z"
         },
         "deck": {
           "path": "slides/tech-talks/agentic-lifecycle.md",
           "exists": true,
-          "bytes": 30622,
-          "modified": "2026-10-21T21:00:50.160Z"
+          "bytes": 78619,
+          "modified": "2026-10-22T18:54:08.420Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/agentic-lifecycle/agenda.md",
           "exists": true,
-          "bytes": 461,
-          "modified": "2026-10-21T21:04:28.713Z"
+          "bytes": 397,
+          "modified": "2026-10-22T19:00:14.396Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/agentic-lifecycle/agenda.html",
           "exists": true,
-          "bytes": 5950,
-          "modified": "2026-10-22T03:27:02.136Z"
+          "bytes": 5887,
+          "modified": "2026-10-22T19:00:14.400Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-lifecycle/deck.pdf",
           "exists": true,
-          "bytes": 2303190,
-          "modified": "2026-10-21T21:05:14.420Z"
+          "bytes": 3240048,
+          "modified": "2026-10-22T19:02:04.713Z"
         }
       },
       "errors": []
@@ -369,7 +305,7 @@
       "related": [
         "copilot-hooks",
         "enterprise-patterns",
-        "loopy-agents"
+        "unattended-agents"
       ],
       "deckSection": "Trust and Govern",
       "cataloged": true,
@@ -377,8 +313,8 @@
         "readme": {
           "path": "tech-talks/agentic-sdlc/README.md",
           "exists": true,
-          "bytes": 79383,
-          "modified": "2026-10-21T21:04:28.751Z"
+          "bytes": 79388,
+          "modified": "2026-10-22T21:29:46.564Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-sdlc/deck.recipe.yml",
@@ -498,7 +434,7 @@
         "surfaces"
       ],
       "related": [
-        "agent-dev-loop",
+        "repo-to-feature",
         "copilot-hooks",
         "enterprise-patterns"
       ],
@@ -508,8 +444,8 @@
         "readme": {
           "path": "tech-talks/context-engineering/README.md",
           "exists": true,
-          "bytes": 23581,
-          "modified": "2026-09-17T13:31:43.818Z"
+          "bytes": 23588,
+          "modified": "2026-10-22T21:29:46.558Z"
         },
         "recipe": {
           "path": "tech-talks/context-engineering/deck.recipe.yml",
@@ -559,7 +495,7 @@
       "level": "advanced",
       "duration": 45,
       "format": "core-talk",
-      "decision": "When should an external client connect to a Copilot agent?",
+      "decision": "When is an external client the right way to reach a Copilot agent?",
       "prerequisites": [
         "copilot-sdk"
       ],
@@ -573,8 +509,8 @@
         "readme": {
           "path": "tech-talks/copilot-acp/README.md",
           "exists": true,
-          "bytes": 20025,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 20033,
+          "modified": "2026-10-22T19:18:37.807Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-acp/deck.recipe.yml",
@@ -630,7 +566,7 @@
       ],
       "related": [
         "agent-teams",
-        "loopy-agents"
+        "unattended-agents"
       ],
       "deckSection": "Delegate and Coordinate",
       "cataloged": false,
@@ -638,8 +574,8 @@
         "readme": {
           "path": "tech-talks/copilot-app/README.md",
           "exists": true,
-          "bytes": 33012,
-          "modified": "2026-09-16T14:24:26.068Z"
+          "bytes": 33017,
+          "modified": "2026-10-22T21:29:46.537Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-app/deck.recipe.yml",
@@ -689,7 +625,7 @@
       "level": "applied",
       "duration": 45,
       "format": "case-study",
-      "decision": "How should agents act on live domain state with least-privilege authority?",
+      "decision": "How can agents act on live domain state with least-privilege authority?",
       "prerequisites": [
         "copilot-cli"
       ],
@@ -703,20 +639,20 @@
         "readme": {
           "path": "tech-talks/copilot-azure-mcp/README.md",
           "exists": true,
-          "bytes": 60651,
-          "modified": "2026-10-21T21:04:28.756Z"
+          "bytes": 60638,
+          "modified": "2026-10-22T19:19:06.991Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-azure-mcp/deck.recipe.yml",
           "exists": true,
-          "bytes": 9328,
-          "modified": "2026-08-10T14:25:09.659Z"
+          "bytes": 9334,
+          "modified": "2026-10-22T19:19:06.994Z"
         },
         "deck": {
           "path": "slides/tech-talks/copilot-azure-mcp.md",
           "exists": true,
-          "bytes": 28030,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 28006,
+          "modified": "2026-10-22T19:15:48.985Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-azure-mcp/agenda.md",
@@ -832,8 +768,8 @@
         "readme": {
           "path": "tech-talks/copilot-cli/README.md",
           "exists": true,
-          "bytes": 73909,
-          "modified": "2026-10-21T15:46:26.954Z"
+          "bytes": 73922,
+          "modified": "2026-10-22T19:19:07.186Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-cli/deck.recipe.yml",
@@ -1078,7 +1014,7 @@
       "level": "advanced",
       "duration": 45,
       "format": "core-talk",
-      "decision": "Which agent actions should policy allow or deny at execution time?",
+      "decision": "Which agent actions does policy allow or deny at execution time?",
       "prerequisites": [
         "copilot-primitives"
       ],
@@ -1093,8 +1029,8 @@
         "readme": {
           "path": "tech-talks/copilot-hooks/README.md",
           "exists": true,
-          "bytes": 59344,
-          "modified": "2026-10-21T15:46:27.842Z"
+          "bytes": 59311,
+          "modified": "2026-10-22T19:19:07.211Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-hooks/deck.recipe.yml",
@@ -1273,7 +1209,7 @@
       "level": "applied",
       "duration": 25,
       "format": "core-talk",
-      "decision": "How should Copilot extensions and configuration be packaged and distributed?",
+      "decision": "How can teams package and distribute Copilot extensions and configuration?",
       "prerequisites": [
         "copilot-primitives"
       ],
@@ -1287,14 +1223,14 @@
         "readme": {
           "path": "tech-talks/copilot-plugins/README.md",
           "exists": true,
-          "bytes": 27555,
-          "modified": "2026-09-16T01:01:24.020Z"
+          "bytes": 27539,
+          "modified": "2026-10-22T19:19:07.119Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-plugins/deck.recipe.yml",
           "exists": true,
-          "bytes": 5118,
-          "modified": "2026-08-11T15:36:11.576Z"
+          "bytes": 5115,
+          "modified": "2026-10-22T19:19:07.072Z"
         },
         "deck": {
           "path": "slides/tech-talks/copilot-plugins.md",
@@ -1338,12 +1274,12 @@
       "level": "foundational",
       "duration": 50,
       "format": "core-talk",
-      "decision": "How should shared Copilot behavior be encoded?",
+      "decision": "Which primitive best encodes each piece of shared Copilot behavior?",
       "prerequisites": [
         "surfaces"
       ],
       "related": [
-        "agent-dev-loop",
+        "repo-to-feature",
         "copilot-hooks",
         "enterprise-patterns"
       ],
@@ -1353,8 +1289,8 @@
         "readme": {
           "path": "tech-talks/copilot-primitives/README.md",
           "exists": true,
-          "bytes": 41000,
-          "modified": "2026-10-21T23:05:58.884Z"
+          "bytes": 41017,
+          "modified": "2026-10-22T21:29:46.546Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-primitives/deck.recipe.yml",
@@ -1365,8 +1301,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-primitives.md",
           "exists": true,
-          "bytes": 36349,
-          "modified": "2026-09-17T13:31:43.815Z"
+          "bytes": 36334,
+          "modified": "2026-10-22T19:15:49.132Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.md",
@@ -1404,7 +1340,7 @@
       "level": "advanced",
       "duration": 45,
       "format": "core-talk",
-      "decision": "When should an application own the agent runtime?",
+      "decision": "When does an application own the agent runtime?",
       "prerequisites": [
         "surfaces"
       ],
@@ -1419,8 +1355,8 @@
         "readme": {
           "path": "tech-talks/copilot-sdk/README.md",
           "exists": true,
-          "bytes": 51448,
-          "modified": "2026-09-16T14:24:26.069Z"
+          "bytes": 51438,
+          "modified": "2026-10-22T19:19:38.156Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-sdk/deck.recipe.yml",
@@ -1471,7 +1407,7 @@
       "format": "core-talk",
       "decision": "What repository work is bounded enough to delegate through GitHub?",
       "prerequisites": [
-        "agent-dev-loop"
+        "repo-to-feature"
       ],
       "related": [
         "agentic-lifecycle",
@@ -1483,14 +1419,14 @@
         "readme": {
           "path": "tech-talks/copilot-web/README.md",
           "exists": true,
-          "bytes": 45796,
-          "modified": "2026-10-21T15:46:27.439Z"
+          "bytes": 45797,
+          "modified": "2026-10-22T21:29:46.580Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-web/deck.recipe.yml",
           "exists": true,
-          "bytes": 8295,
-          "modified": "2026-08-11T13:32:00.535Z"
+          "bytes": 8288,
+          "modified": "2026-10-22T19:20:11.459Z"
         },
         "deck": {
           "path": "slides/tech-talks/copilot-web.md",
@@ -1548,8 +1484,8 @@
         "readme": {
           "path": "tech-talks/copilot-with-foundry/README.md",
           "exists": true,
-          "bytes": 37537,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 37536,
+          "modified": "2026-10-22T19:20:11.559Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-with-foundry/deck.recipe.yml",
@@ -1560,8 +1496,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-with-foundry.md",
           "exists": true,
-          "bytes": 25170,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 25168,
+          "modified": "2026-10-22T19:15:49.029Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-with-foundry/agenda.md",
@@ -1599,7 +1535,7 @@
       "level": "applied",
       "duration": 45,
       "format": "core-talk",
-      "decision": "How should a team design one custom agent that behaves the way it intends in every runtime it reaches?",
+      "decision": "How can a team design one custom agent that behaves the way it intends in every runtime it reaches?",
       "prerequisites": [
         "copilot-primitives"
       ],
@@ -1615,8 +1551,8 @@
         "readme": {
           "path": "tech-talks/custom-agents/README.md",
           "exists": true,
-          "bytes": 22786,
-          "modified": "2026-10-22T03:09:46.910Z"
+          "bytes": 22762,
+          "modified": "2026-10-22T19:20:11.738Z"
         },
         "recipe": {
           "path": "tech-talks/custom-agents/deck.recipe.yml",
@@ -1627,20 +1563,20 @@
         "deck": {
           "path": "slides/tech-talks/custom-agents.md",
           "exists": true,
-          "bytes": 42502,
-          "modified": "2026-10-22T03:11:13.954Z"
+          "bytes": 42482,
+          "modified": "2026-10-22T19:15:49.146Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/custom-agents/agenda.md",
           "exists": true,
           "bytes": 407,
-          "modified": "2026-10-22T01:36:30.449Z"
+          "modified": "2026-10-22T03:29:51.978Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/custom-agents/agenda.html",
           "exists": true,
           "bytes": 5896,
-          "modified": "2026-10-22T03:27:02.189Z"
+          "modified": "2026-10-22T03:29:52.066Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/custom-agents/deck.pdf",
@@ -1667,7 +1603,7 @@
       "level": "strategic",
       "duration": 60,
       "format": "core-talk",
-      "decision": "How should organizations standardize, govern, and measure Copilot adoption?",
+      "decision": "How can organizations standardize, govern, and measure Copilot adoption?",
       "prerequisites": [],
       "related": [
         "copilot-hooks",
@@ -1680,14 +1616,14 @@
         "readme": {
           "path": "tech-talks/enterprise-patterns/README.md",
           "exists": true,
-          "bytes": 62860,
-          "modified": "2026-10-21T21:04:28.762Z"
+          "bytes": 62858,
+          "modified": "2026-10-22T19:20:11.603Z"
         },
         "recipe": {
           "path": "tech-talks/enterprise-patterns/deck.recipe.yml",
           "exists": true,
-          "bytes": 6753,
-          "modified": "2026-08-11T13:02:42.435Z"
+          "bytes": 6754,
+          "modified": "2026-10-22T19:19:07.007Z"
         },
         "deck": {
           "path": "slides/tech-talks/enterprise-patterns.md",
@@ -1747,8 +1683,8 @@
         "readme": {
           "path": "tech-talks/local-agentic-sdlc/README.md",
           "exists": true,
-          "bytes": 20209,
-          "modified": "2026-10-22T03:26:40.599Z"
+          "bytes": 21461,
+          "modified": "2026-10-22T21:40:14.730Z"
         },
         "recipe": {
           "path": "tech-talks/local-agentic-sdlc/deck.recipe.yml",
@@ -1759,8 +1695,8 @@
         "deck": {
           "path": "slides/tech-talks/local-agentic-sdlc.md",
           "exists": true,
-          "bytes": 42245,
-          "modified": "2026-10-22T03:25:10.749Z"
+          "bytes": 42244,
+          "modified": "2026-10-22T19:15:49.036Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/local-agentic-sdlc/agenda.md",
@@ -1779,72 +1715,6 @@
           "exists": true,
           "bytes": 2425261,
           "modified": "2026-10-22T03:29:15.705Z"
-        }
-      },
-      "errors": []
-    },
-    {
-      "slug": "loopy-agents",
-      "title": "Loop Engineering: Designing Agent Systems That Run Reliably",
-      "status": "active",
-      "portfolioState": "deployed",
-      "updated": "2026-09-16",
-      "section": "Agents at Your Keyboard",
-      "audience": [
-        "platform-engineer",
-        "architect",
-        "security"
-      ],
-      "level": "advanced",
-      "duration": 45,
-      "format": "core-talk",
-      "decision": "How should an autonomous loop verify progress and stop safely?",
-      "prerequisites": [
-        "agent-teams"
-      ],
-      "related": [
-        "agentic-lifecycle",
-        "copilot-hooks",
-        "agentic-sdlc"
-      ],
-      "deckSection": "Agents at Your Keyboard",
-      "cataloged": true,
-      "files": {
-        "readme": {
-          "path": "tech-talks/loopy-agents/README.md",
-          "exists": true,
-          "bytes": 59591,
-          "modified": "2026-10-21T21:04:28.768Z"
-        },
-        "recipe": {
-          "path": "tech-talks/loopy-agents/deck.recipe.yml",
-          "exists": true,
-          "bytes": 7734,
-          "modified": "2026-08-10T14:25:42.667Z"
-        },
-        "deck": {
-          "path": "slides/tech-talks/loopy-agents.md",
-          "exists": true,
-          "bytes": 28221,
-          "modified": "2026-09-16T01:01:24.021Z"
-        },
-        "agendaMarkdown": {
-          "path": "slides/companions/tech-talks/loopy-agents/agenda.md",
-          "exists": true,
-          "bytes": 383,
-          "modified": "2026-09-16T13:46:31.181Z"
-        },
-        "agendaHtml": {
-          "path": "slides/companions/tech-talks/loopy-agents/agenda.html",
-          "exists": true,
-          "bytes": 5877,
-          "modified": "2026-10-22T03:27:02.209Z"
-        },
-        "deckPdf": {
-          "path": "slides/companions/tech-talks/loopy-agents/deck.pdf",
-          "exists": true,
-          "bytes": 2053042,
-          "modified": "2026-09-16T14:14:52.938Z"
         }
       },
       "errors": []
@@ -1883,8 +1753,8 @@
         "recipe": {
           "path": "tech-talks/mcp-apps/deck.recipe.yml",
           "exists": true,
-          "bytes": 6463,
-          "modified": "2026-08-10T14:25:42.676Z"
+          "bytes": 6457,
+          "modified": "2026-10-22T19:20:11.462Z"
         },
         "deck": {
           "path": "slides/tech-talks/mcp-apps.md",
@@ -1929,12 +1799,12 @@
       "level": "advanced",
       "duration": 55,
       "format": "core-talk",
-      "decision": "When should work be split across agents, and how should isolated workstreams be steered and integrated?",
+      "decision": "When does work split across agents, and how do teams steer and integrate isolated workstreams?",
       "prerequisites": [
-        "agent-dev-loop"
+        "repo-to-feature"
       ],
       "related": [
-        "agent-dev-loop",
+        "repo-to-feature",
         "agentic-lifecycle",
         "agentic-sdlc",
         "copilot-primitives"
@@ -1945,8 +1815,8 @@
         "readme": {
           "path": "tech-talks/multi-agent-coordination/README.md",
           "exists": true,
-          "bytes": 26256,
-          "modified": "2026-10-21T21:04:28.773Z"
+          "bytes": 26170,
+          "modified": "2026-10-22T21:30:14.111Z"
         },
         "recipe": {
           "path": "tech-talks/multi-agent-coordination/deck.recipe.yml",
@@ -1957,8 +1827,8 @@
         "deck": {
           "path": "slides/tech-talks/multi-agent-coordination.md",
           "exists": true,
-          "bytes": 24810,
-          "modified": "2026-09-16T14:24:26.070Z"
+          "bytes": 24813,
+          "modified": "2026-10-22T19:15:49.006Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/multi-agent-coordination/agenda.md",
@@ -2049,6 +1919,71 @@
       "errors": []
     },
     {
+      "slug": "repo-to-feature",
+      "title": "From Repo to Feature: Building Team Tools as You Go",
+      "status": "active",
+      "portfolioState": "deployed",
+      "updated": "2026-10-22",
+      "section": "Agents at Your Keyboard",
+      "audience": [
+        "developer",
+        "team-lead"
+      ],
+      "level": "applied",
+      "duration": 45,
+      "format": "core-talk",
+      "decision": "How does completed work become reusable team capability?",
+      "prerequisites": [
+        "copilot-primitives"
+      ],
+      "related": [
+        "unattended-agents",
+        "copilot-web",
+        "multi-agent-coordination"
+      ],
+      "deckSection": "Agents at Your Keyboard",
+      "cataloged": true,
+      "files": {
+        "readme": {
+          "path": "tech-talks/repo-to-feature/README.md",
+          "exists": true,
+          "bytes": 33166,
+          "modified": "2026-10-22T21:30:23.692Z"
+        },
+        "recipe": {
+          "path": "tech-talks/repo-to-feature/deck.recipe.yml",
+          "exists": true,
+          "bytes": 6410,
+          "modified": "2026-10-22T21:29:19.392Z"
+        },
+        "deck": {
+          "path": "slides/tech-talks/repo-to-feature.md",
+          "exists": true,
+          "bytes": 31661,
+          "modified": "2026-10-22T21:30:23.780Z"
+        },
+        "agendaMarkdown": {
+          "path": "slides/companions/tech-talks/repo-to-feature/agenda.md",
+          "exists": true,
+          "bytes": 414,
+          "modified": "2026-10-22T21:31:52.663Z"
+        },
+        "agendaHtml": {
+          "path": "slides/companions/tech-talks/repo-to-feature/agenda.html",
+          "exists": true,
+          "bytes": 5908,
+          "modified": "2026-10-22T21:31:52.667Z"
+        },
+        "deckPdf": {
+          "path": "slides/companions/tech-talks/repo-to-feature/deck.pdf",
+          "exists": true,
+          "bytes": 2429431,
+          "modified": "2026-10-22T21:33:41.879Z"
+        }
+      },
+      "errors": []
+    },
+    {
       "slug": "surfaces",
       "title": "Which Copilot Where? A Practical Surface Router",
       "status": "active",
@@ -2077,8 +2012,8 @@
         "readme": {
           "path": "tech-talks/surfaces/README.md",
           "exists": true,
-          "bytes": 34022,
-          "modified": "2026-10-21T15:46:26.796Z"
+          "bytes": 34013,
+          "modified": "2026-10-22T21:29:46.551Z"
         },
         "recipe": {
           "path": "tech-talks/surfaces/deck.recipe.yml",
@@ -2089,8 +2024,8 @@
         "deck": {
           "path": "slides/tech-talks/surfaces.md",
           "exists": true,
-          "bytes": 26388,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 26380,
+          "modified": "2026-10-22T19:15:49.109Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/surfaces/agenda.md",
@@ -2109,6 +2044,73 @@
           "exists": true,
           "bytes": 2105832,
           "modified": "2026-09-16T14:16:07.970Z"
+        }
+      },
+      "errors": []
+    },
+    {
+      "slug": "unattended-agents",
+      "title": "Unattended Agents: Loops That Run Without You and Stop on Their Own Terms",
+      "status": "active",
+      "portfolioState": "deployed",
+      "updated": "2026-10-22",
+      "section": "Agents at Your Keyboard",
+      "audience": [
+        "platform-engineer",
+        "architect",
+        "security"
+      ],
+      "level": "advanced",
+      "duration": 45,
+      "format": "core-talk",
+      "decision": "How does an unattended agent loop verify progress and stop safely?",
+      "prerequisites": [
+        "agent-teams"
+      ],
+      "related": [
+        "repo-to-feature",
+        "agentic-lifecycle",
+        "copilot-hooks",
+        "agentic-sdlc"
+      ],
+      "deckSection": "Agents at Your Keyboard",
+      "cataloged": true,
+      "files": {
+        "readme": {
+          "path": "tech-talks/unattended-agents/README.md",
+          "exists": true,
+          "bytes": 62376,
+          "modified": "2026-10-22T21:30:14.116Z"
+        },
+        "recipe": {
+          "path": "tech-talks/unattended-agents/deck.recipe.yml",
+          "exists": true,
+          "bytes": 7968,
+          "modified": "2026-10-22T21:29:19.407Z"
+        },
+        "deck": {
+          "path": "slides/tech-talks/unattended-agents.md",
+          "exists": true,
+          "bytes": 26697,
+          "modified": "2026-10-22T21:29:19.416Z"
+        },
+        "agendaMarkdown": {
+          "path": "slides/companions/tech-talks/unattended-agents/agenda.md",
+          "exists": true,
+          "bytes": 403,
+          "modified": "2026-10-22T21:33:44.904Z"
+        },
+        "agendaHtml": {
+          "path": "slides/companions/tech-talks/unattended-agents/agenda.html",
+          "exists": true,
+          "bytes": 5897,
+          "modified": "2026-10-22T21:33:44.907Z"
+        },
+        "deckPdf": {
+          "path": "slides/companions/tech-talks/unattended-agents/deck.pdf",
+          "exists": true,
+          "bytes": 1960791,
+          "modified": "2026-10-22T21:34:01.744Z"
         }
       },
       "errors": []
@@ -2133,7 +2135,7 @@
       ],
       "related": [
         "copilot-primitives",
-        "agent-dev-loop",
+        "repo-to-feature",
         "multi-agent-coordination"
       ],
       "deckSection": "Agents at Your Keyboard",
@@ -2142,20 +2144,20 @@
         "readme": {
           "path": "tech-talks/vscode-latest/README.md",
           "exists": true,
-          "bytes": 45684,
-          "modified": "2026-10-21T15:46:27.041Z"
+          "bytes": 45685,
+          "modified": "2026-10-22T21:29:46.532Z"
         },
         "recipe": {
           "path": "tech-talks/vscode-latest/deck.recipe.yml",
           "exists": true,
-          "bytes": 15636,
-          "modified": "2026-09-25T17:07:01.091Z"
+          "bytes": 15634,
+          "modified": "2026-10-22T19:20:11.616Z"
         },
         "deck": {
           "path": "slides/tech-talks/vscode-latest.md",
           "exists": true,
           "bytes": 26612,
-          "modified": "2026-09-25T17:06:53.242Z"
+          "modified": "2026-10-22T19:23:44.620Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/vscode-latest/agenda.md",

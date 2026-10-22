@@ -1,13 +1,13 @@
 ---
-title: "The Agent Dev Loop"
-subtitle: "From Repo to Feature with Copilot in VS Code"
-slug: agent-dev-loop
+title: "From Repo to Feature"
+subtitle: "Building Team Tools as You Go with Copilot in VS Code"
+slug: repo-to-feature
 category: tech-talks
 duration: 45
-updated: 2026-09-16
+updated: 2026-10-22
 ---
 
-# The Agent Dev Loop
+# From Repo to Feature
 
 Agenda (45 min)
 

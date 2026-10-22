@@ -36,7 +36,7 @@ phases:
       - workshop/01-instructions
       - workshop/02-agent-plan-mode
       - tech-talks/copilot-primitives
-      - tech-talks/agent-dev-loop
+      - tech-talks/repo-to-feature
       - tech-talks/pr-trust-stack
     exitEvidence:
       - shared_repository_instructions_exist

@@ -8,7 +8,7 @@ duration: 50
 format: release-brief
 decision: "Which recent VS Code Copilot changes alter a durable workflow decision?"
 prerequisites: [surfaces]
-related: [copilot-primitives, agent-dev-loop, multi-agent-coordination]
+related: [copilot-primitives, repo-to-feature, multi-agent-coordination]
 references:
   - url: https://code.visualstudio.com/updates/v1_139
     label: "VS Code release notes: September 23, 2026 (v1.139)"
@@ -319,7 +319,7 @@ The worktree isolation model now works across harnesses. Whether a session is ru
 The `/btw` command (v1.132) opens a side chat that runs alongside the active agent turn without pausing or interrupting it.[^5]
 
 ```
-/btw should we use the builder pattern here instead?
+/btw would the builder pattern fit better here?
 ```
 
 Use cases:
@@ -395,7 +395,7 @@ From the integrated browser toolbar you can also push page context into the prom
 - **Add Element to Chat** — include selected elements with styles and screenshots
 - **Add Console Logs to Chat** — attach runtime output for debugging
 
-Use agent browser tools when the agent should drive the page. Use Vision paste / Add-to-Chat when **you** already have the evidence and want the model to reason about it on the next turn.
+Use agent browser tools when you want the agent to drive the page. Use Vision paste / Add-to-Chat when **you** already have the evidence and want the model to reason about it on the next turn.
 
 ### Element-Specific Comments (v1.132)
 

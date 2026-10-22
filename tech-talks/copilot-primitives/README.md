@@ -6,9 +6,9 @@ audience: [developer, team-lead, platform-engineer]
 level: foundational
 duration: 50
 format: core-talk
-decision: "How should shared Copilot behavior be encoded?"
+decision: "Which primitive best encodes each piece of shared Copilot behavior?"
 prerequisites: [surfaces]
-related: [agent-dev-loop, copilot-hooks, enterprise-patterns]
+related: [repo-to-feature, copilot-hooks, enterprise-patterns]
 references:
   - url: https://code.visualstudio.com/docs/copilot/copilot-customization
     label: "Customize AI in Visual Studio Code"
@@ -78,7 +78,7 @@ references:
   Each developer gets different quality responses because they provide different context. No shared baseline.
 
 - **One-size-fits-all doesn't fit anyone**
-  Default Copilot treats a React frontend and a Python data pipeline identically. It shouldn't.
+  Default Copilot treats a React frontend and a Python data pipeline identically. Each deserves its own conventions.
 
 ### Narrative
 
@@ -108,7 +108,7 @@ GitHub Copilot supports four core configuration building blocks, and teams incre
 
 The primitives form a progressive stack. GitHub instructions are the foundation — always present, zero-effort. `AGENTS.md` complements them with a predictable place for commands, test steps, and nearest-directory workflow guidance. Custom prompts come next: that is how most developers actually work. They solve a messy task in chat, then freeze the working recipe as a `/command`. Skills are the graduation step, not the first automation — add scripts and templates only after the prompt is proven. Agents sit at the top, composing the other primitives into constrained personas.
 
-Each primitive builds on the ones below it. A prompt should link to instructions instead of copying them. A skill packages a proven prompt. An agent can inherit instructions, invoke prompts, and load skills behind a tool boundary[^3].
+Each primitive builds on the ones below it. A prompt links to instructions instead of copying them. A skill packages a proven prompt. An agent can inherit instructions, invoke prompts, and load skills behind a tool boundary[^3].
 
 ### Model and Provider Configuration Boundary
 
@@ -179,7 +179,7 @@ Use **Manage Language Models** in VS Code when the decision is which provider or
 
 - 🛑 **Over-engineering with agents first**: Start with the smallest artifact that solves the repeated problem → Add orchestration after the workflow and evidence are stable
 - 🛑 **Massive instruction files**: Keep instructions concise and scoped → Preserve context capacity for the request, relevant code, and tool results
-- 🛑 **Task-specific content in instructions**: Instructions should be general conventions, not step-by-step workflows → Use prompts for task-specific workflows instead
+- 🛑 **Task-specific content in instructions**: Keep instructions to general conventions rather than step-by-step workflows → Use prompts for task-specific workflows instead
 
 > **Example Transformation:** Before: Developer types "Add a user endpoint" and gets generic Express boilerplate with `var`, no types, and `console.log` error handling. After: Same prompt produces TypeScript endpoint with Prisma queries, custom error classes, JSDoc comments, and co-located test file — because instructions define the conventions and a prompt encodes the scaffolding workflow.
 
@@ -192,8 +192,8 @@ The primitive is only one part of the design. Before creating a file, classify t
 | Decision | Question | Example |
 |---|---|---|
 | **Owner** | Who may maintain and approve this context? | A code owner reviews repository instructions; an individual controls a personal preference |
-| **Lifetime** | How long should it remain useful? | One request, repeated task, repository lifetime, or organizational policy cycle |
-| **Selector** | Which requests should receive it? | Whole repository, matching files, explicit `/command`, relevant task, or selected agent |
+| **Lifetime** | How long does it stay useful? | One request, repeated task, repository lifetime, or organizational policy cycle |
+| **Selector** | Which requests need it? | Whole repository, matching files, explicit `/command`, relevant task, or selected agent |
 | **Evidence** | What observable signal proves success? | Loaded customization, tool trace, test result, diff, and required reviewer approval |
 
 Shared, repeated behavior proceeds into the primitive decision tree below. One-request facts stay in the request. Personal preferences stay user-controlled. Sensitive data, credentials, customer records, and production payloads stay outside prompts, memory, and repository examples.
@@ -225,11 +225,11 @@ This verification loop keeps the tutorial practical: **place the context, encode
 ```
 Q: What kind of customization do you need?
 │
-├─ "GitHub Copilot should always know our repo conventions"
+├─ "We want GitHub Copilot to always know our repo conventions"
 │  → Use: Repo Instructions (.github/copilot-instructions.md)
 │  └─ Best for: Coding standards, build procedures, repo-wide GitHub guidance
 │
-├─ "Different rules should apply to different files or folders"
+├─ "We want different rules for different files or folders"
 │  → Use: Path-specific Instructions (.instructions.md with applyTo)
 │  └─ Best for: Language-specific rules, test conventions, framework patterns
 │
@@ -237,7 +237,7 @@ Q: What kind of customization do you need?
 │  → Use: AGENTS.md
 │  └─ Best for: Monorepos, subproject playbooks, cross-agent portability
 │
-├─ "A solved workflow the team should share as a /command"
+├─ "A solved workflow we want to share as a /command"
 │  → Use: Prompts (.github/prompts/*.prompt.md)
 │  └─ Best for: Component scaffolding, code review checklists, PR templates
 │
@@ -544,7 +544,7 @@ Reach for an agent when a role needs its own tool boundary — a read-only plann
 
 ### Start Simple, Add Complexity When Needed
 
-Most teams should follow this progression:
+This progression works well for most teams:
 
 | Week | Action | Impact |
 |------|--------|--------|
@@ -719,7 +719,7 @@ For agent ecosystems that support `AGENTS.md`, the nearest file in the directory
 
 All primitives share the model's context window. This is why the progressive loading architecture matters — always-on instructions consume baseline budget, on-demand skills only load when needed, and unused agents consume nothing.
 
-**Rule of thumb**: Instructions (2 pages max) + active skill + prompt + your conversation history should fit comfortably within context. If you're hitting limits, your instructions are probably too long.
+**Rule of thumb**: Instructions (2 pages max) + active skill + prompt + your conversation history fit comfortably within context. If you're hitting limits, your instructions are probably too long.
 
 ### Tool Priority Resolution
 

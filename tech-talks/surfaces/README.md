@@ -36,9 +36,9 @@ references:
 # Which Copilot Where? A Practical Surface Router
 
 > **The Question This Talk Answers:**
-> *"Which Copilot surface fits this work, its constraints, and its desired outcome — and what capability should the team build next?"*
+> *"Which Copilot surface fits this work, its constraints, and its desired outcome — and what capability does the team build next?"*
 
-**Duration:** 45 minutes | **Target Audience:** Cross-functional teams choosing where agentic work should happen
+**Duration:** 45 minutes | **Target Audience:** Cross-functional teams choosing where agentic work happens
 
 ---
 
@@ -313,15 +313,15 @@ The scenarios below treat roles as starting context and goals as routing inputs.
 | **Product manager** | Before refining or prioritizing work in an unfamiliar repository | Evidence-backed brief and a bounded issue | **GitHub.com Chat** | **Coding agent** when the issue is ready to implement |
 | **Platform operations team** | While diagnosing infrastructure or service behavior with host-local evidence | Validated diagnosis, reproducible commands, and a remediation boundary | **Copilot CLI** | **VS Code** when remediation becomes a reviewable infrastructure change |
 | **Incident commander** | During a live service event with host-local evidence | Diagnosis, validated commands, and a clear remediation boundary | **Copilot CLI** | **VS Code** or **coding agent** once the fix becomes repository work |
-| **Security analyst** | While proving how to investigate a recurring alert | Reproducible triage steps and decision criteria | **Copilot CLI** | **Copilot SDK** when the proven workflow should run on every alert |
+| **Security analyst** | While proving how to investigate a recurring alert | Reproducible triage steps and decision criteria | **Copilot CLI** | **Copilot SDK** when the proven workflow needs to run on every alert |
 | **Engineering manager** | When several independent, well-scoped work items are ready | Visible progress and a reviewable set of pull requests | **GitHub Copilot app** | Preferred review surface when each pull request is ready |
 | **Technical writer** | After a bounded product or API change makes documentation stale | Verified documentation update delivered through normal review | **Copilot coding agent** | **VS Code** for editorial inspection and refinement |
 | **Support engineer** | When a customer report must be connected to repository behavior | Repository explanation, reproduction path, and escalation-ready issue | **GitHub.com Chat** | **Copilot CLI** for local reproduction or **coding agent** for a bounded fix |
 | **Quality engineer** | When an agent-generated change needs acceptance evidence before merge | Review findings, reproduced behavior, and an acceptance decision | **Copilot Code Review** | **VS Code** or **CLI** when a finding needs reproduction |
 | **Product designer** | When design intent must be traced into an existing interface | Implementation map, reviewed UI change, and visual acceptance evidence | **GitHub.com Chat** | **VS Code** for iteration, then **Code Review** for implementation risk |
-| **Platform owner** | While proving a workflow that may later serve many teams | A validated workflow with visible tools, policy, and outputs | **VS Code Copilot** | **Copilot SDK** when the proven workflow should become a product capability |
+| **Platform owner** | While proving a workflow that may later serve many teams | A validated workflow with visible tools, policy, and outputs | **VS Code Copilot** | **Copilot SDK** when the proven workflow is ready to become a product capability |
 
-These are lenses, not assignments. A security analyst investigating one alert and a platform owner productizing that investigation should choose different surfaces even when they share the same domain and tools. Every route ends with an acceptance contract: name who reviews the artifact, what evidence they inspect, and what triggers escalation.
+These are lenses, not assignments. A security analyst investigating one alert and a platform owner productizing that investigation choose different surfaces even when they share the same domain and tools. Every route ends with an acceptance contract: name who reviews the artifact, what evidence they inspect, and what triggers escalation.
 
 ---
 
@@ -336,7 +336,7 @@ The four engagement phases provide a telemetry-based starting signal. Repeatedly
 | Phase | Engagement signal | Capability objective | Prescribed core path | Exit evidence |
 |-------|-------------------|----------------------|----------------------|---------------|
 | **0 — Activate** | Licensed, but not yet engaged | Complete one relevant task with human review | [Workshop orientation](../../workshop/00-orientation/) → [VS Code latest](../vscode-latest/) → this Surface Router | One real task completed, output reviewed, and the chosen surface explained |
-| **1 — Standardize** | Code completion or IDE agent use on at least two days | Make interactive assistance repeatable and repository-aware | [Repository instructions](../../workshop/01-instructions/) → [Plan mode](../../workshop/02-agent-plan-mode/) → [Agent development loop](../agent-dev-loop/) → [PR Trust Stack](../pr-trust-stack/) | Shared instructions exist; a plan-led change passes tests and review |
+| **1 — Standardize** | Code completion or IDE agent use on at least two days | Make interactive assistance repeatable and repository-aware | [Repository instructions](../../workshop/01-instructions/) → [Plan mode](../../workshop/02-agent-plan-mode/) → [From repo to feature](../repo-to-feature/) → [PR Trust Stack](../pr-trust-stack/) | Shared instructions exist; a plan-led change passes tests and review |
 | **2 — Delegate** | Use of one GitHub-based agent surface | Delegate bounded work with explicit context, controls, and acceptance criteria | [Configuration primitives](../copilot-primitives/) → [Custom prompts](../../workshop/03-custom-prompts/) → [Agent skills](../../workshop/04-agent-skills/) → [Copilot CLI](../copilot-cli/) → [From Issue to Pull Request](../copilot-web/) | One bounded task produces a reviewable artifact asynchronously; handoff and escalation rules are documented |
 | **3 — Orchestrate** | Use of two or more agent surfaces, or the Copilot app | Coordinate parallel work and operate it as a governed system | [Custom agents](../../workshop/06-custom-agents/) → [Multi-Agent Coordination](../multi-agent-coordination/) → [Agentic Lifecycle](../agentic-lifecycle/) → [Agentic SDLC](../agentic-sdlc/) | Independent workstreams integrate cleanly; quality, policy, cost, and throughput are measured |
 

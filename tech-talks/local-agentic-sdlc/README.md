@@ -228,9 +228,20 @@ The loop ends where human authority begins. The orchestrator pushed one feature 
 
 Ownership stays explicit after the run: the reviewer owns the merge decision and the intent behind every change, and the team lead owns the budget and escalation policy the next run will use.
 
+### Repeat it while your session is open
+
+Some local work recurs: a nightly dependency check, an hourly sweep for new security advisories. Copilot CLI can rerun a pass on an interval without leaving your machine. `/every 1h <prompt>` schedules the pass, `/after` schedules a single run, and bare `/every` opens the schedule manager. The command is experimental and session-scoped, so the schedule lives only while that CLI session stays open.
+
+Two rules keep a repeating run honest:
+
+- **Keep state in a file the next pass reads first.** Each pass starts with a fresh context, so the run's status, attempt count, and history go in a state file in the worktree, never in the conversation.
+- **Escalate a stale run.** If a pass finds the previous run still marked as running past its time limit, it escalates to a person and leaves the worktree alone. Resuming would build on a pass that stopped part-way.
+
+The credit cap still applies per pass. Whether `/every` accepts `/goal … --max-ai-credits` as its scheduled command is untested, so watch one capped pass by hand before leaving it on a schedule. A working state file, orchestrator, and stale-run rule are in the [loop-starter example](../unattended-agents/examples/loop-starter/README.md).
+
 ### Where it stops fitting
 
-- **Work that should start from an event**, such as a label, a schedule, or a failed check, with no developer present, belongs to [GitHub Agentic Workflows](../agentic-lifecycle/README.md).
+- **Work that starts from an event**, such as a label, a schedule, or a failed check, with no developer present, belongs to [GitHub Agentic Workflows](../agentic-lifecycle/README.md).
 - **Work a developer wants to assign and walk away from** belongs to the cloud agent in [Copilot on GitHub](../copilot-on-github/README.md), which runs in an Actions environment and opens its own pull request.
 - **Small, single-file changes** cost more in plan-and-review overhead than they save. The plan stage alone used 47 credits here.
 - **Verification without a fast command** weakens the Stop hook. The FanHub suite runs in about five seconds; a gate that takes minutes changes the economics of every blocked stop.

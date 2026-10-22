@@ -8,7 +8,7 @@ duration: 90
 format: core-talk
 decision: "What repository and CI infrastructure creates trustworthy agent throughput?"
 prerequisites: [agentic-workflows]
-related: [copilot-hooks, enterprise-patterns, loopy-agents]
+related: [copilot-hooks, enterprise-patterns, unattended-agents]
 references:
   - url: https://github.com/microsoft/agentrc
     label: "Microsoft AgentRC repository"

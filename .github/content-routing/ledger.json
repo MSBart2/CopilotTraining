@@ -49,7 +49,7 @@
       "status": "adjudicated",
       "decisions": [
         { "talk": "copilot-code-quality", "materiality": "content", "status": "accepted", "reason": "How It Works now separates Code Quality Autofix from independently enabled and billed Copilot code review." },
-        { "talk": "copilot-code-review", "materiality": "reference", "status": "accepted", "reason": "Its manual ruleset setup remains valid, but the Code Quality comparison should state that review is independently enabled and billed." },
+        { "talk": "copilot-code-review", "materiality": "reference", "status": "accepted", "reason": "Its manual ruleset setup remains valid; the Code Quality comparison needs to state that review is independently enabled and billed." },
         { "talk": "agentic-sdlc", "materiality": "none", "status": "no-impact", "reason": "The integration reversal does not change the broader quality-gate architecture." }
       ]
     },
@@ -69,7 +69,7 @@
       "status": "adjudicated",
       "decisions": [
         { "talk": "vscode-latest", "materiality": "content", "status": "accepted", "reason": "Release 1.132 was incorporated and validated in the 2026-08-10 refresh." },
-        { "talk": "agent-dev-loop", "materiality": "none", "status": "no-impact", "reason": "The release does not invalidate its repository-to-feature workflow." },
+        { "talk": "repo-to-feature", "materiality": "none", "status": "no-impact", "reason": "The release does not invalidate its repository-to-feature workflow." },
         { "talk": "copilot-chat-internals", "materiality": "none", "status": "no-impact", "reason": "No debugging contract used by this talk changed." },
         { "talk": "copilot-primitives", "materiality": "none", "status": "no-impact", "reason": "No customization primitive used by this talk changed." }
       ]

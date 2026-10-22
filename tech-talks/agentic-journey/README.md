@@ -7,7 +7,7 @@ level: applied
 duration: 45
 format: core-talk
 decision: "How should an issue move through intake, planning, coding, and review?"
-prerequisites: [agent-dev-loop, copilot-web]
+prerequisites: [repo-to-feature, copilot-web]
 related: [agentic-workflows, agentic-sdlc]
 references:
   - url: https://docs.github.com/en/copilot

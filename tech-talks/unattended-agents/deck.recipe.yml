@@ -1,7 +1,7 @@
 # deck.recipe.yml — loop engineering talk generation guidance
 # Fresh recipe produced by deck-recipe-review skill (council run: 2026-07-02).
 #
-# Guides slide generation from tech-talks/loopy-agents/README.md.
+# Guides slide generation from tech-talks/unattended-agents/README.md.
 # Council consolidated 5 README 🎬 sections to 4 deck sections:
 #   → "Multi-Agent Design" draws from ## Agent-to-Agent Communication
 #                                  AND ## Orchestration Topologies
@@ -13,7 +13,7 @@
 version: 1
 
 deck:
-  title: "Loop Engineering"
+  title: "Unattended Agents"
   subtitle: "Designing Agent Systems That Run Reliably"
   tagline: "Autonomous by design. Verifiable by default."
 
@@ -35,7 +35,7 @@ deck:
   # arcNarrative: prose rationale for section ordering. Generator authoring guidance only.
   arcNarrative: >
     The talk opens by answering the one question practitioners need before anything else:
-    what IS a loopy agent? One sentence, one slide — the anchor for everything that follows.
+    what IS an unattended agent? One sentence, one slide — the anchor for everything that follows.
     The trigger lands second: without a recurring fire mechanism, what we have is one-shot
     orchestration; Copilot CLI's /every command repeats one kickoff prompt on an interval,
     and showing that session is the first concrete aha. The section closes with the three-slide
@@ -61,7 +61,7 @@ deck:
       # high = 4–5 slides, medium = 2–3, medium-low = 1–2
       emphasis: high
       note: >
-        Slide 1 — definition only: "A loopy agent continues to act and verify in a cycle
+        Slide 1 — definition only: "An unattended agent continues to act and verify in a cycle
         until the goal is demonstrably met — then stops." Let it sit before moving on.
         Slide 2 — trigger: without a recurring fire, this is one-shot orchestration; show
         a Copilot CLI session: one pass by hand, then /every 1d with the same prompt, and
@@ -119,7 +119,7 @@ deck:
 
   # 3–5 high-signal moments the generator must surface in the deck.
   highlightMoments:
-    - "Definition slide: 'A loopy agent continues to act and verify until the goal is demonstrably met — then stops.' One sentence. Most screenworthy slide in the deck."
+    - "Definition slide: 'An unattended agent continues to act and verify until the goal is demonstrably met — then stops.' One sentence. Most screenworthy slide in the deck."
     - "Copilot CLI: one kickoff by hand, then '/every 1h' repeats the pass — the loop trigger is one command, no infrastructure required"
     - "About 18 minutes (illustrative): critical alert → scan → fix → critic → draft PR passing CI, with one human merge decision"
     - "The Idle → Suspended transition: most silent loop failures live here — the next pass's stale-lock check escalates them"

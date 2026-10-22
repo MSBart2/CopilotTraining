@@ -5,7 +5,7 @@ updated: 2026-10-22
 
 # Loop Starter — Security Advisory Response
 
-These are the five agent files from the [Loopy Agents](../../README.md) talk's "Wiring It Together" design, written as working custom agents with a shared state file. Copy them into a repository, run the loop once by hand, and inspect the evidence before you let a schedule fire it.
+These are the five agent files from the [Unattended Agents](../../README.md) talk's "Wiring It Together" design, written as working custom agents with a shared state file. Copy them into a repository, run the loop once by hand, and inspect the evidence before you let a schedule fire it.
 
 The loop runs in a **Copilot CLI** session on your machine. You start a pass with one prompt to the orchestrator, or let `/every 1h` repeat that prompt while the session stays open. The orchestrator and every worker it invokes run in that session against the same working tree, so `loop-state.json` carries each pass's state to the next.
 

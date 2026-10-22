@@ -6,9 +6,9 @@ audience: [platform-engineer, architect, security]
 level: advanced
 duration: 45
 format: core-talk
-decision: "How does an autonomous loop verify progress and stop safely?"
+decision: "How does an unattended agent loop verify progress and stop safely?"
 prerequisites: [agent-teams]
-related: [agentic-lifecycle, copilot-hooks, agentic-sdlc]
+related: [repo-to-feature, agentic-lifecycle, copilot-hooks, agentic-sdlc]
 references:
   - url: https://github.com/cobusgreyling/loop-engineering
     label: "loop-engineering: Practical patterns, starters & CLI tools for loop engineering with AI coding agents"
@@ -30,7 +30,7 @@ references:
     verified: 2026-10-22
 ---
 
-# Loop Engineering: Designing Agent Systems That Run Reliably
+# Unattended Agents: Loops That Run Without You and Stop on Their Own Terms
 
 > **The Question This Talk Answers:**
 > *"How do we design agent systems that run reliably without hand-holding — and stop reliably without breaking?"*
@@ -39,7 +39,7 @@ references:
 
 ---
 
-> **A loopy agent** is an agent that, once triggered, continues to reason → act → verify in a cycle until the goal is demonstrably met — then stops. Every pattern in this talk is in service of making that loop reliable, coordinated across multiple agents, and safe to run unattended.
+> **An unattended agent** is an agent that, once triggered, continues to reason → act → verify in a cycle until the goal is demonstrably met — then stops. Every pattern in this talk is in service of making that loop reliable, coordinated across multiple agents, and safe to run unattended.
 
 ---
 
@@ -291,7 +291,7 @@ Q: Does our task require more than one distinct capability, or run unattended?
 
 ### Comparison with Related Patterns
 
-| Aspect | Loop Engineering | Single-Agent Prompting | Static DAG pipeline |
+| Aspect | Unattended Agent Loop | Single-Agent Prompting | Static DAG pipeline |
 |--------|-----------------|----------------------|-------------------------------|
 | **Best For** | Multi-agent, unattended, long-horizon tasks | Interactive, single-capability tasks | Predictable, fixed-step pipelines |
 | **Strengths** | Dynamic, verifiable, cost-bounded, auditable | Simple, transparent, low overhead | Reproducible, easy to reason about |
@@ -310,9 +310,9 @@ The foundational shift in loop engineering is architectural: the prompt is no lo
 
 Prompts are stateless and synchronous — they encode the developer's intent at a moment in time. Loops are stateful and asynchronous — they encode the system's intent over a time horizon, with memory, checkpoints, and adaptive behavior built in. Boris Cherny describes this transition plainly, as reported by The New Stack: stop writing prompts and start writing loops that write prompts.[^10]
 
-### The Trigger: What Makes It Loopy
+### The Trigger: What Makes It Repeat
 
-Without a recurring trigger, what we have is orchestration — useful, but one-shot. A loop is loopy when something fires it again: a person rerunning it, a schedule, or a prior pass's output signaling that more work remains.
+Without a recurring trigger, what we have is orchestration — useful, but one-shot. A loop becomes a loop when something fires it again: a person rerunning it, a schedule, or a prior pass's output signaling that more work remains.
 
 Copilot CLI gives a local loop both kinds of kickoff. One prompt to the orchestrator runs a pass on demand. In experimental mode, `/every` repeats a prompt, skill, or schedulable slash command on an interval for the life of the session, and `/after` schedules a single later run.[^16]
 
@@ -880,7 +880,7 @@ goal:
 
 ### In 15 Minutes
 
-- [ ] Start `copilot --experimental` and use `/every 1d` to repeat a simple triage prompt — this is the minimum viable loop trigger, and the fastest way to experience what makes a loop loopy rather than one-shot[^16]
+- [ ] Start `copilot --experimental` and use `/every 1d` to repeat a simple triage prompt — this is the minimum viable loop trigger, and the fastest way to experience what makes a loop repeat rather than run once[^16]
 - [ ] Read the [sample run](./examples/loop-starter/loop-state.example-run.json) and trace each goal condition to its evidence, using the [evidence checklist](#read-the-evidence-before-you-schedule-it)
 - [ ] Write out one recurring multi-step agent task as a goal with verifiable conditions — not a description, a checkable criterion
 
@@ -900,6 +900,7 @@ goal:
 
 ## Related Patterns
 
+- **[From Repo to Feature](../repo-to-feature/)** — The guided counterpart: you drive each step of one feature in VS Code and leave behind prompts, skills, and plans. Those assets are what an unattended loop runs on a schedule.
 - **[Multi-Agent Coordination](../multi-agent-coordination/)** — How to compose isolated workstreams; loop engineering provides the production-control layer for unattended operation
 - **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Evidence-gated repository workflows; loop engineering extends this with dynamic, verification-driven execution and adaptive topology
 - **[MCP Apps](../mcp-apps/README.md)** — Model Context Protocol as the tool layer inside a loop's execution layer; MCP tools are what loop agents invoke when they act

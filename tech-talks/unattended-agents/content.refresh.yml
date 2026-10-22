@@ -1,7 +1,7 @@
 version: 1
 
 refresh:
-  talk: "tech-talks/loopy-agents"
+  talk: "tech-talks/unattended-agents"
   cutoff: "2026-09-16"
   feed:
     url: "https://developer.microsoft.com/api/changelog/rss"
@@ -52,7 +52,7 @@ refresh:
       slideImpact: patch
 
     - title: "Blueprint artifacts labeled as blueprints"
-      source: "tech-talks/loopy-agents/README.md"
+      source: "tech-talks/unattended-agents/README.md"
       verified: "2026-10-22"
       releaseStatus: "n/a"
       importance: supporting
@@ -110,7 +110,7 @@ refresh:
       verified: "2026-10-22"
       releaseStatus: "experimental"
       importance: supporting
-      targetSection: "The Trigger: What Makes It Loopy; Simplest Starting Point"
+      targetSection: "The Trigger: What Makes It Repeat; Simplest Starting Point"
       action: replace
       summary: >
         Trigger is a manual kickoff (copilot --agent=loop-orchestrator, one
@@ -140,7 +140,7 @@ refresh:
   ignored:
     - title: "All routed feed items since 2026-09-16"
       source: ".github/content-routing/latest-report.md (generated 2026-10-22)"
-      reason: "None routed to loopy-agents."
+      reason: "None routed to unattended-agents (then loopy-agents)."
       relatedTalks: [vscode-latest, copilot-cli, enterprise-patterns, agentic-lifecycle]
     - title: "Rebuilding the loop runtime on GitHub Agentic Workflows"
       source: "https://github.github.com/gh-aw/"

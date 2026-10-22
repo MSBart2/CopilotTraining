@@ -4,12 +4,12 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## Loop Engineering
+  ## Unattended Agents
   CopilotTraining Tech Talk
 drawings:
   persist: false
 transition: slide-left
-title: Loop Engineering
+title: Unattended Agents
 mdc: true
 section: Agents at Your Keyboard
 status: active
@@ -34,9 +34,9 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 # Title
 <TitleSlide
-  title="Loop Engineering"
-  subtitle="Designing Agent Systems That Run Reliably"
-  tagline="Autonomous by design. Verifiable by default."
+  title="Unattended Agents"
+  subtitle="Loops That Run Without You and Stop on Their Own Terms"
+  tagline="Runs on its own. Stops on evidence. Ends with your review."
   meta="Agentic Systems · 2026"
 />
 
@@ -44,9 +44,9 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 # Core Question
 <CoreQuestionSlide
-  question="What makes an agent loopy — and how do we engineer it to run reliably?"
+  question="What lets an agent run without you — and stop when it has to?"
   subtext="Single-shot agents wait for the next prompt."
-  highlight="Loopy agents verify their own progress and keep going until the goal is met."
+  highlight="Unattended agents verify their own progress, stop at their limits, and hand you the result."
   :cards='[
     { "icon": "🧰", "title": "Platform Engineer", "description": "Designing shared agent pipelines that run unattended across teams" },
     { "icon": "👩‍💻", "title": "Senior Developer", "description": "Moving beyond one-shot Copilot into verified autonomous workflows" },
@@ -62,7 +62,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 # Table of Contents
 <TocSlide
   :sections='[
-    { "icon": "🔄", "title": "The Loop", "subtitle": "Definition + Trigger", "blurb": "What is a loopy agent and what fires it more than once", "slide": 4 },
+    { "icon": "🔄", "title": "The Loop", "subtitle": "Definition + Trigger", "blurb": "What an unattended agent is and what fires it more than once", "slide": 4 },
     { "icon": "📨", "title": "Multi-Agent Design", "subtitle": "Handoff + Topology", "blurb": "How agents coordinate state, escalate, and organize", "slide": 10 },
     { "icon": "🔌", "title": "Production Controls", "subtitle": "Don&#39;t skip these", "blurb": "Circuit breaker, bounded execution, and goal-watchdog", "slide": 15 },
     { "icon": "⏱️", "title": "Wiring It Together", "subtitle": "Alert to draft PR", "blurb": "Full multi-agent pipeline from scheduled alert check to reviewed PR", "slide": 18 }
@@ -75,7 +75,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 <SectionOpenerSlide
   :partNumber="1"
   title="The Loop"
-  subtitle="What IS a loopy agent — and what triggers it to run more than once?"
+  subtitle="What IS an unattended agent — and what triggers it to run more than once?"
   :cards='[
     { "icon": "🔄", "title": "Definition", "blurb": "Act → verify → repeat until goal met — then stop" },
     { "icon": "⚡", "title": "Trigger", "blurb": "Kick off by hand or with /every in Copilot CLI" },
@@ -91,14 +91,14 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
   :partNumber="1"
   pillIcon="🔄"
   pillLabel="The Loop: What It Is"
-  title="What Is a Loopy Agent?"
+  title="What Is an Unattended Agent?"
   subtitle="One sentence. Everything else in this talk follows from it."
   :hero='{ "value": "Loop", "label": "An agent that continues to act and verify in a cycle until the goal is demonstrably met — then stops.", "source": "" }'
   :supporting='[
     { "icon": "⚡", "title": "Triggered once", "description": "One prompt or a /every schedule starts the loop — no prompting between iterations" },
     { "icon": "🔄", "title": "Runs until verified", "description": "The agent reasons, acts, and checks its own goal condition — not just assumes it&#39;s done" },
     { "icon": "🛑", "title": "Stops on proof", "description": "The loop terminates when the goal is demonstrably true, or when controls say stop" },
-    { "icon": "🆚", "title": "Not orchestration", "description": "Orchestration runs once. A loopy agent runs until the work is verifiably complete." }
+    { "icon": "🆚", "title": "Not orchestration", "description": "Orchestration runs once. An unattended agent runs until the work is verifiably complete." }
   ]'
   :insight='{ "icon": "💡", "text": "The hardest engineering challenge is not starting the loop — it is stopping it correctly." }'
   :progressDots='{ "current": 1, "total": 5, "activeColor": "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
@@ -379,7 +379,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
       { "title": "Goal conditions", "detail": "pr_opened · ci_passing · cve_resolved · no_new_cves" },
       { "title": "Circuit breaker", "detail": "max_iterations: 8 · timeout: 45 min · one run at a time" }
     ],
-    "code": { "language": "bash", "content": "# Copy-ready starter:\n# tech-talks/loopy-agents/\n#   examples/loop-starter/" }
+    "code": { "language": "bash", "content": "# Copy-ready starter:\n# tech-talks/unattended-agents/\n#   examples/loop-starter/" }
   }'
   :progressDots='{ "current": 2, "total": 2, "activeColor": "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
@@ -388,7 +388,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 # Before and After
 <BeforeAfterSlide
-  header="From One-Shot Prompts to Loopy Agents"
+  header="From One-Shot Prompts to Unattended Agents"
   :leftItems='[
     "Hand-prompt every step; agent stops when it thinks it&#39;s done",
     "No recurring trigger — workflows run once and wait for a human to restart",
@@ -424,7 +424,7 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
     "Give every scheduled loop all three enforcers: counted limits, a --max-ai-credits cap, and a stale-lock check",
     "Have the orchestrator write the evidence checklist into every draft PR body"
   ]'
-  footer="Every loopy agent starts with a scheduled trigger, a verifiable goal, and a stop condition."
+  footer="Every unattended agent starts with a scheduled trigger, a verifiable goal, and a stop condition."
 />
 
 ---
@@ -449,12 +449,12 @@ import WorkflowShowdownStepsSlide from './components/WorkflowShowdownStepsSlide.
 
 # Thank You
 <ThankYouSlide
-  title="Loop Engineering"
+  title="Unattended Agents"
   subtitle="Autonomous by design. Verifiable by default."
   :cards="[
-    { value: 'The Definition', detail: 'A loopy agent continues to act and verify until the goal is demonstrably met — then stops.' },
+    { value: 'The Definition', detail: 'An unattended agent continues to act and verify until the goal is demonstrably met — then stops.' },
     { value: 'The Trigger', detail: 'One kickoff by hand, or /every 1h in Copilot CLI. No infrastructure required.' },
     { value: 'The Design', detail: 'Critical alert to a reviewable draft PR in about 18 minutes (illustrative), with one human merge.' }
   ]"
-  prompt="What recurring task on your team could run as a loopy agent starting tomorrow?"
+  prompt="What recurring task on your team could run as an unattended agent starting tomorrow?"
 />

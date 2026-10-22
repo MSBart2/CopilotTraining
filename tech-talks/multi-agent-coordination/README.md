@@ -7,9 +7,9 @@ audience: [developer, team-lead, architect, platform-engineer]
 level: advanced
 duration: 55
 format: core-talk
-decision: "When should work be split across agents, and how should isolated workstreams be steered and integrated?"
-prerequisites: [agent-dev-loop]
-related: [agent-dev-loop, agentic-lifecycle, agentic-sdlc, copilot-primitives]
+decision: "When does work split across agents, and how do teams steer and integrate isolated workstreams?"
+prerequisites: [repo-to-feature]
+related: [repo-to-feature, agentic-lifecycle, agentic-sdlc, copilot-primitives]
 references:
   - url: https://code.visualstudio.com/docs/copilot/agents/subagents
     label: "Subagents in VS Code"
@@ -37,7 +37,7 @@ references:
 # Multi-Agent Coordination: Split, Steer, Integrate
 
 > **The Question This Talk Answers:**
-> *"When should work be split across agents, and how should isolated workstreams be steered and integrated?"*
+> *"When does work split across agents, and how do teams steer and integrate isolated workstreams?"*
 
 **Duration:** 55 minutes | **Target Audience:** Developers / Team Leads / Architects / Platform Engineers
 
@@ -477,9 +477,8 @@ Failed integration is useful evidence about the split. Repeated overlap points t
 
 ## Related Patterns
 
-- **[Agent Development Loop](../agent-dev-loop/)** - keeps one delegated change observable from context through validation.
 - **[GitHub Agentic Workflows](../agentic-lifecycle/)** - coordinates recurring repository judgments through evidence-gated handoffs.
-- **[The Agent Dev Loop](../agent-dev-loop/)** - turns one solved task into reusable repository capability before work is split.
+- **[From Repo to Feature](../repo-to-feature/)** - keeps one change observable from context through validation and turns it into reusable repository capability before work is split.
 - **[Agentic SDLC](../agentic-sdlc/)** - extends coordination into repository policy, CI, review, and delivery systems.
 - **[Copilot Configuration Primitives](../copilot-primitives/)** - builds and verifies the instructions, prompts, skills, and agents each workstream needs.
 

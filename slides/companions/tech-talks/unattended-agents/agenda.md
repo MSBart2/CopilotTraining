@@ -1,13 +1,13 @@
 ---
-title: "Loop Engineering"
-subtitle: "Designing Agent Systems That Run Reliably"
-slug: loopy-agents
+title: "Unattended Agents"
+subtitle: "Loops That Run Without You and Stop on Their Own Terms"
+slug: unattended-agents
 category: tech-talks
 duration: 45
 updated: 2026-10-22
 ---
 
-# Loop Engineering
+# Unattended Agents
 
 Agenda (45 min)
 

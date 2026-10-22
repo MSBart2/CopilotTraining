@@ -4,16 +4,16 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## The Agent Dev Loop
+  ## From Repo to Feature
   CopilotTraining Tech Talk
 drawings:
   persist: false
 transition: slide-left
-title: The Agent Dev Loop
+title: From Repo to Feature
 mdc: true
 section: Agents at Your Keyboard
 status: active
-updated: 2026-06-30
+updated: 2026-10-22
 ---
 
 <script setup>
@@ -36,8 +36,8 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 # Title
 <TitleSlide
-  title="The Agent Dev Loop"
-  subtitle="From Repo to Feature with Copilot in VS Code"
+  title="From Repo to Feature"
+  subtitle="Building Team Tools as You Go with Copilot in VS Code"
   tagline="Build the toolkit that makes every future feature faster."
   meta="GitHub Copilot · VS Code · 45 min"
 />
@@ -46,7 +46,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 # Core Question
 <CoreQuestionSlide
-  question="How does a team build a Copilot loop that gets faster with every feature?"
+  question="How does a team build a Copilot workflow that gets faster with every feature?"
   subtext="Five capabilities chain into a repeatable workflow — and every pass leaves reusable assets."
   highlight="Context, prompts, skills, plans, and risk review. All in .github/. All version-controlled."
   :cards='[
@@ -153,7 +153,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
   :features='[
     { icon: "🔗", title: "Bootstrap from a reference", description: "Incorporating ponytail/AGENTS.md seeds lazy-developer conventions before the analysis runs" },
     { icon: "🎯", title: "Real scripts, not examples",  description: "Explicitly asks for actual package.json scripts — prevents &#39;npm run build&#39; boilerplate" },
-    { icon: "🧹", title: "Concise by design",            description: "The closing line keeps output tight — AGENTS.md should be a quick reference, not a doc" }
+    { icon: "🧹", title: "Concise by design",            description: "The closing line keeps output tight — AGENTS.md stays a quick reference" }
   ]'
   :progressDots='{ current: 3, total: 3, activeColor: "bg-cyan-400 shadow-lg shadow-cyan-500/50" }'
 />
@@ -229,7 +229,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
   pillLabel="Build the Toolkit · Live Demo"
   title="Create the Prompt. Then Use It. Two Commands."
   codePosition="top"
-  :code='{ language: "bash", filename: "Copilot Chat", content: "# 1. Create the prompt (saves to .github/prompts/evaluate-issue.prompt.md)\n/create-prompt this prompt should evaluate a bug or issue or feature\n  request for completeness and correctness.\n\n# 2. Run it against a real ticket \u2014 immediately\n/evaluate-issue \u201cPuzzles don\u2019t show me what I\u2019ve done wrong,\n  only a \u2018keep trying\u2019 message.\u201d" }'
+  :code='{ language: "bash", filename: "Copilot Chat", content: "# 1. Create the prompt (saves to .github/prompts/evaluate-issue.prompt.md)\n/create-prompt this prompt evaluates a bug or issue or feature\n  request for completeness and correctness.\n\n# 2. Run it against a real ticket \u2014 immediately\n/evaluate-issue \u201cPuzzles don\u2019t show me what I\u2019ve done wrong,\n  only a \u2018keep trying\u2019 message.\u201d" }'
   :features='[
     { icon: "📁", title: "Step 1: File created",         description: "evaluate-issue.prompt.md written to .github/prompts/ and invokable as /evaluate-issue" },
     { icon: "🔍", title: "Step 2: 1 of 5 criteria met",  description: "4 gaps: expected behavior, repro steps, environment, severity" },
@@ -445,9 +445,9 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 <SectionOpenerSlide
   :partNumber="4"
   title="The Compounding Effect"
-  subtitle="The real output of the loop is the growing toolkit, not any single feature."
+  subtitle="The real output of the workflow is the growing toolkit, not any single feature."
   :cards='[
-    { icon: "📈", title: "Each Loop Adds Assets",  blurb: "Every feature produces a prompt, skill, or plan template" },
+    { icon: "📈", title: "Each Feature Adds Assets",  blurb: "Every feature produces a prompt, skill, or plan template" },
     { icon: "📊", title: "Measured Outcomes",       blurb: "Onboarding, ticket quality, and delivery improve per iteration" },
     { icon: "🎯", title: "Start in 15 Minutes",     blurb: "Clone, run /init, commit AGENTS.md — first step done" }
   ]'
@@ -461,7 +461,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
   :partNumber="4"
   pillIcon="📊"
   pillLabel="The Compounding Effect · Outcomes"
-  title="Four Teams. Four Loops. Four Measured Outcomes."
+  title="Four Teams. Four Features. Four Measured Outcomes."
   :cards='[
     { icon: "🏎", title: "Onboarding",     description: "First merged PR: 5 days → 2 days. AGENTS.md answers convention questions before they&#39;re asked." },
     { icon: "🗒", title: "Backlog triage",  description: "15 incomplete tickets flagged in one batch; reporters fill gaps in one pass. Switches: eliminated." },
@@ -479,12 +479,12 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
   pillIcon="🧭"
   pillLabel="The Compounding Effect · The Journey"
   title="From First /init to a Fully Accumulated Team Toolkit"
-  subtitle="Each loop adds assets that compound across every developer and every feature"
+  subtitle="Each feature adds assets that compound across every developer and every feature"
   :stages='[
     { label: "Week 1",   name: "Context",  description: "AGENTS.md committed — Copilot is project-aware for every developer from day one", icon: "📋", isTarget: false },
     { label: "Sprint 1", name: "Prompts",  description: "evaluate-issue and review-plan saved — checklists become executable and shareable", icon: "📝", isTarget: false },
     { label: "Sprint 2", name: "Skills",   description: "3–4 patterns encoded — new developers inherit team conventions instantly",          icon: "🛠", isTarget: false },
-    { label: "Month 2+", name: "Full Loop", description: "/plan + /review-plan on every feature — risk is a planning artifact, not a review finding", icon: "🗺", isTarget: true }
+    { label: "Month 2+", name: "Full Workflow", description: "/plan + /review-plan on every feature — risk is a planning artifact, not a review finding", icon: "🗺", isTarget: true }
   ]'
   caption="The toolkit compounds — each asset makes every subsequent developer faster."
   :progressDots='{ current: 2, total: 2, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
@@ -494,7 +494,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 # Before and After
 <BeforeAfterSlide
-  header="From Ad-hoc Copilot to the Agent Dev Loop"
+  header="From Ad-hoc Copilot to a Repeatable Feature Workflow"
   :leftItems='[
     "Generic suggestions that miss project conventions",
     "Vague tickets trigger mid-sprint context switches",
@@ -536,7 +536,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
       { href: "https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot", label: "Prompt Engineering for GitHub Copilot", description: "Principles for writing effective .prompt.md files that produce consistent output" }
     ] },
     { title: "🛠️ Related Content", color: "purple", items: [
-      { label: "The Agentic Journey",              description: "GitHub Actions / PR automation: the async complement to the VS Code interactive loop" },
+      { label: "The Agentic Journey",              description: "GitHub Actions / PR automation: the async complement to the VS Code interactive workflow" },
       { href: "https://github.com/DietrichGebert/ponytail/blob/main/AGENTS.md", label: "Real-world AGENTS.md example", description: "Reference implementation from a production SPA codebase" }
     ] }
   ]'
@@ -546,8 +546,8 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
 
 # Thank You
 <ThankYouSlide
-  title="The Agent Dev Loop"
-  subtitle="From Repo to Feature with Copilot in VS Code"
+  title="From Repo to Feature"
+  subtitle="Building Team Tools as You Go with Copilot in VS Code"
   :cards="[
     { value: '30 sec', detail: '/init generates AGENTS.md — permanent context for every Copilot interaction in the project' },
     { value: 'No-go', detail: '/review-plan returns its verdict before a line of implementation code is written' },

@@ -13,7 +13,7 @@ Use this path when you are new to Copilot or introducing it to a team. Each step
 
 1. **Choose the surface** — [Which Copilot Where?](surfaces/) produces a routed task with named context and reviewer.
 2. **Configure shared behavior** — [Copilot Configuration Primitives](copilot-primitives/) builds and verifies instructions, prompts, skills, and agents.
-3. **Make success reusable** — [Agent Dev Loop](agent-dev-loop/) turns one solved task into a validated team capability.
+3. **Make success reusable** — [From Repo to Feature](repo-to-feature/) turns one solved task into a validated team capability.
 4. **Delegate bounded work** — [From Issue to Pull Request](copilot-web/) produces a draft pull request with acceptance evidence.
 5. **Verify before merge** — [PR Trust Stack](pr-trust-stack/) records accepted and rejected findings, deterministic checks, and the final human decision.
 
@@ -23,7 +23,7 @@ Sections follow where the agent runs and who starts it. Every talk applies the s
 
 ## Foundations
 
-**Question:** Which surface fits the work, and what shared context should every agent receive?
+**Question:** Which surface fits the work, and what shared context does every agent need?
 
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
@@ -38,15 +38,15 @@ Sections follow where the agent runs and who starts it. Every talk applies the s
 |---|---|---|
 | Work where shell and runtime state are decisive | [Copilot CLI](copilot-cli/) | A terminal-native result with observable command evidence |
 | Track VS Code changes that alter a durable workflow decision | [What's New in VS Code](vscode-latest/) | A changed workflow with its first verification step |
-| Turn solved work into reusable capability | [Agent Dev Loop](agent-dev-loop/) | Repository configuration and a validated plan |
+| Turn solved work into reusable capability | [From Repo to Feature](repo-to-feature/) | Repository configuration and a validated plan |
 | Split, steer, and integrate multi-agent work | [Multi-Agent Coordination](multi-agent-coordination/) | A coordination contract, isolated evidence, and a named integration owner |
-| Build loops that stop safely | [Loop Engineering](loopy-agents/) | Progress state, verification signal, limit, and escalation path |
+| Build loops that stop safely | [Unattended Agents](unattended-agents/) | Progress state, verification signal, limit, and escalation path |
 
 Release-specific VS Code changes are routed through [rolling release briefs](../.github/content-routing/release-briefs/) to their durable owners. The current [VS Code Latest](vscode-latest/) talk remains active until its approved retirement checklist is complete.
 
 ## Agents on GitHub
 
-**Question:** What work should GitHub's agents take on, and what evidence comes back for a person to decide?
+**Question:** Which work fits GitHub's agents, and what evidence comes back for a person to decide?
 
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
@@ -67,7 +67,7 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 ## Extend and Embed
 
-**Question:** When should Copilot gain a new capability, interface, protocol boundary, or domain context?
+**Question:** When is it time to give Copilot a new capability, interface, protocol boundary, or domain context?
 
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
@@ -82,11 +82,11 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 ### Individual Developer
 
-[Which Copilot Where?](surfaces/) → [Copilot Configuration Primitives](copilot-primitives/) → [Agent Dev Loop](agent-dev-loop/) → choose [Copilot CLI](copilot-cli/) or [From Issue to Pull Request](copilot-web/) → verify the resulting evidence
+[Which Copilot Where?](surfaces/) → [Copilot Configuration Primitives](copilot-primitives/) → [From Repo to Feature](repo-to-feature/) → choose [Copilot CLI](copilot-cli/) or [From Issue to Pull Request](copilot-web/) → verify the resulting evidence
 
 ### Team Delegation
 
-[Which Copilot Where?](surfaces/) → [Agent Dev Loop](agent-dev-loop/) → [From Issue to Pull Request](copilot-web/) → [Multi-Agent Coordination](multi-agent-coordination/) → [Loop Engineering](loopy-agents/)
+[Which Copilot Where?](surfaces/) → [From Repo to Feature](repo-to-feature/) → [From Issue to Pull Request](copilot-web/) → [Multi-Agent Coordination](multi-agent-coordination/) → [Unattended Agents](unattended-agents/)
 
 ### Repository Automation
 
