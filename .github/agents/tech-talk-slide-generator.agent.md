@@ -182,7 +182,7 @@ N         — ThankYouSlide
 
 **After all sections:**
 
-6. Fill `CoreQuestionSlide` cards with real personas and stats from the README.
+6. Fill `CoreQuestionSlide` cards with real personas and stats from the README. The `question` prop is the README's core question, which follows the Core Question Contract in `AGENTS.md`; keep the learner's wording rather than restating the thesis.
 7. Fill `ReferencesSlide` from README references frontmatter.
 8. Get real slide numbers by scanning the live deck — do not hand-count:
    ```powershell

@@ -14,7 +14,7 @@ references:
 # [Feature/Capability Name]: [Compelling Subtitle]
 
 > **The Question This Talk Answers:**
-> *"[Single clear question that readers have - e.g., 'How do I X without Y?' or 'When should I use X instead of Y?']"*
+> *"[One short question the learner already asks, in their own words, about getting more of what they want or less of what they don't. e.g., 'How do I X without Y?' or 'When does X fit better than Y?' See the Core Question Contract in AGENTS.md.]"*
 
 **Duration:** [XX] minutes | **Target Audience:** [Developers/Architects/DevOps/Leaders]
 

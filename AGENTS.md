@@ -81,6 +81,16 @@ Every teaching surface must make three things recoverable without relying on hid
 
 Carry enough context onto each slide that a viewer can identify the actor, task, and consequence after entering mid-section. Use the preceding slide for narrative momentum, not for essential disambiguation.
 
+### Core Question Contract
+
+The core question (the README's "question this talk answers" and the Core Question slide) exists to give the learner an immediately recognizable question in their own voice. We want the reader to think "yes, that's my question" before the first section starts.
+
+- **Ask from the learner's seat.** Write in first person or plain second person about something the learner wants more of (speed, confidence, fewer interruptions, better results) or wants less of (rework, surprises, risk, waiting).
+- **Make it instantly understood.** One short sentence, everyday words, no product taxonomy, no internal framing labels such as "produce, reason, measure", and no list of features.
+- **Keep it straightforward.** Typical shapes: "How do I get X without Y?", "How can I trust X?", "When does X help me, and when does it get in the way?"
+- **Leave the cleverness to the answer.** The thesis, tension, and section structure carry the insight; the question only has to be one the learner already has.
+- **Test it:** Would a member of the target audience ask this, word for word, of a colleague? If it needs the talk to make sense, rewrite it.
+
 ### Tech Talk Narrative Contract
 
 A practitioner tech talk is a coherent argument for one consequential decision. The template supplies coverage prompts; it does not supply the narrative or require its headings to become the running order.

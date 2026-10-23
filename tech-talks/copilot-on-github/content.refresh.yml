@@ -1,0 +1,111 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/copilot-on-github"
+  cutoff: "2026-10-21"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-10-23"
+    lastBuildDate: "not consulted: user-directed restructure driven by first-party docs and an observed run"
+  status: approved
+  approved: 2026-10-23
+  updateLevel: structural
+  rationale: >
+    User-directed restructure. Attendees conflate which agent does which job and when each one fires.
+    The talk now teaches each agent in isolation (Produce = Copilot cloud agent, Reason = Copilot code
+    review, Measure = GitHub Code Quality) with a shared skeleton, then wires them together on one pull
+    request with a crisp order of operations: what is human-invoked, what is automatic, which commit each
+    agent saw, and how rework re-triggers review and measurement. FanHub is drill-down evidence, never the
+    subject. A fresh observed run (FanHub #159 → draft #221, 2026-10-23) supplies the order-of-operations facts.
+  userEmphasis:
+    - "Produce / Reason / Measure as the recurring theme, with a value statement per part in the TOC."
+    - "Parts 1-3 under 10 slides each; Part 4 as long as the step-by-step flow requires."
+    - "Crisp order of operations: human-invoked vs automatic vs waits-for-a-person, shown on one end-to-end diagram."
+    - "Show initial coding, code review plus re-review after rework, Code Quality plus re-review after rework."
+    - "FanHub is an example to drill into, not the story."
+
+  accepted:
+    - title: "Observed order of operations on FanHub draft #221"
+      published: "2026-10-23"
+      source: "https://github.com/MSBart2/FanHub/pull/221"
+      verified: "2026-10-23"
+      releaseStatus: "ga"
+      importance: "headline"
+      targetSection: "4. Wire It Together"
+      action: "add"
+      summary: >
+        Assignment opened a draft with an empty plan commit in 7 s. Code Quality and CodeQL scanned every push,
+        including plan commits, about 5 s after each push and without an Approve-and-run hold. With Review new
+        pushes on, code review re-ran on every push about 2 minutes later. A 🟡 review on a stray lockfile commit
+        was corrected by the agent's next push with no person involved. An outdated, unresolved thread stayed
+        listed as an open issue until a person resolved it. A person's @copilot comment and a person's @Copilot
+        reply on a Code Quality finding each produced agent pushes that re-triggered review and measurement.
+      limitations:
+        - "The Code Quality finding came from a staged human commit (8a752d2), labelled as staged in the commit and in the talk."
+        - "Timings are one observed run; treat them as illustrative."
+        - "The run ends at the person's decision; #221 was left as a draft."
+      recipeImpact: "restructure"
+      slideImpact: "regenerate"
+    - title: "Copilot code review effort levels and cost components"
+      published: "2026-10-23"
+      source: "https://docs.github.com/en/copilot/concepts/agents/code-review"
+      verified: "2026-10-23"
+      releaseStatus: "ga"
+      importance: "supporting"
+      targetSection: "2. Reason: Copilot code review"
+      action: "add"
+      summary: >
+        Two effort levels: Lite (about $0.05-$1 of AI credits per review) and Balanced (about $0.25-$5). Reviews also
+        consume Actions minutes for agentic context gathering. Automatic-review AI credits are attributed to the PR
+        author; for cloud-agent PRs, to the human co-author first.
+      limitations: ["Ranges may change as models evolve."]
+      recipeImpact: "revise"
+      slideImpact: "regenerate"
+    - title: "Automatic review settings: Review new pushes and Review draft pull requests"
+      published: "2026-10-23"
+      source: "https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review"
+      verified: "2026-10-23"
+      releaseStatus: "ga"
+      importance: "supporting"
+      targetSection: "2. Reason: Copilot code review"
+      action: "expand"
+      summary: >
+        Automatic review can come from user settings, repository rulesets, or organization rulesets; Copilot posts one
+        review when several apply. User settings cannot disable push or draft reviews a ruleset enabled.
+      limitations: []
+      recipeImpact: "revise"
+      slideImpact: "regenerate"
+    - title: "Go CodeQL queries for Code Quality"
+      published: "2026-10-23"
+      source: "https://docs.github.com/en/code-security/reference/code-quality/codeql-queries/go-queries"
+      verified: "2026-10-23"
+      releaseStatus: "ga"
+      importance: "reference"
+      targetSection: "3. Measure: GitHub Code Quality"
+      action: "add"
+      summary: >
+        Code Quality rules are CodeQL queries per language with a category (Reliability or Maintainability) and
+        severity; PR findings arrive as github-code-quality[bot] comments with Copilot Autofix where possible.
+      limitations: []
+      recipeImpact: "confirm"
+      slideImpact: "regenerate"
+
+  ignored: []
+  removals:
+    - "Cold open on #210's final-head evidence bundle (replaced by the generic end-to-end flow diagram)."
+    - "Section 4 'Decide What Gets Authority' as a standalone section (folded into Part 4's close)."
+  anomalies: []
+
+  recipeReview:
+    required: true
+    question: >
+      Does the restructure (Produce / Reason / Measure in isolation with a shared skeleton, then Wire It Together
+      as an ordered event flow) teach which agent works where and when more clearly than the previous
+      evidence-and-authority arc, while preserving the authority judgment and evidence discipline?
+
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

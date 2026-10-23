@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-22T21:50:19.331Z",
+  "generatedAt": "2026-10-23T19:45:13.462Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -1169,7 +1169,7 @@
       "title": "Copilot on GitHub: Produce, Reason, Measure",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-21",
+      "updated": "2026-10-23",
       "section": "Agents on GitHub",
       "audience": [
         "developer",
@@ -1177,9 +1177,9 @@
         "platform-engineer"
       ],
       "level": "applied",
-      "duration": 50,
+      "duration": 60,
       "format": "core-talk",
-      "decision": "Which built-in GitHub agent fits each moment of a pull request, and what evidence does each one hand the person who decides?",
+      "decision": "Which pull request steps can run automatically through the cloud agent, code review, and Code Quality, and where do I steer the rework and approve the merge?",
       "prerequisites": [
         "copilot-primitives"
       ],
@@ -1194,38 +1194,38 @@
         "readme": {
           "path": "tech-talks/copilot-on-github/README.md",
           "exists": true,
-          "bytes": 24261,
-          "modified": "2026-10-21T21:39:31.676Z"
+          "bytes": 32720,
+          "modified": "2026-10-23T19:45:05.676Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-on-github/deck.recipe.yml",
           "exists": true,
-          "bytes": 6957,
-          "modified": "2026-10-21T21:39:31.669Z"
+          "bytes": 8720,
+          "modified": "2026-10-23T16:18:17.387Z"
         },
         "deck": {
           "path": "slides/tech-talks/copilot-on-github.md",
           "exists": true,
-          "bytes": 28469,
-          "modified": "2026-10-21T21:39:31.674Z"
+          "bytes": 51972,
+          "modified": "2026-10-23T19:41:16.821Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-on-github/agenda.md",
           "exists": true,
-          "bytes": 455,
-          "modified": "2026-10-21T21:40:25.363Z"
+          "bytes": 371,
+          "modified": "2026-10-23T19:43:19.839Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/copilot-on-github/agenda.html",
           "exists": true,
-          "bytes": 6060,
-          "modified": "2026-10-22T03:27:02.174Z"
+          "bytes": 5726,
+          "modified": "2026-10-23T19:43:19.842Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-on-github/deck.pdf",
           "exists": true,
-          "bytes": 2096133,
-          "modified": "2026-10-21T21:40:10.543Z"
+          "bytes": 3639674,
+          "modified": "2026-10-23T19:43:55.736Z"
         }
       },
       "errors": []

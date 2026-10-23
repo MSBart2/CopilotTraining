@@ -138,7 +138,7 @@ After the user responds:
 1. Incorporate the user's selected outline, toggle choices, or structural edits
 2. Read `tech-talks/TEMPLATE.md` for complete structure (can be done in parallel with research)
    - If the target talk already has `research.md`, use it as the primary verified factual source and reconcile newer first-party evidence against it
-3. Frame ONE clear question this talk answers
+3. Frame ONE clear question this talk answers, following the Core Question Contract in `AGENTS.md`: the learner's own question, instantly recognizable, about getting more of what they want or less of what they don't
 4. Treat the template as a coverage checklist, not a prescribed narrative order
    - Preserve the approved arc; combine or reposition template concerns when that improves the argument
    - Give every major section a job in advancing the thesis, proving it, exposing a boundary, or enabling transfer
