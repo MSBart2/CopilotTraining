@@ -220,6 +220,7 @@ Q: What are you trying to build?
 ### Don't Use This Pattern When
 
 - You need interactive terminal assistance → Use **Copilot CLI** directly
+- You're building an editor or client that mediates agent sessions and permissions for a user through a standard protocol → Use **[Copilot ACP](../copilot-acp/)**; the SDK fits when your own application owns the prompts, tools, and business logic
 - You need code completion while editing → Use **Copilot in VS Code/IDE**
 - Your task is one-off exploration → Use **CLI or IDE** for faster iteration
 - You're building a non-developer-facing product → Consider OpenAI API or other general LLM SDKs instead

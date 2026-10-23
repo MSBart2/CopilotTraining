@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-23T20:28:07.221Z",
+  "generatedAt": "2026-10-23T20:50:10.837Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -544,8 +544,8 @@
         "readme": {
           "path": "tech-talks/copilot-acp/README.md",
           "exists": true,
-          "bytes": 20243,
-          "modified": "2026-10-23T20:21:18.910Z"
+          "bytes": 20621,
+          "modified": "2026-10-23T20:49:08.746Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-acp/deck.recipe.yml",
@@ -660,7 +660,7 @@
       "level": "applied",
       "duration": 45,
       "format": "case-study",
-      "decision": "How can agents act on live domain state with least-privilege authority?",
+      "decision": "How can Copilot work against live Azure resources through Azure MCP, starting from a read-only identity and granting write access deliberately?",
       "prerequisites": [
         "copilot-cli"
       ],
@@ -674,8 +674,8 @@
         "readme": {
           "path": "tech-talks/copilot-azure-mcp/README.md",
           "exists": true,
-          "bytes": 60899,
-          "modified": "2026-10-23T20:21:18.896Z"
+          "bytes": 60971,
+          "modified": "2026-10-23T20:49:54.088Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-azure-mcp/deck.recipe.yml",
@@ -704,8 +704,8 @@
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-azure-mcp/deck.pdf",
           "exists": true,
-          "bytes": 2056359,
-          "modified": "2026-09-16T14:11:39.032Z"
+          "bytes": 2054403,
+          "modified": "2026-10-23T20:29:33.366Z"
         }
       },
       "errors": []
@@ -1354,8 +1354,8 @@
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-primitives/deck.pdf",
           "exists": true,
-          "bytes": 2745832,
-          "modified": "2026-09-17T14:02:21.290Z"
+          "bytes": 2744231,
+          "modified": "2026-10-23T20:29:53.588Z"
         }
       },
       "errors": []
@@ -1390,8 +1390,8 @@
         "readme": {
           "path": "tech-talks/copilot-sdk/README.md",
           "exists": true,
-          "bytes": 51459,
-          "modified": "2026-10-23T20:00:10.679Z"
+          "bytes": 51709,
+          "modified": "2026-10-23T20:49:08.703Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-sdk/deck.recipe.yml",
@@ -1549,8 +1549,8 @@
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-with-foundry/deck.pdf",
           "exists": true,
-          "bytes": 1995563,
-          "modified": "2026-09-16T14:13:23.262Z"
+          "bytes": 1995464,
+          "modified": "2026-10-23T20:30:09.431Z"
         }
       },
       "errors": []
@@ -1616,8 +1616,8 @@
         "deckPdf": {
           "path": "slides/companions/tech-talks/custom-agents/deck.pdf",
           "exists": true,
-          "bytes": 2313001,
-          "modified": "2026-10-22T03:29:36.556Z"
+          "bytes": 2311820,
+          "modified": "2026-10-23T20:30:26.296Z"
         }
       },
       "errors": []
@@ -1748,8 +1748,8 @@
         "deckPdf": {
           "path": "slides/companions/tech-talks/local-agentic-sdlc/deck.pdf",
           "exists": true,
-          "bytes": 2425261,
-          "modified": "2026-10-22T03:29:15.705Z"
+          "bytes": 2425241,
+          "modified": "2026-10-23T20:30:43.242Z"
         }
       },
       "errors": []
@@ -2077,8 +2077,8 @@
         "deckPdf": {
           "path": "slides/companions/tech-talks/surfaces/deck.pdf",
           "exists": true,
-          "bytes": 2105832,
-          "modified": "2026-09-16T14:16:07.970Z"
+          "bytes": 2104497,
+          "modified": "2026-10-23T20:31:00.797Z"
         }
       },
       "errors": []
@@ -2179,8 +2179,8 @@
         "readme": {
           "path": "tech-talks/vscode-latest/README.md",
           "exists": true,
-          "bytes": 45755,
-          "modified": "2026-10-23T20:00:10.666Z"
+          "bytes": 46257,
+          "modified": "2026-10-23T20:48:35.938Z"
         },
         "recipe": {
           "path": "tech-talks/vscode-latest/deck.recipe.yml",
@@ -2209,8 +2209,8 @@
         "deckPdf": {
           "path": "slides/companions/tech-talks/vscode-latest/deck.pdf",
           "exists": true,
-          "bytes": 2076245,
-          "modified": "2026-10-05T18:13:37.021Z"
+          "bytes": 2076047,
+          "modified": "2026-10-23T20:31:16.789Z"
         }
       },
       "errors": []
