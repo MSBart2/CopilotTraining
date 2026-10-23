@@ -26,10 +26,10 @@ describe('[Feature] - Bug: [Brief Description]', () => {
     // Set up test database state
   });
 
-  it('should [expected behavior] - Bug #[issue-number]', async () => {
+  it('[expected behavior] - Bug #[issue-number]', async () => {
     // Arrange: Set up the specific conditions that trigger the bug
     // Act: Perform the action that causes the issue
-    // Assert: Verify the bug occurs (test should FAIL initially)
+    // Assert: Verify the bug occurs (the test fails at first — that proves the bug)
   });
 });
 ```
@@ -42,7 +42,7 @@ describe('[Feature] - Bug: [Brief Description]', () => {
 **Test Pattern**:
 ```javascript
 describe('Characters API - Bug: Duplicate character records', () => {
-  it('should return only unique characters per show - Bug #142', async () => {
+  it('returns only unique characters per show - Bug #142', async () => {
     // Arrange: Seed database with duplicate character
     await db.characters.insert({
       name: 'Jesse Pinkman',
@@ -58,7 +58,7 @@ describe('Characters API - Bug: Duplicate character records', () => {
     // Act: Query for characters
     const response = await request(app).get('/api/shows/1/characters');
     
-    // Assert: Should only return one Jesse Pinkman
+    // Assert: Returns only one Jesse Pinkman
     const jessePinkman = response.body.filter(c => c.name === 'Jesse Pinkman');
     expect(jessePinkman).toHaveLength(1); // FAILS - returns 2!
   });
@@ -71,7 +71,7 @@ describe('Characters API - Bug: Duplicate character records', () => {
 **Test Pattern**:
 ```javascript
 describe('Quotes API - Bug: Crash with deleted character', () => {
-  it('should handle quotes for deleted characters gracefully - Bug #156', async () => {
+  it('handles quotes for deleted characters gracefully - Bug #156', async () => {
     // Arrange: Create quote, then delete character
     const character = await db.characters.insert({ name: 'Test', show_id: 1 });
     await db.quotes.insert({
@@ -84,7 +84,7 @@ describe('Quotes API - Bug: Crash with deleted character', () => {
     // Act: Try to get quote
     const response = await request(app).get(`/api/quotes/${quote.id}`);
     
-    // Assert: Should return 200 with null character, not crash
+    // Assert: Returns 200 with null character, not crash
     expect(response.status).toBe(200); // FAILS - returns 500!
   });
 });
@@ -96,7 +96,7 @@ describe('Quotes API - Bug: Crash with deleted character', () => {
 **Test Pattern**:
 ```javascript
 describe('Episodes API - Bug: Season filter not working', () => {
-  it('should return only episodes from specified season - Bug #178', async () => {
+  it('returns only episodes from specified season - Bug #178', async () => {
     // Arrange: Create episodes across seasons
     await db.episodes.insert([
       { title: 'S1E1', season_number: 1, episode_number: 1, show_id: 1 },
@@ -106,7 +106,7 @@ describe('Episodes API - Bug: Season filter not working', () => {
     // Act: Request only season 1
     const response = await request(app).get('/api/episodes?season=1');
     
-    // Assert: Should only return season 1 episodes
+    // Assert: Returns only season 1 episodes
     expect(response.body.every(ep => ep.season_number === 1)).toBe(true);
     // FAILS - returns episodes from all seasons!
   });
@@ -119,12 +119,12 @@ describe('Episodes API - Bug: Season filter not working', () => {
 **Test Pattern**:
 ```javascript
 describe('Characters API - Bug: Allows invalid status values', () => {
-  it('should reject character with invalid status - Bug #189', async () => {
+  it('rejects character with invalid status - Bug #189', async () => {
     // Arrange: Attempt to create character with invalid status
     const invalidCharacter = {
       name: 'New Character',
       show_id: 1,
-      status: 'retired' // Invalid! Should be 'alive', 'deceased', or 'unknown'
+      status: 'retired' // Invalid! Valid values: 'alive', 'deceased', or 'unknown'
     };
 
     // Act: Try to create character
@@ -132,7 +132,7 @@ describe('Characters API - Bug: Allows invalid status values', () => {
       .post('/api/characters')
       .send(invalidCharacter);
     
-    // Assert: Should return 400 Bad Request
+    // Assert: Returns 400 Bad Request
     expect(response.status).toBe(400); // FAILS - returns 201!
     expect(response.body.error).toContain('Invalid status');
   });
@@ -169,8 +169,8 @@ When writing bug reproduction tests, keep these schema rules in mind:
 1. **Isolate the issue**: Create minimal test data that triggers the bug
 2. **Document expected vs. actual**: Comment what SHOULD happen vs. what DOES happen
 3. **Include bug report context**: Reference the issue number and user report
-4. **Test should FAIL initially**: Confirm the bug exists before fixing
-5. **Verify the fix**: After fixing, test should PASS
+4. **Test fails at first**: Confirm the bug exists before fixing
+5. **Verify the fix**: After fixing, the test passes
 
 ## Example: Complete Bug Reproduction Flow
 
@@ -196,7 +196,7 @@ describe('Characters API - Bug: Duplicate character names in same show', () => {
     breakingBadId = show.id;
   });
 
-  it('should prevent duplicate character names within same show - Bug #142', async () => {
+  it('prevents duplicate character names within same show - Bug #142', async () => {
     // Arrange: Create first Jesse Pinkman
     const first = await request(app)
       .post('/api/characters')
@@ -216,7 +216,7 @@ describe('Characters API - Bug: Duplicate character names in same show', () => {
         actor_name: 'Aaron Paul'
       });
     
-    // Assert: Should reject duplicate
+    // Assert: Rejects duplicate
     expect(duplicate.status).toBe(400); // FAILS - returns 201!
     expect(duplicate.body.error).toContain('Character already exists');
 

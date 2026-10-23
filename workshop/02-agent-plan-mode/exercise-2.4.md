@@ -41,7 +41,7 @@ Switch from plan mode to agent mode, run the combined plan file, verify the Show
    /universe-dashboard-plan.prompt.md
    ```
 
-   Watch the agent work step by step: migration → API route → React component → homepage wiring. It should follow the dependency sequence from the plan.
+   Watch the agent work step by step: migration → API route → React component → homepage wiring. Look for it to follow the dependency sequence from the plan.
 
    **Your job during execution:** Monitor for deviations. If the agent:
 

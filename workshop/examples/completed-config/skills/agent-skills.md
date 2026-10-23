@@ -43,7 +43,7 @@ This library contains three production-ready skills for FanHub development. Each
 - Bug reproduction test structure (describe/it blocks, Arrange/Act/Assert)
 - Common bug categories (data integrity, null references, query errors, business logic)
 - FanHub schema knowledge for realistic test data
-- Test patterns that demonstrate the bug exists (should FAIL initially)
+- Test patterns that demonstrate the bug exists (fails at first — that proves the bug)
 
 **Use this when**: A bug report comes in, reproducing issues before fixing them, preventing regression, or debugging data integrity problems.
 

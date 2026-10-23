@@ -4,7 +4,7 @@ subtitle: ""
 slug: 05-mcp-servers
 category: workshop
 duration: 45
-updated: 2026-08-13
+updated: 2026-10-23
 ---
 
 # Module 5 - MCP Servers

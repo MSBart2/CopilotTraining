@@ -135,7 +135,7 @@ test("universal instructions own the education north star", async () => {
   assert.match(instructions, /canonical source for editorial policy/i);
   assert.match(instructions, /### Actor, Question, and Proof Contract/);
   assert.match(instructions, /Name who or what acts when agency matters/);
-  assert.match(instructions, /Every slide should answer one audience question/);
+  assert.match(instructions, /Every slide answers one audience question/);
   assert.match(instructions, /show a representative input, action, or artifact together with its observable result/);
 });
 

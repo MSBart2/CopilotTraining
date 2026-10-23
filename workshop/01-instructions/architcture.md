@@ -209,9 +209,9 @@ Current migrations:
 
 | Setting                  | File                                          | Notes                                                      |
 | ------------------------ | --------------------------------------------- | ---------------------------------------------------------- |
-| SQLite connection string | `Program.cs` (hardcoded)                      | **Bug** — should be in `appsettings.json`                  |
+| SQLite connection string | `Program.cs` (hardcoded)                      | **Bug** — belongs in `appsettings.json`                    |
 | Backend URL (frontend)   | `appsettings.Development.json` → `BackendUrl` |                                                            |
-| CORS policy              | `Program.cs`                                  | `AllowAnyOrigin` — **should be locked down in production** |
+| CORS policy              | `Program.cs`                                  | `AllowAnyOrigin` — **lock down in production**             |
 | Ports                    | `Properties/launchSettings.json`              | Backend: 5265, Frontend: 3000                              |
 
 ---
@@ -252,7 +252,7 @@ Current migrations:
 | N+1 queries                    | `ShowsController`, `QuotesController`     | Missing `.Include()` calls                  |
 | Season filter ignored          | `Episodes.razor`                          | Caching bug returns all episodes regardless |
 | Static event leak              | `Characters.razor`                        | `OnCharacterSelected` never unsubscribed    |
-| Wrong HTTP status              | Multiple controllers                      | POST should return 201, not 200             |
+| Wrong HTTP status              | Multiple controllers                      | POST returns 201 on create (currently 200)  |
 | Missing DELETE                 | `QuotesController`                        | No delete endpoint                          |
 
 ---

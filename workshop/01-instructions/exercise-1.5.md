@@ -12,13 +12,13 @@ It's 2:15 PM. The team has layer-specific instructions (frontend/backend) and la
 
 **Marcus** edits `Dockerfile` and Copilot suggests application code patterns instead of container best practices—missing multi-stage builds, insecure base images, no health checks. He spends 8 minutes per Dockerfile correcting container-specific issues.
 
-**Elena** writes test files and needs different conventions than production code: descriptive test names, mocking patterns, edge case focus, assertion-specific syntax. But production code instructions leak into tests—encouraging DRY when tests should be explicit, suggesting optimization when tests prioritize readability. She spends 10 minutes per test file refactoring to match testing conventions.
+**Elena** writes test files and needs different conventions than production code: descriptive test names, mocking patterns, edge case focus, assertion-specific syntax. But production code instructions leak into tests—encouraging DRY when tests need to be explicit, suggesting optimization when tests prioritize readability. She spends 10 minutes per test file refactoring to match testing conventions.
 
 **David** writes documentation in `docs/**/*.md` files that needs stakeholder-friendly language, but Copilot suggests technical jargon appropriate for code comments. He spends 12 minutes per doc file making it business-audience appropriate.
 
 The issue: instructions target layers and languages, but not **file purposes**. Test files, config files, documentation, and infrastructure code each need specialized guidance beyond just "what language" or "what layer."
 
-Marcus realizes: *"We need file-type-specific instructions. Test files should focus on clarity and edge cases. Docker files should enforce container security. Documentation should target business stakeholders. Each file type has its own purpose."*
+Marcus realizes: *"We need file-type-specific instructions. Test files focus on clarity and edge cases. Docker files enforce container security. Documentation targets business stakeholders. Each file type has its own purpose."*
 
 #### 🔄 The Transformation
 
@@ -51,11 +51,11 @@ Create file-type-specific instruction files for tests, Docker configs, and docum
    You are writing **test code**. Testing conventions differ from production code:
 
    ## Test Naming
-   - **Descriptive names:** Tests should read like specifications
+   - **Descriptive names:** Tests read like specifications
      test('returns 404 when character does not exist')
      test('creates character with valid data and returns 201')
      test('rejects character creation when name exceeds 100 characters')
-   - **Pattern:** `test('should ... when ...')`  or  `test('returns ... given ...')`
+   - **Pattern:** `test('does ... when ...')`  or  `test('returns ... given ...')`
 
    ## Test Structure (Arrange-Act-Assert)
      test('example test', async () => {
@@ -72,9 +72,9 @@ Create file-type-specific instruction files for tests, Docker configs, and docum
      });
 
    ## Testing Priorities
-   - **Clarity over DRY:** Tests should be explicit and readable, even if repetitive
+   - **Clarity over DRY:** Tests are explicit and readable, even if repetitive
    - **Edge cases are critical:** Empty arrays, null values, boundary conditions, concurrent operations
-   - **Isolation:** Each test should be independent, no shared state
+   - **Isolation:** Each test is independent, no shared state
    - **Fast execution:** Mock external dependencies (databases, APIs, file system)
 
    ## Mock Patterns
@@ -200,7 +200,7 @@ Create file-type-specific instruction files for tests, Docker configs, and docum
 
    ## Writing Style
    - **Audience-first:** Assume reader is unfamiliar with implementation details
-   - **Active voice:** "Click the button" not "The button should be clicked"
+   - **Active voice:** "Click the button" not "The button is to be clicked"
    - **Present tense:** "The system validates" not "The system will validate"
    - **Concise:** Use short sentences and paragraphs
 
@@ -213,7 +213,7 @@ Create file-type-specific instruction files for tests, Docker configs, and docum
    ## Content Guidelines
 
    ### Business Value
-   Every feature should explain:
+   Every feature explains:
    - **What** it does (one sentence)
    - **Why** it matters (business benefit)
    - **How** to use it (step-by-step with examples)
@@ -256,7 +256,7 @@ Create file-type-specific instruction files for tests, Docker configs, and docum
    Write tests for the GET /characters/:id endpoint
    ```
 
-   **Expected:** Descriptive test names, Arrange-Act-Assert structure, edge cases (not found, invalid ID), mocking patterns. Should NOT suggest production abstractions or DRY patterns.
+   **Expected:** Descriptive test names, Arrange-Act-Assert structure, edge cases (not found, invalid ID), mocking patterns. No production abstractions or DRY patterns.
 
    b) **Docker file context:**
 
@@ -266,7 +266,7 @@ Create file-type-specific instruction files for tests, Docker configs, and docum
    Optimize this Dockerfile for production
    ```
 
-   **Expected:** Multi-stage builds, Alpine base image, non-root user, layer optimization. Should NOT suggest application code patterns.
+   **Expected:** Multi-stage builds, Alpine base image, non-root user, layer optimization. No application-code patterns.
 
    c) **Documentation context:**
 
@@ -276,7 +276,7 @@ Create file-type-specific instruction files for tests, Docker configs, and docum
    Explain how the character detail feature works
    ```
 
-   **Expected:** Business-focused language, examples first, scannable structure. Should NOT use technical jargon without context.
+   **Expected:** Business-focused language, examples first, scannable structure. No technical jargon without context.
 
 5. **Verify complex file matching**
 
@@ -288,9 +288,9 @@ Create file-type-specific instruction files for tests, Docker configs, and docum
    - `test/` (singular)
 
    Test that it works:
-   - Create `backend/src/__tests__/example.test.js` → Should apply test conventions
-   - Create `backend/tests/integration.test.js` → Should apply test conventions
-   - Create `backend/src/routes/characters.js` → Should NOT apply test conventions
+   - Create `backend/src/__tests__/example.test.js` → Applies test conventions
+   - Create `backend/tests/integration.test.js` → Applies test conventions
+   - Create `backend/src/routes/characters.js` → Test conventions stay out
 
    **Glob patterns are powerful for targeting file structures.**
 

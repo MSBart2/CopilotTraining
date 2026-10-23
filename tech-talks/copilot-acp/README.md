@@ -6,7 +6,7 @@ audience: [developer, platform-engineer, architect]
 level: advanced
 duration: 45
 format: core-talk
-decision: "When should an external client connect to a Copilot agent?"
+decision: "When is an external client the right way to reach a Copilot agent?"
 prerequisites: [copilot-sdk]
 related: [mcp-apps, copilot-plugins]
 references:
@@ -366,6 +366,8 @@ npm run dev
 ---
 
 ## ✅ What You Can Do Today
+
+**Hands-on walkthrough:** [examples/walkthrough.md](examples/walkthrough.md) runs the cli-acp orchestrator against FanHub workers: broadcast, targeted follow-up, manifest-driven context, and session resume.
 
 **Immediate Actions (15 minutes):**
 - [ ] Verify Copilot CLI is installed: `copilot --version` [^2]

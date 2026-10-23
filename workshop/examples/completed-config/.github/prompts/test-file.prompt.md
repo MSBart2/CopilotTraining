@@ -225,7 +225,7 @@ Provide complete, ready-to-run test file:
 ### Test File Location
 
 ```
-Save to: [exact path where file should be created]
+Save to: [exact path for the new file]
 ```
 
 ### Coverage Summary

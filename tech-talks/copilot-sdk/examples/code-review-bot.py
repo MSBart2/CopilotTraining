@@ -34,19 +34,19 @@ DEFAULT_STANDARDS = """
 
 ## Error Handling
 - Async functions must have try-catch blocks
-- All error cases should be handled explicitly
-- Error messages should not leak sensitive information
+- Handle all error cases explicitly
+- Keep sensitive information out of error messages
 
 ## Code Quality
-- Functions should have single responsibility
-- Magic numbers should be named constants
+- Give each function a single responsibility
+- Name magic numbers as constants
 - Null/undefined checks required for optional parameters
 - No commented-out code in final PR
 
 ## Testing
 - New features require test coverage
-- Tests should cover edge cases (null, empty, boundary values)
-- Test names should be descriptive
+- Tests cover edge cases (null, empty, boundary values)
+- Test names are descriptive
 
 ## Performance
 - Avoid N+1 queries in database operations

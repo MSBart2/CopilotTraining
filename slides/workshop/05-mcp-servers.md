@@ -753,7 +753,7 @@ The <code class="text-emerald-300">check-data-accuracy</code> skill from M3/M4 v
 </div>
 </div>
 <div class="p-3 bg-gray-900/40 rounded-xl border border-emerald-500/20 text-xs text-gray-300 italic">
-&#x1F4AD; <strong class="text-emerald-300">Elena:</strong> "The static check told us what <em>should</em> be true. The MCP check tells us what <em>is</em> stored. I&#39;d been treating those as the same question."
+&#x1F4AD; <strong class="text-emerald-300">Elena:</strong> "The static check told us what we <em>expected</em>. The MCP check tells us what <em>is</em> stored. I&#39;d been treating those as the same question."
 </div>
 </div>
 </div>

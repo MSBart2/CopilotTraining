@@ -51,7 +51,7 @@ Run four targeted MCP queries against the FanHub database, use your show knowled
    When results come back, evaluate against your show knowledge:
 
    - Does the alive/dead breakdown match how **Season 1** of your show ends?
-   - Are there any characters listed as alive who should be marked as deceased by the end of the seeded season?
+   - Are there any characters listed as alive who need to be marked as deceased by the end of the seeded season?
    - Are there characters whose status is ambiguous in the data but clear if you know the show?
 
    **For Breaking Bad:** Nobody major dies in Season 1, but Emilio Koyama and Krazy-8 both die. Check whether they appear in the database and how they're classified. If either is missing from the database entirely, that's a coverage gap.
@@ -75,7 +75,7 @@ Run four targeted MCP queries against the FanHub database, use your show knowled
    - Which are minor enough that a sparse bio is acceptable?
    - Which have the biggest gap between their importance to the show and the quality of their database entry?
 
-   **For Breaking Bad:** Gustavo Fring has a sparse bio in the seed data. He's one of the show's most important antagonists. If his bio shows up here, it's a high-priority gap. Jesse Pinkman should also have a complete bio — if he's in this list, that's a critical error.
+   **For Breaking Bad:** Gustavo Fring has a sparse bio in the seed data. He's one of the show's most important antagonists. If his bio shows up here, it's a high-priority gap. Jesse Pinkman also needs a complete bio — if he's in this list, that's a critical error.
 
    Note at least one character where you can say: **"Copilot can't prioritize this by importance — but I can, because I know the show."** That's the insight the exercise is designed to surface.
 
@@ -116,12 +116,12 @@ Run four targeted MCP queries against the FanHub database, use your show knowled
    Then evaluate against your mental model of the show:
 
    - Given that this is a one-season dataset, does the character count seem like complete coverage?
-   - Who is missing that should be there?
+   - Who is missing that belongs there?
    - Are the location count and canon fact count proportional to the show's complexity?
 
    **For Breaking Bad Season 1:** Key characters include Walter White, Jesse Pinkman, Skyler White, Walter White Jr., Hank Schrader, Marie Schrader, Jane Margolis (wait — Jane doesn't appear until Season 2), Emilio Koyama, Krazy-8, and Gomez. That's roughly 8–10 core characters. If the database has 3, it's underpopulated. If it has 40, the seeding added non-Season-1 characters or invented extras.
 
-   Name at least one character who is missing from the database but should be there. This is a finding Copilot cannot make — it requires knowing the show.
+   Name at least one character who is missing from the database but belongs there. This is a finding Copilot cannot make — it requires knowing the show.
 
 5. **Prioritized remediation plan**
 
@@ -131,7 +131,7 @@ Run four targeted MCP queries against the FanHub database, use your show knowled
    Based on the data quality issues we found in the FanHub database, create a
    prioritized remediation plan. Order by: (1) most important characters with
    empty or wrong bios, (2) incorrect classifications, (3) missing characters
-   who should be in the database.
+   who belongs in the database.
 
    For each item: character name, issue type, suggested fix, priority (high/medium/low).
    ```
@@ -141,10 +141,10 @@ Run four targeted MCP queries against the FanHub database, use your show knowled
 #### ✅ Success Criteria
 
 - [ ] All four challenge queries completed using the connected MCP server
-- [ ] At least one finding is: "Copilot returned data X, but I know the show well enough to know it should be Y"
+- [ ] At least one finding is: "Copilot returned data X, but I know the show well enough to know it needs to be Y"
 - [ ] Challenge 2 identifies at least one character whose bio gap is a *priority* based on show importance, not just field emptiness
 - [ ] Challenge 3 distinguishes between intentionally empty factions and data gaps — using show knowledge, not query logic
-- [ ] Challenge 4 names at least one character who should be in the database but isn't
+- [ ] Challenge 4 names at least one character who belongs in the database but isn't
 - [ ] Remediation plan created with at least 3 items, ordered by priority
 
 #### 📚 Official Docs
@@ -164,7 +164,7 @@ Run four targeted MCP queries against the FanHub database, use your show knowled
 
 | Previous Modules | This Exercise | Combined Power |
 |------------------|---------------|----------------|
-| Module 1 encoded show knowledge in `docs/[show]-universe.md` | Exercise 5.4 applies show knowledge as a live data quality layer | The universe doc isn't just for Copilot's context — it's a reference for what the database *should* contain |
+| Module 1 encoded show knowledge in `docs/[show]-universe.md` | Exercise 5.4 applies show knowledge as a live data quality layer | The universe doc isn't just for Copilot's context — it's a reference for what the database *needs to* contain |
 | Module 4's lore skill documented character facts and common misconceptions | Exercise 5.4 checks those facts against the running database | The lore skill told Copilot what's true; this exercise reveals what the *database* got wrong |
 | Exercises 5.1–5.3 established MCP queries against the FanHub database | Exercise 5.4 gives those queries purpose: evaluating correctness, not just returning data | Raw database access becomes a content QA capability |
 

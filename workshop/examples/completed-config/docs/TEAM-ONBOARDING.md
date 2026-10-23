@@ -156,8 +156,8 @@ Create `.github/copilot-instructions.md` in your repository:
 
 1. Save the file
 2. Open Copilot Chat
-3. Ask: "What coding standards should I follow in this project?"
-4. Copilot should reference your instructions
+3. Ask: "Which coding standards does this project follow?"
+4. Expect Copilot to reference your instructions
 
 ---
 
@@ -169,7 +169,7 @@ Create `.github/copilot-instructions.md` in your repository:
 - Repository context (when you use @workspace)
 - Your prompts and questions
 
-### What You Should Know
+### What to Know
 - Don't paste sensitive data (passwords, API keys) into prompts
 - Review generated code for security issues
 - AI can generate code with vulnerabilities

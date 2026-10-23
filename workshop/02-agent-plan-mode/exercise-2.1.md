@@ -28,7 +28,7 @@ He's not going to hand-edit seed files. He's going to ask Copilot to enumerate w
 
 #### 🎯 Your Goal
 
-Use Copilot in Agent mode to replace the Breaking Bad seed data with content for your chosen show. By the end of this exercise, the FanHub site should load characters, episodes, and locations from your show — not Breaking Bad.
+Use Copilot in Agent mode to replace the Breaking Bad seed data with content for your chosen show. By the end of this exercise, the FanHub site loads characters, episodes, and locations from your show — not Breaking Bad.
 
 #### 📋 Steps
 
@@ -80,7 +80,7 @@ Use Copilot in Agent mode to replace the Breaking Bad seed data with content for
 
 > **Rafael:** "The architecture is fine. The data is wrong. This is a 15-minute alignment — not a feature."
 >
-> Sarah, reviewing the PR: "This should have been the first thing we did."
+> Sarah, reviewing the PR: "We'll make this the first thing we do next time."
 >
 > Rafael: "It is. I'm already on the next OKR."
 

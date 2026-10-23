@@ -71,7 +71,7 @@ Provide a clear validation report with:
 List all validations that passed successfully.
 
 ### ⚠️ Warnings
-Possible issues that should be reviewed but aren't blocking:
+Possible issues worth reviewing that aren't blocking:
 - Near-duplicate names that might be intentional
 - Missing optional fields that would improve data quality
 - Data patterns that differ from existing records

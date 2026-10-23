@@ -130,7 +130,7 @@ After a talk passes validation:
 - Only update one talk at a time in a full apply flow.
 - If verification changes the scope, pause and ask for approval.
 - Archived content is never modified.
-- Latest report files are transient snapshots; they are regenerated and should not be treated as a permanent backlog.
+- Latest report files are transient snapshots; they are regenerated and serve as current views rather than a permanent backlog.
 - Any implemented announcement that came from the ledger must be closed as `accepted`, `rejected`, or `no-impact`. A named-talk refresh that started with an empty inbox must not invent ledger rows.
 - Do not start Agent Council or wipe a deck to confirm a recipe you already intend to keep.
 

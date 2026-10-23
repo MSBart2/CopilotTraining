@@ -1135,7 +1135,7 @@ if (request.params.name === "generate-scaffold") {
 ### Complementary Features
 
 - **[MCP Servers Workshop](../../workshop/05-mcp-servers/README.md)** — MCP fundamentals, tool development, configuration
-- **[Custom Agents](../copilot-web/README.md)** — Building agents that leverage MCP Apps for visualization
+- **[Custom Agents](../custom-agents/)** — Building agents that leverage MCP Apps for visualization
 - **[Agent Skills](../copilot-hooks/README.md)** — Packaging MCP Apps workflows as reusable skills
 
 ### Decision Flow

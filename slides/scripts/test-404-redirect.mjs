@@ -191,7 +191,7 @@ if (secondAttempt.action === "loop-detected") {
   passed++;
 } else {
   console.log(`❌ Loop detection failed for: ${loopTest.input}`);
-  console.log(`   Should have detected loop on second attempt\n`);
+  console.log(`   Expected loop detection on the second attempt\n`);
   failed++;
 }
 

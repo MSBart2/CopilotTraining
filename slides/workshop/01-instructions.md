@@ -120,7 +120,7 @@ The same standards get re-explained in every PR because the repository has no re
 <div class="text-xl mb-1">👩‍🔬</div>
 <div class="text-[15px] font-bold text-blue-300 mb-1">Elena needs context-specific rules</div>
 <div class="text-[15px] text-gray-300 leading-snug">
-Frontend, backend, tests, docs, and Python utilities should not all receive the same instructions.
+Frontend, backend, tests, docs, and Python utilities each need instructions tuned to them.
 </div>
 </div>
 </div>
@@ -240,7 +240,7 @@ Frontend, backend, tests, docs, and Python utilities should not all receive the 
 <div class="p-3 rounded-xl bg-gray-900/60 border border-orange-500/30">
 <div class="text-sm text-orange-300 font-semibold mb-1">Optional enterprise baseline</div>
 <div class="text-base text-white font-bold">Organization instructions</div>
-<div class="text-sm text-gray-300 leading-snug">Useful when many repositories should inherit the same guardrails.</div>
+<div class="text-sm text-gray-300 leading-snug">Useful when many repositories inherit the same guardrails.</div>
 </div>
 
 <div class="p-4 rounded-xl bg-gradient-to-r from-orange-900/40 to-gray-900/40 border border-orange-500/30">
@@ -553,7 +553,7 @@ Copilot doesn't automatically read this file. The trick: add a line in <code cla
 </div>
 </div>
 <div class="relative z-10 mb-3 p-3 bg-gray-900/50 rounded-xl border border-white/10 text-sm text-gray-300">
-Defined by your GitHub organization, not your repo. Every developer and every repo gets these automatically. Ideal for shared baselines that shouldn't be re-implemented team by team.
+Defined by your GitHub organization, not your repo. Every developer and every repo gets these automatically. Ideal for shared baselines every team inherits instead of re-implementing.
 </div>
 <div class="relative z-10 grid grid-cols-2 gap-3 mb-3">
 <div class="p-3 rounded-xl bg-gradient-to-br from-green-950/60 to-gray-900/80 border border-green-500/20">
@@ -1250,7 +1250,7 @@ Frontend and backend keep borrowing the wrong patterns from each other. <strong 
 <div class="space-y-2 text-xs">
 <div class="flex items-start gap-3 p-3 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-purple-700 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span><span class="text-gray-300">Create <span class="font-mono text-purple-300">.github/instructions/</span></span></div>
 <div class="flex items-start gap-3 p-3 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-purple-700 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span><span class="text-gray-300">Add focused frontend and backend instruction files</span></div>
-<div class="flex items-start gap-3 p-3 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-purple-700 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span><span class="text-gray-300">Verify each file activates only where it should</span></div>
+<div class="flex items-start gap-3 p-3 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-purple-700 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span><span class="text-gray-300">Verify each file activates only where intended</span></div>
 </div>
 </div>
 <div class="space-y-3">
@@ -1527,7 +1527,7 @@ Tests, Docker files, and docs serve different purposes than production app code.
 <div class="flex items-start gap-3 p-2 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-green-700 text-white text-xs flex items-center justify-center flex-shrink-0">1</span><span class="text-gray-300"><strong class="text-green-300">Ground the content</strong> &mdash; any TV series, game, or universe you know well. Then in Agent mode, scaffold <span class="font-mono text-green-300">docs/[show]-universe.md</span> using web search for premise, characters, terminology, and canon rules</span></div>
 <div class="flex items-start gap-3 p-2 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-green-700 text-white text-xs flex items-center justify-center flex-shrink-0">2</span><span class="text-gray-300">Review and correct the draft — find at least one inaccuracy Copilot introduced</span></div>
 <div class="flex items-start gap-3 p-2 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-green-700 text-white text-xs flex items-center justify-center flex-shrink-0">3</span><span class="text-gray-300">Add a <span class="font-mono text-green-300">## Universe</span> pointer section to <span class="font-mono text-green-300">AGENTS.md</span> linking to the file</span></div>
-<div class="flex items-start gap-3 p-2 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-green-700 text-white text-xs flex items-center justify-center flex-shrink-0">4</span><span class="text-gray-300">Validate: ask Copilot for a character bio — it should return accurate, show-specific content on the first pass</span></div>
+<div class="flex items-start gap-3 p-2 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-green-700 text-white text-xs flex items-center justify-center flex-shrink-0">4</span><span class="text-gray-300">Validate: ask Copilot for a character bio — expect accurate, show-specific content on the first pass</span></div>
 </div>
 </div>
 <div class="space-y-3">
@@ -1550,7 +1550,7 @@ Tests, Docker files, and docs serve different purposes than production app code.
 <script setup>
 const prompt = `Use #file:breaking-bad-universe.md as the exemplar and let's create a file to contain domain knowledge for my favorite show. Use web search to research [your show] and create docs/[show]-universe.md.
 
-The file should cover:
+Cover these sections:
 • Premise — one paragraph summary of the show
 • Main characters — name, role, key traits, status (alive/deceased)
 • Key locations — recurring places and their significance

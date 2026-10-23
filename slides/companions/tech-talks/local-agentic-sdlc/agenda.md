@@ -4,7 +4,7 @@ subtitle: "A Loop with a Contract"
 slug: local-agentic-sdlc
 category: tech-talks
 duration: 45
-updated: 2026-10-22
+updated: 2026-10-23
 ---
 
 # Local Agentic SDLC

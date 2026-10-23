@@ -73,7 +73,7 @@ echo '{
   "toolArgs": "{\"command\":\"rm -rf /tmp/*\"}"
 }' | .github/hooks/scripts/security-check.sh
 
-# Should output: {"permissionDecision":"deny",...}
+# Expected output: {"permissionDecision":"deny",...}
 ```
 
 ```bash
@@ -85,7 +85,7 @@ echo '{
   "toolArgs": "{\"command\":\"npm test\"}"
 }' | .github/hooks/scripts/security-check.sh
 
-# Should exit 0 (allowed)
+# Expect exit 0 (allowed)
 ```
 
 ## Querying Audit Logs

@@ -12,7 +12,7 @@ refresh:
   updateLevel: content
   rationale: >
     Team-specialized managed settings add a governed distribution path for plugins
-    and marketplaces alongside APM. The update should explain that enterprise
+    and marketplaces alongside APM. The update explains that enterprise
     enabledPlugins and extraKnownMarketplaces form an additive floor that teams can
     extend, without incorrectly presenting this as apm.yml inheritance.
   userEmphasis: []

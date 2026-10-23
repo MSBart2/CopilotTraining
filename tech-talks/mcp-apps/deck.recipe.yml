@@ -80,7 +80,7 @@ deck:
         Apps first-class in agentic workflows. Copilot Memory enabling persistent UI state
         across sessions is the section's standout capability. Move at pace — this is elevation,
         not instruction. Close with Best Practices as a summary frame, not a lecture. The
-        audience should leave feeling the full platform, not just the feature.
+        audience leaves feeling the full platform, not just the feature.
 
   highlightMoments:
     - "Tools return type: 'component' instead of text — VS Code detects and renders an interactive iframe in the chat panel"

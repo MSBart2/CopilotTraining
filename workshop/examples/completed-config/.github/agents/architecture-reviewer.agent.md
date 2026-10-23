@@ -71,10 +71,10 @@ For each review, provide:
 - [Non-blocking improvements]
 
 ### 🚨 Concerns
-- [Issues that should be addressed]
+- [Issues to address]
 
 ### 📚 Patterns to Document
-- [New patterns that should be added to copilot-instructions.md]
+- [New patterns to add to copilot-instructions.md]
 ```
 
 ## Example Review
@@ -99,6 +99,6 @@ For each review, provide:
 - No rate limiting on search endpoint
 
 ### 📚 Patterns to Document
-- Search endpoints should include `limit` parameter with default
+- Search endpoints include `limit` parameter with default
 - Add this pattern to copilot-instructions.md API section
 ```

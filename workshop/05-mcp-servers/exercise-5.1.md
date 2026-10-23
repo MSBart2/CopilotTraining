@@ -8,7 +8,7 @@
 
 #### 📖 The Challenge
 
-The team has been working on character-detail improvements across the workshop, but every database question still forces a context switch. Marcus has to open a database client to confirm what lives in the `characters` table. Elena needs to know what real optional data exists before deciding what tests should change. David wants to verify that the character-detail experience matches the actual data model, not an outdated diagram.
+The team has been working on character-detail improvements across the workshop, but every database question still forces a context switch. Marcus has to open a database client to confirm what lives in the `characters` table. Elena needs to know what real optional data exists before deciding what tests need to change. David wants to verify that the character-detail experience matches the actual data model, not an outdated diagram.
 
 Right now, live FanHub data still sits outside Copilot's reach. That means:
 
@@ -111,7 +111,7 @@ Configure an MCP server that gives Copilot direct access to FanHub's character-r
 
 **[Exercise 5.2: Upgrade Character Test Workflow with MCP](exercise-5.2.md)** — Now that Copilot can see real character data, upgrade the Module 4.2 skill so it can investigate duplicate character records and recommend the right follow-up work.
 
-> *"Module 4 gave us the workflow. Module 5 should make that same workflow smarter with live data."*
+> *"Module 4 gave us the workflow. Module 5 makes that same workflow smarter with live data."*
 > — Marcus, handing off to Elena
 
 ---

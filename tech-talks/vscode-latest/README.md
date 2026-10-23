@@ -609,8 +609,8 @@ Q: What does the workflow need?
 
 - **[Copilot CLI](../copilot-cli/)** — CLI session sidebar, `/worktree`, and `/rewind` commands complement the Agents window for terminal-first workflows
 - **[Custom Agents & Skills](../copilot-primitives/)** — `.agent.md` harness configuration, Agent Skills, and hooks that work across local and remote sessions
-- **[Terminal Sandboxing](../terminal-sandboxing/)** — Deep dive on sandbox configuration — essential for any remote agent host deployment
-- **[MCP Servers](../mcp-servers/)** — MCP configuration patterns that pair with enterprise MCP allowlists
+- **[Copilot CLI: Local and Cloud Sandboxes](../copilot-cli/README.md#local-and-cloud-sandboxes-public-preview)** — Sandbox configuration, essential for any remote agent host deployment
+- **[Workshop: MCP Servers](../../workshop/05-mcp-servers/)** — MCP configuration patterns that pair with enterprise MCP allowlists
 
 See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for full navigation.
 

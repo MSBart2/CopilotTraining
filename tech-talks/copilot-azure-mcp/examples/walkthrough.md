@@ -1,7 +1,7 @@
 # Demo: GitHub Copilot CLI + Azure MCP — Conversational Azure
 
-**Source talk:** `tech-talks/copilot-azure-mcp/`
-**Core question:** How do I prototype and deploy Azure solutions conversationally — with AI that knows what's actually running in my subscription?
+**Source talk:** [GitHub Copilot + Azure Skills Plugin](../README.md)
+**Core question:** How do I prototype and deploy Azure solutions conversationally — with AI that follows real Azure workflows, knows what's already running in my subscriptions, and executes changes through 200+ live Azure tools?
 **Target repo:** [github.com/MSBart2/FanHub](https://github.com/MSBart2/FanHub) — imagining FanHub deployed to Azure (App Service + Cosmos DB)
 
 ---
@@ -91,9 +91,9 @@ I need to add a new environment variable to FanHub's App Service for a third-par
 ```
 
 Copilot will ask before acting:
-- *"Should I use App Service application settings or Key Vault references?"*
+- *"Which fits better here: App Service application settings or Key Vault references?"*
 - *"Do you want this change applied to production, staging slot, or both?"*
-- *"Should I check if this variable name conflicts with any existing settings?"*
+- *"Do you want me to check if this variable name conflicts with any existing settings?"*
 
 Answer the questions. Copilot will then query your actual App Service config (via Azure MCP) and propose a specific `az webapp config appsettings set` command tailored to your real resource names and slot configuration.
 
@@ -115,7 +115,7 @@ Read the production FanHub App Service configuration and generate a Bicep templa
 
 Copilot queries the live resource via Azure MCP, extracts the relevant configuration properties, and generates a Bicep template with your customizations applied.
 
-**What to notice:** "Scaffold from running state" is a different workflow than "write infrastructure from documentation." The generated template reflects what's actually deployed — not what the docs say the defaults should be.
+**What to notice:** "Scaffold from running state" is a different workflow than "write infrastructure from documentation." The generated template reflects what's actually deployed — not what the docs list as the defaults.
 
 ---
 

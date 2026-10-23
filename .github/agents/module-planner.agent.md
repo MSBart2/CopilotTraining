@@ -30,7 +30,7 @@ You do **NOT** create individual exercise files—that's the module-creator's jo
 
 All content reinforces the shift from **"Syntax Wizards" to "Markdown Whisperers"**:
 
-1. **Clarity beats cleverness** — Code should be understandable
+1. **Clarity beats cleverness** — Write code people can understand
 2. **Intent over implementation** — Clear descriptions enable AI collaboration
 3. **Documentation is leverage** — Communication scales knowledge
 4. **AI amplifies clarity** — Better expression yields better results
@@ -70,7 +70,7 @@ When given a URL (blog post, docs, announcement):
    - What demonstrations prove the value?
    - What artifacts would learners create?
    - What before/after metrics are compelling?
-   - Which persona should lead each exercise?
+   - Which persona leads each exercise best?
 
 ### 2. Confirm the Training Design (REQUIRED before writing)
 

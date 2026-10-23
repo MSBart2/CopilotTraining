@@ -154,7 +154,7 @@ When delegating to exercise-author subagent:
 
 ```
 Run the exercise-author skill as a subagent to generate all missing
-exercise files for workshop/[NN]-[topic-name]/. The subagent should:
+exercise files for workshop/[NN]-[topic-name]/. The subagent will:
 1. Read the exercise planning table in README.md
 2. Check which exercise files already exist
 3. Create missing files using TEMPLATE.md structure

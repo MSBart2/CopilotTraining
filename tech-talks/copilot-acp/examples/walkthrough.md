@@ -1,7 +1,7 @@
 # Demo: GitHub Copilot ACP — Multi-Repo Agent Orchestration
 
-**Source talk:** `tech-talks/copilot-acp/`
-**Core question:** How do I integrate GitHub Copilot's agentic capabilities into any editor, tool, or workflow — not just VS Code?
+**Source talk:** [GitHub Copilot ACP: Your Tool Just Got an AI Agent](../README.md)
+**Core question:** I build tools outside VS Code — how do I give them Copilot's full agent capabilities without months of custom integration?
 **Demo repo:** [github.com/MSBart2/cli-acp](https://github.com/MSBart2/cli-acp) — a working ACP orchestrator web app
 **Worker repos:** FanHub's four language tracks — Node.js, .NET, Java, Go
 
@@ -71,7 +71,7 @@ In the **Orchestrator Focus** field, add:
 ```
 Combine the worker summaries into a comparison table. Call out shared setup gaps,
 major differences in stack, and the top 3 follow-up questions a new engineer
-should answer next.
+wants answered next.
 ```
 
 Click **Broadcast**.

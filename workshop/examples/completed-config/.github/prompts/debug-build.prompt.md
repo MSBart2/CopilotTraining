@@ -110,7 +110,7 @@ Check against known project-specific problems:
 **File paths**:
 
 - Use forward slashes (/) not backslashes (\)
-- Relative imports should be from src/ root
+- Relative imports start from src/ root
 - Docker volume paths must match host paths
 
 ## Output Format

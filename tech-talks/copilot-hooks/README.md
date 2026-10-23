@@ -6,7 +6,7 @@ audience: [platform-engineer, security]
 level: advanced
 duration: 45
 format: core-talk
-decision: "Which agent actions should policy allow or deny at execution time?"
+decision: "Which agent actions does policy allow or deny at execution time?"
 prerequisites: [copilot-primitives]
 related: [agentic-lifecycle, agentic-sdlc, enterprise-patterns]
 references:
@@ -69,10 +69,10 @@ references:
   Can't rely on post-incident review to catch `rm -rf /` or `DROP TABLE` commands — violations must be prevented
 
 - **Quality standards need validation at creation**
-  Style violations, test failures, and policy breaches should block commits before they're created, not in CI review
+  Style violations, test failures, and policy breaches block commits before they're created, ahead of CI review
 
 - **Agents need context injection**
-  Project-specific information, environment details, and API keys should be available to agents without manual setup
+  Agents get project-specific information, environment details, and API keys without manual setup
 
 ### Narrative
 
@@ -143,9 +143,9 @@ The critical distinction: **`PreToolUse` is the only hook that can prevent actio
 
 *Referenced but not shown inline — available in repository*
 
-- **[Example Hook Scripts](../../examples/completed-config/hooks/scripts/)** — Reusable bash/PowerShell scripts for common patterns
-- **[Hook Configuration Examples](../../examples/completed-config/hooks/)** — Complete working configurations for multiple use cases
-- **[Terminal Sandboxing Talk](../terminal-sandboxing/)** — Complementary OS-level execution controls
+- **[Example Hook Scripts](../../workshop/examples/completed-config/hooks/scripts/)** — Reusable bash/PowerShell scripts for common patterns
+- **[Hook Configuration Examples](../../workshop/examples/completed-config/hooks/)** — Complete working configurations for multiple use cases
+- **[Copilot CLI: Local and Cloud Sandboxes](../copilot-cli/README.md#local-and-cloud-sandboxes-public-preview)** — Complementary OS-level execution controls
 
 ---
 
@@ -202,7 +202,7 @@ Q: What's your governance requirement?
 │  └─ Best for: Environment-aware agents, project metadata
 │
 └─ "Blanket network/filesystem restrictions"
-   → Use: Terminal Sandboxing (see related talk)
+   → Use: Sandboxing (see Copilot CLI: Local and Cloud Sandboxes)
    └─ Best for: Defense-in-depth, prompt injection protection
 ```
 
@@ -216,18 +216,18 @@ Q: What's your governance requirement?
 
 ### Don't Use This Pattern When
 
-- You need OS-level execution controls → Use [Terminal Sandboxing](../terminal-sandboxing/)
+- You need OS-level execution controls → Use sandboxing, covered in [Copilot CLI: Local and Cloud Sandboxes](../copilot-cli/README.md#local-and-cloud-sandboxes-public-preview)
 - Agents don't touch sensitive systems → Observability overhead may not be worth it
 - You have <5 agent sessions/week → Manual review may be sufficient
 
 ### Comparison with Related Features
 
-| Aspect | Copilot Hooks | Terminal Sandboxing | Custom Instructions |
-|--------|---------------|---------------------|---------------------|
+| Aspect | Copilot Hooks | Sandboxing | Custom Instructions |
+|--------|---------------|------------|---------------------|
 | **Best For** | Real-time governance & audit | OS-level restrictions | Agent behavior guidance |
 | **Control Timing** | Before/after each action | Blanket runtime limits | Pre-action intent setting |
-| **Veto Power** | Yes (`PreToolUse` only) | Yes (blocks via OS) | No (suggestions only) |
-| **Setup Time** | 1-2 hours | 30 minutes | 15 minutes |
+| **Veto Power** | Yes (`PreToolUse` only) | Yes (blocks via OS containment) | No (suggestions only) |
+| **Setup Time** | 1-2 hours | One command (`/sandbox enable` in Copilot CLI) | 15 minutes |
 | **Performance Impact** | <5s per action typical | None (native OS) | None |
 
 ### Defense in Depth, Not Substitution
@@ -590,7 +590,7 @@ exit 0
 ### Key Principles
 
 **Deny by Default:**
-- Hooks should deny operations unless explicitly approved
+- Hooks deny operations unless explicitly approved
 - Use `"ask"` for operations that need human judgment (safer than auto-allow)
 - Reduces attack surface for policy bypass
 
@@ -600,7 +600,7 @@ exit 0
 - Use regex compilation and policy lookup caching
 
 **Clear Denial Messages:**
-- `permissionDecisionReason` should explain what was blocked and why
+- `permissionDecisionReason` explains what was blocked and why
 - Help developers understand policy violations
 - Include guidance on how to proceed correctly
 
@@ -1323,7 +1323,7 @@ exit 0
 
 **Next Steps After Completion:**
 1. ✅ Complete the immediate actions above
-2. 📖 Review related talk: [Terminal Sandboxing](../terminal-sandboxing/) for complementary OS-level controls
+2. 📖 Review [Copilot CLI: Local and Cloud Sandboxes](../copilot-cli/README.md#local-and-cloud-sandboxes-public-preview) for complementary OS-level controls
 3. 💬 Share results with your security/compliance team
 4. 🚀 Expand to organization-wide hook policies
 
@@ -1333,7 +1333,7 @@ exit 0
 
 ### Complementary Features
 
-- **[Terminal Sandboxing](../terminal-sandboxing/)** — OS-level execution controls (network/filesystem restrictions) that complement hook-based governance
+- **[Copilot CLI: Local and Cloud Sandboxes](../copilot-cli/README.md#local-and-cloud-sandboxes-public-preview)** — OS-level execution controls (network/filesystem restrictions) that complement hook-based governance
 - **[Custom Instructions](../../workshop/01-instructions/)** — Define agent behavior guidelines that hooks enforce through validation
 - **[Agent Skills](../../workshop/04-agent-skills/)** — Domain-specific capabilities with hook-based audit trails
 - **[Enterprise Patterns](../enterprise-patterns/)** — Organization-wide governance frameworks using hooks at scale
@@ -1345,7 +1345,7 @@ exit 0
 ```
 Q: What's your governance requirement?
 ├─ "Block network/filesystem access at OS level"
-│  → See: Terminal Sandboxing (blanket restrictions)
+│  → See: Copilot CLI sandboxing (blanket restrictions)
 │
 ├─ "Guide agent behavior without enforcement"
 │  → See: Custom Instructions (suggestions, not validation)
@@ -1527,7 +1527,7 @@ All hooks receive JSON via stdin with common fields plus event-specific addition
   hookSpecificOutput: {
     hookEventName: "Stop" | "SubagentStop";
     decision?: "block";          // Prevent agent from stopping
-    reason?: string;             // Why agent should continue (required when blocking)
+    reason?: string;             // Why the agent needs to continue (required when blocking)
   }
 }
 ```

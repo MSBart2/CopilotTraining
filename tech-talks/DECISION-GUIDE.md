@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-10-21
+updated: 2026-10-23
 ---
 
 # Tech Talks Decision Guide
@@ -13,9 +13,9 @@ Use this path when you are new to Copilot or introducing it to a team. Each step
 
 1. **Choose the surface** — [Which Copilot Where?](surfaces/) produces a routed task with named context and reviewer.
 2. **Configure shared behavior** — [Copilot Configuration Primitives](copilot-primitives/) builds and verifies instructions, prompts, skills, and agents.
-3. **Make success reusable** — [From Repo to Feature](repo-to-feature/) turns one solved task into a validated team capability.
-4. **Delegate bounded work** — [From Issue to Pull Request](copilot-web/) produces a draft pull request with acceptance evidence.
-5. **Verify before merge** — [PR Trust Stack](pr-trust-stack/) records accepted and rejected findings, deterministic checks, and the final human decision.
+3. **Run a contracted local loop** — [Local Agentic SDLC](local-agentic-sdlc/) plans, implements, tests, reviews, and integrates one change on your machine, with a done condition you can check.
+4. **Delegate and verify on GitHub** — [Copilot on GitHub](copilot-on-github/) shows the cloud agent drafting a pull request, code review and Code Quality reporting on every push, and you steering the rework and approving the merge.
+5. **Automate a recurring chore** — [GitHub Agentic Workflows](agentic-lifecycle/) compiles one repository chore into a workflow with read-only defaults, safe outputs, and a named approver.
 
 Stop at any step when its evidence is missing. Repair that boundary before adding more autonomy.
 
@@ -29,6 +29,7 @@ Sections follow where the agent runs and who starts it. Every talk applies the s
 |---|---|---|
 | Choose the right Copilot surface | [Which Copilot Where?](surfaces/) | A routed task with named context, artifact, and reviewer |
 | Encode and verify shared Copilot behavior | [Copilot Configuration Primitives](copilot-primitives/) | Working instruction, prompt, skill, or agent plus delivery and acceptance evidence |
+| Design one agent that behaves as intended in every runtime | [Custom Agents](custom-agents/) | One agent file with explicit tools and limits, plus a check in each runtime that it loaded and behaved as intended |
 
 ## Agents at Your Keyboard
 
@@ -38,9 +39,7 @@ Sections follow where the agent runs and who starts it. Every talk applies the s
 |---|---|---|
 | Work where shell and runtime state are decisive | [Copilot CLI](copilot-cli/) | A terminal-native result with observable command evidence |
 | Track VS Code changes that alter a durable workflow decision | [What's New in VS Code](vscode-latest/) | A changed workflow with its first verification step |
-| Turn solved work into reusable capability | [From Repo to Feature](repo-to-feature/) | Repository configuration and a validated plan |
-| Split, steer, and integrate multi-agent work | [Multi-Agent Coordination](multi-agent-coordination/) | A coordination contract, isolated evidence, and a named integration owner |
-| Build loops that stop safely | [Unattended Agents](unattended-agents/) | Progress state, verification signal, limit, and escalation path |
+| Run plan, implement, test, review, and integrate locally, and know when the run is done | [Local Agentic SDLC](local-agentic-sdlc/) | A plan artifact, isolated specialist work, an integration record, and stop conditions with a credit cap |
 
 Release-specific VS Code changes are routed through [rolling release briefs](../.github/content-routing/release-briefs/) to their durable owners. The current [VS Code Latest](vscode-latest/) talk remains active until its approved retirement checklist is complete.
 
@@ -50,9 +49,8 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
-| Delegate one bounded repository task | [From Issue to Pull Request](copilot-web/) | A draft pull request with an evidence bundle |
-| Automate recurring judgments across a lifecycle | [GitHub Agentic Workflows](agentic-lifecycle/) | Compiled workflow candidates with explicit handoffs, safe outputs, and approval gates |
-| Govern AI findings and deterministic merge evidence | [PR Trust Stack](pr-trust-stack/) | Dispositioned findings, evaluated checks, and a named merge authority |
+| Delegate an issue and verify the pull request before merge | [Copilot on GitHub](copilot-on-github/) | A cloud-agent draft pull request, code review findings and Code Quality results on every push, and a named merge decision |
+| Automate a recurring repository chore | [GitHub Agentic Workflows](agentic-lifecycle/) | Compiled workflow candidates with explicit handoffs, safe outputs, and approval gates |
 
 ## Trust and Govern
 
@@ -82,23 +80,27 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 ### Individual Developer
 
-[Which Copilot Where?](surfaces/) → [Copilot Configuration Primitives](copilot-primitives/) → [From Repo to Feature](repo-to-feature/) → choose [Copilot CLI](copilot-cli/) or [From Issue to Pull Request](copilot-web/) → verify the resulting evidence
+[Which Copilot Where?](surfaces/) → [Copilot Configuration Primitives](copilot-primitives/) → [Custom Agents](custom-agents/) → choose [Copilot CLI](copilot-cli/) or [What's New in VS Code](vscode-latest/) → [Local Agentic SDLC](local-agentic-sdlc/)
 
 ### Team Delegation
 
-[Which Copilot Where?](surfaces/) → [From Repo to Feature](repo-to-feature/) → [From Issue to Pull Request](copilot-web/) → [Multi-Agent Coordination](multi-agent-coordination/) → [Unattended Agents](unattended-agents/)
+[Which Copilot Where?](surfaces/) → [Copilot Configuration Primitives](copilot-primitives/) → [Copilot on GitHub](copilot-on-github/) → [Local Agentic SDLC](local-agentic-sdlc/) → [GitHub Agentic Workflows](agentic-lifecycle/)
 
 ### Repository Automation
 
-[Which Copilot Where?](surfaces/) → [GitHub Agentic Workflows](agentic-lifecycle/) → [PR Trust Stack](pr-trust-stack/) → [Copilot Hooks](copilot-hooks/) → [Agentic SDLC](agentic-sdlc/)
+[Which Copilot Where?](surfaces/) → [GitHub Agentic Workflows](agentic-lifecycle/) → [Copilot on GitHub](copilot-on-github/) → [Copilot Hooks](copilot-hooks/) → [Agentic SDLC](agentic-sdlc/)
 
 ### Platform and Governance
 
-[Enterprise Patterns](enterprise-patterns/) → [Plugins and APM](copilot-plugins/) → [Copilot Hooks](copilot-hooks/) → [PR Trust Stack](pr-trust-stack/) → [Agentic SDLC](agentic-sdlc/)
+[Enterprise Patterns](enterprise-patterns/) → [Plugins and APM](copilot-plugins/) → [GitHub Copilot Governance](copilot-governance/) → [Copilot Hooks](copilot-hooks/) → [Copilot on GitHub](copilot-on-github/) → [Agentic SDLC](agentic-sdlc/)
 
 ### Product and Tool Builders
 
 [Which Copilot Where?](surfaces/) → [Copilot SDK](copilot-sdk/) → choose [ACP](copilot-acp/), [MCP Apps](mcp-apps/), or [Azure MCP and Skills](copilot-azure-mcp/) → [Copilot with Foundry](copilot-with-foundry/)
+
+### Leaders
+
+[The Agentic Operating Model](exec-strategy/) → [GitHub Copilot Governance](copilot-governance/) → [Enterprise Patterns](enterprise-patterns/)
 
 ## Selection Rule
 

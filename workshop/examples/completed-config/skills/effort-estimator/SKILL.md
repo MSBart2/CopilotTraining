@@ -6,7 +6,7 @@ level: 2
 
 # Effort Estimator Skill
 
-> **Note**: This is a sample skill that estimates technical effort for feature requests. Your version should be tailored to your team's velocity and complexity factors.
+> **Note**: This is a sample skill that estimates technical effort for feature requests. Tailor your version to your team's velocity and complexity factors.
 
 ## Purpose
 
@@ -63,7 +63,7 @@ Use this skill when:
 - Significant infrastructure changes
 - External service integrations
 - Performance or scaling implications
-- Should be broken into smaller deliverables
+- Break into smaller deliverables
 
 **Example**: Full-text search across all content with autocomplete
 

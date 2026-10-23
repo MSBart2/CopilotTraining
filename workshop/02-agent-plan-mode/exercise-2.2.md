@@ -42,7 +42,7 @@ Run plan mode to produce a complete implementation roadmap for the Lore card and
 3. **Enter the Lore Card Prompt**
 
    ```
-   /plan Add a Lore card to the FanHub homepage that shows the count of lore facts for the show. Clicking the card should navigate to a new /lore page that lists all lore facts in a card layout.
+   /plan Add a Lore card to the FanHub homepage that shows the count of lore facts for the show. Clicking the card navigates to a new /lore page that lists all lore facts in a card layout.
    ```
 
    Wait for the plan to generate. Watch the chat window as it runs — you'll see Copilot reading `ARCHITECTURE.md`, the existing card components, routing config, and DB schema. It's learning the pattern of the existing cards before proposing how to add a new one.

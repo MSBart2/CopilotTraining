@@ -647,9 +647,8 @@ applyTo: "src/web/**/*.tsx"
 
 ### Complementary Features
 
-- **[Copilot Chat: Context Mastery](../copilot-chat/)** — How to use #file, @workspace, and #codebase for per-request context alongside always-on instructions
 - **Place, Load, and Prove the Context** — The verification sequence in this talk covers ownership, selectors, delivery evidence, and acceptance
-- **[MCP Servers](../mcp-apps/)** — Extend Copilot with external tool access via Model Context Protocol — complements agents with external data sources
+- **[MCP Apps](../mcp-apps/)** — Extend Copilot with external tool access via Model Context Protocol — complements agents with external data sources
 
 ### Decision Flow
 

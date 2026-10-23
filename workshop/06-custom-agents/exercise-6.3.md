@@ -65,7 +65,7 @@ Sarah creates `.github/agents/implement.agent.md` with:
 
 ### 💭 Sarah's Realization
 
-> *"This changes how I think about implementation. The Feature Spec is the source of truth—complete, reviewed, approved. The implementation agent treats it like a detailed specification and executes it systematically. I'm not constantly context-switching between the doc and code. And the handoff to character review makes quality checks part of the workflow, not something I remember to do later. This is how implementation should work: from spec to code to review, all orchestrated."*
+> *"This changes how I think about implementation. The Feature Spec is the source of truth—complete, reviewed, approved. The implementation agent treats it like a detailed specification and executes it systematically. I'm not constantly context-switching between the doc and code. And the handoff to character review makes quality checks part of the workflow, not something I remember to do later. This is how we want implementation to work: from spec to code to review, all orchestrated."*
 
 ---
 
@@ -73,7 +73,7 @@ Sarah creates `.github/agents/implement.agent.md` with:
 
 ### Step 1: Create Implementation Agent Configuration
 
-**Context:** The `@implement` agent needs full editing capabilities and should systematically execute feature specifications from Feature Spec documents. It hands off to character review after implementation.
+**Context:** The `@implement` agent needs full editing capabilities and systematically executes feature specifications from Feature Spec documents. It hands off to character review after implementation.
 
 **Task:**
 
@@ -288,7 +288,7 @@ Document these comparisons:
 
 **Enhance the implementation workflow:**
 
-1. **Bi-directional handoffs** — Add handoff from `@character-review` back to `@implement` for cases where review finds issues that should be fixed immediately
+1. **Bi-directional handoffs** — Add handoff from `@character-review` back to `@implement` for cases where review finds issues worth fixing immediately
 
 ---
 

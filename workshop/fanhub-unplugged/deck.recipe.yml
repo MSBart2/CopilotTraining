@@ -64,7 +64,7 @@ deck:
         Slides are reference cards, not lecture content. Four adventure path overviews (Bug Blitz,
         Full Rebrand, Build Something New, Delight Mode) with brief prompting guidance pointers —
         detailed guidance lives in README/materials. No new concepts introduced; everything
-        participants need is already established. Generator should produce overview slides with
+        participants need is already established. Generator produces overview slides with
         maximum whitespace, not dense instruction blocks. The facilitator circulates during this
         section.
 

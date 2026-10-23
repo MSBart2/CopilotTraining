@@ -427,7 +427,7 @@ describe("GET /api/characters/:id", () => {
     const response = await request(app).get("/api/characters/invalid");
 
     expect(response.status).toBe(404);
-    // Should not call database for invalid input
+    // Skips the database call for invalid input
     expect(queries.getCharacterById).not.toHaveBeenCalled();
   });
 
@@ -630,7 +630,7 @@ describe("CharacterDetail", () => {
 ### Remaining Open Questions
 
 1. **Character biography formatting**
-   - **Question:** Should biography support Markdown or rich text formatting?
+   - **Question:** Does biography support Markdown or rich text formatting?
    - **Current approach:** Plain text only
    - **Decision needed by:** Frontend implementation (Step 4)
    - **Impact:** Medium (affects component rendering and possibly backend storage)

@@ -62,7 +62,7 @@ Let plan mode research the codebase to resolve ambiguous sections. It will:
 
 ### Step 2: Save the Improved Spec
 
-Accept plan mode's proposed additions to `FEATURE-CHARACTER-DETAIL.md`. The improved spec should now include:
+Accept plan mode's proposed additions to `FEATURE-CHARACTER-DETAIL.md`. The improved spec now includes:
 
 - [ ] Concrete API response shape (fields, types, example response)
 - [ ] A specific database migration statement

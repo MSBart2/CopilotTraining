@@ -36,7 +36,7 @@ This is the Module 00 frustration.
 
 ```bash
 # Local install from this demo folder:
-apm install /path/to/demos/fanhub-plugin
+apm install /path/to/CopilotTraining/tech-talks/copilot-plugins/examples/fanhub-plugin
 
 # Once published to the registry:
 # apm install @fanhub/workshop
@@ -126,7 +126,7 @@ node mcp-servers/fanhub-api-server.js
 Don't demo live MCP calls here — save that for Module 05.
 
 **Local path for demo:**
-Replace `/path/to/demos/fanhub-plugin` with the actual absolute path on your machine.
+Replace `/path/to/CopilotTraining/tech-talks/copilot-plugins/examples/fanhub-plugin` with the actual absolute path on your machine.
 The `apm install <local-path>` experience is identical to a registry install — participants
 see the same output.
 

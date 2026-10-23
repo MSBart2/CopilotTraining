@@ -14,14 +14,14 @@ Use the **Slide Generator** agent to create slides:
 
 ```
 @slide-generator workshop/03-custom-prompts
-@slide-generator exec-talks/agentic-delivery
+@slide-generator tech-talks/exec-strategy
 ```
 
 For tech talks, use the **Tech Talk Slide Generator** instead:
 
 ```
 @tech-talk-slide-generator tech-talks/copilot-cli
-@tech-talk-slide-generator tech-talks/agent-teams
+@tech-talk-slide-generator tech-talks/copilot-on-github
 ```
 
 **What it does:**
@@ -30,7 +30,7 @@ For tech talks, use the **Tech Talk Slide Generator** instead:
 - ✅ Updates the slides index
 - ✅ Reports completion with slide count and path
 
-For tech talks, the source `tech-talks/{topic}/README.md` stays the reader-first deep dive. The slide generator adapts it into a presentation deck and should not require visible slide-planning sections inside the README.
+For tech talks, the source `tech-talks/{topic}/README.md` stays the reader-first deep dive. The slide generator adapts it into a presentation deck and works without visible slide-planning sections inside the README.
 
 For fast iteration on a single tech talk, edit `tech-talks/{topic}/deck.recipe.yml` and then rerun the slide generator for that one topic. The recipe is the per-talk slide adaptation artifact; the README remains the source of content.
 
@@ -65,18 +65,18 @@ Opens at `http://localhost:3030` with hot reload.
 | `00-orientation.md` | Training overview, personas, principles |
 | `01-instructions.md` | Repository instructions |
 | `02-agent-plan-mode.md` | Agent plan mode thinking |
-| `03-custom-prompts.md` | Custom prompt engineering |
-| `04-agent-skills.md` | Domain-specific Agent Skills |
+| `03-04-combined.md` | Custom prompts and Agent Skills |
 | `05-mcp-servers.md` | Model Context Protocol servers |
 | `06-custom-agents.md` | Building custom agents |
+| `fanhub-unplugged.md` | Capstone: FanHub end to end |
 
 ### Tech Talks
 
-Agent orchestration, CI/CD workflows, memory systems, CLI tools, and more.
+Practitioner deep dives grouped by where the agent runs: Foundations, Agents at Your Keyboard, Agents on GitHub, Trust and Govern, and Extend and Embed. See [tech-talks/DECISION-GUIDE.md](../tech-talks/DECISION-GUIDE.md) to choose one.
 
 ### Executive Talks
 
-Agentic delivery, economics, and labor implications.
+The Agentic Operating Model: the decisions, owners, and success signals for leaders adopting agentic delivery.
 
 ---
 

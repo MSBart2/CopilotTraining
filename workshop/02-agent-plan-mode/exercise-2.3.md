@@ -36,14 +36,14 @@ With Jessica's plan file open in VS Code, run a second plan mode prompt to desig
    Enter this prompt in plan mode:
 
    ```
-   /plan Add a form to the /lore page that lets me add a new lore entry. The form should have a title and description field. On submit, save the new entry and refresh the list so the new card appears immediately. The Lore count on the homepage card should also update.
+   /plan Add a form to the /lore page that lets me add a new lore entry. The form has a title and description field. On submit, save the new entry and refresh the list so the new card appears immediately. The Lore count on the homepage card also updates.
    ```
 
    When the plan generates, VS Code will ask whether to combine with the open plan or keep them separate. Choose **Combine**.
 
 3. **Run the Continuity Check**
 
-   When the combined plan arrives, search for `lore_entries`. The plan should:
+   When the combined plan arrives, search for `lore_entries`. Look for a plan that does the following:
 
    - Reference `lore_entries` as the target table (not a new table)
    - Propose a `POST /api/lore-entries` endpoint
@@ -55,9 +55,9 @@ With Jessica's plan file open in VS Code, run a second plan mode prompt to desig
 
    Every good plan surfaces at least one decision it couldn't make without human input:
 
-   - *"Should the counter refresh optimistically or wait for the POST to return success?"*
-   - *"What should happen if a duplicate lore entry title is submitted?"*
-   - *"Should the form stay open or close after a successful add?"*
+   - *"Do you want the counter to refresh optimistically or wait for the POST to return success?"*
+   - *"What do you want to happen if a duplicate lore entry title is submitted?"*
+   - *"Do you want the form to stay open or close after a successful add?"*
 
    Pick one. Write your answer. This is the human judgment that plan mode deliberately leaves for you.
 

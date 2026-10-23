@@ -19,7 +19,7 @@ If any of the following are not clear from context, ask before proceeding:
 
 1. **Entity name** — singular PascalCase (e.g. `Location`, `Faction`, `Theme`)
 2. **Properties** — beyond `Id` and `ShowId`, what fields does this entity have? (e.g. `string Title`, `string Description`, `string Category`)
-3. **Form fields** — which properties should appear in the add form on the page?
+3. **Form fields** — which properties appear in the add form on the page?
 4. **Nav card label** — plural display label for the homepage (e.g. "Locations", "Lore Facts")
 5. **Nav card icon** — emoji for the homepage nav-card (e.g. 📍, 📖, ⚗️)
 6. **Seed source** — which file to draw seed data from (default: `docs/breaking-bad-universe.md`)
@@ -37,7 +37,7 @@ Create `dotnet/Backend/Models/{EntityName}.cs` using the template in [`templates
 Replace the example properties with the ones requested. Rules:
 
 - No navigation properties, no data annotations
-- All string properties should be non-nullable (no `?`) to match existing model style
+- All string properties are non-nullable (no `?`) to match existing model style
 
 ### Step 2 — Register DbSet
 

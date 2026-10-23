@@ -387,7 +387,7 @@ Five modules of work sitting in this repo. Right now I have to invoke all of it 
     <div class="text-blue-300 font-bold text-sm mb-2">Tool selection is policy</div>
     <ul class="text-xs text-gray-300 space-y-1.5">
       <li>Read-only tools enforce research or review boundaries</li>
-      <li>Editing tools should only appear where implementation is expected</li>
+      <li>Editing tools appear only where implementation is expected</li>
       <li>The tool list shapes the behavior as much as the prompt does</li>
     </ul>
   </div>

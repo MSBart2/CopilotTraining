@@ -19,7 +19,7 @@ decisions:
     rationale: Use learner decision as the stable catalog axis; keep audience and maturity as metadata and pathway filters.
 
   pr-trust-stack:
-    question: Should PR Trust Stack replace Code Review and Code Quality?
+    question: Will PR Trust Stack replace Code Review and Code Quality?
     state: approved
     evidence:
       - TECH-TALK-PORTFOLIO-PLAN.md#experiment-a-pr-trust-stack
@@ -29,7 +29,7 @@ decisions:
     rationale: Proceed with a conditional merge after first-party verification; preserve sources until the replacement and redirects validate.
 
   context-clinics:
-    question: Should Configuration, Memory, and Debugging consolidate into one Context Engineering talk?
+    question: Will Configuration, Memory, and Debugging consolidate into one Context Engineering talk?
     state: superseded
     evidence:
       - TECH-TALK-PORTFOLIO-PLAN.md#experiment-b-context-foundations
@@ -39,7 +39,7 @@ decisions:
     rationale: This consolidation was later reversed by primitives-restoration after deployed review showed that the practical tutorials, comparisons, and examples had not survived.
 
   primitives-restoration:
-    question: Should Copilot Primitives return as the canonical Step 2 configuration talk?
+    question: Will Copilot Primitives return as the canonical Step 2 configuration talk?
     state: approved
     evidence:
       - .github/content-routing/coverage/wp13-primitives-restoration.yml
@@ -48,7 +48,7 @@ decisions:
     rationale: Restore the practical four-primitive tutorial and absorb the strongest context placement and verification guidance as three supporting concepts.
 
   adoption-pathway:
-    question: Should Agentic Journey become a pathway rather than a standalone talk?
+    question: Will Agentic Journey become a pathway rather than a standalone talk?
     state: approved
     evidence:
       - TECH-TALK-PORTFOLIO-PLAN.md#experiment-c-adoption-story
@@ -58,7 +58,7 @@ decisions:
     rationale: Create a lifecycle-orchestration owner for the integrated four-workflow state machine before Agentic Journey is archived.
 
   release-brief:
-    question: Should VS Code Latest become a rolling release brief?
+    question: Will VS Code Latest become a rolling release brief?
     state: approved
     evidence:
       - TECH-TALK-PORTFOLIO-PLAN.md#proposed-portfolio-disposition
@@ -68,7 +68,7 @@ decisions:
     rationale: Retire conditionally after durable guidance is accepted by owners and redirects, builds, and companions validate.
 
   multi-agent-coordination:
-    question: Should Multi-Agent Coordination replace Agent Teams and GitHub Copilot App?
+    question: Will Multi-Agent Coordination replace Agent Teams and GitHub Copilot App?
     state: approved
     evidence:
       - .github/content-routing/coverage/wp11-multi-agent-coordination.yml
@@ -77,7 +77,7 @@ decisions:
     rationale: Unify composition patterns with the Copilot App operating surface; preserve source talks until the replacement, redirects, build, and companions validate.
 
   workflow-lifecycle:
-    question: Should Agentic Lifecycle absorb GitHub Agentic Workflows?
+    question: Will Agentic Lifecycle absorb GitHub Agentic Workflows?
     state: approved
     evidence:
       - .github/content-routing/coverage/wp12-workflow-lifecycle.yml

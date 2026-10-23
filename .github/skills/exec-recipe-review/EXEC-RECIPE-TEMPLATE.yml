@@ -2,7 +2,7 @@
 #
 # Guides slide generation from tech-talks/exec-<topic>/README.md.
 # Use this file to name and order sections, set the slide budget per section,
-# and surface authoring priorities the generator should follow.
+# and surface authoring priorities for the generator to follow.
 # Complex narrative content belongs in README.md; structural editorial
 # intent belongs here.
 #
@@ -62,8 +62,8 @@ deck:
     "[Section 4 Name]":
       emphasis: medium
       note: >
-        [The action close — what leadership must authorize, invest in, or decide. Should
-        reference 2–3 concrete next steps. Tie back to the opening frame.]
+        [The action close — what leadership must authorize,         invest in, or decide.
+                Reference 2–3 concrete next steps. Tie back to the opening frame.]
 
   # Optional context deck imported immediately after the TitleSlide.
   # Leave empty when the briefing is self-contained.

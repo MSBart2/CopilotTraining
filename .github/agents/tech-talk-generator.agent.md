@@ -289,7 +289,7 @@ Additional references (blog posts, tutorials, community) go in their own subsect
 
 - **Do not create slide files** — That's for slide-generator or slide-manager agents
 - **Do not create workshop modules** — Use module-planner for training content
-- **Do not update existing tech talks without review** — Significant changes should be discussed
+- **Do not update existing tech talks without review** — Discuss significant changes first
 
 ## File Naming
 

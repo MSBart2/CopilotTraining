@@ -90,7 +90,7 @@ These files form the foundation of practical Copilot and agent customization:
 - **Result**: Less tokens wasted, faster responses, more accurate suggestions
 - **What to include**: Tech stack, folder structure, data flow, key patterns
 - **What NOT to include**: Implementation details, code examples, exhaustive file lists
-- **Relationship to `AGENTS.md`**: Architecture remains the source of truth for how the system is shaped; agent files should point to it instead of repeating it
+- **Relationship to `AGENTS.md`**: Architecture remains the source of truth for how the system is shaped; agent files point to it instead of repeating it
 
 **2. .github/copilot-instructions.md** 🪄 **THE MAGIC FILE**
 - **Purpose**: Automatic pattern standardization for ALL interactions
@@ -127,7 +127,7 @@ Before writing instructions manually, let the AI analyze your codebase first:
 - **Output**: Prefers creating `AGENTS.md` with discovered conventions and local workflow guidance
 - **Best for**: Starting a new project, onboarding existing codebases, updating after major changes
 
-> 🤖 **Current default:** `/init` now prefers `AGENTS.md`. Treat that as the agent-ready bootstrap, then decide whether any GitHub-specific repo standards should also be copied or distilled into `.github/copilot-instructions.md`.
+> 🤖 **Current default:** `/init` now prefers `AGENTS.md`. Treat that as the agent-ready bootstrap, then decide whether any GitHub-specific repo standards also belong in `.github/copilot-instructions.md`, copied or distilled.
 
 **The workflow:**
 1. Run `/init` to get an AI-generated baseline
@@ -137,7 +137,7 @@ Before writing instructions manually, let the AI analyze your codebase first:
 5. Distill any always-on GitHub Copilot standards into `.github/copilot-instructions.md` when needed
 6. Layer with path-based instructions for context specificity
 
-**How should you use the generated `AGENTS.md`?**
+**How do you get the most from the generated `AGENTS.md`?**
 
 - Keep **`AGENTS.md`** as the expected `/init` starting point, especially when it includes commands, test steps, repo navigation, or PR guidance
 - Add or update **`.github/copilot-instructions.md`** when part of that output is primarily always-on GitHub Copilot baseline guidance for the whole repository
@@ -150,15 +150,15 @@ Before writing instructions manually, let the AI analyze your codebase first:
 | File | Primary Question | Best Content |
 |------|------------------|--------------|
 | `docs/ARCHITECTURE.md` | "What is this system and how does it fit together?" | System map, data flow, boundaries, major patterns, key dependencies |
-| Root `AGENTS.md` | "How should an agent work safely in this repo?" | Setup commands, test commands, repo conventions, links to architecture and domain docs |
+| Root `AGENTS.md` | "How does an agent work safely in this repo?" | Setup commands, test commands, repo conventions, links to architecture and domain docs |
 | Nested `AGENTS.md` | "What is different in this subproject?" | Local commands, package-specific constraints, deployment notes, local ownership rules |
 
-Use a **pointer pattern**: the root `AGENTS.md` should link to `docs/ARCHITECTURE.md` for system shape, then stay focused on how to operate. Nested `AGENTS.md` files should only exist when a directory has genuinely different commands, tooling, risks, or review expectations.
+Use a **pointer pattern**: the root `AGENTS.md` links to `docs/ARCHITECTURE.md` for system shape, then stay focused on how to operate. Nested `AGENTS.md` files exist only when a directory has genuinely different commands, tooling, risks, or review expectations.
 
 **Create multiple `AGENTS.md` files when:**
 - Different subprojects have different install, build, test, or deploy commands
 - A monorepo contains packages with separate ownership or release rules
-- Local constraints matter enough that an agent working in that folder should see them first
+- Local constraints matter enough that you want an agent working in that folder to see them first
 
 **Avoid multiple `AGENTS.md` files when:**
 - They would mostly duplicate the root playbook
@@ -324,7 +324,7 @@ repo/
 |------|-----------|-----|
 | Universal GitHub Copilot conventions for the whole repo | `.github/copilot-instructions.md` | Always-on repo constitution for GitHub-native flows |
 | Different rules for tests, frontend, backend, or docs | `.github/instructions/*.instructions.md` | `applyTo` gives precise file-pattern targeting |
-| Commands, tests, and guardrails an agent should follow in a specific directory | `AGENTS.md` | Nearest-file playbook works well for subprojects and cross-agent portability |
+| Commands, tests, and guardrails we want an agent to follow in a specific directory | `AGENTS.md` | Nearest-file playbook works well for subprojects and cross-agent portability |
 | Enterprise-wide baseline across many repositories | Organization instructions + repo files | Central standards with local extension |
 
 ---

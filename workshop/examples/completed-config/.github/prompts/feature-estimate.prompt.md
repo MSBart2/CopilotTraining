@@ -188,7 +188,7 @@ Total:     N hours (A-B days for senior dev)
 **Parallel work possible?**
 
 - Frontend and backend can be developed simultaneously if API contract is defined upfront
-- Database changes should be done first
+- Do database changes first
 
 ### ⚠️ Risk Factors
 

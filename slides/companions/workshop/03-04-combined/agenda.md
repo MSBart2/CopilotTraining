@@ -4,7 +4,7 @@ subtitle: ""
 slug: 03-04-combined
 category: workshop
 duration: 45
-updated: 2026-08-13
+updated: 2026-10-23
 ---
 
 # From Prompts to Skills

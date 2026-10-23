@@ -6,7 +6,7 @@ audience: [developer, platform-engineer, architect]
 level: advanced
 duration: 45
 format: core-talk
-decision: "When should an application own the agent runtime?"
+decision: "When does an application own the agent runtime?"
 prerequisites: [surfaces]
 related: [copilot-acp, mcp-apps, copilot-plugins]
 references:
@@ -112,7 +112,7 @@ The separation is intentional: Copilot CLI is the agent runtime (planning, tools
 
 ### Runtime Ownership Decision
 
-Choose the SDK when the application must own runtime lifecycle, tools, policy, observability, and delivery. Choose editor-hosted agent UX when a person should steer work through editor context, diffs, diagnostics, and approvals. VS Code's remote Agent Host is evidence that the runtime can be portable beyond the local editor process; it does not collapse the protocol boundary. Coordinating an external client through the Agent Host Protocol remains a separate client, permission, and session design concern from embedding the Copilot runtime with the SDK.
+Choose the SDK when the application must own runtime lifecycle, tools, policy, observability, and delivery. Choose editor-hosted agent UX when a person steers work through editor context, diffs, diagnostics, and approvals. VS Code's remote Agent Host is evidence that the runtime can be portable beyond the local editor process; it does not collapse the protocol boundary. Coordinating an external client through the Agent Host Protocol remains a separate client, permission, and session design concern from embedding the Copilot runtime with the SDK.
 
 **Official Documentation:**
 - 📖 [GitHub Copilot SDK Repository](https://github.com/github/copilot-sdk) — Installation, API reference, and language-specific examples
@@ -1050,7 +1050,7 @@ def review_pr(repo: str, pr_number: int, github_token: str):
 
     For each issue found:
     - Line number or file path
-    - Severity (blocking / should-fix / suggestion)
+    - Severity (blocking / fix-soon / suggestion)
     - Specific suggestion with code example
 
     PR Diff:
@@ -1225,7 +1225,7 @@ Path('docs/API_REFERENCE.md').write_text(docs)
 - **[GitHub Copilot CLI](../copilot-cli/)** — Interactive terminal experience; SDK enables programmatic control of the same runtime
 - **[MCP Apps](../mcp-apps/)** — Extend SDK capabilities by connecting to internal systems and APIs
 - **[Agentic SDLC](../agentic-sdlc/)** — Full repository automation; SDK is the building block for custom agent workflows
-- **[Multi-Agent Coordination](../multi-agent-coordination/)** — Specialized workstreams and integration contracts; SDK provides a runtime for custom hosts
+- **[Local Agentic SDLC](../local-agentic-sdlc/)** — Specialist workstreams and an integration record in one orchestrated local run; the SDK provides a runtime for custom hosts
 
 ### Decision Flow
 

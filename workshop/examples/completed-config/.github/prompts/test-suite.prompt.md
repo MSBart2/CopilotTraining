@@ -75,7 +75,7 @@ Generate a comprehensive test suite for ${file} following our testing standards 
 
 Provide:
 
-1. **Test file path** — Where the test should be saved (e.g., `__tests__/routes/characters.test.js`)
+1. **Test file path** — Where to save the test (e.g., `__tests__/routes/characters.test.js`)
 2. **Complete test code** — Ready to run with all imports, mocks, and assertions
 3. **Coverage summary** — List of what's tested and estimated coverage percentage
 4. **Missing coverage** — Scenarios that may need manual attention

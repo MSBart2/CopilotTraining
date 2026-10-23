@@ -15,7 +15,7 @@ Read the exec-talk README, analyze its structure with a primary reviewer plus an
 
 **Key Constraints:**
 - **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the leadership decision, evidence, ownership, authority boundary, and organizational test when consolidating the README. Context that does not change a decision has not earned executive airtime.
-- **Max 4 sections** — Review should consolidate, not expand. Exec talks are tighter than tech talks. Each section earns ~8–12 slides in a 30–45 min briefing.
+- **Max 4 sections** — Consolidate during review rather than expanding. Exec talks are tighter than tech talks. Each section earns ~8–12 slides in a 30–45 min briefing.
 - **Executive audience is the filter** — Every section must be evaluated through the lens of a CXO, VP, or transformation lead. If a section teaches implementation, it needs to be reframed as business implications or cut.
 - **Slide generator ensures consistency** — Once you commit a recipe, the [Slide Generator agent](../../agents/slide-generator.agent.md) generates all slides using the cockpit HTML template system with uniform structure. Focus the review on *decision clarity and business credibility*, not slide-level details.
 - **Recipe schema** — Read `.github/skills/exec-recipe-review/EXEC-RECIPE-TEMPLATE.yml` to understand all valid fields before writing the output file.
@@ -44,7 +44,7 @@ Before starting the review, read all three sources. The independent-review brief
 3. AGENTS.md                                                             — canonical editorial policy and content fitness gate
 ```
 
-Do **not** read the existing `slides/tech-talks/exec-<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten and should not constrain the review.
+Do **not** read the existing `slides/tech-talks/exec-<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten, so the review starts fresh from the README.
 
 From these, extract:
 - The `## ` H2 headings from the README — these are the candidate sections
@@ -91,7 +91,7 @@ KNOWN MATERIAL:
 [CONTEXT BLOCK]
 
 Analyze: Is the current section structure the best use of this talk's time with a C-suite audience?
-What should change and why?
+What change would most improve it, and why?
 
 1. Identify the strongest executive decision journey and the single highest-value structural improvement.
 2. Protect sourced claims, business credibility, quantified outcomes, and decision clarity.
@@ -193,7 +193,7 @@ Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 | Missing timing context | No section explains what changed, which decision is now available, or what readiness signals matter | Add sourced market or capability context before the action close |
 | Passive closing section | Last section = "Resources" or "References" — leaders leave with no decision | Reframe as "What Leadership Must Authorize" or "Three Decisions This Quarter" |
 | Metric-free talk | Key points are directional but not quantified | Audit README for any numbers; if none exist, flag as an open decision |
-| All sections equal weight | All `high` or all `medium` | Force a ranking — the credibility peak and the urgency section should be highest emphasis |
+| All sections equal weight | All `high` or all `medium` | Force a ranking — give the credibility peak and the urgency section the highest emphasis |
 | Too many sections | 5+ sections in a 30-min exec briefing | Consolidate: the opening frame and the system/model can often be one section |
 | Audience confusion | Section mixes exec-level framing with developer-level detail | Cut the detail; add a speaker note that "detail available on request" |
 

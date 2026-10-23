@@ -115,7 +115,7 @@ Create a `character-detail-readiness-checker` agent skill that teaches Copilot h
    ```
    Use the character-detail-readiness-checker skill to review whether this change is
    ready for handoff. Check changed files, tests, and whether docs or roadmap notes
-   should be updated before we open a PR.
+   need updates before we open a PR.
    ```
 
 #### ✅ Success Criteria

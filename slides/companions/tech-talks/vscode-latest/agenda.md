@@ -4,7 +4,7 @@ subtitle: "Portable Agent Infrastructure, Open Models, and a Closed Review Loop"
 slug: vscode-latest
 category: tech-talks
 duration: 45
-updated: 2026-09-25
+updated: 2026-10-23
 ---
 
 # VS Code Copilot through 1.139

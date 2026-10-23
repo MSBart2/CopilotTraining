@@ -1,7 +1,7 @@
 # Demo: Agentic SDLC — Infrastructure for AI Velocity
 
-**Source talk:** `tech-talks/agentic-sdlc/`
-**Core question:** How do I rewire repositories, PR workflows, and CI/CD to scale from 2-3 features/week to sustainable agent-driven delivery?
+**Source talk:** [Agentic SDLC: Infrastructure for AI Velocity](../README.md)
+**Core question:** How do I rewire repositories, PR workflows, and CI/CD to scale from 2-3 features/week to 10-15 features/day with AI agents?
 **Target repo:** [github.com/MSBart2/FanHub](https://github.com/MSBart2/FanHub) — fork it, then imagine scaling it to a multi-service architecture
 
 ---
@@ -151,7 +151,7 @@ Closes #
 
 ## Notes for Reviewers
 
-<!-- What should a human reviewer focus on? What tradeoffs were made? -->
+<!-- Where does a human reviewer focus? What tradeoffs were made? -->
 ```
 
 The coding agent fills this template out automatically in its PR descriptions — the "Notes for Reviewers" section will contain the agent's summary of what it did and why, including any tradeoffs it noticed.

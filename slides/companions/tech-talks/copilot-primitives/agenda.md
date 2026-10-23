@@ -4,7 +4,7 @@ subtitle: "Instructions · Custom Prompts · Skills · Agents"
 slug: copilot-primitives
 category: tech-talks
 duration: 45
-updated: 2026-09-17
+updated: 2026-10-23
 ---
 
 # Copilot Configuration Primitives

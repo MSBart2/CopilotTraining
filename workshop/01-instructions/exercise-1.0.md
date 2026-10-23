@@ -12,7 +12,7 @@ The team stares at the FanHub codebase. David knows they need to document patter
 
 Sarah is skeptical: *"Last time I tried to write comprehensive instructions, I spent 90 minutes and still missed half our patterns. The codebase had conventions I'd forgotten existed."*
 
-Elena points out the irony: *"We're about to teach Copilot about our codebase... by manually reading our codebase. Shouldn't AI do the analysis part?"*
+Elena points out the irony: *"We're about to teach Copilot about our codebase... by manually reading our codebase. Why not let AI do the analysis part?"*
 
 David realizes the opportunity: *"VS Code 1.109 added `/init`—a slash command that analyzes the codebase and generates initial instructions automatically. Let's start there, then refine what it creates."*
 
@@ -111,8 +111,8 @@ The `/init` command is implemented as a contributed prompt file, which means:
 - When project conventions evolve significantly
 
 **What `/init` will not decide for you:**
-- Whether GitHub-specific standards should live in `.github/copilot-instructions.md`
-- Whether directory-local agent workflow guidance should live in `AGENTS.md`
+- Whether GitHub-specific standards belong in `.github/copilot-instructions.md`
+- Whether directory-local agent workflow guidance belongs in `AGENTS.md`
 - Whether you need extra `.instructions.md` files for frontend, backend, tests, or docs
 
 #### 🧠 Mindful Moment: AI-Generated vs. Human-Refined

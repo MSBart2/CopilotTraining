@@ -50,7 +50,7 @@ import SurfaceDecisionTreeSlide from './components/SurfaceDecisionTreeSlide.vue'
 # Core Question
 <!-- SLIDE: Core Question -->
 <CoreQuestionSlide
-	question="Which Copilot surface should own this work next?"
+	question="Which Copilot surface owns this work next?"
 	subtext="Start where the decisive context and controls already live."
 	highlight="Route by context, artifact, reviewer, and handoff."
 	:cards='[
@@ -565,5 +565,5 @@ import SurfaceDecisionTreeSlide from './components/SurfaceDecisionTreeSlide.vue'
 		{ value: "4 questions", detail: "One practical router" },
 		{ value: "3 patterns", detail: "One composable lifecycle" }
 	]'
-	prompt="Which task should your team route differently next?"
+	prompt="Which task will your team route differently next?"
 />

@@ -111,7 +111,7 @@
 - Nested loops over large datasets → O(n²) or worse
 - Database queries inside loops
 - Loading entire datasets when pagination is possible
-- Synchronous operations that should be async
+- Synchronous operations that belong async
 - Missing indexes for frequent queries
 
 #### Review Technique
@@ -134,7 +134,7 @@
 - [ ] Are variable/function names descriptive?
 - [ ] Is the code properly structured and organized?
 - [ ] Does it follow team coding standards?
-- [ ] Are there any "magic numbers" that should be constants?
+- [ ] Are there any "magic numbers" that work better as constants?
 
 #### Maintainability Checklist
 ```

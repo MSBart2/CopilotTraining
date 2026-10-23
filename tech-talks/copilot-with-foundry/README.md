@@ -146,15 +146,16 @@ Foundry Agent Service sits behind the Foundry IQ MCP endpoint, managing the know
 
 ### Primary Artifacts
 
-- **`azure.yaml`** — Hosted agent deployment manifest: defines the project, model, source, and environment variables for `azd deploy`
-- **`setup-foundry-iq.py`** — Provisions a Foundry IQ knowledge base: creates the AI Search index, seeds source documents, registers the MCP toolbox endpoint
-- **`combined-context-agent.py`** — The organizational memory pattern: wires GitHub MCP + Foundry IQ MCP into a single agent reasoning loop
-- **`context-layer-reference.md`** — Quick-reference card: which context layer to reach for, what questions each answers
+Each artifact is printed in full in this talk. Copy it from the section linked below.
+
+- **[`azure.yaml`](#the-azureyaml-manifest)** — Hosted agent deployment manifest: defines the project, model, source, and environment variables for `azd deploy`
+- **[`setup-foundry-iq.py`](#provisioning-the-knowledge-base)** — Provisions a Foundry IQ knowledge base: creates the AI Search index, seeds source documents, registers the MCP toolbox endpoint
+- **[`combined-context-agent.py`](#the-organizational-memory-pattern)** — The organizational memory pattern: wires GitHub MCP + Foundry IQ MCP into a single agent reasoning loop
+- **[`context-layer-reference.md`](#context-layer-quick-reference)** — Quick-reference card: which context layer to reach for, what questions each answers
 
 ### Supporting Files
 
-- **[`examples/`](examples/)** — Complete working examples ready to copy
-- **[Microsoft Foundry Agent Samples](https://github.com/microsoft-foundry/foundry-samples/tree/main/samples/python/hosted-agents)** — Official baseline samples including the Foundry IQ toolbox example[^7]
+- **[Microsoft Foundry Agent Samples](https://github.com/microsoft-foundry/foundry-samples/tree/main/samples/python/hosted-agents)** — Official baseline samples to start from, including the Foundry IQ toolbox example[^7]
 
 ---
 
@@ -243,7 +244,7 @@ Every engineering system accumulates two kinds of memory, and they decay at very
 
 **Organizational memory** lives in conversations, reviews, and decisions. It's fragile. People leave. Meetings end and recordings expire. The Teams thread that explains why the architecture looks the way it does gets buried under thousands of subsequent messages. Decision records, when they exist at all, are often disconnected from the code they influenced[^3].
 
-The practical consequence: technical debt is frequently not caused by bad code. It's caused by lost justification. Once the "why" disappears, everything in the codebase looks arbitrary — and engineers start removing things they shouldn't, because they have no way to know whether there was a reason.
+The practical consequence: technical debt is frequently not caused by bad code. It's caused by lost justification. Once the "why" disappears, everything in the codebase looks arbitrary — and engineers start removing things that mattered, because they have no way to know whether there was a reason.
 
 ### The Three-Layer Model
 

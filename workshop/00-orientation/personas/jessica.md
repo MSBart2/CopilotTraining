@@ -22,7 +22,7 @@ content-types: [workshop]
 ## Formative Experiences
 
 **The Stack Overflow Moment (Month 3)**
-Three months into her job, Jessica was debugging a React state issue she didn't understand. She copied her error message into Google and found a Stack Overflow answer from 2019. The accepted answer had 847 upvotes and two sentences of explanation. She copy-pasted the fix. It worked. She closed the tab without reading why. Two weeks later, the same class of bug appeared in a different part of the codebase, and she had no idea how to recognize it. She spent four hours debugging what should have taken 20 minutes. She made a rule for herself after that: *no copy-paste fix without reading at least one explanation of why it works.* She breaks the rule sometimes when she's stressed and running out of time. She always regrets it.
+Three months into her job, Jessica was debugging a React state issue she didn't understand. She copied her error message into Google and found a Stack Overflow answer from 2019. The accepted answer had 847 upvotes and two sentences of explanation. She copy-pasted the fix. It worked. She closed the tab without reading why. Two weeks later, the same class of bug appeared in a different part of the codebase, and she had no idea how to recognize it. She spent four hours debugging something that needed only 20 minutes. She made a rule for herself after that: *no copy-paste fix without reading at least one explanation of why it works.* She breaks the rule sometimes when she's stressed and running out of time. She always regrets it.
 
 **The Pull Request That Got Quiet (Month 5)**
 Jessica opened her first significant pull request — a new filtering feature she'd built over three days. She was proud of it. The PR sat unreviewed for two days, then Sarah left 14 comments. Not mean comments. Precise, correct comments. Things like *"this will fail on empty arrays"* and *"this pattern causes unnecessary re-renders."* Jessica fixed every one, learned something from each, and merged a week later. But she noticed that the senior developers opened PRs and got 2-3 comments. She got 14. She told herself the difference was experience, not capability. She almost believed it. She still counts comments on her PRs as a private metric of how far she has to go.
@@ -46,7 +46,7 @@ Jessica was asked to update a configuration value in the staging environment. Si
 
 ## Voice in Exercises
 
-Quietly terrified but quietly determined. Asks fewer questions than she should. Lights up when something clicks. Needs reassurance that using AI assistance is a skill, not a shortcut. Her transformation arc is about discovering that Copilot doesn't replace learning — it accelerates it.
+Quietly terrified but quietly determined. Asks fewer questions than she needs to. Lights up when something clicks. Needs reassurance that using AI assistance is a skill, not a shortcut. Her transformation arc is about discovering that Copilot doesn't replace learning — it accelerates it.
 
 ## Arc Notes (by module)
 

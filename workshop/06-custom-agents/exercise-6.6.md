@@ -116,7 +116,7 @@ Create `.github/agents/[show]-expert.agent.md` — a custom agent that bundles e
        prompt: "Based on the expert's review above, implement the recommended content changes in the FanHub site."
    ```
 
-   The full frontmatter block should look like:
+   The full frontmatter block looks like:
 
    ```yaml
    ---
@@ -165,7 +165,7 @@ Create `.github/agents/[show]-expert.agent.md` — a custom agent that bundles e
    but academically underprepared, which is why Walt initially underestimates him."
    ```
 
-   The bio contains a deliberate error: Jesse was Walter's former *high school* student, not a college student. The agent should catch this, cite `canon-facts.md` or `characters.md`, and provide the correction.
+   The bio contains a deliberate error: Jesse was Walter's former *high school* student, not a college student. Look for the agent to catch this, cite `canon-facts.md` or `characters.md`, and provide the correction.
 
    > 💡 Elena's note: "This is the accuracy-check prompt from Exercise 3.3, but it's running inside the agent without needing to be invoked separately. That's the compounding effect — the module 3 standard is now part of the agent's default behavior."
 
@@ -178,11 +178,11 @@ Create `.github/agents/[show]-expert.agent.md` — a custom agent that bundles e
    marked as alive. Does that match how Breaking Bad Season 1 actually ends?
    ```
 
-   The agent should:
+   Look for the agent to:
    1. Query the `fanhub-db` MCP server (Module 5 capability)
    2. Return the live character list
    3. Evaluate the results against Breaking Bad canon (Module 4 lore skill)
-   4. Identify any discrepancies — characters alive in the database who shouldn't be, or vice versa
+   4. Identify any discrepancies — characters alive in the database who are dead in canon, or vice versa
 
    This is the pattern from Exercise 5.4, but bundled: Copilot retrieves *and* evaluates in a single agent turn. Without the agent, this required two steps and manual context stitching. With the agent, it's one request.
 
@@ -207,7 +207,7 @@ Create `.github/agents/[show]-expert.agent.md` — a custom agent that bundles e
    to the homepage.
    ```
 
-   The agent should decline and redirect to `@implement`. Verify this happens.
+   Look for the agent to decline and redirect to `@implement`. Verify this happens.
 
 7. **The debrief — map scenarios to modules**
 
@@ -221,7 +221,7 @@ Create `.github/agents/[show]-expert.agent.md` — a custom agent that bundles e
    | Scenario 4: Show-specific content, wrong-request redirect | **All modules + Module 6** | The `.agent.md` itself — mode, constraints, and handoff |
    | Handoff button fires correctly | **Module 6** | `handoffs:` config in the agent frontmatter |
 
-   The goal: every participant should be able to name the module behind each capability. The agent isn't magic — it's the sum of deliberate decisions made across five modules, now accessible in a single entry point.
+   The goal: we want every participant to be able to name the module behind each capability. The agent isn't magic — it's the sum of deliberate decisions made across five modules, now accessible in a single entry point.
 
 #### ✅ Success Criteria
 

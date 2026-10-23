@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-23T19:45:13.462Z",
+  "generatedAt": "2026-10-23T20:28:07.221Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -348,8 +348,8 @@
         "readme": {
           "path": "tech-talks/agentic-sdlc/README.md",
           "exists": true,
-          "bytes": 79388,
-          "modified": "2026-10-22T21:29:46.564Z"
+          "bytes": 79672,
+          "modified": "2026-10-23T20:21:18.901Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-sdlc/deck.recipe.yml",
@@ -544,8 +544,8 @@
         "readme": {
           "path": "tech-talks/copilot-acp/README.md",
           "exists": true,
-          "bytes": 20033,
-          "modified": "2026-10-22T19:18:37.807Z"
+          "bytes": 20243,
+          "modified": "2026-10-23T20:21:18.910Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-acp/deck.recipe.yml",
@@ -674,8 +674,8 @@
         "readme": {
           "path": "tech-talks/copilot-azure-mcp/README.md",
           "exists": true,
-          "bytes": 60638,
-          "modified": "2026-10-22T19:19:06.991Z"
+          "bytes": 60899,
+          "modified": "2026-10-23T20:21:18.896Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-azure-mcp/deck.recipe.yml",
@@ -693,13 +693,13 @@
           "path": "slides/companions/tech-talks/copilot-azure-mcp/agenda.md",
           "exists": true,
           "bytes": 435,
-          "modified": "2026-09-16T13:42:17.240Z"
+          "modified": "2026-10-23T20:26:50.146Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/copilot-azure-mcp/agenda.html",
           "exists": true,
           "bytes": 5929,
-          "modified": "2026-10-22T03:27:02.152Z"
+          "modified": "2026-10-23T20:26:50.152Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-azure-mcp/deck.pdf",
@@ -803,8 +803,8 @@
         "readme": {
           "path": "tech-talks/copilot-cli/README.md",
           "exists": true,
-          "bytes": 73922,
-          "modified": "2026-10-22T19:19:07.186Z"
+          "bytes": 74233,
+          "modified": "2026-10-23T20:21:18.914Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-cli/deck.recipe.yml",
@@ -1064,8 +1064,8 @@
         "readme": {
           "path": "tech-talks/copilot-hooks/README.md",
           "exists": true,
-          "bytes": 59311,
-          "modified": "2026-10-22T19:19:07.211Z"
+          "bytes": 59627,
+          "modified": "2026-10-23T20:02:37.711Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-hooks/deck.recipe.yml",
@@ -1258,8 +1258,8 @@
         "readme": {
           "path": "tech-talks/copilot-plugins/README.md",
           "exists": true,
-          "bytes": 27539,
-          "modified": "2026-10-22T19:19:07.119Z"
+          "bytes": 28025,
+          "modified": "2026-10-23T20:21:18.907Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-plugins/deck.recipe.yml",
@@ -1324,8 +1324,8 @@
         "readme": {
           "path": "tech-talks/copilot-primitives/README.md",
           "exists": true,
-          "bytes": 41017,
-          "modified": "2026-10-22T21:29:46.546Z"
+          "bytes": 40853,
+          "modified": "2026-10-23T20:00:10.662Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-primitives/deck.recipe.yml",
@@ -1343,13 +1343,13 @@
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.md",
           "exists": true,
           "bytes": 405,
-          "modified": "2026-09-17T14:01:56.555Z"
+          "modified": "2026-10-23T20:26:50.232Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.html",
           "exists": true,
           "bytes": 5899,
-          "modified": "2026-10-22T03:27:02.178Z"
+          "modified": "2026-10-23T20:26:50.235Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-primitives/deck.pdf",
@@ -1390,8 +1390,8 @@
         "readme": {
           "path": "tech-talks/copilot-sdk/README.md",
           "exists": true,
-          "bytes": 51438,
-          "modified": "2026-10-22T19:19:38.156Z"
+          "bytes": 51459,
+          "modified": "2026-10-23T20:00:10.679Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-sdk/deck.recipe.yml",
@@ -1519,8 +1519,8 @@
         "readme": {
           "path": "tech-talks/copilot-with-foundry/README.md",
           "exists": true,
-          "bytes": 37536,
-          "modified": "2026-10-22T19:20:11.559Z"
+          "bytes": 37699,
+          "modified": "2026-10-23T20:01:58.658Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-with-foundry/deck.recipe.yml",
@@ -1538,13 +1538,13 @@
           "path": "slides/companions/tech-talks/copilot-with-foundry/agenda.md",
           "exists": true,
           "bytes": 464,
-          "modified": "2026-09-16T13:44:45.338Z"
+          "modified": "2026-10-23T20:26:50.308Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/copilot-with-foundry/agenda.html",
           "exists": true,
           "bytes": 5958,
-          "modified": "2026-10-22T03:27:02.188Z"
+          "modified": "2026-10-23T20:26:50.311Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/copilot-with-foundry/deck.pdf",
@@ -1604,14 +1604,14 @@
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/custom-agents/agenda.md",
           "exists": true,
-          "bytes": 407,
-          "modified": "2026-10-22T03:29:51.978Z"
+          "bytes": 425,
+          "modified": "2026-10-23T20:27:38.283Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/custom-agents/agenda.html",
           "exists": true,
           "bytes": 5896,
-          "modified": "2026-10-22T03:29:52.066Z"
+          "modified": "2026-10-23T20:27:38.363Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/custom-agents/deck.pdf",
@@ -1651,8 +1651,8 @@
         "readme": {
           "path": "tech-talks/enterprise-patterns/README.md",
           "exists": true,
-          "bytes": 62858,
-          "modified": "2026-10-22T19:20:11.603Z"
+          "bytes": 63087,
+          "modified": "2026-10-23T19:59:12.008Z"
         },
         "recipe": {
           "path": "tech-talks/enterprise-patterns/deck.recipe.yml",
@@ -1718,8 +1718,8 @@
         "readme": {
           "path": "tech-talks/local-agentic-sdlc/README.md",
           "exists": true,
-          "bytes": 21461,
-          "modified": "2026-10-22T21:40:14.730Z"
+          "bytes": 21440,
+          "modified": "2026-10-23T20:01:23.223Z"
         },
         "recipe": {
           "path": "tech-talks/local-agentic-sdlc/deck.recipe.yml",
@@ -1737,13 +1737,13 @@
           "path": "slides/companions/tech-talks/local-agentic-sdlc/agenda.md",
           "exists": true,
           "bytes": 488,
-          "modified": "2026-10-22T03:25:58.491Z"
+          "modified": "2026-10-23T20:27:38.449Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/local-agentic-sdlc/agenda.html",
           "exists": true,
           "bytes": 6093,
-          "modified": "2026-10-22T03:27:02.206Z"
+          "modified": "2026-10-23T20:27:38.520Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/local-agentic-sdlc/deck.pdf",
@@ -1782,8 +1782,8 @@
         "readme": {
           "path": "tech-talks/mcp-apps/README.md",
           "exists": true,
-          "bytes": 40716,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 40709,
+          "modified": "2026-10-23T20:00:10.672Z"
         },
         "recipe": {
           "path": "tech-talks/mcp-apps/deck.recipe.yml",
@@ -2047,8 +2047,8 @@
         "readme": {
           "path": "tech-talks/surfaces/README.md",
           "exists": true,
-          "bytes": 34013,
-          "modified": "2026-10-22T21:29:46.551Z"
+          "bytes": 33880,
+          "modified": "2026-10-23T20:00:39.978Z"
         },
         "recipe": {
           "path": "tech-talks/surfaces/deck.recipe.yml",
@@ -2066,13 +2066,13 @@
           "path": "slides/companions/tech-talks/surfaces/agenda.md",
           "exists": true,
           "bytes": 380,
-          "modified": "2026-09-16T13:47:40.489Z"
+          "modified": "2026-10-23T20:26:50.561Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/surfaces/agenda.html",
           "exists": true,
           "bytes": 5874,
-          "modified": "2026-10-22T03:27:02.223Z"
+          "modified": "2026-10-23T20:26:50.565Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/surfaces/deck.pdf",
@@ -2179,8 +2179,8 @@
         "readme": {
           "path": "tech-talks/vscode-latest/README.md",
           "exists": true,
-          "bytes": 45685,
-          "modified": "2026-10-22T21:29:46.532Z"
+          "bytes": 45755,
+          "modified": "2026-10-23T20:00:10.666Z"
         },
         "recipe": {
           "path": "tech-talks/vscode-latest/deck.recipe.yml",
@@ -2197,14 +2197,14 @@
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/vscode-latest/agenda.md",
           "exists": true,
-          "bytes": 487,
-          "modified": "2026-09-25T17:07:30.817Z"
+          "bytes": 506,
+          "modified": "2026-10-23T20:27:38.607Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/vscode-latest/agenda.html",
           "exists": true,
           "bytes": 5981,
-          "modified": "2026-10-22T03:27:02.226Z"
+          "modified": "2026-10-23T20:27:38.671Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/vscode-latest/deck.pdf",

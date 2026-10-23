@@ -126,7 +126,7 @@ Automatically added to Success Criteria:
 
 ### Use FanHub Domain Context
 
-All examples should reference the FanHub TV show fan site:
+Ground every example in the FanHub TV show fan site:
 
 ```markdown
 # API Endpoint Design Skill

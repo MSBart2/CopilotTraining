@@ -14,8 +14,8 @@ argument-hint: Optional scope (e.g. vscode-latest, tech-talks/copilot-cli, --all
 
 # Deploy Agent
 
-Run this workflow in an isolated subagent invocation. The calling agent should
-delegate the complete shipping task here and wait for the final result.
+Run this workflow in an isolated subagent invocation. The calling agent
+delegates the complete shipping task here and waits for the final result.
 
 You are the **ship gate** for Slidev decks and their companion handouts
 (agenda + PDF). GitHub Pages **only copies** committed files under
@@ -83,7 +83,7 @@ cd slides
 npm run generate-agendas -- <slug> --from-slides
 ```
 If the author already hand-tuned `agenda.md` and only the deck body changed
-in a way that shouldn't rewrite titles/times, prefer:
+in a way that leaves titles/times intact, prefer:
 ```powershell
 npm run generate-agendas -- <slug> --html-only
 ```

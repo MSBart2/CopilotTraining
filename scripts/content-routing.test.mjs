@@ -85,6 +85,27 @@ test("code review effort routes to the owning review talk", () => {
   assert.equal(result.candidates[0].relationships[0].role, "explains");
 });
 
+test("merged talks route to their successor and retired talks drop out", () => {
+  const event = {
+    id: "review",
+    title: "Copilot code review effort levels are generally available",
+    source: "https://example.com/review",
+    published: "2026-08-10T00:00:00.000Z",
+    categories: ["GitHub"],
+    description: "Choose Lite or Balanced review effort."
+  };
+  const routing = {
+    redirects: new Map([["copilot-code-review", "pr-trust-stack"]]),
+    retired: new Set(["copilot-code-review", "copilot-web"])
+  };
+  const result = routeEvent(event, registry, profiles, 5, routing);
+  const successor = result.candidates.find(({ talk }) => talk === "pr-trust-stack");
+  assert.ok(successor);
+  assert.equal(successor.relationships[0].redirectedFrom, "copilot-code-review");
+  assert.ok(!result.candidates.some(({ talk }) => talk === "copilot-code-review"));
+  assert.ok(!result.candidates.some(({ talk }) => talk === "copilot-web"));
+});
+
 test("ledger decisions prevent adjudicated events from reopening", () => {
   const event = {
     id: "review",

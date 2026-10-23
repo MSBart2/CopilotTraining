@@ -4,7 +4,7 @@ subtitle: ""
 slug: 06-custom-agents
 category: workshop
 duration: 45
-updated: 2026-08-13
+updated: 2026-10-23
 ---
 
 # Module 6 - Custom Agents

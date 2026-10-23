@@ -76,7 +76,7 @@ Apply the contract by format:
 Every teaching surface must make three things recoverable without relying on hidden presenter context:
 
 1. **Actor:** Name who or what acts when agency matters. Distinguish the practitioner request, Copilot or agent action, control decision, and human approval. Avoid agentless phrases such as "work proceeds" when the actor is Copilot.
-2. **Question and answer:** Every slide should answer one audience question. The headline may state the answer rather than use a question mark, but the question and the slide's answer must be unambiguous.
+2. **Question and answer:** Every slide answers one audience question. The headline may state the answer rather than use a question mark, but the question and the slide's answer must be unambiguous.
 3. **Proof:** When a slide claims behavior, show a representative input, action, or artifact together with its observable result on the same slide whenever practical. Label test-runner status separately from the domain result so terms such as `PASS`, `allow`, and `deny` cannot be mistaken for one another.
 
 Carry enough context onto each slide that a viewer can identify the actor, task, and consequence after entering mid-section. Use the preceding slide for narrative momentum, not for essential disambiguation.
@@ -100,7 +100,7 @@ A practitioner tech talk is a coherent argument for one consequential decision. 
 - **Give the section spine momentum** — use escalating audience questions or practitioner moves rather than a taxonomy of product parts, control types, or settings pages.
 - **Follow an earned arc** — move from situation and question → insight or decision model → technical mechanism → working artifact or demonstration → observable evidence and boundaries → transfer to the audience's work. A strong demonstration may serve as the cold open when seeing the result first makes the later architecture matter.
 - **Make the artifact carry the argument** — use a real configuration, command, workflow, or code path to expose the mechanism. Show the result, failure signal, and recovery path.
-- **Choose one memorable anchor** — identify the demonstration, result, number, or technical reveal the audience should repeat after the talk, then build the surrounding explanation to earn it.
+- **Choose one memorable anchor** — identify the demonstration, result, number, or technical reveal we want the audience to repeat after the talk, then build the surrounding explanation to earn it.
 - **Spend time according to value** — give the strongest insight and demonstration the most room. Consolidate supporting mechanics and remove sections that do not change a decision or strengthen proof.
 - **Use optimistic curiosity in an expert-to-expert register** — lead with what becomes possible, what the pattern unlocks, and how it works. Keep tradeoffs concrete and avoid alarmism, pain-led framing, and comparative negativity.
 

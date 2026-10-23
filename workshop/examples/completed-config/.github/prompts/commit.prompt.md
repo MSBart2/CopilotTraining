@@ -19,7 +19,7 @@ git branch --show-current
 **If on `main` or `master`:**
 - Create a new feature branch based on the changes
 - Use kebab-case naming: `feature/description`, `fix/description`, or `docs/description`
-- Branch name should reflect what changed (analyze staged/unstaged files)
+- Branch name reflects what changed (analyze staged/unstaged files)
 
 **If on a feature branch:**
 - Stay on the current branch
@@ -81,7 +81,7 @@ Use GitHub CLI to create a PR:
 gh pr create --title "<commit message>" --body "<detailed description>"
 ```
 
-**PR Body should include**:
+**PR Body includes**:
 - Summary of changes
 - Files modified
 - Any testing notes
@@ -97,7 +97,7 @@ gh pr create --title "<commit message>" --body "<detailed description>"
 ## Safety Checks
 
 1. Never force push
-2. Always confirm before creating PR from main branch (should be rare)
+2. Always confirm before creating PR from main branch (expected to be rare)
 3. Verify gh CLI is available before PR creation step
 
 ## Output

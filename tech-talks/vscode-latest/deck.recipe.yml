@@ -101,7 +101,7 @@ deck:
         available models automatically; local models work with all chat features, tool
         execution, and MCP with no network request leaving the machine. Name the audience
         this unlocks: teams with air-gap requirements, sensitive codebases, or constrained
-        data residency. This is the moment the audience should feel the ceiling move; do
+        data residency. This is the moment we want the audience to feel the ceiling move; do
         not bury it in a bullet list with the hosted providers. Next slide: Stable Custom
         Endpoint plus utility models as the team-scale story — Custom Endpoint is Stable as
         of v1.122 and connects endpoints implementing the Chat Completions, Responses, or
@@ -158,7 +158,7 @@ deck:
         and existing tabs must be shared. CLIMAX DEMO (GA, live): agent opens localhost,
         emulates a device, screenshots into the chat turn, then v1.132 element comments
         (Ctrl+Alt+C / ⌥⌘C). That implement → emulate → screenshot → annotate → re-validate
-        loop is the last working thing the audience should see. One mixed-status handoff
+        loop is the last working thing the audience sees. One mixed-status handoff
         slide: in-window diff review, CI failure response, PR comment response (Preview);
         PR creation from Agent Host sessions, with optional Agent Merge experimental;
         hybrid Markdown experimental, one sentence, no demo. Weave control thread (OTel, managed settings,

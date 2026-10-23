@@ -188,8 +188,8 @@ tech-talks/
 **Guidance for Authors:**
 - Primary artifacts (2-5 files) are the "stars of the show" — embedded fully in major sections with explanations
 - Supporting files are helpers — linked for reference, not explained line-by-line
-- Inline artifacts typically ≤ 150 lines; longer files should be in repository with key excerpts shown
-- Every artifact should demonstrate a specific capability or pattern
+- Inline artifacts typically ≤ 150 lines; longer files live in the repository with key excerpts shown
+- Every artifact demonstrates a specific capability or pattern
 
 ---
 
@@ -197,7 +197,7 @@ tech-talks/
 
 > **The Core Insight:** [One-liner capturing the new mental model — what becomes natural with this approach]
 
-*Write this as a compelling standalone thesis for the README. It should make sense even if no slides are ever generated.*
+*Write this as a compelling standalone thesis for the README. Make it stand on its own even if no slides are ever generated.*
 
 ### Move Toward (Embrace These Patterns)
 
@@ -406,7 +406,7 @@ Numbered references cited inline throughout the content using `[^n]` footnote sy
 
 [^6]: **[Discussion Thread](URL)** — Real-world usage patterns and tips
 
-> **For Authors:** Aim for 8-15 references. Every major claim, code example, and architecture statement should cite its source with `[^n]`. References [^1] and [^2] (official docs) are required at minimum. References are discovered during initial research (web search + provided URLs) and compiled in `research.md`.
+> **For Authors:** Aim for 8-15 references. Cite the source of every major claim, code example, and architecture statement with `[^n]`. References [^1] and [^2] (official docs) are required at minimum. References are discovered during initial research (web search + provided URLs) and compiled in `research.md`.
 
 ---
 
@@ -428,7 +428,7 @@ Numbered references cited inline throughout the content using `[^n]` footnote sy
 
 [Additional technical insight for advanced users]
 
-**Key Takeaway:** [What this means for how you should architect or tune the feature]
+**Key Takeaway:** [What this means for how you architect or tune the feature]
 
 ---
 

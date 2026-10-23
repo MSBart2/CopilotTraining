@@ -12,7 +12,7 @@ When generating or modifying test files, follow these standards.
 
 - Use `describe` blocks to group related tests by feature/function
 - Use `it` for individual test cases (not `test`)
-- Follow pattern: `it('should [expected behavior] when [condition]')`
+- Follow pattern: `it('[expected behavior] when [condition]')` (e.g., `it('shows error when not found')`)
 - One assertion focus per test (related assertions OK)
 
 ## Test Categories
@@ -50,7 +50,7 @@ beforeEach(() => {
 });
 
 // ❌ Bad - inconsistent inline mocking
-it("should fetch data", () => {
+it("fetches data", () => {
   jest.mock("axios"); // Don't mock inside tests
 });
 ```
@@ -59,7 +59,7 @@ it("should fetch data", () => {
 
 ```javascript
 // ✅ Test behavior, not implementation
-it("should display character episodes when data loads", async () => {
+it("displays character episodes when data loads", async () => {
   axios.get.mockResolvedValue({ data: mockCharacterWithEpisodes });
   render(<CharacterDetail id="1" />);
 
@@ -69,7 +69,7 @@ it("should display character episodes when data loads", async () => {
 });
 
 // ❌ Don't test implementation details
-it("should call fetchCharacter once", async () => {
+it("calls fetchCharacter once", async () => {
   await getCharacter(1);
   expect(fetchCharacter).toHaveBeenCalledTimes(1); // Brittle!
 });
@@ -79,7 +79,7 @@ it("should call fetchCharacter once", async () => {
 
 ```javascript
 // Always test error scenarios for data-fetching components
-it("should show error message when character not found", async () => {
+it("shows error message when character not found", async () => {
   axios.get.mockRejectedValue({ response: { status: 404 } });
   render(<CharacterDetail id="999" />);
 
@@ -88,7 +88,7 @@ it("should show error message when character not found", async () => {
   });
 });
 
-it("should show error message when network fails", async () => {
+it("shows error message when network fails", async () => {
   axios.get.mockRejectedValue(new Error("Network error"));
   render(<CharacterDetail id="1" />);
 
@@ -103,7 +103,7 @@ it("should show error message when network fails", async () => {
 - Use factories or fixtures for complex test data
 - Create mock data that matches FanHub's data structure
 - Avoid magic numbers—use named constants
-- Each test should set up its own data (no shared mutable state)
+- Each test sets up its own data (no shared mutable state)
 
 ## Coverage Expectations
 

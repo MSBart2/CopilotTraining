@@ -1,6 +1,6 @@
 # FanHub Architecture
 
-> Deep-dive reference for the `dotnet/` implementation. For project overview and quick orientation, see [`.github/copilot-instructions.md`](.github/copilot-instructions.md).
+> Deep-dive reference for the `dotnet/` implementation. For project overview and quick orientation, see [`.github/copilot-instructions.md`](../.github/copilot-instructions.md).
 
 ---
 
@@ -209,9 +209,9 @@ Current migrations:
 
 | Setting                  | File                                          | Notes                                                      |
 | ------------------------ | --------------------------------------------- | ---------------------------------------------------------- |
-| SQLite connection string | `Program.cs` (hardcoded)                      | **Bug** — should be in `appsettings.json`                  |
+| SQLite connection string | `Program.cs` (hardcoded)                      | **Bug** — belongs in `appsettings.json`                  |
 | Backend URL (frontend)   | `appsettings.Development.json` → `BackendUrl` |                                                            |
-| CORS policy              | `Program.cs`                                  | `AllowAnyOrigin` — **should be locked down in production** |
+| CORS policy              | `Program.cs`                                  | `AllowAnyOrigin` — **lock down in production** |
 | Ports                    | `Properties/launchSettings.json`              | Backend: 5265, Frontend: 3000                              |
 
 ---
@@ -230,7 +230,7 @@ Current migrations:
 
 ## Known Intentional Bugs
 
-> Full catalog: [`dotnet/BUGS.md`](dotnet/BUGS.md)
+> Full catalog: [`dotnet/BUGS.md`](../dotnet/BUGS.md)
 
 ### Critical
 
@@ -252,7 +252,7 @@ Current migrations:
 | N+1 queries                    | `ShowsController`, `QuotesController`     | Missing `.Include()` calls                  |
 | Season filter ignored          | `Episodes.razor`                          | Caching bug returns all episodes regardless |
 | Static event leak              | `Characters.razor`                        | `OnCharacterSelected` never unsubscribed    |
-| Wrong HTTP status              | Multiple controllers                      | POST should return 201, not 200             |
+| Wrong HTTP status              | Multiple controllers                      | POST returns 200; expected 201             |
 | Missing DELETE                 | `QuotesController`                        | No delete endpoint                          |
 
 ---
@@ -261,8 +261,8 @@ Current migrations:
 
 | Document                                                                             | Purpose                                          |
 | ------------------------------------------------------------------------------------ | ------------------------------------------------ |
-| [`dotnet/BUGS.md`](dotnet/BUGS.md)                                                   | Full bug catalog with evidence and fix guidance  |
-| [`dotnet/SETUP.md`](dotnet/SETUP.md)                                                 | Detailed setup instructions                      |
-| [`dotnet/docs/FEATURE-CHARACTER-DETAIL.md`](dotnet/docs/FEATURE-CHARACTER-DETAIL.md) | Spec for the next feature to build               |
-| [`docs/breaking-bad-universe.md`](docs/breaking-bad-universe.md)                     | Domain lore: characters, locations, show history |
-| [`.github/skills/create-card-and-page skill/SKILL.md`](.github/skills/create-card-and-page skill/SKILL.md)   | Skill for scaffolding new entity card pages      |
+| [`dotnet/BUGS.md`](../dotnet/BUGS.md)                                                   | Full bug catalog with evidence and fix guidance  |
+| [`dotnet/SETUP.md`](../dotnet/SETUP.md)                                                 | Detailed setup instructions                      |
+| [`dotnet/docs/FEATURE-CHARACTER-DETAIL.md`](../dotnet/docs/FEATURE-CHARACTER-DETAIL.md) | Spec for the next feature to build               |
+| [`breaking-bad-universe.md`](breaking-bad-universe.md)                     | Domain lore: characters, locations, show history |
+| [`.github/skills/new-card-skill/SKILL.md`](../.github/skills/new-card-skill/SKILL.md)   | Skill for scaffolding new entity card pages      |

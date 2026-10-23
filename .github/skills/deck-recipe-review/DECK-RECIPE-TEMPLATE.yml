@@ -1,8 +1,8 @@
 # deck.recipe.yml — talk generation guidance
 #
 # Guides slide generation from README.md. Use this file to name and order sections,
-# set the slide budget per section, and surface authoring priorities the generator
-# should follow. Complex narrative content belongs in README.md; structural editorial
+# set the slide budget per section, and surface authoring priorities for the
+# generator to follow. Complex narrative content belongs in README.md; structural editorial
 # intent belongs here.
 
 version: 1

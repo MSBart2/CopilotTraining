@@ -182,9 +182,9 @@ for refining the plan.
 
 | Question | Your Answer |
 |----------|-------------|
-| How many steps should a plan have? | *Find the range (3–6 steps)* |
-| How long should each step be (in words)? | *Find the constraint (5–20 words)* |
-| Should steps include code blocks? | *Find the explicit rule about this* |
+| How many steps does a plan have? | *Find the range (3–6 steps)* |
+| How long is each step (in words)? | *Find the constraint (5–20 words)* |
+| Do steps include code blocks? | *Find the explicit rule about this* |
 | What goes in "Further Considerations"? | *Purpose of this section* |
 
 **💡 Key Insight:** Constraining the format makes plans **actionable and scannable**. No massive walls of text. No premature code. Just clear steps with file references.
@@ -281,13 +281,13 @@ Study the two handoffs:
 
 ## 💭 Persona Reactions
 
-**Sarah:** *"This is well-designed. The stopping rules prevent scope creep, the workflow is iterative, the style guide keeps output consistent. These are the patterns we should use for our own agents."*
+**Sarah:** *"This is well-designed. The stopping rules prevent scope creep, the workflow is iterative, the style guide keeps output consistent. These are the patterns we want for our own agents."*
 
 **David:** *"The tool selection is strategic—everything supports research, nothing enables implementation. That's architectural discipline applied to AI configuration."*
 
 **Marcus:** *"I like the subagent pattern. Delegate the deep research so the main agent can focus on presenting plans. We could use this for infrastructure analysis."*
 
-**Elena:** *"The explicit style guide is brilliant. Without it, plans would be inconsistent. We should create similar templates for test generation and security review agents."*
+**Elena:** *"The explicit style guide is brilliant. Without it, plans would be inconsistent. Let's create similar templates for test generation and security review agents."*
 
 **Rafael:** *"The handoffs are genius. One click to move from planning to implementation. We need this for product analysis to engineering handoff."*
 

@@ -1,6 +1,6 @@
 # Demo: GitHub Copilot CLI — AI at the Point of Work
 
-**Source talk:** `tech-talks/copilot-cli/`
+**Source talk:** [GitHub Copilot CLI: AI at the Point of Work](../README.md)
 **Core question:** How do I bring AI to where the work actually is — and keep steering it from wherever I am?
 **Target repo:** [github.com/MSBart2/FanHub](https://github.com/MSBart2/FanHub) (Node.js track)
 
@@ -32,7 +32,7 @@ The characters list has a duplicate — Jesse Pinkman appears twice. Fix it.
 ```
 
 Copilot will ask before acting:
-- *"Should I trace this from the seed file, the API response, or the frontend filter?"*
+- *"Do you want me to trace this from the seed file, the API response, or the frontend filter?"*
 - *"Do you want me to also add a uniqueness constraint so this can't happen again?"*
 
 Answer the questions. When a plan appears, review it — then approve to let Copilot implement.

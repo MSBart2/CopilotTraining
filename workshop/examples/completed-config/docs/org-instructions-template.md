@@ -22,7 +22,7 @@
 
 ## Our Development Philosophy
 <!-- Describe your organization's core values and approach to software development -->
-We believe in [clarity/quality/security/etc.] as our foundation. Code should be:
+We believe in [clarity/quality/security/etc.] as our foundation. We want code that is:
 - Readable by any team member
 - Maintainable for the long term
 - Secure by default
@@ -49,9 +49,9 @@ We believe in [clarity/quality/security/etc.] as our foundation. Code should be:
 
 ### Naming Conventions
 - Use descriptive names that reveal intent
-- Boolean variables should start with `is`, `has`, `should`, `can`
-- Functions should be verbs: `getUserById`, `calculateTotal`, `validateInput`
-- Constants should be UPPER_SNAKE_CASE
+- Boolean variables start with `is`, `has`, `should`, `can`
+- Functions are verbs: `getUserById`, `calculateTotal`, `validateInput`
+- Constants use UPPER_SNAKE_CASE
 
 ### Error Handling
 - Never swallow exceptions silently

@@ -6,7 +6,7 @@ audience: [platform-engineer, architect, security]
 level: applied
 duration: 45
 format: case-study
-decision: "How should agents act on live domain state with least-privilege authority?"
+decision: "How can agents act on live domain state with least-privilege authority?"
 prerequisites: [copilot-cli]
 related: [mcp-apps, copilot-with-foundry]
 references:
@@ -204,7 +204,7 @@ Q: Are you working with Azure infrastructure or services?
 
 ### Don't Use This Pattern When
 
-- Making production changes without peer review — AI-generated configs should go through standard approval processes
+- Making production changes without peer review — AI-generated configs go through standard approval processes
 - Working in highly restricted environments where MCP server network access to Azure APIs is blocked or prohibited
 - Your workflow requires compliance audit trails that MCP conversational interactions don't yet provide
 - Team members lack Azure RBAC understanding — this pattern requires knowing what permissions the MCP server inherits
@@ -369,7 +369,7 @@ Plan Mode (Shift+Tab in Copilot CLI) enables collaborative planning. The AI asks
 ## Step 1: State the Goal
 
 **Prompt (Shift+Tab to enter Plan Mode):**
-> I need to deploy a new App Service for the payments API. It should be similar to the existing orders API but with its own database connection.
+> I need to deploy a new App Service for the payments API. We want it similar to the existing orders API but with its own database connection.
 
 ---
 
@@ -379,16 +379,16 @@ Plan Mode (Shift+Tab in Copilot CLI) enables collaborative planning. The AI asks
 
 I'll help plan this deployment. A few questions to validate the approach:
 
-1. **Region preference?** The existing orders API runs in East US. Should the payments API be co-located for latency, or in a different region for redundancy?
+1. **Region preference?** The existing orders API runs in East US. Do you want the payments API co-located for latency, or in a different region for redundancy?
 
-2. **App Service Plan?** Should this share the existing `prod-asp-001` plan (currently running orders API), or get a dedicated plan for isolation?
+2. **App Service Plan?** Will this share the existing `prod-asp-001` plan (currently running orders API), or get a dedicated plan for isolation?
 
 3. **Database type?** You mentioned "database connection" — is this:
    - A new Azure SQL database?
    - A new Cosmos DB database?
    - A connection to an existing database?
 
-4. **Networking?** The orders API uses VNet integration with `prod-vnet/app-subnet`. Should payments API use the same subnet or a separate one?
+4. **Networking?** The orders API uses VNet integration with `prod-vnet/app-subnet`. Will the payments API use the same subnet or a separate one?
 
 5. **Scaling requirements?** Orders API is set to autoscale 3-10 instances. Similar needs for payments?
 
@@ -655,7 +655,7 @@ The extension handles configuration automatically. Verify connection in Copilot 
 copilot /tools
 ```
 
-Expected output should include:
+Expected output includes:
 
 ```
 Available MCP Tools:
@@ -875,10 +875,10 @@ Update `~/.copilot/mcp-servers.json`:
 
 ## Step 3: Verify Read-Only Behavior
 
-**Test Query (should succeed):**
+**Test Query (expected: succeeds):**
 > List all storage accounts
 
-**Test Modification (should fail with permission error):**
+**Test Modification (expected: fails with permission error):**
 > Create a new storage account named "test-account"
 
 Expected error:
@@ -910,7 +910,7 @@ Grant Contributor role only when:
 
 **Key Points:**
 - Start with Reader role service principal — enables discovery and configuration extraction without modification risk
-- Production subscriptions should remain read-only until team establishes trust and review processes
+- Keep production subscriptions read-only until the team establishes trust and review processes
 - Dedicated dev subscriptions with Contributor access enable full prototype-to-deployment workflows safely
 
 ### Subscription Boundaries
@@ -1097,6 +1097,8 @@ Would you like me to update the Bicep file with these fixes?
 
 ## What You Can Do Today
 
+**Hands-on walkthrough:** [examples/walkthrough.md](examples/walkthrough.md) configures Azure MCP, queries live resources, plans before changes, scaffolds infrastructure from a running resource, and delegates a long-running audit.
+
 ### 15-Minute Quick Start
 
 **Goal:** Install the Azure Skills Plugin, connect to Copilot CLI, and execute your first live Azure query with full skills + MCP capability
@@ -1209,7 +1211,7 @@ Would you like me to update the Bicep file with these fixes?
 - **[GitHub Copilot CLI](../copilot-cli/README.md)** — Foundational understanding of terminal-native AI workflows, Plan Mode, and cloud delegation
 - **[MCP Apps](../mcp-apps/README.md)** — Building custom MCP servers for internal tools and proprietary systems
 - **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Coordinating recurring repository judgments through evidence-gated workflows
-- **[MCP Servers](../mcp-servers/README.md)** — Deep dive on Model Context Protocol and how tools like the Azure MCP Server expose structured capabilities to agents
+- **[Workshop: MCP Servers](../../workshop/05-mcp-servers/)** — Hands-on Model Context Protocol configuration, and how tools like the Azure MCP Server expose structured capabilities to agents
 
 ### Features That Work Together
 

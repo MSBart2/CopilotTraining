@@ -34,7 +34,7 @@ Create `.github/copilot-instructions.md` that automatically enforces FanHub's co
    Review the FanHub codebase and note patterns you want enforced:
    - **Async patterns:** Are we using async/await consistently?
    - **React style:** Functional components or class components?
-   - **Error handling:** How should errors be caught and handled?
+   - **Error handling:** How are errors caught and handled?
    - **Testing approach:** What framework, what patterns?
    - **Import preferences:** Named imports vs default imports?
 

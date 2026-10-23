@@ -48,7 +48,7 @@ Top-level container class: `section exec-talks`
 
 | Section Name | Icon | Slug | Contents |
 |---|---|---|---|
-| `Executive Talks` | 💼 | `exec-talks` | Agentic Delivery, Agentic Economics, Agentic Labor |
+| `Executive Talks` | 💼 | `exec-talks` | The Agentic Operating Model |
 
 > Executive Talks have no sub-groups — cards go directly in the `exec-talks` section grid.
 

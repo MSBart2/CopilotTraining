@@ -277,7 +277,7 @@ Breaking Bad was created by **Vince Gilligan**, who had spent years writing for 
 
 The show's title is a **Southern U.S. colloquialism** meaning "to raise hell" or "to go wild" — chosen deliberately to describe Walt's transformation. It also connotes defying authority, being combative, and dominating others.
 
-The concept emerged during an unemployed conversation between Gilligan and fellow writer Thomas Schnauz, joking they should "put a meth lab in the back of an RV and drive around the country cooking meth."
+The concept emerged during an unemployed conversation between Gilligan and fellow writer Thomas Schnauz, joking about a plan to "put a meth lab in the back of an RV and drive around the country cooking meth."
 
 ### Almost Never Made
 The show was passed on by **Showtime** (they already had *Weeds*), **HBO**, and **TNT**. **FX** nearly made it but chose a female-led drama instead. AMC — then still building its original programming slate alongside *Mad Men* — picked it up.

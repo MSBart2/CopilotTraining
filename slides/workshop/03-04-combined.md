@@ -455,7 +455,7 @@ Rafael's already thinking about the next sprint. He's noticed that every time th
 <div>
 <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">📋 Steps</div>
 <div class="space-y-2 text-xs">
-<div class="flex items-start gap-3 p-3 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-blue-700 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span><span class="text-gray-300">Run <code class="text-cyan-300">/create-prompt</code> in Copilot Chat to scaffold <span class="font-mono text-blue-300">refresh-docs.prompt.md</span> — describe what it should do and let Copilot generate the file</span></div>
+<div class="flex items-start gap-3 p-3 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-blue-700 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span><span class="text-gray-300">Run <code class="text-cyan-300">/create-prompt</code> in Copilot Chat to scaffold <span class="font-mono text-blue-300">refresh-docs.prompt.md</span> — describe what you want it to do and let Copilot generate the file</span></div>
 <div class="flex items-start gap-3 p-3 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-blue-700 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span><span class="text-gray-300">Use <code>/plan </code> and ask for a review the current workspace and update <span class="font-mono text-blue-300">ARCHITECTURE.md</span> and <span class="font-mono text-blue-300">copilot-instructions.md</span> only when the codebase has changed</span></div>
 <div class="flex items-start gap-3 p-3 bg-gray-900/40 rounded-lg"><span class="w-5 h-5 rounded-full bg-blue-700 text-white text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span><span class="text-gray-300">Save it, and invoke it after each change to keep the docs aligned with current reality instead of stale memory</span></div>
 </div>
@@ -491,7 +491,7 @@ Rafael's already thinking about the next sprint. He's noticed that every time th
 <div class="space-y-3">
 <div class="p-3 bg-gray-900/60 rounded-xl border border-orange-500/20 text-xs">
 <div class="text-orange-300 font-bold mb-2">How it works</div>
-<div class="flex items-start gap-2 text-gray-300 mb-1"><span class="text-orange-400 mt-0.5">1</span><span>Run <span class="font-mono text-orange-200">/create-prompt</span> in Copilot Chat — describe what it should do and tell it to use <span class="font-mono text-orange-200">agent: plan</span></span></div>
+<div class="flex items-start gap-2 text-gray-300 mb-1"><span class="text-orange-400 mt-0.5">1</span><span>Run <span class="font-mono text-orange-200">/create-prompt</span> in Copilot Chat — describe what you want it to do and tell it to use <span class="font-mono text-orange-200">agent: plan</span></span></div>
 <div class="flex items-start gap-2 text-gray-300 mb-1"><span class="text-orange-400 mt-0.5">2</span><span>Run <span class="font-mono text-orange-200">/refresh-docs</span> in Copilot Chat</span></div>
 <div class="flex items-start gap-2 text-gray-300 mb-1"><span class="text-orange-400 mt-0.5">3</span><span>The Plan agent runs automatically — producing a reviewable plan before anything changes</span></div>
 <div class="flex items-start gap-2 text-gray-300"><span class="text-orange-400 mt-0.5">4</span><span>Review the plan, approve, execute</span></div>
@@ -682,7 +682,7 @@ Marcus shipped the <span class="font-mono text-emerald-200">/lore</span> page la
 <div class="relative z-10 flex gap-4 flex-1 min-h-0">
 <div class="select-text font-mono text-xs bg-gray-900/80 rounded-xl border border-emerald-500/30 p-4 text-gray-300 leading-relaxed flex-1 overflow-auto">
 <div class="text-gray-400 text-xs mb-2">User &gt;</div>
-<div class="text-gray-200 mb-4"><span class="text-orange-300">/create-prompt</span> Create a prompt called <span class="text-orange-300">check-data-accuracy</span> that verifies a selected text entry against the canonical reference file for that domain. It should identify the entity type from the selection, locate the relevant reference in the project, check each factual claim, and flag inaccuracies with specific corrections. Use the <span class="text-blue-300">ask</span> agent and respond with Status, Issues, and Verified claims.</div>
+<div class="text-gray-200 mb-4"><span class="text-orange-300">/create-prompt</span> Create a prompt called <span class="text-orange-300">check-data-accuracy</span> that verifies a selected text entry against the canonical reference file for that domain. It identifies the entity type from the selection, locate the relevant reference in the project, check each factual claim, and flag inaccuracies with specific corrections. Use the <span class="text-blue-300">ask</span> agent and respond with Status, Issues, and Verified claims.</div>
 <div class="border-t border-emerald-500/20 pt-3 text-gray-400 text-xs">Copilot generates <span class="text-emerald-300">.github/prompts/check-data-accuracy.prompt.md</span> with <span class="text-emerald-300">agent: ask</span>, <span class="text-cyan-300">&#36;{selection}</span> as the input variable, and structured output format.</div>
 </div>
 <div class="flex flex-col gap-2 text-xs w-44 flex-shrink-0">
@@ -1073,7 +1073,7 @@ Marcus shipped the <span class="font-mono text-emerald-200">/lore</span> page la
 <div class="relative z-10 grid grid-cols-3 gap-3 flex-1 min-h-0 mb-3">
 <div class="flex flex-col p-4 rounded-xl bg-gradient-to-br from-blue-900/50 to-gray-900/50 border border-blue-500/30">
 <div class="flex items-center gap-2 mb-3"><span class="text-2xl">&#x1F3AF;</span><div class="text-blue-300 font-bold text-sm">Capability fit</div></div>
-<div class="text-xs text-gray-300 leading-relaxed flex-1">Check whether the skill actually <span class="text-blue-200 font-medium">teaches the workflow</span>, not just describes it. Copilot should be able to complete the task with the skill alone.</div>
+<div class="text-xs text-gray-300 leading-relaxed flex-1">Check whether the skill actually <span class="text-blue-200 font-medium">teaches the workflow</span>, not just describes it. Confirm Copilot can complete the task with the skill alone.</div>
 <div class="mt-3 p-2 bg-blue-900/30 rounded-lg border border-blue-500/20 text-xs text-blue-300/80 italic">Does it change what Copilot can do?</div>
 </div>
 <div class="flex flex-col p-4 rounded-xl bg-gradient-to-br from-purple-900/50 to-gray-900/50 border border-purple-500/30">
@@ -1119,7 +1119,7 @@ Marcus shipped the <span class="font-mono text-emerald-200">/lore</span> page la
 <div class="text-white text-sm font-semibold mb-2">Card creation as a repeatable skill</div>
 <div class="text-gray-400 text-xs leading-relaxed">Take the M2 plan-mode output for creating lore cards and graduate it into a parameterized skill that generates a card + detail page for any FanHub entity type.</div>
 </div>
-<div class="px-4 pb-4 pt-3 border-t border-purple-500/20"><p class="text-purple-200 text-xs italic">"Wait &mdash; I wrote the same plan twice. That&rsquo;s a pattern. Patterns should be skills." <span class="text-gray-500 not-italic">[tab-switches, tab-switches back]</span> "Okay I&rsquo;m back. Let&rsquo;s build it."</p></div>
+<div class="px-4 pb-4 pt-3 border-t border-purple-500/20"><p class="text-purple-200 text-xs italic">"Wait &mdash; I wrote the same plan twice. That&rsquo;s a pattern. Patterns become skills." <span class="text-gray-500 not-italic">[tab-switches, tab-switches back]</span> "Okay I&rsquo;m back. Let&rsquo;s build it."</p></div>
 </div>
 </div>
 <div class="relative z-10 mt-3 p-3 bg-gray-900/40 rounded-lg border border-white/10 text-center text-xs text-gray-400">Each exercise rotates the lead persona &mdash; everyone contributes, everyone follows.</div>
@@ -1254,7 +1254,7 @@ In Module 2, plan mode produced the full roadmap for the Lore card and <code cla
 <div class="flex items-center gap-2 p-2 bg-green-900/20 rounded-lg border border-green-700/30"><span class="text-green-400">&#x2610;</span> Plan identifies the same  files as the M2 Lore plan</div>
 <div class="flex items-center gap-2 p-2 bg-green-900/20 rounded-lg border border-green-700/30"><span class="text-green-400">&#x2610;</span> Templates folder has at least one starter scaffold file</div>
 </div>
-<div class="mt-3 p-3 bg-purple-900/30 rounded-lg border border-purple-500/30 text-xs text-gray-300 italic">&#x1F4AD; <strong class="text-purple-300">Marcus:</strong> "Wait &mdash; I wrote the same plan twice. That&rsquo;s a pattern." <span class="text-gray-500 not-italic">[tab-switches, tab-switches back]</span> "Okay I&rsquo;m back. Patterns should be skills. Let&rsquo;s build it."</div>
+<div class="mt-3 p-3 bg-purple-900/30 rounded-lg border border-purple-500/30 text-xs text-gray-300 italic">&#x1F4AD; <strong class="text-purple-300">Marcus:</strong> "Wait &mdash; I wrote the same plan twice. That&rsquo;s a pattern." <span class="text-gray-500 not-italic">[tab-switches, tab-switches back]</span> "Okay I&rsquo;m back. Patterns become skills. Let&rsquo;s build it."</div>
 </div>
 </div>
 </div>
@@ -1283,7 +1283,7 @@ In Module 2, plan mode produced the full roadmap for the Lore card and <code cla
 <div class="mb-2">scoped plan for any FanHub entity type.</div>
 <div class="text-gray-400">Make sure the plan includes the form</div>
 <div class="mb-3 text-gray-400">alongside the card + page.</div>
-<div class="border-t border-purple-500/20 pt-2 mb-2 text-gray-300">When the skill runs, it should:</div>
+<div class="border-t border-purple-500/20 pt-2 mb-2 text-gray-300">When the skill runs, it:</div>
 <div class="text-gray-400">1. Ask the user what properties the entity</div>
 <div class="text-gray-400 ml-3">has beyond title and description before</div>
 <div class="text-gray-400 mb-2 ml-3">generating anything.</div>
@@ -1347,9 +1347,9 @@ In Module 2, plan mode produced the full roadmap for the Lore card and <code cla
 <div class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-1">&#x2705; What to check</div>
 <div class="bg-gray-900/60 rounded-xl p-3 border border-purple-500/30 flex-1 text-xs text-gray-300 space-y-2">
 <div class="flex items-start gap-2"><span class="text-purple-400 font-bold flex-shrink-0">1</span><span><strong class="text-white">Skill name matches the folder.</strong> <span class="font-mono text-green-300">name: create-card-and-page</span> must match <span class="font-mono text-green-300">.github/skills/create-card-and-page/</span></span></div>
-<div class="flex items-start gap-2"><span class="text-purple-400 font-bold flex-shrink-0">2</span><span><strong class="text-white">Description is broad enough.</strong> It should trigger when anyone mentions adding a new entity — not just &ldquo;Lore&rdquo; specifically</span></div>
-<div class="flex items-start gap-2"><span class="text-purple-400 font-bold flex-shrink-0">3</span><span><strong class="text-white">No hardcoded entity names.</strong> Every <span class="font-mono text-gray-400">Lore</span>, <span class="font-mono text-gray-400">lore</span>, <span class="font-mono text-gray-400">Lores</span> should be replaced with <span class="font-mono text-yellow-300">&#36;{entityName}</span></span></div>
-<div class="flex items-start gap-2"><span class="text-purple-400 font-bold flex-shrink-0">4</span><span><strong class="text-white">Plan steps are still present.</strong> The full implementation roadmap from M2 should be preserved, just parameterised</span></div>
+<div class="flex items-start gap-2"><span class="text-purple-400 font-bold flex-shrink-0">2</span><span><strong class="text-white">Description is broad enough.</strong> It triggers when anyone mentions adding a new entity — not just &ldquo;Lore&rdquo; specifically</span></div>
+<div class="flex items-start gap-2"><span class="text-purple-400 font-bold flex-shrink-0">3</span><span><strong class="text-white">No hardcoded entity names.</strong> Every <span class="font-mono text-gray-400">Lore</span>, <span class="font-mono text-gray-400">lore</span>, <span class="font-mono text-gray-400">Lores</span> are replaced with <span class="font-mono text-yellow-300">&#36;{entityName}</span></span></div>
+<div class="flex items-start gap-2"><span class="text-purple-400 font-bold flex-shrink-0">4</span><span><strong class="text-white">Plan steps are still present.</strong> The full implementation roadmap from M2 is preserved, just parameterised</span></div>
 </div>
 <div class="bg-purple-900/20 rounded-lg p-2.5 border border-purple-500/20 text-xs text-gray-300">
 &#x1F4A1; If anything looks off, edit SKILL.md directly or ask Copilot: <span class="italic text-gray-400">&ldquo;The description only mentions Lore &mdash; broaden it to cover any entity type.&rdquo;</span>

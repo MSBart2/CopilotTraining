@@ -4,7 +4,7 @@ subtitle: ""
 slug: 01-instructions
 category: workshop
 duration: 45
-updated: 2026-08-13
+updated: 2026-10-23
 ---
 
 # Module 1 - Instructions

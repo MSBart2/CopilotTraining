@@ -10,14 +10,14 @@
 
 It's 2:45 PM on Monday. The team is ready to build its first real skill for the character-detail story arc. But there is still one annoying problem before the useful work begins:
 
-- What should the folder structure look like?
+- What does the folder structure look like?
 - What belongs in `SKILL.md`?
 - Which optional directories are worth creating now versus later?
 - How do they avoid rebuilding the same skill scaffold from scratch every time?
 
-The team already understands the idea of skills, but blank-page setup is still friction. Sarah knows they can teach Copilot specialized workflows, but David points out that the team should not be inventing the starter structure from memory when a strong community template already exists.
+The team already understands the idea of skills, but blank-page setup is still friction. Sarah knows they can teach Copilot specialized workflows, but David points out that the team can skip inventing the starter structure from memory when a strong community template already exists.
 
-He realizes: *"Before we build our own character-detail skills, we should install a proven starter. `make-skill-template` from `github/awesome-copilot` can give us the right scaffolding so the next two exercises start faster and cleaner."*
+He realizes: *"Before we build our own character-detail skills, let's install a proven starter. `make-skill-template` from `github/awesome-copilot` can give us the right scaffolding so the next two exercises start faster and cleaner."*
 
 #### 🔄 The Transformation
 

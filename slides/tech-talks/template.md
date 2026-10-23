@@ -4,7 +4,7 @@ Use this profile when generating `slides/tech-talks/*.md` from content under `te
 
 ## Purpose
 
-Tech talks are practitioner-facing. They should feel concrete, current, and capability-led.
+Tech talks are practitioner-facing. Make them concrete, current, and capability-led.
 
 - Audience: developers, platform engineers, DevOps engineers, architects
 - Tone: technical, direct, outcome-based
@@ -166,7 +166,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
 - Column labels hardcoded: **Today / This Week / This Month** — do not pass labels or icons
 - Colors enforced by column position (green / blue / purple) — no color props
 - Max 5 items per column; `footer` must be a single sentence
-- Items should be concrete, actionable, imperative verbs
+- Write items as concrete, actionable, imperative verbs
 
 ### Slide N-1 — References (REQUIRED)
 
@@ -553,7 +553,7 @@ Horizontal stage progression with chevron separators. One stage can be marked `i
 ```
 
 - `stages`: 2–5 items; each needs `label`, `name`, `description`. `icon` and `isTarget` are optional.
-- Only one stage should have `isTarget: true`. It receives the emerald highlight ring and "TARGET" badge.
+- Give exactly one stage `isTarget: true`. It receives the emerald highlight ring and "TARGET" badge.
 - `caption`: optional bottom-center italic text (e.g., a key constraint about the journey).
 
 ### `AITerminalTranscriptSlide`
@@ -668,4 +668,4 @@ Labeled row taxonomy: fixed-width concept label on the left → explanation text
 
 ## Recipe Integration
 
-Tech talks should also load `deck.recipe.yml` when present. The recipe controls per-talk framing and emphasis, but this profile controls the visual system and the allowed archetype family.
+Tech talks also load `deck.recipe.yml` when present. The recipe controls per-talk framing and emphasis, but this profile controls the visual system and the allowed archetype family.

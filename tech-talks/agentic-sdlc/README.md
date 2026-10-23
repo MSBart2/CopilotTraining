@@ -445,7 +445,7 @@ Q: What's your current agent throughput vs. target?
 │  └─ Best for: Platform transformation, sustainable AI velocity
 │
 ├─ "Haven't started with agents yet"
-│  → Use: Agentic Journey (incremental adoption)
+│  → Use: GitHub Agentic Workflows (automate one repository chore)
 │  └─ Best for: Proving value before infrastructure investment
 │
 ├─ "Already doing 5-10/day but hitting scaling limits"
@@ -455,7 +455,7 @@ Q: What's your current agent throughput vs. target?
 │  └─ CI speed/flakiness → Apply Part 3 (Trust Manufacturing)
 │
 └─ "Need executive framing for transformation"
-   → See: Agentic Delivery (exec-talks)
+   → See: The Agentic Operating Model (exec talk)
    └─ Best for: Budget approval, org change management
 ```
 
@@ -468,19 +468,19 @@ Q: What's your current agent throughput vs. target?
 
 ### Don't Use This Pattern When
 
-- You haven't proven agent value yet → Start with [Agentic Journey](../agentic-journey/) quick wins
+- You haven't proven agent value yet → Start with [GitHub Agentic Workflows](../agentic-lifecycle/) and automate one repository chore
 - Team size <5 developers → Infrastructure overhead may exceed benefits
 - Regulatory requires physical repo separation → Multi-repo is mandatory, focus on Parts 2-3 only
 - You need immediate results in <1 month → Incremental adoption path is better fit
 
 ### Comparison with Related Features
 
-| Aspect | This Talk (Agentic SDLC) | Agentic Journey | Enterprise Patterns |
-|--------|--------------------------|-----------------|---------------------|
-| **Best For** | Platform transformation for sustained AI velocity | Quick wins without restructuring | Organization-wide scaling |
-| **Setup Time** | 3-6 months | 2-3 hours per phase | 6-12 months |
-| **Throughput Gain** | 100x annual (150 → 3,600 features/year) | 15-20x (3/week → 10/week) | 200x+ (multi-team compounding) |
-| **Risk Level** | High (infrastructure change) | Low (additive only) | Very High (organizational) |
+| Aspect | This Talk (Agentic SDLC) | GitHub Agentic Workflows | Enterprise Patterns |
+|--------|--------------------------|--------------------------|---------------------|
+| **Best For** | Platform transformation for sustained AI velocity | Automating one repository chore without restructuring | Organization-wide scaling |
+| **Setup Time** | 3-6 months | One workflow file per chore | 6-12 months |
+| **Throughput Gain** | 100x annual (150 → 3,600 features/year) | Per chore; measure against your own baseline | 200x+ (multi-team compounding) |
+| **Risk Level** | High (infrastructure change) | Low (read-only by default; writes go through safe outputs) | Very High (organizational) |
 | **Prerequisites** | Agent adoption + bottleneck pain | GitHub Actions + Copilot license | Executive sponsorship |
 
 ---
@@ -1571,6 +1571,8 @@ Machine-readable artifacts proving checks ran and passed:
 
 ## ✅ What You Can Do Today
 
+**Hands-on walkthrough:** [examples/walkthrough.md](examples/walkthrough.md) steps a FanHub fork through a maturity self-check, fast-feedback CI, CODEOWNERS routing, and an evidence-bundle PR template.
+
 **Immediate Actions (15 minutes):**
 - [ ] Audit last 50 PRs: How many touched 2+ repos? (If >30%, monorepo candidate)
 - [ ] Measure current PR check time and identify slowest checks
@@ -1598,9 +1600,9 @@ Machine-readable artifacts proving checks ran and passed:
 
 **Next Steps After Completion:**
 1. ✅ Complete Phase 1 (Level 3 standardization) and measure baseline metrics
-2. 📖 Review [Agentic Journey](../agentic-journey/) if you need quick wins before full transformation
+2. 📖 Review [GitHub Agentic Workflows](../agentic-lifecycle/) if you want quick wins before full transformation
 3. 📊 Build ROI dashboard tracking: time-to-merge, agent velocity, flake rate, review capacity, Copilot Metrics API adoption trends
-4. 🚀 Present transformation plan using [Agentic Delivery](../../exec-talks/agentic-delivery/) executive framing
+4. 🚀 Present transformation plan using [The Agentic Operating Model](../exec-strategy/) executive framing
 
 ---
 
@@ -1609,8 +1611,7 @@ Machine-readable artifacts proving checks ran and passed:
 ### Complementary Features
 
 - **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Evidence-gated issue-to-PR automation before full SDLC transformation
-- **[Multi-Agent Coordination](../multi-agent-coordination/)** — Specialized multi-agent coordination patterns for complex workflows
-- **[Parallel Execution](../parallel-execution/)** — Worktree-based independence for multiple agents working simultaneously
+- **[Local Agentic SDLC](../local-agentic-sdlc/)** — Specialist agents, worktree isolation, and an integration record in one orchestrated local run
 - **[Copilot Hooks](../copilot-hooks/)** — Governance mechanisms and agent behavior controls
 
 ### Decision Flow
@@ -1619,11 +1620,11 @@ Machine-readable artifacts proving checks ran and passed:
 
 ```
 Q: What's blocking your agent velocity?
-├─ "Haven't started with agents" → See: Agentic Journey
+├─ "Haven't started with agents" → See: GitHub Agentic Workflows
 ├─ "Agents work but no pain yet" → Wait until pain manifests, then return
-├─ "Need executive buy-in" → See: Agentic Delivery (exec-talks)
+├─ "Need executive buy-in" → See: The Agentic Operating Model (exec talk)
 ├─ "Organization-wide scaling" → See: Enterprise Patterns
-└─ "Interactive dev workflows" → See: Agentic Sessions
+└─ "Interactive dev workflows" → See: Local Agentic SDLC
 ```
 
 See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for complete navigation help.

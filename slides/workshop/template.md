@@ -4,7 +4,7 @@ Use this profile when generating `slides/workshop/*.md` from content under `work
 
 ## Purpose
 
-Workshop decks are hands-on instructional assets. They should move participants through setup, framing, exercise execution, validation, and recap.
+Workshop decks are hands-on instructional assets. They move participants through setup, framing, exercise execution, validation, and recap.
 
 - Audience: practitioners in training sessions
 - Tone: clear, practical, guided

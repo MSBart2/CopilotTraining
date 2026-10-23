@@ -61,11 +61,11 @@ Note: the local container definition also avoids Dev Container features that mus
 
 1. Open Command Palette (Ctrl/Cmd+Shift+P)
 2. Run "Markdown: Open Preview"
-3. Diagrams should render with the `bierner.markdown-mermaid` extension
+3. Diagrams render with the `bierner.markdown-mermaid` extension
 
 ### Ports Not Forwarding?
 
-Check the "Ports" tab in VS Code's terminal panel. Ports should auto-forward when services start.
+Check the "Ports" tab in VS Code's terminal panel. Ports auto-forward when services start.
 
 ### Container Build Fails?
 

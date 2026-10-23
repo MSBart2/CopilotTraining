@@ -178,7 +178,7 @@ When exercises involve file creation, automatically add this to the Success Crit
 
 - Use relative path from module directory to examples folder (typically `../../examples/`)
 - Include the full path within `completed-config/`
-- Link text should show the path for clarity
+- Show the path in link text for clarity
 
 #### Example File Metadata
 

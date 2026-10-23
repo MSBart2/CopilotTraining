@@ -4,7 +4,7 @@ subtitle: "Conversational Azure Prototyping and Deployment"
 slug: copilot-azure-mcp
 category: tech-talks
 duration: 45
-updated: 2026-09-16
+updated: 2026-10-23
 ---
 
 # GitHub Copilot + Azure Skills Plugin

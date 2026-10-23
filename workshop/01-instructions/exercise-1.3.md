@@ -14,7 +14,7 @@ David has the opposite problem in backend files—Copilot suggests React state m
 
 The issue: `.github/copilot-instructions.md` applies to *everything*. It can't distinguish between UI layer and API layer. Sarah and David need instructions that activate based on architectural boundaries.
 
-Sarah realizes: *"We need path-specific guidance that automatically applies based on where we're working. Frontend files should only see frontend patterns. Backend files should only see backend patterns."*
+Sarah realizes: *"We need path-specific guidance that automatically applies based on where we're working. Frontend files see only frontend patterns. Backend files see only backend patterns."*
 
 #### 🔄 The Transformation
 
@@ -138,24 +138,24 @@ Create path-specific instruction files that automatically apply React patterns t
    Open `frontend/src/components/CharacterCard.js` and ask in Copilot Chat:
 
    ```
-   How should I fetch character data in this component?
+   What's the best way to fetch character data in this component?
    ```
 
    **Expected response:** Mentions React Query, services layer, user-facing error handling. **Does NOT mention** database queries, Express routes, or server patterns.
 
-   Check References section in chat response—should show `frontend.instructions.md` was applied.
+   Check References section in chat response—look for `frontend.instructions.md` was applied.
 
    b) **Open a backend file:**
 
    Open `backend/src/routes/characters.js` and ask:
 
    ```
-   How should I implement this GET endpoint?
+   How do I implement this GET endpoint?
    ```
 
    **Expected response:** Mentions RESTful patterns, database queries, parameterized SQL, HTTP status codes. **Does NOT mention** React hooks, components, or JSX.
 
-   Check References section—should show `backend.instructions.md` was applied.
+   Check References section—look for `backend.instructions.md` was applied.
 
 5. **Verify layered context**
 
@@ -215,7 +215,7 @@ Create path-specific instruction files that automatically apply React patterns t
 
 **[Exercise 1.4: Language-Specific Standards](exercise-1.4.md)** — Extend conditional instructions beyond architectural layers to language-specific conventions—Python, JavaScript, TypeScript each get their own standards.
 
-> *"The layer separation is brilliant, but we write Python, JavaScript, and TypeScript. Each language has different style guides that should apply automatically based on file extension."*
+> *"The layer separation is brilliant, but we write Python, JavaScript, and TypeScript. Each language has different style guides that we want applied automatically based on file extension."*
 > — Elena, about to create language-specific instructions
 
 ---

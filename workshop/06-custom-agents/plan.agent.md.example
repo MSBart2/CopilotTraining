@@ -51,7 +51,7 @@ If research reveals major ambiguities or if you need to validate assumptions:
 
 Once context is clear, draft a comprehensive implementation plan.
 
-The plan should reflect:
+The plan reflects:
 - Structured concise enough to be scannable and detailed enough for effective execution
 - Step-by-step implementation with explicit dependencies — mark which steps can run in parallel vs. which block on prior steps
 - For plans with many steps, group into named phases that are each independently verifiable

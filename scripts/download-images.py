@@ -256,7 +256,7 @@ def generate_markdown_report(images, output_dir):
     for img in images:
         # For tech-talks, README.md is in tech-talks/[name]/README.md
         # and images are in tech-talks/[name]/images/[file]
-        # So the markdown path should be images/[filename]
+        # So the markdown path is images/[filename]
         if 'local_path' in img:
             # Extract just the images/filename.png part
             filename = os.path.basename(img['local_path'])

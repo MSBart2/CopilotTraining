@@ -1,148 +1,116 @@
-# Independent critique: rubber-duck subagent on gpt-5.6-sol (cross-model; primary is a Claude model).
-# Reconciliation:
-# - Accepted: frame the authority chain in three inspectable layers: source declares, lock implements,
-#   run evidence shows it in effect. README core insight updated to match.
-# - Accepted: the climax is the narrowing, shown as three states (wizard intent, generated draft with
-#   broad authority highlighted, narrowed contract with staged evidence). Wizard speed is the setup.
-# - Accepted: outcome-oriented agenda; four highlight moments; actor labels on every trace.
-# - Accepted: a workflow-PR reviewer perspective (README "Apply it to your work" updated).
-# - Accepted: outcome efficiency shown with companion signals, compared within one workflow (README updated).
-# - Accepted: factual gates for volatile defaults, staged preview format, and experimental evals.
-# - Accepted: end section 3 with the complete first loop; section 4 covers reliability, cost, and promotion.
-# - Adjusted: the reviewer asked to compress section 1 and the pattern catalog. The user approved the
-#   full ~57-slide plan as a skippable deck; reference-grade slides are marked skippable below.
-# - Resolved by the user earlier: FanHub appears only in the closing 1–2 slides.
-# SLIDE BUDGET EXCEPTION (user-approved): ~57 slides, above the default 30-slide cap. The deck is built
-# to be skipped through; every slide tagged "skippable" can be passed in one click without losing the arc.
+# Recipe history
+# - 2026-10-21: original recipe, critiqued cross-model (rubber-duck subagent on gpt-5.6-sol; primary
+#   Claude). Accepted from that critique and still in force: the three-layer authority chain (source
+#   declares, lock implements, run evidence shows it); narrowing a wizard draft as the climax; actor
+#   labels on every trace; outcome efficiency compared within one workflow; experimental labels on
+#   evals; FanHub only in the closing slides.
+# - 2026-10-22: restructured after live delivery feedback (too much, too deep, too fast, too little
+#   why/when). Deck cut from 65 to 34 slides, use cases first, one visual per slide with depth in
+#   speaker notes. Then evals and Outcomes got worked slides (36 slides), the title and core question
+#   were simplified, and the real FanHub triage-wizard artifacts replaced invented examples.
+# - 2026-10-22 (this revision): recipe rewritten to describe the approved, delivered deck. The user
+#   approved the deck as is, so no cross-model review was run for this documentation pass.
+# SLIDE BUDGET EXCEPTION (user-approved): 36 slides, above the default 30-slide cap. Depth lives in
+# speaker notes, so most slides carry one visual and three to five callouts.
 version: 1
 
 deck:
   title: "GitHub Agentic Workflows"
-  subtitle: "Read the Contract, Then Let the Agent Work"
-  tagline: "Frontmatter grants authority, safe outputs are the only write path, and every layer is inspectable"
+  subtitle: "Automate the Repository Chores That Take Judgment"
+  tagline: "What they are, when to use one, and how to run it safely"
+  coreQuestion: "Which repository chores fit an agent, and how do you keep it in bounds?"
 
   agenda:
-    - title: "Review a workflow's authority in five questions"
-      takeaway: "Trace who starts it, what it reads, what it can reach, what it writes, and what stops it, from source to lock to run."
-      whyItMatters: "Approve or narrow any workflow pull request, including one an agent or wizard wrote for you."
-    - title: "Pick a first job with a small, reversible write"
-      takeaway: "Use recur, judgment, and smallest write to choose work, with IssueOps triage as the model and a catalog for what comes next."
+    - title: "Pick the chore first"
+      takeaway: "Use the three-part test (recurs, needs judgment, small bounded write) to choose work, with IssueOps triage as the model and a gallery for what comes next."
       whyItMatters: "The first workflow sets the team's trust; a reversible write lets maintainers check it within a week."
-    - title: "Run staged, then promote on evidence"
-      takeaway: "Read the staged preview, gh aw audit, and Outcomes, and map each failure symptom to the block that owns it."
+    - title: "Read the contract and grant only the writes it needs"
+      takeaway: "Frontmatter grants authority, safe outputs are the only write path, staged previews come first, and the lock and audit show the contract in effect."
+      whyItMatters: "Approve or narrow any workflow pull request, including one a wizard or agent wrote."
+    - title: "Run it, judge it, and recover"
+      takeaway: "Read the run Summary, gh aw audit, and gh aw logs; weigh cost against evals (did it follow instructions) and Outcomes (did people find it useful); trace each symptom to its owning block."
       whyItMatters: "Promotion, revision, and retirement become decisions backed by run evidence."
 
-  arcToc: "Read the Contract → Choose the Work → Generate a First Draft → Run and Read"
+  arcToc: "Why and When → Read the Contract → Build One Live → Run and Troubleshoot"
 
   arcNarrative: >
-    Section 1 gives the audience a reading skill before anything else: one IssueOps triage file,
-    read block by block, with the paradox that the body can ask for closure while the frontmatter
-    grants no closure path. Every later slide uses that vocabulary, and the five-question checklist
-    closes the section as the tool the audience carries forward. Section 2 turns the skill toward
-    choice: the three-part test for work that earns a workflow, IssueOps triage and planning, the
-    stage decision (judgment workflows plus the Copilot cloud agent for code, with per-stage workflows
-    for audit-heavy teams), and a pattern catalog with primary use cases so practitioners can map
-    their own backlog. Section 3 is the climax. The wizard produces a draft in about a minute, and
-    the audience watches the five questions expose broad authority in that draft, then sees a
-    four-line safe-outputs change narrow it, compile, and show up in the staged preview. Section 3
-    ends with the complete first loop: compile, stage, trigger, inspect, accept or revise. Section 4
-    covers what happens after day one: audit and logs, cost guardrails, Outcomes, failure tracing
-    by owning block, upgrade discipline, fit boundaries, and a time-boxed ladder for the audience's
-    own repository. Two closing slides show the method on FanHub: a /triage run with cited evidence
-    and its audit, and a multi-stage run that ends at a draft pull request awaiting a person.
+    The talk opens on the maintainer: CI handles the predictable work, and what still lands on the
+    desk is recurring work that needs reading and judgment. Part 1 answers which of those chores
+    earns an agent: what scripts, raw tokens, and manual toil make hard; the three-part test; a
+    two-slide use-case gallery (reactive and scheduled); Peli's Agent Factory as the "what people
+    actually run" slide; IssueOps end to end; and the handoff of implementation to the Copilot cloud
+    agent. Part 2 reads one real file, triage-wizard.md from FanHub, frontmatter then body, then
+    follows it through compile to the lock, safe outputs, staged mode, and a hostile issue that tries
+    to steer the agent. Part 3 builds one live: the wizard, its intent, the generated draft narrowed
+    with four controls (allowed, max, target, staged), then refine and the first loop. Part 4 covers
+    life after day one: where to look, whether it is worth it (cost, then worked slides on evals and
+    Outcomes), symptom-to-block troubleshooting, where it stops fitting, a time-boxed ladder, and the
+    real FanHub #202 /triage run as the closing evidence.
 
   sectionOrder:
-    - "1. Read the Contract"
-    - "2. Choose the Work"
-    - "3. Generate a First Draft"
-    - "4. Run It and Read the Evidence"
+    - "1. Why and When"
+    - "2. Read the Contract"
+    - "3. Build One Live"
+    - "4. Run and Troubleshoot"
+
+  frame:
+    - "1 Title: Automate the Repository Chores That Take Judgment"
+    - "2 Core Question: three chores (triage, report, scope work) and three safety facts (1 Markdown file, a read-only agent, 1.22 AI credits)"
+    - "3 Table of Contents"
+    - "34 What You Can Do Today · 35 References · 36 Thank You"
 
   sectionModes:
-    "1. Read the Contract":
+    "1. Why and When":
       emphasis: high
+      slides: "4–11 (8)"
       note: >
-        Budget about 17 slides. Core path: the three-column toolbox (Actions run predefined steps,
-        agentic workflows exercise bounded judgment on a trigger, the Copilot cloud agent carries one
-        delegated implementation); the full triage file split across a frontmatter slide and a body
-        slide; the body-requests-closure paradox on its own slide; one slide each for on/roles,
-        permissions, limits, safe outputs, and staged mode; the authority chain diagram (source
-        declares → lock implements → run evidence shows it); compile to the lock with the four-part
-        review model; the five-question checklist as the section closer. Skippable reference slides:
-        engine table (lead with Copilot as the default, list claude, codex, pi, agy experimental,
-        gemini deprecated), tools table, network, the safe-output catalog by family, the trifecta
-        plus six layers, and three contracts side by side. Label the trifecta-to-layer column as
-        this talk's mapping. Attribute guardrail defaults to the cost guide by name. Show the staged
-        preview using the format from the staged mode docs, labeled as such, until the FanHub
-        rehearsal captures a real one.
-    "2. Choose the Work":
-      emphasis: medium
-      note: >
-        Budget about 11 slides. Core path: the recur + judgment + smallest-write test; IssueOps
-        triage as a one-line flow from requester to maintainer; IssueOps planning into sub-issues
-        with group: true; the stage decision as a two-column comparison with the recommendation
-        stated plainly (start with judgment workflows plus the Copilot cloud agent; choose a
-        workflow per stage when each stage needs its own auditable authority) and the PAT
-        requirement named. Keep all four pattern-catalog slides, each with primary use cases;
-        they are skippable. Peli's Agent Factory gets one slide; label Repo Assist figures as
-        GitHub-published. Close with "Map your own work" and include one quick sorting example:
-        three recurring tasks, with the reason only one earns an agentic workflow. Point out that
-        the three answers are the wizard's inputs, which hands off to section 3.
-    "3. Generate a First Draft":
+        Opener (hard to script, risky to wire by hand, costly to staff); What Would This Take
+        Otherwise; Three-Part Test; Use Cases React; Use Cases Run on Their Own; Peli's Agent
+        Factory (label Repo Assist figures as GitHub-published); IssueOps Flow; Cloud Agent Handoff.
+        Map Your Own Work lives in speaker notes.
+    "2. Read the Contract":
       emphasis: high
+      slides: "12–19 (8)"
       note: >
-        Climax section. Budget about 10 slides. Three ways to start (skippable); the wizard's seven
-        steps; what it hands you (a prompt for your coding agent, run inside the target repository
-        so the agent sees its labels and code); intent becomes evaluation, labeled experimental and
-        kept off the minimum production path (skippable). The live demo slide carries the intent
-        text and a "recorded fallback" marker. The anchor lands as three states across one or two
-        slides: wizard intent, the generated draft with its broad safe-outputs highlighted, and the
-        narrowed contract with the four-line diff and the staged preview it produces. Present
-        "about a minute" as the wizard step time observed in the demo. Refine with the gh-aw skill,
-        then end on the complete first loop: compile, commit, run, read the staged preview, remove
-        staged after outputs match a maintainer's judgment on several real issues.
-    "4. Run It and Read the Evidence":
+        Opener (one file two halves, compiled to a lock, safe by default); Who Acts; triage-wizard.md
+        Frontmatter (real FanHub artifact from examples/; flags roles: all + min-integrity: none as a
+        deliberate risk choice); triage-wizard.md Body; Compile to the Lock (7 jobs, 5,000 AIC daily
+        default confirmed in the lock); Safe Outputs (illustrative, staged); Staged Mode; Hostile Issue (five layered defenses: trust filter, tokens kept outside, network firewall,
+        safe outputs, write review). Body Asks
+        to Close and the Five Questions checklist live in speaker notes.
+    "3. Build One Live":
+      emphasis: high
+      slides: "20–24 (5)"
+      note: >
+        Climax. Opener; Wizard; Live Demo Wizard Intent (real wizard output from
+        examples/example-flow-prompt.md as the fallback); Narrow the Draft (four controls);
+        Refine and First Loop (gh workflow run triage-wizard.lock.yml -f issue_number=202).
+        Intent Becomes Evaluation lives in speaker notes.
+    "4. Run and Troubleshoot":
       emphasis: medium
+      slides: "25–33 (9)"
       note: >
-        Budget about 12 slides. Lead with "a successful run confirms execution; the output and its
-        outcomes confirm useful work," and name the honest stops (noop, report-missing-tool,
-        report-missing-data). One slide each for gh aw audit and gh aw logs; cost guardrails with
-        defaults attributed to the cost guide; Outcomes with the acceptance table and outcome
-        efficiency shown beside acceptance rate, correction rate, and honest-stop rate, compared
-        within one workflow; evals and graders marked experimental (skippable); self-reported
-        failures; the symptom → owning block → fix table as the most reusable artifact; upgrade
-        discipline (skippable); where it stops fitting; the 15-minute / 1-hour / 2–4-hour ladder;
-        and "apply it to your work" with the workflow-PR reviewer's five answers plus the
-        largest-single-run-change question. Then two closing FanHub slides before references:
-        #202 /triage (four reasoned labels, cited lines, duplicate #7, 6 of 6 jobs, 1.22 AIC,
-        about six minutes, maintainer closes and assigns #7 to the cloud agent) and #110 → draft
-        PR #193 (four label-triggered contracts, three honest stops and their fixes, a draft that
-        waits for a person). Label both as observed results on gh-aw v0.92.6.
+        Opener; Where to Look (run Summary, gh aw audit, gh aw logs); Is It Worth It (cost caps,
+        pointers to the next two slides); Evals in Practice (all five BinEval answers, labeled
+        illustrative because triage-wizard has not run on FanHub; 400 AIC evals cap; results
+        committed to evals/triagewizard); Outcomes in Practice (real gh aw outcomes output for run
+        39669929991: 2/2 accepted, 0.810 AIC per accepted outcome); banner "Evals tell you whether it
+        followed instructions. Outcomes tell you whether people found it useful."; When It Misbehaves
+        (symptom → owning block → fix); Where It Stops Fitting; Ladder (15 minutes / 1 hour /
+        2–4 hours); FanHub 202 (observed on gh-aw v0.92.6). Upgrade Discipline and FanHub
+        #110 → #193 live in speaker notes.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "The body asks the agent to close the issue, and the issue stays open: the frontmatter grants no closure path, so the system enforces the contract."
-    - "Five questions read any workflow, and in the live demo they expose broad authority in a wizard draft produced in about a minute."
-    - "A four-line safe-outputs change (allowlist, max, target, staged) narrows what the workflow can do, and the staged preview shows the narrower contract in effect."
-    - "On FanHub, /triage on #202 produced four reasoned labels, cited the cache lines, and found duplicate #7 for 1.22 AI credits, observed on gh-aw v0.92.6."
+    - "Pick the chore first, then grant only the writes it needs: one Markdown file, a read-only agent, and a separate job that applies only the declared writes."
+    - "The real triage-wizard.md, read frontmatter then body, compiles to a lock that shows every job and its permissions."
+    - "In the live demo, four controls (allowed, max, target, staged) narrow a one-minute wizard draft into the right contract."
+    - "Evals tell you whether it followed instructions; Outcomes tell you whether people found it useful. On FanHub #202, /triage produced four reasoned labels and found duplicate #7 for 1.22 AI credits, and both outputs were accepted."
 
-# OPEN DECISION: Generate slides now with guardrail defaults attributed to the cost guide and the
-# staged preview shown in the docs' format, or wait for the FanHub rehearsal on a pinned gh-aw
-# version so those slides show the compiled lock's actual defaults (the frontmatter reference says
-# the daily credit cap is off when omitted) and a captured staged preview. Generating now keeps
-# momentum and needs a quick patch after rehearsal; waiting means one generation pass with observed
-# artifacts on the limits, staged, and demo slides.
-
-# RESTRUCTURE NOTE (2026-10-22, delivery feedback; no cross-model review run)
-# Delivered talk ran too much content, too deep, too fast, with too little why/when.
-# Deck cut from 65 to 34 slides: use cases first, then nugget slides (one visual,
-# 3-5 callouts) with depth moved into speaker notes.
-# Part 1 Why and When: difficult/dangerous/expensive framing, three-part test,
-#   two-slide use-case gallery (When / Why an agent / Trigger), Peli, IssueOps, handoff.
-# Part 2 Read the Contract: approved "What's in the File" + "Safe by Default" merged,
-#   because TocSlide / partNumber support exactly four parts.
-# Part 3 Build One Live; Part 4 Run and Troubleshoot.
-# Moved to notes: Body Asks to Close, Five Questions, Upgrade Discipline,
-#   Intent Becomes Evaluation, Map Your Work, FanHub 110->193 and Before/After.
-# Section weights below predate this restructure; refresh them at the next recipe review.
+# Evidence labels the deck relies on:
+# - Observed: FanHub #202 run (gh-aw v0.92.6), gh aw audit 1.22 AIC, gh aw outcomes 2/2 accepted.
+#   audit and outcomes count credits differently; never compare them directly.
+# - Confirmed from the compiled lock: 7 jobs, 5,000 AIC daily default, 400 AIC evals cap.
+# - Illustrative: eval answers on slide 28, Safe Outputs code on slide 17, lifecycle YAML shapes.

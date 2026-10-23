@@ -94,7 +94,9 @@ references:
     verified: 2026-10-21
 ---
 
-# GitHub Agentic Workflows: Read the Contract, Then Let the Agent Work
+# GitHub Agentic Workflows: Automate the Repository Chores That Take Judgment
+
+*What they are, when to use one, and how to run it safely.*
 
 > **The question this talk answers:** Which repository chores fit an agent, and how do you keep it in bounds?
 

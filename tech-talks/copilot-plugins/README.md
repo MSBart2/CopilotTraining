@@ -6,7 +6,7 @@ audience: [developer, platform-engineer]
 level: applied
 duration: 25
 format: core-talk
-decision: "How should Copilot extensions and configuration be packaged and distributed?"
+decision: "How can teams package and distribute Copilot extensions and configuration?"
 prerequisites: [copilot-primitives]
 related: [copilot-sdk, mcp-apps]
 references:
@@ -349,7 +349,7 @@ APM resolves MCP servers from npm, GitHub, or local paths. After `apm install`, 
 <!-- 🎬 MAJOR SECTION: The Lockfile Pattern -->
 ## The Lockfile Pattern
 
-APM generates `apm-lock.yml` to freeze the exact versions of every plugin, instruction, skill, and MCP server. This file should be committed to version control alongside `apm.yml`.
+APM generates `apm-lock.yml` to freeze the exact versions of every plugin, instruction, skill, and MCP server. Commit this file to version control alongside `apm.yml`.
 
 ### What the Lockfile Captures
 
@@ -393,7 +393,7 @@ With a lockfile, both developers get `1.2.3` — the exact version locked when t
 1. **Initial setup**: Author `apm.yml`, run `apm install`, commit both files
 2. **Daily use**: Developers run `apm install` to sync with the lockfile
 3. **Updates**: Run `apm update` to fetch new versions, review lockfile changes, commit
-4. **Pull requests**: Treat `apm-lock.yml` diffs like dependency updates — CI should validate they match `apm.yml`
+4. **Pull requests**: Treat `apm-lock.yml` diffs like dependency updates — CI validates that they match `apm.yml`
 
 **Key Points:**
 
@@ -580,6 +580,8 @@ The `--frozen-lockfile` flag fails if the lockfile doesn't match `apm.yml`. Pull
 
 ## What You Can Do Today
 
+**Hands-on material:** [examples/walkthrough.md](examples/walkthrough.md) covers discovery, single-plugin install, the `apm.yml` manifest, hydrating a fresh clone, and lockfile updates. [examples/fanhub-plugin/](examples/fanhub-plugin/README.md) is a complete APM package with agents, prompts, skills, and an MCP server; its [WALKTHROUGH.md](examples/fanhub-plugin/WALKTHROUGH.md) installs it into a bare FanHub Unplugged clone.
+
 ### 15 Minutes: Explore the Marketplace and Install Your First Plugin
 
 1. List available plugins from the CLI:
@@ -684,7 +686,7 @@ The `--frozen-lockfile` flag fails if the lockfile doesn't match `apm.yml`. Pull
 ## Related Patterns
 
 - **[Copilot Primitives](../copilot-primitives/)** — Understanding instructions, skills, and MCP servers that APM orchestrates
-- **[Copilot Memory](../copilot-memory/)** — How agent context persists across sessions and repositories
+- **[Copilot Configuration Primitives](../copilot-primitives/)** — How memory sits alongside instructions, prompts, and skills, and how long each one persists
 - **[Copilot CLI](../copilot-cli/)** — Using Copilot from the command line, where plugin management happens
 
 ---

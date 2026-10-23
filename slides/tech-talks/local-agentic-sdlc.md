@@ -499,7 +499,7 @@ The hook blocked with 7 failures. The orchestrator routed the failing assertions
     items: [
       { title: "Was the rename wanted?", detail: "The agent treated it as intended and changed tests to match" },
       { title: "Is the behavior right?", detail: "Product intent lives in review" },
-      { title: "Should it merge?", detail: "The reviewer owns that call" }
+      { title: "Ready to merge?", detail: "The reviewer owns that call" }
     ]
   }'
   :insight='{ icon: "💡", text: "A green gate says the code and its tests agree. Whether the change was wanted is a person&#39;s call." }'

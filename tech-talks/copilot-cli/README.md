@@ -227,7 +227,7 @@ Each capability in this talk removes a different kind of distance between you an
 ### Move Against (Active Resistance Required)
 
 - 🛑 **Pasting secrets into prompts**: Credentials, tokens, and API keys typed into CLI sessions travel to GitHub's API as prompt content — the same way any other context does. It feels natural to give Copilot what it needs to help, but this is a data exposure risk. Use environment variables or secret managers; reference the name, not the value
-- 🛑 **`--yolo` without a documented sandbox**: Permission prompts feel like friction when you're in flow. `--allow-all-tools` or `--yolo` removes that friction instantly — and grants the agent permission to run any shell command, edit any file, make any API call with your current credentials. If you're authenticated to production, the agent has production access. Approve per-tool or per-session, never blanket. Prefer first-party local sandboxing (`/sandbox enable`, experimental) when you need broader autonomy on your machine, or `copilot --cloud --experimental` when the whole session should run in a billed GitHub-hosted environment. Enterprise teams can **enforce this policy** with `permissions.disableBypassPermissionsMode` in managed settings — this prevents users from enabling `--yolo` or `/allow-all` in org-managed environments
+- 🛑 **`--yolo` without a documented sandbox**: Permission prompts feel like friction when you're in flow. `--allow-all-tools` or `--yolo` removes that friction instantly — and grants the agent permission to run any shell command, edit any file, make any API call with your current credentials. If you're authenticated to production, the agent has production access. Approve per-tool or per-session, never blanket. Prefer first-party local sandboxing (`/sandbox enable`, experimental) when you need broader autonomy on your machine, or `copilot --cloud --experimental` when the whole session needs to run in a billed GitHub-hosted environment. Enterprise teams can **enforce this policy** with `permissions.disableBypassPermissionsMode` in managed settings — this prevents users from enabling `--yolo` or `/allow-all` in org-managed environments
 - 🛑 **Skipping Plan Mode because you're in a hurry**: When the deadline is close and you think you know what you need, Plan Mode feels like overhead. It isn't — it's most valuable precisely when you're rushing. The sessions that spiral into 8 failed attempts almost always started with "I'll just jump in." One minute of clarifying questions saves thirty minutes of rework
 - 🛑 **Leaving remote sessions unattended without guardrails**: A persistent `--remote` session with broad permissions on a production machine is powerful and dangerous. Always scope permissions with `--allow-tool`, set session timeouts, and use [Copilot Hooks](../copilot-hooks/) for governance. Never use `--yolo` on a remote production session
 
@@ -288,7 +288,7 @@ Q: What's your primary workflow environment?
 
 - Never leave the terminal at all for anything — CLI integrates alongside IDE and web, not instead of them
 - Need graphical debugging with breakpoints → Use IDE tools
-- Need rich cross-repository architectural analysis across many repos → Use Copilot Web
+- Need rich cross-repository architectural analysis across many repos → Use Copilot Chat on github.com
 - Workflow is entirely GUI-based with no terminal use → No benefit to CLI-specific features
 
 > 💡 **CLI and IDE work simultaneously, not in competition.** Use the `/ide` slash command from within a Copilot CLI session to open any file directly in VS Code — without losing your terminal context or conversation state. Identify the problem in the terminal, open the file in the IDE for editing, and return to the same CLI session. Both tools stay active and aware.
@@ -320,7 +320,7 @@ Request → AI asks clarifying questions → Collaborate on plan → Review plan
 
 Press **Shift+Tab** to toggle Plan Mode on/off. Use **`/autopilot`** (or its alias **`/goal`**) to keep autopilot focused on a specific objective — `/goal` framing is particularly useful when you want Copilot to stay anchored to one outcome across a multi-step session. Copilot uses the `ask_user` tool to ask clarifying questions before any code is written:
 
-- **"Should I check docker-compose config, logs, or both?"**
+- **"Do you want me to check docker-compose config, logs, or both?"**
 - **"Do you want environment variable analysis included?"**
 - **"Start with network configuration or service dependencies?"**
 
@@ -353,7 +353,7 @@ $ copilot
 🤔 Copilot (Plan Mode):
 I can help with that. Before I start, a few questions:
 
-1. Should I check docker-compose configuration, container logs, or both?
+1. Do you want me to check docker-compose configuration, container logs, or both?
 2. Do you want environment variable analysis?
 3. Any recent changes to services or network configuration?
 
@@ -671,7 +671,7 @@ Compact when irrelevant history is consuming the context budget, not merely beca
 
 ### Repository Memory: Cross-Session Learning
 
-Copilot CLI stores learned facts about your codebase — conventions, patterns, preferred approaches — and applies them automatically in future sessions. This is covered in depth in the [Copilot Memory](../copilot-memory/) talk.
+Copilot CLI stores learned facts about your codebase — conventions, patterns, preferred approaches — and applies them automatically in future sessions. This is covered in depth in [Copilot Configuration Primitives](../copilot-primitives/), which places memory alongside instructions, prompts, and skills.
 
 ### Session History and `/chronicle`
 
@@ -1181,9 +1181,11 @@ $ copilot
 
 ## ✅ What You Can Do Today
 
+**Hands-on walkthrough:** [examples/walkthrough.md](examples/walkthrough.md) runs plan mode, programmatic mode, `/fleet` fan-out, remote sessions, and cloud delegation against FanHub's Node.js track.
+
 **Immediate Actions (15 minutes):**
 - [ ] Install Copilot CLI: `gh copilot` (auto-installs on first run) or `npm install -g @github/copilot`
-- [ ] Try interactive mode: `copilot` and ask about your current project — "Explain how this module works" or "What library should I use for X?"
+- [ ] Try interactive mode: `copilot` and ask about your current project — "Explain how this module works" or "What library fits X best?"
 - [ ] Test Plan Mode: Press Shift+Tab, then describe a new feature you're about to build
 - [ ] Try `/ide <filename>` from within a session — opens the file in VS Code while your CLI conversation stays alive. If you have Copilot app 1.1.3+, try `/app` to hand the same session to the desktop app
 - [ ] After a wrong-turn edit, run `/rewind` and choose Conversation + files — confirm Copilot's files restore and any later edit you typed stays
@@ -1226,7 +1228,7 @@ $ copilot
 ```
 Q: What's your actual goal?
 ├─ In-editor code assistance → See: VS Code Copilot documentation
-├─ Cross-repository architectural analysis → See: Copilot Web (github.com/copilot)
+├─ Cross-repository architectural analysis → See: Copilot Chat on github.com (github.com/copilot)
 ├─ Organization-wide governance → See: Copilot Hooks
 └─ Extending with external tools → See: MCP Apps
 ```

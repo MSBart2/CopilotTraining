@@ -8,7 +8,7 @@
 
 #### 📖 The Challenge
 
-After every meaningful code change, the team needs to refresh `ARCHITECTURE.md` and `.github/copilot-instructions.md` so that Copilot's guidance stays aligned with the actual codebase. That is exactly the kind of repeated, high-value work a reusable prompt should handle.
+After every meaningful code change, the team needs to refresh `ARCHITECTURE.md` and `.github/copilot-instructions.md` so that Copilot's guidance stays aligned with the actual codebase. That is exactly the kind of repeated, high-value work a reusable prompt handles well.
 
 Without a saved prompt, Sarah finds herself retyping the same careful request each time: "Review the workspace and update ARCHITECTURE.md and copilot-instructions.md to reflect what changed." It's clear, it works, and it needs to happen regularly — which means it belongs in a prompt file instead of her memory.
 
@@ -55,7 +55,7 @@ Create a workspace prompt that updates `ARCHITECTURE.md` and `.github/copilot-in
 
 2. **Tell the prompt to stay focused**
 
-   The key design choice: the prompt should update the docs *when the codebase has changed* — not rewrite them from scratch every time. The rules section enforces this so the output stays surgical instead of becoming a full-document rewrite.
+   The key design choice: the prompt updates the docs *when the codebase has changed* — not rewrite them from scratch every time. The rules section enforces this so the output stays surgical instead of becoming a full-document rewrite.
 
 3. **Invoke it after a change and verify**
 

@@ -50,7 +50,7 @@ import ProblemSolutionOutcomeSlide from './components/ProblemSolutionOutcomeSlid
   subtext="GitHub gives agents implementation memory. Foundry gives agents"
   highlight="organizational memory."
   :cards='[
-    { icon: "👩‍💻", title: "Principal Engineer", description: "When should my Copilot agent reach for Foundry instead of staying in GitHub?" },
+    { icon: "👩‍💻", title: "Principal Engineer", description: "When does my Copilot agent reach for Foundry instead of staying in GitHub?" },
     { icon: "🏗️", title: "Platform Architect", description: "How do I wire organizational knowledge into an agent without rebuilding everything?" },
     { icon: "🧑‍💼", title: "GitHub SE", description: "How do I demo something GitHub Copilot alone genuinely cannot do?" },
     { title: "5–10%", description: "of coding agent work benefits from organizational memory — the rest stays in GitHub" },

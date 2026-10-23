@@ -173,6 +173,6 @@ The exercises below use this module's capabilities to solve real problems. Each 
 
 [Additional technical insight that helps advanced users understand the system better]
 
-**Key Takeaway:** [What this means for how you should use the feature]
+**Key Takeaway:** [What this means for how you use the feature]
 
 ---

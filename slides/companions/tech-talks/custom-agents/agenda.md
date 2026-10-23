@@ -4,7 +4,7 @@ subtitle: "One File, Every Runtime"
 slug: custom-agents
 category: tech-talks
 duration: 45
-updated: 2026-10-21
+updated: 2026-10-23
 ---
 
 # Custom Agents

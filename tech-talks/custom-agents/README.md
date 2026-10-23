@@ -7,7 +7,7 @@ audience: [developer, platform-engineer, team-lead]
 level: applied
 duration: 45
 format: core-talk
-decision: "How should a team design one custom agent that behaves the way it intends in every runtime it reaches?"
+decision: "How can a team design one custom agent that behaves the way it intends in every runtime it reaches?"
 prerequisites: [copilot-primitives]
 related: [local-agentic-sdlc, copilot-on-github, agentic-lifecycle, copilot-hooks]
 references:
@@ -54,7 +54,7 @@ references:
 
 # Custom Agents: One File, Every Runtime
 
-> **The question this talk answers:** How should a team design one custom agent that behaves the way it intends in every runtime it reaches?
+> **The question this talk answers:** How can a team design one custom agent that behaves the way it intends in every runtime it reaches?
 
 **Duration:** 45 minutes | **Audience:** Developers and platform engineers who write custom agents the whole team shares, and the team leads who rely on them
 
@@ -88,7 +88,7 @@ GitHub describes customizations as a set with distinct jobs ([comparing customiz
 
 | Primitive | Carries | Reach for it when |
 |---|---|---|
-| **Instructions** (`copilot-instructions.md`, `*.instructions.md`, `AGENTS.md`) | Conventions that apply to everyone | Every agent should follow the rule |
+| **Instructions** (`copilot-instructions.md`, `*.instructions.md`, `AGENTS.md`) | Conventions that apply to everyone | Every agent follows the rule |
 | **Prompt file** (`*.prompt.md`) | One repeatable task | A person starts a known task by name |
 | **Skill** (`SKILL.md` folder) | A method plus scripts and resources loaded on demand | Any agent may need the capability for a kind of task |
 | **Custom agent** (`*.agent.md`) | A persistent role: identity, tool boundary, method, and model preference | The work needs a different *who*: different tools, a narrower write boundary, a hand-off point |
@@ -124,7 +124,7 @@ You write tests. You do not change production code.
 
 `test-writer` ends every run with the same five-line summary: agent, tests added, command and result, suspected bugs, files changed. That contract made the cloud run inspectable: the agent's own summary carried the execution failure ("could not run tests because react was missing"), and the pull request description covered the behaviors tested.
 
-### Publish it where it should load
+### Publish it where it loads
 
 | Scope | Location | Who gets it |
 |---|---|---|
@@ -140,7 +140,7 @@ The cloud agent reads agents from the **default branch**. FanHub committed `test
 ### Choose who can start it
 
 - **`target: vscode | github-copilot`** limits an agent to IDE runtimes or to GitHub. Omit it to offer the agent everywhere.
-- **`user-invocable: false`** hides the agent from pickers and keeps it available as a subagent: a good fit for a reviewer that only an orchestrator should call.
+- **`user-invocable: false`** hides the agent from pickers and keeps it available as a subagent: a good fit for a reviewer that only an orchestrator calls.
 - **`disable-model-invocation: true`** stops automatic selection; a person or an orchestrator must name the agent. (It supersedes the retired `infer` field.)
 
 <!-- 🎬 MAJOR SECTION: Run One File in Three Runtimes -->

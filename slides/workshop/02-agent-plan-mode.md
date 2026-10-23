@@ -505,7 +505,7 @@ The homepage already has cards for Characters, Episodes, Seasons, and Network. J
 <div class="relative z-10 mb-3 text-xs text-gray-400">Use <span class="text-orange-300 font-mono font-semibold">/plan</span> at the start of your prompt — this switches to plan mode automatically if you forgot to change the mode selector:</div>
 
 <div class="relative z-10 font-mono text-sm bg-gray-900/80 rounded-xl border border-amber-500/30 p-5 text-gray-200 leading-relaxed mb-4 select-all cursor-text">
-<span class="text-orange-400 font-bold">/plan</span> Add a Lore card to the FanHub homepage that shows the count of lore facts for the show. Clicking the card should navigate to a new /lore page that lists all lore facts in a card layout.
+<span class="text-orange-400 font-bold">/plan</span> Add a Lore card to the FanHub homepage that shows the count of lore facts for the show. Clicking the card navigates to a new /lore page that lists all lore facts in a card layout.
 </div>
 
 <div class="relative z-10 grid grid-cols-2 gap-3 text-xs mb-3">
@@ -550,7 +550,7 @@ The homepage already has cards for Characters, Episodes, Seasons, and Network. J
 <div class="text-gray-400 mb-2">- <span class="text-blue-100">router/index.ts</span> → register /lore route pointing to lore.tsx</div>
 <div class="text-blue-300 mb-1">### Open Questions</div>
 <div class="text-gray-400">- Card style: match existing card pattern exactly, or differentiate Lore visually?</div>
-<div class="text-gray-400">- Empty state: what should /lore show when no entries exist yet?</div>
+<div class="text-gray-400">- Empty state: what does /lore show when no entries exist yet?</div>
 </div>
 <div class="relative z-10 mt-3 text-xs text-gray-400">
 <strong class="text-gray-300">Files touched:</strong> ~5 &nbsp; <strong class="text-gray-300">Most guessed:</strong> 2–3 &nbsp; <strong class="text-gray-300">Gap:</strong> this is the lesson
@@ -613,8 +613,8 @@ Jessica shares her plan output with the group. David reads it line by line — a
 <div class="relative z-10 mb-3 text-xs text-gray-400">David enters this with Jessica's plan file open in VS Code:</div>
 
 <div class="relative z-10 font-mono text-sm bg-gray-900/80 rounded-xl border border-purple-500/30 p-5 text-gray-200 leading-relaxed mb-4 select-all cursor-text">
-<span class="text-orange-400 font-bold">/plan</span> Add a form to the /lore page that lets me add a new lore entry. The form should have a title and description field. On submit, save the new entry and refresh the list so the new card appears immediately. The Lore count on the homepage card should also update.
-<div class="mt-3 text-gray-400">Before you create the plan, ask me any clarifying questions — for example: should this extend the existing lore card plan or be a separate plan? Should the form be reachable from global nav? Any other implementation choices I need to decide before you start.</div>
+<span class="text-orange-400 font-bold">/plan</span> Add a form to the /lore page that lets me add a new lore entry. The form has a title and description field. On submit, save the new entry and refresh the list so the new card appears immediately. The Lore count on the homepage card also updates.
+<div class="mt-3 text-gray-400">Before you create the plan, ask me any clarifying questions — for example: does this extend the existing lore card plan or become a separate plan? Is the form reachable from global nav? Any other implementation choices I need to decide before you start.</div>
 </div>
 
 <div class="relative z-10 p-3 bg-orange-900/20 rounded-xl border border-orange-400/40 text-xs text-gray-300">
@@ -640,7 +640,7 @@ Jessica shares her plan output with the group. David reads it line by line — a
 <div class="text-purple-300 mb-1">### Step 3: Homepage Count Sync</div>
 <div class="text-gray-400 mb-2">- <span class="text-blue-100">pages/index.tsx</span> → Lore card count re-fetches from GET /api/lore-entries on navigation back to homepage</div>
 <div class="text-purple-300 mb-1">### Open Questions (requires your judgment)</div>
-<div class="text-gray-400">- Should the form appear above or below the existing lore cards?</div>
+<div class="text-gray-400">- Does the form go above or below the existing lore cards?</div>
 <div class="text-gray-400">- New entry: append to bottom of list, or sort newest-first?</div>
 </div>
 <div class="relative z-10 mt-3 text-xs text-gray-400">
@@ -828,7 +828,7 @@ Sarah reviews <code>{plan}.prompt.md</code> — two plans merged: Jessica's Lore
 <div class="text-xs text-gray-400">Needs updating</div>
 </div>
 </div>
-<div class="text-sm text-gray-300">Any new naming conventions or patterns from this module should be captured — so every future prompt, skill, and agent inherits current practice.</div>
+<div class="text-sm text-gray-300">Capture any new naming conventions or patterns from this module — so every future prompt, skill, and agent inherits current practice.</div>
 </div>
 </div>
 <div class="relative z-10 mt-5 p-4 bg-gradient-to-r from-orange-900/30 via-purple-900/20 to-blue-900/20 rounded-xl border border-orange-500/30 text-center">

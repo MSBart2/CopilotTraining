@@ -55,7 +55,7 @@ Shows (1) ───────────────────────�
 - **Constraints**:
   - `name` + `show_id` must be unique (no duplicate characters per show)
   - `status` must be: 'alive', 'deceased', or 'unknown'
-  - `bio` should not exceed 2000 characters
+  - `bio` stays within 2000 characters
   - `show_id` must reference an existing show
 
 #### Episodes
@@ -66,8 +66,8 @@ Shows (1) ───────────────────────�
   - `show_id` + `season_number` + `episode_number` must be unique
   - `season_number` must be >= 1
   - `episode_number` must be >= 1
-  - `runtime_minutes` should be between 1 and 300
-  - `air_date` should not be in the future (unless show status is 'upcoming')
+  - `runtime_minutes` is between 1 and 300
+  - `air_date` is today or earlier (unless show status is 'upcoming')
 
 #### Quotes
 
@@ -76,7 +76,7 @@ Shows (1) ───────────────────────�
 - **Constraints**:
   - `character_id` must reference an existing character (if provided)
   - `episode_id` must reference an existing episode (if provided)
-  - `quote_text` should not exceed 1000 characters
+  - `quote_text` stays within 1000 characters
   - If `character_id` is provided, character must belong to the same show
 
 ## Validation Rules
@@ -113,19 +113,19 @@ Shows (1) ───────────────────────�
 ### Data Quality Rules
 
 1. **Related Characters**
-   - Related characters should never include duplicates from the same show
+   - Related characters never include duplicates from the same show
    - A character cannot be related to themselves
-   - Related character relationships should be bidirectional
+   - Related character relationships are bidirectional
 
 2. **Episode Ordering**
    - Episodes within a season use sequential episode numbers
    - No gaps in episode numbering (1, 2, 3... not 1, 3, 5)
-   - Season numbers should be sequential (1, 2, 3... not 1, 3)
+   - Season numbers are sequential (1, 2, 3... not 1, 3)
 
 3. **Quote Attribution**
    - Quotes with `character_id` require proper attribution
    - Quotes without `character_id` require `speaker_context` for context
-   - Famous quotes should be verified for accuracy
+   - Verify famous quotes for accuracy
 
 ## Validation Examples
 
@@ -205,10 +205,10 @@ When importing TV show data from external sources:
 When building character detail pages:
 
 1. Verify character exists and belongs to valid show
-2. Related characters should not include duplicates
+2. Related characters contain no duplicates
 3. Related characters must belong to the same show
 4. All linked quotes must reference valid episodes
-5. Episode appearances should be in chronological order
+5. Episode appearances are in chronological order
 
 ### Scenario 3: Episode Detail Feature
 

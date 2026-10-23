@@ -10,7 +10,7 @@
 
 It's 3:15 PM on Monday. The team is ready to validate the character-detail enhancements from their roadmap. Elena knows the code change is only half the story. After each character-detail update, someone still has to answer:
 
-- which existing tests should change
+- which existing tests need to change
 - whether new coverage is needed
 - which edge cases matter for this change
 - whether the PR is safe from obvious regressions
@@ -29,14 +29,14 @@ Elena realizes: *"A prompt can ask for tests. A skill can teach how to review a 
 
 | Before ❌ | After ✨ |
 |-----------|----------|
-| Each character-detail change starts with manual test review. Elena has to decide what changed, which tests should be updated, which new tests are needed, and whether important edge cases are covered. Edge cases are easy to miss when moving quickly. Total: 20 minutes of test-impact review per change. | Elena invokes the `character-change-test-workflow` skill. Copilot loads a shared review workflow, example patterns, and an edge case checklist. The team can quickly identify what tests should change and then generate or update them from that plan. Total: 5 minutes of setup per change. |
+| Each character-detail change starts with manual test review. Elena has to decide what changed, which tests need updates, which new tests are needed, and whether important edge cases are covered. Edge cases are easy to miss when moving quickly. Total: 20 minutes of test-impact review per change. | Elena invokes the `character-change-test-workflow` skill. Copilot loads a shared review workflow, example patterns, and an edge case checklist. The team can quickly identify what tests need to change and then generate or update them from that plan. Total: 5 minutes of setup per change. |
 | **Review time:** 20 min/change<br>**Edge cases missed:** common under time pressure<br>**Coverage decisions:** inconsistent | **Review time:** 5 min/change<br>**Edge case coverage:** consistent<br>**Coverage decisions:** more repeatable |
 
 **Time saved:** 15 minutes per character-detail change × 4 changes per sprint = **60 minutes saved per sprint**
 
 #### 🎯 Your Goal
 
-Create a `character-change-test-workflow` agent skill that teaches Copilot how to review a character-detail change, identify what tests should change, and then help generate or update those tests using a shared review workflow, examples, and an edge case checklist.
+Create a `character-change-test-workflow` agent skill that teaches Copilot how to review a character-detail change, identify what tests need to change, and then help generate or update those tests using a shared review workflow, examples, and an edge case checklist.
 
 #### 📋 Steps
 
@@ -49,8 +49,8 @@ Create a `character-change-test-workflow` agent skill that teaches Copilot how t
    ```text
    Use the make-skill-template skill to create a new agent skill named
    character-change-test-workflow in .github/skills/.
-   This skill should help Copilot review any character detail change and decide
-   what tests should be added or updated. It should cover new fields, changed
+   This skill helps Copilot review any character detail change and decide
+   what tests to add or update. It covers new fields, changed
    rendering rules, fallback UI, empty states, missing values, partial data,
    and regression risks before a PR.
    ```
@@ -74,11 +74,11 @@ Create a `character-change-test-workflow` agent skill that teaches Copilot how t
    - `.github/skills/character-change-test-workflow/examples/new-field-coverage.test.ts`
    - `.github/skills/character-change-test-workflow/examples/fallback-rendering.test.ts`
 
-   These examples should demonstrate how the team decides what tests to update when new fields, optional data, partial responses, or fallback states change.
+   These examples demonstrate how the team decides what tests to update when new fields, optional data, partial responses, or fallback states change.
 
 4. **Create an edge case checklist**
 
-   Create `.github/skills/character-change-test-workflow/edge-cases.md` documenting the cases Copilot should always consider:
+   Create `.github/skills/character-change-test-workflow/edge-cases.md` documenting the cases we want Copilot to always consider:
 
    - optional field present
    - optional field absent
@@ -97,7 +97,7 @@ Create a `character-change-test-workflow` agent skill that teaches Copilot how t
     ````markdown
     ---
     name: character-change-test-workflow
-    description: 'Review what tests should change for character detail updates using the team workflow, edge case checklist, and example patterns. Use when adding or updating character fields, rendering rules, fallback UI, empty states, missing values, partial character data, API/UI alignment, regression risks, or reviewing test coverage before a PR.'
+    description: 'Review what tests need to change for character detail updates using the team workflow, edge case checklist, and example patterns. Use when adding or updating character fields, rendering rules, fallback UI, empty states, missing values, partial character data, API/UI alignment, regression risks, or reviewing test coverage before a PR.'
     ---
 
    # Character Change Test Workflow
@@ -107,14 +107,14 @@ Create a `character-change-test-workflow` agent skill that teaches Copilot how t
    - Adding or updating character detail fields
    - Changing rendering rules for existing data
    - Reviewing fallback behavior for partial character data
-   - Deciding what tests should change before a PR
+   - Deciding what tests need to change before a PR
 
    ## Workflow
 
    1. Start from [character-change-test-template.md](./character-change-test-template.md)
    2. Apply the checklist in [edge-cases.md](./edge-cases.md)
    3. Reference patterns in [examples](./examples/)
-   4. Identify which tests should be updated or added
+   4. Identify which tests to update or add
    5. Generate or review those tests if needed
 
    ## References
@@ -130,14 +130,14 @@ Create a `character-change-test-workflow` agent skill that teaches Copilot how t
 
    ```
     Use the character-change-test-workflow skill to review this character detail
-    change and tell me what tests should be updated or added, including changed
+    change and tell me what tests to update or add, including changed
     fields, fallback behavior, missing data, rendering rules, and regressions.
     ```
 
    Then test discovery more naturally:
 
    ```
-   I just changed the character detail experience. Review what tests should change
+   I just changed the character detail experience. Review what tests need to change
    before I open a PR, then help me update the highest-priority ones.
    ```
 
@@ -178,7 +178,7 @@ Create a `character-change-test-workflow` agent skill that teaches Copilot how t
 
 **[Exercise 4.3: Character Detail Readiness Checker](exercise-4.3.md)** — The team can now review test impact consistently for character-detail changes. Next: teach Copilot how to verify that a change is truly ready before it becomes a PR.
 
-> *"The implementation is scoped and the tests are better. But we still do one last manual sweep for docs, roadmap, touched files, and handoff quality. That feels like another workflow we should package."*
+> *"The implementation is scoped and the tests are better. But we still do one last manual sweep for docs, roadmap, touched files, and handoff quality. That feels like another workflow we want to package."*
 > — Elena, handing off to Marcus
 
 ---

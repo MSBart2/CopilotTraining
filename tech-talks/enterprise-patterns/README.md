@@ -6,7 +6,7 @@ audience: [platform-engineer, security, architect, engineering-leader]
 level: strategic
 duration: 60
 format: core-talk
-decision: "How should organizations standardize, govern, and measure Copilot adoption?"
+decision: "How can organizations standardize, govern, and measure Copilot adoption?"
 prerequisites: []
 related: [copilot-hooks, agentic-sdlc, copilot-plugins]
 references:
@@ -216,13 +216,13 @@ Q: Where are you in your Copilot adoption journey?
 
 ### Comparison with Related Features
 
-| Aspect | Enterprise Patterns (This Talk) | Agentic Journey | Agentic SDLC |
-|--------|--------------------------------|-----------------|--------------|
-| **Best For** | Org-wide scaling (50-200+ devs) | Issue-to-PR automation | Full Gen-4 transformation |
-| **Scope** | Standards, governance, enablement | Workflow automation | Repo topology + CI + PRs |
-| **Setup Time** | 2-4 weeks (180 hours) | 8-12 hours | 3-6 months |
-| **ROI Timeline** | 3-6 months to break even | 1-2 weeks | 6-12 months |
-| **Risk Level** | Medium (org change management) | Low (additive workflows) | High (full restructuring) |
+| Aspect | Enterprise Patterns (This Talk) | GitHub Agentic Workflows | Agentic SDLC |
+|--------|--------------------------------|--------------------------|--------------|
+| **Best For** | Org-wide scaling (50-200+ devs) | Automating repository chores and issue-to-PR handoffs | Full Gen-4 transformation |
+| **Scope** | Standards, governance, enablement | One workflow per chore, with safe outputs | Repo topology + CI + PRs |
+| **Setup Time** | 2-4 weeks (180 hours) | One workflow file per chore | 3-6 months |
+| **ROI Timeline** | 3-6 months to break even | Per chore; measure against your own baseline | 6-12 months |
+| **Risk Level** | Medium (org change management) | Low (read-only by default; writes go through safe outputs) | High (full restructuring) |
 
 ---
 
@@ -462,7 +462,7 @@ Copilot Knowledge Bases solve the multi-repository context problem. In microserv
 
 ### Organization-Owned Telemetry and Tool Policy
 
-Treat observability and tool discovery as organization-owned contracts. Configure OpenTelemetry export centrally so security and platform teams define approved destinations, fields, retention, and access rather than leaving telemetry behavior to each repository. Govern MCP discovery through enterprise policy: restrict clients to a curated registry when approved tools should remain discoverable, or turn MCP off when no external tool execution is allowed. Repository configuration can narrow behavior, but it must not widen the organizational boundary.
+Treat observability and tool discovery as organization-owned contracts. Configure OpenTelemetry export centrally so security and platform teams define approved destinations, fields, retention, and access rather than leaving telemetry behavior to each repository. Govern MCP discovery through enterprise policy: restrict clients to a curated registry when approved tools need to remain discoverable, or turn MCP off when no external tool execution is allowed. Repository configuration can narrow behavior, but it must not widen the organizational boundary.
 
 **Auto model selection benefits:**
 - Route routine tasks to cost-effective models
@@ -1002,7 +1002,7 @@ Team Adoption:
 1. ✅ Achieve 80%+ licensed seat utilization with consistent standards
 2. 📊 Present quarterly ROI metrics to leadership for expansion budget justification
 3. 🚀 Scale from 50 to 200+ developers using proven playbooks
-4. 📖 Review [Agentic Journey](../agentic-journey/) for workflow automation patterns
+4. 📖 Review [GitHub Agentic Workflows](../agentic-lifecycle/) for workflow automation patterns
 
 ---
 
@@ -1012,7 +1012,7 @@ Team Adoption:
 
 - **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Issue-to-PR automation workflows that leverage org standards
 - **[Agentic SDLC](../agentic-sdlc/)** — Full Gen-4 transformation when ready to graduate beyond enterprise patterns
-- **[Multi-Agent Coordination](../multi-agent-coordination/)** — Specialized agent coordination patterns for complex workflows
+- **[Local Agentic SDLC](../local-agentic-sdlc/)** — Specialist agents and an integration record in one orchestrated local run
 
 ### Decision Flow
 
@@ -1021,9 +1021,9 @@ Team Adoption:
 ```
 Q: What's your actual goal?
 ├─ Still in pilot phase (<10 teams) → Prove value first before enterprise patterns
-├─ Need issue-to-PR automation → See: Agentic Journey
+├─ Need issue-to-PR automation → See: GitHub Agentic Workflows, or Copilot on GitHub for the cloud agent
 ├─ Ready for full SDLC transformation → See: Agentic SDLC
-└─ Executive strategic framing → See: Agentic Delivery (exec-talks)
+└─ Executive strategic framing → See: The Agentic Operating Model (exec talk)
 ```
 
 See [DECISION-GUIDE.md](../DECISION-GUIDE.md) for complete navigation help.

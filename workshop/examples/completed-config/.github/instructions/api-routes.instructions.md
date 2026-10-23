@@ -15,7 +15,7 @@ When generating or modifying files under `routes/`, follow RESTful conventions.
 router.get('/:id', authenticate, validate(schema), asyncHandler(controller));
 ```
 
-Every route should have:
+Every route has:
 1. HTTP method matching the operation (GET=read, POST=create, PUT=replace, PATCH=update, DELETE=remove)
 2. Authentication middleware where required
 3. Input validation middleware

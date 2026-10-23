@@ -186,7 +186,7 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
   pillIcon="📋"
   pillLabel="Instructions"
   title="AGENTS.md — Cross-Tool Institutional Knowledge"
-  :left='{"header":"📁 What goes in root AGENTS.md","items":["Setup and install commands for the repo","Test commands and linting steps for PRs","Repository navigation tips","PR title format and commit conventions","Commands agents should actually run"]}'
+  :left='{"header":"📁 What goes in root AGENTS.md","items":["Setup and install commands for the repo","Test commands and linting steps for PRs","Repository navigation tips","PR title format and commit conventions","Commands agents actually run"]}'
   :right='{"header":"🌐 Keep the playbook portable","items":["Open Markdown — not VS Code-specific","Any coding agent that reads AGENTS.md gets it","Prefer applyTo for folder-specific rules","Nested AGENTS.md is still experimental","Institutional knowledge that travels with the repo"]}'
   :progressDots='{"current":8,"total":9,"activeColor":"bg-cyan-400 shadow-lg shadow-cyan-500/50"}'
 />
@@ -276,8 +276,8 @@ import AITerminalTranscriptSlide from './components/AITerminalTranscriptSlide.vu
   pillIcon="💬"
   pillLabel="Custom Prompts"
   title="Prompt First — Skill When the Recipe Is Proven"
-  :left='{"header":"💬 Stay on a prompt when","items":["A human should decide when it runs","The steps are text, not scripts","You are still iterating on the recipe","The team needs a shared /command now","Example: /component, /pr-checklist"]}'
-  :right='{"header":"⚡ Graduate to a skill when","items":["The agent should notice the task itself","You have a script or template to run","The same workflow spans tools","You want auto-load, slash-only, or both","Example: test-runner with run-tests.sh"]}'
+  :left='{"header":"💬 Stay on a prompt when","items":["A human decides when it runs","The steps are text, not scripts","You are still iterating on the recipe","The team needs a shared /command now","Example: /component, /pr-checklist"]}'
+  :right='{"header":"⚡ Graduate to a skill when","items":["The agent notices the task on its own","You have a script or template to run","The same workflow spans tools","You want auto-load, slash-only, or both","Example: test-runner with run-tests.sh"]}'
   :progressDots='{"current":3,"total":4,"activeColor":"bg-blue-400 shadow-lg shadow-blue-500/50"}'
 />
 

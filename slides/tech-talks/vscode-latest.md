@@ -309,7 +309,7 @@ import BeforeAfterPanelsSlide from './components/BeforeAfterPanelsSlide.vue'
       { title: "Opens without pausing the active turn", detail: "Main agent keeps executing while you type" },
       "Shares context and prompt cache with main chat",
       "Captures observations without interrupting the task",
-      { title: "/btw should we use the builder pattern here?", detail: "Ask mid-tool-chain; main turn keeps running" }
+      { title: "/btw is the builder pattern a good fit here?", detail: "Ask mid-tool-chain; main turn keeps running" }
     ]
   }'
   :right='{

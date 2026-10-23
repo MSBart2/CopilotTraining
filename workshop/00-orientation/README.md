@@ -313,7 +313,7 @@ Imagine onboarding a new developer:
 Do you want this applied AUTOMATICALLY?
 ├── YES → Is it project-wide context?
 │         ├── YES → Use REPO INSTRUCTIONS (copilot-instructions.md)
-│         └── NO → Should it apply to specific file types?
+│         └── NO → Does it apply to specific file types?
 │                   ├── YES → Use CUSTOM INSTRUCTIONS (*.instructions.md)
 │                   └── NO → Does it need scripts + domain knowledge?
 │                             ├── YES → Use SKILLS

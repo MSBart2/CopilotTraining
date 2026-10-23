@@ -24,9 +24,9 @@ The component system follows the same restrained visual direction as `index-cust
 3. **Crisp geometry.** Cards and labels use modest corner radii. Avoid capsule-shaped text containers except for true statuses or compact metadata.
 4. **No decorative glow circles.** Do not add blurred orbs, bokeh, or logo glows. Use subtle gradients, hairlines, or grid texture to create depth.
 5. **Purposeful gradients.** Reserve gradients for title text, section transitions, and restrained canvas atmosphere. Content panels remain readable neutral surfaces.
-6. **Sparse decoration.** Icons support scanning but should not compete with the evidence, artifact, or decision shown on the slide.
+6. **Sparse decoration.** Icons support scanning and stay quieter than the evidence, artifact, or decision shown on the slide.
 
-The shared implementation lives in `slides/style.css` and `slides/tech-talks/components/useSectionTheme.ts`. Component-specific styles should build on those primitives instead of reintroducing a separate visual theme.
+The shared implementation lives in `slides/style.css` and `slides/tech-talks/components/useSectionTheme.ts`. Component-specific styles build on those primitives instead of reintroducing a separate visual theme.
 
 ---
 

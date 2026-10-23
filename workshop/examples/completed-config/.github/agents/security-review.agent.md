@@ -123,7 +123,7 @@ Security vulnerabilities or major standards violations that must be fixed before
 
 ### Warnings (Severity: Medium)
 
-Standards violations or quality concerns that should be addressed.
+Standards violations or quality concerns to address.
 
 ### Recommendations (Severity: Low)
 

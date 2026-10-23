@@ -14,7 +14,7 @@ Copilot returns something technically correct but hollow. It calls him "a restau
 
 Sarah tracks it: every content task — character bio, episode description, lore entry — takes 5–8 minutes of re-explaining show context before Copilot can be useful. She's answered "What is Breaking Bad about?" in chat at least twelve times this week. Multiply that across a team of five working on content additions, and it's hours of repeated setup.
 
-**David** connects it to a pattern he's seen in enterprise work: *"This is the same problem healthcare teams have with HIPAA terminology. Or fintech teams with regulatory definitions. Copilot doesn't know your domain. You have to tell it — but you should only have to tell it once."*
+**David** connects it to a pattern he's seen in enterprise work: *"This is the same problem healthcare teams have with HIPAA terminology. Or fintech teams with regulatory definitions. Copilot doesn't know your domain. You have to tell it — and we want to tell it only once."*
 
 Sarah realizes: *"The instructions file handles code context. I need a companion file that handles show context — a universe file that Copilot can consult whenever it's writing anything about the show."*
 
@@ -59,16 +59,16 @@ Create a standalone `docs/[show]-universe.md` file that captures your show's pre
    that a content writer would need to know. Include a one-line definition for each.
 
    ### Canon Accuracy Rules
-   3–5 rules written as directives that Copilot should follow when generating
+   3–5 rules written as directives we want Copilot to follow when generating
    any content about this show. Examples:
    - "Never describe [Character] as [inaccurate trait]"
    - "Always refer to [Location] by its in-universe name, not [common mistake]"
    - "Events from Season X are not yet canon in the FanHub timeline — do not reference them"
 
-   Write everything as instructions Copilot should follow when helping build this fan site.
+   Write everything as instructions we want Copilot to follow when helping build this fan site.
    ````
 
-   **Breaking Bad example:** The prompt will produce `docs/breaking-bad-universe.md`. Copilot should include Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Gustavo Fring, Saul Goodman, Mike Ehrmantraut, and Marie Schrader in the Characters table, plus terms like "Blue Sky," "The Superlab," "Los Pollos Hermanos," and "the cartel."
+   **Breaking Bad example:** The prompt will produce `docs/breaking-bad-universe.md`. Look for Copilot to include Walter White, Jesse Pinkman, Skyler White, Hank Schrader, Gustavo Fring, Saul Goodman, Mike Ehrmantraut, and Marie Schrader in the Characters table, plus terms like "Blue Sky," "The Superlab," "Los Pollos Hermanos," and "the cartel."
 
    **Other shows:** For Stranger Things, the slug is `stranger-things`; for The Office (US), use `the-office`. Copilot will use its training data to populate the file — your job in Step 2 is to verify and correct it.
 
@@ -94,7 +94,7 @@ Create a standalone `docs/[show]-universe.md` file that captures your show's pre
    - [ ] **Premise** — 1 paragraph, accurate and specific to the show
    - [ ] **Characters** — At least 5 characters with Name, Role, and One-line description columns
    - [ ] **Terminology** — At least 3 show-specific terms with one-line definitions
-   - [ ] **Canon Accuracy Rules** — At least 2 directives stated as rules Copilot should follow
+   - [ ] **Canon Accuracy Rules** — At least 2 directives stated as rules for Copilot to follow
 
    If any section is thin, ask Copilot in Agent mode to expand it:
 
@@ -134,7 +134,7 @@ Create a standalone `docs/[show]-universe.md` file that captures your show's pre
    Write a two-sentence bio for Jesse Pinkman for the FanHub character page.
    ```
 
-   Copilot should describe him accurately as Walter's former *high school* student, reference his role as Walter's cook and distributor, and avoid the seed-data error. If it still produces the wrong answer, check that the pointer section in `copilot-instructions.md` is saved and uses the correct filename.
+   Look for Copilot to describe him accurately as Walter's former *high school* student, reference his role as Walter's cook and distributor, and avoid the seed-data error. If it still produces the wrong answer, check that the pointer section in `copilot-instructions.md` is saved and uses the correct filename.
 
    **Try a terminology check:**
 
@@ -142,7 +142,7 @@ Create a standalone `docs/[show]-universe.md` file that captures your show's pre
    What is "Blue Sky" in the FanHub context?
    ```
 
-   The answer should reflect your Terminology definition, not a generic web search result.
+   The answer reflects your Terminology definition, not a generic web search result.
 
 ---
 

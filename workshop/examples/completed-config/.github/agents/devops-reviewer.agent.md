@@ -79,7 +79,7 @@ When reviewing changes, check:
 - [Nice-to-have operational enhancements]
 
 ### 📋 Runbook Updates Needed
-- [Documentation that should be created/updated]
+- [Documentation to create/update]
 ```
 
 ## Example Review

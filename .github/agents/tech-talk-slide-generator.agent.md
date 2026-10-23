@@ -123,7 +123,7 @@ Template.md was already loaded in pre-flight for structural component schemas. I
 - Study the escaping rules and usage patterns
 - This is your authoritative source — do not guess at prop names or structures
 
-**Only AFTER you have the body component schemas in context should you write any body slide.**
+**Write body slides only AFTER the body component schemas are in context.**
 
 ---
 

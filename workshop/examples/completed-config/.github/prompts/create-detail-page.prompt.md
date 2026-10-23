@@ -95,4 +95,4 @@ For Episode Detail with:
 - display_fields: title, air_date, season_number, episode_number, synopsis, runtime
 - related_entities: quotes, characters
 
-The result should match the quality and pattern of CharacterDetail.jsx.
+We want the result to match the quality and pattern of CharacterDetail.jsx.

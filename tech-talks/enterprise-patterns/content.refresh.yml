@@ -87,7 +87,7 @@ refresh:
       action: add
       summary: >
         Enterprise administrators may need to enable replacement models in Copilot
-        model policies before September 1 migrations; users should verify the
+        model policies before September 1 migrations; users verify that the
         replacement appears in model selectors before workflows depend on it.
       limitations:
         - "No action is required to remove deprecated models after retirement."

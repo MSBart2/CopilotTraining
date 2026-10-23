@@ -184,7 +184,7 @@ function parseSlideDeck(filePath) {
 /**
  * Returns true if slide N is in the "closing section" — slides at or after
  * a known closing-section marker slide (e.g. "What You Can Do Today").
- * These slides are standalone (own colors, no section dots) and should be exempt.
+ * These slides are standalone (own colors, no section dots) and are exempt.
  */
 function isClosingSection(slides, n) {
   const CLOSING_MARKERS = [

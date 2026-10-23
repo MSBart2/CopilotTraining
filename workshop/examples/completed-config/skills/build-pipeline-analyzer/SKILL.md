@@ -412,7 +412,7 @@ When a GitHub Actions build fails:
    | Import case mismatch | Yes (Linux vs Mac) |
    | Missing mocks | No (universal) |
    | Docker context path | Yes (workflow-specific) |
-   | Lint error | No (should fail locally too) |
+   | Lint error | No (fails locally too) |
 
 6. **Apply the appropriate fix**
    - See specific sections above for each failure type
@@ -456,7 +456,7 @@ This skill works well with:
 - Suggests upgrade paths
 
 **Example question that uses both**:
-> *"The CI pipeline fails during Docker build. The error is 'ENOENT package.json'. What should I check?"*
+> *"The CI pipeline fails during Docker build. The error is 'ENOENT package.json'. What's worth checking first?"*
 
 Copilot might:
 1. Use Build Pipeline Analyzer: Check CI workflow docker build context
@@ -477,7 +477,7 @@ Ask Copilot with this skill when:
 **Example prompts**:
 - *"The GitHub Actions build failed with test timeout. How do I debug it?"*
 - *"Why does my Docker build work locally but fail in CI?"*
-- *"This test is flaky—passes sometimes, fails others. What should I check?"*
+- *"This test is flaky—passes sometimes, fails others. What's worth checking first?"*
 - *"The workflow failed at the lint step. How do I fix ESLint errors?"*
 
 ---

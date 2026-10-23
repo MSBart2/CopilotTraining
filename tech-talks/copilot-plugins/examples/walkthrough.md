@@ -1,6 +1,6 @@
 # Demo: Copilot Plugins & APM — Extending Copilot with CLI-First Configuration
 
-**Source talk:** `tech-talks/copilot-plugins/`
+**Source talk:** [Copilot Plugins & APM: Composable AI Extensions](../README.md)
 **Core question:** How do I extend Copilot with custom capabilities — and how do I share that configuration across teams and repositories?
 **Target repo:** Any repository you maintain (FanHub works well for testing)
 

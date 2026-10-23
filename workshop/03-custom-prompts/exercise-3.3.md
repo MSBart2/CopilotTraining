@@ -35,7 +35,7 @@ That's exactly it. The knowledge exists. The prompt just makes it run consistent
 
 #### 🎯 Your Goal
 
-Create `.github/prompts/lore-accuracy-check.prompt.md` — a reusable prompt that validates any lore entry against the canon rules in your universe file. The prompt should catch errors in lore descriptions, pass cleanly on correct content, and work on any lore entry without being hardcoded to a specific title or character.
+Create `.github/prompts/lore-accuracy-check.prompt.md` — a reusable prompt that validates any lore entry against the canon rules in your universe file. The prompt catches errors in lore descriptions, pass cleanly on correct content, and work on any lore entry without being hardcoded to a specific title or character.
 
 #### 📋 Steps
 
@@ -46,7 +46,7 @@ Create `.github/prompts/lore-accuracy-check.prompt.md` — a reusable prompt tha
    ```
    Create a new prompt file at `.github/prompts/lore-accuracy-check.prompt.md`.
 
-   The prompt should:
+   The prompt needs to:
    - Have frontmatter with name, description, and mode: ask
    - Reference `docs/[show]-universe.md` as its accuracy source using a `#file:` reference
    - Instruct Copilot to check provided lore entry content against canon rules
@@ -61,7 +61,7 @@ Create `.github/prompts/lore-accuracy-check.prompt.md` — a reusable prompt tha
 
 2. **Review and refine the prompt body**
 
-   Open the generated `.github/prompts/lore-accuracy-check.prompt.md`. It should look roughly like this — adjust yours if it doesn't:
+   Open the generated `.github/prompts/lore-accuracy-check.prompt.md`. Look for something roughly like this — adjust yours if it doesn't:
 
    ```markdown
    ---
@@ -105,7 +105,7 @@ Create `.github/prompts/lore-accuracy-check.prompt.md` — a reusable prompt tha
    where Walter taught a chemistry course.
    ```
 
-   **Expected result:** The prompt should flag "University of New Mexico" as a canon violation. Walter White was a chemistry teacher at J.P. Wynne **High School** — not a university professor. The corrected version should reference J.P. Wynne High School.
+   **Expected result:** The prompt flags "University of New Mexico" as a canon violation. Walter White was a chemistry teacher at J.P. Wynne **High School** — not a university professor. The corrected version references J.P. Wynne High School.
 
    If the prompt doesn't catch this, check that your universe file (from Exercise 1.6) correctly states Walter's role and that the prompt file actually references it. The prompt is only as accurate as the rules you encoded.
 
@@ -120,7 +120,7 @@ Create `.github/prompts/lore-accuracy-check.prompt.md` — a reusable prompt tha
    the synthesis method Walter developed at the Superlab.
    ```
 
-   **Expected result:** The prompt should confirm this passes — the key facts (purity over 99%, the Superlab) are consistent with established canon.
+   **Expected result:** The prompt confirms this passes — the key facts (purity over 99%, the Superlab) are consistent with established canon.
 
 5. **Test on your own show's content (non-Breaking Bad participants)**
 
@@ -133,7 +133,7 @@ Create `.github/prompts/lore-accuracy-check.prompt.md` — a reusable prompt tha
    ```
    *(The show depicts MKUltra-style experiments, but the specific mechanism for Eleven's powers is tied to her mother Teresa's participation — test whether your prompt correctly handles this level of canon nuance.)*
 
-   The goal is the same: one failure case, one passing case. The prompt should distinguish between them using only the rules in your universe file.
+   The goal is the same: one failure case, one passing case. The prompt distinguishes between them using only the rules in your universe file.
 
 #### ✅ Success Criteria
 

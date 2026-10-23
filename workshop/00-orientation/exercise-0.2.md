@@ -42,7 +42,7 @@ What database tables exist? #file:backend/database/schema.sql
 **4. `#fetch` — External docs**
 ```
 #fetch https://react.dev/learn/thinking-in-react
-How should I structure React components based on this?
+What's the best way to structure React components based on this?
 ```
 
 **5. Images — Visual context**

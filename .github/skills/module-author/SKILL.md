@@ -93,7 +93,7 @@ If the user provides a URL (blog post, docs page, announcement):
    - What hands-on demonstrations would prove the value?
    - What artifacts would learners create?
    - What before/after metrics would be compelling?
-   - Which persona should lead each exercise?
+   - Which persona leads each exercise best?
    - How will Jessica demonstrate understanding while accelerating learning?
 
 4. **Find official docs:**
@@ -195,11 +195,11 @@ When populating the exercise planning table in TEMPLATE.md:
 
 ### Step Count Goal: 3 Steps per Exercise
 
-Each exercise specification should assume **~3 steps** in implementation:
+Assume **~3 steps** in implementation for each exercise specification:
 
 - **Ideal**: 3 substantial, clear steps
 - **Acceptable**: 2 steps if naturally cohesive, or 4-5 if complexity demands it
-- **Consider splitting**: If you plan for more than 5 steps, consider if this should be 2 exercises
+- **Consider splitting**: If you plan for more than 5 steps, consider whether it works better as 2 exercises
 
 ---
 
@@ -209,7 +209,7 @@ Each exercise specification should assume **~3 steps** in implementation:
 
 Aim for diverse representation:
 
-- Each persona should lead at least 1 exercise across every 2-3 modules
+- Give each persona the lead on at least 1 exercise across every 2-3 modules
 - Sarah and David typically lead architecture/standards exercises
 - Marcus leads infrastructure/workflow exercises
 - Elena leads testing/quality exercises

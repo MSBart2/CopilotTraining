@@ -101,7 +101,7 @@ The single-day constraint creates urgency and focus. Each module represents roug
 ### Pacing Principles
 
 1. **Start with struggle** — Module 0 must establish the "before" state
-2. **Early wins** — Module 1-2 should deliver visible improvement quickly
+2. **Early wins** — Module 1-2 deliver visible improvement quickly
 3. **Build complexity gradually** — Each module adds one new concept
 4. **Compound benefits** — Later modules show how features work together
 5. **End with reflection** — Final module celebrates transformation
@@ -156,7 +156,7 @@ The project choice matters. FanHub works because:
 
 ### The "Before and After" Pattern
 
-Every exercise should show contrast:
+Every exercise shows contrast:
 
 ```markdown
 #### ❌ The "Before" — What Frustration Looks Like

@@ -267,7 +267,7 @@ import MaturityJourneyRoadmapSlide from './components/MaturityJourneyRoadmapSlid
     { icon: "💰", title: "Cost estimate in the plan", description: "AI surfaces ~$150/month before you approve — no billing surprises" },
     { icon: "🔒", title: "RBAC gap caught pre-deploy", description: "azure-validate found the missing firewall rule before the deploy failed" }
   ]'
-  :insight='{ icon: "💡", text: "The loop works because the AI knows what&#39;s running — not what the docs say should be running." }'
+  :insight='{ icon: "💡", text: "The loop works because the AI reads what&#39;s actually running, right now." }'
   :progressDots='{ current: 4, total: 4, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 

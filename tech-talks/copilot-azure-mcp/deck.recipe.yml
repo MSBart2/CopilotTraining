@@ -116,7 +116,7 @@ deck:
 #
 # Working assumption: YES (Path A). Plan Mode's "read-only" constraint applies
 # to codebase writes, not to Skills activation. Skills are Markdown instruction
-# files loaded into context by intent recognition — they should be active in any
+# files loaded into context by intent recognition — we expect them to be active in any
 # conversation mode including Plan Mode. This assumption has not been verified
 # against live behavior with the Azure Skills Plugin installed.
 #

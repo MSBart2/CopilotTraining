@@ -81,7 +81,7 @@ Controller/Service → Database Query → Response
 **Common violations to check**:
 
 - Frontend component making direct database calls ❌
-- Backend routes containing business logic ❌ (should be in service layer)
+- Backend routes containing business logic ❌ (belongs in service layer)
 - Frontend components with complex business logic ❌ (belongs in backend)
 - Hardcoded data instead of API calls ❌
 
@@ -168,7 +168,7 @@ Check proper error handling:
 
 ```
 Met: Proper layer separation, folder structure, error handling
-Violated: Contains business logic in route handler, should be in service layer
+Violated: Contains business logic in route handler; it belongs in service layer
 ```
 
 ### 2. 📂 File Location Issues
@@ -187,7 +187,7 @@ Line 45-67: Component makes direct database query
   Fix: Move query to backend route, call via api.js service
 
 Line 102: Business logic in route handler
-  Violation: Route handler should delegate to service
+  Violation: Route handler skips delegating to service
   Fix: Extract logic to service function, call from route
 ```
 

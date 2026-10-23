@@ -10,14 +10,14 @@
 
 In Module 4.2, the team created `character-change-test-workflow` to answer a useful question:
 
-**what tests should change when the character-detail experience changes?**
+**what tests need to change when the character-detail experience changes?**
 
 That workflow was helpful, but it still depended on whatever context the developer provided. Now the team knows something more concrete:
 
 - FanHub has duplicate character records
 - those duplicates can make character-detail behavior inconsistent
 - fallback behavior can hide the problem
-- tests and cleanup decisions should be grounded in the real data, not guesses
+- tests and cleanup decisions are grounded in the real data, not guesses
 
 So the next step is not to replace the skill. It is to **upgrade the skill** so it can use live FanHub data through MCP.
 
@@ -38,11 +38,11 @@ Update the `character-change-test-workflow` skill from Module 4.2 so it can use 
 
    Open `.github/skills/character-change-test-workflow/SKILL.md` and revise it so the workflow can use `#mcp-fanhub-db` when character-detail changes may be affected by live data issues.
 
-   The updated skill should help Copilot:
+   The updated skill helps Copilot:
 
    - inspect real character records
    - identify duplicate or conflicting rows
-   - decide what tests should change
+   - decide what tests need to change
    - recommend cleanup or guardrails before the PR
 
 2. **Add MCP-aware workflow guidance**

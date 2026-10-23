@@ -78,7 +78,7 @@ So that [benefit/value].
 
 ## Example Input
 
-"We should add a way for users to save their favorite characters"
+"Let's add a way for users to save their favorite characters"
 
 ---
 

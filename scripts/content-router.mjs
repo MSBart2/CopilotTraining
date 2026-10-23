@@ -2,7 +2,7 @@
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { loadTalkProfiles, parseFeed, renderMarkdown, routeFeed } from "./content-routing-lib.mjs";
+import { loadRoutingIndex, loadTalkProfiles, parseFeed, renderMarkdown, routeFeed } from "./content-routing-lib.mjs";
 
 const args = process.argv.slice(2);
 const valueFor = (name, fallback = null) => {
@@ -30,7 +30,8 @@ const registry = JSON.parse(readFileSync(join(root, ".github/content-routing/cov
 const ledger = JSON.parse(readFileSync(join(root, ".github/content-routing/ledger.json"), "utf8"));
 const profiles = loadTalkProfiles(root);
 const feed = parseFeed(xml);
-const report = routeFeed(feed, registry, profiles, { since, ledger });
+const routing = loadRoutingIndex(root);
+const report = routeFeed(feed, registry, profiles, { since, ledger, routing });
 const markdown = renderMarkdown(report);
 
 mkdirSync(outputDir, { recursive: true });

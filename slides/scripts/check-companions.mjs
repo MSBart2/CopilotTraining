@@ -117,7 +117,7 @@ function checkOne(deck) {
     }
   }
 
-  // agenda.html should not be older than agenda.md when both exist
+  // agenda.html must be at least as new as agenda.md when both exist
   if (files["agenda.md"] && files["agenda.html"]) {
     if (files["agenda.md"].mtimeMs > files["agenda.html"].mtimeMs + 2000) {
       issues.push({ code: "stale-html", file: "agenda.html" });

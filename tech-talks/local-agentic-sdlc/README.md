@@ -237,7 +237,7 @@ Two rules keep a repeating run honest:
 - **Keep state in a file the next pass reads first.** Each pass starts with a fresh context, so the run's status, attempt count, and history go in a state file in the worktree, never in the conversation.
 - **Escalate a stale run.** If a pass finds the previous run still marked as running past its time limit, it escalates to a person and leaves the worktree alone. Resuming would build on a pass that stopped part-way.
 
-The credit cap still applies per pass. Whether `/every` accepts `/goal … --max-ai-credits` as its scheduled command is untested, so watch one capped pass by hand before leaving it on a schedule. A working state file, orchestrator, and stale-run rule are in the [loop-starter example](../unattended-agents/examples/loop-starter/README.md).
+The credit cap still applies per pass. Whether `/every` accepts `/goal … --max-ai-credits` as its scheduled command is untested, so watch one capped pass by hand before leaving it on a schedule. A working state file, orchestrator, and stale-run rule are in the [loop-starter example](examples/loop-starter/README.md).
 
 ### Where it stops fitting
 

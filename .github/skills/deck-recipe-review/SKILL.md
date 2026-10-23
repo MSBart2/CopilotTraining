@@ -14,7 +14,7 @@ Read the tech-talk README, analyze its structure with a primary reviewer plus an
 
 **Key Constraints:**
 - **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the practitioner decision, observable proof, boundary, and own-work transfer when consolidating the README. A section that only inventories features has not earned slide time.
-- **Max 4 sections** — Review should consolidate, not expand. Budget emphasis within a 20-25 slide target for the complete deck and never exceed 30 slides.
+- **Max 4 sections** — Consolidate during review rather than expanding. Budget emphasis within a 20-25 slide target for the complete deck and never exceed 30 slides.
 - **Slide generator ensures consistency** — Once you commit a recipe, the [Tech Talk Slide Generator agent](../../agents/tech-talk-slide-generator.agent.md) generates all slides using the Vue component system with uniform structure (title, toc, section openers, closers, references). Focus the review on *narrative logic and audience fit*, not slide-level details.
 - **Recipe schema** — Read `.github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml` to understand all valid fields before writing the output file.
 - **Tech-talk voice applies to recipe guidance** — Write every field and comment in direct-positive, possibility-led language because the slide generator may carry recipe wording into audience-facing content. Replace contrastive-negation constructions such as "not X, but Y," "rather than," "instead of," "unlike," and "no longer" with a direct statement of the desired behavior.
@@ -43,7 +43,7 @@ Before starting the review, read all three sources. The independent-review brief
 3. tech-talks/TEMPLATE.md                                           — "Voice & Framing Guidelines"
 ```
 
-Do **not** read the existing `slides/tech-talks/<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten and should not constrain the review.
+Do **not** read the existing `slides/tech-talks/<topic>.md`. The recipe is the authoritative spec for the slide generator — existing slides will be overwritten, so the review starts fresh from the README.
 
 From these, extract:
 - The `<!-- 🎬 MAJOR SECTION: -->` markers from the README — these are the candidate sections
@@ -91,7 +91,7 @@ KNOWN MATERIAL:
 [CONTEXT BLOCK]
 
 Analyze: Is the current section weighting the best use of the talk's time?
-What should change and why?
+What change would most improve it, and why?
 
 1. Identify the strongest narrative arc and the single highest-value structural improvement.
 2. Protect practical artifacts, audience outcomes, and technical accuracy.
@@ -194,7 +194,7 @@ Use `DECK-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 | Identity crisis | Talk's core question promises X but all slides deliver Y | Rename sections with verb-led titles that match what the audience *does* |
 | Consumption-only for a producer audience | Platform/ops teams are in the audience but all sections are consumer-perspective | Add at least one producer-perspective section |
 | Passive closing section | Last section = "Resources" or "References" — audience leaves with no next action | Reframe as "Contribution Targets" or "What to Try This Week" |
-| All sections equal weight | All `high` or all `medium` | Force a ranking — the climax section should be the highest-emphasis section |
+| All sections equal weight | All `high` or all `medium` | Force a ranking — make the climax section the highest-emphasis section |
 
 ---
 

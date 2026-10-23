@@ -1,6 +1,6 @@
 # Tech Talks — Creation Guide
 
-This directory contains practitioner-focused technical deep dives. Each talk lives in its own subdirectory (e.g., `copilot-cli/`, `agent-teams/`) and follows a consistent structure defined by [TEMPLATE.md](TEMPLATE.md).
+This directory contains practitioner-focused technical deep dives. Each talk lives in its own subdirectory (e.g., `copilot-cli/`, `copilot-on-github/`) and follows a consistent structure defined by [TEMPLATE.md](TEMPLATE.md).
 
 ---
 
@@ -136,11 +136,11 @@ Practitioner talks are grouped by **where the agent runs and who starts it**. Ev
 
 | Section | Question |
 |---|---|
-| Foundations | Which surface fits the work, and what shared context should every agent receive? |
+| Foundations | Which surface fits the work, and what shared context does every agent need? |
 | Agents at Your Keyboard | What can a developer run, steer, and verify locally in VS Code or the CLI? |
-| Agents on GitHub | What work should GitHub's agents take on, and what evidence comes back for a person to decide? |
+| Agents on GitHub | Which work fits GitHub's agents, and what evidence comes back for a person to decide? |
 | Trust and Govern | How ready is the repository, what may an agent do, and who may approve or stop the work? |
-| Extend and Embed | When should Copilot gain a capability, interface, protocol boundary, or domain context? |
+| Extend and Embed | When is it time to give Copilot a capability, interface, protocol boundary, or domain context? |
 
 Archived talks keep their original section (`Choose and Configure`, `Delegate and Coordinate`, or `Verify and Govern`); those names are valid only on archived talks.
 

@@ -85,14 +85,14 @@ Identify tests that may be flaky based on:
 
 ## 4. Recommendations
 - Immediate fixes for high-confidence issues
-- Tests that should be quarantined
+- Tests to quarantine
 - Infrastructure improvements needed
 - Code patterns to investigate
 
 ## 5. Priority Classification
 Classify each failure as:
 - 🔴 Critical: Blocks deployment, needs immediate fix
-- 🟡 Medium: Should fix soon, may impact users
+- 🟡 Medium: Fix soon, may impact users
 - 🟢 Low: Flaky test or minor issue, can defer
 
 Format as markdown with actionable items.

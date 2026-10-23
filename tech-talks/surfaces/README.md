@@ -336,9 +336,9 @@ The four engagement phases provide a telemetry-based starting signal. Repeatedly
 | Phase | Engagement signal | Capability objective | Prescribed core path | Exit evidence |
 |-------|-------------------|----------------------|----------------------|---------------|
 | **0 — Activate** | Licensed, but not yet engaged | Complete one relevant task with human review | [Workshop orientation](../../workshop/00-orientation/) → [VS Code latest](../vscode-latest/) → this Surface Router | One real task completed, output reviewed, and the chosen surface explained |
-| **1 — Standardize** | Code completion or IDE agent use on at least two days | Make interactive assistance repeatable and repository-aware | [Repository instructions](../../workshop/01-instructions/) → [Plan mode](../../workshop/02-agent-plan-mode/) → [From repo to feature](../repo-to-feature/) → [PR Trust Stack](../pr-trust-stack/) | Shared instructions exist; a plan-led change passes tests and review |
-| **2 — Delegate** | Use of one GitHub-based agent surface | Delegate bounded work with explicit context, controls, and acceptance criteria | [Configuration primitives](../copilot-primitives/) → [Custom prompts](../../workshop/03-custom-prompts/) → [Agent skills](../../workshop/04-agent-skills/) → [Copilot CLI](../copilot-cli/) → [From Issue to Pull Request](../copilot-web/) | One bounded task produces a reviewable artifact asynchronously; handoff and escalation rules are documented |
-| **3 — Orchestrate** | Use of two or more agent surfaces, or the Copilot app | Coordinate parallel work and operate it as a governed system | [Custom agents](../../workshop/06-custom-agents/) → [Multi-Agent Coordination](../multi-agent-coordination/) → [Agentic Lifecycle](../agentic-lifecycle/) → [Agentic SDLC](../agentic-sdlc/) | Independent workstreams integrate cleanly; quality, policy, cost, and throughput are measured |
+| **1 — Standardize** | Code completion or IDE agent use on at least two days | Make interactive assistance repeatable and repository-aware | [Repository instructions](../../workshop/01-instructions/) → [Plan mode](../../workshop/02-agent-plan-mode/) → [Configuration primitives](../copilot-primitives/) | Shared instructions exist; a plan-led change passes tests and review |
+| **2 — Delegate** | Use of one GitHub-based agent surface | Delegate bounded work with explicit context, controls, and acceptance criteria | [Custom prompts](../../workshop/03-custom-prompts/) → [Agent skills](../../workshop/04-agent-skills/) → [Copilot CLI](../copilot-cli/) → [Copilot on GitHub](../copilot-on-github/) | One bounded task produces a reviewable artifact asynchronously; handoff and escalation rules are documented |
+| **3 — Orchestrate** | Use of two or more agent surfaces, or the Copilot app | Coordinate parallel work and operate it as a governed system | [Custom agents](../../workshop/06-custom-agents/) → [Local Agentic SDLC](../local-agentic-sdlc/) → [GitHub Agentic Workflows](../agentic-lifecycle/) → [Agentic SDLC](../agentic-sdlc/) | Independent workstreams integrate cleanly; quality, policy, cost, and throughput are measured |
 
 ### Prescriptive Branches
 
@@ -346,12 +346,12 @@ After the core path for a phase, branch according to the outcome the learner own
 
 | Learner owns... | Add this path | Demonstrated outcome |
 |-----------------|---------------|----------------------|
-| **Implementation quality** | [PR Trust Stack](../pr-trust-stack/) | Generated changes meet repository quality and review gates |
+| **Implementation quality** | [Copilot on GitHub](../copilot-on-github/) | Generated changes meet repository quality and review gates |
 | **Runtime or incident outcomes** | [Copilot CLI](../copilot-cli/) → [Copilot Azure MCP](../copilot-azure-mcp/) | Runtime evidence becomes a reproducible diagnosis and bounded remediation |
 | **Security and policy** | [Copilot hooks](../copilot-hooks/) → [Enterprise patterns](../enterprise-patterns/) | Tool access, approvals, and audit evidence are explicit |
 | **Platform capability** | [MCP servers](../../workshop/05-mcp-servers/) → [MCP apps](../mcp-apps/) → [Copilot SDK](../copilot-sdk/) | A proven workflow becomes a governed, reusable service |
-| **Team throughput** | [Multi-Agent Coordination](../multi-agent-coordination/) → [Agentic Lifecycle](../agentic-lifecycle/) | Parallel work has clear ownership, isolation, integration, and review |
-| **Leadership decisions** | [Agentic delivery](../exec-delivery/) → [Agentic economics](../exec-economics/) → [Agentic labor](../exec-labor/) | Leaders can choose investments, controls, and success measures |
+| **Team throughput** | [Local Agentic SDLC](../local-agentic-sdlc/) → [GitHub Agentic Workflows](../agentic-lifecycle/) | Parallel work has clear ownership, isolation, integration, and review |
+| **Leadership decisions** | [The Agentic Operating Model](../exec-strategy/) | Leaders can choose investments, controls, and success measures |
 
 ### Advancement Rules
 
@@ -496,9 +496,9 @@ Use the canonical [`surface-decision-tree.mmd`](surface-decision-tree.mmd) to ro
 ## Related Patterns
 
 - **[GitHub Copilot CLI](../copilot-cli/README.md)** — Terminal execution, planning, sessions, and remote operation.
-- **[Multi-Agent Coordination](../multi-agent-coordination/)** — Parallel workstream coordination, session control, and integration ownership.
+- **[Local Agentic SDLC](../local-agentic-sdlc/)** — Parallel specialist work, session control, and integration ownership in one orchestrated local run.
 - **[Copilot SDK](../copilot-sdk/README.md)** — Programmatic embedding and application-defined agent experiences.
-- **[Copilot Web](../copilot-web/README.md)** — Delegated issue-to-pull-request workflows through the coding agent.
+- **[Copilot on GitHub](../copilot-on-github/)** — Delegating issues to the cloud agent, with code review and Code Quality on every push.
 - **[What's New in VS Code](../vscode-latest/README.md)** — Current editor-side agent capabilities and workflows.
 
 ---

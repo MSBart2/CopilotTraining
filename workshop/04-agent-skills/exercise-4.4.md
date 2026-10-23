@@ -134,7 +134,7 @@ Create `.github/skills/[show]-lore/` — a custom agent skill that gives Copilot
 
 4. **Add `resources/canon-facts.md` — with at least 5 truths and 3 misconceptions**
 
-   This is the most important resource. Breaking Bad's seeded FanHub data has deliberate errors that stem from exactly the kinds of misconceptions this file should capture. Write it yourself:
+   This is the most important resource. Breaking Bad's seeded FanHub data has deliberate errors that stem from exactly the kinds of misconceptions this file captures. Write it yourself:
 
    ```markdown
    # Breaking Bad — Canon Facts
@@ -216,7 +216,7 @@ Create `.github/skills/[show]-lore/` — a custom agent skill that gives Copilot
    /breaking-bad-accuracy-check [paste the Gus Fring bio here]
    ```
 
-   A well-populated lore skill means the accuracy check should now pass cleanly — or at worst flag minor stylistic issues rather than factual errors. The two exercises complement each other: the lore skill prevents errors at generation; the accuracy-check prompt catches any that slip through.
+   A well-populated lore skill means the accuracy check now passes cleanly — or at worst flag minor stylistic issues rather than factual errors. The two exercises complement each other: the lore skill prevents errors at generation; the accuracy-check prompt catches any that slip through.
 
 #### ✅ Success Criteria
 
@@ -260,5 +260,5 @@ Create `.github/skills/[show]-lore/` — a custom agent skill that gives Copilot
 
 **[Module 5: MCP Servers](../05-mcp-servers/README.md)** — Now that Copilot knows your show's canon, let's see if the *live database* matches. The FanHub SQLite data was seeded with one season of Breaking Bad — but with deliberate errors. Module 5 connects the MCP server and lets you find them.
 
-> *"The lore skill tells Copilot what the show says should be true. I want to know if the database agrees."*
+> *"The lore skill tells Copilot what the show says is true. I want to know if the database agrees."*
 > — Rafael, already planning what he's going to query first

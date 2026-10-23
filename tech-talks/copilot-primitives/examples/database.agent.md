@@ -146,7 +146,7 @@ WHERE published = TRUE AND deleted_at IS NULL;
 Identify and resolve performance issues:
 
 - **Slow Query Log**: Analyze slow queries from database logs
-- **Missing Indexes**: Identify table scans that should use indexes
+- **Missing Indexes**: Identify table scans that would benefit from indexes
 - **Index Bloat**: Detect and recommend REINDEX for bloated indexes
 - **Table Statistics**: Ensure ANALYZE runs regularly for query planner
 

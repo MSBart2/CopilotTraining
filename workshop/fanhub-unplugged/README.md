@@ -72,7 +72,7 @@ The point of FanHub is not to teach you the codebase. It's to give you a real ta
 
 This sprint works identically whether you use **VS Code with Copilot Chat in agent mode** or **Copilot CLI** in your terminal. Both give you the same thing: a conversational interface where you describe what you want, the agent reads the codebase, writes the code, runs it, and iterates — while you direct from a high altitude.
 
-You should not be reading source files. You should not be manually editing code. You should be writing prompts.
+Your job here is writing prompts. Leave the source files unread and the code untouched by hand.
 
 ### VS Code: Agent Mode in Copilot Chat
 
@@ -205,9 +205,9 @@ FanHub is missing an entire tier of features — the README documents them expli
 
 > *"Add full-text search across characters and episodes. The search box lives in the navbar. Results appear in a dropdown as the user types. The API gets a `?q=` parameter. Build both layers — API endpoint and frontend — and wire them together end-to-end."*
 
-> *"Build a character detail page. Clicking a character card should navigate to `/characters/:id`. The detail page should show their full bio, actor name, all their quotes, and the episodes they appeared in. Build the route, the API endpoint if needed, and the page component."*
+> *"Build a character detail page. Clicking a character card navigates to `/characters/:id`. The detail page shows their full bio, actor name, all their quotes, and the episodes they appeared in. Build the route, the API endpoint if needed, and the page component."*
 
-> *"Add episode ratings. Each episode card should have a 1–5 star rating widget. Ratings persist in the database. The API needs a PATCH endpoint. Build the whole thing."*
+> *"Add episode ratings. Each episode card has a 1–5 star rating widget. Ratings persist in the database. The API needs a PATCH endpoint. Build the whole thing."*
 
 End-to-end specs produce end-to-end features. Under-specified prompts produce stubs.
 
@@ -244,7 +244,7 @@ Don't want any of the above? Shout one of these at the agent and see what comes 
 - *"Build a mood-based episode recommender — pick three words and get an episode suggestion"*
 - *"Add a 5-question trivia quiz seeded from existing characters and episode titles"*
 
-**UX that should have existed already**
+**UX that was waiting to exist**
 - *"Add a spoiler mode toggle that blurs character names and bios until hover"*
 - *"Add keyboard shortcuts: `/` to focus search, `Escape` to clear, arrow keys to navigate results"*
 - *"Add a 'recently viewed' section in the sidebar that persists across page reloads with localStorage"*

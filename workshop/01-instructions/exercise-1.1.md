@@ -8,7 +8,7 @@
 
 #### 📖 The Challenge
 
-David looks at the FanHub codebase and sees what every architect fears—a project with no map. The frontend is React, the backend is Express, but nowhere is this documented. Every time someone asks Copilot a simple question like "where should database queries go?" it has to analyze hundreds of files to figure out the structure.
+David looks at the FanHub codebase and sees what every architect fears—a project with no map. The frontend is React, the backend is Express, but nowhere is this documented. Every time someone asks Copilot a simple question like "where do database queries go?" it has to analyze hundreds of files to figure out the structure.
 
 Sarah chimes in: *"I timed it. Without architecture docs, Copilot takes 8 seconds to answer 'where do routes live?' because it's scanning the entire codebase. That's wasted time and wasted tokens on every query."* Marcus adds: *"And when I ask about database patterns, it gives me three different approaches because it can't tell which one we're actually using."*
 
@@ -85,16 +85,16 @@ Create `fanhub/docs/ARCHITECTURE.md` that gives Copilot (and humans) structural 
 
    > ⚠️ **Don't confuse this with Exercise 1.6.** The middleware/interceptor layer happens to be called `universe` in the code (`req.universe`, `HttpContext.Items["Universe"]`, etc.) — that's an unrelated, unfortunate naming coincidence with the `docs/[show]-universe.md` canon file you'll build later in this module. One is a request-scoped "which show is this about" flag; the other is a static reference document about the show's characters and lore. If your terminology map conflates the two, that's exactly the kind of ambiguity this exercise exists to catch.
 
-   > 💡 **Why this matters more than it looks like it should:** this isn't a contrived puzzle — it's the single most common reason AI coding agents (and new hires) give confidently wrong answers in real codebases. The concept never changed; only its name did, at every layer, with no rosetta stone. Once you write the terminology map down in ARCHITECTURE.md, every future Copilot session in this repo inherits it for free.
+   > 💡 **Why this matters more than it first appears:** this isn't a contrived puzzle — it's the single most common reason AI coding agents (and new hires) give confidently wrong answers in real codebases. The concept never changed; only its name did, at every layer, with no rosetta stone. Once you write the terminology map down in ARCHITECTURE.md, every future Copilot session in this repo inherits it for free.
 
 4. **Test the improvement with a query**
 
    In Copilot Chat, ask:
    ```
-   @workspace Where should I add a new database query for retrieving show details?
+   @workspace Where do I add a new database query for retrieving show details?
    ```
 
-   **Expected result:** Copilot references ARCHITECTURE.md and immediately suggests `backend/src/database/` following the documented pattern. Response should be faster (2-3 seconds) and more specific than before.
+   **Expected result:** Copilot references ARCHITECTURE.md and immediately suggests `backend/src/database/` following the documented pattern. Look for a faster response (2-3 seconds) and more specific than before.
 
 5. **Refine based on team feedback**
 

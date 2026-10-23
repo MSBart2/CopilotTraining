@@ -133,7 +133,7 @@ The exercises below create custom agents that orchestrate capabilities from Modu
 
 **Custom Agents:** Workflow-based Copilot configurations stored in `.agent.md` files that define available tools, loaded skills, MCP servers, behavioral instructions, and workflow handoffs for specific tasks.
 
-**When to use it:** When different tasks require different capabilities—review needs read-only analysis tools, implementation needs full editing, and handoffs should make the workflow between them explicit. Use custom agents when you want to eliminate context-switching overhead and enforce role-appropriate tool usage.
+**When to use it:** When different tasks require different capabilities—review needs read-only analysis tools, implementation needs full editing, and handoffs make the workflow between them explicit. Use custom agents when you want to eliminate context-switching overhead and enforce role-appropriate tool usage.
 
 **What you'll build:**
 - **Character review agent** — Read-only tools, character-review workflow, duplicate-data escalation through MCP when relevant
@@ -146,7 +146,7 @@ The exercises below create custom agents that orchestrate capabilities from Modu
 - 📖 [Custom agents in VS Code](https://code.visualstudio.com/docs/copilot/customization/custom-agents) — Complete guide to agent structure, handoffs, and tool configuration
 - 📖 [Custom agents tutorials](https://docs.github.com/en/copilot/tutorials/customization-library/custom-agents) — Example agents including implementation planner, bug fix specialist, cleanup agent
 
-> 💡 **Important for this module:** The key payoff is not just creating agents—it is creating the right boundaries between them. Review agents should stay read-only. Implementation agents should be able to edit. Handoffs make that workflow feel natural instead of manual.
+> 💡 **Important for this module:** The key payoff is not just creating agents—it is creating the right boundaries between them. Review agents stay read-only. Implementation agents can edit. Handoffs make that workflow feel natural instead of manual.
 
 ---
 
@@ -332,7 +332,7 @@ model: Claude Sonnet 4
 **When to use each control:**
 | Control | Use Case |
 |---------|----------|
-| `user-invokable: false` | Specialized subagents that shouldn't clutter dropdown |
+| `user-invokable: false` | Specialized subagents kept out of the dropdown |
 | `disable-model-invocation: true` | Sensitive operations requiring explicit user approval |
 | `agents.allow` | Limit orchestration scope to specific trusted agents |
 | `agents.deny` | Block specific dangerous or incompatible agents |

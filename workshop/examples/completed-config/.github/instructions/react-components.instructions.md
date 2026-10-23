@@ -79,7 +79,7 @@ export function EpisodeAppearances({
 ## Hook Rules
 
 - Hooks must be called at the top level (not in conditions/loops)
-- Custom hooks should start with `use`
+- Custom hooks start with `use`
 - Always include ALL dependencies in useEffect/useCallback/useMemo
 - Prefer `useCallback` for event handlers passed to children
 - Use `useMemo` only for expensive calculations

@@ -31,7 +31,7 @@ But every review still starts with manual setup:
 **Time breakdown:**
 - **5 minutes** — Rebuilding the same context before each review
 - **Inconsistent behavior** — Sometimes the prompt is reused well, other times MCP isn't consulted even when duplicate data is the real issue
-- **Mental overhead** — Elena has to remember which customization layer should help with which part of the review
+- **Mental overhead** — Elena has to remember which customization layer helps with which part of the review
 
 Sarah watches Elena retype the same review framing again: *"You've already built the workflow. Why not turn it into an agent so the same review behavior is ready instantly?"*
 
@@ -72,7 +72,7 @@ Elena creates `.github/agents/character-review.agent.md` with:
 
 ### Step 1: Create Character Review Agent Configuration
 
-**Context:** The `@character-review` agent should be analysis-only. Its job is to review character-detail changes using the workflow you already established across Modules 3.2, 4.2, and 5.2.
+**Context:** The `@character-review` agent is analysis-only. Its job is to review character-detail changes using the workflow you already established across Modules 3.2, 4.2, and 5.2.
 
 **Task:**
 
@@ -101,7 +101,7 @@ You are in analysis-only mode. Do not modify files, create files, or implement f
 When reviewing a character-detail change:
 
 1. Start from the same workflow as the `character-review-prompt`
-2. Use the `character-change-test-workflow` skill to determine what tests should change
+2. Use the `character-change-test-workflow` skill to determine what tests need to change
 3. Review the changed code, related files, and likely regressions
 4. If duplicate or conflicting data may affect the behavior, use `#mcp-fanhub-db`
 5. Return:

@@ -16,7 +16,7 @@ A meta-skill for creating new Agent Skills. Use this skill when you need to scaf
 
 ## Prerequisites
 
-- Understanding of what the skill should accomplish
+- Understanding of what you want the skill to accomplish
 - A clear, keyword-rich description of capabilities and triggers
 - Knowledge of any bundled resources needed (scripts, references, assets, templates)
 

@@ -19,7 +19,7 @@ The team uses multiple languages:
 
 Each language has established style guides (PEP 8, Airbnb, TypeScript strict), but `.github/copilot-instructions.md` can't differentiate between them.
 
-Elena realizes: *"We need language-specific instructions that activate based on file extension. Python files should follow PEP 8 automatically. JavaScript should follow Airbnb. TypeScript should enforce strict types."*
+Elena realizes: *"We need language-specific instructions that activate based on file extension. Python files follow PEP 8 automatically. JavaScript follows Airbnb. TypeScript enforces strict types."*
 
 #### 🔄 The Transformation
 
@@ -249,7 +249,7 @@ Create language-specific instruction files that automatically apply Python, Java
    - ✅ `.github/instructions/frontend.instructions.md` — React patterns (from Exercise 1.3)
    - ✅ `.github/instructions/typescript.instructions.md` — Type safety rules
 
-   Ask Copilot to generate a component. Should see:
+   Ask Copilot to generate a component. Look for:
    - React hooks (frontend context)
    - Interface for props (TypeScript context)
    - camelCase naming (TypeScript context)

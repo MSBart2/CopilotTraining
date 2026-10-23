@@ -74,7 +74,7 @@ deck:
         review the lockfile diff on the next PR — so every attendee leaves with a step they
         can take within the hour.
 
-  # What to emphasize most (3-5 key points readers/audiences should remember)
+  # What to emphasize most (3-5 key points we want readers/audiences to remember)
   highlightMoments:
     - "copilot plugin install for exploration; apm install for team-wide reproducibility — two tools, two scopes"
     - "apm.yml is infrastructure: commit it to version control alongside your code, not in a wiki page"
@@ -92,7 +92,7 @@ deck:
     enabled: true
     variant: standard
 
-# OPEN DECISION: Should "The Lockfile Pattern" be restored as a standalone fourth section
+# OPEN DECISION: Does "The Lockfile Pattern" return as a standalone fourth section
 # (displacing "What You Can Do Today")?
 # Current choice: lockfile coverage folds into "Building an APM Manifest" to preserve an
 # action-oriented close. Restore as standalone only if audience feedback shows teams are

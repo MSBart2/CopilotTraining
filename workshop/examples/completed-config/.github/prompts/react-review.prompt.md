@@ -100,7 +100,7 @@ For each violation, provide:
 Example:
 
 ```
-Line 47: <div> should be <section> for semantic HTML
+Line 47: <div> → <section> for semantic HTML
   Standard: Accessibility > Semantic HTML
 
 Line 82: onClick handler missing aria-label
@@ -133,7 +133,7 @@ Example:
 Classify issues by priority:
 
 - **Critical** (blocks merge): Missing error handling, accessibility violations, security issues
-- **High** (should fix before merge): Performance issues, type safety gaps
+- **High** (fix before merge): Performance issues, type safety gaps
 - **Medium** (nice to have): Style consistency, minor optimizations
 - **Low** (optional): Future enhancements, alternative approaches
 

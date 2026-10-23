@@ -53,7 +53,7 @@ Today we follow that one file into three runtimes and learn to read what each ru
 <!-- SLIDE: Core Question -->
 # Core Question
 <CoreQuestionSlide
-  question="How should a team design one custom agent that behaves as intended in every runtime it reaches?"
+  question="How does a team design one custom agent that behaves as intended in every runtime it reaches?"
   subtext="Each runtime resolves the same file in its own context: fields, tools, model, and environment."
   highlight="Write the portable core, then read the resolved run."
   :cards='[
@@ -121,7 +121,7 @@ Ask the room: which agent did the team actually ship? Take a few answers. Hold t
 <SectionOpenerSlide
   :partNumber="1"
   title="Design the Portable Core"
-  subtitle="Decide when a role earns a file, split description, tools, and body, then publish where it should load"
+  subtitle="Decide when a role earns a file, split description, tools, and body, then publish where it loads"
   :cards='[
     { icon: "🧭", title: "A different who", blurb: "An agent file carries a role: identity, tool boundary, method, model" },
     { icon: "📝", title: "The body travels", blurb: "Every runtime reads the body, so the output contract lives there" },
@@ -210,8 +210,8 @@ This contract is what made the cloud run inspectable. The agent's own summary ca
 
 ---
 
-<!-- SLIDE: Publish Where It Should Load -->
-# Publish Where It Should Load
+<!-- SLIDE: Publish Where It Loads -->
+# Publish Where It Loads
 <FrameworkMappingRowsSlide
   :partNumber="1"
   pillIcon="📍"

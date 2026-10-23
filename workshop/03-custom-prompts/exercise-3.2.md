@@ -84,7 +84,7 @@ Create a workspace prompt file that takes a feature name as input, references li
    /Feature-Kickoff "Character Detail Stats Card"
    ```
 
-   Compare the two outputs. The structure should be identical — the content should be completely different. That's the variable doing its job.
+   Compare the two outputs. Look for identical structure and completely different content. That's the variable doing its job.
 
 #### ✅ Success Criteria
 
