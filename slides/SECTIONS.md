@@ -30,11 +30,11 @@ Top-level container class: `section tech-talks`
 
 | Section Name | Icon | Slug | Tagline | Contents |
 |---|---|---|---|---|
-| `Foundations` | 🧱 | `foundations` | Choose the surface and encode the context every agent shares | Surfaces, Configuration Primitives, Custom Agents |
+| `Foundations` | 🧱 | `foundations` | Choose the surface and encode the context every agent shares | Surfaces, Configuration Primitives, Custom Agents, Harness Fundamentals |
 | `Agents at Your Keyboard` | ⌨️ | `agents-at-your-keyboard` | Run, steer, and verify agents locally in VS Code and the CLI | CLI, What's New in VS Code, local SDLC orchestration |
 | `Agents on GitHub` | ☁️ | `agents-on-github` | Hand work to agents GitHub runs, and inspect the evidence they return | Coding agent, Code Review, Code Quality, GitHub Agentic Workflows |
-| `Trust and Govern` | 🛡️ | `trust-and-govern` | Measure readiness, decide what blocks, and name who may approve or override | Agentic SDLC, Hooks, Governance, Enterprise Patterns |
-| `Extend and Embed` | 🧩 | `extend-and-embed` | Add capabilities, interfaces, protocols, and governed domain context | Plugins, SDK, ACP, MCP Apps, Azure MCP, Foundry |
+| `Trust and Govern` | 🛡️ | `trust-and-govern` | Measure readiness, decide what blocks, and name who may approve or override | Agentic SDLC, Enterprise Patterns |
+| `Extend and Embed` | 🧩 | `extend-and-embed` | Add capabilities, interfaces, protocols, and governed domain context | Plugins, ACP, MCP Apps, Azure MCP, Foundry |
 
 > **Taxonomy:** each section answers *who starts the agent and where its work applies*. Foundations is the context every agent shares. Agents at Your Keyboard run locally because a developer starts them in VS Code or the CLI. Agents on GitHub start from a GitHub event or a person on github.com. Trust and Govern holds the rules that apply whichever section an agent comes from. Extend and Embed puts agents inside other products and protocols. The judgment lenses — Context, Delegation, Verification, Authority — apply inside every talk; they are not sections.
 >

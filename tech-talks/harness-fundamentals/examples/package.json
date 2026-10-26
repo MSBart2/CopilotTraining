@@ -1,0 +1,24 @@
+{
+  "name": "harness-fundamentals-examples",
+  "private": true,
+  "type": "module",
+  "description": "Hook and SDK examples for the Harness Fundamentals tech talk, applied to the FanHub demo repo.",
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\" && tsx --test \"test/*.test.ts\"",
+    "typecheck": "tsc -p .",
+    "apply": "node scripts/apply-overlay.mjs",
+    "fresh-eyes": "tsx apps/fresh-eyes/app.ts",
+    "blind-tests": "tsx apps/blind-tests/app.ts"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@github/copilot-sdk": "1.0.26"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

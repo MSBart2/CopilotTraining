@@ -1,6 +1,5 @@
 ---
-status: active
-portfolioState: candidate
+status: archived
 updated: 2026-09-18
 section: "Trust and Govern"
 audience: [platform-engineer, security, architect]

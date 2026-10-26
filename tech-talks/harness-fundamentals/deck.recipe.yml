@@ -1,0 +1,148 @@
+# deck.recipe.yml — Harness Fundamentals (Revision 2, SDK-led)
+#
+# Reviewed 2026-10-26. Primary analysis: Claude. Independent critique: rubber-duck subagent,
+# reported model OpenAI GPT-5.3 Codex. Reconciliation is summarized at the end of this file.
+#
+# Slide budget: 15 content slides (3 + 5 + 4 + 3) plus ~10 generated structural slides ≈ 25 total.
+# Treat each section's slide count as a maximum.
+#
+# Evidence labels carry onto slides: "Observed" = live run on 2026-10-26 (SDK 1.0.26, model auto,
+# FanHub 0ea9e78); "Tested" = deterministic unit test in examples/; "Documented" = first-party docs.
+# Each content slide answers one audience question and shows the input and observed result together.
+
+version: 1
+
+deck:
+  title: "Harness Fundamentals"
+  subtitle: "Getting Inside the Agent Loop"
+  tagline: "Host Copilot's agent loop in your own code, decide what it sees, and keep the repository floor underneath."
+
+  agenda:
+    - title: "Start the agent loop from your code"
+      takeaway: "Five short TypeScript steps take you from npm install to a permission handler, each with the output we observed."
+      whyItMatters: "You leave with a runnable path to an agent that follows your persona, your tools, and your per-call decisions."
+    - title: "Shape what the agent can reach"
+      takeaway: "One visibility policy, applied at two SDK checkpoints, turns the same agent into an onboarding reviewer or a black-box tester."
+      whyItMatters: "Deliberate context produced concrete findings in FanHub: conflicting setup docs and an undocumented API mismatch."
+    - title: "Operate it with evidence and owners"
+      takeaway: "Repository hooks, a joined event log, organization policy, and a named report owner surround every run."
+      whyItMatters: "Each run leaves traceable decisions, bounded execution, and a person who accepts or routes the findings."
+
+  arcToc: "Why Host the Agent → Build It From Zero → Decide What It Sees → Prove and Own It"
+
+  arcNarrative: >
+    The talk opens on the promise: the Copilot SDK hosts the same agent loop as Copilot CLI, the
+    practitioner configures its task, persona, tools, per-call decisions, and evidence, and repository
+    and organization controls keep applying. Section one gives that promise a mental model, four
+    workflows worth building, and the two ways into the loop, with the hook decision contract and the
+    observed precedence probe establishing the repository floor. Section two delivers the code the
+    audience came for: five runnable steps, each with observed output, ending on the talk's anchor,
+    the fresh-eyes friction report, where an agent restricted to the docs made 24 tool calls, opened
+    zero source files, and reported that FanHub's two Node.js guides disagree on port and Docker.
+    Section three generalizes that result into a reusable visibility policy and takes it further with
+    the blind test writer as the deeper verification case: the host reruns the suite, and a separate
+    referee session classifies each failure. Section four turns a working tool into one other people
+    can run: a joined evidence log, the owner lifecycle, the surrounding organization controls, and a
+    pre-flight checklist. Building from zero before showing the anchor keeps the promised code path
+    first; a single teaser on the core-question slide previews the anchor's numbers.
+
+  sectionOrder:
+    - "Why Host the Agent"
+    - "Build It From Zero"
+    - "Decide What It Sees"
+    - "Prove and Own It"
+
+  sectionModes:
+    "Why Host the Agent":
+      emphasis: medium
+      note: >
+        Three content slides maximum. Slide 1 answers "What does the SDK give me?": the host/runtime
+        mental-model diagram from the README, with capability labels (systemMessage, availableTools,
+        defineTool, onPermissionRequest, onPreToolUse, session events, enableFileHooks) placed on the
+        diagram arrows; keep the full capability table for the references. Slide 2 answers "What is
+        worth building?": an agent with a deliberate perspective, shown as four workflows with what each
+        hides (source → onboarding check; implementation → blind tests; everything but the diff → PR
+        reviewer; commands outside the guide → migration check). Slide 3 answers "Hook or host?": the
+        two-ways-in comparison in compact form, the preToolUse decision contract (crash or non-zero
+        exit denies, timeout allows, one JSON object, reason shown to the agent), and the observed
+        precedence probe: the repository deny held while the SDK onPreToolUse returned allow. Put the
+        55 ms hook timing in speaker notes. Authentication routes and model governance belong to
+        section four.
+    "Build It From Zero":
+      emphasis: high
+      note: >
+        Five content slides, the highest-priority section and home of the anchor. Slide 1 combines
+        steps 01 and 02: the five-line session and the streamed event trace ([tool] powershell, view ×3,
+        [idle]). Slide 2 is step 03: the customize persona snippet beside the observed result (file
+        citations on every step), with the lesson that personas work when they state a checkable
+        behavior. Slide 3 is step 04: defineTool lookup_owner plus availableTools, with the agent's
+        observed reply ("api-team"; no command tool, so no git log). Slide 4 is step 05: the permission
+        handler beside the observed recovery (shell rejected with feedback, then 6 approved reads and
+        correct counts), and the fact that in-repo reads raise permission requests. Slide 5 is the
+        anchor: the fresh-eyes host decisions in one compact strip (clean clone, docs-only reads,
+        report_friction tool, 80-call budget), then the observed friction table led by the port 3001
+        versus 5265 and Docker conflict between node/README.md and node/SETUP.md, with "24 tool calls,
+        zero source reads, GET /api/characters 200" as the proof line and the docs owner named as the
+        report's reader. Show prerequisites and authentication as a one-line footer on slide 1.
+    "Decide What It Sees":
+      emphasis: high
+      note: >
+        Four content slides. Frame the blind test writer as the deeper verification case that
+        generalizes the fresh-eyes control model. Slide 1 answers "How do I express what the agent
+        sees?": the createVisibilityPolicy call and the two-checkpoint table (onPreToolUse sees raw
+        arguments and catches searches that sweep hidden folders; onPermissionRequest sees the parsed
+        request and checks reads, writes, write contents, and shell executables). Slide 2 answers
+        "What can a host check that a hook script finds hard?": write-content inspection (a test file
+        that would read src/ at runtime is rejected, Tested) and per-segment command allowlists
+        (Tested), with one example each. Slide 3 is the blind-test setup: api_contract built from
+        SETUP.md with bug hints stripped, hidden paths including BUGS.md, writes only in
+        __tests__/blind, the host rerun, and the read-only referee session. Slide 4 is the result and
+        its boundaries: host rerun 10 passing and 2 failing, label test status apart from the domain
+        finding, POST /api/characters → 500 mapped by the referee to BUGS.md #19, and the seasonId
+        filter labeled undocumented because SETUP.md documents seasonId while the route reads
+        season_id; then the repository floor active inside both apps (19 preToolUse runs in
+        fresh-eyes, 12 in blind tests) and the boundary that executed test code runs with full
+        process access, so a container sets the outer limit and the API owner decides which side
+        changes.
+    "Prove and Own It":
+      emphasis: medium
+      note: >
+        Three content slides. Slide 1 answers "What evidence does a run leave, and who acts on it?":
+        four real JSONL lines from the blind run (repo-hook, host-policy deny, runtime tool.complete,
+        host session-end) joined by sessionId, plus the owner lifecycle as one row: platform team
+        publishes the policy and boundary → practitioner defines the workflow and rules → Copilot agent
+        performs mediated work → host records and verifies → docs owner or API owner accepts or routes
+        the findings. Slide 2 answers "Which controls surround my app?": policy hooks loaded
+        machine-wide ahead of repository hooks and kept running under disableAllHooks, and the
+        governance table condensed to access, model availability versus requested model, billing by
+        authentication route (signed-in user or token follows Copilot policy; BYOK follows provider
+        terms), tool and MCP policy with managedApprovalRequired, and process reach. Slide 3 combines
+        the pre-flight checklist with the how-deep decision tree (note → sessionStart hook;
+        must-never-run call → preToolUse or policy hook; persona, tools, visibility, budget, or report
+        → SDK host with enableFileHooks).
+
+  preamble: []
+  appendix: []
+
+  highlightMoments:
+    - "The fresh-eyes agent made 24 tool calls, opened zero source files, and reported that FanHub's two Node.js guides disagree on the backend port (3001 versus 5265) and on whether Docker is required."
+    - "In step 05 the host rejected a shell command with feedback naming the view tool, and the Copilot agent recovered through 6 approved reads to return correct line counts."
+    - "The blind-test host reran 12 tests and observed 10 passing and 2 failing; the read-only referee mapped one failure to BUGS.md #19 and labeled the seasonId filter mismatch undocumented."
+    - "In an observed precedence probe, a repository preToolUse deny held while the SDK hook returned allow, and FanHub's repository hooks ran 19 preToolUse checks inside the fresh-eyes session."
+
+# RECONCILIATION (primary vs independent critique)
+# Accepted: fixed caps 3 + 5 + 4 + 3; fresh-eyes as the single anchor with blind tests framed as
+#   the deeper verification case; evidence-bounded agenda wording; capability labels on the diagram
+#   with the full table in references; authentication and model governance in section four; owner
+#   lifecycle on the evidence slide; refined thesis that keeps repository and organization controls
+#   in view; referee wording ("labeled undocumented"); cold-start timing and policy line count kept
+#   off content slides; core-question teaser in place of a cold open.
+# Partly accepted: the critique suggested moving the hook contract and fail-open timeout to section
+#   four. The compact contract stays on section one's third slide because the user asked for hooks
+#   coverage there and the contract explains why the repository floor holds; section four repeats
+#   the timeout rule for policy hooks. The 55 ms timing moves to speaker notes.
+#
+# DEMO MODE (resolved 2026-10-26): Recorded runs carry the proof on slides, using the .runs/ reports
+#   and events.jsonl from 2026-10-26. Quickstart step 05 is the one live on-stage demonstration;
+#   put the live-run cue in the step 05 slide's speaker notes and mark the other evidence slides
+#   "Observed 2026-10-26".

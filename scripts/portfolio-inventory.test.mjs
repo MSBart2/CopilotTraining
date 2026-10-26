@@ -46,14 +46,14 @@ test("active talks use runtime sections; legacy sections stay on archived talks"
 
 test("discovers the current consolidated practitioner portfolio", () => {
   const inventory = collectPortfolio(root);
-  assert.equal(inventory.counts.totalTalks, 32);
-  assert.equal(inventory.counts.practitionerTalks, 18);
-  assert.equal(inventory.counts.archivedTalks, 14);
-  assert.equal(inventory.counts.deployedTalks, 17);
-  assert.equal(inventory.counts.candidateTalks, 1);
-  assert.equal(inventory.counts.catalogCards, 18);
+  assert.equal(inventory.counts.totalTalks, 33);
+  assert.equal(inventory.counts.practitionerTalks, 16);
+  assert.equal(inventory.counts.archivedTalks, 17);
+  assert.equal(inventory.counts.deployedTalks, 16);
+  assert.equal(inventory.counts.candidateTalks, 0);
+  assert.equal(inventory.counts.catalogCards, 16);
   assert.equal(inventory.counts.validTalks, inventory.counts.totalTalks);
-  assert.equal(inventory.redirects.length, 14);
+  assert.equal(inventory.redirects.length, 17);
   assert.equal(new Set(inventory.talks.map(({ slug }) => slug)).size, inventory.counts.totalTalks);
   assert.deepEqual(inventoryErrors(inventory), []);
 });

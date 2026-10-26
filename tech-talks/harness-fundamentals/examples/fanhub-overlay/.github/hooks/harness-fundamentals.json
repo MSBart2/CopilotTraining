@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "type": "command",
+        "command": "node scripts/harness-fundamentals/session-start.mjs",
+        "timeoutSec": 5
+      }
+    ],
+    "preToolUse": [
+      {
+        "type": "command",
+        "command": "node scripts/harness-fundamentals/pre-tool-use.mjs",
+        "timeoutSec": 5
+      }
+    ],
+    "postToolUse": [
+      {
+        "type": "command",
+        "command": "node scripts/harness-fundamentals/post-tool-use.mjs",
+        "timeoutSec": 5
+      }
+    ]
+  }
+}

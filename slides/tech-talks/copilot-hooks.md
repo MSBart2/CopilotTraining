@@ -12,7 +12,7 @@ transition: slide-left
 title: GitHub Copilot Hooks
 mdc: true
 section: Trust and Govern
-status: active
+status: archived
 updated: 2026-04-22
 ---
 

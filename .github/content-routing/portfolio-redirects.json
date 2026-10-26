@@ -98,6 +98,27 @@
       "target": "copilot-on-github",
       "reason": "Joining agent, review, and Code Quality evidence for one human merge decision now sits inside Copilot on GitHub.",
       "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "copilot-hooks",
+      "status": "merged",
+      "target": "harness-fundamentals",
+      "reason": "Repository hooks now carry the inject, control, and observe seams inside Harness Fundamentals, with a tested protected-path rule.",
+      "decisionId": "harness-fundamentals"
+    },
+    {
+      "source": "copilot-sdk",
+      "status": "merged",
+      "target": "harness-fundamentals",
+      "reason": "The SDK host now sits inside Harness Fundamentals as the deeper way into the loop: session configuration, permission handling, custom tools, and approval.",
+      "decisionId": "harness-fundamentals"
+    },
+    {
+      "source": "copilot-governance",
+      "status": "merged",
+      "target": "harness-fundamentals",
+      "reason": "Organization controls around the harness (access, model availability, policy hooks, billing route, and acceptance) now sit inside Harness Fundamentals.",
+      "decisionId": "harness-fundamentals"
     }
   ]
 }

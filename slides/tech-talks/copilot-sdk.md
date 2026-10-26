@@ -12,7 +12,7 @@ transition: slide-left
 title: GitHub Copilot SDK
 mdc: true
 section: "Extend and Embed"
-status: active
+status: archived
 updated: 2026-04-22
 ---
 

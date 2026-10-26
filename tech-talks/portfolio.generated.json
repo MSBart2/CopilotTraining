@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-23T20:50:10.837Z",
+  "generatedAt": "2026-10-26T17:47:01.036Z",
   "source": "tech-talks/*/README.md",
   "counts": {
-    "totalTalks": 32,
-    "practitionerTalks": 18,
-    "archivedTalks": 14,
-    "deployedTalks": 17,
-    "candidateTalks": 1,
-    "catalogCards": 18,
-    "validTalks": 32
+    "totalTalks": 33,
+    "practitionerTalks": 16,
+    "archivedTalks": 17,
+    "deployedTalks": 16,
+    "candidateTalks": 0,
+    "catalogCards": 16,
+    "validTalks": 33
   },
   "warnings": [
     "Directory has no README and is not a portfolio artifact: copilot-surface-router"
@@ -116,6 +116,27 @@
       "target": "copilot-on-github",
       "reason": "Joining agent, review, and Code Quality evidence for one human merge decision now sits inside Copilot on GitHub.",
       "decisionId": "taxonomy-restructure"
+    },
+    {
+      "source": "copilot-hooks",
+      "status": "merged",
+      "target": "harness-fundamentals",
+      "reason": "Repository hooks now carry the inject, control, and observe seams inside Harness Fundamentals, with a tested protected-path rule.",
+      "decisionId": "harness-fundamentals"
+    },
+    {
+      "source": "copilot-sdk",
+      "status": "merged",
+      "target": "harness-fundamentals",
+      "reason": "The SDK host now sits inside Harness Fundamentals as the deeper way into the loop: session configuration, permission handling, custom tools, and approval.",
+      "decisionId": "harness-fundamentals"
+    },
+    {
+      "source": "copilot-governance",
+      "status": "merged",
+      "target": "harness-fundamentals",
+      "reason": "Organization controls around the harness (access, model availability, policy hooks, billing route, and acceptance) now sit inside Harness Fundamentals.",
+      "decisionId": "harness-fundamentals"
     }
   ],
   "redirectErrors": [],
@@ -283,7 +304,7 @@
           "path": "tech-talks/agentic-lifecycle/README.md",
           "exists": true,
           "bytes": 57759,
-          "modified": "2026-10-22T19:15:00.462Z"
+          "modified": "2026-10-26T15:25:34.401Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-lifecycle/deck.recipe.yml",
@@ -349,7 +370,7 @@
           "path": "tech-talks/agentic-sdlc/README.md",
           "exists": true,
           "bytes": 79672,
-          "modified": "2026-10-23T20:21:18.901Z"
+          "modified": "2026-10-26T15:25:34.400Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-sdlc/deck.recipe.yml",
@@ -361,7 +382,7 @@
           "path": "slides/tech-talks/agentic-sdlc.md",
           "exists": true,
           "bytes": 26004,
-          "modified": "2026-09-16T01:01:24.018Z"
+          "modified": "2026-10-26T15:25:34.400Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/agentic-sdlc/agenda.md",
@@ -544,8 +565,8 @@
         "readme": {
           "path": "tech-talks/copilot-acp/README.md",
           "exists": true,
-          "bytes": 20621,
-          "modified": "2026-10-23T20:49:08.746Z"
+          "bytes": 20243,
+          "modified": "2026-10-26T15:25:34.399Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-acp/deck.recipe.yml",
@@ -660,7 +681,7 @@
       "level": "applied",
       "duration": 45,
       "format": "case-study",
-      "decision": "How can Copilot work against live Azure resources through Azure MCP, starting from a read-only identity and granting write access deliberately?",
+      "decision": "How can agents act on live domain state with least-privilege authority?",
       "prerequisites": [
         "copilot-cli"
       ],
@@ -674,8 +695,8 @@
         "readme": {
           "path": "tech-talks/copilot-azure-mcp/README.md",
           "exists": true,
-          "bytes": 60971,
-          "modified": "2026-10-23T20:49:54.088Z"
+          "bytes": 60899,
+          "modified": "2026-10-26T15:25:34.400Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-azure-mcp/deck.recipe.yml",
@@ -972,8 +993,8 @@
     {
       "slug": "copilot-governance",
       "title": "Useful Autonomy, Clear Authority: GitHub Copilot Governance",
-      "status": "active",
-      "portfolioState": "candidate",
+      "status": "archived",
+      "portfolioState": "deployed",
       "updated": "2026-09-18",
       "section": "Trust and Govern",
       "audience": [
@@ -994,13 +1015,13 @@
         "pr-trust-stack"
       ],
       "deckSection": "Trust and Govern",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-governance/README.md",
           "exists": true,
-          "bytes": 25898,
-          "modified": "2026-10-21T15:46:27.953Z"
+          "bytes": 25873,
+          "modified": "2026-10-26T15:56:44.006Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-governance/deck.recipe.yml",
@@ -1011,8 +1032,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-governance.md",
           "exists": true,
-          "bytes": 33311,
-          "modified": "2026-10-21T15:48:23.582Z"
+          "bytes": 33313,
+          "modified": "2026-10-26T15:56:03.885Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-governance/agenda.md",
@@ -1038,7 +1059,7 @@
     {
       "slug": "copilot-hooks",
       "title": "GitHub Copilot Hooks: Programmable Governance for Agent Workflows",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2026-09-16",
       "section": "Trust and Govern",
@@ -1059,13 +1080,13 @@
         "enterprise-patterns"
       ],
       "deckSection": "Trust and Govern",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-hooks/README.md",
           "exists": true,
-          "bytes": 59627,
-          "modified": "2026-10-23T20:02:37.711Z"
+          "bytes": 59629,
+          "modified": "2026-10-26T15:56:03.852Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-hooks/deck.recipe.yml",
@@ -1076,8 +1097,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-hooks.md",
           "exists": true,
-          "bytes": 26101,
-          "modified": "2026-09-16T01:01:24.018Z"
+          "bytes": 26103,
+          "modified": "2026-10-26T15:56:03.894Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-hooks/agenda.md",
@@ -1195,7 +1216,7 @@
           "path": "tech-talks/copilot-on-github/README.md",
           "exists": true,
           "bytes": 32720,
-          "modified": "2026-10-23T19:45:05.676Z"
+          "modified": "2026-10-26T15:25:34.438Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-on-github/deck.recipe.yml",
@@ -1363,7 +1384,7 @@
     {
       "slug": "copilot-sdk",
       "title": "GitHub Copilot SDK: Build AI-Powered Tools for Your Workflows",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2026-09-16",
       "section": "Extend and Embed",
@@ -1385,13 +1406,13 @@
         "copilot-plugins"
       ],
       "deckSection": "Extend and Embed",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-sdk/README.md",
           "exists": true,
-          "bytes": 51709,
-          "modified": "2026-10-23T20:49:08.703Z"
+          "bytes": 51461,
+          "modified": "2026-10-26T15:56:03.877Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-sdk/deck.recipe.yml",
@@ -1402,8 +1423,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-sdk.md",
           "exists": true,
-          "bytes": 23675,
-          "modified": "2026-09-16T01:01:24.018Z"
+          "bytes": 23677,
+          "modified": "2026-10-26T15:56:03.900Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-sdk/agenda.md",
@@ -1652,7 +1673,7 @@
           "path": "tech-talks/enterprise-patterns/README.md",
           "exists": true,
           "bytes": 63087,
-          "modified": "2026-10-23T19:59:12.008Z"
+          "modified": "2026-10-26T15:25:34.400Z"
         },
         "recipe": {
           "path": "tech-talks/enterprise-patterns/deck.recipe.yml",
@@ -1683,6 +1704,73 @@
           "exists": true,
           "bytes": 2249791,
           "modified": "2026-09-16T14:13:42.511Z"
+        }
+      },
+      "errors": []
+    },
+    {
+      "slug": "harness-fundamentals",
+      "title": "Harness Fundamentals: Getting Inside the Agent Loop",
+      "status": "active",
+      "portfolioState": "deployed",
+      "updated": "2026-10-26",
+      "section": "Foundations",
+      "audience": [
+        "developer",
+        "platform-engineer",
+        "architect"
+      ],
+      "level": "applied",
+      "duration": 60,
+      "format": "core-talk",
+      "decision": "Which workflow deserves its own agent host, and what does that host let the agent see, use, and do?",
+      "prerequisites": [
+        "copilot-cli"
+      ],
+      "related": [
+        "copilot-primitives",
+        "custom-agents",
+        "copilot-on-github",
+        "enterprise-patterns"
+      ],
+      "deckSection": "Foundations",
+      "cataloged": true,
+      "files": {
+        "readme": {
+          "path": "tech-talks/harness-fundamentals/README.md",
+          "exists": true,
+          "bytes": 32320,
+          "modified": "2026-10-26T17:09:32.373Z"
+        },
+        "recipe": {
+          "path": "tech-talks/harness-fundamentals/deck.recipe.yml",
+          "exists": true,
+          "bytes": 11331,
+          "modified": "2026-10-26T17:14:32.786Z"
+        },
+        "deck": {
+          "path": "slides/tech-talks/harness-fundamentals.md",
+          "exists": true,
+          "bytes": 48710,
+          "modified": "2026-10-26T17:35:56.831Z"
+        },
+        "agendaMarkdown": {
+          "path": "slides/companions/tech-talks/harness-fundamentals/agenda.md",
+          "exists": true,
+          "bytes": 396,
+          "modified": "2026-10-26T17:37:04.039Z"
+        },
+        "agendaHtml": {
+          "path": "slides/companions/tech-talks/harness-fundamentals/agenda.html",
+          "exists": true,
+          "bytes": 5890,
+          "modified": "2026-10-26T17:37:04.044Z"
+        },
+        "deckPdf": {
+          "path": "slides/companions/tech-talks/harness-fundamentals/deck.pdf",
+          "exists": true,
+          "bytes": 2532849,
+          "modified": "2026-10-26T17:37:37.520Z"
         }
       },
       "errors": []
@@ -2048,7 +2136,7 @@
           "path": "tech-talks/surfaces/README.md",
           "exists": true,
           "bytes": 33880,
-          "modified": "2026-10-23T20:00:39.978Z"
+          "modified": "2026-10-26T15:25:34.401Z"
         },
         "recipe": {
           "path": "tech-talks/surfaces/deck.recipe.yml",
@@ -2179,8 +2267,8 @@
         "readme": {
           "path": "tech-talks/vscode-latest/README.md",
           "exists": true,
-          "bytes": 46257,
-          "modified": "2026-10-23T20:48:35.938Z"
+          "bytes": 45755,
+          "modified": "2026-10-26T15:25:34.400Z"
         },
         "recipe": {
           "path": "tech-talks/vscode-latest/deck.recipe.yml",

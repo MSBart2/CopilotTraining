@@ -12,7 +12,7 @@ transition: slide-left
 title: "Useful Autonomy, Clear Authority"
 mdc: true
 section: Trust and Govern
-status: active
+status: archived
 updated: 2026-09-17
 ---
 
