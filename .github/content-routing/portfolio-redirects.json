@@ -100,6 +100,13 @@
       "decisionId": "taxonomy-restructure"
     },
     {
+      "source": "agentic-sdlc",
+      "status": "merged",
+      "target": "agent-readiness",
+      "reason": "The AgentRC report card, policy, generation, eval, and routing now carry the readiness story; PR models and evidence bundles live in Copilot on GitHub and Copilot Governance.",
+      "decisionId": "agent-readiness"
+    },
+    {
       "source": "copilot-hooks",
       "status": "merged",
       "target": "harness-fundamentals",

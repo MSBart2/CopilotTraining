@@ -6,7 +6,7 @@ audience: [platform-engineer, architect, security]
 level: applied
 duration: 45
 format: case-study
-decision: "How can Copilot work against live Azure resources through Azure MCP, starting from a read-only identity and granting write access deliberately?"
+decision: "How can agents act on live domain state with least-privilege authority?"
 prerequisites: [copilot-cli]
 related: [mcp-apps, copilot-with-foundry]
 references:

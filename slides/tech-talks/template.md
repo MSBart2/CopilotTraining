@@ -21,12 +21,13 @@ Tech talks are practitioner-facing. Make them concrete, current, and capability-
 
 ## Deck Structure
 
-Every tech-talk deck has 6 fixed slides — 3 opening, 3 closing — with content slides in between.
+Every tech-talk deck has 7 fixed slides — 3 opening, 4 closing — with content slides in between, plus an optional Agenda slide.
 
 ```
 Slide 1 — Title              ← TitleSlide
 Slide 2 — Core Question      ← CoreQuestionSlide (REQUIRED)
-Slide 3 — Table of Contents  ← TocSlide (REQUIRED)
+Slide 3 — Agenda             ← AgendaSlide (OPTIONAL; on request)
+Slide 3/4 — Table of Contents ← TocSlide (REQUIRED)
 ...content slides...
 N-3     — Before/After       ← BeforeAfterSlide (REQUIRED)
 N-2     — What You Can Do Today  ← WhatYouCanDoTodaySlide (REQUIRED)
@@ -34,7 +35,7 @@ N-1     — References             ← ReferencesSlide (REQUIRED)
 N       — Thank You              ← ThankYouSlide (REQUIRED)
 ```
 
-Do **not** add an Agenda slide. Outcome framing belongs in Core Question / TOC; a separate AgendaSlide is retired.
+When a deck includes the optional Agenda slide, it carries exactly 3 attendee outcomes from `deck.agenda` (`title` ≤30 chars; `takeaway` and `whyItMatters` ≤110 chars). The TOC carries section navigation.
 
 All component imports go in a single `<script setup>` block at the top of the deck. Import only what the deck uses:
 
@@ -43,6 +44,7 @@ All component imports go in a single `<script setup>` block at the top of the de
 // Required scaffold (all decks)
 import TitleSlide from './components/structure/TitleSlide.vue'
 import CoreQuestionSlide from './components/structure/CoreQuestionSlide.vue'
+import AgendaSlide from './components/structure/AgendaSlide.vue' // optional
 import TocSlide from './components/structure/TocSlide.vue'
 import SectionOpenerSlide from './components/structure/SectionOpenerSlide.vue'
 import BeforeAfterSlide from './components/structure/BeforeAfterSlide.vue'

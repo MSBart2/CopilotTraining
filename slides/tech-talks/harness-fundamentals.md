@@ -11,7 +11,7 @@ drawings:
 transition: slide-left
 title: Harness Fundamentals
 mdc: true
-section: "Foundations"
+section: "Extend and Embed"
 status: active
 updated: 2026-10-26
 ---
@@ -37,7 +37,7 @@ import FrameworkMappingRowsSlide from './components/FrameworkMappingRowsSlide.vu
   title="Harness Fundamentals"
   subtitle="Getting Inside the Agent Loop"
   tagline="Host Copilot&#39;s agent loop in your own code, decide what it sees, and keep the repository floor underneath."
-  meta="Foundations · CopilotTraining Tech Talk · 60 min · @github/copilot-sdk 1.0.26"
+  meta="Extend and Embed · CopilotTraining Tech Talk · 60 min · @github/copilot-sdk 1.0.26"
 />
 
 <!--

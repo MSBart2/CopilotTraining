@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T17:47:01.036Z",
+  "generatedAt": "2026-10-26T17:53:27.050Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 33,
@@ -118,6 +118,13 @@
       "decisionId": "taxonomy-restructure"
     },
     {
+      "source": "agentic-sdlc",
+      "status": "merged",
+      "target": "agent-readiness",
+      "reason": "The AgentRC report card, policy, generation, eval, and routing now carry the readiness story; PR models and evidence bundles live in Copilot on GitHub and Copilot Governance.",
+      "decisionId": "agent-readiness"
+    },
+    {
       "source": "copilot-hooks",
       "status": "merged",
       "target": "harness-fundamentals",
@@ -139,7 +146,10 @@
       "decisionId": "harness-fundamentals"
     }
   ],
-  "redirectErrors": [],
+  "redirectErrors": [
+    "Redirect source is not archived: agentic-sdlc",
+    "Redirect target is not active and deployed: agent-readiness"
+  ],
   "talks": [
     {
       "slug": "agent-teams",
@@ -1714,7 +1724,7 @@
       "status": "active",
       "portfolioState": "deployed",
       "updated": "2026-10-26",
-      "section": "Foundations",
+      "section": "Extend and Embed",
       "audience": [
         "developer",
         "platform-engineer",
@@ -1733,14 +1743,14 @@
         "copilot-on-github",
         "enterprise-patterns"
       ],
-      "deckSection": "Foundations",
+      "deckSection": "Extend and Embed",
       "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/harness-fundamentals/README.md",
           "exists": true,
-          "bytes": 32320,
-          "modified": "2026-10-26T17:09:32.373Z"
+          "bytes": 32325,
+          "modified": "2026-10-26T17:53:16.973Z"
         },
         "recipe": {
           "path": "tech-talks/harness-fundamentals/deck.recipe.yml",
@@ -1751,8 +1761,8 @@
         "deck": {
           "path": "slides/tech-talks/harness-fundamentals.md",
           "exists": true,
-          "bytes": 48710,
-          "modified": "2026-10-26T17:35:56.831Z"
+          "bytes": 48715,
+          "modified": "2026-10-26T17:53:16.985Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/harness-fundamentals/agenda.md",

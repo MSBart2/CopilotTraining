@@ -1,7 +1,7 @@
 ---
 status: active
 updated: 2026-10-27
-section: "Foundations"
+section: "Extend and Embed"
 ---
 
 # Harness Fundamentals: Plan (Revision 2, SDK-led)
@@ -68,7 +68,7 @@ Revision 2 adds these evidence gates, all to be observed before the README claim
 ### Planning defaults
 
 - **Title and slug:** Harness Fundamentals / `harness-fundamentals` (unchanged).
-- **Duration:** 60 minutes. **Level:** applied. **Section:** Foundations.
+- **Duration:** 60 minutes. **Level:** applied. **Section:** Extend and Embed.
 - **Language:** TypeScript only, run with `tsx`. SDK `@github/copilot-sdk` 1.0.26, pinned.
 - **Prerequisites:** A Copilot subscription (or BYOK), Node 20+, comfort with async TypeScript. No SDK experience required.
 - **Running repository:** FanHub (`node/` track), cloned at a pinned commit so every run starts clean.

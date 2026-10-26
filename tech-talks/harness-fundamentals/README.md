@@ -1,7 +1,7 @@
 ---
 status: active
 updated: 2026-10-26
-section: "Foundations"
+section: "Extend and Embed"
 audience: [developer, platform-engineer, architect]
 level: applied
 duration: 60

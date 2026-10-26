@@ -62,7 +62,7 @@ Before we go further — here's the quick decision:
 | Your situation | Use ACP? | Alternative |
 |---------------|----------|-------------|
 | Building or using a **non-VS Code editor** that wants Copilot agent features | ✅ Yes | — |
-| Building **CI/CD or automation** that needs multi-turn agent conversations | ✅ Yes, when the tool speaks a protocol other agents can also serve | [Copilot SDK](../copilot-sdk/) when your own code calls a typed Copilot library; `copilot -p` for single-shot commands |
+| Building **CI/CD or automation** that needs multi-turn agent conversations | ✅ Yes | `copilot -p` for single-shot commands |
 | Coordinating **multiple AI agents** across repositories | ✅ Yes | — |
 | Already using **VS Code + Copilot** and happy | ❌ No | Built-in integration is simpler |
 | Building **tools that agents can use** | ❌ No | Use MCP instead (see [MCP Apps](../mcp-apps/)) |
@@ -356,7 +356,6 @@ npm run dev
 | Option | When to Use | Trade-off |
 |--------|-------------|-----------|
 | **ACP** | Editor ↔ Agent communication; multi-turn, stateful, permission-mediated | Requires implementing ACP client |
-| **[Copilot SDK](../copilot-sdk/)** | Your application calls Copilot through a typed library (Python, TypeScript, Go, .NET) and owns prompts, tools, and business logic | Copilot-specific; ACP keeps the client portable across agents |
 | **MCP** | Agent ↔ Tool integration (filesystem, APIs, databases) | Complementary to ACP, not a replacement [^11] |
 | **Copilot Extensions** | Extend Copilot within VS Code/GitHub | Locked to GitHub's platforms |
 | **`copilot -p`** | Simple single-shot CLI commands | No sessions, no streaming, no permissions |

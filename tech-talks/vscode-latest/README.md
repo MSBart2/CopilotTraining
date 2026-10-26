@@ -264,8 +264,6 @@ Q: What will the model do in this session?
 
 The highest-leverage feature many teams still skip is not a model or a tool — it is a **window**. The side Chat view is fine for code-adjacent questions. The **Agents window** is the surface built for agent-first work: start and monitor sessions across workspaces, review changes beside the conversation, and run concurrent efforts without burying them in one editor sidebar.[^6]
 
-This section covers the window and the controls that make parallel sessions visible. When those sessions need to coordinate — a planner hands work to an implementer, tests decide when the run stops, and a reviewer checks the result — [Local Agentic SDLC](../local-agentic-sdlc/) teaches that orchestration pattern.
-
 ### Open It (Awareness Before Features)
 
 If the audience takes nothing else from this section, take this: open the Agents window once and keep it available.
@@ -610,7 +608,6 @@ Q: What does the workflow need?
 ## Related Patterns
 
 - **[Copilot CLI](../copilot-cli/)** — CLI session sidebar, `/worktree`, and `/rewind` commands complement the Agents window for terminal-first workflows
-- **[Local Agentic SDLC](../local-agentic-sdlc/)** — Coordinates parallel agents through plan, implement, test, review, and integrate, with evidence deciding when the run stops
 - **[Custom Agents & Skills](../copilot-primitives/)** — `.agent.md` harness configuration, Agent Skills, and hooks that work across local and remote sessions
 - **[Copilot CLI: Local and Cloud Sandboxes](../copilot-cli/README.md#local-and-cloud-sandboxes-public-preview)** — Sandbox configuration, essential for any remote agent host deployment
 - **[Workshop: MCP Servers](../../workshop/05-mcp-servers/)** — MCP configuration patterns that pair with enterprise MCP allowlists
