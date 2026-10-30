@@ -12,7 +12,7 @@ transition: slide-left
 title: MCP Apps - Rich Interactive UI in Chat
 module: tech-talks/mcp-apps
 mdc: true
-status: active
+status: archived
 updated: 2026-02-01
 ---
 

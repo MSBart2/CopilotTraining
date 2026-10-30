@@ -1,5 +1,5 @@
 ---
-status: active
+status: archived
 updated: 2026-02-01
 section: "Extend and Embed"
 audience: [developer, platform-engineer]

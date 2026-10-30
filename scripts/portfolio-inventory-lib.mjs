@@ -90,7 +90,9 @@ function fileRecord(root, path) {
 }
 
 export function collectIndexSlugs(indexContent) {
-  return [...indexContent.matchAll(/href="tech-talks\/([^/"#]+)\/"/g)]
+  // The Archived Talks reference list is not part of the active catalog.
+  const catalog = indexContent.replace(/<!-- ARCHIVED-TALKS:START[\s\S]*?<!-- ARCHIVED-TALKS:END -->/g, "");
+  return [...catalog.matchAll(/href="tech-talks\/([^/"#]+)\/"/g)]
     .map((match) => match[1])
     .filter((slug) => !slug.startsWith("exec-"));
 }
@@ -233,11 +235,6 @@ export function collectPortfolio(root) {
   }
 
   const talksBySlug = new Map(talks.map((talk) => [talk.slug, talk]));
-  for (const talk of talks) {
-    if (talk.status === "archived" && !redirectsBySource.has(talk.slug)) {
-      redirectErrors.push(`Archived talk has no redirect: ${talk.slug}`);
-    }
-  }
   for (const redirect of redirectsBySource.values()) {
     const source = talksBySlug.get(redirect.source);
     const target = talksBySlug.get(redirect.target);

@@ -933,7 +933,8 @@
     #start-here:target,
     #tech-talks:target,
     #workshop:target,
-    #related-repos:target {
+    #related-repos:target,
+    #archived-talks:target {
       position: relative;
       z-index: 1;
       outline: 1px solid color-mix(in srgb, var(--target-accent) 72%, transparent);
@@ -949,6 +950,43 @@
     #tech-talks { --target-accent: #22d3ee; }
     #workshop { --target-accent: #fb923c; }
     #related-repos { --target-accent: #a855f7; }
+    #archived-talks { --target-accent: #94a3b8; }
+
+    .section.archived {
+      background: var(--section-bg);
+    }
+
+    .archived-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 0.4rem 2rem;
+    }
+
+    .archived-list li {
+      padding: 0.55rem 0;
+      border-bottom: 1px solid var(--section-divider);
+      line-height: 1.45;
+    }
+
+    .archived-list a {
+      color: var(--text);
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .archived-list a:hover {
+      text-decoration: underline;
+    }
+
+    .archived-desc {
+      display: block;
+      margin-top: 0.15rem;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
 
     @keyframes target-halo {
       from {
@@ -1550,6 +1588,7 @@
       <a href="#tech-talks"><span class="catalog-nav-index">02</span>Tech talks</a>
       <a href="#workshop"><span class="catalog-nav-index">03</span>Workshop</a>
       <a href="#related-repos"><span class="catalog-nav-index">04</span>Related repos</a>
+      <a href="#archived-talks"><span class="catalog-nav-index">05</span>Archived</a>
     </nav>
 
     <section class="onboarding-path" id="start-here" aria-labelledby="start-here-title">
@@ -1707,14 +1746,6 @@
             <h2>Azure MCP and Skills</h2>
             <p>Apply domain tools to live Azure state with explicit identity, evidence, and least-privilege authority.</p>
           </a>
-          <a href="tech-talks/copilot-acp/" class="card">
-            <h2>Copilot ACP</h2>
-            <p>Connect external clients to Copilot agents while preserving session and permission boundaries.</p>
-          </a>
-          <a href="tech-talks/mcp-apps/" class="card">
-            <h2>MCP Apps</h2>
-            <p>Return an interactive interface when a text response cannot support the user’s next decision.</p>
-          </a>
           <a href="tech-talks/copilot-with-foundry/" class="card">
             <h2>GitHub Copilot with Microsoft Foundry</h2>
             <p>Add governed organizational knowledge when repository context cannot explain intent.</p>
@@ -1831,6 +1862,109 @@
         </a>
       </div>
     </div>
+
+    <!-- Archived Talks Section -->
+    <!-- ARCHIVED-TALKS:START — reference only; archived content is frozen and excluded from the active catalog -->
+    <div class="section archived" id="archived-talks">
+      <div class="section-header">
+        <span class="section-icon">🗄️</span>
+        <div>
+          <h2 class="section-title">Archived Talks</h2>
+          <p class="section-description">Earlier talks kept for reference. Their content is frozen, and the active talks above carry the current material.</p>
+        </div>
+      </div>
+      <ul class="archived-list">
+          <li>
+            <a href="tech-talks/agent-teams/">Agent Teams</a>
+            <span class="archived-desc">From subagents to autonomous teams. The complete stack: context isolation, role specialists (Squad), background agents + worktrees, and multi-model deliberation (AgentCouncil).</span>
+          </li>
+          <li>
+            <a href="tech-talks/exec-delivery/">Agentic Delivery</a>
+            <span class="archived-desc">No instruments, no delivery. The enterprise agentic imperative — why verification infrastructure is the real investment.</span>
+          </li>
+          <li>
+            <a href="tech-talks/exec-economics/">Agentic Economics</a>
+            <span class="archived-desc">The $2–5/hour agent reality. Making the business case — ROI math, the J-curve, and three concrete asks.</span>
+          </li>
+          <li>
+            <a href="tech-talks/agentic-journey/">Agentic Journey</a>
+            <span class="archived-desc">From "assign to copilot" to full SDLC transformation. The 5-phase incremental path with 4-workflow architecture and historical context search.</span>
+          </li>
+          <li>
+            <a href="tech-talks/exec-labor/">Agentic Labor</a>
+            <span class="archived-desc">AI tools addressed 33% of the labor problem. The multiplier model for capturing the other 67%.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-acp/">Copilot ACP</a>
+            <span class="archived-desc">Connect external clients to Copilot agents while preserving session and permission boundaries.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-chat-internals/">Copilot Chat Internals</a>
+            <span class="archived-desc">Under the hood diagnostics. Chat Debug View, customization diagnostics, and extension logs for systematic troubleshooting.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-code-review/">Copilot Code Review</a>
+            <span class="archived-desc">Investigate advisory PR findings, test useful corrections, and keep approval with the human reviewer.</span>
+          </li>
+          <li>
+            <a href="tech-talks/context-engineering/">Copilot Context Engineering</a>
+            <span class="archived-desc">Place context by owner, inspect delivery through the request path, and prove compliance with independent evidence.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-hooks/">Copilot Hooks</a>
+            <span class="archived-desc">Programmable governance for AI agents. Real-time prevention, audit trails, and compliance enforcement at execution time.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-memory/">Copilot Memory</a>
+            <span class="archived-desc">Cross-session context persistence. Store preferences, project context, and workflow patterns that persist across all conversations.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-sdk/">Copilot SDK</a>
+            <span class="archived-desc">Stop building AI infrastructure. Production Copilot agent runtime in 10 lines — CLI tools, Web APIs, and scheduled automations shipping this sprint.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-web/">From Issue to Pull Request</a>
+            <span class="archived-desc">Delegate bounded repository work and review the resulting draft pull request as an evidence bundle.</span>
+          </li>
+          <li>
+            <a href="tech-talks/repo-to-feature/">From Repo to Feature</a>
+            <span class="archived-desc">Guide one feature from an unfamiliar repo to a risk-reviewed plan, and leave behind reusable instructions, prompts, skills, and plans.</span>
+          </li>
+          <li>
+            <a href="tech-talks/agentic-workflows/">GitHub Agentic Workflows</a>
+            <span class="archived-desc">Repository automation with AI agents. Write workflows in Markdown, compiled to secure GitHub Actions with safe-output validation.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-code-quality/">GitHub Code Quality</a>
+            <span class="archived-desc">Inspect a human-accepted Autofix and prove when a configured coverage rule blocks or unblocks merge.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-app/">GitHub Copilot App</a>
+            <span class="archived-desc">From one assistant to an agent fleet — parallel dispatch, worktree isolation, Canvas control, and Agent Merge. Five agents, five issues, zero branch conflicts.</span>
+          </li>
+          <li>
+            <a href="tech-talks/copilot-governance/">GitHub Copilot Governance</a>
+            <span class="archived-desc">Carry one bounded change through visible runtime decisions, reviewable evidence, and authorized merge.</span>
+          </li>
+          <li>
+            <a href="tech-talks/mcp-apps/">MCP Apps</a>
+            <span class="archived-desc">Return an interactive interface when a text response cannot support the user’s next decision.</span>
+          </li>
+          <li>
+            <a href="tech-talks/multi-agent-coordination/">Multi-Agent Coordination</a>
+            <span class="archived-desc">Split work only when boundaries earn it, steer isolated workstreams through visible evidence, and integrate under named authority.</span>
+          </li>
+          <li>
+            <a href="tech-talks/pr-trust-stack/">PR Trust Stack</a>
+            <span class="archived-desc">Assign every pre-merge signal a role, an owner, and a governed path from evidence to authority.</span>
+          </li>
+          <li>
+            <a href="tech-talks/unattended-agents/">Unattended Agents</a>
+            <span class="archived-desc">Agents that repeat a task without you and stop on evidence. A manual kickoff or Copilot CLI /every runs each pass, shared state coordinates the crew, and three controls — each with a named enforcer — bound every run.</span>
+          </li>
+      </ul>
+    </div>
+    <!-- ARCHIVED-TALKS:END -->
 
   </div>
   <script>

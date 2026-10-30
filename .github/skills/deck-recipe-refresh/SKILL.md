@@ -1,6 +1,6 @@
 ---
 name: deck-recipe-refresh
-description: "Use after an approved content refresh when recipeReview.required is true, or when the user asks to refresh an existing recipe. Preserves the current recipe as a baseline and requires an independent cross-model critique before structural changes are finalized. Triggers: refresh recipe, changelog recipe review, approve recipe, update existing deck recipe."
+description: "Use after an approved content refresh when recipeReview.required is true, or when the user asks to refresh an existing recipe. Preserves the current recipe as a baseline; the user's approval finalizes structural changes. Triggers: refresh recipe, changelog recipe review, approve recipe, update existing deck recipe."
 infer: true
 ---
 
@@ -34,12 +34,12 @@ Do not read the existing slide deck. The README, refresh plan, and recipe are th
 
 ## Review depth
 
-- Compact (default when this skill runs): primary analysis, independent cross-model critique, then reconciliation.
-- Full: primary analysis must include at least one credible alternate structure before the independent critique. Use only for `updateLevel: structural`, `recipeImpact: restructure`, or `slideImpact: replace-demo`.
+- Compact (default when this skill runs): one analysis, then user approval.
+- Full: the analysis includes at least one credible alternate structure and the reason the chosen structure wins. Use only for `updateLevel: structural`, `recipeImpact: restructure`, or `slideImpact: replace-demo`.
 
 ## Review Question
 
-Give the primary reviewer and independent reviewer the same extracted context and ask:
+Answer this question from the extracted context:
 
 > Does the approved evidence require changing the talk's thesis, section order,
 > weighting, highlights, agenda, or demos? Preserve intentional decisions unless
@@ -55,30 +55,9 @@ The context must include:
 - User emphasis from the refresh plan
 - Constraints from the standard recipe review skill
 
-## Mandatory Independent Review Gate
+## Recipe Analysis
 
-Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
-
-1. Produce a primary recommendation that identifies how the product model or technical thesis changed, protects practical demos and factual release status, and minimizes unnecessary churn.
-2. Select the review mechanism from the current host. Never launch one Copilot host from another:
-	- **VS Code:** launch one review subagent with `runSubagent`, explicitly selecting an available model from a different model family than the primary model. Give it the complete extracted context and adversarial brief. Do not invoke the `copilot` CLI from VS Code.
-	- **Copilot CLI:** ask the main CLI agent to delegate the complete brief to its built-in **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
-3. In Copilot CLI, use:
-	```powershell
-	$prompt = @'
-	You are the main GitHub Copilot CLI agent. Do not perform this review yourself.
-	Delegate the complete review brief below to your built-in Rubber Duck tool, wait for
-	its response, and return the critique with explicit evidence that delegation occurred.
-
-	[COMPLETE EXTRACTED CONTEXT AND ADVERSARIAL REVIEW PROMPT]
-	'@
-	copilot --prompt $prompt --no-ask-user
-	```
-4. Do not role-play the independent reviewer in the primary model. Wait for the separate review and reconcile its objections explicitly before finalizing.
-5. Accept a review only when it comes from the selected independent mechanism and includes the requested critique. For CLI, require explicit Rubber Duck delegation evidence. For VS Code, record the subagent model in the reconciliation.
-6. If the host-native independent reviewer is unavailable, choose another available model family in the same host. If no cross-model reviewer is available, record the unavailable gate, continue the primary review, and mark the recipe `# REVIEW PENDING: independent cross-model critique unavailable`. Keep `refresh.validation.recipeApproved: false` until an independent review completes.
-
-The reconciled result must return:
+Produce one recommendation that identifies how the product model or technical thesis changed, protects practical demos and factual release status, and minimizes unnecessary churn. The user's approval is the review gate. The analysis returns:
 
 1. `decision`: `preserve`, `revise`, or `restructure`
 2. A short rationale tied to accepted refresh items
@@ -92,7 +71,7 @@ The reconciled result must return:
 - `revise`: Keep the section order and thesis; adjust emphasis, notes, agenda, or highlights.
 - `restructure`: Change the thesis or section order because a headline update changes the operating model or centerpiece workflow.
 
-A `structural` refresh does not force `restructure`; it forces explicit cross-model consideration.
+A `structural` refresh does not force `restructure`; it forces an explicit alternate-structure check.
 
 ## Write and Report
 
@@ -100,7 +79,7 @@ A `structural` refresh does not force `restructure`; it forces explicit cross-mo
 2. Add a concise header comment containing the refresh date, review decision, and rationale.
 3. Validate YAML and the standard recipe quality checks.
 4. Set `refresh.validation.recipeApproved: true` in `content.refresh.yml`.
-5. Report the decision and material recipe changes before slide generation.
+5. Report the decision and material recipe changes, and wait for user approval before slide generation.
 
 ## Post-Recipe Workflow
 

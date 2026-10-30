@@ -1,9 +1,9 @@
 ---
 name: exec-recipe-review
 description: >
-  Review an exec-talk's README and produce an exec.recipe.yml. Requires an independent
-  cross-model critique of section weighting, executive audience fit, narrative
-  arc, and action clarity. Always overwrites any existing recipe. Triggers: "review the talk",
+  Review an exec-talk's README and produce an exec.recipe.yml covering section weighting,
+  executive audience fit, narrative arc, and action clarity. The user's approval
+  is the review gate. Always overwrites any existing recipe. Triggers: "review the talk",
   "create the recipe", "is this landing for execs", "section weighting", "coverage gap",
   "recipe", "executive framing".
 infer: true
@@ -11,7 +11,7 @@ infer: true
 
 # Exec Recipe Review Skill
 
-Read the exec-talk README, analyze its structure with a primary reviewer plus an independent cross-model critique, and write `exec.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Slide Generator when building exec-talk decks.
+Read the exec-talk README, analyze its structure, and write `exec.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Slide Generator when building exec-talk decks.
 
 **Key Constraints:**
 - **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the leadership decision, evidence, ownership, authority boundary, and organizational test when consolidating the README. Context that does not change a decision has not earned executive airtime.
@@ -36,7 +36,7 @@ Read the exec-talk README, analyze its structure with a primary reviewer plus an
 
 ## Pre-Flight: Gather Source Material
 
-Before starting the review, read all three sources. The independent-review brief must include the full context — the reviewer must not be expected to read files itself.
+Before starting the review, read all three sources.
 
 ```
 1. tech-talks/exec-<topic>/README.md                                     — full section content + key metrics
@@ -55,9 +55,9 @@ From these, extract:
 
 ---
 
-## Primary Analysis
+## Structural Analysis
 
-Perform one primary structural analysis using the complete context block below. The independent review gate that follows provides the separate adversarial perspective.
+Perform one structural analysis using the complete context block below. Challenge your own first answer: name the strongest alternate structure and the reason the chosen one wins.
 
 ### Context Block Template
 
@@ -85,7 +85,7 @@ KNOWN MATERIAL:
 - [Any competitive data, cost figures, or risk framing that exists]
 ```
 
-### Primary Review Prompt
+### Review Prompt
 
 ```
 [CONTEXT BLOCK]
@@ -98,39 +98,14 @@ What change would most improve it, and why?
 3. Identify which judgment lens or lenses the arc develops and where leaders can test the decision in their organization.
 4. Reframe or remove implementation detail and content that has not earned executive airtime.
 5. Produce a concrete `sectionOrder`, emphasis levels, and highlight changes with rationale.
-6. Flag open questions and at least one credible alternate structure for the independent reviewer to challenge.
+6. Flag open questions and at least one credible alternate structure, with the reason the chosen structure wins.
 ```
 
 ---
 
-## Mandatory Independent Review Gate
+## Final Recipe Direction
 
-Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
-
-1. Select the review mechanism from the current host. Never launch one Copilot host from another:
-  - **VS Code:** launch one review subagent with `runSubagent`, explicitly selecting an available model from a different model family than the primary model. Give it the complete context block and adversarial review prompt. Do not invoke the `copilot` CLI from VS Code.
-  - **Copilot CLI:** ask the main CLI agent to delegate the complete brief to its built-in **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
-2. In Copilot CLI, use:
-  ```powershell
-  $prompt = @'
-  You are the main GitHub Copilot CLI agent. Do not perform this review yourself.
-  Delegate the complete review brief below to your built-in Rubber Duck tool, wait for
-  its response, and return the critique with explicit evidence that delegation occurred.
-
-  [COMPLETE CONTEXT BLOCK AND ADVERSARIAL REVIEW PROMPT]
-  '@
-  copilot --prompt $prompt --no-ask-user
-  ```
-3. Require the independent reviewer to attack the proposed business question, decision journey, section order, weighting, credibility, timing context, action clarity, voice compliance, and content that has not earned executive airtime.
-4. Do not role-play the independent reviewer in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
-5. Accept a review only when it comes from the selected independent mechanism and includes the requested critique. For CLI, require explicit Rubber Duck delegation evidence. For VS Code, record the subagent model in the reconciliation.
-6. If the host-native independent reviewer is unavailable, choose another available model family in the same host. If no cross-model reviewer is available, record the unavailable gate, perform the primary review, and mark the recipe `# REVIEW PENDING: independent cross-model critique unavailable`. This degraded path preserves progress while preventing the recipe from being treated as fully reviewed.
-
----
-
-## Reconciliation and Final Recipe Direction
-
-Reconcile the primary analysis with the independent critique. The reviewer is advisory, but every material objection must be accepted or rejected with a content-based reason before producing:
+Turn the analysis into these outputs:
 
 1. **Verdict** (2-3 sentences) — the core structural problem and fix for this executive audience
 2. **`arcToc`** — one line ≤ 80 chars, section names joined by ` → ` (use "The X" naming pattern if appropriate)
@@ -151,11 +126,11 @@ Write the **complete** `exec.recipe.yml` file — all fields. Source them as fol
 | `deck.title` | README H1 title |
 | `deck.subtitle` | README subtitle line or guiding question, condensed |
 | `deck.tagline` | README one-line promise / focus (from intro block) |
-| `deck.arcToc` | Reconciled review output |
-| `deck.arcNarrative` | Reconciled review output |
-| `deck.sectionOrder` | Reconciled review output |
-| `deck.sectionModes` | Reconciled review output |
-| `deck.highlightMoments` | Reconciled review output |
+| `deck.arcToc` | Review output |
+| `deck.arcNarrative` | Review output |
+| `deck.sectionOrder` | Review output |
+| `deck.sectionModes` | Review output |
+| `deck.highlightMoments` | Review output |
 | `deck.preamble` | `[]` for a self-contained briefing; use `src` entries only when a real shared context deck exists |
 | `deck.appendix` | `[]` unless the talk has explicit appendix content |
 
@@ -171,7 +146,7 @@ Use `EXEC-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 
 ## Quality Checks Before Committing
 
-- [ ] **Max 4 sections** — Reconciled output has exactly 4 or fewer sections. If more, consolidate.
+- [ ] **Max 4 sections** — The recipe has exactly 4 or fewer sections. If more, consolidate.
 - [ ] Every section in the new `sectionOrder` exists as a `## ` heading in the README
 - [ ] No section has been marked `high` that contains primarily implementation detail — reframe or cut
 - [ ] `arcToc` is a single line ≤ 80 chars using ` → ` separators between section names

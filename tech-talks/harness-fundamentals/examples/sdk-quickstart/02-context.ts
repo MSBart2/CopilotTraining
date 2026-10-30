@@ -1,5 +1,5 @@
-// Step 3: decide who the agent is. `customize` edits one section of the system prompt and keeps the SDK's safety sections.
-//   npx tsx sdk-quickstart/03-persona.ts
+// Step 2 · Context: decide who the agent is. `customize` edits one section of the system prompt and leaves the others in place.
+//   npx tsx sdk-quickstart/02-context.ts
 import { CopilotClient, approveAll } from "@github/copilot-sdk";
 
 const client = new CopilotClient();

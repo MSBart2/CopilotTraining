@@ -1,5 +1,5 @@
-// Step 5: decide what the agent can do. Every mediated read, write, and shell call asks your handler first.
-//   npx tsx sdk-quickstart/05-permissions.ts
+// Step 4 · Control: decide what the agent can do. Every mediated read, write, and shell call asks your handler first.
+//   npx tsx sdk-quickstart/04-control.ts
 import { CopilotClient, type PermissionHandler } from "@github/copilot-sdk";
 
 const onPermissionRequest: PermissionHandler = (request) => {

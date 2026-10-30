@@ -29,6 +29,20 @@ test("collects only practitioner catalog slugs", () => {
   assert.deepEqual(collectIndexSlugs(html), ["copilot-cli"]);
 });
 
+test("archived reference list stays out of the active catalog", () => {
+  const html = '<a href="tech-talks/copilot-cli/"></a>'
+    + '<!-- ARCHIVED-TALKS:START -->\n<a href="tech-talks/mcp-apps/">MCP Apps</a>\n<!-- ARCHIVED-TALKS:END -->';
+  assert.deepEqual(collectIndexSlugs(html), ["copilot-cli"]);
+});
+
+test("archived talks need no redirect entry", () => {
+  const inventory = collectPortfolio(root);
+  const redirected = new Set(inventory.redirects.map(({ source }) => source));
+  const unredirected = inventory.talks.filter(({ slug, status }) => status === "archived" && !redirected.has(slug));
+  assert.ok(unredirected.length > 0);
+  assert.ok(!inventory.redirectErrors.some((error) => error.includes("has no redirect")));
+});
+
 test("active talks use runtime sections; legacy sections stay on archived talks", () => {
   const inventory = collectPortfolio(root);
   for (const talk of inventory.talks) {
@@ -47,11 +61,11 @@ test("active talks use runtime sections; legacy sections stay on archived talks"
 test("discovers the current consolidated practitioner portfolio", () => {
   const inventory = collectPortfolio(root);
   assert.equal(inventory.counts.totalTalks, 33);
-  assert.equal(inventory.counts.practitionerTalks, 16);
-  assert.equal(inventory.counts.archivedTalks, 17);
-  assert.equal(inventory.counts.deployedTalks, 16);
+  assert.equal(inventory.counts.practitionerTalks, 14);
+  assert.equal(inventory.counts.archivedTalks, 19);
+  assert.equal(inventory.counts.deployedTalks, 14);
   assert.equal(inventory.counts.candidateTalks, 0);
-  assert.equal(inventory.counts.catalogCards, 16);
+  assert.equal(inventory.counts.catalogCards, 14);
   assert.equal(inventory.counts.validTalks, inventory.counts.totalTalks);
   assert.equal(inventory.redirects.length, 17);
   assert.equal(new Set(inventory.talks.map(({ slug }) => slug)).size, inventory.counts.totalTalks);

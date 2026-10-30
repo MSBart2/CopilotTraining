@@ -1,5 +1,5 @@
-// Step 1: one client, one session, one answer. The SDK starts the bundled Copilot runtime for you.
-//   npx tsx sdk-quickstart/01-hello.ts
+// Step 1 · Loop: one client, one session, one answer. The SDK starts the bundled Copilot runtime, which runs the loop.
+//   npx tsx sdk-quickstart/01-loop.ts
 import { CopilotClient, approveAll } from "@github/copilot-sdk";
 
 const client = new CopilotClient();

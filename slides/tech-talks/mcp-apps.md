@@ -12,7 +12,7 @@ transition: slide-left
 title: MCP Apps
 mdc: true
 section: Extend and Embed
-status: active
+status: archived
 updated: 2026-04-22
 ---
 

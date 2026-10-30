@@ -1,8 +1,8 @@
 ---
 name: deck-recipe-review
 description: >
-  Review a tech-talk's README and produce a deck.recipe.yml. Requires an independent
-  cross-model critique of section weighting, narrative arc, and coverage gaps.
+  Review a tech-talk's README and produce a deck.recipe.yml covering section weighting,
+  narrative arc, and coverage gaps. The user's approval is the review gate.
   Always overwrites any existing recipe. Triggers: "review the talk", "create the recipe",
   "is this the best use of our time", "section weighting", "coverage gap", "recipe".
 infer: true
@@ -10,7 +10,7 @@ infer: true
 
 # Deck Recipe Review Skill
 
-Read the tech-talk README, analyze its structure with a primary reviewer plus an independent cross-model critique, and write `deck.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Tech Talk Slide Generator.
+Read the tech-talk README, analyze its structure, and write `deck.recipe.yml`. This skill **always produces a fresh recipe** — it does not preserve or patch an existing one. The recipe is the authoritative input for the Tech Talk Slide Generator.
 
 **Key Constraints:**
 - **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the practitioner decision, observable proof, boundary, and own-work transfer when consolidating the README. A section that only inventories features has not earned slide time.
@@ -35,7 +35,7 @@ Read the tech-talk README, analyze its structure with a primary reviewer plus an
 
 ## Pre-Flight: Gather Source Material
 
-Before starting the review, read all three sources. The independent-review brief must include the full context — the reviewer must not be expected to read files itself.
+Before starting the review, read all three sources.
 
 ```
 1. tech-talks/<topic>/README.md                                     — full section content + key artifacts
@@ -51,13 +51,13 @@ From these, extract:
 - The core question the talk answers
 - Key artifacts, metrics, and highlight moments
 - The specific concern the user raised (if invoked manually)
-- The direct-positive voice rules that every reviewer and the final recipe must follow
+- The direct-positive voice rules that the final recipe must follow
 
 ---
 
-## Primary Analysis
+## Structural Analysis
 
-Perform one primary structural analysis using the complete context block below. The independent review gate that follows provides the separate adversarial perspective.
+Perform one structural analysis using the complete context block below. Challenge your own first answer: name the strongest alternate structure and the reason the chosen one wins.
 
 ### Context Block Template
 
@@ -85,7 +85,7 @@ KNOWN MATERIAL:
 - [Any CLI commands or toolchain status that affects feasibility]
 ```
 
-### Primary Review Prompt
+### Review Prompt
 
 ```
 [CONTEXT BLOCK]
@@ -98,40 +98,15 @@ What change would most improve it, and why?
 3. Identify which judgment lens or lenses the arc develops and where the audience proves or transfers that judgment.
 4. Identify content to consolidate, demote, or remove rather than only adding material.
 5. Produce a concrete `sectionOrder`, emphasis levels, agenda, and highlight changes with rationale.
-6. Flag open questions and at least one credible alternate structure for the independent reviewer to challenge.
+6. Flag open questions and at least one credible alternate structure, with the reason the chosen structure wins.
 7. Rewrite every recommendation in direct-positive, possibility-led language suitable for reuse by the slide generator.
 ```
 
 ---
 
-## Mandatory Independent Review Gate
+## Final Recipe Direction
 
-Before writing the recipe, complete all of these steps without asking the user to remember or invoke them:
-
-1. Select the review mechanism from the current host. Never launch one Copilot host from another:
-  - **VS Code:** launch one review subagent with `runSubagent`, explicitly selecting an available model from a different model family than the primary model. Give it the complete context block and adversarial review prompt. Do not invoke the `copilot` CLI from VS Code.
-  - **Copilot CLI:** ask the main CLI agent to delegate the complete brief to its built-in **Rubber Duck** tool. Rubber Duck is not a selectable custom agent; never invoke it with `--agent "Rubber Duck"`.
-2. In Copilot CLI, use:
-  ```powershell
-  $prompt = @'
-  You are the main GitHub Copilot CLI agent. Do not perform this review yourself.
-  Delegate the complete review brief below to your built-in Rubber Duck tool, wait for
-  its response, and return the critique with explicit evidence that delegation occurred.
-
-  [COMPLETE CONTEXT BLOCK AND ADVERSARIAL REVIEW PROMPT]
-  '@
-  copilot --prompt $prompt --no-ask-user
-  ```
-3. Accept a review only when it comes from the selected independent mechanism and includes the requested critique. For CLI, require explicit Rubber Duck delegation evidence. For VS Code, record the subagent model in the reconciliation.
-4. Require the independent reviewer to attack the proposed thesis, section order, weighting, agenda, highlights, missing producer/consumer perspectives, content that has not earned slide time, and any recommendation that violates the tech-talk voice.
-5. Do not role-play the independent reviewer in the primary model. Wait for the separate review and preserve substantive disagreements for reconciliation.
-6. If the host-native independent reviewer is unavailable, choose another available model family in the same host. If no cross-model reviewer is available, record the unavailable gate, perform the primary review, and mark the recipe `# REVIEW PENDING: independent cross-model critique unavailable`. This degraded path preserves progress while preventing the recipe from being treated as fully reviewed.
-
----
-
-## Reconciliation and Final Recipe Direction
-
-Reconcile the primary analysis with the independent critique. The reviewer is advisory, but every material objection must be accepted or rejected with a content-based reason before producing. Rewrite inherited reviewer language into the direct-positive tech-talk voice; never copy contrastive phrasing into the recipe unchanged.
+Turn the analysis into these outputs, written in the direct-positive tech-talk voice:
 
 1. **Verdict** (2-3 sentences) — the core structural problem and fix
 2. **`arcToc`** — one line ≤ 80 chars, section names joined by ` → `
@@ -153,12 +128,12 @@ Write the **complete** `deck.recipe.yml` file — all fields. Source them as fol
 | `deck.title` | README H1 title |
 | `deck.subtitle` | README subtitle line or guiding question, condensed |
 | `deck.tagline` | README one-line promise / focus (from intro block) |
-| `deck.agenda` | Reconciled review output; exactly 3 attendee-facing outcomes |
-| `deck.arcToc` | Reconciled review output |
-| `deck.arcNarrative` | Reconciled review output |
-| `deck.sectionOrder` | Reconciled review output |
-| `deck.sectionModes` | Reconciled review output |
-| `deck.highlightMoments` | Reconciled review output |
+| `deck.agenda` | Review output; exactly 3 attendee-facing outcomes |
+| `deck.arcToc` | Review output |
+| `deck.arcNarrative` | Review output |
+| `deck.sectionOrder` | Review output |
+| `deck.sectionModes` | Review output |
+| `deck.highlightMoments` | Review output |
 
 Use `DECK-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field names, YAML structure, and inline comments. Apply the same voice rules to internal guidance and YAML comments because they are generator inputs. If there is an open decision from the review, append it as a YAML comment at the end of the file: `# OPEN DECISION: [question] — [paths and consequences]`.
 
@@ -172,11 +147,11 @@ Use `DECK-RECIPE-TEMPLATE.yml` (read during pre-flight) as the schema for field 
 
 ## Quality Checks Before Committing
 
-- [ ] **Max 4 sections** — Reconciled output has exactly 4 or fewer sections. If more, consolidate.
+- [ ] **Max 4 sections** — The recipe has exactly 4 or fewer sections. If more, consolidate.
 - [ ] Every section in the new `sectionOrder` exists as a major section (`##`) in the README
-- [ ] No section has been promoted to `high` that the independent reviewer flagged as risky without noting the risk
+- [ ] Every `high` section carries the talk's strongest proof or demonstration
 - [ ] `arcToc` is a single line ≤ 80 chars using ` → ` separators between section names
-- [ ] `arcNarrative` is a prose paragraph explaining the reconciled sequencing logic
+- [ ] `arcNarrative` is a prose paragraph explaining the sequencing logic
 - [ ] `agenda` contains exactly 3 entries, each with `title`, `takeaway`, and `whyItMatters`; entries promise outcomes rather than repeat the TOC
 - [ ] The open decision is documented in the file — don't silently absorb it
 - [ ] `highlightMoments` list is 3-5 items (not more — dilutes focus)

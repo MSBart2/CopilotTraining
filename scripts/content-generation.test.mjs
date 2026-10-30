@@ -95,16 +95,11 @@ test("executive review preserves the factual opportunity-framed voice", async ()
   assert.doesNotMatch(review, /Missing urgency|cost of not acting|cost of delay/i);
 });
 
-test("recipe reviews use the independent reviewer native to the current host", async () => {
+test("recipe reviews gate on user approval with no cross-model step", async () => {
   for (const path of recipeReviewMachinery) {
     const content = await read(path);
-    assert.match(content, /Never launch one Copilot host from another/);
-    assert.match(content, /VS Code:[\s\S]*runSubagent/);
-    assert.match(content, /different model family/);
-    assert.match(content, /Do not invoke the `copilot` CLI from VS Code/);
-    assert.match(content, /copilot --prompt \$prompt --no-ask-user/);
-    assert.match(content, /Rubber Duck is not a selectable custom agent/);
-    assert.match(content, /REVIEW PENDING: independent cross-model critique unavailable/);
+    assert.match(content, /user's approval/i);
+    assert.doesNotMatch(content, /cross-model|Rubber Duck|independent review gate|REVIEW PENDING/i);
   }
 });
 

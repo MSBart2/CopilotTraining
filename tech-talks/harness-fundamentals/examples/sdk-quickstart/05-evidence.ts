@@ -1,5 +1,5 @@
-// Step 2: watch the loop. Every delta, tool call, and result arrives as an event your app can render or store.
-//   npx tsx sdk-quickstart/02-stream.ts
+// Step 5 · Evidence: watch the loop. Every delta, tool call, and result arrives as an event your app can render, count, or store.
+//   npx tsx sdk-quickstart/05-evidence.ts
 import { CopilotClient, approveAll } from "@github/copilot-sdk";
 
 const client = new CopilotClient();

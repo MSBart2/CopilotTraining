@@ -34,7 +34,7 @@ Top-level container class: `section tech-talks`
 | `Agents at Your Keyboard` | ⌨️ | `agents-at-your-keyboard` | Run, steer, and verify agents locally in VS Code and the CLI | CLI, What's New in VS Code, local SDLC orchestration |
 | `Agents on GitHub` | ☁️ | `agents-on-github` | Hand work to agents GitHub runs, and inspect the evidence they return | Coding agent, Code Review, Code Quality, GitHub Agentic Workflows |
 | `Trust and Govern` | 🛡️ | `trust-and-govern` | Measure readiness, decide what blocks, and name who may approve or override | Agentic SDLC, Enterprise Patterns |
-| `Extend and Embed` | 🧩 | `extend-and-embed` | Add capabilities, interfaces, protocols, and governed domain context | Plugins, Harness Fundamentals, ACP, MCP Apps, Azure MCP, Foundry |
+| `Extend and Embed` | 🧩 | `extend-and-embed` | Add capabilities, interfaces, protocols, and governed domain context | Plugins, Harness Fundamentals, Azure MCP, Foundry |
 
 > **Taxonomy:** sections answer *where the agent runs and who starts it*. The judgment lenses — Context, Delegation, Verification, Authority — apply inside every talk; they are not sections.
 >
@@ -77,6 +77,8 @@ Cards in `index-custom.html` can have multiple states:
 
 Deprecated cards remain in the HTML for link preservation and historical records, but are visually muted (opacity 0.45, grayscale filter) and non-clickable.
 
+**Archived talks** (`status: archived`) leave the card grid and appear in the **Archived Talks** list at the bottom of the page as a title link plus the talk's last card description. Their decks still build and deploy, so every archived URL stays reachable for reference. Archived content is frozen: add a list entry when a talk is archived, and leave the talk itself untouched. The list sits between `<!-- ARCHIVED-TALKS:START -->` and `<!-- ARCHIVED-TALKS:END -->`, which the portfolio inventory excludes from the active catalog count.
+
 ---
 
 ## index-custom.html Structure Reference
@@ -98,6 +100,9 @@ Deprecated cards remain in the HTML for link preservation and historical records
 
 <div class="section repos">
   <div class="grid">       ← Related Repos (external links, not talk slides)
+
+<div class="section archived">
+  <ul class="archived-list"> ← Archived Talks (title + description, reference only)
 ```
 
 ---

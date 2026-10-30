@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-26T17:53:27.050Z",
+  "generatedAt": "2026-10-30T17:24:32.520Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 33,
-    "practitionerTalks": 16,
-    "archivedTalks": 17,
-    "deployedTalks": 16,
+    "practitionerTalks": 14,
+    "archivedTalks": 19,
+    "deployedTalks": 14,
     "candidateTalks": 0,
-    "catalogCards": 16,
+    "catalogCards": 14,
     "validTalks": 33
   },
   "warnings": [
@@ -398,19 +398,19 @@
           "path": "slides/companions/tech-talks/agentic-sdlc/agenda.md",
           "exists": true,
           "bytes": 375,
-          "modified": "2026-09-16T13:41:14.771Z"
+          "modified": "2026-10-26T17:57:08.809Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/agentic-sdlc/agenda.html",
           "exists": true,
           "bytes": 5869,
-          "modified": "2026-10-22T03:27:02.140Z"
+          "modified": "2026-10-26T17:57:08.813Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-sdlc/deck.pdf",
           "exists": true,
-          "bytes": 1947608,
-          "modified": "2026-09-16T14:10:50.410Z"
+          "bytes": 1947607,
+          "modified": "2026-10-26T17:57:24.269Z"
         }
       },
       "errors": []
@@ -549,7 +549,7 @@
     {
       "slug": "copilot-acp",
       "title": "GitHub Copilot ACP: Your Tool Just Got an AI Agent",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2025-07-25",
       "section": "Extend and Embed",
@@ -570,13 +570,13 @@
         "copilot-plugins"
       ],
       "deckSection": "Extend and Embed",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-acp/README.md",
           "exists": true,
-          "bytes": 20243,
-          "modified": "2026-10-26T15:25:34.399Z"
+          "bytes": 20245,
+          "modified": "2026-10-26T20:05:16.665Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-acp/deck.recipe.yml",
@@ -587,8 +587,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-acp.md",
           "exists": true,
-          "bytes": 18892,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 18894,
+          "modified": "2026-10-26T20:05:16.773Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-acp/agenda.md",
@@ -1733,7 +1733,7 @@
       "level": "applied",
       "duration": 60,
       "format": "core-talk",
-      "decision": "Which workflow deserves its own agent host, and what does that host let the agent see, use, and do?",
+      "decision": "Which of the five harness jobs do I take over for this workflow, and what does my host let the agent see, use, and do?",
       "prerequisites": [
         "copilot-cli"
       ],
@@ -1749,38 +1749,38 @@
         "readme": {
           "path": "tech-talks/harness-fundamentals/README.md",
           "exists": true,
-          "bytes": 32325,
-          "modified": "2026-10-26T17:53:16.973Z"
+          "bytes": 50111,
+          "modified": "2026-10-30T16:03:58.799Z"
         },
         "recipe": {
           "path": "tech-talks/harness-fundamentals/deck.recipe.yml",
           "exists": true,
-          "bytes": 11331,
-          "modified": "2026-10-26T17:14:32.786Z"
+          "bytes": 13190,
+          "modified": "2026-10-26T21:06:17.574Z"
         },
         "deck": {
           "path": "slides/tech-talks/harness-fundamentals.md",
           "exists": true,
-          "bytes": 48715,
-          "modified": "2026-10-26T17:53:16.985Z"
+          "bytes": 49959,
+          "modified": "2026-10-30T17:20:56.744Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/harness-fundamentals/agenda.md",
           "exists": true,
-          "bytes": 396,
-          "modified": "2026-10-26T17:37:04.039Z"
+          "bytes": 393,
+          "modified": "2026-10-30T17:23:04.312Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/harness-fundamentals/agenda.html",
           "exists": true,
-          "bytes": 5890,
-          "modified": "2026-10-26T17:37:04.044Z"
+          "bytes": 5891,
+          "modified": "2026-10-30T17:23:04.315Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/harness-fundamentals/deck.pdf",
           "exists": true,
-          "bytes": 2532849,
-          "modified": "2026-10-26T17:37:37.520Z"
+          "bytes": 2974137,
+          "modified": "2026-10-30T17:24:00.201Z"
         }
       },
       "errors": []
@@ -1855,7 +1855,7 @@
     {
       "slug": "mcp-apps",
       "title": "MCP Apps: Rich Interactive UI in Chat",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
       "updated": "2026-02-01",
       "section": "Extend and Embed",
@@ -1875,13 +1875,13 @@
         "copilot-azure-mcp"
       ],
       "deckSection": "Extend and Embed",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/mcp-apps/README.md",
           "exists": true,
-          "bytes": 40709,
-          "modified": "2026-10-23T20:00:10.672Z"
+          "bytes": 40711,
+          "modified": "2026-10-26T20:05:16.593Z"
         },
         "recipe": {
           "path": "tech-talks/mcp-apps/deck.recipe.yml",
@@ -1892,8 +1892,8 @@
         "deck": {
           "path": "slides/tech-talks/mcp-apps.md",
           "exists": true,
-          "bytes": 27725,
-          "modified": "2026-09-16T01:01:24.018Z"
+          "bytes": 27727,
+          "modified": "2026-10-26T20:05:16.728Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/mcp-apps/agenda.md",

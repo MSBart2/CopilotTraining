@@ -1,6 +1,6 @@
 ---
 name: ledger-tech-talk-refresh
-description: "Refresh existing tech talks from proposal-created decisions in .github/content-routing/ledger.json, or from a named talk even when the ledger is empty. Use for implementing the routing inbox, applying ledger proposals, refreshing impacted talks, processing the content refresh queue, or closing feed-driven talk updates. Orchestrates content.refresh.yml and README updates; cross-model recipe review and full slide regen only when the plan requires them."
+description: "Refresh existing tech talks from proposal-created decisions in .github/content-routing/ledger.json, or from a named talk even when the ledger is empty. Use for implementing the routing inbox, applying ledger proposals, refreshing impacted talks, processing the content refresh queue, or closing feed-driven talk updates. Orchestrates content.refresh.yml and README updates; recipe refresh and full slide regen only when the plan requires them."
 argument-hint: "[talk slug|all] [plan-only|apply]"
 ---
 
@@ -123,11 +123,11 @@ Complete one talk end to end before starting the next:
 Branch by the cheap-path table in `content-refresh`:
 
 - `reference` or `slideImpact: none`: validate README links; leave recipe and deck unless a visible slide claim is now false.
-- `content` with `recipeImpact: none|confirm` and `slideImpact: none|patch`: no cross-model review. Patch the existing deck if needed. Single-deck build only.
+- `content` with `recipeImpact: none|confirm` and `slideImpact: none|patch`: no recipe refresh. Patch the existing deck if needed. Single-deck build only.
 - `content` with `recipeImpact: revise` or `slideImpact: regenerate`: compact recipe refresh, then targeted slide work. Do not wipe the deck unless the recipe skeleton changed.
-- `structural`, `headline`, `recipeImpact: restructure`, or `slideImpact: replace-demo`: full `deck-recipe-refresh` with the host-native independent review gate, then Tech Talk Slide Generator, then single-deck build.
+- `structural`, `headline`, `recipeImpact: restructure`, or `slideImpact: replace-demo`: full `deck-recipe-refresh` and user approval of the recipe, then Tech Talk Slide Generator, then single-deck build.
 
-Never invoke cross-model recipe review to confirm a recipe you already intend to keep.
+Never run a recipe refresh to confirm a recipe you already intend to keep.
 
 When slides change:
 
@@ -171,7 +171,7 @@ A talk is complete only when:
 - Preview, experimental, GA, deprecated, and retired states are explicit.
 - The README remains reader-first rather than becoming a release-note dump.
 - `content.refresh.yml` accurately records approval and validation.
-- Required cross-model recipe review is complete.
+- Any required recipe refresh is approved by the user.
 - Required slides are regenerated and the single-deck build passes.
 - Index dates are synchronized after slide changes.
 - Ledger and generated reports agree.

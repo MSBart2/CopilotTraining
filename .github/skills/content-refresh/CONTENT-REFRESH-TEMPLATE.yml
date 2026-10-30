@@ -41,7 +41,7 @@ refresh:
     required: false
     question: >
       Required only for structural / restructure / replace-demo. Otherwise leave
-      false and skip cross-model recipe review.
+      false and skip the recipe refresh.
 
   validation:
     firstPartySourcesVerified: false

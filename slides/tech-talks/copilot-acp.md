@@ -12,7 +12,7 @@ transition: slide-left
 title: GitHub Copilot ACP
 mdc: true
 section: "Extend and Embed"
-status: active
+status: archived
 updated: 2026-06-10
 ---
 

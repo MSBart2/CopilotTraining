@@ -6,10 +6,13 @@ audience: [developer, platform-engineer, architect]
 level: applied
 duration: 60
 format: core-talk
-decision: "Which workflow deserves its own agent host, and what does that host let the agent see, use, and do?"
+decision: "Which of the five harness jobs do I take over for this workflow, and what does my host let the agent see, use, and do?"
 prerequisites: [copilot-cli]
 related: [copilot-primitives, custom-agents, copilot-on-github, enterprise-patterns]
 references:
+  - url: https://github.com/earendil-works/pi/tree/f9daca3480732d0042b1df3a6e27221f597a620d
+    label: "pi coding agent (MIT), pinned at f9daca3"
+    verified: 2026-10-26
   - url: https://github.com/github/copilot-sdk
     label: "GitHub Copilot SDK repository"
     verified: 2026-10-26
@@ -47,8 +50,8 @@ references:
 | Criterion | Assessment | Notes |
 |-----------|-----------|-------|
 | **Relevant** | 🟢 High | Every team has workflows that call for a specific perspective: a new hire walking the setup docs, a tester who knows only the API contract. The decision is which workflow earns its own agent host, and what that host lets the agent see, use, and do. |
-| **Compelling** | 🟢 High | Controlling what an agent *sees* turns a general coding agent into a specific tool. An agent restricted to the docs found that FanHub's two Node.js guides disagree on the backend port and on whether Docker is required, and it never opened a source file to get there. |
-| **Actionable** | 🟢 High | Five TypeScript quickstart steps from `npm install` to a permission handler, a shared visibility policy, 19 tests across the hook and the policy, and two apps the audience can point at its own repository today. |
+| **Compelling** | 🟢 High | A whole agent loop fits on one screen, and every hook or SDK callback fills one of five jobs inside it. Once the loop is visible, controlling what an agent *sees* becomes a design move: an agent restricted to the docs found that FanHub's two Node.js guides disagree on the backend port and on whether Docker is required, without opening a source file. |
+| **Actionable** | 🟢 High | A five-jobs checklist, five TypeScript quickstart steps from `npm install` to a permission handler, a shared visibility policy, 19 tests across the hook and the policy, and two apps the audience can point at its own repository today. |
 
 **Overall Status:** 🟢 Ready to use
 
@@ -56,66 +59,384 @@ references:
 
 ## The Promise
 
-The [Copilot SDK](https://github.com/github/copilot-sdk) gives your application the same agent loop that runs Copilot CLI: planning, tool calling, file edits, and shell commands.[^1] Your code supplies everything around the loop: the task, who the agent is, which tools it gets, what each call is allowed to touch, and what evidence you keep.
+Every coding agent is a model inside a **harness**, and a harness is just a loop: ask the model, run what it asks for, feed back the result, repeat. The loop has five jobs, and every hook or SDK callback in this talk steps in at one of them: running the loop, deciding what the model sees each turn, offering and executing tools, deciding which calls run, and recording what happened.
 
-Those choices are where an agent becomes a *tool*. This talk builds two of them against [FanHub](https://github.com/MSBart2/FanHub), a TV-show fan site with deliberately imperfect docs and about 46 catalogued bugs:
+This talk reads one small open-source harness, [pi](https://github.com/earendil-works/pi), to see all five jobs in plain code.[^8] Then it takes over those jobs in GitHub's harness through the [Copilot SDK](https://github.com/github/copilot-sdk), which gives your application the same agent loop that runs Copilot CLI.[^1] Two apps against [FanHub](https://github.com/MSBart2/FanHub), a TV-show fan site with deliberately imperfect docs and about 46 catalogued bugs, show what the jobs unlock:
 
 | App | What the agent may see | What it produces |
 |---|---|---|
 | **Fresh-eyes onboarding check** | The documentation and nothing else | A friction report: every place the setup docs and reality disagree |
 | **Blind test writer** | An API contract and a running server | A test suite written without the implementation, plus a referee's map of failures to known bugs |
 
-Both run in TypeScript on `@github/copilot-sdk` 1.0.26. Every behavior claim below is labeled **observed** (a live run on 2026-10-26) or **tested** (a deterministic unit test in [`examples/`](./examples/)).
+Both run in TypeScript on `@github/copilot-sdk` 1.0.26. Every behavior claim below is labeled **observed** (a live run on 2026-10-26) or **tested** (a deterministic unit test in [`examples/`](./examples/)). pi appears as read-only excerpts pinned to commit `f9daca3`; claims about Copilot stay at the surface the SDK exposes.
 
 ---
 
-<!-- 🎬 MAJOR SECTION: Why Host the Agent -->
-## Why Host the Agent
+<!-- 🎬 MAJOR SECTION: What a Harness Is -->
+## What a Harness Is
 
-### What the SDK gives you
+A harness is just a loop: ask the model, run what it asks for, feed back the result, repeat. Everything else in this talk is a place to step into that loop.
+
+### Five jobs: five places to step in
+
+| Job | The question it answers | Where pi does it |
+|---|---|---|
+| **Loop** | When does the agent take another turn, and when does it stop? | `runLoop` in `agent-loop.ts` |
+| **Context** | What does the model see on this turn? | `transformContext`, `convertToLlm`, `prepareRequest` |
+| **Tools** | What can the agent do, and how does each action run? | Tool definitions such as `write` and `find` |
+| **Control** | Which calls actually run? | `beforeToolCall` |
+| **Evidence** | What happened, in a form someone can inspect? | `emit(...)` events and `afterToolCall` |
+
+pi is a good reference because it is small, readable, and MIT-licensed. It is one harness among many; the five jobs are the part that transfers.
+
+### Loop: the whole harness fits on one screen
+
+That's the whole harness. pi's entire agent loop is `runLoop`, a single function of about 170 lines.[^8] Trimmed to its skeleton:
+
+```ts
+// pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent-loop.ts#L188-L337 (trimmed)
+while (true) {                                                       // LOOP: outer, for follow-ups
+  let hasMoreToolCalls = true;
+  while (hasMoreToolCalls || pendingMessages.length > 0) {           // LOOP: one turn per pass
+    for (const message of declareToolChanges(currentContext, [...preparedMessages, ...pendingMessages])) {
+      currentContext.messages.push(message);                         // CONTEXT: queued messages join
+    }
+    const requestUpdate = await config.prepareRequest?.({ context: currentContext, ... }, signal);
+    const message = await streamAssistantResponse(currentContext, config, signal, emit, streamFunction);
+    const toolCalls = message.content.filter((c) => c.type === "toolCall");
+    hasMoreToolCalls = false;
+    if (toolCalls.length > 0) {
+      const executedToolBatch =
+        message.stopReason === "length"
+          ? await failToolCallsFromTruncatedMessage(toolCalls, emit)
+          : await executeToolCalls(currentContext, message, config, signal, emit); // TOOLS + CONTROL
+      hasMoreToolCalls = !executedToolBatch.terminate;
+      // … tool results are pushed into currentContext.messages
+    }
+    await emit({ type: "turn_end", message, toolResults });          // EVIDENCE
+    pendingMessages = (await config.getSteeringMessages?.()) || [];
+  }
+  const followUpMessages = (await config.getFollowUpMessages?.()) || [];
+  if (followUpMessages.length > 0) { pendingMessages = followUpMessages; continue; }
+  break;
+}
+```
+
+Read it once and the agent stops being mysterious:
+
+- **The agent keeps going while the model asks for tools.** A reply with no tool calls ends the inner loop. Tool results go back into the context, and the model takes another turn.
+- **People can steer mid-run.** Steering messages join before the next turn; follow-up messages restart the loop after the agent would have stopped.
+- **Every turn is an event.** `emit` reports turn, message, and tool events, which is where a UI, a log, or a budget attaches.
+
+### Context: rebuilt every turn
+
+Before every model call, pi assembles what the model sees:
+
+```ts
+// pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent-loop.ts#L398-L404
+let messages = context.messages;
+if (config.transformContext) {
+  messages = await config.transformContext(messages, signal);
+}
+const llmMessages = await config.convertToLlm(messages);
+```
+
+`transformContext` can prune, summarize, or inject. `prepareRequest`, called just before, can swap the model or thinking level for the next turn. `declareToolChanges` tells the model when the tool list changed. Context is a decision the harness makes on every turn, which is why a host that controls it can shape the agent's whole view.
+
+### Tools: build your own or borrow one
+
+A tool is just a schema the model fills in plus code the harness runs, so a harness can bring its own tools. That code can be pure harness code or a hand-off to an external program; pi's two file tools show both.
+
+#### `write`: built by the harness
+
+
+pi's `write` tool is 97 lines of pi's own code, with no OS command anywhere:
+
+```ts
+// pi · MIT · earendil-works/pi@f9daca3 · packages/coding-agent/src/core/tools/write.ts (trimmed)
+const writeSchema = Type.Object({
+  path: Type.String({ description: "Path to the file to write (relative or absolute)" }),
+  content: Type.String({ description: "Content to write to the file" }),
+});
+export const writeToolSystemPromptContribution = {
+  snippet: "Create or overwrite files",
+  guidelines: ["Use write only for new files or complete rewrites."],
+} as const;
+// …
+async execute(_toolCallId, { path, content }, signal?, _onUpdate?, ctx?) {
+  const absolutePath = resolveToCwd(path, ctx?.cwd || cwd);
+  return withFileMutationQueue(absolutePath, async () => {
+    throwIfAborted();
+    await ops.mkdir(dirname(absolutePath));
+    throwIfAborted();
+    await ops.writeFile(absolutePath, content);
+    return { content: [{ type: "text", text: `Successfully wrote to ${path}` }], details: undefined };
+  });
+},
+```
+
+- **The schema is the contract** the model fills in, validated before `beforeToolCall` sees it.
+- **The prompt snippet and guideline are context.** A tool teaches the model when to use it.
+- **The mutation queue and abort checks** keep parallel calls and cancellation safe.
+- **`ops` is swappable.** The default writes to local disk; the code comment suggests SSH. The harness decides where an action lands.
+
+#### `find`: borrows `fd`
+
+
+`find` takes a different shape. By default it delegates to an external program:
+
+```ts
+// pi · MIT · earendil-works/pi@f9daca3 · packages/coding-agent/src/core/tools/find.ts#L116, L172, L216 (trimmed)
+if (customOps?.glob) {
+  const results = await ops.glob(pattern, searchPath, { ignore: ["**/node_modules/**", "**/.git/**"], limit });
+  // … format and return
+}
+const fdPath = await ensureTool("fd");                 // downloads fd if it is missing
+const child = spawn(fdPath, args, { stdio: ["ignore", "pipe", "pipe"] });
+```
+
+This is the first boundary of the talk. The harness mediates the call: it validates the pattern, can block it, and sees the result. What `fd` does while it runs belongs to `fd` and the operating system. Supply custom `glob` operations and the harness owns the search end to end. Section 3 meets the same boundary in GitHub's harness.
+
+### Control: one hook that can say no
+
+Every tool call passes through `prepareToolCall`, which validates arguments and then asks the host:
+
+```ts
+// pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent-loop.ts#L738-L765 (trimmed)
+if (config.beforeToolCall) {
+  const beforeResult = await config.beforeToolCall(
+    { assistantMessage, toolCall, args: validatedArgs, context: currentContext },
+    signal,
+  );
+  if (beforeResult?.block) {
+    const result = createErrorToolResult(beforeResult.reason || "Tool execution was blocked");
+    if (beforeResult.terminate === true) result.terminate = true;
+    return { kind: "immediate", result, isError: true };
+  }
+}
+```
+
+Two details carry straight into GitHub's harness:
+
+- **A block becomes a tool result the model reads.** The `reason` is how the agent learns what to do next, so a good reason names the rule and the alternative.
+- **The host sees validated arguments and the whole context.** That is more than a single-event script receives, and it is the difference section 3 builds on.
+
+The loop owns the hook point; the product supplies the policy. pi's own coding agent installs its extension system into that one hook:
+
+```ts
+// pi · MIT · earendil-works/pi@f9daca3 · packages/coding-agent/src/core/agent-session.ts#L652-L682 (trimmed)
+private _installAgentToolHooks(): void {
+  this.agent.beforeToolCall = (context) => this._beforeToolCall(context);
+  this.agent.afterToolCall = (context) => this._afterToolCall(context);
+}
+
+private async _beforeToolCall({ toolCall, args }, parentToolCallId?) {
+  const runner = this._extensionRunner;
+  if (!runner.hasHandlers("tool_call")) return undefined;
+  return await runner.emitToolCall({
+    type: "tool_call",
+    toolName: toolCall.name,
+    toolCallId: toolCall.id,
+    input: args,
+  });
+  // … a handler that throws blocks the call
+}
+```
+
+Every `tool_call` extension a user loads gets a vote on every call, and the loop itself never changes. Section 2 shows the same split in GitHub's harness: the SDK owns the loop, and your hooks and handlers supply the policy.
+
+The harness also protects itself: when a reply is cut off by the token limit (`stopReason === "length"`), the loop fails every tool call in that reply, because their arguments may be truncated.
+
+### Evidence: every step is an event
+
+The loop reports everything it does through one function, `emit`. A run produces a small, fixed vocabulary: `agent_start`, `turn_start`, `message_start`, `message_update`, `message_end`, `tool_execution_start`, `tool_execution_update`, `tool_execution_end`, `turn_end`, and `agent_end`. When a tool finishes, the host gets one last look before the result is reported:
+
+```ts
+// pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent-loop.ts#L880-L937 (trimmed)
+if (config.afterToolCall) {
+  const afterResult = await config.afterToolCall(
+    { assistantMessage, toolCall: prepared.toolCall, args: prepared.args, result, isError, context: currentContext },
+    signal,
+  );
+  if (afterResult) {
+    result = { ...result, content: afterResult.content ?? result.content, details: afterResult.details ?? result.details };
+    // … usage, terminate, and isError can be replaced the same way
+  }
+}
+// …
+await emit({
+  type: "tool_execution_end",
+  toolCallId: finalized.toolCall.id,
+  toolName: finalized.toolCall.name,
+  result: finalized.result,
+  isError: finalized.isError,
+  ...(finalized.durationMs === undefined ? {} : { durationMs: finalized.durationMs }),
+});
+```
+
+```ts
+// pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent.ts#L275-L278
+subscribe(listener: (event: AgentEvent, signal: AbortSignal) => Promise<void> | void): () => void {
+  this.listeners.add(listener);
+  return () => this.listeners.delete(listener);
+}
+```
+
+- **`afterToolCall` sees the arguments and the result together.** It can rewrite the result before the model reads it: redact a secret, trim a huge output, or mark a failure.
+- **Each event carries what an audit needs:** which tool, which call, the result, whether it failed, and how long it took.
+- **Anything can listen.** The `Agent` class fans every event out to its subscribers, which is where a UI, a log file, or a budget counter attaches. Step 5 of section 2 receives the same kind of stream from GitHub's harness.
+
+---
+
+<!-- 🎬 MAJOR SECTION: Drive GitHub's Harness -->
+## Drive GitHub's Harness
+
+### Same loop, GitHub runs it
+
+GitHub's harness is the same loop. GitHub runs it, and your code steps in at the same five places.
+
+The SDK talks to the Copilot runtime over JSON-RPC and, by default, starts and stops that runtime for you.[^1] The runtime runs the loop. Your application takes over the other jobs through the SDK:
+
+| Job | In pi | In GitHub's harness | What it unlocks |
+|---|---|---|---|
+| **Loop** | `runLoop` | The runtime; your app drives it with `createSession`, `sendAndWait`, `abort` | Run a task to completion, with a timeout you choose, from any Node process |
+| **Context** | `transformContext`, `prepareRequest` | `systemMessage` (`append`, `customize`, `replace`), the prompt, `model` | Decide who the agent is, what "done" means, and which model to request |
+| **Tools** | `write`, `find` | Built-in tools, `availableTools`, `excludedTools`, `defineTool` | Remove whole capabilities; answer from your own systems |
+| **Control** | `beforeToolCall` | `onPermissionRequest`, `hooks.onPreToolUse`, repository hooks | Allow or reject each read, write, shell command, and custom-tool call, with feedback the agent reads |
+| **Evidence** | `emit`, `afterToolCall` | `streaming: true`, `session.on(...)`, tool handlers, hook logs | Render progress, count tool calls, enforce a budget, keep an audit trail |
 
 ```text
-Your app (the host)                          Copilot runtime (same loop as the CLI)
-  task + persona   ── systemMessage ───────▶  plan
-  tool set         ── availableTools ──────▶  pick a tool
-  domain tools     ── defineTool ──────────▶  call it, your handler answers
-  decisions        ◀── onPermissionRequest ──  every mediated read, write, shell call
-  evidence         ◀── session.on(...) ──────  deltas, tool calls, results, hook runs
+Your app (the host)                          Copilot runtime (the loop)
+  context   ── systemMessage ──────────────▶  plan
+  tools     ── availableTools / defineTool ▶  pick a tool, call it
+  control   ◀── onPermissionRequest ───────  every mediated read, write, shell call
+  evidence  ◀── session.on(...) ───────────  deltas, tool calls, results, hook runs
                                                ▲
-Repository hooks (.github/hooks/*.json) ───────┘  run inside your session when you opt in
+Repository hooks (.github/hooks/*.json) ───────┘  control + evidence inside your session when you opt in
 Organization: who may use Copilot, which models, what it costs
 ```
 
-The SDK talks to the Copilot runtime over JSON-RPC and, by default, starts and stops that runtime for you.[^1] What your application controls:
+The SDK also offers structured output (`sendAndWait(options, schema)`) and three authentication routes: signed-in user, token, or BYOK provider.[^3]
 
-| Capability | SDK surface | What it unlocks |
+### Before you start
+
+- **Node 20+** and `npm install` in [`examples/`](./examples/). The SDK package bundles the Copilot runtime.
+- **Authentication.** With no options, the SDK uses the signed-in Copilot CLI user, so sessions follow that user's Copilot license, policies, and billing. A token or a BYOK provider configuration selects a different route, and BYOK traffic follows the provider's terms.[^3]
+- **Run anything that installs packages or starts servers in a disposable environment**, such as a container, Codespace, or temp clone. The apps below clone FanHub into a temp folder for every run.
+
+Each job gets one short, runnable file in [`examples/sdk-quickstart/`](./examples/sdk-quickstart/). The files are numbered in job order (01 loop, 02 context, 03 tools, 04 control, 05 evidence). Run any of them with `npx tsx sdk-quickstart/<file>`.
+
+### Loop: your code starts it and decides when to stop
+
+[`01-loop.ts`](./examples/sdk-quickstart/01-loop.ts) is the whole host:
+
+```ts
+import { CopilotClient, approveAll } from "@github/copilot-sdk";
+
+const client = new CopilotClient();
+const session = await client.createSession({ model: "auto", onPermissionRequest: approveAll });
+
+const reply = await session.sendAndWait({ prompt: "How do I run this project? Two sentences." });
+console.log(reply?.data.content);
+
+await session.disconnect();
+await client.stop();
+```
+
+The runtime runs the loop; your code decides when it starts and when it stops. **Documented:**[^1][^2]
+
+- **It is Copilot CLI's loop.** `CopilotClient` starts the same Copilot runtime that powers Copilot CLI and talks to it over JSON-RPC.
+- **Results can be typed.** Pass a schema as the second argument, `sendAndWait(options, schema)`, and the reply comes back as structured data your code can branch on.
+- **`session.abort()` stops the loop.** The `sendAndWait` timeout (60 seconds by default) only ends your wait, so long tasks pass their own.
+
+**Observed:** a correct two-sentence answer about the examples folder. `approveAll` is a convenience for this first step; step 4 replaces it.
+
+### Context: decide what the model is told
+
+[`02-context.ts`](./examples/sdk-quickstart/02-context.ts) adds instructions by editing one named section of GitHub's system prompt. The instructions give the agent a role, a first-day engineer who trusts only written docs, with two behaviors you can check in the output:
+
+```ts
+const session = await client.createSession({
+  model: "auto",
+  onPermissionRequest: approveAll,
+  systemMessage: {
+    mode: "customize",
+    sections: {
+      custom_instructions: {
+        action: "append",
+        content: "You are a first-day engineer who trusts only written documentation. " +
+                 "Cite the file behind every step. Label any step that comes from code or config instead of docs as (undocumented).",
+      },
+    },
+  },
+});
+```
+
+**Documented:** `systemMessage` has three modes.[^2]
+
+| Mode | What the model gets | Use it when |
 |---|---|---|
-| **Sessions** | `createSession`, `sendAndWait`, `abort`, `disconnect` | Run a task to completion, with a timeout you choose, from any Node process |
-| **Streaming events** | `streaming: true`, `session.on("assistant.message_delta" \| "tool.execution_start" \| …)` | Render progress in your UI, count tool calls, enforce a budget |
-| **Persona** | `systemMessage` in `append`, `customize`, or `replace` mode | Decide who the agent is and what "done" means |
-| **Tool set** | `availableTools`, `excludedTools` | Remove whole capabilities; a tool that is never offered is never requested |
-| **Domain tools** | `defineTool(name, { parameters, handler })` | Answer from your systems: owners, contracts, tickets, findings |
-| **Permissions** | `onPermissionRequest` | Allow or reject each read, write, shell command, and custom-tool call, with feedback the agent sees |
-| **In-process hooks** | `hooks: { onPreToolUse, onPostToolUse, … }` | Inspect raw tool arguments before the permission layer runs |
-| **Repository hooks** | `enableFileHooks: true` | Inherit the team's `.github/hooks/` rules inside your app |
-| **Model** | `model: "auto"` or a model ID | Request a model within what your organization allows |
-| **Structured output** | `sendAndWait(options, schema)` | Get typed results back (not used in these demos) |
-| **Authentication** | Signed-in user, token, or BYOK provider[^3] | Choose who pays and which policies apply |
+| `append` (default) | GitHub's full prompt, plus your text at the end | You only need to add guidance |
+| `customize` | GitHub's prompt, with named sections changed | You want a precise edit that keeps `safety` and `tool_instructions` in place |
+| `replace` | Only your text | You accept that the SDK's guardrails, including security restrictions, are removed |
 
-### What is worth building
+In `customize` mode, each named section (`identity`, `tone`, `environment_context`, `safety`, `tool_instructions`, `custom_instructions`, `last_instructions`, and others) takes one action: `replace`, `remove`, `append`, `prepend`, `preserve`, or a function that receives the section's current text and returns new text. `custom_instructions` is where repository and organization instructions already live, so these instructions sit beside the team's own rules.
 
-The pattern that pays off most is **an agent with a deliberate perspective**. A full-access agent answers "make this work." A constrained one can answer questions a full-access agent cannot:
+**Observed, two runs of the same file.** The instructions ask for two behaviors you can check: a cited file on every step, and "(undocumented)" on anything that comes from code or config. The first run cited the README for setup and `examples/package.json` for the Node 20+ requirement, then cited the step 1 quickstart file as documentation even though it is code. A rerun cited `package.json` on every step and labeled each one "undocumented", exactly as asked. Same code, same instructions, different compliance. An earlier, softer line that described an attitude without a checkable behavior produced no visible change. Instructions steer the model; the next two steps enforce limits in code.
 
-- *Can a newcomer get this running from the docs alone?* Hide the source. (Fresh-eyes, section 2.)
-- *Does the API do what its contract says?* Hide the implementation. (Blind tests, section 3.)
-- *Is this PR understandable from its description?* Show only the diff and the description.
-- *Would this migration guide work on a clean machine?* Allow only the commands the guide names.
+### Tools: add one, allow four
 
-Each one is the same host with different answers to three questions: what may the agent see, what may it use, and who reads its report.
+[`03-tools.ts`](./examples/sdk-quickstart/03-tools.ts) gives the agent a tool only your app can answer, then narrows everything else:
 
-### Two ways into the loop
+```ts
+const lookupOwner = defineTool("lookup_owner", {
+  description: "Return the team that owns a repository path.",
+  parameters: { type: "object", properties: { path: { type: "string" } }, required: ["path"] },
+  handler: async ({ path }: { path: string }) => { /* … match path in a local OWNERS table */ },
+});
 
-You can reach the loop from the outside, with hooks, or host it yourself, with the SDK. They compose.
+const session = await client.createSession({
+  model: "auto",
+  onPermissionRequest: approveAll,
+  tools: [lookupOwner],
+  availableTools: ["view", "glob", "grep", "lookup_owner"],
+});
+```
+
+Two options, two jobs:[^2]
+
+| Option | Takes | What it does |
+|---|---|---|
+| `tools` | Tool objects | Adds a tool: its name, schema, and a handler that runs in your process |
+| `availableTools` | Tool names | An allowlist across built-in, MCP, and custom tools. Anything off the list is hidden. `excludedTools` subtracts and always wins |
+
+`lookupOwner` is the JavaScript variable; `"lookup_owner"` is the name the model sees and the allowlist matches. With only `tools`, the agent keeps every built-in plus yours. With only `availableTools`, `"lookup_owner"` matches nothing. The handler in the example answers from a hard-coded table of three paths; a real one calls your own systems.
+
+**Observed:** asked who reviews `node/backend/src/routes/characters.js` and then to run `git log`, the agent called `lookup_owner`, answered "api-team," and reported that it "couldn't run git log because this session doesn't provide a command-execution tool." Narrowing the tool set changes the plan the agent makes, before any permission check runs.
+
+### Control: decide what it can do
+
+[`04-control.ts`](./examples/sdk-quickstart/04-control.ts) replaces `approveAll` with a handler that judges every mediated call:
+
+```ts
+const onPermissionRequest: PermissionHandler = (request) => {
+  if (request.kind === "read") return { kind: "approve-once" };
+  return { kind: "reject", feedback: "This session is read-only. Use the view tool to inspect files." };
+};
+
+const session = await client.createSession({ model: "auto", onPermissionRequest });
+```
+
+**Observed:** asked to count lines in each `.ts` file "using a shell command if that is fastest," the agent's `Get-ChildItem … | Measure-Object` was rejected. It switched to `view`, made six approved reads, and returned correct counts. Two details matter for everything that follows:
+
+- **Reads inside the working directory raise permission requests too** (`kind: "read"`, with `request.path`), so a handler can govern what the agent sees, along with what it changes.
+- **The `feedback` string shapes the recovery.** The agent read "use the view tool" and did exactly that, just as pi's block `reason` comes back as a tool result.
+
+The request carries rich detail per kind: `read` has `path`; `write` has `fileName` and `newFileContents`; `shell` has `fullCommandText`, `commands[]`, `possiblePaths`, and `hasWriteFileRedirection`; `custom-tool` has `toolName`.[^2]
+
+#### Hooks and the host: two ways to say no
+
+Your handler governs the sessions your app creates. Repository hooks reach the same decision point from outside: they take over **control** and **evidence** (plus a little **context** at `sessionStart`) in every harness that loads them. The two compose.
 
 | | **Hooks** | **SDK host** |
 |---|---|---|
@@ -146,37 +467,9 @@ return {};   // no opinion: the normal permission flow decides
 
 An SDK app opts into that floor with `enableFileHooks: true`. **Observed:** in a dedicated precedence probe, a repository `preToolUse` deny held while the SDK's own `onPreToolUse` returned `allow`; the SDK callbacks were never invoked for that call. A team can rely on its repository rules surviving any host that loads them, and each app adds the rules its own purpose needs.
 
----
+### Evidence: every event reaches your code
 
-<!-- 🎬 MAJOR SECTION: Build It From Zero -->
-## Build It From Zero
-
-### Before you start
-
-- **Node 20+** and `npm install` in [`examples/`](./examples/). The SDK package bundles the Copilot runtime.
-- **Authentication.** With no options, the SDK uses the signed-in Copilot CLI user, so sessions follow that user's Copilot license, policies, and billing. A token or a BYOK provider configuration selects a different route, and BYOK traffic follows the provider's terms.[^3]
-- **Run anything that installs packages or starts servers in a disposable environment**, such as a container, Codespace, or temp clone. The apps below clone FanHub into a temp folder for every run.
-
-Each step is a short, runnable file in [`examples/sdk-quickstart/`](./examples/sdk-quickstart/). Run any of them with `npx tsx sdk-quickstart/<file>`.
-
-### Step 1: one session, one answer
-
-```ts
-import { CopilotClient, approveAll } from "@github/copilot-sdk";
-
-const client = new CopilotClient();
-const session = await client.createSession({ model: "auto", onPermissionRequest: approveAll });
-
-const reply = await session.sendAndWait({ prompt: "How do I run this project? Two sentences." });
-console.log(reply?.data.content);
-
-await session.disconnect();
-await client.stop();
-```
-
-**Observed:** a correct two-sentence answer about the examples folder, about 50 seconds end to end on a cold start, most of it runtime startup. `approveAll` is a convenience for this first step; step 5 replaces it.
-
-### Step 2: watch the loop
+[`05-evidence.ts`](./examples/sdk-quickstart/05-evidence.ts) turns on streaming and subscribes to the session, the same move as pi's `subscribe`:
 
 ```ts
 const session = await client.createSession({ model: "auto", streaming: true, onPermissionRequest: approveAll });
@@ -186,61 +479,18 @@ session.on("tool.execution_start", (e) => console.log(`\n[tool] ${e.data.toolNam
 session.on("session.idle", () => console.log("\n[idle]"));
 ```
 
-**Observed:** `[tool] powershell`, three `[tool] view` calls, the streamed answer, then `[idle]`. Every one of those events is something your app can render, count, or store. On Windows the built-in tools include `powershell`, `view`, `glob`, and `grep`.
+**Observed:** `[tool] powershell`, three `[tool] view` calls, the streamed answer, then `[idle]`. Every one of those events is something your app can render, count, or store. On Windows the built-in tools include `powershell`, `view`, `glob`, and `grep`. Repository hooks add a second record from outside the app: section 3 joins the two by `sessionId`.
 
-### Step 3: decide who the agent is
+### What is worth building
 
-```ts
-systemMessage: {
-  mode: "customize",
-  sections: {
-    custom_instructions: {
-      action: "append",
-      content: "You are a first-day engineer who trusts only written documentation. " +
-               "Cite the file behind every step. Label any step that comes from code or config instead of docs as (undocumented).",
-    },
-  },
-},
-```
+The pattern that pays off most is **an agent with a deliberate perspective**. A full-access agent answers "make this work." A constrained one can answer questions a full-access agent cannot:
 
-`customize` edits one named section and keeps the runtime's safety and tool sections in place. `replace` swaps the entire prompt and the SDK's guardrails go with it.[^2]
+- *Can a newcomer get this running from the docs alone?* Hide the source. (Fresh-eyes, section 2.)
+- *Does the API do what its contract says?* Hide the implementation. (Blind tests, section 3.)
+- *Is this PR understandable from its description?* Show only the diff and the description.
+- *Would this migration guide work on a clean machine?* Allow only the commands the guide names.
 
-**Observed:** the same question now came back with a file citation on each step. An earlier, softer persona line that described an attitude without a checkable behavior produced no visible change. Personas earn their keep when they state a behavior you can check in the output.
-
-### Step 4: decide what it can use
-
-```ts
-const lookupOwner = defineTool("lookup_owner", {
-  description: "Return the team that owns a repository path.",
-  parameters: { type: "object", properties: { path: { type: "string" } }, required: ["path"] },
-  handler: async ({ path }: { path: string }) => /* answer from your own systems */,
-});
-
-const session = await client.createSession({
-  model: "auto",
-  onPermissionRequest: approveAll,
-  availableTools: ["view", "glob", "grep", "lookup_owner"],
-  tools: [lookupOwner],
-});
-```
-
-**Observed:** asked who reviews `node/backend/src/routes/characters.js` and then to run `git log`, the agent called `lookup_owner`, answered "api-team," and reported that it "couldn't run git log because this session doesn't provide a command-execution tool." Narrowing the tool set changes the plan the agent makes, before any permission check runs.
-
-### Step 5: decide what it can do
-
-```ts
-const onPermissionRequest: PermissionHandler = (request) => {
-  if (request.kind === "read") return { kind: "approve-once" };
-  return { kind: "reject", feedback: "This session is read-only. Use the view tool to inspect files." };
-};
-```
-
-**Observed:** asked to count lines in each `.ts` file "using a shell command if that is fastest," the agent's `Get-ChildItem … | Measure-Object` was rejected. It switched to `view`, made six approved reads, and returned correct counts. Two details matter for everything that follows:
-
-- **Reads inside the working directory raise permission requests too** (`kind: "read"`, with `request.path`), so a handler can govern what the agent sees, along with what it changes.
-- **The `feedback` string shapes the recovery.** The agent read "use the view tool" and did exactly that.
-
-The request carries rich detail per kind: `read` has `path`; `write` has `fileName` and `newFileContents`; `shell` has `fullCommandText`, `commands[]`, `possiblePaths`, and `hasWriteFileRedirection`; `custom-tool` has `toolName`.[^2]
+Each one is the same host with different answers to three questions: what may the agent see, what may it use, and who reads its report.
 
 ### Payoff: the fresh-eyes onboarding check
 
@@ -311,7 +561,7 @@ The policy uses both SDK checkpoints, because each sees something the other does
 | `hooks.onPreToolUse` | Raw tool arguments for every tool | A `grep` whose scope would sweep a hidden folder; a `view` of a hidden path |
 | `onPermissionRequest` | The runtime's parsed request | Reads of hidden paths; writes outside the output folder; write *contents* that would read hidden files at runtime; shell commands by executable, parsed path, and text |
 
-That second column is where a host goes past a repository hook. A hook script receives the call's arguments; the host receives the runtime's analysis of the call, holds the session's state, and serves its own tools. Three checks in this policy depend on that:
+That second column is where a host goes past a repository hook, the same way pi's `beforeToolCall` sees the whole context. A hook script receives the call's arguments; the host receives the runtime's analysis of the call, holds the session's state, and serves its own tools. Three checks in this policy depend on that:
 
 - **Write-content inspection.** A test file that calls `readFileSync('../../src/…')` would read hidden code *when it runs*. The host rejects the write: "That file would read hidden material when it runs." **Tested.**
 - **Executable allowlists per segment.** The host splits `cd node/backend; npm start | tee log` into `cd`, `npm`, and `tee`, ignores separators inside quoted arguments, and checks each. **Tested** with 5 command shapes.
@@ -352,10 +602,7 @@ Both apps set `enableFileHooks: true`. **Observed:** FanHub's repository hooks r
 - **Anything outside mediated tools.** The policy decides tool calls. Other processes, other users, and the network are governed by the OS account, container, and network controls.
 - **Whether the contract or the code is right.** A failing blind test is a disagreement. The API owner decides which side changes.
 
----
-
-<!-- 🎬 MAJOR SECTION: Prove and Own It -->
-## Prove and Own It
+This is pi's `find` → `fd` boundary again: the harness decides the call and sees its result, and the operating system governs what happens inside the process the call starts.
 
 ### Evidence you keep
 
@@ -374,6 +621,13 @@ Every run also produces a human-readable report (`friction-report.md` or `blind-
 - **Record decisions apart from executions.** An allowed call can still fail.
 - **Log names, rules, and counts.** Leave file contents and command output out of the log by construction.
 - **Make the host the source of truth.** The blind-test host reruns the suite itself; the friction report comes from tool calls, independent of the agent's closing summary.
+
+---
+
+<!-- 🎬 MAJOR SECTION: Own It -->
+## Own It
+
+A harness you share becomes a harness someone owns. Two things travel with it: the controls other people already set around Copilot, and a pre-flight that tells the next person what they are running.
 
 ### The controls around your app
 
@@ -417,16 +671,17 @@ visibility rules, budget, or a structured report?
 
 ## What You Can Do Today
 
-### 15 minutes: your first session
+### 15 minutes: read the loop, then run your first session
 
+Open pi's [`agent-loop.ts`](https://github.com/earendil-works/pi/blob/f9daca3480732d0042b1df3a6e27221f597a620d/packages/agent/src/agent-loop.ts) at the pinned commit and find the five jobs in `runLoop`. Then run GitHub's harness from your own code:
 ```powershell
 cd tech-talks/harness-fundamentals/examples
 npm install
-npx tsx sdk-quickstart/01-hello.ts
-npx tsx sdk-quickstart/05-permissions.ts
+npx tsx sdk-quickstart/01-loop.ts
+npx tsx sdk-quickstart/04-control.ts
 ```
 
-Success looks like an answer from step 1 and, from step 5, a `[reject] shell …` line followed by the agent recovering through approved reads.
+Success looks like an answer from step 1 and, from step 4, a `[reject] shell …` line followed by the agent recovering through approved reads.
 
 ### 1 hour: run both apps
 
@@ -447,7 +702,7 @@ Set `FANHUB_SOURCE` to a local FanHub clone to skip the network clone. Open the 
 
 ### Apply it to your work
 
-Pick one workflow where a fresh, constrained perspective would help: setup docs, API contracts, a PR description, a runbook. What does your agent need to see, what stays hidden, which tools does it get, and who reads its report?
+Pick one workflow where a fresh, constrained perspective would help: setup docs, API contracts, a PR description, a runbook. Which of the five jobs do you take over? What does your agent need to see, what stays hidden, which tools does it get, and who reads its report?
 
 ---
 
@@ -460,6 +715,7 @@ Pick one workflow where a fresh, constrained perspective would help: setup docs,
 [^5]: [VS Code agent hooks (Preview)](https://code.visualstudio.com/docs/agent-customization/hooks): the editor's hook format and event coverage.
 [^6]: [Copilot policies for enterprises and organizations](https://docs.github.com/en/copilot/concepts/enterprise/policies): AI controls for features, agents, and models.
 [^7]: [Supported AI models in GitHub Copilot](https://docs.github.com/en/copilot/reference/ai-models/supported-models): availability by plan and surface.
+[^8]: [pi coding agent, earendil-works/pi@f9daca3](https://github.com/earendil-works/pi/tree/f9daca3480732d0042b1df3a6e27221f597a620d) (MIT): `packages/agent/src/agent-loop.ts` (`runLoop`, `streamAssistantResponse`, `prepareToolCall`), `packages/coding-agent/src/core/tools/write.ts`, and `find.ts`.
 
 ---
 
@@ -471,13 +727,29 @@ All live runs used `@github/copilot-sdk` 1.0.26 with `model: "auto"`, Node 24.22
 
 | Run | What was observed |
 |---|---|
-| Quickstart 01–05 | Answer in ~50 s cold; streamed tool events; persona citations; `lookup_owner` used and shell absent; shell rejected and recovered through reads |
+| Quickstart 01–05 | Answer in ~50 s cold; instructions followed unevenly (run 1 cited a code file as documentation; a rerun on 2026-10-26 labeled every step correctly); `lookup_owner` used and shell absent; shell rejected and recovered through reads; streamed tool events. Recorded under the earlier file names `01-hello`, `03-persona`, `04-tools`, `05-permissions`, and `02-stream`; the code is unchanged |
 | Fresh-eyes | 24 tool calls, 20 allowed, 1 denied; 3 friction items; `/api/characters` reached 200 through Node 20; no source reads |
 | Blind tests, run A | Agent reported 9 passing, 5 failing; referee mapped to BUGS.md #9, #6, #17 and flagged one test's own query-parameter choice |
 | Blind tests, run B | Host rerun 10 passing, 2 failing; BUGS.md #19 and the undocumented `seasonId` / `season_id` mismatch |
 | Precedence probe | Repository `preToolUse` deny held while the SDK `onPreToolUse` returned `allow` |
 
 The deterministic tests are the contract; the live runs show the contract operating in real sessions, and their wording varies from run to run.
+
+### The pi excerpts
+
+pi was read as source at commit `f9daca3480732d0042b1df3a6e27221f597a620d` under its MIT license; it was not installed or run for this talk. Excerpts are trimmed with `// …` and keep the original identifiers.
+
+| Excerpt | File and lines |
+|---|---|
+| The loop | `packages/agent/src/agent-loop.ts`, `runLoop` L172-L341 (excerpt L188-L337) |
+| Context | `agent-loop.ts` L398-L404, `streamAssistantResponse` |
+| Control | `agent-loop.ts` L738-L765, `prepareToolCall`; truncated-reply rule L272-L281 |
+| Control, wired by the product | `packages/coding-agent/src/core/agent-session.ts` L652-L682, `_installAgentToolHooks` and `_beforeToolCall` |
+| `write` | `packages/coding-agent/src/core/tools/write.ts`, 97 lines |
+| `find` | `packages/coding-agent/src/core/tools/find.ts`: custom `glob` L116, `ensureTool("fd")` L172, `spawn` L216 |
+| Evidence | `agent-loop.ts` L880-L912, `afterToolCall`; L929-L937, `emitToolExecutionEnd`; `packages/agent/src/agent.ts` L275-L278, `subscribe` |
+
+Claims about GitHub's harness stay at the SDK surface: what the SDK lets a host configure and observe. The runtime's internal loop is out of scope.
 
 ### A setup note for Node 22 and later
 

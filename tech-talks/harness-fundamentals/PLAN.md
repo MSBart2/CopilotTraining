@@ -4,11 +4,15 @@ updated: 2026-10-27
 section: "Extend and Embed"
 ---
 
-# Harness Fundamentals: Plan (Revision 2, SDK-led)
+# Harness Fundamentals: Plan (Revision 4, five jobs twice)
 
-**Proposal status:** Draft for approval. Revision 2 replaces the hook-and-SDK pairing with an SDK-led talk: the audience builds its own Copilot-powered tools, and hooks become the repository layer those tools inherit. The first revision's evidence remains valid and is carried forward.
+**Proposal status:** Draft for approval. Revision 3 opens the talk by defining a harness from working code. [pi](https://github.com/earendil-works/pi) (MIT) is the readable reference harness; the Copilot SDK is GitHub's harness, which the audience then hosts from its own code. Revision 2's apps, evidence, and host kit carry forward unchanged.
 
-**Why the revision:** The first build taught seams and controls around one maintenance helper, but never showed how to start an SDK app from zero, what the SDK promises, or what is worth building with it. Three cuts compounded: the plan scoped SDK patterns to one helper, the README dropped the baseline runs and the "what the host takes on" material, and the four-section recipe compressed what remained.
+**Why Revision 4:** Revision 3 had the right spine (a harness does five jobs) but spent it unevenly: section 1 gave tools two slides and evidence none, and section 2 packed five quickstart steps onto two noisy slides with two or three code blocks each. Revision 4 walks the five jobs twice in the same order, one slide per job: section 1 in pi, section 2 in the Copilot SDK. Each quickstart file now carries one job and its number (01 loop, 02 context, 03 tools, 04 control, 05 evidence), so every SDK slide shows exactly one file. Hooks fold into the Control slide; pi's `find` becomes a callout on the Tools slide. The persona card is relabeled so documented behavior and observed behavior stay distinct.
+
+**Why Revision 3:** Revision 2 taught the SDK levers without ever showing the loop those levers reach into, because the Copilot runtime keeps its loop out of view. pi's loop is one readable function, so the audience can see every job a harness does before learning which of those jobs GitHub's harness hands to them. The new anchor is that reveal; the fresh-eyes report becomes the payoff of section 2.
+
+**Why Revision 2:** The first build taught seams and controls around one maintenance helper, but never showed how to start an SDK app from zero, what the SDK promises, or what is worth building with it. Three cuts compounded: the plan scoped SDK patterns to one helper, the README dropped the baseline runs and the "what the host takes on" material, and the four-section recipe compressed what remained.
 
 ## Research Brief
 
@@ -19,18 +23,19 @@ Application developers and platform engineers have used Copilot in an editor or 
 **Question this talk answers:**
 > How do I get inside the agent loop and change how it behaves?
 
-**Thesis:** The Copilot SDK hands an application the same agent loop that runs Copilot CLI. Planning, tool calling, and file edits come with it. The application supplies everything around the loop: the task, the persona, the tool set, the permission decisions, and the evidence. Those choices turn a general coding agent into a specific, trustworthy tool. Repository hooks keep applying underneath, so team-wide rules travel with the repository while each app adds the rules its purpose needs.
+**Thesis:** A harness is the code around a model that turns its replies into actions, and it does five jobs: run the **loop**, assemble the **context**, offer the **tools**, **control** which calls run, and record the **evidence**. pi shows all five in plain TypeScript. The Copilot SDK hands an application GitHub's harness: the runtime keeps the loop, and the application takes over context, tools, control, and evidence. Repository hooks fill the control and evidence jobs underneath every app, so team-wide rules travel with the repository while each app adds the rules its purpose needs.
 
-**Tension:** Controlling what the agent *sees* is as powerful as controlling what it *does*. Withholding source code turns the agent into an independent tester; withholding everything except the docs turns it into a new hire. Every such choice is behavior the host team owns, tests, and explains.
+**Tension:** Controlling what the agent *sees* is as powerful as controlling what it *does*. Withholding source code turns the agent into an independent tester; withholding everything except the docs turns it into a new hire. Every such choice is behavior the host team owns, tests, and explains. The boundary is visible in the first section: a tool such as pi's `find` hands work to an external program, and the harness sees only the call and its result.
 
-**Judgment lenses:** Context and delegation, proven through verification.
+**Judgment lenses:** Context and delegation, proven through verification; authority in the closing section.
 
 ### What stands out
 
-1. The SDK promise: "the same engine behind Copilot CLI" with the application defining agent behavior. Getting started takes five lines and one install.
-2. Information control is a design tool. Permission handlers and the tool set shape the agent's view of the world, which unlocks use cases a full-access agent cannot serve.
-3. Repository hooks load in SDK sessions when the host opts in, and a repository deny holds even when the host approves. Hooks are the floor; the app builds on it.
-4. Authentication route, billing, model availability, and organization policy decide who can run the app and what it costs.
+1. **A harness fits on a screen.** pi's whole loop is `runLoop`, about 170 lines. Every hook and SDK callback in this talk fills one of five jobs in a loop like it.
+2. The SDK promise: "the same engine behind Copilot CLI" with the application defining agent behavior. Getting started takes five lines and one install.
+3. Information control is a design tool. Permission handlers and the tool set shape the agent's view of the world, which unlocks use cases a full-access agent cannot serve.
+4. Repository hooks load in SDK sessions when the host opts in, and a repository deny holds even when the host approves. Hooks are the floor; the app builds on it.
+5. Authentication route, billing, model availability, and organization policy decide who can run the app and what it costs.
 
 
 ### Evidence map
@@ -63,6 +68,21 @@ Revision 2 adds these evidence gates, all to be observed before the README claim
 | Fresh-eyes run produces at least one real doc mismatch | Run against a clean FanHub clone at a pinned commit; record the friction report. |
 | Blind test writer never reads hidden paths and its tests fail on real API gaps | Live run with hidden-path denials logged; run the produced tests; map failures to `BUGS.md` after the session. |
 
+Revision 3 adds source-reading evidence from pi at commit [`f9daca3`](https://github.com/earendil-works/pi/tree/f9daca3480732d0042b1df3a6e27221f597a620d), read 2026-10-26. These are claims about pi's code only.
+
+| Claim | Source (pinned) | Confidence and boundary |
+|---|---|---|
+| The core loop is one function, `runLoop`, about 170 lines | `packages/agent/src/agent-loop.ts` L172-341 (file is 959 lines including tool execution) | Read from source. Excerpts on slides stay under 25 lines and carry the MIT attribution. |
+| Inner loop runs until no tool calls and no queued steering; outer loop resumes for follow-up messages | `agent-loop.ts` L188-330 (`while (true)`, `getSteeringMessages`, `getFollowUpMessages` at L311) | Read from source. |
+| Context is assembled every turn | `transformContext` L400, `convertToLlm` L404 | Read from source. |
+| A host can block a call before it runs | `beforeToolCall` result `{ block, reason }` at L755 becomes an error tool result | Read from source. Maps to SDK `onPreToolUse` / `onPermissionRequest` by role; the APIs differ. |
+| The product supplies policy through the loop's hook | `packages/coding-agent/src/core/agent-session.ts` L652-682: `_installAgentToolHooks` assigns `agent.beforeToolCall`, which routes each call to extension `tool_call` handlers | Read from source. The `Agent` class (`packages/agent/src/agent.ts` L446, L490) only passes the hooks through to `runAgentLoop`. |
+| A reply cut off at the token limit never executes its tool calls | `stopReason === "length"` at L277 fails the whole batch | Read from source. A detail of pi; no claim about Copilot's behavior. |
+| `write` is fully in-process and swappable | `packages/coding-agent/src/core/tools/write.ts` (97 lines): schema, prompt snippet, per-file mutation queue, abort checks, pluggable `WriteOperations` | Read from source. |
+| `find` delegates to an external program | `packages/coding-agent/src/core/tools/find.ts` (318 lines): `ensureTool("fd")` L172 downloads `fd` on demand; `spawn` L216; custom `glob` operations L116 replace it | Read from source. The harness sees the call and its output; it has no view inside `fd`. |
+
+**Accuracy rule for pi:** pi is one readable harness. The talk claims Copilot's harness does the same five jobs only where the SDK exposes them (session options, callbacks, events, hooks). It makes no claim about the Copilot runtime's internal loop.
+
 ## Recommended Structural Proposal
 
 ### Planning defaults
@@ -72,49 +92,65 @@ Revision 2 adds these evidence gates, all to be observed before the README claim
 - **Language:** TypeScript only, run with `tsx`. SDK `@github/copilot-sdk` 1.0.26, pinned.
 - **Prerequisites:** A Copilot subscription (or BYOK), Node 20+, comfort with async TypeScript. No SDK experience required.
 - **Running repository:** FanHub (`node/` track), cloned at a pinned commit so every run starts clean.
-- **Anchor:** The fresh-eyes friction report. An agent restricted to the documentation finds that FanHub's two Node.js guides disagree on the backend port and on Docker, without opening a source file. The blind test writer remains the section 3 climax, including the undocumented `seasonId` / `season_id` mismatch the referee confirmed.
+- **Anchor:** The loop reveal. pi's entire agent loop is one ~170-line function, and every hook or SDK callback in this talk fills one of its five jobs. The audience sees the loop once, then recognizes each later lever as a job they are taking over.
+- **Payoff and climax:** The fresh-eyes friction report closes section 2: an agent restricted to the documentation finds that FanHub's two Node.js guides disagree on the backend port and on Docker, without opening a source file. The blind test writer is the section 3 climax, including the `seasonId` / `season_id` mismatch the referee labeled undocumented.
 
-### The mental model
+### The mental model: five harness jobs
+
+| Job | What it decides | In pi (read only) | In GitHub's harness (SDK + runtime) |
+|---|---|---|---|
+| **Loop** | Keep going until the work is done | `runLoop`: stream reply → run tool calls → repeat; steering and follow-up queues | The runtime runs it; the app drives it with `sendAndWait` and watches it through events |
+| **Context** | What the model sees each turn | `transformContext`, `convertToLlm`, `prepareRequest` | `systemMessage` (`append` / `customize`), prompt, attachments |
+| **Tools** | What the agent can do | `write` (in-process), `find` (spawns `fd`) | Built-in tools, `availableTools`, `excludedTools`, `defineTool` |
+| **Control** | Which calls run | `beforeToolCall` → `{ block, reason }` | `onPermissionRequest`, `hooks.onPreToolUse`, repository hooks |
+| **Evidence** | What happened | `emit()` events, `afterToolCall` | `session.on(...)`, tool handlers, hook logs |
 
 ```text
-Your app (host)                       Copilot runtime (same loop as the CLI)
-  task + persona  ── systemMessage ──▶  plan
-  tool set        ── availableTools ─▶  pick a tool
-  custom tools    ── defineTool ─────▶  call it
-  permissions     ◀─ onPermissionRequest ─ every read, write, shell
-  evidence        ◀─ session events ───  deltas, tool calls, results
+Your app (host)                       Copilot runtime (the loop)
+  context   ── systemMessage ───────▶  plan
+  tools     ── availableTools/defineTool ▶ pick and call a tool
+  control   ◀─ onPermissionRequest ──  every read, write, shell
+  evidence  ◀─ session events ──────  deltas, tool calls, results
                                         ▲
-Repository hooks (.github/hooks) ───────┘  apply inside your session too
+Repository hooks (.github/hooks) ───────┘  control + evidence inside your session too
 Organization: who may use Copilot, which models, what it costs
 ```
-
-| Seam | The host decides | SDK lever |
-|---|---|---|
-| **Who the agent is** | Role, goal, done criteria | `systemMessage` (`append` / `customize`) |
-| **What it can use** | Built-in tools, domain tools | `availableTools`, `excludedTools`, `defineTool` |
-| **What it can see and do** | Per-call allow, reject, or ask | `onPermissionRequest`, `hooks.onPreToolUse` |
-| **What you keep** | Report, logs, audit trail | `session.on(...)`, tool handlers |
 
 ### Section spine (max four)
 
 | Time | Section and audience question | Artifact and proof | Boundary or recovery |
 |---|---|---|---|
-| 10 min | **Why Host the Agent** — What do I get from the SDK, and what is worth building? | The promise, the mental model above, and the two apps as goals. **Hooks coverage:** the two ways into the loop (hooks attach to an existing harness; the SDK hosts it), hook events and the decision contract, fail-closed/fail-open behavior, and the FanHub database hook as the repository floor every app inherits. | A hook reaches existing harnesses with no host; the SDK makes you the host with its auth, versioning, and lifecycle duties. |
-| 18 min | **Build It From Zero** — How do I go from `npm install` to a working agent tool? | `examples/sdk-quickstart/` steps 01-05 (hello, stream, persona, tools, permissions), each a short diff. Ends with the **fresh-eyes onboarding check** running against a clean FanHub clone and producing a friction report. | Installs and network access happen for real: run in a container or Codespace. A permission handler governs mediated tools; it is not a sandbox. |
-| 20 min | **Decide What It Sees** (climax) — How do I shape the agent's view to get a result a full-access agent cannot give me? | **Blind test writer.** Host hides `node/backend/src/**`, `BUGS.md`, and the database; serves an `api_contract` tool built from `SETUP.md` endpoints with bug hints stripped; allows writes only under `__tests__/blind/`. Live log shows denied reads, the shell workaround caught, the tests written, and the post-session reveal mapping failures to `BUGS.md`. Repo hook still blocks the database inside the session. | A failing blind test is a disagreement between spec and code; the API owner decides which side is wrong. Hidden paths hold only for mediated calls. |
-| 12 min | **Prove and Own It** — What do I need before someone else runs my tool? | Correlated hook log and SDK event stream. **Governance coverage:** the Surrounding Controls map below — who may use Copilot, model availability versus requested model, usage and billing per auth route, tool/MCP policy, policy-level hooks administrators install, evidence retention, and who accepts results — closed by a pre-flight checklist. | Requested model ≠ guaranteed model; usage reporting ≠ enforced budget; BYOK has its own applicability. Name the owner who accepts results. |
+| 18 min | **What a Harness Is** — What is actually running when an agent works, and where can I reach in? | pi at `f9daca3`, read as pinned excerpts (no install, no live run). Six slides: the five jobs, then one slide per job in order. **Loop:** `runLoop` annotated (**anchor**). **Context:** assembled every turn. **Tools:** `write` anatomy (schema, prompt snippet, mutation queue, swappable operations) with `find` delegating to `fd` as a callout. **Control:** `beforeToolCall` blocking a call, the truncated-reply rule, and agent-session wiring. **Evidence:** `emit` vocabulary, `afterToolCall`, and `subscribe`. | `find` is the first boundary: the harness mediates the call and sees the result; work inside the external program is outside its view. pi is a reference; Copilot claims stay at the SDK surface. |
+| 20 min | **Drive GitHub's Harness** — How do I take over those jobs in Copilot, starting from zero? | Mapping table (the five jobs above). **Hooks coverage:** the two ways in — repository hooks as configuration that fills control and evidence in every harness that loads them, the SDK as code that fills all four host jobs; hook decision contract and fail-closed/fail-open behavior; the FanHub database hook as the floor. Then one slide per job, each showing one `examples/sdk-quickstart/` file: **Loop** 01, **Context** 02, **Tools** 03, **Control** 04 (with repository hooks folded in), **Evidence** 05. Ends with the **fresh-eyes onboarding check** (payoff). | Installs and network access happen for real: run in a container or Codespace. A permission handler governs mediated tools; it is not a sandbox. |
+| 15 min | **Decide What It Sees** (climax) — How do I shape the agent's view to get a result a full-access agent cannot give me? | **Blind test writer** on one slide: hidden `node/backend/src/**`, `BUGS.md`, and the database; `api_contract` tool from `SETUP.md` with bug hints stripped; writes only under `__tests__/blind/`; denied reads, the shell check, host rerun, referee mapping. Then what the host cannot see (calls back to `find` → `fd`), and the correlated hook log plus SDK event stream as the evidence you keep. | A failing blind test is a disagreement between spec and code; the API owner decides which side is wrong. Hidden paths hold only for mediated calls. |
+| 7 min | **Own It** — What has to be true before someone else runs my harness? | **Governance coverage:** the Surrounding Controls map below on one slide — who may use Copilot, model availability versus requested model, usage and billing per auth route, tool/MCP policy, policy-level hooks, evidence retention. Second slide: the owner who accepts results and the pre-flight checklist. | Requested model ≠ guaranteed model; usage reporting ≠ enforced budget; BYOK has its own applicability. Name the owner who accepts results. |
 
-The two apps share one host scaffold, so section 3 reuses everything built in section 2 and adds only the visibility rules.
+About 19 content slides (6 + 7 + 4 + 2), about 30 with generated structural slides. The two apps share one host scaffold, so section 3 reuses everything built in section 2 and adds only the visibility rules. Slides consolidated from Revision 2: "What the SDK Gives You", "What Is Worth Building", and "Hook or Host" become the mapping and two-ways-in slides; the two blind-test slides merge into one.
 
 ## Demonstration and Artifact Plan
 
+### pi excerpts (section 1)
+
+Read-only, pinned to `f9daca3`, each excerpt under 25 lines with "pi · MIT · earendil-works/pi@f9daca3 · path#Lx-Ly" on the slide. No `examples/` code and no pi install.
+
+1. **The loop:** `agent-loop.ts` L188-330, trimmed to the inner and outer `while` with the five jobs labeled in the margin.
+2. **Context:** L399-404, `transformContext` then `convertToLlm`, run before every model call.
+3. **Control:** L738-760, `beforeToolCall` returning `{ block, reason }`; plus L275-281, the truncated-reply rule; plus `agent-session.ts` L652-682, where pi's coding agent installs its extensions into that hook (loop owns the hook point, product supplies the policy).
+4. **`write`:** the tool definition and `execute` body, showing schema, prompt snippet, mutation queue, and `WriteOperations`.
+5. **`find`:** `ensureTool("fd")` and `spawn`, plus the custom `glob` operations that replace them (a callout on the Tools slide).
+6. **Evidence:** `agent-loop.ts` L880-912 `afterToolCall` and L929-937 `emitToolExecutionEnd`, plus `agent.ts` L275-278 `subscribe`.
+
+Slide order follows the jobs: loop, context, tools (`write` + `find`), control, evidence.
+
 ### `examples/sdk-quickstart/` (section 2)
 
-1. `01-hello.ts` — `CopilotClient`, `createSession({ model: "auto" })`, `sendAndWait`, `disconnect`, `stop`.
-2. `02-stream.ts` — `streaming: true`, `assistant.message_delta`, `session.idle`, tool-call events.
-3. `03-persona.ts` — `systemMessage` in `customize` mode; same question, different answer.
-4. `04-tools.ts` — `availableTools` narrowing plus one `defineTool` with a JSON schema.
-5. `05-permissions.ts` — `onPermissionRequest` that logs every request kind and approves reads, asks on shell.
+Numbered in job order; one file per slide.
+
+1. `01-loop.ts` — **Loop:** `CopilotClient`, `createSession({ model: "auto" })`, `sendAndWait` (60 s default wait; `abort()` stops the loop), `disconnect`, `stop`.
+2. `02-context.ts` — **Context:** `systemMessage` in `customize` mode; the three modes and section actions are Documented, the citations Observed.
+3. `03-tools.ts` — **Tools:** `tools` adds `lookup_owner`; `availableTools` allowlists four names.
+4. `04-control.ts` — **Control:** `onPermissionRequest` approves reads and rejects everything else with feedback; repository hooks and the precedence probe on the same slide.
+5. `05-evidence.ts` — **Evidence:** `streaming: true`, `assistant.message_delta`, `tool.execution_start`, `session.idle`.
 
 ### Fresh-eyes onboarding check (section 2 payoff)
 
@@ -167,16 +203,16 @@ For GitHub-authenticated and BYOK routes, document applicability separately. Do 
 |---|---|---|---|
 | [Copilot SDK](../copilot-sdk/README.md) | Runtime reuse, host lifecycle, domain tools, auth routes, the "build your own tool" ambition | Rebuild as a from-zero TypeScript path ending in two working apps | Multi-language tour, unsourced savings, blanket production-readiness claims |
 | [Copilot Hooks](../copilot-hooks/README.md) | Repository hooks as the floor every session inherits; policy-level hooks for administrators | Show hooks loading inside the SDK apps and holding a deny | Universal event counts, complete-compliance claims, secret-injection recipes |
-| [Copilot Governance](../copilot-governance/README.md) | Decision ownership, model availability, usage, and control map | Fold into Prove and Own It as the pre-flight for shipping an app | Detailed PR protection walkthrough |
+| [Copilot Governance](../copilot-governance/README.md) | Decision ownership, model availability, usage, and control map | Fold into Own It as the pre-flight for shipping a harness | Detailed PR protection walkthrough |
 
 ## Delivery Plan and Approval Gates
 
-1. **Approve this revision.** Confirm the core question, section spine, and both app designs.
-2. **Build and run the examples.** Quickstart steps, both apps, shared host kit, tests; record live output against a pinned FanHub clone.
-3. **Rewrite the README** around the observed results; approve.
-4. **New recipe** with an independent cross-model critique; approve.
+1. **Approve this revision.** Confirm the five-jobs definition, the section spine, and the pi excerpt list.
+2. **Re-verify the pi excerpts** at `f9daca3` and record exact line ranges in the README's Behind the Scenes. No new runs are needed: the apps, quickstart, and recorded evidence from Revision 2 carry forward.
+3. **Rewrite the README:** new section 1 (What a Harness Is), section 2 absorbs the old "Why Host the Agent" and "Build It From Zero", section 3 gains the `find` callback and the evidence slide content, section 4 becomes Own It. Approve.
+4. **New recipe** from the deck-recipe-review skill; approve.
 5. **Regenerate the deck and companions** (60-minute agenda), sync the index, regenerate the portfolio.
-6. **Commit** through the Deploy workflow with the archive cutover already in the working tree.
+6. **Commit** through the Deploy workflow.
 
 
 ### Completion and archival checklist
@@ -196,8 +232,8 @@ The worktree already contains portfolio restructuring and edits to the Hooks and
 ## Publication Gate and Transfer
 
 - **Relevant:** A developer can name a workflow in their own repository that deserves a dedicated agent tool and the person who consumes its output.
-- **Compelling:** Watching an agent produce useful, independent results *because* of what it was not allowed to see changes how the audience thinks about agent design.
-- **Actionable:** The audience leaves with a five-step quickstart, a reusable host scaffold, and two apps they can point at their own repository today.
+- **Compelling:** Seeing the whole loop on one screen turns hooks and SDK callbacks from settings into jobs the audience recognizes, and watching an agent produce useful, independent results *because* of what it was not allowed to see changes how the audience thinks about agent design.
+- **Actionable:** The audience leaves with the five-jobs checklist, a five-step quickstart, a reusable host scaffold, and two apps they can point at their own repository today.
 
-**Transfer prompt:** Pick one workflow where a fresh, constrained perspective would help: docs, tests, reviews, or onboarding. What does your agent need to see, what must it never see, what tools does it get, and who reads its report?
+**Transfer prompt:** Pick one workflow where a fresh, constrained perspective would help: docs, tests, reviews, or onboarding. Which of the five jobs do you take over? What does your agent need to see, what must it never see, what tools does it get, and who reads its report?
 

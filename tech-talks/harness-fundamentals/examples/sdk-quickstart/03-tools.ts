@@ -1,5 +1,5 @@
-// Step 4: decide what the agent can use. Narrow the built-ins, then add a tool only your app can answer.
-//   npx tsx sdk-quickstart/04-tools.ts
+// Step 3 · Tools: `tools` adds a tool object your app answers; `availableTools` allowlists tool names, hiding the rest.
+//   npx tsx sdk-quickstart/03-tools.ts
 import { CopilotClient, approveAll, defineTool } from "@github/copilot-sdk";
 
 // Knowledge that lives in your systems, not in the repo.
