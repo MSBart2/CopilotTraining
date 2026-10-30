@@ -1,10 +1,12 @@
 ---
 status: active
-updated: 2026-10-27
+updated: 2026-10-30
 section: "Extend and Embed"
 ---
 
 # Harness Fundamentals: Plan (Revision 4, five jobs twice)
+
+**SDK framing update (2026-10-30):** The five-job mirror remains. The primary SDK value statement is embedding AI in an existing tool or app: a named custom-tool handler calls an app method, the existing service validates and authorizes the app user, and SDK events feed its UI and telemetry. Section 2 now follows a release-dashboard integration sketch from question to method call to visible result, with permission decisions distinct from resource authorization and business approval. Sketches are labeled illustrative; quickstarts and the observed fresh-eyes run remain supporting README material. This supersedes the earlier requirement to put one quickstart file on each SDK slide and make fresh-eyes the section payoff. The closing ideas and transfer slide ask which existing app method the audience could expose, what authority it retains, and what evidence its users need.
 
 **Proposal status:** Draft for approval. Revision 3 opens the talk by defining a harness from working code. [pi](https://github.com/earendil-works/pi) (MIT) is the readable reference harness; the Copilot SDK is GitHub's harness, which the audience then hosts from its own code. Revision 2's apps, evidence, and host kit carry forward unchanged.
 
@@ -18,12 +20,12 @@ section: "Extend and Embed"
 
 ### Audience and consequential decision
 
-Application developers and platform engineers have used Copilot in an editor or the CLI and now want the agent inside their own tools. They write and test code comfortably; the SDK and harness internals are new. Their decision: which workflow deserves its own agent host, and what that host decides about what the agent sees, uses, and does.
+Application developers and platform engineers have used Copilot in an editor or the CLI and now want the agent inside their own tools. They write and test code comfortably; the SDK and harness internals are new. Their decision: which existing app capability to expose through an AI tool, which permissions and approvals the app retains, and what its users need to see in the UI and telemetry.
 
 **Question this talk answers:**
 > How do I get inside the agent loop and change how it behaves?
 
-**Thesis:** A harness is the code around a model that turns its replies into actions, and it does five jobs: run the **loop**, assemble the **context**, offer the **tools**, **control** which calls run, and record the **evidence**. pi shows all five in plain TypeScript. The Copilot SDK hands an application GitHub's harness: the runtime keeps the loop, and the application takes over context, tools, control, and evidence. Repository hooks fill the control and evidence jobs underneath every app, so team-wide rules travel with the repository while each app adds the rules its purpose needs.
+**Thesis:** A harness is a loop with five jobs: run the **loop**, assemble the **context**, offer the **tools**, **control** which calls run, and record the **evidence**. pi shows all five in plain TypeScript. The Copilot SDK embeds GitHub's harness in an existing application. Custom tools call selected app methods; the app retains service authorization and approval gates, and wires events into its UI and telemetry. Repository hooks add rules in sessions that load them. Each layer has a clear job, and the app team verifies the resulting behavior.
 
 **Tension:** Controlling what the agent *sees* is as powerful as controlling what it *does*. Withholding source code turns the agent into an independent tester; withholding everything except the docs turns it into a new hire. Every such choice is behavior the host team owns, tests, and explains. The boundary is visible in the first section: a tool such as pi's `find` hands work to an external program, and the harness sees only the call and its result.
 
@@ -236,4 +238,3 @@ The worktree already contains portfolio restructuring and edits to the Hooks and
 - **Actionable:** The audience leaves with the five-jobs checklist, a five-step quickstart, a reusable host scaffold, and two apps they can point at their own repository today.
 
 **Transfer prompt:** Pick one workflow where a fresh, constrained perspective would help: docs, tests, reviews, or onboarding. Which of the five jobs do you take over? What does your agent need to see, what must it never see, what tools does it get, and who reads its report?
-

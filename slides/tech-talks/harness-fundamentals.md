@@ -13,7 +13,7 @@ title: Harness Fundamentals
 mdc: true
 section: "Extend and Embed"
 status: active
-updated: 2026-10-26
+updated: 2026-10-30
 ---
 
 <script setup>
@@ -37,7 +37,7 @@ import HeroStatSlide from './components/HeroStatSlide.vue'
 <TitleSlide
   title="Harness Fundamentals"
   subtitle="Getting Inside the Agent Loop"
-  tagline="See the five jobs every agent harness does, then take them over in GitHub's harness from your own code."
+  tagline="Understand the loop, then bring AI into your existing apps with tools, controls, and telemetry."
   meta="Extend and Embed · CopilotTraining Tech Talk · 60 min · @github/copilot-sdk 1.0.26"
 />
 
@@ -52,7 +52,7 @@ import HeroStatSlide from './components/HeroStatSlide.vue'
   :cards='[
     { icon: "🧑‍💻", title: "Developers", description: "Already use Copilot in the editor or CLI and want the agent inside their own tools" },
     { icon: "🛠️", title: "Platform engineers", description: "Decide which rules run in every harness and which belong in one app" },
-    { icon: "🏗️", title: "Architects", description: "Choose when a workflow earns its own agent app and what it may see" },
+    { icon: "🏗️", title: "Architects", description: "Choose which existing app methods an agent may request and what access it needs" },
     { title: "~170 lines", description: "pi&#39;s entire agent loop, one function you can read on one screen" },
     { title: "5 places to step in", description: "Loop, context, tools, control, evidence: every hook or callback fills one" },
     { title: "Same loop in Copilot", description: "The SDK starts the Copilot CLI runtime; your code steps in at the same five places" }
@@ -66,7 +66,7 @@ import HeroStatSlide from './components/HeroStatSlide.vue'
 <TocSlide
   :sections='[
     { icon: "🔁", title: "What a Harness Is", subtitle: "Five jobs, read in pi&#39;s source", blurb: "Loop, context, tools, control, and evidence, each on one slide of real code", slide: 4 },
-    { icon: "🧭", title: "Drive GitHub&#39;s Harness", subtitle: "The same five jobs, one quickstart file each", blurb: "Take over four jobs from your own code and build a docs-only onboarding check", slide: 11 },
+    { icon: "🧭", title: "Drive GitHub&#39;s Harness", subtitle: "Bring AI into the apps you already own", blurb: "Call existing methods through tools, enforce app permissions, and stream progress", slide: 11 },
     { icon: "🔍", title: "Decide What It Sees", subtitle: "One policy, a blind tester, and its evidence", blurb: "Hide the implementation and let a referee name what the tests found", slide: 19 },
     { icon: "🤝", title: "Own It", subtitle: "Surrounding controls, pre-flight, named owner", blurb: "Share a harness others can run, and know who reads each report", slide: 24 }
   ]'
@@ -229,14 +229,22 @@ afterToolCall sees the arguments and the result together, so it can redact a sec
 <SectionOpenerSlide
   :partNumber='2'
   title="Drive GitHub's Harness"
-  subtitle="Same loop; GitHub runs it, and your code steps in at the same five places."
+  subtitle="Put the loop inside an app you already own, with its methods, permissions, and UI."
   :cards='[
-    { icon: "🔁", title: "Same loop, your host", blurb: "Host = the app you write with the SDK; it steps in at five places" },
-    { icon: "📂", title: "One file per job", blurb: "01-loop.ts through 05-evidence.ts, one slide each" },
-    { icon: "👀", title: "Fresh-eyes check", blurb: "A docs-only agent files a friction report" }
+    { icon: "🔁", title: "Your app is the host", blurb: "Host = the app running the SDK; it can be one you already use" },
+    { icon: "🧰", title: "Your methods become tools", blurb: "The model requests a named tool; your handler calls app code" },
+    { icon: "📡", title: "Your rules, your telemetry", blurb: "App permissions stay in force; events feed your UI and logs" }
   ]'
-  :terminal='{ context: "@github/copilot-sdk 1.0.26 · model auto · FanHub 0ea9e78 · observed 2026-10-26", detail: "24 tool calls · 0 source reads · 3 friction findings" }'
+  :terminal='{ context: "Integration sketch · existing release dashboard + @github/copilot-sdk", detail: "What blocks this release? → app method → readiness result → dashboard" }'
 />
+
+<!--
+The SDK's primary value here is embedding an agent in software the team already owns. The app can be a desktop tool, a web backend, or an internal release dashboard. A web frontend talks to its backend; the backend hosts the SDK and keeps credentials and authorization there.
+
+The following sketches use a release dashboard as one continuous example. releaseService, user, selectedRelease, ui, and telemetry are application-owned objects, not SDK APIs. These are illustrative integration excerpts, not a recorded release-dashboard run. The runnable quickstarts remain supporting material.
+
+The model requests a named tool. Its handler calls the app's existing method. Tool availability and permission callbacks bound the request; the service still validates the arguments and authorizes the authenticated user. SDK events feed progress and diagnostics, while the service records the business result. Embedding the SDK creates these control points; it does not secure an application automatically.
+-->
 
 ---
 
@@ -251,9 +259,9 @@ afterToolCall sees the arguments and the result together, so it can redact a sec
   :rows='[
     { label: "Loop", description: "The runtime; your app drives createSession, sendAndWait, abort", tag: "pi: runLoop" },
     { label: "Context", description: "systemMessage (append, customize, replace), the prompt, model", tag: "pi: transformContext" },
-    { label: "Tools", description: "Built-in tools, availableTools, excludedTools, defineTool", tag: "pi: write · find" },
+    { label: "Tools", description: "defineTool wraps app methods; availableTools names what exists", tag: "pi: write · find" },
     { label: "Control", description: "onPermissionRequest, hooks.onPreToolUse, repository hooks", tag: "pi: beforeToolCall" },
-    { label: "Evidence", description: "streaming, session.on(...), tool handlers, hook logs", tag: "pi: emit · afterToolCall" }
+    { label: "Evidence", description: "session.on feeds your UI and telemetry; services record results", tag: "pi: emit · afterToolCall" }
   ]'
   footnote="Documented: the SDK talks to the Copilot runtime over JSON-RPC and starts and stops it for you"
   :progressDots='{ current: 1, total: 7, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
@@ -267,20 +275,24 @@ afterToolCall sees the arguments and the result together, so it can redact a sec
   :partNumber='2'
   pillIcon="🔁"
   pillLabel="Drive GitHub's Harness · Loop"
-  title="Your code starts GitHub's loop and decides when it stops"
+  title="A dashboard action starts the loop and displays its answer"
   codePosition="top"
-  :code='{ language: "ts", filename: "examples/sdk-quickstart/01-loop.ts", content: "import { CopilotClient, approveAll } from \"@github/copilot-sdk\";\n\nconst client = new CopilotClient();\nconst session = await client.createSession({ model: \"auto\", onPermissionRequest: approveAll });\n\nconst reply = await session.sendAndWait({ prompt: \"How do I run this project? Two sentences.\" });\nconsole.log(reply?.data.content);\n\nawait session.disconnect();\nawait client.stop();" }'
+  :code='{ language: "ts", filename: "release-assistant.ts (integration sketch)", content: "const client = new CopilotClient();\nconst session = await client.createSession({\n  model: \"auto\", tools: [readinessTool],\n  availableTools: [\"release_readiness\"],\n  onPermissionRequest: releasePermissions,\n});\nconst reply = await session.sendAndWait({\n  prompt: `What blocks release ${selectedRelease.id}?`,\n});\nui.showAnswer(reply?.data.content);" }'
   :features='[
-    { icon: "🖥️", title: "new CopilotClient()", description: "Starts the Copilot CLI runtime: GitHub&#39;s loop." },
-    { icon: "⏳", title: "sendAndWait", description: "Runs the loop until the agent is done; returns the reply." },
-    { icon: "🛑", title: "disconnect + stop", description: "Ends the session and shuts the runtime down." }
+    { icon: "🖥️", title: "Your app starts it", description: "A UI action supplies the selected release and the question." },
+    { icon: "⏳", title: "sendAndWait", description: "The runtime handles model turns and tool calls; your app gets the reply." },
+    { icon: "🖼️", title: "Your app shows the answer", description: "ui.showAnswer delivers the reply inside the dashboard people already use." }
   ]'
   :insight='{ icon: "🔁", text: "Same loop as pi. The SDK hands you the five places to step in." }'
   :progressDots='{ current: 2, total: 7, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 <!--
-The runtime runs the loop; your code decides when it starts and when it stops. CopilotClient starts the same Copilot runtime that powers Copilot CLI and talks to it over JSON-RPC, so this loop is the CLI's loop. Not shown, worth knowing: pass a schema as the second argument to sendAndWait and the reply comes back as typed data your code can branch on. session.abort() stops the loop mid-run, for when your budget or your user says the run is over; sendAndWait's timeout (60 seconds by default) only ends your wait, so long tasks pass their own. approveAll is a convenience for this first step; the control slide replaces it. Same loop as pi's runLoop: GitHub runs it, and the next four slides are the four other places your code steps in. Setup: Node 20+; the session runs as the signed-in Copilot CLI user, under that user's license and policy.
+The practitioner clicks "Explain readiness" in an existing release dashboard. Its backend creates a session with one tool and the permission handler shown on the next slides. selectedRelease and ui belong to the app; ui.showAnswer represents delivering the answer back to its frontend. The service supplies the data; the model explains it.
+
+CopilotClient starts the Copilot runtime and talks over JSON-RPC. In a long-lived app, reuse the client and scope sessions to users and tasks. A Cancel action calls session.abort(); sendAndWait's default 60-second timeout ends only the wait. In finally, disconnect the session; stop the client when its owning app shuts down. Those lifecycle paths are omitted from this integration excerpt.
+
+The runtime runs the same kind of loop as pi; the next four slides show what your app supplies. Node 20+; choose an authentication route for your deployment. Copilot identity and app-user authorization are separate decisions.
 -->
 
 ---
@@ -291,13 +303,13 @@ The runtime runs the loop; your code decides when it starts and when it stops. C
   :partNumber='2'
   pillIcon="🧠"
   pillLabel="Drive GitHub's Harness · Context"
-  title="Your code rewrites one section of what the model is told; the rest stays"
+  title="Give the model a clear job inside your app"
   codePosition="top"
-  :code='{ language: "ts", filename: "examples/sdk-quickstart/02-context.ts (trimmed)", content: "const session = await client.createSession({\n  model: \"auto\",\n  onPermissionRequest: approveAll,\n  systemMessage: {\n    mode: \"customize\",\n    sections: { custom_instructions: { action: \"append\", content:\n      \"You are a first-day engineer who trusts only written documentation. \" +\n      \"Cite the file behind every step. \" +\n      \"Label any step that comes from code or config instead of docs as (undocumented).\" } },\n  },\n});" }'
+  :code='{ language: "ts", filename: "release-assistant.ts · session options (integration sketch)", content: "systemMessage: {\n  mode: \"customize\",\n  sections: { custom_instructions: { action: \"append\", content:\n    \"You assist a release engineer inside the release dashboard. \" +\n    \"Use release_readiness for current status; name each blocker. \" +\n    \"If the tool cannot answer, report the gap. \" +\n    \"Explain the next step for a person to approve.\" } },\n}" }'
   :features='[
     { icon: "📝", title: "systemMessage", description: "GitHub&#39;s built-in instructions to the model, in named sections." },
     { icon: "🎚️", title: "mode: customize", description: "Edit one section; every other section stays as GitHub wrote it." },
-    { icon: "➕", title: "custom_instructions", description: "The section for your rules; here, three sentences appended." }
+    { icon: "➕", title: "custom_instructions", description: "Names the app task, the source of facts, and what to do when facts are missing." }
   ]'
   :insight='{ icon: "💡", text: "Instructions steer the model; the next two slides enforce limits in code." }'
   :progressDots='{ current: 3, total: 7, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
@@ -306,7 +318,7 @@ The runtime runs the loop; your code decides when it starts and when it stops. C
 <!--
 What: three modes. append (default) adds your text after GitHub's full prompt; customize changes named sections (identity, tone, custom_instructions, and others) and keeps safety and tool_instructions in place; replace sends only your text and removes the SDK's guardrails, including security restrictions.
 
-Why customize: your code edits one named section (here custom_instructions, where repo and org instructions already live) and the rest of GitHub's prompt, including safety, stays as written. The first-day-engineer text is just example content.
+Why customize: your code edits one named section (here custom_instructions, where repo and org instructions already live) and the rest of GitHub's prompt, including safety, stays as written. Here the role is a release assistant inside an existing dashboard. The instruction names its tool and asks it to report missing facts instead of guessing.
 
 When: use instructions for what the model aims at, such as role, tone, and output rules. Instructions steer, and the model follows them most of the time. When a rule must hold every time, enforce it in code with the next two jobs: tools decide what exists, control decides what runs.
 -->
@@ -319,24 +331,26 @@ When: use instructions for what the model aims at, such as role, tone, and outpu
   :partNumber='2'
   pillIcon="🧰"
   pillLabel="Drive GitHub's Harness · Tools"
-  title="Your host adds one tool and allows four; the rest disappear"
+  title="A custom tool can call a method your app already has"
   codePosition="top"
-  :code='{ language: "ts", filename: "examples/sdk-quickstart/03-tools.ts (trimmed)", content: "const OWNERS: Record<string, string> = { \"node/backend/src/routes/\": \"api-team\",\n  \"node/backend/src/database/\": \"data-team\", \"node/frontend/\": \"web-team\" };\nconst lookupOwner = defineTool(\"lookup_owner\", {\n  description: \"Return the team that owns a repository path.\",\n  parameters: { type: \"object\", properties: { path: { type: \"string\" } }, required: [\"path\"] },\n  handler: async ({ path }: { path: string }) => { /* … owner of the matching OWNERS prefix */ },\n});\nconst session = await client.createSession({ model: \"auto\", onPermissionRequest: approveAll,\n  availableTools: [\"view\", \"glob\", \"grep\", \"lookup_owner\"], tools: [lookupOwner] });" }'
+  :code='{ language: "ts", filename: "release-tools.ts (integration sketch; releaseService is app code)", content: "const readinessTool = defineTool(\"release_readiness\", {\n  description: \"Read the current blockers for a release.\",\n  parameters: { type: \"object\", properties: {\n    releaseId: { type: \"string\" } }, required: [\"releaseId\"], additionalProperties: false },\n  handler: async ({ releaseId }: { releaseId: string }) =>\n    releaseService.getReadiness(user, releaseId),\n});\n// Session options:\ntools: [readinessTool],\navailableTools: [\"release_readiness\"]" }'
   :features='[
-    { icon: "➕", title: "What: tools", description: "Adds a tool: name, schema, handler in your app." },
-    { icon: "✅", title: "What: availableTools", description: "An allowlist of names; the rest are hidden." },
-    { icon: "🎯", title: "When to add one", description: "The answer lives in your systems, outside the repo." }
+    { icon: "🔗", title: "handler → app method", description: "The SDK calls your handler; it calls releaseService.getReadiness." },
+    { icon: "🛂", title: "Keep app authorization", description: "The service checks the authenticated user and the requested release." },
+    { icon: "✅", title: "Expose just this tool", description: "tools adds it; availableTools hides shell, files, and other tools." }
   ]'
-  :insight='{ icon: "🧭", text: "Narrowing the tool set changes the plan the agent makes, before any permission check runs." }'
+  :insight='{ icon: "💡", text: "The model chooses when to request a tool; your app chooses which method it calls and what data comes back." }'
   :progressDots='{ current: 4, total: 7, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 <!--
-Two options, two jobs. `tools` hands the runtime the tool object (name, schema, handler) so the tool exists. `availableTools` is an allowlist of names across built-in, MCP, and custom tools; once set, everything off the list is hidden, so here the agent has no shell at all. `excludedTools` subtracts and always wins.
+This is the central SDK use case: expose a narrow wrapper around a method already in the app. No shell command, external MCP server, or duplicate release service is needed. The SDK routes the named tool call back into the hosting process.
 
-`lookupOwner` is the JavaScript variable; "lookup_owner" is the name the model sees and the allowlist matches. With only `tools`, the agent keeps every built-in plus yours. With only `availableTools`, "lookup_owner" matches nothing.
+releaseService and user are app-owned. user comes from the authenticated app session, never from model-supplied arguments. The service validates releaseId, checks that user can access that release, returns only permitted readiness fields, and records the business operation in its existing audit log. A JSON schema describes the input shape; it does not authorize a release ID.
 
-When to add a tool: the answer lives in your systems (ownership, tickets, deploy state) and the agent cannot read it from the repo. The handler here reads a three-path OWNERS table; a real one calls your own service. When to narrow: a task that only needs to read gets only read tools, so the agent plans around what exists before any permission check runs.
+tools registers the tool object; availableTools is an allowlist of names across built-in, MCP, and custom tools. With only tools, built-ins remain available. excludedTools subtracts and wins. This sketch exposes one read-only business operation; the model cannot choose arbitrary app method names.
+
+Illustrative request: release_readiness({ releaseId: "v2.4" }). Illustrative service result: { ready: false, blockers: ["Integration tests failed"] }. The release dashboard already has the facts and authorization; the agent gains a new way to use them. These are example values, not observed results.
 -->
 
 ---
@@ -347,27 +361,31 @@ When to add a tool: the answer lives in your systems (ownership, tickets, deploy
   :partNumber='2'
   pillIcon="🛂"
   pillLabel="Drive GitHub's Harness · Control"
-  title="Before the agent reads, writes, or runs a command, your code says yes or no"
+  title="Your app controls tool requests and checks user access"
   codePosition="top"
-  :code='{ language: "ts", filename: "examples/sdk-quickstart/04-control.ts (trimmed)", content: "const onPermissionRequest: PermissionHandler = (request) => {\n  // … subject = fullCommandText (shell), path (read), or fileName (write)\n  if (request.kind === \"read\") {\n    console.log(`[allow] read ${subject}`);\n    return { kind: \"approve-once\" };\n  }\n  console.log(`[reject] ${request.kind} ${subject}`);\n  return { kind: \"reject\", feedback: \"This session is read-only. Use the view tool to inspect files.\" };\n};\nconst session = await client.createSession({ model: \"auto\", onPermissionRequest });" }'
+  :code='{ language: "ts", filename: "release-permissions.ts (integration sketch)", content: "const releasePermissions: PermissionHandler = (request) =>\n  request.kind === \"custom-tool\" && !request.managedApprovalRequired &&\n  request.toolName === \"release_readiness\"\n    ? { kind: \"approve-once\" }\n    : { kind: \"reject\", feedback: \"Readiness only. Ask a release owner.\" };\n// Session options:\nonPermissionRequest: releasePermissions,\nenableFileHooks: true" }'
   :features='[
-    { icon: "🛂", title: "onPermissionRequest", description: "Called before every file read, file write, and shell command." },
-    { icon: "✅", title: "approve-once or reject", description: "Here: reads are allowed; writes and commands are refused." },
-    { icon: "↩️", title: "feedback", description: "The reason goes to the agent, so it finds an allowed way." },
-    { icon: "🧱", title: "Repo hooks still run", description: "Rules checked into the repo apply too, and a repo no wins." }
+    { icon: "🛂", title: "Allow one operation", description: "The permission handler approves only release_readiness." },
+    { icon: "🔐", title: "Authorize inside the service", description: "Tool approval never grants access to every user or release." },
+    { icon: "↩️", title: "Reject with a next step", description: "Other requests get a reason and a route to the release owner." },
+    { icon: "🧱", title: "Load repository hooks", description: "enableFileHooks loads repo rules; a repo deny still wins." }
   ]'
-  :insight='{ icon: "🔗", text: "Your handler holds this app&#39;s rules; repo hooks hold the rules every agent must follow (enableFileHooks: true)." }'
+  :insight='{ icon: "🔗", text: "SDK approvals gate tool requests; your service checks user access and any required human approval." }'
   :progressDots='{ current: 5, total: 7, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
 <!--
-What: every mediated read, write, and shell call asks your handler first. Reads inside the working directory raise requests too (kind read, with request.path), so the handler governs what the agent sees as well as what it changes.
+There are two distinct decisions. The SDK permission handler decides whether this session may request the named operation. releaseService then uses the app's authenticated user to authorize access to that specific release. A custom-tool permission request includes toolName; keep argument-level validation and authorization in the service, where the arguments and identity are available together.
 
-Why feedback: a reject carries a reason, and the reason goes back to the model, just as pi's block reason comes back as a tool result. "Read-only; use the view tool" turns a no into a redirect, and the agent finishes the task on an allowed path.
+This session exposes only the read-only readiness method. A publish method is absent. If the team later adds deployment tools, its existing service must require a separately recorded human approval for the exact release and target. A model instruction or approve-once decision is not that business approval.
+
+managedApprovalRequired means a managed policy requires human approval. This minimal handler refuses those requests and directs the user to the owner; an app that supports them needs an explicit human approval flow.
+
+Feedback gives the agent a useful next step after a refusal. It can explain that a release owner must act. Never turn service failures into a success response; preserve a visible error and record the failure.
 
 Repo hooks: a preToolUse hook checked into the repository (FanHub's denies node/backend/src/database/** and fanhub.db*). With enableFileHooks: true, every session your app creates loads it, and a repository deny wins even when your app's own hook says allow. If a hook crashes or exits non-zero, the call is blocked; if it times out, the call runs. A hook you rely on has to be fast.
 
-When to use which: the handler for this app's policy (this session is read-only); repo hooks for rules every tool must obey, whether the caller is your app, Copilot CLI, or the cloud agent.
+Hooks govern the tool calls they receive; they cannot see every operation inside a custom handler. A service method still needs its own authorization and audit trail. When running against a repository, enableFileHooks opts into its hook rules. Operating-system isolation and organization controls remain separate boundaries.
 -->
 
 ---
@@ -378,39 +396,48 @@ When to use which: the handler for this app's policy (this session is read-only)
   :partNumber='2'
   pillIcon="📡"
   pillLabel="Drive GitHub's Harness · Evidence"
-  title="Every event in GitHub's loop reaches your code"
+  title="Feed progress into your app UI and tool events into its telemetry"
   codePosition="top"
-  :code='{ language: "ts", filename: "examples/sdk-quickstart/05-evidence.ts (trimmed)", content: "const session = await client.createSession({\n  model: \"auto\", streaming: true, onPermissionRequest: approveAll });\n\nsession.on(\"assistant.message_delta\", (e) => process.stdout.write(e.data.deltaContent));\nsession.on(\"tool.execution_start\", (e) => console.log(`\\n[tool] ${e.data.toolName}`));\nsession.on(\"tool.execution_complete\", (e) => console.log(`[tool done] success=${e.data.success}`));\nsession.on(\"session.idle\", () => console.log(\"\\n[idle]\"));\n\nawait session.sendAndWait({\n  prompt: \"List the files in this folder, then tell me which one is the entry point.\" });" }'
+  :code='{ language: "ts", filename: "release-events.ts (integration sketch; ui and telemetry are app code)", content: "// Set streaming: true when creating the session; subscribe before sending.\nsession.on(\"assistant.message_delta\", (e) => ui.appendText(e.data.deltaContent));\nsession.on(\"tool.execution_start\", (e) =>\n  ui.showTool(e.data.toolName));\nsession.on(\"tool.execution_complete\", (e) =>\n  telemetry.record(\"tool.complete\", {\n    sessionId: session.sessionId, toolCallId: e.data.toolCallId,\n    success: e.data.success,\n  }));\nsession.on(\"session.idle\", () => ui.finishResponse());" }'
   :features='[
-    { icon: "📡", title: "What: session.on", description: "Messages, tool calls, and idle, as they happen." },
-    { icon: "📊", title: "Why: render, count, store", description: "Feed a UI, a budget, or an audit log." },
-    { icon: "🔁", title: "Like pi&#39;s subscribe", description: "session.on is the host end of the stream." }
+    { icon: "📡", title: "Progress in your UI", description: "Stream the answer and show which tool the agent requested." },
+    { icon: "📊", title: "Events in your telemetry", description: "Record the session, tool call, and whether execution succeeded." },
+    { icon: "🔐", title: "Business audit stays in the app", description: "The service records access decisions and the actual release result." }
   ]'
-  :insight='{ icon: "🧾", text: "Repository hooks add a second record from outside the app; section 3 joins the two by sessionId." }'
+  :insight='{ icon: "🧾", text: "Tool execution success means the call completed; ready: false can still be its business result." }'
   :progressDots='{ current: 6, total: 7, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
+<!--
+ui and telemetry represent the app's existing UI bridge and telemetry client. Subscribe before sending the prompt, so early events are captured. A web backend forwards progress to the frontend over its chosen transport. Render model text as untrusted content with the UI's usual escaping.
+
+sessionId groups the conversation; toolCallId identifies a particular call. Add the app's request identifier to its own service audit and handler telemetry to correlate them; that join is application wiring, not an automatic SDK feature. Record bounded metadata, permission outcomes, and failures. Avoid logging tokens, raw arguments, or full business records by default.
+
+tool.execution_complete.success reports execution status. A successful readiness query may return ready: false, and a permission refusal is a different event again. Keep those meanings separate. Handle session.error and application transport failures visibly; idle ends this response, not the app session. Unsubscribe handlers when the owning view/session is disposed.
+-->
+
 ---
 
-<!-- SLIDE: Fresh-Eyes Payoff -->
-# Fresh-Eyes Payoff
+<!-- SLIDE: AI Inside Your App -->
+# AI Inside Your App
 <TwoColPairedConceptsSlide
   :partNumber='2'
-  pillIcon="👀"
-  pillLabel="Drive GitHub's Harness · Fresh-Eyes"
-  title="A docs-only agent found FanHub's Node guides disagree"
-  :left='{ header: "Host decisions", icon: "🧭", items: [
-  { title: "Clean clone at a pinned commit", detail: "A fresh temp folder for every run" },
-  { title: "Sees docs only", detail: "Docs, manifests, Dockerfiles, scripts; src/ hidden" },
-  { title: "report_friction tool", detail: "step, docSays, reality, doc, severity: structured findings" },
-  { title: "Bounded", detail: "80 tool calls, then session.abort(); 20-minute timeout" }
+  pillIcon="🧩"
+  pillLabel="Drive GitHub's Harness · Inside Your App"
+  title="AI brings your app's existing methods into a new workflow"
+  :left='{ header: "One question becomes an app workflow", icon: "🧭", items: [
+  { title: "Engineer asks: What blocks v2.4?", detail: "The dashboard supplies the selected release" },
+  { title: "Agent requests release_readiness", detail: "Your handler calls releaseService.getReadiness" },
+  { title: "Service returns ready: false", detail: "Example blocker: integration tests failed" },
+  { title: "Dashboard shows answer and progress", detail: "The engineer sees the blocker and chooses the next action" }
 ] }'
-  :right='{ header: "Friction report → docs owner", icon: "📋", items: [
-  { title: "confusing: port 3001 vs 5265, Docker or none", detail: "README needs Docker on 3001; SETUP runs on 5265" },
-  { title: "blocker: Node 24 and better-sqlite3", detail: "No prebuilt binary; docs name no tested Node version" },
-  { title: "confusing: no fallback for native installs", detail: "The agent recovered with npm exec --package=node@20" }
+  :right='{ header: "Your app keeps the controls", icon: "🛂", items: [
+  { title: "One named read-only operation", detail: "No shell, file access, or publish tool exposed" },
+  { title: "Service checks the app user", detail: "A supplied release ID never grants access" },
+  { title: "SDK events plus the service audit", detail: "Trace the request and verify the actual result" },
+  { title: "Missing facts or failed access?", detail: "Show the error; a release owner resolves it" }
 ] }'
-  :insight='{ icon: "✅", text: "The agent reports friction; the docs owner decides the fixes." }'
+  :insight='{ icon: "💡", text: "Integration sketch: AI uses your app&#39;s existing capabilities through methods you deliberately expose." }'
   :progressDots='{ current: 7, total: 7, activeColor: "bg-blue-400 shadow-lg shadow-blue-500/50" }'
 />
 
@@ -604,23 +631,23 @@ The agent's summary of its own run is useful, but it is a claim. Reports come fr
 <!-- SLIDE: Before/After -->
 # Before/After
 <BeforeAfterSlide
-  header="From Using an Agent to Hosting One"
+  header="From Watching the Loop to Hosting It in Your App"
   :leftItems='[
     "The agent is a black box you prompt from outside",
-    "One full-access agent for every question",
+    "Your app already has useful methods behind its buttons",
     "Rules live in prompts and reviewer memory",
     "The agent&#39;s own summary stands in for the result"
   ]'
   :rightItems='[
     "Just a loop: you choose where to step in, five known places",
-    "A host per perspective: docs-only, contract-only",
-    "Repo hooks plus a unit-tested host policy",
-    "Host-rerun tests and JSONL evidence joined by sessionId"
+    "Expose selected app methods as named tools",
+    "App authorization, permission handlers, and repo hooks",
+    "Stream progress to your UI; verify results in service logs"
   ]'
   :metrics='[
     { value: "~170", detail: "lines in pi&#39;s whole runLoop" },
-    { value: "24 / 0", detail: "fresh-eyes tool calls / source files opened" },
-    { value: "10 / 2", detail: "blind tests passing / failing on the host rerun" }
+    { value: "5 jobs", detail: "places your app can step into the loop" },
+    { value: "1 method", detail: "a starting scope for an embedded assistant" }
   ]'
 />
 
@@ -632,34 +659,34 @@ The agent's summary of its own run is useful, but it is a claim. Reports come fr
   :partNumber='4'
   pillIcon="💡"
   pillLabel="Own It · Ideas"
-  title="Six apps worth hosting, and the jobs that make each one work"
-  subtitle="Each idea takes over some of the five jobs; the runtime handles the rest"
+  title="What could AI unlock inside the tools your team already uses?"
+  subtitle="Wrap selected app methods as tools; keep permissions and telemetry in the app"
   :rows='[
-    { label: "Flaky hunter", description: "Reruns a failing CI test, bisects recent commits, files the culprit", tag: "Loop + Evidence" },
-    { label: "Upgrade crew", description: "One session per dependency; each bumps, tests, and keeps only green", tag: "Loop + Control" },
-    { label: "Release prep", description: "Drafts notes from merged PRs, bumps the version; a person tags it", tag: "Tools + Control" },
+    { label: "CI console", description: "Calls rerunTest and compareRuns to investigate a flaky build", tag: "Tools + Evidence" },
+    { label: "Upgrade crew", description: "Your dependency portal tests upgrade branches in isolated workers", tag: "Loop + Control" },
+    { label: "Release UI", description: "Calls getReadiness and draftRollout; your app gates deployment", tag: "Tools + Control" },
     { label: "Runbook drill", description: "Follows an incident runbook in a sandbox; flags each unclear step", tag: "Context + Evidence" },
-    { label: "Exam grader", description: "Runs a student&#39;s tests while the answer key stays hidden", tag: "Control" },
-    { label: "Issue→release", description: "Plan, code, review, ship: one session each, a person between stages", tag: "All five" }
+    { label: "Exam grader", description: "Your learning app grades submitted tests; the answer key stays hidden", tag: "Control" },
+    { label: "Issue→release", description: "Your dev portal coordinates stages; app approval gates each handoff", tag: "All five" }
   ]'
   footnote="The tag names the job you write code for; start with that one"
   :progressDots='{ current: 3, total: 3, activeColor: "bg-purple-400 shadow-lg shadow-purple-500/50" }'
 />
 
 <!--
-Ideas to spark "what would I build?", ordered from a focused build chore to a whole pipeline.
+Ideas to spark "where would I embed this?", from existing build/release tools to a whole pipeline. Method names are illustrative app methods, not SDK APIs.
 
-Flaky hunter: the host owns the loop. It reruns the failing test a few times to confirm it is flaky, then walks recent commits with git bisect, one tool call per step. Evidence: the report names the commit and attaches the rerun counts from the log, so the claim is checkable.
+CI console: wrap the test service's rerunTest and compareRuns methods. A developer selects a failing build, the agent gathers repeated results, and the console shows the evidence. Treat flakiness as uncertainty; a single passing rerun does not identify a culprit.
 
-Upgrade crew: one CopilotClient, many sessions, one per dependency. Each session may edit only package.json, the lockfile, and the code that breaks; onPermissionRequest enforces that. The host runs the tests itself and keeps a branch only when they pass.
+Upgrade crew: embed sessions in the dependency portal's existing branch-and-test workflow, one isolated worktree or worker per dependency. The app creates candidate upgrades and reruns the checks; the agent helps repair incompatibilities within the permitted scope. A person reviews the branch before merging.
 
-Release prep: a custom tool returns merged PRs since the last tag, so the agent works from facts. The agent drafts notes and bumps the version; onPermissionRequest sends anything that tags, pushes, or publishes to a person for approval.
+Release UI: getReadiness reads blockers, draftRollout builds a proposed plan using the app's existing logic. The deployment service enforces human approval for the exact release and target, regardless of how the request originated. The assistant never treats its own suggestion as approval.
 
 Runbook drill: the runbook goes in as context, the agent works in a throwaway container, and the run log becomes the list of steps a person found unclear.
 
-Exam grader: the same visibility idea as the blind test writer: the answer key is hidden from every tool, and the host reruns the tests itself before recording a grade.
+Exam grader: embed the agent in a learning app. A grading method runs submitted code in an isolated worker and returns permitted results; the agent explains feedback. The app keeps the answer key out of model context and exposed tools, and records the grade itself.
 
-Issue to release, the stretch: each stage is its own session with its own systemMessage, tools, and rules. The planner reads the issue and writes a plan; the coder may write only in a worktree; the reviewer is read-only; the release stage reuses release prep. A person approves each handoff, and one log joins every stage. It is a lot to build at once, so start with the one stage that hurts most today.
+Issue to release, the stretch: add the SDK to a developer portal that already tracks issues, worktrees, CI, and releases. Each stage gets its own session, tools, and rules. App-owned approval gates and a durable workflow record connect the stages. Begin with one existing method and expand only after its permissions and evidence are useful.
 
 Ask the room: which of these is closest to a chore you already have, and which job would you write first?
 -->
@@ -680,9 +707,9 @@ Ask the room: which of these is closest to a chore you already have, and which j
     "Move one prompt-only rule into a hook and watch it hold"
   ]'
   :thisMonth='[
-    "Pick one build or release chore and name the jobs you would own",
-    "Sketch a small host: one session, one custom tool, one rule",
-    "Ask who would read its report, and what they would want in it"
+    "Pick an app you own and a method an AI assistant could use",
+    "Sketch one tool wrapper; keep user checks and approvals in the app",
+    "Decide what its UI shows and what its telemetry records"
   ]'
   footer="A harness is just a loop: pick the place you want to step in, and start there."
 />
@@ -694,10 +721,11 @@ Today: you need nothing new. The next time an agent works for you, narrate it: t
 
 This week: look under the covers. Reading one small loop end to end makes every other harness easier to reason about. Then ask the authority question for the agent you use most: what can it see, write, and run, and who chose that? Move one prompt-only rule into a hook, so it holds no matter how the prompt is worded.
 
-This month: decide where the SDK earns its place. Choose one chore from your build or release flow, maybe one from the ideas slide, and name the jobs you would take over. A first host can be very small: one session, one custom tool, one permission rule. Before building, name who reads its report; that person defines what good evidence looks like.
+This month: decide where the SDK earns its place inside an app you already own. Choose one existing method and wrap it as a named tool. Keep the authenticated user, argument validation, service authorization, and approval gates in application code. Sketch what the person sees in the existing UI, what the SDK events record, and how the service's result can be checked. Start with one read-only operation and test an unauthorized request as well as a useful answer.
 -->
 
 ---
+
 <!-- SLIDE: References -->
 # References
 <ReferencesSlide
@@ -731,8 +759,8 @@ This month: decide where the SDK earns its place. Choose one chore from your bui
   subtitle="Getting Inside the Agent Loop"
   :cards='[
     { value: "5 jobs", detail: "Loop, context, tools, control, evidence: every hook takes over one" },
-    { value: "3001 vs 5265", detail: "A port conflict found from the docs alone" },
-    { value: "season_id", detail: "An undocumented mismatch a blind tester surfaced" }
+    { value: "Your app", detail: "Custom tools call methods you already own" },
+    { value: "Your controls", detail: "Keep permissions, approval gates, UI, and telemetry" }
   ]'
-  prompt="Which of the five jobs do you take over for your workflow?"
+  prompt="Which method in an app you own could become a useful AI tool?"
 />

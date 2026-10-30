@@ -2,7 +2,7 @@
 #
 # Reviewed 2026-10-26. Single structural analysis; the user's approval is the review gate.
 #
-# Slide budget: 19 content slides (6 + 7 + 4 + 2) plus ~11 generated structural slides ≈ 30 total.
+# Slide budget: 20 content slides (6 + 7 + 4 + 3) plus 11 structural slides = 31 total.
 # Sections one and two walk the same five jobs in the same order (loop, context, tools, control,
 # evidence), one slide per job, so the audience can line each pi slide up with its SDK slide.
 # Treat each section's slide count as a maximum.
@@ -11,8 +11,8 @@
 # FanHub 0ea9e78); "Tested" = deterministic unit test in examples/; "Documented" = first-party docs;
 # "Source" = pi excerpt at earendil-works/pi@f9daca3 (MIT). Every pi code block carries the
 # attribution line "pi · MIT · earendil-works/pi@f9daca3 · <path>#<lines>" and stays under 25 lines.
-# Each content slide answers one audience question and shows the input and observed result together.
-# Each job slide carries exactly one code block from one file. Label documented SDK behavior
+# Each content slide answers one audience question; examples distinguish illustrative and observed results.
+# Each job slide carries one code block; SDK integration excerpts are labeled sketches. Label documented SDK behavior
 # "Documented" and recorded runs "Observed"; never mark a documented claim as observed.
 # Copilot claims stay at the SDK surface: what a host configures and observes.
 
@@ -21,15 +21,15 @@ version: 1
 deck:
   title: "Harness Fundamentals"
   subtitle: "Getting Inside the Agent Loop"
-  tagline: "See the five jobs every agent harness does, then take them over in GitHub's harness from your own code."
+  tagline: "Understand the loop, then bring AI into your existing apps with tools, controls, and telemetry."
 
   agenda:
     - title: "Read a whole harness"
       takeaway: "pi's agent loop is one function of about 170 lines, and its loop, context, tools, control, and evidence jobs each fit on a slide."
       whyItMatters: "Every hook and SDK callback you write afterward has a clear place: it takes over one named job."
     - title: "Take over the jobs in GitHub's harness"
-      takeaway: "Five short SDK files, one per job, make your code the host for context, tools, control, and evidence; repository hooks add a control floor every harness loads."
-      whyItMatters: "A docs-only agent built in those steps found FanHub's two Node.js guides disagree on port and Docker, with zero source files opened."
+      takeaway: "An existing app can host the SDK and expose selected methods as tools, keeping service authorization, approval gates, UI, and telemetry."
+      whyItMatters: "A release engineer can ask the dashboard what blocks a release; its existing service supplies facts through a narrow tool, with app-owned checks and observable results."
     - title: "Design the view, then own the harness"
       takeaway: "One visibility policy at two SDK checkpoints produced a blind test suite that surfaced an undocumented API mismatch, with a named owner for every result."
       whyItMatters: "You leave with a pattern for perspective-driven agents, the evidence that backs them, and the pre-flight for sharing one."
@@ -41,9 +41,11 @@ deck:
     job: the whole loop on one screen as the anchor, context rebuilt every turn, a self-contained
     write tool with find handing its work to fd (the boundary the talk returns to), a
     beforeToolCall hook that returns a reason the model reads, and an emit stream any subscriber can
-    read. Section two walks the same five jobs in the same order in GitHub's harness, one quickstart
-    file per slide, so every pi slide has a matching SDK slide; repository hooks join the control
-    slide as the second way to say no. It pays off with the fresh-eyes friction report. Section three is the climax:
+    read. Section two walks the same five jobs in the same order inside an existing release dashboard,
+    using explicitly labeled integration sketches. The tool handler calls an existing service method;
+    SDK permissions bound requests while the service authorizes the user and retains approval gates.
+    Session events feed the UI and telemetry; the service audit records business results.
+    Fresh-eyes remains supporting README material. Section three extends that control model:
     the same host, with a different view, writes a blind test suite whose failure the referee labels
     undocumented; the fd boundary returns as what the host cannot see, and the joined event log shows
     the evidence job in practice. Section four is short and practical: the controls other people
@@ -84,29 +86,21 @@ deck:
     "Drive GitHub's Harness":
       emphasis: high
       note: >
-        Seven content slides. Slide 1 answers "Where are the five jobs in GitHub's harness?": the
-        mapping table (pi column beside the SDK surface) with the runtime running the loop and the host
-        taking over the other four. Slides 2-6 mirror section one, one job per slide, each with one
-        code block from one quickstart file and a pill naming the job. Slide 2 (Loop, 01-loop.ts):
-        the five-line session; Documented: sendAndWait waits 60 seconds by default and abort() stops
-        the loop; Observed: one answer in about 50 seconds cold; prerequisites and authentication as
-        the footer. Slide 3 (Context, 02-context.ts): the customize persona; Documented: append,
-        customize, and replace modes, customize keeps the safety section, replace removes the SDK's
-        guardrails; Observed: a file citation per step, with one code file cited as documentation,
-        so a persona shapes behavior and the next two slides enforce it. Slide 4 (Tools, 03-tools.ts):
-        defineTool lookup_owner with tools and availableTools; one line per option (tools adds the
-        tool object, availableTools allowlists names); Observed: lookup_owner answered api-team and the
-        agent reported no tool for git log. Slide 5 (Control, 04-control.ts): the permission handler
-        rejecting shell with feedback; Observed: recovery through 6 approved reads; a hooks strip on
-        the same slide: preToolUse contract (crash or non-zero exit denies, timeout allows, reason
-        shown to the agent), the FanHub database floor, and the precedence probe where the repository
-        deny held while the SDK onPreToolUse returned allow; put the live-run cue for 04-control.ts in
-        speaker notes. Slide 6 (Evidence, 05-evidence.ts): streaming plus session.on; Observed:
-        [tool] powershell, view ×3, then [idle]; callback to pi's subscribe. Slide 7 is the payoff:
-        fresh-eyes host decisions in one strip (clean clone, docs-only reads, report_friction tool,
-        80-call budget) and the friction table led by the port 3001 versus 5265 and Docker conflict,
-        with "24 tool calls, zero source reads, GET /api/characters 200" as the proof line and the
-        docs owner named as the reader.
+        Seven content slides, preserving the five-jobs mirror. One existing release dashboard is
+        the primary SDK story; label every integration excerpt as a sketch, never as observed.
+        Slide 1 maps pi jobs to SDK surfaces. Slide 2 (Loop) starts a session from a dashboard
+        question and returns the answer to its UI; cancellation and lifecycle are in notes.
+        Slide 3 (Context) names the release assistant role and the readiness tool as its source
+        of facts. Slide 4 (Tools) wraps releaseService.getReadiness(user, releaseId) with
+        defineTool and exposes only release_readiness. Distinguish application objects from SDK APIs.
+        Slide 5 (Control) approves only that custom-tool name; the existing service still validates
+        arguments, authorizes the app user, and retains business approval gates. Repository hooks
+        remain opt-in with enableFileHooks and cannot inspect every internal service operation.
+        Slide 6 (Evidence) sends streamed text to the UI and selected execution metadata to app
+        telemetry. Separate successful execution from ready: false; the service audit carries the
+        business result, and correlation is application wiring. Slide 7 walks question, tool request,
+        method call, example blocker, UI answer, and control boundaries together. Quickstarts and
+        the observed fresh-eyes report remain supporting README examples, not the SDK value statement.
     "Decide What It Sees":
       emphasis: high
       note: >
@@ -128,13 +122,16 @@ deck:
     "Own It":
       emphasis: medium
       note: >
-        Two content slides. Slide 1 answers "Which controls surround my harness?": policy hooks loaded
+        Three content slides. Slide 1 answers "Which controls surround my harness?": policy hooks loaded
         machine-wide ahead of repository hooks and kept running under disableAllHooks, and the
         governance table condensed to access, model availability versus requested model, billing by
         authentication route (signed-in user or token follows Copilot policy; BYOK follows provider
         terms), tool and MCP policy with managedApprovalRequired, and process reach. Slide 2 combines
         the pre-flight checklist with the how-deep decision tree and names the owner who accepts each
-        report; close on the transfer question "Which of the five jobs do you take over?"
+        report. Slide 3 offers six existing-app integrations, from CI and release methods to
+        runbook drills, a learning app, and an issue-to-release portal. Preserve app authority
+        and evidence in each idea. Close by choosing one existing method to expose as a tool,
+        its user checks and approval boundary, and what the app UI and telemetry will show.
 
   preamble: []
   appendix: []
@@ -142,13 +139,13 @@ deck:
   highlightMoments:
     - "pi's entire agent loop is one function of about 170 lines, and every hook or SDK callback in the talk takes over one of its five jobs."
     - "pi's find tool hands its search to fd: the harness decides the call and sees the result, and the operating system governs the process. The blind-test host meets the same boundary."
-    - "The fresh-eyes agent made 24 tool calls, opened zero source files, and reported that FanHub's two Node.js guides disagree on the backend port (3001 versus 5265) and on whether Docker is required."
+    - "A custom tool calls an existing app method: the release-dashboard sketch adds AI-driven interaction while retaining service authorization, approval gates, UI, and telemetry."
     - "The blind-test host reran 12 tests and observed 10 passing and 2 failing; the read-only referee mapped one failure to BUGS.md #19 and labeled the seasonId filter mismatch undocumented."
 
 # STRUCTURAL ANALYSIS
 # Revision 4: sections one and two mirror each other job by job. The repetition is the teaching
 #   device: the audience meets each job in readable source, then takes it over in GitHub's harness.
-#   One quickstart file per slide keeps every SDK slide to a single code block.
+#   One integration excerpt per SDK job carries the existing-app value statement.
 # Strongest alternate: keep the SDK-first spine and add pi as a two-slide sidebar inside section one.
 #   The harness-first spine wins because naming the five jobs up front gives every SDK slide a
 #   home, and the find → fd boundary gives section three a callback the audience already understands.
@@ -156,9 +153,9 @@ deck:
 #   host" become the mapping slide and the hooks strip on the Control slide; quickstart steps take one slide per job;
 #   the two blind-test slides merge into one; evidence moves into the climax section.
 #
-# DEMO MODE (carried from Revision 2): Recorded runs carry the proof on slides, using the .runs/
-#   reports and events.jsonl from 2026-10-26. Quickstart 04-control.ts is the one live on-stage
-#   demonstration. pi appears as source only.
+# DEMO MODE: pi appears as source. SDK section uses labeled release-dashboard integration sketches;
+#   no live quickstart run is required. Recorded FanHub results remain supporting evidence and
+#   section-three material, distinct from illustrative dashboard values.
 #
 # DECIDED (2026-10-26, Revision 4): Both sections walk the five jobs in the same order, one slide
 #   per job. find folds into the Tools slide as a callout; Hook or Host folds into the SDK Control

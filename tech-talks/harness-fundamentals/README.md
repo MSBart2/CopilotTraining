@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-10-26
+updated: 2026-10-30
 section: "Extend and Embed"
 audience: [developer, platform-engineer, architect]
 level: applied
@@ -49,9 +49,9 @@ references:
 
 | Criterion | Assessment | Notes |
 |-----------|-----------|-------|
-| **Relevant** | 🟢 High | Every team has workflows that call for a specific perspective: a new hire walking the setup docs, a tester who knows only the API contract. The decision is which workflow earns its own agent host, and what that host lets the agent see, use, and do. |
-| **Compelling** | 🟢 High | A whole agent loop fits on one screen, and every hook or SDK callback fills one of five jobs inside it. Once the loop is visible, controlling what an agent *sees* becomes a design move: an agent restricted to the docs found that FanHub's two Node.js guides disagree on the backend port and on whether Docker is required, without opening a source file. |
-| **Actionable** | 🟢 High | A five-jobs checklist, five TypeScript quickstart steps from `npm install` to a permission handler, a shared visibility policy, 19 tests across the hook and the policy, and two apps the audience can point at its own repository today. |
+| **Relevant** | 🟢 High | Application and platform teams already own build, release, and learning tools with useful methods and permissions. They decide which operation an embedded assistant may request, for which user, with what consequence. |
+| **Compelling** | 🟢 High | A harness is a loop. A custom SDK tool can call a method in the app hosting that loop: the existing app gains an AI-driven workflow while retaining its service authorization, approval gates, UI, and telemetry. |
+| **Actionable** | 🟢 High | Identify one existing method, wrap it as a named tool, restrict the session, and connect SDK events to the app UI and logs. Verify both a useful result and an unauthorized request; use the supporting examples to inspect individual mechanisms. |
 
 **Overall Status:** 🟢 Ready to use
 
@@ -61,14 +61,18 @@ references:
 
 Every coding agent is a model inside a **harness**, and a harness is just a loop: ask the model, run what it asks for, feed back the result, repeat. The loop has five jobs, and every hook or SDK callback in this talk steps in at one of them: running the loop, deciding what the model sees each turn, offering and executing tools, deciding which calls run, and recording what happened.
 
-This talk reads one small open-source harness, [pi](https://github.com/earendil-works/pi), to see all five jobs in plain code.[^8] Then it takes over those jobs in GitHub's harness through the [Copilot SDK](https://github.com/github/copilot-sdk), which gives your application the same agent loop that runs Copilot CLI.[^1] Two apps against [FanHub](https://github.com/MSBart2/FanHub), a TV-show fan site with deliberately imperfect docs and about 46 catalogued bugs, show what the jobs unlock:
+This talk reads one small open-source harness, [pi](https://github.com/earendil-works/pi), to see all five jobs in plain code.[^8] Then it brings GitHub's harness into an **app you already own** through the [Copilot SDK](https://github.com/github/copilot-sdk), which gives your application the same agent loop that runs Copilot CLI.[^1] A custom tool can simply call a named method in that app. Your release dashboard, CI console, or developer portal gains an AI-driven way to use its existing capabilities.
+
+The app stays responsible for user authorization, input validation, and human approval. SDK permission handlers and hooks bound the agent's requests; session events feed the existing UI and telemetry. The SDK supplies control points, and the app team wires and verifies them. A release-dashboard integration sketch carries that argument through section 2; its illustrative values are not recorded run results.
+
+Two supporting apps against [FanHub](https://github.com/MSBart2/FanHub), a TV-show fan site with deliberately imperfect docs and about 46 catalogued bugs, demonstrate another useful design choice: deliberately restricting the agent's view.
 
 | App | What the agent may see | What it produces |
 |---|---|---|
 | **Fresh-eyes onboarding check** | The documentation and nothing else | A friction report: every place the setup docs and reality disagree |
 | **Blind test writer** | An API contract and a running server | A test suite written without the implementation, plus a referee's map of failures to known bugs |
 
-Both run in TypeScript on `@github/copilot-sdk` 1.0.26. Every behavior claim below is labeled **observed** (a live run on 2026-10-26) or **tested** (a deterministic unit test in [`examples/`](./examples/)). pi appears as read-only excerpts pinned to commit `f9daca3`; claims about Copilot stay at the surface the SDK exposes.
+Both supporting apps run in TypeScript on `@github/copilot-sdk` 1.0.26. Recorded results below are labeled **observed** (a live run on 2026-10-26) or **tested** (a deterministic unit test in [`examples/`](./examples/)); documented API behavior cites first-party sources. Integration sketches describe proposed application wiring. pi appears as read-only excerpts pinned to commit `f9daca3`; claims about Copilot stay at the surface the SDK exposes.
 
 ---
 
@@ -293,7 +297,7 @@ subscribe(listener: (event: AgentEvent, signal: AbortSignal) => Promise<void> | 
 
 ### Same loop, GitHub runs it
 
-GitHub's harness is the same loop. GitHub runs it, and your code steps in at the same five places.
+GitHub's harness is the same loop. GitHub runs it, and your code steps in at the same five places. **The host is the app running the SDK, and it can be an app you already use.** A release engineer asking "What blocks this release?" can stay in the dashboard that already owns the answer.
 
 The SDK talks to the Copilot runtime over JSON-RPC and, by default, starts and stops that runtime for you.[^1] The runtime runs the loop. Your application takes over the other jobs through the SDK:
 
@@ -301,9 +305,9 @@ The SDK talks to the Copilot runtime over JSON-RPC and, by default, starts and s
 |---|---|---|---|
 | **Loop** | `runLoop` | The runtime; your app drives it with `createSession`, `sendAndWait`, `abort` | Run a task to completion, with a timeout you choose, from any Node process |
 | **Context** | `transformContext`, `prepareRequest` | `systemMessage` (`append`, `customize`, `replace`), the prompt, `model` | Decide who the agent is, what "done" means, and which model to request |
-| **Tools** | `write`, `find` | Built-in tools, `availableTools`, `excludedTools`, `defineTool` | Remove whole capabilities; answer from your own systems |
+| **Tools** | `write`, `find` | Built-in tools, `availableTools`, `excludedTools`, `defineTool` | Expose selected app methods through named tool handlers; hide capabilities the task never needs |
 | **Control** | `beforeToolCall` | `onPermissionRequest`, `hooks.onPreToolUse`, repository hooks | Allow or reject each read, write, shell command, and custom-tool call, with feedback the agent reads |
-| **Evidence** | `emit`, `afterToolCall` | `streaming: true`, `session.on(...)`, tool handlers, hook logs | Render progress, count tool calls, enforce a budget, keep an audit trail |
+| **Evidence** | `emit`, `afterToolCall` | `streaming: true`, `session.on(...)`, tool handlers, hook logs | Feed the existing UI and telemetry; correlate with service audit records to verify the business result |
 
 ```text
 Your app (the host)                          Copilot runtime (the loop)
@@ -318,13 +322,31 @@ Organization: who may use Copilot, which models, what it costs
 
 The SDK also offers structured output (`sendAndWait(options, schema)`) and three authentication routes: signed-in user, token, or BYOK provider.[^3]
 
+### Put AI inside the app you already have
+
+Consider a release dashboard with an existing method, `releaseService.getReadiness(user, releaseId)`. It validates the release ID, authorizes the authenticated app user, reads CI and approval state, and returns permitted readiness fields. A custom SDK tool wraps that method; the model requests the tool by name and the handler calls the service in the hosting process.[^2] The model never gets arbitrary method dispatch or an app credential.
+
+The following is an **integration sketch**, not a new runnable release-dashboard app. `releaseService`, `user`, `ui`, `telemetry`, and the selected release belong to the existing application. In a web app, the backend hosts the SDK and forwards progress to the frontend; app credentials and authorization stay on the backend.
+
+| Job | What the existing dashboard supplies |
+|---|---|
+| **Loop** | A UI action starts a scoped session; Cancel calls `session.abort()`. The app disposes sessions and stops its client on shutdown |
+| **Context** | Instructions name the release-assistant role, the readiness tool as the source of facts, and the recovery path when facts are missing |
+| **Tools** | A `release_readiness` handler calls `releaseService.getReadiness(user, releaseId)`; the session exposes only that tool |
+| **Control** | The SDK handler approves only the named operation. The service separately checks the actual app user and requested release; any deployment keeps its existing human approval gate |
+| **Evidence** | SDK events show progress and execution status. Service audit records show authorization and business results; the app correlates the records |
+
+For example, the engineer asks **"What blocks v2.4?"** The agent requests `release_readiness({ releaseId: "v2.4" })`; the service returns `{ ready: false, blockers: ["Integration tests failed"] }`; the dashboard shows the explanation and the tool activity. Those are illustrative values. A successful tool call can return a release that is **not ready**; execution status and release readiness are different signals.
+
+Start with one read-only method. Check that an authorized user gets current facts, an unauthorized user gets a visible refusal, and the UI and logs distinguish a failed query from an unfavorable readiness result. When a tool cannot answer, report the gap and route it to the release owner. Adding the SDK does not automatically implement those checks.
+
 ### Before you start
 
 - **Node 20+** and `npm install` in [`examples/`](./examples/). The SDK package bundles the Copilot runtime.
 - **Authentication.** With no options, the SDK uses the signed-in Copilot CLI user, so sessions follow that user's Copilot license, policies, and billing. A token or a BYOK provider configuration selects a different route, and BYOK traffic follows the provider's terms.[^3]
 - **Run anything that installs packages or starts servers in a disposable environment**, such as a container, Codespace, or temp clone. The apps below clone FanHub into a temp folder for every run.
 
-Each job gets one short, runnable file in [`examples/sdk-quickstart/`](./examples/sdk-quickstart/). The files are numbered in job order (01 loop, 02 context, 03 tools, 04 control, 05 evidence). Run any of them with `npx tsx sdk-quickstart/<file>`.
+The slide walkthrough uses the release-dashboard sketch to teach each job in its application context. The short runnable files in [`examples/sdk-quickstart/`](./examples/sdk-quickstart/) are supporting mechanism examples, numbered in job order (01 loop, 02 context, 03 tools, 04 control, 05 evidence). They are optional material for inspecting a particular callback; the transfer goal is choosing where these callbacks fit in your own app.
 
 ### Loop: your code starts it and decides when to stop
 
@@ -384,24 +406,38 @@ In `customize` mode, each named section (`identity`, `tone`, `environment_contex
 
 **Observed, two runs of the same file.** The instructions ask for two behaviors you can check: a cited file on every step, and "(undocumented)" on anything that comes from code or config. The first run cited the README for setup and `examples/package.json` for the Node 20+ requirement, then cited the step 1 quickstart file as documentation even though it is code. A rerun cited `package.json` on every step and labeled each one "undocumented", exactly as asked. Same code, same instructions, different compliance. An earlier, softer line that described an attitude without a checkable behavior produced no visible change. Instructions steer the model; the next two steps enforce limits in code.
 
-### Tools: add one, allow four
+### Tools: call an existing app method
 
-[`03-tools.ts`](./examples/sdk-quickstart/03-tools.ts) gives the agent a tool only your app can answer, then narrows everything else:
+`defineTool` connects a model-visible name and argument schema to a handler in your app.[^2] Here the handler calls the release service directly:
 
 ```ts
-const lookupOwner = defineTool("lookup_owner", {
-  description: "Return the team that owns a repository path.",
-  parameters: { type: "object", properties: { path: { type: "string" } }, required: ["path"] },
-  handler: async ({ path }: { path: string }) => { /* … match path in a local OWNERS table */ },
+const readinessTool = defineTool("release_readiness", {
+  description: "Read the current blockers for a release.",
+  parameters: {
+    type: "object",
+    properties: { releaseId: { type: "string" } },
+    required: ["releaseId"],
+    additionalProperties: false,
+  },
+  handler: async ({ releaseId }: { releaseId: string }) =>
+    releaseService.getReadiness(user, releaseId),
 });
 
 const session = await client.createSession({
   model: "auto",
-  onPermissionRequest: approveAll,
-  tools: [lookupOwner],
-  availableTools: ["view", "glob", "grep", "lookup_owner"],
+  tools: [readinessTool],
+  availableTools: ["release_readiness"],
+  onPermissionRequest: (request) => {
+    if (request.kind === "custom-tool" && !request.managedApprovalRequired &&
+        request.toolName === "release_readiness") {
+      return { kind: "approve-once" };
+    }
+    return { kind: "reject", feedback: "Readiness only. Ask a release owner to make changes." };
+  },
 });
 ```
+
+This is the same integration sketch as the dashboard walkthrough. `user` comes from the authenticated app session, never from model-supplied arguments. The service checks that user can access the requested release, returns a bounded result, and records the operation. A schema describes input shape; it does not authorize an identifier. Keep those checks inside the existing method so every caller follows the same rules. This minimal handler rejects `managedApprovalRequired` requests rather than auto-approving them; supporting those requests requires an explicit human approval flow.
 
 Two options, two jobs:[^2]
 
@@ -410,11 +446,15 @@ Two options, two jobs:[^2]
 | `tools` | Tool objects | Adds a tool: its name, schema, and a handler that runs in your process |
 | `availableTools` | Tool names | An allowlist across built-in, MCP, and custom tools. Anything off the list is hidden. `excludedTools` subtracts and always wins |
 
-`lookupOwner` is the JavaScript variable; `"lookup_owner"` is the name the model sees and the allowlist matches. With only `tools`, the agent keeps every built-in plus yours. With only `availableTools`, `"lookup_owner"` matches nothing. The handler in the example answers from a hard-coded table of three paths; a real one calls your own systems.
+`readinessTool` is the JavaScript variable; `"release_readiness"` is the name the model sees and the allowlist matches. With only `tools`, the agent keeps every built-in plus yours. With only `availableTools`, a custom name matches nothing until you register its tool object. The dashboard exposes one business operation, with no shell or file tools.
 
-**Observed:** asked who reviews `node/backend/src/routes/characters.js` and then to run `git log`, the agent called `lookup_owner`, answered "api-team," and reported that it "couldn't run git log because this session doesn't provide a command-execution tool." Narrowing the tool set changes the plan the agent makes, before any permission check runs.
+**Supporting runnable example:** [`03-tools.ts`](./examples/sdk-quickstart/03-tools.ts) uses `lookup_owner` and a small ownership table to demonstrate the same registration and allowlist mechanics. **Observed:** asked who reviews `node/backend/src/routes/characters.js` and then to run `git log`, the agent answered "api-team" and reported no command-execution tool. That observation belongs to the ownership example, not the dashboard sketch.
 
 ### Control: decide what it can do
+
+In an embedded app, distinguish **permission to request a tool** from **authorization to act on an application resource**. The readiness handler above approves one tool name. `releaseService` still validates arguments, authorizes the app user, and records access. For a future deployment tool, the deployment service enforces human approval for the exact release and target. An SDK `approve-once` response is not a release approval.
+
+Hooks see the tool call they receive; they cannot inspect every operation inside a custom handler. Keep service checks and audit records in app code. If a method fails, return a visible failure and record it; a friendly success-shaped response hides the information the agent and user need to recover.
 
 [`04-control.ts`](./examples/sdk-quickstart/04-control.ts) replaces `approveAll` with a handler that judges every mediated call:
 
@@ -469,6 +509,10 @@ An SDK app opts into that floor with `enableFileHooks: true`. **Observed:** in a
 
 ### Evidence: every event reaches your code
 
+Inside an existing app, route `assistant.message_delta` to the UI, `tool.execution_start` to its activity view, and selected `tool.execution_complete` fields to its telemetry. Subscribe before sending the prompt. `sessionId` groups a conversation and `toolCallId` identifies a call; the app adds its own request identifier to join handler telemetry with service audit records. That join is application wiring, not an automatic SDK audit of every method.
+
+Keep execution success, permission outcomes, and business results separate. Log bounded metadata and failures; avoid credentials, raw tool arguments, and full business records by default. Display model text with the UI's usual untrusted-content handling. Handle session and transport errors visibly; `session.idle` ends a response, not the lifetime of the app session.
+
 [`05-evidence.ts`](./examples/sdk-quickstart/05-evidence.ts) turns on streaming and subscribes to the session, the same move as pi's `subscribe`:
 
 ```ts
@@ -483,16 +527,29 @@ session.on("session.idle", () => console.log("\n[idle]"));
 
 ### What is worth building
 
-The pattern that pays off most is **an agent with a deliberate perspective**. A full-access agent answers "make this work." A constrained one can answer questions a full-access agent cannot:
+The first place to look is **an app your team already owns**. Its methods, data, identity checks, and UI provide useful foundations for an embedded assistant. These are proposed integrations, not implemented examples:
 
-- *Can a newcomer get this running from the docs alone?* Hide the source. (Fresh-eyes, section 2.)
+| Existing app | AI-assisted workflow | Control and evidence |
+|---|---|---|
+| **CI console** | Call `rerunTest` and `compareRuns` to investigate an intermittent failure | Scope access to permitted builds; show repeated results rather than declare a culprit from one rerun |
+| **Dependency portal** | Coordinate upgrade branches and repairs in isolated workers | One scope per dependency; app reruns checks and a person reviews before merge |
+| **Release dashboard** | Call `getReadiness` and `draftRollout` | Readiness comes from the service; deployment keeps its approval gate |
+| **Runbook tooling** | Rehearse an incident procedure in a disposable environment | Restrict commands and network access; record unclear or failed steps |
+| **Learning app** | Grade submitted tests and explain results | Isolate submitted code; keep answer keys out of context and tools; app records grades |
+| **Developer portal** | Coordinate issue, plan, implementation, review, and release stages | App-owned handoff approvals and a durable workflow record; start with one stage |
+
+Pick one existing method, one useful question, and the evidence a user needs to trust the result. Add a narrow tool wrapper and verify both allowed and denied access before expanding.
+
+**A deliberate perspective** is another useful pattern. Restricting what an agent sees can enable independent checks:
+
+- *Can a newcomer get this running from the docs alone?* Hide the source. (Supporting fresh-eyes example below.)
 - *Does the API do what its contract says?* Hide the implementation. (Blind tests, section 3.)
 - *Is this PR understandable from its description?* Show only the diff and the description.
 - *Would this migration guide work on a clean machine?* Allow only the commands the guide names.
 
 Each one is the same host with different answers to three questions: what may the agent see, what may it use, and who reads its report.
 
-### Payoff: the fresh-eyes onboarding check
+### Supporting example: the fresh-eyes onboarding check
 
 Five steps are enough to build a real tool. [`apps/fresh-eyes/app.ts`](./examples/apps/fresh-eyes/app.ts) asks a single question: *can a capable newcomer get FanHub's Node.js track running from the documentation alone?*
 
