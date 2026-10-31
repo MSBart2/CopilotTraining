@@ -8,7 +8,7 @@ infer: true
 
 Review an existing tech-talk recipe after feed-driven content changes. Unlike `deck-recipe-review`, this workflow uses the current recipe as an intentional baseline and changes it only when new evidence improves the talk.
 
-The output is always a complete `deck.recipe.yml`, suitable for deterministic slide regeneration.
+The output is always a complete `deck.recipe.yml`, suitable for deterministic slide regeneration. This skill also prepares a Slidev tech talk for conversion to the native engine.
 
 ## Skip this skill
 
@@ -18,19 +18,23 @@ Do not run this skill when `content.refresh.yml` has `recipeReview.required: fal
 
 Read all four inputs:
 
-1. `tech-talks/<topic>/README.md` - updated canonical content
-2. `tech-talks/<topic>/content.refresh.yml` - approved evidence and impact plan
+1. The talk's canonical content: `slides/tech-talks/<topic>/slides.js` (slides and speaker notes) for a native talk; `tech-talks/<topic>/README.md` for a Slidev talk
+2. `tech-talks/<topic>/content.refresh.yml` - approved evidence and impact plan (absent for a conversion)
 3. `tech-talks/<topic>/deck.recipe.yml` - current editorial decisions
 4. `.github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml` - output schema
 
 Stop when:
 
 - The README or deck is archived.
-- The refresh plan is not `status: approved`.
-- Accepted claims are not represented in the updated README.
+- The refresh plan exists and is not `status: approved`.
+- Accepted claims are not represented in the updated notes (native) or README (Slidev).
 - Any required input is missing.
 
-Do not read the existing slide deck. The README, refresh plan, and recipe are the authoritative inputs.
+For a refresh, do not read the Slidev deck markdown; the canonical content, refresh plan, and recipe are the authoritative inputs.
+
+### Conversion to the native engine
+
+When the user asks to convert a Slidev tech talk, also read `slides/tech-talks/<topic>.md` for the current running order and proof slides. The review question becomes: which slides consolidate, which become shared patterns, which earn a deck scene, and how the time budget lands. Add the `slides:` per-slide plan from the template. The user's approval of that plan precedes Native Deck Author `convert`.
 
 ## Review depth
 
@@ -83,12 +87,21 @@ A `structural` refresh does not force `restructure`; it forces an explicit alter
 
 ## Post-Recipe Workflow
 
+Native talks (`slides/tech-talks/<topic>/slides.js` exists):
+
+- `preserve`: edit only the slide data and notes whose claims are now false.
+- `revise` with `slideImpact: patch`: Native Deck Author `patch` mode; keep ids, order, and scenes.
+- `restructure` or `slideImpact: regenerate|replace-demo`: Native Deck Author with the talk path; it rebuilds the affected parts and reuses scenes that still prove their claims.
+- Conversion: Native Deck Author `convert`.
+
+Slidev talks not yet converted:
+
 - `preserve`: do not regenerate slides. Patch existing slides only if a visible claim is now false.
 - `revise` with `slideImpact: patch`: edit the existing deck; do not wipe it.
-- `restructure` or `slideImpact: regenerate|replace-demo`: invoke Tech Talk Slide Generator with the talk path.
+- `restructure` or `slideImpact: regenerate|replace-demo`: convert the talk to native with Native Deck Author `convert` (preferred), or invoke the legacy Tech Talk Slide Generator with the talk path.
 
 After any slide change:
 
-1. Run the single-deck build.
+1. Native: `cd slides; npm run validate:native -- tech-talks/<topic>`. Slidev: run the single-deck build.
 2. Run `node slides/scripts/sync-index-dates.mjs` from the repository root.
 3. Update `content.refresh.yml` validation fields.

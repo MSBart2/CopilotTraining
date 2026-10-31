@@ -58,6 +58,16 @@ test("active talks use runtime sections; legacy sections stay on archived talks"
   }
 });
 
+test("native talks use README metadata and provide their notes page", () => {
+  const inventory = collectPortfolio(root);
+  const surfaces = inventory.talks.find(({ slug }) => slug === "surfaces");
+  assert.equal(surfaces.deckFormat, "native");
+  assert.equal(surfaces.deckSection, surfaces.section);
+  assert.equal(surfaces.files.deck.path, "slides/tech-talks/surfaces/slides.js");
+  assert.equal(surfaces.files.notesHtml.exists, true);
+  assert.ok(!surfaces.errors.some((error) => /agenda|deckPdf/.test(error)));
+});
+
 test("discovers the current consolidated practitioner portfolio", () => {
   const inventory = collectPortfolio(root);
   assert.equal(inventory.counts.totalTalks, 33);
@@ -67,7 +77,7 @@ test("discovers the current consolidated practitioner portfolio", () => {
   assert.equal(inventory.counts.candidateTalks, 0);
   assert.equal(inventory.counts.catalogCards, 14);
   assert.equal(inventory.counts.validTalks, inventory.counts.totalTalks);
-  assert.equal(inventory.redirects.length, 17);
+  assert.equal(inventory.redirects.length, 18);
   assert.equal(new Set(inventory.talks.map(({ slug }) => slug)).size, inventory.counts.totalTalks);
   assert.deepEqual(inventoryErrors(inventory), []);
 });

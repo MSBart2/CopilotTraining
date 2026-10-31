@@ -122,7 +122,10 @@ test("universal instructions own the education north star", async () => {
     assert.match(instructions, new RegExp(`\\*\\*${lens}\\*\\*`));
   }
   assert.match(instructions, /attempt → inspect → adjust → rerun → validate/);
-  assert.match(instructions, /### Content Fitness Gate/);
+  assert.match(
+    instructions,
+    /### Relevant, Compelling, Actionable: Creation Lens and Publication Gate/,
+  );
   for (const quality of ["Relevant", "Compelling", "Actionable"]) {
     assert.match(instructions, new RegExp(`\\*\\*${quality}\\*\\*`));
   }
@@ -135,12 +138,31 @@ test("universal instructions own the education north star", async () => {
 });
 
 test("tech-talk slides enforce actor, question, and proof clarity", async () => {
-  const generator = await read(".github/agents/tech-talk-slide-generator.agent.md");
-  assert.match(generator, /Per-slide clarity gate/);
-  assert.match(generator, /Name the actor wherever agency changes the meaning/);
-  assert.match(generator, /viewer entering on this slide/);
-  assert.match(generator, /representative input or action beside its observable output or decision/);
-  assert.match(generator, /Separate verification status from the behavior being verified/);
+  for (const path of [
+    ".github/agents/tech-talk-slide-generator.agent.md",
+    ".github/agents/native-deck-author.agent.md",
+  ]) {
+    const generator = await read(path);
+    assert.match(generator, /Per-slide clarity gate/, `${path} lacks the clarity gate`);
+    assert.match(generator, /Name the actor wherever agency changes the meaning/);
+    assert.match(generator, /viewer entering on this slide/);
+    assert.match(generator, /representative input or action beside its observable output or decision/);
+    assert.match(generator, /Separate verification status from the behavior being verified/);
+  }
+});
+
+test("native tech talks are notes-first and validated", async () => {
+  const author = await read(".github/agents/native-deck-author.agent.md");
+  assert.match(author, /### Notes contract/);
+  assert.match(author, /validate:native/);
+  assert.match(author, /Tech talks only|practitioner tech talks only/i);
+  const generator = await read(".github/agents/tech-talk-generator.agent.md");
+  assert.match(generator, /research\.md/);
+  assert.match(generator, /Native Deck Author/);
+  const template = await read("tech-talks/TEMPLATE.md");
+  assert.match(template, /The Question This Talk Answers/);
+  assert.match(template, /notes\.html/);
+  assert.match(await read(".github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml"), /^\s+slides:/m);
 });
 
 test("live content machinery has no deleted editorial dependencies", async () => {
@@ -149,6 +171,7 @@ test("live content machinery has no deleted editorial dependencies", async () =>
     ...executiveMachinery.slice(0, 3),
     ".github/agents/tech-talk-generator.agent.md",
     ".github/agents/tech-talk-slide-generator.agent.md",
+    ".github/agents/native-deck-author.agent.md",
     ".github/skills/deck-recipe-review/SKILL.md",
   ];
   for (const path of machinery) {
@@ -170,6 +193,7 @@ test("content planning and recipe review consume the judgment contract", async (
     ".github/agents/exec-talk-generator.agent.md",
     ".github/agents/slide-generator.agent.md",
     ".github/agents/tech-talk-slide-generator.agent.md",
+    ".github/agents/native-deck-author.agent.md",
     ".github/skills/module-author/SKILL.md",
     ".github/skills/exercise-author/SKILL.md",
     ".github/skills/deck-recipe-review/SKILL.md",

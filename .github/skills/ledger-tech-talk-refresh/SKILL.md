@@ -59,7 +59,7 @@ Before generating a plan:
 
 1. Confirm `tech-talks/<talk>/README.md` exists.
 2. Read frontmatter and stop if `status: archived`.
-3. Read major README sections and `deck.recipe.yml` when present.
+3. Read major README sections and `deck.recipe.yml` when present. For a native talk (`slides/tech-talks/<talk>/slides.js` exists), read the slide notes there instead: they are the teaching source, and README patches become `slides.js` patches (see "Native talks" in `content-refresh`).
 4. Read every selected ledger event, materiality, reason, and source from the latest routing report.
 5. Check for an existing `content.refresh.yml`:
    - Merge still-relevant uncompleted evidence.

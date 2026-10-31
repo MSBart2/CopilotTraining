@@ -3,10 +3,12 @@
 // check-companions.mjs — Detect missing/stale agenda + PDF companions
 // ============================================================================
 //
-// For each active deck, requires:
+// For each active Slidev deck, requires:
 //   slides/companions/<category>/<slug>/agenda.md
 //   slides/companions/<category>/<slug>/agenda.html
 //   slides/companions/<category>/<slug>/deck.pdf
+//
+// Native tech talks require their in-folder notes.html handout instead.
 //
 // Stale if the deck markdown is newer than the companion (mtime), or the
 // companion is missing entirely.
@@ -27,6 +29,7 @@ import {
 } from "fs";
 import { basename, dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { discoverNativeDecks, getNativeDeck } from "./native-decks.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -60,13 +63,30 @@ function isArchived(filePath) {
 
 function discoverDecks() {
   const decks = [];
+  const nativeDecks = discoverNativeDecks(ROOT);
   for (const cat of ["tech-talks", "workshop", "exec-talks"]) {
     if (folderFilter && cat !== folderFilter) continue;
     const dir = join(ROOT, cat);
     if (!existsSync(dir)) continue;
+    if (cat === "tech-talks") {
+      for (const deck of nativeDecks) {
+        if (slugFilter && deck.slug !== slugFilter) continue;
+        if (!isArchived(join(ROOT, "..", "tech-talks", deck.slug, "README.md"))) {
+          decks.push({
+            category: cat,
+            slug: deck.slug,
+            deckPath: deck.source,
+            notesPath: deck.notes,
+            native: true,
+            key: `${cat}/${deck.slug}`,
+          });
+        }
+      }
+    }
     for (const file of readdirSync(dir).filter((f) => f.endsWith(".md"))) {
       const slug = basename(file, ".md");
       if (SKIP.has(slug) || slug.endsWith("-reference")) continue;
+      if (cat === "tech-talks" && getNativeDeck(ROOT, slug)) continue;
       if (slugFilter && slug !== slugFilter) continue;
       const abs = join(dir, file);
       if (isArchived(abs)) continue;
@@ -91,13 +111,17 @@ function mtimeMs(p) {
 
 function checkOne(deck) {
   const dir = join(COMPANIONS, deck.category, deck.slug);
-  const needed = ["agenda.md", "agenda.html", "deck.pdf"];
-  const deckM = mtimeMs(deck.deckPath);
+  const needed = deck.native
+    ? [{ name: "notes.html", path: deck.notesPath }]
+    : ["agenda.md", "agenda.html", "deck.pdf"].map((name) => ({
+      name,
+      path: join(dir, name),
+    }));
+  const deckM = deck.native ? null : mtimeMs(deck.deckPath);
   const issues = [];
   const files = {};
 
-  for (const name of needed) {
-    const p = join(dir, name);
+  for (const { name, path: p } of needed) {
     const m = mtimeMs(p);
     files[name] = m
       ? { path: p, mtimeMs: m, bytes: statSync(p).size }
@@ -118,7 +142,7 @@ function checkOne(deck) {
   }
 
   // agenda.html must be at least as new as agenda.md when both exist
-  if (files["agenda.md"] && files["agenda.html"]) {
+  if (!deck.native && files["agenda.md"] && files["agenda.html"]) {
     if (files["agenda.md"].mtimeMs > files["agenda.html"].mtimeMs + 2000) {
       issues.push({ code: "stale-html", file: "agenda.html" });
     }

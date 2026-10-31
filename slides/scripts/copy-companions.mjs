@@ -4,7 +4,7 @@
 // ============================================================================
 //
 // Source:  slides/companions/<category>/<slug>/{agenda.html,agenda.md,deck.pdf}
-// Dest:    slides/dist/<category>/<slug>/
+// Dest:    slides/dist/<category>/<slug>/ (Slidev decks only)
 //
 // Deploy and local builds call this so only inspected artifacts ship.
 // ============================================================================
@@ -18,6 +18,7 @@ import {
 } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { getNativeDeck } from "./native-decks.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SLIDES = join(__dirname, "..");
@@ -37,6 +38,10 @@ for (const cat of readdirSync(SRC, { withFileTypes: true })) {
   const catDir = join(SRC, cat.name);
   for (const slug of readdirSync(catDir, { withFileTypes: true })) {
     if (!slug.isDirectory()) continue;
+    if (cat.name === "tech-talks" && getNativeDeck(SLIDES, slug.name)) {
+      console.log(`  Skipping legacy companions for native tech-talks/${slug.name}.`);
+      continue;
+    }
     const fromDir = join(catDir, slug.name);
     const toDir = join(DIST, cat.name, slug.name);
     for (const name of readdirSync(fromDir)) {

@@ -21,6 +21,15 @@ Most refreshes are README wording. Do not start a recipe refresh or wipe the dec
 
 Never treat an empty 7-day feed report or an empty ledger as "this talk is current."
 
+## Native talks: notes are the source
+
+A talk is native when `slides/tech-talks/<topic>/slides.js` exists. For a native talk, the per-slide speaker notes in `slides.js` (`notes`, `know`, `sources`, `seconds`) are the teaching source, and the README is a short landing page that keeps the frontmatter, H1, question block, and part headings.
+
+- Wherever this skill says "patch the README," patch the owning slide's data and notes in `slides.js` instead. Map each change to a slide id rather than a README section.
+- Touch the README only for frontmatter (`updated`, `references`), the question, the thesis, or a part summary that is now false.
+- Validate with `cd slides; npm run validate:native -- tech-talks/<topic>`.
+- Notes lines render as HTML: avoid raw `<` and `&`, start spoken lines with `"`, and start transitions with `→`.
+
 ## Inputs
 
 - Talk path: `tech-talks/<topic>/`
@@ -98,7 +107,7 @@ Present a concise summary and wait for approval before editing the README. A dir
 4. Preserve unrelated material and working artifacts unless the plan replaces them.
 5. Follow the cheap-path table. Do not refresh the recipe or wipe `slides/tech-talks/<slug>.md` for confirm/patch work.
 6. If `recipeReview.required` is true, invoke `deck-recipe-refresh`.
-7. If `slideImpact` is `patch`, edit the existing deck in place and run a single-deck build. If `regenerate` or `replace-demo`, invoke the Tech Talk Slide Generator only after the recipe is settled.
+7. If `slideImpact` is `patch`, edit the existing deck in place: for a native talk, edit `slides.js` (Native Deck Author `patch` mode) and run `cd slides; npm run validate:native -- tech-talks/<slug>`; for a Slidev talk, run a single-deck build. If `regenerate` or `replace-demo`, invoke Native Deck Author (native talks, or `convert` for a Slidev talk) only after the recipe is settled; the legacy Tech Talk Slide Generator remains available for Slidev talks that are not converting yet.
 8. One network or subagent failure: retry once, then continue with local files. Do not regenerate the same deck twice because a fetch failed.
 
 ## Quality Gate

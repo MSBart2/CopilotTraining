@@ -5,6 +5,7 @@ import {
   statSync,
 } from "node:fs";
 import { basename, join, relative } from "node:path";
+import { getNativeDeck } from "../slides/scripts/native-decks.mjs";
 
 export const CURRENT_SECTIONS = [
   "Foundations",
@@ -134,14 +135,18 @@ export function collectPortfolio(root) {
         return null;
       }
 
-      const deckPath = join(slidesRoot, `${slug}.md`);
-      const deck = existsSync(deckPath)
-        ? parseFrontmatter(readFileSync(deckPath, "utf8"))
-        : {};
+      const nativeDeck = getNativeDeck(join(root, "slides"), slug);
+      const deckPath = nativeDeck?.source ?? join(slidesRoot, `${slug}.md`);
+      const deck = nativeDeck
+        ? readme
+        : existsSync(deckPath)
+          ? parseFrontmatter(readFileSync(deckPath, "utf8"))
+          : {};
       const files = {
         readme: fileRecord(root, readmePath),
         recipe: fileRecord(root, join(talksRoot, slug, "deck.recipe.yml")),
         deck: fileRecord(root, deckPath),
+        ...(nativeDeck ? { notesHtml: fileRecord(root, nativeDeck.notes) } : {}),
         agendaMarkdown: fileRecord(root, join(companionsRoot, slug, "agenda.md")),
         agendaHtml: fileRecord(root, join(companionsRoot, slug, "agenda.html")),
         deckPdf: fileRecord(root, join(companionsRoot, slug, "deck.pdf")),
@@ -182,15 +187,16 @@ export function collectPortfolio(root) {
       if (!isCandidate && !files.deck.exists) errors.push("Slide deck is missing");
       const statusMismatchAllowed =
         STATUS_MISMATCH_EXCEPTIONS.has(slug) && readme.status === "archived" && deck.status === "active";
-      if (files.deck.exists && deck.status !== readme.status && !statusMismatchAllowed) {
+      if (!nativeDeck && files.deck.exists && deck.status !== readme.status && !statusMismatchAllowed) {
         errors.push(`Status mismatch: README=${readme.status}, deck=${deck.status ?? "missing"}`);
       }
-      if (files.deck.exists && deck.section !== readme.section) {
+      if (!nativeDeck && files.deck.exists && deck.section !== readme.section) {
         errors.push(`Section mismatch: README=${readme.section}, deck=${deck.section ?? "missing"}`);
       }
       for (const [name, file] of Object.entries(files)) {
         if (isCandidate && name !== "readme") continue;
         if (isArchived && ["agendaMarkdown", "agendaHtml", "deckPdf"].includes(name)) continue;
+        if (nativeDeck && ["agendaMarkdown", "agendaHtml", "deckPdf"].includes(name)) continue;
         if (!file.exists) errors.push(`${name} is missing`);
       }
       if (!isArchived && !isCandidate && !indexSlugs.has(slug)) errors.push("Active catalog card is missing");
@@ -209,6 +215,7 @@ export function collectPortfolio(root) {
         decision: readme.decision ?? null,
         prerequisites: readme.prerequisites ?? null,
         related: readme.related ?? null,
+        deckFormat: nativeDeck ? "native" : "slidev",
         deckSection: deck.section ?? null,
         cataloged: indexSlugs.has(slug),
         files,

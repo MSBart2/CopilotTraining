@@ -176,7 +176,14 @@ if ($Deck) {
     $DeckSearched = $false
     $Categories = @('workshop', 'tech-talks')
 
+    $NativeDeckPath = Join-Path (Join-Path $SlidesDir 'tech-talks') "$Deck\slides.js"
+    if (Test-Path $NativeDeckPath) {
+        $Folder = 'tech-talks'
+        $DeckSearched = $true
+    }
+
     foreach ($Cat in $Categories) {
+        if ($DeckSearched) { break }
         $DeckPath = Join-Path $SlidesDir $Cat "$Deck.md"
         if (Test-Path $DeckPath) {
             $Folder = $Cat
@@ -246,6 +253,10 @@ foreach ($Cat in $CategoryConfig) {
     foreach ($SlideFile in $SlideFiles) {
         $BaseName = $SlideFile.BaseName
         if ($BaseName -eq 'template') { continue }
+        if ($Cat.Name -eq 'tech-talks' -and (Test-Path (Join-Path (Join-Path $SlidesDir 'tech-talks') "$BaseName\slides.js"))) {
+            Write-Host "   [NATIVE] Using native deck: tech-talks/$BaseName" -ForegroundColor Cyan
+            continue
+        }
         if (Test-Archived $SlideFile.FullName) {
             Write-Host "   [SKIP] Skipping archived: $($Cat.Name)/$BaseName" -ForegroundColor DarkGray
             $TotalSkipped++
@@ -255,7 +266,7 @@ foreach ($Cat in $CategoryConfig) {
     }
 }
 
-if ($AllDecks.Count -eq 0) {
+if ($AllDecks.Count -eq 0 -and -not ($Deck -and (Test-Path (Join-Path (Join-Path $SlidesDir 'tech-talks') "$Deck\slides.js")))) {
     if ($Deck) {
         Write-Host "[ERROR] Deck not found: $Deck (searched in workshop, tech-talks)" -ForegroundColor Red
     } else {
@@ -338,6 +349,28 @@ while ($remaining.Count -gt 0) {
 }
 
 Write-Host ""
+if (-not $Folder -or $Folder -eq 'tech-talks') {
+    Push-Location $SlidesDir
+    try {
+        if ($Deck) {
+            node scripts/build-native-decks.mjs --deck $Deck
+        } else {
+            node scripts/build-native-decks.mjs --folder tech-talks
+        }
+        if ($LASTEXITCODE -ne 0) { throw "Native deck validation or publishing failed" }
+        $NativeDecks = @(Get-ChildItem (Join-Path $SlidesDir 'tech-talks') -Directory | Where-Object {
+            (Test-Path (Join-Path $_.FullName 'index.html')) -and
+            (Test-Path (Join-Path $_.FullName 'slides.js')) -and
+            (Test-Path (Join-Path $_.FullName 'scenes.js')) -and
+            (Test-Path (Join-Path $_.FullName 'notes.html')) -and
+            (-not $Deck -or $_.Name -eq $Deck)
+        })
+        $TotalBuilt += $NativeDecks.Count
+    } finally {
+        Pop-Location
+    }
+}
+
 # Copy index.html and 404.html to dist root
 Write-Host "[DOC] Copying index-custom.html and 404.html to dist root..." -ForegroundColor Gray
 Copy-Item "$SlidesDir/index-custom.html" "$OutputDir/index.html" -Force

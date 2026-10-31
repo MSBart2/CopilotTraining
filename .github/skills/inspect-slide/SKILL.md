@@ -1,6 +1,6 @@
 ---
 name: inspect-slide
-description: Visually inspect individual Slidev slides for overflow, missing progress dots, and color inconsistency. Uses a live slidev dev server and Playwright screenshots for fast edit/verify loops — no full build required.
+description: Visually inspect individual Slidev slides for overflow, missing progress dots, and color inconsistency. Uses a live slidev dev server and Playwright screenshots for fast edit/verify loops — no full build required. For native tech-talk folders (slides/tech-talks/{slug}/slides.js), use validate-native-deck with --only and --shots instead.
 infer: true
 triggers:
   - inspect slide

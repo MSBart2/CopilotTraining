@@ -1,6 +1,6 @@
 ---
 name: build-slidev-decks
-description: Fast validation of Slidev deck changes. Correct invocation, output interpretation, and common issues.
+description: Fast validation of Slidev deck changes (workshop, exec, and tech talks not yet converted to native). Correct invocation, output interpretation, and common issues. For native tech-talk folders (slides/tech-talks/{slug}/slides.js), use validate-native-deck instead.
 infer: true
 ---
 

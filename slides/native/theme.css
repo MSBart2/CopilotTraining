@@ -1,0 +1,236 @@
+/*
+  CopilotTraining native deck theme.
+  Brand: slides/copilot-brand.md (80/10/5/5). Purple marks the hero idea,
+  green a reviewed or successful outcome, orange a human decision or limit.
+  Execution zones keep the Slidev deck colors: cyan local, blue remote,
+  indigo GitHub, violet product runtime.
+*/
+:root {
+  --bg: #101411;
+  --surface: #161b18;
+  --card: #232925;
+  --line: #30363d;
+  --line-soft: #252b29;
+  --text: #ffffff;
+  --body: #c9d1d9;
+  --muted: #8b949e;
+  --faint: #5d656e;
+
+  --purple: #8534f3;
+  --purple-light: #b870ff;
+  --purple-deep: #43179e;
+  --green: #0fbf3e;
+  --green-muted: #238636;
+  --orange: #f08a3a;
+  --red: #f85149;
+
+  --cyan: #22d3ee;
+  --blue: #60a5fa;
+  --indigo: #818cf8;
+  --violet: #a78bfa;
+
+  --accent: var(--purple-light);
+  --accent-2: var(--purple);
+  --sans: "Mona Sans", "Segoe UI Variable Text", "Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --mono: "Mona Sans Mono", "Cascadia Code", "SF Mono", Consolas, Menlo, monospace;
+  --swift: cubic-bezier(.2, .9, .25, 1);
+}
+
+/* Part accents follow the Slidev section chrome. */
+.part-1 { --accent: var(--cyan); --accent-2: var(--blue); }
+.part-2 { --accent: var(--blue); --accent-2: var(--indigo); }
+.part-3 { --accent: var(--indigo); --accent-2: var(--violet); }
+.part-4 { --accent: var(--violet); --accent-2: var(--purple-light); }
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text); font-family: var(--sans); }
+body.deck { overflow: hidden; }
+a { color: var(--purple-light); }
+:focus-visible { outline: 2px solid var(--purple-light); outline-offset: 4px; }
+
+/* Viewport and stage */
+.deck-root { position: fixed; inset: 0; display: grid; place-items: center; }
+.slide { position: absolute; inset: 0; display: none; place-items: center; }
+.slide.is-current { display: grid; }
+.viewport { position: relative; width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9; }
+.stage {
+  position: absolute; left: 0; top: 0; width: 1600px; height: 900px; overflow: hidden;
+  zoom: var(--scale, .5);
+  background:
+    radial-gradient(ellipse 60% 55% at 100% 0%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%),
+    radial-gradient(ellipse 55% 50% at 0% 100%, rgba(67, 23, 158, .16), transparent 70%),
+    var(--bg);
+}
+.stage::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 40px 40px; mask-image: radial-gradient(ellipse at 70% 30%, #000 10%, transparent 70%);
+}
+.stage-body { position: absolute; inset: 0; padding: 56px 80px 64px; display: flex; flex-direction: column; z-index: 1; }
+
+/* Chrome: section label (a terminal-style prompt), headline, footer progress */
+.pill {
+  align-self: flex-start; display: inline-flex; align-items: center; gap: 14px; height: 28px;
+  font: 500 19px/1 var(--mono); letter-spacing: 0; text-transform: lowercase; color: var(--muted);
+}
+/* Drawn rather than typed so it centres on the text in any mono font. */
+.pill::before {
+  content: ""; flex: none; width: 8px; height: 8px; margin: 0 2px 0 -1px;
+  border: solid var(--accent); border-width: 2.5px 2.5px 0 0; transform: rotate(45deg);
+}
+.stage h1 { margin: 0; font-size: 96px; line-height: 1.02; letter-spacing: -.035em; font-weight: 750; text-wrap: balance; }
+.stage h2 { margin: 18px 0 0; font-size: 52px; line-height: 1.08; letter-spacing: -.025em; font-weight: 700; text-wrap: balance; }
+.stage .subtitle { margin: 12px 0 0; font-size: 26px; line-height: 1.35; color: var(--muted); max-width: 1300px; text-wrap: pretty; }
+.stage .footnote { margin-top: 14px; font-size: 22px; color: var(--muted); font-style: italic; text-align: center; }
+.head-row { display: flex; align-items: center; justify-content: space-between; }
+.steps { display: flex; gap: 10px; }
+.steps i { width: 12px; height: 12px; border-radius: 50%; background: var(--line); }
+.steps i.done { background: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+.steps i.on { width: 36px; border-radius: 6px; background: var(--accent); box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 60%, transparent); }
+.deck-progress { position: absolute; left: 80px; right: 80px; bottom: 26px; display: flex; align-items: center; gap: 16px; z-index: 2; font: 500 16px var(--mono); color: var(--faint); }
+.deck-progress .bar { flex: 1; height: 3px; background: var(--line-soft); border-radius: 2px; overflow: hidden; }
+.deck-progress .fill { height: 100%; width: calc(var(--p) * 100%); background: linear-gradient(90deg, var(--accent), var(--accent-2)); }
+
+/* Scene canvas */
+.scene { display: block; width: 100%; flex: 1; min-height: 0; margin-top: 28px; overflow: visible; }
+.scene text { fill: var(--text); font-family: var(--sans); font-weight: 600; font-size: 22px; }
+.scene .t-sm { font-size: 17px; font-weight: 600; }
+.scene .t-xs { font-size: 15px; font-weight: 500; fill: var(--muted); }
+.scene .t-lg { font-size: 28px; font-weight: 700; }
+.scene .t-muted { fill: var(--muted); font-weight: 500; }
+.scene .t-mono { font-family: var(--mono); }
+.scene .t-dark { fill: #0b0f0c; font-weight: 800; }
+
+.box { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
+.box.soft { fill: rgba(255,255,255,.02); stroke: var(--line-soft); }
+.box.head { fill: rgba(22, 27, 24, .85); stroke: var(--line); }
+.wire { fill: none; stroke: var(--line); stroke-width: 2; }
+.ring { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 3 9; }
+
+/* Zone tones: fill, stroke, and text for each execution location */
+.z-local { --z: var(--cyan); } .z-remote { --z: var(--blue); } .z-github { --z: var(--indigo); } .z-runtime { --z: var(--violet); }
+.z-purple { --z: var(--purple-light); } .z-green { --z: var(--green); } .z-orange { --z: var(--orange); }
+.z-accent { --z: var(--accent); }
+.scene .z-text { fill: color-mix(in srgb, var(--z) 62%, white); }
+.scene .t-emoji { font-size: 34px; font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", var(--sans); }
+.scene a { cursor: pointer; }
+.scene a:hover .box { stroke: var(--z, var(--accent)); }
+.zone { fill: color-mix(in srgb, var(--z) 11%, #0f1411); stroke: color-mix(in srgb, var(--z) 45%, transparent); stroke-width: 1.5; }
+.chip-base { fill: var(--bg); }
+.chip { fill: color-mix(in srgb, var(--z) 16%, transparent); stroke: color-mix(in srgb, var(--z) 40%, transparent); stroke-width: 1.2; }
+.scene .chip-text { fill: color-mix(in srgb, var(--z) 55%, white); }
+.z-stroke { stroke: var(--z); }
+.z-fill { fill: var(--z); }
+.route { fill: none; stroke: var(--z, var(--text)); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.badge { fill: var(--text); }
+.focus-ring { fill: none; stroke: var(--z, var(--text)); stroke-width: 2.5; }
+.dim { opacity: .22; filter: saturate(.4); }
+
+/* Shared card details used by frames, patterns, and deck scenes */
+.scene .card-edge, .scene .card-top { fill: var(--z, var(--accent)); stroke: none; }
+.scene .wire.faint { stroke: var(--line-soft); }
+.scene .wire.link { stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.scene .wire.dashed { stroke-dasharray: 6 6; }
+.scene .zone.dashed { stroke-dasharray: 8 6; }
+.scene .stop { fill: color-mix(in srgb, var(--z) 22%, var(--bg)); stroke: var(--z); stroke-width: 2.5; }
+.scene .task { fill: color-mix(in srgb, var(--z) 18%, #121613); stroke: var(--z); stroke-width: 2; }
+.scene .check { fill: none; stroke: var(--z); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.scene .col-label { letter-spacing: .12em; font-weight: 700; }
+
+/* Motion: every rule runs only on the current, live slide.
+   --at sets the delay and --dur the duration. */
+.slide:not(.is-live) :is(.m-in, .m-trace, .m-glide, .m-pop, .m-type) { opacity: 0; }
+.m-type { display: inline-block; white-space: nowrap; vertical-align: bottom; }
+.is-live .m-type { animation: m-type var(--dur, 1200ms) steps(var(--n, 30)) var(--at, 0ms) both; }
+.is-live .m-in { animation: m-in .7s var(--swift) var(--at, 0ms) both; }
+.is-live .m-pop { animation: m-pop .55s var(--swift) var(--at, 0ms) both; transform-box: fill-box; transform-origin: center; }
+.is-live .m-trace { stroke-dasharray: 1; animation: m-trace var(--dur, 900ms) var(--swift) var(--at, 0ms) both; }
+.is-live .m-glide { animation: m-glide .9s var(--swift) var(--at, 0ms) both; }
+.is-live .m-dim { animation: m-dim .6s ease var(--at, 0ms) both; }
+.m-stream { stroke-dasharray: 5 15; stroke-linecap: round; fill: none; stroke-width: 3; stroke: var(--z, var(--accent)); opacity: 0; }
+.is-live .m-stream { animation: m-fade .5s ease var(--at, 0ms) forwards, m-march 1.2s linear infinite; }
+.m-ride { opacity: 0; offset-rotate: 0deg; fill: var(--z, var(--accent)); }
+.is-live .m-ride { animation: m-ride var(--dur, 2200ms) cubic-bezier(.5, 0, .3, 1) var(--at, 0ms) infinite; }
+.is-live .m-ride.once { animation-iteration-count: 1; animation-fill-mode: forwards; }
+.is-live .m-breathe { animation: m-breathe 2.4s ease-in-out var(--at, 0ms) infinite; transform-box: fill-box; transform-origin: center; }
+.is-live .m-halo { animation: m-halo 2.6s ease-out var(--at, 0ms) infinite; transform-box: fill-box; transform-origin: center; }
+
+@keyframes m-in { from { opacity: 0; transform: translateY(12px); } }
+@keyframes m-pop { from { opacity: 0; transform: scale(.6); } }
+@keyframes m-trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes m-glide { from { opacity: .4; transform: translate(var(--fx, 0px), var(--fy, 0px)); } }
+@keyframes m-dim { from { opacity: 1; filter: none; } }
+@keyframes m-fade { to { opacity: 1; } }
+@keyframes m-type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes m-march { to { stroke-dashoffset: -20; } }
+@keyframes m-ride { 0% { offset-distance: 0%; opacity: 0; } 10%, 88% { opacity: 1; } 100% { offset-distance: 100%; opacity: 0; } }
+@keyframes m-breathe { 50% { opacity: .55; transform: scale(.85); } }
+@keyframes m-halo { from { opacity: .7; transform: scale(1); } to { opacity: 0; transform: scale(1.8); } }
+
+/* Settled: reduced motion, print, overview, notes, and ?settled show the final state. */
+.settled .slide :is(.m-in, .m-trace, .m-glide, .m-pop, .m-stream, .m-type) { opacity: 1 !important; }
+.settled .slide *, .settled .slide *::before { animation: none !important; }
+.settled .slide .m-trace { stroke-dasharray: none; }
+.settled .slide :is(.m-ride, .m-halo) { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .slide :is(.m-in, .m-trace, .m-glide, .m-pop, .m-stream, .m-type) { opacity: 1 !important; }
+  .slide *, .slide *::before { animation: none !important; }
+  .slide .m-trace { stroke-dasharray: none; }
+  .slide :is(.m-ride, .m-halo) { display: none; }
+}
+
+/* Pending scenes stay visible during migration so nothing silently disappears. */
+.pending { margin: auto; text-align: center; color: var(--muted); font-size: 26px; border: 1.5px dashed var(--line); border-radius: 20px; padding: 48px 64px; max-width: 1000px; }
+.pending code { color: var(--purple-light); font-family: var(--mono); }
+
+/* Overview grid (press O) */
+body.overview { overflow: auto; }
+.overview .deck-root { position: static; display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px; padding: 24px; }
+.overview .slide { position: relative; display: block; inset: auto; cursor: pointer; }
+.overview .slide .viewport { width: 100%; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.overview .slide.is-current .viewport { outline: 3px solid var(--purple-light); }
+.overview .slide::after { content: attr(data-n) "  " attr(aria-label); display: block; margin-top: 6px; font: 500 13px var(--sans); color: var(--muted); }
+
+/* Notes page */
+body.notes { max-width: 1100px; margin: 0 auto; padding: 40px 28px 80px; height: auto; }
+.notes header.intro h1 { font-size: 34px; margin: 0 0 6px; }
+.notes header.intro p { color: var(--muted); margin: 4px 0; }
+.notes .controls { display: flex; flex-wrap: wrap; gap: 12px 26px; align-items: center; margin-top: 14px; }
+.notes .controls label { display: inline-flex; gap: 8px; align-items: center; cursor: pointer; min-height: 40px; }
+.notes .brief { margin: 18px 0 6px; padding: 16px 20px; border-left: 3px solid var(--purple-light); background: rgba(67, 23, 158, .14); border-radius: 0 12px 12px 0; }
+.notes .brief p { margin: 4px 0; color: var(--body); font-size: 17px; line-height: 1.5; }
+.notes .brief b { display: inline-block; min-width: 72px; font: 600 12px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--purple-light); }
+.notes article { padding: 34px 0 44px; border-top: 1px solid var(--line); scroll-margin-top: 20px; }
+.notes article.is-following { border-top: 3px solid var(--purple-light); }
+.notes article > .meta { font: 500 14px var(--mono); color: var(--muted); }
+.notes article > h2 { font-size: 26px; margin: 8px 0 18px; }
+.notes article > h2 a { color: var(--text); text-decoration: none; }
+.notes .slide { position: relative; display: block; inset: auto; }
+.notes .viewport { width: 100%; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.notes .copy { max-width: 72ch; margin: 24px auto 0; font-size: 18px; line-height: 1.6; color: var(--body); }
+.notes .copy p { margin: 0 0 14px; }
+.notes .copy .say { color: var(--green); font-weight: 600; }
+.notes .copy .next { color: var(--muted); font-style: italic; }
+.notes .copy .empty { color: var(--faint); font-style: italic; }
+.notes aside { margin-top: 20px; padding: 16px 20px; border: 1px solid var(--line); border-radius: 12px; font-size: 16px; }
+.notes aside h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.notes aside.cue { background: rgba(67, 23, 158, .2); border-color: rgba(184, 112, 255, .3); }
+.notes aside ul { margin: 0; padding-left: 20px; }
+.notes.no-previews .viewport { display: none; }
+
+/* Print: one settled slide per 16:9 page. */
+@page { size: 16in 9in; margin: 0; }
+@media print {
+  html, body { height: auto; overflow: visible !important; }
+  body { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .deck-root { position: static; display: block; }
+  .deck .slide { position: relative; display: grid !important; width: 16in; height: 9in; break-after: page; }
+  .deck .slide .viewport { width: 16in; }
+  .slide :is(.m-in, .m-trace, .m-glide, .m-pop, .m-stream, .m-type) { opacity: 1 !important; }
+  .slide *, .slide *::before { animation: none !important; }
+  .slide .m-trace { stroke-dasharray: none; }
+  .slide :is(.m-ride, .m-halo) { display: none; }
+  .deck-progress { display: none; }
+  .notes article { break-inside: avoid; }
+  .notes .controls { display: none; }
+}

@@ -1,12 +1,14 @@
 ---
 name: Tech Talk Slide Generator
-description: Generate or patch Slidev presentation slides for CopilotTraining tech talks. Default for content refresh is patch-in-place. Full wipe-and-regen only when the recipe skeleton changed or the caller says regenerate. Uses the Vue component system — no raw HTML. Source: tech-talks/{topic}/README.md + deck.recipe.yml.
+description: LEGACY. Patch Slidev tech-talk decks (slides/tech-talks/{slug}.md) that have not been converted to the native engine yet. New talks, conversions, and decks with a slides/tech-talks/{slug}/slides.js folder use the Native Deck Author agent. Uses the Vue component system — no raw HTML. Source: tech-talks/{topic}/README.md + deck.recipe.yml.
 tools: ["read", "edit/createFile", "edit/editFiles", "execute/runInTerminal", "execute/getTerminalOutput"]
 model: Claude Sonnet 4.6
 argument-hint: "tech-talks/{topic} [patch|regenerate]"
 ---
 
 # Tech Talk Slide Generator
+
+> **Legacy (Slidev).** Tech talks are moving to the native HTML engine one deck at a time (`machinery_plan.md`). Use this agent only to patch a Slidev tech-talk deck that has not been converted. When `slides/tech-talks/{slug}/slides.js` exists, stop and hand off to the **Native Deck Author** agent. For a new talk or a `regenerate`, hand off to Native Deck Author in `new` or `convert` mode. This agent retires when the last tech talk converts.
 
 Generates `slides/tech-talks/{slug}.md` from `tech-talks/{topic}/README.md` and `deck.recipe.yml`.
 

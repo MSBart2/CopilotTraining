@@ -2,13 +2,15 @@
 // ============================================================================
 // verify-companions-dist.mjs — Ensure every companion file was copied into dist/
 // ============================================================================
-// Used by CI after copy-companions.mjs. Fails hard if a source companion is
-// missing from dist/<category>/<slug>/. Does not regenerate anything.
+// Used by CI after copy-companions.mjs. Fails hard if a Slidev companion is
+// missing from dist/<category>/<slug>/. Does not regenerate anything. Legacy
+// companions for native talks are skipped because notes.html ships with them.
 // ============================================================================
 
 import { existsSync, readdirSync, statSync } from "fs";
 import { dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { getNativeDeck } from "./native-decks.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -30,6 +32,7 @@ for (const cat of readdirSync(SRC)) {
   for (const slug of readdirSync(cdir)) {
     const sdir = join(cdir, slug);
     if (!statSync(sdir).isDirectory()) continue;
+    if (cat === "tech-talks" && getNativeDeck(ROOT, slug)) continue;
     for (const name of readdirSync(sdir)) {
       if (!NAMES.has(name)) continue;
       const src = join(sdir, name);

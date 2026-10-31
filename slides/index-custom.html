@@ -2005,6 +2005,7 @@
     //
     // SOURCE OF TRUTH: slide frontmatter "updated:"
     // Regenerate: node slides/scripts/sync-index-dates.mjs
+    // Native tech-talk detection also comes from native deck folder shape.
     // Agenda/PDF companions live under slides/companions/ and are linked, not embedded.
     const SLIDE_DATES = {
       '00-orientation': '2026-04-01',
@@ -2049,9 +2050,12 @@
       'multi-agent-coordination': '2026-09-16',
       'pr-trust-stack': '2026-10-08',
       'repo-to-feature': '2026-10-22',
-      'surfaces': '2026-09-14',
+      'surfaces': '2026-10-30',
       'unattended-agents': '2026-10-22',
       'vscode-latest': '2026-09-25',
+    };
+    const SLIDE_NATIVE = {
+      'surfaces': true,
     };
 
     function parseDeckHref(href) {
@@ -2104,28 +2108,37 @@
       const actions = document.createElement('div');
       actions.className = 'card-actions';
 
-      const agenda = document.createElement('a');
-      agenda.className = 'card-chip card-agenda';
-      agenda.textContent = 'Agenda';
-      agenda.setAttribute('aria-label', `Open agenda for ${slug}`);
-      softLink(
-        agenda,
-        `${category}/${slug}/agenda.html`,
-        'Agenda not published yet — generate locally: npm run generate-agendas -- ' + slug,
-      );
+      if (category === 'tech-talks' && SLIDE_NATIVE[slug]) {
+        const notes = document.createElement('a');
+        notes.className = 'card-chip card-agenda';
+        notes.textContent = 'Notes';
+        notes.setAttribute('aria-label', `Open speaker notes for ${slug}`);
+        softLink(notes, `${category}/${slug}/notes.html`, 'Speaker notes are not published yet.');
+        actions.appendChild(notes);
+      } else {
+        const agenda = document.createElement('a');
+        agenda.className = 'card-chip card-agenda';
+        agenda.textContent = 'Agenda';
+        agenda.setAttribute('aria-label', `Open agenda for ${slug}`);
+        softLink(
+          agenda,
+          `${category}/${slug}/agenda.html`,
+          'Agenda not published yet — generate locally: npm run generate-agendas -- ' + slug,
+        );
 
-      const pdf = document.createElement('a');
-      pdf.className = 'card-chip card-pdf';
-      pdf.textContent = 'PDF';
-      pdf.setAttribute('aria-label', `Download PDF for ${slug}`);
-      softLink(
-        pdf,
-        `${category}/${slug}/deck.pdf`,
-        'PDF not published yet — export locally: npm run export-pdf -- ' + slug,
-      );
+        const pdf = document.createElement('a');
+        pdf.className = 'card-chip card-pdf';
+        pdf.textContent = 'PDF';
+        pdf.setAttribute('aria-label', `Download PDF for ${slug}`);
+        softLink(
+          pdf,
+          `${category}/${slug}/deck.pdf`,
+          'PDF not published yet — export locally: npm run export-pdf -- ' + slug,
+        );
 
-      actions.appendChild(agenda);
-      actions.appendChild(pdf);
+        actions.appendChild(agenda);
+        actions.appendChild(pdf);
+      }
       titleRow.appendChild(titleLink);
       titleRow.appendChild(actions);
       shell.appendChild(titleRow);

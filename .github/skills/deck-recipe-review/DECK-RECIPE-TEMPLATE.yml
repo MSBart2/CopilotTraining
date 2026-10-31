@@ -1,9 +1,11 @@
 # deck.recipe.yml — talk generation guidance
 #
-# Guides slide generation from README.md. Use this file to name and order sections,
-# set the slide budget per section, and surface authoring priorities for the
-# generator to follow. Complex narrative content belongs in README.md; structural editorial
-# intent belongs here.
+# Guides deck generation from research.md and the README. Use this file to name and order
+# sections, set the slide budget per section, plan each body slide, and surface authoring
+# priorities for the deck author. Teaching content belongs in the speaker notes
+# (slides/tech-talks/{slug}/slides.js); structural editorial intent belongs here.
+#
+# preamble and appendix apply to Slidev decks only.
 
 version: 1
 
@@ -12,7 +14,8 @@ deck:
   subtitle: "[Compelling Subtitle]"
   tagline: "[One-line promise or focus]"
 
-  # agenda: exactly 3 attendee-facing outcomes shown after the Core Question and before the TOC.
+  # agenda: exactly 3 attendee-facing outcomes. Slidev shows them after the Core Question;
+  # native decks carry them in the core-question speaker notes.
   # Each point is distinct from the four-section navigation: describe what attendees will
   # see or learn, then why the outcome matters in their work.
   agenda:
@@ -81,8 +84,8 @@ deck:
   # Leave empty [] if the talk has no appendix imports.
   appendix: []
 
-  # 3–5 high-signal moments the generator must surface in the deck.
-  # Used for: BeforeAfterSlide items, ThankYouSlide cards, WhatYouCanDoTodaySlide actions.
+  # 3–5 high-signal moments the deck must surface.
+  # Used for: before-after metrics, thanks cards, and today actions.
   # Write each as a complete sentence with a quantified metric where possible.
   highlightMoments:
     - "[Most dramatic before/after comparison with a concrete metric]"
@@ -90,3 +93,22 @@ deck:
     - "[Third critical point — what the audience takes back to their team]"
     - "[Optional: fourth moment if warranted]"
     - "[Optional: fifth moment if warranted]"
+
+  # Per-slide plan for body slides (native decks). Standard slides (title, core-question,
+  # contents, part openers, before-after, today, references, thanks) come from shared frames;
+  # list them only to give them a seconds budget. The deck's total seconds land 3–5 minutes
+  # under the README duration. Budgets are estimates until a presenter times a run-through.
+  slides:
+    - id: "[kebab-case-id]"
+      part: 1
+      # claim: the one thing this slide proves, as the audience would repeat it.
+      claim: "[One sentence]"
+      # scene: a shared pattern (terminal, showdown, scorecard, relay, signals, four-phases)
+      # or "deck: <what the audience sees settle>; motion: <the beat that reveals it>".
+      scene: "deck: [settled picture]; motion: [reveal order]"
+      seconds: 120
+    - id: "[kebab-case-id]"
+      part: 1
+      claim: "[One sentence]"
+      scene: "terminal: [the prompt and the outcome line]"
+      seconds: 90

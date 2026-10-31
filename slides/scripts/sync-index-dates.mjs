@@ -3,9 +3,9 @@
 // sync-index-dates.mjs — Regenerate SLIDE_DATES in index-custom.html
 // ============================================================================
 //
-// Reads the "updated:" field from every slide's YAML frontmatter and writes
-// the SLIDE_DATES map into slides/index-custom.html so the "NEW" badge
-// appears automatically for slides updated within the last 7 days.
+// Reads "updated:" from Slidev frontmatter and native tech-talk READMEs.
+// Writes SLIDE_DATES and SLIDE_NATIVE into index-custom.html for NEW badges
+// and the native notes chip.
 //
 // Agenda HTML / PDFs are companion files (generate-agendas.mjs / export-pdfs.mjs)
 // and are NOT embedded in the index.
@@ -18,6 +18,7 @@
 import { readFileSync, writeFileSync, readdirSync } from "fs";
 import { join, basename, dirname } from "path";
 import { fileURLToPath } from "url";
+import { discoverNativeDecks } from "./native-decks.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -46,7 +47,18 @@ function collectDates() {
     }
   }
 
+  for (const deck of discoverNativeDecks(ROOT)) {
+    const readme = join(ROOT, "..", "tech-talks", deck.slug, "README.md");
+    const content = readFileSync(readme, "utf8");
+    const match = content.match(/^updated:\s*(\d{4}-\d{2}-\d{2})/m);
+    if (match) dates[deck.slug] = match[1];
+  }
+
   return dates;
+}
+
+function collectNativeSlugs() {
+  return discoverNativeDecks(ROOT).map(({ slug }) => slug);
 }
 
 function formatDatesMap(dates) {
@@ -57,18 +69,28 @@ function formatDatesMap(dates) {
   return `const SLIDE_DATES = {\n${entries}\n    }`;
 }
 
+function formatNativeMap(slugs) {
+  const entries = slugs
+    .sort((a, b) => a.localeCompare(b))
+    .map((slug) => `      '${slug}': true,`)
+    .join("\n");
+  return `const SLIDE_NATIVE = {\n${entries}\n    }`;
+}
+
 const dates = collectDates();
-const newMap = formatDatesMap(dates);
+const newDatesMap = formatDatesMap(dates);
+const newNativeMap = formatNativeMap(collectNativeSlugs());
 const indexPath = join(ROOT, "index-custom.html");
 const html = readFileSync(indexPath, "utf8");
-const pattern = /const SLIDE_DATES = \{[\s\S]*?\n\s*\}/;
+const datesPattern = /const SLIDE_DATES = \{[\s\S]*?\n\s*\}/;
+const nativePattern = /const SLIDE_NATIVE = \{[\s\S]*?\n\s*\}/;
 
-if (!pattern.test(html)) {
-  console.error("❌ Could not find SLIDE_DATES block in index-custom.html");
+if (!datesPattern.test(html) || !nativePattern.test(html)) {
+  console.error("❌ Could not find SLIDE_DATES or SLIDE_NATIVE block in index-custom.html");
   process.exit(1);
 }
 
-let next = html.replace(pattern, newMap);
+let next = html.replace(datesPattern, newDatesMap).replace(nativePattern, newNativeMap);
 next = next.replace(
   /\n\s*\/\/ Placeholder[\s\S]*?\n\s*const SLIDE_AGENDAS = \{[\s\S]*?\n\s*\};?\n/,
   "\n",
@@ -77,7 +99,7 @@ next = next.replace(/\n\s*const SLIDE_AGENDAS = \{[\s\S]*?\n\s*\};?\n/, "\n");
 
 if (process.argv.includes("--check")) {
   if (html === next) {
-    console.log("✅ SLIDE_DATES is in sync with frontmatter");
+    console.log("✅ SLIDE_DATES and SLIDE_NATIVE are in sync with deck sources");
     process.exit(0);
   }
   console.error(
@@ -88,6 +110,7 @@ if (process.argv.includes("--check")) {
 
 writeFileSync(indexPath, next);
 console.log(`✅ Updated SLIDE_DATES with ${Object.keys(dates).length} entries`);
+console.log(`✅ Updated SLIDE_NATIVE with ${collectNativeSlugs().length} entries`);
 
 const now = new Date();
 const oneWeek = 7 * 24 * 60 * 60 * 1000;

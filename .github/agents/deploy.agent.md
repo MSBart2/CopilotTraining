@@ -71,6 +71,28 @@ one-liner, then push the current branch.
 If the working tree is clean **and** `check-companions` is fully green, say
 so and stop (nothing to ship).
 
+### Native tech-talk decks
+
+Tech talks use native HTML folders (`slides/tech-talks/<slug>/`) and the shared
+engine in `slides/native/`; workshop and exec decks stay on Slidev.
+
+For every native folder that is dirty, or every native folder when
+`slides/native/` changed:
+
+```powershell
+cd slides
+npm run validate:native -- tech-talks/<slug>
+```
+
+**A failing `validate:native` is a hard stop**, same as `--strict`.
+
+The deployment pipeline validates and copies the native folder and shared
+engine. If a matching Slidev `.md` remains during conversion, the native deck
+is authoritative and the Slidev source stays in the repository as a reference.
+The notes page is the native handout and replaces agenda/PDF chips until native
+companion generation lands in Phase 5. Stage native folders, `slides/native/**`,
+and the native build/validation scripts alongside deck changes.
+
 ---
 
 ## Phase A — Regenerate what changed
@@ -82,6 +104,8 @@ For each deck in scope (category/slug):
 cd slides
 npm run generate-agendas -- <slug> --from-slides
 ```
+Run agenda generation only for Slidev decks. Native talks link to their notes
+page until Phase 5 adds native agenda companions.
 If the author already hand-tuned `agenda.md` and only the deck body changed
 in a way that leaves titles/times intact, prefer:
 ```powershell
@@ -94,6 +118,7 @@ Only HTML skin or agenda.md edits → `--html-only`.
 ```powershell
 npm run export-pdf -- <slug>
 ```
+Run PDF export only for Slidev decks. Native PDF generation lands in Phase 5.
 Do **not** pass `--native` unless the user demands the giant Chromium print
 PDF. Compact is ~1–3 MB; native is ~6–9 MB.
 
@@ -126,8 +151,8 @@ npm run preview:index
 ## Phase B — Stage + snarky commit + push
 
 1. Stage **intentionally**:
-   - Changed decks: `slides/**/*.md` (and components only if touched)
-   - Companions: `slides/companions/**`
+   - Changed decks: Slidev markdown or native deck folders and shared engine
+   - Companions: `slides/companions/**` for Slidev decks
    - Index: `slides/index-custom.html` when sync changed it
    - Scripts/workflow/agent docs if this ship includes them
    - **Do not** stage `slides/dist/`, `node_modules/`, `*.log`, `_size-tests`
@@ -180,7 +205,8 @@ commands to fix them. No lectures longer than five lines.
 ## Done criteria
 
 - [ ] `check-companions --strict` exits 0 for scope
-- [ ] Companions for scope are staged (md + html + pdf)
+- [ ] `validate:native` passes for every native folder in scope
+- [ ] Slidev companions for scope are staged (md + html + pdf); native notes are staged with their deck
 - [ ] Index dates synced if decks changed
 - [ ] Snarky commit landed (or user declined commit)
 - [ ] Current branch pushed without force

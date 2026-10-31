@@ -1,0 +1,64 @@
+/* Standard slides shared by every native deck (frames.js). Load after theme.css, before deck.css. */
+
+/* Title and thank-you: copy on the left, the deck's visual (if any) on the right. */
+.sc-title .stage-body, .sc-thanks .stage-body { flex-direction: row; align-items: center; gap: 40px; padding: 60px 70px 60px 96px; }
+.sc-title .title-copy, .sc-thanks .title-copy { flex: 1; display: flex; flex-direction: column; gap: 22px; }
+/* The SDP PNG is 3:2 with wide transparent margins; crop to the portrait mark. */
+.sc-title .logo, .sc-thanks .logo { width: 104px; height: 120px; object-fit: cover; object-position: 50% 50%; margin-left: -10px; margin-bottom: 4px; }
+.sc-title h1, .sc-thanks h1 { background: linear-gradient(100deg, #fff 35%, var(--purple-light)); -webkit-background-clip: text; background-clip: text; color: transparent; padding-bottom: 6px; }
+.sc-title .title-sub, .sc-thanks .title-sub { margin: 0; font-size: 38px; font-weight: 650; color: var(--purple-light); }
+.sc-title .tagline { margin: 6px 0 0; font-size: 25px; line-height: 1.45; color: var(--body); max-width: 620px; text-wrap: pretty; }
+.sc-title .meta { margin: 18px 0 0; font: 500 18px var(--mono); color: var(--muted); letter-spacing: .02em; }
+.sc-title .stage-body > .scene, .sc-thanks .stage-body > .scene { flex: 0 0 720px; width: 720px; height: 720px; margin: 0; }
+.sc-thanks .title-copy { gap: 26px; }
+.sc-thanks .thanks-sub { font-size: 30px; line-height: 1.35; text-wrap: balance; }
+.thanks-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 10px; }
+.thanks-cards div { display: grid; gap: 6px; padding: 18px 18px; border: 1px solid var(--line); border-top: 4px solid var(--purple-light); border-radius: 14px; background: color-mix(in srgb, var(--purple-light) 7%, transparent); }
+.thanks-cards b { font-size: 23px; color: var(--purple-light); }
+.thanks-cards span { font-size: 17px; color: var(--body); }
+.thanks-prompt { margin: 12px 0 0; font: 600 30px/1.35 var(--sans); color: var(--text); text-wrap: balance; }
+
+/* Part openers */
+.opener-num {
+  position: absolute; right: 60px; top: -40px; z-index: 0; pointer-events: none;
+  font: 800 440px/1 var(--sans); letter-spacing: -.06em;
+  color: transparent; -webkit-text-stroke: 2px color-mix(in srgb, var(--accent) 28%, transparent);
+}
+.kicker { margin: 40px 0 0; font: 600 20px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+.stage-body:has(.opener-cards) h1 { margin-top: 14px; font-size: 104px; }
+.stage-body:has(.opener-cards) .subtitle { font-size: 30px; max-width: 1100px; margin-top: 20px; }
+.scene.opener-cards { flex: 0 0 auto; height: auto; margin-top: auto; }
+.terminal { margin: 26px 0 8px; display: flex; align-items: baseline; gap: 14px; font: 500 22px var(--mono); color: var(--body); }
+.terminal .caret { color: var(--accent); }
+.terminal .sep, .terminal .detail { color: var(--muted); }
+
+/* Core question */
+.stage h2.question { font-size: 62px; }
+.scene.core { flex: 0 0 auto; height: auto; margin: auto 0; }
+.scene .route-word .chip-text { font-weight: 700; }
+
+/* Contents */
+.scene.contents { margin-top: 36px; }
+
+/* Before/After: the left column dims and dashes so the after state carries the slide. */
+.scene .ba-item { font-size: 23px; }
+.scene .ba-left .ba-item { fill: color-mix(in srgb, var(--text) 62%, transparent); }
+.scene .ba-left .box { stroke-dasharray: 6 6; }
+.scene .ba-mark { font-size: 24px; font-weight: 800; }
+.scene .ba-num { font-size: 60px; font-weight: 800; }
+
+/* What you can do today */
+.scene .tick-box { fill: none; stroke: color-mix(in srgb, var(--z) 70%, transparent); stroke-width: 2; }
+.scene.today .check { stroke-width: 3.5; }
+.scene.today { flex: 0 0 auto; height: auto; margin-top: 56px; }
+.takeaway { margin: 40px auto 0; display: flex; align-items: baseline; gap: 18px; padding: 16px 28px; border: 1px solid color-mix(in srgb, var(--cyan) 40%, transparent); border-radius: 14px; background: color-mix(in srgb, var(--cyan) 9%, transparent); font-size: 24px; color: var(--text); }
+.takeaway .k { font-weight: 700; color: var(--cyan); white-space: nowrap; }
+
+/* References */
+.refs { margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: start; }
+.ref-group h3 { margin: 0 0 16px; display: flex; gap: 12px; font-size: 26px; color: var(--z); }
+.ref { display: grid; gap: 4px; margin-bottom: 14px; padding: 16px 22px; border: 1px solid var(--line); border-left: 5px solid var(--z); border-radius: 12px; background: color-mix(in srgb, var(--z) 6%, transparent); text-decoration: none; color: var(--text); transition: background .2s; }
+.ref:hover { background: color-mix(in srgb, var(--z) 14%, transparent); }
+.ref b { font-size: 23px; font-weight: 650; color: var(--z); }
+.ref span { font-size: 19px; color: var(--body); }
+.ref code { font: 14px var(--mono); color: var(--muted); }

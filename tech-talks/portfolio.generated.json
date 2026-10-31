@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-30T17:24:32.520Z",
+  "generatedAt": "2026-10-30T20:54:31.206Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 33,
@@ -175,6 +175,7 @@
         "copilot-app",
         "agentic-sdlc"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Delegate and Coordinate",
       "cataloged": false,
       "files": {
@@ -241,6 +242,7 @@
         "agentic-workflows",
         "agentic-sdlc"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Delegate and Coordinate",
       "cataloged": false,
       "files": {
@@ -307,6 +309,7 @@
         "copilot-hooks",
         "agentic-sdlc"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents on GitHub",
       "cataloged": true,
       "files": {
@@ -373,6 +376,7 @@
         "enterprise-patterns",
         "unattended-agents"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Trust and Govern",
       "cataloged": true,
       "files": {
@@ -438,6 +442,7 @@
         "copilot-hooks",
         "agentic-sdlc"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Delegate and Coordinate",
       "cataloged": false,
       "files": {
@@ -504,6 +509,7 @@
         "copilot-hooks",
         "enterprise-patterns"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Choose and Configure",
       "cataloged": false,
       "files": {
@@ -569,6 +575,7 @@
         "mcp-apps",
         "copilot-plugins"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Extend and Embed",
       "cataloged": false,
       "files": {
@@ -634,6 +641,7 @@
         "agent-teams",
         "unattended-agents"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Delegate and Coordinate",
       "cataloged": false,
       "files": {
@@ -699,6 +707,7 @@
         "mcp-apps",
         "copilot-with-foundry"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Extend and Embed",
       "cataloged": true,
       "files": {
@@ -764,6 +773,7 @@
         "copilot-memory",
         "copilot-hooks"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Choose and Configure",
       "cataloged": false,
       "files": {
@@ -828,6 +838,7 @@
         "copilot-web",
         "copilot-azure-mcp"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": true,
       "files": {
@@ -893,6 +904,7 @@
         "copilot-code-review",
         "agentic-sdlc"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Verify and Govern",
       "cataloged": false,
       "files": {
@@ -958,6 +970,7 @@
         "copilot-code-quality",
         "agentic-sdlc"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Verify and Govern",
       "cataloged": false,
       "files": {
@@ -1024,6 +1037,7 @@
         "enterprise-patterns",
         "pr-trust-stack"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Trust and Govern",
       "cataloged": false,
       "files": {
@@ -1089,6 +1103,7 @@
         "agentic-sdlc",
         "enterprise-patterns"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Trust and Govern",
       "cataloged": false,
       "files": {
@@ -1153,6 +1168,7 @@
         "copilot-chat-internals",
         "copilot-with-foundry"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Choose and Configure",
       "cataloged": false,
       "files": {
@@ -1219,6 +1235,7 @@
         "copilot-governance",
         "copilot-hooks"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents on GitHub",
       "cataloged": true,
       "files": {
@@ -1283,6 +1300,7 @@
         "copilot-sdk",
         "mcp-apps"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Extend and Embed",
       "cataloged": true,
       "files": {
@@ -1349,6 +1367,7 @@
         "copilot-hooks",
         "enterprise-patterns"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Foundations",
       "cataloged": true,
       "files": {
@@ -1415,6 +1434,7 @@
         "mcp-apps",
         "copilot-plugins"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Extend and Embed",
       "cataloged": false,
       "files": {
@@ -1479,6 +1499,7 @@
         "agentic-lifecycle",
         "pr-trust-stack"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents on GitHub",
       "cataloged": false,
       "files": {
@@ -1544,6 +1565,7 @@
         "copilot-azure-mcp",
         "enterprise-patterns"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Extend and Embed",
       "cataloged": true,
       "files": {
@@ -1611,6 +1633,7 @@
         "agentic-lifecycle",
         "copilot-hooks"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Foundations",
       "cataloged": true,
       "files": {
@@ -1676,6 +1699,7 @@
         "agentic-sdlc",
         "copilot-plugins"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Trust and Govern",
       "cataloged": true,
       "files": {
@@ -1723,7 +1747,7 @@
       "title": "Harness Fundamentals: Getting Inside the Agent Loop",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-26",
+      "updated": "2026-10-30",
       "section": "Extend and Embed",
       "audience": [
         "developer",
@@ -1743,44 +1767,45 @@
         "copilot-on-github",
         "enterprise-patterns"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Extend and Embed",
       "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/harness-fundamentals/README.md",
           "exists": true,
-          "bytes": 50111,
-          "modified": "2026-10-30T16:03:58.799Z"
+          "bytes": 57698,
+          "modified": "2026-10-30T17:50:26.449Z"
         },
         "recipe": {
           "path": "tech-talks/harness-fundamentals/deck.recipe.yml",
           "exists": true,
-          "bytes": 13190,
-          "modified": "2026-10-26T21:06:17.574Z"
+          "bytes": 12889,
+          "modified": "2026-10-30T17:46:21.161Z"
         },
         "deck": {
           "path": "slides/tech-talks/harness-fundamentals.md",
           "exists": true,
-          "bytes": 49959,
-          "modified": "2026-10-30T17:20:56.744Z"
+          "bytes": 53615,
+          "modified": "2026-10-30T17:50:26.427Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/harness-fundamentals/agenda.md",
           "exists": true,
           "bytes": 393,
-          "modified": "2026-10-30T17:23:04.312Z"
+          "modified": "2026-10-30T18:04:51.458Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/harness-fundamentals/agenda.html",
           "exists": true,
           "bytes": 5891,
-          "modified": "2026-10-30T17:23:04.315Z"
+          "modified": "2026-10-30T18:04:51.461Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/harness-fundamentals/deck.pdf",
           "exists": true,
-          "bytes": 2974137,
-          "modified": "2026-10-30T17:24:00.201Z"
+          "bytes": 3108061,
+          "modified": "2026-10-30T18:05:20.721Z"
         }
       },
       "errors": []
@@ -1810,6 +1835,7 @@
         "agentic-lifecycle",
         "copilot-on-github"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": true,
       "files": {
@@ -1874,6 +1900,7 @@
         "copilot-acp",
         "copilot-azure-mcp"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Extend and Embed",
       "cataloged": false,
       "files": {
@@ -1942,6 +1969,7 @@
         "agentic-sdlc",
         "copilot-primitives"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": false,
       "files": {
@@ -2009,6 +2037,7 @@
         "agentic-sdlc",
         "copilot-web"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents on GitHub",
       "cataloged": false,
       "files": {
@@ -2074,6 +2103,7 @@
         "copilot-web",
         "multi-agent-coordination"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": false,
       "files": {
@@ -2121,7 +2151,7 @@
       "title": "Which Copilot Where? A Practical Surface Router",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-16",
+      "updated": "2026-10-30",
       "section": "Foundations",
       "audience": [
         "developer",
@@ -2139,14 +2169,15 @@
         "copilot-web",
         "multi-agent-coordination"
       ],
+      "deckFormat": "native",
       "deckSection": "Foundations",
       "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/surfaces/README.md",
           "exists": true,
-          "bytes": 33880,
-          "modified": "2026-10-26T15:25:34.401Z"
+          "bytes": 5884,
+          "modified": "2026-10-30T20:39:25.037Z"
         },
         "recipe": {
           "path": "tech-talks/surfaces/deck.recipe.yml",
@@ -2155,10 +2186,16 @@
           "modified": "2026-09-15T01:27:27.847Z"
         },
         "deck": {
-          "path": "slides/tech-talks/surfaces.md",
+          "path": "slides/tech-talks/surfaces/slides.js",
           "exists": true,
-          "bytes": 26380,
-          "modified": "2026-10-22T19:15:49.109Z"
+          "bytes": 42790,
+          "modified": "2026-10-30T20:27:17.522Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/surfaces/notes.html",
+          "exists": true,
+          "bytes": 1297,
+          "modified": "2026-10-30T20:27:43.737Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/surfaces/agenda.md",
@@ -2206,6 +2243,7 @@
         "copilot-hooks",
         "agentic-sdlc"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": false,
       "files": {
@@ -2271,6 +2309,7 @@
         "repo-to-feature",
         "multi-agent-coordination"
       ],
+      "deckFormat": "slidev",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": true,
       "files": {

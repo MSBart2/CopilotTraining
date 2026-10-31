@@ -26,10 +26,10 @@ if (!scriptMatch) {
 // Test cases
 const testCases = [
   {
-    name: "Slide route with single digit",
-    input: "/CopilotTraining/tech-talks/subagents/1",
+    name: "Native tech-talk numeric slide route",
+    input: "/CopilotTraining/tech-talks/surfaces/17",
     expectedAction: "redirect",
-    expectedTo: "/CopilotTraining/tech-talks/subagents/?slide=1",
+    expectedTo: "/CopilotTraining/tech-talks/surfaces/?slide=17",
     expectedLoopPrevention: true,
   },
   {

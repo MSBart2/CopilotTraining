@@ -1,0 +1,28 @@
+/* Which Copilot Where? — deck-specific layout on top of slides/native/{theme,frames,patterns}.css */
+
+/* Title and closing ring: spokes take each surface's tone. */
+.scene.title-map .m-trace { stroke: color-mix(in srgb, var(--z) 55%, transparent); stroke-width: 2; }
+
+/* Route slides */
+.scene .on .chip { stroke: var(--purple-light); stroke-width: 2.5; fill: color-mix(in srgb, var(--purple-light) 22%, transparent); }
+.scene .on .chip-text { fill: #fff; }
+.scene .badge-dot { fill: var(--purple-light); stroke: var(--bg); stroke-width: 3; }
+.scene .route { stroke: var(--purple-light); stroke-width: 5; filter: drop-shadow(0 0 8px rgba(184, 112, 255, .55)); }
+/* Matrix and route slides share one fixed matrix frame so the grid holds still between them. */
+.scene.matrix { flex: 0 0 520px; height: 520px; margin-top: 24px; }
+.s-matrix .footnote { margin-top: 22px; }
+.route-caption { margin: 12px 0 0; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 21px; line-height: 1.35; color: var(--muted); white-space: nowrap; }
+.route-caption b { color: var(--text); font-weight: 650; }
+
+/* Decision tree */
+.scene.tree { margin-top: 18px; }
+.scene .intent { font-size: 25px; font-weight: 700; }
+.scene .intent-icon { font-size: 28px; }
+
+/* Onboarding lanes */
+.scene.onboard { flex: 0 0 auto; height: auto; margin: auto 0; }
+.scene .lane-surface { font-size: 26px; font-weight: 650; }
+.scene .row-label { letter-spacing: .08em; fill: var(--muted); }
+.scene .row-label.z-text { fill: var(--z); }
+.scene .row-detail { font-size: 22px; font-weight: 500; fill: var(--body); }
+.scene .row-mark { font-size: 26px; }

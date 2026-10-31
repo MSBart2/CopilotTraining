@@ -64,7 +64,7 @@ jobs:
           # individual frontmatter dates did not change.
           SHARED_FINGERPRINT=$({
             printf '%s\0' style.css vite.config.ts package.json package-lock.json global-top.vue global-bottom.vue
-            find components layouts setup -type f -print0
+            find components layouts setup native -type f -print0
             find tech-talks -maxdepth 1 -type f \( -name 'global-*.vue' -o -name 'sdp-logo.png' \) -print0
             find exec-talks -maxdepth 1 -type f \( -name 'global-*.vue' -o -name 'sdp-logo.png' \) -print0
           } | xargs -0 sha256sum | sha256sum | cut -d' ' -f1)
@@ -159,6 +159,10 @@ jobs:
             CATEGORY=$(dirname "$SLIDE_FILE")
             BASENAME=$(basename "$SLIDE_FILE" .md)
             KEY="${CATEGORY}/${BASENAME}"
+            if [ "$CATEGORY" = "tech-talks" ] && [ -f "tech-talks/${BASENAME}/slides.js" ]; then
+              echo "🧭 ${KEY} has a native deck — keeping the Slidev source out of deployment"
+              continue
+            fi
             CURRENT_UPDATED=$(get_updated "$SLIDE_FILE")
             # Date plus content hash, so same-day edits still rebuild
             CURRENT_STAMP="${CURRENT_UPDATED}@$(sha256sum "$SLIDE_FILE" | cut -c1-12)"
@@ -186,6 +190,9 @@ jobs:
           done
 
           [ $FAILED -eq 1 ] && { echo "❌ Some builds failed"; exit 1; }
+
+          # Native tech talks are validated and copied as static folders.
+          node scripts/build-native-decks.mjs
 
           # Write manifest for next run
           python3 -c "

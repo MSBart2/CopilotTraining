@@ -42,7 +42,9 @@ done
 
 # If --deck is specified, auto-detect its category
 if [[ -n "$DECK" ]]; then
-    if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../workshop/${DECK}.md" ]]; then
+    if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../tech-talks/${DECK}/slides.js" ]]; then
+        FOLDER="tech-talks"
+    elif [[ -f "$(dirname "${BASH_SOURCE[0]}")/../workshop/${DECK}.md" ]]; then
         FOLDER="workshop"
     elif [[ -f "$(dirname "${BASH_SOURCE[0]}")/../tech-talks/${DECK}.md" ]]; then
         FOLDER="tech-talks"
@@ -131,6 +133,9 @@ if [[ -z "$FOLDER" || "$FOLDER" == "workshop" ]]; then
     for SLIDE_FILE in "${SLIDES_DIR}"/workshop/*.md; do
         if [ -f "$SLIDE_FILE" ]; then
             BASENAME=$(basename "$SLIDE_FILE" .md)
+            if [[ -n "$DECK" && "$BASENAME" != "$DECK" ]]; then
+                continue
+            fi
             if [ "$BASENAME" = "template" ]; then
                 continue
             fi
@@ -152,12 +157,19 @@ if [[ -z "$FOLDER" || "$FOLDER" == "tech-talks" ]]; then
     for SLIDE_FILE in "${SLIDES_DIR}"/tech-talks/*.md; do
         if [ -f "$SLIDE_FILE" ]; then
             BASENAME=$(basename "$SLIDE_FILE" .md)
+            if [[ -n "$DECK" && "$BASENAME" != "$DECK" ]]; then
+                continue
+            fi
             if [ "$BASENAME" = "template" ]; then
                 continue
             fi
             if is_archived "$SLIDE_FILE"; then
                 echo "   ⏭️  Skipping archived: tech-talks/${BASENAME}"
                 TOTAL_SKIPPED=$((TOTAL_SKIPPED + 1))
+                continue
+            fi
+            if [ -f "${SLIDES_DIR}/tech-talks/${BASENAME}/slides.js" ]; then
+                echo "   🧭 Using native deck: tech-talks/${BASENAME}"
                 continue
             fi
             build_slide "tech-talks" "${BASENAME}"
@@ -173,6 +185,9 @@ if [[ -z "$FOLDER" || "$FOLDER" == "exec-talks" ]]; then
     for SLIDE_FILE in "${SLIDES_DIR}"/exec-talks/*.md; do
         if [ -f "$SLIDE_FILE" ]; then
             BASENAME=$(basename "$SLIDE_FILE" .md)
+            if [[ -n "$DECK" && "$BASENAME" != "$DECK" ]]; then
+                continue
+            fi
             if [ "$BASENAME" = "template" ]; then
                 continue
             fi
@@ -186,6 +201,24 @@ if [[ -z "$FOLDER" || "$FOLDER" == "exec-talks" ]]; then
         fi
     done
     echo ""
+fi
+
+# Native tech-talks use their static deck folders and shared engine.
+if [[ -z "$FOLDER" || "$FOLDER" == "tech-talks" ]]; then
+    if [[ -n "$DECK" ]]; then
+        node "${SLIDES_DIR}/scripts/build-native-decks.mjs" --deck "$DECK"
+    else
+        node "${SLIDES_DIR}/scripts/build-native-decks.mjs" --folder tech-talks
+    fi
+    NATIVE_BUILT=0
+    for NATIVE_DIR in "${SLIDES_DIR}"/tech-talks/*; do
+        [ -d "$NATIVE_DIR" ] || continue
+        [ -f "${NATIVE_DIR}/index.html" ] && [ -f "${NATIVE_DIR}/slides.js" ] \
+            && [ -f "${NATIVE_DIR}/scenes.js" ] && [ -f "${NATIVE_DIR}/notes.html" ] || continue
+        [ -n "$DECK" ] && [ "$(basename "$NATIVE_DIR")" != "$DECK" ] && continue
+        NATIVE_BUILT=$((NATIVE_BUILT + 1))
+    done
+    TOTAL_BUILT=$((TOTAL_BUILT + NATIVE_BUILT))
 fi
 
 # Copy index.html and 404.html to dist root

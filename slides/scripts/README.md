@@ -47,6 +47,7 @@ This pattern enables:
 - Discovers .md files in workshop/, tech-talks/, exec-talks/
 - Checks for archived status (skips archived decks)
 - Invokes `npm run build` for each deck with correct output paths
+- Validates and publishes native tech-talk folders in `slides/tech-talks/<slug>/`
 - Handles success/failure detection
 - Displays timing and summary
 
@@ -109,6 +110,17 @@ After a successful build:
 Built decks are in `slides/dist/<category>/<deck-name>/`.
 
 ## Previewing Locally
+
+Native tech talks are selected by folder shape (`index.html`, `slides.js`,
+`scenes.js`, and `notes.html`). When a native folder and its legacy `.md` source
+share a slug during conversion, the native deck is published and the Slidev
+source remains available as a reference. Native builds run the browser
+validator before copying the deck and shared engine into `dist/`.
+
+```powershell
+cd slides
+npm run build:native
+```
 
 ### Homepage + companions (fast)
 

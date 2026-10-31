@@ -7,7 +7,7 @@
 Three content types, each with dedicated agents:
 
 - **`workshop/`** — Hands-on training modules with personas, exercises, and metrics → use `module-planner` or `module-creator` agents
-- **`tech-talks/`** — Technical deep-dives for practitioners → use `Tech Talk Generator` agent
+- **`tech-talks/`** — The 1-hour show-and-tell for practitioners → use `Tech Talk Generator` agent (research, landing README, recipe), then `Native Deck Author` (deck and speaker notes)
 - **`tech-talks/exec-*`** — Executive thought leadership for strategic decision-making → use `Exec Talk Generator` agent
 
 ---
@@ -169,7 +169,7 @@ Use the announcement feed to keep existing tech talks current without rewriting 
 2. Read the generated report and `.github/content-routing/ledger.json`. An empty ledger is not a stop for a named talk.
 3. Verify candidates against first-party docs **and** the product's own release notes / command reference. The Microsoft feed is discovery only.
 4. Create or update `tech-talks/<topic>/content.refresh.yml` using the `content-refresh` skill.
-5. After approval, patch the talk README as a reader-first article, not a changelog dump.
+5. After approval, patch the talk README as a reader-first article, not a changelog dump. For a native talk, patch the speaker notes in `slides/tech-talks/<slug>/slides.js` (the teaching source) and touch the landing README only for frontmatter, question, thesis, or part summaries.
 6. Follow the cheap-path table in `content-refresh`. Recipe refresh + full deck regen only for structural / restructure / replace-demo. Confirm/patch work stays in the existing deck.
 7. Normalize any selected ledger status to `accepted` or `rejected` after validation. Do not invent ledger rows for a named-talk refresh that started with an empty inbox.
 
@@ -197,14 +197,17 @@ See [docs/announcement-feed/README.md](docs/announcement-feed/README.md) for the
 
 ## Slide Generation
 
-Two agents — pick by category:
+Pick the agent by category and engine:
 
 | Category | Agent |
 |---|---|
-| `tech-talks/` | **Tech Talk Slide Generator** — Vue components, no raw HTML |
+| `tech-talks/` native (`slides/tech-talks/<slug>/slides.js`), new talks, and conversions | **Native Deck Author** — shared engine in `slides/native/`; slide data and speaker notes in `slides.js` |
+| `tech-talks/` Slidev decks not yet converted | **Tech Talk Slide Generator** (legacy) — patches only; Vue components, no raw HTML |
 | `workshop/` or `tech-talks/exec-*` | **Slide Generator** — cockpit HTML templates |
 
-Key invariants (all categories):
+Native tech talks (the 1-hour show-and-tell) are notes-first: the speaker notes are the teaching source and the README is a landing page. Validate with `cd slides; npm run validate:native -- tech-talks/<slug>`. Workshop and exec decks stay on Slidev.
+
+Key invariants (Slidev decks):
 
 - `---` separator always on its own line — never `---<!-- SLIDE:` on same line
 - No per-slide frontmatter (`layout:`, `class:`, `transition:`) — use CSS
@@ -215,18 +218,21 @@ Key invariants (all categories):
 
 ## Shipping slides (Deploy agent)
 
-Homepage **Agenda** / **PDF** chips resolve to files under
+For Slidev decks, homepage **Agenda** / **PDF** chips resolve to files under
 `slides/companions/<category>/<slug>/`. GitHub Pages **only copies** those
-files into `dist/` — it never runs `generate-agendas` or `export-pdf`.
+files into `dist/` — it never runs `generate-agendas` or `export-pdf`. Native
+tech-talk cards link to their `notes.html` handout; agenda/PDF generation for
+native talks is planned for Phase 5.
 
 Before committing slide or companion changes, invoke the **Deploy** agent as a subagent
 (`.github/agents/deploy.agent.md`):
 
-1. `cd slides && npm run check-companions -- --strict` (hard gate)
-2. Regen stale agendas + compact PDFs for the dirty scope
+1. `cd slides && npm run check-companions -- --strict` (hard gate; native decks require notes)
+2. Regen stale Slidev agendas + compact PDFs; validate changed native talks with `npm run validate:native -- tech-talks/<slug>`
 3. `npm run sync-index` if decks changed
 4. Re-check, then **snarky commit** including `slides/companions/**`
-5. **Refuse** commit when companions are missing/older than their decks
+5. **Refuse** commit when Slidev companions are missing/older than their decks or native validation fails
 6. Push the current branch after a successful commit; never force-push
 
-Do not commit deck-only changes that leave companions untracked or stale.
+Do not commit Slidev deck-only changes that leave companions untracked or stale.
+Stage native deck folders and the shared engine with native deck changes.
