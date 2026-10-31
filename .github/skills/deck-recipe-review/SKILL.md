@@ -16,7 +16,7 @@ Read the talk's source material, analyze its structure, and write `deck.recipe.y
 
 **Key Constraints:**
 - **Judgment and Transfer Contract** — Apply the universal contract in `AGENTS.md`. Protect the practitioner decision, observable proof, boundary, and own-work transfer when consolidating the source material. A section that only inventories features has not earned slide time.
-- **Max 4 sections** — Consolidate during review rather than expanding. Budget emphasis within a 20-25 slide target for the complete deck and never exceed 30 slides.
+- **Max 4 sections** — Give practitioner tech talks room for 30+ slides. Count spine/template slides separately from teaching slides. The narrative, demonstration, and speaking-time budget determine the total; there is no fixed slide-count ceiling. Every teaching slide earns its place by advancing the argument or proving a claim.
 - **Shared frames ensure consistency** — The native engine renders the standard slides (title, core question, contents, part openers, before/after, today, references, thanks) from shared frames. Focus the review on *narrative logic and audience fit*, and on what each body slide must prove.
 - **Per-slide plan** — The recipe ends with a `slides:` list: one entry per body slide with its claim, scene intent, and `seconds`. This is where the talk's time goes, so the user approves it with the rest of the recipe.
 - **Recipe schema** — Read `.github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml` to understand all valid fields before writing the output file.
@@ -85,7 +85,8 @@ CANDIDATE SECTIONS (from research.md parts, README part headings, or 🎬 marker
 CONSTRAINTS:
 - Max 4 sections (no exceptions — consolidate, don't expand)
 - Shared frames render the standard slides; body slides carry the argument
-- Body slides: 20-25 total in the deck, each proving one claim with a visible scene
+- Plan for 30+ slides overall, counting spine/template slides separately from teaching slides; each teaching slide proves one claim with a visible scene
+- Fit the speaking-time budget through deliberate pacing; slide count has no fixed ceiling
 - Apply the tech-talk voice to every proposed recipe field and comment
 - State desired behavior directly; avoid contrastive-negation phrasing ("not X, but Y,"
   "rather than," "instead of," "unlike," "no longer")

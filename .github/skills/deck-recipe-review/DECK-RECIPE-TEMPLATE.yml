@@ -50,7 +50,7 @@ deck:
   # Per-section editorial guidance for the slide generator.
   sectionModes:
     "[Section 1 Name]":
-      # Slide budget hint: high = 4–5 slides, medium = 2–3, medium-low = 1–2
+      # Emphasis allocates teaching time and proof depth, not a fixed slide count.
       emphasis: medium
       # note: authoring priority — what must land, what to cut, what the "whoa" moment is.
       # Written as a free-form directive to the generator. Be specific.
@@ -96,7 +96,9 @@ deck:
 
   # Per-slide plan for body slides (native decks). Standard slides (title, core-question,
   # contents, part openers, before-after, today, references, thanks) come from shared frames;
-  # list them only to give them a seconds budget. The deck's total seconds land 3–5 minutes
+  # list them to give them a seconds budget and count spine/template slides separately
+  # from teaching slides. Plan for 30+ slides overall with no fixed slide-count ceiling;
+  # the narrative and speaking-time budget determine the total. The total seconds land 3–5 minutes
   # under the README duration. Budgets are estimates until a presenter times a run-through.
   slides:
     - id: "[kebab-case-id]"

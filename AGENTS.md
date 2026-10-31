@@ -207,6 +207,8 @@ Pick the agent by category and engine:
 
 Native tech talks (the 1-hour show-and-tell) are notes-first: the speaker notes are the teaching source and the README is a landing page. Validate with `cd slides; npm run validate:native -- tech-talks/<slug>`. Workshop and exec decks stay on Slidev.
 
+Practitioner tech talks have room for 30+ slides, with no fixed slide-count ceiling. Count spine/template slides separately from teaching slides. Let the narrative, demonstration, and speaking-time budget determine the total; each teaching slide answers one audience question and advances the argument or proves a claim. This guidance leaves workshop and executive deck budgets unchanged.
+
 Key invariants (Slidev decks):
 
 - `---` separator always on its own line — never `---<!-- SLIDE:` on same line

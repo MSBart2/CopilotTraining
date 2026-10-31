@@ -165,6 +165,21 @@ test("native tech talks are notes-first and validated", async () => {
   assert.match(await read(".github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml"), /^\s+slides:/m);
 });
 
+test("practitioner deck budgets allow 30+ slides and separate spine from teaching", async () => {
+  for (const path of [
+    "AGENTS.md",
+    ".github/agents/native-deck-author.agent.md",
+    ".github/agents/tech-talk-slide-generator.agent.md",
+    ".github/skills/deck-recipe-review/SKILL.md",
+    ".github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml",
+  ]) {
+    const content = await read(path);
+    assert.match(content, /30\+ slides/, `${path} lacks the expanded slide budget`);
+    assert.match(content, /spine\/template slides separately/, `${path} conflates spine and teaching slides`);
+    assert.doesNotMatch(content, /20[-–]25 slides|20-25 slide target|never exceed 30/i);
+  }
+});
+
 test("live content machinery has no deleted editorial dependencies", async () => {
   const machinery = [
     ...workshopMachinery,

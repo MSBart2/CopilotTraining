@@ -64,7 +64,7 @@ part-1 opener · body…   part-2 opener · body…   part-3 opener · body…  
 before-after · today · references · thanks
 ```
 
-Use the recipe's per-slide plan when present; otherwise budget body slides from `sectionModes[].emphasis` (high 4–5, medium 2–3, medium-low 1–2). Target 20–25 slides; never exceed 30.
+Use the recipe's per-slide plan when present. Plan for 30+ slides overall and count spine/template slides separately from teaching slides. Allocate teaching slides by section emphasis and the claims, mechanisms, and proof the audience needs. The narrative and speaking-time budget determine the total; there is no fixed slide-count ceiling. Give a dense idea several focused slides when that makes the story clearer. Each teaching slide earns its place, and the total seconds still leave 3–5 minutes within the README duration for questions.
 
 ### Slide data
 

@@ -82,7 +82,7 @@ Write the scaffold in one pass:
 | `deck.arcNarrative`                             | Authoring guidance — read before writing section openers to understand sequencing intent; never displayed |
 | `deck.sectionOrder`                             | `TocSlide` section list; one `SectionOpenerSlide` per entry                                               |
 | `deck.sectionModes[].note`                      | `SectionOpenerSlide` subtitle — verbatim or condensed to ≤ 120 chars                                      |
-| `deck.sectionModes[].emphasis`                  | Budget comment after each opener: `high` = 4–5 slides, `medium` = 2–3, `medium-low` = 1–2                 |
+| `deck.sectionModes[].emphasis`                  | Allocate teaching time and proof depth after each opener; use the approved per-slide plan when present |
 | `deck.highlightMoments`                         | `BeforeAfterSlide` items/metrics; `WhatYouCanDoTodaySlide` actions; `ThankYouSlide` summary cards         |
 | `deck.preamble`                                 | `src:` import blocks emitted immediately after `TitleSlide` (optional)                                    |
 | `deck.appendix`                                 | `src:` import blocks emitted after `ThankYouSlide` (optional)                                             |
@@ -157,7 +157,7 @@ Identify the single technical reveal, honest tension, or boundary that changes h
 4. For a behavioral claim, show the representative input or action beside its observable output or decision whenever practical. Preserve real field names and values when displaying payloads.
 5. Separate verification status from the behavior being verified. For example, present `3/3 expected decisions verified` apart from the actual `allow`, `ask`, and `deny` results.
 
-**Target: 20-25 slides total (never exceed 30).** Fixed positions:
+**Practitioner tech talks have room for 30+ slides overall, with no fixed slide-count ceiling.** Count spine/template slides separately from teaching slides; let the narrative and speaking-time budget determine the total. Patch mode preserves the existing running order unless a structural change is approved. Fixed positions:
 
 ```
 Slide 1   — TitleSlide
