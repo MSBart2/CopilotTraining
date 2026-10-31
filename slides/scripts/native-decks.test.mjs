@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { discoverNativeDecks, getNativeDeck } from "./native-decks.mjs";
@@ -45,4 +45,10 @@ test("rejects incomplete native deck folders", () => {
   } finally {
     f.cleanup();
   }
+});
+
+test("Pages installs Chromium and gates artifact upload on native publishing", () => {
+  const workflow = readFileSync(new URL("../../.github/workflows/deploy-slides.yml", import.meta.url), "utf8");
+  assert.match(workflow, /run: npx playwright install --with-deps chromium/);
+  assert.match(workflow, /- name: Validate and publish native decks\r?\n\s+working-directory: \.\/slides\r?\n\s+run: node scripts\/build-native-decks\.mjs\r?\n\r?\n\s+- name: Upload artifact/);
 });

@@ -116,6 +116,9 @@ Native tech talks are selected by folder shape (`index.html`, `slides.js`,
 share a slug during conversion, the native deck is published and the Slidev
 source remains available as a reference. Native builds run the browser
 validator before copying the deck and shared engine into `dist/`.
+GitHub Pages installs Playwright Chromium and runs native validation/publishing
+as a separate required step before artifact upload. A failed native check blocks
+deployment, including deployment of restored build-cache output.
 
 ```powershell
 cd slides

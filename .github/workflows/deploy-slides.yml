@@ -48,6 +48,10 @@ jobs:
         working-directory: ./slides
         run: npm ci
 
+      - name: Install native validation browser
+        working-directory: ./slides
+        run: npx playwright install --with-deps chromium
+
       - name: Build slides
         working-directory: ./slides
         shell: bash {0}
@@ -191,9 +195,6 @@ jobs:
 
           [ $FAILED -eq 1 ] && { echo "❌ Some builds failed"; exit 1; }
 
-          # Native tech talks are validated and copied as static folders.
-          node scripts/build-native-decks.mjs
-
           # Write manifest for next run
           python3 -c "
           import json, sys
@@ -226,6 +227,10 @@ jobs:
 
           BUILT=${#LABELS[@]}
           echo "📊 ${BUILT} built, ${SKIPPED} skipped (up to date)"
+
+      - name: Validate and publish native decks
+        working-directory: ./slides
+        run: node scripts/build-native-decks.mjs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
