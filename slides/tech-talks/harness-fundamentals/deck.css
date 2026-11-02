@@ -1,0 +1,17 @@
+/* Harness Fundamentals deck-only alignment for evidence tables. */
+.table-head {
+  display: grid;
+  grid-template-columns: 220px 520px 1fr;
+  gap: 24px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font: 500 15px/1.2 var(--mono);
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.s-sdk-context .table-head,
+.s-surrounding-controls .table-head,
+.s-visibility-policy .table-head,
+.s-pi-tools .table-head {
+  grid-template-columns: 220px 520px 1fr;
+}

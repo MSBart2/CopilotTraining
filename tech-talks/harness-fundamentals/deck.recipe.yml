@@ -1,6 +1,8 @@
 # deck.recipe.yml — Harness Fundamentals (Revision 4, five jobs twice)
 #
 # Reviewed 2026-10-26. Single structural analysis; the user's approval is the review gate.
+# Native conversion plan approved 2026-10-31 under the user's explicit autonomous-build waiver.
+# The 31-slide plan preserves the current four-part narrative and evidence; no news refresh is in scope.
 #
 # Slide budget: 20 content slides (6 + 7 + 4 + 3) plus 11 structural slides = 31 total.
 # Sections one and two walk the same five jobs in the same order (loop, context, tools, control,
@@ -132,6 +134,163 @@ deck:
         runbook drills, a learning app, and an issue-to-release portal. Preserve app authority
         and evidence in each idea. Close by choosing one existing method to expose as a tool,
         its user checks and approval boundary, and what the app UI and telemetry will show.
+
+  slides:
+    - id: title
+      part: 0
+      claim: "A harness makes an existing app's capabilities available through a governed agent workflow."
+      scene: "frame: title and five-job promise"
+      seconds: 20
+    - id: core-question
+      part: 0
+      claim: "The learner can choose which harness job to take over and which authority remains in the host."
+      scene: "frame: learner question, roles, and transfer"
+      seconds: 45
+    - id: contents
+      part: 0
+      claim: "The talk moves from a readable harness, to an app-hosted loop, to visibility and ownership."
+      scene: "frame: four-part route linking to slides 4, 11, 19, and 24"
+      seconds: 30
+    - id: part-1
+      part: 1
+      claim: "Reading pi's source gives each later SDK callback a named place in the loop."
+      scene: "frame: shared opener"
+      seconds: 20
+    - id: five-jobs
+      part: 1
+      claim: "Loop, context, tools, control, and evidence are the five jobs a harness performs."
+      scene: "deck: five aligned job rows with pi source locations"
+      seconds: 145
+    - id: pi-loop
+      part: 1
+      claim: "pi repeats model turns while tools or queued messages remain, then stops when the loop has no next work."
+      scene: "deck: model request, tool result, next turn, and stop condition"
+      seconds: 145
+    - id: pi-context
+      part: 1
+      claim: "pi transforms and converts the message history before each model request."
+      scene: "deck: context assembly pipeline and per-request choices"
+      seconds: 145
+    - id: pi-tools
+      part: 1
+      claim: "A tool combines a schema, model guidance, execution code, and a boundary where external processes take over."
+      scene: "deck: write-tool anatomy beside find-to-fd handoff"
+      seconds: 145
+    - id: pi-control
+      part: 1
+      claim: "A host block returns a reason as a tool result, while the loop owns the hook point."
+      scene: "deck: validated call, product policy, and model-readable refusal"
+      seconds: 145
+    - id: pi-evidence
+      part: 1
+      claim: "pi lets a host inspect or revise tool results and subscribe to execution events."
+      scene: "deck: afterToolCall, emitted event, and subscriber"
+      seconds: 145
+    - id: part-2
+      part: 2
+      claim: "An existing application can host the SDK and bring its methods, identity, approvals, and UI into the loop."
+      scene: "frame: shared opener"
+      seconds: 20
+    - id: sdk-map
+      part: 2
+      claim: "The Copilot SDK exposes host control across the same five harness jobs."
+      scene: "deck: five pi jobs aligned to SDK host surfaces"
+      seconds: 145
+    - id: sdk-loop
+      part: 2
+      claim: "The dashboard starts a scoped session, sends a question, and presents the returned answer."
+      scene: "deck: dashboard question to session to UI response"
+      seconds: 145
+    - id: sdk-context
+      part: 2
+      claim: "The host can append or customize role guidance while retaining SDK prompt sections."
+      scene: "deck: append, customize, and replace modes with their boundary"
+      seconds: 145
+    - id: sdk-tools
+      part: 2
+      claim: "A named tool can call an existing service method without exposing arbitrary app dispatch."
+      scene: "deck: release_readiness schema, handler, and allowlist"
+      seconds: 145
+    - id: sdk-control
+      part: 2
+      claim: "SDK permission to request a tool and service authorization for a user are separate decisions."
+      scene: "showdown: session permission compared with service authority"
+      seconds: 145
+    - id: sdk-evidence
+      part: 2
+      claim: "SDK events report execution progress; the application records the business result."
+      scene: "deck: event stream, UI, telemetry, and service audit"
+      seconds: 145
+    - id: release-flow
+      part: 2
+      claim: "A release assistant can explain an unfavorable result while execution succeeds and a person retains approval."
+      scene: "deck: illustrative question, tool request, service result, and human action"
+      seconds: 145
+    - id: part-3
+      part: 3
+      claim: "The same host can run an independent check by changing what its agent sees."
+      scene: "frame: shared opener"
+      seconds: 20
+    - id: visibility-policy
+      part: 3
+      claim: "Raw-argument hooks and parsed permission callbacks cover different visibility checks."
+      scene: "deck: two SDK checkpoints and tested write and shell rules"
+      seconds: 165
+    - id: blind-result
+      part: 3
+      claim: "A host-rerun blind suite found two failures, and a separate referee classified their evidence."
+      scene: "terminal: TAP rerun and referee's documented or undocumented findings"
+      seconds: 165
+    - id: host-boundary
+      part: 3
+      claim: "The host cannot contain code after launch, govern unmediated activity, or decide which side of a contract mismatch is correct."
+      scene: "signals: process, tool, and judgment boundaries"
+      seconds: 165
+    - id: run-evidence
+      part: 3
+      claim: "Joining policy decisions, hook events, runtime outcomes, and app summaries by sessionId makes a run inspectable."
+      scene: "deck: four redacted event layers with separate decision and execution fields"
+      seconds: 165
+    - id: part-4
+      part: 4
+      claim: "Sharing a harness means accounting for surrounding controls and naming the person who accepts each report."
+      scene: "frame: shared opener"
+      seconds: 20
+    - id: surrounding-controls
+      part: 4
+      claim: "Admins, app owners, platform teams, and service owners control different parts of a shared harness."
+      scene: "deck: controls mapped to owner and verification"
+      seconds: 125
+    - id: preflight
+      part: 4
+      claim: "A shareable host pins, bounds, tests, and names an owner before another person runs it."
+      scene: "scorecard: four pre-flight evidence cards"
+      seconds: 125
+    - id: apps-to-embed
+      part: 4
+      claim: "An existing app method is a useful starting point when its authority, result, and reviewer remain explicit."
+      scene: "deck: six app workflows with their retained controls"
+      seconds: 125
+    - id: before-after
+      part: 0
+      claim: "The harness moves the team from an opaque request to a named job, narrow method, and reviewable result."
+      scene: "frame: before and after with approximate pi line count and five jobs"
+      seconds: 45
+    - id: today
+      part: 0
+      claim: "Practitioners can inspect a loop today, run a scoped example this week, and pilot one app method this month."
+      scene: "frame: today, this week, this month"
+      seconds: 115
+    - id: references
+      part: 0
+      claim: "The talk's source code and SDK behavior can be checked against pinned or first-party references."
+      scene: "frame: references from README frontmatter"
+      seconds: 25
+    - id: thanks
+      part: 0
+      claim: "The transfer decision is which method to expose, what authority stays in the app, and who reads its evidence."
+      scene: "frame: close on the own-work question"
+      seconds: 20
 
   preamble: []
   appendix: []

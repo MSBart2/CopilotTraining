@@ -1,0 +1,3 @@
+/* Keep the title visual and host-locality diagram within the shared stage. */
+.scene.session-bridge { flex: 0 0 min(48vw, 680px); height: min(48vw, 680px); }
+.scene.host-locality { flex: 0 0 430px; height: 430px; margin-top: 16px; }

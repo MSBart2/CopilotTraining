@@ -1,199 +1,775 @@
-# deck.recipe.yml — VS Code Latest talk guidance
-#
-# REFRESH: 2026-09-25 — current version and signed-out Agents window wording only
-# COUNCIL DECISION: RESTRUCTURE — high confidence (prior 2026-08-10)
-# FOLLOW-UP: 2026-08-12 — ADJUST. Author feedback: many teams still do not open the
-# Agents window, and daily Vision paste (e.g. Excel clipboard → image attachment) is
-# under-taught. Raise Parallel Agent Work to medium with an awareness/how-to-open lead;
-# add Copilot Vision paste as a GA beat inside Closed-Loop Delivery. Keep Open Model
-# Workbench as the sole high-emphasis peak and the GA browser loop as climax.
-# PRIOR: 2026-08-10 — PRESERVE for model-retirement wording only.
-
+# Recipe refresh approved by the user on 2026-11-01.
+# Approval covers the 47-slide / 36-feature-card announcement-first structure,
+# exact ordering and timing, four sections, and the proposed refresh candidates.
+# Preserve evidence gaps, especially the unresolved first-party 1.143 date.
 version: 1
 
+approval:
+  status: approved
+  approved: "2026-11-01"
+  scope: "Expanded announcement-first recipe and proposed content.refresh.yml candidates"
+
 deck:
-  title: "VS Code Copilot through 1.139"
-  subtitle: "Portable Agent Infrastructure, Open Models, and a Closed Review Loop"
-  tagline: "BYOK chat without GitHub sign-in; Agents window access has separate requirements"
+  title: "VS Code Copilot through 1.144"
+  subtitle: "Find a better answer, keep work moving, delegate with fewer interruptions, and check more than the code"
+  tagline: "A dated capability map with a proof path for every meaningful release."
 
   agenda:
-    - title: "Run Any Model You Choose"
-      takeaway: "Configure BYOK providers, local Ollama models, and a Stable Custom Endpoint in the model picker without a GitHub sign-in."
-      whyItMatters: "Model choice, cost, and data residency become configuration decisions your team controls."
-    - title: "Open the Agents Window"
-      takeaway: "Leave side-chat-only habits: open the dedicated Agents window and run multi-session work with live activity."
-      whyItMatters: "Most of the parallel and review story is invisible until this surface is open."
-    - title: "Close the Loop In-Window"
-      takeaway: "Paste vision evidence, emulate a device, screenshot, take element-anchored feedback, and route review back into the same session."
-      whyItMatters: "Validation and context handoff stop costing a context switch on every iteration."
+    - title: "Choose an answer path"
+      takeaway: "Inspect Fusion, comparisons, explicit models, context, and visual input against the task."
+      whyItMatters: "The route, cost, policy, and evidence boundary remain visible."
+    - title: "Carry work across boundaries"
+      takeaway: "Follow session, workspace, host, and worktree state through interruptions and handoffs."
+      whyItMatters: "A reopened conversation does not guarantee copied files or a running host."
+    - title: "Accept evidence, not fluency"
+      takeaway: "Use permissions, screenshots, browser feedback, diffs, tests, and PR evidence as separate checks."
+      whyItMatters: "A tool approval or passing test does not prove the whole result."
 
-  arcToc: "Agent Infrastructure → Open Models → Parallel Work → Closed-Loop Delivery"
-
+  arcToc: "Answer → Continuity → Control → Evidence"
   arcNarrative: >
-    The talk follows the README's own order because that order is the argument, not just
-    a table of contents. Agent Infrastructure comes first as the substrate: the Copilot
-    SDK and the open Agent Host Protocol separate the session from the window, so an
-    agent can run on a machine the team owns and be reconnected later. It is deliberately
-    short — mental model, not protocol tour — and Preview, so prepared evidence beats a
-    live reconnect demo. Open Model Workbench remains the peak and the only high-emphasis
-    section: BYOK without GitHub sign-in, Ollama, Stable Custom Endpoint, utility models,
-    and 1M-token contexts — demoable with noted limits — plus the boundaries that
-    inline/NES still need GitHub sign-in and signed-out Agents window access is
-    experimental. Parallel Agent Work is no longer the most compressed
-    section. Author delivery feedback is that many practitioners never open the Agents
-    window at all, so the section now leads with awareness and open paths (title bar,
-    Command Palette, code --agents), then the workspace claim (multi-session, worktrees,
-    multi-chat), then the GA /btw and live-pills beats. Multi-session live demos stay
-    off-limits as fragile Preview choreography; opening the window and showing its layout
-    is the required awareness demo. Closed-Loop Delivery remains the practical climax:
-    Copilot Vision paste (GA) for everyday evidence handoff, GA browser tools with device
-    emulation and chat-attached screenshots, and v1.132 element comments. In-window diff
-    review, CI, and PR response stay Preview direction-of-travel. Boundaries stay woven
-    into the sections they constrain. End on a working loop, not a policy checklist.
+    Keep the four exact outcome sections and make each meaningful feature
+    independently legible. Part 1 starts with the dated model and context
+    choices. Part 2 follows session state across clients, hosts, containers,
+    worktrees, and cloud. Part 3 moves from isolation to steering, permissions,
+    and reversible changes. Part 4 closes with browser and artifact evidence.
+    The release sequence is evidence-first rather than a single login story.
+    Each feature card names its version, publication date, status, use case,
+    newly possible action, proof plan, limitation, and capture state. The
+    selected structure wins over a feature-family taxonomy because it preserves
+    the four user-approved practitioner questions while making release
+    provenance auditable. 1.140–1.143 items are proposed additions until the
+    expanded refresh is approved; the inherited 1.139 baseline and approved
+    1.144/Universe items remain marked as such.
 
   sectionOrder:
-    - "Agent Infrastructure"
-    - "Open Model Workbench"
-    - "Parallel Agent Work"
-    - "Closed-Loop Delivery"
+    - "Find a Better Answer"
+    - "Keep Work Moving"
+    - "Delegate with Fewer Interruptions"
+    - "Check More Than the Code"
 
   sectionModes:
-    "Agent Infrastructure":
-      emphasis: medium
-      note: >
-        2–3 slides. This section builds the mental model and then gets out of the way —
-        do not let protocol detail crowd out the Open Model Workbench peak that follows.
-        Slide 1: the decoupling claim. The Copilot SDK is the runtime agent harnesses are
-        built on, and the Agent Host Protocol is an open protocol where an agent host owns
-        authoritative session state, synchronizes it to connected clients, and sequences
-        mutations; because it is open, other clients and hosts can implement it. The line
-        that must land: the session is no longer the same thing as the window. Slide 2:
-        remote machine execution as a concrete three-step flow — open the Agents window,
-        connect its remote tab via an existing ~/.ssh/config entry, a user@host value, or
-        a running dev tunnel, and VS Code installs or connects to its CLI server and starts
-        the agent host there. State plainly that the host persists after the VS Code window
-        closes and that progress, tool outputs, and session memory remain available on
-        reconnect; v1.132 allows the same session to be connected from multiple VS Code
-        windows. Label this Preview explicitly — remote agents and parts of the AHP rollout
-        are preview, while host registration and multi-client session UX continue to
-        evolve. No live reconnect demo is required; prepared or
-        recorded evidence is the default because this surface is Preview. Optional slide 3:
-        the local-versus-remote decision guide, compressed to the two decisive branches —
-        interactive and exploratory work stays local; long-running autonomous work or work
-        needing environment parity and controlled access goes remote. Mention here, in one
-        line only, that the agent host can run Copilot, Claude, and Codex harnesses in a
-        dedicated process — harness portability is the point; no model or vendor gets its
-        own slide. Cut: AHP message-level mechanics, harness-by-harness comparison, and any
-        implication that remote hosts are ready for production-critical workflows.
-
-    "Open Model Workbench":
+    "Find a Better Answer":
       emphasis: high
       note: >
-        4–5 slides. This is the peak of the talk and the only high-emphasis section; give
-        it the most time and the strongest live demo. Open with the headline as a status
-        claim, not a feature list: BYOK is GA and needs no GitHub sign-in — Anthropic,
-        Azure, Gemini, OpenAI, Ollama, OpenRouter, or any compatible custom endpoint works
-        for chat, tool execution, and MCP, with billing and rate limits going through the
-        provider rather than Copilot quotas. PRIMARY LIVE DEMO (GA, must be live): open the
-        model picker, choose Manage Models…, add a provider, and watch the models appear in
-        the picker. Dedicate a full slide to local and open models via Ollama — install
-        Ollama, pull a model, select Manage Models… → Ollama, and VS Code discovers locally
-        available models automatically; local models work with all chat features, tool
-        execution, and MCP with no network request leaving the machine. Name the audience
-        this unlocks: teams with air-gap requirements, sensitive codebases, or constrained
-        data residency. This is the moment we want the audience to feel the ceiling move; do
-        not bury it in a bullet list with the hosted providers. Next slide: Stable Custom
-        Endpoint plus utility models as the team-scale story — Custom Endpoint is Stable as
-        of v1.122 and connects endpoints implementing the Chat Completions, Responses, or
-        Messages API families, so an internal gateway for cost control, logging, or
-        compliance can carry all VS Code Copilot chat traffic with no client-side code
-        change; utility models are independently configurable via chat.utilityModel and
-        chat.utilitySmallModel, so a fast local or lower-cost model can handle titles,
-        summaries, commit messages, rename suggestions, and intent detection while a
-        frontier model handles primary work. Show the settings block. Then 1M-token
-        contexts on supported models as an architectural decision for large-codebase tasks,
-        with the honest tradeoff stated: very long contexts increase latency and provider
-        cost, and /compact and background compaction remain the counterweight. STATE BOTH
-        SIGN-IN BOUNDARIES: inline suggestions and next edit suggestions still require
-        GitHub sign-in and a Copilot subscription; signed-out desktop Agents window
-        access is experimental and setting-gated, while browser access requires sign-in.
-        BYOK chat, tool calls, and MCP do not require GitHub sign-in. Weave the control thread
-        here, not in a separate section: session and subagent credit usage and model costs
-        are visible in the Agents window, and some controls depend on Copilot plan and
-        organization policy. Cut: provider-by-provider capability tables, pricing
-        comparisons, individual model arrivals, and any standalone vendor focus.
-
-    "Parallel Agent Work":
-      emphasis: medium
+        Use dated cards for the redesigned model picker (1.142), local models
+        and comparison (1.143), Fusion GA and expanded comparisons (1.144),
+        BYOK stateful responses (1.142), utility/context controls, and visual
+        input. The reviewer sees the exact prompt, route, model/policy choice,
+        and returned artifact. Never call a route better without a measured
+        result. Proposed cards retain their proposed status.
+    "Keep Work Moving":
+      emphasis: high
       note: >
-        3–4 slides. Lead with awareness, not orchestration depth — the delivery problem is
-        that many people never open the Agents window. Slide 1 (required): Open It. Show
-        the open paths live or as a crisp callout — title bar Open in Agents, Command
-        Palette "Chat: Open Agents Window", code --agents, welcome-page entry, and the
-        optional browser Agents surface. State that it is a dedicated VS Code window beside
-        the editor, sharing sessions/settings/keybindings with the side Chat view so
-        context is not forked. Slide 2: what the window is for — sessions list across
-        workspaces, Chat + Changes + Files for the active session, customizations panel —
-        and the one-line contrast with side chat (code-adjacent vs agent-first). Slide 3:
-        workspace claim compressed — multiple sessions side by side with isolated
-        worktrees, multi-chat / peer forks as a structural claim, one concrete pattern
-        (two approaches, two worktrees, compare diffs). Label Preview limits out loud.
-        Slide 4 (or combined with 3): GA /btw side chats and live activity pills as the
-        safe live beats. Do not run a multi-session endurance demo. Cut: fork merge
-        semantics, grouping UI tours, production-orchestration claims.
-
-    "Closed-Loop Delivery":
+        Show the state that travels and the state that does not: multi-root
+        and remote hosts (1.140), external sessions and sandboxing (1.141),
+        canvases and moving chats (1.142), large-chat and worktree handling
+        (1.143), and cloud continuity plus remote environments (1.144).
+        Every card includes the reopen or move action and its host/workspace
+        prerequisite.
+    "Delegate with Fewer Interruptions":
+      emphasis: high
+      note: >
+        Separate isolation, steering, permission, and acceptance. Cover peer
+        chats, remote delegation, background-shell controls, queued messages,
+        working-set/discard recovery, assisted permissions GA, and experimental
+        computer use. A permission result never stands in for review of the
+        resulting change.
+    "Check More Than the Code":
       emphasis: medium-high
       note: >
-        4–5 slides and the practical climax. Everything the audience can do tomorrow with
-        no Preview dependency lives here. Open with a short GA Vision beat before the
-        browser climax: Copilot Vision is GA (v1.128) — paste, drag-drop, or attach images
-        and PDFs in ask/plan/agent modes on all Copilot plans. Call out the everyday
-        pattern author feedback highlighted: copy a large Excel range (or other clipboard
-        content that includes image data), paste into Chat, and it attaches as vision
-        context instead of a wall of cells. Pair with integrated-browser Add Screenshot /
-        Add Element / Add Console Logs to Chat for human-driven evidence. Then the status
-        fact: agentic browser tools are GA and on by default — navigation, screenshots,
-        interaction, device emulation, remote browsing; agent pages are private in-memory
-        and existing tabs must be shared. CLIMAX DEMO (GA, live): agent opens localhost,
-        emulates a device, screenshots into the chat turn, then v1.132 element comments
-        (Ctrl+Alt+C / ⌥⌘C). That implement → emulate → screenshot → annotate → re-validate
-        loop is the last working thing the audience sees. One mixed-status handoff
-        slide: in-window diff review, CI failure response, PR comment response (Preview);
-        PR creation from Agent Host sessions, with optional Agent Merge experimental;
-        hybrid Markdown experimental, one sentence, no demo. Weave control thread (OTel, managed settings,
-        MCP allowlists, sensitive prompts) here. End on the working loop, not policy.
+        Keep the login page as one independent local example only here. Pair
+        browser scope, screenshot/emulation, element feedback, measurement,
+        tests, diffs, and PR evidence with a visible capture status. Browser
+        capture is a later implementation task; desktop capture is unavailable
+        in this review. Use first-party media links instead of invented images.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "BYOK is GA without a GitHub sign-in: add an Anthropic, Azure, Gemini, OpenAI, Ollama, OpenRouter, or compatible custom endpoint key in Manage Models… and it drives chat, tool execution, and MCP with billing and rate limits handled by the provider instead of Copilot quotas."
-    - "Ollama is a first-class provider, so VS Code discovers locally pulled open models automatically and runs chat, tools, and MCP against them with no network request leaving the machine — the practical unlock for air-gapped teams and sensitive codebases."
-    - "Custom Endpoint is Stable and utility models are independently configurable, so a team can route every VS Code Copilot chat call through its own gateway while chat.utilityModel and chat.utilitySmallModel hand titles, summaries, and commit messages to a cheap local model and reserve the frontier model for real work."
-    - "Open the Agents window — title bar Open in Agents, Chat: Open Agents Window, or code --agents — and leave side-chat-only agent habits; it is the dedicated multi-workspace surface for sessions, changes, and parallel work."
-    - "Copilot Vision is GA: paste an Excel range, mockup, or PDF into Chat and attach visual evidence instead of a wall of text; pair with browser Add Screenshot / Element to Chat when you already have the page open."
-    - "GA browser tools close the loop live — the agent opens a localhost page, emulates a device, screenshots it into the chat turn as permanent evidence, and in v1.132 takes comments anchored to the exact elements that still need work, all without leaving the session."
+    - "Fusion GA routes a request across models and exposes effort and billing, while policy and plan limits remain visible."
+    - "Cloud sessions reopen across clients with a separate workspace; local uncommitted changes do not copy automatically."
+    - "A peer chat shares files while a separate worktree isolates changes, so the delegation boundary is a deliberate choice."
+    - "Assisted permissions can approve lower-risk calls, while higher-risk or uncertain calls still require confirmation."
+    - "A screenshot, measurement, test, diff, and PR review answer different questions about the resulting behavior."
 
-# REJECTED CANDIDATES (did not earn slide time)
-# - Reordering to lead with Open Model Workbench: the user emphasis is satisfied by force
-#   ranking (sole `high`, primary live demo, metadata and agenda lead). Diverging from
-#   README order would desync the deck from the canonical source for no evidentiary gain.
-# - A fifth "Boundaries and Control" section: cost visibility, OTel, managed settings, MCP
-#   allowlists, and sensitive prompt handling are qualifiers on other capabilities, not a
-#   standalone narrative. They are woven into the sections they constrain.
-# - Release-by-release catalog spine: removed by the approved refresh; it organizes by
-#   changelog rather than by operating model.
-# - Commit-attribution revert highlight: removed by the approved refresh; no longer
-#   represents the highest-value current workflow.
-# - Browser tab-sharing demo: superseded by the GA build-validate-review loop with device
-#   emulation and element comments.
-# - Standalone Claude / single-vendor section: model and harness choice is now the story;
-#   harness portability is one line in Agent Infrastructure.
-# - Live multi-session, peer-fork, or remote-reconnect demos: Preview surfaces with the
-#   highest failure risk in the deck. Shown as prepared evidence instead.
-# - "Fleet" framing carried over from the prior recipe: the 1.121–1.132 evidence is about
-#   portability, model openness, and closing the loop, not about scale of orchestration.
-# - VS Code 1.133: excluded as future-dated and unconfirmed per the refresh anomaly.
-# - Individual model arrivals and non-editor changelog items (code review effort levels,
-#   impact dashboard ROI, CLI session changes): out of scope, routed to other talks.
+  slides:
+    - id: title
+      part: 0
+      claim: "Five release trains become a dated capability map across four practitioner outcomes."
+      scene: "title: four outcome tiles with release badges 1.140–1.144; no recurring task"
+      seconds: 25
+    - id: core-question
+      part: 0
+      claim: "How do I get a useful answer from Copilot and know what it changed?"
+      scene: "core-question: actor, task, boundary, evidence"
+      seconds: 40
+    - id: contents
+      part: 0
+      claim: "The four sections answer separate questions about answer quality, continuity, control, and proof."
+      scene: "contents: four exact section names and release ranges"
+      seconds: 30
+
+    - id: part-1
+      part: 1
+      claim: "A useful answer begins with an explicit task, route, context boundary, and acceptance test."
+      scene: "opener: Find a Better Answer; dated release cards"
+      seconds: 25
+    - id: v142-model-picker
+      part: 1
+      claim: "VS Code 1.142 made Copilot and BYOK models, reasoning effort, and context size inspectable in a redesigned picker."
+      scene: "deck: picker tabs and model-detail panel; motion: open model details and expose limits"
+      seconds: 70
+      release: "VS Code 1.142"
+      version: "1.142"
+      published: "2026-10-14"
+      status: "Stable"
+      useCase: "A developer chooses a model and thinking level for a bounded coding task."
+      unlock: "Copilot and BYOK choices are separated and the selected model exposes thinking and context controls."
+      proof: "First-party picker screenshots at /assets/updates/1_142/model-picker-list.webp and model-picker-reasoning-effort.webp; captureReady: source-media-link."
+      limitation: "The picker exposes choices; it does not establish that one model produces the best result."
+      evidenceStatus: "source-verified; live capture needed"
+      source: "https://code.visualstudio.com/updates/v1_142"
+      capture: "captureReady: source-media-link; capture-needed: installed picker state"
+    - id: v143-local-models
+      part: 1
+      claim: "VS Code 1.143 introduced experimental on-device Copilot models for eligible hardware."
+      scene: "deck: device model route beside eligibility and network-bound tool routes; motion: separate inference from tools"
+      seconds: 65
+      release: "VS Code 1.143"
+      version: "1.143"
+      published: "Unknown in first-party release page"
+      dateEvidence: "2026-10-20 is secondary corroboration only; the retrieved first-party page header omits the date."
+      status: "Experimental"
+      useCase: "A developer tests a local model for a task with a local-data constraint."
+      unlock: "Some model inference can run on the device."
+      proof: "Release-note model picker section; show model entry and a redacted network/tool check."
+      limitation: "Local inference does not prove every extension, MCP server, or service call stays local; hardware eligibility applies."
+      evidenceStatus: "source-verified; live run not recorded"
+      source: "https://code.visualstudio.com/updates/v1_143"
+      capture: "capture-needed: local eligible device; demo-needed: network-route inspection"
+    - id: v142-byok-stateful
+      part: 1
+      claim: "VS Code 1.142 lets a stateless BYOK Responses API receive full conversation history when statefulResponses is false."
+      scene: "terminal: redacted chatLanguageModels.json and request boundary; motion: send history explicitly"
+      seconds: 60
+      release: "VS Code 1.142"
+      version: "1.142"
+      published: "2026-10-14"
+      status: "Stable"
+      useCase: "A platform engineer configures a compatible gateway that does not retain response state."
+      unlock: "The client can send full history to a stateless endpoint."
+      proof: "Release-note configuration name beside a redacted JSON snippet and request trace placeholder."
+      limitation: "Credentials, retention, provider policy, and payload size remain outside this setting."
+      evidenceStatus: "source-verified; capture-needed"
+      source: "https://code.visualstudio.com/updates/v1_142"
+      capture: "capture-needed: redacted configuration and request trace"
+    - id: v143-compare-preview
+      part: 1
+      claim: "VS Code 1.143 added Preview model and harness comparisons that run the same task in parallel."
+      scene: "showdown: shared prompt, isolated attempts, judge scorecard, human acceptance criteria"
+      seconds: 80
+      release: "VS Code 1.143"
+      version: "1.143"
+      published: "Unknown in first-party release page"
+      dateEvidence: "2026-10-20 is secondary corroboration only; the retrieved first-party page header omits the date."
+      status: "Preview"
+      useCase: "A developer compares approaches before accepting a code change."
+      unlock: "Multiple models and harnesses can attempt one prompt independently, with optional Judge and Synthesize steps."
+      proof: "First-party bake-off picker, grid, and results images under /assets/updates/1_143/; label scorecard as recommendation, not verdict."
+      limitation: "Attempts are separate sessions/worktrees; comparison availability and settings apply."
+      evidenceStatus: "source-verified; source media available"
+      source: "https://code.visualstudio.com/updates/v1_143"
+      capture: "captureReady: source-media-link; capture-needed: eligible installed session"
+    - id: v144-fusion-ga
+      part: 1
+      claim: "VS Code 1.144 made Copilot Fusion generally available for task-aware multi-model routing."
+      scene: "deck: Fusion effort selector → routed models → reported usage and billing; motion: reveal route after request"
+      seconds: 85
+      release: "VS Code 1.144"
+      version: "1.144"
+      published: "2026-10-28"
+      status: "GA"
+      useCase: "A developer wants routing and orchestration without selecting an underlying model for every request."
+      unlock: "Fusion chooses models, reasoning effort, and execution pattern; Standard, High, and Max expose a quality/cost choice."
+      proof: "Release-note Fusion section and linked Fusion documentation; capture picker effort and response usage when available."
+      limitation: "Each model used is billed; High and Max plan limits apply; model policy is not a data-boundary guarantee."
+      evidenceStatus: "approved refresh; live run not recorded"
+      source: "https://code.visualstudio.com/updates/v1_144"
+      capture: "capture-needed: eligible paid-plan picker and usage detail"
+    - id: v144-comparisons-expanded
+      part: 1
+      claim: "VS Code 1.144 expanded Preview comparisons to folderless chats and repositories without a remote or initial commit."
+      scene: "deck: folderless Chat and empty-repository snapshot → parallel attempts; motion: show eligibility before run"
+      seconds: 75
+      release: "VS Code 1.144"
+      version: "1.144"
+      published: "2026-10-28"
+      status: "Preview"
+      useCase: "A developer explores an idea before a repository exists or before adding a remote."
+      unlock: "The same prompt can be compared without a project, Git remote, or initial commit."
+      proof: "First-party Compare Models picker image at /assets/updates/1_144/compare-models-picker.webp; show isolated snapshot boundary."
+      limitation: "Model comparisons are not supported in Dev Containers; output remains evidence to inspect."
+      evidenceStatus: "approved refresh; source media available"
+      source: "https://code.visualstudio.com/updates/v1_144"
+      capture: "captureReady: source-media-link; capture-needed: folderless eligible session"
+    - id: visual-input-baseline
+      part: 1
+      claim: "The approved baseline lets a practitioner attach image or PDF context and inspect what Copilot received."
+      scene: "relay: human visual artifact → attachment preview → bounded question → response"
+      seconds: 65
+      release: "Copilot Vision"
+      version: "2026 announcement"
+      published: "2026-07-01"
+      status: "GA"
+      useCase: "A developer asks about a screenshot, mockup, spreadsheet range, or error dialog."
+      unlock: "Visual context can accompany the question instead of being paraphrased."
+      proof: "Attachment preview plus redacted prompt; source announcement and existing baseline notes."
+      limitation: "Sensitive visual data remains subject to policy; an attachment is context, not acceptance evidence."
+      evidenceStatus: "approved baseline; source-verified"
+      source: "https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/"
+      capture: "capture-needed: local attachment preview"
+    - id: context-budget-baseline
+      part: 1
+      claim: "Context size and /compact are controls for keeping a task inspectable, not proof of answer quality."
+      scene: "signals: context indicator → narrowed prompt → explicit acceptance check"
+      seconds: 55
+      release: "VS Code Copilot baseline"
+      version: "through 1.139"
+      published: "2026-09-25 cutoff"
+      status: "Baseline"
+      useCase: "A developer narrows an overlong request before rerunning it."
+      unlock: "The practitioner can trade context breadth for a more bounded request."
+      proof: "Context indicator and /compact command placeholder beside the acceptance criterion."
+      limitation: "No speed or quality improvement is claimed without a measured run."
+      evidenceStatus: "approved baseline; illustrative"
+      source: "https://code.visualstudio.com/docs/chat/copilot-chat-context"
+      capture: "capture-needed: installed context indicator"
+    - id: provider-route-baseline
+      part: 1
+      claim: "An explicit provider or local route makes model access, billing, and data boundaries inspectable."
+      scene: "deck: redacted provider configuration → picker entry → policy check"
+      seconds: 60
+      release: "VS Code Copilot baseline"
+      version: "through 1.139"
+      published: "2026-09-25 cutoff"
+      status: "Baseline"
+      useCase: "A platform engineer configures a gateway or local provider without exposing credentials."
+      unlock: "The model route is visible enough to review before a task runs."
+      proof: "Redacted settings and picker entry; no credential mutation."
+      limitation: "Provider billing, policy, and tool network routes remain separate checks."
+      evidenceStatus: "approved baseline; capture-needed"
+      source: "https://code.visualstudio.com/docs/agent-customization/language-models"
+      capture: "capture-needed: redacted settings and picker"
+
+    - id: part-2
+      part: 2
+      claim: "Work moves only when the practitioner can name the session, workspace, host, and reconnect condition."
+      scene: "opener: Keep Work Moving; state-travel map"
+      seconds: 25
+    - id: v140-multiroot-peer
+      part: 2
+      claim: "VS Code 1.140 added experimental multi-root sessions for related repositories and worktrees."
+      scene: "deck: main chat plus peer chats on repositories/worktrees; motion: select workspace relationship"
+      seconds: 70
+      release: "VS Code 1.140"
+      version: "1.140"
+      published: "2026-09-30"
+      status: "Experimental"
+      useCase: "A developer asks related agents to work across repositories or compare approaches in fresh worktrees."
+      unlock: "A session can coordinate multiple folders or worktrees without rebuilding context."
+      proof: "Release-note setting names and the peer/worktree relationship diagram."
+      limitation: "Settings are hidden and disabled by default; no UI adds a folder; workspace sharing changes the isolation boundary."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_140"
+      capture: "capture-needed: enabled settings and peer session"
+    - id: v140-remote-delegation
+      part: 2
+      claim: "VS Code 1.140 added experimental tools for discovering hosts and delegating sessions to remote agent hosts."
+      scene: "relay: originating chat → list_agent_hosts → create_remote_session → send_remote_message"
+      seconds: 75
+      release: "VS Code 1.140"
+      version: "1.140"
+      published: "2026-09-30"
+      status: "Experimental"
+      useCase: "A coordinator sends a repository task to a host with matching OS, memory, CPU, and model capacity."
+      unlock: "The agent can discover capacity, place a session, and report back without a picker for every task."
+      proof: "Release-note tool names and redacted request/response transcript."
+      limitation: "Tools are off by default; the coordinating Agents window must remain connected; normal approvals still apply."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_140"
+      capture: "capture-needed: connected host list; demo-needed: safe remote task"
+    - id: v140-devcontainer-cleanup
+      part: 2
+      claim: "VS Code 1.140 can stop inactive Dev Containers after five minutes and restart them when work resumes."
+      scene: "deck: inactive session → cleanup timer → stopped container → resume/restart"
+      seconds: 60
+      release: "VS Code 1.140"
+      version: "1.140"
+      published: "2026-09-30"
+      status: "Stable"
+      useCase: "A developer pauses container work and later resumes without leaving every container running."
+      unlock: "Inactive container sessions can be reclaimed and restarted automatically."
+      proof: "Release-note settings chat.agentHost.devContainer.enabled and idleTimeout beside lifecycle diagram."
+      limitation: "The feature is Agents-window scoped; startup still depends on Docker and the container configuration."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_140"
+      capture: "capture-needed: settings and stopped/restarted container"
+    - id: v141-external-sessions
+      part: 2
+      claim: "VS Code 1.141 automatically surfaces new local Copilot CLI and Copilot app conversations in the Agents window."
+      scene: "deck: external client → Agents window filter → continue conversation"
+      seconds: 65
+      release: "VS Code 1.141"
+      version: "1.141"
+      published: "2026-10-07"
+      status: "Stable"
+      useCase: "A developer starts in Copilot CLI or the Copilot app and continues in VS Code."
+      unlock: "External sessions appear without reloading after the first request."
+      proof: "Release-note Created In and Created Externally filters beside session transcript placeholder."
+      limitation: "The session remains tied to local host/application availability; only one application sends at a time for Codex handoff."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_141"
+      capture: "capture-needed: external-session filter"
+    - id: v141-sandboxing
+      part: 2
+      claim: "VS Code 1.141 added Copilot agent-host sandboxing for supported file and network operations."
+      scene: "deck: agent operation → sandbox policy → allowed/blocked result → endpoint security boundary"
+      seconds: 65
+      release: "VS Code 1.141"
+      version: "1.141"
+      published: "2026-10-07"
+      status: "Stable"
+      useCase: "A platform engineer limits the blast radius of model mistakes, prompt injection, or untrusted dependencies."
+      unlock: "Agent operations can receive OS or host-process restrictions on Windows, macOS, and Linux."
+      proof: "Release-note setting chat.agent.sandbox.enabled and a redacted allow/deny transcript."
+      limitation: "Sandboxing is an additional layer, not a standalone security boundary or replacement for endpoint security."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_141"
+      capture: "capture-needed: policy setting and safe blocked operation"
+    - id: v142-canvases
+      part: 2
+      claim: "VS Code 1.142 introduced Preview canvases as shared interactive surfaces for an agent and developer."
+      scene: "deck: chat → canvas tab → shared artifact; motion: open canvas and inspect state"
+      seconds: 65
+      release: "VS Code 1.142"
+      version: "1.142"
+      published: "2026-10-14"
+      status: "Preview"
+      useCase: "A developer and agent inspect or update the same structured artifact."
+      unlock: "A canvas extension can open beside the Agents window and keep the artifact in the session."
+      proof: "First-party release section and canvas tab path; source media link where available."
+      limitation: "A chat plugin with a canvas extension is required; extensions and organization policy affect availability."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_142"
+      capture: "capture-needed: installed canvas extension; no desktop capture claimed"
+    - id: v142-move-chat
+      part: 2
+      claim: "VS Code 1.142 can move a Codex chat to another folder or Git worktree without losing conversation history."
+      scene: "deck: existing chat → move command → new folder/worktree → preserved transcript"
+      seconds: 65
+      release: "VS Code 1.142"
+      version: "1.142"
+      published: "2026-10-14"
+      status: "Stable"
+      useCase: "A developer moves investigation into an isolated worktree before implementation."
+      unlock: "The chat history follows a workspace or worktree change."
+      proof: "Release-note example prompt and before/after workspace labels."
+      limitation: "Only Codex sessions with one chat and one local folder qualify; the original checkout remains unchanged."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_142"
+      capture: "capture-needed: Codex session and worktree notice"
+    - id: v143-large-chat
+      part: 2
+      claim: "VS Code 1.143 restored large Agent Host chats in slices, with release measurements showing lower open time and unresponsive time."
+      scene: "scorecard: 1.142 → 1.143 cold/reopen/reload table; motion: open then inspect responsiveness"
+      seconds: 75
+      release: "VS Code 1.143"
+      version: "1.143"
+      published: "Unknown in first-party release page"
+      dateEvidence: "2026-10-20 is secondary corroboration only; the retrieved first-party page header omits the date."
+      status: "Stable"
+      useCase: "A developer reopens a long-running session without losing the ability to interact with the window."
+      unlock: "History restoration is sliced instead of one blocking task."
+      proof: "First-party table reports Chat A cold open 35.6s→9.0s and unresponsive 28.3s→0.6s; label as release-observed measurements."
+      limitation: "The published measurements are specific macOS runs, not a promise for every chat or machine."
+      evidenceStatus: "proposed; source-verified with measured release evidence"
+      source: "https://code.visualstudio.com/updates/v1_143"
+      capture: "captureReady: source-table; capture-needed: local timing if claimed"
+    - id: v143-worktree-cleanup
+      part: 2
+      claim: "VS Code 1.143 added experimental cleanup suggestions for inactive agent-session worktrees."
+      scene: "deck: inactive worktrees → size/filter review → cleanup → restore path"
+      seconds: 65
+      release: "VS Code 1.143"
+      version: "1.143"
+      published: "Unknown in first-party release page"
+      dateEvidence: "2026-10-20 is secondary corroboration only; the retrieved first-party page header omits the date."
+      status: "Experimental"
+      useCase: "A team reclaims disk space from inactive worktrees without deleting active sessions."
+      unlock: "The cleanup editor reports size, filters inactivity, and protects active/pinned sessions."
+      proof: "First-party worktree cleanup editor and suggestion images under /assets/updates/1_143/ and /assets/updates/1_141/."
+      limitation: "Cleanup marks sessions done and deletes worktrees; restore recreates them and active sessions are protected."
+      evidenceStatus: "proposed; source media available"
+      source: "https://code.visualstudio.com/updates/v1_143"
+      capture: "captureReady: source-media-link; capture-needed: safe inactive worktree"
+    - id: v144-cloud-sessions
+      part: 2
+      claim: "VS Code 1.144 lets a paid-plan user start and reopen a cloud task across VS Code, GitHub.com, and GitHub Mobile."
+      scene: "relay: VS Code start → cloud workspace → mobile/GitHub check → VS Code reopen"
+      seconds: 80
+      release: "VS Code 1.144"
+      version: "1.144"
+      published: "2026-10-28"
+      status: "GA"
+      useCase: "A developer starts a repository task away from the desk and returns to the same cloud conversation."
+      unlock: "The task and conversation remain available across Copilot clients while GitHub infrastructure runs them."
+      proof: "Release-note cloud session flow; do not sign in or alter user sessions in this review."
+      limitation: "Cloud uses a separate workspace; local uncommitted changes are not copied automatically; paid plan and organization policy apply."
+      evidenceStatus: "approved refresh; source-verified; account capture unavailable"
+      source: "https://code.visualstudio.com/updates/v1_144"
+      capture: "capture-needed: account-eligible cloud session; desktop/browser capture later"
+    - id: v144-remote-environments
+      part: 2
+      claim: "VS Code 1.144 groups GitHub Environments, Dev Tunnels, WSL, and SSH hosts in a Remote Environments dialog."
+      scene: "deck: environment picker → grouped remotes → status/connect action → target host"
+      seconds: 65
+      release: "VS Code 1.144"
+      version: "1.144"
+      published: "2026-10-28"
+      status: "GA"
+      useCase: "A developer checks remote availability before connecting an agent to a project host."
+      unlock: "Remote status, visibility, connect, and disconnect actions are gathered in one dialog."
+      proof: "First-party image /assets/updates/1_144/remote-environments.webp."
+      limitation: "A visible remote is not proof that its machine, Agent Host, repository, or toolchain is ready."
+      evidenceStatus: "approved refresh; source media available"
+      source: "https://code.visualstudio.com/updates/v1_144"
+      capture: "captureReady: source-media-link; capture-needed: local remote status"
+    - id: baseline-host-state
+      part: 2
+      claim: "The approved baseline treats the Agent Host as the authoritative session boundary while clients connect and disconnect."
+      scene: "host-diagram: host state, clients, machine lifetime, reconnect evidence"
+      seconds: 60
+      release: "Agent Host Protocol baseline"
+      version: "through 1.139"
+      published: "2026-09-25 cutoff"
+      status: "Preview baseline"
+      useCase: "A developer reconnects to a remote session and verifies the intended repository and host."
+      unlock: "Session lifetime can outlast a client window."
+      proof: "Host/client diagram and reconnect checklist."
+      limitation: "The remote machine and Agent Host must remain running; protocol behavior is not a claim about every harness."
+      evidenceStatus: "approved baseline; illustrative"
+      source: "https://code.visualstudio.com/docs/agents/concepts/agent-host"
+      capture: "capture-needed: safe remote host"
+
+    - id: part-3
+      part: 3
+      claim: "Delegation stays bounded when isolation, steering, permission, and acceptance are separate decisions."
+      scene: "opener: Delegate with Fewer Interruptions; control gates"
+      seconds: 25
+    - id: v140-peer-worktrees
+      part: 3
+      claim: "VS Code 1.140 lets a main chat create peer chats that reuse a checkout or use fresh worktrees."
+      scene: "showdown: shared checkout versus isolated worktrees; motion: choose relationship before prompt"
+      seconds: 70
+      release: "VS Code 1.140"
+      version: "1.140"
+      published: "2026-09-30"
+      status: "Experimental"
+      useCase: "A maintainer compares independent implementations without letting changes collide."
+      unlock: "Related work can share files, while independent work can receive a separate branch, changes, and PR."
+      proof: "First-party multi-root/peer-chat release text and worktree relationship diagram."
+      limitation: "Shared checkout means shared files; multi-root settings are disabled by default."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_140"
+      capture: "capture-needed: safe disposable repository"
+    - id: v141-background-shells
+      part: 3
+      claim: "VS Code 1.141 exposed running Copilot background shells and their streamed output in a pill."
+      scene: "terminal: Background Shells pill → command/runtime → output stream → stop boundary"
+      seconds: 65
+      release: "VS Code 1.141"
+      version: "1.141"
+      published: "2026-10-07"
+      status: "Stable"
+      useCase: "A developer watches a long command without losing the main agent conversation."
+      unlock: "The user can inspect command, runtime, and available output while the shell runs."
+      proof: "First-party background-shell-streaming.webp."
+      limitation: "The list covers running shells and attached shells; detached shells cannot be stopped from this interface."
+      evidenceStatus: "proposed; source media available"
+      source: "https://code.visualstudio.com/updates/v1_141"
+      capture: "captureReady: source-media-link; capture-needed: safe long-running command"
+    - id: v141-send-message
+      part: 3
+      claim: "VS Code 1.141 lets agent-triggered messages steer, queue, replace, or cancel work across sessions before it starts."
+      scene: "deck: active turn plus ordered queue; motion: replace queued item, then show immutable started turn"
+      seconds: 70
+      release: "VS Code 1.141"
+      version: "1.141"
+      published: "2026-10-07"
+      status: "Stable"
+      useCase: "A coordinator corrects a delegated task as requirements change."
+      unlock: "Queued work can be edited or cancelled; an active conversation can receive a correction."
+      proof: "Release-note send_message action list and redacted queue transcript."
+      limitation: "A message cannot be replaced or cancelled after processing begins."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_141"
+      capture: "capture-needed: disposable multi-session setup"
+    - id: v142-stop-shell
+      part: 3
+      claim: "VS Code 1.142 added Stop Shell for attached background commands."
+      scene: "terminal: selected shell → Stop Shell → stopped status; motion: preserve unrelated shells"
+      seconds: 60
+      release: "VS Code 1.142"
+      version: "1.142"
+      published: "2026-10-14"
+      status: "Stable"
+      useCase: "A developer stops a stale test run before restarting it."
+      unlock: "One attached shell can stop without ending the session or other commands."
+      proof: "Release-note Background Shells path and stopped-shell status."
+      limitation: "Detached shells run independently and cannot be stopped from this interface."
+      evidenceStatus: "proposed; source-verified"
+      source: "https://code.visualstudio.com/updates/v1_142"
+      capture: "capture-needed: safe attached shell"
+    - id: v143-working-set
+      part: 3
+      claim: "VS Code 1.143 added an experimental working set so a developer can keep or undo agent file edits in the editor."
+      scene: "deck: changed files → working set → Keep/Undo choice → disk state"
+      seconds: 65
+      release: "VS Code 1.143"
+      version: "1.143"
+      published: "Unknown in first-party release page"
+      dateEvidence: "2026-10-20 is secondary corroboration only; the retrieved first-party page header omits the date."
+      status: "Experimental"
+      useCase: "A developer reviews agent edits before allowing them to remain in the working tree."
+      unlock: "File edits can be reviewed and selectively kept or undone in the editor."
+      proof: "First-party working-set section and release screenshot if available."
+      limitation: "The release notes describe file-level Undo as planned later; this is not a merge or approval authority."
+      evidenceStatus: "proposed; source-verified; capture gap"
+      source: "https://code.visualstudio.com/updates/v1_143"
+      capture: "capture-needed: eligible editor; source-media unavailable in retrieved text"
+    - id: v143-discard-changes
+      part: 3
+      claim: "VS Code 1.143 added discard actions for branch, session, and last-turn changesets."
+      scene: "deck: changesets → selected file → scoped discard → preserved unrelated edits"
+      seconds: 70
+      release: "VS Code 1.143"
+      version: "1.143"
+      published: "Unknown in first-party release page"
+      dateEvidence: "2026-10-20 is secondary corroboration only; the retrieved first-party page header omits the date."
+      status: "Stable"
+      useCase: "A maintainer removes a bad agent change while preserving personal edits or earlier turns."
+      unlock: "Discard scope follows branch, session, or last-turn boundaries."
+      proof: "First-party discard-branch-changes.webp and changeset matrix."
+      limitation: "Discard is destructive to the selected scope; review the target changeset before acting."
+      evidenceStatus: "proposed; source media available"
+      source: "https://code.visualstudio.com/updates/v1_143"
+      capture: "captureReady: source-media-link; capture-needed: disposable branch"
+    - id: v144-assisted-permissions
+      part: 3
+      claim: "VS Code 1.144 made assisted permissions GA for lower-risk tool calls while retaining confirmation for higher-risk or uncertain calls."
+      scene: "deck: risk assessment → automatic approval or confirmation gate → human result review"
+      seconds: 75
+      release: "VS Code 1.144"
+      version: "1.144"
+      published: "2026-10-28"
+      status: "GA"
+      useCase: "A developer reduces repetitive approvals inside a Folder-isolated session."
+      unlock: "The permission picker can use an LLM risk assessment for lower-risk calls."
+      proof: "Release-note assisted-permissions flow and redacted permission picker."
+      limitation: "Folder isolation is required; policy can restrict it; automatic approval is not human review of the result."
+      evidenceStatus: "approved refresh; live run not recorded"
+      source: "https://code.visualstudio.com/updates/v1_144"
+      capture: "capture-needed: eligible isolated session and policy-safe read call"
+    - id: v144-computer-use
+      part: 3
+      claim: "VS Code 1.144 added Experimental computer use for Copilot-harness sessions on local Windows and macOS."
+      scene: "deck: /computer on → app action request → approve/reject → stop and inspect"
+      seconds: 75
+      release: "VS Code 1.144"
+      version: "1.144"
+      published: "2026-10-28"
+      status: "Experimental"
+      useCase: "A developer permits a bounded desktop action when the work lives outside the editor or terminal."
+      unlock: "The agent can see and control eligible desktop apps after explicit enablement and per-action approval."
+      proof: "Universe announcement and Computer Use documentation; no desktop screenshot claimed."
+      limitation: "Local Windows/macOS Copilot-harness only; platform permissions and organization policy apply; every action needs approval."
+      evidenceStatus: "approved refresh; source-verified; desktop capture unavailable"
+      source: "https://github.blog/changelog/2026-10-28-github-copilot-in-vs-code-universe-releases/"
+      capture: "capture-needed: desktop-only surface; desktop tool unavailable; demo-needed: safe app with stop path"
+    - id: baseline-isolation
+      part: 3
+      claim: "The approved baseline distinguishes separate worktrees, shared peer chats, /btw steering, and activity artifacts."
+      scene: "deck: isolation and steering matrix; motion: choose boundary before delegation"
+      seconds: 65
+      release: "VS Code Copilot baseline"
+      version: "through 1.139"
+      published: "2026-09-25 cutoff"
+      status: "Baseline"
+      useCase: "A team lead chooses whether an independent task can share files or needs isolation."
+      unlock: "The delegation boundary becomes an explicit choice before execution."
+      proof: "Prepared matrix with shared files, worktree, /btw, activity, and reviewer owner."
+      limitation: "A visible activity pill or side question is not durable evidence that the final change is acceptable."
+      evidenceStatus: "approved baseline; illustrative"
+      source: "https://code.visualstudio.com/docs/agents/run/sessions/manage-sessions"
+      capture: "capture-needed: safe local session"
+
+    - id: part-4
+      part: 4
+      claim: "A reviewer checks resulting behavior and artifacts, not only the proposed code."
+      scene: "opener: Check More Than the Code; browser and proof inventory"
+      seconds: 25
+    - id: browser-scope-baseline
+      part: 4
+      claim: "The integrated browser can inspect an agent-opened page while an existing tab remains private until shared."
+      scene: "signals: private page, existing tab, shared tab, returned artifact"
+      seconds: 65
+      release: "VS Code Copilot browser tools"
+      version: "approved baseline"
+      published: "2026-09-25 cutoff"
+      status: "GA"
+      useCase: "A developer validates a safe local page without handing over unrelated browser state."
+      unlock: "Page, screenshot, element, and console evidence can stay tied to a session."
+      proof: "Browser scope diagram and first-party browser-tools documentation."
+      limitation: "Organizational policy can disable tools; existing tabs require explicit sharing."
+      evidenceStatus: "approved baseline; capture-needed"
+      source: "https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode"
+      capture: "capture-needed: browser tool surface; account/policy constraints apply"
+    - id: screenshot-emulation
+      part: 4
+      claim: "A viewport request makes a screenshot and measurement criterion explicit before a reviewer accepts the result."
+      scene: "terminal: localhost login request → 390×844 viewport → screenshot placeholder → separate runner status"
+      seconds: 75
+      release: "VS Code Copilot browser workflow"
+      version: "approved baseline"
+      published: "2026-09-25 cutoff"
+      status: "Workflow"
+      useCase: "A developer checks a responsive local page at a named viewport."
+      unlock: "The request carries the viewport and artifact criteria instead of vague visual approval."
+      proof: "Capture placeholder linked to browser action and fresh screenshot; no result claimed."
+      limitation: "390×844 and 44×44 CSS px are demo criteria, not accessibility conformance or observed outcomes."
+      evidenceStatus: "approved baseline; illustrative; capture-needed"
+      source: "https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode"
+      capture: "capture-needed: local safe page; browser tool availability varies"
+    - id: element-feedback
+      part: 4
+      claim: "Element feedback can anchor a proposed correction to a page element before a fresh capture."
+      scene: "validation-loop: select element → comment → CSS proposal → fresh screenshot"
+      seconds: 70
+      release: "VS Code Copilot browser workflow"
+      version: "approved baseline"
+      published: "2026-09-25 cutoff"
+      status: "Workflow"
+      useCase: "A reviewer points to a control whose target needs a bounded adjustment."
+      unlock: "Feedback includes the element context needed to propose a focused change."
+      proof: "Element attachment placeholder, diff, and recaptured viewport."
+      limitation: "A proposed CSS target is not a measured result until a fresh artifact confirms it."
+      evidenceStatus: "approved baseline; illustrative; capture-needed"
+      source: "https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode"
+      capture: "capture-needed: element feedback and fresh screenshot"
+    - id: tests-and-measurements
+      part: 4
+      claim: "Tests, measurements, and browser artifacts answer different questions and must remain separately labelled."
+      scene: "scorecard: test runner status | page measurement | screenshot observation"
+      seconds: 65
+      release: "VS Code Copilot verification workflow"
+      version: "approved baseline"
+      published: "2026-09-25 cutoff"
+      status: "Workflow"
+      useCase: "A developer decides whether a UI change meets the requested behavior."
+      unlock: "Domain evidence is not confused with runner PASS/FAIL status."
+      proof: "Three-column evidence card with status labels and scope."
+      limitation: "A passing test can miss visual or environment-specific behavior."
+      evidenceStatus: "approved baseline; illustrative"
+      source: "https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode"
+      capture: "capture-needed: safe test and measurement run"
+    - id: diff-pr-evidence
+      part: 4
+      claim: "A diff and PR review preserve human authority after an agent proposes a change."
+      scene: "relay: diff → checks → PR evidence → reviewer accept/hold/revise"
+      seconds: 70
+      release: "VS Code Copilot review workflow"
+      version: "approved baseline"
+      published: "2026-09-25 cutoff"
+      status: "Workflow"
+      useCase: "A maintainer decides whether a proposed change is ready for handoff."
+      unlock: "File changes, checks, comments, and PR state can be reviewed before merge authority is exercised."
+      proof: "Redacted diff/PR card and explicit reviewer decision."
+      limitation: "Agent feedback visibility does not grant merge authority; policy and installed build affect actions."
+      evidenceStatus: "approved baseline; illustrative"
+      source: "https://code.visualstudio.com/docs/copilot/chat/chat-agent-mode"
+      capture: "capture-needed: disposable repository and PR"
+    - id: check-recover
+      part: 4
+      claim: "Conflicting or missing evidence produces a bounded hold, adjustment, rerun, revert, or escalation."
+      scene: "signals: stale screenshot or failing test → choose recovery path → fresh evidence"
+      seconds: 65
+      release: "VS Code Copilot verification workflow"
+      version: "approved baseline"
+      published: "2026-09-25 cutoff"
+      status: "Workflow"
+      useCase: "A reviewer finds that the artifact, test, and diff disagree."
+      unlock: "The workflow names a recovery move instead of treating uncertainty as acceptance."
+      proof: "Discrepancy card with owner and next action."
+      limitation: "Recovery paths depend on repository policy, environment access, and authority."
+      evidenceStatus: "approved baseline; illustrative"
+      source: "https://code.visualstudio.com/docs/copilot/overview"
+      capture: "capture-needed: safe discrepancy example"
+
+    - id: before-after
+      part: 0
+      claim: "The release-first recipe replaces vague feature families with dated capabilities and proof boundaries."
+      scene: "before-after: 38-slide abstraction versus 47-slide announcement inventory"
+      seconds: 45
+    - id: today
+      part: 0
+      claim: "A practitioner can transfer the method by naming the capability, release status, use case, proof, and limitation."
+      scene: "today: choose one real task; capture one artifact; name one recovery path"
+      seconds: 70
+    - id: references
+      part: 0
+      claim: "First-party release notes and announcement pages make every proposed feature traceable."
+      scene: "references: v1_140, v1_141, v1_142, v1_143, v1_144, Universe, and retained baseline sources"
+      seconds: 20
+    - id: thanks
+      part: 0
+      claim: "The next task starts with a dated capability and ends with evidence a reviewer can inspect."
+      scene: "thanks: transfer question and approval gate"
+      seconds: 10
+
+  comparison:
+    current:
+      totalSlides: 38
+      teachingSlides: 27
+      spineSlides: 11
+      totalSeconds: 2760
+      shape: "Outcome abstraction with 1.144/Universe emphasis and a retained baseline."
+    proposed:
+      totalSlides: 47
+      teachingSlides: 36
+      spineSlides: 11
+      totalSeconds: 2790
+      shape: "Announcement-first feature cards inside the same four sections."
+    selected: "Proposed announcement-first structure; it keeps the approved section order while making release ownership and proof status visible."
+    rejected: "A single login story and a feature-family taxonomy were rejected because they hide independent use cases and force unrelated releases into one narrative."
+    rejectedFeatures:
+      - { feature: "1.144 Cloud Automations", disposition: notes-only, reason: "A scheduled/event-driven workflow changes autonomy and governance; it needs a separate demonstration." }
+      - { feature: "1.144 Customization Marketplace and Copilot connectors", disposition: notes-only, reason: "Configuration and enterprise-governance material does not change the four outcome decisions." }
+      - { feature: "1.144 Agent Host Protocol v1.0", disposition: supporting-note, reason: "The host boundary is taught; client implementation and six-language libraries are infrastructure depth." }
+      - { feature: "1.144 Image generation", disposition: notes-only, reason: "Useful creative capability, but it does not strengthen the selected answer, continuity, control, or verification proof." }
+      - { feature: "1.142 Markdown editor improvements", disposition: rejected, reason: "Editor productivity changes do not materially alter the agent workflow thesis." }
+      - { feature: "1.140 welcome phrases and composer polish", disposition: rejected, reason: "Surface polish has no consequential decision or evidence boundary." }
+      - { feature: "1.143 Session Activity Bar and empty Files actions", disposition: rejected, reason: "Navigation affordances do not earn a standalone feature card at this timing." }
+    coverageInventory:
+      byRelease:
+        "1.140": 5
+        "1.141": 5
+        "1.142": 5
+        "1.143": 8
+        "1.144": 8
+        "through-1.139-baseline": 13
+      selectedFeatureCards: 36
+      rejectedOrNotesOnly: 7
+      sourceMediaLinks: 10
+      captureNeededOrUnavailable: 31
+    timingTradeoff: "2790 seconds is 210 seconds under the 50-minute README duration; feature cards receive 55–85 seconds and source-media narration can replace live capture. A presenter run-through may move low-signal baseline cards to notes rather than silently increasing duration."

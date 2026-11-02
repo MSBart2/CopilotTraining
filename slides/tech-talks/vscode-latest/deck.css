@@ -1,0 +1,26 @@
+/* Scoped to this deck's loaders. No shared engine overrides or moving print state. */
+.stage { background: #101411; }
+.stage::after { display: none; }
+.stage .subtitle { color: #aeb9bf; }
+.vl-scene .t-sm { font-size: 18px; }
+.vl-scene .t-xs { font-size: 15px; }
+.vl-scene .t-muted { fill: #aeb9bf; }
+.scene .z-text { fill: color-mix(in srgb, var(--z, var(--accent)) 62%, white); }
+.scene .vl-window { fill: #141b1b; stroke: #445158; }
+.sc-title h1, .sc-thanks h1 { background: none; color: white; }
+.sc-title .title-copy, .sc-thanks .title-copy { flex: 1; }
+.sc-title .stage-body > .scene { flex-basis: 700px; width: 700px; }
+.sc-thanks .stage-body > .scene { flex: 0 0 520px; width: 520px; height: 520px; }
+.sc-title .scene .t-sm, .sc-thanks .scene .t-sm { font-size: 22px; }
+.sc-title .scene .t-xs, .sc-thanks .scene .t-xs { font-size: 18px; }
+.sc-before-after .ba-left .box { fill: none; }
+.sc-before-after .ba-left .ba-item { fill: #bac4ca; }
+.sc-before-after .ba-num { fill: white; }
+.sc-today .box { rx: 6; fill: #161e1d; }
+.sc-today .takeaway { border-radius: 6px; border-left-width: 6px; }
+.sc-references .refs { margin-top: 24px; gap: 32px; }
+.sc-references .ref-group h3 { margin-bottom: 8px; font-size: 20px; }
+.sc-references .ref { background: none; border-width: 0 0 1px 4px; border-radius: 0; padding: 8px 12px; margin-bottom: 6px; gap: 2px; }
+.sc-references .ref b { font-size: 17px; }
+.sc-references .ref span { font-size: 15px; line-height: 1.2; }
+.sc-references .ref code { font-size: 11px; line-height: 1.1; overflow-wrap: anywhere; }

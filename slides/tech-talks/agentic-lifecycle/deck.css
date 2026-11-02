@@ -1,0 +1,2 @@
+/* Keep this deck on the shared native theme; only the title-chain visual needs a small fit. */
+.scene.authority-chain { flex: 0 0 560px; height: 560px; }

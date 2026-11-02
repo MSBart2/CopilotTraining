@@ -12,6 +12,12 @@
 #   approved the deck as is, so no cross-model review was run for this documentation pass.
 # SLIDE BUDGET EXCEPTION (user-approved): 36 slides, above the default 30-slide cap. Depth lives in
 # speaker notes, so most slides carry one visual and three to five callouts.
+# CONVERSION REFRESH — 2026-10-30
+# Decision: preserve. Approved for faithful mechanical conversion by the user's explicit
+# instruction to proceed without review pauses. Preserve all 36 source slides and their order; the FanHub proof slide
+# uses the shared before-after frame to carry closing proof without adding a slide.
+# Speaking budget: 3,110 seconds (51m 50s) against a 55-minute README duration, reserving 3m 10s
+# for questions. 10 spine/template slides + 26 teaching slides.
 version: 1
 
 deck:
@@ -57,6 +63,11 @@ deck:
     - "1 Title: Automate the Repository Chores That Take Judgment"
     - "2 Core Question: three chores (triage, report, scope work) and three safety facts (1 Markdown file, a read-only agent, 1.22 AI credits)"
     - "3 Table of Contents"
+    - "4 Part 1 opener · 5–11 choose the chore, compare tools, inspect patterns, and hand off"
+    - "12 Part 2 opener · 13–19 actors, real source and body, lock, writes, staging, threat boundary"
+    - "20 Part 3 opener · 21–24 wizard, illustrative live fallback, narrow, compile, preview"
+    - "25 Part 4 opener · 26–33 observe, evaluate, troubleshoot, boundaries, ladder, FanHub proof"
+    - "33 FanHub #202 uses the shared before-after frame: real issue input → observed output and separately labelled run/outcome evidence"
     - "34 What You Can Do Today · 35 References · 36 Thank You"
 
   sectionModes:
@@ -108,6 +119,44 @@ deck:
     - "The real triage-wizard.md, read frontmatter then body, compiles to a lock that shows every job and its permissions."
     - "In the live demo, four controls (allowed, max, target, staged) narrow a one-minute wizard draft into the right contract."
     - "Evals tell you whether it followed instructions; Outcomes tell you whether people found it useful. On FanHub #202, /triage produced four reasoned labels and found duplicate #7 for 1.22 AI credits, and both outputs were accepted."
+
+  slides:
+    - { id: title, part: 0, kind: spine, question: "What useful recurring work can a maintainer delegate?", claim: "A readable authority contract makes recurring repository judgment inspectable.", scene: "title + source → lock → audit visual", seconds: 25 }
+    - { id: core-question, part: 0, kind: spine, question: "Which repository chores fit an agent, and how do I keep it in bounds?", claim: "Pick the chore first, then grant only the writes it needs.", scene: "core-question", seconds: 65 }
+    - { id: contents, part: 0, kind: spine, question: "How will the decision unfold?", claim: "Four parts move from chore choice through evidence and transfer.", scene: "contents; opener links 4, 12, 20, 25", seconds: 25 }
+    - { id: part-1, part: 1, kind: opener, question: "Why choose recurring judgment work first?", claim: "Recurring work that needs judgment and a bounded write is the candidate.", scene: "opener", seconds: 20 }
+    - { id: otherwise, part: 1, kind: teaching, question: "What does this work take without an agentic workflow?", claim: "A separate write job makes recurring judgment reviewable without putting repository writes in the model job.", scene: "showdown: brittle or direct work versus bounded workflow; reveal context, job boundary, human decision", seconds: 100 }
+    - { id: three-part-test, part: 1, kind: teaching, question: "When does a job earn an agentic workflow?", claim: "The task must recur, need judgment, and end in a small bounded write.", scene: "signals: show each condition and its example", seconds: 90 }
+    - { id: use-cases-react, part: 1, kind: teaching, question: "Which workflows react to a person or event?", claim: "IssueOps, ChatOps, and LabelOps pair a named initiator with a bounded output.", scene: "relay: trigger → output → human next step", seconds: 105 }
+    - { id: use-cases-scheduled, part: 1, kind: teaching, question: "Which workflows run on a schedule or queue?", claim: "Reports, queues, and research-to-plan handoffs make recurring judgment actionable.", scene: "relay: owner trigger → bounded work → human checkpoint", seconds: 105 }
+    - { id: agent-factory, part: 1, kind: teaching, question: "What work does the gh-aw team report running?", claim: "GitHub reports more than 100 workflows; Repo Assist figures are published claims, not local forecasts.", scene: "scorecard: attributed portfolio and Repo Assist evidence", seconds: 75 }
+    - { id: issueops-flow, part: 1, kind: teaching, question: "How does an issue become agent-ready work?", claim: "IssueOps moves from bounded triage through scoped plan to a human-owned implementation decision.", scene: "relay: triage → plan → decide", seconds: 135 }
+    - { id: cloud-agent-handoff, part: 1, kind: teaching, question: "Who owns implementation after planning?", claim: "A person chooses the workflow-per-stage or workflow-plus-cloud-agent handoff and still reviews the merge.", scene: "showdown: auditable stages versus fewer files and iterative implementation", seconds: 110 }
+    - { id: part-2, part: 2, kind: opener, question: "What is in the contract, and what keeps it bounded?", claim: "Source declares authority, lock implements it, audit shows the run.", scene: "opener", seconds: 20 }
+    - { id: who-acts, part: 2, kind: teaching, question: "Who acts at each point in a workflow?", claim: "Requester starts, agent proposes, safe-outputs job writes, maintainer decides.", scene: "relay: contract owner → requester/agent → write job/maintainer", seconds: 75 }
+    - { id: frontmatter, part: 2, kind: teaching, question: "What authority does the real frontmatter grant?", claim: "Five review questions expose trigger, reads, reach, writes, and runaway limits.", scene: "signals: real FanHub frontmatter blocks mapped to reviewer questions", seconds: 135 }
+    - { id: workflow-body, part: 2, kind: teaching, question: "What judgment does the Markdown body ask for?", claim: "The body asks for bounded evidence before classification; frontmatter enforces authority.", scene: "terminal: issue input → evidence instructions → authority boundary", seconds: 100 }
+    - { id: compile-lock, part: 2, kind: teaching, question: "What proves the source contract is implemented?", claim: "The seven-job lock keeps model jobs read-only and applies writes in a separate job.", scene: "relay: source → compiled lock → run audit", seconds: 130 }
+    - { id: safe-outputs, part: 2, kind: teaching, question: "How can the agent write without holding repository write authority?", claim: "A separate job applies only declared outputs, targets, allowlists, and limits.", scene: "signals: agent proposal → bounded writes → honest stop", seconds: 100 }
+    - { id: staged-mode, part: 2, kind: teaching, question: "How can a maintainer inspect a write before it happens?", claim: "Staged mode shows built-in safe-output previews before real writes.", scene: "terminal: staged setting → Summary preview → no resources created", seconds: 100 }
+    - { id: hostile-issue, part: 2, kind: teaching, question: "What contains an untrusted issue that tries to redirect the agent?", claim: "Independent trust, credential, network, output, and detection controls contain the request.", scene: "signals: hostile input → five corresponding controls", seconds: 100 }
+    - { id: part-3, part: 3, kind: opener, question: "How does a prompt become a reviewed workflow?", claim: "The wizard prompts; a coding agent drafts; the reviewer narrows authority.", scene: "opener", seconds: 20 }
+    - { id: wizard, part: 3, kind: teaching, question: "What does the wizard ask for and hand to the coding agent?", claim: "Seven inputs produce a prompt, not an approved workflow.", scene: "four-phases: Why/How → When/Where → Extras/Agent → prompt", seconds: 80 }
+    - { id: wizard-intent, part: 3, kind: teaching, question: "What does the actual prompt and repository-aware draft look like?", claim: "A concrete FanHub intent becomes a repository-aware draft; the reviewer still owns authority.", scene: "terminal: saved prompt → generated file; recorded fallback, not a live run", seconds: 180 }
+    - { id: narrow-draft, part: 3, kind: teaching, question: "What decisions remain with the reviewer after generation?", claim: "The reviewer chooses allowlist, limits and target, staging, and trust/permission exceptions.", scene: "signals: generated contract → four reviewer decisions", seconds: 135 }
+    - { id: refine-first-loop, part: 3, kind: teaching, question: "How does the reviewer refine, compile, and inspect the first run?", claim: "Compile and preview first; promote only after several representative issues match.", scene: "terminal: refine → compile → run staged → compare", seconds: 105 }
+    - { id: part-4, part: 4, kind: opener, question: "What evidence shows whether the workflow works and is worth keeping?", claim: "Read the output, measure value, and trace failures to the owning block.", scene: "opener", seconds: 20 }
+    - { id: where-to-look, part: 4, kind: teaching, question: "Which run view answers which question?", claim: "Summary, audit, and logs distinguish outcome, one-run cause, and trend.", scene: "relay: Summary → audit → logs", seconds: 90 }
+    - { id: cost-and-value, part: 4, kind: teaching, question: "How do I compare workflow value with bounded spend?", claim: "Caps constrain spend while Outcomes and evals measure separate value signals.", scene: "signals: per-run/per-day limits → eval signal → accepted outcome", seconds: 100 }
+    - { id: evals, part: 4, kind: teaching, question: "Did the run follow its declared instructions?", claim: "Evals ask whether the output followed instructions; the shown answers are illustrative.", scene: "terminal: five checks and labelled YES/NO/UNKNOWN example", seconds: 140 }
+    - { id: outcomes, part: 4, kind: teaching, question: "Did maintainers keep the outputs from a real run?", claim: "FanHub Outcomes accepted both recorded safe outputs; repository state supplies the evidence.", scene: "terminal: observed run output with acceptance separate from status", seconds: 140 }
+    - { id: troubleshoot, part: 4, kind: teaching, question: "Which contract block owns each failure symptom?", claim: "Trace the symptom to its engine, integrity, network, source, lock, or trigger owner.", scene: "signals: symptom → owning block → recovery", seconds: 100 }
+    - { id: boundary, part: 4, kind: teaching, question: "When does an agentic workflow stop fitting?", claim: "Route deterministic work, broad writes, unowned review, and single-task implementation elsewhere.", scene: "showdown: workflow fit versus boundary and alternate tool", seconds: 70 }
+    - { id: adoption-ladder, part: 4, kind: teaching, question: "What is a safe first move, first pilot, and next expansion?", claim: "Use staged previews and maintainer comparison before expanding the pilot.", scene: "four-phases: 15 minutes → 1 hour → 2–4 hours", seconds: 60 }
+    - { id: fanhub-202, part: 4, kind: teaching, question: "What did the real FanHub #202 run produce, and what evidence supports it?", claim: "The observed /triage run produced reasoned labels and duplicate evidence; job status, audit cost, and Outcomes are separate.", scene: "before-after: issue input → observed output; three separately labelled evidence values", seconds: 120 }
+    - { id: today, part: 0, kind: spine, question: "What can I try in my own repository next?", claim: "Choose one real task, preview its bounded output, and decide from evidence.", scene: "today: today → this week → this month with signals and validation", seconds: 90 }
+    - { id: references, part: 0, kind: spine, question: "Where can I verify the talk's claims?", claim: "Primary docs and FanHub artifacts back the talk's claims.", scene: "references: product docs and observed artifacts", seconds: 30 }
+    - { id: thanks, part: 0, kind: spine, question: "Which real chore will I map first?", claim: "Transfer the recurring, bounded, reviewable decision to one repository task.", scene: "thanks + transfer visual", seconds: 15 }
 
 # Evidence labels the deck relies on:
 # - Observed: FanHub #202 run (gh-aw v0.92.6), gh aw audit 1.22 AIC, gh aw outcomes 2/2 accepted.

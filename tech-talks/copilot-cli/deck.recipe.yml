@@ -1,3 +1,8 @@
+# Native conversion recipe approved per slide under the user's explicit approval waiver.
+# 2026-10-31 · deck-recipe-refresh conversion mode · content review follows the mechanics pass.
+# Preserve the approved thesis, section order, working walkthrough, and command scope.
+# Estimates and scenario results remain labeled as such; no product/news refresh is included.
+
 version: 1
 
 deck:
@@ -8,29 +13,29 @@ deck:
   agenda:
     - title: "Turn Intent into Evidence"
       takeaway: "Shape an ambiguous Docker request into an approved plan and two targeted checks."
-      whyItMatters: "Early clarity focuses tools, reasoning effort, and engineering attention."
+      whyItMatters: "Clarifying scope gives the operator a review point before execution."
     - title: "Choose Autonomy with Confidence"
-      takeaway: "Use a decision ladder that delivers a 5-minute automated CI analysis."
-      whyItMatters: "Clear permissions, containment, review, and cost boundaries support confident automation."
-    - title: "Keep the Incident in Reach"
-      takeaway: "Steer a live server session from a phone while a 12GB log corpus stays on its host."
-      whyItMatters: "Durable sessions preserve momentum, execution locality, and data governance."
+      takeaway: "Match interactive, CI, parallel, delegated, and scheduled work to explicit boundaries."
+      whyItMatters: "Permissions, containment, review, and cost define a trustworthy handoff."
+    - title: "Keep Context and Reach"
+      takeaway: "Preserve useful session state, recover wrong turns, and steer work where it runs."
+      whyItMatters: "A durable session helps only when evidence and human authority remain visible."
 
-  arcToc: "Clarify Intent → Choose Autonomy → Keep Context → Steer From Anywhere"
+  arcToc: "Clarify intent → Choose a mode → Keep context → Steer remotely"
 
   arcNarrative: >
     Plan Mode opens with the five-part Distance Model and closes the intent gap
-    through a quantified Docker diagnosis. Operating Modes closes the complexity
-    and time gaps by pairing interactive, headless, fan-out, delegated, and
-    scheduled work with explicit permission, containment, review, and cost
-    boundaries. Context Management establishes the session as a durable,
-    recoverable unit of work and creates a focused breath before the climax.
-    Remote Sessions completes the geography arc through device handoff and
-    data-local forensics, with host execution and human steering working
-    together. This sequence prepares the audience to understand what runs, what
-    persists, and what stays under human approval when the marquee reveal lands.
-    The arcToc uses four concise verb phrases in the same order as the full
-    section names so the chain fits within 80 characters.
+    through the source talk's illustrative Docker diagnosis. Operating Modes
+    closes the complexity and time gaps by pairing interactive, headless,
+    fan-out, delegated, and scheduled work with explicit permission,
+    containment, review, and cost boundaries. Context Management establishes
+    the session as a durable, recoverable unit of work and creates a focused
+    breath before the climax. Remote Sessions completes the geography arc
+    through device handoff and host-local forensics, with execution locality
+    and operator locality shown together. The sequence prepares the audience
+    to understand what runs, what persists, and what stays under human
+    approval. Quantified scenarios remain labeled as estimates or illustrations;
+    no new release or product-news content is added.
 
   sectionOrder:
     - "Plan Mode: Collaborative Planning Before Implementation"
@@ -42,65 +47,267 @@ deck:
     "Plan Mode: Collaborative Planning Before Implementation":
       emphasis: medium
       note: >
-        Open with the five-part Distance Model so the audience can track which
-        gap each section closes. Tell one complete Docker story: ambiguous
-        request, clarifying questions, approved plan, two targeted checks, and
-        an 8-minute resolution following a 45-minute, 8-attempt baseline. Keep
-        real-time steering and Rubber Duck as brief quality checkpoints. Present
-        Rubber Duck as enabled by default and powered by a different model
-        family, with the quality-gap percentage reserved for speaker notes.
-        Use three focused body slides and place the reasoning-model catalog in
-        the appendix.
+        Preserve the five-part Distance Model, then tell one complete
+        illustrative Docker story: ambiguous request, clarifying questions,
+        operator-approved plan, two targeted checks, and an example port
+        diagnosis. Keep steering and rejection as quality checkpoints.
+        Treat the 45-minute/eight-attempt and eight-minute/two-check figures as
+        source-talk estimates, not measured results. Keep model catalogs and
+        exact release-dependent controls in notes.
     "Interactive Mode vs Programmatic Mode vs Cloud Delegation":
       emphasis: high
       note: >
-        Build a task-and-boundary decision ladder the audience can apply on
-        Monday: interactive work for uncertain diagnosis, copilot -p for
-        reproducible CI, /fleet for parallel subtasks inside one approved plan,
-        & for long-running cloud work, and session-scoped scheduled prompts for
-        recurring patrol. Feature the 5-minute CI artifact and its 25-minute
-        baseline as the centerpiece. Give every rung its permissions, output,
-        review, containment, and cost signal, including local and cloud
-        sandboxing and the managed permissions.disableBypassPermissionsMode
-        control. Plant the scheduled-patrol thread for the remote climax. Place
-        the agent roster, custom-agent authoring, and plugin mechanics in the
-        appendix.
+        Build a task-and-boundary ladder: interactive diagnosis for uncertainty,
+        copilot -p for reproducible CI reports, /fleet for parallel subtasks
+        within one plan and host, ampersand delegation for asynchronous
+        repository work, and session-scoped scheduled prompts for recurring
+        patrol. Give each path its output, permissions, containment, human
+        review, and cost boundary. Keep the 25-minute/5-minute CI values labeled
+        as source estimates. Distinguish cloud sandboxing from cloud delegation.
     "Automatic Context Management and Repository Memory":
       emphasis: medium-low
       note: >
-        Carry two ideas across two slides. First, show the durable session
-        through auto-compaction at 95%, repository memory across sessions, and
-        /resume from any machine. Second, show turn-level recovery through
-        /rewind, which restores Copilot-changed files, keeps developer-authored
-        edits, and works with Git as an optional foundation. Name /chronicle
-        improve writing .github/copilot-instructions.md as the producer
-        takeaway. Place /worktree, storage internals, model controls, sidebar
-        mechanics, /voice, and /app in the reference appendix.
+        Preserve both approved ideas: durable session context through
+        auto-compaction, repository memory, /resume, and /chronicle; and
+        turn-level recovery through /rewind, which restores Copilot-changed
+        files while preserving developer-authored edits. Contrast /worktree as
+        experimental isolation requiring Git. Include command syntax,
+        storage, model/cost controls, sidebar mechanics, and version limits in
+        presenter notes rather than feature-inventory slides.
     "Remote Sessions: The Last Distance Falls":
       emphasis: high
       note: >
-        Deliver the geography payoff as the closing marquee and explain
-        execution locality alongside operator locality in one clear frame. Show
-        a controlled host session handed to web or mobile by QR code, then
-        connect the walking-to-meeting incident to 12GB log forensics performed
-        where the data lives. Collect the scheduled-patrol thread from Operating
-        Modes. Present /fleet as subagent orchestration inside one approved plan
-        on one host. Present multi-environment work as several independent
-        remote sessions that an operator steers from one browser. Pair remote
-        steering with scoped --allow-tool permissions, host-side containment,
-        enterprise policy, and human approval for consequential actions. Give
-        Agent Plugins 1.0 one consumer-facing mention that points to the
-        dedicated plugins talk, and close with a concrete staging-host action.
+        Deliver the geography payoff by showing execution locality alongside
+        operator locality. Show an authorized host session handed to web or
+        mobile, then use the walking incident and 12 GB log corpus as
+        explicitly illustrative scenarios. Keep /fleet to one approved plan
+        on one host; show multi-host work as separately steered sessions.
+        Pair remote access with scoped permissions, host containment,
+        enterprise policy, and human approval. Mention Agent Plugins as a
+        dated consumer capability with a link to its dedicated talk. End with
+        a staging-host action and an own-work transfer question.
 
   preamble: []
-
-  appendix:
-    - src: ./copilot-cli-reference.md
+  appendix: []
 
   highlightMoments:
-    - "Plan Mode delivers an 8-minute Docker diagnosis with 2 targeted checks after a 45-minute, 8-attempt baseline."
-    - "A copilot -p CI step delivers build-failure analysis in 5 minutes after a 25-minute baseline."
-    - "/rewind returns a session to an earlier turn, restores Copilot edits, keeps developer edits, and works with Git as an option."
-    - "--remote keeps a 12GB log corpus on its server while the operator steers the live session from a phone."
+    - "Plan Mode structures a Docker diagnosis as clarifying questions, an approved plan, and two targeted checks; its source comparison is an estimate."
+    - "A copilot -p CI step produces a reviewable failure report; the source's 25-minute and 5-minute figures are estimates."
+    - "/rewind can restore Copilot-changed files while skipping developer-authored edits; Git remains an optional safety net."
+    - "--remote lets an operator steer a host-local session without copying the illustrative 12 GB log corpus to a phone."
 
-# OPEN DECISION: Will the remote handoff use a live QR-scan demo or a narrated storyboard? — A live demo needs venue connectivity, a phone camera, and a staged host; a storyboard needs two or three capture images prepared before slide generation.
+# Explicit waiver: the user authorized mechanics-first conversion and waived a separate
+# recipe approval pause. The complete plan below is the approved per-slide conversion
+# contract; the user reviews presentation content after the mechanical pass.
+  conversion:
+    mode: convert
+    approved: true
+    approval: "Explicit user waiver recorded 2026-10-31; review mechanics now, content later."
+    sourceSlidev: "slides/tech-talks/copilot-cli.md"
+    sourceLanding: "tech-talks/copilot-cli/README.md"
+    preservedArtifact: "tech-talks/copilot-cli/examples/walkthrough.md"
+    note: >
+      The prior recipe named an appendix file that is absent from the repository.
+      Its valuable command and reference depth has been moved into native slide
+      notes and first-party sources; the existing FanHub walkthrough path remains.
+    planCount: 39
+    totalSeconds: 2400
+    teachingSlides: 28
+    frameAndSpineSlides: 11
+
+  slides:
+    - id: title
+      part: 0
+      claim: "A durable CLI session connects the task, execution place, context, and operator."
+      scene: "frame: title + deck visual session-bridge; settled orbit connects the session to five decisions."
+      seconds: 30
+    - id: core-question
+      part: 0
+      claim: "Practitioners can keep the task and its steering connected across execution contexts."
+      scene: "frame: core-question; question, four route words, practitioner roles, and approval/evidence outcomes."
+      seconds: 65
+    - id: contents
+      part: 0
+      claim: "The four sections move from intent to mode choice, continuity, and remote steering."
+      scene: "frame: contents; route cards link to slide 4, 10, 21, and 26."
+      seconds: 35
+    - id: part-1
+      part: 1
+      claim: "Plan Mode makes task scope reviewable before implementation."
+      scene: "frame: opener; three cards reveal map, questions, and evidence."
+      seconds: 45
+    - id: distance-model
+      part: 1
+      claim: "Five distinct work distances map to five different CLI decisions."
+      scene: "signals: intent, complexity, context, time, and geography each map to a capability."
+      seconds: 65
+    - id: plan-mode-loop
+      part: 1
+      claim: "Plan Mode places clarifying questions and plan approval before edits."
+      scene: "showdown: immediate generation versus ask, approve, and execute; source estimates are labeled."
+      seconds: 60
+    - id: docker-clarify
+      part: 1
+      claim: "The operator narrows a Docker request before Copilot checks logs or configuration."
+      scene: "terminal: illustrative request, clarifying questions, and operator answer."
+      seconds: 75
+    - id: docker-plan
+      part: 1
+      claim: "An approved plan turns the Docker diagnosis into two inspectable checks."
+      scene: "four-phases: ask, plan, approve, verify; example port mapping stays labeled illustrative."
+      seconds: 75
+    - id: steer-boundary
+      part: 1
+      claim: "Rejecting a proposed destructive tool call can redirect Copilot with task context."
+      scene: "terminal: request, proposed deletion, human rejection, and constraint."
+      seconds: 65
+    - id: part-2
+      part: 2
+      claim: "Mode choice depends on uncertainty, runtime, duration, and expected review."
+      scene: "frame: opener; collaborate, automate, and delegate introduce the decision."
+      seconds: 45
+    - id: mode-ladder
+      part: 2
+      claim: "Each operating mode has a distinct task fit and reviewable output."
+      scene: "scorecard: interactive, -p, /fleet, and scheduled/delegated paths."
+      seconds: 60
+    - id: interactive-diagnosis
+      part: 2
+      claim: "Interactive mode keeps uncertain runtime diagnosis steerable before edits."
+      scene: "terminal: bounded staging request and evidence-first response."
+      seconds: 60
+    - id: programmatic-command
+      part: 2
+      claim: "copilot -p can return a bounded report to CI without authorizing a repair."
+      scene: "terminal: prompt, scoped tools, and report artifact."
+      seconds: 70
+    - id: ci-artifact
+      part: 2
+      claim: "A CI failure report remains an artifact for a maintainer to validate."
+      scene: "showdown: manual triage and bounded report; separate workflow status from domain diagnosis."
+      seconds: 80
+    - id: fleet-work
+      part: 2
+      claim: "/fleet parallelizes independent subtasks within one approved plan and host."
+      scene: "four-phases: approve, decompose, parallelize, and review."
+      seconds: 75
+    - id: authority-boundary
+      part: 2
+      claim: "Tool permissions and human approvals define who may execute consequential actions."
+      scene: "signals: Copilot request, scoped policy, operator decision, enterprise control."
+      seconds: 70
+    - id: local-containment
+      part: 2
+      claim: "Local sandboxing adds experimental OS containment with documented limits."
+      scene: "scorecard: enable, contain, inspect, and bound."
+      seconds: 75
+    - id: cloud-containment
+      part: 2
+      claim: "Cloud sandboxing contains an interactive session; ampersand delegates repository work."
+      scene: "showdown: compare start, execution place, output, and boundary."
+      seconds: 70
+    - id: scheduled-patrol
+      part: 2
+      claim: "A scheduled prompt runs only while its interactive session remains active."
+      scene: "terminal: experimental /every example and visible session-lifetime limitation."
+      seconds: 75
+    - id: delegate-cloud
+      part: 2
+      claim: "A bounded cloud task can return a PR while the practitioner reviews the result."
+      scene: "relay: practitioner scope → coding-agent work → maintainer acceptance."
+      seconds: 50
+    - id: part-3
+      part: 3
+      claim: "Useful session continuity depends on preserving context and recovering wrong turns."
+      scene: "frame: opener; compact, remember, and recover."
+      seconds: 45
+    - id: compaction
+      part: 3
+      claim: "Context tools expose compaction and session usage for operator inspection."
+      scene: "scorecard: /context, auto-compaction, /compact, and /usage."
+      seconds: 70
+    - id: compact-quality
+      part: 3
+      claim: "After compaction, verify that constraints and evidence still guide the next action."
+      scene: "showdown: age-based compacting versus context need and post-compaction checks."
+      seconds: 55
+    - id: memory-chronicle
+      part: 3
+      claim: "/chronicle improve suggests repository-scoped instruction edits for owner review."
+      scene: "scorecard: repository memory, standup, tips, and improve."
+      seconds: 75
+    - id: rewind-recovery
+      part: 3
+      claim: "/rewind restores Copilot edits; /worktree isolates exploration and requires Git."
+      scene: "showdown: turn recovery and isolated worktree compared side by side."
+      seconds: 75
+    - id: part-4
+      part: 4
+      claim: "A remote session separates host execution from operator location."
+      scene: "frame: opener; host, session, and operator."
+      seconds: 45
+    - id: remote-locality
+      part: 4
+      claim: "--remote lets the operator steer while tools and files stay on the host."
+      scene: "deck: operator → remote session → host CLI → local files; settled arrows show execution locality."
+      seconds: 70
+    - id: remote-approval
+      part: 4
+      claim: "Remote access changes where approval happens, not who owns the decision."
+      scene: "signals: host request, policy, human operator, and evidence check."
+      seconds: 65
+    - id: walking-incident
+      part: 4
+      claim: "A remote session can preserve an illustrative incident investigation across devices."
+      scene: "showdown: context abandoned versus same session steered remotely."
+      seconds: 75
+    - id: host-forensics
+      part: 4
+      claim: "Host-local analysis can avoid copying a large log corpus to a phone."
+      scene: "terminal: authorized aggregate log request, no automated blocking, illustrative 12 GB scale."
+      seconds: 75
+    - id: fleet-across-machines
+      part: 4
+      claim: "/fleet is one-host orchestration; multiple remote sessions remain independent."
+      scene: "showdown: one orchestrated plan versus separately steered host sessions."
+      seconds: 75
+    - id: patrol-scope
+      part: 4
+      claim: "Remote patrol requires a running session, scoped tools, and human remediation approval."
+      scene: "signals: session, experimental schedule, least privilege, human response."
+      seconds: 75
+    - id: agent-roster
+      part: 4
+      claim: "Specialized agents can focus common work while /tasks keeps subagent activity visible."
+      scene: "scorecard: Explore/Research, Task, General Purpose, and review agents."
+      seconds: 60
+    - id: extensions-bridges
+      part: 4
+      claim: "Extensions earn a place when they supply needed context or a repeatable capability."
+      scene: "scorecard: plugins, MCP, custom agents, and interface bridges."
+      seconds: 65
+    - id: staging-transfer
+      part: 4
+      claim: "A staging pilot can test host-local diagnosis with scoped tools and observable evidence."
+      scene: "deck: host-locality reused with staging task and operator transfer cue."
+      seconds: 70
+    - id: before-after
+      part: 0
+      claim: "A durable session changes how context is carried without removing human review."
+      scene: "frame: before-after; scenario values labeled estimate or illustrative scale."
+      seconds: 45
+    - id: today
+      part: 0
+      claim: "A low-risk experiment can produce evidence before broader adoption."
+      scene: "frame: today; action, expected signal, and validation across three horizons."
+      seconds: 60
+    - id: references
+      part: 0
+      claim: "First-party references hold current command syntax and policy boundaries."
+      scene: "frame: references; core CLI, boundaries/continuity, and remote/extensions."
+      seconds: 35
+    - id: thanks
+      part: 0
+      claim: "The transferable model is intent, context, locality, and human steering."
+      scene: "frame: thanks + session-bridge; qualitative recap and own-work question."
+      seconds: 20

@@ -1,134 +1,142 @@
+# Conversion plan reviewed and approved under the user's no-pause waiver, 2026-10-31.
+# Preserve source scope and artifacts; label synthetic evidence and unresolved behavior.
+# No feature refresh, Azure provisioning, or cloud mutation is part of this conversion.
 version: 1
 
 deck:
   title: "GitHub Copilot + Azure Skills Plugin"
   subtitle: "Conversational Azure Prototyping and Deployment"
-  tagline: "From 45 minutes of portal clicks to 8 minutes of live-context conversation"
+  tagline: "Use live context to shape infrastructure proposals; keep authority explicit."
 
 
   agenda:
-    - title: "Live Azure Context"
-      takeaway: "Query and reason over current Azure resources conversationally."
-      whyItMatters: "Live state replaces portal hopping and stale assumptions."
-    - title: "Faster Prototype Loops"
-      takeaway: "Plan, validate, and deploy infrastructure in one conversation."
-      whyItMatters: "Shorter iteration makes infrastructure experiments practical."
-    - title: "Guardrailed Deployment"
-      takeaway: "Combine skills, MCP tools, and validation for safe execution."
-      whyItMatters: "Conversational infrastructure remains grounded in proven workflows."
+    - title: "Ask Azure with context"
+      takeaway: "Trace a natural-language request to a scoped Azure resource query."
+      whyItMatters: "Identity, subscription, and returned evidence determine what the answer means."
+    - title: "Plan before proposing changes"
+      takeaway: "Separate an illustrative plan from verified subscription facts and deployable code."
+      whyItMatters: "A human can review assumptions before any consequential action."
+    - title: "Bound authority"
+      takeaway: "Distinguish tool availability, identity permissions, and human approval."
+      whyItMatters: "The integration inherits configured authority; it does not make an unsafe workflow safe by itself."
 
-  arcToc: "Live Context → Prototype Loop → Skills Plugin Stack → Guardrails"
+  arcToc: "Query → Plan → Compose → Bound"
 
   arcNarrative: >
-    Section 1 establishes the mental model shift — terminal as first-class Azure interface —
-    using concrete discovery queries that let the audience experience "ask, don't click" before
-    any architecture is explained. A vocabulary micro-slide at the tail names azure-prepare,
-    azure-validate, and azure-deploy as the map for Section 2's demo. Section 2 opens with the
-    comparative table ("Same Intent. Three Environments.") before a single demo line runs — this
-    kills the "why not just MCP" objection before it forms, not after. The prototype loop then
-    plays out in full: Plan Mode activates, live context flows in, the config generates, the
-    deployment runs. This is the talk's peak engagement moment; the 8-minute cycle is the headline
-    metric and must land explicitly. Section 3 explains retroactively how the three layers made
-    that work — Skills as brain, MCP as hands, Foundry as AI specialist — and earns the install
-    and auth steps their place because the audience now has a reason to care. The section closes
-    by surfacing azure-rbac as the conceptual handoff: "the Skills layer is also your first line
-    of access governance." Section 4 lands guardrails efficiently — RBAC scoping, read-only
-    defaults, and a single CTO-ready sentence — then exits. This ordering beats the alternative
-    (architecture first) because audiences who understand what a tool does are far more receptive
-    to learning how it works than audiences who learn the architecture and then watch the demo
-    they could have predicted.
+    Start with a visible request and response, then ask what the response proves. The payment API
+    Plan Mode scenario is the centerpiece, but the recipe itself marks Skills activation inside
+    Plan Mode unverified. Keep that uncertainty visible; label transcripts and checks as
+    illustrative rather than observed. Explain Skills, MCP, and Azure after the intended workflow
+    is clear. End by separating authentication, Azure authorization, host confirmation, and
+    organizational approval. Retain the source's 45-to-8-minute comparison only as an unmeasured
+    historical estimate. The argument teaches contextual delegation and verification without
+    provisioning resources or changing Azure.
 
   sectionOrder:
-    - "Live Azure Context in Terminal Conversations"
-    - "The Prototype Loop: Plan → Generate → Deploy"
-    - "Azure Skills Plugin: Adding the Brain Layer"
-    - "Guardrails and Trust Boundaries"
+    - "Query Azure with Live Context"
+    - "Plan Before Any Change"
+    - "Compose Skills, MCP, and Azure"
+    - "Keep Authority Explicit"
 
   sectionModes:
-    "Live Azure Context in Terminal Conversations":
+    "Query Azure with Live Context":
       emphasis: medium
       note: >
-        Open with the core mental model shift in one tight frame: "terminal becomes your Azure
-        interface." Show 2-3 live query examples (storage accounts, Cosmos DB, Log Analytics)
-        as a BeforeAfterSlide — left side is "open portal, navigate, copy value," right side is
-        one conversational prompt and structured output. Close the section with a vocabulary
-        micro-slide naming the three key skills (azure-prepare, azure-validate, azure-deploy)
-        as the workflow map for the demo ahead. Do not explain the architecture here — that
-        belongs in Section 3. This section earns attention; Section 2 spends it.
+        Show how a scoped resource question can return structured state and support a bounded
+        follow-up. Use fictional resource names and mark transcript output illustrative, not
+        observed. Carry subscription, identity, selected fields, and freshness context with the
+        result. Do not imply that conversational output is inherently current, complete, or a
+        replacement for portal/CLI checks.
 
-    "The Prototype Loop: Plan → Generate → Deploy":
+    "Plan Before Any Change":
       emphasis: high
       note: >
-        This is the talk's centerpiece — peak engagement lives here. Open with the comparative
-        table as its own slide: "Same Intent. Three Environments." with columns No Skills /
-        MCP Only / Skills+MCP and rows covering what you type, Azure context, deploy sequence,
-        error recovery, RBAC awareness, and time (45 min / ~15 min / 8 min). This slide kills
-        the "why not just MCP" objection before a single demo line runs. Slide 2 runs the full
-        prototype loop: Plan Mode activates (Shift+Tab), AI queries live App Service state,
-        scaffolds staging config, validates against subscription limits, deploys. The "8 minutes,
-        zero portal visits" close is the section's headline metric — it must appear explicitly.
-        Do not explain why the loop works (that is Section 3's job). Let the demo speak.
-        NOTE: This placement assumes Plan Mode invokes the Skills layer (Path A). See open
-        decision at the bottom — if Plan Mode bypasses Skills, relocate the comparative table
-        to Section 3 slide 2 and replace this section's opening with a "here's the goal"
-        framing slide instead.
+        Make the payment API/App Service example the centerpiece. Retain its clarifying questions,
+        subnet/quota/firewall checks, proposed architecture, generated-code review, and manual
+        deployment boundary as explicitly illustrative source material. Path A, Skills activation
+        during Plan Mode, remains an unverified assumption; do not narrate it as behavior. Treat
+        45 and 8 minutes as unmeasured estimates, not an experiment.
 
-    "Azure Skills Plugin: Adding the Brain Layer":
+    "Compose Skills, MCP, and Azure":
       emphasis: high
       note: >
-        Open with the architecture table from the README — Brain (Azure Skills, 21 curated
-        skills), Hands (Azure MCP Server, 200+ tools across 40+ services), AI Specialist
-        (Foundry MCP Server) — as a structured diagram slide. This is the retroactive
-        explanation of what the audience just watched in Section 2. Slide 2 connects the
-        comparative table's "Skills+MCP wins" column to the decision logic encoded in Skills
-        that MCP-only lacks — name azure-prepare, azure-validate, azure-deploy explicitly as
-        examples. Merge install and auth steps here as a natural "here's how you get this"
-        beat — they belong after motivation is established, not before. Close by surfacing
-        azure-rbac explicitly: "the Skills layer is also your first line of access governance"
-        — this is the conceptual bridge into Section 4. Do not make setup the section's focus;
-        it is one slide among four.
+        Draw the control/data path: host and instructions, optional Skills guidance, MCP tool
+        discovery/call, server credential, Azure authorization, result. Keep the 21-skill and
+        200-plus-tool/40-plus-service counts dated to the source talk and not independently
+        refreshed. Preserve installation routes and configuration lessons, marking command shapes
+        version-specific and asking presenters to verify current docs.
 
-    "Guardrails and Trust Boundaries":
+    "Keep Authority Explicit":
       emphasis: medium-low
       note: >
-        Land three points and exit. (1) Read-only by default: MCP server operates within
-        authenticated RBAC — no elevation, respects subscription boundaries. (2) Production
-        discipline: AI-validated configs still require review before production deployment —
-        treat AI as a skilled junior engineer, not an authority. (3) CTO talking point as the
-        quote-ready closer: "Read-only service principal by default; write access is opt-in
-        per-service." Flag the room-read variant in speaker notes: security/compliance-focused
-        rooms can lead with this section's content as the talk opener — but that is a speaker
-        choice, not a structural change to the recipe.
+        Separate tool availability, authentication, Azure RBAC/data-plane authorization, host
+        approval prompts, and separate organizational review. Least privilege is a property of
+        configured identities and scopes, not an MCP default. Preserve Reader/Contributor/Owner
+        and production/dev separation guidance, use-case boundaries, recovery paths, and transfer.
+        No live Azure access, credential creation, or provisioning occurs.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "Prototype-to-deployment cycle compresses from 45 minutes of portal clicks and guesswork to 8 minutes of conversational deployment with live context — the talk's headline number, must appear on a slide."
-    - "200+ live Azure tools across 40+ services give the AI direct read/write execution reach — not prompts, not examples, actual SDK calls against the authenticated subscription."
-    - "21 curated skills (azure-prepare, azure-validate, azure-deploy, azure-rbac, and 17 more) encode real Azure decision logic — the Skills layer is what separates this from a raw MCP connection."
-    - "Read-only service principal by default; write access is opt-in per-service — the CTO talking point that closes Section 4."
-    - "Same Intent. Three Environments. — the comparative table (No Skills / MCP Only / Skills+MCP) earns its own slide at the Section 2 opening and is the talk's most persuasive single artifact."
+    - "A resource answer earns confidence when its scope, identity, fields, and freshness are inspectable."
+    - "Skills guidance and MCP tool availability are different layers; neither proves a tool call happened."
+    - "Authentication, Azure authorization, host confirmation, and service-owner approval are separate controls."
+    - "The source's 45-minute and 8-minute cycle figures have no supplied measurement method and are not observed outcomes."
+    - "Generated infrastructure is a proposal; review, validation, and deployment remain separate actions."
 
 # ─── OPEN DECISION ────────────────────────────────────────────────────────────
 # Question: Does Copilot Plan Mode (Shift+Tab) invoke the Azure Skills layer
 # during its clarifying-question phase?
 #
-# Working assumption: YES (Path A). Plan Mode's "read-only" constraint applies
-# to codebase writes, not to Skills activation. Skills are Markdown instruction
-# files loaded into context by intent recognition — we expect them to be active in any
-# conversation mode including Plan Mode. This assumption has not been verified
-# against live behavior with the Azure Skills Plugin installed.
+# Status at conversion (2026-10-31): UNVERIFIED. The existing source proposed
+# Path A as a working assumption, but supplied no live observation. This deck
+# does not assert that Skills run during Plan Mode or that Plan Mode queries Azure.
 #
-# Path A — Skills ACTIVE in Plan Mode (recipe as written, assumed correct):
-#   Section 2's prototype loop is a full Skills+MCP demonstration. Comparative
-#   table placement at Section 2 opening is correct. No structural changes needed.
+# Path A — if later observed:
+#   Retain the Skills+MCP branch only after the activity log proves which Skills
+#   were loaded and the tool trace proves which calls ran.
 #
-# Path B — Skills NOT active in Plan Mode (if assumption is wrong):
-#   Section 2 demo is MCP-only. Move the comparative table to Section 3 slide 2.
-#   Replace Section 2's opening beat with a "here's the goal" framing slide.
-#   Update sectionModes notes for Section 2 and 3 before slide generation.
+# Path B — if a later authorized run shows no Skills activity:
+#   Describe the Plan Mode run as MCP-only and keep Skills guidance as a separate
+#   workflow layer. Do not infer this path from an absent or incomplete trace.
 #
-# Verify by running the prototype loop demo with Azure Skills Plugin installed
-# and checking whether azure-prepare/validate/deploy appear in the activity log.
+# To resolve later, run a separately authorized test in a non-production
+# subscription and inspect tool/skill activity. This conversion performs no test.
 # ─────────────────────────────────────────────────────────────────────────────
+
+  # Approved complete plan: 32 slides, including all spine frames. Seconds are
+  # estimates; total is 2,415 seconds (40:15), leaving 4:45 within the 45-minute duration.
+  slides:
+    - { id: title, part: 0, claim: "Live Azure context can inform a proposal while authority stays explicit.", scene: "shared title frame with a query-to-review loop", seconds: 30 }
+    - { id: core-question, part: 0, claim: "How do I use Azure context without handing over the decision?", scene: "shared core-question frame", seconds: 40 }
+    - { id: contents, part: 0, claim: "The talk moves from query to plan, composition, and authority.", scene: "shared contents frame", seconds: 35 }
+    - { id: part-1, part: 1, claim: "A scoped question can turn resource state into conversational context.", scene: "shared opener frame", seconds: 35 }
+    - { id: query-shape, part: 1, claim: "A resource query names the scope and fields that make its answer inspectable.", scene: "shared scorecard: scope, identity, fields, freshness", seconds: 80 }
+    - { id: query-transcript, part: 1, claim: "A structured answer is evidence to inspect, not proof of a real live call.", scene: "terminal: illustrative storage-account prompt and result", seconds: 90 }
+    - { id: follow-up-context, part: 1, claim: "A follow-up can reuse a prior result, but the presenter must retain its scope and age.", scene: "terminal: fictional Cosmos configuration follow-up", seconds: 80 }
+    - { id: template-from-state, part: 1, claim: "A live resource is a reference for a draft, not an automatically safe template.", scene: "shared showdown: copy properties versus reviewed variation", seconds: 90 }
+    - { id: part-2, part: 2, claim: "Planning makes assumptions and decision points visible before a proposed change.", scene: "shared opener frame", seconds: 35 }
+    - { id: three-paths, part: 2, claim: "Workflow guidance, live tools, and manual work solve different parts of the same task.", scene: "deck scene: three paths with responsibilities and limits", seconds: 100 }
+    - { id: plan-mode-boundary, part: 2, claim: "Skills activation during Copilot Plan Mode is an unresolved source-recipe assumption.", scene: "shared signals: unresolved claim, needed observation, safe narration", seconds: 90 }
+    - { id: clarifying-questions, part: 2, claim: "Region, plan, database, network, and scale questions expose deployment assumptions.", scene: "terminal: fictional payment API planning prompt", seconds: 90 }
+    - { id: plan-evidence, part: 2, claim: "A plan can surface candidate checks, but each result needs provenance and verification.", scene: "deck scene: plan input beside illustrative checks and labels", seconds: 105 }
+    - { id: review-before-deploy, part: 2, claim: "A reviewed Bicep proposal and an approved deployment are separate states.", scene: "shared relay: inspect, validate, approve, deploy", seconds: 95 }
+    - { id: estimate-not-result, part: 2, claim: "The source's 45-to-8-minute comparison is an estimate, not measured evidence.", scene: "shared scorecard: estimate, missing method, measurement plan", seconds: 80 }
+    - { id: part-3, part: 3, claim: "The host, Skills, MCP server, and Azure APIs have distinct responsibilities.", scene: "shared opener frame", seconds: 35 }
+    - { id: stack-architecture, part: 3, claim: "Skills guide workflow; MCP exposes tools; Azure enforces the configured identity's permissions.", scene: "deck scene: four layers and distinct trust boundaries", seconds: 100 }
+    - { id: skills-as-guidance, part: 3, claim: "Named Skills describe workflow guidance; their presence does not prove tool execution.", scene: "shared scorecard: prepare, validate, deploy, diagnose", seconds: 90 }
+    - { id: mcp-request-path, part: 3, claim: "MCP carries structured tool requests and results; the host and server mediate the call.", scene: "shared relay: discover, request, execute, inspect", seconds: 100 }
+    - { id: setup-shape, part: 3, claim: "Setup connects a host to a server and identity; exact configuration is host/version-specific.", scene: "terminal: non-secret configuration outline and connection check", seconds: 100 }
+    - { id: scope-services, part: 3, claim: "Narrowing exposed services reduces irrelevant choices; Azure permissions still govern access.", scene: "shared showdown: broad tools versus selected tools", seconds: 100 }
+    - { id: part-4, part: 4, claim: "Tool reach becomes safe only when identity, authorization, confirmation, and ownership are explicit.", scene: "shared opener frame", seconds: 35 }
+    - { id: authz-not-approval, part: 4, claim: "Authentication identifies a principal; authorization and human approval answer different questions.", scene: "deck scene: identity, permission, host approval, service owner", seconds: 110 }
+    - { id: role-scope, part: 4, claim: "Reader, Contributor, and Owner roles carry different consequences at a chosen scope.", scene: "shared scorecard: role, action boundary, review owner", seconds: 105 }
+    - { id: separate-environments, part: 4, claim: "Separate production-read and development-write connections make environment boundaries inspectable.", scene: "shared relay: production read, dev proposal, human-approved deploy", seconds: 105 }
+    - { id: verify-proposal, part: 4, claim: "A reviewer can compare declared infrastructure assumptions with observable environment facts.", scene: "deck scene: illustrative Bicep inputs and three mismatch signals", seconds: 105 }
+    - { id: use-cases-and-limits, part: 4, claim: "Cloning, log analysis, and IaC validation each require different evidence and owners.", scene: "shared signals: task, evidence, boundary, next owner", seconds: 95 }
+    - { id: recovery-and-delegation, part: 4, claim: "When evidence is missing or a task outgrows a session, stop, gather proof, and hand off explicitly.", scene: "shared four-phases: inspect, bound, review, escalate", seconds: 95 }
+    - { id: before-after, part: 0, claim: "The useful shift is from copying assumptions to reviewing scoped evidence.", scene: "shared before-after frame", seconds: 45 }
+    - { id: today, part: 0, claim: "A safe first test is a read query in an approved scope with a recorded expected result.", scene: "shared today frame", seconds: 60 }
+    - { id: references, part: 0, claim: "First-party documentation and source repositories locate the implementation details.", scene: "shared references frame", seconds: 30 }
+    - { id: thanks, part: 0, claim: "Apply the query-plan-review boundary to one real task in your own workflow.", scene: "shared thanks frame with deck visual", seconds: 30 }

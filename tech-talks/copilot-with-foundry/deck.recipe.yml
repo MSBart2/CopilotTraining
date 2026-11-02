@@ -1,125 +1,114 @@
-# deck.recipe.yml — talk generation guidance for copilot-with-foundry
+# Native conversion plan, 2026-10-31.
+# Approved under the user's autonomous-conversion waiver; content review follows conversion.
+# Preserve the existing narrative, sample architecture and artifacts; qualify unsupported
+# percentages and fictional case details as illustrative rather than observed.
 version: 1
 
 deck:
   title: "GitHub Copilot with Microsoft Foundry: Organizational Memory for Coding Agents"
   subtitle: "When does a Copilot agent need Foundry — and how do we wire it up?"
-  tagline: "Extend GitHub Copilot agents with organizational memory: the 5–10% of engineering work where intent matters most."
-
-  # arcToc: single line ≤ 80 chars, shown as TocSlide subtitle
-
+  tagline: "Add a governed organizational-memory tool when repository context cannot explain intent."
   agenda:
-    - title: "Code and Intent"
-      takeaway: "Pair implementation history with the organizational reasons behind it."
-      whyItMatters: "Agents avoid optimizing away decisions that exist for a reason."
-    - title: "Organizational Memory"
-      takeaway: "Query indexed docs, decisions, and architecture with Foundry IQ."
-      whyItMatters: "Agents can act with context beyond a single repository."
-    - title: "Durable Decisions"
-      takeaway: "Make reasoning accessible beyond the people who made it."
-      whyItMatters: "Onboarding and continuity improve as teams change."
-
-  arcToc: "Two Memories → Foundry IQ → Org Memory Pattern → Intent Problems"
-
-  # arcNarrative: prose rationale explaining WHY sections are ordered this way.
-  # Used by the generator as authoring guidance; never displayed on a slide.
+    - title: "Find the missing context"
+      takeaway: "Trace what GitHub can establish and what organizational records can add."
+      whyItMatters: "The distinction keeps repository evidence and decision rationale separate."
+    - title: "Wire the provider"
+      takeaway: "Follow the hosted-agent, knowledge-base, MCP, and identity boundaries."
+      whyItMatters: "Each actor and permission is visible before a tool call."
+    - title: "Keep the human decision"
+      takeaway: "Inspect retrieved evidence, verify currency, and request approval before changing code."
+      whyItMatters: "A historical decision is evidence, not current authorization."
+  arcToc: "Two memories → Connect Foundry IQ → Recover intent → Choose the boundary"
   arcNarrative: >
-    The talk opens with bypassFraudChecks() on a slide — just the code, annotated to show
-    exactly what a Copilot agent can and cannot tell you about it. That gap (implementation
-    facts vs. missing organizational intent) is described on-page before a single product
-    feature is introduced. Section 1 (The Two Memories) names the structural cause with
-    the 3-layer model, giving the audience vocabulary that every subsequent section uses.
-    Section 2 (Connecting Foundry IQ) wires the fix and forces an architectural decision
-    — managed identity as trust boundary, not auth plumbing — with a single azd callout
-    slide acknowledging the setup step without dwelling on it. The fraud bypass context
-    document appears here as a concrete index entry, making the abstract model tangible.
-    Section 3 (The Organizational Memory Pattern) is the payoff: show the March 2023
-    architecture review excerpt that explains why the code exists, then walk the
-    before/after as two annotated concept slides and step through the 6-part reasoning
-    loop. No live terminal — the explanation is the demo. Section 4 (Recognizing Intent
-    Problems) closes with the paired diagnostic: the signal words table plus its
-    counterpart, anchored by the 5-10% filter rule. The arc works because the opening
-    code snippet motivates everything without requiring infrastructure, and the explanation
-    of how Foundry recovers intent is more durable than any live terminal output.
-
-  # Ordered list of 4 section names (must match README ## headings)
+    Keep the approved sequence and anchor. Open with bypassFraudChecks() and label its
+    PR trace as illustrative, then name implementation, operational, and organizational
+    context. Show the architecture before configuration so the audience can locate each
+    actor. The middle moves from a hosted-agent setup snapshot and knowledge-base wiring
+    to an explicit distinction among tool availability, permission, and human approval.
+    The peak is the same query answered with implementation evidence and a retrieved,
+    dated decision excerpt; neither result is represented as a live deployment or
+    observed test. The closing diagnostic pairs positive intent signals with content
+    that does not earn indexing. Carry the original four parts, 5–10% heuristic, sample
+    artifacts, and transfer actions while disclosing that quantitative ratios and the
+    fraud scenario are not measured evidence. Skip product-news refresh and live cloud
+    actions.
   sectionOrder:
     - "The Two Memories"
     - "Connecting Foundry IQ"
     - "The Organizational Memory Pattern"
     - "Recognizing Intent Problems"
-
-  # Per-section editorial guidance for the slide generator.
   sectionModes:
     "The Two Memories":
-      # high = 4–5 slides; load-bearing mental model section
       emphasis: high
       note: >
-        Open with the bypassFraudChecks() code snippet on a slide — just the code, no
-        preamble. Annotate it directly: describe what a GitHub Copilot agent CAN tell you
-        (PR history, author, linked issue) and what it CANNOT tell you (why this bypass
-        exists, whether it's still valid). This is the failure described on-page, not a
-        running terminal. Then introduce the 3-layer model as the explanation for the gap.
-        Must land: the 3-layer model (implementation / operational / organizational memory)
-        as a crystallization slide — the frame every subsequent section references. Cut:
-        product history, Foundry pricing, setup prerequisites. Structural moment: the
-        code-on-slide failure annotation followed immediately by the 3-layer reveal.
-
+        Open on the code and its sample PR trace. State that the case details are
+        illustrative, not observed production evidence. Establish what code history can
+        answer, what it cannot establish about intent, then crystallize the three context
+        layers and a question-to-provider router.
     "Connecting Foundry IQ":
-      # medium-high = 3–4 slides
-      emphasis: medium-high
-      note: >
-        Open with a single prerequisite callout slide: azure.yaml manifest + azd up as a
-        callout box (≈2 min, link to docs, not a tutorial — acknowledges azd-naive
-        attendees and moves on). The fraud bypass context document must appear here as a
-        concrete index entry — this is where the abstract model becomes tangible material.
-        Dedicated callout slide required: managed identity as architectural trust boundary,
-        not auth plumbing. Frame it as an organizational governance decision: which agents
-        earn access to institutional knowledge? Must land: wiring sequence and identity
-        trust boundary. Cut: SDK deep dives, full azd walkthrough, error-handling edge
-        cases. Structural moment: managed identity callout slide — the governance decision
-        hiding inside the auth step.
-
-    "The Organizational Memory Pattern":
-      # high = 4–5 slides; peak engagement, concept walkthrough payoff
       emphasis: high
       note: >
-        Walk through how Foundry would change the answer to the opening code question.
-        Show the architecture review excerpt ("March 2023 — fraud service latency, legal
-        approved temporary bypass, pending migration") as a slide — this is the
-        organizational memory that explains the code's existence. Then show the before/after
-        as two annotated slides: what the agent said without Foundry IQ (implementation
-        facts only), and what it can say with Foundry IQ (implementation facts + intent
-        recovered). Walk the 6-step reasoning loop as a numbered diagram. Must land: the
-        before/after concept and the reasoning loop. Cut: live terminal output, SDK details,
-        edge-case error handling. Structural moment: the architecture review excerpt slide —
-        the document that explains why the weird code exists.
-
+        Keep the hosted-agent setup a short, sourced orientation rather than a tutorial.
+        Show the project manifest, knowledge-base/toolbox handoff, document selection,
+        and managed identity. Name the Copilot client, tool server, Foundry runtime,
+        identity, permission grant, and owner separately. Setup snippets are examples;
+        verify them against current first-party documentation before use.
+    "The Organizational Memory Pattern":
+      emphasis: high
+      note: >
+        Use the dated architecture-review excerpt as explicitly illustrative source
+        material, then compare the same question with and without Foundry IQ. Preserve
+        the two-provider artifact and six reasoning steps. Distinguish tool request,
+        service permission, human authorization, retrieved historical evidence, current
+        verification, and approval to act.
     "Recognizing Intent Problems":
-      # medium = 2–3 slides; closing diagnostic tool
       emphasis: medium
       note: >
-        Deliver as a paired diagnostic tool, not a lecture. Signal words table (when to use
-        organizational memory) and "what not to index" counterpart (when not to) must appear
-        side-by-side or in immediate sequence — prevents cargo-culting. The 5-10% filter
-        rule is the decision criterion to leave with: if fewer than 5-10% of agent runs
-        would benefit from a given index entry, skip it. Must land: both sides of the
-        diagnostic. Cut: extended case studies, competitor comparisons, ROI calculations.
-        Structural moment: the two-sided diagnostic table walkthrough — give attendees a
-        tool they can apply before the week is out.
-
+        Present signal phrases beside the counterexample: missing or low-value
+        organizational records do not become useful by indexing everything. Frame
+        5–10% as the README's unmeasured planning heuristic, never a measured adoption
+        statistic. End with a local-baseline method and a transfer decision.
   preamble: []
   appendix: []
-
-  # 3–5 high-signal moments the generator must surface in the deck.
   highlightMoments:
-    - "bypassFraudChecks() on a slide: the code GitHub Copilot can trace but cannot explain — PR history, author, linked issue vs. the 'why' that only organizational memory holds"
-    - "3-layer model reveal (The Two Memories): the crystallization slide naming implementation, operational, and organizational memory — the conceptual frame all three subsequent sections depend on"
-    - "The architecture review excerpt slide (Org Memory Pattern): the March 2023 decision document that explains the code's existence — organizational memory made visible and concrete"
-    - "Before/after concept slide (Org Memory Pattern): what the agent answers without Foundry IQ vs. with it — same code, same question, fundamentally different answer"
-    - "Paired diagnostic walkthrough (Recognizing Intent Problems): signal words table paired with 'what not to index' counterpart, anchored by the 5-10% filter rule — a two-sided decision tool"
-
-# RESOLVED: Static slide walkthrough — no live terminal or recording needed.
-# The bypassFraudChecks() code appears on slide 1 with inline annotations.
-# The architecture review excerpt appears as a dedicated slide in section 3.
-# The before/after comparison is two annotated concept slides, not a terminal diff.
+    - "GitHub evidence can trace a code change; only a separate organizational source can supply a documented rationale."
+    - "A tool being offered, a caller being permitted, and a person approving a code change are three different decisions."
+    - "A March 2023 review excerpt is illustrative evidence in the teaching case, not an observed Foundry retrieval."
+    - "The six-step loop checks whether a historical reason still holds before proposing any code change."
+    - "The 5–10% figure is a local planning heuristic to test, not a measured universal share."
+  slides:
+    - { id: title, part: 0, claim: "A coding agent can combine repository evidence with organizational rationale through distinct context providers.", scene: "deck: provider paths converge on a coding question; motion: routes appear in sequence", seconds: 20 }
+    - { id: core-question, part: 0, claim: "Add organizational memory only when the task needs a documented reason beyond repository context.", scene: "frame: learner question, three practitioner roles, and the decision", seconds: 40 }
+    - { id: contents, part: 0, claim: "The talk moves from the context gap through wiring and reasoning to a bounded adoption decision.", scene: "frame: four linked parts", seconds: 30 }
+    - { id: part-1, part: 1, claim: "Repository evidence and organizational rationale answer different questions.", scene: "frame: three cards introduce the context gap", seconds: 25 }
+    - { id: code-gap, part: 1, claim: "Code history can identify a change while leaving its intent and present validity unresolved.", scene: "deck: sample code beside traceable facts and an unanswered question", seconds: 100 }
+    - { id: memory-layers, part: 1, claim: "Implementation, operational, and organizational context route to different authorities.", scene: "scorecard: three context layers and their questions", seconds: 100 }
+    - { id: context-router, part: 1, claim: "Route what/how questions to repository sources, current-state questions to operational tools, and why questions to decision records.", scene: "signals: question signals map to context providers", seconds: 70 }
+    - { id: intent-boundary, part: 1, claim: "A retrieved rationale explains a past decision but does not prove that the constraint still applies.", scene: "showdown: historical record versus current validation", seconds: 70 }
+    - { id: part-2, part: 2, claim: "Foundry IQ becomes a provider through an indexed source, an MCP toolbox, and an authorized identity.", scene: "frame: index, expose, govern", seconds: 25 }
+    - { id: integration-map, part: 2, claim: "The Copilot client requests tools while provider services retrieve their own authoritative context.", scene: "deck: actor-labeled Copilot, GitHub MCP, Foundry IQ, and document paths", seconds: 95 }
+    - { id: hosted-setup, part: 2, claim: "The hosted-agent quickstart scaffolds deployment, but does not itself authorize every tool action.", scene: "terminal: documented setup orientation, no live provisioning", seconds: 75 }
+    - { id: deployment-manifest, part: 2, claim: "The manifest connects a hosted agent to its project, model deployment, endpoint, and runtime configuration.", scene: "deck: manifest fields grouped by responsibility", seconds: 90 }
+    - { id: provision-kb, part: 2, claim: "Knowledge-base setup selects sources, creates an index, exposes a toolbox, and returns an endpoint.", scene: "four-phases: select, index, expose, verify", seconds: 90 }
+    - { id: source-quality, part: 2, claim: "Decision records earn indexing when they are authoritative, scoped, maintainable, and safe to retrieve.", scene: "scorecard: five source classes and curation checks", seconds: 75 }
+    - { id: identity-boundary, part: 2, claim: "Managed identity establishes an identity boundary; a separate grant defines what that identity may access.", scene: "deck: caller identity, permission grant, service decision", seconds: 90 }
+    - { id: part-3, part: 3, claim: "The organizational-memory pattern combines implementation trace with dated rationale before proposing action.", scene: "frame: code, historical record, reviewed answer", seconds: 25 }
+    - { id: illustrative-review, part: 3, claim: "The sample March 2023 review gives a historical reason and a review condition, not current approval.", scene: "deck: explicitly illustrative decision-record excerpt with dates", seconds: 100 }
+    - { id: answer-without, part: 3, claim: "Without an organizational provider, the agent can report the sample code history but cannot ground the why.", scene: "terminal: illustrative repository-only response", seconds: 70 }
+    - { id: answer-with-foundry, part: 3, claim: "With a permitted Foundry IQ tool, the agent can retrieve a decision excerpt and flag its age for validation.", scene: "terminal: illustrative combined-source response with evidence labels", seconds: 70 }
+    - { id: agent-tools, part: 3, claim: "Separate GitHub and organizational tools keep each provider's authority legible to the model and reviewer.", scene: "deck: tool configuration excerpt and provider ownership", seconds: 100 }
+    - { id: instruction-policy, part: 3, claim: "Instructions can route questions and propose work, while access policy and human review remain separate controls.", scene: "showdown: model instruction, service permission, human approval", seconds: 90 }
+    - { id: reasoning-loop, part: 3, claim: "The agent must trace, recognize a gap, retrieve, synthesize, check currency, and propose—not silently change code.", scene: "deck: six-step evidence loop ending at human decision", seconds: 90 }
+    - { id: freshness-evidence, part: 3, claim: "A dated retrieval is evidence of a past decision; current system state and source citations determine the next check.", scene: "deck: dated rationale paired with present-state verification", seconds: 90 }
+    - { id: permission-vs-approval, part: 3, claim: "Tool invocation permission does not equal authorization to change production code or waive a human review.", scene: "showdown: request, access, proposed change, named human approval", seconds: 90 }
+    - { id: part-4, part: 4, claim: "Intent signals justify a local fit check; missing sources or ordinary code tasks point elsewhere.", scene: "frame: signals, exclusions, local threshold", seconds: 25 }
+    - { id: signal-phrases, part: 4, claim: "Repeated questions about why, unknown constraints, and migration surprises indicate a context gap worth testing.", scene: "signals: phrase-to-diagnostic mapping", seconds: 100 }
+    - { id: what-not-to-index, part: 4, claim: "Code-only questions, inaccessible records, and broad uncurated corpora do not justify adding an organizational tool.", scene: "scorecard: exclusion criteria and alternative route", seconds: 90 }
+    - { id: decision-tree, part: 4, claim: "Add Foundry only when a consequential why-question has an authoritative source and an approved access path.", scene: "deck: branching decision gates", seconds: 100 }
+    - { id: estimate-filter, part: 4, claim: "The 5–10% figure is an unmeasured heuristic; teams need a local task sample before using it as a budget.", scene: "deck: estimate separated from a local measurement plan", seconds: 90 }
+    - { id: use-cases, part: 4, claim: "Migration, onboarding, debt review, and compliance checks are candidate workflows only when evidence and owners exist.", scene: "scorecard: four explicitly illustrative workflows", seconds: 90 }
+    - { id: implementation-artifacts, part: 4, claim: "A bounded pilot can begin with a source map, a two-tool configuration, and a reviewable validation issue.", scene: "deck: reusable artifact bundle and evidence checkpoints", seconds: 75 }
+    - { id: before-after, part: 0, claim: "The added provider contributes documented intent; a human still verifies current state and approves any change.", scene: "frame: repository-only versus combined evidence, with no fabricated performance metric", seconds: 60 }
+    - { id: today, part: 0, claim: "Start with one real why-question, identify the authoritative record, then measure whether retrieval changes the decision.", scene: "frame: today, this week, this month transfer plan", seconds: 90 }
+    - { id: references, part: 0, claim: "First-party quickstarts and protocol documentation are the verification path for evolving setup details.", scene: "frame: first-party sources", seconds: 30 }
+    - { id: thanks, part: 0, claim: "The transferable decision is when a task needs organizational context and who approves action on it.", scene: "frame: closing question and provider map", seconds: 30 }

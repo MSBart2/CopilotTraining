@@ -1,5 +1,7 @@
-# Reviewed 2026-09-16: preserve the four-primitives spine and add a compact
-# place-load-prove preamble. Independent review moved the live climax to skill graduation.
+# Conversion recipe refreshed 2026-10-30.
+# Decision: preserve. User-authorized structural approval retains the existing four-part
+# narrative, all 33 slides, the /init and /create-skill demos, and the worked prompt/agent
+# transcripts. Shared frames/patterns replace Slidev-only layout; no news refresh is included.
 version: 1
 deck:
   title: "Copilot Configuration Primitives: Making AI Understand Your Codebase"
@@ -8,25 +10,31 @@ deck:
 
   agenda:
     - title: "Encode the smallest fitting primitive"
-      takeaway: "See one shared convention become repository, path-scoped, and directory guidance."
-      whyItMatters: "Teams choose the correct file and stop repeating stable context in each request."
+      takeaway: "Choose repository, path, or directory guidance by owner, lifetime, selector, and evidence."
+      whyItMatters: "The right scope shares stable rules without making every request carry irrelevant context."
     - title: "Graduate solved work into capability"
-      takeaway: "Turn a working chat into a shared command, then add scripts and templates as a skill."
-      whyItMatters: "The team reuses proven work with observable execution evidence."
+      takeaway: "Freeze a proven chat as a prompt, then add a script and template when the workflow earns them."
+      whyItMatters: "Teams can repeat useful work with visible execution evidence instead of automating guesses."
     - title: "Prove configuration reached the result"
-      takeaway: "Trace eligibility through acceptance, then repair the first broken boundary."
-      whyItMatters: "Delivery, execution, validation, and approval remain independently observable."
+      takeaway: "Trace eligibility, loading, execution, validation, and human acceptance as separate claims."
+      whyItMatters: "A loaded file is evidence of delivery, not proof that output is correct or approved."
 
   arcToc: "Instructions → Custom Prompts → Skills → Agents"
   arcNarrative: >
-    A three-slide preamble classifies owner, lifetime, selector, and evidence;
-    separates eligibility, loading, execution, validation, and acceptance; and
-    repairs one concrete selector failure. Instructions then establish the
-    reviewed baseline and prove delivery through a live /init demonstration.
-    Custom Prompts capture a solved workflow as a shared command. Skills form
-    the engagement peak by graduating that workflow into a runnable pack during
-    a live demonstration. Agents close the progression by composing the stack
-    behind explicit tools and a human-controlled handoff.
+    Preserve the existing four-primitive progression and all 33 slides. A compact
+    placement and evidence preamble establishes owner, lifetime, selector, and
+    acceptance before the Instructions section demonstrates broad and scoped
+    guidance with /init. Custom Prompts capture a solved workflow as a shared
+    human-triggered command. Skills are the engagement peak: the live
+    /create-skill demonstration graduates the proven test workflow into a pack
+    with a linked script and test template. Agents close the arc by composing
+    the primitives behind an explicit tool boundary and human-controlled
+    handoff. Preserve the worked /create-prompt and /create-agent transcripts.
+    Treat examples and transcripts as illustrative, not measurements or
+    guaranteed product output. Keep runtime availability and authority distinct
+    from file syntax: a tool list is not a substitute for service, repository,
+    or human approval controls.
+
   sectionOrder:
     - "Instructions"
     - "Custom Prompts"
@@ -36,36 +44,206 @@ deck:
     "Instructions":
       emphasis: high
       note: >
-        Use one anatomy beat for repository-wide and path-scoped instructions.
-        Give AGENTS.md one selector slide inside this section. Show shared
-        configuration as reviewed institutional knowledge with a named owner.
-        Run /init live and use the References panel as delivery evidence.
+        Preserve the place/load/prove preamble, three instruction surfaces,
+        complete repository and path examples, economical authoring guidance,
+        AGENTS.md playbook, selector repair, and live /init demonstration.
+        Separate eligibility and delivery evidence from execution, validation,
+        and accountable acceptance.
     "Custom Prompts":
       emphasis: medium
       note: >
-        Show a complete .prompt.md anatomy with inputs, selection, file context,
-        tools, and links to instructions. Use a static /create-prompt transcript
-        to preserve time for the runnable graduation in the next section.
+        Show the complete .prompt.md anatomy: input, selection, file context,
+        task recipe, linked instructions, tools, and agent selection. Keep the
+        /create-prompt transcript illustrative. A prompt is a human-selected
+        task recipe, not an approval grant or security boundary.
     "Skills":
       emphasis: high
       note: >
-        Make prompt-to-skill graduation the climax. Show progressive loading,
-        SKILL.md, a referenced script, and a referenced template. Run the
-        /create-prompt to /create-skill graduation live and validate one output.
+        Retain progressive loading, SKILL.md, the referenced run-tests.sh,
+        and the test template. Preserve live /create-skill as the climax. Make
+        script invocation, validation, and human acceptance explicit and
+        distinguish example behavior from observed demo output.
     "Agents":
       emphasis: medium
       note: >
-        Show one read-only planner anatomy with explicit tools and one handoff.
-        Use a static /create-agent transcript. Keep human approval outside the
-        agent tool list and close with the primitive selection decision model.
+        Keep the read-only Planner anatomy and worked handoff transcript.
+        Separate an agent's declared tool availability and handoff from
+        execution policy and human approval. Close with the primitive choice
+        model and say where the model/provider decision belongs.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "One repository convention becomes broad, path-scoped, or directory guidance through an explicit selector decision."
-    - "A solved chat becomes a team command, then graduates into a runnable skill with a referenced script and template."
-    - "Skills load metadata first, instructions on a match, and resources during execution."
-    - "The evidence chain separates eligible, loaded, executed, validated, and accepted into observable claims."
-    - "A read-only planner and one implementation handoff make tool constraints visible as architecture."
+    - "One shared rule can be repository-wide, path-scoped, or directory-local; the selector determines eligibility."
+    - "References or diagnostic context can show delivery, while tests, diff review, and owner approval prove different things."
+    - "A solved chat becomes a shared prompt before the team adds a runnable skill."
+    - "Skills separate discovery metadata, task instructions, and linked resources; actual loading varies by supported host."
+    - "An agent's tool list makes role boundaries visible, while approval remains with the responsible human or system."
 
+  slides:
+    - id: title
+      part: 0
+      claim: "A team can encode shared context once and graduate a workflow only after it works."
+      scene: "shared frame: title; deck visual: four primitives in progression"
+      seconds: 10
+    - id: core-question
+      part: 0
+      claim: "Choose configuration by the context the team needs, the task it repeats, and the evidence it can inspect."
+      scene: "shared frame: core-question"
+      seconds: 35
+    - id: contents
+      part: 0
+      claim: "The talk moves from shared instructions through reusable prompts and skills to constrained agents."
+      scene: "shared frame: contents"
+      seconds: 35
+    - id: instructions-opener
+      part: 1
+      claim: "Place context, prove its delivery, then encode the shared baseline."
+      scene: "shared frame: opener"
+      seconds: 20
+    - id: place-context
+      part: 1
+      claim: "Owner, lifetime, selector, and evidence decide whether context belongs in a shared primitive."
+      scene: "scorecard: four placement decisions"
+      seconds: 90
+    - id: delivery-chain
+      part: 1
+      claim: "Eligibility, loading, execution, validation, and acceptance are separate claims."
+      scene: "signals: five evidence boundaries"
+      seconds: 100
+    - id: repair-selector
+      part: 1
+      claim: "A valid path rule has no effect when its applyTo glob misses the requested file."
+      scene: "showdown: mismatched selector versus corrected selector"
+      seconds: 95
+    - id: instruction-surfaces
+      part: 1
+      claim: "Repository-wide instructions, applyTo rules, and AGENTS.md target different scopes."
+      scene: "signals: three instruction selectors"
+      seconds: 100
+    - id: repo-instructions
+      part: 1
+      claim: "A concise repository instruction file makes reviewed conventions available across eligible requests."
+      scene: "deck artifact: repository instruction excerpt and delivery check"
+      seconds: 115
+    - id: path-instructions
+      part: 1
+      claim: "The applyTo glob determines which file-specific rules are eligible."
+      scene: "deck artifact: real applyTo field beside matching and non-matching paths"
+      seconds: 110
+    - id: economical-instructions
+      part: 1
+      claim: "Short rules with reasons and examples carry more useful context than lint preferences."
+      scene: "scorecard: economical rule-writing choices"
+      seconds: 85
+    - id: agents-playbook
+      part: 1
+      claim: "AGENTS.md is a portable playbook for local setup, tests, and workflow guidance."
+      scene: "showdown: repository playbook contents versus Copilot-specific selector"
+      seconds: 90
+    - id: init-demo
+      part: 1
+      claim: "/init can draft a baseline that the developer reviews and checks in References."
+      scene: "terminal: illustrative /init request, draft, and References check"
+      seconds: 180
+    - id: prompts-opener
+      part: 2
+      claim: "A prompt preserves a task recipe that already worked."
+      scene: "shared frame: opener"
+      seconds: 20
+    - id: prompt-anatomy
+      part: 2
+      claim: "A prompt file combines a human-triggered recipe with inputs, context links, and optional tool configuration."
+      scene: "deck artifact: .prompt.md anatomy"
+      seconds: 120
+    - id: create-prompt
+      part: 2
+      claim: "/create-prompt can turn a successful component task into a shared /component recipe."
+      scene: "terminal: illustrative solved chat to prompt file"
+      seconds: 115
+    - id: prompt-to-skill
+      part: 2
+      claim: "Keep text-only, human-triggered work in a prompt; graduate when linked resources or task matching earn a skill."
+      scene: "showdown: prompt fit versus skill fit"
+      seconds: 105
+    - id: keep-prompts-thin
+      part: 2
+      claim: "Link shared rules and parameterize the task instead of copying policy into each prompt."
+      scene: "signals: prompt maintenance boundaries"
+      seconds: 80
+    - id: skills-opener
+      part: 3
+      claim: "A skill packages a proven workflow with resources the agent can use."
+      scene: "shared frame: opener"
+      seconds: 20
+    - id: progressive-skill-loading
+      part: 3
+      claim: "A skill separates discovery metadata, task instructions, and resources loaded when needed."
+      scene: "four-phases: three loading levels"
+      seconds: 105
+    - id: skill-anatomy
+      part: 3
+      claim: "A skill's description selects relevance and its links make the script and template reachable."
+      scene: "deck artifact: SKILL.md with linked resources"
+      seconds: 115
+    - id: skill-runner-script
+      part: 3
+      claim: "The linked script is an executable action, not explanatory prose."
+      scene: "deck artifact: run-tests.sh and its observable command result"
+      seconds: 85
+    - id: test-template
+      part: 3
+      claim: "A referenced test template gives generated tests a concrete starting pattern."
+      scene: "deck artifact: test template and skill link"
+      seconds: 80
+    - id: create-skill-demo
+      part: 3
+      claim: "/create-skill can package the tested workflow with a runner and template."
+      scene: "terminal: illustrative prompt-to-skill demo and invocation boundaries"
+      seconds: 190
+    - id: agents-opener
+      part: 4
+      claim: "An agent's role and available tools shape its operating boundary."
+      scene: "shared frame: opener"
+      seconds: 20
+    - id: planner-agent
+      part: 4
+      claim: "A read-only Planner can research and hand off a plan without edit tools."
+      scene: "deck artifact: agent frontmatter and authority boundary"
+      seconds: 120
+    - id: create-agent
+      part: 4
+      claim: "A handoff transfers a plan to an implementation role; it does not approve the implementation."
+      scene: "terminal: illustrative planner result and handoff"
+      seconds: 115
+    - id: configuration-stack
+      part: 4
+      claim: "Instructions, prompts, skills, and agents solve different context and workflow needs."
+      scene: "four-phases: primitive progression"
+      seconds: 85
+    - id: choose-primitive
+      part: 4
+      claim: "Select a primitive by scope, trigger, runnable resources, and role-specific tools."
+      scene: "signals: five primitive decisions"
+      seconds: 100
+    - id: before-after
+      part: 0
+      claim: "Reviewed configuration replaces repeated context while preserving validation and acceptance."
+      scene: "shared frame: before-after"
+      seconds: 45
+    - id: today
+      part: 0
+      claim: "Start with one shared rule, inspect delivery, and expand only after a real task proves value."
+      scene: "shared frame: today"
+      seconds: 90
+    - id: references
+      part: 0
+      claim: "First-party documentation is the path for checking syntax, runtime support, and changes."
+      scene: "shared frame: references"
+      seconds: 20
+    - id: thanks
+      part: 0
+      claim: "Choose the smallest primitive, prove its effect, then add execution authority deliberately."
+      scene: "shared frame: thanks; deck visual: four primitives in progression"
+      seconds: 10
