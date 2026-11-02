@@ -1,12 +1,593 @@
 # Content refresh routing inbox
 
-Generated: 2026-10-22T19:27:03.243Z
-Feed last built: 2026-10-22T16:00:17.000Z
-Window starts: 2026-09-16T00:00:00.000Z
+Generated: 2026-10-31T19:31:55.311Z
+Feed last built: 2026-10-31T16:00:10.000Z
+Window starts: 2026-09-25T00:00:00.000Z
 
-Scanned 213 entries: 60 need review, 0 were previously adjudicated, 57 had no talk match, 96 were out of scope.
+Scanned 204 entries: 57 need review, 0 were previously adjudicated, 57 had no talk match, 90 were out of scope.
 
 > Candidate ranking creates awareness. A talk receives work only after editorial adjudication finds that the announcement changes its thesis, workflow, decision guidance, demo, setup, status, or boundary.
+
+## Webhook IP ranges added to the Meta API
+
+- Published: 2026-10-29
+- Source: https://github.blog/changelog/2026-10-29-webhook-ip-ranges-added-to-the-meta-api
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Visual Studio Code 1.144
+
+- Published: 2026-10-28
+- Source: https://code.visualstudio.com/updates/v1_144
+- Disposition: **review**
+- Topics: vscode-copilot
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
+
+## Route and orchestrate models with GitHub Copilot Fusion
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## GitHub Copilot app, Universe releases
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-copilot-app-universe-releases
+- Disposition: **review**
+- Topics: copilot-app
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
+| [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs | Cover app access policy, managed settings, and organization rollout. |
+
+## GitHub Enterprise now includes access to GitHub Copilot
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot
+- Disposition: **review**
+- Topics: copilot-app
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
+| [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs | Cover app access policy, managed settings, and organization rollout. |
+
+## Security extension for the GitHub Copilot app
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-security-extension-for-the-github-copilot-app
+- Disposition: **review**
+- Topics: copilot-app
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
+| [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs | Cover app access policy, managed settings, and organization rollout. |
+
+## GitHub intelligence puts your code, context, and history to work
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-intelligence-puts-your-code-context-and-history-to-work
+- Disposition: **review**
+- Topics: customization
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/copilot-primitives` | customization: explains | Explain instructions, skills, prompts, and agents as distinct configuration primitives. |
+| [ ] | `tech-talks/copilot-plugins` | customization: applies | Explain packaging and distributing customization bundles. |
+| [ ] | `tech-talks/enterprise-patterns` | customization: governs | Cover organization-wide distribution and enforcement of configuration. |
+| [ ] | `tech-talks/harness-fundamentals` | customization: applies (via copilot-hooks) | Keep hook availability, events, and governance behavior accurate. |
+
+## Build shared workflows for your team with Copilot Automations
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-build-shared-workflows-for-your-team-with-copilot-automations
+- Disposition: **review**
+- Topics: agentic-workflows
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+
+## Repository plugin defaults and enterprise plugin controls generally available
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-repository-plugin-defaults-and-enterprise-plugin-controls-generally-available
+- Disposition: **review**
+- Topics: vscode-copilot, copilot-cli, copilot-app, customization
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals)<br>customization: explains | Keep VS Code chat debugging surfaces and diagnostics accurate.<br>Explain instructions, skills, prompts, and agents as distinct configuration primitives. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature)<br>copilot-app: explains (via copilot-app) | Keep the end-to-end VS Code agent workflow and demos executable.<br>Explain Copilot app availability, parallel work, controls, and review workflows. |
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains<br>copilot-cli: references | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model.<br>Reference CLI behavior only where it changes cross-client agent continuity. |
+| [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs<br>customization: governs | Cover app access policy, managed settings, and organization rollout.<br>Cover organization-wide distribution and enforcement of configuration. |
+| [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
+
+## GitHub Copilot in VS Code, Universe releases
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-copilot-in-vs-code-universe-releases
+- Disposition: **review**
+- Topics: vscode-copilot
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
+
+## Generate and edit images directly in Copilot
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-generate-and-edit-images-directly-in-copilot
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## GitHub Copilot Fusion now supports selection of local models
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-copilot-fusion-now-supports-selection-of-local-models
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## GitHub Agentic Workflows generally available
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-agentic-workflows-generally-available
+- Disposition: **review**
+- Topics: agentic-workflows
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+
+## Prioritize Dependabot alerts with reachability analysis
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-prioritize-dependabot-alerts-with-reachability-analysis
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Push protection beyond predefined secret patterns
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-push-protection-beyond-predefined-secret-patterns
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Work from anywhere with a new, connected Copilot cloud experience
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-work-from-anywhere-with-a-new-connected-copilot-cloud-experience
+- Disposition: **review**
+- Topics: vscode-copilot, copilot-cli
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains<br>copilot-cli: references | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model.<br>Reference CLI behavior only where it changes cross-client agent continuity. |
+| [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+
+## Introducing Replica, an open-source AI prototyping tool
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-introducing-replica-an-open-source-ai-prototyping-tool
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## GitHub Copilot in JetBrains Universe releases
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-copilot-in-jetbrains-universe-releases
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Public monitoring for enterprises generally available
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-public-monitoring-for-enterprises-generally-available
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Issue artifacts are now in public preview
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-issue-artifacts-are-now-in-public-preview
+- Disposition: **review**
+- Topics: cloud-agent
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/copilot-on-github` | cloud-agent: explains (via copilot-web) | Explain issue-to-PR delegation, review, iteration, and coding-agent controls. |
+| [ ] | `tech-talks/local-agentic-sdlc` | cloud-agent: applies (via copilot-app) | Explain how cloud-agent work appears in the app's multi-agent workflow. |
+| [ ] | `tech-talks/agentic-lifecycle` | cloud-agent: applies (via agentic-journey) | Keep the incremental issue-to-PR automation path current. |
+| [ ] | `tech-talks/agent-readiness` | cloud-agent: depends (via agentic-sdlc) | Keep CI and repository infrastructure guidance compatible with agent execution. |
+
+## GitHub Actions adds multi-cloud compute to improve reliability
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-actions-adds-multi-cloud-compute-to-improve-reliability
+- Disposition: **review**
+- Topics: agentic-workflows
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+
+## Pull request limits: Exempt contributors by age or history
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-pull-request-limits-exempt-contributors-by-age-or-history
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Connect your tools to Copilot without all the setup
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-connect-your-tools-to-copilot-without-all-the-setup
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## New tools, triggers, and cost controls for Copilot Automations
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-new-tools-triggers-and-cost-controls-for-copilot-automations
+- Disposition: **review**
+- Topics: agentic-workflows
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+
+## Copilot Automations now learn from outcomes and self-improve
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-copilot-automations-now-learn-from-outcomes-and-self-improve
+- Disposition: **review**
+- Topics: agentic-workflows
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+
+## Create and manage Copilot Automations in Visual Studio Code
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-create-and-manage-copilot-automations-in-visual-studio-code
+- Disposition: **review**
+- Topics: vscode-copilot, agentic-workflows
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
+| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+
+## Agent Merge watches and fixes pull requests in the cloud
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-agent-merge-watches-and-fixes-pull-requests-in-the-cloud
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Copilot code review: Merge with confidence with Max and approvals
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-copilot-code-review-merge-with-confidence-with-max-and-approvals
+- Disposition: **review**
+- Topics: copilot-code-review
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/copilot-on-github` | copilot-code-review: explains (via copilot-code-review) | Explain code-review configuration, depth, customization, findings, and response workflows. |
+| [ ] | `tech-talks/agent-readiness` | copilot-code-review: applies (via agentic-sdlc) | Keep the automated review and CI trust-factory workflow accurate. |
+
+## GitHub Actions workflow lockfiles are generally available
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-actions-workflow-lockfiles-are-generally-available
+- Disposition: **review**
+- Topics: agentic-workflows
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+
+## Moderate role for GitHub Issues generally available
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-moderate-role-for-github-issues-generally-available
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## GitHub Copilot SDK is becoming Microsoft Copilot SDK
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-github-copilot-sdk-is-becoming-microsoft-copilot-sdk
+- Disposition: **review**
+- Topics: copilot-sdk
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/harness-fundamentals` | copilot-sdk: explains (via copilot-sdk) | Explain SDK runtime, APIs, authentication, tools, models, and production integration. |
+| [ ] | `tech-talks/vscode-latest` | copilot-sdk: applies | Explain how the SDK underpins portable VS Code agent infrastructure. |
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-sdk: depends (via copilot-app) | Keep app harness and runtime claims accurate. |
+
+## AI Scan for repositories in public preview
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-ai-scan-for-repositories-in-public-preview
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Code scanning for AI applications in public preview
+
+- Published: 2026-10-28
+- Source: https://github.blog/changelog/2026-10-28-code-scanning-for-ai-applications-in-public-preview
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## VS Code Wrapped: GitHub Universe 2026
+
+- Published: 2026-10-28
+- Source: https://code.visualstudio.com/blogs/2026/10/28/vscode-wrapped
+- Disposition: **review**
+- Topics: vscode-copilot
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+
+## GitHub Copilot supports server-to-server authentication
+
+- Published: 2026-10-27
+- Source: https://github.blog/changelog/2026-10-27-github-copilot-supports-server-to-server-authentication
+- Disposition: **review**
+- Topics: copilot-sdk
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/harness-fundamentals` | copilot-sdk: explains (via copilot-sdk) | Explain SDK runtime, APIs, authentication, tools, models, and production integration. |
+| [ ] | `tech-talks/vscode-latest` | copilot-sdk: applies | Explain how the SDK underpins portable VS Code agent infrastructure. |
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-sdk: depends (via copilot-app) | Keep app harness and runtime claims accurate. |
+
+## [Launched] Generally Available: Cost management and tagging for Claude models in Microsoft Foundry
+
+- Published: 2026-10-27
+- Source: https://azure.microsoft.com/updates?id=577260
+- Disposition: **review**
+- Topics: foundry
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/copilot-with-foundry` | foundry: explains | Explain when Copilot needs Foundry and how organizational knowledge is connected. |
+| [ ] | `tech-talks/copilot-azure-mcp` | foundry: applies | Keep Foundry-related Azure skills and MCP workflows accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | foundry: references (via agent-teams) | Reference Foundry orchestration only when it changes the multi-agent mechanism comparison. |
+
+## Visual Studio October Update – Compare Commits to Your Code, Resolve Conflicts in Bulk, Keep Coding
+
+- Published: 2026-10-27
+- Source: https://devblogs.microsoft.com/visualstudio/visual-studio-october-update-compare-commits-to-your-code-resolve-conflicts-in-bulk-keep-coding/
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## GitHub Copilot assisted permissions generally available
+
+- Published: 2026-10-26
+- Source: https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available
+- Disposition: **review**
+- Topics: vscode-copilot, model-choice, copilot-cli, copilot-app
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains<br>model-choice: explains<br>copilot-cli: references | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model.<br>Explain editor model choice, provider setup, local models, and sign-in boundaries.<br>Reference CLI behavior only where it changes cross-client agent continuity. |
+| [ ] | `tech-talks/copilot-cli` | model-choice: applies<br>copilot-cli: explains | Explain model selection, provider configuration, and reasoning controls for CLI sessions.<br>Explain current CLI commands, session lifecycle, steering, and remote workflows. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature)<br>copilot-app: explains (via copilot-app) | Keep the end-to-end VS Code agent workflow and demos executable.<br>Explain Copilot app availability, parallel work, controls, and review workflows. |
+| [ ] | `tech-talks/enterprise-patterns` | model-choice: governs<br>copilot-app: governs | Cover organization model policy, cost, access, and data-governance consequences.<br>Cover app access policy, managed settings, and organization rollout. |
+| [ ] | `tech-talks/harness-fundamentals` | model-choice: applies (via copilot-sdk) | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
+
+## GPT-6.1 Terra in GitHub Copilot
+
+- Published: 2026-10-26
+- Source: https://github.blog/changelog/2026-10-26-gpt-6-1-terra-in-github-copilot
+- Disposition: **review**
+- Topics: model-choice, copilot-app
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/enterprise-patterns` | model-choice: governs<br>copilot-app: governs | Cover organization model policy, cost, access, and data-governance consequences.<br>Cover app access policy, managed settings, and organization rollout. |
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
+| [ ] | `tech-talks/vscode-latest` | model-choice: explains | Explain editor model choice, provider setup, local models, and sign-in boundaries. |
+| [ ] | `tech-talks/copilot-cli` | model-choice: applies | Explain model selection, provider configuration, and reasoning controls for CLI sessions. |
+| [ ] | `tech-talks/harness-fundamentals` | model-choice: applies (via copilot-sdk) | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
+
+## Tune GitHub Copilot Inline Suggestions with Configurable Eagerness
+
+- Published: 2026-10-26
+- Source: https://code.visualstudio.com/blogs/2026/10/27/configurable-eagerness
+- Disposition: **review**
+- Topics: vscode-copilot
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
+
+## Usage metrics API adds usage from tools like OpenCode
+
+- Published: 2026-10-23
+- Source: https://github.blog/changelog/2026-10-23-usage-metrics-api-adds-usage-from-tools-like-opencode
+- Disposition: **review**
+- Topics: enterprise-governance
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/enterprise-patterns` | enterprise-governance: explains | Explain enterprise rollout, policy, controls, measurement, and federated governance. |
+| [ ] | `tech-talks/exec-strategy` | enterprise-governance: applies | Keep board-level investment and control guidance grounded in available evidence. |
+| [ ] | `tech-talks/vscode-latest` | enterprise-governance: governs | Mention enterprise controls only when they constrain editor capabilities. |
+| [ ] | `tech-talks/copilot-cli` | enterprise-governance: governs | Mention managed settings only when they alter CLI behavior or deployment. |
+
+## Power Pages: Plugin support for GitHub Copilot CLI and Claude Code to create and edit traditional sites
+
+- Published: 2026-10-23
+- Source: https://www.microsoft.com/microsoft-365/roadmap?id=577900
+- Disposition: **review**
+- Topics: copilot-cli, cloud-agent
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
+| [ ] | `tech-talks/copilot-on-github` | cloud-agent: explains (via copilot-web) | Explain issue-to-PR delegation, review, iteration, and coding-agent controls. |
+| [ ] | `tech-talks/vscode-latest` | copilot-cli: references | Reference CLI behavior only where it changes cross-client agent continuity. |
+| [ ] | `tech-talks/agentic-lifecycle` | cloud-agent: applies (via agentic-journey) | Keep the incremental issue-to-PR automation path current. |
+| [ ] | `tech-talks/local-agentic-sdlc` | cloud-agent: applies (via copilot-app) | Explain how cloud-agent work appears in the app's multi-agent workflow. |
+
+## Turn notifications into code with GitHub Copilot in Teams
+
+- Published: 2026-10-23
+- Source: https://github.blog/changelog/2026-10-23-turn-notifications-into-code-with-github-copilot-in-teams
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## EMU deletions fix
+
+- Published: 2026-10-23
+- Source: https://github.blog/changelog/2026-10-23-emu-deletions-fix
+- Disposition: **review**
+- Topics: enterprise-governance
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/enterprise-patterns` | enterprise-governance: explains | Explain enterprise rollout, policy, controls, measurement, and federated governance. |
+| [ ] | `tech-talks/exec-strategy` | enterprise-governance: applies | Keep board-level investment and control guidance grounded in available evidence. |
+| [ ] | `tech-talks/copilot-cli` | enterprise-governance: governs | Mention managed settings only when they alter CLI behavior or deployment. |
+| [ ] | `tech-talks/vscode-latest` | enterprise-governance: governs | Mention enterprise controls only when they constrain editor capabilities. |
+
+## Public monitoring adds triage, validity, API, and webhooks
+
+- Published: 2026-10-23
+- Source: https://github.blog/changelog/2026-10-23-public-monitoring-adds-triage-validity-api-and-webhooks
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Enterprise installations for GitHub Apps generally available
+
+- Published: 2026-10-23
+- Source: https://github.blog/changelog/2026-10-23-enterprise-installations-for-github-apps-generally-available
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## GitHub Copilot in Visual Studio — September update
+
+- Published: 2026-10-23
+- Source: https://github.blog/changelog/2026-10-22-github-copilot-in-visual-studio-september-update-2
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Custom skills, agents, and MCP servers in usage metrics API
+
+- Published: 2026-10-22
+- Source: https://github.blog/changelog/2026-10-22-custom-skills-agents-and-mcp-servers-in-usage-metrics-api
+- Disposition: **review**
+- Topics: mcp, customization, enterprise-governance
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/copilot-plugins` | mcp: depends<br>customization: applies | Keep plugin-bundled MCP configuration and portability behavior accurate.<br>Explain packaging and distributing customization bundles. |
+| [ ] | `tech-talks/copilot-primitives` | mcp: references<br>customization: explains | Clarify MCP's boundary relative to repository customization primitives.<br>Explain instructions, skills, prompts, and agents as distinct configuration primitives. |
+| [ ] | `tech-talks/enterprise-patterns` | customization: governs<br>enterprise-governance: explains | Cover organization-wide distribution and enforcement of configuration.<br>Explain enterprise rollout, policy, controls, measurement, and federated governance. |
+| [ ] | `tech-talks/copilot-azure-mcp` | mcp: applies | Keep Azure MCP installation, trust, tools, and workflow guidance accurate. |
+| [ ] | `tech-talks/exec-strategy` | enterprise-governance: applies | Keep board-level investment and control guidance grounded in available evidence. |
+
+## Global default for Copilot features generally available
+
+- Published: 2026-10-22
+- Source: https://github.blog/changelog/2026-10-22-global-default-for-copilot-features-generally-available
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Meta API endpoints updated for Actions blob storage
+
+- Published: 2026-10-22
+- Source: https://github.blog/changelog/2026-10-22-meta-api-endpoints-updated-for-actions-blob-storage
+- Disposition: **review**
+- Topics: agentic-workflows
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+
+## Public monitoring now available with data residency
+
+- Published: 2026-10-22
+- Source: https://github.blog/changelog/2026-10-22-public-monitoring-now-available-with-data-residency
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Pull requests: Saved whitespace preferences and improved split view
+
+- Published: 2026-10-22
+- Source: https://github.blog/changelog/2026-10-22-pull-requests-saved-whitespace-preferences-and-improved-split-view
+- Disposition: **no-match**
+
+No candidate talk crossed the V1 routing threshold.
+
+## Industry comparisons in the Copilot impact dashboard
+
+- Published: 2026-10-22
+- Source: https://github.blog/changelog/2026-10-22-industry-comparisons-in-the-copilot-impact-dashboard
+- Disposition: **review**
+- Topics: enterprise-governance
+
+| Review | Talk | Relationship | Obligation |
+|---|---|---|---|
+| [ ] | `tech-talks/enterprise-patterns` | enterprise-governance: explains | Explain enterprise rollout, policy, controls, measurement, and federated governance. |
+| [ ] | `tech-talks/exec-strategy` | enterprise-governance: applies | Keep board-level investment and control guidance grounded in available evidence. |
+| [ ] | `tech-talks/copilot-cli` | enterprise-governance: governs | Mention managed settings only when they alter CLI behavior or deployment. |
+| [ ] | `tech-talks/vscode-latest` | enterprise-governance: governs | Mention enterprise controls only when they constrain editor capabilities. |
 
 ## Visual Studio Code 1.143
 
@@ -18,8 +599,8 @@ Scanned 213 entries: 60 need review, 0 were previously adjudicated, 57 had no ta
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
 | [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
 
 ## GitHub CLI: Opt in to expiring, auto-refreshing OAuth tokens
 
@@ -31,7 +612,6 @@ Scanned 213 entries: 60 need review, 0 were previously adjudicated, 57 had no ta
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
-| [ ] | `tech-talks/copilot-acp` | copilot-cli: depends | Keep CLI server and ACP protocol integration behavior accurate. |
 | [ ] | `tech-talks/vscode-latest` | copilot-cli: references | Reference CLI behavior only where it changes cross-client agent continuity. |
 
 ## Bulk migrate branch protections to rulesets for a repository
@@ -86,8 +666,8 @@ No candidate talk crossed the V1 routing threshold.
 | [ ] | `tech-talks/enterprise-patterns` | model-choice: governs<br>copilot-app: governs | Cover organization model policy, cost, access, and data-governance consequences.<br>Cover app access policy, managed settings, and organization rollout. |
 | [ ] | `tech-talks/vscode-latest` | model-choice: explains | Explain editor model choice, provider setup, local models, and sign-in boundaries. |
 | [ ] | `tech-talks/copilot-cli` | model-choice: applies | Explain model selection, provider configuration, and reasoning controls for CLI sessions. |
-| [ ] | `tech-talks/copilot-sdk` | model-choice: applies | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
+| [ ] | `tech-talks/harness-fundamentals` | model-choice: applies (via copilot-sdk) | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
 
 ## GitHub Copilot models deprecated on October 19, 2026
 
@@ -100,7 +680,7 @@ No candidate talk crossed the V1 routing threshold.
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | model-choice: explains | Explain editor model choice, provider setup, local models, and sign-in boundaries. |
 | [ ] | `tech-talks/copilot-cli` | model-choice: applies | Explain model selection, provider configuration, and reasoning controls for CLI sessions. |
-| [ ] | `tech-talks/copilot-sdk` | model-choice: applies | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
+| [ ] | `tech-talks/harness-fundamentals` | model-choice: applies (via copilot-sdk) | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
 | [ ] | `tech-talks/enterprise-patterns` | model-choice: governs | Cover organization model policy, cost, access, and data-governance consequences. |
 
 ## Some Git over HTTPS may temporarily require authentication
@@ -137,7 +717,7 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## Multi-repository support and other improvements for GitHub in Slack and Teams
 
@@ -156,8 +736,8 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/pr-trust-stack` | code-quality: explains (via copilot-code-quality) | Explain Code Quality setup, coverage, findings, rulesets, billing, and product boundaries. |
-| [ ] | `tech-talks/agentic-sdlc` | code-quality: applies | Keep quality gates and coverage automation accurate. |
+| [ ] | `tech-talks/copilot-on-github` | code-quality: explains (via copilot-code-quality) | Explain Code Quality setup, coverage, findings, rulesets, billing, and product boundaries. |
+| [ ] | `tech-talks/agent-readiness` | code-quality: applies (via agentic-sdlc) | Keep quality gates and coverage automation accurate. |
 
 ## Upcoming deprecation of selected GitHub Copilot models in mid-November
 
@@ -170,7 +750,7 @@ No candidate talk crossed the V1 routing threshold.
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | model-choice: explains | Explain editor model choice, provider setup, local models, and sign-in boundaries. |
 | [ ] | `tech-talks/copilot-cli` | model-choice: applies | Explain model selection, provider configuration, and reasoning controls for CLI sessions. |
-| [ ] | `tech-talks/copilot-sdk` | model-choice: applies | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
+| [ ] | `tech-talks/harness-fundamentals` | model-choice: applies (via copilot-sdk) | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
 | [ ] | `tech-talks/enterprise-patterns` | model-choice: governs | Cover organization model policy, cost, access, and data-governance consequences. |
 
 ## AI Scan for pull requests generally available
@@ -207,8 +787,8 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
 | [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
 
 ## HydraFusion updates and new Max option
 
@@ -219,11 +799,10 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature)<br>copilot-app: explains (via copilot-app) | Keep the end-to-end VS Code agent workflow and demos executable.<br>Explain Copilot app availability, parallel work, controls, and review workflows. |
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
 | [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs | Cover app access policy, managed settings, and organization rollout. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
 
 ## Visual Studio Code 1.142
 
@@ -235,8 +814,8 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
 | [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
 
 ## GitHub Actions workflow lockfiles in public preview
 
@@ -248,7 +827,7 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
+| [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## GitHub App improvements for least privilege and management
 
@@ -268,10 +847,10 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/enterprise-patterns` | model-choice: governs<br>copilot-app: governs | Cover organization model policy, cost, access, and data-governance consequences.<br>Cover app access policy, managed settings, and organization rollout. |
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
 | [ ] | `tech-talks/vscode-latest` | model-choice: explains | Explain editor model choice, provider setup, local models, and sign-in boundaries. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/copilot-sdk` | model-choice: applies | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
 | [ ] | `tech-talks/copilot-cli` | model-choice: applies | Explain model selection, provider configuration, and reasoning controls for CLI sessions. |
+| [ ] | `tech-talks/harness-fundamentals` | model-choice: applies (via copilot-sdk) | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
 
 ## Audit GitHub Code Quality finding dismissals and reopenings
 
@@ -282,8 +861,8 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/pr-trust-stack` | code-quality: explains (via copilot-code-quality) | Explain Code Quality setup, coverage, findings, rulesets, billing, and product boundaries. |
-| [ ] | `tech-talks/agentic-sdlc` | code-quality: applies | Keep quality gates and coverage automation accurate. |
+| [ ] | `tech-talks/copilot-on-github` | code-quality: explains (via copilot-code-quality) | Explain Code Quality setup, coverage, findings, rulesets, billing, and product boundaries. |
+| [ ] | `tech-talks/agent-readiness` | code-quality: applies (via agentic-sdlc) | Keep quality gates and coverage automation accurate. |
 
 ## Secret scanning blocks Anthropic keys by default, adds Salesforce
 
@@ -304,9 +883,9 @@ No candidate talk crossed the V1 routing threshold.
 |---|---|---|---|
 | [ ] | `tech-talks/enterprise-patterns` | customization: governs<br>enterprise-governance: explains | Cover organization-wide distribution and enforcement of configuration.<br>Explain enterprise rollout, policy, controls, measurement, and federated governance. |
 | [ ] | `tech-talks/copilot-cli` | copilot-cli: explains<br>enterprise-governance: governs | Explain current CLI commands, session lifecycle, steering, and remote workflows.<br>Mention managed settings only when they alter CLI behavior or deployment. |
-| [ ] | `tech-talks/vscode-latest` | copilot-cli: references<br>enterprise-governance: governs | Reference CLI behavior only where it changes cross-client agent continuity.<br>Mention enterprise controls only when they constrain editor capabilities. |
 | [ ] | `tech-talks/copilot-primitives` | customization: explains | Explain instructions, skills, prompts, and agents as distinct configuration primitives. |
-| [ ] | `tech-talks/copilot-hooks` | customization: applies | Keep hook availability, events, and governance behavior accurate. |
+| [ ] | `tech-talks/vscode-latest` | copilot-cli: references<br>enterprise-governance: governs | Reference CLI behavior only where it changes cross-client agent continuity.<br>Mention enterprise controls only when they constrain editor capabilities. |
+| [ ] | `tech-talks/copilot-plugins` | customization: applies | Explain packaging and distributing customization bundles. |
 
 ## Improved detection for withdrawn Dependabot alerts
 
@@ -342,9 +921,9 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/copilot-primitives` | customization: explains | Explain instructions, skills, prompts, and agents as distinct configuration primitives. |
-| [ ] | `tech-talks/copilot-hooks` | customization: applies | Keep hook availability, events, and governance behavior accurate. |
 | [ ] | `tech-talks/copilot-plugins` | customization: applies | Explain packaging and distributing customization bundles. |
 | [ ] | `tech-talks/enterprise-patterns` | customization: governs | Cover organization-wide distribution and enforcement of configuration. |
+| [ ] | `tech-talks/harness-fundamentals` | customization: applies (via copilot-hooks) | Keep hook availability, events, and governance behavior accurate. |
 
 ## Push attribution for commits in limited public preview
 
@@ -372,7 +951,6 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/copilot-azure-mcp` | mcp: applies | Keep Azure MCP installation, trust, tools, and workflow guidance accurate. |
-| [ ] | `tech-talks/mcp-apps` | mcp: depends | Keep MCP Apps protocol, host support, security, and UI behavior accurate. |
 | [ ] | `tech-talks/copilot-plugins` | mcp: depends | Keep plugin-bundled MCP configuration and portability behavior accurate. |
 | [ ] | `tech-talks/copilot-primitives` | mcp: references | Clarify MCP's boundary relative to repository customization primitives. |
 
@@ -401,9 +979,8 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/pr-trust-stack` | copilot-code-review: explains (via copilot-code-review) | Explain code-review configuration, depth, customization, findings, and response workflows. |
-| [ ] | `tech-talks/agentic-sdlc` | copilot-code-review: applies | Keep the automated review and CI trust-factory workflow accurate. |
-| [ ] | `tech-talks/copilot-web` | copilot-code-review: depends | Keep coding-agent response-to-review workflows accurate. |
+| [ ] | `tech-talks/copilot-on-github` | copilot-code-review: explains (via copilot-code-review) | Explain code-review configuration, depth, customization, findings, and response workflows. |
+| [ ] | `tech-talks/agent-readiness` | copilot-code-review: applies (via agentic-sdlc) | Keep the automated review and CI trust-factory workflow accurate. |
 
 ## Triage role users or higher can now archive pull requests
 
@@ -439,10 +1016,10 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/enterprise-patterns` | model-choice: governs<br>copilot-app: governs | Cover organization model policy, cost, access, and data-governance consequences.<br>Cover app access policy, managed settings, and organization rollout. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
 | [ ] | `tech-talks/vscode-latest` | model-choice: explains | Explain editor model choice, provider setup, local models, and sign-in boundaries. |
 | [ ] | `tech-talks/copilot-cli` | model-choice: applies | Explain model selection, provider configuration, and reasoning controls for CLI sessions. |
-| [ ] | `tech-talks/copilot-sdk` | model-choice: applies | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
+| [ ] | `tech-talks/harness-fundamentals` | model-choice: applies (via copilot-sdk) | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
 
 ## Visual Studio Code 1.141
 
@@ -454,8 +1031,8 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
 | [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
 
 ## Purpose-built model for leaked secret detection
 
@@ -476,9 +1053,9 @@ No candidate talk crossed the V1 routing threshold.
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains<br>model-choice: explains<br>copilot-cli: references | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model.<br>Explain editor model choice, provider setup, local models, and sign-in boundaries.<br>Reference CLI behavior only where it changes cross-client agent continuity. |
 | [ ] | `tech-talks/copilot-cli` | model-choice: applies<br>copilot-cli: explains | Explain model selection, provider configuration, and reasoning controls for CLI sessions.<br>Explain current CLI commands, session lifecycle, steering, and remote workflows. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature)<br>copilot-app: explains (via copilot-app) | Keep the end-to-end VS Code agent workflow and demos executable.<br>Explain Copilot app availability, parallel work, controls, and review workflows. |
 | [ ] | `tech-talks/enterprise-patterns` | model-choice: governs<br>copilot-app: governs | Cover organization model policy, cost, access, and data-governance consequences.<br>Cover app access policy, managed settings, and organization rollout. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/copilot-sdk` | model-choice: applies | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
+| [ ] | `tech-talks/harness-fundamentals` | model-choice: applies (via copilot-sdk) | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
 
 ## Discover local models in GitHub Copilot CLI
 
@@ -490,7 +1067,6 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
-| [ ] | `tech-talks/copilot-acp` | copilot-cli: depends | Keep CLI server and ACP protocol integration behavior accurate. |
 | [ ] | `tech-talks/vscode-latest` | copilot-cli: references | Reference CLI behavior only where it changes cross-client agent continuity. |
 
 ## Update your IDE to restore agent activity in Copilot usage metrics
@@ -503,8 +1079,8 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/enterprise-patterns` | enterprise-governance: explains | Explain enterprise rollout, policy, controls, measurement, and federated governance. |
-| [ ] | `tech-talks/vscode-latest` | enterprise-governance: governs | Mention enterprise controls only when they constrain editor capabilities. |
 | [ ] | `tech-talks/exec-strategy` | enterprise-governance: applies | Keep board-level investment and control guidance grounded in available evidence. |
+| [ ] | `tech-talks/vscode-latest` | enterprise-governance: governs | Mention enterprise controls only when they constrain editor capabilities. |
 | [ ] | `tech-talks/copilot-cli` | enterprise-governance: governs | Mention managed settings only when they alter CLI behavior or deployment. |
 
 ## Stacked pull requests generally available
@@ -548,9 +1124,8 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/pr-trust-stack` | copilot-code-review: explains (via copilot-code-review) | Explain code-review configuration, depth, customization, findings, and response workflows. |
-| [ ] | `tech-talks/agentic-sdlc` | copilot-code-review: applies | Keep the automated review and CI trust-factory workflow accurate. |
-| [ ] | `tech-talks/copilot-web` | copilot-code-review: depends | Keep coding-agent response-to-review workflows accurate. |
+| [ ] | `tech-talks/copilot-on-github` | copilot-code-review: explains (via copilot-code-review) | Explain code-review configuration, depth, customization, findings, and response workflows. |
+| [ ] | `tech-talks/agent-readiness` | copilot-code-review: applies (via agentic-sdlc) | Keep the automated review and CI trust-factory workflow accurate. |
 
 ## Unvalidated npm trusted publishing configurations now expire
 
@@ -585,183 +1160,15 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature)<br>copilot-app: explains (via copilot-app) | Keep the end-to-end VS Code agent workflow and demos executable.<br>Explain Copilot app availability, parallel work, controls, and review workflows. |
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
 | [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs | Cover app access policy, managed settings, and organization rollout. |
+| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
 
 ## New fields for SecurityAdvisory GraphQL API
 
 - Published: 2026-10-02
 - Source: https://github.blog/changelog/2026-10-02-new-fields-for-securityadvisory-graphql-api
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Confidential comments on repository security advisories
-
-- Published: 2026-10-02
-- Source: https://github.blog/changelog/2026-10-02-confidential-comments-on-repository-security-advisories
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Repository security advisory comments API in public preview
-
-- Published: 2026-10-02
-- Source: https://github.blog/changelog/2026-10-02-repository-security-advisory-comments-api-in-public-preview
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Rate limits for private vulnerability reports
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-rate-limits-for-private-vulnerability-reports
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Structured forms for private vulnerability reports
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-structured-forms-for-private-vulnerability-reports
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## GitHub Copilot can now interact with desktop apps with computer use
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-github-copilot-can-now-interact-with-desktop-apps
-- Disposition: **review**
-- Topics: copilot-cli, copilot-app
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
-| [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs | Cover app access policy, managed settings, and organization rollout. |
-| [ ] | `tech-talks/copilot-acp` | copilot-cli: depends | Keep CLI server and ACP protocol integration behavior accurate. |
-| [ ] | `tech-talks/vscode-latest` | copilot-cli: references | Reference CLI behavior only where it changes cross-client agent continuity. |
-
-## GitHub Actions: macOS 14 runner image retirement
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-github-actions-macos-14-runner-image-retirement
-- Disposition: **review**
-- Topics: agentic-workflows
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
-
-## GitHub Copilot in VS Code, September 2026 releases
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-github-copilot-in-vs-code-september-2026-releases
-- Disposition: **review**
-- Topics: vscode-copilot
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
-## Accessibility statements highlighted on repository overview
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-accessibility-statements-highlighted-on-repository-overview
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Actions retention now covers checks, runs, and statuses
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-actions-retention-now-covers-checks-runs-and-statuses
-- Disposition: **review**
-- Topics: agentic-workflows
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
-
-## Scheduled code scanning skips inactive repositories
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-scheduled-code-scanning-skips-inactive-repositories
-- Disposition: **review**
-- Topics: code-quality
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/pr-trust-stack` | code-quality: explains (via copilot-code-quality) | Explain Code Quality setup, coverage, findings, rulesets, billing, and product boundaries. |
-| [ ] | `tech-talks/agentic-sdlc` | code-quality: applies | Keep quality gates and coverage automation accurate. |
-
-## Code coverage uploads no longer fail CI for new branches
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-code-coverage-uploads-no-longer-fail-ci-for-new-branches
-- Disposition: **review**
-- Topics: code-quality
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/agentic-sdlc` | code-quality: applies | Keep quality gates and coverage automation accurate. |
-| [ ] | `tech-talks/pr-trust-stack` | code-quality: explains (via copilot-code-quality) | Explain Code Quality setup, coverage, findings, rulesets, billing, and product boundaries. |
-
-## Dynamic workflows in Copilot CLI and the Copilot app
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app
-- Disposition: **review**
-- Topics: copilot-cli, copilot-app, copilot-sdk
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/copilot-acp` | copilot-cli: depends<br>copilot-sdk: depends | Keep CLI server and ACP protocol integration behavior accurate.<br>Distinguish ACP integration from direct SDK embedding. |
-| [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
-| [ ] | `tech-talks/vscode-latest` | copilot-cli: references<br>copilot-sdk: applies | Reference CLI behavior only where it changes cross-client agent continuity.<br>Explain how the SDK underpins portable VS Code agent infrastructure. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app)<br>copilot-sdk: depends (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows.<br>Keep app harness and runtime claims accurate. |
-| [ ] | `tech-talks/copilot-sdk` | copilot-sdk: explains | Explain SDK runtime, APIs, authentication, tools, models, and production integration. |
-
-## New dashboard experience now the default
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-new-dashboard-experience-now-the-default
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## GitHub async merge API generally available
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-github-async-merge-api-generally-available
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Actions Runner Controller release 0.15.0
-
-- Published: 2026-10-01
-- Source: https://github.blog/changelog/2026-10-01-actions-runner-controller-release-0-15-0
-- Disposition: **review**
-- Topics: agentic-workflows
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
-
-## Opt-in dist-tag permissions for npm trusted publishing
-
-- Published: 2026-09-30
-- Source: https://github.blog/changelog/2026-09-30-opt-in-dist-tag-permissions-for-npm-trusted-publishing
 - Disposition: **no-match**
 
 No candidate talk crossed the V1 routing threshold.
@@ -775,10 +1182,9 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/copilot-sdk` | copilot-sdk: explains | Explain SDK runtime, APIs, authentication, tools, models, and production integration. |
+| [ ] | `tech-talks/harness-fundamentals` | copilot-sdk: explains (via copilot-sdk) | Explain SDK runtime, APIs, authentication, tools, models, and production integration. |
+| [ ] | `tech-talks/local-agentic-sdlc` | copilot-sdk: depends (via copilot-app) | Keep app harness and runtime claims accurate. |
 | [ ] | `tech-talks/vscode-latest` | copilot-sdk: applies | Explain how the SDK underpins portable VS Code agent infrastructure. |
-| [ ] | `tech-talks/copilot-acp` | copilot-sdk: depends | Distinguish ACP integration from direct SDK embedding. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-sdk: depends (via copilot-app) | Keep app harness and runtime claims accurate. |
 
 ## Visual Studio Code 1.140
 
@@ -790,55 +1196,8 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
 | [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
-## GitHub Advanced Security trials for GitHub Team
-
-- Published: 2026-09-30
-- Source: https://github.blog/changelog/2026-09-30-github-advanced-security-trials-for-github-team
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## HydraFusion in VS Code and the GitHub Copilot app
-
-- Published: 2026-09-30
-- Source: https://github.blog/changelog/2026-09-30-hydrafusion-in-vs-code-and-the-github-copilot-app
-- Disposition: **review**
-- Topics: vscode-copilot, copilot-cli, copilot-app
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains<br>copilot-cli: references | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model.<br>Reference CLI behavior only where it changes cross-client agent continuity. |
-| [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
-## X25519-only TLS ends for GHE.com on October 7
-
-- Published: 2026-09-30
-- Source: https://github.blog/changelog/2026-09-30-x25519-only-tls-ends-for-ghe-com-on-september-15
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Repository custom runner settings for Dependabot
-
-- Published: 2026-09-29
-- Source: https://github.blog/changelog/2026-09-29-repository-custom-runner-settings-for-dependabot
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Bring business context with external custom properties
-
-- Published: 2026-09-29
-- Source: https://github.blog/changelog/2026-09-29-bring-business-context-with-external-custom-properties
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
 
 ## [Launched] Generally Available: SQL Formatter
 
@@ -850,20 +1209,8 @@ No candidate talk crossed the V1 routing threshold.
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
 | [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
 | [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
-## GPT-6.1 Sol in GitHub Copilot
-
-- Published: 2026-09-29
-- Source: https://github.blog/changelog/2026-09-29-gpt-6-1-sol-in-github-copilot
-- Disposition: **review**
-- Topics: copilot-app
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs | Cover app access policy, managed settings, and organization rollout. |
+| [ ] | `tech-talks/local-agentic-sdlc` | vscode-copilot: depends (via repo-to-feature) | Keep the end-to-end VS Code agent workflow and demos executable. |
 
 ## Visual Studio September Update – Power Your Workflow with Your Model
 
@@ -873,398 +1220,7 @@ No candidate talk crossed the V1 routing threshold.
 
 No candidate talk crossed the V1 routing threshold.
 
-## Self-hosted runner version enforcement date has moved
-
-- Published: 2026-09-28
-- Source: https://github.blog/changelog/2026-09-28-self-hosted-runner-version-enforcement-date-has-moved
-- Disposition: **review**
-- Topics: agentic-workflows
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
-
-## Claude Sonnet 5.5 in GitHub Copilot
-
-- Published: 2026-09-28
-- Source: https://github.blog/changelog/2026-09-28-claude-sonnet-5-5-in-github-copilot
-- Disposition: **review**
-- Topics: model-choice, copilot-app
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/enterprise-patterns` | model-choice: governs<br>copilot-app: governs | Cover organization model policy, cost, access, and data-governance consequences.<br>Cover app access policy, managed settings, and organization rollout. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/vscode-latest` | model-choice: explains | Explain editor model choice, provider setup, local models, and sign-in boundaries. |
-| [ ] | `tech-talks/copilot-cli` | model-choice: applies | Explain model selection, provider configuration, and reasoning controls for CLI sessions. |
-| [ ] | `tech-talks/copilot-sdk` | model-choice: applies | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
-
-## Enterprise managed settings in-product validator
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-25-enterprise-managed-settings-in-product-validator
-- Disposition: **review**
-- Topics: customization, enterprise-governance
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/enterprise-patterns` | customization: governs<br>enterprise-governance: explains | Cover organization-wide distribution and enforcement of configuration.<br>Explain enterprise rollout, policy, controls, measurement, and federated governance. |
-| [ ] | `tech-talks/copilot-primitives` | customization: explains | Explain instructions, skills, prompts, and agents as distinct configuration primitives. |
-| [ ] | `tech-talks/copilot-hooks` | customization: applies | Keep hook availability, events, and governance behavior accurate. |
-| [ ] | `tech-talks/copilot-plugins` | customization: applies | Explain packaging and distributing customization bundles. |
-| [ ] | `tech-talks/copilot-cli` | enterprise-governance: governs | Mention managed settings only when they alter CLI behavior or deployment. |
-
-## Usage metrics API adds pull request review stages
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-25-usage-metrics-api-adds-pull-request-review-stages
-- Disposition: **review**
-- Topics: enterprise-governance
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/enterprise-patterns` | enterprise-governance: explains | Explain enterprise rollout, policy, controls, measurement, and federated governance. |
-| [ ] | `tech-talks/vscode-latest` | enterprise-governance: governs | Mention enterprise controls only when they constrain editor capabilities. |
-| [ ] | `tech-talks/copilot-cli` | enterprise-governance: governs | Mention managed settings only when they alter CLI behavior or deployment. |
-| [ ] | `tech-talks/exec-strategy` | enterprise-governance: applies | Keep board-level investment and control guidance grounded in available evidence. |
-
-## Private saved views for repository issues and "Relates to" issue relationship is generally available
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-25-personal-saved-views-for-repository-issues-and-more
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Changes to query results in the GitHub Actions API and UI
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-25-changes-to-query-results-in-the-github-actions-api-and-ui
-- Disposition: **review**
-- Topics: agentic-workflows
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
-
-## Agentic autofix now uses Copilot Memory
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-25-agentic-autofix-now-uses-copilot-memory
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## GitHub Copilot weekly releases — September 21
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-25-github-copilot-weekly-releases-september-21
-- Disposition: **review**
-- Topics: vscode-copilot
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
-## Updates to GitHub Copilot for Slack and Microsoft Teams
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-25-updates-to-github-copilot-for-slack-and-microsoft-teams
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## CodeQL 2.27.1 adds C and C++ query and Kotlin 2.4.20 support
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-25-codeql-2-27-1-adds-c-and-c-query-and-kotlin-2-4-20-support
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Default Enablement of Copilot features for Copilot Business and Enterprise
-
-- Published: 2026-09-25
-- Source: https://github.blog/changelog/2026-09-24-default-enablement-of-copilot-features-for-copilot-business-and-enterprise
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Require proof of presence for high-impact actions
-
-- Published: 2026-09-24
-- Source: https://github.blog/changelog/2026-09-24-require-proof-of-presence-for-high-impact-actions
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Expired GitHub Actions artifacts no longer shown in UI and API
-
-- Published: 2026-09-24
-- Source: https://github.blog/changelog/2026-09-24-expired-github-actions-artifacts-no-longer-shown-in-ui-and-api
-- Disposition: **review**
-- Topics: agentic-workflows
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
-
-## More ways to request and configure Copilot code reviews
-
-- Published: 2026-09-23
-- Source: https://github.blog/changelog/2026-09-23-copilot-code-review-more-ways-to-request-and-configure-reviews
-- Disposition: **review**
-- Topics: copilot-code-review
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/pr-trust-stack` | copilot-code-review: explains (via copilot-code-review) | Explain code-review configuration, depth, customization, findings, and response workflows. |
-| [ ] | `tech-talks/agentic-sdlc` | copilot-code-review: applies | Keep the automated review and CI trust-factory workflow accurate. |
-| [ ] | `tech-talks/copilot-web` | copilot-code-review: depends | Keep coding-agent response-to-review workflows accurate. |
-
-## Node 20 is no longer available in GitHub Actions
-
-- Published: 2026-09-23
-- Source: https://github.blog/changelog/2026-09-23-node-20-is-no-longer-available-in-github-actions
-- Disposition: **review**
-- Topics: agentic-workflows
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
-| [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
-
-## Visual Studio Code 1.139
-
-- Published: 2026-09-23
-- Source: https://code.visualstudio.com/updates/v1_139
-- Disposition: **review**
-- Topics: vscode-copilot
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
-## Local sandboxing in the GitHub Copilot app
-
-- Published: 2026-09-23
-- Source: https://github.blog/changelog/2026-09-23-local-sandboxing-in-the-github-copilot-app
-- Disposition: **review**
-- Topics: copilot-app
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs | Cover app access policy, managed settings, and organization rollout. |
-
-## OpenTelemetry in the GitHub Copilot app
-
-- Published: 2026-09-23
-- Source: https://github.blog/changelog/2026-09-22-opentelemetry-in-the-github-copilot-app
-- Disposition: **review**
-- Topics: copilot-app, customization, observability
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/enterprise-patterns` | copilot-app: governs<br>customization: governs<br>observability: governs | Cover app access policy, managed settings, and organization rollout.<br>Cover organization-wide distribution and enforcement of configuration.<br>Cover organization telemetry ownership, approved collectors, and controls. |
-| [ ] | `tech-talks/copilot-primitives` | customization: explains<br>observability: applies (via copilot-chat-internals) | Explain instructions, skills, prompts, and agents as distinct configuration primitives.<br>Explain available diagnostics and traces for debugging Copilot interactions. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-| [ ] | `tech-talks/vscode-latest` | observability: applies | Keep VS Code agent observability and managed export claims accurate. |
-| [ ] | `tech-talks/copilot-cli` | observability: applies | Keep CLI telemetry configuration and behavior accurate. |
-
-## New features and improvements in Copilot for JetBrains
-
-- Published: 2026-09-23
-- Source: https://github.blog/changelog/2026-09-22-new-features-and-improvements-in-copilot-for-jetbrains
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Building the new GitHub Copilot Inline Suggestions Model: Part Two
-
-- Published: 2026-09-23
-- Source: https://code.visualstudio.com/blogs/2026/09/23/building-the-github-copilot-inline-suggestions-model-part-two
-- Disposition: **review**
-- Topics: vscode-copilot
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-
-## Faster C++ code intelligence with whole codebase indexing
-
-- Published: 2026-09-22
-- Source: https://github.blog/changelog/2026-09-22-faster-c-code-intelligence-with-whole-codebase-indexing
-- Disposition: **review**
-- Topics: copilot-cli
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
-| [ ] | `tech-talks/copilot-acp` | copilot-cli: depends | Keep CLI server and ACP protocol integration behavior accurate. |
-| [ ] | `tech-talks/vscode-latest` | copilot-cli: references | Reference CLI behavior only where it changes cross-client agent continuity. |
-
-## Claude Opus 5.5 is now available in GitHub Copilot
-
-- Published: 2026-09-22
-- Source: https://github.blog/changelog/2026-09-22-claude-opus-5-5-is-now-available-in-github-copilot
-- Disposition: **review**
-- Topics: model-choice, copilot-app
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/enterprise-patterns` | model-choice: governs<br>copilot-app: governs | Cover organization model policy, cost, access, and data-governance consequences.<br>Cover app access policy, managed settings, and organization rollout. |
-| [ ] | `tech-talks/vscode-latest` | model-choice: explains | Explain editor model choice, provider setup, local models, and sign-in boundaries. |
-| [ ] | `tech-talks/copilot-cli` | model-choice: applies | Explain model selection, provider configuration, and reasoning controls for CLI sessions. |
-| [ ] | `tech-talks/copilot-sdk` | model-choice: applies | Keep SDK model-provider, authentication, and BYOK integration guidance accurate. |
-| [ ] | `tech-talks/multi-agent-coordination` | copilot-app: explains (via copilot-app) | Explain Copilot app availability, parallel work, controls, and review workflows. |
-
-## OpenAI's GPT-6 Sol and GPT-6 Luna now available
-
-- Published: 2026-09-22
-- Source: https://github.blog/changelog/2026-09-22-openais-gpt-6-sol-and-gpt-6-luna-now-available
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Security improvements for SSH
-
-- Published: 2026-09-22
-- Source: https://github.blog/changelog/2026-09-22-security-improvements-for-ssh
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## Deprecation notice: All-platform CodeQL bundle
-
-- Published: 2026-09-22
-- Source: https://github.blog/changelog/2026-09-22-deprecation-notice-all-platform-codeql-bundle
-- Disposition: **review**
-- Topics: copilot-cli
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/copilot-cli` | copilot-cli: explains | Explain current CLI commands, session lifecycle, steering, and remote workflows. |
-| [ ] | `tech-talks/copilot-acp` | copilot-cli: depends | Keep CLI server and ACP protocol integration behavior accurate. |
-| [ ] | `tech-talks/vscode-latest` | copilot-cli: references | Reference CLI behavior only where it changes cross-client agent continuity. |
-
-## Refreshed repository pull requests page generally available
-
-- Published: 2026-09-22
-- Source: https://github.blog/changelog/2026-09-21-refreshed-repository-pull-requests-page-generally-available
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## GitHub Enterprise adds credential inventory exports
-
-- Published: 2026-09-21
-- Source: https://github.blog/changelog/2026-09-21-github-enterprise-adds-credential-inventory-exports
-- Disposition: **no-match**
-
-No candidate talk crossed the V1 routing threshold.
-
-## [In preview] Public Preview: Introducing a Guided Copilot Experience for Building Azure Apps in VS Code
-
-- Published: 2026-09-21
-- Source: https://azure.microsoft.com/updates?id=572214
-- Disposition: **review**
-- Topics: vscode-copilot
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
-## [In preview] Public Preview: Foundry Routines in Foundry Agent Service
-
-- Published: 2026-09-18
-- Source: https://azure.microsoft.com/updates?id=563536
-- Disposition: **review**
-- Topics: foundry
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/copilot-with-foundry` | foundry: explains | Explain when Copilot needs Foundry and how organizational knowledge is connected. |
-| [ ] | `tech-talks/copilot-azure-mcp` | foundry: applies | Keep Foundry-related Azure skills and MCP workflows accurate. |
-| [ ] | `tech-talks/multi-agent-coordination` | foundry: references (via agent-teams) | Reference Foundry orchestration only when it changes the multi-agent mechanism comparison. |
-
-## [Launched] Generally Available: Enable and disable controls for Microsoft Foundry agents in Agent 365
-
-- Published: 2026-09-18
-- Source: https://azure.microsoft.com/updates?id=571826
-- Disposition: **review**
-- Topics: foundry
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/copilot-with-foundry` | foundry: explains | Explain when Copilot needs Foundry and how organizational knowledge is connected. |
-| [ ] | `tech-talks/copilot-azure-mcp` | foundry: applies | Keep Foundry-related Azure skills and MCP workflows accurate. |
-| [ ] | `tech-talks/multi-agent-coordination` | foundry: references (via agent-teams) | Reference Foundry orchestration only when it changes the multi-agent mechanism comparison. |
-
-## [In preview] Public Preview: Network egress controls for hosted agents in Microsoft Foundry
-
-- Published: 2026-09-18
-- Source: https://azure.microsoft.com/updates?id=571821
-- Disposition: **review**
-- Topics: foundry
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/copilot-with-foundry` | foundry: explains | Explain when Copilot needs Foundry and how organizational knowledge is connected. |
-| [ ] | `tech-talks/copilot-azure-mcp` | foundry: applies | Keep Foundry-related Azure skills and MCP workflows accurate. |
-| [ ] | `tech-talks/multi-agent-coordination` | foundry: references (via agent-teams) | Reference Foundry orchestration only when it changes the multi-agent mechanism comparison. |
-
-## [Launched] Generally Available: Publishing Microsoft Foundry agents to Microsoft 365 Copilot and Teams
-
-- Published: 2026-09-18
-- Source: https://azure.microsoft.com/updates?id=571816
-- Disposition: **review**
-- Topics: foundry
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/copilot-with-foundry` | foundry: explains | Explain when Copilot needs Foundry and how organizational knowledge is connected. |
-| [ ] | `tech-talks/copilot-azure-mcp` | foundry: applies | Keep Foundry-related Azure skills and MCP workflows accurate. |
-| [ ] | `tech-talks/multi-agent-coordination` | foundry: references (via agent-teams) | Reference Foundry orchestration only when it changes the multi-agent mechanism comparison. |
-
-## Visual Studio Code 1.138
-
-- Published: 2026-09-16
-- Source: https://code.visualstudio.com/updates/v1_138
-- Disposition: **review**
-- Topics: vscode-copilot
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
-## Building the new GitHub Copilot Inline Suggestions Model: Part One
-
-- Published: 2026-09-16
-- Source: https://code.visualstudio.com/blogs/2026/09/16/building-the-github-copilot-inline-suggestions-model-part-one
-- Disposition: **review**
-- Topics: vscode-copilot
-
-| Review | Talk | Relationship | Obligation |
-|---|---|---|---|
-| [ ] | `tech-talks/vscode-latest` | vscode-copilot: explains | Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model. |
-| [ ] | `tech-talks/agent-dev-loop` | vscode-copilot: depends | Keep the end-to-end VS Code agent workflow and demos executable. |
-| [ ] | `tech-talks/copilot-primitives` | vscode-copilot: depends (via copilot-chat-internals) | Keep VS Code chat debugging surfaces and diagnostics accurate. |
-
 ## Anomalies
 
-- Visual Studio Code 1.144 (Insiders): future-dated
+- Visual Studio Code 1.145 (Insiders): future-dated
 
