@@ -1,8 +1,62 @@
 /* Small local refinements for the artifact and primitive-map scenes. */
+.sc-know-how-hero h1 {
+  margin-top: 20px; max-width: 1280px; font-size: 76px;
+  color: var(--text);
+}
+.sc-know-how-hero .scene { flex: 0 0 auto; height: 516px; margin-top: 26px; }
+.sc-know-how-hero .hero-phrase { white-space: nowrap; color: var(--purple-light); }
+.sc-know-how-hero .hero-meta { margin: auto 0 0; font: 500 16px var(--mono); color: var(--muted); }
+.sc-know-how-hero .hero-guidance { stroke-width: 2.5; filter: drop-shadow(0 0 18px #b58aff24); }
+.sc-know-how-hero .hero-draft { stroke: var(--purple-light); stroke-opacity: .35; }
+.sc-know-how-hero .hero-artifact { font-size: 23px; font-weight: 700; }
+.sc-working-layers h2 { max-width: 1330px; font-size: 54px; }
+.sc-working-layers .scene { flex: 0 0 auto; height: 502px; margin-top: 24px; }
+.sc-working-layers .layer-label { fill: var(--purple-light); font-size: 18px; letter-spacing: .1em; }
+.sc-working-layers .layer-question { font-size: 25px; font-weight: 700; }
+.sc-working-layers .footnote { margin-top: 16px; font-size: 19px; font-style: normal; }
 .scene .artifact-code { font-family: var(--mono); }
 .scene .artifact-badge { fill: var(--orange); }
 .scene .artifact-proof-title { font-weight: 700; }
 .scene .primitive-label { font-size: 30px; font-weight: 700; }
+
+/* Knowledge → work: local narrative scenes, with a fully readable settled state. */
+.sc-instruction-reuse .scene,
+.sc-instruction-sources .scene,
+.sc-instruction-context .scene,
+.sc-instruction-examples .scene,
+.sc-instruction-maintenance .scene,
+.sc-instruction-locations .scene,
+.sc-instruction-repo .scene,
+.sc-instruction-selectors .scene,
+.sc-instruction-trial .scene,
+.sc-instruction-troubleshoot .scene { flex: 0 0 auto; height: 500px; margin-top: 24px; }
+.instruction-picture .wire.link { stroke: var(--purple-light); }
+.instruction-picture .instruction-rule { font-size: 25px; }
+.instruction-picture .instruction-example { font-size: 21px; }
+.instruction-picture .instruction-output { font-size: 20px; }
+.instruction-picture .instruction-diff { font: 23px var(--mono); }
+.instruction-picture .instruction-location { font-size: 24px; }
+.instruction-picture .instruction-selector { font-size: 25px; }
+.instruction-picture .instruction-match { font: 22px var(--mono); }
+.instruction-picture .instruction-trial-code { font: 20px var(--mono); }
+.instruction-picture .instruction-contribution { font-size: 19px; }
+.instruction-picture .instruction-file-line { font: 17px var(--mono); }
+.instruction-picture .instruction-maintenance-request { font-size: 20px; }
+.instruction-picture .instruction-trial-request { font-size: 18px; }
+.instruction-picture .instruction-troubleshoot-text { font-size: 18px; }
+.instruction-picture .instruction-troubleshoot-signal { font-size: 17px; }
+.sc-instruction-repo .artifact-proof-text { font-size: 14px; }
+.sc-instruction-repo h2,
+.sc-instruction-context h2 { font-size: 52px; }
+.instruction-pointer-code { font: 16px var(--mono); fill: var(--text); }
+.instruction-pointer-path { font: 15px var(--mono); fill: var(--text); }
+.instruction-pointer-detail { font-size: 18px; fill: var(--muted); }
+.instruction-flow-label { font: 700 14px var(--mono); letter-spacing: .035em; }
+.instruction-flow-path { font: 14px var(--mono); fill: var(--text); }
+.instruction-flow-body { font-size: 16px; fill: var(--text); }
+.instruction-flow-excluded { font: 14px var(--mono); fill: var(--muted); }
+.instruction-flow-request { font-size: 19px; font-weight: 650; fill: var(--text); }
+.sc-instruction-context .instruction-flow-path { font-size: 13px; }
 
 /* Preserve the complete first-party bibliography without touching the shared frame. */
 .s-references .refs { margin-top: 16px; gap: 20px; }
@@ -11,3 +65,30 @@
 .s-references .ref b { font-size: 19px; }
 .s-references .ref span { font-size: 16px; }
 .s-references .ref code { font-size: 11px; }
+
+/* Prompt capture and task-relevant expertise: scoped to the new local scenes. */
+.sc-prompt-capture .scene, .sc-prompt-contract .scene,
+.sc-prompt-reuse .scene, .sc-prompt-share .scene,
+.sc-skill-discovery .scene, .sc-skill-contract .scene,
+.sc-skill-knowledge .scene, .sc-skill-resources .scene,
+.sc-skill-invocation .scene { flex: 0 0 auto; height: 500px; margin-top: 24px; }
+.expertise-picture .expertise-text { font-size: 22px; }
+.expertise-picture .expertise-body { font-size: 22px; }
+.expertise-picture .expertise-label { font: 700 17px var(--mono); }
+.expertise-picture .expertise-mono { font: 20px var(--mono); }
+.expertise-picture .expertise-code { font: 20px var(--mono); white-space: pre; }
+.expertise-picture .wire.link { stroke: var(--purple-light); }
+
+/* Documentation Reviewer: role → existing method → inspectable proposal. */
+.sc-reviewer-contract .scene, .sc-reviewer-trace .scene,
+.sc-reviewer-judgment .scene, .sc-reviewer-composition .scene {
+  flex: 0 0 auto; height: 500px; margin-top: 24px;
+}
+.reviewer-picture .expertise-text { font-size: 22px; }
+.reviewer-picture .expertise-body { font-size: 22px; }
+.reviewer-picture .expertise-label { font: 700 17px var(--mono); }
+.reviewer-picture .reviewer-code { font: 19px var(--mono); white-space: pre; }
+.reviewer-picture .reviewer-path { font: 18px var(--mono); }
+.reviewer-picture .reviewer-diff { font: 28px var(--mono); }
+.reviewer-picture .wire.link { stroke: var(--purple-light); }
+.sc-reviewer-trace h2, .sc-reviewer-composition h2 { font-size: 52px; }
