@@ -1,1020 +1,1308 @@
 /*
-  GitHub Copilot CLI — teaching data and speaker notes.
-  The README is the landing page; this file is the talk and handout.
+  Copilot CLI: teaching source and printable handout.
+  Evidence reviewed 2026-11-02. Representative traces are scripts, never run logs.
+  Distance-first narrative approved 2026-11-03; product verification date unchanged.
 */
 (() => {
   const S = (id, part, title, more = {}) => ({ id, part, title, section: part ? `Part ${part}` : 'Frame', ...more });
-
   const SRC = {
-    about: { label: 'About GitHub Copilot CLI', href: 'https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli' },
-    use: { label: 'Use GitHub Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli' },
+    about: { label: 'About Copilot CLI', href: 'https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli' },
+    use: { label: 'Use Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli' },
     install: { label: 'Install Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli' },
-    command: { label: 'GitHub Copilot CLI command reference', href: 'https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference' },
-    plan: { label: 'Plan Mode announcement and steering', href: 'https://github.blog/changelog/2026-01-21-github-copilot-cli-plan-before-you-build-steer-as-you-go/' },
-    sandbox: { label: 'About cloud and local sandboxes', href: 'https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes' },
-    schedule: { label: 'Scheduling prompts in GitHub Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/schedule-prompts' },
-    fleet: { label: 'Running tasks in parallel with /fleet', href: 'https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet' },
-    fleetHowto: { label: 'Speeding up task completion with /fleet', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/speeding-up-task-completion' },
-    remote: { label: 'Steering a session remotely', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/steer-remotely' },
-    remotePreview: { label: 'Remote control CLI sessions on web and mobile (public preview)', href: 'https://github.blog/changelog/2026-04-13-remote-control-cli-sessions-on-web-and-mobile-in-public-preview/' },
-    chronicle: { label: 'Using GitHub Copilot CLI session data (/chronicle)', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle' },
-    chronicleConcept: { label: 'About GitHub Copilot CLI session data', href: 'https://docs.github.com/en/copilot/concepts/agents/copilot-cli/chronicle' },
-    best: { label: 'Copilot CLI best practices', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices' },
-    instructions: { label: 'Adding custom instructions for Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/add-custom-instructions' },
-    plugin: { label: 'Finding and installing plugins for Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing' },
-    pluginAbout: { label: 'About plugins for Copilot CLI', href: 'https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-cli-plugins' },
-    pluginNews: { label: 'Agent Plugins 1.0 in VS Code, Copilot CLI, and Copilot app', href: 'https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app' },
-    releases: { label: 'GitHub Copilot CLI releases', href: 'https://github.com/github/copilot-cli/releases' },
-    memory: { label: 'Copilot repository instructions and memory', href: 'https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-instructions' },
-    mcp: { label: 'Add an MCP server to Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#add-an-mcp-server' },
-    pluginsTalk: { label: 'Copilot Plugins practitioner talk', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/copilot-plugins' }
+    command: { label: 'CLI command reference', href: 'https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference' },
+    plan: { label: 'Plan before you build; steer as you go', href: 'https://github.blog/changelog/2026-01-21-github-copilot-cli-plan-before-you-build-steer-as-you-go/' },
+    sandbox: { label: 'Cloud and local sandbox boundaries', href: 'https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes' },
+    sandboxGA: { label: 'Local sandboxing GA · October 7', href: 'https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available' },
+    cloud: { label: 'Connected cloud experience GA · October 28', href: 'https://github.blog/changelog/2026-10-28-work-from-anywhere-with-a-new-connected-copilot-cloud-experience' },
+    cloudDocs: { label: 'About cloud sandboxes', href: 'https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-sandboxes' },
+    connected: { label: 'Copilot on GitHub', href: 'https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-on-github' },
+    models: { label: 'Add models and discover Ollama', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-llm-models' },
+    modelNews: { label: 'Discover local models · October 7', href: 'https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli' },
+    permissions: { label: 'Allowing safe commands', href: 'https://docs.github.com/en/copilot/concepts/customizations/allowing-safe-commands' },
+    assisted: { label: 'Assisted permissions GA · October 26', href: 'https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available' },
+    managed: { label: 'Managed settings enforcement · October 13', href: 'https://github.blog/changelog/2026-10-13-enterprise-managed-settings-enforcement-updates' },
+    workflow: { label: 'Dynamic workflows', href: 'https://docs.github.com/en/copilot/concepts/agents/dynamic-workflows' },
+    workflowUse: { label: 'Use dynamic workflows', href: 'https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows' },
+    workflowNews: { label: 'Dynamic workflows public preview · October 1', href: 'https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/' },
+    schedule: { label: 'Schedule prompts', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/schedule-prompts' },
+    fleet: { label: 'Parallel tasks with /fleet', href: 'https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet' },
+    remote: { label: 'Steer a session remotely', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/steer-remotely' },
+    chronicle: { label: 'Use session data with /chronicle', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle' },
+    instructions: { label: 'Add repository instructions', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/add-custom-instructions' },
+    best: { label: 'CLI best practices', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices' },
+    releases: { label: 'Official CLI releases', href: 'https://github.com/github/copilot-cli/releases' },
+    stable: { label: 'Stable v1.0.105', href: 'https://github.com/github/copilot-cli/releases/tag/v1.0.105' },
+    rubberDuck: { label: 'Second opinion with the rubber duck agent', href: 'https://docs.github.com/en/copilot/concepts/agents/copilot-cli/rubber-duck' }
   };
-  const refs = (...keys) => keys.map((k) => SRC[k]);
+  const refs = (...keys) => keys.map(k => SRC[k]);
+  const trace = (command, request, lines, result) => [
+    { type: 'prompt', text: command }, { type: 'user', text: request },
+    { type: 'thinking', label: 'Representative trace · proposed live check' },
+    { type: 'response', lines }, { type: 'divider' }, { type: 'outcome', text: result }
+  ];
+  const pair = (a, an, b, bn, z = 'purple') => ({ left: { label: a, note: an }, right: { label: b, note: bn, z } });
 
   const slides = [
-    S('title', 0, 'GitHub Copilot CLI', {
-      chrome: false, visual: 'session-bridge',
-      subtitle: 'AI at the Point of Work',
-      tagline: 'Close distance across intent, complexity, context, time, and geography.',
-      meta: 'CopilotTraining · Practitioner Tech Talk'
+    S('title', 0, 'GitHub Copilot CLI: Intelligence Within Reach', {
+      chrome: false, scene: 'within-reach', subtitle: 'Bring intelligence to the work, and keep the worker within reach.',
+      tagline: 'Bring intelligence to the work, and keep the worker within reach.',
+      meta: 'CopilotTraining · Practitioner Tech Talk · November 2026'
     }),
-    S('core-question', 0, 'How do I bring AI to where the work actually is — and keep steering it from wherever I am?', {
-      pill: 'Core Question',
-      subtitle: 'One session can connect the task, its execution place, and the person who reviews the result.',
-      highlight: 'Clarify before action; keep authority and evidence visible.',
-      routing: ['intent', 'execution', 'session', 'steering'],
-      routingLabel: 'Reduce the distance',
+    S('core-question', 0, 'How do I get AI help right where I’m working?', {
+      pill: 'Core question', subtitle: 'Bring intelligence to the work, and keep the worker within reach.',
+      highlight: 'Close a useful distance; verify the result and retain authority.',
+      routing: ['worker + work', 'intelligence + data', 'workflow + system', 'now + later'],
+      routingLabel: 'Four distances to close',
       roles: [
-        { icon: '⌨️', title: 'Developer', description: 'Diagnose code and runtime behavior from the terminal.' },
-        { icon: '⚙️', title: 'Platform engineer', description: 'Choose where operational context and tools remain.' },
-        { icon: '🧭', title: 'CLI practitioner', description: 'Match the work to a mode and keep review in reach.' }
+        { icon: '⌨️', title: 'Developer', description: 'Diagnose a container using the actual listener and logs.' },
+        { icon: '⚙️', title: 'Platform engineer', description: 'Inspect a running service within approved host access.' },
+        { icon: '🧭', title: 'Practitioner', description: 'Continue useful work across devices and interruptions.' }
       ],
       stats: [
-        { title: 'Intent', description: 'Copilot asks; the practitioner approves the plan.' },
-        { title: 'Authority', description: 'Tool permissions define what Copilot may execute.' },
-        { title: 'Evidence', description: 'A report, diff, test, or runtime signal is reviewed.' }
-      ],
-      notes: [
-        '"The terminal is a strong control surface when runtime context and tools matter. The session keeps that investigation steerable."',
-        'Name the actors: the practitioner sets the task and approves consequential work; Copilot proposes or runs only within the configured controls.',
-        'The session joins intent, execution, context, and steering. The following sections test that claim with a Docker example, a CI artifact, recovery, and a host-local remote scenario.',
-        '→ Start with the map: five kinds of distance, and the specific capability that changes each one.'
-      ],
-      know: [
-        'The original question wording is preserved from the approved talk.',
-        'Copilot CLI is one possible control surface. Editor-first code changes, GitHub-hosted collaboration, or another governed tool can be a better fit for other tasks.'
-      ],
-      sources: refs('about', 'use'),
-      seconds: 65
+        { title: 'Choose placement', description: 'Model, tools, and steering can live apart.' },
+        { title: 'Inspect proof', description: 'Keep the input beside a test or finding.' },
+        { title: 'Name authority', description: 'Permission decisions and acceptance differ.' }
+      ]
     }),
-    S('contents', 0, 'Four moves bring the session closer to the work', {
+    S('contents', 0, 'Follow the investigation across four distances', {
       sections: [
-        { icon: '🧭', title: 'Plan Before You Build', subtitle: 'Clarify intent', blurb: 'Ask, scope, approve, then inspect the Docker result.', slide: 4 },
-        { icon: '⚖️', title: 'Choose the Right Mode', subtitle: 'Bound autonomy', blurb: 'Match interactive, CI, fan-out, schedule, or delegation to the task.', slide: 10 },
-        { icon: '🔄', title: 'Keep the Session Alive', subtitle: 'Preserve context', blurb: 'Compact deliberately, carry repository knowledge, and recover turns.', slide: 21 },
-        { icon: '🌍', title: 'Work from Anywhere', subtitle: 'Separate execution and steering', blurb: 'Keep data on its host while the operator supervises remotely.', slide: 26 }
-      ],
-      notes: [
-        '"We will move from the intent decision to operating boundaries, then use session continuity to earn the remote handoff."',
-        'Point to the four opener numbers. The contents links jump to slides 4, 10, 21, and 26.',
-        '→ First, make the desired outcome and the approved plan visible before tool execution begins.'
-      ],
-      know: ['The four section names preserve the approved recipe spine.'],
-      sources: refs('about'),
-      seconds: 35
+        { icon: '⌨️', title: 'Worker ↔ Work', subtitle: 'Ask, inspect, decide here', blurb: 'Use Docker output to choose the next check in the same loop.', slide: 5 },
+        { icon: '🔎', title: 'Intelligence ↔ Data', subtitle: 'Reach decisive evidence', blurb: 'Inspect staging logs and select the provider deliberately.', slide: 10 },
+        { icon: '⚙️', title: 'Workflow ↔ Running System', subtitle: 'Reason inside the process', blurb: 'Return a CI explanation and save the staging procedure.', slide: 15 },
+        { icon: '⏱️', title: 'Now ↔ Later', subtitle: 'Keep useful work in reach', blurb: 'Verify the task, context, or session that carries forward.', slide: 24 }
+      ]
     }),
-    S('part-1', 1, 'Plan Before You Build', {
-      scene: 'opener',
-      subtitle: 'Turn an ambiguous runtime request into a plan the operator can approve.',
+    S('part-1', 1, 'Worker ↔ Work', {
+      scene: 'opener', subtitle: 'Keep the developer’s request, Docker evidence, and next decision in one inspectable loop.',
       cards: [
-        { icon: '🧭', title: 'Map the gap', blurb: 'Intent is the first distance' },
-        { icon: '❓', title: 'Ask first', blurb: 'Clarify the diagnostic scope' },
-        { icon: '✅', title: 'Approve evidence', blurb: 'Inspect before changing files' }
+        { icon: '❓', title: 'Developer asks', blurb: 'Investigate the backend' },
+        { icon: '🧾', title: 'Copilot inspects', blurb: 'Logs and published port' },
+        { icon: '🔎', title: 'Developer decides', blurb: 'Review the next HTTP probe' }
       ],
-      terminal: { context: 'Backend container will not start', detail: 'Question → plan → two focused checks' },
-      notes: [
-        '"Plan Mode changes the order of work: clarify the request, review the plan, then let Copilot act within the approved scope."',
-        'This Docker scenario is an illustrative example retained from the source talk; it is not a published benchmark or a live run in this conversion.',
-        '→ The distance model gives us a way to see why the next sections belong in the same talk.'
-      ],
-      know: ['The source talk compares a 45-minute, eight-attempt baseline with an eight-minute, two-check scenario. Keep both values labeled as illustrative estimates wherever shown.'],
-      sources: refs('plan', 'about'),
-      seconds: 45
+      terminal: { context: 'Backend container will not start', detail: 'Clarify → inspect → decide' }
     }),
-    S('distance-model', 1, 'One session closes five kinds of distance', {
-      scene: 'signals',
+    S('distance-model', 0, 'Choose the gap; inspect what comes closer', {
+      scene: 'signals', subtitle: 'What is separated? What brings it closer? What observable result improves?',
       rows: [
-        { label: 'Intent', description: 'Ask before choosing an interpretation', tag: 'Plan Mode', z: 'purple' },
-        { label: 'Complexity', description: 'Split a plan into independent tasks', tag: '/fleet', z: 'local' },
-        { label: 'Context', description: 'Carry and recover useful session state', tag: 'compact + memory', z: 'green' },
-        { label: 'Time', description: 'Hand off long-running repository work', tag: '& delegation', z: 'github' },
-        { label: 'Geography', description: 'Run where the runtime evidence lives', tag: '--remote', z: 'orange' }
+        { label: 'Worker ↔ Work', description: 'Ask beside Docker → inspect logs and mapping → choose a probe', tag: 'Next check', z: 'orange' },
+        { label: 'Intelligence ↔ Data', description: 'Start on staging → read approved logs → check an aggregate', tag: 'Source + finding', z: 'purple' },
+        { label: 'Workflow ↔ System', description: 'CI runs copilot -p → return why.md beside the failed test', tag: 'Proposed why', z: 'local' },
+        { label: 'Now ↔ Later', description: 'Continue the same session → verify host, scope, and next step', tag: 'Checked state', z: 'green' }
       ],
-      subtitle: 'Each move has a different decision and a different boundary.',
-      footnote: 'A route map, not a feature ranking.',
-      notes: [
-        '"These five distances are a map of practitioner decisions, not five features to turn on at once."',
-        'Trace the row labels from intent through geography. Later, separate /fleet on one execution host from multiple independent --remote sessions.',
-        '→ The first decision is whether the task is clear enough to begin execution.'
-      ],
-      know: [
-        'Intent is handled through Plan Mode; complexity through explicit /fleet decomposition; context through compaction and repository memory; time through cloud delegation; geography through host-local remote sessions.',
-        'The pattern stops fitting when another surface owns the decisive context, or when the operator cannot safely grant the required tools.'
-      ],
-      sources: refs('about', 'plan', 'fleet', 'remote'),
-      seconds: 65
+      footnote: 'Model location, tool location, continuity, and permission policy remain separate decisions.'
     }),
-    S('plan-mode-loop', 1, 'Plan Mode puts the decision before the edit', {
-      scene: 'showdown',
-      leftLabel: 'Start coding immediately',
-      rightLabel: 'Clarify, then approve',
-      subtitle: 'Shift+Tab enters Plan Mode in an interactive session.',
-      pairs: [
-        { left: { label: 'Request', note: 'One interpretation is assumed' }, right: { label: 'Request', note: 'Operator states the desired result', z: 'purple' } },
-        { left: { label: 'Generate', note: 'Changes arrive before ambiguity is surfaced' }, right: { label: 'Questions', note: 'Copilot asks about logs, config, and scope', z: 'purple' } },
-        { left: { label: 'Discover mismatch', note: 'Review finds an unsuitable change' }, right: { label: 'Plan review', note: 'Operator approves or redirects the plan', z: 'orange' } },
-        { left: { label: 'Repeat', note: 'Source scenario: 8 attempts, 45 minutes' }, right: { label: 'Execute', note: 'Source scenario: 2 checks, 8 minutes', z: 'green' } }
-      ],
-      outcomeLeft: { icon: '↻', label: '45m / 8 attempts · illustrative' },
-      outcomeRight: { icon: '✓', label: '8m / 2 checks · illustrative' },
-      footnote: 'The time and attempt counts are source-talk scenario estimates, not measured study results.',
-      notes: [
-        '"Plan Mode gives the practitioner an explicit point to correct the interpretation before edits begin."',
-        'The 45/8 and 8/2 figures come from the source scenario. No test protocol, logs, or comparative study accompany them, so do not call them measured savings.',
-        'Shift+Tab is the documented interactive toggle in the talk source. Current shortcuts and options can change; confirm them in the command reference.',
-        '→ Let us make the clarification exchange concrete with the backend-container request.'
-      ],
-      know: [
-        'The source scenario contrasts eight attempts over 45 minutes with two targeted checks over eight minutes. Treat each number as illustrative, not a guaranteed result.',
-        'Plan Mode and /autopilot or /goal are separate controls. The latter commands focus an objective; they are not synonyms for collaborative planning.',
-        'The source uses follow-up prompts such as “Also check if Redis is running” and “Focus on authentication-related errors first” to illustrate steering while a response is in progress.',
-        'The source description identifies ask_user as the clarification mechanism. The practitioner still owns whether the plan is acceptable.'
-      ],
-      sources: refs('plan', 'command', 'releases'),
-      seconds: 60
-    }),
-    S('docker-clarify', 1, 'The operator narrows the Docker question before Copilot checks', {
-      scene: 'terminal',
-      termTitle: 'Illustrative Plan Mode transcript',
-      subtitle: 'The request, questions, and human answer stay visible together.',
-      transcript: [
-        { type: 'prompt', text: 'copilot' },
-        { type: 'user', text: 'Debug why the backend container will not start.' },
-        { type: 'thinking', label: 'Copilot · Plan Mode asks:' },
-        { type: 'response', lines: ['Check logs, compose config, or both?', 'Include environment analysis?', 'Any recent service or network changes?'] },
-        { type: 'user', text: 'Start with logs; inspect config if the logs point there.' },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Scope is now logs first, then config if relevant.' }
-      ],
-      footnote: 'Illustrative scenario from the talk source; the transcript is not a recorded CLI session.',
-      notes: [
-        '"Notice who narrows the task: Copilot asks, and the operator chooses logs first with configuration as a conditional next step."',
-        'Keep the example scenario label visible. This is a representative script, not a claim that the deck author executed it.',
-        '→ A clear answer lets Copilot propose a bounded plan rather than silently broaden the diagnosis.'
-      ],
-      know: [
-        'The source example asks whether to inspect docker-compose configuration, container logs, or both; whether to include environment variables; and whether recent service or network changes matter.',
-        'The operator answer is to start with logs and consult configuration if needed. Avoid sharing actual secrets in prompts; inspect secret names or approved redacted signals instead.'
-      ],
-      sources: refs('plan', 'use', 'best'),
-      seconds: 75
-    }),
-    S('docker-plan', 1, 'The approved plan makes two checks inspectable', {
-      scene: 'four-phases',
-      subtitle: 'Copilot proposes; the operator accepts the scope; the result remains subject to review.',
+    S('plan-mode-loop', 1, 'Shape Copilot’s next action beside the task', {
+      scene: 'four-phases', subtitle: 'Shift+Tab enters Plan Mode: clarify the backend request before tools act in the same session.',
       stages: [
-        { label: '1', name: 'Ask', icon: '❓', description: 'Confirm logs first and config only if relevant' },
-        { label: '2', name: 'Plan', icon: '🧾', description: 'Read backend logs, inspect config if indicated' },
-        { label: '3', name: 'Approve', icon: '✋', description: 'Operator reviews the plan before execution' },
-        { label: '4', name: 'Verify', icon: '🔎', description: 'Check the port mapping and rerun the container', target: true }
+        { label: '1', name: 'Request', icon: '⌨️', description: 'Developer names the failing backend' },
+        { label: '2', name: 'Clarify', icon: '❓', description: 'Copilot asks about evidence and scope' },
+        { label: '3', name: 'Review', icon: '✋', description: 'Developer approves or redirects the plan' },
+        { label: '4', name: 'Inspect', icon: '🔎', description: 'Tool policy gates actions; developer checks results', target: true }
       ],
-      stageLabel: 'Step',
-      gateLabel: 'human check',
-      footnote: 'The source example reports 5001:5000 versus the app’s expected internal port 5000; it is an illustrative output.',
-      notes: [
-        '"The review gate is part of the mechanism: a proposed plan is not the same thing as permission to execute it."',
-        'The source example identifies a port mapping of 5001:5000 while the app expects internal port 5000, then proposes a fix. Label it as sample output and ask the presenter to validate the actual compose file and health check in a real demo.',
-        'Do not promise a successful container start from the drawing; the observable confirmation is the operator’s own rerun and health check.',
-        '→ The operator can also steer or reject a tool request when it crosses the agreed boundary.'
-      ],
-      know: [
-        'A port mapping uses host and container ports; the example’s reported mapping and expected app port are taken from the source talk.',
-        'The source’s example change is service.ports from 5001:5000 to 5000:5000. Treat the mapping as illustrative and verify the actual compose file and expected listener before editing.',
-        'The source does not include an attached run log. Do not present the root cause or the eight-minute outcome as independently observed evidence.',
-        'A useful acceptance check is the service starting and a health endpoint or equivalent returning the expected result.'
-      ],
-      sources: refs('plan', 'use'),
-      seconds: 75
+      stageLabel: 'Move', gateLabel: 'scope check'
     }),
-    S('steer-boundary', 1, 'A rejected tool request can redirect the work', {
-      scene: 'terminal',
-      termTitle: 'Illustrative rejection and redirect',
-      subtitle: 'Permission decisions and task steering are separate from Copilot’s proposed behavior.',
-      transcript: [
-        { type: 'prompt', text: 'copilot · checking a temporary workspace' },
-        { type: 'user', text: 'Keep generated artifacts in tmp; do not remove them.' },
-        { type: 'thinking', label: 'Copilot requests a destructive command:' },
-        { type: 'response', lines: ['rm -rf tmp/*'] },
-        { type: 'user', text: 'Esc · Do not delete tmp; those artifacts are needed.' },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Operator rejects the request and explains the constraint.' }
-      ],
-      footnote: 'The command is a warning example from the source talk, not an instruction to run.',
-      notes: [
-        '"A rejection can carry useful context. The operator blocks the proposed deletion and explains why the files matter."',
-        'Point out the actors: Copilot proposes a tool action; the configured permission control asks; the operator approves, denies, or redirects. A rejected request is not evidence that the underlying task is complete.',
-        '→ Part two applies the same authority judgment to different operating modes.'
-      ],
-      know: [
-        'The source describes Escape plus inline feedback as a way to reject a tool permission and redirect Copilot. Verify current key behavior against the installed CLI version.',
-        'Never run the destructive command from the example. It exists to make the permission boundary visible.'
-      ],
-      sources: refs('use', 'command', 'best'),
-      seconds: 65
+    S('docker-clarify', 1, 'Copilot asks; the developer chooses logs first', {
+      scene: 'terminal', termTitle: 'Docker diagnosis · representative exchange',
+      subtitle: 'The developer answers beside the backend task; Copilot returns a smaller, reviewable diagnostic scope.',
+      transcript: trace('copilot · Plan Mode', 'Debug why the backend container will not start.', [
+        'Copilot: Logs, compose configuration, or both?',
+        'Developer: Logs first; inspect configuration if the evidence points there.',
+        'Copilot proposes: read backend logs, then compare listener and port mapping.'
+      ], 'Review point: approve the diagnostic scope before edits.'),
+      footnote: 'Representative script, not a recorded diagnosis.'
     }),
-    S('part-2', 2, 'Choose the Right Mode', {
-      scene: 'opener',
-      subtitle: 'Match the task’s uncertainty, runtime, duration, and approval path to a mode.',
+    S('docker-plan', 1, 'Two host outputs bring the next decision into reach', {
+      scene: 'docker-investigation',
+      subtitle: 'After plan approval, Copilot requests shell tools on the Docker host. No edits are needed yet.',
+      checks: [
+        { title: '1 · Copilot reads startup logs', command: 'docker compose logs --tail 20 backend',
+          output: 'backend | Listening on 0.0.0.0:5000',
+          inference: 'Copilot: the log reports a listener, so test reachability next.' },
+        { title: '2 · Copilot checks the published port', command: 'docker compose port backend 5000',
+          output: '0.0.0.0:5001',
+          inference: 'Copilot: the host exposes port 5001; your request used 5000.' }
+      ],
+      nextCommand: 'curl -i http://localhost:5001/',
+      nextDecision: 'Copilot proposes a request on 5001. Inspect the response before calling this fixed.',
+      footnote: 'Representative tool trace, not a recorded run. Tool policy still applies; a listener log alone does not prove current health.'
+    }),
+    S('steer-boundary', 1, 'Redirect Copilot without losing the evidence', {
+      scene: 'terminal', termTitle: 'Representative permission request · manual mode',
+      subtitle: 'Task intent, tool permission, and result acceptance are three different decisions.',
+      transcript: trace('copilot · manual permissions', 'Inspect the generated artifacts; preserve tmp.', [
+        'Copilot requests: remove generated files in tmp.',
+        'Developer denies the request: those artifacts are evidence.',
+        'Developer redirects: list the files and summarize their contents.'
+      ], 'Decision: deny deletion; continue the evidence-only task.'),
+      footnote: 'Later: assisted mode can resolve eligible requests without asking the human.'
+    }),
+    S('part-2', 2, 'Intelligence ↔ Data', {
+      scene: 'opener', subtitle: 'Bring help to staging evidence; inspect the provider separately from the tools that read it.',
       cards: [
-        { icon: '💬', title: 'Collaborate', blurb: 'Interactive diagnosis' },
-        { icon: '📄', title: 'Automate', blurb: 'A bounded CI artifact' },
-        { icon: '⚡', title: 'Delegate', blurb: 'Parallel or background work' }
+        { icon: '⌨️', title: 'Start on staging', blurb: 'Tools reach approved logs' },
+        { icon: '🔎', title: 'Inspect the provider', blurb: 'Know who receives context' },
+        { icon: '🧾', title: 'Check the finding', blurb: 'Compare counts with source' }
       ],
-      terminal: { context: 'Start with the task and its boundary', detail: 'Mode choice → evidence → human review' },
-      notes: [
-        '"Mode choice is a decision about who acts, where execution happens, and what the operator will inspect."',
-        'The following ladder is for task selection, not a ranking of autonomy.',
-        '→ Compare the modes by the kind of uncertainty and follow-up they create.'
-      ],
-      know: ['The approved recipe emphasizes interactive diagnosis, programmatic CI, /fleet, cloud delegation, and session-scoped scheduled prompts.'],
-      sources: refs('about', 'use'),
-      seconds: 45
+      terminal: { context: 'The decisive log lives on the staging host', detail: 'Reach the source → bound the finding → verify' }
     }),
-    S('mode-ladder', 2, 'Choose the mode by the task’s next decision', {
-      scene: 'scorecard',
-      subtitle: 'A useful mode leaves a reviewable output and a clear owner for the next step.',
-      cards: [
-        { icon: '💬', title: 'Interactive · copilot', description: 'Uncertain diagnosis; ask, steer, inspect, and decide in a durable session.' },
-        { icon: '📄', title: 'Programmatic · -p', description: 'One headless prompt; return a bounded report to CI or a script.' },
-        { icon: '⚡', title: '/fleet', description: 'Parallelize independent subtasks inside one reviewed plan and execution context.' },
-        { icon: '☁️', title: '& task / /every', description: 'Hand off longer work or schedule a session-scoped prompt; keep review explicit.' }
-      ],
-      footnote: 'Use an editor or GitHub surface when its context or artifact is decisive.',
-      notes: [
-        '"Start from the output you need, not from a feature list: a diagnosis, a CI report, parallel subtasks, or work that runs later."',
-        'Interactive work is a good fit when root cause is uncertain and the operator needs to steer. Programmatic mode is for a single headless prompt. /fleet decomposes a task; it is not a separate host. The ampersand delegates to GitHub’s coding agent. Scheduled prompts are an experimental session feature.',
-        '→ The interactive session keeps runtime evidence beside the conversation.'
-      ],
-      know: [
-        'Decision tree: runtime state and iterative diagnosis point toward interactive CLI; reproducible one-shot analysis points toward copilot -p; independent subtasks point toward /fleet; a long repository task that can be reviewed as a PR may fit the ampersand handoff; a recurring check that runs while the interactive session is open may fit /every or /after.',
-        'For in-editor completion, cross-repository browsing, or hosted code review, use the relevant VS Code or GitHub surface instead of forcing the task into the terminal.',
-        'The source’s reasoning controls include selecting a currently supported model with /model and setting effort from low through higher levels; Ctrl+T is described as toggling reasoning visibility. Model names, effort labels, and shortcuts change, and organization policy can hide catalog entries.',
-        'The source distinguishes a session model choice from durable defaults: /model is session-scoped; /config model or /model --global sets a user default; /model --repo pins a repository default. A model multiplier such as 1x or 2x indicates premium-request use per prompt. Check the current catalog and policy before pinning.',
-        'The source also mentions custom providers through COPILOT_PROVIDER_* environment variables and `copilot help providers`; the provider must support tool calling and streaming. Treat BYOK availability and exact configuration as version-sensitive.'
-      ],
-      sources: refs('about', 'use', 'schedule', 'fleet'),
-      seconds: 60
+    S('local-model', 2, 'Choose inference placement; verify the endpoint', {
+      scene: 'terminal', termTitle: 'Local Ollama · proposed live check',
+      subtitle: 'The practitioner inspects the provider and endpoint before selecting a model.',
+      transcript: trace('copilot', '/model', [
+        'Inspect discovery for an already-running local Ollama service.',
+        'Check the endpoint; add a prepared model with tool calling and streaming.',
+        'Switch this session; ask it to summarize synthetic repository evidence.'
+      ], 'Inspect: selected provider, endpoint, and the answer against the fixture.'),
+      footnote: 'Discovery installs neither runtime nor model. Local model ≠ offline mode or telemetry disabled.'
     }),
-    S('interactive-diagnosis', 2, 'Interactive mode keeps the runtime investigation steerable', {
-      scene: 'terminal',
-      termTitle: 'Illustrative local or host session',
-      subtitle: 'The practitioner requests evidence first; the operator decides whether a fix is in scope.',
+    S('interactive-diagnosis', 2, 'Run Copilot where the failure happens', {
+      scene: 'terminal', termTitle: 'Laptop → SSH → authorized Linux staging host · representative trace',
+      subtitle: 'Start the CLI on staging: its shell tools run beside that host’s service and logs.',
       transcript: [
+        { type: 'prompt', text: 'ssh ops@staging-host' },
         { type: 'prompt', text: 'copilot' },
-        { type: 'user', text: 'The service returns 503 in staging but works locally. Diagnose; do not edit yet.' },
-        { type: 'thinking', label: 'Copilot proposes checks:' },
-        { type: 'response', lines: ['Read recent service logs', 'Compare approved environment-variable names', 'Check the configured dependency endpoint'] },
-        { type: 'user', text: 'Start with logs and the staged config; redact secret values.' },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Evidence is gathered before a change is proposed.' }
+        { type: 'user', text: 'Staging returns 503. Inspect approved logs; redact secrets; do not edit.' },
+        { type: 'thinking', label: 'On staging · Copilot requests an approved shell tool' },
+        { type: 'response', lines: [
+          'Tool: journalctl -u backend --since "10 minutes ago" --no-pager -n 20',
+          'Representative output: backend: connection refused to 127.0.0.1:6379',
+          'Copilot: check the configured dependency endpoint next; no fix established.'
+        ] }
       ],
-      footnote: 'Representative prompt only. Do not paste credentials or unredacted secrets.',
-      notes: [
-        '"Interactive mode is useful when the next diagnostic step depends on what the runtime evidence shows."',
-        'This is a representative workflow built from the source use case, not an observed diagnosis. Name the task, environment, and change boundary in the prompt. Inspect the exact commands and outputs before approving them.',
-        '→ When the same question can be asked once in CI, programmatic mode can return a file for review.'
-      ],
-      know: [
-        'The original README example inspects docker logs, environment variable names, and a dependency endpoint. Keep credential values out of the prompt and choose approved commands for the target environment.',
-        'The source scenario reports a missing JWT_SECRET in staging, successful Redis connectivity, and a separate 503-versus-401 behavior to investigate. These are illustrative outputs, not an observed production diagnosis.',
-        'Interactive sessions maintain context across turns, but they still need a clear task boundary and a review of proposed edits.'
-      ],
-      sources: refs('use', 'best'),
-      seconds: 60
+      footnote: 'CLI and tools run on staging; inference uses the selected provider. Part 4 adds steering from another device.'
     }),
-    S('programmatic-command', 2, 'Programmatic mode turns one prompt into a CI artifact', {
-      scene: 'terminal',
-      termTitle: 'Command pattern · inspect before posting',
-      subtitle: 'The workflow author scopes tools; Copilot writes analysis, not a production fix.',
-      transcript: [
-        { type: 'prompt', text: 'copilot -p "Summarize this build failure and suggest likely causes."' },
-        { type: 'user', text: "--allow-tool 'shell(gh)'   --allow-tool 'shell(git)'" },
-        { type: 'thinking', label: 'Headless invocation:' },
-        { type: 'response', lines: ['Redirect the response to failure-analysis.txt', 'Attach it to a run summary or a reviewable PR comment'] },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Artifact: failure-analysis.txt · reviewer checks it before action.' }
+    S('programmatic-command', 3, 'CI returns a proposed why beside its failed test', {
+      scene: 'ci-explanation',
+      subtitle: 'GitHub Actions runs copilot -p over the failed test log—before the maintainer opens the job.',
+      workflow: [
+        '- name: Run tests',
+        '  id: tests',
+        '  shell: bash',
+        '  run: |',
+        '    set -o pipefail',
+        '    npm test 2>&1 | tee failure.log',
+        '- name: Explain test failure',
+        "  if: ${{ failure() && steps.tests.outcome == 'failure' }}",
+        '  shell: bash',
+        '  run: |',
+        '    copilot -p "$(printf \'%s\\n\' \\',
+        "      'Explain why tests failed. Cite log lines.'; \\",
+        '      cat failure.log)" --silent > why.md',
+        '    cat why.md >> "$GITHUB_STEP_SUMMARY"'
       ],
-      footnote: 'Shell quoting, authentication, and available flags vary by runner and CLI version.',
-      notes: [
-        '"The useful handoff is a report the CI reviewer can inspect, not an automatic change to the failing code."',
-        'The source example uses copilot -p with shell(gh) and shell(git), then redirects output to a text artifact. In a real workflow, pin installation, provide a least-privilege token, protect logs and summaries, and verify current flags.',
-        '→ The artifact is useful only if we separate the run status from the diagnosis it contains.'
+      failureEvidence: ['failure.log · representative input', '1  FAIL session-store integration test', '2  ECONNREFUSED 127.0.0.1:6379'],
+      explanation: [
+        'why.md → Actions job summary',
+        'Likely cause: the test cannot reach',
+        'its configured dependency (line 2).',
+        'Check the CI service and endpoint.',
+        'The log does not establish why',
+        'that dependency is unavailable.'
       ],
-      know: [
-        'A full source example installs @github/copilot in a GitHub Actions job, sets a Copilot token from a secret, runs analysis after a failure, and optionally posts the report with gh. The sample does not supply a tested permission or credential design; tailor authentication and PR-comment authority to the repository.',
-        'The historical YAML uses GITHUB_TOKEN from secrets.COPILOT_GITHUB_TOKEN, runs copilot -p after failure, writes failure-analysis.txt, and optionally calls gh pr comment with --body-file. Treat it as a workflow sketch; verify token permissions, fork behavior, quoting, and the runner’s current install path.',
-        'The domain result is the failure analysis. GitHub Actions failure status is a separate workflow signal.',
-        'The source shows --allow-tool shell(gh) and shell(git); treat tool names as version-sensitive and confirm the current CLI reference.'
-      ],
-      sources: refs('use', 'command', 'install'),
-      seconds: 70
+      footnote: 'Workflow excerpt: runner already has dependencies and an authenticated CLI. Synthetic log and explanation; the test job stays failed.'
     }),
-    S('ci-artifact', 2, 'CI returns a report for review, not an automatic repair', {
-      scene: 'showdown',
-      leftLabel: 'Manual triage example',
-      rightLabel: 'Programmatic report',
-      subtitle: 'A failed build triggers bounded analysis; the maintainer still owns acceptance.',
-      pairs: [
-        { left: { label: 'Failure signal', note: 'Build job exits unsuccessfully' }, right: { label: 'Failure signal', note: 'Actions condition runs the analysis step', z: 'purple' } },
-        { left: { label: 'Collect evidence', note: 'Engineer finds logs and recent commits' }, right: { label: 'Scoped tools', note: 'Copilot can call the named CLI tools', z: 'orange' } },
-        { left: { label: 'Write diagnosis', note: 'Notes stay in the operator’s context' }, right: { label: 'Save report', note: 'failure-analysis.txt is reviewable', z: 'green' } },
-        { left: { label: 'Choose a fix', note: 'Maintainer tests and approves changes' }, right: { label: 'Choose a fix', note: 'Maintainer validates before applying', z: 'orange' } }
-      ],
-      outcomeLeft: { icon: 'i', label: '25m manual baseline · estimate' },
-      outcomeRight: { icon: '✓', label: '5m report · source estimate' },
-      footnote: 'The 25-to-5-minute figures are illustrative estimates from the source talk, not measured CI results.',
-      notes: [
-        '"The practical improvement is a repeatable, reviewable artifact after a failure. The maintainer still decides whether the explanation is right."',
-        'The source talk gives a 25-minute manual baseline and a five-minute automated analysis figure. No run history or benchmark accompanies them; present them as illustrative estimates, not observed performance.',
-        'Keep the CI status separate from the report’s diagnosis. A completed step does not verify that its explanation is correct.',
-        '→ Parallel work uses the same principle: Copilot can decompose, but the operator owns scope and review.'
-      ],
-      know: [
-        'A report may cite recent commits, dependency changes, or error patterns. The human reviewer compares those claims with the actual logs and repository evidence.',
-        'Posting a report as a pull-request comment can require additional GitHub permissions beyond reading build artifacts. Do not infer write authority from the example’s shell(gh) allow rule.'
-      ],
-      sources: refs('use', 'command'),
-      seconds: 80
-    }),
-    S('fleet-work', 2, '/fleet parallelizes independent work inside one plan', {
-      scene: 'four-phases',
-      subtitle: 'One orchestrator decomposes, schedules, and merges subtasks in the session’s execution context.',
-      stages: [
-        { label: '1', name: 'Approve', icon: '✋', description: 'Operator agrees on the plan and task boundary' },
-        { label: '2', name: 'Decompose', icon: '🧩', description: 'Copilot identifies independent subtasks and dependencies' },
-        { label: '3', name: 'Parallelize', icon: '⚡', description: 'Subagents work in separate context windows where possible' },
-        { label: '4', name: 'Review', icon: '🔎', description: 'Orchestrator returns results; maintainer checks the diff', target: true }
-      ],
-      stageLabel: 'Move',
-      gateLabel: 'dependency check',
-      footnote: 'Parallelism helps independent work; dependent steps still run in order.',
-      notes: [
-        '"Use /fleet after a plan is clear and the work has independent parts. The orchestrator handles the decomposition; the maintainer reviews the result."',
-        'The source example is /fleet implement all phases of this auth plan. It can also fan out independent test tasks. A subagent gets its own context window; results return to the orchestrator.',
-        '→ Parallelism changes the number of tool actions, so permissions and cost deserve their own review.'
-      ],
-      know: [
-        'The recipe preserves the boundary that /fleet is subagent orchestration inside one approved plan on one execution host. Multiple remote machines are separate sessions, not one /fleet distributed host fleet.',
-        'Dependent tasks will not become faster just because /fleet is used. Each subagent can make independent model calls, so premium request use may increase.',
-        'Specialized and custom agents can be selected for matching subtasks where configured. Review each resulting artifact and the combined diff.'
-      ],
-      sources: refs('fleet', 'fleetHowto', 'command'),
-      seconds: 75
-    }),
-    S('authority-boundary', 2, 'Tool permission is an authority boundary, not a speed setting', {
-      scene: 'signals',
-      subtitle: 'The actor who approves the request remains visible at each gate.',
+    S('authority-boundary', 3, 'Three ways to approve Copilot’s tool requests', {
+      scene: 'signals', subtitle: 'Pick a permission mode for the task; check the current one with /permissions show.',
       rows: [
-        { label: 'Copilot proposes', description: 'A shell, file, or GitHub action is requested', tag: 'Inspect tool', z: 'purple' },
-        { label: 'Policy scopes', description: 'Per-tool or session approval limits actions', tag: '--allow-tool', z: 'local' },
-        { label: 'Human decides', description: 'Approve, deny, or explain a constraint', tag: 'Operator review', z: 'orange' },
-        { label: 'Org controls', description: 'Managed policy can block permission bypass', tag: 'disableBypass…', z: 'github' }
+        { label: 'Manual', description: 'The human resolves requests left open by policy', tag: 'Human decides', z: 'orange' },
+        { label: 'Assisted · GA', description: 'A review model can approve eligible unresolved requests', tag: 'Model decides', z: 'purple' },
+        { label: 'Allow-all', description: 'Broad preauthorization resolves requests within enforced limits', tag: 'Preauthorized', z: 'local' },
+        { label: 'Enforced controls', description: 'Deny rules and enterprise restrictions remain effective', tag: 'Policy constrains', z: 'github' }
       ],
-      footnote: 'Avoid blanket --allow-all-tools or --yolo in environments with consequential credentials.',
-      notes: [
-        '"Permission changes who can act. Containment changes what those actions can reach. Neither replaces a human acceptance decision."',
-        'Name the four actors and layers: Copilot proposes; CLI permission settings gate tools; the operator approves or rejects; organization policy can prevent bypass modes.',
-        '→ Sandboxing adds containment, but local and cloud sandboxes have different tradeoffs.'
-      ],
-      know: [
-        'The source names --allow-all-tools and --yolo as broad convenience options, and notes that an authenticated agent may reach resources accessible to those credentials.',
-        'The source names the managed setting permissions.disableBypassPermissionsMode as a control that can prevent enabling --yolo or /allow-all in organization-managed environments.',
-        'Per-session approvals may auto-approve later pending requests of the same type. Read the actual confirmation prompt and scope before selecting an approval duration.',
-        'A rejection can include a reason in the same interaction; do not treat the rejection itself as completion or validation.'
-      ],
-      sources: refs('command', 'use', 'sandbox', 'best'),
-      seconds: 70
+      footnote: 'Human acceptance of a consequential result remains separate from tool-request approval.'
     }),
-    S('local-containment', 2, 'Local sandboxing contains tool execution on the workstation', {
-      scene: 'scorecard',
-      subtitle: 'Experimental OS-level isolation is useful only when its limits are understood.',
-      cards: [
-        { icon: '▶️', title: 'Enable', description: 'Start an experimental session, then use /sandbox enable.' },
-        { icon: '🧱', title: 'Contain', description: 'Restrict supported command and tool access to host resources.' },
-        { icon: '🔎', title: 'Inspect', description: 'Use /sandbox status and /sandbox policy to examine the active policy.' },
-        { icon: '⚠️', title: 'Bound', description: 'Not a VM; in-process file tools enforce policy best-effort.' }
+    S('local-containment', 3, 'You approved npm test. The sandbox limits what it spawns.', {
+      scene: 'sandbox-tree',
+      subtitle: 'With /sandbox enabled, every process the command starts runs inside the same policy.',
+      root: { cmd: 'npm test', tag: 'Approved by you' },
+      children: [
+        { actor: 'jest · test runner', cmd: 'write ./coverage/lcov.info', outcome: 'Allowed', reason: 'Inside the repo', z: 'green' },
+        { actor: 'test helper', cmd: 'read ~/.ssh/id_ed25519', outcome: 'Denied', reason: 'Path outside the policy', z: 'local' },
+        { actor: 'dependency script', cmd: 'curl https://metrics.example.net', outcome: 'Blocked', reason: 'Destination not allowed', z: 'local' },
+        { actor: 'release script', cmd: 'gh auth token', outcome: 'Unavailable', reason: 'Credential withheld', z: 'local' }
       ],
-      footnote: 'Local sandboxing is experimental and may have platform-specific behavior.',
-      notes: [
-        '"Local sandboxing adds a containment boundary to tools that run on your machine, while the permission prompt still decides whether a requested tool is allowed."',
-        'The source walkthrough enables it with copilot --experimental followed by /sandbox enable, /sandbox status, and /sandbox policy.',
-        '→ A cloud sandbox moves the whole interactive session to a GitHub-hosted environment instead.'
-      ],
-      know: [
-        'The historical source describes local sandboxing as experimental, off by default unless enterprise policy requires it, and implemented with Microsoft eXecution Container (MXC), not a VM or container.',
-        'It restricts filesystem, network, and system access for commands and tools. Built-in in-process file tools honor the policy on a best-effort basis.',
-        'The setting can persist for later interactive and programmatic use until /sandbox disable. The source says local sandboxing is included in the Copilot seat at no extra charge; verify current packaging and platform support before presenting that as current policy.'
-      ],
-      sources: refs('sandbox', 'command'),
-      seconds: 75
+      result: 'Tests run. Nothing reaches beyond the repo.',
+      footnote: 'Representative outcomes under an example policy, not a recorded run. OS-level isolation, not a VM; platform limits apply.'
     }),
-    S('cloud-containment', 2, 'Cloud sandboxing and cloud delegation run different work', {
-      scene: 'showdown',
-      leftLabel: 'Cloud sandbox',
-      rightLabel: 'Ampersand delegation',
-      subtitle: 'One contains an interactive CLI session; the other hands repository work to a coding agent.',
+    S('cloud-containment', 2, 'Bring repository work to cloud; keep host evidence distinct', {
+      scene: 'showdown', leftLabel: 'Ordinary CLI session', rightLabel: 'Connected cloud session · GA',
+      subtitle: 'copilot --cloud starts interactive cloud work; ordinary CLI execution remains local by default.',
       pairs: [
-        { left: { label: 'Start', note: 'copilot --cloud --experimental' }, right: { label: 'Start', note: '& followed by a repository task', z: 'purple' } },
-        { left: { label: 'Execution', note: 'Entire interactive session in GitHub-hosted Linux' }, right: { label: 'Execution', note: 'GitHub Copilot coding agent handles the task', z: 'github' } },
-        { left: { label: 'Output', note: 'Resume the session; metered compute and storage' }, right: { label: 'Output', note: 'A pull request for a maintainer to review', z: 'green' } },
-        { left: { label: 'Boundary', note: 'Cannot combine with -p or -i' }, right: { label: 'Boundary', note: 'Requires repository/agent access; review before merge', z: 'orange' } }
+        pair('Start', 'copilot', 'Start', 'copilot --cloud'),
+        pair('Execution', 'Tools use the local or original host environment', 'Execution', 'Tools run in a GitHub cloud sandbox', 'github'),
+        pair('Evidence', 'Host files, installed tools, running service state', 'Continuity', 'Snapshots preserve files and in-progress work', 'green'),
+        pair('Choose deliberately', 'Keep host-only diagnostics near that host', 'Cloud or Actions', 'Select at start; a change requires a new session', 'orange')
       ],
-      outcomeLeft: { icon: '☁', label: 'Session containment' },
-      outcomeRight: { icon: '↗', label: 'Task delegation' },
-      footnote: 'Cloud sandbox access can be disabled by default for organizations and enterprises.',
-      notes: [
-        '"The cloud sandbox is an interactive contained session. The ampersand handoff delegates a repository task to a coding agent."',
-        'The cloud sandbox uses copilot --cloud --experimental. The source says it cannot be combined with -p or -i, and compute, memory, and snapshot storage are metered.',
-        'Ampersand delegation sends work to GitHub’s coding agent. It may create a branch and pull request. The operator reviews the result; a pull request is not an approval to merge.',
-        '→ Scheduled prompts add a third distinct control: a recurring task tied to a running interactive session.'
-      ],
-      know: [
-        'The source states that organization and enterprise cloud sandbox access is disabled by default. Confirm current access policy, billing, and supported regions before a real run.',
-        'The README distinguishes this cloud sandbox from the ampersand delegation workflow. Do not describe the latter as the CLI session running in the sandbox.',
-        'Never use --yolo on a remote production session. Scope tools and environment access before enabling any broader autonomy.'
-      ],
-      sources: refs('sandbox', 'about', 'use'),
-      seconds: 70
+      outcomeLeft: { icon: '⌨', label: 'Local remains the CLI default' },
+      outcomeRight: { icon: '☁', label: 'Cloud has its own access and billing' },
+      footnote: 'Cloud is interactive: cannot combine --cloud with -p or -i. Actions-only setup still needs Actions.'
     }),
-    S('scheduled-patrol', 2, 'A scheduled prompt runs only while its session is active', {
-      scene: 'terminal',
-      termTitle: 'Experimental · session-scoped schedule',
-      subtitle: 'A patrol can summarize or alert; the operator still decides consequential remediation.',
-      transcript: [
-        { type: 'prompt', text: 'copilot --experimental' },
-        { type: 'user', text: '/every weekday at 9am' },
-        { type: 'response', lines: ['Summarize overnight pull requests.', 'Use approved tools and send the report to the remote session.'] },
-        { type: 'divider' },
-        { type: 'thinking', label: 'Operator checks schedule scope:' },
-        { type: 'response', lines: ['Schedules belong to this interactive session.', 'Closing the session stops the schedule.'] },
-        { type: 'outcome', text: 'List or delete schedules with bare /every or /after.' }
-      ],
-      footnote: 'Do not treat a session schedule as a durable system scheduler.',
-      notes: [
-        '"A recurring prompt can patrol while its interactive session is running. It is not a replacement for a durable scheduler when the session is closed."',
-        'The source examples use /every weekday at 9am and /every 30min. It also documents /after. Keep the feature labeled experimental and session-scoped.',
-        '→ Long-running work with a PR-shaped outcome may instead fit the ampersand handoff.'
-      ],
-      know: [
-        'The historical schedule reference says scheduled prompts require --experimental or /experimental on, are session-scoped, and resume with the session rather than running independently.',
-        'Bare /every or /after lists or deletes schedules. User-invocable skills can be scheduled. Most built-in slash commands cannot; /chronicle standup is a documented exception. Do not generalize from that one exception.',
-        'The reference states a minimum interval of 10 seconds and a maximum of one day. Recheck current constraints in the linked documentation.',
-        'When no interactive session is running, use an external scheduler such as cron or Task Scheduler with copilot -p, with its own credentials, logging, and review controls.'
-      ],
-      sources: refs('schedule', 'command'),
-      seconds: 75
+    S('delegate-cloud', 4, 'Hand off now. Review the PR later.', {
+      scene: 'pr-handoff',
+      subtitle: 'Delegate a bounded repository task; keep your terminal available while the cloud agent works.',
+      request: '& Add input validation to POST /orders. Add tests; open a draft PR. Do not merge.',
+      prTitle: 'Validate order quantities before saving',
+      diff: ['+ if (!Number.isInteger(quantity) || quantity < 1)', '+   return res.status(400).json({ error: "Invalid quantity" });'],
+      evidence: 'Test evidence to inspect: zero and fractional quantities → HTTP 400; valid order → existing behavior.',
+      footnote: 'Illustrative handoff and PR, not a recorded run. Inspect local changes, repository access, policy, and billing before delegation.'
     }),
-    S('delegate-cloud', 2, 'Delegate long repository work when a reviewed PR is the right output', {
-      scene: 'relay',
-      subtitle: 'The interactive terminal stays available while a separate cloud coding-agent task runs.',
-      columns: [
-        { icon: '⌨️', title: 'Practitioner', description: 'Names a bounded task and repository outcome.', items: ['Define scope', 'Choose limits', 'Review the PR'], z: ['local', 'orange', 'green'] },
-        { icon: '☁️', title: 'Coding agent', description: 'Works asynchronously in the cloud.', items: ['Create branch', 'Analyze or edit', 'Return a PR'], z: ['github', 'github', 'green'] },
-        { icon: '🧪', title: 'Maintainer', description: 'Checks evidence before accepting changes.', items: ['Inspect diff', 'Run tests', 'Approve or revise'], z: ['purple', 'local', 'orange'] }
-      ],
-      footnote: 'Example input: & Audit this repository’s missing API input validation and open a draft PR.',
-      notes: [
-        '"The ampersand handoff is useful when the work can outlive the current terminal attention and the result can come back as a pull request."',
-        'The source walkthrough uses an API input-validation audit as its example. Keep the task bounded, avoid exposing secrets, and review the returned diff and tests.',
-        '→ We have chosen where and how work runs. Next, preserve enough context to continue and recover.'
-      ],
-      know: [
-        'The source says the delegated task runs independently of the local IDE and terminal, and can create a branch and PR on completion. Do not promise completion time or notification behavior for every configuration.',
-        'The cloud agent’s repository access, billing, branch rules, and network access follow the organization’s configuration. Review the current coding-agent controls.',
-        'The source example says the agent may commit unstaged changes and create a new branch during delegation. Inspect or commit local changes before handing off so the worktree state is understood.',
-        'This differs from /fleet: /fleet orchestrates subtasks in one plan; the ampersand handoff creates an asynchronous cloud coding-agent task.'
-      ],
-      sources: refs('about', 'use', 'best'),
-      seconds: 50
-    }),
-    S('part-3', 3, 'Keep the Session Alive', {
-      scene: 'opener',
-      subtitle: 'A durable session helps only when you can preserve its useful context and recover safely.',
+    S('part-3', 3, 'Workflow ↔ Running System', {
+      scene: 'opener', subtitle: 'Put reasoning into the process that already has the evidence: failed CI and staging investigation.',
       cards: [
-        { icon: '🧠', title: 'Compact', blurb: 'Keep useful constraints' },
-        { icon: '📚', title: 'Remember', blurb: 'Reuse repository guidance' },
-        { icon: '↩️', title: 'Recover', blurb: 'Undo a wrong turn' }
+        { icon: '⚙️', title: 'CI asks', blurb: 'Failure log → proposed why' },
+        { icon: '📋', title: 'Workflow collects', blurb: 'Fresh staging evidence' },
+        { icon: '🔎', title: 'Operator reviews', blurb: 'Source-backed next check' }
       ],
-      terminal: { context: 'The session outlives one prompt', detail: 'Context → memory → recovery' },
-      notes: [
-        '"Persistence is more than keeping a transcript. It means preserving the constraints, evidence, and recovery options that make a session useful."',
-        '→ First, inspect how context management works and which commands expose it.'
-      ],
-      know: ['This part preserves the approved two-idea spine: durable context across turns and recovery after a wrong turn.'],
-      sources: refs('about', 'command', 'chronicle'),
-      seconds: 45
+      terminal: { context: 'The running process can ask at the moment it has evidence', detail: 'Collect → reason → return evidence' }
     }),
-    S('compaction', 3, 'Auto-compaction protects a session near its context limit', {
-      scene: 'scorecard',
-      subtitle: 'Compaction summarizes history; the operator can inspect context and request a manual pass.',
+    S('workflow-reuse', 3, 'Save the investigation, not just the prompt', {
+      scene: 'workflow-lesson',
+      subtitle: 'A dynamic workflow brings agent reasoning to collected service evidence—and saves the procedure for next time.',
+      label: 'USE CASE · THE NEXT STAGING INCIDENT',
+      lead: '“The service is failing again. Run our investigation.”',
+      detail: 'Keep the collection steps and report format consistent. Let agents interpret the new evidence.',
+      steps: [
+        { title: '1 · Collect with code', text: 'Read service state and the last 30 log entries on this host.' },
+        { title: '2 · Reason with agents', text: 'Investigate process health and an upstream dependency in parallel.' },
+        { title: '3 · Return a report', text: 'Bring findings, source evidence, and uncertainty back to the operator.' }
+      ],
+      takeaway: 'A prompt asks for an outcome. A workflow also defines the steps that produce it.',
+      footnote: 'Copilot dynamic workflows · public preview · code lives in an extension. Different from GitHub Actions YAML and gh aw.'
+    }),
+    S('workflow-definition', 3, 'Describe the process once; Copilot creates the workflow', {
+      scene: 'workflow-lesson',
+      subtitle: 'Setup on an authorized host: start copilot --experimental, then enter this authoring request.',
+      label: 'YOU TYPE IN COPILOT · NATURAL LANGUAGE, NOT YAML',
+      command: [
+        'Create a project dynamic workflow named staging-investigation.',
+        'Collect orders.service state and its last 30 journal entries.',
+        'Ask two agents to examine process health and dependency failures.',
+        'Return a report with findings, source evidence, and uncertainty.',
+        'Use read-only collection; no restarts or edits.',
+        'Start with synthetic evidence and a bounded AI credit limit.'
+      ],
+      steps: [
+        { title: 'Copilot creates code', text: 'An extension defines the steps, agent calls, and returned report.' },
+        { title: 'You review and keep it', text: 'Inspect commands, data access, and limits. Save as a project extension.' },
+        { title: 'Confirm registration', text: 'In a fresh session ask: “What dynamic workflows are available?”' }
+      ],
+      takeaway: 'Creating a workflow does not run it. Confirm the registered name before use.',
+      footnote: 'Documented authoring flow; generated implementation needs review. This talk has not created or run a complete Copilot extension.'
+    }),
+    S('workflow-code', 3, 'What Copilot writes: one extension.mjs', {
+      scene: 'workflow-code',
+      subtitle: 'Illustrative output for the request on the previous slide. Review it like any code that runs on your host.',
+      path: '.github/extensions/staging-investigation/extension.mjs',
+      code: [
+        [0, 'import { execFile } from "node:child_process";'],
+        [0, 'import { promisify } from "node:util";'],
+        [4, 'import { defineWorkflow, joinSession } from "@github/copilot-sdk/extension";'],
+        [0, 'const sh = async (...args) => (await promisify(execFile)(...args)).stdout;'],
+        [0, ''],
+        [4, 'const investigate = defineWorkflow({'],
+        [4, '  meta: {'],
+        [4, '    name: "staging-investigation",'],
+        [4, '    phases: [{ title: "Collect" }, { title: "Analyze" }],'],
+        [4, '    limits: { maxAiCredits: 5 }, // the ceiling you confirmed'],
+        [4, '  },'],
+        [0, '  run: async (ctx) => {'],
+        [1, '    const evidence = await ctx.step("collect-v1", async () => ({'],
+        [1, '      state: await sh("systemctl", ["show", "orders.service", "-p", "ActiveState"]),'],
+        [1, '      logs: await sh("journalctl", ["-u", "orders.service", "-n", "30", "--no-pager"]),'],
+        [1, '    }));'],
+        [2, '    const findings = await ctx.parallel(["process health", "dependency failures"].map('],
+        [2, '      (focus) => () => ctx.agent('],
+        [2, '        `Examine ${focus}. Cite log lines; state uncertainty.\\n${JSON.stringify(evidence)}`,'],
+        [2, '        { label: focus })));'],
+        [3, '    return { evidence, findings, decision: "human review required" };'],
+        [0, '  },'],
+        [0, '});'],
+        [4, 'await joinSession({ workflows: [investigate] });']
+      ],
+      callouts: [
+        [1, 'Collect with code', 'ctx.step runs read-only systemctl and journalctl on this host and journals the result.'],
+        [2, 'Reason with agents', 'ctx.parallel starts two ctx.agent calls, one question each, over the same evidence.'],
+        [3, 'Return a report', 'The returned JSON is what --result-file saves. A human decides what happens next.'],
+        [4, 'What you review', 'Name, limits, imports, and registration. This code runs outside agent tool permissions.']
+      ],
+      footnote: 'Illustrative, not from a recorded run. API from the workflow guidance bundled with CLI v1.0.105; experimental.'
+    }),
+    S('rubber-duck', 3, 'Before it touches staging, get a second opinion', {
+      scene: 'rubber-duck',
+      subtitle: '/rubber-duck sends the work to a critic on a different model family. It reads; it does not edit.',
+      askLabel: 'YOU ASK · BEFORE REGISTERING THE WORKFLOW',
+      ask: '/rubber-duck Review extension.mjs. Anything unsafe to run on staging?',
+      facts: [
+        'Critic model contrasts with your session model',
+        'Read-only exploration tools; no edits, no commands that change anything',
+        'Reports only issues that matter, by severity'
+      ],
+      critique: [
+        { sev: 'blocking', label: 'Blocking', text: 'Raw journal lines go to both agents unredacted. Tokens or customer data in logs would reach the model.', fix: 'Redact before ctx.agent.' },
+        { sev: 'major', label: 'Non-blocking', text: 'execFile has no timeout; a hung journalctl stalls the run.', fix: 'Pass a timeout to each command.' },
+        { sev: 'major', label: 'Non-blocking', text: 'A failed agent resolves to null and lands in the report silently.', fix: 'Guard findings; report the failure.' },
+        { sev: 'minor', label: 'Suggestion', text: 'Findings are free text.', fix: 'Add a ctx.agent schema so the report is checkable.' }
+      ],
+      summary: 'Copilot: The critique found unredacted logs and missing timeouts, so I added redaction and a 10-second timeout before registering.',
+      footnote: 'Representative critique of the extension.mjs example, not a recorded run. Each review is an extra pass on another model.'
+    }),
+    S('workflow-report', 3, 'Next time, run it and inspect the explanation', {
+      scene: 'workflow-lesson',
+      subtitle: 'After creation and registration, run the saved workflow on the host that owns the evidence.',
+      label: 'YOU RUN · BASH ON STAGING',
+      command: [
+        'copilot --experimental workflow run staging-investigation \\',
+        '  --result-file staging-report.json'
+      ],
+      report: [
+        'EXAMPLE REPORT · SYNTHETIC EVIDENCE',
+        'Observed: orders.service is active.',
+        'Log: upstream inventory timeout.',
+        'Lead: investigate the inventory dependency.',
+        'Unknown: why that dependency timed out.',
+        'Next check: verify upstream health.'
+      ],
+      steps: [
+        { title: 'Same process, new evidence', text: 'Code repeats the collection; agent findings can change with each run.' },
+        { title: 'You choose the next action', text: 'Check the cited logs before accepting the explanation. No automatic repair.' }
+      ],
+      takeaway: 'Useful for recurring, multi-step investigations. For one log summary, copilot -p is simpler.',
+      footnote: 'Invocation assumes a reviewed workflow with defaults for this host. Pregrant required agent permissions; workflow run does not prompt for approval.'
+    }),
+    S('scheduled-patrol', 4, 'Ship the fix, keep working. Copilot checks back.', {
+      scene: 'schedule-timeline',
+      subtitle: '/every watches while you move on. /after verifies the fix later, in the same staging session.',
+      typedLabel: 'YOU TYPE ONCE · IN THE STAGING SESSION · RIGHT AFTER THE FIX DEPLOYS',
+      commands: [
+        '/every 5min Check backend: restarts and 503s in the last 5 minutes. Only tell me if it gets worse.',
+        '/after 45min Did the 503 come back since 10:00? Count it in the logs and show the command.'
+      ],
+      start: '10:00 · fix deployed',
+      end: '10:45 · /after fires',
+      band: 'You work on something else. Eight quiet checks; nothing worth interrupting you.',
+      reportLabel: '10:45 · COPILOT REPORTS BACK',
+      report: [
+        '503s since 10:00: 0   (41 in the 10 minutes before the fix)',
+        'backend restarts since 10:00: 0',
+        "Evidence: journalctl -u backend --since 10:00 | grep -c ' 503 '  →  0",
+        'Holding so far. 45 quiet minutes is evidence, not a guarantee. Your call on closing the incident.'
+      ],
+      footnote: 'Representative timeline and report, not a recorded run. Experimental; schedules run only while this session stays open.'
+    }),
+    S('compact-quality', 4, 'After /compact, ask Copilot to restate the task', {
+      scene: 'terminal', termTitle: 'Representative post-compaction quality check',
+      subtitle: '/context inspects use; /compact carries a lossy summary forward. Check the next plan before acting.',
+      transcript: trace('/context → /compact', 'Restate our staging scope and next acceptance check before acting.', [
+        'Expected constraints: approved logs only; redact secrets; no remediation.',
+        'Expected evidence: cited source output and a service health check.',
+        'If a constraint is missing, re-anchor it and inspect the revised plan.'
+      ], 'Decision: continue only when the task and proof are recoverable.')
+    }),
+    S('memory-chronicle', 4, 'Turn session lessons into repo instructions', {
+      scene: 'chronicle-improve',
+      subtitle: '/chronicle improve finds where Copilot struggled in this repo’s sessions and proposes the instruction that fixes it.',
+      pickerLabel: '/chronicle improve · WHAT COPILOT FOUND → WHAT IT SUGGESTS',
+      recs: [
+        { on: true, found: 'You corrected me 3 times: staging logs are in the journal, not /var/log.', fix: 'Read backend logs with journalctl -u backend.' },
+        { on: true, found: 'Tests failed twice because I ran jest; this repo uses vitest.', fix: 'Run tests with npx vitest run.' },
+        { on: true, found: 'You stopped me when I proposed restarting staging.', fix: 'Never restart staging; propose the command and stop.' },
+        { on: false, found: 'The Nov 3 503 came from an inventory timeout.', fix: 'Treat 503s as inventory timeouts.' }
+      ],
+      keys: 'space toggles · enter applies · one incident is not a rule',
+      file: '.github/copilot-instructions.md',
+      diff: [
+        '  ## Staging',
+        '+ - Backend logs: `journalctl -u backend`.',
+        '+ - Never restart staging; propose and stop.',
+        '  ## Tests',
+        '+ - Run tests: `npx vitest run` (not jest).'
+      ],
+      after: 'The next session starts already knowing this. Review and commit it like any other change.',
+      footnote: 'Representative recommendations, not a recorded run. Scope is limited to this repository’s session history.'
+    }),
+    S('rewind-recovery', 4, 'Copilot went too far? Rewind to the last good turn.', {
+      scene: 'rewind-timeline',
+      subtitle: '/rewind undoes the conversation and Copilot’s file changes from later turns, and keeps your own edits.',
+      sessionLabel: 'THIS SESSION · FIXING THE 503',
+      turns: [
+        { state: 'good', ask: 'Fix the timeout handling in the config loader.', did: 'Copilot edited src/config.ts' },
+        { state: 'target', ask: 'Add a test for the timeout.', did: 'Copilot edited src/config.test.ts · tests pass' },
+        { state: 'undone', ask: 'Also tidy up error handling.', did: 'Copilot rewrote 6 files in src/http/' },
+        { state: 'undone', ask: 'Update the callers to match.', did: 'Copilot edited 4 more files · 9 tests fail' }
+      ],
+      pin: '← rewind here',
+      command: ['/rewind', '→ turn 2 · Conversation + files'],
+      result: [
+        ['CONVERSATION', 'Back to turn 2; turns 3–4 dropped.'],
+        ['FILES', 'Copilot’s 10 edits from turns 3–4 undone. Your own edit to README.md kept.'],
+        ['VERIFY', 'git status and the test run match turn 2.']
+      ],
+      aside: 'Still want that refactor? /worktree (experimental) tries it in a separate Git worktree and conversation.',
+      footnote: 'Representative session, not a recorded run. Inspect the restored files; Git remains a useful safety net.'
+    }),
+    S('part-4', 4, 'Now ↔ Later', {
+      scene: 'opener', subtitle: 'Keep useful work within reach when time, attention, or device changes. Verify what survives.',
       cards: [
-        { icon: '📈', title: 'Watch', description: '/context shows the current token-use breakdown.' },
-        { icon: '🧹', title: 'Compact', description: 'Auto-compaction is documented near 95% of the context limit.' },
-        { icon: '⌨️', title: 'Control', description: '/compact requests a manual compaction; Escape can cancel.' },
-        { icon: '📊', title: 'Review', description: '/usage reports session statistics and model use.' }
+        { icon: '📋', title: 'Procedure or task', blurb: 'Rerun code; review a PR' },
+        { icon: '🧾', title: 'Checked context', blurb: 'Retain scope; recover edits' },
+        { icon: '🖥️', title: 'Continuing session', blurb: 'Verify host, files, and policy' }
       ],
-      footnote: 'A summary is a lossy representation; re-check critical constraints and evidence.',
-      notes: [
-        '"The useful idea is continuity with inspection: context can be compacted, and the operator can check what remains."',
-        'The source describes automatic compression around 95% of the token limit and names /context, /usage, and /compact. Treat the threshold and behavior as version-sensitive.',
-        '→ A compacted session needs a quality check, not an assumption that nothing important was lost.'
-      ],
-      know: [
-        'The source says important facts and decisions are retained while verbose or redundant output is pruned. Do not call this an infinite session or guarantee that every detail survives.',
-        '/context shows context usage; /usage shows session statistics such as duration, edits, and model usage as described in the source.',
-        'The README also names /mcp for per-server token usage when MCP servers are used. Verify command availability and displayed fields on the installed version.'
-      ],
-      sources: refs('command', 'use', 'about'),
-      seconds: 70
+      terminal: { context: 'Saved procedure ≠ scheduled intent ≠ running session', detail: 'Name what remains → inspect its evidence' }
     }),
-    S('compact-quality', 3, 'Compact when noise crowds out constraints, then verify the next step', {
-      scene: 'showdown',
-      leftLabel: 'Compact by session age',
-      rightLabel: 'Compact by context need',
-      subtitle: 'A quality check protects the evidence that will decide the next action.',
-      pairs: [
-        { left: { label: 'Trigger', note: 'Session feels long' }, right: { label: 'Trigger', note: 'Verbose history crowds out task context', z: 'purple' } },
-        { left: { label: 'Summarize', note: 'Assume the summary is complete' }, right: { label: 'Preserve', note: 'Restate scope and acceptance evidence', z: 'orange' } },
-        { left: { label: 'Continue', note: 'Rely on old assumptions' }, right: { label: 'Inspect', note: 'Check the next plan for missing constraints', z: 'green' } },
-        { left: { label: 'Measure', note: 'Assume token or cost savings' }, right: { label: 'Re-anchor', note: 'Correct drift before acting', z: 'purple' } }
+    S('remote-locality', 4, 'Walk away from the terminal. Keep steering the session.', {
+      scene: 'remote-phone',
+      subtitle: '/remote on puts the running session on GitHub.com and GitHub Mobile. Commands still run on the host.',
+      termLabel: 'STAGING-HOST · THE SESSION KEEPS RUNNING HERE',
+      terminal: [
+        ['p', 'ops@staging-host:~$ copilot'],
+        ['p', '> /remote on'],
+        ['o', 'Remote control on · GitHub.com link shown · Ctrl+O shows a QR code'],
+        ['p', '> /keep-alive busy'],
+        ['m', 'Copilot: checking the dependency behind the 503…']
       ],
-      outcomeLeft: { icon: '!', label: 'Possible constraint loss' },
-      outcomeRight: { icon: '✓', label: 'Context fit is workload-dependent' },
-      notes: [
-        '"Compaction is a quality decision. Preserve the constraints and verification evidence that will tell you whether the result is acceptable."',
-        'Before compaction, restate the task boundary and the proof needed. After it, inspect the next response or plan for missing constraints, stale assumptions, and lost evidence; re-anchor the session if quality has drifted.',
-        '→ Repository knowledge can carry stable conventions across sessions, while /chronicle turns session history into suggestions.'
+      hostNote: 'Tools, files, and logs stay on staging-host.',
+      gap: 'Same session, same GitHub account',
+      phoneLabel: 'GitHub Mobile · staging-host',
+      phone: [
+        { kind: 'copilot', text: 'Backend logs show connection refused to 127.0.0.1:6379. Checking redis next.' },
+        { kind: 'ask', title: 'Copilot wants to run', cmd: 'systemctl status redis' },
+        { kind: 'you', text: 'Allowed. Read only, no restarts. Then summarize.' }
       ],
-      know: [
-        'Any token or cost reduction is workload-dependent; this talk makes no universal savings claim.',
-        'The source recommends preserving task constraints and evidence before compaction and checking later outputs for drift.'
-      ],
-      sources: refs('use', 'best'),
-      seconds: 55
+      phoneNote: 'You approve and steer from here.',
+      footnote: 'Representative session, not a recorded run. Host and session must stay running; synced sessions are view-only until /remote on.'
     }),
-    S('memory-chronicle', 3, 'Repository guidance and /chronicle turn experience into reusable context', {
-      scene: 'scorecard',
-      subtitle: 'The practitioner reviews suggestions before they become team instructions.',
-      cards: [
-        { icon: '📚', title: 'Repository memory', description: 'Record stable conventions and apply them in future sessions.' },
-        { icon: '📋', title: '/chronicle standup', description: 'Generate a standup summary from recent session activity.' },
-        { icon: '💡', title: '/chronicle tips', description: 'Review usage patterns and personalized suggestions.' },
-        { icon: '✍️', title: '/chronicle improve', description: 'Suggest repository-scoped edits to .github/copilot-instructions.md.' }
+    S('walking-incident', 4, 'Back at your desk, the session already has it all', {
+      scene: 'remote-return',
+      subtitle: 'Everything you did from the phone happened in the host session. Pick up where you left off.',
+      termLabel: 'STAGING-HOST · SAME SESSION, 20 MINUTES LATER',
+      who: { phone: 'from phone', host: 'on host', copilot: 'copilot', desk: 'at desk' },
+      lines: [
+        ['phone', 'Allowed: systemctl status redis'],
+        ['host', 'redis.service · inactive (dead) since 10:31'],
+        ['phone', 'Read only, no restarts. Then summarize.'],
+        ['copilot', 'Backend 503s line up with redis down since 10:31. Lead: redis stopped. Unknown: why it exited. Next: check its last log lines.'],
+        ['desk', 'Check redis’s last 20 log lines.'],
+        ['desk', '/remote off']
       ],
-      footnote: 'Suggestions are review inputs; the repository owner decides what becomes policy.',
-      notes: [
-        '"A useful instruction is a reusable decision the team has already made, not a transcript of every session."',
-        'Use /chronicle improve as the producer takeaway. It suggests changes to .github/copilot-instructions.md for the current repository or working directory; the owner reviews and applies them.',
-        '→ When Copilot takes a wrong turn, recovery operates at the turn level rather than the repository-policy level.'
+      keptLabel: 'WHAT CARRIED OVER',
+      kept: [
+        'One session on one host: no context to rebuild',
+        'Your phone approvals and instructions, in order',
+        'The same permission mode and sandbox throughout',
+        '/remote off ends it; /remote shows the status'
       ],
-      know: [
-        'Historical refresh accuracy: the command is /chronicle improve, not /chronicle instructions. The first-party reference also documents /chronicle standup as a schedulable slash-command exception.',
-        'Session history is stored locally under ~/.copilot/session-state/ per the source talk; the source describes it as private to the user account. Treat session history as sensitive and follow the organization’s retention and endpoint policies.',
-        'The source describes custom instruction files at user, repository, and organization scope as additive rather than a highest-priority-file fallback. Verify current merge behavior and policy in the linked documentation.',
-        'The repository-instructions concept is covered in more depth by Copilot Configuration Primitives. Chronicle suggestions are not an automatic policy change.'
-      ],
-      sources: refs('chronicle', 'chronicleConcept', 'instructions', 'command'),
-      seconds: 75
+      footnote: 'Representative session, not a recorded run. Exact terminal labels for remote input may differ.'
     }),
-    S('rewind-recovery', 3, 'Use /rewind for a wrong turn; use /worktree for isolated exploration', {
-      scene: 'showdown',
-      leftLabel: '/rewind or /undo',
-      rightLabel: 'Experimental /worktree',
-      subtitle: 'Recovery in the current tree and exploration in a separate worktree solve different problems.',
-      pairs: [
-        { left: { label: 'Choose a turn', note: 'Pick the point before the wrong change' }, right: { label: 'Start a branch of the tree', note: 'Open a separate conversation and worktree', z: 'purple' } },
-        { left: { label: 'Conversation only', note: 'Rewind dialogue; leave files in place' }, right: { label: 'Isolation', note: 'Keep exploratory changes apart from current workspace', z: 'local' } },
-        { left: { label: 'Conversation + files', note: 'Restore Copilot edits; skip your own edits' }, right: { label: 'Prerequisite', note: 'Requires Git; /rewind does not', z: 'orange' } }
+    S('host-forensics', 2, 'A day of logs stays put; a finding comes back', {
+      scene: 'log-proof',
+      subtitle: 'Copilot runs on the log host, questions the data with host tools, and returns what matters.',
+      corpus: { size: '~1.8M lines', what: '/var/log/auth.log · last 24 h' },
+      steps: [
+        { cmd: "grep auth=fail auth.log | grep -o 'user=\\S*' | sort | uniq -c | sort -rn | head -2",
+          out: ['412 user=svc-deploy', '  9 user=ci-runner'],
+          think: 'One account dominates. Where do its failures come from?' },
+        { cmd: "grep 'fail user=svc-deploy' auth.log | grep -oE 'src=([0-9]+\\.){2}[0-9]+' | sort | uniq -c",
+          out: ['412 src=203.0.113'],
+          think: 'All from one /24. Has that range appeared before?' },
+        { cmd: "grep -c 'src=203\\.0\\.113\\.' auth.log.1",
+          out: ['0'],
+          think: 'New since yesterday’s log.' }
       ],
-      outcomeLeft: { icon: '↩', label: 'Turn recovery · no Git required' },
-      outcomeRight: { icon: '⑂', label: 'Separate worktree · Git required' },
-      footnote: 'Inspect the affected files and Git status after recovery; keep Git as an additional safety net.',
-      notes: [
-        '"The choice depends on what went wrong: /rewind returns the current session to an earlier turn; /worktree isolates a new exploration."',
-        'A source example is /rewind, choose the turn before the refactor, then choose Conversation + files. Copilot-changed files are restored; files you edited yourself are skipped.',
-        '→ Remote steering is useful when execution belongs on another host, not when recovery is the only need.'
+      finding: [
+        ['FINDING', '412 of 430 failures target svc-deploy from 203.0.113.0/24, a range absent from yesterday’s log.'],
+        ['UNKNOWN', 'Credential guessing or a misconfigured new client.'],
+        ['NEXT CHECK', 'Ask the svc-deploy owner whether a new deployer runs from that range.']
       ],
-      know: [
-        '/rewind is also aliased as /undo. Conversation only leaves files as they are; Conversation + files also restores Copilot-changed files associated with the selected and later discarded turns.',
-        'The source says change tracking covers editing tools, shell commands, and subagents, and that rewind works in a dirty folder or outside a Git repository. This behavior is version-sensitive; inspect the resulting tree.',
-        '/worktree is experimental and requires Git. It creates a separate worktree and conversation. Git remains useful for review and recovery even when /rewind does not require it.',
-        'Other session commands from the source: copilot --continue, copilot --resume, copilot --resume SESSION-ID, /resume, and /rename NAME. The session sidebar opens with the left-angle key; n creates a session, x closes the current one, and the right-angle key closes the sidebar. Verify the current shortcut mapping.'
-      ],
-      sources: refs('command', 'use', 'releases'),
-      seconds: 75
+      footnote: 'Illustrative corpus and outputs, not a recorded run. Only command outputs enter model context, and they reach the selected provider.'
     }),
-    S('part-4', 4, 'Work from Anywhere', {
-      scene: 'opener',
-      subtitle: 'Keep execution and sensitive data on the host while the operator steers from another device.',
-      cards: [
-        { icon: '🖥️', title: 'Host', blurb: 'Runtime and files stay local' },
-        { icon: '🔗', title: 'Session', blurb: 'Remote steering link' },
-        { icon: '📱', title: 'Operator', blurb: 'Review and approve' }
+    S('cloud-continuity', 4, 'Close the laptop. The cloud session keeps going.', {
+      scene: 'cloud-relay',
+      subtitle: 'copilot --cloud runs the whole session in a GitHub-hosted sandbox. Pick it up from any client.',
+      stops: [
+        { time: '09:10', device: 'LAPTOP · COPILOT CLI', lines: [
+          ['cmd', '$ copilot --cloud'],
+          ['you', 'Add retries with backoff to the inventory client. Run the tests.'],
+          ['state', 'Running in a cloud sandbox · lid closed']
+        ] },
+        { time: '12:30', device: 'PHONE · GITHUB MOBILE', lines: [
+          ['copilot', 'Retries added. Tests: 42 passed. Diff ready.'],
+          ['you', 'Cap retries at 3.'],
+          ['state', 'Same session, still running']
+        ] },
+        { time: '15:00', device: 'ANOTHER MACHINE · GITHUB.COM', lines: [
+          ['copilot', 'Capped at 3; tests rerun and pass.'],
+          ['you', 'Open a draft PR.'],
+          ['done', 'Files and progress intact · PR ready to review']
+        ] }
       ],
-      terminal: { context: 'The session runs where the problem lives', detail: 'Host execution + human steering' },
-      notes: [
-        '"The geography payoff is not moving the machine. The CLI session runs on the target host, while the operator can steer through the remote interface."',
-        'Keep execution locality distinct from operator locality, and keep approval responsibility with the human.',
-        '→ The host-local session is the mechanism; the next picture shows which parts move and which stay.'
+      compare: [
+        ['/remote', 'Your machine runs the work. It must stay on.', 'orange'],
+        ['--cloud', 'GitHub’s sandbox runs it. Close the laptop.', 'purple'],
+        ['Boundary', 'A cloud sandbox cannot see staging-host or your local files.', 'local']
       ],
-      know: ['The README describes remote control as a public preview in its April 2026 reference and the refresh lists first-party docs verified August 25, 2026. Recheck current availability and policy before presenting it as generally available.'],
-      sources: refs('remote', 'remotePreview'),
-      seconds: 45
+      footnote: 'Representative session, not a recorded run. Billed per use (compute, memory, snapshot storage); org policy “Copilot in the cloud” applies.'
     }),
-    S('remote-locality', 4, '--remote moves operator access, not the host’s working data', {
-      scene: 'host-locality',
-      subtitle: 'The CLI process and tools run on the target machine; browser or mobile supplies another steering surface.',
-      footnote: 'Use only with an authorized host, scoped tools, and the organization’s remote-session policy.',
-      notes: [
-        '"The central distinction is execution locality versus operator locality: tools run where the CLI session is, while the human can inspect and steer from another device."',
-        'The source describes a remote URL and QR code and says GitHub.com or GitHub Mobile can monitor the session, send prompts, and approve or deny tool permissions.',
-        'Avoid claiming that data can never leave a host. The prompt and resulting session communication still use the service; the claim here is that the log corpus need not be copied to the operator’s phone.',
-        '→ Remote access gives a second control surface, not a reason to remove the host’s permission boundary.'
-      ],
-      know: [
-        'The source describes the CLI as the source of truth, with web and mobile as remote views. The session is private to the initiating user unless a link is explicitly shared; organization policy can manage access.',
-        'The source suggests tmux or screen to preserve a process across SSH disconnects. That host-side persistence is distinct from the browser/mobile remote-steering feature.',
-        'The source command sequence is ssh ops@prod-server-3.us-east-1, then copilot --remote; it also shows /remote to enable access mid-session. The displayed session URL and QR code are illustrative placeholders.',
-        'A persistence example is tmux new -s copilot-debug, start copilot --remote, then tmux attach -s copilot-debug after reconnecting. copilot --resume can resume a session from another machine; confirm current session behavior and access policy.',
-        'The remote feature was documented as public preview in the cited April 2026 changelog. Confirm current status, feature availability, and policy before relying on it.'
-      ],
-      sources: refs('remote', 'remotePreview', 'about'),
-      seconds: 70
-    }),
-    S('remote-approval', 4, 'Remote steering keeps consequential actions behind a human decision', {
-      scene: 'signals',
-      subtitle: 'A phone or browser can receive the approval request; it does not become the approver.',
-      rows: [
-        { label: 'Host session', description: 'Copilot requests a specific tool or file action', tag: 'Show request', z: 'purple' },
-        { label: 'Policy', description: 'Host permissions and containment still apply', tag: 'Scope tools', z: 'local' },
-        { label: 'Operator', description: 'Review context; approve, deny, or redirect', tag: 'Human decision', z: 'orange' },
-        { label: 'After action', description: 'Inspect output and verify the service signal', tag: 'Evidence check', z: 'green' }
-      ],
-      footnote: 'For production, pair least-privilege tools with host-side containment and enterprise policy.',
-      notes: [
-        '"Remote steering changes where the operator sees the request. The authority to approve remains with the operator and the organization’s policy."',
-        'Use --allow-tool to scope permitted shell tools where supported. The source recommends timeouts, governance hooks, and avoiding --yolo on remote production sessions.',
-        '→ An incident scenario shows why locality matters without pretending that location removes approval.'
-      ],
-      know: [
-        'The source describes approving and denying tool permissions from a remote device and sending steering messages or new prompts.',
-        'Use Copilot Hooks and enterprise policy as governance controls where configured; they supplement rather than replace least privilege and human review.',
-        'A persistent, broad-permission remote session on a production host increases the consequence of a mistaken action. Use a staged environment for a first pilot.'
-      ],
-      sources: refs('remote', 'command', 'best'),
-      seconds: 65
-    }),
-    S('walking-incident', 4, 'A remote session can preserve an incident investigation across a device handoff', {
-      scene: 'showdown',
-      leftLabel: 'Session abandoned',
-      rightLabel: 'Session steered remotely',
-      subtitle: 'Illustrative staging incident: an operator begins at a laptop and continues from a phone.',
-      pairs: [
-        { left: { label: 'Alert arrives', note: 'Runtime investigation is on a workstation' }, right: { label: 'Start on staging', note: 'Copilot CLI runs where the service lives', z: 'purple' } },
-        { left: { label: 'Context switch', note: 'Copy output or pause the investigation' }, right: { label: 'Scan remote link', note: 'Phone opens the same live session', z: 'local' } },
-        { left: { label: 'Action waits', note: 'Operator has no review point in transit' }, right: { label: 'Inspect request', note: 'Operator steers and approves from mobile', z: 'orange' } },
-        { left: { label: 'Rebuild context', note: 'Re-enter logs and prior decisions' }, right: { label: 'Verify on host', note: 'Check the proposed result before closure', z: 'green' } }
-      ],
-      outcomeLeft: { icon: '…', label: 'Context handoff is manual' },
-      outcomeRight: { icon: '✓', label: 'One session, operator still reviews' },
-      footnote: 'The walking-to-meeting story is an illustrative scenario, not an observed incident report.',
-      notes: [
-        '"The benefit is continuity: the operator changes devices without copying the entire investigation into a new chat."',
-        'The source story includes example times and a missing JWT_SECRET. Treat those details as a hypothetical scenario, not an actual incident, customer, or measured outcome.',
-        'If demonstrating, use a staging environment and fake or redacted data. Do not approve a production remediation from a phone without the same required review and escalation process.',
-        '→ The same locality principle applies to larger log corpora.'
-      ],
-      know: [
-        'The source scenario has an alert, a remote QR handoff, two affected services, and a proposed fix. None of those events are independently observed evidence.',
-        'The remote link does not grant authorization beyond the user’s identity and the configured session controls.'
-      ],
-      sources: refs('remote', 'remotePreview'),
-      seconds: 75
-    }),
-    S('host-forensics', 4, 'Host-local analysis can avoid copying a large log corpus to a phone', {
-      scene: 'terminal',
-      termTitle: 'Illustrative, authorized log-analysis request',
-      subtitle: 'Ask for an aggregate report from approved logs; leave remediation for a separate review.',
-      transcript: [
-        { type: 'prompt', text: 'ssh analytics@approved-log-host' },
-        { type: 'prompt', text: 'copilot --remote' },
-        { type: 'user', text: 'Analyze approved access logs from the last 24 hours.' },
-        { type: 'thinking', label: 'Operator-approved scope:' },
-        { type: 'response', lines: ['Return aggregate counts and time windows for auth failures.', 'Cite the local evidence used; do not block, delete, or change configuration.'] },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Example scale: 12 GB remains on the host; findings need human validation.' }
-      ],
-      footnote: '12 GB is an illustrative source-talk scenario, not a measured transfer or compliance result.',
-      notes: [
-        '"The operator can ask for a bounded summary while keeping a large log corpus on the machine that already holds it."',
-        'The source example asks for top IP addresses associated with 401 responses and patterns consistent with credential stuffing. For this talk, keep the demonstration defensive and aggregate: verify scope, minimize sensitive fields, review evidence, and leave blocking or other response actions to an authorized human.',
-        'Do not claim zero data exposure or compliance certification. The point is avoiding a manual copy of the full corpus; prompts and session results still cross the remote-service boundary.',
-        '→ For distributed incidents, distinguish one-host fan-out from several separately steered sessions.'
-      ],
-      know: [
-        'The 12 GB size and outcomes in the source are illustrative. No test of a 12 GB corpus, transfer benchmark, or compliance assessment is supplied.',
-        'The source command examples use grep and awk to aggregate HTTP 401 results and inspect a sample. Keep any live command restricted to authorized logs and avoid exposing personal or credential data in output.',
-        'The source’s example pipeline is `grep 401 /var/log/nginx/access.log | awk ... | sort | uniq -c`; its sample IP uses a documentation-only address. The full command depends on log format and must be checked before use.',
-        'A local data path is not a substitute for data classification, retention policy, or review of what the remote service receives.'
-      ],
-      sources: refs('remote', 'remotePreview', 'best'),
-      seconds: 75
-    }),
-    S('fleet-across-machines', 4, '/fleet coordinates one host; multi-host work uses separate remote sessions', {
-      scene: 'showdown',
-      leftLabel: '/fleet · one execution context',
-      rightLabel: 'Several --remote sessions',
-      subtitle: 'The operator can supervise multiple sessions from a browser without implying one distributed orchestrator.',
-      pairs: [
-        { left: { label: 'Plan', note: 'One approved plan on one host' }, right: { label: 'Start', note: 'One session on each authorized machine', z: 'purple' } },
-        { left: { label: 'Fan out', note: 'Subagents take independent subtasks' }, right: { label: 'Steer', note: 'Operator selects among session URLs', z: 'orange' } },
-        { left: { label: 'Return', note: 'Orchestrator merges subtask results' }, right: { label: 'Synthesize', note: 'Operator compares reports across hosts', z: 'green' } }
-      ],
-      outcomeLeft: { icon: '⚡', label: 'One orchestrated plan' },
-      outcomeRight: { icon: '↔', label: 'Independent sessions; no shared merge claim' },
-      footnote: 'Use explicit host scope and separate least-privilege permissions for each session.',
-      notes: [
-        '"These are two different shapes: /fleet decomposes work within one plan and host; multiple remote sessions are independent investigations the operator steers."',
-        'The source’s multi-machine example describes separate sessions on separate hosts. Do not claim that one /fleet command fans out across remote machines or merges those independent reports automatically.',
-        '→ Recurring patrols combine remote access with another boundary: the schedule exists only as long as its session.'
-      ],
-      know: [
-        'One browser may give the operator access to multiple session links. It is not a common orchestrator, authorization layer, or guaranteed merged-report facility.',
-        '/fleet can run parallel subtasks where dependencies permit and merges its own results in the orchestrating session.',
-        'Record host identity, task scope, permission policy, and a human review owner separately for each remote session.'
-      ],
-      sources: refs('fleet', 'remote', 'command'),
-      seconds: 75
-    }),
-    S('patrol-scope', 4, 'A remote patrol needs a running session and a bounded response path', {
-      scene: 'signals',
-      subtitle: 'Schedule observation and reporting; keep remediation under a named human approval.',
-      rows: [
-        { label: 'Session', description: 'Keep the interactive host session running', tag: 'Session-scoped', z: 'purple' },
-        { label: 'Schedule', description: 'Use /every or /after within documented limits', tag: 'Experimental', z: 'orange' },
-        { label: 'Tools', description: 'Allow only necessary monitoring commands', tag: 'Least privilege', z: 'local' },
-        { label: 'Response', description: 'Report evidence; request approval for changes', tag: 'Human review', z: 'green' }
-      ],
-      footnote: 'When no interactive session runs, use an external scheduler with an explicit run and review design.',
-      notes: [
-        '"A patrol can detect and explain an anomaly, but detection does not authorize a rollback."',
-        'The source example pairs tmux, --remote, and allow rules for kubectl and docker, then asks for five-minute checks. Treat this as a design illustration; verify the schedule, host lifetime, and exact tool policy before use.',
-        '→ Built-in agents can also help with bounded tasks, but the operator still needs visibility into their work.'
-      ],
-      know: [
-        'The schedule feature is experimental and session-scoped. The source specifies a 10-second minimum interval and one-day maximum; these settings are version-sensitive.',
-        'Most built-in slash commands cannot be scheduled; the refresh identified /chronicle standup as a documented exception. Skills invocably available to the user can be scheduled.',
-        'The source patrol scenario reports CPU at 92% after a memory-limit change from 512Mi to 256Mi and recommends rollback. Treat those details as illustrative, not an observed incident; a human owner validates the evidence and approves any rollback.',
-        'A five-minute poll is not a substitute for a production monitoring or alerting system with tested availability and escalation.'
-      ],
-      sources: refs('schedule', 'remote', 'command', 'best'),
-      seconds: 75
-    }),
-    S('agent-roster', 4, 'Specialized agents are useful when the task benefits from a distinct work pattern', {
-      scene: 'scorecard',
-      subtitle: 'Copilot routes common work; /tasks gives the operator a place to inspect running subagents.',
-      cards: [
-        { icon: '🔎', title: 'Explore + Research', description: 'Explain code or investigate broader sources with focused evidence.' },
-        { icon: '▶️', title: 'Task', description: 'Run a command and summarize success or surface full failure output.' },
-        { icon: '🧩', title: 'General purpose', description: 'Handle multi-step work in a separate context window.' },
-        { icon: '🛡️', title: 'Code review + Rubber Duck', description: 'Surface defects or challenge a plan at review checkpoints.' }
-      ],
-      footnote: 'Agent names and behavior can change by CLI version and configuration.',
-      notes: [
-        '"Specialization can keep the main conversation focused, while /tasks provides visibility into work that is running."',
-        '→ The same selection rule applies to plugins, MCP, and bridges: add them when they solve a real context gap.'
-      ],
-      know: [
-        'The source’s six-name how-to roster is Explore, Task, General purpose, Code review, Research, and Rubber Duck.',
-        'Explore is described as focused codebase analysis; Task as command execution with filtered success output; General purpose as a separate-window helper; Code review as defect-focused; Research as broader GitHub and web investigation with citations.',
-        'Use /tasks to inspect and manage subagents and shell commands. Ctrl+Q or Ctrl+Enter can queue follow-ups in the documented flow; verify current key behavior.',
-        'Rubber Duck is described as a different-model-family reviewer enabled by default in the historical source. It names a Claude-primary/GPT-5.4 reviewer pairing and claims a roughly 75% quality-gap result. Those are version-specific and unsupported here by linked evaluation evidence; verify the default, model pairing, and result before repeating them.',
-        'The source names builtInAgents.rubberDuck: false as a settings option to disable the reviewer. Treat setting shape and defaults as version-sensitive.'
-      ],
-      sources: refs('use', 'command', 'releases'),
-      seconds: 60
-    }),
-    S('extensions-bridges', 4, 'Add an extension only when the task needs context the CLI lacks', {
-      scene: 'scorecard',
-      subtitle: 'Keep tool, instruction, agent, and interface choices tied to an observable need.',
-      cards: [
-        { icon: '🧩', title: 'Plugins', description: 'Install a package for skills, MCP configuration, agents, commands, or hooks.' },
-        { icon: '🔌', title: 'MCP', description: 'Connect external tools; check organization policy support first.' },
-        { icon: '🧭', title: 'Custom agents', description: 'Place role-specific agent definitions at user or repository scope.' },
-        { icon: '↔️', title: 'Bridges', description: '/ide, /app, and /voice move the session or input surface.' }
-      ],
-      footnote: 'Plugins are mentioned as a consumer capability; authoring and marketplace mechanics live in the dedicated talk.',
-      notes: [
-        '"An extension earns its cost when it supplies decisive context or a repeatable capability. Keep its permissions and owner explicit."',
-        'The source says Agent Plugins 1.0 was GA in CLI, VS Code, and the Copilot app when refreshed. It packages portable skills and MCP configuration plus Copilot-specific agents, commands, and hooks. This status is a dated claim; recheck current plugin docs.',
-        '→ Close with a staging-host action that a practitioner can try and verify in their own environment.'
-      ],
-      know: [
-        'The README’s plugin example is `copilot plugin marketplace browse awesome-copilot` followed by `copilot plugin install database-data-management@awesome-copilot`; it then asks Copilot to show a database schema. These are version-sensitive examples; see the linked finding/installing guide.',
-        'The source says CLI cannot currently honor the organization policies “MCP servers in Copilot” or “MCP Registry URL” as verified on 2026-08-25. This limitation is explicitly a dated snapshot; check current administration docs.',
-        'Custom agents may be stored at ~/.copilot/agents/, .github/agents/, or .github-private/agents/ as described in the source. It also names /agent and --agent=refactor-agent as usage forms; verify current syntax.',
-        '/ide opens a file in VS Code while the CLI session continues. /app hands the same session and folder to the Copilot desktop app; the source requires app 1.1.3 or later. /voice is described as local speech-to-text through Foundry Local.',
-        'Other source examples include listing assigned issues, starting work from an issue URL, opening PR reviews, creating Actions workflows, and asking a configured GitHub MCP server to find beginner issues. The source says the /pr screen can create a Git worktree for a PR; verify current syntax and permission scope.',
-        'The README also notes shell UX details: prefix history such as !docker with Up-arrow cycling, shell-history handling, intent-based terminal-tab titles, live tool-call duration, and Windows/PowerShell ergonomics. These are version-sensitive behaviors, not performance guarantees.',
-        'For plugin packaging, marketplace authoring, and governance, use the related Copilot Plugins talk rather than expanding this talk into an authoring tutorial.'
-      ],
-      sources: refs('plugin', 'pluginAbout', 'pluginNews', 'mcp', 'use', 'releases', 'pluginsTalk'),
-      seconds: 65
-    }),
-    S('staging-transfer', 4, 'Try one host-local diagnostic on staging, then inspect the evidence', {
-      scene: 'host-locality',
-      subtitle: 'The practitioner chooses the host and tools; Copilot reports; the service owner accepts any fix.',
-      footnote: 'Start with a low-risk staging task. Never copy secrets or grant blanket permissions.',
-      notes: [
-        '"The concrete next move is small: choose one staging diagnostic whose decisive evidence already lives on the host."',
-        'Before running it, name the host, task, approved read commands, output that would change your decision, and the person who can approve remediation.',
-        'After the session returns evidence, inspect the commands and source output, validate the diagnosis independently, and approve a change only through your normal review path.',
-        'Ask the room: which recurring terminal investigation in your own work has enough context to try this, and what evidence would make you stop?',
-        '→ The closing comparison keeps the example metrics in their proper category.'
-      ],
-      know: [
-        'The README’s next-step checklist includes installation, interactive mode, Plan Mode, /rewind, -p, /fleet, remote steering, sandboxing, schedules, /chronicle, and a staging host. The today slide compresses this into a progression rather than an inventory.',
-        'The source install examples include npm install -g @github/copilot and checking copilot --version. Follow the current install guide for platform-specific setup rather than relying on an old walkthrough prerequisite.',
-        'A useful pilot has a safe scope, an observable result, and an exit condition. If permissions or data handling are unclear, stop and use the organization’s escalation route.'
-      ],
-      sources: refs('install', 'use', 'remote', 'best'),
-      seconds: 70
-    }),
-    S('before-after', 0, 'The practical shift is from carrying context to steering a session', {
+    S('before-after', 0, 'Four distances, four inspectable improvements', {
       before: [
-        'Repeat the task context after every restart',
-        'Copy runtime output between host and chat',
-        'Keep every long task in the active terminal',
-        'Find ambiguity only after a change lands'
+        'Worker ↔ Work: request apart from next check',
+        'Intelligence ↔ Data: logs too big to move',
+        'Workflow ↔ System: explanation outside CI',
+        'Now ↔ Later: remember to check back yourself'
       ],
       after: [
-        'Compact, resume, and recover session context',
-        'Keep the runtime investigation on its host',
-        'Delegate only when a reviewed PR fits',
-        'Clarify and approve before execution'
+        'Docker outputs → Copilot picks the next probe',
+        'A day of logs stays put → cited finding returns',
+        'CI runs copilot -p → why.md beside the red test',
+        'Ship the fix → /after checks back with evidence'
       ],
       metrics: [
-        { value: '45 → 8 min', detail: 'Docker example · illustrative estimate' },
-        { value: '25 → 5 min', detail: 'CI triage example · illustrative estimate' },
-        { value: '12 GB stays host', detail: 'Log scenario · illustrative scale' }
-      ],
-      notes: [
-        '"The transferable change is where context lives and how the operator stays in the decision loop."',
-        'The three figures are source-talk examples, not benchmarks or measured results: Docker 45-to-8 minutes, CI triage 25-to-5 minutes, and a 12 GB host-local log scenario.',
-        'Each number has a different status: time comparisons are estimates; log volume is an illustrative scale. There is no supplied run artifact, study, or compliance assessment.',
-        '→ The next slide turns the judgment into a low-risk experiment.'
-      ],
-      know: [
-        'The original source also mentions a 90-minute-to-15-minute greenfield research scenario. That comparison lacks a supplied measurement method and does not appear as a headline metric; retain it here as an unverified source estimate rather than a promise.',
-        'The source’s before/after language about no data transfer is narrowed to the practical claim that the large corpus need not be copied to the phone. Remote prompts and session results still cross a service boundary.'
-      ],
-      sources: refs('about', 'use', 'remote'),
-      seconds: 45
+        { value: 'Bring closer', detail: 'Task, source, process, continuation' },
+        { value: 'Inspect proof', detail: 'Commands and artifacts, not promised gains' },
+        { value: 'Keep authority', detail: 'Permission policy and human acceptance' }
+      ]
     }),
-    S('today', 0, 'Start with one task and define its proof before choosing autonomy', {
+    S('today', 0, 'Choose one distance to close in your own work', {
+      scene: 'distance-actions',
       horizons: [
-        { icon: '🧭', label: 'Today', z: 'green', items: [
-          'Install the current CLI; check copilot --version. Try Plan Mode on one low-risk task.',
-          'Signal: Copilot asks a useful scope question. Validate: review the plan, diff, and test.'
+        { icon: '⌨️', label: 'Worker ↔ Work', z: 'green', items: [
+          'Ask Copilot for two read-only checks beside a runtime task.',
+          'Inspect the outputs and choose the next probe.'
         ] },
-        { icon: '📄', label: 'This week', z: 'local', items: [
-          'Add one copilot -p failure summary to CI with scoped tools.',
-          'Save a reviewable report; compare it with logs and record your own time and corrections.'
+        { icon: '🔎', label: 'Intelligence ↔ Data', z: 'local', items: [
+          'Run Copilot on the host that owns a large log.',
+          'Rerun the counts it cites before accepting the finding.'
         ] },
-        { icon: '🌍', label: 'This month', z: 'purple', items: [
-          'Pilot --remote on an authorized staging host with redacted or synthetic data.',
-          'Validate permissions, reconnect, reviewer ownership, and an exit path before remediation.'
+        { icon: '⚙️', label: 'Workflow ↔ System', z: 'purple', items: [
+          'Return one bounded CI failure explanation.',
+          'Compare why.md with the log; keep the failed test status.'
+        ] },
+        { icon: '⏱️', label: 'Now ↔ Later', z: 'orange', items: [
+          'After your next fix, set one /after check.',
+          'Compare its report with the logs it cites.'
         ] }
       ],
-      takeaway: 'One task. One reviewer. One acceptance signal.',
-      notes: [
-        '"You do not need to adopt every mode. Start with one task and name the evidence that would make it useful."',
-        'Today: install from the current official guide, verify the version, and try Plan Mode in a safe repository. Success is a proposed plan that matches the task; inspect before approving edits.',
-        'This week: make a CI report, not an automatic repair. Use least privilege, preserve logs safely, and compare the report with the actual failure.',
-        'This month: test remote steering in staging. Confirm host scope, remote-session policy, reconnect behavior, reviewer ownership, and an exit path.',
-        '→ The references point to current command and policy details; always recheck version-sensitive behavior.'
-      ],
-      know: [
-        'A local measurement plan can compare elapsed time, number of correction turns, accepted output quality, and reviewer effort over a defined set of representative tasks. Treat the baseline and acceptance threshold as proposals until collected.',
-        'The original artifact is tech-talks/copilot-cli/examples/walkthrough.md. It demonstrates Plan Mode, copilot -p, /fleet, remote sessions, and cloud delegation against the FanHub Node.js track. Check its prerequisite and command details against the installed CLI before a live run.'
-      ],
-      sources: refs('install', 'use', 'plan', 'remote', 'best'),
-      seconds: 60
+      takeaway: 'What evidence would make you keep, adjust, or stop? When the evidence disagrees, stop and re-scope.'
     }),
-    S('references', 0, 'First-party references for commands, boundaries, and evidence', {
+    S('references', 0, 'References', {
       groups: [
-        { icon: '📖', title: 'Core CLI', z: 'local', items: [
-          { href: SRC.about.href, label: SRC.about.label, description: 'Session model, operating modes, and concepts' },
-          { href: SRC.command.href, label: SRC.command.label, description: 'Version-sensitive flags and slash commands' },
-          { href: SRC.install.href, label: SRC.install.label, description: 'Current installation options' }
+        { icon: '📖', title: 'Core and execution', z: 'local', items: [
+          { ...SRC.command, description: 'Commands and switches' },
+          { ...SRC.models, description: 'Provider placement and discovery' },
+          { ...SRC.workflowUse, description: 'Create, run, and share workflows' },
+          { ...SRC.rubberDuck, description: 'Critique from a different model' }
         ] },
-        { icon: '🛡️', title: 'Boundaries and remote work', z: 'orange', items: [
-          { href: SRC.sandbox.href, label: SRC.sandbox.label, description: 'Local and cloud containment' },
-          { href: SRC.schedule.href, label: SRC.schedule.label, description: 'Experimental session schedules' },
-          { href: SRC.remote.href, label: SRC.remote.label, description: 'Remote session setup and steering' }
+        { icon: '🛡️', title: 'Authority and continuity', z: 'orange', items: [
+          { ...SRC.permissions, description: 'Permission modes' },
+          { ...SRC.sandbox, description: 'Containment and platform limits' },
+          { ...SRC.remote, description: 'Steer from GitHub.com or Mobile' },
+          { ...SRC.cloudDocs, description: 'Cloud environment and continuity' }
         ] }
-      ],
-      notes: [
-        '"The links on this slide are first-party references. The full metadata list remains on the talk landing page, and claim-specific citations also appear beside the relevant notes."',
-        'Call attention to the command reference for version-sensitive switches and slash commands, and the sandbox/schedule pages for preview and session limits.',
-        '→ Close with a question about the audience’s own recurring task.'
-      ],
-      know: [
-        'References are first-party GitHub documentation, GitHub changelog/blog, and the official Copilot CLI release page.',
-        'The README metadata includes additional first-party pages for custom instructions, MCP, plugins, remote sessions, Chronicle, and model deprecations. The per-slide notes carry the sources for their claims.',
-        'The approved 2026-08-25 content refresh recorded CLI v1.0.80 as the latest stable release and v1.0.81 as prerelease at that time. This conversion does not refresh release news; check the current release page and installed version before presenting any dated command behavior.',
-        'The source walkthrough is retained at tech-talks/copilot-cli/examples/walkthrough.md.'
-      ],
-      sources: refs('about', 'use', 'install', 'command', 'sandbox', 'schedule', 'fleet', 'chronicle', 'chronicleConcept', 'remote', 'remotePreview', 'best', 'instructions', 'plugin', 'pluginAbout', 'pluginNews', 'releases', 'plan'),
-      seconds: 35
+      ]
     }),
-    S('thanks', 0, 'GitHub Copilot CLI', {
-      chrome: false, visual: 'session-bridge',
-      subtitle: 'AI at the Point of Work',
-      cards: [
-        { value: 'Intent', detail: 'Ask, plan, approve' },
-        { value: 'Context', detail: 'Compact, remember, recover' },
-        { value: 'Place', detail: 'Run on the host; steer remotely' }
-      ],
-      prompt: 'Which recurring investigation in your own work is worth trying next?'
+    S('thanks', 0, 'GitHub Copilot CLI: Intelligence Within Reach', {
+      chrome: false, scene: 'within-reach', subtitle: 'Bring intelligence to the work, and keep the worker within reach.',
+      prompt: 'Which distance will you close—and what evidence will you inspect?'
     })
   ];
 
   const NOTES = {
     title: {
+      question: 'Why bring AI into the terminal?',
       notes: [
-        '"This talk follows the work rather than treating the terminal as only a command prompt."',
-        'Opening visual: one session connects intent, execution, context, time, and geography. These are different decisions, not a promise that every capability is available in every organization.',
-        '→ Begin with the practitioner’s question.'
+        'Let the animation run without talking over it: four pairs start at opposite edges of the frame and close onto one blinking prompt.',
+        '"Why does a CLI for Copilot exist? To shrink four distances: between the worker and the work, the intelligence and the data, the workflow and the running system, and now and later."',
+        '"Everything in this talk is one of those gaps getting smaller, and the evidence we inspect to know it did."',
+        'This is our practitioner answer to why the CLI is useful, not a historical origin claim or a ranking of other surfaces. Closing a gap never grants authority by itself; that stays explicit throughout.',
+        '→ Ask the question from the practitioner’s seat.'
       ],
-      know: ['The subtitle and five-distance tagline preserve the approved title and thesis framing.'],
-      sources: refs('about'),
-      seconds: 30
+      know: [
+        'This is a 45-minute slot with an estimated 40:00 talk and 5:00 for questions: 36 slides, 25 teaching and 11 spine. Budgets remain estimates until a presenter times a run-through.',
+        'Evidence reviewed November 2, 2026. Latest stable baseline: v1.0.105. Prerelease v1.0.106 entries do not establish stable behavior.',
+        'The October 31 conversion was mechanical and excluded product news; August 25 was the previous verification baseline.'
+      ],
+      sources: refs('about', 'stable', 'use', 'remote'), seconds: 45
+    },
+    'core-question': {
+      question: 'How do I get AI help right where I’m working?',
+      notes: [
+        '"Where I’m working can mean a repository, a running host, or a cloud task I return to later."',
+        '"Start with the distance that matters to your task. Bring help closer, then inspect what improves."',
+        'Three attendee outcomes: turn an ambiguous runtime request into scoped checks; separate placement from authority; verify continuity across interruptions and devices.',
+        'The practitioner sets scope. Copilot proposes or acts through configured controls. A human accepts consequential outcomes.',
+        '→ Make the four distances concrete before we navigate.'
+      ],
+      know: [
+        'The CLI is a useful control surface when terminal tools and runtime context are decisive. Editor-first changes or GitHub-hosted collaboration can fit another surface better.',
+        'Context, delegation, verification, and authority are the judgment lenses. The four distances explain relationships, rather than mapping one feature to each distance.'
+      ],
+      sources: refs('about', 'use'), seconds: 55
+    },
+    contents: {
+      question: 'How will we prove the thesis?',
+      notes: [
+        '"First, worker and work. Then intelligence and data. Next, workflow and running system. Finally, now and later."',
+        'Point to opener links 5, 10, 15, and 22. Docker keeps the next decision beside the task; host logs bring reasoning to evidence; CI asks inside the process; continuation preserves checked state.',
+        '→ Start with the developer and a backend that will not start.'
+      ],
+      know: ['Distances are the narrative spine, not an exclusive feature taxonomy. Remote steering also closes worker-to-work; workflow reuse also closes now-to-later.'],
+      sources: refs('about'), seconds: 30
     },
     'part-1': {
-      sources: refs('plan', 'about')
+      question: 'Can I ask, inspect, and decide where I am already working?',
+      notes: [
+        '"Keep the request, host evidence, and next decision in one loop. The developer can inspect what Copilot used before choosing the next action."',
+        'Introduce the Docker sequence as a representative script. It does not report a live successful repair.',
+        '→ Shape the next action beside the backend task.'
+      ],
+      know: ['Planning is a scope and evidence decision; approving a plan does not grant every tool action or accept a future result.'],
+      sources: refs('plan', 'about'), seconds: 35
+    },
+    'distance-model': {
+      question: 'What does minimizing distance mean in practice?',
+      notes: [
+        '"Ask what is separated, what brings it closer, and what observable result improves."',
+        'Point to each concrete pair: Docker output and next probe; on-host logs and checked aggregate; failure-gated copilot -p and why.md; continued session and verified identity. These are observable improvements in access to evidence or action, not measured speed gains.',
+        '"One capability can close more than one distance. The task decides which relationship matters."',
+        '→ These four distances are also our navigation.'
+      ],
+      know: [
+        'CLI execution stays local by default. Moving a model, moving tools, exposing remote control, and changing tool permissions are independent decisions.',
+        'The pattern stops fitting when decisive evidence belongs to another surface or the operator lacks safe authority to inspect it.'
+      ],
+      sources: refs('about', 'models', 'cloudDocs', 'remote', 'command'), seconds: 70
+    },
+    'plan-mode-loop': {
+      question: 'What does Plan Mode change before execution?',
+      notes: [
+        '"Copilot can surface an ambiguity while it is still inexpensive for the developer to resolve."',
+        'The separation is between the developer’s intent and Copilot’s next action. Plan Mode brings a proposed scope into the working session; the reviewable plan is the artifact. Inspect its commands and stop if it assumes unapproved access.',
+        'Point from request to clarification to plan review. Confirm the installed interactive shortcut before presenting; the script uses Shift+Tab.',
+        '"The developer approves the diagnostic scope. Tool policy still decides which actions may run."',
+        '→ Watch the scope get smaller in the exchange.'
+      ],
+      know: [
+        'Plan Mode is collaborative planning. Autopilot or goal controls are separate mechanisms.',
+        'No time-saving ratio is taught here. The old 45-to-8-minute Docker comparison had no supplied run artifact and has been displaced by inspectable evidence.'
+      ],
+      sources: refs('plan', 'command'), seconds: 55
+    },
+    'docker-clarify': {
+      question: 'How can I make an ambiguous Docker request inspectable?',
+      notes: [
+        '"Copilot asks where to begin. The developer chooses logs first, with configuration only when the evidence points there."',
+        'Read the representative exchange; point to the named actor on each line. Keep secret values out of the prompt and approve only the needed read operations.',
+        '"That answer gives us a plan we can review instead of an unspoken interpretation."',
+        'The concrete improvement is a recoverable scope in this working loop: logs first, configuration only when evidence warrants it. The developer can correct it before execution.',
+        '→ Now inspect what those two checks actually establish.'
+      ],
+      know: [
+        'Logs may show a process startup fault, binding error, or dependency issue. A port mapping alone cannot establish which occurred.',
+        'A proposed live check can use a disposable container fixture; preserve the actual log and compose file as evidence.'
+      ],
+      cue: [
+        'Optional: open a disposable Docker project and enter Plan Mode.',
+        'Ask for logs first and no edits. Review the proposed commands before executing.',
+        'If the output differs from the script, teach from the actual output rather than forcing the planned diagnosis.'
+      ],
+      sources: refs('plan', 'use', 'best'), seconds: 70
+    },
+    'docker-plan': {
+      question: 'What does Copilot actually do with the approved diagnostic plan?',
+      notes: [
+        '"Once the developer approves the plan and leaves planning for execution, Copilot requests these shell tools on the host that owns the Docker environment."',
+        'Read each command and representative tool output together. The shell tool runs docker compose logs; Copilot reads the returned listener line. It then requests docker compose port to resolve the actual published host port rather than guessing from the symptom.',
+        '"Copilot changes its explanation: this trace points toward a request sent to the wrong host port. It proposes a request on 5001 before editing anything."',
+        'Point to the proposed curl command. It probes the root URL, not an assumed health endpoint. Inspect the actual HTTP response and then run the repository’s documented health check. A response alone does not establish application correctness.',
+        'The important proximity is visible: Copilot uses the host’s existing Docker tools, receives their evidence, and chooses the next check in the same session. The developer reviews the conclusion.',
+        '→ The developer can also redirect a proposed action that threatens the evidence.'
+      ],
+      know: [
+        'The commands and returned lines are a constructed, representative trace; no recorded diagnosis, successful request, or repair is claimed.',
+        'Use a disposable Compose fixture with a backend service, container listener 5000, and published host port 5001. Confirm the installed Docker Compose syntax and host access before presenting.',
+        'Plan approval does not grant blanket tool permission. Leave Plan Mode through the installed client’s execution flow; CLI permission rules gate the requested shell actions separately.',
+        'A historical listener log is a clue, not proof that the process is still alive. If the request fails, inspect current container state and recent startup errors before selecting another hypothesis.',
+        'Changing 5001:5000 to 5000:5000 can align a host-side caller when host port 5000 is available; it does not by itself fix an application that fails to start.',
+        'A real health endpoint and expected response depend on the application. Use the repository’s documented check rather than inventing a successful response.',
+        'Recovery: retain logs, inspect the actual listener and startup error, revise the plan, and rerun the relevant check.'
+      ],
+      cue: [
+        'Prepare the disposable fixture and a failing request to host port 5000. Ask Copilot to diagnose without edits.',
+        'Approve the scoped plan and enter execution. Inspect the requested commands, policy decisions, and actual tool outputs.',
+        'Ask Copilot what changed in its explanation and which next request could disprove it. Inspect the response and application health check.',
+        'When actual output differs, follow that evidence. Present the scripted trace as representative if no fixture is available.'
+      ],
+      sources: refs('plan', 'use', 'best'), seconds: 130
+    },
+    'steer-boundary': {
+      question: 'Can I block an action and keep the investigation moving?',
+      notes: [
+        '"In manual mode, the developer can deny an unresolved request and explain the constraint in the same interaction."',
+        'Keep deletion as a request in the script; do not run it. Point to the useful redirect: summarize the evidence while preserving it.',
+        '"The denial is an authority decision. It does not prove the diagnostic task is complete."',
+        'The worker stays beside the task even when denying a request. Preserved evidence and an evidence-only continuation are the useful result; no task completion is implied.',
+        '→ Now follow the evidence to the host that owns it.'
+      ],
+      know: [
+        'Existing policy may resolve a tool request before a human prompt. Manual does not mean every action always asks.',
+        'Current rejection-key behavior can vary; inspect the installed prompt. Assisted mode can approve eligible unresolved requests automatically, so a universal human-per-tool claim is inaccurate.'
+      ],
+      sources: refs('permissions', 'use', 'command'), seconds: 55
     },
     'part-2': {
-      sources: refs('about', 'use', 'schedule', 'fleet')
+      question: 'Can help reach the evidence that decides this task?',
+      notes: [
+        '"The staging log can decide the investigation. Start Copilot where approved tools can read it, then check who receives that context."',
+        'Point to source, provider, and finding. Tools run on their host; inference placement is a separate choice. Local by default describes ordinary CLI execution, not a promise that data stays local.',
+        '→ Connect to staging and inspect a representative service log.'
+      ],
+      know: ['Local sandboxing constrains OS tool access. It does not select or relocate the language model.'],
+      sources: refs('about', 'cloudDocs', 'sandbox'), seconds: 35
+    },
+    'local-model': {
+      question: 'How can I check local model placement without broadening the task?',
+      notes: [
+        '"Prepare the runtime and model first. Discovery can make an already-running local Ollama service available in /model."',
+        'Inspect discovery status, provider, and endpoint before adding the prepared model and switching the current session. Use synthetic evidence and compare the answer with the fixture.',
+        '"The proof is the selected endpoint and a checkable answer. It is not a claim of offline operation."',
+        'The separation here is between reasoning and approved evidence. A prepared local endpoint is one deliberate inference choice; the selected endpoint and checked synthetic answer establish what was actually used.',
+        '→ Repository work may fit cloud; host-only evidence still needs its host.'
+      ],
+      know: [
+        'The runtime and model must already be installed; discovery installs neither. The model needs tool calling and streaming.',
+        'Automatic discovery is local-machine only. Remote Ollama requires provider configuration; verify the endpoint before sending context.',
+        'Local selection neither enables offline mode nor disables telemetry. COPILOT_OFFLINE=true does not prevent a configured remote provider from receiving context.',
+        'Intelligent local routing is future availability in the announcement; do not present it as shipped. Discovery was announced starting with v1.0.94-0; this talk uses stable v1.0.105 as the dated baseline.'
+      ],
+      cue: [
+        'Preflight a supported installed model with tool calling and streaming; keep its name out of the permanent script.',
+        'Open /model, inspect the discovered local endpoint, add the model, and optionally switch without restarting.',
+        'Ask for a summary of a synthetic file and compare it with the file. If discovery is absent, inspect provider configuration; do not claim a successful local run.'
+      ],
+      sources: refs('models', 'modelNews', 'stable'), seconds: 85
+    },
+    'interactive-diagnosis': {
+      question: 'How do I bring Copilot to evidence that exists only on the staging host?',
+      notes: [
+        '"Connect to the authorized staging host, then start Copilot there. The CLI process and its shell tools now operate beside the service that is failing."',
+        'Point to SSH first, then copilot: the second command runs in the remote shell, not on the laptop. Copilot requests journalctl on that host and uses the returned evidence to choose its next diagnostic step.',
+        '"The useful distance closes between reasoning and the staging evidence. Copilot reads the tool result where the log lives and proposes a check we can inspect."',
+        'The displayed connection-refused line is representative, not an observed diagnosis. It motivates checking the configured dependency endpoint; it does not prove which dependency is at fault or authorize a change.',
+        'CLI execution location and model inference location differ. The selected provider can receive prompt and tool context. Approved scope, redaction, tool permissions, and containment still apply.',
+        'This slide establishes execution placement. Part 4 keeps the same original-host session running while the practitioner steers it from another device; SSH alone is not the remote-control feature.',
+        '"The service owner accepts any fix after checking the evidence."',
+        '→ Now scale it up: a whole day of logs that is too large to move.'
+      ],
+      know: [
+        'This is a representative Linux/systemd fixture with a backend unit. Install and authenticate the CLI on the authorized host beforehand; SSH does not install it or grant log access.',
+        'journalctl requires the relevant service name, log-read permissions, and a systemd journal. Adapt to the actual approved host tooling rather than assuming this command works everywhere.',
+        'A refused connection at 127.0.0.1:6379 does not establish a confirmed root cause. Check configuration and actual dependency state before proposing remediation.',
+        'If runtime credentials or data handling are unclear, stop and use the organization’s approved diagnostic path.'
+      ],
+      cue: [
+        'Connect to a disposable authorized staging host and verify host identity before starting the installed CLI.',
+        'Request a read-only diagnosis. Inspect the shell request, permitted log output, and Copilot’s next proposed check.',
+        'Use synthetic or approved redacted logs; present the visible trace as representative when a suitable host is unavailable.'
+      ],
+      sources: refs('use', 'best'), seconds: 55
+    },
+    'programmatic-command': {
+      question: 'Can the failed CI run explain why it failed before I open its logs?',
+      notes: [
+        '"GitHub Actions already has the failure evidence. Put Copilot in that workflow and the run can return a reason alongside the red test result."',
+        'Trace the actual workflow excerpt: Bash captures the test output with tee, pipefail retains the failing test status, and the next step runs only when that test step failed. No continue-on-error is needed.',
+        'The workflow passes the captured log into copilot -p as prompt context, writes its response to why.md, and appends it to the Actions job summary. The model reasons over the log at the point where CI produced it; the maintainer does not need to start a separate conversation and paste the failure.',
+        'Read the representative log and explanation together. Connection refused supports an unreachable dependency hypothesis. It does not prove whether startup, configuration, or another cause made the dependency unavailable.',
+        '"Keep the original test status. A successful analysis command never turns a failed test green."',
+        'Compare the explanation with the source log and a reproduction before accepting it. Analysis completion does not verify the proposed cause.',
+        'The separation is between the failed process and the maintainer’s explanation. Running the bounded prompt inside CI returns a proposed why beside the red test, while preserving the original evidence and status.',
+        '→ Save a recurring multi-step investigation as a procedure.'
+      ],
+      know: [
+        'This is a GitHub Actions steps excerpt, not a complete executed workflow. Earlier trusted steps must check out the repository, install project dependencies and the standalone CLI, and authenticate it with a supported Copilot credential. The default Actions GITHUB_TOKEN does not itself supply a Copilot entitlement.',
+        'The shown shell is Bash on the Actions runner. Command substitution supplies bounded log text directly as prompt context; no log-reading shell tool is required for this explanation. --silent keeps progress chatter out of why.md.',
+        'Use trusted runs and redacted bounded logs. Large logs can exceed shell argument or model context limits; select the relevant evidence first. Treat log contents as untrusted data and preconfigure minimum permissions, with no edit or repair authority.',
+        'GitHub job summaries expose the generated text to people who can view the run. Review data-handling policy before publishing logs or analysis; never place credentials in the prompt or summary.',
+        'The command exits explicitly if analysis fails through the runner’s normal Bash error handling; no success-shaped fallback is supplied. The original failed test remains failed whether analysis succeeds or fails.',
+        'Non-interactive and autopilot requests still requiring human approval are denied. Pre-grant only the tools needed for the bounded report.',
+        'Posting a PR comment is a separate write authority. Prefer an artifact until the repository owner approves publication of the report.'
+      ],
+      sources: refs('command', 'install', 'permissions', 'use'), seconds: 90
+    },
+    'authority-boundary': {
+      question: 'What are my options for controlling what Copilot may run?',
+      notes: [
+        '"Inspect /permissions show. Manual leaves unresolved requests with a human. Assisted lets a review model resolve eligible requests. Allow-all broadly preauthorizes within enforced limits."',
+        'Distinguish the requested action, decision maker, actual decision, and later human acceptance. In a live check, show an eligible approval and a denied or escalated request; do not invent their results.',
+        '"Assisted approval is useful automation, with a model’s fallibility. Containment remains a separate boundary."',
+        'Use the running-system example: a workflow requests service reads; a proposed restart has different consequences. Proximity does not grant authority. The observable proof is the actual request and allow, deny, or escalation, with demonstration verification recorded separately.',
+        '→ Inspect what approved tools can actually reach.'
+      ],
+      know: [
+        'Assisted permissions are GA. A review model can approve dangerous or unintended actions; no safety guarantee follows from its approval.',
+        'Existing deny rules and enterprise restrictions remain effective. Eligible enterprise ask rules can be satisfied by model approval.',
+        'Requests to bypass local sandboxing are not reviewed by assisted permissions. Autopilot and non-interactive requests still needing a human are denied.',
+        'Administrators can disable assisted and allow-all independently. Avoid broad permission bypass in environments holding consequential credentials.',
+        'Managed forceRemoteSettingsRefresh can require current server policy at startup and fail closed if it cannot be confirmed. Restore policy access or update the client rather than bypassing governance.',
+        'A server-managed freshness requirement begins after the client receives it; MDM or file delivery can apply before first sign-in. Managed sandbox keys may require a newer client.'
+      ],
+      cue: [
+        'On a disposable task, inspect /permissions show and select /permissions assisted only when policy permits.',
+        'Observe an eligible unresolved request and an explicitly denied or escalated request.',
+        'Record the requested operation and actual decision separately from the status of the demonstration.'
+      ],
+      sources: refs('permissions', 'assisted', 'managed', 'command'), seconds: 95
+    },
+    'local-containment': {
+      question: 'What happens to everything an approved command starts?',
+      notes: [
+        '"On the last slide you approved npm test. But npm test is not one action. It starts a test runner, helper scripts, and code from dependencies you have never read."',
+        'Let the tree build. The root is your decision, in orange. Each branch is something a child process tries to do: the test runner writes coverage inside the repo, a helper reaches for an SSH key, a dependency phones home, a script asks for a GitHub token.',
+        '"Permissions decided that npm test may run. The sandbox decides what everything it spawns can reach."',
+        'One write is allowed; three reaches beyond the task are refused. The tests still run. That is the payoff for the distance argument: with the reach bounded, you can let Copilot work closer to your code with more autonomy.',
+        'Mechanism: CLI declares the effective policy and Microsoft eXecution Container turns it into operating-system restrictions. Shell commands and local MCP and language servers run inside it when local sandboxing is enabled. Configure with /sandbox and inspect /sandbox policy and /sandbox status; enabling alone does not prove these specific restrictions are present.',
+        'These four outcomes are representative under an example policy, not output from a recorded run and not the default policy.',
+        'When a legitimate test is blocked, inspect the denied resource and narrowly revise policy if authorized. Avoid turning containment off merely to make a run pass.',
+        '→ Carry this bounded, reusable process into the next useful moment.'
+      ],
+      know: [
+        'No experimental-startup prerequisite is required for GA local sandboxing. It is off by default unless managed policy requires it.',
+        'MXC provides OS-level restrictions, not a separate VM or container. It does not select a model endpoint.',
+        'Built-in in-process file tools check policy themselves on a best-effort basis; OS enforcement applies to spawned processes such as shell commands.',
+        'Credential controls can limit Git and GitHub CLI authentication and mask selected environment variables. This does not imply that every credential on the host is automatically removed.',
+        'Repository scripts can spawn other commands; containment is useful even when the approved top-level command looks routine. It is not a guarantee against malicious code or a substitute for reviewing untrusted scripts.',
+        'Platform prerequisites and enforcement differ. Current Windows support requires a suitable Windows 11 build; confirm the documented supported build before the demo.',
+        'Windows proxy and host rules do not provide the same direct-connection protection as macOS and Linux. Do not claim identical network enforcement across platforms.',
+        'Fresh managed policy may fail startup closed, and a managed sandbox requirement may require a newer client. Restore policy connectivity or update the client.'
+      ],
+      cue: [
+        'Check OS prerequisites and managed policy on a disposable environment.',
+        'Run /sandbox enable, /sandbox status, and /sandbox policy.',
+        'Configure and inspect the example policy: required repository/runtime reads, repo and test scratch writes, and only needed network and credential access.',
+        'Use a synthetic file in an explicitly denied test directory, never a real secret. Compare an allowed repo test operation with a shell read of that fixture.',
+        'Keep the actual output; if enforcement differs, stop and inspect policy rather than claiming containment.'
+      ],
+      sources: refs('sandbox', 'sandboxGA', 'managed', 'command'), seconds: 85
+    },
+    'cloud-containment': {
+      question: 'When does the work belong in a cloud session?',
+      notes: [
+        '"Ordinary CLI sessions still execute locally by default. copilot --cloud deliberately starts interactive work in a cloud sandbox."',
+        'Point to environment choice at start. Select Cloud for its supported connected execution path; use Actions when Actions-only setup steps or runner requirements are decisive.',
+        '"A cloud snapshot preserves files and in-progress work. It does not provide access to your staging host’s live state."',
+        'The separation to close is repository work and its execution environment. Cloud can make that repository task reachable; it does not make the original host’s logs available. Inspect access and the actual evidence before choosing.',
+        '→ Next put reasoning into the process that already has the evidence.'
+      ],
+      know: [
+        'Connected cloud sessions and cloud sandboxes are GA for paid Copilot plans in the October 28 announcement; confirm organization access and installed-client availability.',
+        'copilot --cloud is interactive and cannot be combined with -p or -i. Cloud and Actions are chosen at session start; changing environment requires a new session.',
+        'Actions-only setup steps and runner requirements still require Actions.',
+        'The announcement says cloud-sandbox billing begins in November 2026 using a shared Actions compute entitlement. This is November: confirm current rates and entitlement before the demo. No rate or free-compute promise is made.',
+        'Broad cloud-default language in the announcement does not change ordinary local-by-default CLI execution.'
+      ],
+      sources: refs('cloud', 'cloudDocs', 'connected'), seconds: 80
+    },
+    'delegate-cloud': {
+      question: 'When is a PR a better handoff than a live session?',
+      notes: [
+        '"Hand off now, then come back to a pull request you can inspect. Your terminal remains available while a separate cloud coding-agent task works."',
+        'Read the ampersand request on the left: one endpoint, input validation, tests, draft PR, and no merge. Inspect local worktree state before handing off. This is separate task delegation, not continuation of the current interactive cloud session.',
+        'Follow the time gap to the larger PR preview. The diff is a representative JavaScript fragment, not a complete implementation or observed change. It assumes the endpoint has already parsed the body; real validation also needs the application’s full request contract.',
+        'The test evidence line names what the maintainer must inspect; it does not claim tests ran or passed. Compare actual tests and results with both rejected inputs and the valid-order behavior.',
+        '"The agent returns proposed work. The maintainer reviews, requests changes, or merges under repository policy."',
+        '→ Later work also needs a mechanism for pausing deliberately.'
+      ],
+      know: [
+        'The original walkthrough used an API input-validation audit. Returned PR shape, task access, and completion behavior depend on current coding-agent controls.',
+        'A task can outlive terminal attention without giving it unlimited repository or network authority. Avoid promising a completion time or notification route.',
+        'Inspect local changes before delegation; do not assume a dirty worktree is excluded from a handoff.'
+      ],
+      sources: refs('about', 'use', 'best'), seconds: 45
     },
     'part-3': {
-      sources: refs('command', 'chronicle')
+      question: 'Can the process ask for an explanation when it has the evidence?',
+      notes: [
+        '"CI already holds the failure log. Let that process ask for an explanation at the moment it can supply the evidence."',
+        'Then use the staging example to show a reusable collection-and-reasoning procedure. The output is evidence for an operator, with explicit permission and containment boundaries.',
+        '→ Watch Actions literally run copilot -p when tests fail.'
+      ],
+      know: ['CI explanation and dynamic workflows connect reasoning with a running process. Workflow-definition reuse also bridges time; findings still depend on fresh evidence.'],
+      sources: refs('workflow', 'permissions', 'command'), seconds: 35
+    },
+    'workflow-reuse': {
+      question: 'How do I keep this useful terminal investigation for the next incident?',
+      notes: [
+        '"We already connected to staging, started Copilot there, and inspected the service logs. Keep that useful process for the next investigation."',
+        'Start with the familiar situation: another staging incident. Walk through collection, agent analysis, and returned report. Code makes the procedure repeatable; the agents interpret new evidence rather than making every step deterministic.',
+        'A dynamic workflow is a program inside a Copilot extension. It can combine fixed commands, agent calls, ordering, parallelism, and structured outputs. It is not YAML and does not arise merely from saving a prompt.',
+        '"Code repeats the collection and report assembly. Agents analyze process health and an upstream lead. The practitioner gets evidence to review."',
+        'This closes workflow to running system because commands inspect this host, and now to later because the procedure is reusable. Parallel analysis fits independent hypotheses; keep dependent steps ordered.',
+        '→ First create the workflow by describing the process to Copilot.'
+      ],
+      know: [
+        'The concept documentation explicitly uses incident investigation, telemetry collection, independent agents, and a combined root-cause report as an example. This staging fixture is our teaching implementation, not a GitHub-provided sample.',
+        'Dynamic workflows are Copilot extension programs in public preview, distinct from GitHub Agentic Workflows and Actions YAML.',
+        '/fleet lets Copilot decompose a task. A dynamic workflow defines the process in code. copilot -p submits one prompt; a script can also orchestrate such prompts, but that alone does not register a dynamic workflow.',
+        'The CLI command runs in its existing environment. Start it on the authorized staging host; it neither connects to that host nor deploys across hosts automatically.'
+      ],
+      sources: refs('workflow', 'workflowUse', 'workflowNews', 'fleet'), seconds: 75
+    },
+    'workflow-definition': {
+      question: 'How do I create and configure a dynamic workflow?',
+      notes: [
+        '"Start an experimental Copilot session and describe the process. This text is a request to Copilot, not a YAML file or JavaScript API."',
+        'The author names the workflow, collection scope, agent questions, output, authority boundary, and a bounded budget. Copilot generates extension code and may ask for authoring approvals. Ask it to clarify a numeric credit limit before running; the prompt does not prescribe one.',
+        'Review the generated commands, handling of sensitive logs, tool access, and configured limits. Ask for a project extension so the workflow can be reused outside the authoring session. Confirm registration by asking what dynamic workflows are available in a fresh session.',
+        '"Creating and registering the workflow does not start the investigation. That is a separate action."',
+        'This is the documented authoring experience, not a claim that the talk already generated the extension. The downloadable JavaScript core and synthetic fixture are optional implementation study material, not a complete Copilot extension.',
+        '→ Here is the kind of code Copilot writes from that request.'
+      ],
+      know: [
+        'Verified November 2 against current docs and installed CLI v1.0.105 workflow run help: --args accepts inline JSON or @file; --result-file saves only the returned value. --experimental enables preview features.',
+        'Personal extensions live under ~/.copilot/extensions/; project extensions under .github/extensions/. A session-only definition needs copying to one of these locations before a separate command can find it. Copying definitions does not copy run history.',
+        'Ask Copilot: Show me the guidance for writing dynamic workflows. Audit the generated extension and registration against that guidance; confirm the name in a new session before using workflow run.',
+        'copilot workflow run never displays permission approval prompts. Pregrant only the tools and URLs the reviewed extension requires; unresolved requests are denied.',
+        'Trusted extension JavaScript can run host code. Agent tool grants are not a sandbox for arbitrary extension code. Review the collector and allowed data before live collection.',
+        'For a trusted project extension in an untrusted script working directory, documentation offers GITHUB_COPILOT_PROMPT_MODE_EXTENSIONS=true. That authorizes loading repository code; it is not an automatic setup step here.'
+      ],
+      cue: [
+        'For preview rehearsal follow examples/walkthrough.md section 6: start copilot --experimental, enter the authoring request, review the generated extension, make it a project extension, then confirm registration in a fresh experimental session.',
+        'If registration or preview access is unavailable, show this slide and the next as the documented flow. Never claim the talk generated or ran the extension.'
+      ],
+      sources: refs('workflow', 'workflowUse', 'workflowNews', 'command'), seconds: 85
+    },
+    'workflow-code': {
+      question: 'What does the code Copilot creates actually look like?',
+      notes: [
+        '"This is the artifact the previous request produces: one JavaScript file in a project extension folder. Not YAML, not a saved prompt."',
+        'Follow the colors. Green: ctx.step runs systemctl and journalctl on this host, read-only, and journals the result so a resumed run reuses it. Purple: ctx.parallel starts two ctx.agent calls, each with its own question over the same evidence; the labels make them independent subagents. Orange: the returned JSON is the report that --result-file saves.',
+        '"Code owns the parts that must be the same every time. Agents own the parts that need judgment."',
+        'Blue is what the reviewer checks before registration: the name, the AI-credit ceiling, the imports, and joinSession, which registers the workflow. The two shell commands run as extension code, outside agent tool permissions, so read them as carefully as any script you would run on staging.',
+        'This is illustrative code written against the API in the guidance bundled with installed CLI v1.0.105, not output captured from a Copilot run. A fuller version (with description and progress phases) is in examples/extension.mjs; it passes a syntax check and a stub-SDK run that exercises collect, two agent calls, and the returned report.',
+        '→ Before registering it, get a second opinion.'
+      ],
+      know: [
+        'API surface (experimental): defineWorkflow({ meta, run }) and joinSession({ workflows }) from @github/copilot-sdk/extension; ctx.step, ctx.parallel, ctx.agent, ctx.phase, ctx.pause, ctx.pipeline, and meta.limits (maxAiCredits, maxTotalSubagents, maxConcurrentSubagents, timeoutSeconds). Read it with: Show me the guidance for writing dynamic workflows.',
+        'Identical ctx.agent calls are memoized into one subagent; distinct labels or prompts create independent ones. A failed agent resolves to null rather than throwing, so a production version guards each finding.',
+        'ctx.agent accepts a schema option for structured JSON findings. The slide omits it to stay readable.',
+        'The guidance advises setting maxAiCredits only from known cost or a ceiling the user names. A reached limit stops the run with workflow_limit_reached; resume with a raised limit if approved.',
+        'Version the step key (collect-v1) whenever collection changes; a resume replays a cached value for a matching key even if the producer changed.',
+        'The repository also keeps staging-investigation.mjs, a dependency-free core with fixture checks, as optional study material.'
+      ],
+      sources: refs('workflow', 'workflowUse', 'stable'), seconds: 80
+    },
+    'rubber-duck': {
+      question: 'How do I catch what Copilot missed before the code runs?',
+      notes: [
+        '"Copilot just wrote code that will run on staging. Before we register it, we want a reviewer that does not share its blind spots."',
+        'Run /rubber-duck with a pointed question. Rubber duck is a built-in agent that deliberately runs on a different model family from your session; if your session uses a Claude model, the critic may be a GPT model. It reads the work in context with read-only tools and cannot edit files.',
+        'Read the critique by severity. Blocking: the raw journal lines go to the agents unredacted, so a token in a log line would reach the model. Non-blocking: no command timeout, and a failed agent quietly becomes null in the report. Suggestion: give findings a schema. Look back at slide 19: every one of these is true of that code.',
+        '"Two models, two sets of blind spots. The duck found what the author model did not."',
+        'The main agent decides what to do with the critique and summarizes what it changed. You still review the diff before registering.',
+        'This closes workflow to running system safely: code headed for a real host gets an independent review before it gets anywhere near it.',
+        '→ Reviewed and registered, run it.'
+      ],
+      know: [
+        'Invoke manually with /rubber-duck plus a question, or in plain language: "Rubber duck your plan" or "Get a critique of the changes so far." It is not invoked automatically by default.',
+        'Proactive mode: /subagents, select the rubber duck agent, toggle Proactive invocation. This persists in ~/.copilot/settings.json under subagents.agents.rubber-duck.autoInvoke. Copilot then consults it after planning non-trivial changes, mid-implementation, after writing tests, and after repeated failures; it typically skips small changes.',
+        'Severity buckets: blocking, non-blocking, suggestions. It is configured not to comment on style, naming, or formatting, and says so explicitly when it finds no issues.',
+        'Each review is an additional reasoning pass on a separate model: some latency and extra usage, usually repaid by catching problems before implementation. It runs only if a suitable contrasting model is available.',
+        'The critique shown is representative, written against examples/extension.mjs; it was not captured from a live run.'
+      ],
+      cue: [
+        'With examples/extension.mjs open in a session, run: /rubber-duck Review extension.mjs. Anything unsafe to run on staging?',
+        'Show the severity-grouped response, then ask Copilot to apply only the blocking fix and show the diff.'
+      ],
+      sources: refs('rubberDuck', 'workflow'), seconds: 75
+    },
+    'workflow-report': {
+      question: 'What can I inspect, and what do I do when a run fails?',
+      notes: [
+        '"Next time, run the saved workflow. The command invokes the program; it does not ask Copilot to invent the process again."',
+        'The displayed Bash command assumes registration and defaults selecting the intended service, host, and collection mode. If the authored workflow requires inputs, pass those with --args using its actual input contract. A natural-language request in the interactive session is another documented way to run it.',
+        'The report is a human-readable teaching summary of synthetic evidence, not literal JSON output or an observed agent diagnosis. A real report includes the source evidence needed to check the lead.',
+        '"The program can verify a source ID exists. The practitioner still verifies whether the finding follows from it."',
+        'If the actual run pauses or fails, inspect its status and run ID. A prior result file remains unchanged, so use a fresh filename and inspect run status before reading a report. A saved report does not authorize restart or deployment.',
+        '→ The procedure brings reasoning close to the system. Name who decides its requested actions.'
+      ],
+      know: [
+        'The local fixture checks cover assembly, rejection of unknown evidence IDs, and propagation of an agent failure. No live Copilot workflow, systemctl, journalctl, or agent diagnosis was executed for these checks.',
+        'The CLI writes --result-file only on successful completion with a returned result; a paused, failed, or interrupted run leaves an existing file unchanged. Progress and run metadata are not part of that result file.',
+        'For machine-readable run metadata the docs provide --silent --output-format json, containing workflow name, run ID, status, and any result. Capture that separately from a returned report.',
+        'Inspect /workflows for resumable paused or limit-stopped runs; completed saved steps can be reused, unsaved work can rerun, and canceled runs cannot resume. Limits remain cumulative when raised.',
+        'Checkpoints are an optional review mechanism, not the value proposition of this core and not an unattended durable scheduler. Ask an audited adapter to checkpoint only when useful.',
+        'If evidence collection fails, fix authorized host access or the command scope. If findings are malformed or unsupported, inspect evidence and revise the adapter or reasoning request before rerunning. Never widen permissions just to obtain a green status.'
+      ],
+      cue: [
+        'Inspect the fixture JSON evidence and findings. Compare logs:3 with the cited upstream lead and uncertainty.',
+        'Show stderr fixture-check status separately from report decision human-review-required.',
+        'In a prepared live run, retain status and run ID, inspect the newly written report, and independently check each material claim. Record live outcomes only after observing them.'
+      ],
+      sources: refs('workflow', 'workflowUse'), seconds: 90
+    },
+    'scheduled-patrol': {
+      question: 'How do I keep an eye on a fix without babysitting it?',
+      notes: [
+        '"The fix for the 503 just deployed to staging. We think it worked. We want to move on, and we want to know if we were wrong."',
+        'Read the two commands. /every sets a quiet watch: every five minutes Copilot checks restarts and 503s in the same staging session, and only interrupts if things get worse. /after sets one later check: at 45 minutes, count the 503s since the fix and show the command used.',
+        'Follow the timeline. You work on something else; eight checks pass with nothing worth saying. At 10:45 the /after report arrives with a count, a comparison to before the fix, and the exact command you can rerun.',
+        '"We closed the distance between now and later: the follow-up you would have forgotten happens on time, with the same context, and it brings evidence."',
+        'The report says holding so far, not fixed. Closing the incident remains your decision.',
+        'Boundary: these schedules live in this session. Close it and they stop; resume it and they come back, and an overdue /after can fire immediately. That fits a working session. For unattended watching, use your monitoring system or an external scheduler with copilot -p.',
+        'The timeline, counts, and report are representative, not a recorded run.',
+        '→ Long sessions also need their context checked.'
+      ],
+      know: [
+        '/every and /after remain experimental and session-only. /loop is documented as an alias for /every. Start with copilot --experimental or /experimental on.',
+        'A self-paced /every lets the model choose cadence; the fixed-interval bounds are 10 seconds minimum and one day maximum. Check current documentation for accepted interval syntax before presenting.',
+        'Bare /every or /after lists and deletes schedules. Inspect what was created rather than assuming the request produced the intended cadence, and delete the watch when you are done.',
+        'Each scheduled run uses the session permission mode and sandbox. Keep the watch read-only; a schedule does not authorize rollback or remediation.',
+        'Use cron, Task Scheduler, or an approved durable scheduler with copilot -p when execution must occur without the interactive session. That design needs its own credentials, logging, and review.'
+      ],
+      cue: [
+        'On a disposable staging host with a synthetic backend, start copilot --experimental and enter both commands with short intervals (for example /every 1min and /after 5min).',
+        'Run bare /every to show the created schedule, keep presenting, and show the /after report when it arrives. Compare its count with the command it cites.',
+        'Delete the schedule afterwards. If a schedule does not fire, show the listing and say so; do not claim a report.'
+      ],
+      sources: refs('schedule', 'command', 'permissions'), seconds: 90
+    },
+    'compact-quality': {
+      question: 'How do I know a compacted session still remembers the task?',
+      notes: [
+        '"Use /context to inspect context use, then /compact when a summary helps. Ask Copilot to restate the scope and acceptance check before it acts."',
+        'Compare its next plan with approved logs only, redaction, no remediation, and a source-backed health check. These expected constraints belong to our representative staging scenario.',
+        '"If one is missing, re-anchor it and inspect again."',
+        '→ Stable decisions can move into repository guidance.'
+      ],
+      know: [
+        'The displayed constraints are expected checks, not observed model output.',
+        'Compaction by session age alone gives no quality assurance. Choose it when context need warrants it, then verify the next step.',
+        'Automatic compaction also manages history. The old near-95-percent threshold is version-sensitive, not a universal guarantee. /usage exposes session statistics; no token or cost reduction is promised.',
+        'If a summary loses decisive evidence, reread approved source artifacts and restate constraints before acting.'
+      ],
+      sources: refs('best', 'use', 'command'), seconds: 65
+    },
+    'memory-chronicle': {
+      question: 'How do I make Copilot remember what this session taught us?',
+      notes: [
+        '"Every correction you made today is a lesson Copilot will forget tomorrow, unless it becomes an instruction."',
+        'Run /chronicle improve. It searches this repository’s session history for friction: places you corrected or redirected Copilot, repeated test failures, builds that took several tries. It returns three to five recommendations, each naming the problem it found and the instruction that would prevent it.',
+        'Read the picker. Three come straight from this talk: the journal location, vitest instead of jest, and never restarting staging. The fourth is the cause of one incident; turn it off with the space bar, because one incident is not a rule.',
+        'Press enter and Copilot writes .github/copilot-instructions.md. That file is in the repo: review and commit it like any other change, so the whole team gets it.',
+        '"Today’s corrections become tomorrow’s defaults. That is the now-to-later distance for knowledge."',
+        'The recommendations shown are representative of the documented behavior, not output from a recorded run.',
+        '→ Sometimes the lesson is mid-session: Copilot went too far, and we want to go back.'
+      ],
+      know: [
+        '/chronicle improve is scoped to session data for the current repository or working directory, unlike other /chronicle subcommands. Its docs example is Copilot repeatedly trying jest in a vitest project.',
+        'All recommendations are selected by default; arrow keys move, space toggles, enter applies. Copilot then creates or updates .github/copilot-instructions.md.',
+        'Other subcommands: /chronicle standup, tips, and cost-tips. Session data is stored locally and by default syncs to your GitHub account; treat history as sensitive and follow retention policies.',
+        'Review applied instructions for secrets and incident-specific claims before committing.'
+      ],
+      cue: [
+        'In a repository with a few prior sessions that include corrections, run /chronicle improve. Show the recommendations, toggle one off, and apply.',
+        'Show the resulting git diff of .github/copilot-instructions.md. If there is too little history for recommendations, say so and show this slide as the expected shape.'
+      ],
+      sources: refs('chronicle', 'instructions', 'command'), seconds: 55
+    },
+    'rewind-recovery': {
+      question: 'What do I do when Copilot goes too far?',
+      notes: [
+        '"Two good turns, then we asked for a little tidy-up, and Copilot rewrote ten files. Nine tests fail. We do not want to untangle that by hand."',
+        'Read the session top to bottom: turn 2 is the last good state. Run /rewind (or /undo), pick turn 2, and choose Conversation + files.',
+        'Point right. The conversation goes back to turn 2, so Copilot forgets the bad direction. Copilot’s file changes from turns 3 and 4 are restored. Your own hand edit to README.md is kept, because rewind only undoes what Copilot changed.',
+        '"Then verify: git status and the tests match turn 2 again."',
+        'Conversation only is the other choice: forget the turns but leave files as they are, useful when the edits were fine and only the direction was wrong.',
+        'If the refactor was a good idea at the wrong time, /worktree (experimental) explores it in a separate Git worktree and conversation without touching this one.',
+        'The session and counts are representative, not a recorded run.',
+        '→ Next: keep the worker in reach when the device changes.'
+      ],
+      know: [
+        '/rewind is aliased as /undo. Conversation only leaves files as they are; Conversation + files restores Copilot-made changes for the discarded turns and skips developer-authored edits.',
+        'Change tracking covers editing tools, shell commands, and subagents, including dirty folders and work outside Git. Still inspect the restored files rather than promising universal recovery.',
+        '/worktree is experimental and requires Git; /rewind does not. Review worktree changes before merging them.',
+        '/resume and CLI continue/resume controls recover session context. Resuming a local session does not migrate a running host process or its environment.'
+      ],
+      cue: [
+        'In a disposable repo, make two small good changes with Copilot, then ask for a broad refactor. Make one hand edit yourself.',
+        'Run /rewind, choose the second turn and Conversation + files, then show git status: Copilot’s refactor gone, your edit present.'
+      ],
+      sources: refs('command', 'use', 'releases'), seconds: 65
     },
     'part-4': {
-      sources: refs('remote', 'remotePreview')
-    },
-    'staging-transfer': {
-      cue: [
-        'Optional live run: choose an approved staging host with synthetic or redacted data.',
-        'Start a session with only the required tools; show the permission request before approving it.',
-        'Ask for an evidence-only diagnosis. Do not apply a remediation in the live demo.',
-        'Inspect the host-side output and close the session using the organization’s runbook.'
-      ]
-    },
-    'before-after': {},
-    thanks: {
+      question: 'What can I carry forward without starting over?',
       notes: [
-        '"The decision model is yours to carry back: match the mode to the work, keep authority explicit, and decide what evidence earns acceptance."',
-        'Invite the audience to name one candidate task and its reviewer.',
-        '→ Leave time for questions.'
+        '"Keep useful work within reach when time, attention, or device changes. First name what you are preserving."',
+        'Recap the saved workflow procedure from Part 3. Then distinguish a delegated task and PR, scheduled intent, checked conversation context, reviewed guidance, recoverable edits, a running original-host session, and cloud files or work in progress.',
+        '→ Hand off one bounded task now and inspect its returned PR later.'
       ],
-      know: ['The three closing cards are a qualitative summary; they are not performance metrics.'],
-      sources: refs('about', 'use', 'remote'),
-      seconds: 20
+      know: ['Reuse preserves a definition, not an incident outcome. Schedules need an active session. Original-host steering needs a live host and process. Cloud continuation preserves different state.'],
+      sources: refs('workflow', 'schedule', 'remote', 'cloud', 'cloudDocs'), seconds: 35
+    },
+    'remote-locality': {
+      question: 'Can I keep steering Copilot after I leave my desk?',
+      notes: [
+        '"The staging investigation is mid-flight and you have to walk into a meeting. You do not want to stop it, and you do not want it to run unsupervised."',
+        'Point left: on staging-host, /remote on. The CLI shows a GitHub.com link, and Ctrl+O toggles a QR code that opens the session in GitHub Mobile. /keep-alive busy keeps the machine awake while Copilot works.',
+        'Point right: on the phone you see the same session. Copilot found connection refused on the redis port and asks to run systemctl status redis. You tap Allow and add an instruction: read only, no restarts, then summarize.',
+        '"The command runs on staging-host. Only the conversation moved to your pocket."',
+        'This closes worker to work: the work stays where its evidence is, and the worker stays in reach of it. Permission requests arrive on the phone under the same permission mode; remote control does not loosen policy or sandboxing.',
+        'Session sync alone is view-only; steering requires /remote on, the same GitHub account, and the host and session still running. The session and messages shown are representative.',
+        '→ Twenty minutes later, you are back at the terminal.'
+      ],
+      know: [
+        'Docs: remote control lets you view output, respond to permission requests, and continue working from GitHub.com or GitHub Mobile. Bare /remote shows status or redisplays access details; /remote off ends it. settings.json remoteSessions: true enables it for every interactive session.',
+        'Ctrl+O toggles the QR code only when the input field is empty; it also expands or collapses all details in the conversation.',
+        '/keep-alive takes an option such as busy (stay awake only while Copilot is working or waiting on you); without an option it shows status. tmux or screen preserve a process across SSH disconnects; that is separate from remote control.',
+        'Remote control does not require a GitHub-hosted repository. If the CLI cannot resolve a configured but inaccessible remote, it shows Remote session disabled.',
+        'Prompts, selected context, and session results cross service boundaries; host-local execution is not zero data exposure. Follow organization remote-access policy.',
+        'Assisted permissions can approve unintended actions and exclude sandbox-bypass requests. Remote access changes neither that limitation nor enterprise restrictions.',
+        'Several hosts remain separate sessions you steer one by one; /fleet coordinates subtasks inside one session, not across machines.'
+      ],
+      cue: [
+        'On an approved staging host, start copilot, run /remote on, and press Ctrl+O with an empty prompt to show the QR code. Scan it with GitHub Mobile signed in to the same account.',
+        'Ask for a read-only check that needs approval, approve it from the phone, then show the result on the host terminal.',
+        'Finish with /remote off and bare /remote to show it is off.'
+      ],
+      sources: refs('remote', 'about', 'command', 'permissions', 'assisted', 'sandbox', 'fleet'), seconds: 100
+    },
+    'walking-incident': {
+      question: 'What is waiting for me when I get back to the terminal?',
+      notes: [
+        '"Back at the desk. Nothing to catch up on, because nothing happened anywhere else."',
+        'Read the terminal top to bottom. Your approval from the phone, the command it ran on this host, your instruction, and Copilot’s summary are all in this one session, in order. Redis has been down since 10:31; that lines up with the 503s. Cause unknown; next check is its last log lines.',
+        'Continue typing at the desk as if you never left, then /remote off when you no longer need the phone.',
+        '"The worker moved twice. The work never moved at all."',
+        'Point to what carried over: one session on one host, the approvals in order, the same permission mode and sandbox, and an explicit way to end remote access.',
+        'The session shown is representative, not a recorded run; the exact terminal label for remotely sent messages may differ.',
+        '→ Cloud sessions carry a different kind of state across clients.'
+      ],
+      know: [
+        'A local session resumed on another machine does not move its tools or live environment; remote control works because the original session never stopped.',
+        'If remote control is unavailable, keep the investigation on the host terminal and present these two slides as the documented flow.'
+      ],
+      sources: refs('remote', 'best', 'permissions'), seconds: 65
+    },
+    'host-forensics': {
+      question: 'Why bring intelligence to a log host?',
+      notes: [
+        '"A day of auth logs is too large to paste and too sensitive to copy around. So we bring Copilot to it."',
+        'Point left: about 1.8 million lines stay on the host. Host tools read them there. Copilot never sees the raw corpus; it sees only the short outputs of the commands it requests.',
+        'Walk the middle column top to bottom. Each output decides the next question: one account dominates, so check its sources; one /24, so check whether that range is new; zero hits yesterday, so it is new. A fixed script would not know to ask question two or three; Copilot chooses them from the evidence.',
+        '"Ten lines of tool output crossed the distance. A day of logs did not."',
+        'Point right: the finding cites counts the operator can rerun, names what is still unknown, and hands the next decision to the account owner. No blocking, rotation, or remediation is proposed by the tooling.',
+        'This is an illustrative run with invented, documentation-range data (203.0.113.0/24 is reserved for examples). No live Copilot analysis was recorded. Command outputs and prompts reach the selected provider; this is less data movement, not zero exposure.',
+        '→ The tools went to the data. Inference placement is a separate choice.'
+      ],
+      know: [
+        'The original 12 GB corpus was illustrative. There is no attached transfer measurement, completed analysis, or compliance assessment.',
+        'The original grep and awk pipeline depended on log format. Use a checked parser for the actual format and avoid exposing personal or credential data in output.',
+        'A local model on a log host needs that host’s runtime and endpoint configuration; a local workstation model is not automatically local to the remote host.',
+        'Prompt and result communication still cross service boundaries. Data classification, retention, and provider selection remain required.',
+        'If findings suggest an incident, hand the report to the authorized response owner; do not automate blocking or destructive response from this script.'
+      ],
+      cue: [
+        'On an authorized disposable host, generate a synthetic auth.log with a planted pattern (one account, one documentation-range /24) plus background noise, and an auth.log.1 without that range. The walkthrough has a generator.',
+        'Ask Copilot, read-only: "Investigate failed authentications in auth.log. Cite counts I can rerun." Inspect each requested command before permitting it.',
+        'Compare the finding with the planted pattern. If Copilot takes a different path, follow its actual commands; record a live result only after checking it.'
+      ],
+      sources: refs('use', 'best', 'models'), seconds: 100
+    },
+    'cloud-continuity': {
+      question: 'What if the work needs to keep going after I close the laptop?',
+      notes: [
+        '"Remote control needs your machine on. Sometimes you want the opposite: hand the session to something that does not sleep, and pick it up wherever you are."',
+        'Read the timeline left to right. At 09:10 on the laptop, copilot --cloud starts an interactive session in a GitHub-hosted Linux sandbox; Copilot clones the repo there and runs commands and tests there. Ask for the change and close the lid.',
+        'At 12:30 on the phone, the same session is still working: retries added, tests passing, diff ready. Steer it: cap retries at 3.',
+        'At 15:00 on another machine, open the same session from GitHub.com. Files and in-progress work are intact because a stopped session keeps a snapshot. Ask for a draft PR and review it like any other.',
+        '"Now and later, without your machine in the loop."',
+        'Point to the bottom row. /remote: your machine runs the work, so it stays on. --cloud: GitHub runs it, so the laptop can close. The boundary: a cloud sandbox cannot read your local files or reach staging-host, so host-only investigations stay on the host.',
+        'The session shown is representative, not a recorded run.',
+        '→ Bring the four distances back together.'
+      ],
+      know: [
+        'copilot --cloud is interactive only; it cannot be combined with -p or -i, and it applies only to the session it starts. CLI sessions run locally by default.',
+        'Environment is chosen at session start (Cloud by default where a choice exists; Actions for setup-steps, larger or self-hosted runners, or Windows). Changing it means a new session.',
+        'Network access follows the Copilot cloud agent firewall and allowlist. Allowlist changes apply to new sessions, not running ones.',
+        'Personal instructions, skills, and custom agents can come along via a dotfiles repository with a root .copilot directory (not for Actions-based sessions).',
+        'Billing is usage-based across compute (vCPU seconds), memory (GiB seconds), and snapshot storage (GiB months); check current rates before presenting. The organization policy Copilot in the cloud controls access and is on by default.',
+        'Cloud sessions can be continued from the GitHub website, GitHub Mobile, the Copilot app, VS Code, and other supported clients. Confirm the current UI for reopening a session before presenting.'
+      ],
+      cue: [
+        'In a low-risk repository, run copilot --cloud and ask for a small change with tests. Close the terminal.',
+        'Open the same session in GitHub Mobile or on GitHub.com, steer it once, and show that files and progress are intact. If access or client support is missing, show this slide as the documented flow.'
+      ],
+      sources: refs('cloud', 'cloudDocs', 'connected'), seconds: 110
+    },
+    'before-after': {
+      question: 'What changes in the way I work?',
+      notes: [
+        '"Each distance has a concrete artifact we can inspect."',
+        'Read the four pairs: Docker outputs choosing the next probe; a day of logs that never moved, with a cited finding; CI explaining its own red test; and an /after check that came back with evidence. These are inspectable artifacts, not measured performance improvements.',
+        '→ Choose one relationship to test this week.'
+      ],
+      know: [
+        'The old headline elapsed-time estimates have been removed because they did not carry observed run evidence.',
+        'Cloud continuity, reusable workflow definitions, and host steering preserve different things; each needs its own evidence and acceptance decision.'
+      ],
+      sources: refs('about', 'permissions', 'workflow', 'cloudDocs', 'remote'), seconds: 45
+    },
+    today: {
+      question: 'What can I try and verify next?',
+      notes: [
+        '"Choose one distance, not four pilots. Ask beside a task, run Copilot where the logs live, explain a failed CI run, or set an /after check on your next fix."',
+        '"Inspect the artifact that makes your next decision easier. Name who accepts it, and stop and re-scope when the evidence disagrees."',
+        'Ask for an own-work example: what is separated, what brings it closer, and what observable result improves?',
+        '→ Use the sources to check version-sensitive details.'
+      ],
+      know: [
+        'The related walkthrough is a proposed rehearsal path, not a record of successful runs.',
+        'Record your own elapsed time, corrections, reviewer effort, and acceptance quality before claiming a benefit. The first useful signal is a credible artifact and a sound decision.'
+      ],
+      sources: refs('install', 'plan', 'command', 'remote', 'cloudDocs'), seconds: 65
+    },
+    references: {
+      question: 'Where can I verify these claims and limits?',
+      notes: [
+        '"These are first-party sources. Claim-specific links sit with every slide’s notes, and the landing page carries the reference inventory."',
+        'Recheck installed commands, platform support, preview access, and current cloud billing before delivery. November 2 verification is a dated snapshot.',
+        '→ Close with the audience’s next decision.'
+      ],
+      know: [
+        'Latest stable baseline is v1.0.105. Do not promote prerelease release-note behavior into stable claims.',
+        'All feature demonstrations in this refresh remain proposed live checks or representative traces. Automated deck validation verifies presentation behavior, not product behavior.'
+      ],
+      sources: Object.values(SRC), seconds: 30
+    },
+    thanks: {
+      question: 'Which judgment do I carry into my own work?',
+      notes: [
+        '"Bring intelligence to the work, and keep the worker within reach."',
+        '"Which distance will you close, and what evidence will you inspect?"',
+        'Invite one candidate task and its acceptance evidence. Leave the remaining slot for questions.'
+      ],
+      know: ['The closing settles the opening scene: the same four pairs held against the prompt, with the own-work question beneath.'],
+      sources: refs('about', 'best'), seconds: 20
     }
   };
-
-  slides.forEach((s) => Object.assign(s, NOTES[s.id]));
-
+  // Approved distance-first running order; definitions above retain artifact groupings.
+  const order = [
+    'title', 'core-question', 'distance-model', 'contents',
+    'part-1', 'plan-mode-loop', 'docker-clarify', 'docker-plan', 'steer-boundary',
+    'part-2', 'interactive-diagnosis', 'host-forensics', 'local-model', 'cloud-containment',
+    'part-3', 'programmatic-command', 'workflow-reuse', 'workflow-definition', 'workflow-code', 'rubber-duck', 'workflow-report',
+    'authority-boundary', 'local-containment',
+    'part-4', 'delegate-cloud', 'scheduled-patrol', 'compact-quality', 'memory-chronicle',
+    'rewind-recovery', 'remote-locality', 'walking-incident', 'cloud-continuity',
+    'before-after', 'today', 'references', 'thanks'
+  ];
+  slides.sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+  slides.forEach(s => Object.assign(s, NOTES[s.id]));
   window.DECK = {
     meta: {
-      slug: 'copilot-cli',
-      title: 'GitHub Copilot CLI: AI at the Point of Work',
-      short: 'Copilot CLI',
-      category: 'practitioner tech talk',
-      source: 'tech-talks/copilot-cli/README.md',
-      question: 'How do I bring AI to where the work actually is — and keep steering it from wherever I am?',
-      thesis: 'Copilot CLI closes distance across intent, complexity, context, time, and geography when practitioners clarify first, choose bounded autonomy, verify the artifact, and keep human approval visible.'
+      slug: 'copilot-cli', title: 'GitHub Copilot CLI: Intelligence Within Reach', short: 'Copilot CLI',
+      category: 'practitioner tech talk', source: 'tech-talks/copilot-cli/README.md',
+      question: 'How do I get AI help right where I’m working?',
+      thesis: 'Bring intelligence to the work, and keep the worker within reach.'
     },
     slides
   };

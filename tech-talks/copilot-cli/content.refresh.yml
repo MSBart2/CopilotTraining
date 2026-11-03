@@ -2,100 +2,343 @@ version: 1
 
 refresh:
   talk: "tech-talks/copilot-cli"
-  cutoff: "2026-08-25"
+  cutoff: "2026-10-31"
+  evidenceBaseline: "2026-08-25"
   feed:
     url: "https://developer.microsoft.com/api/changelog/rss"
-    checked: "2026-08-25"
-    lastBuildDate: "Tue, 25 Aug 2026 20:00:07 GMT"
+    checked: "2026-11-02"
+    lastBuildDate: "Mon, 02 Nov 2026 20:00:15 GMT"
+    routingSince: "2026-08-25"
   status: approved
-  approved: "2026-08-25"
-  updateLevel: content
+  approved: "2026-11-02"
+  approval: >
+    User approved implementation of the proposed refresh and its four-distance
+    narrative: "this is great. make the updates." The same instruction requests
+    a more impactful title slide without the nodes paradigm. Approval covers
+    the proposed recipe changes and implementation; no additional pause.
+    User subsequently approved expanding dynamic workflows: "yeah, let's do
+    that, and add a couple of slides if needed to land the point/value of
+    dynamic workflows". This approves replacement of the checkpoint beat
+    with three focused slides (two additions).
+    On 2026-11-03 the user approved the distance-first section spine and new
+    working-terminal opening: "Approve the distance-first structure and opening
+    scene; implement". This narrative approval leaves November 2 product
+    evidence verification unchanged.
+  updateLevel: structural
   rationale: >
-    Same-day named-talk refresh after the 2026-08-25 apply. Microsoft feed since
-    the README cutoff has no CLI news. First-party chronicle and command-reference
-    pages now name /chronicle improve (not instructions) and document /chronicle
-    standup as a schedulable exception. Those are wording/accuracy patches inside
-    the existing S3 climax. Thesis, section order, and phone-steering demo stay.
+    The October 31 native conversion explicitly excluded product-news updates;
+    its source verification and prior refresh stop at August 25. Review that
+    evidence gap as well as October 31 through the feed build. Connected cloud
+    sessions, local model discovery, GA sandboxing, assisted permissions, and
+    dynamic workflows strengthen the user's distance thesis. Propose a revised
+    decision model and cloud-continuity proof alongside the existing host-local
+    demonstration. Apply the approved README, recipe, deck, and directly
+    related walkthrough updates.
   userEmphasis:
-    - "Refresh the copilot-cli deck using the cheap path — no council, no wipe."
+    - "Minimize distance between worker and work, intelligence and data, workflow and running system, now and later."
+    - "Fit release updates into those relationships rather than adding a feature inventory."
+    - "Keep the staging investigation as a reusable code-defined process combining commands, agent reasoning, and a reviewable report; checkpoints are optional detail."
+
+  framework:
+    thesis: "Bring intelligence to the work, and keep the worker within reach."
+    distances:
+      - "Worker to work: choose an execution environment and a steering surface."
+      - "Intelligence to data: put the right model and tools near decisive evidence."
+      - "Workflow to running system: inspect, act, and verify within explicit access boundaries."
+      - "Now to later: preserve context and bounded work across interruptions."
+    proofQuestions:
+      - "What is separated?"
+      - "What brings it closer?"
+      - "What observable result improves?"
+    boundary: >
+      Reduce distance to execution while keeping approval deliberate. Model
+      location, tool location, session continuity, and permission policy are
+      separate decisions.
 
   accepted:
-    - title: "/chronicle improve replaced /chronicle instructions"
-      published: "2026-08-25"
-      source: "https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle"
-      verified: "2026-08-25"
+    - title: "Connected cloud sessions and cloud sandboxes are generally available"
+      published: "2026-10-28"
+      source: "https://github.blog/changelog/2026-10-28-work-from-anywhere-with-a-new-connected-copilot-cloud-experience"
+      corroboration:
+        - "https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-sandboxes"
+        - "https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-on-github"
+      verified: "2026-11-02"
       releaseStatus: ga
-      importance: supporting
-      targetSection: "Session History and `/chronicle`"
+      importance: headline
+      distance: ["worker to work", "now to later"]
+      targetSection: "Part 2 / Part 4"
+      targetSlides: ["cloud-containment", "delegate-cloud", "cloud-continuity", "before-after"]
       action: replace
       summary: >
-        First-party chronicle how-to and CLI command reference now list
-        standup, tips, cost tips, search, improve, reindex, and skills
-        subcommands. The talk still names /chronicle instructions as the S3
-        climax. Replace that command with /chronicle improve. Keep the same
-        climax: propose and apply updates to .github/copilot-instructions.md.
+        Replace the experimental cloud-sandbox account with copilot --cloud,
+        then distinguish a cloud session continued across clients from remote
+        steering of a session still executing on its original host. Cloud
+        sandbox snapshots preserve files and in-progress work for resumption.
+        Teach Cloud versus Actions as an environment choice, with CLI local
+        execution still the default. Keep the existing host-local forensics
+        demonstration and add a compact cross-client cloud-continuity proof.
+      proof: >
+        Start a low-risk cloud task, inspect its changed file and test evidence,
+        then continue the same session from another supported client. Separately
+        inspect a remote-controlled host session and identify its execution host.
       limitations:
-        - "improve is scoped to the current repository or working directory."
-        - "Do not promote cost tips, search, or skills subcommands into new slides."
+        - "Cloud GA is announced for paid Copilot plans; confirm organization access."
+        - "copilot --cloud is interactive and cannot be combined with -p or -i."
+        - "Cloud and Actions environments are selected at session start; changing environment requires a new session."
+        - "Actions-only setup steps and runner requirements still require Actions."
+        - "The announcement says cloud-sandbox billing begins in November 2026 using a shared Actions compute entitlement; confirm current rates before a demo."
+        - "Do not interpret the announcement's cloud-default wording as changing ordinary CLI sessions to cloud execution."
+      recipeImpact: restructure
+      slideImpact: replace-demo
+
+    - title: "Discover local Ollama models inside Copilot CLI"
+      published: "2026-10-07"
+      source: "https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli"
+      corroboration:
+        - "https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-llm-models"
+        - "https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5"
+      verified: "2026-11-02"
+      releaseStatus: "documented; announcement starts with v1.0.94-0"
+      importance: supporting
+      distance: ["intelligence to data"]
+      targetSection: "Part 2 · Intelligence ↔ Data"
+      targetSlides: ["interactive-diagnosis", "local-model", "host-forensics"]
+      action: expand
+      summary: >
+        Promote model placement from a provider footnote into one concrete
+        decision: /model discovers an already-running local Ollama service;
+        the practitioner checks provider and endpoint before adding a model
+        and optionally switching the current session without restarting.
+      proof: >
+        Inspect the model endpoint and discovery status, add a prepared local
+        model, and run a bounded task over synthetic repository evidence.
+      limitations:
+        - "The runtime and model must already be installed; discovery installs neither."
+        - "The model must support tool calling and streaming."
+        - "Automatic discovery is local-machine only; remote Ollama needs provider configuration."
+        - "Local model selection does not enable offline mode or disable telemetry."
+        - "COPILOT_OFFLINE=true does not prevent a configured remote provider from receiving context."
+        - "Intelligent local routing is announced for future availability; do not demonstrate it as shipped."
+      recipeImpact: revise
+      slideImpact: patch
+
+    - title: "Local sandboxing is generally available"
+      published: "2026-10-07"
+      source: "https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available"
+      corroboration:
+        - "https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes"
+      verified: "2026-11-02"
+      releaseStatus: ga
+      importance: supporting
+      distance: ["workflow to running system"]
+      targetSection: "Part 3 / Part 4"
+      targetSlides: ["authority-boundary", "local-containment", "staging-transfer"]
+      action: replace
+      summary: >
+        Remove experimental labels and the experimental-startup prerequisite
+        from local sandboxing. Show /sandbox enable and inspection of the
+        actual policy. Explain how containment makes tool access near useful
+        host evidence more bounded without replacing permission decisions.
+      proof: >
+        On a disposable supported host, inspect policy and compare an allowed
+        test operation with a denied out-of-scope operation.
+      limitations:
+        - "Local sandboxing is off by default unless managed policy requires it."
+        - "MXC provides OS-level restrictions, not a separate VM or container."
+        - "Built-in in-process file tools check policy best-effort."
+        - "Platform prerequisites and enforcement differ; current Windows support requires a suitable Windows 11 build."
+        - "Windows proxy and host rules do not provide the same direct-connection protection as macOS and Linux."
       recipeImpact: confirm
       slideImpact: patch
-    - title: "/chronicle standup is a documented schedulable slash command"
-      published: "2026-08-25"
-      source: "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference"
-      verified: "2026-08-25"
-      releaseStatus: experimental
+
+    - title: "Assisted permissions are generally available"
+      published: "2026-10-26"
+      source: "https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available"
+      corroboration:
+        - "https://docs.github.com/en/copilot/concepts/customizations/allowing-safe-commands"
+        - "https://github.com/github/copilot-cli/releases/tag/v1.0.104"
+      verified: "2026-11-02"
+      releaseStatus: ga
       importance: supporting
-      targetSection: "Scheduled Prompts: `/every` and `/after`"
+      distance: ["worker to work", "workflow to running system"]
+      targetSection: "Part 3 / Part 4"
+      targetSlides: ["authority-boundary", "remote-locality", "walking-incident"]
+      action: expand
+      summary: >
+        Add /permissions assisted alongside manual and allow-all. A model
+        evaluates eligible unresolved requests; requests judged safe can
+        proceed automatically. Update claims that imply a human approves
+        every tool call, while retaining human acceptance of consequential
+        outcomes.
+      proof: >
+        Inspect /permissions show, observe an eligible approval decision,
+        and inspect an explicitly denied or escalated request.
+      limitations:
+        - "The review model can approve dangerous or unintended actions; containment remains separate."
+        - "Existing deny rules and enterprise restrictions remain effective."
+        - "Eligible enterprise ask rules can be satisfied by model approval."
+        - "Requests to bypass local sandboxing are not reviewed by assisted permissions."
+        - "In autopilot and non-interactive runs, requests still needing human approval are denied."
+        - "Administrators can disable assisted and allow-all independently."
+      recipeImpact: confirm
+      slideImpact: patch
+
+    - title: "Dynamic workflows turn a useful investigation into a reusable program"
+      published: "2026-10-01"
+      source: "https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/"
+      corroboration:
+        - "https://docs.github.com/en/copilot/concepts/agents/dynamic-workflows"
+        - "https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows"
+      verified: "2026-11-02"
+      releaseStatus: preview
+      importance: supporting
+      distance: ["workflow to running system", "now to later"]
+      targetSection: "Part 3"
+      targetSlides: ["part-3", "workflow-reuse", "workflow-definition", "workflow-report", "before-after"]
+      replacesSlide: "workflow-checkpoint"
+      proposedSlides: ["workflow-reuse", "workflow-definition", "workflow-report"]
+      action: replace
+      summary: >
+        Build on the staging-host investigation: fixed code gathers approved
+        service state and logs, agents analyze independent hypotheses, code
+        assembles findings with source IDs and uncertainty, and a practitioner
+        reviews the evidence. Reuse closes workflow-to-system and now-to-later.
+        Teach overview, natural-language authoring with Copilot, review and
+        registration, then repeat invocation. Show a clearly labeled synthetic
+        report and distinguish recurring workflows from one copilot -p prompt.
+      proof: >
+        Execute the dependency-free JavaScript core with synthetic fixtures
+        and stub agents. Inspect a cited timeout lead beside its source.
+        Verify assembly, unknown-source-ID rejection, and agent-failure
+        propagation separately from unperformed live Copilot execution.
+        Recheck the documented Copilot authoring flow: ask it to create a project
+        workflow, review generated code, confirm registration in a fresh session,
+        and run it separately. The slides illustrate that flow and a synthetic
+        report; the executable fixture core remains optional implementation depth.
+      limitations:
+        - "Public preview; the announcement requires experimental features in CLI."
+        - "Workflows live in extensions and need explicit tool and permission scope."
+        - "copilot workflow run does not display permission approval prompts; grant needed permissions before starting."
+        - "Public docs defer the extension API to built-in guidance; CLI v1.0.105 bundles it (defineWorkflow, joinSession, ctx.step/parallel/agent). examples/extension.mjs is illustrative and stub-tested, not a recorded live run."
+        - "CLI invocation runs in its existing environment; it does not connect to staging or deploy across hosts."
+        - "result-file writes only a returned result on successful completion; failed, paused, or interrupted runs leave an existing file unchanged."
+        - "Fixture findings are stub outputs, not observed agent diagnoses; source-ID checks do not prove a claim follows from evidence."
+        - "Live collection needs Linux systemd, journal access, an audited adapter, and approved data redaction; extension code is outside agent-tool approval scope."
+        - "Checkpoints are optional; they do not imply an unattended durable scheduler."
+      artifacts:
+        - "tech-talks/copilot-cli/examples/staging-investigation.mjs"
+        - "tech-talks/copilot-cli/examples/staging-input.json"
+        - "tech-talks/copilot-cli/examples/walkthrough.md"
+      recipeImpact: revise
+      slideImpact: regenerate
+
+    - title: "Current remote steering and scheduled-prompt documentation"
+      published: null
+      source: "https://docs.github.com/en/copilot/how-tos/copilot-cli/steer-remotely"
+      corroboration:
+        - "https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/schedule-prompts"
+      verified: "2026-11-02"
+      releaseStatus: "remote control documented; scheduling experimental"
+      importance: reference
+      distance: ["worker to work", "now to later"]
+      targetSection: "Part 4 · Now ↔ Later"
+      targetSlides: ["scheduled-patrol", "remote-locality", "walking-incident"]
       action: update
       summary: >
-        Command reference examples schedule /chronicle standup. Schedule-prompts
-        how-to still says built-in slash commands such as /clear cannot be
-        scheduled. Tighten the talk so the ban is not absolute: user-invocable
-        skills plus documented schedulable slash commands such as /chronicle
-        standup. Do not invent a catalog of every schedulable command.
+        Use the current documented /remote on, /remote off, and bare /remote
+        status flow. Distinguish view-only session sync from steerable remote
+        access. The host and session must remain running. Scheduling now
+        documents self-paced /every prompts, /loop as an alias, and a broader
+        subset of schedulable work commands; replace the chronicle-only
+        exception wording in notes without adding a command catalog.
       limitations:
-        - "/every and /after remain experimental and session-scoped."
-        - "Most built-in slash commands still cannot be scheduled."
-      recipeImpact: none
-      slideImpact: none
+        - "Documentation observation dates are not announcement dates or GA evidence."
+        - "Remote access requires the same signed-in account; data and result communication still cross service boundaries."
+        - "/every and /after remain experimental and fire only while their session runs."
+        - "Self-paced schedules have model-selected cadence; inspect and delete unwanted runs."
+        - "Resumption restores schedules; an overdue /after can fire immediately."
+        - "Do not infer that older --remote syntax was removed merely because the how-to now teaches /remote on."
+      recipeImpact: confirm
+      slideImpact: patch
+
+    - title: "Managed settings can require fresh policy and minimum sandbox-capable clients"
+      published: "2026-10-13"
+      source: "https://github.blog/changelog/2026-10-13-enterprise-managed-settings-enforcement-updates"
+      verified: "2026-11-02"
+      releaseStatus: "announced; no separate GA label"
+      importance: reference
+      distance: ["workflow to running system"]
+      targetSection: "Part 3 / Part 4"
+      targetSlides: ["authority-boundary", "local-containment", "staging-transfer"]
+      action: update
+      summary: >
+        Add a setup and recovery note: forceRemoteSettingsRefresh can require
+        current server policy at startup and fail closed when it cannot be
+        confirmed. A managed sandbox key can require a newer client. A blocked
+        startup requires restoring policy access or updating the client, not
+        bypassing governance.
+      limitations:
+        - "Keep this in notes and prerequisite checks, not a governance detour."
+        - "A server-managed freshness requirement begins after the client receives it; MDM or file delivery can apply before first sign-in."
+      recipeImpact: confirm
+      slideImpact: patch
 
   ignored:
-    - title: "Visual Studio Code 1.135 (Insiders)"
-      source: "https://code.visualstudio.com/updates/v1_135"
-      reason: >
-        Feed review item for vscode-latest and chat internals. Does not change
-        Copilot CLI commands, sessions, or --remote steering.
-      relatedTalks:
-        - "tech-talks/vscode-latest"
-        - "tech-talks/copilot-chat-internals"
-    - title: "1.0.81-* prerelease line"
+    - title: "New model catalog entries and deprecation announcements"
+      source: "https://developer.microsoft.com/api/changelog/rss"
+      reason: "Teach provider placement and current installed selection, not a model catalog. Audit any pinned demo model before delivery."
+      relatedTalks: ["tech-talks/copilot-models"]
+    - title: "1.0.106 prerelease session tools, mentions, and fixes"
       source: "https://github.com/github/copilot-cli/releases"
-      reason: >
-        Latest stable remains v1.0.80. Crash-restore, copilot app, defaultMode,
-        and Ctrl+Space voice stay off the talk until a stable release or docs.
+      reason: "Latest stable is v1.0.105. Do not teach prerelease cross-session tools as stable behavior."
       relatedTalks: []
-    - title: "security-review built-in agent in the command reference"
-      source: "https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference"
-      reason: >
-        Command reference lists security-review; the practitioner how-to roster
-        still lists six agents. Do not expand the roster until the how-to page
-        or a stable weekly agrees.
+    - title: "GitHub CLI OAuth tokens, Azure Developer CLI extensions, and Power Pages plugins"
+      source: "https://developer.microsoft.com/api/changelog/rss"
+      reason: "Adjacent products or specialized integrations do not change this talk's selected CLI task or proof."
       relatedTalks: []
+    - title: "Usage metrics, impact dashboards, and account lifecycle updates"
+      source: "https://developer.microsoft.com/api/changelog/rss"
+      reason: "Organization reporting and account administration do not earn teaching time in the distance argument."
+      relatedTalks: ["tech-talks/enterprise-patterns"]
 
   removals:
-    - "Replace `/chronicle instructions` with `/chronicle improve` in README and deck."
-    - "Replace the absolute 'built-in slash commands cannot be scheduled' line."
+    - "Replace the five feature-mapped distances with the four practitioner relationships after recipe approval."
+    - "Remove experimental labels and startup prerequisites for GA local and cloud sandboxing."
+    - "Replace universal human-per-tool approval language with the selected permission mode and its decision maker."
+    - "Replace chronicle-only schedulable-exception wording with current documented categories."
+    - "Displace lower-value agent-roster and extension inventory coverage to make room for locality and continuity proofs."
+    - "Replace headline time estimates with observable artifacts; retain historical estimates only as explicitly unverified background if useful."
 
   anomalies:
-    - "npm run content:route -- --since DATE still swallows --since. Use node scripts/content-router.mjs --since DATE."
-    - "No copilot-cli decisions are proposal-created in ledger.json. Do not invent ledger rows."
-    - "Latest stable CLI release is still v1.0.80 (2026-08-14). 1.0.81-* is prerelease."
+    - "README updated is October 31, but conversion recipe explicitly says no product-news refresh; August 25 remains the prior verification baseline."
+    - "Feed lastBuildDate is November 2 but contains a November 4 VS Code Insiders entry; exclude future-dated material."
+    - "No CLI proposal-created decisions were found in the ledger; do not invent rows for this named-talk proposal."
+    - "The shared latest-report files already have unrelated local edits; routing output was written to session storage instead."
+    - "The old refresh claimed npm swallowed --since; the current router handles it and this run used the requested August 25 window."
+    - "The guessed October 30 weekly-release URL returned 404; use the verified October 9 weekly and direct announcements instead."
+    - "Cloud announcement uses broad cloud-default language; cloud-sandbox docs explicitly retain local-by-default CLI sessions."
+    - "Release v1.0.105 has an October 27 body date and October 28 publication display; cite version rather than invent a single reconciled release timestamp."
+    - "Exact environment-host registration, connected-session handoff UI, current cloud billing rates, and installed-client availability need pre-demo verification."
+    - "No live feature or performance demonstration was run during source review; all proofs above are proposed."
 
   recipeReview:
-    required: false
+    required: true
+    narrativeReview:
+      date: "2026-11-03"
+      decision: restructure
+      status: implemented-and-validated
+      approved: "2026-11-03"
+      approval: "User: Approve the distance-first structure and opening scene; implement."
+      rationale: "User asks for the four distances to carry the entire deck and a stronger opening scene. Product evidence remains unchanged."
+      baseline: "Prior implementation: 40 slides / 2500 seconds."
+      implementation: "35 slides / 2400 seconds; 24 teaching / 11 spine; openers 5, 10, 15, 22. Four distances now own the section spine; five mechanics slides consolidated into examples and notes."
+      opening: "Deck-local working terminal reveals a representative service log, Copilot reasoning and next check, workflow, and later same-session continuation. Four shrinking brackets annotate this one scene; closing echoes it."
+      evidenceDate: "2026-11-02"
     question: >
-      Not required. Command rename and schedule-exception wording stay inside
-      the existing S3 climax.
+      How do I get AI help right where I’m working? The approved answer uses
+      Worker ↔ Work, Intelligence ↔ Data, Workflow ↔ Running System, and Now ↔ Later.
+      Capabilities can close multiple distances; this is a practitioner thesis,
+      not a historical origin claim or a ranking of other surfaces.
 
   validation:
     firstPartySourcesVerified: true
@@ -103,3 +346,9 @@ refresh:
     recipeApproved: true
     slidesRegenerated: true
     deckBuildPassed: true
+    nativeValidation: "2026-11-03: 35 slides; 0 pending; 0 warnings; PDF 35 pages; estimated talk 40:00; Q&A 5:00. Later 2026-11-03: workflow-code added, 36 slides, 40:45, Q&A 4:15. Full native validator passed."
+    visualReview: "Settled screenshots inspected for title, all four openers, source/action/aggregate log proof, distance model, contents, Docker, CI, three workflow-lesson layouts, compaction check, remote steering, device check, transfer, recap, next actions, and closing. Live title frames inspected; typography and recap spill corrected."
+    workflowExampleValidation: "Node syntax and fixture execution passed: report assembly, unknown-source-ID rejection, and agent-failure propagation. Executable core retained as optional depth; slides now show documented authoring and an illustrative report."
+    workflowRuntimeVerification: "Installed CLI v1.0.105 version and workflow run help verified; live Copilot workflow/agent execution and live systemctl/journalctl collection not performed. examples/extension.mjs passes node --check and a stub-SDK run (collect step, two labeled agents, returned report); no live registration."
+    recipeParity: "Exact ordered IDs, parts, per-slide seconds, and total match the approved recipe: 36 / 2445s; 25 teaching / 11 spine (after workflow-code); contents targets 5, 10, 15, 23. Contents targets match openers 5, 10, 15, 22. YAML, JS syntax, notes/source coverage, voice, and README router extraction passed."
+    liveProductDemosRun: false

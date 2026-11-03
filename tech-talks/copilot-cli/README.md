@@ -1,29 +1,17 @@
 ---
 status: active
-updated: 2026-10-31
+updated: 2026-11-03
 section: "Agents at Your Keyboard"
 audience: [developer, platform-engineer]
 level: applied
 duration: 45
 format: core-talk
-decision: "When is the terminal the correct Copilot control surface?"
+decision: "Where can I put AI help so decisive evidence and the right decision maker stay within reach?"
 prerequisites: [surfaces]
 related: [copilot-web, copilot-azure-mcp]
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli
-    label: "About GitHub Copilot CLI"
-    verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/concepts/about-cloud-and-local-sandboxes
-    label: "About cloud and local sandboxes for GitHub Copilot"
-    verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference
-    label: "GitHub Copilot CLI command reference"
-    verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/schedule-prompts
-    label: "Scheduling prompts in GitHub Copilot CLI"
-    verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet
-    label: "Running tasks in parallel with /fleet"
+    label: "About Copilot CLI"
     verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli
     label: "Use Copilot CLI"
@@ -31,118 +19,147 @@ references:
   - url: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli
     label: "Install Copilot CLI"
     verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#use-custom-instructions
-    label: "Copilot CLI custom instructions"
+  - url: https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference
+    label: "CLI command reference"
+    verified: 2026-11-02
+  - url: https://github.blog/changelog/2026-01-21-github-copilot-cli-plan-before-you-build-steer-as-you-go/
+    label: "Plan before you build; steer as you go"
     verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#add-an-mcp-server
-    label: "Add an MCP server to Copilot CLI"
-    verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing
-    label: "Finding and installing plugins for Copilot CLI"
-    verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-cli-plugins
-    label: "About plugins for Copilot CLI"
+  - url: https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-and-local-sandboxes
+    label: "Cloud and local sandbox boundaries"
+    verified: 2026-11-02
+  - url: https://github.blog/changelog/2026-10-07-local-sandboxing-for-github-copilot-now-generally-available
+    label: "Local sandboxing GA"
+    verified: 2026-11-02
+  - url: https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/about-cloud-sandboxes
+    label: "About cloud sandboxes"
+    verified: 2026-11-02
+  - url: https://github.blog/changelog/2026-10-28-work-from-anywhere-with-a-new-connected-copilot-cloud-experience
+    label: "Connected cloud experience GA"
+    verified: 2026-11-02
+  - url: https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-on-github
+    label: "Copilot on GitHub"
+    verified: 2026-11-02
+  - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-llm-models
+    label: "Add models and discover Ollama"
+    verified: 2026-11-02
+  - url: https://github.blog/changelog/2026-10-07-discover-local-models-in-github-copilot-cli
+    label: "Discover local models"
+    verified: 2026-11-02
+  - url: https://docs.github.com/en/copilot/concepts/customizations/allowing-safe-commands
+    label: "Allowing safe commands"
+    verified: 2026-11-02
+  - url: https://github.blog/changelog/2026-10-26-github-copilot-assisted-permissions-generally-available
+    label: "Assisted permissions GA"
+    verified: 2026-11-02
+  - url: https://github.blog/changelog/2026-10-13-enterprise-managed-settings-enforcement-updates
+    label: "Managed settings enforcement"
+    verified: 2026-11-02
+  - url: https://docs.github.com/en/copilot/concepts/agents/dynamic-workflows
+    label: "Dynamic workflows"
+    verified: 2026-11-02
+  - url: https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-dynamic-workflows
+    label: "Use dynamic workflows"
+    verified: 2026-11-02
+  - url: https://github.blog/changelog/2026-10-01-dynamic-workflows-in-copilot-cli-and-the-copilot-app/
+    label: "Dynamic workflows public preview"
+    verified: 2026-11-02
+  - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/automate-copilot-cli/schedule-prompts
+    label: "Schedule prompts"
+    verified: 2026-11-02
+  - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/fleet
+    label: "Parallel tasks with /fleet"
     verified: 2026-08-25
   - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/steer-remotely
-    label: "Steering a GitHub Copilot CLI session from another device"
-    verified: 2026-08-25
-  - url: https://github.blog/changelog/2026-04-13-remote-control-cli-sessions-on-web-and-mobile-in-public-preview/
-    label: "Remote control CLI sessions on web and mobile (public preview)"
-    verified: 2026-08-25
+    label: "Steer a session remotely"
+    verified: 2026-11-02
   - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/chronicle
-    label: "Using GitHub Copilot CLI session data (/chronicle)"
+    label: "Use session data with /chronicle"
     verified: 2026-08-25
-  - url: https://docs.github.com/en/copilot/concepts/agents/copilot-cli/chronicle
-    label: "About GitHub Copilot CLI session data"
+  - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/add-custom-instructions
+    label: "Add repository instructions"
+    verified: 2026-08-25
+  - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/cli-best-practices
+    label: "CLI best practices"
     verified: 2026-08-25
   - url: https://github.com/github/copilot-cli/releases
-    label: "GitHub Copilot CLI release notes"
-    verified: 2026-08-25
-  - url: https://github.blog/changelog/2026-08-07-github-copilot-weekly-releases-august-3
-    label: "GitHub Copilot weekly releases: August 3 CLI updates"
-    verified: 2026-08-25
-  - url: https://github.blog/changelog/2026-08-13-github-copilot-weekly-releases-august-10
-    label: "GitHub Copilot weekly releases: August 10 CLI workflow controls"
-    verified: 2026-08-25
-  - url: https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app
-    label: "Agent Plugins 1.0 in VS Code, Copilot CLI, and the Copilot app"
-    verified: 2026-08-25
-  - url: https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot
-    label: "Upcoming September 2026 model deprecations in GitHub Copilot"
-    verified: 2026-08-25
+    label: "Official CLI releases"
+    verified: 2026-11-02
+  - url: https://github.com/github/copilot-cli/releases/tag/v1.0.105
+    label: "Stable v1.0.105"
+    verified: 2026-11-02
 ---
 
-# GitHub Copilot CLI: AI at the Point of Work
+# GitHub Copilot CLI: Intelligence Within Reach
 
 > **The Question This Talk Answers:**
-> *"How do I bring AI to where the work actually is — and keep steering it from wherever I am?"*
+> *"How do I get AI help right where I’m working?"*
 
-**Duration:** 45 minutes | **Audience:** Developers and platform engineers working in terminal, CI, and operational environments
+**Duration:** 45 minutes | **Audience:** Developers and platform engineers working with repository, CI, and running-system evidence
 
-**Thesis:** Copilot CLI closes distance across intent, complexity, context, time, and geography when practitioners clarify first, choose bounded autonomy, verify the artifact, and keep human approval visible.
+**Thesis:** Bring intelligence to the work, and keep the worker within reach.
 
 ## Present and Study
 
-- **[Open the deck](../../slides/tech-talks/copilot-cli/index.html)**: 39 slides. Press `N` to open speaker notes beside it.
-- **[Speaker notes](../../slides/tech-talks/copilot-cli/notes.html)**: talk track, command details, boundaries, recovery paths, first-party evidence, and a time budget for every slide. The notes print as the handout.
+- **[Open the deck](../../slides/tech-talks/copilot-cli/index.html):** 36 slides (25 teaching, 11 spine); estimated 40:00 talk plus 5:00 for questions. Press `N` for speaker notes.
+- **[Speaker notes and handout](../../slides/tech-talks/copilot-cli/notes.html):** Complete talk track, proposed live checks, source evidence, boundaries, and recovery paths.
 
-The deck and notes live in [`slides.js`](../../slides/tech-talks/copilot-cli/slides.js); the notes are the teaching source.
+The [native teaching source](../../slides/tech-talks/copilot-cli/slides.js) owns the talk. Product evidence was reviewed November 2, 2026; stable baseline v1.0.105. The distance-first narrative was approved November 3. Representative traces are scripts, not observed results.
 
-## 1. Plan Mode: Collaborative Planning Before Implementation
+Why use CLI here? It can minimize the distance between the person, the evidence, the process, and the next useful moment. This is a practitioner thesis, not a historical origin claim or a ranking of other surfaces.
 
-Use clarifying questions and an approved plan to turn an ambiguous runtime request into scoped checks. The Docker numbers are clearly labeled source-scenario estimates, not measured results.
+## 1. Worker ↔ Work
 
-## 2. Interactive Mode vs Programmatic Mode vs Cloud Delegation
+Keep the developer’s request, Docker tool outputs, and next decision in one inspectable loop. Clarify the task, review a scoped plan, and use the listener and valid `5001:5000` mapping to choose a proposed HTTP probe. No successful repair is claimed.
 
-Match interactive diagnosis, headless CI reports, `/fleet`, cloud delegation, or scheduled prompts to the task. Keep permissions, containment, review, and cost visible.
+## 2. Intelligence ↔ Data
 
-## 3. Automatic Context Management and Repository Memory
+Start Copilot on the authorized staging host so tools can reach decisive evidence. Inspect inference placement separately, compare a bounded log finding with its synthetic source, and choose cloud deliberately for repository work. Host-local tools do not imply host-local inference or zero data movement.
 
-Inspect context before and after compaction, record stable repository guidance, and choose `/rewind` for a wrong turn or `/worktree` for isolated exploration.
+## 3. Workflow ↔ Running System
 
-## 4. Remote Sessions: The Last Distance Falls
+Let failed CI run `copilot -p` and return a proposed why beside the original red test. Save recurring staging investigation as a public-preview dynamic workflow: understand the process, describe and review its creation, confirm registration, then invoke it and inspect the report. Permissions and containment bound the actions close to the system.
 
-Run the session on the host that owns the runtime evidence and steer it remotely. Keep host scope, tool permissions, and human approval explicit.
+## 4. Now ↔ Later
+
+Carry forward the right thing: a reusable procedure, delegated task, scheduled intent, checked context, reviewed guidance, recoverable edits, or continuing session. Experimental schedules require an active session. Original-host steering requires a running host and process; connected cloud continuation preserves different state. Verify identity, scope, files, and actual test evidence.
 
 ## What You Can Do Today
 
-### Today
+### Worker ↔ Work
 
-- **Try:** Install the current CLI and use Plan Mode for one ambiguous, low-risk task in a safe repository.
-- **Expected signal:** Copilot asks a useful scope question and presents a plan that names the evidence it will inspect.
-- **Validate:** Review the plan before approval, inspect any diff, and run the relevant test or check.
+- Ask for two read-only checks beside a runtime task; inspect their outputs and choose the next probe.
 
-### This Week
+### Intelligence ↔ Data
 
-- **Build:** Add one `copilot -p` failure summary to CI with scoped tools and a reviewable output file.
-- **Expected signal:** A maintainer can compare the report with the actual failure evidence.
-- **Validate:** Record time, correction turns, and reviewer acceptance for your own workload before claiming a benefit.
+- Analyze an approved synthetic source on its host; inspect the provider and compare the finding with source.
 
-### This Month
+### Workflow ↔ Running System
 
-- **Pilot:** Try `--remote` on an authorized staging host with redacted or synthetic data.
-- **Success measure:** Confirm session access, host-local execution, scoped permissions, reconnect behavior, and reviewer ownership.
-- **Boundary:** Stop when host scope, data handling, or approval authority is unclear; use the team’s escalation path.
+- Return one bounded CI failure explanation; compare `why.md` with the log and keep the original failed test status.
+
+### Now ↔ Later
+
+- Continue a low-risk task; verify the session, retained scope, files, and actual next check. Confirm access and current billing before cloud work.
 
 ### Apply It to Your Work
 
-- **Candidate task:** Choose a recurring diagnosis whose decisive evidence lives in a terminal or on a remote host.
-- **Decisive context:** Identify the logs, files, service state, and policy Copilot needs; keep secrets out of prompts.
-- **Delegation and authority:** State what Copilot may inspect, who approves tool requests, and who accepts any proposed remediation.
-- **Evidence:** Name the report, test, health signal, or diff that decides whether to keep, adjust, or stop the pattern.
+- **Candidate task:** Choose one distance in a real task; capabilities can close several distances.
+- **Decisive context:** Identify the host, files, service state, and provider allowed to receive context.
+- **Delegation and authority:** Name the permission decision maker and the human who accepts the result.
+- **Evidence:** Define an artifact and a signal that makes you keep, adjust, or stop the pattern.
+- **Boundary:** Stop when source evidence disagrees or access, data handling, or acceptance ownership is unclear. Preserve the artifact and re-scope with the owner.
 
 ## Key Artifacts
 
-- **[FanHub walkthrough](examples/walkthrough.md):** Hands-on Plan Mode, programmatic mode, `/fleet`, remote-session, and cloud-delegation examples. Check its prerequisite and command details against the installed CLI before presenting.
-- **[Teaching source](../../slides/tech-talks/copilot-cli/slides.js):** The deck, talk track, command references, evidence notes, and slide timing.
+- **[Walkthrough and proposed checks](examples/walkthrough.md):** Safe rehearsal paths for planning, CI, model placement, permissions, containment, workflows, and both continuity paths.
+- **[Illustrative workflow extension](examples/extension.mjs):** The kind of `extension.mjs` Copilot writes for the staging investigation, using the API in the guidance bundled with CLI v1.0.105; syntax-checked and stub-SDK tested, not a recorded run. and **[fixture inputs](examples/staging-input.json):** Dependency-free Node.js fixture checks; a Copilot extension adapter requires separate authoring and audit.
+- **[Teaching source](../../slides/tech-talks/copilot-cli/slides.js):** Slide data, full notes, source map, and timing.
+- **[Approved recipe](deck.recipe.yml):** Structural rationale and actual per-slide plan.
 
 ## Related Patterns
 
-- **[Copilot Web](../copilot-web/README.md):** Use when web or GitHub-hosted context changes the surface decision.
-- **[Copilot CLI + Azure MCP](../copilot-azure-mcp/README.md):** Compose CLI workflows with Azure context and tools.
-- **[Copilot Configuration Primitives](../copilot-primitives/README.md):** Instructions, memory, prompts, and skills.
-- **[Copilot Plugins](../copilot-plugins/README.md):** Plugin authoring, marketplaces, and packaging.
-
-## References
-
-First-party sources for each claim are listed per slide in the [speaker notes](../../slides/tech-talks/copilot-cli/notes.html); the complete verified inventory remains in the frontmatter above. CLI commands, preview status, permissions, and integrations are version-sensitive. Confirm current documentation and policy before a live run.
+- **[Copilot Web](../copilot-web/README.md):** GitHub-hosted collaboration and context.
+- **[Copilot CLI + Azure MCP](../copilot-azure-mcp/README.md):** CLI workflows with Azure evidence and tools.
+- **[Copilot Configuration Primitives](../copilot-primitives/README.md):** Stable instructions and reusable context.
+- **[Copilot Plugins](../copilot-plugins/README.md):** Extension packaging and governance.
