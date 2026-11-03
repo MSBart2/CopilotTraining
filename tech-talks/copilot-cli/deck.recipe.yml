@@ -1,106 +1,286 @@
+# 2026-11-03 · decision: restructure · approved by user.
+# User: "Approve the distance-first structure and opening scene; implement".
+# Baseline: 40 slides / 2500 seconds, planning → placement → context → remote.
+# Make the user's four distances the section spine; preserve concrete proofs.
 version: 1
 
 deck:
-  title: "GitHub Copilot CLI: AI at the Point of Work"
-  subtitle: "Bring AI to Where Work Lives and Steer It from Anywhere"
-  tagline: "Close distance across intent, complexity, context, time, and geography."
-
+  title: "GitHub Copilot CLI: Intelligence Within Reach"
+  subtitle: "Bring intelligence to the work, and keep the worker within reach."
+  tagline: "Close the distance between worker and work, intelligence and data, workflow and running system, now and later."
   agenda:
-    - title: "Turn Intent into Evidence"
-      takeaway: "Shape an ambiguous Docker request into an approved plan and two targeted checks."
-      whyItMatters: "Early clarity focuses tools, reasoning effort, and engineering attention."
-    - title: "Choose Autonomy with Confidence"
-      takeaway: "Use a decision ladder that delivers a 5-minute automated CI analysis."
-      whyItMatters: "Clear permissions, containment, review, and cost boundaries support confident automation."
-    - title: "Keep the Incident in Reach"
-      takeaway: "Steer a live server session from a phone while a 12GB log corpus stays on its host."
-      whyItMatters: "Durable sessions preserve momentum, execution locality, and data governance."
-
-  arcToc: "Clarify Intent → Choose Autonomy → Keep Context → Steer From Anywhere"
-
+    - title: "Worker ↔ Work"
+      takeaway: "Inspect Docker outputs and choose the next check in the same working loop."
+      whyItMatters: "The developer can shape Copilot's next action beside the task."
+    - title: "Intelligence ↔ Data"
+      takeaway: "Start on staging, inspect the provider separately, and check a bounded source-backed finding."
+      whyItMatters: "Reasoning can reach approved evidence without manually carrying the corpus."
+    - title: "Workflow ↔ Running System"
+      takeaway: "Run copilot -p in failed CI and create a reusable staging investigation."
+      whyItMatters: "An existing workflow can return a source-backed explanation alongside its result."
+    - title: "Now ↔ Later"
+      takeaway: "Verify what survives delegation, interruption, a later run, and a device change."
+      whyItMatters: "The practitioner can continue without guessing which state or environment remains."
+  arcToc: "Worker ↔ work → Intelligence ↔ data → Workflow ↔ system → Now ↔ later"
   arcNarrative: >
-    Plan Mode opens with the five-part Distance Model and closes the intent gap
-    through a quantified Docker diagnosis. Operating Modes closes the complexity
-    and time gaps by pairing interactive, headless, fan-out, delegated, and
-    scheduled work with explicit permission, containment, review, and cost
-    boundaries. Context Management establishes the session as a durable,
-    recoverable unit of work and creates a focused breath before the climax.
-    Remote Sessions completes the geography arc through device handoff and
-    data-local forensics, with host execution and human steering working
-    together. This sequence prepares the audience to understand what runs, what
-    persists, and what stays under human approval when the marquee reveal lands.
-    The arcToc uses four concise verb phrases in the same order as the full
-    section names so the chain fits within 80 characters.
-
+    Answer why CLI exists: it can reduce the distance between the person, the evidence, the process, and the next useful action. This is the talk's practitioner thesis, not a claim about the product's historical origin or superiority over other surfaces. Begin with a developer investigating a service from a terminal. The title scene makes useful proximity visible through one concrete investigation rather than stacked planes or nodes. Introduce the four distances before navigation; make them the navigation. First keep the worker and work in one inspectable request/tool/result loop: plan a Docker investigation, observe two checks, choose the next action. Then follow decisive evidence to staging. Separate host-side tools from model inference; local-model selection is one deliberate option. A log-host example demonstrates bounded analysis without manually carrying the corpus. Cloud placement closes distance to repository work, not host-only state. Next put reasoning inside the running process: CI returns a proposed why beside its failed test; dynamic workflows preserve the collection and analysis procedure. Permissions and containment make this proximity bounded. Finally cross time: delegate now/review later, repeat an investigation, schedule within a live session, retain checked context, recover a wrong turn, and keep the same host investigation reachable from another device. Remote steering keeps the worker close as attention moves; it is not durable unattended execution. Cloud continuation preserves different state. End by revisiting all four distances with their concrete artifacts. Every teaching slide exposes what is separated, the CLI action that brings it closer, and an observable consequence. A primary distance is a narrative lens; capabilities can close several distances.
   sectionOrder:
-    - "Plan Mode: Collaborative Planning Before Implementation"
-    - "Interactive Mode vs Programmatic Mode vs Cloud Delegation"
-    - "Automatic Context Management and Repository Memory"
-    - "Remote Sessions: The Last Distance Falls"
-
+    - "Worker ↔ Work"
+    - "Intelligence ↔ Data"
+    - "Workflow ↔ Running System"
+    - "Now ↔ Later"
   sectionModes:
-    "Plan Mode: Collaborative Planning Before Implementation":
+    "Worker ↔ Work":
       emphasis: medium
       note: >
-        Open with the five-part Distance Model so the audience can track which
-        gap each section closes. Tell one complete Docker story: ambiguous
-        request, clarifying questions, approved plan, two targeted checks, and
-        an 8-minute resolution following a 45-minute, 8-attempt baseline. Keep
-        real-time steering and Rubber Duck as brief quality checkpoints. Present
-        Rubber Duck as enabled by default and powered by a different model
-        family, with the quality-gap percentage reserved for speaker notes.
-        Use three focused body slides and place the reasoning-model catalog in
-        the appendix.
-    "Interactive Mode vs Programmatic Mode vs Cloud Delegation":
+        Audience question: can I ask, inspect, and decide where I am already working? Open with the developer at a failing backend, not a Plan Mode feature introduction. Planning earns space as the short path from an ambiguous request to inspectable action. Preserve the representative Docker commands and valid 5001:5000 mapping. Land the visible payoff: Copilot reads host tool output, revises its explanation, and proposes a probe in the same working loop. Manual redirect keeps evidence intact. No repair, time saving, or HTTP success is claimed without observation.
+    "Intelligence ↔ Data":
       emphasis: high
       note: >
-        Build a task-and-boundary decision ladder the audience can apply on
-        Monday: interactive work for uncertain diagnosis, copilot -p for
-        reproducible CI, /fleet for parallel subtasks inside one approved plan,
-        & for long-running cloud work, and session-scoped scheduled prompts for
-        recurring patrol. Feature the 5-minute CI artifact and its 25-minute
-        baseline as the centerpiece. Give every rung its permissions, output,
-        review, containment, and cost signal, including local and cloud
-        sandboxing and the managed permissions.disableBypassPermissionsMode
-        control. Plant the scheduled-patrol thread for the remote climax. Place
-        the agent roster, custom-agent authoring, and plugin mechanics in the
-        appendix.
-    "Automatic Context Management and Repository Memory":
-      emphasis: medium-low
-      note: >
-        Carry two ideas across two slides. First, show the durable session
-        through auto-compaction at 95%, repository memory across sessions, and
-        /resume from any machine. Second, show turn-level recovery through
-        /rewind, which restores Copilot-changed files, keeps developer-authored
-        edits, and works with Git as an optional foundation. Name /chronicle
-        improve writing .github/copilot-instructions.md as the producer
-        takeaway. Place /worktree, storage internals, model controls, sidebar
-        mechanics, /voice, and /app in the reference appendix.
-    "Remote Sessions: The Last Distance Falls":
+        Audience question: can help reach the evidence that decides this task? Lead with SSH then copilot on staging, because it proves execution placement. Then show provider endpoint inspection and local Ollama discovery as a separate inference choice. Host-local tools do not mean host-local inference, offline operation, or zero data movement. Make log-host analysis a command/source/aggregate proof rather than another generic terminal request. Show a labeled synthetic source and expected aggregate if no live run is available. Model, tool, steering, and authority distinctions remain in notes and concrete scene labels; remove the standalone four-decision scorecard. End with the choice: host evidence belongs on its host; a repository task may fit cloud.
+    "Workflow ↔ Running System":
       emphasis: high
       note: >
-        Deliver the geography payoff as the closing marquee and explain
-        execution locality alongside operator locality in one clear frame. Show
-        a controlled host session handed to web or mobile by QR code, then
-        connect the walking-to-meeting incident to 12GB log forensics performed
-        where the data lives. Collect the scheduled-patrol thread from Operating
-        Modes. Present /fleet as subagent orchestration inside one approved plan
-        on one host. Present multi-environment work as several independent
-        remote sessions that an operator steers from one browser. Pair remote
-        steering with scoped --allow-tool permissions, host-side containment,
-        enterprise policy, and human approval for consequential actions. Give
-        Agent Plugins 1.0 one consumer-facing mention that points to the
-        dedicated plugins talk, and close with a concrete staging-host action.
-
+        Audience question: can the process ask for an explanation at the moment it has the evidence? CI is the centerpiece: preserve failure-gated Actions YAML running copilot -p, captured log, why.md/job summary, and the original failed test status. Show a source-cited proposed why. Follow with the three-slide dynamic-workflow lesson: reusable process, natural-language creation/review/registration, invocation and report. It is extension code in public preview, not YAML or a supplied complete extension. Synthetic reports and the tested stub-agent core remain distinct from live Copilot results. Workflow reuse also bridges time. Place permission decisions and sandbox reach beside the process they constrain. Keep assisted permissions GA, managed-policy recovery, MXC/platform limits, and best-effort file checks accurate. Fleet stays an optional contrast in notes, not an orchestration detour.
+    "Now ↔ Later":
+      emphasis: high
+      note: >
+        Audience question: what can I carry forward without starting over? Distinguish the thing preserved in every example: delegated task/PR, scheduled intent, checked conversation context, reviewed repository guidance, recoverable edits, running original-host session, or cloud files/in-progress work. Recap workflow-definition reuse here without repeating its setup tutorial. Schedules are experimental and active- session-only, not a durable scheduler. Combine compaction mechanics and the next-plan check into one evidence-focused slide. Reframe rewind as recovering useful progress. Remote control demonstrates worker reach across a change of device; require the host/session to stay alive and keep policy intact. Fold the repeated remote-approval slide into this example and the Part 3 authority slide. Connected-cloud continuation needs identity, files, actual test evidence, and a supported second client; it does not migrate staging state. End with one own-work distance, artifact, owner, and stop signal.
   preamble: []
-
-  appendix:
-    - src: ./copilot-cli-reference.md
-
+  appendix: []
   highlightMoments:
-    - "Plan Mode delivers an 8-minute Docker diagnosis with 2 targeted checks after a 45-minute, 8-attempt baseline."
-    - "A copilot -p CI step delivers build-failure analysis in 5 minutes after a 25-minute baseline."
-    - "/rewind returns a session to an earlier turn, restores Copilot edits, keeps developer edits, and works with Git as an option."
-    - "--remote keeps a 12GB log corpus on its server while the operator steers the live session from a phone."
-
-# OPEN DECISION: Will the remote handoff use a live QR-scan demo or a narrated storyboard? — A live demo needs venue connectivity, a phone camera, and a staged host; a storyboard needs two or three capture images prepared before slide generation.
+    - "Copilot uses two Docker outputs to revise its explanation within the developer's working loop."
+    - "The staging command shows exactly where tools run; provider inspection separately establishes where inference runs."
+    - "A failed CI job returns a proposed why beside its original failure evidence."
+    - "A reviewed workflow preserves the investigation procedure while agents interpret fresh evidence."
+    - "The practitioner continues the same investigation elsewhere and verifies which host and state remain."
+  refresh:
+    approved: true
+    reviewDate: "2026-11-03"
+    source: "tech-talks/copilot-cli/content.refresh.yml"
+    baselineIntent: "Planning → placement → durable context → host-local remote steering"
+    baselinePlanCount: 40
+    baselineTotalSeconds: 2500
+    decision: restructure
+    approvalStatus: "Approved 2026-11-03 by user: Approve the distance-first structure and opening scene; implement."
+    alternativeConsidered: >
+      Keep the current order and add distance labels/callbacks. This preserves more layout work but leaves planning, feature modes, and remote mechanics as the visible spine. The four-distance structure better answers why CLI exists while retaining the approved working artifacts.
+    rejectedCoverage:
+      - "Standalone mode-ladder scorecard: fold distinctions into actual placement examples and notes."
+      - "Standalone fleet-work and fleet-across-machines: keep fleet and multi-host limits as optional notes; they interrupt this argument."
+      - "Standalone remote-approval: fold policy continuity into the remote example and authority slide."
+      - "Standalone compaction scorecard: merge commands into the next-plan proof."
+      - "Agent roster, model catalog, and prerelease capabilities: no new evidence for the selected distances."
+      - "Invented timing gains, live diagnoses, complete workflow extension, or zero-exposure claims."
+    openingScene:
+      name: "Within reach"
+      concept: >
+        Replace the physical cutaway with a full-width terminal investigation, visually dominant enough to read as a working instrument rather than a card in a diagram. A developer enters copilot beside a running service's shell context. Reveal one requested journal command, its short representative failure evidence, and Copilot's next diagnostic check. Four understated distance brackets annotate the same working scene: worker/work, intelligence/data, workflow/system, now/later. A small continuation strip carries the same session into a later moment; no fabricated completion time or repair result.
+      motion: >
+        Begin close on the prompt; reveal the service evidence and reasoning response; widen to expose the workflow and continuation strip. Brackets shorten once as useful context comes within operational reach. They do not depict moving the service, corpus, or model. The final frame remains fully legible and states the four distances.
+      guardrails: >
+        No nodes, connecting-edge topology, stacked cutaway, stock brain, decorative particles, or four generic feature tiles. Label this a conceptual representative sequence. Provider location remains explicit and separate from host tools. Keep product name and thesis prominent.
+    publicationGate:
+      relevant: "Developer/platform engineer needs to diagnose, explain, and continue a runtime task using approved evidence."
+      compelling: "The terminal can put reasoning in the existing loop across places, processes, and time."
+      actionable: "Choose one gap, execute a bounded task, inspect its artifact, and stop or recover when evidence fails."
+    planCount: 36
+    totalSeconds: 2400
+    teachingSlides: 25
+    frameAndSpineSlides: 11
+    durationMinutes: 45
+    questionsMinutes: 5
+    questionsSeconds: 300
+    timingStatus: "Approved budget; estimate until presenter run-through"
+  conversion:
+    mode: native-refresh
+    approved: true
+    approval: "2026-11-03 user approval: Approve the distance-first structure and opening scene; implement."
+    sourceLanding: "tech-talks/copilot-cli/README.md"
+    preservedArtifact: "tech-talks/copilot-cli/examples/walkthrough.md"
+    note: "Preserve approved product evidence and example code; change narrative, grouping, and title scene."
+    planCount: 36
+    totalSeconds: 2400
+    teachingSlides: 25
+    frameAndSpineSlides: 11
+  slides:
+    - id: title
+      part: 0
+      claim: "CLI brings intelligence within reach of the person, evidence, process, and next useful moment."
+      scene: "deck within-reach: four oversized word pairs (worker/work, intelligence/data, workflow/running system, now/later) glide in from the frame edges and lock onto one blinking copilot caret; dashed gap lines fade as they close. No terminal text wall, nodes, or caveat footer."
+      seconds: 45
+    - id: core-question
+      part: 0
+      claim: "How do I get AI help right where I am working?"
+      scene: "core-question: retain the learner question; make minimizing distance the explicit answer; details stay in notes."
+      seconds: 55
+    - id: distance-model
+      part: 0
+      claim: "Choose the gap that matters, bring help closer, and inspect what improves."
+      scene: "four distances with concrete task/artifact pairs; introduce the recurring question and distinguish proximity from permission."
+      seconds: 70
+    - id: contents
+      part: 0
+      claim: "Four distances organize the investigation from the current task to its next useful continuation."
+      scene: "contents: exact four distance names; opener links 5, 10, 15, 22."
+      seconds: 30
+    - id: part-1
+      part: 1
+      claim: "Keep the worker and the work in one inspectable loop."
+      scene: "opener: Worker ↔ Work; ask where the developer can inspect and decide without leaving the task."
+      seconds: 35
+    - id: plan-mode-loop
+      part: 1
+      claim: "The developer can shape Copilot's next action beside the task."
+      scene: "four-phases: same working loop, concrete backend request, clarification, plan review, host evidence."
+      seconds: 55
+    - id: docker-clarify
+      part: 1
+      claim: "A short exchange turns the developer's request into scoped checks."
+      scene: "terminal: representative logs-first request and review point; worker/work payoff explicit."
+      seconds: 70
+    - id: docker-plan
+      part: 1
+      claim: "Copilot reads the host's Docker outputs and proposes a testable next check in the same session."
+      scene: "retain docker-investigation commands/output/inference; close on the worker choosing the next HTTP probe."
+      seconds: 130
+    - id: steer-boundary
+      part: 1
+      claim: "The worker can redirect a tool request while preserving useful evidence."
+      scene: "terminal: manual denial of deletion and evidence-only continuation; scope, permission, and acceptance remain distinct."
+      seconds: 55
+    - id: part-2
+      part: 2
+      claim: "Bring help to the evidence that decides the task."
+      scene: "opener: Intelligence ↔ Data; staging logs, selected provider, and bounded source-backed finding."
+      seconds: 35
+    - id: interactive-diagnosis
+      part: 2
+      claim: "Start Copilot on staging so tools can inspect the service and logs where they live."
+      scene: "terminal: SSH then copilot then journalctl; host and inference provider explicitly distinct."
+      seconds: 55
+    - id: host-forensics
+      part: 2
+      claim: "A day of logs stays on its host while Copilot questions it; only a short cited finding reaches the operator."
+      scene: "deck log-proof: large illustrative corpus (stays) · three chained host commands whose outputs choose the next question · finding/unknown/next check (reaches you). Commands verified against walkthrough generator."
+      seconds: 100
+    - id: local-model
+      part: 2
+      claim: "Inference placement is a separate choice verified by the selected provider endpoint."
+      scene: "retain /model discovery of a prepared Ollama runtime and synthetic evidence check; no offline claim."
+      seconds: 85
+    - id: cloud-containment
+      part: 2
+      claim: "Place repository work in cloud deliberately; host-only evidence still belongs to its original environment."
+      scene: "showdown: copilot versus copilot --cloud; show which evidence each can actually reach and preserve GA/billing limits."
+      seconds: 80
+    - id: part-3
+      part: 3
+      claim: "Put reasoning into the process that already has the evidence."
+      scene: "opener: Workflow ↔ Running System; CI failure and repeatable staging investigation."
+      seconds: 35
+    - id: programmatic-command
+      part: 3
+      claim: "The failed CI run can return a proposed why before a maintainer opens a separate conversation."
+      scene: "retain failure-gated Actions copilot -p YAML, synthetic log, why.md summary, and failed test status."
+      seconds: 90
+    - id: workflow-reuse
+      part: 3
+      claim: "Save a recurring investigation as collection code, agent reasoning, and a source-backed report."
+      scene: "retain workflow-lesson overview; connect today's running-system evidence with the next incident."
+      seconds: 75
+    - id: workflow-definition
+      part: 3
+      claim: "Describe the process to Copilot, review its extension code, and confirm registration separately from execution."
+      scene: "retain natural-language authoring request and three setup steps; no invented YAML/API or ready-run extension claim."
+      seconds: 85
+    - id: workflow-code
+      part: 3
+      claim: "The authoring request produces one reviewable extension.mjs: code collects, agents reason, the return value is the report."
+      scene: "deck workflow-code: color-banded extension.mjs (defineWorkflow, ctx.step collection, ctx.parallel + ctx.agent, return, joinSession) beside four matching callouts. API from guidance bundled with CLI v1.0.105; illustrative, stub-tested in examples/extension.mjs."
+      seconds: 80
+    - id: rubber-duck
+      part: 3
+      claim: Before workflow code runs on staging, /rubber-duck gets an independent critique from a different model family, grouped by severity.
+      scene: "deck rubber-duck: the /rubber-duck request and what the critic is (contrasting model, read-only) beside a severity-grouped critique of examples/extension.mjs (unredacted logs blocking; timeout and null guard non-blocking; schema suggestion) and Copilot summary of fixes."
+      seconds: 75
+    - id: workflow-report
+      part: 3
+      claim: "Run the saved procedure against fresh evidence and inspect the explanation before choosing action."
+      scene: "retain Bash invocation and synthetic report; distinguish saved procedure from variable findings and failed-run result-file behavior."
+      seconds: 90
+    - id: authority-boundary
+      part: 3
+      claim: "Three permission modes (manual, assisted, allow-all) decide tool requests; enforced policy applies in all of them."
+      scene: "manual, assisted GA, broad preauthorization, and enforced policy beside the workflow's requested actions; acceptance remains human."
+      seconds: 95
+    - id: local-containment
+      part: 3
+      claim: "A sandbox can give useful tools a smaller reach around the task."
+      scene: "deck sandbox-tree: approved npm test (orange) branches to four child actions; one repo write allowed (green), SSH key read, unknown egress, and gh token refused (cyan); representative outcomes under an example policy."
+      seconds: 85
+    - id: part-4
+      part: 4
+      claim: "Keep useful work within reach when time, attention, or device changes."
+      scene: "opener: Now ↔ Later; name procedure, task, context, and session as different things to preserve."
+      seconds: 35
+    - id: delegate-cloud
+      part: 4
+      claim: "Hand off a bounded task now and return to a reviewable PR later."
+      scene: "retain pr-handoff; independent work/time gap, representative PR, evidence to inspect, human review."
+      seconds: 45
+    - id: scheduled-patrol
+      part: 4
+      claim: "After shipping a fix, /every watches quietly and /after verifies later with evidence, so the developer can move on within the same session."
+      scene: "deck schedule-timeline: two commands typed once, 45-minute timeline of quiet /every checks, /after report with before/after 503 counts and rerunnable command; session-only boundary in footnote and notes."
+      seconds: 90
+    - id: compact-quality
+      part: 4
+      claim: "A later continuation is useful when the next plan retains the task and its constraints."
+      scene: "merge /context and /compact mechanics into representative post-compaction plan check; missing constraint → re-anchor → inspect."
+      seconds: 65
+    - id: memory-chronicle
+      part: 4
+      claim: "/chronicle improve turns friction from this repo's sessions into reviewed instructions, so today's corrections become tomorrow's defaults."
+      scene: "deck chronicle-improve: recommendation picker (found → suggested instruction; one incident-specific item toggled off) beside resulting .github/copilot-instructions.md diff; representative per documented behavior."
+      seconds: 55
+    - id: rewind-recovery
+      part: 4
+      claim: "When Copilot goes too far, /rewind returns the conversation and Copilot's file changes to the last good turn while keeping your own edits."
+      scene: "deck rewind-timeline: four session turns (two good, two over-reaching struck through) with rewind target, beside /rewind result (conversation, files, verify) and /worktree aside."
+      seconds: 65
+    - id: remote-locality
+      part: 4
+      claim: "/remote on lets you steer and approve a running host session from GitHub.com or GitHub Mobile while commands stay on the host."
+      scene: "deck remote-phone: staging-host terminal (/remote on, QR via Ctrl+O, /keep-alive busy) beside a phone showing Copilot progress, a permission request with Allow, and your instruction."
+      seconds: 100
+    - id: walking-incident
+      part: 4
+      claim: "Back at the terminal, the same host session already holds every phone approval, result, and instruction; continue, then /remote off."
+      scene: "deck remote-return: one session transcript with source labels (from phone, on host, copilot, at desk) beside what carried over."
+      seconds: 65
+    - id: cloud-continuity
+      part: 4
+      claim: "copilot --cloud runs the session in a GitHub sandbox, so the worker can close the laptop and continue the same session from a phone or another machine."
+      scene: "deck cloud-relay: laptop 09:10 → phone 12:30 → another machine 15:00 timeline of one cloud session, with /remote vs --cloud vs boundary contrast row."
+      seconds: 110
+    - id: before-after
+      part: 0
+      claim: "Recap: each distance ends in an inspectable artifact from the demos (probe, cited finding, why.md, /after report)."
+      scene: "before-after: four before/after rows matching the current demos; bring closer, inspect proof, keep authority."
+      seconds: 45
+    - id: today
+      part: 0
+      claim: "Pick one distance and one concrete first step with a check; stop and re-scope when evidence disagrees."
+      scene: "replace calendar horizons with four distance-specific candidate actions and an observable check."
+      seconds: 65
+    - id: references
+      part: 0
+      claim: "References: first-party docs for commands, models, workflows, rubber duck, permissions, sandbox, remote, and cloud."
+      scene: "retain references and per-slide source links; preview, access, and platform status remain explicit."
+      seconds: 30
+    - id: thanks
+      part: 0
+      claim: "Bring intelligence to the work, and keep the worker within reach."
+      scene: "echo the opening working scene in settled form; four distances and own-work question replace place/prove/decide cards."
+      seconds: 20

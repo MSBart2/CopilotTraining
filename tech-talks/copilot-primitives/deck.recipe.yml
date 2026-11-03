@@ -1,32 +1,98 @@
-# Reviewed 2026-09-16: preserve the four-primitives spine and add a compact
-# place-load-prove preamble. Independent review moved the live climax to skill graduation.
+# Conversion recipe refreshed 2026-10-30.
+# Decision: preserve. User-authorized structural approval retains the existing four-part
+# narrative, worked prompt/agent transcripts, and /create-skill demo. The approved
+# Section 1 feedback adds an instruction-context flow and end-of-section troubleshooting;
+# the /init walkthrough is replaced by an explicit guidance-edit-and-rerun example.
+# Section 1 redesign approved by the user 2026-11-02, including fresh deck-local
+# sequence/impact scenes. This supersedes its placement/evidence preamble below.
+# Parts 2 and 3 redesigned with user approval 2026-11-02. Keep individual openers:
+# prompts capture human-invoked workflows; skills discover relevant expertise.
+# This supersedes the earlier prompt-to-runnable-skill ladder and test-runner demo.
+# Part 4 Documentation Reviewer redesign approved by the user 2026-11-02.
+# Preserve the approved opening and Parts 1–3 except the optional prompt agent target.
+# Supersedes the earlier Planner, new API task, /create-agent and handoff narrative.
+# 34 slides: 23 teaching + 11 spine/frame slides. Speaking 46:40; Q&A 3:20.
 version: 1
 deck:
   title: "Copilot Configuration Primitives: Making AI Understand Your Codebase"
   subtitle: "Instructions, Custom Prompts, Skills, and Agents"
-  tagline: "Encode the convention once. Graduate the workflow when it is proven."
+  tagline: "Preserve useful know-how. Reuse it in the work that needs it."
+  slideCount: 34
+  teachingSlideCount: 23
+  spineSlideCount: 11
+  speakingSeconds: 2800
+  questionSeconds: 200
 
   agenda:
-    - title: "Encode the smallest fitting primitive"
-      takeaway: "See one shared convention become repository, path-scoped, and directory guidance."
-      whyItMatters: "Teams choose the correct file and stop repeating stable context in each request."
-    - title: "Graduate solved work into capability"
-      takeaway: "Turn a working chat into a shared command, then add scripts and templates as a skill."
-      whyItMatters: "The team reuses proven work with observable execution evidence."
-    - title: "Prove configuration reached the result"
-      takeaway: "Trace eligibility through acceptance, then repair the first broken boundary."
-      whyItMatters: "Delivery, execution, validation, and approval remain independently observable."
+    - title: "Make reviewed team know-how reusable"
+      takeaway: "Write concrete instructions, maintain them through review, and supply them to the work that needs them."
+      whyItMatters: "Different disciplines contribute reusable instructions; supported chat context depends on scope and activation."
+    - title: "Capture useful work as a Custom Prompt"
+      takeaway: "Save a useful documentation-review workflow as /refresh-docs, reuse it for another change, then version and share it."
+      whyItMatters: "A human-invoked recipe preserves the approach while each case gets its own evidence and review."
+    - title: "Make task expertise discoverable with Skills"
+      takeaway: "Load relevant knowledge through name/description, SKILL.md, and maintained references; resources are optional."
+      whyItMatters: "Knowledge-only skills can help relevant work, with explicit invocation as an alternative when selection misses."
+    - title: "Put expertise to work in a focused role"
+      takeaway: "Select Documentation Reviewer, apply the existing skill, and inspect a sourced doc patch with open questions."
+      whyItMatters: "A recurring role adds fitting tools and output boundaries while keeping human acceptance separate."
 
   arcToc: "Instructions → Custom Prompts → Skills → Agents"
   arcNarrative: >
-    A three-slide preamble classifies owner, lifetime, selector, and evidence;
-    separates eligibility, loading, execution, validation, and acceptance; and
-    repairs one concrete selector failure. Instructions then establish the
-    reviewed baseline and prove delivery through a live /init demonstration.
-    Custom Prompts capture a solved workflow as a shared command. Skills form
-    the engagement peak by graduating that workflow into a runnable pack during
-    a live demonstration. Agents close the progression by composing the stack
-    behind explicit tools and a human-controlled handoff.
+    Preserve four separate parts and the approved opening.
+    Instructions begins with four concrete contributions from product,
+    accessibility, engineering, and operations, then distinguishes repository,
+    user, and organization sources. It teaches a concise shared baseline with
+    explicit “read when” pointers to detailed documents, then a focused runbook
+    instruction using applyTo. One deployment request traces the supported VS
+    Code automatic baseline, matching task-specific instruction, explicit read
+    of the relevant linked guide, assembled context, proposed runbook work, and
+    unrelated accessibility guidance left outside. It distinguishes automatic
+    baseline context from conditional file guidance and a separately consulted
+    document; a link alone does not guarantee a read. Concrete instructions map
+    directly to inspectable behavior. A significant deployment-command change
+    prompts a person to ask Copilot to assess existing guidance; a maintainer
+    reviews a proposed targeted edit or keeps the file unchanged. Follow with
+    supported locations, an explicit instruction-add/update demo, and end-of-
+    section troubleshooting across discovery, scope, rule quality, and a repeated
+    representative task. Examples remain illustrative.
+    Custom Prompts begins with its own question and opener. A maintainer works
+    with Copilot on a documentation review, asks it in natural language to capture
+    the useful approach as /refresh-docs, reviews the complete prompt file,
+    invokes it for a configuration rename after the deployment-command case,
+    inspects and refines the output, then versions the shared approach.
+    Named, discoverable, parameterized, human-invoked functions are an analogy,
+    not deterministic guarantees. Skills has a separate question and opener:
+    the check works; now make it discoverable during relevant work. Trace
+    name/description discovery, SKILL.md loading, and reference use as needed.
+    A complete knowledge-only docs-review skill routes to the same maintained
+    guide. Show a relevant configuration change and an unrelated logo-layout
+    request, then the guide and changed source producing a proposed doc edit
+    with an unresolved default question. Optional template and local-link
+    checker extensions help this same task; neither is required or proves
+    correctness. Compare deliberate /refresh-docs with task-relevance discovery
+    and explicit /docs-review invocation. Keep one source of detailed rules.
+    The final skill slide offers an optional prepared live inspection with a
+    complete static fallback, not an assumed successful execution.
+    Agents close the arc with Documentation Reviewer: the same Copilot in a
+    focused recurring role. Show a concise docs-reviewer.agent.md with read,
+    search, and edit tools, an explicit relative link to the existing docs-review
+    SKILL.md, a doc patch plus citations and open questions, and stopping
+    conditions. Trace the same API_TIMEOUT to REQUEST_TIMEOUT example through
+    applicable host instructions, explicit skill and linked-guide reads, changed
+    source inspection, and proposed docs/configuration.md update. The runbook
+    applyTo does not match this config document; explain the alternate deployment
+    case in notes. Inspect the stale line, source citation, narrow diff, and
+    unresolved default question. Keep checks not executed and human review
+    pending separate. Close with direct role selection or optional /refresh-docs
+    agent targeting in a supported prompt host; update the Part 2 illustrated
+    prompt itself. No automatic inheritance, universal precedence, or all-four
+    requirement. The agent references expertise instead of copying the workflow.
+    Treat examples and transcripts as illustrative, not measurements or
+    guaranteed product output. Keep runtime availability and authority distinct
+    from file syntax: a tool list is not a substitute for service, repository,
+    or human approval controls.
+
   sectionOrder:
     - "Instructions"
     - "Custom Prompts"
@@ -36,36 +102,235 @@ deck:
     "Instructions":
       emphasis: high
       note: >
-        Use one anatomy beat for repository-wide and path-scoped instructions.
-        Give AGENTS.md one selector slide inside this section. Show shared
-        configuration as reviewed institutional knowledge with a named owner.
-        Run /init live and use the References panel as delivery evidence.
+        Teach Copilot once and carry reviewed team know-how into a relevant task.
+        Use ten teaching slides plus the opener: cross-discipline contributions,
+        knowledge sources, useful rules, significant-change maintenance, supported
+        homes, a concise baseline with explicit document pointers, one applyTo
+        runbook rule, a deployment context trace, an explicit add/update-and-rerun
+        example, and actionable troubleshooting. Preserve AGENTS.md
+        setup/test/workflow guidance within supported homes. Notes qualify
+        harness support, activation, inline-suggestion exclusion, organization
+        discovery, and the difference between loaded guidance and acceptable work.
+        A linked document is not guaranteed to be read. No universal precedence
+        or enforcement claim.
     "Custom Prompts":
       emphasis: medium
       note: >
-        Show a complete .prompt.md anatomy with inputs, selection, file context,
-        tools, and links to instructions. Use a static /create-prompt transcript
-        to preserve time for the runnable graduation in the next section.
+        Four teaching slides plus a separate opener, 7:20 total. Capture a useful
+        documentation review, read the complete prompt, reuse the same approach
+        for two distinct significant changes, then version and share it.
+        Show input, linked current guide, and expected output together. Verify
+        input syntax against current first-party docs; avoid unnecessary tool
+        IDs. A natural-language capture request avoids dependence on a creation
+        command. Keep the prompt a valid destination, with no graduation rule.
     "Skills":
       emphasis: high
       note: >
-        Make prompt-to-skill graduation the climax. Show progressive loading,
-        SKILL.md, a referenced script, and a referenced template. Run the
-        /create-prompt to /create-skill graduation live and validate one output.
+        Five teaching slides plus a separate opener, 9:55 total. Teach task
+        relevance, progressive disclosure, a complete knowledge-only SKILL.md,
+        maintained references doing work, and optional resources helping that
+        work. Contrast deliberate prompt invocation with relevance discovery
+        and explicit skill invocation. Selection is not guaranteed. Inspect
+        actual loading and output separately from acceptance. No scheduler,
+        runnable prerequisite, template guarantee, or mandatory prompt ladder.
+        The final 3:10 slide includes an optional two-minute prepared inspection
+        and own-work transfer; static examples remain fully deliverable alone.
     "Agents":
       emphasis: medium
       note: >
-        Show one read-only planner anatomy with explicit tools and one handoff.
-        Use a static /create-agent transcript. Keep human approval outside the
-        agent tool list and close with the primitive selection decision model.
+        Four teaching slides plus a separate opener, 7:20 total. Select a focused
+        recurring responsibility, read the complete Documentation Reviewer agent
+        definition, trace existing expertise doing work, inspect the cited patch
+        and unresolved question, then choose direct role selection or deliberate
+        prompt entry. Current first-party tool aliases and schema; omit execute
+        when no script is needed. Prose remit is not file-level enforcement.
+        Shared and applicable targeted instructions come from the host. The
+        explicit skill reference routes to the existing maintained guide.
+        Prompt/skill/agent coexistence has no maturity ladder. No mandatory
+        handoffs, subagents, scripts, or MCP. Examples remain illustrative.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "One repository convention becomes broad, path-scoped, or directory guidance through an explicit selector decision."
-    - "A solved chat becomes a team command, then graduates into a runnable skill with a referenced script and template."
-    - "Skills load metadata first, instructions on a match, and resources during execution."
-    - "The evidence chain separates eligible, loaded, executed, validated, and accepted into observable claims."
-    - "A read-only planner and one implementation handoff make tool constraints visible as architecture."
+    - "Product, accessibility, engineering, and operations contribute distinct reusable instructions."
+    - "A short shared baseline routes a relevant task to its detailed document with an explicit read direction."
+    - "A selected VS Code Copilot harness adds the supported baseline automatically; matching file guidance and linked documents enter through their own conditions."
+    - "After a significant change, a person asks Copilot to assess existing guidance; an owner reviews any proposed edit."
+    - "A useful documentation-review conversation becomes /refresh-docs; a deployment command change and a configuration rename expose representative reuse."
+    - "A knowledge-only skill makes the same review expertise discoverable through task relevance and progressive disclosure."
+    - "Prompt and skill read one maintained guide; optional template and script resources help without becoming prerequisites."
+    - "Documentation Reviewer puts the existing expertise to work through a focused remit, fitting tools, and a reviewable proposal."
+    - "The cited rename patch leaves an unsupported default question open, with check status and human review separate."
 
+  slides:
+    - id: title
+      part: 0
+      claim: "A team can make shared know-how useful across work, while people check drafts and own approval."
+      scene: "deck know-how-hero: shared knowledge fans out into lifecycle artifacts"
+      seconds: 25
+    - id: core-question
+      part: 0
+      claim: "Choose configuration by the context the team needs, the task it repeats, and the evidence it can inspect."
+      scene: "deck working-layers: convention, implementation, and specialization for one endpoint"
+      seconds: 65
+    - id: contents
+      part: 0
+      claim: "The talk moves from shared instructions through reusable prompts and skills to focused recurring roles."
+      scene: "shared frame: contents"
+      seconds: 35
+    - id: instructions-opener
+      part: 1
+      claim: "Teach Copilot once and carry reviewed team know-how into the next task."
+      scene: "shared frame: opener"
+      seconds: 20
+    - id: reusable-improvements
+      part: 1
+      claim: "Four disciplines contribute concrete lines to one shared repository instructions file."
+      scene: "deck instruction-reuse: four team contributions converge into one reviewed file"
+      seconds: 75
+    - id: knowledge-sources
+      part: 1
+      claim: "Organization, repository, and personal guidance bring distinct knowledge and update paths into supported sessions."
+      scene: "deck instruction-sources: equal routes converge without precedence"
+      seconds: 85
+    - id: useful-instructions
+      part: 1
+      claim: "Concrete actions, source paths, and expected behavior make guidance directly inspectable."
+      scene: "deck instruction-examples: weak advice to useful instruction to artifact"
+      seconds: 100
+    - id: maintain-guidance
+      part: 1
+      claim: "A person asks Copilot to assess guidance after a significant change; an owner reviews any targeted edit."
+      scene: "deck instruction-maintenance: significant change to request to proposal or no-op to owner review"
+      seconds: 95
+    - id: instruction-surfaces
+      part: 1
+      claim: "Choose a supported organization, user, repository, playbook, or targeted home for each rule."
+      scene: "deck instruction-locations: audience to actual supported location"
+      seconds: 100
+    - id: repo-instructions
+      part: 1
+      claim: "A concise shared baseline points to task-specific documents with explicit read directions."
+      scene: "deck instruction-repo: short Markdown baseline routes deployment and accessibility detail"
+      seconds: 100
+    - id: path-instructions
+      part: 1
+      claim: "A runbook applyTo rule attaches when the agent creates or modifies a matching runbook."
+      scene: "deck instruction-selectors: one focused applyTo file, matching and outside paths"
+      seconds: 70
+    - id: instruction-context
+      part: 1
+      claim: "One deployment task combines the automatic baseline, matching runbook rule, and explicitly read deployment guide."
+      scene: "deck instruction-context: request through relevant context to proposed work, unrelated guidance outside"
+      seconds: 120
+    - id: init-demo
+      part: 1
+      claim: "A maintainer asks Copilot to add or update one instruction, reviews the diff, and reruns the same task."
+      scene: "deck instruction-trial: first draft, explicit guidance edit, owner review, same-task retry"
+      seconds: 160
+    - id: troubleshoot-instructions
+      part: 1
+      claim: "Discovery, file scope, rule quality, and a representative retry reveal actionable next steps."
+      scene: "deck instruction-troubleshoot: four observable checks with useful next moves"
+      seconds: 110
+    - id: prompts-opener
+      part: 2
+      claim: "A maintainer can reuse a useful documentation review as a human-invoked command."
+      scene: "shared frame: opener"
+      seconds: 20
+    - id: create-prompt
+      part: 2
+      claim: "A maintainer asks Copilot to capture a useful documentation-review approach as /refresh-docs."
+      scene: "deck prompt-capture: refined conversation to reusable prompt"
+      seconds: 115
+    - id: prompt-anatomy
+      part: 2
+      claim: "A named prompt takes a change input, links guidance, asks for sourced output, and can optionally target docs-reviewer."
+      scene: "deck prompt-contract: complete prompt beside its task-specific meaning"
+      seconds: 120
+    - id: prompt-reuse
+      part: 2
+      claim: "The same workflow produces distinct sourced doc edits for a deployment-command change and a configuration rename."
+      scene: "deck prompt-reuse: two inputs through one workflow to distinct inspectable drafts"
+      seconds: 105
+    - id: share-prompt
+      part: 2
+      claim: "A team reviews and versions the approach while keeping detailed rules in one maintained guide."
+      scene: "deck prompt-share: propose, review, invoke, and maintain one guide"
+      seconds: 80
+    - id: skills-opener
+      part: 3
+      claim: "A skill makes relevant expertise discoverable; knowledge alone can be useful."
+      scene: "shared frame: opener"
+      seconds: 20
+    - id: progressive-skill-loading
+      part: 3
+      claim: "Copilot can discover docs-review, load SKILL.md, and consult the guide during relevant work."
+      scene: "deck skill-discovery: request through metadata, instructions, and references"
+      seconds: 105
+    - id: skill-anatomy
+      part: 3
+      claim: "A knowledge-only SKILL.md describes the task fit and routes to maintained guidance."
+      scene: "deck skill-contract: complete file with relevant and unrelated design probes"
+      seconds: 115
+    - id: skill-knowledge
+      part: 3
+      claim: "The guide and changed source support a proposed doc edit while leaving an unsupported default as an Open Question."
+      scene: "deck skill-knowledge: guide plus source converge on proposed edit and human decision"
+      seconds: 85
+    - id: skill-resources
+      part: 3
+      claim: "An optional report template organizes evidence and an optional link checker checks a bounded property."
+      scene: "deck skill-resources: task-directed resource use to report and finding; status separate"
+      seconds: 80
+    - id: skill-invocation
+      part: 3
+      claim: "Deliberate prompt invocation and skill discovery can coexist; explicit skill invocation helps recover from a miss."
+      scene: "deck skill-invocation: alternative entry points converge on one guide and evidence contract"
+      seconds: 190
+    - id: agents-opener
+      part: 4
+      claim: "Select the same Copilot in a focused working mode for a recurring documentation-review responsibility."
+      scene: "shared frame: opener"
+      seconds: 20
+    - id: docs-reviewer-agent
+      part: 4
+      claim: "Documentation Reviewer adds remit, read/search/edit tools, output expectations, and stopping conditions while referencing existing expertise."
+      scene: "deck reviewer-contract: concise agent file beside role, tools, deliverable"
+      seconds: 120
+    - id: reviewer-trace
+      part: 4
+      claim: "The selected role applies host instructions and the existing skill and guide to the same configuration rename."
+      scene: "deck reviewer-trace: role and context to skill and guide to source inspection to proposal"
+      seconds: 115
+    - id: reviewer-judgment
+      part: 4
+      claim: "A cited narrow doc patch corrects the stale name and leaves the unsupported default question open."
+      scene: "deck reviewer-judgment: source rename beside proposed diff, open question, separate checks and human status"
+      seconds: 105
+    - id: choose-primitive
+      part: 4
+      claim: "Use a prompt for deliberate requests, a skill for expertise, and an agent for a recurring focused role; compose only what helps."
+      scene: "deck reviewer-composition: direct or optional prompt selection, agent references existing skill, host supplies instructions"
+      seconds: 80
+    - id: before-after
+      part: 0
+      claim: "Reviewed configuration replaces repeated context while preserving validation and acceptance."
+      scene: "shared frame: before-after"
+      seconds: 45
+    - id: today
+      part: 0
+      claim: "Start with one shared rule, inspect delivery, and expand only after a real task proves value."
+      scene: "shared frame: today"
+      seconds: 90
+    - id: references
+      part: 0
+      claim: "First-party documentation is the path for checking syntax, runtime support, and changes."
+      scene: "shared frame: references"
+      seconds: 20
+    - id: thanks
+      part: 0
+      claim: "Share how we work, reuse requests and expertise, and select a focused role when it helps; keep evidence and acceptance visible."
+      scene: "shared frame: thanks; deck visual: primitive map"
+      seconds: 10

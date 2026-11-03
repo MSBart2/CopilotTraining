@@ -5,6 +5,7 @@ on:
     paths:
       - "slides/**"
       - "tech-talks/**"
+      - ".github/workflows/pr-validate-slides.yml"
 
 permissions:
   contents: read
@@ -24,150 +25,68 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Detect changed slides
-        id: changes
-        run: |
-          BASE_SHA="${{ github.event.pull_request.base.sha }}"
-          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
-          SLIDES_TECH_TALKS_DIR="slides/tech-talks"
-
-          echo "🔍 Comparing $BASE_SHA...$HEAD_SHA"
-
-          CHANGED_FILES=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" -- slides/ tech-talks/)
-
-          # Check if shared files changed (require full rebuild)
-          SHARED_PATTERNS="slides/package\.json|slides/package-lock\.json|slides/style\.css|slides/global-top\.vue|slides/global-bottom\.vue|slides/layouts/|slides/components/|slides/setup/"
-          if echo "$CHANGED_FILES" | grep -qE "$SHARED_PATTERNS"; then
-            echo "🔄 Shared files changed — building ALL slides"
-            echo "full_rebuild=true" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-
-          # Extract changed slide .md files
-          CHANGED_SLIDES=$(echo "$CHANGED_FILES" | grep -E "^slides/(workshop|tech-talks|exec-talks)/.*\.md$" | sed 's#^slides/##' || echo "")
-
-          # Detect tech-talk updates that must update matching slides
-          CHANGED_TECH_TALKS=$(echo "$CHANGED_FILES" \
-            | grep -E "^tech-talks/[^/]+/" \
-            | grep -v "^tech-talks/archive/" \
-            | cut -d/ -f2 \
-            | sort -u || echo "")
-
-          if [ -n "$CHANGED_TECH_TALKS" ]; then
-            echo "📖 Tech talk updates detected:"
-            echo "$CHANGED_TECH_TALKS"
-
-            # Every updated tech-talk must have a corresponding slide update to keep decks in sync.
-            # CHANGED_TECH_TALK_SLIDES contains slide basenames (e.g., copilot-cli),
-            # derived from slides/tech-talks/copilot-cli.md paths.
-            # Assumes tech-talk folder names map to slides/tech-talks/<name>.md
-            # (e.g., tech-talks/copilot-cli/ in repo root -> slides/tech-talks/copilot-cli.md).
-            # Archived tech-talks are exempt (filtered above).
-            CHANGED_TECH_TALK_SLIDES=$(echo "$CHANGED_SLIDES" \
-              | grep -E "^tech-talks/[^/]+\.md$" \
-              | sed 's#^tech-talks/##' \
-              | sed 's/\.md$//' \
-              | sort -u || echo "")
-
-            MISSING_SLIDES=()
-            while IFS= read -r TALK; do
-              if [ -n "$TALK" ]; then
-                EXPECTED_SLIDE="${SLIDES_TECH_TALKS_DIR}/${TALK}.md"
-                EXPECTED_SLIDE_PATH="${GITHUB_WORKSPACE}/${EXPECTED_SLIDE}"
-                if [ ! -f "$EXPECTED_SLIDE_PATH" ]; then
-                  MISSING_SLIDES+=("$EXPECTED_SLIDE")
-                # Slide exists but wasn't updated alongside the tech-talk.
-                elif ! echo "$CHANGED_TECH_TALK_SLIDES" | grep -Fqx "$TALK"; then
-                  MISSING_SLIDES+=("$EXPECTED_SLIDE")
-                fi
-              fi
-            done <<< "$CHANGED_TECH_TALKS"
-
-            if [ ${#MISSING_SLIDES[@]} -gt 0 ]; then
-              echo "❌ The following tech-talks require corresponding slide updates:"
-              printf '%s\n' "${MISSING_SLIDES[@]}"
-              exit 1
-            fi
-          fi
-
-          if [ -z "$CHANGED_SLIDES" ]; then
-            echo "📭 No slide .md files changed (may be non-slide assets)"
-            echo "full_rebuild=false" >> $GITHUB_OUTPUT
-            echo "changed_slides=" >> $GITHUB_OUTPUT
-            echo "count=0" >> $GITHUB_OUTPUT
-          else
-            COUNT=$(echo "$CHANGED_SLIDES" | wc -l)
-            echo "📝 ${COUNT} changed slide(s):"
-            echo "$CHANGED_SLIDES"
-            echo "full_rebuild=false" >> $GITHUB_OUTPUT
-            echo "count=${COUNT}" >> $GITHUB_OUTPUT
-            echo "changed_slides<<EOF" >> $GITHUB_OUTPUT
-            echo "$CHANGED_SLIDES" >> $GITHUB_OUTPUT
-            echo "EOF" >> $GITHUB_OUTPUT
-          fi
-
       - name: Setup Node.js
-        if: steps.changes.outputs.changed_slides != '' || steps.changes.outputs.full_rebuild == 'true'
         uses: actions/setup-node@v5
         with:
           node-version: "24"
           cache: npm
           cache-dependency-path: slides/package-lock.json
 
+      - name: Detect changed slides
+        id: changes
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node slides/scripts/detect-slide-changes.mjs "$BASE_SHA" "$HEAD_SHA"
+
+      - name: Test deck selection
+        run: node --test slides/scripts/native-decks.test.mjs slides/scripts/detect-slide-changes.test.mjs
+
       - name: Install dependencies
-        if: steps.changes.outputs.changed_slides != '' || steps.changes.outputs.full_rebuild == 'true'
+        if: steps.changes.outputs.changed_slides != '' || steps.changes.outputs.changed_native != '' || steps.changes.outputs.full_rebuild == 'true' || steps.changes.outputs.full_native == 'true'
         working-directory: ./slides
         run: npm ci
 
       - name: Install Playwright browsers
-        if: steps.changes.outputs.changed_slides != '' || steps.changes.outputs.full_rebuild == 'true'
+        if: steps.changes.outputs.changed_slides != '' || steps.changes.outputs.changed_native != '' || steps.changes.outputs.full_rebuild == 'true' || steps.changes.outputs.full_native == 'true'
         working-directory: ./slides
         run: npx playwright install chromium --with-deps
 
-      - name: Build changed slides
+      - name: Build changed Slidev decks
         if: steps.changes.outputs.full_rebuild != 'true' && steps.changes.outputs.changed_slides != ''
         working-directory: ./slides
+        env:
+          CHANGED_SLIDES: ${{ steps.changes.outputs.changed_slides }}
         run: |
-          echo "🚀 Building ${{ steps.changes.outputs.count }} changed slide(s)..."
-          mkdir -p dist/workshop dist/tech-talks dist/exec-talks
-
-          FAILED=0
-          BUILT=0
-
           while IFS= read -r SLIDE_FILE; do
-            if [ -n "$SLIDE_FILE" ] && [ -f "$SLIDE_FILE" ]; then
-              CATEGORY=$(dirname "$SLIDE_FILE")
-              BASENAME=$(basename "$SLIDE_FILE" .md)
+            [ -n "$SLIDE_FILE" ] || continue
+            CATEGORY=$(dirname "$SLIDE_FILE")
+            BASENAME=$(basename "$SLIDE_FILE" .md)
+            npx slidev build "$SLIDE_FILE" \
+              --base "/CopilotTraining/${CATEGORY}/${BASENAME}/" \
+              --out "$(pwd)/dist/${CATEGORY}/${BASENAME}"
+          done <<< "$CHANGED_SLIDES"
 
-              printf "🔨 %s/%s... " "$CATEGORY" "$BASENAME"
-
-              if npx slidev build "$SLIDE_FILE" \
-                --base "/CopilotTraining/${CATEGORY}/${BASENAME}/" \
-                --out "$(pwd)/dist/${CATEGORY}/${BASENAME}" 2>&1; then
-                echo "✅"
-                BUILT=$((BUILT + 1))
-              else
-                echo "❌ FAILED"
-                FAILED=$((FAILED + 1))
-              fi
-            fi
-          done <<< "${{ steps.changes.outputs.changed_slides }}"
-
-          echo ""
-          echo "📊 Results: ${BUILT} built, ${FAILED} failed"
-
-          if [ $FAILED -gt 0 ]; then
-            echo "❌ ${FAILED} slide(s) failed to build"
-            exit 1
-          fi
-
-      - name: Build all slides (shared files changed)
+      - name: Build all decks (shared Slidev files changed)
         if: steps.changes.outputs.full_rebuild == 'true'
         working-directory: ./slides
-        run: |
-          echo "🚀 Shared files changed — building all slides..."
-          bash scripts/build-all.sh
+        run: bash scripts/build-all.sh
 
-      - name: Skip notification
-        if: steps.changes.outputs.changed_slides == '' && steps.changes.outputs.full_rebuild != 'true'
-        run: echo "✅ No slide content changed — nothing to validate"
+      - name: Validate and build native decks
+        if: steps.changes.outputs.full_rebuild != 'true' && (steps.changes.outputs.changed_native != '' || steps.changes.outputs.full_native == 'true')
+        working-directory: ./slides
+        env:
+          FULL_NATIVE: ${{ steps.changes.outputs.full_native }}
+          CHANGED_NATIVE: ${{ steps.changes.outputs.changed_native }}
+        run: |
+          if [ "$FULL_NATIVE" = "true" ]; then
+            node scripts/build-native-decks.mjs
+          else
+            while IFS= read -r SLUG; do
+              [ -n "$SLUG" ] || continue
+              node scripts/build-native-decks.mjs --deck "$SLUG"
+            done <<< "$CHANGED_NATIVE"
+          fi
+
+      - name: Check catalog metadata
+        run: node slides/scripts/sync-index-dates.mjs --check
