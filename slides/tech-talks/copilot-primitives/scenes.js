@@ -316,7 +316,9 @@
         }), 200), { cls: 'z-purple' }),
       svg.g(svg.enter(
         svg.rect(xs[1], cardY, cardW, cardH, { cls: 'zone', r: 14 }) +
-        itext(xs[1] + 16, 116, '2 · FILE-MATCHED RULE', 'instruction-flow-label z-text') +
+        svg.lines(xs[1] + 16, 110, '2 · FILE-MATCHED RULE', {
+          cls: 'instruction-flow-label z-text', anchor: 'start', max: 16, lh: 20
+        }) +
         itext(xs[1] + 16, 154, scopedDir, 'instruction-flow-path') +
         itext(xs[1] + 16, 184, scopedName, 'instruction-flow-path') +
         itext(xs[1] + 16, 226, 'applyTo:', 'instruction-flow-label t-muted') +
@@ -344,7 +346,9 @@
         }), 900), { cls: 'z-purple' }),
       svg.enter(
         svg.rect(xs[3], cardY, cardW, cardH, { cls: 'box', r: 14 }) +
-        itext(xs[3] + 16, 116, '4 · WORKING CONTEXT', 'instruction-flow-label t-muted') +
+        svg.lines(xs[3] + 16, 110, '4 · WORKING CONTEXT', {
+          cls: 'instruction-flow-label t-muted', anchor: 'start', max: 16, lh: 20
+        }) +
         itext(xs[3] + 16, 166, 'Request', 'instruction-flow-body') +
         itext(xs[3] + 16, 202, 'Automatic baseline', 'instruction-flow-body') +
         itext(xs[3] + 16, 238, 'Matched runbook rule', 'instruction-flow-body') +
@@ -358,7 +362,9 @@
         }), 1250),
       svg.g(svg.enter(
         svg.rect(xs[4], cardY, cardW, cardH, { cls: 'zone', r: 14 }) +
-        itext(xs[4] + 16, 116, '5 · PROPOSED CHANGE', 'instruction-flow-label z-text') +
+        svg.lines(xs[4] + 16, 110, '5 · PROPOSED CHANGE', {
+          cls: 'instruction-flow-label z-text', anchor: 'start', max: 16, lh: 20
+        }) +
         svg.lines(xs[4] + 16, 164, s.output[0], {
           cls: 'instruction-flow-path', anchor: 'start', max: 25, lh: 21
         }) +
@@ -814,9 +820,10 @@
       el(22, 82, ['Documentation Reviewer',
         'Use its remit, tools, and deliverable.'], 'expertise-body', 34), '', 0) +
     eb(0, 218, 446, 176, 'DELIBERATE REQUEST → /refresh-docs',
-      el(22, 300, ['agent: docs-reviewer',
+      el(22, 286, ['agent: docs-reviewer',
         'Optional prompt frontmatter',
-        'A person invokes it in a supported host.'], 'reviewer-path', 32), '', 350) +
+        'A person invokes it',
+        'in a supported host.'], 'reviewer-path', 26), '', 350) +
     ea('M446 78H484V210H530', 650) +
     ea('M446 306H484V210', 850) +
     eb(530, 90, 396, 278, 'AGENT → FOCUSED WORKING MODE',
