@@ -141,7 +141,7 @@ a { color: var(--purple-light); }
    --at sets the delay and --dur the duration. */
 .slide:not(.is-live) :is(.m-in, .m-trace, .m-glide, .m-pop, .m-type) { opacity: 0; }
 .m-type { display: inline-block; white-space: nowrap; vertical-align: bottom; }
-.is-live .m-type { animation: m-type var(--dur, 1200ms) steps(var(--n, 30)) var(--at, 0ms) both; }
+.is-live .m-type { animation: m-type var(--dur, 1200ms) steps(var(--n, 30)) var(--at, 0ms) backwards; }
 .is-live .m-in { animation: m-in .7s var(--swift) var(--at, 0ms) both; }
 .is-live .m-pop { animation: m-pop .55s var(--swift) var(--at, 0ms) both; transform-box: fill-box; transform-origin: center; }
 .is-live .m-trace { stroke-dasharray: 1; animation: m-trace var(--dur, 900ms) var(--swift) var(--at, 0ms) both; }
