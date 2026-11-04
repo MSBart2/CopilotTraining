@@ -1,18 +1,7 @@
-# Refresh 2026-10-23 (structural, user-directed). Decision: restructure.
-# Independent critique: rubber-duck subagent (cross-model; primary is a Claude model).
-# Reconciliation:
-# - Rejected: cap at 30 slides with ~3 slides per part. The user directed full treatment per agent
-#   (under 10 each) and Part 4 as long as needed; budgets tightened instead to 6/6/5 + 13.
-# - Accepted: one climax. Measure drops to medium; Part 4 is the payoff, anchored on
-#   "Every push reopens the question; a person ends the loop."
-# - Accepted: vary the shared skeleton; merge setup with context, and vary the proof per part
-#   (issue rewrite, browser gap, enforceable gate).
-# - Accepted: Part 4 closes with three synthesis slides plus one transfer slide, not six.
-# - Accepted: "staged quality issue" rather than "defect"; every timing labeled as one observed run.
-# - Accepted: state that #221 remained draft with no merge decision; #210 supplies the merged decision record.
-# - Accepted: role labels where authority changes; first-mention preview labels for Copilot approvals,
-#   Fix with Copilot, and AI findings.
-# - Accepted: direct-positive phrasing in the narrative.version: 1
+# Conversion recipe approved autonomously under the user's explicit waiver of review pauses.
+# Approved 2026-10-30. Preserve the 2026-10-23 structural refresh and its FanHub proof;
+# this is a format conversion, not a current-news refresh.
+version: 1
 
 deck:
   title: "Copilot on GitHub"
@@ -21,32 +10,28 @@ deck:
 
   agenda:
     - title: "Know which agent does which job"
-      takeaway: "The cloud agent produces the change, code review reasons about intent, and Code Quality measures it against rules."
-      whyItMatters: "Teams that conflate the three ask each one for evidence it never produces."
+      takeaway: "The cloud agent produces, code review reasons, and Code Quality measures against rules."
+      whyItMatters: "Each agent returns different evidence for the same pull request."
     - title: "Read a pull request as a sequence of events"
-      takeaway: "See which step a person invokes, which fires automatically, and which commit each agent saw."
-      whyItMatters: "Order of operations explains every surprising review, missing finding, and stale open issue."
+      takeaway: "Identify the human action, automatic trigger, and commit each agent saw."
+      whyItMatters: "The event order explains missed reviews, findings, and stale threads."
     - title: "Wire the loop and decide who ends it"
-      takeaway: "Turn on re-review after each push, hand findings back to the agent, and promote one setting at a time."
-      whyItMatters: "Each promotion changes who holds authority, so the team chooses it deliberately and can reverse it."
+      takeaway: "Re-review after pushes, route findings to rework, and promote authority deliberately."
+      whyItMatters: "A person accepts residual risk and decides when the change ships."
 
   arcToc: "Produce → Reason → Measure → Wire It Together"
 
   arcNarrative: >
-    Cold open on the one-page flow: a swimlane of Person, Cloud agent, Code review, and Code Quality across
-    generic pull request events, every cell marked 👤 human-invoked, ⚡ automatic, or ⏸ waits for a person.
-    The audience sees the whole system and the anchor line, "Every push reopens the question; a person ends the
-    loop," before any part. Parts 1-3 then light one row at a time and teach each agent in isolation with the
-    same visual rhythm (job and wake event, setup and use, evidence and authority boundary), so the audience
-    distinguishes each agent by the evidence it returns. Each part varies its proof: the issue rewrite, the
-    browser gap, the enforceable gate. FanHub supplies drill-down proof in "In practice" panels. Part 4 is the payoff:
-    one issue walked step by step on the same swimlane, with the general rule as the headline and the #221
-    event as the proof, showing measurement within seconds, review two minutes later, re-review after every
-    push, a stale thread carried forward, and a staged quality issue caught by both agents with different framing.
-    Part 4 closes with three synthesis slides (what ends the loop with the evidence and decision record;
-    configuration, promotion, and cost; the event-map recap) and a transfer exercise that replays the audience's last merged PR
-    against the event map. Rejected alternative: keeping the #210 decision cold open, because it teaches the
-    authority conclusion before the audience can tell the three agents apart.
+    Keep the approved thesis and section order. Open with the event model: a person starts
+    work, the cloud agent produces a draft, code review and Code Quality wake on configured
+    events, pushes can reopen both, and a person ends the loop. Parts 1–3 distinguish the
+    agents by their job, trigger, context, returned evidence, recovery path, and authority.
+    Preserve the issue rewrite, browser-gap review, ruleset gate, and detailed FanHub #221
+    event walk as practical proof. Label the #221 timings as one observed run dated
+    2026-10-23, and the staged quality issue as deliberately introduced. End with the
+    decision record, configuration and promotion ladder, event-map synthesis, and transfer
+    exercise. Speaking time is about 47:05 of the 60-minute slot, leaving room for live demos
+    and questions. Section 4 is condensed to a linked #221 timeline and two zooms.
 
   sectionOrder:
     - "1. Produce: Copilot Cloud Agent"
@@ -58,55 +43,76 @@ deck:
     "1. Produce: Copilot Cloud Agent":
       emphasis: high
       note: >
-        Budget 6 slides. Opener with the Produce row lit on the swimlane and the
-        value statement. Triggers table with 👤/⚡ badges (assign, Agents tab plan, @copilot / Fix with Copilot (public preview) /
-        @Copilot on a finding). Setup: copilot-setup-steps, firewall, MCP, custom agents. Context: the issue
-        template (problem, acceptance criteria, scope) beside the #159 rewrite as In practice. Use: the six-question
-        acceptance check and steering by comment. Troubleshoot: signal → cause → move table with the #221
-        lockfile commit and the x/crypto justification. Authority: platform-fixed boundary. Keep good-fit and
-        keep-human-led lists folded into the opener. Merge setup and context onto one slide if density allows.
+        Preserve the six focused slides after the opener. Establish good-fit versus
+        human-led work, three invocation paths, setup environment, the issue as prompt,
+        six-question acceptance check, and the platform-fixed
+        authority boundary. The issue rewrite (#159) and observed lockfile/dependency
+        decisions (#221) are proof, not decoration.
     "2. Reason: Copilot Code Review":
       emphasis: high
       note: >
-        Budget 6 slides. Triggers table must make Review new pushes unmistakable:
-        without it, the first automatic review is the only one. Setup: rulesets, Lite versus Balanced effort with
-        credit ranges, authorized-users switch. Context: shared instruction files and excludeAgent. Use: check
-        which commit the review saw, read assessment with open-issues list, send fixes back, close threads
-        deliberately, run what the review left unexecuted. In practice: #198 inert Retry beside four passing tests.
-        Troubleshoot: plan-only review, 🟢 with "1 open issue", no review after fix. Authority: advisory until
-        Copilot approvals (preview) are turned on, with preview status labeled.
+        Preserve Review new pushes as the decisive trigger; show settings, Lite/Balanced/Max
+        effort and cost as dated estimates, shared instructions and excludeAgent, the
+        commit-specific assessment and open-issues list, and recovery. Use #198 to prove
+        that passing tests and a green build can coexist with an inert browser interaction.
+        Mark Copilot approvals as public preview and advisory by default.
     "3. Measure: GitHub Code Quality":
       emphasis: medium
       note: >
-        Budget 5 slides. Standard versus AI findings table (reproducibility, status,
-        where, gate capability), with AI findings labeled public preview. Triggers: every push, within seconds, not held at Approve and run. Setup: enable,
-        ruleset with threshold and coverage, Evaluate before Active. Use: inline finding, Commit suggestions,
-        @Copilot handoff, dismiss with reason; #201 Autofix and #199 coverage gate as In practice drill-downs.
-        Troubleshoot: no findings, two CodeQL checks, unexpected block. Authority: the only agent whose result can
-        block a merge on its own; AI findings stay advisory.
+        Preserve standard versus AI finding differences and dated status, the push trigger,
+        Evaluate-to-Active promotion, and #201 Autofix and #199 coverage-gate proof.
+        Separate Code Quality from code review and security CodeQL.
+        Standard findings can gate at configured thresholds; AI findings run on the default branch and feed the backlog.
     "4. Wire It Together":
       emphasis: high
       note: >
-        About 13 slides: opener, 8 step slides, three synthesis slides, one transfer slide. This is the climax. Every step slide uses the swimlane strip on top with
-        the active step lit, the general rule as the headline, and a compact In practice panel from #221 with
-        time and SHA, labeled "Observed on FanHub #221, one run, 2026-10-23". Name the role (requester, PR owner,
-        reviewer, platform owner) on every 👤 step. Group the 13 README steps into about 8 step slides: assign and plan commit; Code Quality and
-        review on the plan commit; lockfile push and 🟡; self-correction and 🟢 with a stale open issue; person
-        resolves and asks @copilot; rework push and 🟢 No open issues; staged push caught by both (label STAGED quality issue);
-        @Copilot on the finding and final 🟢. Fold the four facts from the run into the step slides where each
-        is observed. Synthesis: (1) what ends the loop + evidence on the final head + decision record, stating
-        that #221 remained draft with no merge decision and using #210 as the merged example, with "tests were
-        not executed" visible; (2) configuration map + promotion ladder + cost in one line; (3) the event-map
-        recap. Transfer: replay your last merged PR against the event map, with What You Can Do Today folded in.
+        Show #221 as one linked timeline, then zoom into two moments (steer and rework;
+        two agents on the same lines). Link every artifact to its exact commit, review, or comment. Identify 2026-10-23 as one observed run; mark the
+        nil-guard commit as staged. Keep #221's draft/no-merge status separate from #210's
+        maintainer approval and merge commit. Close with the evidence
+        record, configuration/promotion/cost, a before/after event-model synthesis, and a
+        role-by-role next move: run one issue through all three agents this week.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "Observed on FanHub #221: Code Quality started within about five seconds of every push; code review followed about two minutes later."
-    - "With Review new pushes on, code review ran on all eight pushes of #221; without it, the first automatic review of #210 saw only the plan commit."
-    - "Code review flagged a lockfile-only commit and the agent's next push corrected it with no person involved."
-    - "On a staged quality issue, Code Quality named the rule and offered a fix, code review explained the cost, and one @Copilot reply cleared both."
-    - "Every Copilot review stated that tests were not executed; a person decides what evidence is enough to merge."
+    - "On FanHub #221, Code Quality started about five seconds after each push; code review followed about two minutes later in one observed run."
+    - "With Review new pushes enabled, code review ran on all eight pushes of #221, including plan commits."
+    - "Code review found an inert Retry interaction in #198 even though four component tests passed and the build was green."
+    - "On a deliberately staged quality issue, Code Quality named a rule and offered Autofix while code review explained the cost."
+    - "A person decides what evidence is enough to merge; every review on #221 said tests were not executed."
 
-# OPEN DECISION: total deck is ~36 slides for 60 minutes. If rehearsal runs long, cut Part 4 step slides 2 and 4 into their neighbors first.
+  slides:
+    - { id: title, part: 0, claim: "Three GitHub agents return different evidence inside one pull request loop.", scene: "shared title frame", seconds: 35 }
+    - { id: core-question, part: 0, claim: "A practitioner can tell which pull request work runs automatically and where judgment remains.", scene: "shared core-question frame", seconds: 75 }
+    - { id: contents, part: 0, claim: "The talk moves from each agent's job to one integrated event loop.", scene: "shared contents frame", seconds: 45 }
+    - { id: whole-flow, part: 0, claim: "Every push can wake review and measurement; a person ends the loop.", scene: "deck event map; reveal actor lanes then recurring push route", seconds: 90 }
+    - { id: produce, part: 1, claim: "A bounded issue lets the cloud agent return an inspectable draft.", scene: "shared opener frame", seconds: 65 }
+    - { id: produce-row, part: 1, claim: "The cloud agent turns a delegated issue into branch commits and a draft PR, not approval.", scene: "four-phase pattern", seconds: 80 }
+    - { id: produce-triggers, part: 1, claim: "A person invokes the cloud agent; the agent then pushes on its own branch.", scene: "signals pattern with actor and trigger", seconds: 85 }
+    - { id: produce-setup-context, part: 1, claim: "A scoped issue plus repository instructions gives the producer an actionable contract.", scene: "deck issue template beside FanHub #159 rewrite", seconds: 110 }
+    - { id: produce-use, part: 1, claim: "The PR owner checks plan, commit, scope, tests, pending workflows, and missing evidence.", scene: "scorecard pattern", seconds: 110 }
+    - { id: produce-authority, part: 1, claim: "The cloud agent drafts and pushes; people retain ready, approval, and merge decisions.", scene: "showdown pattern", seconds: 80 }
+    - { id: reason, part: 2, claim: "Code review reasons about intent and returns an assessment, comments, and open issues.", scene: "shared opener frame", seconds: 65 }
+    - { id: reason-row, part: 2, claim: "Automatic review on new commits depends on Review new pushes.", scene: "four-phase pattern", seconds: 80 }
+    - { id: reason-triggers, part: 2, claim: "A request, ruleset, or user setting can trigger review; push and draft settings remain explicit.", scene: "signals pattern", seconds: 85 }
+    - { id: reason-setup-context, part: 2, claim: "Review policy controls invocation while shared, scoped instructions shape what the reviewer reads.", scene: "deck split: policy and instruction sources", seconds: 110 }
+    - { id: reason-effort-cost, part: 2, claim: "Match review effort (Lite, Balanced, Max) to the risk of the change; Review new pushes multiplies per-review cost.", scene: "deck effort tiers: cost ranges and use-for cards", seconds: 90 }
+    - { id: reason-use-198, part: 2, claim: "Passing tests and a green build did not expose the broken Retry interaction in #198.", scene: "deck before/after browser behavior proof", seconds: 120 }
+    - { id: reason-authority, part: 2, claim: "Code review stays advisory unless admins enable Copilot approvals, which are public preview.", scene: "showdown pattern", seconds: 75 }
+    - { id: measure, part: 3, claim: "Code Quality measures commits against rules and team thresholds.", scene: "shared opener frame", seconds: 65 }
+    - { id: measure-row, part: 3, claim: "Code Quality scans each pull-request push without waiting for workflow approval.", scene: "four-phase pattern", seconds: 80 }
+    - { id: measure-standard-ai, part: 3, claim: "Standard findings can gate a merge; AI findings widen what the default branch reveals.", scene: "showdown pattern", seconds: 90 }
+    - { id: measure-setup, part: 3, claim: "Evaluate mode reveals a rule's effect before the platform owner makes it Active.", scene: "four-phases pattern", seconds: 100 }
+    - { id: measure-use, part: 3, claim: "A person can commit Autofix, hand a finding to the cloud agent, or dismiss it with a reason.", scene: "scorecard with #201 and #199 proof", seconds: 115 }
+    - { id: wire, part: 4, claim: "One issue exposes how the three agents respond to events and how people steer the loop.", scene: "shared opener frame", seconds: 70 }
+    - { id: pr-timeline, part: 4, claim: "One issue, eight pushes: every push woke review and Code Quality; each marker links to the exact artifact.", scene: "deck swimlane timeline of #221 with linked markers and moments A, B, C", seconds: 150 }
+    - { id: steer-rework, part: 4, claim: "Review caught a wrong push; a person steered the rework.", scene: "deck artifact chain: four linked #221 artifacts with real quotes", seconds: 120 }
+    - { id: same-line, part: 4, claim: "Two agents flagged the same lines; one handoff cleared both threads.", scene: "deck code card at 8a752d2 with both agents' linked comments and the resolution chain; staged label explicit", seconds: 120 }
+    - { id: what-ends-loop, part: 4, claim: "Merge requires a human decision record that distinguishes available evidence from missing evidence.", scene: "scorecard/evidence record", seconds: 125 }
+    - { id: configure-promote-cost, part: 4, claim: "Roll out each agent in three steps: observe, evaluate, then enforce.", scene: "four-phases pattern plus dated cost line", seconds: 120 }
+    - { id: event-map-recap, part: 4, claim: "An event map explains the loop more accurately than a linear pipeline.", scene: "before-after frame", seconds: 90 }
+    - { id: next-moves, part: 4, claim: "Run one issue through all three agents this week; each role owns one move.", scene: "deck role cards (developer, platform owner, team lead) with steps and links back to the teaching slides", seconds: 115 }
+    - { id: references, part: 0, claim: "Every product and FanHub claim has first-party evidence to inspect.", scene: "shared references frame", seconds: 35 }
+    - { id: thanks, part: 0, claim: "Practitioners leave with an event-map question to apply to their own repository.", scene: "shared thanks frame", seconds: 30 }

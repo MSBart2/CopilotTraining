@@ -1,0 +1,14 @@
+/* Copilot on GitHub deck-only spacing for its four proof diagrams. */
+.scene.event-map,
+.scene.event-step,
+.scene.proof-split,
+.scene.issue-proof { margin-top: 22px; }
+
+.scene.today { margin-top: 24px; }
+.takeaway { margin-top: 12px; padding: 10px 20px; font-size: 20px; }
+
+.refs { margin-top: 12px; gap: 20px; }
+.ref { margin-bottom: 8px; padding: 10px 14px; }
+.ref b { font-size: 19px; }
+.ref span { font-size: 16px; }
+.ref code { font-size: 11px; }
