@@ -33,7 +33,7 @@ Application developers and platform engineers have used Copilot in an editor or 
 
 ### What stands out
 
-1. **A harness fits on a screen.** pi's whole loop is `runLoop`, about 170 lines. Every hook and SDK callback in this talk fills one of five jobs in a loop like it.
+1. **A harness fits on a screen.** pi's whole loop is `runLoop`, about 160 lines. Every hook and SDK callback in this talk fills one of five jobs in a loop like it.
 2. The SDK promise: "the same engine behind Copilot CLI" with the application defining agent behavior. Getting started takes five lines and one install.
 3. Information control is a design tool. Permission handlers and the tool set shape the agent's view of the world, which unlocks use cases a full-access agent cannot serve.
 4. Repository hooks load in SDK sessions when the host opts in, and a repository deny holds even when the host approves. Hooks are the floor; the app builds on it.
@@ -74,7 +74,7 @@ Revision 3 adds source-reading evidence from pi at commit [`f9daca3`](https://gi
 
 | Claim | Source (pinned) | Confidence and boundary |
 |---|---|---|
-| The core loop is one function, `runLoop`, about 170 lines | `packages/agent/src/agent-loop.ts` L172-341 (file is 959 lines including tool execution) | Read from source. Excerpts on slides stay under 25 lines and carry the MIT attribution. |
+| The core loop is one function, `runLoop`, about 160 lines | `packages/agent/src/agent-loop.ts` L172-330 (file is 959 lines including tool execution) | Read from source. Excerpts on slides stay under 25 lines and carry the MIT attribution. |
 | Inner loop runs until no tool calls and no queued steering; outer loop resumes for follow-up messages | `agent-loop.ts` L188-330 (`while (true)`, `getSteeringMessages`, `getFollowUpMessages` at L311) | Read from source. |
 | Context is assembled every turn | `transformContext` L400, `convertToLlm` L404 | Read from source. |
 | A host can block a call before it runs | `beforeToolCall` result `{ block, reason }` at L755 becomes an error tool result | Read from source. Maps to SDK `onPreToolUse` / `onPermissionRequest` by role; the APIs differ. |
@@ -94,7 +94,7 @@ Revision 3 adds source-reading evidence from pi at commit [`f9daca3`](https://gi
 - **Language:** TypeScript only, run with `tsx`. SDK `@github/copilot-sdk` 1.0.26, pinned.
 - **Prerequisites:** A Copilot subscription (or BYOK), Node 20+, comfort with async TypeScript. No SDK experience required.
 - **Running repository:** FanHub (`node/` track), cloned at a pinned commit so every run starts clean.
-- **Anchor:** The loop reveal. pi's entire agent loop is one ~170-line function, and every hook or SDK callback in this talk fills one of its five jobs. The audience sees the loop once, then recognizes each later lever as a job they are taking over.
+- **Anchor:** The loop reveal. pi's entire agent loop is one ~160-line function, and every hook or SDK callback in this talk fills one of its five jobs. The audience sees the loop once, then recognizes each later lever as a job they are taking over.
 - **Payoff and climax:** The fresh-eyes friction report closes section 2: an agent restricted to the documentation finds that FanHub's two Node.js guides disagree on the backend port and on Docker, without opening a source file. The blind test writer is the section 3 climax, including the `seasonId` / `season_id` mismatch the referee labeled undocumented.
 
 ### The mental model: five harness jobs

@@ -18,6 +18,7 @@
 .tl-rule { border: 0; border-top: 1px dashed var(--line); margin: 14px 0; }
 .tl.outcome { color: var(--text); font-weight: 600; }
 .tl .ok { color: var(--green); font-weight: 800; }
+.tl .mark { color: var(--orange); font-weight: 800; }
 
 /* Showdown, relay, signals */
 .scene.showdown, .scene.patterns, .scene.signals { flex: 0 0 auto; height: auto; margin: auto 0; }

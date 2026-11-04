@@ -38,7 +38,7 @@ one slide.
 | Layer | Scenes | Data each slide supplies |
 |---|---|---|
 | **Frames** | `title`, `core-question`, `contents`, `opener`, `before-after`, `today`, `references`, `thanks` | Title/thanks: `subtitle`, `tagline`, `meta`, `cards`, `prompt`, optional `visual` and `logo` (`false` hides it). Core question: `routing`, optional `routingLabel`, `roles`, `stats`. Contents: `sections`. Opener: `part`, `terminal`, `cards`. |
-| **Patterns** | `terminal`, `showdown`, `scorecard`, `relay` (alias `patterns`), `signals`, `four-phases` | Terminal: `transcript`, optional `termTitle`. Showdown: `pairs` (any count; `right.optional` draws dashed), `outcomeLeft`, `outcomeRight`. Four phases: `stages` (one `target`), optional `stageLabel`, `gateLabel`. |
+| **Patterns** | `terminal`, `showdown`, `scorecard`, `relay` (alias `patterns`), `signals`, `four-phases` | Terminal: `transcript`, optional `termTitle`; an `outcome` entry with `mark` shows that marker in orange instead of the green ✓. Showdown: `pairs` (any count; `right.optional` draws dashed), `outcomeLeft`, `outcomeRight`. Four phases: `stages` (one `target`), optional `stageLabel`, `gateLabel`. |
 | **Deck** | Anything the talk alone needs, plus visuals | `visual: 'name'` on title or thanks renders `SCENES[name]`, which returns one 760×760 `svg.scene`. |
 
 Use a frame or pattern whenever its shape fits, and change it in `native/` when a
