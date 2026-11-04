@@ -1,199 +1,388 @@
-# deck.recipe.yml — VS Code Latest talk guidance
-#
-# REFRESH: 2026-09-25 — current version and signed-out Agents window wording only
-# COUNCIL DECISION: RESTRUCTURE — high confidence (prior 2026-08-10)
-# FOLLOW-UP: 2026-08-12 — ADJUST. Author feedback: many teams still do not open the
-# Agents window, and daily Vision paste (e.g. Excel clipboard → image attachment) is
-# under-taught. Raise Parallel Agent Work to medium with an awareness/how-to-open lead;
-# add Copilot Vision paste as a GA beat inside Closed-Loop Delivery. Keep Open Model
-# Workbench as the sole high-emphasis peak and the GA browser loop as climax.
-# PRIOR: 2026-08-10 — PRESERVE for model-retirement wording only.
-
+# 2026-11-03 · decision: restructure · approved by user.
+# User: "the number of categories to cover isn't clear. there's not a central
+# theme to help communicate/remember the features" → approved "Pick · Place ·
+# Steer · Keep" with one running task.
+# Baseline: 47 slides / 2790 seconds, 36 interchangeable feature cards under
+# four long outcome titles. This approval supersedes the 2026-11-01 rule that
+# the login task stays local to Part 4: it is now the talk-wide memory hook.
+# Preserve every dated release status, limitation, and evidence gap.
+# 2026-11-03 revision: running task removed at user request; slide 2 becomes an unsorted feature wall that pairs with the release map.
 version: 1
 
+approval:
+  status: approved
+  approved: "2026-11-03"
+  scope: "Pick · Place · Steer · Keep restructure; hero proof slides plus roundups so no approved feature is dropped; 2026-11-03 revision: self-contained examples per slide and an opening feature wall"
+
 deck:
-  title: "VS Code Copilot through 1.139"
-  subtitle: "Portable Agent Infrastructure, Open Models, and a Closed Review Loop"
-  tagline: "BYOK chat without GitHub sign-in; Agents window access has separate requirements"
+  title: "VS Code Agents: Pick, Place, Steer, Keep"
+  subtitle: "Four decisions for every agent run, and the controls VS Code 1.140–1.144 added for each"
+  tagline: "Each release lets the agent go further on its own, and each adds the control that keeps the result yours."
 
   agenda:
-    - title: "Run Any Model You Choose"
-      takeaway: "Configure BYOK providers, local Ollama models, and a Stable Custom Endpoint in the model picker without a GitHub sign-in."
-      whyItMatters: "Model choice, cost, and data residency become configuration decisions your team controls."
-    - title: "Open the Agents Window"
-      takeaway: "Leave side-chat-only habits: open the dedicated Agents window and run multi-session work with live activity."
-      whyItMatters: "Most of the parallel and review story is invisible until this surface is open."
-    - title: "Close the Loop In-Window"
-      takeaway: "Paste vision evidence, emulate a device, screenshot, take element-anchored feedback, and route review back into the same session."
-      whyItMatters: "Validation and context handoff stop costing a context switch on every iteration."
+    - title: "Four verbs that hold the release train"
+      takeaway: "Every 1.140–1.144 agent feature lands on one of four decisions: pick, place, steer, or keep."
+      whyItMatters: "A weekly release becomes a question you already ask, so new features have somewhere to go."
+    - title: "Each control with its boundary"
+      takeaway: "Every hero feature appears on its own short, self-contained example, with version, status, and limit in view."
+      whyItMatters: "A practitioner can lift any one slide into their own work without replaying a shared story."
+    - title: "A four-line card for your next task"
+      takeaway: "Name the intelligence, the place, what may act unasked, and the evidence that earns Keep."
+      whyItMatters: "The card works on a real repository task the day after the talk."
 
-  arcToc: "Agent Infrastructure → Open Models → Parallel Work → Closed-Loop Delivery"
-
+  arcToc: "Pick → Place → Steer → Keep"
   arcNarrative: >
-    The talk follows the README's own order because that order is the argument, not just
-    a table of contents. Agent Infrastructure comes first as the substrate: the Copilot
-    SDK and the open Agent Host Protocol separate the session from the window, so an
-    agent can run on a machine the team owns and be reconnected later. It is deliberately
-    short — mental model, not protocol tour — and Preview, so prepared evidence beats a
-    live reconnect demo. Open Model Workbench remains the peak and the only high-emphasis
-    section: BYOK without GitHub sign-in, Ollama, Stable Custom Endpoint, utility models,
-    and 1M-token contexts — demoable with noted limits — plus the boundaries that
-    inline/NES still need GitHub sign-in and signed-out Agents window access is
-    experimental. Parallel Agent Work is no longer the most compressed
-    section. Author delivery feedback is that many practitioners never open the Agents
-    window at all, so the section now leads with awareness and open paths (title bar,
-    Command Palette, code --agents), then the workspace claim (multi-session, worktrees,
-    multi-chat), then the GA /btw and live-pills beats. Multi-session live demos stay
-    off-limits as fragile Preview choreography; opening the window and showing its layout
-    is the required awareness demo. Closed-Loop Delivery remains the practical climax:
-    Copilot Vision paste (GA) for everyday evidence handoff, GA browser tools with device
-    emulation and chat-attached screenshots, and v1.132 element comments. In-window diff
-    review, CI, and PR response stay Preview direction-of-travel. Boundaries stay woven
-    into the sections they constrain. End on a working loop, not a policy checklist.
+    The previous deck taught 36 equal feature cards under four long, non-parallel
+    outcome names; nothing told the audience how many categories there were or
+    how to remember them. This structure gives the release train one memorable
+    model: every agent run in VS Code comes down to four decisions, and each verb
+    is a question the practitioner already asks. Pick: which intelligence answers?
+    Place: where does the work run, and what travels with it? Steer: what happens
+    while it runs, and what may act unasked? Keep: which changes stay, on what
+    evidence? The verbs are parallel, short, and in run order, so the section
+    count is self-evident. The working set's literal Keep/Undo buttons make the
+    last verb concrete. The four verbs are the only memory hook: there is no
+    shared story. Each slide carries its own short, self-contained example
+    (two comparison attempts read by diff size and evidence, a long test-and-fix
+    task started in the cloud, a hung test shell, a working set with one
+    unrelated change undone), so any slide stands on its own. Features that are
+    a different case of the same decision (Fusion, local models, computer use,
+    remote delegation) are framed as "same decision, different case" so they
+    still teach the verb. Every verb ends
+    with an "also shipped" roundup (Keep needs none; all its features earn hero
+    slides), so no approved feature disappears silently.
+    The tension is optimistic: autonomy and control grow together. Cloud
+    sessions, assisted permissions, and computer use let the agent go further
+    without the developer; comparisons, Stop Shell, queued-message control,
+    sandboxing, and the working set keep the result theirs. The talk opens with
+    an unsorted feature wall: every agent feature on the release map as a
+    neutral chip with its version, in shuffled order, so the audience feels the
+    weekly noise, then one line says each one changes one of four decisions.
+    It closes with the release map, the same feature list filed under the four
+    verbs, so the audience leaves with a filing system for next week's release.
+    Alternative considered: keep the outcome sections and add verb labels. It
+    preserves layout but keeps 36 equal cards, so it does not solve the memory
+    problem. A feature-family taxonomy (models, sessions, shells, browser) was
+    rejected again because it describes product parts rather than decisions.
 
   sectionOrder:
-    - "Agent Infrastructure"
-    - "Open Model Workbench"
-    - "Parallel Agent Work"
-    - "Closed-Loop Delivery"
+    - "Pick"
+    - "Place"
+    - "Steer"
+    - "Keep"
 
   sectionModes:
-    "Agent Infrastructure":
-      emphasis: medium
-      note: >
-        2–3 slides. This section builds the mental model and then gets out of the way —
-        do not let protocol detail crowd out the Open Model Workbench peak that follows.
-        Slide 1: the decoupling claim. The Copilot SDK is the runtime agent harnesses are
-        built on, and the Agent Host Protocol is an open protocol where an agent host owns
-        authoritative session state, synchronizes it to connected clients, and sequences
-        mutations; because it is open, other clients and hosts can implement it. The line
-        that must land: the session is no longer the same thing as the window. Slide 2:
-        remote machine execution as a concrete three-step flow — open the Agents window,
-        connect its remote tab via an existing ~/.ssh/config entry, a user@host value, or
-        a running dev tunnel, and VS Code installs or connects to its CLI server and starts
-        the agent host there. State plainly that the host persists after the VS Code window
-        closes and that progress, tool outputs, and session memory remain available on
-        reconnect; v1.132 allows the same session to be connected from multiple VS Code
-        windows. Label this Preview explicitly — remote agents and parts of the AHP rollout
-        are preview, while host registration and multi-client session UX continue to
-        evolve. No live reconnect demo is required; prepared or
-        recorded evidence is the default because this surface is Preview. Optional slide 3:
-        the local-versus-remote decision guide, compressed to the two decisive branches —
-        interactive and exploratory work stays local; long-running autonomous work or work
-        needing environment parity and controlled access goes remote. Mention here, in one
-        line only, that the agent host can run Copilot, Claude, and Codex harnesses in a
-        dedicated process — harness portability is the point; no model or vendor gets its
-        own slide. Cut: AHP message-level mechanics, harness-by-harness comparison, and any
-        implication that remote hosts are ready for production-critical workflows.
-
-    "Open Model Workbench":
+    "Pick":
       emphasis: high
       note: >
-        4–5 slides. This is the peak of the talk and the only high-emphasis section; give
-        it the most time and the strongest live demo. Open with the headline as a status
-        claim, not a feature list: BYOK is GA and needs no GitHub sign-in — Anthropic,
-        Azure, Gemini, OpenAI, Ollama, OpenRouter, or any compatible custom endpoint works
-        for chat, tool execution, and MCP, with billing and rate limits going through the
-        provider rather than Copilot quotas. PRIMARY LIVE DEMO (GA, must be live): open the
-        model picker, choose Manage Models…, add a provider, and watch the models appear in
-        the picker. Dedicate a full slide to local and open models via Ollama — install
-        Ollama, pull a model, select Manage Models… → Ollama, and VS Code discovers locally
-        available models automatically; local models work with all chat features, tool
-        execution, and MCP with no network request leaving the machine. Name the audience
-        this unlocks: teams with air-gap requirements, sensitive codebases, or constrained
-        data residency. This is the moment we want the audience to feel the ceiling move; do
-        not bury it in a bullet list with the hosted providers. Next slide: Stable Custom
-        Endpoint plus utility models as the team-scale story — Custom Endpoint is Stable as
-        of v1.122 and connects endpoints implementing the Chat Completions, Responses, or
-        Messages API families, so an internal gateway for cost control, logging, or
-        compliance can carry all VS Code Copilot chat traffic with no client-side code
-        change; utility models are independently configurable via chat.utilityModel and
-        chat.utilitySmallModel, so a fast local or lower-cost model can handle titles,
-        summaries, commit messages, rename suggestions, and intent detection while a
-        frontier model handles primary work. Show the settings block. Then 1M-token
-        contexts on supported models as an architectural decision for large-codebase tasks,
-        with the honest tradeoff stated: very long contexts increase latency and provider
-        cost, and /compact and background compaction remain the counterweight. STATE BOTH
-        SIGN-IN BOUNDARIES: inline suggestions and next edit suggestions still require
-        GitHub sign-in and a Copilot subscription; signed-out desktop Agents window
-        access is experimental and setting-gated, while browser access requires sign-in.
-        BYOK chat, tool calls, and MCP do not require GitHub sign-in. Weave the control thread
-        here, not in a separate section: session and subagent credit usage and model costs
-        are visible in the Agents window, and some controls depend on Copilot plan and
-        organization policy. Cut: provider-by-provider capability tables, pricing
-        comparisons, individual model arrivals, and any standalone vendor focus.
-
-    "Parallel Agent Work":
-      emphasis: medium
+        Audience question: which intelligence answers this task, and how do I
+        know? Open with comparing two attempts at one task:
+        1.143 model and harness comparisons (Preview) run independently in
+        separate sessions/worktrees, with optional Judge and Synthesize; 1.144
+        lets comparisons start before a repository exists (not in Dev
+        Containers). The scorecard is a recommendation for human review, not a
+        verdict. Then Fusion GA (1.144) as "let Copilot pick": Standard/High/Max,
+        routed models, every model billed, plan limits, model policy is not a
+        data boundary. Then where inference runs: 1.143 local models
+        (Experimental, eligible hardware) and 1.142 BYOK statefulResponses false;
+        inference placement does not prove tool, extension, or MCP traffic stays
+        local. Split into setup and proof: Custom Endpoint steps for a local
+        Ollama server, then the observed two-answer run (Unknown versus Teal)
+        that shows why statefulResponses false exists. Roundup: 1.142 model picker, Copilot Vision GA, context sizing and
+        /compact, explicit provider route. No route is called better without a
+        measured result.
+    "Place":
+      emphasis: high
       note: >
-        3–4 slides. Lead with awareness, not orchestration depth — the delivery problem is
-        that many people never open the Agents window. Slide 1 (required): Open It. Show
-        the open paths live or as a crisp callout — title bar Open in Agents, Command
-        Palette "Chat: Open Agents Window", code --agents, welcome-page entry, and the
-        optional browser Agents surface. State that it is a dedicated VS Code window beside
-        the editor, sharing sessions/settings/keybindings with the side Chat view so
-        context is not forked. Slide 2: what the window is for — sessions list across
-        workspaces, Chat + Changes + Files for the active session, customizations panel —
-        and the one-line contrast with side chat (code-adjacent vs agent-first). Slide 3:
-        workspace claim compressed — multiple sessions side by side with isolated
-        worktrees, multi-chat / peer forks as a structural claim, one concrete pattern
-        (two approaches, two worktrees, compare diffs). Label Preview limits out loud.
-        Slide 4 (or combined with 3): GA /btw side chats and live activity pills as the
-        safe live beats. Do not run a multi-session endurance demo. Cut: fork merge
-        semantics, grouping UI tours, production-orchestration claims.
-
-    "Closed-Loop Delivery":
-      emphasis: medium-high
+        Audience question: where does this work run, and what travels with it?
+        Start with the isolation choice: shared checkout or fresh worktree; 1.142
+        moves a chat into a worktree when you ask the agent (Copilot harness or
+        Codex; one chat, one local folder), 1.140 peer worktrees are Experimental. Centerpiece and anchor:
+        1.144 cloud sessions (Experimental) across two slides. Start a long-running task in VS Code, it
+        runs in a separate cloud workspace, the developer checks progress from
+        GitHub Mobile, then returns to VS Code with the same conversation. Local
+        uncommitted changes do not copy; paid plan and organization policy apply.
+        Then hosts: the Agent Host keeps a session alive beyond a window; the
+        1.144 Remote Environments dialog shows targets, and 1.140 remote
+        delegation tools (Experimental, off by default) match a task to host
+        capacity. A visible remote does not prove host, repository, or toolchain
+        readiness. Roundup: 1.141 external sessions, 1.140 Dev Container cleanup,
+        1.143 sliced large-chat restore (release-observed macOS table only),
+        1.143 worktree cleanup.
+    "Steer":
+      emphasis: high
       note: >
-        4–5 slides and the practical climax. Everything the audience can do tomorrow with
-        no Preview dependency lives here. Open with a short GA Vision beat before the
-        browser climax: Copilot Vision is GA (v1.128) — paste, drag-drop, or attach images
-        and PDFs in ask/plan/agent modes on all Copilot plans. Call out the everyday
-        pattern author feedback highlighted: copy a large Excel range (or other clipboard
-        content that includes image data), paste into Chat, and it attaches as vision
-        context instead of a wall of cells. Pair with integrated-browser Add Screenshot /
-        Add Element / Add Console Logs to Chat for human-driven evidence. Then the status
-        fact: agentic browser tools are GA and on by default — navigation, screenshots,
-        interaction, device emulation, remote browsing; agent pages are private in-memory
-        and existing tabs must be shared. CLIMAX DEMO (GA, live): agent opens localhost,
-        emulates a device, screenshots into the chat turn, then v1.132 element comments
-        (Ctrl+Alt+C / ⌥⌘C). That implement → emulate → screenshot → annotate → re-validate
-        loop is the last working thing the audience sees. One mixed-status handoff
-        slide: in-window diff review, CI failure response, PR comment response (Preview);
-        PR creation from Agent Host sessions, with optional Agent Merge experimental;
-        hybrid Markdown experimental, one sentence, no demo. Weave control thread (OTel, managed settings,
-        MCP allowlists, sensitive prompts) here. End on the working loop, not policy.
+        Audience question: what can I see and change while it runs, and what may
+        act without asking? A test run hangs: the 1.141
+        Background Shells pill shows command, runtime, and output; 1.142 Stop
+        Shell ends one attached shell without ending the session (detached shells
+        cannot be stopped there). Plans change: 1.141 queued-message
+        control edits or cancels the next message; a started turn is immutable.
+        Then what acts unasked: 1.144 assisted permissions (GA) use a risk
+        assessment for lower-risk calls inside Folder-isolated sessions;
+        automatic approval is not review of the result. 1.141 sandboxing is an
+        additional OS/host layer, not a standalone security boundary. Computer
+        use (Experimental, local Windows/macOS Copilot harness) is "same
+        decision, different case": every desktop action needs approval. Roundup:
+        1.142 shared canvases (Preview), /btw and activity, isolation baseline.
+    "Keep":
+      emphasis: high
+      note: >
+        Audience question: which changes stay, and on what evidence? The 1.143
+        working set (Experimental) makes the verb literal: per-file Keep or Undo
+        before edits remain in the working tree; 1.144 added file-level Undo, on by
+        default in the editor. Scoped discard follows branch, session, or last-turn boundaries
+        and is destructive within its scope. Browser evidence for a UI change:
+        screenshot at the viewport you care about, element feedback on the
+        element that is wrong, a proposed CSS change, then a fresh recapture. Keep runner
+        status, page measurement, and diff/PR review in separate columns; agent
+        visibility does not grant merge authority. Recovery is a strip on the evidence slide: comment and retry, or Undo or discard.
+        The viewport is the test condition; the expected result is a criterion, not an observed outcome.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "BYOK is GA without a GitHub sign-in: add an Anthropic, Azure, Gemini, OpenAI, Ollama, OpenRouter, or compatible custom endpoint key in Manage Models… and it drives chat, tool execution, and MCP with billing and rate limits handled by the provider instead of Copilot quotas."
-    - "Ollama is a first-class provider, so VS Code discovers locally pulled open models automatically and runs chat, tools, and MCP against them with no network request leaving the machine — the practical unlock for air-gapped teams and sensitive codebases."
-    - "Custom Endpoint is Stable and utility models are independently configurable, so a team can route every VS Code Copilot chat call through its own gateway while chat.utilityModel and chat.utilitySmallModel hand titles, summaries, and commit messages to a cheap local model and reserve the frontier model for real work."
-    - "Open the Agents window — title bar Open in Agents, Chat: Open Agents Window, or code --agents — and leave side-chat-only agent habits; it is the dedicated multi-workspace surface for sessions, changes, and parallel work."
-    - "Copilot Vision is GA: paste an Excel range, mockup, or PDF into Chat and attach visual evidence instead of a wall of text; pair with browser Add Screenshot / Element to Chat when you already have the page open."
-    - "GA browser tools close the loop live — the agent opens a localhost page, emulates a device, screenshots it into the chat turn as permanent evidence, and in v1.132 takes comments anchored to the exact elements that still need work, all without leaving the session."
+    - "Every 1.140–1.144 agent feature lands on one of four verbs, so a weekly release has somewhere to go: Pick, Place, Steer, Keep."
+    - "An unsorted wall of every agent feature opens the talk; the release map closes it with the same list filed under four verbs."
+    - "Two attempts at the same task run side by side; the comparison scorecard informs the developer's choice and never makes it."
+    - "A cloud session started in VS Code keeps running after the laptop closes, is checked from GitHub Mobile, and returns to VS Code; local uncommitted changes stay where they were."
+    - "Stop Shell ends one hung test run while the session, its conversation, and other shells keep going."
+    - "The working set's Keep and Undo buttons decide, file by file, which agent edits remain."
 
-# REJECTED CANDIDATES (did not earn slide time)
-# - Reordering to lead with Open Model Workbench: the user emphasis is satisfied by force
-#   ranking (sole `high`, primary live demo, metadata and agenda lead). Diverging from
-#   README order would desync the deck from the canonical source for no evidentiary gain.
-# - A fifth "Boundaries and Control" section: cost visibility, OTel, managed settings, MCP
-#   allowlists, and sensitive prompt handling are qualifiers on other capabilities, not a
-#   standalone narrative. They are woven into the sections they constrain.
-# - Release-by-release catalog spine: removed by the approved refresh; it organizes by
-#   changelog rather than by operating model.
-# - Commit-attribution revert highlight: removed by the approved refresh; no longer
-#   represents the highest-value current workflow.
-# - Browser tab-sharing demo: superseded by the GA build-validate-review loop with device
-#   emulation and element comments.
-# - Standalone Claude / single-vendor section: model and harness choice is now the story;
-#   harness portability is one line in Agent Infrastructure.
-# - Live multi-session, peer-fork, or remote-reconnect demos: Preview surfaces with the
-#   highest failure risk in the deck. Shown as prepared evidence instead.
-# - "Fleet" framing carried over from the prior recipe: the 1.121–1.132 evidence is about
-#   portability, model openness, and closing the loop, not about scale of orchestration.
-# - VS Code 1.133: excluded as future-dated and unconfirmed per the refresh anomaly.
-# - Individual model arrivals and non-editor changelog items (code review effort levels,
-#   impact dashboard ROI, CLI session changes): out of scope, routed to other talks.
+  refresh:
+    approved: true
+    reviewDate: "2026-11-03"
+    source: "tech-talks/vscode-latest/content.refresh.yml"
+    baselineIntent: "Find a Better Answer → Keep Work Moving → Delegate with Fewer Interruptions → Check More Than the Code; 36 feature cards"
+    baselinePlanCount: 47
+    baselineTotalSeconds: 2790
+    decision: restructure
+    approvalStatus: "Approved 2026-11-03 by user: Pick · Place · Steer · Keep; write the recipe, then rebuild the deck."
+    alternativeConsidered: >
+      Keep the four outcome sections and relabel them with verbs. Rejected: it
+      keeps 36 equal-weight cards and no central model, so the audience still has
+      nothing to remember the features by.
+    rejectedCoverage:
+      - "36 standalone feature cards: 25 features earn space on 21 hero slides; the other 11 move to roundups for Pick, Place, and Steer."
+      - "Standalone before-after card about the deck's own format: replaced by the release map that files every feature under a verb."
+      - "1.144 Cloud Automations, Customization Marketplace, connectors, Agent Host Protocol, image generation: unchanged notes-only dispositions from the 2026-11-01 review."
+      - "Invented timings, live runs, screenshots, or conformance claims: every visual stays a labelled schematic until a presenter capture exists."
+    openingScene:
+      name: "Four decisions, every run"
+      concept: >
+        One card at center labelled "EVERY AGENT RUN": "Four decisions, and a
+        control you can inspect for each." Four oversized verbs, PICK, PLACE,
+        STEER, KEEP, arrive from the four edges and lock onto the card in run
+        order. Each verb brings one small control chip from the releases
+        (Compare, Cloud session, Stop Shell, Keep/Undo). The final frame reads
+        as one run with four decisions, not four features. Slide 2 then shows
+        the unsorted feature wall; the release map at the end files the same
+        list under the verbs.
+      motion: >
+        Card settles first; verbs slide in one at a time in run order; each chip
+        clicks onto the card edge; the KEEP chip lands last as two buttons.
+      guardrails: >
+        No product screenshot implied. No node graph or stacked feature tiles
+        on the title. Title and thesis stay prominent.
+    publicationGate:
+      relevant: "A developer, team lead, or platform engineer must decide how to use each weekly VS Code agent release on a real repository task."
+      compelling: "Four verbs in run order turn a release train into one memorable decision model, and every new control arrives with the autonomy it governs."
+      actionable: "A four-line card (intelligence, place, what acts unasked, evidence for Keep) applied to one real task, with a recovery move when evidence disagrees."
+    planCount: 32
+    totalSeconds: 2700
+    teachingSlides: 20
+    frameAndSpineSlides: 8
+    durationMinutes: 50
+    questionsMinutes: 4.75
+    questionsSeconds: 285
+    timingStatus: "Approved budget; estimate until presenter run-through"
+
+  slides:
+    - id: title
+      part: 0
+      claim: "Every agent run in VS Code comes down to four decisions: pick, place, steer, keep."
+      scene: "deck four-verbs: a task-neutral card at center (EVERY AGENT RUN: four decisions, and a control you can inspect for each); PICK, PLACE, STEER, KEEP lock on in run order, each with one release control chip (Compare, Cloud session, Stop Shell, Keep/Undo)."
+      seconds: 45
+    - id: core-question
+      part: 0
+      claim: "VS Code ships Copilot changes every week. Which ones change how I work? Each one changes one of four decisions you already make."
+      scene: "deck feature-wall: the learner question as title; below it every feature from the shared FEATURES list (the same list the release map uses) as a neutral chip with name and version badge, in a fixed shuffled order, no verb grouping or verb colours, status as a small dot; chips arrive in a quick scattered cascade; one answer line last: Each one changes one of four decisions you already make. Agenda outcomes and roles move to the notes."
+      seconds: 90
+    - id: four-decisions
+      part: 0
+      claim: "Each verb is a question you already ask, and each release added a control you can inspect for it."
+      scene: "deck verb-grid: four columns (verb, question, autonomy added, control added) for Pick, Place, Steer, Keep; a rising pair of lines shows autonomy and control growing together."
+      seconds: 90
+    - id: contents
+      part: 0
+      claim: "Four verbs, in the order a run happens."
+      scene: "contents: Pick, Place, Steer, Keep with their questions; opener links to slides 5, 11, 17, 24."
+      seconds: 30
+
+    - id: part-1
+      part: 1
+      claim: "Pick: which intelligence answers this task, and how do I know?"
+      scene: "opener: Pick; compare, route, inspect."
+      seconds: 35
+    - id: pick-compare
+      part: 1
+      claim: "Compare Models runs one prompt as several attempts in their own worktrees; the developer reads the Judge scorecard and diffs, then picks and continues."
+      scene: "deck compare: five operating steps from the first-party docs (Open Compare Models in the Agents window or Ctrl+Alt+M · add 2–10 attempts and configure Judge/Synthesis · Run N Attempts from the last commit · read the Judge scorecard and Open Attempt N · continue in the winner or Synthesize; nothing auto-merges); reading-the-results strip (A: changes 14 files, tests pass; B: changes 2 files and adds a test, tests pass; smaller diff, same evidence, developer picks B); boundary (commit first, Allow all, judge is not proof, per-attempt usage, Agents window only, not Dev Containers). Badges: 1.143 Preview; 1.144 on by default + folderless chats."
+      seconds: 170
+    - id: pick-fusion
+      part: 1
+      claim: "Fusion lets Copilot route the request, and the usage detail shows what it chose and what it costs."
+      scene: "deck fusion: Standard/High/Max effort selector → routed model path → usage/billing detail. Badge 1.144 GA. Boundary: each model used is billed; High/Max plan limits; model policy is not a data boundary."
+      seconds: 110
+    - id: pick-route-setup
+      part: 1
+      claim: "Point Copilot at your own model in four steps; statefulResponses false is the line that matters for a stateless server."
+      scene: "deck route-setup: four steps (Manage Language Models · Add Models → Custom Endpoint · API type Responses · pick it) beside chatLanguageModels.json for local Ollama with the statefulResponses line highlighted; dashed on-device card with real requirements (NVIDIA GPU 96 GB+ VRAM, ~55 GB disk, llama.cpp b11658+, GitHub sign-in) and its two settings."
+      seconds: 100
+    - id: pick-route-proof
+      part: 1
+      claim: "Same follow-up, two answers: a stateless server forgets unless VS Code resends the history."
+      scene: "deck route-proof: two-turn conversation; default column answers Unknown with no error, statefulResponses false answers Teal (observed 2026-11-03, local Ollama 0.40.6); inference lane checked, tools/MCP/extensions lane unproven; boundary."
+      seconds: 90
+    - id: pick-roundup
+      part: 1
+      claim: "Also shipped for Pick: a clearer picker, visual input, and tighter context."
+      scene: "deck roundup: four compact chips with version, status, one-line use, one-line boundary: 1.142 model picker · Copilot Vision GA · context sizing and /compact · explicit provider route."
+      seconds: 55
+
+    - id: part-2
+      part: 2
+      claim: "Place: where does the work run, and what travels with it?"
+      scene: "opener: Place; checkout, worktree, host, cloud."
+      seconds: 35
+    - id: place-worktree
+      part: 2
+      claim: "Choosing a shared checkout or a fresh worktree decides whether the agent's edits can collide with yours."
+      scene: "showdown: shared checkout (shared files) versus fresh worktree (own branch, changes, PR); chat history moves with 1.142 move-chat; 1.140 peer worktrees Experimental."
+      seconds: 110
+    - id: place-cloud-start
+      part: 2
+      claim: "Leaving for the day, the developer commits, pushes, and starts long-running work as a new cloud session (New → Cloud → Choose Repository); it keeps going after the laptop closes. 1.144, Experimental."
+      scene: "deck cloud-relay part 1: VS Code start (New → Environment: Cloud; Choose Repository, send the task) → separate cloud workspace; laptop lid closes; session continues. Badge 1.144 Experimental; Copilot harness only; paid plan and policy apply."
+      seconds: 100
+    - id: place-cloud-return
+      part: 2
+      claim: "The developer checks progress from GitHub Mobile and returns to the same conversation in VS Code; local uncommitted edits stay local."
+      scene: "deck cloud-relay part 2: GitHub Mobile check → VS Code return; a what-travels ledger: conversation and cloud files travel; local uncommitted changes do not."
+      seconds: 110
+    - id: place-hosts
+      part: 2
+      claim: "Need more than your laptop? Send the session to a host that's running, has the repo, and has the tools."
+      scene: "deck host-check: Agent Host outlives the client window; 1.144 Remote Environments dialog groups GitHub Environments, Dev Tunnels, WSL, SSH; 1.140 remote delegation (Experimental, off by default) matches task needs to host capacity; checklist: host, repo, toolchain."
+      seconds: 115
+    - id: place-roundup
+      part: 2
+      claim: "Also shipped for Place: sessions arrive from other clients, and idle containers and worktrees get reclaimed."
+      scene: "deck roundup: 1.141 external sessions · 1.140 Dev Container cleanup · 1.143 sliced large-chat restore (release-observed macOS: 35.6s→9.0s cold open) · 1.143 worktree cleanup. (1.140 multi-folder sessions removed: same feature as slide 12 peer worktrees.)"
+      seconds: 80
+
+    - id: part-3
+      part: 3
+      claim: "Steer: what can I see and change while it runs, and what may act unasked?"
+      scene: "opener: Steer; watch, stop, correct, permit."
+      seconds: 35
+    - id: steer-shells
+      part: 3
+      claim: "A test run hangs; stop that one shell and the session keeps going."
+      scene: "deck shells: Background Shells pill (1.141, Copilot harness) lists command, runtime, output; Stop Shell (1.142) on the hung npm test shell; dev server keeps running; detached shells cannot be stopped here."
+      seconds: 100
+    - id: steer-queue
+      part: 3
+      claim: "Plans change mid-run: queue the next step, or steer the one that is running."
+      scene: "terminal: Send dropdown in use: Steer with Message redirects an unrelated reformatting detour to the failing date parser; Add to Queue holds the full test suite run until the response finishes; Stop and Send cancels. Baseline chat behavior; 1.141 send_message gives coordinating agents the same controls (notes only)."
+      seconds: 85
+    - id: steer-permissions
+      part: 3
+      claim: "Assisted permissions let low-risk calls run without asking; read the diff before you commit."
+      scene: "deck permission-flow: permissions picker → Assisted permissions; tool request → LLM risk assessment → low risk runs / higher or unknown risk asks; edits show up in Source Control as uncommitted changes; no extra review step. Badge 1.144 GA; Copilot sessions, Folder isolation, policy can restrict."
+      seconds: 110
+    - id: steer-sandbox
+      part: 3
+      claim: "Sandboxing narrows what an approved operation can reach."
+      scene: "deck sandbox: allowed operation inside the box; blocked operation outside, with chat.agent.sandbox.enabled. Badge 1.141; additional layer, not a standalone security boundary."
+      seconds: 85
+    - id: steer-computer-use
+      part: 3
+      claim: "Same decision, different case: computer use lets the agent work in desktop apps you approve."
+      scene: "deck desktop-approve: Enable setting + restart → Turn On prompt or /computer on → approve each app (macOS: Accessibility + Screen Recording) → /computer off. Per-app approval; stays on for Copilot incl. CLI until /computer off. Experimental; local Copilot harness, Windows and macOS."
+      seconds: 95
+    - id: steer-roundup
+      part: 3
+      claim: "Also for Steer: a shared artifact beside the chat, and side questions that do not interrupt."
+      scene: "deck roundup: 1.142 shared canvases (Preview; canvas extension; Add Context → Canvas) · /btw side chats (baseline). Isolation card removed: slide 12 covers it."
+      seconds: 60
+
+    - id: part-4
+      part: 4
+      claim: "Keep: which changes stay, and on what evidence?"
+      scene: "opener: Keep; review, observe, decide."
+      seconds: 35
+    - id: keep-working-set
+      part: 4
+      claim: "Keep or Undo each agent edit, file by file, before you commit."
+      scene: "deck working-set: four changed files (the fix, its tests, test script kept; an unasked restyle undone) with Keep/Undo per file; side panel says what each button does (Keep: marked reviewed, edit stays on disk; Undo: file goes back). Badges 1.143 Experimental Keep, 1.144 Experimental Undo on by default; boundary: Copilot harness editor window, terminal-command edits not shown, Agents window uses Changes view."
+      seconds: 130
+    - id: keep-discard
+      part: 4
+      claim: "Discard just the agent’s last turn, or its whole session; your own edits stay."
+      scene: "deck discard-scope: Agents window Changes view; changeset tabs Last turn (selected) / Session / Branch with one-line meanings; one file’s layers: last-turn restyle discarded, earlier turns and your own edits kept. Badge 1.143; per file; Branch deletes branch-added files; read the diff first."
+      seconds: 90
+    - id: keep-browser
+      part: 4
+      claim: "A screenshot, an element comment, and a fresh recapture turn a UI change into behavioral evidence."
+      scene: "deck browser-loop: agent-opened page screenshot at the viewport you care about → comment on the element that is wrong → proposed CSS (not yet measured) → fresh recapture: did it change?; existing tabs stay private until shared. Criteria, not observed results."
+      seconds: 140
+    - id: keep-evidence
+      part: 4
+      claim: "Runner status, page behavior, and the diff answer different questions; when they disagree, comment and retry, or Undo or discard."
+      scene: "deck evidence-columns: test runner (PASS/FAIL), page measurement (expected vs fresh capture), diff and PR review (accept/hold/revise); green strip: if they disagree, comment on the element and retry, or Undo or discard. Former keep-recover slide folded in."
+      seconds: 140
+    - id: release-map
+      part: 0
+      claim: "Every 1.140–1.144 agent feature has a home under one verb, and next week's release will too."
+      scene: "deck release-map: four verb columns built from the shared FEATURES list (the same list as the slide 2 wall), each feature with version and status badge; legend GA / Preview / Experimental; notes call back to the wall."
+      seconds: 90
+    - id: today
+      part: 0
+      claim: "Take one real task and fill in four lines before the agent starts."
+      scene: "today: four-line card: intelligence, place, what may act unasked, evidence that earns Keep; plus the recovery owner."
+      seconds: 105
+    - id: references
+      part: 0
+      claim: "First-party release notes back every claim, grouped by verb."
+      scene: "references: v1_140–v1_144, Universe, Fusion, Vision, Agent Host, sessions, browser docs."
+      seconds: 20
+    - id: thanks
+      part: 0
+      claim: "Pick, place, steer, keep."
+      scene: "thanks: four verbs and the transfer question."
+      seconds: 15
+
+  comparison:
+    previous:
+      totalSlides: 47
+      teachingSlides: 36
+      spineSlides: 11
+      totalSeconds: 2790
+      shape: "36 equal feature cards under four outcome sections; independent examples."
+    selected:
+      totalSlides: 32
+      teachingSlides: 20
+      spineSlides: 12
+      totalSeconds: 2700
+      shape: "Four verbs in run order; unsorted feature wall up front paired with the release map at the end; self-contained examples per slide; 14 hero features with proof slides; one roundup per verb."
+    coverage:
+      baselineFeatures: 34  # baseline listed multi-root peers and peer worktrees separately; they are one 1.140 feature; evidence recovery removed 2026-11-03 (a workflow, not a shipped feature)
+      heroSlides: 22
+      featuresOnHeroSlides: 25
+      roundupFeatures: 9
+      releaseMapSplit: { Pick: 9, Place: 10, Steer: 8, Keep: 7 }
+      notesOnly: ["1.144 Cloud Automations", "1.144 Customization Marketplace and connectors", "1.144 Agent Host Protocol v1.0", "1.144 image generation"]
+      droppedFromSlides: []
+    timingTradeoff: "2715 seconds leaves 4 minutes 45 seconds for questions inside the 50-minute slot. Roundups can move to notes before hero slides lose time."
