@@ -3,6 +3,8 @@ applyTo: "slides/**/*.md"
 description: "Use when editing Slidev deck markdown files, section opener slides, or raw HTML in slides. Covers balanced HTML, wrapper structure, and required deck build validation."
 ---
 
+Every teaching slide follows the Actor, Question, Proof contract in `native-decks.instructions.md`. Run `node slides/scripts/sync-index-dates.mjs` after any slide change.
+
 ## Slidev Runs on Vite + Vue 3
 
 Slide content is compiled as a **Vue SFC (Single File Component) template** — not plain HTML. This explains every class of authoring error you'll encounter:

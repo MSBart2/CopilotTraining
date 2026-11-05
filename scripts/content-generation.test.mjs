@@ -122,19 +122,22 @@ test("universal instructions own the education north star", async () => {
     assert.match(instructions, new RegExp(`\\*\\*${lens}\\*\\*`));
   }
   assert.match(instructions, /attempt → inspect → adjust → rerun → validate/);
-  assert.match(
-    instructions,
-    /### Relevant, Compelling, Actionable: Creation Lens and Publication Gate/,
-  );
+  assert.match(instructions, /## \d+\. The Core Question/);
+  assert.match(instructions, /## \d+\. Relevant, Compelling, Actionable/);
   for (const quality of ["Relevant", "Compelling", "Actionable"]) {
     assert.match(instructions, new RegExp(`\\*\\*${quality}\\*\\*`));
   }
-  assert.match(instructions, /### Universal Voice and Prose Contract/);
+  assert.match(instructions, /## \d+\. Voice and Prose/);
   assert.match(instructions, /canonical source for editorial policy/i);
-  assert.match(instructions, /### Actor, Question, and Proof Contract/);
+});
+
+test("deck instructions own the actor, question, and proof slide contract", async () => {
+  const instructions = await read(".github/instructions/native-decks.instructions.md");
+  assert.match(instructions, /## Slide contract: Actor, Question, Proof/);
   assert.match(instructions, /Name who or what acts when agency matters/);
   assert.match(instructions, /Every slide answers one audience question/);
   assert.match(instructions, /show a representative input, action, or artifact together with its observable result/);
+  assert.match(await read(".github/instructions/slidev-decks.instructions.md"), /Actor, Question, Proof contract/);
 });
 
 test("tech-talk slides enforce actor, question, and proof clarity", async () => {
@@ -167,7 +170,7 @@ test("native tech talks are notes-first and validated", async () => {
 
 test("practitioner deck budgets allow 30+ slides and separate spine from teaching", async () => {
   for (const path of [
-    "AGENTS.md",
+    ".github/instructions/native-decks.instructions.md",
     ".github/agents/native-deck-author.agent.md",
     ".github/agents/tech-talk-slide-generator.agent.md",
     ".github/skills/deck-recipe-review/SKILL.md",

@@ -1,3 +1,6 @@
+# Conversion plan approved under the user's explicit waiver on 2026-10-31:
+# proceed without waiting for recipe approval; preserve the existing narrative and proof;
+# review the content after mechanics and conversion are complete.
 # Independent critique: rubber-duck subagent (cross-model; primary is a Claude model).
 # Reconciliation:
 # - Accepted: the contract has four visible fields (role ownership, completion evidence, budget and escalation,
@@ -94,10 +97,12 @@ deck:
         merged, the implementer fix, and the 4.5:1 contrast regression taking the suite from 95 to 96, labeled
         REAL. Slide 2: seams resolved and the integration record fields. Slide 3: what the reviewer of #217
         receives (plan comments, suite counts, corrections, open risks, budget history) and who owns what: the
-        reviewer owns merge, the team lead owns budget and escalation policy. Slide 4: where it stops fitting,
-        routing event-driven work to GitHub Agentic Workflows and assign-and-walk-away work to Copilot on GitHub,
-        plus small changes and slow verification. Slide 5: what to do today and the own-work question. Budget 5
-        slides.
+        reviewer owns merge, the team lead owns budget and escalation policy. Slide 4: recurring CLI passes,
+        file-based state, the stale-run escalation rule, and the untested capped-schedule boundary. Slide 5:
+        where local work stops fitting, routing event-driven work to GitHub Agentic Workflows and assign-and-walk-
+        away work to Copilot on GitHub, plus small changes and slow verification. Slide 6: a four-field contract
+        for one real issue. The integration record and own-work contract get focused slides so the handoff and
+        transfer remain independently inspectable. Budget 6 teaching slides.
 
   preamble: []
   appendix: []
@@ -112,3 +117,39 @@ deck:
 # OPEN DECISION: Cost framing. Present ≈380 credits as one observed run with no manual baseline (current choice;
 #   honest and transferable), or time a manual implementation of #4 and #5 first to add a comparison (stronger ROI
 #   story; requires a new measured run before slides).
+
+  # Conversion plan, including standard spine frames. The original 28-slide narrative
+  # remains in order; focused integration-record, recurring-run, and transfer slides
+  # make existing README depth teachable without adding filler.
+  slides:
+    - { id: title, part: 0, claim: "A local agentic SDLC becomes reviewable when the run has a contract.", scene: "frame: title and a four-role loop motif", seconds: 30 }
+    - { id: core-question, part: 0, claim: "A developer can hand off an issue while retaining evidence, budget, and merge authority.", scene: "frame: learner question, actors, and observed outcome", seconds: 80 }
+    - { id: contents, part: 0, claim: "The argument moves from contract, to crew, to evidence, to human handoff.", scene: "frame: four linked parts with opener slide numbers", seconds: 25 }
+    - { id: run-ledger, part: 0, claim: "Four real Copilot CLI sessions took FanHub issues #4 and #5 to draft PR #217 for about 380 credits.", scene: "deck: four-stage evidence ledger; motion: plan, parallel worktrees, integrate", seconds: 140 }
+    - { id: part-1, part: 1, claim: "Four explicit answers make delegation inspectable before code changes.", scene: "frame: opener with contract, plan, and split test", seconds: 20 }
+    - { id: four-field-contract, part: 1, claim: "Roles, done evidence, stop budget, and merge authority each map to an enforcement point.", scene: "deck: four contract rows connected to their control", seconds: 90 }
+    - { id: plan-with-risks, part: 1, claim: "A read-only planner posts a fixed plan and names likely breakage before implementation.", scene: "deck: plan artifact beside the #5 router and #4 class-component risks", seconds: 100 }
+    - { id: split-test, part: 1, claim: "Parallelize only when file sets are independent apart from named, integration-owned seams.", scene: "deck: split/keep-together decision and FanHub seams", seconds: 90 }
+    - { id: part-2, part: 2, claim: "The orchestrator keeps sequence while narrow agents hold task boundaries.", scene: "frame: opener with orchestrator, roles, and worktrees", seconds: 20 }
+    - { id: orchestrator-file, part: 2, claim: "An agents allow-list, no edit tool, and an agent-scoped Stop hook bound the orchestrator.", scene: "deck: agent frontmatter with ownership callouts", seconds: 100 }
+    - { id: role-boundaries, part: 2, claim: "The implementer reports test failures and the test-writer owns test edits.", scene: "deck: four role cards and the #5 boundary", seconds: 90 }
+    - { id: worktree-command, part: 2, claim: "One worktree per issue isolates parallel edits while flags cap spend and deny push.", scene: "terminal: actual #4 command and resulting isolated worktree", seconds: 100 }
+    - { id: setup-gotchas, part: 2, claim: "Permission denials, fresh dependencies, and snake_case hook input become diagnosable when logged.", scene: "deck: three setup gotchas with observed fix", seconds: 90 }
+    - { id: part-3, part: 3, claim: "Tests steer the run; a Stop hook backs up the finish decision and budgets yield control.", scene: "frame: opener marking the evidence climax", seconds: 20 }
+    - { id: predicted-failure, part: 3, claim: "The predicted router-context risk became eight failures, a test-writer fix, and 47 passing tests.", scene: "deck: risk → observed failure → routed agent → verified result", seconds: 120 }
+    - { id: stop-hook, part: 3, claim: "A Stop hook returns allow on a passing suite or block with failure output for the next turn.", scene: "deck: suite decision flow with per-session escalation", seconds: 120 }
+    - { id: real-gate-record, part: 3, claim: "The real runs logged 11 allow and 0 block because the orchestrator fixed failures before stopping.", scene: "scorecard: separate hook status from suite outcomes", seconds: 80 }
+    - { id: staged-backstop, part: 3, claim: "A deliberately staged run blocked on seven failures and allowed after eight passed.", scene: "terminal: staged JSONL block and allow records", seconds: 100 }
+    - { id: agreement-and-intent, part: 3, claim: "A green suite proves code-test agreement; a person decides whether the change matches intent.", scene: "showdown: automated agreement versus human judgment", seconds: 90 }
+    - { id: budgets, part: 3, claim: "Credit, continuation, no-progress, and hook limits stop a run and hand the decision to a person.", scene: "deck: observed integration budget stop and control scopes", seconds: 110 }
+    - { id: part-4, part: 4, claim: "Integration exposes defects that isolated green workstreams cannot reveal.", scene: "frame: opener with merged review, record, and person-owned handoff", seconds: 20 }
+    - { id: reviewer-catch, part: 4, claim: "The merged reviewer found unreadable headings and the team added a 4.5:1 regression check.", scene: "deck: two passing branches converge on defect, fix, and 95→96 tests", seconds: 120 }
+    - { id: integration-record, part: 4, claim: "The integration record names seam resolution, test counts, corrections, and remaining risks.", scene: "deck: branch evidence consolidates into a PR-ready record", seconds: 100 }
+    - { id: reviewer-handoff, part: 4, claim: "The reviewer owns merge and intent; the team lead owns future budget and escalation policy.", scene: "relay: issue plans, run evidence, and open risks arrive at a human reviewer", seconds: 100 }
+    - { id: scheduled-loop, part: 4, claim: "A recurring CLI pass needs file-based state, stale-run escalation, and a watched first capped run.", scene: "deck: schedule → fresh-context pass → state check → person on stale or uncertain run", seconds: 95 }
+    - { id: fit-boundary, part: 4, claim: "Local orchestration fits developer-led work with fast checks, not event-triggered or unattended work.", scene: "signals: event trigger, assign-and-walk-away, small change, and slow verification boundaries", seconds: 90 }
+    - { id: own-work-contract, part: 4, claim: "A practitioner can transfer the pattern by writing four answers for one real issue.", scene: "scorecard: role, done command, budget, merge owner, plus a concrete own-work prompt", seconds: 95 }
+    - { id: before-after, part: 0, claim: "The contract turns opaque delegation into bounded work with evidence and a human decision.", scene: "frame: four habit-to-contract pairs and labeled run evidence", seconds: 60 }
+    - { id: today, part: 0, claim: "A developer can begin with one issue contract today, build the crew this week, and test the loop this month.", scene: "frame: today / this week / this month actions", seconds: 70 }
+    - { id: references, part: 0, claim: "First-party documentation and FanHub artifacts let the audience inspect every core mechanism.", scene: "frame: links from README references", seconds: 25 }
+    - { id: thanks, part: 0, claim: "Roles, evidence, budgets, and human authority form one repeatable local loop.", scene: "frame: closing summary and own-work question", seconds: 20 }

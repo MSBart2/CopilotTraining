@@ -1,20 +1,10 @@
 # CopilotTraining Agent Instructions
 
----
-
-## Repository Structure
-
-Three content types, each with dedicated agents:
-
-- **`workshop/`** — Hands-on training modules with personas, exercises, and metrics → use `module-planner` or `module-creator` agents
-- **`tech-talks/`** — The 1-hour show-and-tell for practitioners → use `Tech Talk Generator` agent (research, landing README, recipe), then `Native Deck Author` (deck and speaker notes)
-- **`tech-talks/exec-*`** — Executive thought leadership for strategic decision-making → use `Exec Talk Generator` agent
+`AGENTS.md` is the canonical source for editorial policy across workshops, practitioner tech talks, executive talks, and slides. Format-specific agents, skills, and templates may add constraints but must not weaken or contradict it.
 
 ---
 
-## Content Rules (apply everywhere)
-
-### Education North Star
+## 1. North Star
 
 > Great Copilot education helps capable people form better judgment about context, delegation, verification, and authority, then lets them prove that judgment in their own work.
 
@@ -24,12 +14,25 @@ This repository serves real people doing real work in real environments. Every a
 
 - **Show capability in motion** — use working artifacts, commands, configurations, workflows, and observable results. Let the audience see what becomes possible and how it behaves.
 - **Teach through proof** — connect explanation to a demonstration, inspection, or validation that the audience can reproduce. Documentation summaries provide supporting context; they are never the main event.
-- **Build practical judgment** — help the audience decide what to try, what context it needs, what evidence makes it acceptable, and what to do when the result differs from expectations.
-- **Stay optimistic** — lead with useful possibility, earned progress, and credible next moves. Present boundaries and failures as information that helps people operate the capability well.
+- **Build practical judgment** — help the audience decide what to try, what context it needs, what evidence makes it acceptable.
 
 Academic framing, abstract taxonomies, and product-documentation tours do not earn space on their own. Include theory or feature detail only when it clarifies a real decision, explains observed behavior, or enables successful practice.
 
-### Relevant, Compelling, Actionable: Creation Lens and Publication Gate
+---
+
+## 2. The Core Question
+
+The core question (the README's "question this talk answers" and the Core Question slide) exists to give the learner an immediately recognizable question in their own voice. We want the reader to think "yes, that's my question" before the first section starts.
+
+- **Ask from the learner's seat.** Write in first person or plain second person about something the learner wants more of (speed, confidence, fewer interruptions, better results) or wants less of (rework, surprises, risk, waiting).
+- **Make it instantly understood.** One short sentence, everyday words, no product taxonomy, no internal framing labels such as "produce, reason, measure", and no list of features.
+- **Keep it straightforward.** Typical shapes: "How do I get X without Y?", "How can I trust X?", "When does X help me, and when does it get in the way?"
+- **Leave the cleverness to the answer.** The thesis, tension, and section structure carry the insight; the question only has to be one the learner already has.
+- **Test it:** Would a member of the target audience ask this, word for word, of a colleague? If it needs the talk to make sense, rewrite it.
+
+---
+
+## 3. Relevant, Compelling, Actionable
 
 Apply these three tests from the first content decision onward. Use them to select the topic, shape the thesis, choose the artifact and proof, allocate time, and revise the draft. Reapply them as a hard gate before publication.
 
@@ -37,17 +40,22 @@ Every talk or module must be all three:
 
 - **Relevant** — begins with a concrete practitioner role, team, or sourced person in a recognizable situation, facing a consequential decision in a realistic workflow. Establish who needs the judgment, when they need it, and what outcome the decision affects. Product breadth, novelty, and release timing alone do not establish relevance.
 - **Compelling** — earns attention by changing how the audience understands or approaches that decision. Use a useful insight, honest tension, consequential tradeoff, or working demonstration that offers more than a feature inventory or documentation tour.
-- **Actionable** — enables the audience to transfer the judgment into its own environment. Provide a decision method, usable artifact or concrete next step, observable evidence, and a boundary, recovery path, or escalation route when the result is wrong.
+- **Actionable** — enables the audience to transfer the judgment into its own environment. Provide a decision method, usable artifact or concrete next step, observable evidence. Content proves transfer when the audience can:
+  1. make a decision rather than repeat a feature description,
+  2. produce or inspect observable evidence,
+  3. adapt the decision to a real repository, workflow, or organization.
 
 Evaluate the content throughout creation and again before publication:
 
 1. **Relevant:** Can the artifact identify the practitioner role or team, workflow, decision, and consequence?
 2. **Compelling:** Can it state the insight that earns attention without listing product features?
-3. **Actionable:** Can the audience produce or inspect evidence in its own environment and know what to do when that evidence fails?
+3. **Actionable:** Can the audience produce or inspect evidence in its own environment?
 
 Revise or reconsider content that misses any dimension. Feature coverage, novelty, and presentation polish cannot compensate for a weak decision or missing transfer.
 
-### Judgment and Transfer Contract
+---
+
+## 4. Judgment Lenses
 
 Each artifact must develop at least one relevant judgment lens. Select the lenses the topic genuinely needs; do not force all four into every section.
 
@@ -58,65 +66,9 @@ Each artifact must develop at least one relevant judgment lens. Select the lense
 | **Verification** | What observable evidence makes the result acceptable, and how do we recover when it is wrong? |
 | **Authority** | Who may propose, execute, approve, reject, or escalate this work? |
 
-Content proves transfer when the audience can:
+---
 
-1. make a decision rather than repeat a feature description,
-2. produce or inspect observable evidence,
-3. recognize a boundary, failure signal, or escalation path, and
-4. adapt the decision to a real repository, workflow, or organization.
-
-Apply the contract by format:
-
-- **Workshop:** use an attempt → inspect → adjust → rerun → validate loop. Planned metrics are targets until participants produce evidence. End with an explicit transfer question about their own work.
-- **Tech talk:** teach a decision model, demonstrate it through a working artifact, validate the outcome, and name when the pattern stops fitting. Leave practitioners with a concrete application to their own repository or workflow.
-- **Executive talk:** clarify the decision, owner, authority boundary, tradeoff, and success signal. Distinguish sourced facts, observed results, estimates, and proposed targets.
-
-### Actor, Question, and Proof Contract
-
-Every teaching surface must make three things recoverable without relying on hidden presenter context:
-
-1. **Actor:** Name who or what acts when agency matters. Distinguish the practitioner request, Copilot or agent action, control decision, and human approval. Avoid agentless phrases such as "work proceeds" when the actor is Copilot.
-2. **Question and answer:** Every slide answers one audience question. The headline may state the answer rather than use a question mark, but the question and the slide's answer must be unambiguous.
-3. **Proof:** When a slide claims behavior, show a representative input, action, or artifact together with its observable result on the same slide whenever practical. Label test-runner status separately from the domain result so terms such as `PASS`, `allow`, and `deny` cannot be mistaken for one another.
-
-Carry enough context onto each slide that a viewer can identify the actor, task, and consequence after entering mid-section. Use the preceding slide for narrative momentum, not for essential disambiguation.
-
-### Core Question Contract
-
-The core question (the README's "question this talk answers" and the Core Question slide) exists to give the learner an immediately recognizable question in their own voice. We want the reader to think "yes, that's my question" before the first section starts.
-
-- **Ask from the learner's seat.** Write in first person or plain second person about something the learner wants more of (speed, confidence, fewer interruptions, better results) or wants less of (rework, surprises, risk, waiting).
-- **Make it instantly understood.** One short sentence, everyday words, no product taxonomy, no internal framing labels such as "produce, reason, measure", and no list of features.
-- **Keep it straightforward.** Typical shapes: "How do I get X without Y?", "How can I trust X?", "When does X help me, and when does it get in the way?"
-- **Leave the cleverness to the answer.** The thesis, tension, and section structure carry the insight; the question only has to be one the learner already has.
-- **Test it:** Would a member of the target audience ask this, word for word, of a colleague? If it needs the talk to make sense, rewrite it.
-
-### Tech Talk Narrative Contract
-
-A practitioner tech talk is a coherent argument for one consequential decision. The template supplies coverage prompts; it does not supply the narrative or require its headings to become the running order.
-
-- **Begin with a practitioner in motion** — identify the concrete role or team, the real workflow, the decision in front of them, and the consequence of that decision. Do not invent named personas for practitioner tech talks; use a real, authorized person only when the source material supports it.
-- **Build around one useful tension** — choose an honest tradeoff, boundary, or surprising mechanism that changes how the audience approaches the decision. Every section must advance that thesis.
-- **Give the section spine momentum** — use escalating audience questions or practitioner moves rather than a taxonomy of product parts, control types, or settings pages.
-- **Follow an earned arc** — move from situation and question → insight or decision model → technical mechanism → working artifact or demonstration → observable evidence and boundaries → transfer to the audience's work. A strong demonstration may serve as the cold open when seeing the result first makes the later architecture matter.
-- **Make the artifact carry the argument** — use a real configuration, command, workflow, or code path to expose the mechanism. Show the result, failure signal, and recovery path.
-- **Choose one memorable anchor** — identify the demonstration, result, number, or technical reveal we want the audience to repeat after the talk, then build the surrounding explanation to earn it.
-- **Spend time according to value** — give the strongest insight and demonstration the most room. Consolidate supporting mechanics and remove sections that do not change a decision or strengthen proof.
-- **Use optimistic curiosity in an expert-to-expert register** — lead with what becomes possible, what the pattern unlocks, and how it works. Keep tradeoffs concrete and avoid alarmism, pain-led framing, and comparative negativity.
-
-For a new talk, approve a research brief and structural proposal before drafting. The proposal must identify the audience, question, thesis, tension, artifact, evidence, boundary, and intended transfer. It must also answer:
-
-- **Relevant:** Who faces what decision, in which workflow, with what consequence?
-- **Compelling:** What insight, tension, demonstration, or tradeoff changes how the audience approaches it?
-- **Actionable:** What can the audience apply or inspect, what evidence will it produce, and how will it recover when that evidence fails?
-
-Skip this gate only when the user explicitly requests it.
-
-Avoid feature inventories that do not improve judgment, frictionless success stories, conversion narratives, and claims whose confidence is unclear.
-
-### Universal Voice and Prose Contract
-
-`AGENTS.md` is the canonical source for editorial policy across workshops, practitioner tech talks, executive talks, and slides. Format-specific agents and templates may add audience or artifact constraints, but must not weaken or contradict this contract.
+## 5. Voice and Prose
 
 - **Respectful** — preserve dignity, use no gatekeeping, and write for capable peers calibrating a practice. Treat successful existing approaches as valid context rather than something the audience must renounce.
 - **Optimistic curiosity** — lead with what becomes possible. Use opportunity and discovery framing, invite useful experimentation, and show progress without hype or manufactured urgency.
@@ -129,7 +81,7 @@ Avoid feature inventories that do not improve judgment, frictionless success sto
 - **Evidence discipline** — distinguish sourced facts, observed results, estimates, and proposed targets. Never invent metrics or present a target as an achieved result.
 - **Clear language** — front-load the point, use active voice, keep sentences purposeful, and remove prose that exists only to sound impressive.
 
-Apply these format-specific modes:
+Avoid shame, threat framing, unsupported superlatives, frictionless success stories, and claims whose confidence is unclear in every format.
 
 | Format | Framing | Voice | Lead with |
 |---|---|---|---|
@@ -137,7 +89,43 @@ Apply these format-specific modes:
 | **Practitioner tech talk** | Opportunity and discovery | Optimistic curiosity; expert-to-expert | What this unlocks, what is now possible, and how it works |
 | **Executive talk** | Business context, industry analogy, and organizational implication | Authoritative, accessible, strategic, and third-person | The decision, owner, tradeoff, evidence, and revisit signal |
 
-Practitioner talks tell a good-news story centered on useful capability and earned confidence. They avoid pain-led framing, alarmism, and comparisons that diminish existing practice. Avoid shame, threat framing, unsupported superlatives, frictionless success stories, and claims whose confidence is unclear in every format.
+---
+
+## 6. Format Notes
+
+### Workshop
+
+Use an attempt → inspect → adjust → rerun → validate loop. Planned metrics are targets until participants produce evidence. End with an explicit transfer question about their own work.
+
+### Practitioner tech talk
+
+A practitioner tech talk is a coherent argument for one consequential decision. The template supplies coverage prompts; it does not supply the narrative or require its headings to become the running order. Teach a decision model, demonstrate it through a working artifact, validate the outcome, and name when the pattern stops fitting. Leave practitioners with a concrete application to their own repository or workflow.
+
+- **Begin with a practitioner in motion** — identify the concrete role or team, the real workflow, the decision in front of them, and the consequence of that decision. Do not invent named personas for practitioner tech talks; use a real, authorized person only when the source material supports it.
+- **Build around one useful tension** — choose an honest tradeoff, boundary, or surprising mechanism that changes how the audience approaches the decision. Every section must advance that thesis.
+- **Give the section spine momentum** — use escalating audience questions or practitioner moves rather than a taxonomy of product parts, control types, or settings pages.
+- **Follow an earned arc** — move from situation and question → insight or decision model → technical mechanism → working artifact or demonstration → observable evidence and boundaries → transfer to the audience's work. A strong demonstration may serve as the cold open when seeing the result first makes the later architecture matter.
+- **Make the artifact carry the argument** — use a real configuration, command, workflow, or code path to expose the mechanism. Show the result, failure signal, and recovery path.
+- **Choose one memorable anchor** — identify the demonstration, result, number, or technical reveal we want the audience to repeat after the talk, then build the surrounding explanation to earn it.
+- **Spend time according to value** — give the strongest insight and demonstration the most room. Consolidate supporting mechanics and remove sections that do not change a decision or strengthen proof.
+
+For a new talk, approve a research brief and structural proposal before drafting. The proposal must identify the audience, question, thesis, tension, artifact, evidence, boundary, and intended transfer, and pass the Section 3 gate. Skip this gate only when the user explicitly requests it.
+
+### Executive talk
+
+Clarify the decision, owner, authority boundary, tradeoff, and success signal. Distinguish sourced facts, observed results, estimates, and proposed targets.
+
+---
+
+## 7. Repository, Agents, and Content Hygiene
+
+| Content | Location | Agents |
+|---|---|---|
+| Workshop modules (personas, exercises, metrics) | `workshop/` | `module-planner`, `module-creator`; decks: **Slide Generator** (Slidev) |
+| Practitioner tech talks (the 1-hour show-and-tell) | `tech-talks/` | **Tech Talk Generator** (research, landing README, recipe), then **Native Deck Author** (deck and speaker notes in `slides/tech-talks/<slug>/slides.js`); unconverted Slidev decks: **Tech Talk Slide Generator** (legacy, patches only) |
+| Executive talks | `tech-talks/exec-*` | **Exec Talk Generator**; decks: **Slide Generator** (Slidev) |
+
+Native tech talks are notes-first: the speaker notes are the teaching source and the README is a landing page. Deck authoring rules live in `.github/instructions/native-decks.instructions.md` and `.github/instructions/slidev-decks.instructions.md`.
 
 **Archived content is frozen.** Any file with `status: archived` in frontmatter must never be modified by any agent. Stop and inform the user.
 
@@ -152,89 +140,12 @@ Tech talks and exec talks also require `section:` matching a valid value from `s
 
 ---
 
-## Announcement-Driven Tech Talk Refresh
+## 8. Workflows
 
-Use the announcement feed to keep existing tech talks current without rewriting them as release notes.
+### Announcement-driven tech talk refresh
 
-### Source hierarchy
+Keep live talks current without turning them into release notes. The Microsoft Developer Changelog feed is for discovery only; first-party docs and release notes are the source of truth, and `.github/content-routing/ledger.json` is the work queue. Start with `npm run content:route -- --since <README updated>`, then follow the `content-refresh` and `ledger-tech-talk-refresh` skills. Full guide: [docs/announcement-feed/README.md](docs/announcement-feed/README.md).
 
-1. Microsoft Developer Changelog RSS feed — discovery and routing source
-2. Linked first-party docs or release notes — factual source of truth
-3. Existing talk README and recipe — compare against current claims
-4. `.github/content-routing/ledger.json` — approved work queue and decision log
+### Shipping slides
 
-### Standard flow
-
-1. Run `npm run content:route -- --since <README updated>` from the repo root. Default 7-day lookback is not enough for an older talk.
-2. Read the generated report and `.github/content-routing/ledger.json`. An empty ledger is not a stop for a named talk.
-3. Verify candidates against first-party docs **and** the product's own release notes / command reference. The Microsoft feed is discovery only.
-4. Create or update `tech-talks/<topic>/content.refresh.yml` using the `content-refresh` skill.
-5. After approval, patch the talk README as a reader-first article, not a changelog dump. For a native talk, patch the speaker notes in `slides/tech-talks/<slug>/slides.js` (the teaching source) and touch the landing README only for frontmatter, question, thesis, or part summaries.
-6. Follow the cheap-path table in `content-refresh`. Recipe refresh + full deck regen only for structural / restructure / replace-demo. Confirm/patch work stays in the existing deck.
-7. Normalize any selected ledger status to `accepted` or `rejected` after validation. Do not invent ledger rows for a named-talk refresh that started with an empty inbox.
-
-### When to use it
-
-Use this workflow for:
-
-- new product announcements that materially affect a live talk,
-- status changes such as GA, preview, deprecation, or retirement,
-- demo or setup changes that invalidate existing instructions,
-- removing stale references that no longer match current behavior.
-
-### Guardrails
-
-- Do not treat feed entries as fact without a first-party source.
-- Do not append an announcement dump to a README.
-- Do not update archived talks.
-- Do not regenerate slides before the README and recipe are approved.
-- Do not leave an implemented feed decision in `proposal-created` state. Closing it in the ledger is required before the report is considered clean.
-- Treat `.github/content-routing/latest-report.*` as a transient snapshot, not the durable backlog. The ledger is the source of truth.
-
-See [docs/announcement-feed/README.md](docs/announcement-feed/README.md) for the full operating guide.
-
----
-
-## Slide Generation
-
-Pick the agent by category and engine:
-
-| Category | Agent |
-|---|---|
-| `tech-talks/` native (`slides/tech-talks/<slug>/slides.js`), new talks, and conversions | **Native Deck Author** — shared engine in `slides/native/`; slide data and speaker notes in `slides.js` |
-| `tech-talks/` Slidev decks not yet converted | **Tech Talk Slide Generator** (legacy) — patches only; Vue components, no raw HTML |
-| `workshop/` or `tech-talks/exec-*` | **Slide Generator** — cockpit HTML templates |
-
-Native tech talks (the 1-hour show-and-tell) are notes-first: the speaker notes are the teaching source and the README is a landing page. Validate with `cd slides; npm run validate:native -- tech-talks/<slug>`. Workshop and exec decks stay on Slidev.
-
-Practitioner tech talks have room for 30+ slides, with no fixed slide-count ceiling. Count spine/template slides separately from teaching slides. Let the narrative, demonstration, and speaking-time budget determine the total; each teaching slide answers one audience question and advances the argument or proves a claim. This guidance leaves workshop and executive deck budgets unchanged.
-
-Key invariants (Slidev decks):
-
-- `---` separator always on its own line — never `---<!-- SLIDE:` on same line
-- No per-slide frontmatter (`layout:`, `class:`, `transition:`) — use CSS
-- Every slide including slide 1 needs `<!-- SLIDE: Name -->` comment
-- Run `node slides/scripts/sync-index-dates.mjs` after any slide change
-
----
-
-## Shipping slides (Deploy agent)
-
-For Slidev decks, homepage **Agenda** / **PDF** chips resolve to files under
-`slides/companions/<category>/<slug>/`. GitHub Pages **only copies** those
-files into `dist/` — it never runs `generate-agendas` or `export-pdf`. Native
-tech-talk cards link to their `notes.html` handout; agenda/PDF generation for
-native talks is planned for Phase 5.
-
-Before committing slide or companion changes, invoke the **Deploy** agent as a subagent
-(`.github/agents/deploy.agent.md`):
-
-1. `cd slides && npm run check-companions -- --strict` (hard gate; native decks require notes)
-2. Regen stale Slidev agendas + compact PDFs; validate changed native talks with `npm run validate:native -- tech-talks/<slug>`
-3. `npm run sync-index` if decks changed
-4. Re-check, then **snarky commit** including `slides/companions/**`
-5. **Refuse** commit when Slidev companions are missing/older than their decks or native validation fails
-6. Push the current branch after a successful commit; never force-push
-
-Do not commit Slidev deck-only changes that leave companions untracked or stale.
-Stage native deck folders and the shared engine with native deck changes.
+Before committing slide or companion changes, invoke the **Deploy** agent (`.github/agents/deploy.agent.md`). It refuses to commit stale or missing Slidev companions or a failing native validation, then commits and pushes.

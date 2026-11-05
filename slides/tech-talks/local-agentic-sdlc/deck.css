@@ -1,0 +1,11 @@
+/* Local Agentic SDLC — small deck-only refinements. */
+.scene.local-loop { flex: 0 0 720px; width: 720px; height: 720px; }
+.scene .deck-card-title { font-size: 23px; font-weight: 700; }
+.scene .deck-card-body { font-size: 20px; }
+.scene .t-xl { font-size: 108px; font-weight: 800; }
+.s-references .refs { gap: 14px; margin-top: 12px; }
+.s-references .ref-group h3 { margin-bottom: 6px; font-size: 19px; }
+.s-references .ref { gap: 1px; margin-bottom: 5px; padding: 7px 12px; }
+.s-references .ref b { font-size: 16px; }
+.s-references .ref span { font-size: 13px; }
+.s-references .ref code { font-size: 9px; }

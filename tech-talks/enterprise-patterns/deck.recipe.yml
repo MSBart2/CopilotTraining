@@ -1,45 +1,41 @@
-# REFRESH DATE: 2026-08-10
-# COUNCIL DECISION: REVISE
-# RATIONALE: Preserve the thesis, section order, weighting, and demos while separating shared
-# knowledge from the managed-settings control plane, adding migration readiness, and grounding
-# ROI in product-backed directional metrics.
+# RECIPE REFRESH: 2026-10-31
+# DECISION: REVISE — approved under the user's explicit conversion waiver in this session.
+# RATIONALE: Preserve the thesis, four-part spine, examples, artifacts, and approved refresh evidence.
+# Conversion plan: translate the Slidev order into one-claim scenes and carry long-form depth into notes.
 
 version: 1
 
 deck:
   title: "Scaling GitHub Copilot Across Organizations"
   subtitle: "Enterprise Patterns for AI Adoption at Scale"
-  tagline: "One change, all repos, instantly — from pilot teams to org-wide capability"
+  tagline: "One reviewed baseline can reach every repository; teams specialize inside its boundary."
 
   agenda:
-    - title: "Standards at Scale"
-      takeaway: "Propagate organization-wide instructions across repositories."
-      whyItMatters: "Consistency becomes structural instead of aspirational."
-    - title: "Shared Skill Libraries"
-      takeaway: "Publish vetted expertise as reusable organizational assets."
-      whyItMatters: "One teams insight compounds across every other team."
-    - title: "ROI Instrumentation"
-      takeaway: "Use impact-dashboard ROI and agent-app activity metrics with explicit caveats."
-      whyItMatters: "Leadership gets product-backed evidence without claiming audited attribution."
+    - title: "Encode the shared floor"
+      takeaway: "Place organization, repository, file-pattern, and directory guidance where each belongs."
+      whyItMatters: "Teams inherit repeatable context while local work keeps its own commands and constraints."
+    - title: "Share knowledge with an owner"
+      takeaway: "Choose skills for reusable expertise and knowledge bases for cross-repository context."
+      whyItMatters: "The source, reviewer, and update path stay visible as guidance compounds."
+    - title: "Measure and govern the boundary"
+      takeaway: "Inspect policy, adoption, workflow movement, and directional ROI with their limits attached."
+      whyItMatters: "Leaders can make the next investment decision with evidence they can explain."
 
-  arcToc: "Standards → Skills & Knowledge → Governance & Licensing → Adoption & Enablement"
+  arcToc: "Set standards → Share knowledge → Govern evidence → Enable teams"
 
   arcNarrative: >
-    Open with the organizing problem: 50 teams each reinvent security rules, coding standards,
-    and framework patterns, wasting 40+ hours per team while knowledge remains fragmented. S1
-    resolves that fragmentation with organization-wide instructions that propagate a standards
-    floor to every repository. S2 then multiplies institutional knowledge: Agent Skills encode
-    reusable expertise and Knowledge Bases provide cross-repository context. Keep those knowledge
-    mechanisms distinct from the managed-settings control plane; knowledge helps teams understand
-    and act, while managed settings govern which enterprise choices teams may specialize. S3 makes
-    the investment defensible through model policy, licensing, compliance controls, and a concise
-    supported-model migration-readiness callout: enable and verify an approved replacement before
-    affected workflows depend on it. S4 closes on adoption and proof. Give managed-settings
-    coordination a dedicated slide showing the enterprise floor, permitted team specialization,
-    and bounded merge behavior, then pair self-service enablement with product-backed evidence.
-    Use impact-dashboard ROI directionally, join agent activity on stable agent_id, and avoid
-    double counting nested and top-level interactions. Preserve the 16x platform-investment
-    example as illustrative context, not audited attribution.
+    Keep the approved four-part order. Part 1 opens inside the standards problem and
+    proves where each instruction belongs, then shows an illustrative organization
+    baseline, a review loop, and the assumptions behind the reinvention arithmetic.
+    Part 2 separates Agent Skills from Knowledge Bases by the job each performs and
+    makes source ownership and update review visible. Part 3 moves from that reusable
+    capability into model, licensing, telemetry, tool, and compliance boundaries;
+    migration readiness stays a concise, durable policy check. Part 4 gives managed
+    settings its own control-plane proof, then connects onboarding and measurement to
+    a clearly labeled illustrative investment model. The memorable reveal is one
+    organization policy floor with permitted team specialization and observable
+    results. A separate rollout section was rejected because it would dilute the
+    approved four-part spine; the rollout becomes a practical decision path in Part 4.
 
   sectionOrder:
     - "Organization-Wide Standards"
@@ -51,55 +47,232 @@ deck:
     "Organization-Wide Standards":
       emphasis: high
       note: >
-        The foundational fix and early climax moment — one org-level instruction change reaches
-        every repo instantly, ending the 50-teams × 40-hours reinvention tax. Cover what to
-        standardize (security requirements, framework patterns, quality standards), monorepo
-        nested playbooks, and the "50 teams = 50 reinventions without this" framing. This is the
-        talk's organizing claim and must land with force before S2 can build on it. The "whoa"
-        moment: one change propagates to 500+ developers with zero per-repo config.
-
+        Land the practical selector: repository-wide organization guidance,
+        repository context, file-pattern instructions, and nearest directory playbooks.
+        Show an illustrative instruction fragment beside its scope and review evidence.
+        Keep the 50-team calculation explicitly hypothetical and name its assumptions.
     "Organizational Skills & Knowledge Bases":
       emphasis: medium-high
       note: >
-        Agent Skills (GA) and Knowledge Bases (Enterprise Cloud only) encode reusable expertise
-        and cross-repository context. Keep the audience segmentation and roughly three-slide
-        treatment, but do not present shared knowledge as the enterprise control plane. Knowledge
-        helps teams understand and act across domains; managed settings separately define the
-        enterprise floor and the team-specific choices administrators permit. Preserve the
-        knowledge-compounds-with-use moment, then hand off managed-settings coordination to its
-        dedicated slide in Adoption & Enablement.
-
+        Give each mechanism a distinct job: skills encode reusable procedures and
+        knowledge bases retrieve context across indexed repositories. Show an
+        illustrative query and a human-owned source, review, and update path.
     "Governance & Licensing":
       emphasis: medium-high
       note: >
-        Critical trust-builder for regulated industries and cost-conscious engineering leaders.
-        Cover model access and auto-selection policies, flexible licensing with the existing
-        30-40% cost-reduction claim, and compliance automation with audit trails, content
-        filtering, and data residency. Add supported-model migration readiness as a concise
-        callout, not a new section: enable an approved replacement in policy and verify it appears
-        in affected model selectors before workflows depend on it. Land this control layer before
-        ROI so the investment remains defensible.
-
+        Make authority, policy, and evidence boundaries visible across model access,
+        current licensing terms, telemetry destinations, tool discovery, and compliance
+        review. Treat legacy savings and outcome figures as estimates or illustrations,
+        never as measured results.
     "Adoption & Enablement":
       emphasis: high
       note: >
-        The adoption and evidence payoff. Keep the self-service 30-minute quick start and existing
-        metrics framework, but give managed-settings coordination a dedicated slide: enterprise
-        administrators lock the floor, mark permitted overrides, map team specializations, and
-        preserve additive or least-restrictive behavior only within that boundary. Follow with
-        product-backed measurement: treat impact-dashboard ROI as directional rather than audited
-        attribution; join agent-app history on stable agent_id; and never add nested
-        user_initiated_interaction_count to the top-level total. Preserve the 16x example as
-        illustrative platform-investment context and the existing Adoption & Enablement rename.
+        Prove managed settings with an enterprise floor, explicitly overridable keys,
+        team mappings, bounded merge rules, and a validation step for a multi-team user.
+        Pair product-backed adoption signals with their caveats, a self-service kit,
+        and a transfer plan teams can adapt.
+
+  preamble: []
+  appendix: []
 
   highlightMoments:
-    - "16x ROI: 180 hours platform investment → 2,900+ hours saved year 1 (50 teams × 40 hrs reinvention avoided)"
-    - "One org-wide instruction change reaches 500+ developers instantly — no per-repo config needed"
-    - "Managed settings establish the enterprise floor while permitted team specialization preserves autonomy"
-    - "Agent Skills (GA) vs Knowledge Bases (Enterprise Cloud only) — audience segmentation that matters"
-    - "Product-backed directional ROI plus stable-ID agent activity — evidence without double counting or audited-attribution claims"
+    - "A single organization instruction change can set a baseline across repositories; local standards still need owners and verification."
+    - "Agent Skills encode reusable expertise; Knowledge Bases retrieve context across indexed repositories."
+    - "Managed settings permit named team specialization beneath enterprise choices, with explicit merge and product boundaries."
+    - "The 16x saved-hours ratio is an illustrative scenario calculation, not audited attribution or a customer result."
+    - "Impact-dashboard ROI is directional; agent activity uses stable agent_id and avoids nested-count double counting."
 
-# OPEN DECISION: Does the S1 opening slide ("The Traditional Problem") earn promotion to a
-# standalone framing slide before S1, or does it serve well as S1's entry slide? Current
-# structure embeds it inside Part 1 — acceptable if the hook lands within the first 60 seconds.
-# Promote only if live delivery shows the problem framing needs more breathing room.
+  slides:
+    - id: title
+      part: 0
+      claim: "A reviewed organization baseline can make Copilot guidance reusable across repositories."
+      scene: "frame: title with deck visual; shared standards radiate to teams"
+      seconds: 45
+    - id: core-question
+      part: 0
+      claim: "The practitioner decision is how to scale adoption while keeping standards, team choice, and proof clear."
+      scene: "frame: core-question; question, audience, and four-part route"
+      seconds: 90
+    - id: contents
+      part: 0
+      claim: "Four decisions connect standards, shared knowledge, governance, and enablement."
+      scene: "frame: contents; four linked section stops"
+      seconds: 30
+    - id: part-1
+      part: 1
+      claim: "Organization standards work when each rule lives at the scope that owns it."
+      scene: "frame: opener; establish policy, repository, and directory layers"
+      seconds: 25
+    - id: reinvention-case
+      part: 1
+      claim: "The 50-team, 40-hour calculation is a scenario for repeated setup, not an observed result."
+      scene: "scorecard: inputs, multiplication, consequence, and evidence status"
+      seconds: 103
+    - id: standard-selection
+      part: 1
+      claim: "The selector is the scope of the guidance: organization, repository, file pattern, or directory."
+      scene: "signals: scope question routes each standard to its owner"
+      seconds: 93
+    - id: repo-topology
+      part: 1
+      claim: "Polyrepos share a baseline across repository lifecycles; monorepos add path-specific guidance."
+      scene: "showdown: polyrepo and monorepo placement with a shared outcome"
+      seconds: 93
+    - id: instruction-artifact
+      part: 1
+      claim: "An instruction is useful when its owner, scope, and concrete review signal are explicit."
+      scene: "terminal: illustrative rule, Copilot action, reviewer check, and pass condition"
+      seconds: 123
+    - id: authority-scope
+      part: 1
+      claim: "The organization owner defines the baseline; repository owners add local context within their authority."
+      scene: "relay: baseline, repository specialization, and review handoff"
+      seconds: 98
+    - id: verification-loop
+      part: 1
+      claim: "A reviewer validates generated work against the same approved rule that shaped it."
+      scene: "scorecard: input, changed artifact, test evidence, human acceptance"
+      seconds: 103
+    - id: savings-model
+      part: 1
+      claim: "The source's 2,900 saved-hours example depends on explicit, locally testable assumptions."
+      scene: "terminal: 400 + 1,000 + 1,500 = 2,900; 2,900 / 180 ≈ 16.1"
+      seconds: 113
+    - id: part-2
+      part: 2
+      claim: "Shared knowledge scales when the mechanism matches the question and an owner maintains it."
+      scene: "frame: opener; reusable procedure, cross-repository context, reviewed update"
+      seconds: 25
+    - id: skill-vs-context
+      part: 2
+      claim: "A skill supplies a reusable method; a Knowledge Base supplies indexed repository context."
+      scene: "showdown: same task, distinct mechanism, distinct output"
+      seconds: 98
+    - id: skill-library
+      part: 2
+      claim: "A useful skill catalog groups repeatable expertise around security, quality, and operations."
+      scene: "scorecard: three categories, example skill names, maintainers"
+      seconds: 108
+    - id: knowledge-query
+      part: 2
+      claim: "A Knowledge Base query can gather context from repositories an individual checkout does not contain."
+      scene: "terminal: illustrative query, indexed sources, answer inspection"
+      seconds: 103
+    - id: knowledge-maintenance
+      part: 2
+      claim: "A shared skill improves safely when the source owner reviews changes before consumers inherit them."
+      scene: "relay: propose, validate, publish, and observe a versioned update"
+      seconds: 88
+    - id: part-3
+      part: 3
+      claim: "Governance connects capability to an approved policy, a current license, and a named reviewer."
+      scene: "frame: opener; model, commercial, and compliance decisions"
+      seconds: 25
+    - id: model-policy
+      part: 3
+      claim: "Model readiness is a policy check followed by a selector check in each affected workflow."
+      scene: "terminal: approved replacement enabled, selector verified, workflow ready"
+      seconds: 108
+    - id: licensing-fit
+      part: 3
+      claim: "License fit follows actual usage and current contract terms; the 30–40% figure is a legacy estimate."
+      scene: "scorecard: frequent, occasional, and review-only usage; local cost inputs"
+      seconds: 93
+    - id: telemetry-tool-governance
+      part: 3
+      claim: "The organization owner controls telemetry destinations and tool discovery at the approved boundary."
+      scene: "signals: destination, fields, retention, access, and tool policy"
+      seconds: 108
+    - id: compliance-evidence
+      part: 3
+      claim: "Automation can surface a compliance signal; the accountable reviewer decides whether evidence meets policy."
+      scene: "showdown: illustrative check and human-reviewed evidence"
+      seconds: 118
+    - id: human-review-boundary
+      part: 3
+      claim: "A generated suggestion is evidence for review, not an approval or a compliance finding by itself."
+      scene: "scorecard: proposal, automated check, human authority, escalation"
+      seconds: 93
+    - id: part-4
+      part: 4
+      claim: "Enablement scales when team choice stays inside a visible enterprise control boundary."
+      scene: "frame: opener; enterprise floor, team specialization, evidence"
+      seconds: 25
+    - id: managed-settings
+      part: 4
+      claim: "Enterprise administrators mark overridable keys; all other managed choices remain at the enterprise floor."
+      scene: "four-phases: lock floor, permit keys, map teams, inspect effective settings"
+      seconds: 123
+    - id: team-merge
+      part: 4
+      claim: "Multiple team settings merge by documented rules beneath the enterprise policy."
+      scene: "showdown: least-restrictive values, additive lists, locked choices"
+      seconds: 103
+    - id: effective-config
+      part: 4
+      claim: "An administrator verifies the effective settings for a user with multiple mapped teams."
+      scene: "terminal: mapping input, resolution, and observable validation"
+      seconds: 108
+    - id: impact-dashboard
+      part: 4
+      claim: "The impact dashboard compares cohorts with directional inputs, not audited savings attribution."
+      scene: "showdown: product-backed inputs beside permission and interpretation caveats"
+      seconds: 108
+    - id: agent-activity
+      part: 4
+      claim: "Usage reports join recognized agent-app activity on agent_id without adding nested interactions twice."
+      scene: "terminal: representative fields, stable join, count boundary"
+      seconds: 123
+    - id: measure-movement
+      part: 4
+      claim: "Adoption, workflow movement, and business outcomes answer different measurement questions."
+      scene: "four-phases: leading, intermediate, lagging, and review gate"
+      seconds: 103
+    - id: onboarding-kit
+      part: 4
+      claim: "A 30-minute quick start is a testable onboarding design, with first-use evidence collected locally."
+      scene: "relay: read, configure, exercise, inspect"
+      seconds: 103
+    - id: rollout-gates
+      part: 4
+      claim: "Teams expand a pattern after a bounded pilot produces accepted evidence and a recovery path."
+      scene: "four-phases: pilot, inspect, expand, maintain"
+      seconds: 103
+    - id: community-loop
+      part: 4
+      claim: "A community of practice turns local findings into reviewed, reusable patterns."
+      scene: "relay: team evidence, maintainer review, shared catalog"
+      seconds: 63
+    - id: investment-math
+      part: 4
+      claim: "The 180-hour investment and 2,900-hour return form an illustrative 16.1 saved-hours ratio."
+      scene: "terminal: show component estimates, arithmetic, and attribution boundary"
+      seconds: 122
+    - id: when-pattern-fits
+      part: 4
+      claim: "The pattern fits repeated shared work with an owner; teams keep local control where needs diverge."
+      scene: "signals: readiness, evidence, boundary, and escalation"
+      seconds: 93
+    - id: before-after
+      part: 0
+      claim: "The operating shift is from scattered setup to an owned baseline with bounded specialization."
+      scene: "frame: before-after; label every numerical item as a scenario estimate"
+      seconds: 75
+    - id: today
+      part: 0
+      claim: "A team can test one shared rule today, build a scoped pilot this week, and review fit this month."
+      scene: "frame: today; actions paired with observable signals and validation"
+      seconds: 105
+    - id: references
+      part: 0
+      claim: "First-party documentation and release notes are the evidence trail for this talk."
+      scene: "frame: references; links grouped by administration, configuration, and measurement"
+      seconds: 30
+    - id: thanks
+      part: 0
+      claim: "The audience leaves with a repository decision to test and an evidence owner to name."
+      scene: "frame: thanks with deck visual; transfer question"
+      seconds: 30
+
+# OPEN DECISION: Keep the traditional-problem hook inside Part 1 for this conversion; a timed
+# presenter run-through can promote it to a separate frame if the first-minute setup needs room.
