@@ -1,0 +1,16 @@
+/* Custom Agents: small, deck-local refinements for the field tables, file excerpts, and lit lines. */
+.scene .tbl-head { letter-spacing: .04em; }
+.scene .tbl-cell { fill: var(--body); }
+.scene .tbl-key { fill: var(--text); font-weight: 700; }
+.scene .tbl-mark { font-weight: 700; }
+.scene .anatomy-code { fill: var(--body); }
+.scene .ring-label { font-size: 21px; font-weight: 700; }
+.scene .lit-head { font-weight: 700; }
+.scene .lit-code { fill: var(--body); }
+.scene .lit-off { fill: none; stroke: var(--faint); stroke-width: 2; }
+.scene .ladder-tag { font-weight: 700; }
+.sc-references .refs { gap: 18px; }
+.sc-references .ref { padding: 8px 12px; margin-bottom: 6px; gap: 2px; }
+.sc-references .ref b { font-size: 18px; }
+.sc-references .ref span { font-size: 15px; }
+.sc-references .ref code { display: none; }
