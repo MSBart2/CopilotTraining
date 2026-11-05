@@ -38,7 +38,7 @@ The replacement owns orchestration only:
 | Specialist composition | `agent-teams` | Escalate when one lifecycle phase needs isolated parallel workstreams |
 | Trust infrastructure | `agentic-sdlc` | Rely on repository rulesets, CI, and CODEOWNERS for merge authority |
 
-WP12 approved this talk (then slugged `agentic-workflows`) as the active replacement for the durable content in the earlier `agentic-workflows` talk. The absorption preserves workflow selection, Markdown-source-to-lock compilation, trigger choice, permission isolation, and safe-output boundaries. It retires the broad ten-use-case catalog because unrelated examples do not expose handoff evidence, stop behavior, recovery ownership, and human authority as clearly as one concrete lifecycle. The earlier talk was later deleted, and this talk took over the `agentic-workflows` slug.
+WP12 approved this talk (then slugged `agentic-lifecycle`) as the active replacement for the durable content in the earlier `agentic-workflows` talk. The absorption preserves workflow selection, Markdown-source-to-lock compilation, trigger choice, permission isolation, and safe-output boundaries. It retires the broad ten-use-case catalog because unrelated examples do not expose handoff evidence, stop behavior, recovery ownership, and human authority as clearly as one concrete lifecycle. The earlier talk was later deleted, and this talk took over the `agentic-workflows` slug.
 
 ## Source Assessment
 

@@ -102,7 +102,7 @@
         { icon: '🎯', title: 'Why and When', subtitle: 'Pick the work first', blurb: 'A practical test, use cases, and the maintainer handoff.', slide: 4 },
         { icon: '📜', title: 'Read the Contract', subtitle: 'See authority in the file', blurb: 'Read the source, lock, safe outputs, and boundary controls.', slide: 11 },
         { icon: '🪄', title: 'Build One Live', subtitle: 'Narrow the generated draft',         blurb: 'Use the wizard, review four controls, and run staged.', slide: 21 },
-                { icon: '📊', title: 'Run and Troubleshoot', subtitle: 'Judge with evidence', blurb: 'Read the run, compare value and cost, recover, transfer.', slide: 26 }
+                { icon: '📊', title: 'Run and Judge', subtitle: 'Judge with evidence', blurb: 'Read the run, compare value and cost, recover, transfer.', slide: 26 }
       ]
     }),
     S('part-1', 1, 'Why and When', {
@@ -465,7 +465,7 @@
       loop: { from: 3, to: 2, label: 'Repeat on several real issues' },
       gateLabel: 'previews match'
     }),
-    S('part-4', 4, 'Run and Troubleshoot', {
+    S('part-4', 4, 'Run and Judge', {
       scene: 'opener',
       subtitle: 'Read the work, measure usefulness, and route what does not fit.',
       cards: [

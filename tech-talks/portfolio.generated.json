@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T16:52:05.782Z",
+  "generatedAt": "2026-11-05T17:03:21.596Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -11,12 +11,8 @@
     "catalogCards": 14,
     "validTalks": 32
   },
-  "warnings": [
-    "Directory has no README and is not a portfolio artifact: copilot-surface-router"
-  ],
-  "ghostDirectories": [
-    "copilot-surface-router"
-  ],
+  "warnings": [],
+  "ghostDirectories": [],
   "orphanedCards": [],
   "redirects": [
     {
@@ -376,20 +372,20 @@
         "readme": {
           "path": "tech-talks/agentic-workflows/README.md",
           "exists": true,
-          "bytes": 8904,
-          "modified": "2026-11-05T16:42:34.100Z"
+          "bytes": 8897,
+          "modified": "2026-11-05T17:03:20.728Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-workflows/deck.recipe.yml",
           "exists": true,
-          "bytes": 21471,
-          "modified": "2026-11-05T16:42:34.094Z"
+          "bytes": 21614,
+          "modified": "2026-11-05T17:03:20.730Z"
         },
         "deck": {
           "path": "slides/tech-talks/agentic-workflows/slides.js",
           "exists": true,
-          "bytes": 101800,
-          "modified": "2026-11-05T16:42:09.882Z"
+          "bytes": 101978,
+          "modified": "2026-11-05T17:03:20.725Z"
         },
         "notesHtml": {
           "path": "slides/tech-talks/agentic-workflows/notes.html",
@@ -400,14 +396,14 @@
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/agentic-workflows/agenda.md",
           "exists": true,
-          "bytes": 397,
-          "modified": "2026-11-05T01:58:11.919Z"
+          "bytes": 409,
+          "modified": "2026-11-05T17:03:20.716Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/agentic-workflows/agenda.html",
           "exists": true,
-          "bytes": 5887,
-          "modified": "2026-11-05T01:58:11.918Z"
+          "bytes": 6066,
+          "modified": "2026-11-05T17:03:20.714Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-workflows/deck.pdf",
@@ -751,10 +747,10 @@
     },
     {
       "slug": "copilot-cli",
-      "title": "GitHub Copilot CLI: AI at the Point of Work",
+      "title": "GitHub Copilot CLI: Intelligence Within Reach",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-15",
+      "updated": "2026-11-03",
       "section": "Agents at Your Keyboard",
       "audience": [
         "developer",
@@ -763,7 +759,7 @@
       "level": "applied",
       "duration": 45,
       "format": "core-talk",
-      "decision": "When is the terminal the correct Copilot control surface?",
+      "decision": "Where can I put AI help so decisive evidence and the right decision maker stay within reach?",
       "prerequisites": [
         "surfaces"
       ],
@@ -771,7 +767,7 @@
         "copilot-web",
         "copilot-azure-mcp"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": true,
       "files": {
@@ -788,10 +784,16 @@
           "modified": "2026-08-28T14:02:56.854Z"
         },
         "deck": {
-          "path": "slides/tech-talks/copilot-cli.md",
+          "path": "slides/tech-talks/copilot-cli/slides.js",
           "exists": true,
-          "bytes": 25481,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 113170,
+          "modified": "2026-11-05T17:03:18.603Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/copilot-cli/notes.html",
+          "exists": true,
+          "bytes": 1324,
+          "modified": "2026-11-05T17:03:18.599Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-cli/agenda.md",
@@ -1149,7 +1151,7 @@
       "title": "Copilot on GitHub: Produce, Reason, Measure",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-23",
+      "updated": "2026-11-04",
       "section": "Agents on GitHub",
       "audience": [
         "developer",
@@ -1168,7 +1170,7 @@
         "copilot-governance",
         "copilot-hooks"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Agents on GitHub",
       "cataloged": true,
       "files": {
@@ -1185,10 +1187,16 @@
           "modified": "2026-10-23T16:18:17.387Z"
         },
         "deck": {
-          "path": "slides/tech-talks/copilot-on-github.md",
+          "path": "slides/tech-talks/copilot-on-github/slides.js",
           "exists": true,
-          "bytes": 51972,
-          "modified": "2026-10-23T19:41:16.821Z"
+          "bytes": 76889,
+          "modified": "2026-11-05T17:03:18.623Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/copilot-on-github/notes.html",
+          "exists": true,
+          "bytes": 1295,
+          "modified": "2026-11-05T17:03:18.620Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-on-github/agenda.md",
@@ -1281,7 +1289,7 @@
       "title": "Copilot Configuration Primitives: Making AI Understand Your Codebase",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-21",
+      "updated": "2026-11-02",
       "section": "Foundations",
       "audience": [
         "developer",
@@ -1300,7 +1308,7 @@
         "copilot-hooks",
         "enterprise-patterns"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Foundations",
       "cataloged": true,
       "files": {
@@ -1317,10 +1325,16 @@
           "modified": "2026-09-17T13:31:43.838Z"
         },
         "deck": {
-          "path": "slides/tech-talks/copilot-primitives.md",
+          "path": "slides/tech-talks/copilot-primitives/slides.js",
           "exists": true,
-          "bytes": 36334,
-          "modified": "2026-10-22T19:15:49.132Z"
+          "bytes": 94945,
+          "modified": "2026-11-05T17:03:18.635Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/copilot-primitives/notes.html",
+          "exists": true,
+          "bytes": 1325,
+          "modified": "2026-11-05T17:03:18.630Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-primitives/agenda.md",
@@ -1543,10 +1557,10 @@
     },
     {
       "slug": "custom-agents",
-      "title": "Custom Agents: One File, Every Runtime",
+      "title": "Custom Agents: One File, Every Surface",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-21",
+      "updated": "2026-11-04",
       "section": "Foundations",
       "audience": [
         "developer",
@@ -1556,7 +1570,7 @@
       "level": "applied",
       "duration": 45,
       "format": "core-talk",
-      "decision": "How can a team design one custom agent that behaves the way it intends in every runtime it reaches?",
+      "decision": "How do I write one agent file that works in every Copilot surface my team uses?",
       "prerequisites": [
         "copilot-primitives"
       ],
@@ -1566,7 +1580,7 @@
         "agentic-workflows",
         "copilot-hooks"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Foundations",
       "cataloged": true,
       "files": {
@@ -1583,10 +1597,16 @@
           "modified": "2026-10-22T01:17:12.688Z"
         },
         "deck": {
-          "path": "slides/tech-talks/custom-agents.md",
+          "path": "slides/tech-talks/custom-agents/slides.js",
           "exists": true,
-          "bytes": 42482,
-          "modified": "2026-10-22T19:15:49.146Z"
+          "bytes": 59072,
+          "modified": "2026-11-05T17:03:18.646Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/custom-agents/notes.html",
+          "exists": true,
+          "bytes": 1312,
+          "modified": "2026-11-05T17:03:18.642Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/custom-agents/agenda.md",
@@ -1680,7 +1700,7 @@
       "title": "Harness Fundamentals: Getting Inside the Agent Loop",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-30",
+      "updated": "2026-11-04",
       "section": "Extend and Embed",
       "audience": [
         "developer",
@@ -1700,7 +1720,7 @@
         "copilot-on-github",
         "enterprise-patterns"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Extend and Embed",
       "cataloged": true,
       "files": {
@@ -1717,10 +1737,16 @@
           "modified": "2026-10-30T17:46:21.161Z"
         },
         "deck": {
-          "path": "slides/tech-talks/harness-fundamentals.md",
+          "path": "slides/tech-talks/harness-fundamentals/slides.js",
           "exists": true,
-          "bytes": 53615,
-          "modified": "2026-10-30T17:50:26.427Z"
+          "bytes": 94586,
+          "modified": "2026-11-05T17:03:18.662Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/harness-fundamentals/notes.html",
+          "exists": true,
+          "bytes": 1301,
+          "modified": "2026-11-05T17:03:18.659Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/harness-fundamentals/agenda.md",
@@ -2221,10 +2247,10 @@
     },
     {
       "slug": "vscode-latest",
-      "title": "VS Code Copilot Through 1.139: Agent Infrastructure, Open Models, and Closed-Loop Delivery",
+      "title": "VS Code Agents: Pick, Place, Steer, Keep",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-25",
+      "updated": "2026-11-02",
       "section": "Agents at Your Keyboard",
       "audience": [
         "developer",
@@ -2233,7 +2259,7 @@
       "level": "applied",
       "duration": 50,
       "format": "release-brief",
-      "decision": "Which recent VS Code Copilot changes alter a durable workflow decision?",
+      "decision": "Which intelligence, which place, what may act unasked, and which changes stay for this agent run?",
       "prerequisites": [
         "surfaces"
       ],
@@ -2242,7 +2268,7 @@
         "repo-to-feature",
         "multi-agent-coordination"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": true,
       "files": {
@@ -2259,10 +2285,16 @@
           "modified": "2026-10-22T19:20:11.616Z"
         },
         "deck": {
-          "path": "slides/tech-talks/vscode-latest.md",
+          "path": "slides/tech-talks/vscode-latest/slides.js",
           "exists": true,
-          "bytes": 26612,
-          "modified": "2026-10-22T19:23:44.620Z"
+          "bytes": 90898,
+          "modified": "2026-11-05T17:03:18.706Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/vscode-latest/notes.html",
+          "exists": true,
+          "bytes": 1518,
+          "modified": "2026-11-05T17:03:18.703Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/vscode-latest/agenda.md",

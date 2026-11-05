@@ -122,7 +122,7 @@ Read the real FanHub workflow source, body, compiled lock, safe outputs, and sta
 
 Use the wizard to turn task intent into a prompt, then let repository context inform a draft. The reviewer narrows allowed outputs, limits, target, and staging before compiling and inspecting a preview.
 
-## 4. Run and Troubleshoot
+## 4. Run and Judge
 
 Separate job status from domain results. Use run Summary, `gh aw audit`, `gh aw logs`, experimental evals, and Outcomes for distinct evidence, know when another tool fits better, and tell Copilot automations apart from agentic workflows.
 

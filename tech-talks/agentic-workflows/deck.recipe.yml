@@ -37,7 +37,7 @@ deck:
       takeaway: "Read the run Summary, gh aw audit, and gh aw logs; weigh cost against evals (did it follow instructions) and Outcomes (did people find it useful); trace each symptom to its owning block."
       whyItMatters: "Promotion, revision, and retirement become decisions backed by run evidence."
 
-  arcToc: "Why and When → Read the Contract → Build One Live → Run and Troubleshoot"
+  arcToc: "Why and When → Read the Contract → Build One Live → Run and Judge"
 
   arcNarrative: >
     The talk opens on Continuous AI: the Agent Factory ring shows planning, refactoring, docs, CI diagnosis, and meta-agents running on Actions runners. CI handles the predictable work, and what still lands on the
@@ -57,7 +57,7 @@ deck:
     - "1. Why and When"
     - "2. Read the Contract"
     - "3. Build One Live"
-    - "4. Run and Troubleshoot"
+    - "4. Run and Judge"
 
   frame:
     - "1 Title: Continuous AI for Your Repository"
@@ -97,7 +97,7 @@ deck:
         examples/example-flow-prompt.md as the fallback); Narrow the Draft (four controls);
         Refine and First Loop (gh workflow run triage-wizard.lock.yml -f issue_number=202).
         Intent Becomes Evaluation lives in speaker notes.
-    "4. Run and Troubleshoot":
+    "4. Run and Judge":
       emphasis: medium
       slides: "26–33 (8)"
       note: >

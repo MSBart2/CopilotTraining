@@ -26,7 +26,6 @@ const DECKS = [
   "agent-teams",
   "agentic-journey",
   "agentic-sdlc",
-  "agentic-workflows",
   "copilot-acp",
   "copilot-azure-mcp",
   "copilot-chat-internals",
