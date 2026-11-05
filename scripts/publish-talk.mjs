@@ -4,9 +4,12 @@
 // origin/main, so the current branch and working tree are never touched.
 //
 //   npm run publish:talk -- <slug> [--include <path>]... [-m "message"] [--push] [--keep]
+//   npm run publish:talk -- --status                     # what is still only on this branch
+//   npm run publish:talk -- --tooling [-m "message" --push]   # ship the non-talk leftovers
 //
 // Without --push it is a dry run: it stages the change in the worktree, runs the
-// ship checks, prints the diff stat, and cleans up.
+// ship checks, prints the diff stat, and cleans up. Every run ends with a list of
+// talks still waiting and, once none remain, a reminder to ship the tooling.
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, symlinkSync, unlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -14,19 +17,25 @@ import { join, resolve } from "node:path";
 
 const TRAILER = "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>";
 const repo = resolve(import.meta.dirname, "..");
+// Regenerated on every publish, so they never count as leftovers.
+const GENERATED = new Set(["slides/index-custom.html", "tech-talks/portfolio.generated.json"]);
 
 function parseArgs(argv) {
-  const opts = { include: [], push: false, keep: false, message: null, slug: null };
+  const opts = { include: [], push: false, keep: false, status: false, tooling: false, message: null, slug: null };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--include") opts.include.push(argv[++i]);
     else if (a === "-m" || a === "--message") opts.message = argv[++i];
     else if (a === "--push") opts.push = true;
     else if (a === "--keep") opts.keep = true;
+    else if (a === "--status") opts.status = true;
+    else if (a === "--tooling") opts.tooling = true;
     else if (!a.startsWith("-") && !opts.slug) opts.slug = a;
     else throw new Error(`Unknown argument: ${a}`);
   }
-  if (!opts.slug) throw new Error("Usage: npm run publish:talk -- <slug> [--include <path>]... [-m \"message\"] [--push]");
+  if (!opts.slug && !opts.status && !opts.tooling) {
+    throw new Error("Usage: npm run publish:talk -- <slug> | --status | --tooling [--include <path>]... [-m \"message\"] [--push]");
+  }
   if (opts.push && !opts.message) throw new Error("--push needs -m \"commit message\"");
   return opts;
 }
@@ -34,6 +43,40 @@ function parseArgs(argv) {
 const git = (args, cwd = repo) => execFileSync("git", args, { cwd, encoding: "utf8" }).trim();
 const run = (args, cwd) => execFileSync(process.execPath, args, { cwd, stdio: "inherit" });
 const inTree = (rev, path, cwd) => git(["ls-tree", "-r", "--name-only", rev, "--", path], cwd) !== "";
+
+// Split everything that differs between main and the branch into talks and tooling.
+function pending(base, source) {
+  const files = git(["diff", "--name-only", base, source]).split(/\r?\n/).filter(Boolean);
+  const talks = new Set();
+  const tooling = [];
+  for (const f of files) {
+    if (GENERATED.has(f)) continue;
+    const m = f.match(/^(?:slides\/companions\/|slides\/)?tech-talks\/([^/]+)\//) ?? f.match(/^slides\/tech-talks\/([^/]+)\.md$/);
+    if (m && (inTree(source, `tech-talks/${m[1]}/README.md`) || inTree(base, `tech-talks/${m[1]}/README.md`))) talks.add(m[1]);
+    else tooling.push(f);
+  }
+  return { talks: [...talks].sort(), tooling };
+}
+
+function reportPending({ talks, tooling }, branch) {
+  console.log("");
+  if (talks.length) {
+    console.log(`📋 Still only on ${branch} (${talks.length}): ${talks.join(", ")}`);
+    if (tooling.length) console.log(`   Plus ${tooling.length} tooling file(s); ship them after the last talk (npm run publish:talk -- --tooling).`);
+    return;
+  }
+  if (!tooling.length) {
+    console.log(`✅ ${branch} has nothing left that main lacks. Safe to delete it (and backup/* branches).`);
+    return;
+  }
+  const bar = "═".repeat(72);
+  console.log(`${bar}\n⚠  LAST TALK IS OUT — BEFORE YOU DELETE ${branch}:\n`);
+  console.log(`   ${tooling.length} tooling file(s) exist only on this branch and die with it:`);
+  for (const f of tooling) console.log(`     · ${f}`);
+  console.log(`\n   Review: npm run publish:talk -- --tooling`);
+  console.log(`   Ship:   npm run publish:talk -- --tooling -m "<message>" --push`);
+  console.log(`   Or drop any you don't want, then delete the branch.\n${bar}`);
+}
 
 // A fresh checkout gives every file a new mtime, so the inventory would report
 // size and date churn for files this publish never touched. Keep main's values for those.
@@ -57,27 +100,42 @@ function restoreInventoryNoise(wt, changed) {
 
 function main() {
   const opts = parseArgs(process.argv.slice(2));
-  const { slug } = opts;
   const source = git(["rev-parse", "HEAD"]);
   const branch = git(["rev-parse", "--abbrev-ref", "HEAD"]);
 
-  const readme = join(repo, "tech-talks", slug, "README.md");
-  if (!existsSync(readme)) throw new Error(`No talk at tech-talks/${slug}/README.md`);
-  if (/^status:\s*archived\s*$/m.test(readFileSync(readme, "utf8"))) throw new Error(`${slug} is archived; nothing to publish.`);
+  if (opts.status) {
+    git(["fetch", "origin", "main", "--quiet"]);
+    reportPending(pending("origin/main", source), branch);
+    return;
+  }
 
-  const paths = [
-    `tech-talks/${slug}`,
-    `slides/tech-talks/${slug}`,
-    `slides/tech-talks/${slug}.md`,
-    `slides/companions/tech-talks/${slug}`,
-    ...opts.include,
-  ];
+  const { slug } = opts;
+  let paths;
+  if (opts.tooling) {
+    paths = [...pending("origin/main", source).tooling, ...opts.include];
+    if (!paths.length) {
+      console.log("✓ No tooling left to publish.");
+      return;
+    }
+  } else {
+    const readme = join(repo, "tech-talks", slug, "README.md");
+    if (!existsSync(readme)) throw new Error(`No talk at tech-talks/${slug}/README.md`);
+    if (/^status:\s*archived\s*$/m.test(readFileSync(readme, "utf8"))) throw new Error(`${slug} is archived; nothing to publish.`);
+    paths = [
+      `tech-talks/${slug}`,
+      `slides/tech-talks/${slug}`,
+      `slides/tech-talks/${slug}.md`,
+      `slides/companions/tech-talks/${slug}`,
+      ...opts.include,
+    ];
+  }
+  const label = opts.tooling ? "tooling" : slug;
 
   const dirty = git(["status", "--porcelain", "--", ...paths]);
   if (dirty) console.warn(`⚠ Uncommitted changes in these paths are NOT published (commit them first):\n${dirty}\n`);
 
   git(["fetch", "origin", "main", "--quiet"]);
-  const wt = join(tmpdir(), `publish-${slug}-${Date.now()}`);
+  const wt = join(tmpdir(), `publish-${label}-${Date.now()}`);
   git(["worktree", "add", "--quiet", "--detach", wt, "origin/main"]);
   const links = [];
   try {
@@ -106,7 +164,7 @@ function main() {
 
     console.log(`\n▶ Ship checks`);
     run(["scripts/check-companions.mjs", "--strict"], join(wt, "slides"));
-    if (existsSync(join(wt, "slides", "tech-talks", slug, "slides.js"))) {
+    if (slug && existsSync(join(wt, "slides", "tech-talks", slug, "slides.js"))) {
       run(["scripts/validate-native-deck.mjs", `tech-talks/${slug}`], join(wt, "slides"));
     }
 
@@ -114,18 +172,25 @@ function main() {
     git(["add", "-A"], wt);
     const stat = git(["diff", "--cached", "--stat"], wt);
     if (!stat) {
-      console.log(`\n✓ main already matches ${branch} for ${slug}; nothing to publish.`);
+      console.log(`\n✓ main already matches ${branch} for ${label}; nothing to publish.`);
       return;
     }
     console.log(`\n▶ Changes for main (from ${branch} @ ${source.slice(0, 7)}):\n${stat}`);
 
     if (!opts.push) {
-      console.log(`\nDry run. Publish with: npm run publish:talk -- ${slug}${opts.include.map((p) => ` --include ${p}`).join("")} -m "<message>" --push`);
+      const cmd = opts.tooling ? "--tooling" : slug;
+      console.log(`\nDry run. Publish with: npm run publish:talk -- ${cmd}${opts.include.map((p) => ` --include ${p}`).join("")} -m "<message>" --push`);
+      // Preview what would remain once this one ships.
+      const after = pending("origin/main", source);
+      after.talks = after.talks.filter((t) => t !== slug);
+      if (opts.tooling) after.tooling = [];
+      reportPending(after, branch);
       return;
     }
     git(["commit", "-q", "-m", opts.message, "-m", TRAILER], wt);
     git(["push", "origin", "HEAD:main"], wt);
     console.log(`\n✓ Pushed ${git(["log", "-1", "--format=%h %s"], wt)} to main`);
+    reportPending(pending(git(["rev-parse", "HEAD"], wt), source), branch);
   } finally {
     for (const link of links) unlinkSync(link);
     if (opts.keep) console.log(`Worktree kept at ${wt}`);
