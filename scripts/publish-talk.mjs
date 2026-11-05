@@ -156,7 +156,7 @@ function main() {
     } catch {
       console.warn("⚠ Inventory reported errors (listed above); the file was still regenerated.");
     }
-    git(["add", "-A", "--", ...restorable], wt);
+    git(["add", "-A", "--", ...restorable.filter((p) => existsSync(join(wt, p)))], wt);
     const changed = new Set(git(["diff", "--cached", "--name-only"], wt).split(/\r?\n/).filter(Boolean));
     restoreInventoryNoise(wt, changed);
 
