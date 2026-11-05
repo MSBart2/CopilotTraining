@@ -98,7 +98,7 @@ with an acknowledgement in the engine README.
 ## 2. Where we start
 
 - **Active tech talks:** 15. Nine have Slidev decks under `slides/tech-talks/`:
-  `agentic-lifecycle` (36), `copilot-on-github` (39), `copilot-primitives` (33),
+  `agentic-workflows` (36), `copilot-on-github` (39), `copilot-primitives` (33),
   `custom-agents` (25), `exec-strategy` (20), `harness-fundamentals` (31),
   `local-agentic-sdlc` (28), `surfaces` (28), and `vscode-latest` (24). The other
   six have no deck under a matching name; the inventory phase confirms them.
@@ -356,7 +356,7 @@ and a time budget totaling 42:00 (estimates), and the README is a landing page.
 | Deck | Slides now | Target engine | State | Evidence |
 |---|---|---|---|---|
 | surfaces | 28 | native | Pilot complete: 28 of 28; standard slides and patterns extracted to `native/frames.js` and `native/patterns.js` (deck keeps 6 deck-only scenes); notes-first: 28 slides of notes, README slimmed to a landing page | `validate:native` passes (28 slides, 28 PDF pages); pixel-identical to pre-extraction baseline |
-| agentic-lifecycle | 36 | native | Not started | — |
+| agentic-workflows | 36 | native | Not started | — |
 | copilot-on-github | 39 | native | Not started | — |
 | copilot-primitives | 33 | native | Not started | — |
 | custom-agents | 25 | native | Not started | — |

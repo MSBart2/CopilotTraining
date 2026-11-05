@@ -7,7 +7,7 @@ level: applied
 duration: 50
 format: core-talk
 decision: "How can a team join agentic delivery, advisory review, and an enforceable quality gate into a human-owned merge decision?"
-prerequisites: [agentic-lifecycle, copilot-code-review, copilot-code-quality]
+prerequisites: [agentic-workflows, copilot-code-review, copilot-code-quality]
 related: [agentic-sdlc, copilot-web]
 references:
   - url: https://github.github.com/gh-aw/introduction/overview/
@@ -54,7 +54,7 @@ references:
 
 **Duration:** 50 minutes | **Audience:** Developers, team leads, and platform engineers
 
-A maintainer can approve a bounded issue and let an agent offer a draft while independent tools inspect it. The advantage comes when the teammate opening the PR can tell **which evidence is advice, which change needed a human click, which rule can stop a merge, and what remains unproved**. This capstone joins the [agentic lifecycle](../agentic-lifecycle/README.md), [Copilot Code Review](../copilot-code-review/README.md), and [Code Quality](../copilot-code-quality/README.md) talks at the merge decision. Deployment and production feedback are the next boundary, not observed outcomes here.
+A maintainer can approve a bounded issue and let an agent offer a draft while independent tools inspect it. The advantage comes when the teammate opening the PR can tell **which evidence is advice, which change needed a human click, which rule can stop a merge, and what remains unproved**. This capstone joins the [agentic lifecycle](../agentic-workflows/README.md), [Copilot Code Review](../copilot-code-review/README.md), and [Code Quality](../copilot-code-quality/README.md) talks at the merge decision. Deployment and production feedback are the next boundary, not observed outcomes here.
 
 ### Four proofs, not one synthetic PR
 

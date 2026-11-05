@@ -18,7 +18,7 @@ updated: 2026-10-21
 |---|---|---|---|---|
 | 1 | Foundations 🧱 | `foundations` | Context shared by every agent | surfaces, copilot-primitives, **custom-agents (NEW)** |
 | 2 | Agents at Your Keyboard ⌨️ | `agents-at-your-keyboard` | A developer runs it locally in VS Code or the CLI | copilot-cli, vscode-latest, **local-agentic-sdlc (NEW)** |
-| 3 | Agents on GitHub ☁️ | `agents-on-github` | A GitHub event or a person on github.com starts it | **copilot-on-github (NEW: coding agent + code review + Code Quality)**, **agentic-lifecycle → full GitHub Agentic Workflows talk** |
+| 3 | Agents on GitHub ☁️ | `agents-on-github` | A GitHub event or a person on github.com starts it | **copilot-on-github (NEW: coding agent + code review + Code Quality)**, **agentic-workflows → full GitHub Agentic Workflows talk** |
 | 4 | Trust and Govern 🛡️ | `trust-and-govern` | Rules that apply whichever section the agent comes from | copilot-hooks, agentic-sdlc, copilot-governance, enterprise-patterns *(merge deferred)* |
 | 5 | Extend and Embed 🧩 | `extend-and-embed` | Agents built into other products | unchanged |
 
@@ -28,7 +28,7 @@ updated: 2026-10-21
 
 **Section 3 split:**
 - **copilot-on-github:** built-in agents that someone invokes and whose results someone reviews. Each one's value shows up at a different step of the same pull request.
-- **agentic-lifecycle:** automation the team writes itself, started by repository events. This is the talk with real depth.
+- **agentic-workflows:** automation the team writes itself, started by repository events. This is the talk with real depth.
 
 ---
 
@@ -44,7 +44,7 @@ updated: 2026-10-21
 6. Re-section the active talks that change section. Update `section:` and `updated:` in **both** the README and the deck frontmatter:
    - Foundations: surfaces, copilot-primitives
    - Keyboard: copilot-cli, vscode-latest (repo-to-feature, unattended-agents and multi-agent-coordination stay where they are until archived)
-   - GitHub: agentic-lifecycle (copilot-web stays where it is until archived)
+   - GitHub: agentic-workflows (copilot-web stays where it is until archived)
    - Trust: copilot-hooks, agentic-sdlc, copilot-governance, enterprise-patterns (pr-trust-stack stays where it is until archived)
    - Extend: unchanged name. Verify only.
 7. `tech-talks/README.md` and `tech-talks/DECISION-GUIDE.md`: rewrite the section narrative around the runtime axis and state the lens checklist once.
@@ -63,9 +63,9 @@ These steps differed from the plan above:
 - Test counts: `catalogCards` is 22 (the old assertion of 20 was already failing). Added a test that active talks use a current section and only archived talks may use a legacy section.
 - The onboarding "Start here" path and the DECISION-GUIDE learning paths still link to talks that will be archived. Phase 4 updates them.
 
-## Phase 1 — Agents on GitHub: expand agentic-lifecycle into the full GitHub Agentic Workflows talk
+## Phase 1 — Agents on GitHub: expand agentic-workflows into the full GitHub Agentic Workflows talk
 
-**Why this phase is needed:** the `agentic-workflows` redirect says agentic-lifecycle covers "workflow selection, compilation, permissions, and safe outputs," but today it shows only one pattern: four workflows, each started when a person adds a label.
+**Why this phase is needed:** the old `agentic-workflows` redirect says agentic-lifecycle (since renamed `agentic-workflows`) covers "workflow selection, compilation, permissions, and safe outputs," but today it shows only one pattern: four workflows, each started when a person adds a label.
 
 - **Keep:** the FanHub #110 → draft PR #193 journey as the anchor.
 - **Add, re-verified against current gh-aw docs and release notes:**
@@ -211,9 +211,9 @@ Do this only after each replacement talk is `active` + `deployed`, because redir
 
 Fix `prerequisites` / `related` and any inline links:
 
-- agentic-sdlc: `prerequisites: [agentic-workflows]` (archived) → `[agentic-lifecycle]`
+- agentic-sdlc: `prerequisites: [agentic-workflows]` (archived) → `[agentic-lifecycle]` (the active talk has since taken the `agentic-workflows` slug; the archived talk was deleted)
 - copilot-on-github: `prerequisites: [custom-agents]` (new talk)
-- agentic-lifecycle: `prerequisites: [repo-to-feature, copilot-web]` → `[copilot-on-github]`; related: `multi-agent-coordination` → `local-agentic-sdlc`
+- agentic-workflows: `prerequisites: [repo-to-feature, copilot-web]` → `[copilot-on-github]`; related: `multi-agent-coordination` → `local-agentic-sdlc`
 - surfaces, copilot-cli: replace links to copilot-web → `copilot-on-github`; agentic-sdlc, copilot-governance, copilot-hooks: replace links to pr-trust-stack → `copilot-on-github`
 - surfaces, vscode-latest, copilot-primitives: replace links to repo-to-feature and multi-agent-coordination
 - copilot-hooks, copilot-governance, copilot-with-foundry, agentic-sdlc: re-check related links

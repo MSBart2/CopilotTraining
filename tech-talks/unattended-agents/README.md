@@ -8,7 +8,7 @@ duration: 45
 format: core-talk
 decision: "How does an unattended agent loop verify progress and stop safely?"
 prerequisites: [agent-teams]
-related: [repo-to-feature, agentic-lifecycle, copilot-hooks, agentic-sdlc]
+related: [repo-to-feature, agentic-workflows, copilot-hooks, agentic-sdlc]
 references:
   - url: https://github.com/cobusgreyling/loop-engineering
     label: "loop-engineering: Practical patterns, starters & CLI tools for loop engineering with AI coding agents"
@@ -169,7 +169,7 @@ tools: [read, edit, search, agent, "github/*"]
 
 Two operating details keep a file-based state store honest. The file lives in the session's working tree, so each pass sees the previous pass's state immediately; give the loop its own git worktree so your own edits and the loop's stay apart. Passes that overlap can overwrite each other's state, so run one loop per worktree and have the orchestrator verify the file against the repository before acting on it.
 
-The YAML examples later in this talk express the same five components as design blueprints — specifications a team adapts into its own orchestrator, agent instructions, and CI. No Copilot surface reads those files directly. The [loop starter](./examples/loop-starter/) turns the security-advisory blueprint into five working agent files you can copy and run. For a repository-native runtime that enforces time, turn, and write limits for you, see [GitHub Agentic Workflows](../agentic-lifecycle/).
+The YAML examples later in this talk express the same five components as design blueprints — specifications a team adapts into its own orchestrator, agent instructions, and CI. No Copilot surface reads those files directly. The [loop starter](./examples/loop-starter/) turns the security-advisory blueprint into five working agent files you can copy and run. For a repository-native runtime that enforces time, turn, and write limits for you, see [GitHub Agentic Workflows](../agentic-workflows/).
 
 **Key References:**
 - 📖 [Copilot CLI command reference — GitHub Docs](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference) — The loop trigger: `/every` repeats a prompt on an interval inside a CLI session; `--agent` selects the orchestrator[^16]
@@ -299,7 +299,7 @@ Q: Does our task require more than one distinct capability, or run unattended?
 | **Topology** | Hierarchical, flat-pool, pipeline, or hybrid | N/A | Directed acyclic graph |
 | **Controls** | Explicit circuit breakers + watchdogs | None needed | DAG timeout/retry |
 
-**GitHub Agentic Workflows** (`gh aw`) is a repository-native runtime for many of these loop components: scheduled and event triggers, Git-backed memory, enforced time and turn limits, and gated write outputs. The [agentic-lifecycle](../agentic-lifecycle/) talk covers it in depth.
+**GitHub Agentic Workflows** (`gh aw`) is a repository-native runtime for many of these loop components: scheduled and event triggers, Git-backed memory, enforced time and turn limits, and gated write outputs. The [agentic-workflows](../agentic-workflows/) talk covers it in depth.
 
 ---
 
@@ -329,7 +329,7 @@ $ copilot --experimental
   activity for 3 days. Close issues stale for 7+ days with a polite note.
 ```
 
-This is the simplest complete loop: `/every` is the trigger, the prompt encodes the goal and exit condition, and the session fires the pass again tomorrow. The schedule belongs to the session, so it runs while the CLI stays open on a machine that is awake. A loop that has to run around the clock without a session belongs in a repository-hosted runtime such as [GitHub Agentic Workflows](../agentic-lifecycle/). The orchestrator agent files and shared state store described above extend this pattern to multi-agent coordination.
+This is the simplest complete loop: `/every` is the trigger, the prompt encodes the goal and exit condition, and the session fires the pass again tomorrow. The schedule belongs to the session, so it runs while the CLI stays open on a machine that is awake. A loop that has to run around the clock without a session belongs in a repository-hosted runtime such as [GitHub Agentic Workflows](../agentic-workflows/). The orchestrator agent files and shared state store described above extend this pattern to multi-agent coordination.
 
 ### Anatomy of a Production Loop
 
@@ -894,7 +894,7 @@ goal:
 
 - [ ] Wire a three-agent hierarchical pipeline (orchestrator → worker → critic) using `loop-topology.yml` as a base, with full task-envelope handoff between agents and a shared `circuit_breaker` in the controls section
 - [ ] Make the evidence checklist part of the loop: have the orchestrator write each row's result into the draft PR body, so reviewers see the controls working alongside the fix
-- [ ] Move one loop's hard limits out of the agent: start its CLI session with `--deny-tool` rules for merge and review, or rebuild it as a [GitHub Agentic Workflow](../agentic-lifecycle/) with `max-turns` and `stop-after`
+- [ ] Move one loop's hard limits out of the agent: start its CLI session with `--deny-tool` rules for merge and review, or rebuild it as a [GitHub Agentic Workflow](../agentic-workflows/) with `max-turns` and `stop-after`
 
 ---
 
@@ -902,7 +902,7 @@ goal:
 
 - **[From Repo to Feature](../repo-to-feature/)** — The guided counterpart: you drive each step of one feature in VS Code and leave behind prompts, skills, and plans. Those assets are what an unattended loop runs on a schedule.
 - **[Multi-Agent Coordination](../multi-agent-coordination/)** — How to compose isolated workstreams; loop engineering provides the production-control layer for unattended operation
-- **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Evidence-gated repository workflows; loop engineering extends this with dynamic, verification-driven execution and adaptive topology
+- **[GitHub Agentic Workflows](../agentic-workflows/)** — Evidence-gated repository workflows; loop engineering extends this with dynamic, verification-driven execution and adaptive topology
 - **[MCP Apps](../mcp-apps/README.md)** — Model Context Protocol as the tool layer inside a loop's execution layer; MCP tools are what loop agents invoke when they act
 
 ---

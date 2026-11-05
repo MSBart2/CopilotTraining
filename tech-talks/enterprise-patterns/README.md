@@ -1002,7 +1002,7 @@ Team Adoption:
 1. ✅ Achieve 80%+ licensed seat utilization with consistent standards
 2. 📊 Present quarterly ROI metrics to leadership for expansion budget justification
 3. 🚀 Scale from 50 to 200+ developers using proven playbooks
-4. 📖 Review [GitHub Agentic Workflows](../agentic-lifecycle/) for workflow automation patterns
+4. 📖 Review [GitHub Agentic Workflows](../agentic-workflows/) for workflow automation patterns
 
 ---
 
@@ -1010,7 +1010,7 @@ Team Adoption:
 
 ### Complementary Features
 
-- **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Issue-to-PR automation workflows that leverage org standards
+- **[GitHub Agentic Workflows](../agentic-workflows/)** — Issue-to-PR automation workflows that leverage org standards
 - **[Agentic SDLC](../agentic-sdlc/)** — Full Gen-4 transformation when ready to graduate beyond enterprise patterns
 - **[Local Agentic SDLC](../local-agentic-sdlc/)** — Specialist agents and an integration record in one orchestrated local run
 

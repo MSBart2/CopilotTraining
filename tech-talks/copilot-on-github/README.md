@@ -9,7 +9,7 @@ duration: 60
 format: core-talk
 decision: "Which pull request steps can run automatically through the cloud agent, code review, and Code Quality, and where do I steer the rework and approve the merge?"
 prerequisites: [copilot-primitives]
-related: [agentic-lifecycle, copilot-governance, copilot-hooks]
+related: [agentic-workflows, copilot-governance, copilot-hooks]
 references:
   - url: https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent
     label: "About Copilot cloud agent"
@@ -132,7 +132,7 @@ Trace one observed FanHub pull request through its human actions, pushes, review
 
 ## Related Patterns
 
-- **[GitHub Agentic Workflows](../agentic-lifecycle/README.md):** scheduled and event-driven repository judgment with its own authority contract.
+- **[GitHub Agentic Workflows](../agentic-workflows/README.md):** scheduled and event-driven repository judgment with its own authority contract.
 - **[Copilot Governance](../copilot-governance/README.md):** policies, budgets, and who may promote agent authority.
 - **[Copilot Hooks](../copilot-hooks/README.md):** deterministic checks around agent sessions.
 

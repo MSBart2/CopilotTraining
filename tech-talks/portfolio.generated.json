@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-30T20:54:31.206Z",
+  "generatedAt": "2026-11-05T16:52:05.782Z",
   "source": "tech-talks/*/README.md",
   "counts": {
-    "totalTalks": 33,
+    "totalTalks": 32,
     "practitionerTalks": 14,
-    "archivedTalks": 19,
+    "archivedTalks": 18,
     "deployedTalks": 14,
     "candidateTalks": 0,
     "catalogCards": 14,
-    "validTalks": 33
+    "validTalks": 32
   },
   "warnings": [
     "Directory has no README and is not a portfolio artifact: copilot-surface-router"
@@ -57,7 +57,7 @@
     {
       "source": "agentic-journey",
       "status": "merged",
-      "target": "agentic-lifecycle",
+      "target": "agentic-workflows",
       "reason": "The issue-to-PR state machine is now owned by GitHub Agentic Workflows.",
       "decisionId": "adoption-pathway"
     },
@@ -74,13 +74,6 @@
       "target": "local-agentic-sdlc",
       "reason": "Parallel local sessions and worktrees are now taught inside the orchestrated run in Local Agentic SDLC.",
       "decisionId": "taxonomy-restructure"
-    },
-    {
-      "source": "agentic-workflows",
-      "status": "merged",
-      "target": "agentic-lifecycle",
-      "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by GitHub Agentic Workflows.",
-      "decisionId": "workflow-lifecycle"
     },
     {
       "source": "repo-to-feature",
@@ -286,73 +279,6 @@
       "errors": []
     },
     {
-      "slug": "agentic-lifecycle",
-      "title": "GitHub Agentic Workflows: Automate the Repository Chores That Take Judgment",
-      "status": "active",
-      "portfolioState": "deployed",
-      "updated": "2026-10-22",
-      "section": "Agents on GitHub",
-      "audience": [
-        "platform-engineer",
-        "team-lead",
-        "developer"
-      ],
-      "level": "advanced",
-      "duration": 55,
-      "format": "core-talk",
-      "decision": "Which repository chores fit an agent, and how do you keep it in bounds?",
-      "prerequisites": [
-        "copilot-primitives"
-      ],
-      "related": [
-        "copilot-on-github",
-        "copilot-hooks",
-        "agentic-sdlc"
-      ],
-      "deckFormat": "slidev",
-      "deckSection": "Agents on GitHub",
-      "cataloged": true,
-      "files": {
-        "readme": {
-          "path": "tech-talks/agentic-lifecycle/README.md",
-          "exists": true,
-          "bytes": 57759,
-          "modified": "2026-10-26T15:25:34.401Z"
-        },
-        "recipe": {
-          "path": "tech-talks/agentic-lifecycle/deck.recipe.yml",
-          "exists": true,
-          "bytes": 7820,
-          "modified": "2026-10-22T19:17:11.410Z"
-        },
-        "deck": {
-          "path": "slides/tech-talks/agentic-lifecycle.md",
-          "exists": true,
-          "bytes": 78619,
-          "modified": "2026-10-22T18:54:08.420Z"
-        },
-        "agendaMarkdown": {
-          "path": "slides/companions/tech-talks/agentic-lifecycle/agenda.md",
-          "exists": true,
-          "bytes": 397,
-          "modified": "2026-10-22T19:00:14.396Z"
-        },
-        "agendaHtml": {
-          "path": "slides/companions/tech-talks/agentic-lifecycle/agenda.html",
-          "exists": true,
-          "bytes": 5887,
-          "modified": "2026-10-22T19:00:14.400Z"
-        },
-        "deckPdf": {
-          "path": "slides/companions/tech-talks/agentic-lifecycle/deck.pdf",
-          "exists": true,
-          "bytes": 3240048,
-          "modified": "2026-10-22T19:02:04.713Z"
-        }
-      },
-      "errors": []
-    },
-    {
       "slug": "agentic-sdlc",
       "title": "Agentic SDLC: Infrastructure for AI Velocity",
       "status": "active",
@@ -421,66 +347,73 @@
     },
     {
       "slug": "agentic-workflows",
-      "title": "GitHub Agentic Workflows: Repository Automation with AI Agents",
-      "status": "archived",
+      "title": "GitHub Agentic Workflows: Continuous AI for Your Repository",
+      "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-16",
-      "section": "Delegate and Coordinate",
+      "updated": "2026-10-30",
+      "section": "Agents on GitHub",
       "audience": [
-        "developer",
+        "platform-engineer",
         "team-lead",
-        "platform-engineer"
+        "developer"
       ],
       "level": "advanced",
-      "duration": 50,
+      "duration": 55,
       "format": "core-talk",
-      "decision": "Which recurring repository judgments should run as workflows?",
+      "decision": "What can agents run continuously in my repository, and how do I keep them in bounds?",
       "prerequisites": [
-        "copilot-web"
+        "copilot-primitives"
       ],
       "related": [
+        "copilot-on-github",
         "copilot-hooks",
         "agentic-sdlc"
       ],
-      "deckFormat": "slidev",
-      "deckSection": "Delegate and Coordinate",
-      "cataloged": false,
+      "deckFormat": "native",
+      "deckSection": "Agents on GitHub",
+      "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/agentic-workflows/README.md",
           "exists": true,
-          "bytes": 50744,
-          "modified": "2026-09-16T14:24:26.068Z"
+          "bytes": 8904,
+          "modified": "2026-11-05T16:42:34.100Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-workflows/deck.recipe.yml",
           "exists": true,
-          "bytes": 9482,
-          "modified": "2026-08-11T14:12:27.904Z"
+          "bytes": 21471,
+          "modified": "2026-11-05T16:42:34.094Z"
         },
         "deck": {
-          "path": "slides/tech-talks/agentic-workflows.md",
+          "path": "slides/tech-talks/agentic-workflows/slides.js",
           "exists": true,
-          "bytes": 29526,
-          "modified": "2026-09-16T14:24:26.069Z"
+          "bytes": 101800,
+          "modified": "2026-11-05T16:42:09.882Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/agentic-workflows/notes.html",
+          "exists": true,
+          "bytes": 1309,
+          "modified": "2026-11-05T01:49:49.841Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/agentic-workflows/agenda.md",
           "exists": true,
-          "bytes": 403,
-          "modified": "2026-09-15T20:35:44.952Z"
+          "bytes": 397,
+          "modified": "2026-11-05T01:58:11.919Z"
         },
         "agendaHtml": {
           "path": "slides/companions/tech-talks/agentic-workflows/agenda.html",
           "exists": true,
-          "bytes": 5901,
-          "modified": "2026-10-22T03:27:02.143Z"
+          "bytes": 5887,
+          "modified": "2026-11-05T01:58:11.918Z"
         },
         "deckPdf": {
           "path": "slides/companions/tech-talks/agentic-workflows/deck.pdf",
           "exists": true,
-          "bytes": 2042045,
-          "modified": "2026-09-15T20:36:20.947Z"
+          "bytes": 3240048,
+          "modified": "2026-10-22T19:02:04.713Z"
         }
       },
       "errors": []
@@ -1099,7 +1032,7 @@
         "copilot-primitives"
       ],
       "related": [
-        "agentic-lifecycle",
+        "agentic-workflows",
         "agentic-sdlc",
         "enterprise-patterns"
       ],
@@ -1231,7 +1164,7 @@
         "copilot-primitives"
       ],
       "related": [
-        "agentic-lifecycle",
+        "agentic-workflows",
         "copilot-governance",
         "copilot-hooks"
       ],
@@ -1496,7 +1429,7 @@
         "repo-to-feature"
       ],
       "related": [
-        "agentic-lifecycle",
+        "agentic-workflows",
         "pr-trust-stack"
       ],
       "deckFormat": "slidev",
@@ -1630,7 +1563,7 @@
       "related": [
         "local-agentic-sdlc",
         "copilot-on-github",
-        "agentic-lifecycle",
+        "agentic-workflows",
         "copilot-hooks"
       ],
       "deckFormat": "slidev",
@@ -1832,7 +1765,7 @@
         "custom-agents",
         "copilot-cli",
         "copilot-hooks",
-        "agentic-lifecycle",
+        "agentic-workflows",
         "copilot-on-github"
       ],
       "deckFormat": "slidev",
@@ -1965,7 +1898,7 @@
       ],
       "related": [
         "repo-to-feature",
-        "agentic-lifecycle",
+        "agentic-workflows",
         "agentic-sdlc",
         "copilot-primitives"
       ],
@@ -2029,7 +1962,7 @@
       "format": "core-talk",
       "decision": "How can a team join agentic delivery, advisory review, and an enforceable quality gate into a human-owned merge decision?",
       "prerequisites": [
-        "agentic-lifecycle",
+        "agentic-workflows",
         "copilot-code-review",
         "copilot-code-quality"
       ],
@@ -2239,7 +2172,7 @@
       ],
       "related": [
         "repo-to-feature",
-        "agentic-lifecycle",
+        "agentic-workflows",
         "copilot-hooks",
         "agentic-sdlc"
       ],

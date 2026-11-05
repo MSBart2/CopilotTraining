@@ -9,7 +9,7 @@ duration: 45
 format: core-talk
 decision: "How can a developer run plan, implement, test, review, and integrate locally with custom agents, and know when the run is done?"
 prerequisites: [custom-agents]
-related: [custom-agents, copilot-cli, copilot-hooks, agentic-lifecycle, copilot-on-github]
+related: [custom-agents, copilot-cli, copilot-hooks, agentic-workflows, copilot-on-github]
 references:
   - url: https://code.visualstudio.com/docs/agents/run/subagents
     label: "VS Code: subagents and orchestration patterns"
@@ -241,7 +241,7 @@ The credit cap still applies per pass. Whether `/every` accepts `/goal … --max
 
 ### Where it stops fitting
 
-- **Work that starts from an event**, such as a label, a schedule, or a failed check, with no developer present, belongs to [GitHub Agentic Workflows](../agentic-lifecycle/README.md).
+- **Work that starts from an event**, such as a label, a schedule, or a failed check, with no developer present, belongs to [GitHub Agentic Workflows](../agentic-workflows/README.md).
 - **Work a developer wants to assign and walk away from** belongs to the cloud agent in [Copilot on GitHub](../copilot-on-github/README.md), which runs in an Actions environment and opens its own pull request.
 - **Small, single-file changes** cost more in plan-and-review overhead than they save. The plan stage alone used 47 credits here.
 - **Verification without a fast command** weakens the Stop hook. The FanHub suite runs in about five seconds; a gate that takes minutes changes the economics of every blocked stop.
@@ -262,7 +262,7 @@ Pick the next issue you would hand to an agent. Which command would your Stop ho
 - [Custom Agents](../custom-agents/README.md): designing one agent file that resolves well in every runtime
 - [Copilot CLI](../copilot-cli/README.md): the terminal surface this loop runs in
 - [Copilot Hooks](../copilot-hooks/README.md): hook events, decisions, and policy enforcement in depth
-- [GitHub Agentic Workflows](../agentic-lifecycle/README.md): event-triggered agents with safe outputs
+- [GitHub Agentic Workflows](../agentic-workflows/README.md): event-triggered agents with safe outputs
 - [Copilot on GitHub](../copilot-on-github/README.md): the cloud agent, code review, and Code Quality on one pull request
 
 ## References

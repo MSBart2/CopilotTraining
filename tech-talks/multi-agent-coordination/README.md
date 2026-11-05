@@ -9,7 +9,7 @@ duration: 55
 format: core-talk
 decision: "When does work split across agents, and how do teams steer and integrate isolated workstreams?"
 prerequisites: [repo-to-feature]
-related: [repo-to-feature, agentic-lifecycle, agentic-sdlc, copilot-primitives]
+related: [repo-to-feature, agentic-workflows, agentic-sdlc, copilot-primitives]
 references:
   - url: https://code.visualstudio.com/docs/copilot/agents/subagents
     label: "Subagents in VS Code"
@@ -477,7 +477,7 @@ Failed integration is useful evidence about the split. Repeated overlap points t
 
 ## Related Patterns
 
-- **[GitHub Agentic Workflows](../agentic-lifecycle/)** - coordinates recurring repository judgments through evidence-gated handoffs.
+- **[GitHub Agentic Workflows](../agentic-workflows/)** - coordinates recurring repository judgments through evidence-gated handoffs.
 - **[From Repo to Feature](../repo-to-feature/)** - keeps one change observable from context through validation and turns it into reusable repository capability before work is split.
 - **[Agentic SDLC](../agentic-sdlc/)** - extends coordination into repository policy, CI, review, and delivery systems.
 - **[Copilot Configuration Primitives](../copilot-primitives/)** - builds and verifies the instructions, prompts, skills, and agents each workstream needs.

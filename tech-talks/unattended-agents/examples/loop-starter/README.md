@@ -104,4 +104,4 @@ package-lock.json   @your-org/security-team
 
 ## Scale it up
 
-The talk's [`copilot-loop-pipeline.yml`](../../README.md#wiring-it-all-together) design adds a separate `test-runner-agent` and a deeper goal watchdog. This starter folds test runs into the fix agent and the critic's re-verification. When you want a runtime that enforces turn, time, and write limits for you, the [Agentic Lifecycle](../../../agentic-lifecycle/README.md) talk covers GitHub Agentic Workflows.
+The talk's [`copilot-loop-pipeline.yml`](../../README.md#wiring-it-all-together) design adds a separate `test-runner-agent` and a deeper goal watchdog. This starter folds test runs into the fix agent and the critic's re-verification. When you want a runtime that enforces turn, time, and write limits for you, the [GitHub Agentic Workflows](../../../agentic-workflows/README.md) talk covers GitHub Agentic Workflows.

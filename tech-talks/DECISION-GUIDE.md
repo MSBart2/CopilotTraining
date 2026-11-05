@@ -15,7 +15,7 @@ Use this path when you are new to Copilot or introducing it to a team. Each step
 2. **Configure shared behavior** — [Copilot Configuration Primitives](copilot-primitives/) builds and verifies instructions, prompts, skills, and agents.
 3. **Run a contracted local loop** — [Local Agentic SDLC](local-agentic-sdlc/) plans, implements, tests, reviews, and integrates one change on your machine, with a done condition you can check.
 4. **Delegate and verify on GitHub** — [Copilot on GitHub](copilot-on-github/) shows the cloud agent drafting a pull request, code review and Code Quality reporting on every push, and you steering the rework and approving the merge.
-5. **Automate a recurring chore** — [GitHub Agentic Workflows](agentic-lifecycle/) compiles one repository chore into a workflow with read-only defaults, safe outputs, and a named approver.
+5. **Run continuous AI in a repository** — [GitHub Agentic Workflows](agentic-workflows/) compiles one piece of recurring repository work into a workflow with read-only defaults, safe outputs, and a named approver.
 
 Stop at any step when its evidence is missing. Repair that boundary before adding more autonomy.
 
@@ -50,7 +50,7 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
 | Delegate an issue and verify the pull request before merge | [Copilot on GitHub](copilot-on-github/) | A cloud-agent draft pull request, code review findings and Code Quality results on every push, and a named merge decision |
-| Automate a recurring repository chore | [GitHub Agentic Workflows](agentic-lifecycle/) | Compiled workflow candidates with explicit handoffs, safe outputs, and approval gates |
+| Run continuous AI in a repository | [GitHub Agentic Workflows](agentic-workflows/) | Compiled workflow candidates with explicit handoffs, safe outputs, and approval gates |
 
 ## Trust and Govern
 
@@ -84,11 +84,11 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 ### Team Delegation
 
-[Which Copilot Where?](surfaces/) → [Copilot Configuration Primitives](copilot-primitives/) → [Copilot on GitHub](copilot-on-github/) → [Local Agentic SDLC](local-agentic-sdlc/) → [GitHub Agentic Workflows](agentic-lifecycle/)
+[Which Copilot Where?](surfaces/) → [Copilot Configuration Primitives](copilot-primitives/) → [Copilot on GitHub](copilot-on-github/) → [Local Agentic SDLC](local-agentic-sdlc/) → [GitHub Agentic Workflows](agentic-workflows/)
 
 ### Repository Automation
 
-[Which Copilot Where?](surfaces/) → [GitHub Agentic Workflows](agentic-lifecycle/) → [Copilot on GitHub](copilot-on-github/) → [Copilot Hooks](copilot-hooks/) → [Agentic SDLC](agentic-sdlc/)
+[Which Copilot Where?](surfaces/) → [GitHub Agentic Workflows](agentic-workflows/) → [Copilot on GitHub](copilot-on-github/) → [Copilot Hooks](copilot-hooks/) → [Agentic SDLC](agentic-sdlc/)
 
 ### Platform and Governance
 

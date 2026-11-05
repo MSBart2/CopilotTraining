@@ -468,7 +468,7 @@ Q: What's your current agent throughput vs. target?
 
 ### Don't Use This Pattern When
 
-- You haven't proven agent value yet → Start with [GitHub Agentic Workflows](../agentic-lifecycle/) and automate one repository chore
+- You haven't proven agent value yet → Start with [GitHub Agentic Workflows](../agentic-workflows/) and automate one repository chore
 - Team size <5 developers → Infrastructure overhead may exceed benefits
 - Regulatory requires physical repo separation → Multi-repo is mandatory, focus on Parts 2-3 only
 - You need immediate results in <1 month → Incremental adoption path is better fit
@@ -1600,7 +1600,7 @@ Machine-readable artifacts proving checks ran and passed:
 
 **Next Steps After Completion:**
 1. ✅ Complete Phase 1 (Level 3 standardization) and measure baseline metrics
-2. 📖 Review [GitHub Agentic Workflows](../agentic-lifecycle/) if you want quick wins before full transformation
+2. 📖 Review [GitHub Agentic Workflows](../agentic-workflows/) if you want quick wins before full transformation
 3. 📊 Build ROI dashboard tracking: time-to-merge, agent velocity, flake rate, review capacity, Copilot Metrics API adoption trends
 4. 🚀 Present transformation plan using [The Agentic Operating Model](../exec-strategy/) executive framing
 
@@ -1610,7 +1610,7 @@ Machine-readable artifacts proving checks ran and passed:
 
 ### Complementary Features
 
-- **[GitHub Agentic Workflows](../agentic-lifecycle/)** — Evidence-gated issue-to-PR automation before full SDLC transformation
+- **[GitHub Agentic Workflows](../agentic-workflows/)** — Evidence-gated issue-to-PR automation before full SDLC transformation
 - **[Local Agentic SDLC](../local-agentic-sdlc/)** — Specialist agents, worktree isolation, and an integration record in one orchestrated local run
 - **[Copilot Hooks](../copilot-hooks/)** — Governance mechanisms and agent behavior controls
 

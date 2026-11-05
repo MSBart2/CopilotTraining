@@ -1,139 +1,166 @@
-# deck.recipe.yml — Agentic Workflows talk guidance
-#
-# COUNCIL VERDICT (May 2026, 3-agent collaborative council):
-# The core structural problem: 10 use cases (5 newly added) are buried in an unsectioned
-# block, making their relationship to patterns and decision criteria opaque. The fix:
-# promote flagship use cases into the opening section as evidence for the problem, merge
-# Architecture + Safe Outputs into one trust-building section, and deploy a Path×Maturity
-# matrix as Section 3's spine — surfacing all 10 use cases visually so audience members
-# can self-locate before the CTA lands.
-#
-# COUNCIL REVISE (2026-08-10): Preserve the arc; add one execution-boundary beat
-# and relabel the Path C Level 2 pattern as Comment Workflows (gh-aw).
-
+# Recipe history
+# - 2026-10-21: original recipe, critiqued cross-model (rubber-duck subagent on gpt-5.6-sol; primary
+#   Claude). Accepted from that critique and still in force: the three-layer authority chain (source
+#   declares, lock implements, run evidence shows it); narrowing a wizard draft as the climax; actor
+#   labels on every trace; outcome efficiency compared within one workflow; experimental labels on
+#   evals; FanHub only in the closing slides.
+# - 2026-10-22: restructured after live delivery feedback (too much, too deep, too fast, too little
+#   why/when). Deck cut from 65 to 34 slides, use cases first, one visual per slide with depth in
+#   speaker notes. Then evals and Outcomes got worked slides (36 slides), the title and core question
+#   were simplified, and the real FanHub triage-wizard artifacts replaced invented examples.
+# - 2026-10-22 (this revision): recipe rewritten to describe the approved, delivered deck. The user
+#   approved the deck as is, so no cross-model review was run for this documentation pass.
+# SLIDE BUDGET EXCEPTION (user-approved): 36 slides, above the default 30-slide cap. Depth lives in
+# speaker notes, so most slides carry one visual and three to five callouts.
+# CONVERSION REFRESH — 2026-10-30
+# Decision: preserve. Approved for faithful mechanical conversion by the user's explicit
+# instruction to proceed without review pauses. Preserve all 36 source slides and their order; the FanHub proof slide
+# uses the shared before-after frame to carry closing proof without adding a slide.
+# Speaking budget: 3,110 seconds (51m 50s) against a 55-minute README duration, reserving 3m 10s
+# for questions. 10 spine/template slides + 26 teaching slides.
 version: 1
 
 deck:
   title: "GitHub Agentic Workflows"
-  subtitle: "Repository Automation with AI Agents"
-  tagline: "Write repository automation in natural language, execute with security-first AI agents"
-
-  # arcToc: ≤80 chars, displayed as TocSlide subtitle
+  subtitle: "Continuous AI for Your Repository"
+  tagline: "What they are, when to use one, and how to run it safely"
+  coreQuestion: "What can agents run continuously in my repository, and how do I keep them in bounds?"
 
   agenda:
-    - title: "Intent-Driven Workflows"
-      takeaway: "Describe outcomes and let agents adapt to repository context."
-      whyItMatters: "Automation stays useful when the surrounding state changes."
-    - title: "Security by Design"
-      takeaway: "Explore safe outputs and sandboxed, read-only defaults."
-      whyItMatters: "Teams can automate without treating governance as an afterthought."
-    - title: "A Practical Starting Point"
-      takeaway: "Locate the workflow and maturity path that fits the team."
-      whyItMatters: "Every attendee leaves with a credible next action."
+    - title: "Pick the work first"
+      takeaway: "Use the three-part test (recurs, needs judgment, small bounded write) to choose work, with IssueOps triage as the model and a gallery for what comes next."
+      whyItMatters: "The first workflow sets the team's trust; a reversible write lets maintainers check it within a week."
+    - title: "Read the contract and grant only the writes it needs"
+      takeaway: "Frontmatter grants authority, safe outputs are the only write path, staged previews come first, and the lock and audit show the contract in effect."
+      whyItMatters: "Approve or narrow any workflow pull request, including one a wizard or agent wrote."
+    - title: "Run it, judge it, and recover"
+      takeaway: "Read the run Summary, gh aw audit, and gh aw logs; weigh cost against evals (did it follow instructions) and Outcomes (did people find it useful); trace each symptom to its owning block."
+      whyItMatters: "Promotion, revision, and retirement become decisions backed by run evidence."
 
-  arcToc: "Why It Matters → Architecture & Safety → Patterns by Path → Your Path Forward"
+  arcToc: "Why and When → Read the Contract → Build One Live → Run and Troubleshoot"
 
   arcNarrative: >
-    Section 1 establishes three audience paths (A: high-volume triage automation; B: complex
-    visibility and reporting; C: multi-agent orchestration) via three flagship use cases — one
-    per path — so every persona self-recognizes their problem within the first 12 slides. The
-    decision tree is a teaser here, not a deep dive; its job is to plant the A/B/C framing
-    that threads through the entire talk. Section 2 is the intellectual core: it layers
-    architecture → safe execution → Pattern Showcase, moving from "how it compiles" to "what
-    these patterns are called," with the Pattern Showcase slide acting as the bridge that
-    translates technical concepts into repeatable design vocabulary before Section 3 applies
-    them. Section 3 is the talk's centerpiece: a 3×3 matrix (Path A/B/C × Maturity Level
-    1/2/3) distributes all 10 use cases visually so audience members scan for their path and
-    level intersection and instantly find their peer use cases and dominant patterns. Peak
-    engagement lands at Section 1 (motivation + credential) and Section 3 (the "I can see
-    myself here" matrix moment). Section 4 closes with a path+level self-assessment that
-    converts the matrix insight into concrete week-by-week actions per path. This ordering
-    beats the previous structure because it makes use cases primary evidence rather than a
-    reference appendix, ties patterns to decisions rather than abstract categorization, and
-    gives every persona a personalized action sequence rather than a generic CTA.
+    The talk opens on Continuous AI: the Agent Factory ring shows planning, refactoring, docs, CI diagnosis, and meta-agents running on Actions runners. CI handles the predictable work, and what still lands on the
+    desk is recurring work that needs reading and judgment. Part 1 answers which of that continuous work
+    earns an agent: what scripts, raw tokens, and manual toil make hard; the three-part test; a
+    two-slide use-case gallery (reactive and scheduled); Peli's Agent Factory as the "what people
+    actually run" slide; IssueOps end to end; and the handoff of implementation to the Copilot cloud
+    agent. Part 2 reads one real file, triage-wizard.md from FanHub, frontmatter then body, then
+    follows it through compile to the lock, safe outputs, staged mode, and a hostile issue that tries
+    to steer the agent. Part 3 builds one live: the wizard, its intent, the generated draft narrowed
+    with four controls (allowed, max, target, staged), then refine and the first loop. Part 4 covers
+    life after day one: where to look, whether it is worth it (cost, then worked slides on evals and
+    Outcomes), where it stops fitting, a time-boxed ladder, and the
+    real FanHub #202 /triage run as the closing evidence. The close tells Copilot automations apart from agentic workflows, then bookends on the Agent Factory ring with "your repository" at its centre.
 
   sectionOrder:
-    - "Why Agentic Workflows Matter"
-    - "Architecture & Safe Execution"
-    - "Patterns by Path & Maturity"
-    - "Your Path Forward"
+    - "1. Why and When"
+    - "2. Read the Contract"
+    - "3. Build One Live"
+    - "4. Run and Troubleshoot"
+
+  frame:
+    - "1 Title: Continuous AI for Your Repository"
+    - "2 Core Question: three work families (plan and triage, improve via PRs, watch and report) and three safety facts (1 Markdown file, a read-only agent, 1.22 AI credits)"
+    - "3 Table of Contents"
+    - "4 Part 1 opener · 5–11 choose the work, compare tools, inspect patterns, and hand off"
+    - "12 Part 2 opener · 13–19 actors, real source and body, lock, writes, staging, threat boundary"
+    - "21 Part 3 opener · 22–25 wizard, prompt to draft PR, reviewer narrows, second prompt and staged loop"
+    - "26 Part 4 opener · 27–33 observe, evaluate, boundaries, ladder, FanHub proof"
+    - "33 FanHub #202 uses the shared before-after frame: real issue input → observed output and separately labelled run/outcome evidence"
+    - "34 Where to Go from Here · 35 Copilot Automations or an Agentic Workflow · 36 Which One Fits (decision tree) · 37 References · 38 Thank You (Agent Factory ring bookend)"
 
   sectionModes:
-    "Why Agentic Workflows Matter":
+    "1. Why and When":
       emphasis: high
+      slides: "4–11 (8)"
       note: >
-        Draw from: README "The Opportunity", "The Solution", "Mental Model Shift" intro, and
-        3 flagship use cases from "Real-World Use Cases". Open with the YAML friction contrast
-        (intent-driven vs. stepwise), then deliver three flagship use cases — one per path —
-        concisely (2-3 lines + trigger + artifact each): Path A = Issue Triage (high-volume,
-        instant wins), Path B = Weekly Health Report (visibility, zero effort), Path C =
-        Multi-Agent Orchestration (parallel workers, synthesized insight). End with the A/B/C
-        decision tree as a preview/teaser: "Which path is yours?" Do NOT explain the
-        compilation pipeline here — defer to Section 2. The "whoa" moment is the before/after:
-        complex YAML automation collapsed into an 8-line Markdown intent statement. Leave the
-        audience leaning forward to understand how that is safe.
-    "Architecture & Safe Execution":
+        Opener (hard to script, risky to wire by hand, costly to staff); What Would This Take
+        Otherwise; Three-Part Test; Use Cases React; Use Cases Run on Their Own; Peli's Agent
+        Factory (label Repo Assist figures as GitHub-published); IssueOps Flow; Cloud Agent Handoff.
+        Map Your Own Work lives in speaker notes.
+    "2. Read the Contract":
       emphasis: high
+      slides: "12–19 (8)"
       note: >
-        Draw from: README "Core Architecture & Compilation", "Safe Outputs Deep Dive",
-        and "Key Artifacts". This is the trust-building section. Teach the three-phase
-        pipeline (Authoring -> Compilation -> Execution) with the lock-file reveal as the
-        primary "whoa" moment: show compiled YAML side-by-side with the Markdown source so
-        the audience viscerally understands the compiler enforces security, not author
-        discipline. Then the Safe Outputs model: read-only AI sandbox -> structured JSON ->
-        validation pipeline (schema, sanitization, rate limiting, permissions) -> scoped
-        handler executes. Include the noop pattern as the #1 runtime failure mode with its
-        fix. Close with the Pattern Showcase bridge slide: name and visually map the 5
-        pattern families (Continuous Improvement, Monitoring/Insights, Orchestration,
-        Quality/Safety, Release/Delivery) to their primary use-case examples — this slide
-        transitions the audience from "I understand the mechanism" to "I know the vocabulary
-        for Section 3." Add at most one execution-boundary beat: gh-aw comment workflows are
-        repo-owned, version-controlled Markdown compiled to Actions and governed by safe
-        outputs; Copilot cloud-agent Automations are configured in Agents > Automations,
-        delegate tasks on configured trigger text, require an eligible plan, and are controlled
-        by Business/Enterprise admin policy. Do not characterize runtime beyond the README.
-    "Patterns by Path & Maturity":
+        Opener (one file two halves, compiled to a lock, safe by default); Who Acts; triage-wizard.md
+        Frontmatter (real FanHub artifact from examples/; flags roles: all + min-integrity: none as a
+        deliberate risk choice); triage-wizard.md Body; Compile to the Lock (7 jobs, 5,000 AIC daily
+        default confirmed in the lock); Safe Outputs (illustrative, staged); Staged Mode; Hostile Issue (five layered defenses: trust filter, tokens kept outside, network firewall,
+        safe outputs, write review). Body Asks
+        to Close and the Five Questions checklist live in speaker notes.
+    "3. Build One Live":
+      emphasis: high
+      slides: "20–24 (5)"
+      note: >
+        Climax. Opener; Wizard; Live Demo Wizard Intent (real wizard output from
+        examples/example-flow-prompt.md as the fallback); Narrow the Draft (four controls);
+        Refine and First Loop (gh workflow run triage-wizard.lock.yml -f issue_number=202).
+        Intent Becomes Evaluation lives in speaker notes.
+    "4. Run and Troubleshoot":
       emphasis: medium
+      slides: "26–33 (8)"
       note: >
-        Draw from: README "The Agent Factory Pattern" and "Real-World Use Cases" (all 10).
-        Spine of this section is a 3x3 matrix: rows = Path A/B/C, columns = Level 1
-        (prototype/quick win), Level 2 (production-ready), Level 3 (advanced/multi-agent).
-        Distribute all 10 use cases across the 9 cells: Path A L1=Issue Triage, L2=PR Review,
-        L3=Dependency Audit; Path B L1=Weekly Health Report, L2=Release Notes, L3=Weekly
-        Research Digest; Path C L1=CI Failure Diagnosis, L2=Comment Workflows (gh-aw),
-        L3=Multi-Agent Orchestration + Code Simplification. Include the Agent Factory
-        philosophy (specialize not monolith; 100+ workflows in continuous production) as
-        framing before the matrix. Surface 1 failure mode per path (Path A: too many ops
-        hitting max; Path B: low-signal noop spam; Path C: worker synchronization). The
-        "whoa" moment is the matrix reveal — audience scans for their intersection and
-        instantly locates their peer use cases. Use 3 slides (one per path), each showing
-        that path's 3 maturity levels with 1-2 use cases and the dominant pattern per cell.
-        Do NOT use a single dense 3x3 grid — legibility requires one path per slide.
-    "Your Path Forward":
-      emphasis: medium-low
-      note: >
-        Draw from: README "What You Can Do Today", "Mental Model Shift" tables, and "Related
-        Patterns". Recap the A/B/C decision tree as a commitment: "You have seen the matrix
-        — which path is yours?" Then deliver a maturity progression contract per path (Week 1:
-        Level 1 workflow; Week 2-3: add safe writes; Week 4+: Level 2; Month 2+: Level 3).
-        Path-specific CTAs: Path A gets triage workflow starter; Path B gets weekly report
-        template; Path C gets orchestrator scaffolding. Include the Mental Model Shift
-        move-toward/move-away tables compressed to one slide. Close with Related Patterns
-        breadcrumbs (MCP, Custom Instructions, Agent Teams) and the single install command:
-        gh extension install github/gh-aw. This section should feel fast and confident —
-        audience leaves knowing exactly what to build Monday morning.
+        Opener; Where to Look (run Summary, gh aw audit, gh aw logs); Is It Worth It (cost caps,
+        pointers to the next two slides); Evals in Practice (all five BinEval answers, labeled
+        illustrative because triage-wizard has not run on FanHub; 400 AIC evals cap; results
+        committed to evals/triagewizard); Outcomes in Practice (real gh aw outcomes output for run
+        39669929991: 2/2 accepted, 0.810 AIC per accepted outcome); banner "Evals tell you whether it
+        followed instructions. Outcomes tell you whether people found it useful."; Where It Stops Fitting; Ladder (15 minutes / 1 hour /
+        2–4 hours); FanHub 202 (observed on gh-aw v0.92.6). Upgrade Discipline and FanHub
+        #110 → #193 live in speaker notes.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "Write repository automation in 8-line Markdown intent — the compiler generates the secure YAML lock file"
-    - "Safe outputs: AI reads everything, writes nothing — all requests flow through a validation pipeline enforced by the compiler, not author discipline"
-    - "Noop is the #1 failure mode: every workflow must explicitly handle 'no action needed' or it fails silently"
-    - "100+ workflows running continuously in production (Peli's Agent Factory): validated reality across triage, PR review, CI diagnosis, ChatOps, research digests, and more"
-    - "The 3x3 matrix (Path x Maturity) shows exactly where you sit — find your cell and see which peers have already shipped it"
+    - "Pick the work first, then grant only the writes it needs: one Markdown file, a read-only agent, and a separate job that applies only the declared writes."
+    - "The real triage-wizard.md, read frontmatter then body, compiles to a lock that shows every job and its permissions."
+    - "In the live demo, four controls (allowed, max, target, staged) narrow a one-minute wizard draft into the right contract."
+    - "Evals tell you whether it followed instructions; Outcomes tell you whether people found it useful. On FanHub #202, /triage produced four reasoned labels and found duplicate #7 for 1.22 AI credits, and both outputs were accepted."
 
-# DECIDED: Matrix format = Option B — 3 path slides (one per Path A/B/C), each showing
-# 3 maturity levels with 1-2 use cases and the dominant pattern per cell. Estimated
-# Section 3 slide count: ~14-16 slides (3 matrix slides + factory intro + failure modes
-# + transitions).
+  slides:
+    - { id: title, part: 0, kind: spine, question: "What useful recurring work can a maintainer delegate?", claim: "A readable authority contract makes recurring repository judgment inspectable.", scene: "title + source → lock → audit visual", seconds: 25 }
+    - { id: core-question, part: 0, kind: spine, question: "What can agents run continuously in my repository, and how do I keep them in bounds?", claim: "Pick the work first, then grant only the writes it needs.", scene: "core-question", seconds: 65 }
+    - { id: contents, part: 0, kind: spine, question: "How will the decision unfold?", claim: "Four parts move from work choice through evidence and transfer.", scene: "contents; opener links 4, 11, 21, 26", seconds: 25 }
+    - { id: part-1, part: 1, kind: opener, question: "Why choose recurring judgment work first?", claim: "Recurring work that needs judgment and a bounded write is the candidate.", scene: "opener", seconds: 20 }
+    - { id: three-part-test, part: 1, kind: teaching, question: "When does a job earn an agentic workflow?", claim: "The task must recur, need judgment, and end in a small bounded write; a missing check routes it to Actions or the cloud agent.", scene: "task-sort: six real tasks scored on three checks, each routed to its tool", seconds: 100 }
+    - { id: use-cases-react, part: 1, kind: teaching, question: "Which workflows react to a person or event?", claim: "IssueOps, ChatOps, and LabelOps pair a named initiator with a bounded output.", scene: "relay: trigger → output → human next step", seconds: 105 }
+    - { id: use-cases-scheduled, part: 1, kind: teaching, question: "Which workflows run on a schedule or queue?", claim: "Reports, queues, and research-to-plan handoffs make recurring judgment actionable.", scene: "relay: owner trigger → bounded work → human checkpoint", seconds: 105 }
+    - { id: agent-factory, part: 1, kind: teaching, question: "What work does the gh-aw team report running?", claim: "GitHub reports more than 100 workflows; merged PRs are counted back to the workflow that started the chain, and a person merged every one.", scene: "factory-scorecard: /plan, refactoring, docs, meta-agents; footnote links to Peli's Agent Factory", seconds: 80 }
+    - { id: issueops-flow, part: 1, kind: teaching, question: "How does an issue become agent-ready work?", claim: "IssueOps moves from bounded triage through scoped plan to a human-owned implementation decision.", scene: "issueops-lanes: person / agent / repo-write rows across triage → plan → decide; illustrative issue #318 walks the chain", seconds: 135 }
+    - { id: cloud-agent-handoff, part: 1, kind: teaching, question: "Who owns implementation after planning?", claim: "A person chooses the workflow-per-stage or workflow-plus-cloud-agent handoff and still reviews the merge.", scene: "route-fork: [plan] #321 → maintainer decision → workflow-per-stage stations or cloud-agent session + CI gate → person merges", seconds: 110 }
+    - { id: part-2, part: 2, kind: opener, question: "What is in the contract, and what keeps it bounded?", claim: "Source declares authority, lock implements it, audit shows the run.", scene: "opener", seconds: 20 }
+    - { id: who-acts, part: 2, kind: teaching, question: "Who acts at each point in a workflow?", claim: "Five actors each hold one authority: owner declares, requester starts, agent proposes, safe-outputs job writes, maintainer decides.", scene: "actor-chain: five actor cards in run order (before / during / after) with does and cannot rows", seconds: 80 }
+    - { id: meet-triage-wizard, part: 2, kind: teaching, question: "What does the running example look like?", claim: "One Markdown file: YAML frontmatter grants authority, the body carries judgment, and gh aw compile produces the lock.", scene: "file-anatomy: condensed triage-wizard.md with frontmatter and body bracketed and explained", seconds: 75 }
+    - { id: frontmatter, part: 2, kind: teaching, question: "What authority does the real frontmatter grant?", claim: "Five review questions expose trigger, reads, reach, writes, and runaway limits.", scene: "signals: real FanHub frontmatter blocks mapped to reviewer questions", seconds: 135 }
+    - { id: workflow-body, part: 2, kind: teaching, question: "What judgment does the Markdown body ask for?", claim: "The body asks for bounded evidence before classification; frontmatter enforces authority.", scene: "terminal: issue input → evidence instructions → authority boundary", seconds: 100 }
+    - { id: compile-lock, part: 2, kind: teaching, question: "What proves the source contract is implemented?", claim: "The seven-job lock keeps every model job read-only and puts the triage write in a model-free job gated on detection.", scene: "lock-jobs: source → gh aw compile → lock strip, then the real job graph colored model / write / plumbing with permissions", seconds: 130 }
+    - { id: safe-outputs, part: 2, kind: teaching, question: "How can the agent write without holding repository write authority?", claim: "The agent job only records proposals; a separate job on another runner holds the write token, checks each proposal, then applies it.", scene: "write-handoff: agent job (read token, tool list, proposal file) → artifact through detection → safe_outputs job (write token, checks, applied)", seconds: 100 }
+    - { id: staged-mode, part: 2, kind: teaching, question: "How can a maintainer inspect a write before it happens?", claim: "Staged mode is a dry run: the agent does its full work and the writes become previews in the Actions Summary.", scene: "terminal: staged setting → Summary preview → no resources created", seconds: 100 }
+    - { id: otherwise, part: 2, kind: teaching, question: "What happens when one issue carries a prompt injection?", claim: "One event reaches rule-based Actions, an agentic workflow, and a DIY LLM job; only the agentic workflow keeps the injected close request from becoming a write.", scene: "gap-lanes: issue #482 with injection fans out to three lanes; outputs and result per lane", seconds: 100 }
+    - { id: hostile-issue, part: 2, kind: teaching, question: "What stops a hostile issue from taking over the run?", claim: "Five independent gates meet five injection attempts; the one gate the example opens is an owned setting, and four runtime gates still hold.", scene: "injection-gates: hostile issue → integrity filter (open) → credential proxy → firewall → threat detection → safe outputs → repository", seconds: 110 }
+    - { id: part-3, part: 3, kind: opener, question: "How does a prompt become a reviewed workflow?", claim: "The wizard prompts; a coding agent drafts; the reviewer narrows authority.", scene: "opener", seconds: 20 }
+    - { id: wizard, part: 3, kind: teaching, question: "What does the wizard ask for and hand to the coding agent?", claim: "Seven inputs produce a prompt, not an approved workflow.", scene: "wizard-link: four-phases Why/How → When/Where → Extras/Agent → prompt, with a footnote link to the wizard", seconds: 80 }
+    - { id: wizard-intent, part: 3, kind: teaching, question: "How do I turn the wizard prompt into a workflow?", claim: "Prompt 1: paste the wizard prompt into a coding agent in the repo; it reads repository context and opens a draft PR with the source and lock.", scene: "prompt-to-draft: prompt excerpt with presenter additions → gh aw init once per repo, coding agent surfaces, and what it reads → draft PR files and contents", seconds: 150 }
+    - { id: narrow-draft, part: 3, kind: teaching, question: "What does the reviewer inspect and change in the draft PR?", claim: "Four authority lines: keep the label allowlist, keep the scope, add staged: true, decide the trust settings.", scene: "draft-review: condensed frontmatter diff with numbered markers → KEEP/KEEP/ADD/DECIDE cards", seconds: 135 }
+    - { id: refine-first-loop, part: 3, kind: teaching, question: "How does the reviewer refine and prove the workflow before promoting it?", claim: "Prompt 2 asks the agentic-workflows skill (installed by gh aw init) to optimize the draft; staged runs on real issues earn promotion.", scene: "refine-loop: Prompt 2 bubble → reread diff → compile+push → run staged → read preview (loop) → promote", seconds: 120 }
+    - { id: part-4, part: 4, kind: opener, question: "What evidence shows whether the workflow works and is worth keeping?", claim: "Read the output, measure value, and route what does not fit.", scene: "opener", seconds: 20 }
+    - { id: where-to-look, part: 4, kind: teaching, question: "Which run view answers which question?", claim: "Summary, audit, and logs distinguish outcome, one-run cause, and trend.", scene: "relay: Summary → audit → logs", seconds: 90 }
+    - { id: cost-and-value, part: 4, kind: teaching, question: "How do I compare workflow value with bounded spend?", claim: "Caps constrain spend while Outcomes and evals measure separate value signals.", scene: "signals: per-run/per-day limits → eval signal → accepted outcome", seconds: 100 }
+    - { id: evals, part: 4, kind: teaching, question: "Did the run follow its declared instructions?", claim: "Evals ask whether the output followed instructions; the shown answers are illustrative.", scene: "terminal: five checks and labelled YES/NO/UNKNOWN example", seconds: 140 }
+    - { id: outcomes, part: 4, kind: teaching, question: "Did maintainers keep the outputs from a real run?", claim: "FanHub Outcomes accepted both recorded safe outputs; repository state supplies the evidence.", scene: "terminal: observed run output with acceptance separate from status", seconds: 140 }
+    - { id: boundary, part: 4, kind: teaching, question: "When does an agentic workflow stop fitting?", claim: "Route deterministic work, broad writes, unowned review, and single-task implementation elsewhere.", scene: "showdown: workflow fit versus boundary and alternate tool", seconds: 70 }
+    - { id: adoption-ladder, part: 4, kind: teaching, question: "What is a safe first move, first pilot, and next expansion?", claim: "Use staged previews and maintainer comparison before expanding the pilot.", scene: "four-phases: 15 minutes → 1 hour → 2–4 hours", seconds: 60 }
+    - { id: fanhub-202, part: 4, kind: teaching, question: "What did the real FanHub #202 run produce, and what evidence supports it?", claim: "The observed /triage run produced reasoned labels and duplicate evidence; job status, audit cost, and Outcomes are separate.", scene: "before-after: issue input → observed output; three separately labelled evidence values", seconds: 120 }
+    - { id: today, part: 0, kind: spine, question: "What can I try in my own repository next?", claim: "Choose one real task, preview its bounded output, and decide from evidence.", scene: "today: today → this week → this month with signals and validation", seconds: 90 }
+    - { id: automations, part: 0, kind: spine, question: "When do I use a Copilot automation instead of an agentic workflow?", claim: "Automations are owner-configured cloud-agent tasks outside Git; agentic workflows are repository contracts whose authority is reviewed in a PR.", scene: "automation-fork: automation vs agentic workflow across trigger, home, runtime, writes, repos → choose-it-when row; footnote links the automations docs", seconds: 90 }
+    - { id: automation-tree, part: 0, kind: spine, question: "Which one fits this specific job?", claim: "Any yes routes to an agentic workflow: public repo, authority reviewed in a PR, or writes capped to a declared list; three noes route to a Copilot automation.", scene: "automation-tree: start → visibility → governance → writes (no path) → Copilot automation; yes drops to the agentic workflow bar with the reason", seconds: 75 }
+    - { id: references, part: 0, kind: spine, question: "Where can I verify the talk's claims?", claim: "Primary docs and FanHub artifacts back the talk's claims.", scene: "references: product docs and observed artifacts", seconds: 30 }
+    - { id: thanks, part: 0, kind: spine, question: "Which real workflow will I map first?", claim: "Transfer the recurring, bounded, reviewable decision to one repository task.", scene: "thanks + use-case-ring bookend with YOUR REPOSITORY at the centre", seconds: 15 }
+
+# Evidence labels the deck relies on:
+# - Observed: FanHub #202 run (gh-aw v0.92.6), gh aw audit 1.22 AIC, gh aw outcomes 2/2 accepted.
+#   audit and outcomes count credits differently; never compare them directly.
+# - Confirmed from the compiled lock: 7 jobs, 5,000 AIC daily default, 400 AIC evals cap.
+# - Illustrative: eval answers on slide 28, Safe Outputs code on slide 17, lifecycle YAML shapes.

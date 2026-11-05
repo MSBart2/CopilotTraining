@@ -136,7 +136,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## Multi-repository support and other improvements for GitHub in Slack and Teams
@@ -247,7 +247,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## GitHub App improvements for least privilege and management
@@ -655,7 +655,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## GitHub Copilot in VS Code, September 2026 releases
@@ -688,7 +688,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## Scheduled code scanning skips inactive repositories
@@ -755,7 +755,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## Opt-in dist-tag permissions for npm trusted publishing
@@ -882,7 +882,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## Claude Sonnet 5.5 in GitHub Copilot
@@ -946,7 +946,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## Agentic autofix now uses Copilot Memory
@@ -1011,7 +1011,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## More ways to request and configure Copilot code reviews
@@ -1036,7 +1036,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agentic-sdlc` | agentic-workflows: depends | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## Visual Studio Code 1.139
