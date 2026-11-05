@@ -78,7 +78,7 @@ function main() {
 
   git(["fetch", "origin", "main", "--quiet"]);
   const wt = join(tmpdir(), `publish-${slug}-${Date.now()}`);
-  git(["worktree", "add", "--detach", wt, "origin/main"]);
+  git(["worktree", "add", "--quiet", "--detach", wt, "origin/main"]);
   const links = [];
   try {
     const restorable = paths.filter((p) => inTree(source, p, wt) || inTree("HEAD", p, wt));
@@ -95,7 +95,11 @@ function main() {
 
     console.log(`\n▶ Regenerating index and inventory on main`);
     run(["slides/scripts/sync-index-dates.mjs"], wt);
-    run(["scripts/portfolio-inventory.mjs"], wt);
+    try {
+      run(["scripts/portfolio-inventory.mjs"], wt);
+    } catch {
+      console.warn("⚠ Inventory reported errors (listed above); the file was still regenerated.");
+    }
     git(["add", "-A", "--", ...restorable], wt);
     const changed = new Set(git(["diff", "--cached", "--name-only"], wt).split(/\r?\n/).filter(Boolean));
     restoreInventoryNoise(wt, changed);

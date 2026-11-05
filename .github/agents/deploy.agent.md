@@ -185,6 +185,7 @@ npm run preview:index
 | Regen agendas but skip PDFs "to save time" | Allow only if they explicitly waive PDFs; note chips will stay dim for PDF. Default = regenerate both. |
 | Ask you to generate in the GitHub Action | **Refuse.** CI copies only. Point at this agent. |
 | Push after commit | Push the current branch; never force-push or change branches. |
+| Ship one reviewed talk from a staging branch straight to `main` | Commit it on the staging branch, then run `npm run publish:talk -- <slug> [--include <path>]...` (dry run) and add `-m "<snarky message>" --push`. It works in a temporary `origin/main` worktree, so no branch changes. Never push the staging branch itself to `main`. |
 
 When blocking, name the offending `category/slug` list and the exact npm
 commands to fix them. No lectures longer than five lines.
