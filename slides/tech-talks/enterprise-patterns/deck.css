@@ -1,0 +1,15 @@
+/* Three reference groups keep every first-party source visible on the final reference slide. */
+.s-references .refs {
+  margin-top: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.s-references .ref-group h3 { margin-bottom: 10px; font-size: 19px; }
+.s-references .ref {
+  gap: 3px;
+  margin-bottom: 8px;
+  padding: 10px 12px;
+}
+.s-references .ref b { font-size: 16px; }
+.s-references .ref span { font-size: 14px; }
+.s-references .ref code { font-size: 10px; overflow-wrap: anywhere; }

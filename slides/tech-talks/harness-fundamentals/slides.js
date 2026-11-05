@@ -23,7 +23,10 @@
     fresh: { label: 'Fresh-eyes app source', href: 'https://github.com/MSBart2/CopilotTraining/blob/main/tech-talks/harness-fundamentals/examples/apps/fresh-eyes/app.ts' },
     visibility: { label: 'Shared visibility policy and tests', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/harness-fundamentals/examples/host-kit' },
     runLog: { label: 'Run log implementation', href: 'https://github.com/MSBart2/CopilotTraining/blob/main/tech-talks/harness-fundamentals/examples/host-kit/run-log.ts' },
-    overlay: { label: 'FanHub repository hook overlay', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/harness-fundamentals/examples/fanhub-overlay' }
+    overlay: { label: 'FanHub repository hook overlay', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/harness-fundamentals/examples/fanhub-overlay' },
+    msHarness: { label: 'Microsoft Blog: Introducing the Microsoft Copilot harness (2026-10-28)', href: 'https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/' },
+    harnessEval: { label: 'GitHub Blog: Evaluating the Copilot agentic harness across models and tasks', href: 'https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/' },
+    bench: { label: 'GitHub Copilot Benchmarks (DeepSWE 1.1, Terminal-Bench 4.0)', href: 'https://benchmarks.github.com/' }
   };
 
   const slides = [
@@ -55,7 +58,7 @@
         { icon: '🔁', title: 'What a Harness Is', subtitle: 'Read pi as source', blurb: 'Name five jobs and see how a small loop handles each.', slide: 4 },
         { icon: '🧰', title: "Drive GitHub's Harness", subtitle: 'Use an app you own', blurb: 'Connect a release question to an existing service method.', slide: 12 },
         { icon: '🔍', title: 'Decide What It Sees', subtitle: 'Test a deliberate view',         blurb: 'Hide the implementation, rerun tests, and inspect evidence.', slide: 22 },
-                { icon: '💡', title: 'Controls and Ideas', subtitle: 'Check the controls, pick an app', blurb: 'Who governs the harness, and where to embed it next.', slide: 29 }
+                { icon: '💡', title: 'Controls and Ideas', subtitle: 'Check the controls, pick an app', blurb: 'Who governs it, where to embed it, and how it is tested.', slide: 29 }
       ]
     }),
     S('part-1', 1, 'What a Harness Is', {
@@ -524,6 +527,73 @@
       ],
       footer: 'Your turn: which app already has the data, and which question takes a person an hour to answer today?'
     }),
+    S('one-harness', 4, 'The SDK you host runs the same harness as every Copilot surface', {
+      scene: 'harness-hub', pill: 'Controls and Ideas · One Harness',
+      subtitle: 'Microsoft standardized its Copilot experiences on GitHub’s harness. Improve the harness, and every surface gains, including your app.',
+      surfaces: [
+        { label: 'VS Code' },
+        { label: 'GitHub Copilot CLI' },
+        { label: 'GitHub Copilot app' },
+        { label: 'Copilot code review' },
+        { label: 'Copilot Studio' },
+        { label: 'Copilot Code' },
+        { label: 'Microsoft Foundry agents', mark: 'managed', z: 'purple' },
+        { label: 'Your app, via the Copilot SDK', mark: 'this talk', z: 'green' }
+      ],
+      hub: {
+        title: 'Copilot harness',
+        detail: 'the Copilot SDK runtime, now ported to Rust',
+        note: 'Microsoft runs the loop and sandbox; you bring instructions, skills, tools, and model choice.'
+      },
+      jobs: ['Loop', 'Context', 'Tools', 'Control', 'Evidence'],
+      models: [
+        { label: '20+ frontier models', detail: 'GPT, Claude, Gemini, and MAI families', z: 'remote' },
+        { label: 'Auto model selection', detail: 'Picks a model by task intent and model health', z: 'purple' },
+        { label: 'Multi-model orchestration', detail: 'copilot-fusion, and Rubber Duck cross-family critique', z: 'local' },
+        { label: 'Bring your own key', detail: 'Your provider, open-source, and local models', z: 'green' }
+      ],
+      footnote: 'Announced 2026-10-28 as the Microsoft Copilot harness: download the SDK, or run it managed in Microsoft Foundry.'
+    }),
+    S('harness-testing', 4, 'To test a harness, hold the model fixed and change only the harness', {
+      scene: 'detail-rows', pill: 'Controls and Ideas · Harness Testing',
+      subtitle: 'GitHub ran Copilot CLI against each model vendor’s own harness, with the same model on the same tasks.',
+      columns: ['Step', 'What GitHub did', 'Why it matters'],
+      rows: [
+        { label: 'Same model, two harnesses', detail: 'Copilot CLI vs Claude Code (Sonnet 4.6, Opus 4.7) and vs Codex CLI (GPT-5.4, GPT-5.5)', proof: 'Any difference comes from the harness, since the model is the same.', z: 'purple' },
+        { label: 'Same settings', detail: 'Same context window and prompt limit, medium reasoning, built-in tools only, no MCP or web, 2-hour timeout', proof: 'Public leaderboards use tuned settings, so their numbers differ from these.', z: 'local' },
+        { label: 'Five kinds of task', detail: 'SWE-bench Verified and Pro, SkillsBench, TerminalBench 2, and Win-Hill (internal, Windows containers)', proof: 'Bug fixes, multi-step changes, skill triggering, terminal work, and a second OS.', z: 'remote' },
+        { label: 'Repeat, show the spread', detail: 'Five or more runs per pairing; ±1σ spread plotted on TerminalBench 2’s 89 tasks', proof: 'Model errors stay in the score; only infrastructure failures are rerun.', z: 'orange' },
+        { label: 'Result', detail: 'Task resolution on par, inside run-to-run variance; fewer tokens in most pairings', proof: 'Exception: GPT-5.4 and GPT-5.5 on SWE-bench Verified, 7% and 4% behind on tokens.', z: 'green' }
+      ],
+      footnote: 'Source: GitHub Blog, “Evaluating performance and efficiency of the GitHub Copilot agentic harness.” Scores are pass@1.'
+    }),
+    S('model-results', 4, 'One harness, many models: choose the tradeoff per task', {
+      scene: 'bench-scatter', pill: 'Controls and Ideas · Model Results',
+      subtitle: 'DeepSWE 1.1, 113 tasks, the same Copilot harness behind every point. Up and to the left is better: solve more, spend less.',
+      chart: {
+        xMin: 0.1, xMax: 16, yMin: 52, yMax: 82,
+        xTicks: [0.1, 0.3, 1, 3, 10], yTicks: [55, 60, 65, 70, 75, 80],
+        xLabel: 'average cost per task (USD, log scale) →', yLabel: '↑ resolution rate',
+        points: [
+          { id: 'fusion-max', label: 'copilot-fusion max · 78.1%', cost: 4.97, score: 78.1, z: 'purple', pos: 't' },
+          { id: 'fusion', label: 'copilot-fusion · 75.4% · $0.87', cost: 0.87, score: 75.4, z: 'purple', pos: 't' },
+          { id: 'opus-xhigh', label: 'opus-5.5 xhigh · 74.5%', cost: 4.92, score: 74.5, z: 'orange', pos: 'r' },
+          { id: 'opus-max', label: 'opus-5.5 max · 70.1%', cost: 10.89, score: 70.1, z: 'orange', pos: 'b' },
+          { id: 'sol', label: 'gpt-6.1-sol · 74.3%', cost: 0.54, score: 74.3, z: 'remote', pos: 'l' },
+          { id: 'astra', label: 'gpt-6-astra · 73.8%', cost: 3.20, score: 73.8, z: 'remote', pos: 'b' },
+          { id: 'auto', label: 'auto · 69.2%', cost: 0.61, score: 69.2, z: 'green', pos: 'r' },
+          { id: 'luna', label: 'gpt-6-luna max · 62.3%', cost: 0.16, score: 62.3, z: 'remote', pos: 'r' },
+          { id: 'haiku', label: 'haiku-5.5 xhigh · 56.1%', cost: 0.25, score: 56.1, z: 'orange', pos: 'r' }
+        ],
+        links: [{ from: 'opus-xhigh', to: 'opus-max' }]
+      },
+      takeaways: [
+        { title: 'Orchestration leads', value: '78.1%', detail: 'Fusion max tops every model; fusion matches Opus 5.5 xhigh at a sixth of the cost.', z: 'purple' },
+        { title: 'Effort has a peak', value: '74.5% → 70.1%', detail: 'Opus 5.5 from xhigh ($4.92) to max ($10.89): over twice the cost for a lower score.', z: 'orange' },
+        { title: 'Your task mix decides', value: '69% vs 19%', detail: 'Auto (balance) on DeepSWE 1.1 vs Terminal-Bench 4.0. Rankings move by benchmark.', z: 'green' }
+      ],
+      footnote: 'benchmarks.github.com · provisional, updated 2026-10-21 · average of up to five runs · 9 of 43 configurations shown.'
+    }),
     S('before-after', 0, 'What changes when your app hosts the loop', {
       scene: 'recap', pill: 'The Value Recap',
       beforeLabel: 'Agent in a chat window', afterLabel: 'Agent hosted in your app',
@@ -898,7 +968,7 @@
       seconds: 20,
       notes: [
         '"Two practical questions to finish: what already controls a harness before you share it, and where would you embed one first?"',
-        'Controls first: some are set by admins and platform teams, not by your code. Then a short pre-flight. Then a set of app ideas to take home.',
+        'Controls first: some are set by admins and platform teams, not by your code. Then a short pre-flight. Then a set of app ideas to take home, and a look at how GitHub tests the harness itself across models.',
         '→ Start with the controls around the app.'
       ],
       know: ['Part 4 covers authority and transfer: the controls other teams already own around Copilot, a pre-flight that makes the harness’s claims checkable, and existing-app ideas. Each report still has a human reader, such as the docs owner for onboarding friction or the API owner for contract failures.'],
@@ -938,10 +1008,52 @@
         'Security portal: the hard part of a CVE alert is reachability. The model reads the advisory, searches for the call sites, and makes the case with file references. Dismissing or fixing stays with the owner.',
         'Code review queue: twelve open PRs, one reviewer. The model ranks them by blast radius from changed paths, code owners, and coverage. People still choose and merge.',
         'The last two are not hypothetical. The release dashboard is the one we built in Part 2. Fresh-eyes runs today in this talk’s examples and found three real documentation problems in FanHub.',
-        '"Your turn: which app already has the data, and which question takes a person an hour to answer today?"'
+        '"Your turn: which app already has the data, and which question takes a person an hour to answer today?"',
+        '→ Before the recap: the harness you would embed is the same one behind every Copilot surface.'
       ],
       know: ['Cards A through D are illustrative designs; tool names are examples of narrow, read-only app methods. In each, consequential actions (rollback, refund, dismissing an alert, merging, deploying) stay as app UI behind existing permissions. queryMetric takes enumerated metric and dimension values so the model cannot write arbitrary queries. Fresh-eyes is a supporting working app: it starts from a pinned clean FanHub clone; persona follows written docs literally; source is hidden; .env is the only writable path; an allowlist controls setup commands; web tools are excluded; report_friction records step, docSays, reality, doc, and severity. Bounds are 80 tool calls, 20 minutes, and cleanup of a listener on port 5265. Observed: 24 tool calls, 20 allowed, one denied, zero source reads, GET /api/characters returned 200, and three findings. Finding 1: node/SETUP.md says Node 18+; on Node 24 better-sqlite3 had no prebuilt binary and its source build needed Python. Finding 2: node/README.md calls Docker a prerequisite and gives port 3001, while SETUP.md says no Docker and uses 5265. Finding 3: docs give no native-install fallback; the agent recovered with npm exec --package=node@20. The docs owner decides what to fix.'],
       sources: [SRC.fresh, SRC.visibility, SRC.examples]
+    },
+    'one-harness': {
+      seconds: 120,
+      notes: [
+        '"The SDK you just embedded in a dashboard runs the same harness Microsoft now ships in every Copilot surface."',
+        'Left: VS Code, the CLI, the GitHub Copilot app, code review, Copilot Studio, Copilot Code, and Foundry-managed agents. Bottom left: your app, the one we built in Part 2.',
+        'Center: the five jobs from Part 1 live here. Microsoft runs the loop and sandbox; you bring instructions, skills, tools, and model choice.',
+        'Right: one harness, many models. Twenty-plus frontier models, Auto selection, multi-model orchestration, and bring your own key, including open-source and local models. That is the BYOK route from the licensing slide.',
+        '"When GitHub improves the harness, every surface gets the improvement, and so does the app you host."',
+        '→ That raises a fair question: how do you know a harness is any good?'
+      ],
+      know: ['Microsoft announced the Microsoft Copilot harness on 2026-10-28: the harness GitHub built, adopted company-wide, powering Copilot Code, Copilot Studio, the GitHub Copilot app, the CLI, VS Code, and more, and available managed in Microsoft Foundry or as the downloadable SDK. The harness runtime was recently ported to Rust, which the announcement credits with lower session overhead and time-to-first-token. Model families named by GitHub: GPT, Claude, Gemini, and MAI, plus BYOK for open-source and local models. Rubber Duck uses a model from another family to critique work; copilot-fusion is the multi-model orchestration that appears on the benchmarks site. The platforms stay open: other harnesses and frameworks remain supported.'],
+      sources: [SRC.msHarness, SRC.harnessEval, SRC.sdk, SRC.byok]
+    },
+    'harness-testing': {
+      seconds: 120,
+      notes: [
+        '"To measure a harness, you have to take the model out of the comparison. GitHub runs the same model in two harnesses on the same tasks."',
+        'Row 1: Claude models in Copilot CLI vs Claude Code; GPT models in Copilot CLI vs Codex CLI.',
+        'Row 2: every setting that could tilt the result is pinned. These are deliberately not leaderboard settings, so the numbers will not match public submissions.',
+        'Row 3: five task types, including Win-Hill, an internal benchmark in Windows containers that checks results hold on a second operating system.',
+        'Row 4: agents are stochastic, so one run proves little. Five or more runs per pairing, with the spread plotted.',
+        '"The result: task completion on par, with fewer tokens in most pairings. GitHub also reports where it trails: two GPT pairings on SWE-bench Verified."',
+        '→ Parity on the harness is the floor. The interesting part is what changes when you swap the model.'
+      ],
+      know: ['Benchmarks: SWE-bench Verified (500 human-validated Python bug fixes), SWE-bench Pro (harder multi-step work), SkillsBench (skill use and triggering), TerminalBench 2 (terminal tasks), Win-Hill (internal, Windows containers). Methodology: non-interactive single turn, web tools disabled, all tools allowed, two-hour timeout; normalized context window, prompt token limits, medium reasoning effort, no tool search, no MCP servers, default built-in tools. For benchmarks under 100 instances, five runs with the best run reported; pass@1. TerminalBench 2 variance study: 89 tasks, five runs per model, ±1σ ellipses on resolution vs cost; Copilot CLI used github-mcp-server and tool search was on for Claude Code in that study only. GitHub reads resolution differences as within run-to-run variance. Token-efficiency exceptions: GPT-5.4 and GPT-5.5 on SWE-bench Verified, 7% and 4% worse. The study used the models current at publication (Sonnet 4.6, Opus 4.7, GPT-5.4, GPT-5.5).'],
+      sources: [SRC.harnessEval]
+    },
+    'model-results': {
+      seconds: 150,
+      notes: [
+        '"Every point here runs in the same Copilot harness. Only the model and its reasoning effort change."',
+        'Orient the room: up is more tasks solved, left is cheaper. The cost axis is logarithmic, so each tick is roughly three times the one before.',
+        'Top: copilot-fusion max, multi-model orchestration, beats every single model at 78.1%. Plain copilot-fusion matches Opus 5.5 at xhigh effort for about a sixth of the cost.',
+        'Follow the dashed line: Opus 5.5 at max effort costs more than twice xhigh and scores lower. More thinking has a peak.',
+        'Bottom right panel: Auto (balance) solves 69% of DeepSWE but 19% of Terminal-Bench 4.0. Rankings move with the task mix.',
+        '"For your app, the model is a setting you can change per task. Pick the tradeoff on your own work, then measure it."',
+        '→ Back to the whole talk in four rows.'
+      ],
+      know: ['DeepSWE 1.1 values (score ± std err, avg cost per task): copilot-fusion max 78.1 ± 1.1, $4.97; copilot-fusion 75.4 ± 1.0, $0.87; claude-opus-5.5 xhigh 74.5 ± 0.8, $4.92; gpt-6.1-sol medium 74.3 ± 1.5, $0.54; gpt-6-astra medium 73.8 ± 1.0, $3.20; claude-opus-5.5 max 70.1 ± 1.8, $10.89; auto balance 69.2 ± 1.4, $0.61; gpt-6-luna max 62.3 ± 0.6, $0.16; claude-haiku-5.5 xhigh 56.1 ± 1.3, $0.25. Terminal-Bench 4.0 (66 tasks): copilot-fusion max 67.9, claude-opus-5.5 max 62.4, gpt-6.1-sol medium 45.5, auto balance 19.1. Effort also peaks for Haiku 5.5 on DeepSWE: xhigh 56.1 vs max 38.1. The site marks both datasets provisional (updated 2026-10-21) and notes Kimi K3 uses different effort labels. Each configuration runs five times with up to two retries per task; scores average up to five runs. Results reflect the model and harness together.'],
+      sources: [SRC.bench, SRC.harnessEval]
     },
     'before-after': {
       seconds: 45,
@@ -973,7 +1085,7 @@
         'The notes above identify which evidence supports each specific claim.'
       ],
       know: ['README frontmatter references are the source for this slide. The talk’s pi excerpts are read-only and pinned to f9daca3; SDK examples and observations use version 1.0.26.'],
-      sources: [SRC.pi, SRC.sdk, SRC.npm, SRC.auth, SRC.hooks, SRC.vscode, SRC.policies, SRC.models]
+      sources: [SRC.pi, SRC.sdk, SRC.npm, SRC.auth, SRC.msHarness, SRC.harnessEval, SRC.bench, SRC.hooks, SRC.vscode, SRC.policies, SRC.models]
     },
     thanks: {
       seconds: 20,

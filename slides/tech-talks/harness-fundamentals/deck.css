@@ -1,3 +1,4 @@
 /* Harness Fundamentals deck-only styles for code panels and table headings. */
 .scene .code-line { white-space: pre; }
 .scene .col-head { letter-spacing: .08em; }
+.scene .stat-num { font-size: 34px; font-weight: 800; }

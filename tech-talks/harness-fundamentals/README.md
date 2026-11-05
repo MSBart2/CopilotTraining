@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-11-04
+updated: 2026-11-05
 section: "Extend and Embed"
 audience: [developer, platform-engineer, architect]
 level: applied
@@ -37,6 +37,15 @@ references:
   - url: https://docs.github.com/en/copilot/reference/ai-models/supported-models
     label: "Supported AI models in GitHub Copilot"
     verified: 2026-10-26
+  - url: https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/
+    label: "Introducing the Microsoft Copilot harness (Microsoft Blog)"
+    verified: 2026-11-05
+  - url: https://github.blog/ai-and-ml/github-copilot/evaluating-performance-and-efficiency-of-the-github-copilot-agentic-harness-across-models-and-tasks/
+    label: "Evaluating the GitHub Copilot agentic harness across models and tasks (GitHub Blog)"
+    verified: 2026-11-05
+  - url: https://benchmarks.github.com/
+    label: "GitHub Copilot Benchmarks (provisional data, updated 2026-10-21)"
+    verified: 2026-11-05
 ---
 
 # Harness Fundamentals: Getting Inside the Agent Loop
@@ -50,7 +59,7 @@ references:
 
 ## Present and Study
 
-- **[Open the deck](../../slides/tech-talks/harness-fundamentals/index.html):** 36 native slides. Press `N` to open the notes beside it.
+- **[Open the deck](../../slides/tech-talks/harness-fundamentals/index.html):** 39 native slides. Press `N` to open the notes beside it.
 - **[Speaker notes](../../slides/tech-talks/harness-fundamentals/notes.html):** complete talk track, evidence, technical boundaries, sources, and per-slide timing. The notes are the handout.
 - **[Teaching source](../../slides/tech-talks/harness-fundamentals/slides.js):** slide data and notes together.
 
@@ -70,7 +79,7 @@ Meet the blind-tests app ([`examples/apps/blind-tests/app.ts`](./examples/apps/b
 
 ## 4. Controls and Ideas
 
-Check the controls other teams already own around a harness, run a concrete pre-flight, and pick the first existing app and method to embed it in.
+Check the controls other teams already own around a harness, run a concrete pre-flight, and pick the first existing app and method to embed it in. Close with the evidence behind the harness itself: Microsoft now runs every Copilot surface on the same harness the SDK exposes, GitHub tests it by holding the model fixed against each vendor's own harness, and the benchmarks show how model and effort choices trade resolution against cost.
 
 ## What You Can Do Today
 

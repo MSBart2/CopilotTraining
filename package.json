@@ -1,6 +1,7 @@
 {
   "scripts": {
     "content:route": "node scripts/content-router.mjs",
+    "publish:talk": "node scripts/publish-talk.mjs",
     "portfolio:generate": "node scripts/portfolio-inventory.mjs",
     "portfolio:check": "node scripts/portfolio-inventory.mjs --check",
     "test:portfolio": "node --test scripts/portfolio-inventory.test.mjs",
