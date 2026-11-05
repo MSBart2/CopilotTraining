@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T19:00:26.279Z",
+  "generatedAt": "2026-11-05T19:16:09.615Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -1702,7 +1702,7 @@
       "title": "Harness Fundamentals: Getting Inside the Agent Loop",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-11-04",
+      "updated": "2026-11-05",
       "section": "Extend and Embed",
       "audience": [
         "developer",
@@ -1729,8 +1729,8 @@
         "readme": {
           "path": "tech-talks/harness-fundamentals/README.md",
           "exists": true,
-          "bytes": 57698,
-          "modified": "2026-10-30T17:50:26.449Z"
+          "bytes": 8312,
+          "modified": "2026-11-05T19:16:08.556Z"
         },
         "recipe": {
           "path": "tech-talks/harness-fundamentals/deck.recipe.yml",
@@ -1741,8 +1741,8 @@
         "deck": {
           "path": "slides/tech-talks/harness-fundamentals/slides.js",
           "exists": true,
-          "bytes": 94586,
-          "modified": "2026-11-05T17:03:18.662Z"
+          "bytes": 106954,
+          "modified": "2026-11-05T19:16:08.553Z"
         },
         "notesHtml": {
           "path": "slides/tech-talks/harness-fundamentals/notes.html",

@@ -404,6 +404,106 @@
     return `${html.head(s)}${svg.scene(W, height, label, cards, 'app-ideas')}<p class="footnote">${esc(s.footer)}</p>`;
   };
 
+  // One harness in the middle: the surfaces it powers on the left, the models it runs on the right.
+  const harnessHub = (s) => {
+    const colW = 400;
+    const hubX = 480;
+    const hubW = W - 2 * hubX;
+    const rightX = W - colW;
+    const sh = 44;
+    const sg = 8;
+    const height = s.surfaces.length * sh + (s.surfaces.length - 1) * sg;
+    const mh = (height - (s.models.length - 1) * 12) / s.models.length;
+    const hubH = 250;
+    const hubY = (height - hubH) / 2;
+    const hubMid = height / 2;
+    const surfaces = s.surfaces.map((m, i) => {
+      const y = i * (sh + sg);
+      const wire = svg.path(window.Kit.curve(colW, y + sh / 2, hubX, hubMid), { cls: `wire${m.mark ? ' link' : ' faint'}` });
+      const body =
+        svg.rect(0, y, colW, sh, { cls: m.mark ? 'zone' : 'box soft', r: 12 }) +
+        svg.text(20, y + 28, m.label, { cls: `t-sm${m.mark ? ' z-text' : ''}`, anchor: 'start' }) +
+        (m.mark ? svg.text(colW - 18, y + 28, m.mark, { cls: 't-xs t-mono z-text', anchor: 'end' }) : '');
+      return svg.enter(wire, 900 + i * 60) + svg.g(svg.enter(body, 300 + i * 80), { cls: `z-${m.z || 'local'}` });
+    }).join('');
+    const models = s.models.map((m, i) => {
+      const y = i * (mh + 12);
+      const wire = svg.path(window.Kit.curve(hubX + hubW, hubMid, rightX, y + mh / 2), { cls: 'wire link' });
+      const body =
+        svg.rect(rightX, y, colW, mh, { cls: 'zone', r: 14 }) +
+        svg.text(rightX + 20, y + 36, m.label, { cls: 't-sm z-text', anchor: 'start' }) +
+        svg.lines(rightX + 20, y + 62, m.detail, { cls: 't-xs', anchor: 'start', max: 44, lh: 19 });
+      return svg.g(svg.enter(wire, 1500 + i * 80) + svg.enter(body, 1300 + i * 120), { cls: `z-${m.z}` });
+    }).join('');
+    let chipX = 0;
+    const jobChips = s.jobs.map((j) => {
+      const c = svg.chip(chipX, 0, j, { z: 'purple', size: 15, h: 30, pad: 11 });
+      chipX += c.w + 8;
+      return c;
+    });
+    const chipsW = chipX - 8;
+    const chipsX = hubX + (hubW - chipsW) / 2;
+    const hub = svg.g(
+      svg.rect(hubX, hubY, hubW, hubH, { cls: 'zone', r: 22 }) +
+      svg.text(W / 2, hubY + 56, s.hub.title, { cls: 't-lg z-text' }) +
+      svg.text(W / 2, hubY + 88, s.hub.detail, { cls: 't-sm t-muted' }) +
+      `<g transform="translate(${chipsX - 0} ${hubY + 118})">${jobChips.map((c) => c.markup).join('')}</g>` +
+      svg.lines(W / 2, hubY + 186, s.hub.note, { cls: 't-xs', max: 52, lh: 20 }),
+      { cls: 'z-purple' }
+    );
+    const label = `${s.title}. One harness, ${s.hub.title}, ${s.hub.detail}, runs ${s.jobs.join(', ')}. It powers ${s.surfaces.map((m) => m.label).join(', ')}. It runs ${s.models.map((m) => `${m.label}: ${m.detail}`).join('; ')}.`;
+    return `${html.head(s)}${svg.scene(W, height, label, surfaces + svg.pop(hub, 600) + models, 'harness-hub')}${html.footnote(s.footnote)}`;
+  };
+
+  // Resolution rate against cost per task on a log axis, beside the takeaways the points prove.
+  const benchScatter = (s) => {
+    const c = s.chart;
+    const chartW = 930;
+    const x0 = 70;
+    const x1 = chartW - 20;
+    const y0 = 16;
+    const y1 = 400;
+    const height = y1 + 56;
+    const lx = (v) => x0 + ((Math.log10(v) - Math.log10(c.xMin)) / (Math.log10(c.xMax) - Math.log10(c.xMin))) * (x1 - x0);
+    const ly = (v) => y1 - ((v - c.yMin) / (c.yMax - c.yMin)) * (y1 - y0);
+    const grid =
+      c.yTicks.map((t) => svg.path(`M${x0} ${ly(t)}L${x1} ${ly(t)}`, { cls: 'wire faint' }) +
+        svg.text(x0 - 12, ly(t) + 5, `${t}%`, { cls: 't-xs', anchor: 'end' })).join('') +
+      c.xTicks.map((t) => svg.path(`M${lx(t)} ${y1}L${lx(t)} ${y1 + 6}`, { cls: 'wire' }) +
+        svg.text(lx(t), y1 + 26, `$${t < 1 ? t.toFixed(2) : t}`, { cls: 't-xs' })).join('') +
+      svg.path(`M${x0} ${y0}L${x0} ${y1}L${x1} ${y1}`, { cls: 'wire' }) +
+      svg.text(x0, y1 + 52, c.xLabel, { cls: 't-xs t-mono', anchor: 'start' }) +
+      svg.text(x0 + 14, ly(c.yMax) + 6, c.yLabel, { cls: 't-xs t-mono', anchor: 'start' });
+    const byId = Object.fromEntries(c.points.map((p) => [p.id, p]));
+    const links = (c.links || []).map((l, i) => {
+      const a = byId[l.from];
+      const b = byId[l.to];
+      return svg.trace(`M${lx(a.cost)} ${ly(a.score)}L${lx(b.cost)} ${ly(b.score)}`, { cls: 'wire link dashed', at: 1700 + i * 200, dur: 500 });
+    }).join('');
+    const offsets = { r: [14, 5, 'start'], l: [-14, 5, 'end'], b: [0, 28, 'middle'], t: [0, -16, 'middle'] };
+    const points = c.points.map((p, i) => {
+      const x = lx(p.cost);
+      const y = ly(p.score);
+      const [dx, dy, anchor] = offsets[p.pos || 'r'];
+      return svg.g(svg.pop(
+        svg.circle(x, y, 8, { cls: 'task' }) +
+        svg.text(x + dx, y + dy, p.label, { cls: 't-xs t-mono z-text', anchor }), 300 + i * 90), { cls: `z-${p.z}` });
+    }).join('');
+    const px = chartW + 40;
+    const pw = W - px;
+    const ch = (height - 2 * 14) / 3;
+    const cards = s.takeaways.map((t, i) => {
+      const y = i * (ch + 14);
+      return svg.g(svg.enter(
+        svg.rect(px, y, pw, ch, { cls: 'zone', r: 16 }) +
+        svg.text(px + 22, y + 34, t.title.toUpperCase(), { cls: 't-xs t-mono z-text col-head', anchor: 'start' }) +
+        svg.text(px + 22, y + 74, t.value, { cls: 'stat-num z-text', anchor: 'start' }) +
+        svg.lines(px + 22, y + 104, t.detail, { cls: 't-xs', anchor: 'start', max: 50, lh: 19 }), 1600 + i * 250), { cls: `z-${t.z}` });
+    }).join('');
+    const label = `${s.title}. ${c.xLabel} against ${c.yLabel}: ${c.points.map((p) => `${p.label}`).join('; ')}. ${s.takeaways.map((t) => `${t.title}: ${t.value}. ${t.detail}`).join(' ')}`;
+    return `${html.head(s)}${svg.scene(W, height, label, grid + links + points + cards, 'bench-scatter')}${html.footnote(s.footnote)}`;
+  };
+
   // Two nested cycles: turns (model call, gated tools, results) repeat inside one run (prompt to final answer).
   const harnessLoop = () => {
     const C = 380;
@@ -450,6 +550,8 @@
     'jsonl-file': jsonlFile,
     recap,
     'dashboard-mockup': dashboardMockup,
-    'app-ideas': appIdeas
+    'app-ideas': appIdeas,
+    'harness-hub': harnessHub,
+    'bench-scatter': benchScatter
   };
 })();
