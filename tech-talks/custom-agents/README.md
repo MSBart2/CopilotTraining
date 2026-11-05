@@ -9,7 +9,7 @@ duration: 45
 format: core-talk
 decision: "How do I write one agent file that works in every Copilot surface my team uses?"
 prerequisites: [copilot-primitives]
-related: [local-agentic-sdlc, copilot-on-github, agentic-lifecycle, copilot-hooks]
+related: [local-agentic-sdlc, copilot-on-github, agentic-workflows, copilot-hooks]
 references:
   - url: https://docs.github.com/en/copilot/reference/custom-agents-configuration
     label: "Custom agents configuration reference"
@@ -95,7 +95,7 @@ Confirm which agent, model, and tools loaded on each surface your team uses. Sta
 - [Copilot Primitives](../copilot-primitives/README.md): where custom agents sit among instructions, prompts, skills, and hooks.
 - [Local Agentic SDLC](../local-agentic-sdlc/README.md): orchestration across agents and worktrees.
 - [Copilot on GitHub](../copilot-on-github/README.md): cloud agent, code review, and Code Quality on one pull request.
-- [GitHub Agentic Workflows](../agentic-lifecycle/README.md): event-triggered agents with safe outputs.
+- [GitHub Agentic Workflows](../agentic-workflows/README.md): event-triggered agents with safe outputs.
 - [Copilot Hooks](../copilot-hooks/README.md): controls that can enforce boundaries beyond the profile.
 
 ## References

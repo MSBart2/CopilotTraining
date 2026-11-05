@@ -25,7 +25,7 @@ No candidate talk crossed the V1 routing threshold.
 
 | Review | Talk | Relationship | Obligation |
 |---|---|---|---|
-| [ ] | `tech-talks/agentic-lifecycle` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
+| [ ] | `tech-talks/agentic-workflows` | agentic-workflows: explains (via agentic-workflows) | Explain repository-native agent workflow triggers, permissions, outputs, and safety. |
 | [ ] | `tech-talks/agent-readiness` | agentic-workflows: depends (via agentic-sdlc) | Keep CI/CD infrastructure and agent workflow boundaries accurate. |
 
 ## Anomalies

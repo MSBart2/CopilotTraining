@@ -104,4 +104,4 @@ package-lock.json   @your-org/security-team
 
 ## Scale it up
 
-A fuller design adds a separate `test-runner-agent` and a deeper goal watchdog. This starter folds test runs into the fix agent and the critic's re-verification. When you want a runtime that enforces turn, time, and write limits for you, the [GitHub Agentic Workflows](../../../agentic-lifecycle/README.md) talk covers it.
+A fuller design adds a separate `test-runner-agent` and a deeper goal watchdog. This starter folds test runs into the fix agent and the critic's re-verification. When you want a runtime that enforces turn, time, and write limits for you, the [GitHub Agentic Workflows](../../../agentic-workflows/README.md) talk covers it.

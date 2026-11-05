@@ -201,7 +201,7 @@ refresh:
         continuity, but an automation demo would displace the bounded
         developer-led validation loop.
       relatedTalks:
-        - "tech-talks/agentic-lifecycle"
+        - "tech-talks/agentic-workflows"
 
     - title: "Install GitHub Copilot CLI with VS Code"
       source: "https://github.blog/changelog/2026-10-28-github-copilot-in-vs-code-universe-releases/"

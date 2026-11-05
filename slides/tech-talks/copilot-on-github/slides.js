@@ -26,7 +26,7 @@
     pr198: { label: 'FanHub #198: Copilot review found a browser gap', href: 'https://github.com/MSBart2/FanHub/pull/198' },
     pr199: { label: 'FanHub #199: coverage gate demonstration', href: 'https://github.com/MSBart2/FanHub/pull/199' },
     pr201: { label: 'FanHub #201: Code Quality Autofix demonstration', href: 'https://github.com/MSBart2/FanHub/pull/201' },
-    workflows: { label: 'GitHub Agentic Workflows talk', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/agentic-lifecycle' },
+    workflows: { label: 'GitHub Agentic Workflows talk', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/agentic-workflows' },
     localSdlc: { label: 'Local Agentic SDLC talk', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/local-agentic-sdlc' },
     sdlc: { label: 'Agentic SDLC talk', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/agentic-sdlc' }
   };

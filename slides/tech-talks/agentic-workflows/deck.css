@@ -1,0 +1,16 @@
+/* Deck-only scene styles on top of the shared native theme. */
+.stage .footnote .foot-link { font-style: normal; color: var(--purple-light); text-decoration: none; border-bottom: 1px solid currentColor; white-space: nowrap; }
+.scene .aw-cell-title { font-size: 23px; font-weight: 700; fill: var(--text); }
+.scene .aw-cell-detail { font-size: 17px; font-weight: 500; fill: var(--muted); }
+.scene .aw-code { font-family: var(--mono); font-size: 17px; fill: var(--text); white-space: pre; }
+.scene .aw-code-fence { fill: var(--muted); }
+.scene .aw-code-key { fill: color-mix(in srgb, var(--cyan) 70%, white); }
+.scene .aw-code-head { fill: color-mix(in srgb, var(--purple-light) 70%, white); font-weight: 700; }
+.scene .aw-code-expr { fill: var(--orange); }
+.scene .aw-gate { stroke: var(--z); stroke-width: 8; stroke-linecap: round; fill: none; }
+.scene .aw-gate.open { stroke-dasharray: 4 14; }
+.scene .aw-gate-num { fill: var(--text); font-weight: 700; }
+.scene .aw-open-note { fill: var(--orange); }
+.scene .aw-code-add { fill: var(--orange); font-weight: 700; }
+.scene .aw-prompt { font-family: var(--mono); font-size: 34px; font-weight: 700; fill: var(--text); }
+.scene .aw-fork-cell { font-size: 20px; font-weight: 500; fill: var(--body); }

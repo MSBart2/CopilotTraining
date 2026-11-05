@@ -8,7 +8,7 @@ duration: 45
 format: core-talk
 decision: "Which agent actions does policy allow or deny at execution time?"
 prerequisites: [copilot-primitives]
-related: [agentic-lifecycle, agentic-sdlc, enterprise-patterns]
+related: [agentic-workflows, agentic-sdlc, enterprise-patterns]
 references:
   - url: https://code.visualstudio.com/docs/copilot/customization/hooks
     label: "Agent hooks configuration in VS Code"

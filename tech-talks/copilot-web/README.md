@@ -8,7 +8,7 @@ duration: 40
 format: core-talk
 decision: "What repository work is bounded enough to delegate through GitHub?"
 prerequisites: [repo-to-feature]
-related: [agentic-lifecycle, pr-trust-stack]
+related: [agentic-workflows, pr-trust-stack]
 references:
   - url: https://code.visualstudio.com/docs/copilot/copilot-coding-agent
     label: "GitHub Copilot coding agent - VS Code"

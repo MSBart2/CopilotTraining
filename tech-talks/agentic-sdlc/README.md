@@ -73,7 +73,7 @@ Apply the decision to one repository and record what the evidence says.
 
 ## Related Talks
 
-- [GitHub Agentic Workflows](../agentic-lifecycle/) — evidence-gated issue-to-PR automation.
+- [GitHub Agentic Workflows](../agentic-workflows/) — evidence-gated issue-to-PR automation.
 - [Local Agentic SDLC](../local-agentic-sdlc/) — specialist agents, worktree isolation, and integration records.
 - [Copilot Hooks](../copilot-hooks/) — governance mechanisms and agent behavior controls.
 - [Enterprise Patterns](../enterprise-patterns/) — organization-wide scaling patterns.

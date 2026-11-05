@@ -9,7 +9,7 @@ duration: 45
 format: core-talk
 decision: "How do I hand an issue to local agents and know when the work is ready for my review?"
 prerequisites: [custom-agents]
-related: [custom-agents, copilot-cli, copilot-hooks, agentic-lifecycle, copilot-on-github]
+related: [custom-agents, copilot-cli, copilot-hooks, agentic-workflows, copilot-on-github]
 references:
   - url: https://code.visualstudio.com/docs/agents/run/subagents
     label: "VS Code: subagents and orchestration patterns"
@@ -101,5 +101,5 @@ The FanHub ledger is **one observed run**: about 380 AI credits across four sess
 - [Custom Agents](../custom-agents/README.md): design an agent file that resolves across runtimes
 - [Copilot CLI](../copilot-cli/README.md): the terminal surface for the local loop
 - [Copilot Hooks](../copilot-hooks/README.md): hook events and policy enforcement
-- [GitHub Agentic Workflows](../agentic-lifecycle/README.md): event-triggered agents with safe outputs
+- [GitHub Agentic Workflows](../agentic-workflows/README.md): event-triggered agents with safe outputs
 - [Copilot on GitHub](../copilot-on-github/README.md): hosted work assigned for review

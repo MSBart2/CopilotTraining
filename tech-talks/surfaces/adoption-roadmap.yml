@@ -53,7 +53,7 @@ phases:
       - workshop/04-agent-skills
       - tech-talks/copilot-cli
       - tech-talks/copilot-web
-      - tech-talks/agentic-lifecycle
+      - tech-talks/agentic-workflows
     exitEvidence:
       - bounded_task_has_acceptance_criteria
       - asynchronous_work_produces_reviewable_artifact

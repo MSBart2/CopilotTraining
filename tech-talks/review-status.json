@@ -2,6 +2,127 @@
   "format": "copilottraining.talk-review",
   "version": 1,
   "talks": {
+    "agentic-workflows": {
+      "stage": "in-review",
+      "updated": "2026-11-05T16:42:51.388Z",
+      "slides": {
+        "agent-factory": {
+          "status": "fixed",
+          "note": "Cards now explain causal-chain attribution (/plan and refactor feed coding agents; docs opens its own PRs; people merge). Repo Assist moved to notes. Footnote links to Peli's Agent Factory.",
+          "updated": "2026-11-05T14:50:33.559Z"
+        },
+        "automation-tree": {
+          "status": "fixed",
+          "note": "New decision tree: public? / reviewed in a PR? / capped writes? Any yes = agentic workflow; three noes = Copilot automation.",
+          "updated": "2026-11-05T16:42:51.388Z"
+        },
+        "automations": {
+          "status": "fixed",
+          "note": "New: Copilot automations vs agentic workflow comparison, linked to GitHub docs.",
+          "updated": "2026-11-05T16:36:11.459Z"
+        },
+        "cloud-agent-handoff": {
+          "status": "fixed",
+          "note": "Replaced shared showdown with deck scene route-fork: [plan] #321 reaches a maintainer decision, forks into workflow-per-stage or cloud-agent session + CI gate, rejoins at person merges.",
+          "updated": "2026-11-05T14:57:37.828Z"
+        },
+        "compile-lock": {
+          "status": "fixed",
+          "note": "Rebuilt as lock-jobs: compile strip + real 7-job graph colored model/write/plumbing with permissions.",
+          "updated": "2026-11-05T16:02:20.881Z"
+        },
+        "contents": {
+          "status": "ok",
+          "updated": "2026-11-05T14:16:18.111Z"
+        },
+        "core-question": {
+          "status": "ok",
+          "updated": "2026-11-05T14:16:14.834Z"
+        },
+        "fanhub-202": {
+          "status": "fixed",
+          "note": "Issue moved to subtitle; question rows now pair one-to-one with their observed answers.",
+          "updated": "2026-11-05T16:42:48.804Z"
+        },
+        "hostile-issue": {
+          "status": "fixed",
+          "note": "Rebuilt as injection-gates: five injection asks meet five gates along the run; gate 1 shown open (min-integrity: none).",
+          "updated": "2026-11-05T16:02:26.274Z"
+        },
+        "issueops-flow": {
+          "status": "fixed",
+          "note": "Replaced shared relay with deck scene issueops-lanes: person/agent/repo-write swimlanes across triage, plan, decide; illustrative issue #318 walks the chain.",
+          "updated": "2026-11-05T14:57:35.022Z"
+        },
+        "meet-triage-wizard": {
+          "status": "fixed",
+          "note": "New slide: annotated triage-wizard.md syntax intro (frontmatter = authority, body = judgment).",
+          "updated": "2026-11-05T15:53:09.747Z"
+        },
+        "narrow-draft": {
+          "status": "fixed",
+          "note": "Markers renumbered to ascend in code order: 1 trust, 2 staged, 3 scope, 4 labels.",
+          "updated": "2026-11-05T16:36:06.634Z"
+        },
+        "otherwise": {
+          "status": "fixed",
+          "note": "Moved to Part 2 (slide 18), just before hostile-issue; pill 'Threat boundary'; transitions bridge from staged-mode and into the controls slide.",
+          "updated": "2026-11-05T14:43:03.512Z"
+        },
+        "part-1": {
+          "status": "ok",
+          "updated": "2026-11-05T14:16:21.223Z"
+        },
+        "part-4": {
+          "status": "fixed",
+          "note": "Third card now 'Route deliberately' after removing troubleshoot.",
+          "updated": "2026-11-05T16:36:13.727Z"
+        },
+        "refine-first-loop": {
+          "status": "fixed",
+          "note": "refine-loop: explicit Prompt 2 bubble, staged loop, promote.",
+          "updated": "2026-11-05T16:16:09.068Z"
+        },
+        "staged-mode": {
+          "status": "fixed",
+          "note": "Retitled: dry run where the agent works and the writes become previews.",
+          "updated": "2026-11-05T16:02:26.250Z"
+        },
+        "three-part-test": {
+          "status": "fixed",
+          "note": "Rebuilt as task-sort table: six real tasks scored on recurs/judgment/bounded write and routed to agentic workflow, Actions, or cloud agent.",
+          "updated": "2026-11-05T14:43:00.601Z"
+        },
+        "title": {
+          "status": "ok",
+          "note": "Reframed as Continuous AI: Agent Factory capability ring.",
+          "updated": "2026-11-05T02:29:23.597Z"
+        },
+        "today": {
+          "status": "fixed",
+          "note": "Retitled 'Where to go from here'.",
+          "updated": "2026-11-05T16:36:09.244Z"
+        },
+        "use-cases-react": {
+          "status": "ok",
+          "updated": "2026-11-05T14:47:50.965Z"
+        },
+        "use-cases-scheduled": {
+          "status": "ok",
+          "updated": "2026-11-05T14:47:55.193Z"
+        },
+        "who-acts": {
+          "status": "fixed",
+          "note": "Rebuilt as actor-chain: five actor cards in run order with does/cannot rows.",
+          "updated": "2026-11-05T15:52:58.322Z"
+        },
+        "wizard-intent": {
+          "status": "fixed",
+          "note": "prompt-to-draft: Prompt 1 → coding agent → draft PR; disclaimer removed.",
+          "updated": "2026-11-05T16:16:04.168Z"
+        }
+      }
+    },
     "copilot-cli": {
       "stage": "pushed",
       "note": "Distance-first rebuild pushed in 0557efe.",

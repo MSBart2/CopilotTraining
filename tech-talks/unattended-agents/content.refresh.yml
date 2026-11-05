@@ -32,7 +32,7 @@ refresh:
     section order, so the recipe and deck are patched in place.
   userEmphasis:
     - "Keep the current approach; only fix what's broken."
-    - "Lean on agentic-lifecycle for gh-aw basics; cross-link rather than re-teach."
+    - "Lean on agentic-workflows for gh-aw basics; cross-link rather than re-teach."
 
   accepted:
     - title: "Custom agent tool aliases"
@@ -65,7 +65,7 @@ refresh:
         not a file any Copilot surface reads) and name where each control can
         actually be enforced today: Actions timeout-minutes and concurrency,
         branch protection and required review, and the gh-aw limits taught in
-        agentic-lifecycle (timeout-minutes, max-turns, stop-after, safe-output
+        agentic-workflows (timeout-minutes, max-turns, stop-after, safe-output
         max counts). Note that no first-party per-run USD cap exists, so
         max_cost_usd is a design intent the orchestrator must enforce itself.
       recipeImpact: none
@@ -83,7 +83,7 @@ refresh:
         constraints: cloud-agent writes land on a PR branch rather than the
         default branch, and concurrent runs can conflict, so serialize runs
         and verify state against the repository at the start of each run.
-        Cross-link agentic-lifecycle for platform-managed memory and limits.
+        Cross-link agentic-workflows for platform-managed memory and limits.
       recipeImpact: none
       slideImpact: patch
 
@@ -129,7 +129,7 @@ refresh:
       reason: >
         Name collides with GitHub Agentic Workflows. Rename to 'Static DAG
         pipeline' and add a 'GitHub Agentic Workflows' row that cross-links
-        agentic-lifecycle.
+        agentic-workflows.
     - item: "Urgency and deficit framing ('window is closing', 'Move Against (Active Resistance)', 'Total human time: 0 minutes')"
       reason: "Conflicts with the AGENTS.md voice contract and hides the human-merge authority boundary."
     - item: "Boris Cherny '8x / >80% merged code' figures"
@@ -141,11 +141,11 @@ refresh:
     - title: "All routed feed items since 2026-09-16"
       source: ".github/content-routing/latest-report.md (generated 2026-10-22)"
       reason: "None routed to unattended-agents (then loopy-agents)."
-      relatedTalks: [vscode-latest, copilot-cli, enterprise-patterns, agentic-lifecycle]
+      relatedTalks: [vscode-latest, copilot-cli, enterprise-patterns, agentic-workflows]
     - title: "Rebuilding the loop runtime on GitHub Agentic Workflows"
       source: "https://github.github.com/gh-aw/"
-      reason: "Presenter chose to keep the current approach. agentic-lifecycle owns gh-aw; this talk cross-links it."
-      relatedTalks: [agentic-lifecycle]
+      reason: "Presenter chose to keep the current approach. agentic-workflows owns gh-aw; this talk cross-links it."
+      relatedTalks: [agentic-workflows]
 
   anomalies:
     - "Deck frontmatter updated 2026-07-02 vs README 2026-09-16; the deck predates the last README edit."

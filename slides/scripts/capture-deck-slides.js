@@ -29,7 +29,6 @@ const DECKS = [
   { slug: "agent-teams",             last: 25 },
   { slug: "agentic-journey",         last: 21 },
   { slug: "agentic-sdlc",            last: 25 },
-  { slug: "agentic-workflows",       last: 19 },
   { slug: "copilot-acp",             last: 24 },
   { slug: "copilot-azure-mcp",       last: 21 },
   { slug: "copilot-chat-internals",  last: 19 },

@@ -39,7 +39,7 @@
     {
       "source": "agentic-journey",
       "status": "merged",
-      "target": "agentic-lifecycle",
+      "target": "agentic-workflows",
       "reason": "The issue-to-PR state machine is now owned by GitHub Agentic Workflows.",
       "decisionId": "adoption-pathway"
     },
@@ -56,13 +56,6 @@
       "target": "local-agentic-sdlc",
       "reason": "Parallel local sessions and worktrees are now taught inside the orchestrated run in Local Agentic SDLC.",
       "decisionId": "taxonomy-restructure"
-    },
-    {
-      "source": "agentic-workflows",
-      "status": "merged",
-      "target": "agentic-lifecycle",
-      "reason": "Workflow selection, compilation, permissions, and safe outputs are now owned by GitHub Agentic Workflows.",
-      "decisionId": "workflow-lifecycle"
     },
     {
       "source": "repo-to-feature",

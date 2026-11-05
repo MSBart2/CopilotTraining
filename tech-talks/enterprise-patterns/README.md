@@ -126,7 +126,7 @@ These are teaching examples in the deck and notes, not separate downloadable tem
 - [Copilot Hooks](../copilot-hooks/README.md): add controlled lifecycle actions to a local workflow.
 - [Agentic SDLC](../agentic-sdlc/README.md): explore broader repository and delivery-system change.
 - [Copilot Plugins](../copilot-plugins/README.md): package capabilities for governed reuse.
-- [GitHub Agentic Workflows](../agentic-lifecycle/README.md): automate bounded repository chores.
+- [GitHub Agentic Workflows](../agentic-workflows/README.md): automate bounded repository chores.
 - [Local Agentic SDLC](../local-agentic-sdlc/README.md): coordinate specialist work in a local run.
 - [Decision guide](../DECISION-GUIDE.md): compare related practitioner talks.
 
