@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T17:03:21.596Z",
+  "generatedAt": "2026-11-05T19:00:26.279Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -107,13 +107,6 @@
       "decisionId": "taxonomy-restructure"
     },
     {
-      "source": "agentic-sdlc",
-      "status": "merged",
-      "target": "agent-readiness",
-      "reason": "The AgentRC report card, policy, generation, eval, and routing now carry the readiness story; PR models and evidence bundles live in Copilot on GitHub and Copilot Governance.",
-      "decisionId": "agent-readiness"
-    },
-    {
       "source": "copilot-hooks",
       "status": "merged",
       "target": "harness-fundamentals",
@@ -135,10 +128,7 @@
       "decisionId": "harness-fundamentals"
     }
   ],
-  "redirectErrors": [
-    "Redirect source is not archived: agentic-sdlc",
-    "Redirect target is not active and deployed: agent-readiness"
-  ],
+  "redirectErrors": [],
   "talks": [
     {
       "slug": "agent-teams",
@@ -279,7 +269,7 @@
       "title": "Agentic SDLC: Infrastructure for AI Velocity",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-16",
+      "updated": "2026-11-05",
       "section": "Trust and Govern",
       "audience": [
         "platform-engineer",
@@ -298,27 +288,33 @@
         "enterprise-patterns",
         "unattended-agents"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Trust and Govern",
       "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/agentic-sdlc/README.md",
           "exists": true,
-          "bytes": 79672,
-          "modified": "2026-10-26T15:25:34.400Z"
+          "bytes": 4458,
+          "modified": "2026-11-05T19:00:24.872Z"
         },
         "recipe": {
           "path": "tech-talks/agentic-sdlc/deck.recipe.yml",
           "exists": true,
-          "bytes": 7328,
-          "modified": "2026-08-10T14:25:09.629Z"
+          "bytes": 12294,
+          "modified": "2026-11-05T19:00:24.875Z"
         },
         "deck": {
-          "path": "slides/tech-talks/agentic-sdlc.md",
+          "path": "slides/tech-talks/agentic-sdlc/slides.js",
           "exists": true,
-          "bytes": 26004,
-          "modified": "2026-10-26T15:25:34.400Z"
+          "bytes": 87979,
+          "modified": "2026-11-05T19:00:24.852Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/agentic-sdlc/notes.html",
+          "exists": true,
+          "bytes": 1285,
+          "modified": "2026-11-05T19:00:24.842Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/agentic-sdlc/agenda.md",
@@ -618,7 +614,7 @@
       "title": "GitHub Copilot + Azure Skills Plugin: Conversational Azure Prototyping and Deployment",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-16",
+      "updated": "2026-11-05",
       "section": "Extend and Embed",
       "audience": [
         "platform-engineer",
@@ -636,27 +632,33 @@
         "mcp-apps",
         "copilot-with-foundry"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Extend and Embed",
       "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-azure-mcp/README.md",
           "exists": true,
-          "bytes": 60899,
-          "modified": "2026-10-26T15:25:34.400Z"
+          "bytes": 7996,
+          "modified": "2026-11-05T19:00:24.881Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-azure-mcp/deck.recipe.yml",
           "exists": true,
-          "bytes": 9334,
-          "modified": "2026-10-22T19:19:06.994Z"
+          "bytes": 12374,
+          "modified": "2026-11-05T19:00:24.885Z"
         },
         "deck": {
-          "path": "slides/tech-talks/copilot-azure-mcp.md",
+          "path": "slides/tech-talks/copilot-azure-mcp/slides.js",
           "exists": true,
-          "bytes": 28006,
-          "modified": "2026-10-22T19:15:48.985Z"
+          "bytes": 36813,
+          "modified": "2026-11-05T19:00:24.869Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/copilot-azure-mcp/notes.html",
+          "exists": true,
+          "bytes": 1290,
+          "modified": "2026-11-05T19:00:24.861Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-azure-mcp/agenda.md",

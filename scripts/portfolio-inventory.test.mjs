@@ -77,7 +77,7 @@ test("discovers the current consolidated practitioner portfolio", () => {
   assert.equal(inventory.counts.candidateTalks, 0);
   assert.equal(inventory.counts.catalogCards, 14);
   assert.equal(inventory.counts.validTalks, inventory.counts.totalTalks);
-  assert.equal(inventory.redirects.length, 17);
+  assert.equal(inventory.redirects.length, 16);
   assert.equal(new Set(inventory.talks.map(({ slug }) => slug)).size, inventory.counts.totalTalks);
   assert.deepEqual(inventoryErrors(inventory), []);
 });

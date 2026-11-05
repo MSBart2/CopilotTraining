@@ -1,7 +1,7 @@
 # deck.recipe.yml — Agentic SDLC talk guidance
 #
-# Updated to reflect the enriched five-level maturity model in the README.
-# Implementation Roadmap is Section 5 — the talk ends on a planning frame.
+# Updated for the enriched five-level maturity model and the four-part
+# native conversion. The final part turns the model into a local plan.
 
 version: 1
 
@@ -9,31 +9,25 @@ deck:
   title: Agentic SDLC
   subtitle: "Designing the SDLC Your Agents Deserve"
   tagline: >
-    Five maturity levels — platform readiness, developer adoption, and
-    governance that compound together
-
+    Five maturity levels — platform readiness, developer adoption, and governance that compound together
 
   agenda:
-    - title: "A New Velocity Model"
-      takeaway: "See why agent output changes the economics of the delivery system."
-      whyItMatters: "Traditional line-by-line review cannot absorb agent-scale volume."
-    - title: "Maturity as Roadmap"
-      takeaway: "Use five maturity levels to sequence capability and governance."
-      whyItMatters: "A shared roadmap prevents both stalled pilots and rushed autonomy."
-    - title: "Outcome Governance"
-      takeaway: "Move validation to the few human checkpoints that matter most."
-      whyItMatters: "Control improves when effort targets intent, risk, and merge outcomes."
+    - title: "Maturity Model"
+      takeaway: "Assess platform readiness and adoption together; choose repository boundaries from real change patterns."
+      whyItMatters: "A repeatable launchpad gives later delegation evidence and context to build on."
+    - title: "PR Workflows"
+      takeaway: "Give Copilot bounded intent, then route evidence and approval to accountable owners."
+      whyItMatters: "Automation handles repeatable checks while people keep authority over risk."
+    - title: "Trust Manufacturing"
+      takeaway: "Use fast, reliable CI, visible flake ownership, valid caches, and provenance."
+      whyItMatters: "A fast green signal matters only when its scope and inputs remain trustworthy."
+    - title: "Implementation Roadmap"
+      takeaway: "Advance from L3 to L5 when local measurements support the next investment."
+      whyItMatters: "The roadmap pairs platform work with adoption, governance, and evidence."
 
   arcToc: "Assess → Govern → Trust → Scale"
   arcNarrative: >
-    One framework, five levels — each level has clear platform signals,
-    adoption signals, and governance expectations. Three infrastructure
-    sections deliver the blueprint. Repository topology is a critical
-    infrastructure prerequisite but is woven into the Implementation
-    Roadmap as Phase 1 context rather than a standalone section. A
-    constraint-ladder thread runs through the arc: the bottleneck moves
-    from setup → review → trust → measurement, giving each section a
-    clear "here is the next wall you'll hit" transition.
+    One framework, five levels — each level has platform signals, adoption signals, and governance expectations. The talk moves from maturity and repository boundaries to PR authority, CI evidence, and an implementation roadmap. The constraint changes from readiness to review capacity to trust production to measurement.
   sectionOrder:
     - "Maturity Model"
     - "PR Workflows"
@@ -44,96 +38,100 @@ deck:
     "Maturity Model":
       emphasis: high
       note: >
-        3 slides max. (1) L1–L5 assessment table — each level has platform
-        signals, adoption signals, and governance signals; detailed criteria
-        live in speaker notes. (2) L5 breakpoint — review capacity designed
-        for 300 lines/day collapses at 15,000; this is the only "taxonomy"
-        slide that earns its keep. (3) Instruction Hierarchy — the
-        cross-cutting investment that compounds at every level (org
-        instructions → repo instructions → AGENTS.md → prompt files →
-        coding guidelines).
+        Six teaching slides: pair the L1–L5 platform/adoption map with the L3 launchpad signals; label the 300-to-15,000 review-volume model as illustrative; show the instruction hierarchy; then decide repository boundaries and inspect a monorepo topology.
     "PR Workflows":
       emphasis: high
       note: >
-        The governance pyramid inversion (22 manual gates → 4 human
-        checkpoints + 90% automated) is the architectural insight leaders
-        need. Open with the maturity context table so the audience sees how
-        review mode shifts at each level. Constraint-ladder transition:
-        "Coordination is solved; now review capacity is the bottleneck."
+        Six teaching slides: map review-mode progression; show a bounded intent contract; assemble an evidence bundle; separate policy checks from four human decisions; distinguish contextual triage from approval; and name the developer, Copilot, CI, reviewer, and service owner. Treat 22-to-4 and 90% as proposed design figures, not results.
     "Trust Manufacturing":
       emphasis: medium-high
       note: >
-        Keep 10-min CI threshold, zero-flake tolerance, attestations, and
-        context-aware agent validation. Focus purely on the CI-as-trust-
-        factory metaphor. Constraint-ladder transition: "Review scales; now
-        you need the CI pipeline to manufacture trust at that velocity."
+        Six teaching slides: stage CI; compare four-iteration wait scenarios; demonstrate affected analysis; define flake ownership; pair hermetic inputs with safe cache invalidation; inspect attestations. Keep time/throughput and cache figures labeled as estimates or targets.
     "Implementation Roadmap":
       emphasis: high
       note: >
-        3 slides, one per phase. Each phase shows Platform & Tooling (left)
-        and Adoption & Governance (right). Phase 1 = L3 (standardized
-        foundation) — include a one-paragraph call-out on repository
-        topology here: the coordination tax arithmetic (3 repos × 45-min CI
-        = 3 days vs monorepo 45 min) belongs in Phase 1 as the first
-        infrastructure decision, not a standalone section. Phase 2 = L4
-        (optimized governance). Phase 3 = L5 (autonomous + measurement).
-        Instruction Hierarchy woven through all three phases. Final slide:
-        "L3 is the launchpad — where repeatability, adoption, and quality
-        infrastructure first compound."
+        Three teaching slides: one Platform & Tooling plus Adoption & Governance checklist per L3, L4, and L5 phase, each item tagged to the part that taught it, with a roadmap rail and exit evidence. Preserve repository topology in Part 1 and revisit its measurement in Phase 1.
 
   highlightMoments:
     - >
-      Level 5 breakpoint: review capacity designed for 300 lines/day
-      collapses at 15,000 lines/day — scarcity shifts from writing code
-      to trusting it at velocity
+      Illustrative review-volume comparison: 300 lines/day to 15,000 lines/day; the decision shifts toward intent, risk, and evidence.
     - >
-      Coordination tax arithmetic: 3 repos × (45-min CI + 4-hr review) =
-      3 days to production; monorepo makes it 45 minutes — same agent work,
-      radically different wall time
+      Unverified coordination scenario: three repositories and multiple handoffs are compared with one atomic change; measure your own elapsed time before estimating savings.
     - >
-      10-minute CI threshold: agents sit idle 80% of the time with 60-min
-      CI, productive 95% with 8-min CI — the difference between 3
-      features/day and 15
+      CI scenario math: four 60-minute waits equal 240 minutes; four 8-minute waits equal 32 minutes. Idle shares and feature counts remain estimates until tested against a workload.
     - >
-      Governance pyramid inversion: 22 manual approval gates → 4 human
-      checkpoints with 90% automated enforcement — review capacity scales
-      from 300 to 15,000 lines/day per reviewer
+      Governance design proposal: four named human checkpoints with automation for repeatable checks; the source's 22-gate and 90% figures are not observed organization-wide results.
     - >
-      100x throughput result: 150 features/year → 3,600 — compounding
-      effect of repo topology, PR governance, and CI trust manufacturing
-      working together
+      The source's 100x throughput projection is unsupported and is not presented as an achieved or promised outcome.
     - >
-      Platform without adoption stalls at L3. Adoption without platform
-      never reaches L5. Both must advance — and L3 is where they first
-      compound into something real.
+      In this maturity model, platform readiness without adoption leaves capability unused; adoption without repeatable infrastructure makes outcomes inconsistent. L3 is the launchpad where the two begin to compound.
     - >
-      Instruction Hierarchy as highest-leverage cross-cutting investment:
-      org instructions → repo instructions → AGENTS.md → prompt files →
-      coding guidelines — compounds at every level
+      Instruction Hierarchy as highest-leverage cross-cutting investment: org instructions → repo instructions → AGENTS.md → prompt files → coding guidelines — compounds at every level
     - >
-      L3 is the launchpad: where repeatability, adoption depth, and quality
-      infrastructure first compound — skip it and L5 collapses under
-      its own weight
+      L3 is the launchpad: where repeatability, adoption depth, and quality infrastructure first compound; treat higher autonomy as dependent on evidence from that foundation
+  slides:
+    - { id: title, part: Frame, scene: title + sdlc-loop, intent: Introduce the delivery-system argument, seconds: 20 }
+    - { id: core-question, part: Frame, scene: core-question, intent: State the learner's question and thesis, seconds: 60 }
+    - { id: contents, part: Frame, scene: contents, intent: Route the audience through four decisions, seconds: 30 }
+    - { id: part-1, part: 1, scene: opener, intent: Frame maturity as paired platform and adoption assessment, seconds: 20 }
+    - { id: maturity-map, part: 1, scene: maturity-map, intent: "Compare platform, adoption, and unlocks across five levels", seconds: 220 }
+    - { id: l3-launchpad, part: 1, scene: l3-requirements, intent: Recap the platform and adoption requirements L3 depends on, seconds: 220 }
+    - { id: volume-breakpoint, part: 1, scene: volume-breakpoint, intent: Explain the modeled shift from code production to trust capacity, seconds: 220 }
+    - { id: instruction-hierarchy, part: 1, scene: instruction-stack, intent: Place versioned instructions at the layers that need them, seconds: 220 }
+    - { id: repo-decision, part: 1, scene: repo-decision, intent: Measure the cross-repo rate against a proposed threshold and weigh separation against consolidation, seconds: 220 }
+    - { id: monorepo-topology, part: 1, scene: topology, intent: "Show a workspace tree, an enforced boundary with real lint output, and a separate control-plane option", seconds: 220 }
+    - { id: polyrepo-strategies, part: 1, scene: polyrepo-strategies, intent: "Map what a monorepo provides to polyrepo strategies and GitHub mechanisms, with the coordination cost", seconds: 220 }
+    - { id: part-2, part: 2, scene: opener, intent: Shift from repository coordination to human review capacity, seconds: 20 }
+    - { id: review-maturity, part: 2, scene: signals, intent: Show how review mode changes across readiness levels, seconds: 220 }
+    - { id: intent-contract, part: 2, scene: issue-contract, intent: "Show an agent-ready issue where goal, constraints, rules, and acceptance criteria each do a job for the agent and the reviewer", seconds: 220 }
+    - { id: evidence-bundle, part: 2, scene: pr-evidence, intent: "Show where the reviewer inspects evidence on the PR page (linked issue, session log, merge box, files) in four steps", seconds: 220 }
+    - { id: governance-gates, part: 2, scene: gate-sort, intent: "Worked example sorting an illustrative list of 22 manual gates (16 automate, 4 route, 2 decide) into the four named human checkpoints", seconds: 220 }
+    - { id: context-aware-review, part: 2, scene: context-review, intent: "Same diff run through a named regex CI job (2 findings, 1 false positive) and Copilot code review with an instructions file (1 finding with a reason); the owner decides", seconds: 220 }
+    - { id: human-ownership, part: 2, scene: code-owners, intent: "Show CODEOWNERS plus a ruleset auto-requesting the right owners per file, and why that speeds agent PR review", seconds: 220 }
+    - { id: part-3, part: 3, scene: opener, intent: "Agents move at the speed of CI: fast, reliable, provable", seconds: 20 }
+    - { id: trust-pipeline, part: 3, scene: ci-stages, intent: "Stage CI by who waits: agent on every push, reviewer before merge, release owner before release", seconds: 220 }
+    - { id: ci-feedback, part: 3, scene: ci-clock, intent: "Show CI time as the floor under every round with an illustrative 260 vs 52 minute timeline", seconds: 220 }
+    - { id: affected-analysis, part: 3, scene: affected-graph, intent: "Build only the changeset: a dependency graph picks 3 of 9 projects via nx affected", seconds: 220 }
+    - { id: flake-policy, part: 3, scene: flake-anatomy, intent: "Define a flake, name its causes and fixes, and show why agents raise the cost", seconds: 220 }
+    - { id: hermetic-cache, part: 3, scene: opinionated-ci, intent: "Opinionated CI (pinned image, npm ci, lockfile cache key) runs faster than resolve-at-runtime", seconds: 220 }
+    - { id: attestations, part: 3, scene: slsa-provenance, intent: "SLSA provenance flow: sign in CI, verify before deploy, what it proves, and build levels", seconds: 220 }
+    - { id: part-4, part: 4, scene: opener, intent: "Three phases, each reusing what Parts 1-3 built", seconds: 20 }
+    - { id: phase-l3, part: 4, scene: phase-roadmap, intent: "Phase 1 checklist tagged to where each item was taught; advance when checks, owners, and baseline exist", seconds: 220 }
+    - { id: phase-l4, part: 4, scene: phase-roadmap, intent: "Phase 2: fast quiet CI plus gate sorting and review tuning; advance when exceptions reach owners", seconds: 220 }
+    - { id: phase-l5, part: 4, scene: phase-roadmap, intent: "Phase 3: provenance-gated deploys and measured autonomy kept while DORA and override paths hold", seconds: 220 }
+    - { id: before-after, part: Frame, scene: value-recap, intent: "Recap each part as a habit turned into openable evidence, with targets to measure against", seconds: 50 }
+    - { id: today, part: Frame, scene: today-plan, intent: "Give a repository-level action for today, this week, and this month", seconds: 50 }
+    - { id: references, part: Frame, scene: references, intent: Link first-party evidence and core technical references, seconds: 20 }
+    - { id: thanks, part: Frame, scene: thanks + sdlc-loop, intent: Close with an own-work transfer question, seconds: 10 }
+  preamble: []
+  appendix: []
 
 # ──────────────────────────────────────────────────────────────────────
-# OPEN QUESTIONS (not blocking; resolve during slide authoring)
+# RESOLVED DURING NATIVE CONVERSION
 #
-# 1. Slide budget: 4 sections — target 16–20 slides total.
+# 1. The native plan has 33 slides, including 22 teaching slides.
 #
-# 2. Assessment table density: one slide may be tight for the full 5-row
-#    table with platform + adoption + governance columns. Consider an
-#    abbreviated table on-slide with full criteria in speaker notes.
+# 2. The maturity table shows brief platform/adoption signals; detailed
+#    criteria, thresholds, boundaries, and source caveats live in notes.
 # ──────────────────────────────────────────────────────────────────────
 
 # ──────────────────────────────────────────────────────────────────────
-# OPTIONAL / EXPERIMENTAL IDEAS (captured from council brainstorm)
+# NOT SELECTED
 #
-# Cold open from failure — "Your agents can write 15 features/day. Your
-# SDLC can only absorb 3." Opens with the gap, then rebuilds. Strong
-# for executive-heavy rooms; test with a dry run.
-#
-# Constraint-ladder framing — already woven into section transition
-# notes above. If it resonates in rehearsal, consider a small recurring
-# visual (e.g., a bottleneck icon that moves) rather than just verbal
-# transitions.
+# Cold-open failure framing was excluded; the talk leads with capability
+# and uses the constraint ladder as a transition, not an alarmist hook.
 # ──────────────────────────────────────────────────────────────────────
+
+# This approved native plan was authorized under the user's 2026-10-31
+# conversion waiver: build first; presenter/content review follows.
+nativeConversion:
+  status: approved-under-user-waiver
+  approved: 2026-10-31
+  mode: convert
+  scope: Preserve the approved narrative, examples, FanHub walkthrough, and references; no product/news refresh.
+  audienceQuestion: "How do I get agent-scale delivery without losing confidence in what we ship?"
+  thesis: "L3 is the launchpad: reliable context, repeatable checks, and habitual use create the conditions for outcome-focused governance and measured autonomy."
+  durationSeconds: 5400
+  plannedSpeakingSeconds: 5160
+  questionReserveSeconds: 240
+  teachingSlides: 22
