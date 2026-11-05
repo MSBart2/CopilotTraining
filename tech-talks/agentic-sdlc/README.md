@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-10-31
+updated: 2026-11-05
 section: "Trust and Govern"
 audience: [platform-engineer, architect, engineering-leader]
 level: advanced
@@ -34,7 +34,7 @@ references:
 # Agentic SDLC: Infrastructure for AI Velocity
 
 > **The Question This Talk Answers:**
-> *"How do I get agent-scale delivery without losing confidence in what we ship?"*
+> *"How do I ship more with agents and still trust every change?"*
 
 **Thesis:** L3 is the launchpad: reliable context, repeatable checks, and habitual use create the conditions for outcome-focused governance and measured autonomy.
 

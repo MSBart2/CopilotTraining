@@ -1,1 +1,119 @@
-/* Keep this deck on the shared native theme; scenes use the engine's standard tokens. */
+/* Maturity map */
+.scene .mm-val { font-size: 19px; font-weight: 600; }
+.scene .mm-unlock { font-size: 22px; font-weight: 700; }
+.scene .mm-badge .chip-text { font-family: var(--mono); letter-spacing: .06em; }
+
+/* L3 requirements */
+.scene .l3-item { font-size: 21px; font-weight: 550; fill: var(--body); }
+.scene .l3-check { stroke-width: 3.5; }
+
+/* Review breakpoint */
+.scene .vb-num { font-size: 60px; font-weight: 800; letter-spacing: -.02em; }
+.scene .vb-bar { fill: none; stroke: var(--z); stroke-width: 36; opacity: .85; }
+
+/* Repository decision, topology, polyrepo */
+.scene .rd-item { font-size: 21px; font-weight: 650; fill: var(--text); }
+.scene .rd-dot { fill: var(--z); }
+.scene .tp-tree { font: 500 17px var(--mono); fill: var(--body); }
+.scene .tp-tree.tp-hot { fill: var(--z); font-weight: 700; }
+.scene .tp-node { font: 600 17px var(--mono); }
+.scene .tp-edge { stroke-width: 3; }
+.scene .tp-lint { font: 500 15px var(--mono); fill: var(--body); }
+
+/* PR workflow scenes */
+.scene .ic-title { font-size: 26px; font-weight: 700; fill: var(--text); }
+.scene .ic-head { font: 700 16px var(--mono); }
+.scene .ic-line { font: 500 16px var(--mono); fill: var(--body); }
+.scene .pe-badge { fill: var(--z); }
+.scene .pe-num { font-size: 16px; font-weight: 800; fill: #fff; }
+.scene .pe-tab-on { fill: var(--text); }
+.scene .pe-mark { font-size: 18px; font-weight: 800; }
+.scene .pe-check { font-size: 17px; fill: var(--body); }
+.scene .gs-q { font-size: 19px; font-weight: 650; fill: var(--text); }
+.scene .gs-item { font-size: 17px; fill: var(--body); }
+.scene .gs-item.gs-sub { fill: var(--muted); }
+.scene .gs-item.gs-cp { fill: var(--z); font-weight: 700; }
+.scene .cr-code { font: 500 16px var(--mono); fill: var(--body); }
+.scene .co-line { font: 500 16px var(--mono); fill: var(--muted); }
+.scene .co-line.co-hot { fill: var(--z); font-weight: 700; }
+.scene .co-file { font: 600 16px var(--mono); }
+.scene .co-rule { fill: var(--body); }
+.scene .cs-budget { font-size: 46px; font-weight: 800; fill: var(--z); }
+.scene .cs-total { font: 700 20px var(--mono); fill: var(--text); }
+.scene .ag-node { font: 600 16px var(--mono); fill: var(--body); }
+.scene .ag-node.ag-on, .scene .ag-on { fill: #fff; font-weight: 700; }
+.scene .ag-node.ag-off { fill: var(--muted); font-weight: 500; }
+.scene .ag-ring { stroke: var(--z); stroke-width: 2; }
+.scene .oc-pick { font: 600 16px var(--mono); fill: var(--z); }
+.scene .pr-on { font-size: 18px; font-weight: 700; fill: var(--text); }
+.scene .pr-item { font-size: 17px; fill: var(--body); }
+.scene .pr-box { fill: none; stroke: var(--z); stroke-width: 2; }
+
+.sc-delivery-confidence .confidence-layout {
+  display: grid;
+  grid-template-columns: 620px 736px;
+  gap: 84px;
+  align-items: center;
+  margin-top: 40px;
+}
+.sc-delivery-confidence .confidence-copy h2 {
+  margin: 0;
+  font-size: 68px;
+  line-height: 1.08;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.sc-delivery-confidence .confidence-copy .subtitle {
+  margin-top: 28px;
+  max-width: 570px;
+  font-size: 27px;
+  line-height: 1.45;
+  color: var(--body);
+}
+.sc-delivery-confidence .confidence-label {
+  margin: 0;
+  font: 500 16px/1.3 var(--mono);
+  color: var(--muted);
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+.sc-delivery-confidence .confidence-example > .confidence-label { margin-bottom: 16px; }
+.sc-delivery-confidence .confidence-handoff { margin: 0; height: 490px; }
+.sc-delivery-confidence .confidence-route {
+  margin-top: auto;
+  padding: 24px 0 16px;
+  border-top: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  align-items: center;
+  gap: 18px 40px;
+}
+.sc-delivery-confidence .confidence-route ol {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: confidence-step;
+}
+.sc-delivery-confidence .confidence-route li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 25px;
+  font-weight: 650;
+  counter-increment: confidence-step;
+}
+.sc-delivery-confidence .confidence-route li::before {
+  content: "0" counter(confidence-step);
+  font: 500 16px var(--mono);
+  color: var(--purple-light);
+}
+.sc-delivery-confidence .confidence-takeaway {
+  grid-column: 2;
+  margin: 0;
+  font-size: 20px;
+  color: var(--muted);
+}
+.scene .vr-val { font-size: 54px; font-weight: 800; letter-spacing: -.02em; fill: var(--z); }

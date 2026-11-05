@@ -50,7 +50,7 @@ deck:
     "Implementation Roadmap":
       emphasis: high
       note: >
-        Four teaching slides: one Platform & Tooling plus Adoption & Governance checklist per L3, L4, and L5 phase, followed by the FanHub walkthrough as own-work transfer. Preserve repository topology in Part 1 and revisit its measurement in Phase 1.
+        Three teaching slides: one Platform & Tooling plus Adoption & Governance checklist per L3, L4, and L5 phase, each item tagged to the part that taught it, with a roadmap rail and exit evidence. Preserve repository topology in Part 1 and revisit its measurement in Phase 1.
 
   highlightMoments:
     - >
@@ -74,33 +74,33 @@ deck:
     - { id: core-question, part: Frame, scene: core-question, intent: State the learner's question and thesis, seconds: 60 }
     - { id: contents, part: Frame, scene: contents, intent: Route the audience through four decisions, seconds: 30 }
     - { id: part-1, part: 1, scene: opener, intent: Frame maturity as paired platform and adoption assessment, seconds: 20 }
-    - { id: maturity-map, part: 1, scene: maturity-map, intent: Compare platform, adoption, and unlocks across five levels, seconds: 220 }
-    - { id: l3-launchpad, part: 1, scene: signals, intent: Show the observable L3 foundation signals, seconds: 220 }
+    - { id: maturity-map, part: 1, scene: maturity-map, intent: "Compare platform, adoption, and unlocks across five levels", seconds: 220 }
+    - { id: l3-launchpad, part: 1, scene: l3-requirements, intent: Recap the platform and adoption requirements L3 depends on, seconds: 220 }
     - { id: volume-breakpoint, part: 1, scene: volume-breakpoint, intent: Explain the modeled shift from code production to trust capacity, seconds: 220 }
     - { id: instruction-hierarchy, part: 1, scene: instruction-stack, intent: Place versioned instructions at the layers that need them, seconds: 220 }
-    - { id: repo-decision, part: 1, scene: showdown, intent: Decide when monorepo coordination savings justify complexity, seconds: 220 }
-    - { id: monorepo-topology, part: 1, scene: topology, intent: Show app/library boundaries and a separate control-plane option, seconds: 220 }
+    - { id: repo-decision, part: 1, scene: repo-decision, intent: Measure the cross-repo rate against a proposed threshold and weigh separation against consolidation, seconds: 220 }
+    - { id: monorepo-topology, part: 1, scene: topology, intent: "Show a workspace tree, an enforced boundary with real lint output, and a separate control-plane option", seconds: 220 }
+    - { id: polyrepo-strategies, part: 1, scene: polyrepo-strategies, intent: "Map what a monorepo provides to polyrepo strategies and GitHub mechanisms, with the coordination cost", seconds: 220 }
     - { id: part-2, part: 2, scene: opener, intent: Shift from repository coordination to human review capacity, seconds: 20 }
     - { id: review-maturity, part: 2, scene: signals, intent: Show how review mode changes across readiness levels, seconds: 220 }
-    - { id: intent-contract, part: 2, scene: intent-contract, intent: Pair a representative request with constraints and acceptance evidence, seconds: 220 }
-    - { id: evidence-bundle, part: 2, scene: scorecard, intent: Show what evidence a reviewer inspects, seconds: 220 }
-    - { id: governance-gates, part: 2, scene: four-phases, intent: Separate automated policy checks from four human decisions, seconds: 220 }
-    - { id: context-aware-review, part: 2, scene: showdown, intent: Contrast rule matches with contextual triage and human verification, seconds: 220 }
-    - { id: human-ownership, part: 2, scene: signals, intent: Distinguish developer, Copilot, CI, reviewer, and service-owner authority, seconds: 220 }
-    - { id: part-3, part: 3, scene: opener, intent: Frame CI as repeatable evidence production, seconds: 20 }
-    - { id: trust-pipeline, part: 3, scene: four-phases, intent: Stage fast, comprehensive, and pre-production checks, seconds: 220 }
-    - { id: ci-feedback, part: 3, scene: showdown, intent: Compare wait-time scenarios without claiming measured throughput, seconds: 220 }
-    - { id: affected-analysis, part: 3, scene: terminal, intent: Show a representative affected-analysis command and output, seconds: 220 }
-    - { id: flake-policy, part: 3, scene: signals, intent: Show a first-flake quarantine, repair, and measurement path, seconds: 220 }
-    - { id: hermetic-cache, part: 3, scene: showdown, intent: Contrast pinned inputs and safe cache invalidation, seconds: 220 }
-    - { id: attestations, part: 3, scene: terminal, intent: Identify provenance fields and the human sufficiency decision, seconds: 220 }
-    - { id: part-4, part: 4, scene: opener, intent: Set out evidence-led phase progression, seconds: 20 }
-    - { id: phase-l3, part: 4, scene: phase-checklist, intent: Establish repeatable CI, ownership, context, and baseline measures, seconds: 220 }
-    - { id: phase-l4, part: 4, scene: phase-checklist, intent: Optimize governance and tool use from observed exceptions, seconds: 220 }
-    - { id: phase-l5, part: 4, scene: phase-checklist, intent: Expand autonomy with measurement and recovery controls, seconds: 220 }
-    - { id: fanhub-walkthrough, part: 4, scene: four-phases, intent: Transfer the model through the linked FanHub exercise, seconds: 220 }
-    - { id: before-after, part: Frame, scene: before-after, intent: Summarize the system-level behavior change without unsupported multipliers, seconds: 50 }
-    - { id: today, part: Frame, scene: today-plan, intent: Give a repository-level action for today, this week, and this month, seconds: 50 }
+    - { id: intent-contract, part: 2, scene: issue-contract, intent: "Show an agent-ready issue where goal, constraints, rules, and acceptance criteria each do a job for the agent and the reviewer", seconds: 220 }
+    - { id: evidence-bundle, part: 2, scene: pr-evidence, intent: "Show where the reviewer inspects evidence on the PR page (linked issue, session log, merge box, files) in four steps", seconds: 220 }
+    - { id: governance-gates, part: 2, scene: gate-sort, intent: "Worked example sorting an illustrative list of 22 manual gates (16 automate, 4 route, 2 decide) into the four named human checkpoints", seconds: 220 }
+    - { id: context-aware-review, part: 2, scene: context-review, intent: "Same diff run through a named regex CI job (2 findings, 1 false positive) and Copilot code review with an instructions file (1 finding with a reason); the owner decides", seconds: 220 }
+    - { id: human-ownership, part: 2, scene: code-owners, intent: "Show CODEOWNERS plus a ruleset auto-requesting the right owners per file, and why that speeds agent PR review", seconds: 220 }
+    - { id: part-3, part: 3, scene: opener, intent: "Agents move at the speed of CI: fast, reliable, provable", seconds: 20 }
+    - { id: trust-pipeline, part: 3, scene: ci-stages, intent: "Stage CI by who waits: agent on every push, reviewer before merge, release owner before release", seconds: 220 }
+    - { id: ci-feedback, part: 3, scene: ci-clock, intent: "Show CI time as the floor under every round with an illustrative 260 vs 52 minute timeline", seconds: 220 }
+    - { id: affected-analysis, part: 3, scene: affected-graph, intent: "Build only the changeset: a dependency graph picks 3 of 9 projects via nx affected", seconds: 220 }
+    - { id: flake-policy, part: 3, scene: flake-anatomy, intent: "Define a flake, name its causes and fixes, and show why agents raise the cost", seconds: 220 }
+    - { id: hermetic-cache, part: 3, scene: opinionated-ci, intent: "Opinionated CI (pinned image, npm ci, lockfile cache key) runs faster than resolve-at-runtime", seconds: 220 }
+    - { id: attestations, part: 3, scene: slsa-provenance, intent: "SLSA provenance flow: sign in CI, verify before deploy, what it proves, and build levels", seconds: 220 }
+    - { id: part-4, part: 4, scene: opener, intent: "Three phases, each reusing what Parts 1-3 built", seconds: 20 }
+    - { id: phase-l3, part: 4, scene: phase-roadmap, intent: "Phase 1 checklist tagged to where each item was taught; advance when checks, owners, and baseline exist", seconds: 220 }
+    - { id: phase-l4, part: 4, scene: phase-roadmap, intent: "Phase 2: fast quiet CI plus gate sorting and review tuning; advance when exceptions reach owners", seconds: 220 }
+    - { id: phase-l5, part: 4, scene: phase-roadmap, intent: "Phase 3: provenance-gated deploys and measured autonomy kept while DORA and override paths hold", seconds: 220 }
+    - { id: before-after, part: Frame, scene: value-recap, intent: "Recap each part as a habit turned into openable evidence, with targets to measure against", seconds: 50 }
+    - { id: today, part: Frame, scene: today-plan, intent: "Give a repository-level action for today, this week, and this month", seconds: 50 }
     - { id: references, part: Frame, scene: references, intent: Link first-party evidence and core technical references, seconds: 20 }
     - { id: thanks, part: Frame, scene: thanks + sdlc-loop, intent: Close with an own-work transfer question, seconds: 10 }
   preamble: []

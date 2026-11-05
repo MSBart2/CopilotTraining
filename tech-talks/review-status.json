@@ -2,9 +2,13 @@
   "format": "copilottraining.talk-review",
   "version": 1,
   "talks": {
+    "agentic-sdlc": {
+      "stage": "pushed",
+      "updated": "2026-11-05T18:57:12.289Z"
+    },
     "agentic-workflows": {
-      "stage": "in-review",
-      "updated": "2026-11-05T16:42:51.388Z",
+      "stage": "pushed",
+      "updated": "2026-11-05T17:05:22.819Z",
       "slides": {
         "agent-factory": {
           "status": "fixed",
@@ -122,6 +126,10 @@
           "updated": "2026-11-05T16:16:04.168Z"
         }
       }
+    },
+    "copilot-azure-mcp": {
+      "stage": "pushed",
+      "updated": "2026-11-05T18:57:16.795Z"
     },
     "copilot-cli": {
       "stage": "pushed",

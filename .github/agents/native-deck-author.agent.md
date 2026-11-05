@@ -98,7 +98,7 @@ The notes replace the long README. A presenter who has never seen the talk deliv
 
 Rules:
 
-- Ground every line in the recipe, research brief, long README (convert), or a first-party source. Never invent metrics, quotes, customers, or personas. Label estimates as estimates.
+- Ground every line in the recipe, research brief, long README (convert), or a first-party source. Never invent metrics, quotes, customers, or personas. Label estimates as estimates: once, on the number itself. A worked example with fictional names needs no per-slide "illustrative" subtitle or footnote; mention it once in the section opener's notes (AGENTS.md, Evidence discipline).
 - Notes render as HTML: avoid raw `<` and `&` (write "and"); `<b>`, `<i>`, `<code>`, and `<kbd>` are allowed.
 - Follow the Voice and Prose section of `AGENTS.md`. Never use "should". Lead with what becomes possible.
 - Spoken lines sound like a person talking to peers: short, concrete, one idea each. Two or three spoken lines per slide is typical; the slide carries the detail.

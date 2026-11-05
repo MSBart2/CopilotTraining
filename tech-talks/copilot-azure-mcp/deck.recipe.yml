@@ -25,8 +25,9 @@ deck:
   arcNarrative: >
     Start with a visible request and response, then ask what the response proves. The payment API
     Plan Mode scenario is the centerpiece, but the recipe itself marks Skills activation inside
-    Plan Mode unverified. Keep that uncertainty visible; label transcripts and checks as
-    illustrative rather than observed. Explain Skills, MCP, and Azure after the intended workflow
+    Plan Mode unverified. Keep that uncertainty visible on the slide that makes the Plan Mode
+    claim. Worked examples use fictional names; say so once in the Part 1 opener notes rather than
+    on every slide. Explain Skills, MCP, and Azure after the intended workflow
     is clear. End by separating authentication, Azure authorization, host confirmation, and
     organizational approval. Retain the source's 45-to-8-minute comparison only as an unmeasured
     historical estimate. The argument teaches contextual delegation and verification without
@@ -43,37 +44,37 @@ deck:
       emphasis: medium
       note: >
         Show how a scoped resource question can return structured state and support a bounded
-        follow-up. Use fictional resource names and mark transcript output illustrative, not
-        observed. Carry subscription, identity, selected fields, and freshness context with the
+        follow-up. Use fictional resource names (noted once in the opener's speaker notes; no
+        per-slide disclaimers). Carry subscription, identity, selected fields, and freshness context with the
         result. Do not imply that conversational output is inherently current, complete, or a
         replacement for portal/CLI checks.
 
     "Plan Before Any Change":
       emphasis: high
       note: >
-        Make the payment API/App Service example the centerpiece. Retain its clarifying questions,
-        subnet/quota/firewall checks, proposed architecture, generated-code review, and manual
-        deployment boundary as explicitly illustrative source material. Path A, Skills activation
-        during Plan Mode, remains an unverified assumption; do not narrate it as behavior. Treat
-        45 and 8 minutes as unmeasured estimates, not an experiment.
+        Follow one routine infra ticket (stand up paystore-staging from Part 1's decisions) through
+        clarify, check, decide. Anchor: a live policy check overturns the office IP rule and the plan
+        switches to a private endpoint. Times (about 45 vs 8 minutes to a reviewable plan) are
+        representative estimates, labelled once on the ticket slide; review and approval keep their
+        length. Say Copilot asks clarifying questions without claiming which Skill shaped them.
 
     "Compose Skills, MCP, and Azure":
       emphasis: high
       note: >
-        Draw the control/data path: host and instructions, optional Skills guidance, MCP tool
-        discovery/call, server credential, Azure authorization, result. Keep the 21-skill and
-        200-plus-tool/40-plus-service counts dated to the source talk and not independently
-        refreshed. Preserve installation routes and configuration lessons, marking command shapes
-        version-specific and asking presenters to verify current docs.
+        Follow the approved paystore-staging plan from Part 2 to deployed in the same chat. One
+        deploy prompt crosses four layers (azure-deploy skill, host confirmation, Azure MCP / az
+        CLI, Azure RBAC), each able to stop it. Show the prepare → validate → deploy gates from the
+        azure-deploy SKILL.md, a timed deploy trace ending in a receipt that matches the what-if,
+        setup as four checkable choices, and tool exposure versus Azure rights as separate dials.
+        Mention version-dependence once, in the notes.
 
     "Keep Authority Explicit":
       emphasis: medium-low
       note: >
-        Separate tool availability, authentication, Azure RBAC/data-plane authorization, host
-        approval prompts, and separate organizational review. Least privilege is a property of
-        configured identities and scopes, not an MCP default. Preserve Reader/Contributor/Owner
-        and production/dev separation guidance, use-case boundaries, recovery paths, and transfer.
-        No live Azure access, credential creation, or provisioning occurs.
+        Close the paystore-staging story by counting its four green lights (Entra sign-in, RBAC role at
+        scope, lead approval, host confirmation). Show roles at scopes, separate prod-read and
+        staging-write connections with production changes on the pipeline, the open partner rule
+        routed to its two owners, and the same questions on other Azure tasks. Least privilege is a property of configured identities and scopes.
 
   preamble: []
   appendix: []
@@ -111,32 +112,30 @@ deck:
     - { id: title, part: 0, claim: "Live Azure context can inform a proposal while authority stays explicit.", scene: "shared title frame with a query-to-review loop", seconds: 30 }
     - { id: core-question, part: 0, claim: "How do I use Azure context without handing over the decision?", scene: "shared core-question frame", seconds: 40 }
     - { id: contents, part: 0, claim: "The talk moves from query to plan, composition, and authority.", scene: "shared contents frame", seconds: 35 }
-    - { id: part-1, part: 1, claim: "A scoped question can turn resource state into conversational context.", scene: "shared opener frame", seconds: 35 }
-    - { id: query-shape, part: 1, claim: "A resource query names the scope and fields that make its answer inspectable.", scene: "shared scorecard: scope, identity, fields, freshness", seconds: 80 }
-    - { id: query-transcript, part: 1, claim: "A structured answer is evidence to inspect, not proof of a real live call.", scene: "terminal: illustrative storage-account prompt and result", seconds: 90 }
-    - { id: follow-up-context, part: 1, claim: "A follow-up can reuse a prior result, but the presenter must retain its scope and age.", scene: "terminal: fictional Cosmos configuration follow-up", seconds: 80 }
-    - { id: template-from-state, part: 1, claim: "A live resource is a reference for a draft, not an automatically safe template.", scene: "shared showdown: copy properties versus reviewed variation", seconds: 90 }
-    - { id: part-2, part: 2, claim: "Planning makes assumptions and decision points visible before a proposed change.", scene: "shared opener frame", seconds: 35 }
-    - { id: three-paths, part: 2, claim: "Workflow guidance, live tools, and manual work solve different parts of the same task.", scene: "deck scene: three paths with responsibilities and limits", seconds: 100 }
-    - { id: plan-mode-boundary, part: 2, claim: "Skills activation during Copilot Plan Mode is an unresolved source-recipe assumption.", scene: "shared signals: unresolved claim, needed observation, safe narration", seconds: 90 }
-    - { id: clarifying-questions, part: 2, claim: "Region, plan, database, network, and scale questions expose deployment assumptions.", scene: "terminal: fictional payment API planning prompt", seconds: 90 }
-    - { id: plan-evidence, part: 2, claim: "A plan can surface candidate checks, but each result needs provenance and verification.", scene: "deck scene: plan input beside illustrative checks and labels", seconds: 105 }
-    - { id: review-before-deploy, part: 2, claim: "A reviewed Bicep proposal and an approved deployment are separate states.", scene: "shared relay: inspect, validate, approve, deploy", seconds: 95 }
-    - { id: estimate-not-result, part: 2, claim: "The source's 45-to-8-minute comparison is an estimate, not measured evidence.", scene: "shared scorecard: estimate, missing method, measurement plan", seconds: 80 }
-    - { id: part-3, part: 3, claim: "The host, Skills, MCP server, and Azure APIs have distinct responsibilities.", scene: "shared opener frame", seconds: 35 }
-    - { id: stack-architecture, part: 3, claim: "Skills guide workflow; MCP exposes tools; Azure enforces the configured identity's permissions.", scene: "deck scene: four layers and distinct trust boundaries", seconds: 100 }
-    - { id: skills-as-guidance, part: 3, claim: "Named Skills describe workflow guidance; their presence does not prove tool execution.", scene: "shared scorecard: prepare, validate, deploy, diagnose", seconds: 90 }
-    - { id: mcp-request-path, part: 3, claim: "MCP carries structured tool requests and results; the host and server mediate the call.", scene: "shared relay: discover, request, execute, inspect", seconds: 100 }
-    - { id: setup-shape, part: 3, claim: "Setup connects a host to a server and identity; exact configuration is host/version-specific.", scene: "terminal: non-secret configuration outline and connection check", seconds: 100 }
-    - { id: scope-services, part: 3, claim: "Narrowing exposed services reduces irrelevant choices; Azure permissions still govern access.", scene: "shared showdown: broad tools versus selected tools", seconds: 100 }
-    - { id: part-4, part: 4, claim: "Tool reach becomes safe only when identity, authorization, confirmation, and ownership are explicit.", scene: "shared opener frame", seconds: 35 }
-    - { id: authz-not-approval, part: 4, claim: "Authentication identifies a principal; authorization and human approval answer different questions.", scene: "deck scene: identity, permission, host approval, service owner", seconds: 110 }
-    - { id: role-scope, part: 4, claim: "Reader, Contributor, and Owner roles carry different consequences at a chosen scope.", scene: "shared scorecard: role, action boundary, review owner", seconds: 105 }
-    - { id: separate-environments, part: 4, claim: "Separate production-read and development-write connections make environment boundaries inspectable.", scene: "shared relay: production read, dev proposal, human-approved deploy", seconds: 105 }
-    - { id: verify-proposal, part: 4, claim: "A reviewer can compare declared infrastructure assumptions with observable environment facts.", scene: "deck scene: illustrative Bicep inputs and three mismatch signals", seconds: 105 }
-    - { id: use-cases-and-limits, part: 4, claim: "Cloning, log analysis, and IaC validation each require different evidence and owners.", scene: "shared signals: task, evidence, boundary, next owner", seconds: 95 }
-    - { id: recovery-and-delegation, part: 4, claim: "When evidence is missing or a task outgrows a session, stop, gather proof, and hand off explicitly.", scene: "shared four-phases: inspect, bound, review, escalate", seconds: 95 }
-    - { id: before-after, part: 0, claim: "The useful shift is from copying assumptions to reviewing scoped evidence.", scene: "shared before-after frame", seconds: 45 }
+    - { id: part-1, part: 1, claim: "One scoped question turns production state into context for a staging decision.", scene: "shared opener frame", seconds: 40 }
+    - { id: query-shape, part: 1, claim: "A scoped ask returns one resource with the fields the decision needs.", scene: "deck scene: broad ask versus scoped ask", seconds: 75 }
+    - { id: query-transcript, part: 1, claim: "An answer is usable when its scope, identity, fields, and time are visible.", scene: "deck scene: answer with receipt callouts", seconds: 90 }
+    - { id: follow-up-context, part: 1, claim: "Follow-ups reuse a snapshot; re-query when the property can change and the decision depends on it.", scene: "deck scene: chat lane versus Azure lane timeline", seconds: 80 }
+    - { id: template-from-state, part: 1, claim: "Copilot shows what production has; the engineer decides what staging gets, and why.", scene: "deck scene: setting table with keep, change, drop, ask owner", seconds: 90 }
+    - { id: part-2, part: 2, claim: "One ticket moves from request to approval through clarify, check, decide.", scene: "shared opener frame", seconds: 35 }
+    - { id: the-ticket, part: 2, claim: "Copilot shortens the path to a reviewable plan, not the review.", scene: "deck scene: ticket plus time bars, representative estimates", seconds: 90 }
+    - { id: clarify, part: 2, claim: "Every open point becomes a question with an answer and an owner.", scene: "deck scene: question, answer, who answers", seconds: 90 }
+    - { id: live-checks, part: 2, claim: "Live checks confirm most answers and overturn one, which changes the plan.", scene: "deck scene: assumption, live check, result", seconds: 105 }
+    - { id: plan-receipt, part: 2, claim: "The approver reads the plan and its evidence together.", scene: "deck scene: change request with four blocks", seconds: 90 }
+    - { id: approval-path, part: 2, claim: "Approval is the gate wherever the deploy runs, in this chat or a pipeline.", scene: "deck scene: five handoffs with owners", seconds: 90 }
+    - { id: part-3, part: 3, claim: "Follow the approved plan to deployed, in the same chat.", scene: "shared opener frame", seconds: 35 }
+    - { id: deploy-stack, part: 3, claim: "One deploy prompt crosses skill, host, tools, and Azure; each can stop it.", scene: "deck scene: four layers with what each does and when it stops the deploy", seconds: 100 }
+    - { id: skill-gates, part: 3, claim: "azure-deploy runs only a plan azure-validate marked Validated; the lead's approval is the human gate.", scene: "deck scene: prepare → validate → deploy cards with plan status and gate", seconds: 95 }
+    - { id: deploy-trace, part: 3, claim: "One deploy, timed from prompt to receipt; the result matches the what-if.", scene: "deck scene: timed actor rows ending in a green receipt band", seconds: 100 }
+    - { id: setup-choices, part: 3, claim: "Setup is four choices (plugin, MCP server, subscription, identity), each with a check.", scene: "deck scene: four numbered cards with a check each", seconds: 80 }
+    - { id: tools-vs-rights, part: 3, claim: "Tool exposure and Azure rights are separate dials; narrow both to the task.", scene: "deck scene: action × reach × role × outcome matrix", seconds: 95 }
+    - { id: part-4, part: 4, claim: "paystore-staging is deployed; who gave the green light, at each step?", scene: "shared opener frame", seconds: 35 }
+    - { id: four-green-lights, part: 4, claim: "Four different green lights deployed paystore-staging; none stands in for another.", scene: "deck scene: four cards with question, the green light, evidence, and who gave it", seconds: 110 }
+    - { id: role-scope, part: 4, claim: "A role only means something at a scope.", scene: "deck scene: role × can × cannot × in this story", seconds: 95 }
+    - { id: separate-environments, part: 4, claim: "One connection reads production, another writes staging; production changes take the pipeline.", scene: "deck scene: three connections by identity, role/scope, use, and story moment", seconds: 100 }
+    - { id: owner-decides, part: 4, claim: "When the decision is not yours, Copilot gathers the facts and drafts the ask.", scene: "deck scene: open partner rule, facts, owners, Copilot draft", seconds: 105 }
+    - { id: other-tasks, part: 4, claim: "The same questions carry to other Azure tasks.", scene: "deck scene: task × reads × check × decider", seconds: 95 }
+      - { id: story-recap, part: 0, claim: "One ticket, four habits: each part's moment in the story and the habit it teaches.", scene: "deck scene: four part cards with moment, habit, and check", seconds: 60 }
     - { id: today, part: 0, claim: "A safe first test is a read query in an approved scope with a recorded expected result.", scene: "shared today frame", seconds: 60 }
     - { id: references, part: 0, claim: "First-party documentation and source repositories locate the implementation details.", scene: "shared references frame", seconds: 30 }
     - { id: thanks, part: 0, claim: "Apply the query-plan-review boundary to one real task in your own workflow.", scene: "shared thanks frame with deck visual", seconds: 30 }

@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-10-31
+updated: 2026-11-05
 section: "Extend and Embed"
 audience: [platform-engineer, architect, security]
 level: applied
@@ -45,19 +45,19 @@ The source README's deployment transcripts, configuration examples, and named in
 
 ## 1. Query Azure with Live Context
 
-See how a scoped question can return structured resource context. Carry the identity, subscription, requested fields, and query time with the answer; inspect the result before using it as a template.
+Follow one question from ask to decision: a platform engineer needs staging storage that behaves like production payments storage. Scope the ask to one resource and the fields that matter, read the answer's receipt (scope, identity, fields, query time), and re-query when the snapshot may have aged. Copilot shows what production has; the engineer decides what staging keeps, changes, or drops, and routes anything they don't own to its owner.
 
 ## 2. Plan Before Any Change
 
-Use the source's payments API scenario to surface region, plan, database, network, and scale assumptions. Treat the sample checks, generated Bicep, and 45-to-8-minute comparison as illustrative or unmeasured, not observed.
+Follow one routine infra ticket, standing up paystore-staging from Part 1's decisions, through clarify, check, and decide. Copilot turns open points into questions with owners, live checks confirm most answers and overturn one (a policy that denies public access turns the office IP rule into a private endpoint), and the approver reviews the plan with its evidence before the deploy runs, in the chat or a pipeline. Representative estimates put the path to a reviewable plan at about 45 minutes by hand and 8 with Copilot; review and approval keep their length.
 
 ## 3. Compose Skills, MCP, and Azure
 
-Trace workflow guidance, tool discovery and calls, server credentials, and Azure authorization as separate responsibilities. Verify installation commands and capabilities against the current host and server documentation.
+Follow the approved paystore-staging plan to deployed without leaving the chat. One deploy prompt crosses four layers (the azure-deploy skill, the Copilot host, Azure MCP and the az CLI, and Azure Resource Manager), and each layer can stop it. The skill chain (prepare → validate → deploy) refuses to run an unvalidated plan, the host asks before running the command, and Azure checks the engineer's role. The deploy result matches the approved what-if and a re-query confirms it. Setup is four choices, each with a check, and tool exposure and Azure rights stay two separate dials. Verify install steps against the current host and server documentation.
 
 ## 4. Keep Authority Explicit
 
-Separate authentication, Azure authorization, host confirmation, service-owner approval, and deployment. Use a scoped identity and approved environment; pause when evidence or authority is unclear.
+Count the green lights behind the paystore-staging deploy: sign-in, a role at a scope, the lead's approval of the plan, and the engineer's confirmation when the host asks to run it. Each comes from a different system, and none stands in for another. Keep Reader on production and Contributor on staging in separate connections, with production changes on their own governed path. Route the still-open partner rule to its owners with the facts Copilot gathered, and carry the same four questions to other Azure tasks.
 
 ## What You Can Do Today
 

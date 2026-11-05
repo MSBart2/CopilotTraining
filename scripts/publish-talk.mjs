@@ -3,7 +3,7 @@
 // bringing along any other unreviewed talk. Works in a temporary worktree of
 // origin/main, so the current branch and working tree are never touched.
 //
-//   npm run publish:talk -- <slug> [--include <path>]... [-m "message"] [--push] [--keep]
+//   npm run publish:talk -- <slug> [<slug>...] [--include <path>]... [-m "message"] [--push] [--keep]
 //   npm run publish:talk -- --status                     # what is still only on this branch
 //   npm run publish:talk -- --tooling [-m "message" --push]   # ship the non-talk leftovers
 //
@@ -21,7 +21,7 @@ const repo = resolve(import.meta.dirname, "..");
 const GENERATED = new Set(["slides/index-custom.html", "tech-talks/portfolio.generated.json"]);
 
 function parseArgs(argv) {
-  const opts = { include: [], push: false, keep: false, status: false, tooling: false, message: null, slug: null };
+  const opts = { include: [], push: false, keep: false, status: false, tooling: false, message: null, slugs: [] };
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--include") opts.include.push(argv[++i]);
@@ -30,11 +30,11 @@ function parseArgs(argv) {
     else if (a === "--keep") opts.keep = true;
     else if (a === "--status") opts.status = true;
     else if (a === "--tooling") opts.tooling = true;
-    else if (!a.startsWith("-") && !opts.slug) opts.slug = a;
+    else if (!a.startsWith("-")) opts.slugs.push(a);
     else throw new Error(`Unknown argument: ${a}`);
   }
-  if (!opts.slug && !opts.status && !opts.tooling) {
-    throw new Error("Usage: npm run publish:talk -- <slug> | --status | --tooling [--include <path>]... [-m \"message\"] [--push]");
+  if (!opts.slugs.length && !opts.status && !opts.tooling) {
+    throw new Error("Usage: npm run publish:talk -- <slug> [<slug>...] | --status | --tooling [--include <path>]... [-m \"message\"] [--push]");
   }
   if (opts.push && !opts.message) throw new Error("--push needs -m \"commit message\"");
   return opts;
@@ -109,7 +109,7 @@ function main() {
     return;
   }
 
-  const { slug } = opts;
+  const { slugs } = opts;
   let paths;
   if (opts.tooling) {
     paths = [...pending("origin/main", source).tooling, ...opts.include];
@@ -118,18 +118,16 @@ function main() {
       return;
     }
   } else {
-    const readme = join(repo, "tech-talks", slug, "README.md");
-    if (!existsSync(readme)) throw new Error(`No talk at tech-talks/${slug}/README.md`);
-    if (/^status:\s*archived\s*$/m.test(readFileSync(readme, "utf8"))) throw new Error(`${slug} is archived; nothing to publish.`);
-    paths = [
-      `tech-talks/${slug}`,
-      `slides/tech-talks/${slug}`,
-      `slides/tech-talks/${slug}.md`,
-      `slides/companions/tech-talks/${slug}`,
-      ...opts.include,
-    ];
+    paths = [];
+    for (const slug of slugs) {
+      const readme = join(repo, "tech-talks", slug, "README.md");
+      if (!existsSync(readme)) throw new Error(`No talk at tech-talks/${slug}/README.md`);
+      if (/^status:\s*archived\s*$/m.test(readFileSync(readme, "utf8"))) throw new Error(`${slug} is archived; nothing to publish.`);
+      paths.push(`tech-talks/${slug}`, `slides/tech-talks/${slug}`, `slides/tech-talks/${slug}.md`, `slides/companions/tech-talks/${slug}`);
+    }
+    paths.push(...opts.include);
   }
-  const label = opts.tooling ? "tooling" : slug;
+  const label = opts.tooling ? "tooling" : slugs.join("+");
 
   const dirty = git(["status", "--porcelain", "--", ...paths]);
   if (dirty) console.warn(`⚠ Uncommitted changes in these paths are NOT published (commit them first):\n${dirty}\n`);
@@ -164,8 +162,10 @@ function main() {
 
     console.log(`\n▶ Ship checks`);
     run(["scripts/check-companions.mjs", "--strict"], join(wt, "slides"));
-    if (slug && existsSync(join(wt, "slides", "tech-talks", slug, "slides.js"))) {
-      run(["scripts/validate-native-deck.mjs", `tech-talks/${slug}`], join(wt, "slides"));
+    for (const slug of slugs) {
+      if (existsSync(join(wt, "slides", "tech-talks", slug, "slides.js"))) {
+        run(["scripts/validate-native-deck.mjs", `tech-talks/${slug}`], join(wt, "slides"));
+      }
     }
 
     for (const link of links.splice(0)) unlinkSync(link);
@@ -178,11 +178,11 @@ function main() {
     console.log(`\n▶ Changes for main (from ${branch} @ ${source.slice(0, 7)}):\n${stat}`);
 
     if (!opts.push) {
-      const cmd = opts.tooling ? "--tooling" : slug;
+      const cmd = opts.tooling ? "--tooling" : slugs.join(" ");
       console.log(`\nDry run. Publish with: npm run publish:talk -- ${cmd}${opts.include.map((p) => ` --include ${p}`).join("")} -m "<message>" --push`);
       // Preview what would remain once this one ships.
       const after = pending("origin/main", source);
-      after.talks = after.talks.filter((t) => t !== slug);
+      after.talks = after.talks.filter((t) => !slugs.includes(t));
       if (opts.tooling) after.tooling = [];
       reportPending(after, branch);
       return;

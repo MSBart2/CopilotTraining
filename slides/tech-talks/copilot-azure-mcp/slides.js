@@ -10,6 +10,9 @@
     mcpRepo: { label: 'Azure MCP Server source repository', href: 'https://github.com/Azure/azure-mcp' },
     skillsNews: { label: 'Azure Skills Plugin announcement (2026-04-27)', href: 'https://devblogs.microsoft.com/all-things-azure/announcing-the-azure-skills-plugin/' },
     skillsRepo: { label: 'Azure Skills source repository', href: 'https://github.com/microsoft/azure-skills' },
+    deploySkill: { label: 'azure-deploy skill definition', href: 'https://github.com/microsoft/azure-skills/blob/main/skills/azure-deploy/SKILL.md' },
+    whatIf: { label: 'Azure Resource Manager deployment what-if', href: 'https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-what-if' },
+    deployExamples: { label: 'GitHub Copilot for Azure deployment examples', href: 'https://learn.microsoft.com/en-us/azure/developer/github-copilot-azure/deploy-examples' },
     mcpCli: { label: 'Add an MCP server to Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/use-copilot-agents/use-copilot-cli#add-an-mcp-server' },
     sourceTalk: { label: 'Copilot + Azure Skills source talk landing page', href: 'https://github.com/MSBart2/CopilotTraining/blob/main/tech-talks/copilot-azure-mcp/README.md' }
   };
@@ -17,16 +20,16 @@
   const slides = [
     S('title', 0, 'GitHub Copilot + Azure Skills Plugin', {
       chrome: false, visual: 'azure-ring', subtitle: 'Conversational Azure Prototyping and Deployment',
-      tagline: 'Use live context to shape infrastructure proposals; keep authority explicit.',
-      meta: 'Practitioner Tech Talk · 45 minutes · Azure developers, platform engineers, architects'
+      tagline: 'Live Azure context shapes the proposal. You keep the decision.',
+      meta: 'Extend and Embed · Practitioner Tech Talk · 45 min'
     }),
     S('core-question', 0, 'How do I use Azure context without handing over the decision?', {
-      pill: 'Core Question', subtitle: 'Query, inspect, and plan while keeping the configured authority visible.',
+      scene: 'core-lanes', pill: 'Core Question', subtitle: 'Query, inspect, and plan while keeping the configured authority visible.',
       highlight: 'Context informs the proposal; evidence and approval govern the action.',
-      routing: ['Context', 'Evidence', 'Authority'], routingLabel: 'Keep visible',
+      routing: ['Context', 'Evidence', 'Authority'],
       roles: [
         { icon: '⌨️', title: 'Azure developer', description: 'Inspect resource state before shaping a change.' },
-        { icon: '🧭', title: 'Platform engineer', description: 'Bound tools by environment, identity, and task.' },
+        { icon: '🧭', title: 'Platform engineer', description: 'Check a proposal against environment and policy.' },
         { icon: '🔐', title: 'Cloud architect', description: 'Separate permission from approval and ownership.' }
       ],
       stats: [
@@ -39,273 +42,125 @@
       pill: 'Four parts',
       sections: [
         { icon: '🔎', title: 'Query Azure with Live Context', subtitle: 'Ask and inspect', blurb: 'Make scope and freshness part of the answer.', slide: 4 },
-        { icon: '🧭', title: 'Plan Before Any Change', subtitle: 'Clarify and verify', blurb: 'Keep assumptions and proposals visible.', slide: 9 },
-        { icon: '🧩', title: 'Compose Skills, MCP, and Azure', subtitle: 'Trace the mechanism', blurb: 'Separate guidance, tools, identity, and APIs.', slide: 16 },
-        { icon: '🔐', title: 'Keep Authority Explicit', subtitle: 'Bound and transfer', blurb: 'Review evidence and name the action owner.', slide: 22 }
+        { icon: '🧭', title: 'Plan Before Any Change', subtitle: 'Clarify, check, decide', blurb: 'Follow one ticket to an approved plan.', slide: 9 },
+        { icon: '🧩', title: 'Compose Skills, MCP, and Azure', subtitle: 'Deploy from the chat', blurb: 'Follow the approved plan to deployed.', slide: 15 },
+        { icon: '🔐', title: 'Keep Authority Explicit', subtitle: 'Green lights', blurb: 'Name every green light and its owner.', slide: 21 }
       ]
     }),
     S('part-1', 1, 'Query Azure with Live Context', {
-      scene: 'opener', subtitle: 'A useful answer carries its scope, identity, fields, and freshness.',
+      scene: 'opener', subtitle: 'Follow one question from ask to decision: what does production payments storage look like today?',
       cards: [
-        { icon: '🎯', title: 'Scope', blurb: 'Which subscription and resource?' },
-        { icon: '🔎', title: 'Inspect', blurb: 'Which fields answer the task?' },
-        { icon: '🧾', title: 'Carry proof', blurb: 'What time and source support it?' }
+        { icon: '🎯', title: 'Ask narrowly', blurb: 'Name subscription, resource, and fields.' },
+        { icon: '🧾', title: 'Read the receipt', blurb: 'Check scope, identity, and time.' },
+        { icon: '📝', title: 'Decide each setting', blurb: 'Choose what staging keeps or changes.' }
       ],
-      terminal: { context: 'Ask for the resource and the fields you need', detail: 'Keep identity and scope attached' }
+      terminal: { context: 'Staging needs storage like production paystore', detail: 'Ask Copilot what production has today' }
     }),
-    S('query-shape', 1, 'A resource answer needs four pieces of context', {
-      scene: 'scorecard', pill: 'Query · Evidence',
-      cards: [
-        { icon: '🗂️', title: 'Scope', description: 'Subscription, tenant, resource group, and resource name.' },
-        { icon: '👤', title: 'Identity', description: 'The principal and role that returned this view.' },
-        { icon: '📋', title: 'Fields', description: 'The properties the question actually requires.' },
-        { icon: '🕒', title: 'Freshness', description: 'When the query ran and which system supplied it.' }
-      ]
+    S('query-shape', 1, 'A scoped question gets an answer you can use', {
+      scene: 'scoped-ask', pill: 'Step 1 · Ask', steps: { current: 1, total: 4 },
+      subtitle: 'Staging needs storage that behaves like production payments. Start with the question.',
     }),
-    S('query-transcript', 1, 'A structured query result is inspectable evidence', {
-      scene: 'terminal', pill: 'Illustrative transcript',
-      subtitle: 'Example only · fictional resource names · no Azure call was made',
-      footnote: 'Illustrative values are not a live subscription result.',
-      transcript: [
-        { type: 'prompt', text: 'copilot' },
-        { type: 'user', text: 'List storage accounts in example-rg with location and SKU.' },
-        { type: 'thinking', label: 'Copilot requests an Azure resource tool' },
-        { type: 'response', lines: [
-          'Illustrative response · resource group: example-rg',
-          'demo-store-a · eastus · Standard_LRS',
-          'demo-store-b · westus2 · Standard_GRS',
-          'Query time and principal: attach from the actual run'
-        ] },
-        { type: 'outcome', text: 'Inspect scope, principal, timestamp, and returned fields' }
-      ]
+    S('query-transcript', 1, 'The answer carries its receipt', {
+      scene: 'answer-receipt', pill: 'Step 2 · Read', steps: { current: 2, total: 4 },
+      subtitle: 'Four questions a reviewer asks of the paystore-prod result before using it.',
     }),
-    S('follow-up-context', 1, 'Follow-ups can use prior context; scope can drift', {
-      scene: 'terminal', pill: 'Illustrative follow-up',
-      subtitle: 'Carry the original scope into the next question',
-      footnote: 'Fictional example. Re-query when state can change or the evidence is stale.',
-      transcript: [
-        { type: 'prompt', text: 'same example session' },
-        { type: 'user', text: 'For demo-cosmos-a, show database throughput settings.' },
-        { type: 'thinking', label: 'Copilot selects a data query' },
-        { type: 'response', lines: [
-          'Illustrative result · source resource: demo-cosmos-a',
-          'catalog-db · autoscale maximum: 4,000 RU/s',
-          'Result is a sample, not a live Azure observation',
-          'Confirm account, database, mode, and time in your environment'
-        ] },
-        { type: 'outcome', text: 'Use session context as a pointer, not a freshness guarantee' }
-      ]
+    S('follow-up-context', 1, 'Follow-ups inherit the scope, and the snapshot ages', {
+      scene: 'context-drift', pill: 'Step 3 · Re-check', steps: { current: 3, total: 4 },
+      subtitle: 'The chat remembers 10:02. Azure kept moving.',
     }),
-    S('template-from-state', 1, 'A live configuration informs a draft; it does not certify it', {
-      scene: 'showdown', pill: 'Inspect · Adapt',
-      leftLabel: 'Copy the existing configuration',
-      rightLabel: 'Use it as a reviewed reference',
-      pairs: [
-        { left: { label: 'Copy every setting', note: 'Includes environment-specific values' }, right: { label: 'Select relevant properties', note: 'Name what transfers and what changes', z: 'purple' } },
-        { left: { label: 'Assume the result is current', note: 'Session context may age' }, right: { label: 'Record scope and query time', note: 'Re-check volatile properties', z: 'green' } },
-        { left: { label: 'Treat output as a template', note: 'A resource has hidden dependencies' }, right: { label: 'Review the proposed differences', note: 'Validate network, identity, and cost', z: 'orange' } }
-      ],
-      outcomeLeft: { icon: '!', label: 'Assumptions carried forward' },
-      outcomeRight: { icon: '✓', label: 'Draft with explicit checks' },
-      footnote: 'Illustrative comparison; review the target service documentation and local policy.'
+    S('template-from-state', 1, 'Copilot shows what production has. You decide what staging gets.', {
+      scene: 'staging-draft', pill: 'Step 4 · Decide', steps: { current: 4, total: 4 },
+      subtitle: 'Copying production as-is brings its network, its rules, and its cost into staging.'
     }),
     S('part-2', 2, 'Plan Before Any Change', {
-      scene: 'opener', subtitle: 'A plan surfaces assumptions; it does not prove a live check happened.',
+      scene: 'opener', subtitle: 'Follow one ticket from request to approval: stand up paystore-staging.',
       cards: [
-        { icon: '❓', title: 'Clarify', blurb: 'Ask about region and dependencies.' },
-        { icon: '🧪', title: 'Check', blurb: 'Label evidence and uncertainty.' },
-        { icon: '🧑‍⚖️', title: 'Decide', blurb: 'Review code before deployment.' }
+        { icon: '❓', title: 'Clarify', blurb: 'Turn every gap into a question.' },
+        { icon: '🔎', title: 'Check', blurb: 'Confirm each answer against Azure.' },
+        { icon: '🧑‍⚖️', title: 'Decide', blurb: 'A named owner approves the plan.' }
       ],
-      terminal: { context: 'Plan a payments API environment', detail: 'Proposal first · deployment stays separate' }
+      terminal: { context: 'Ticket: stand up paystore-staging', detail: 'Settings decided in Part 1 · plan before any change' }
     }),
-    S('three-paths', 2, 'Tools, workflow guidance, and human work are distinct', {
-      scene: 'three-paths', pill: 'Same intent · different responsibilities',
-      subtitle: 'An illustrative comparison, not a measured or guaranteed outcome'
+    S('the-ticket', 2, 'Copilot shortens the path to a reviewable plan, not the review', {
+      scene: 'ticket-time', pill: 'The ticket',
+      subtitle: 'A routine infra request, worked by hand and with Copilot.'
     }),
-    S('plan-mode-boundary', 2, 'Skills activation during Plan Mode remains unverified', {
-      scene: 'signals', pill: 'Recipe open decision · status 2026-10-31',
-      subtitle: 'The source recipe records an assumption, not an observed result.',
-      footnote: 'Resolve only with a separately authorized test; this conversion performed none.',
-      rows: [
-        { label: 'Claim in source recipe', description: 'Plan Mode invokes Azure Skills before code generation', tag: 'UNVERIFIED', z: 'orange' },
-        { label: 'Evidence supplied', description: 'No activity log or reproducible run was included', tag: 'NONE', z: 'orange' },
-        { label: 'Safe talk track', description: 'Describe a proposed flow and label it illustrative', tag: 'NO BEHAVIOR CLAIM', z: 'green' }
-      ]
+    S('clarify', 2, 'Every gap becomes a question with an owner', {
+      scene: 'clarify-questions', pill: 'Step 1 · Clarify', steps: { current: 1, total: 3 },
+      subtitle: 'Before any Bicep, Copilot asks what the ticket leaves open.'
     }),
-    S('clarifying-questions', 2, 'Clarifying questions expose deployment assumptions', {
-      scene: 'terminal', pill: 'Illustrative Plan Mode scenario',
-      subtitle: 'Payments API example from the source talk · no live access',
-      footnote: 'This transcript is constructed from the source README; it does not report a run.',
-      transcript: [
-        { type: 'user', text: 'Plan a payments API beside an existing orders API.' },
-        { type: 'thinking', label: 'Questions before proposing code' },
-        { type: 'response', lines: [
-          'Which region and app plan fit the workload?',
-          'New database or existing connection?',
-          'Which subnet and network boundary?',
-          'What scale and isolation does the owner need?'
-        ] },
-        { type: 'user', text: 'Capture the answers as assumptions; request evidence.' },
-        { type: 'outcome', text: 'Clarification improves the proposal; it does not authorize deployment' }
-      ]
+    S('live-checks', 2, 'Azure confirms four answers and overturns one', {
+      scene: 'live-checks', pill: 'Step 2 · Check', steps: { current: 2, total: 3 },
+      subtitle: 'Each answer is an assumption until a live query backs it.'
     }),
-    S('plan-evidence', 2, 'Every proposed check needs provenance', {
-      scene: 'plan-evidence', pill: 'Illustrative result labels',
-      subtitle: 'Separate what the plan says from what a live query establishes'
+    S('plan-receipt', 2, 'The approver reads the plan and its evidence together', {
+      scene: 'plan-receipt', pill: 'Step 3 · Decide', steps: { current: 3, total: 3 },
+      subtitle: 'What changes, what backs it, what the checks changed, and what is still open.'
     }),
-    S('review-before-deploy', 2, 'Review, validate, approve, and deploy are different states', {
-      scene: 'relay', pill: 'Proposed infrastructure handoff',
-      columns: [
-        { icon: '📄', title: 'Developer inspects', description: 'Generated Bicep is a proposal, not deployment evidence.', items: ['Review parameters', 'Check resource API', 'Compare conventions'], z: ['purple', 'purple', 'orange'] },
-        { icon: '🧪', title: 'Team validates', description: 'Run checks with the right environment and policy.', items: ['Lint and validate', 'Review plan output', 'Check blast radius'], z: ['green', 'green', 'orange'] },
-        { icon: '🧑‍⚖️', title: 'Owner authorizes', description: 'Use the approved deployment workflow.', items: ['Approve change', 'Run controlled deploy', 'Inspect resulting state'], z: ['orange', 'orange', 'green'] }
-      ]
-    }),
-    S('estimate-not-result', 2, 'The source’s 45-to-8-minute comparison is unmeasured', {
-      scene: 'scorecard', pill: 'Evidence status',
-      cards: [
-        { icon: '⏱️', title: '45 and 8 minutes', description: 'Figures repeated in the source talk; no study or timing record supplied.' },
-        { icon: '❔', title: 'Missing method', description: 'No task sample, participant count, baseline, or variance is documented.' },
-        { icon: '🧭', title: 'Presenter wording', description: 'Call these source estimates, never an observed result or promise.' },
-        { icon: '📏', title: 'Measure locally', description: 'Time comparable tasks and record checks, rework, and approvals.' }
-      ]
+    S('approval-path', 2, 'Approval is the gate, wherever the deploy runs', {
+      scene: 'approval-path', pill: 'Step 3 · Decide', steps: { current: 3, total: 3 },
+      subtitle: 'The approved plan can deploy from this chat or from a pipeline. Approval comes first either way.'
     }),
     S('part-3', 3, 'Compose Skills, MCP, and Azure', {
-      scene: 'opener', subtitle: 'Separate guidance, tool transport, credentials, and cloud enforcement.',
+      scene: 'opener', subtitle: 'Follow the approved plan to deployed, in the same chat.',
       cards: [
-        { icon: '📘', title: 'Skills', blurb: 'Describe workflow guidance.' },
-        { icon: '🔌', title: 'MCP', blurb: 'Expose structured tools.' },
-        { icon: '☁️', title: 'Azure', blurb: 'Enforce the principal’s rights.' }
+        { icon: '📘', title: 'Skills', blurb: 'Sequence the work and its gates.' },
+        { icon: '🔌', title: 'MCP', blurb: 'Carry each call to Azure.' },
+        { icon: '☁️', title: 'Azure', blurb: 'Decides what your identity may do.' }
       ],
-      terminal: { context: 'Trace request → tool → result', detail: 'No layer grants another layer’s authority' }
+      terminal: { context: 'Lead approved the paystore-staging plan', detail: 'Next prompt: deploy it' }
     }),
-    S('stack-architecture', 3, 'Skills guide workflow; Azure enforces the principal’s permissions', {
-      scene: 'stack-architecture', pill: 'Control path and trust boundaries',
-      subtitle: 'Tool reach is not a permission grant, and a skill is not an approval gate'
+    S('deploy-stack', 3, 'One deploy prompt crosses four layers, and each can say no', {
+      scene: 'deploy-stack', pill: 'The stack',
+      subtitle: 'Skill, host, tools, and Azure each get a chance to stop the change.'
     }),
-    S('skills-as-guidance', 3, 'Named Skills describe workflow guidance, not proof of execution', {
-      scene: 'scorecard', pill: 'Examples named in source README',
-      cards: [
-        { icon: '🧰', title: 'azure-prepare', description: 'Source describes project analysis and infrastructure preparation.' },
-        { icon: '✅', title: 'azure-validate', description: 'Source describes pre-deployment checks and configuration review.' },
-        { icon: '🚀', title: 'azure-deploy', description: 'Source describes deployment workflow guidance.' },
-        { icon: '🔎', title: 'azure-diagnostics', description: 'Source describes operational troubleshooting guidance.' }
-      ],
-      footnote: 'Plugin details and skill inventory are dated to the source talk; check the current repository.'
+    S('skill-gates', 3, 'The deploy skill will not skip its gates', {
+      scene: 'skill-gates', pill: 'The skill chain',
+      subtitle: 'Three Azure Skills, one plan file, and a status only validation can set.'
     }),
-    S('mcp-request-path', 3, 'MCP carries structured requests; the host and server mediate the call', {
-      scene: 'relay', pill: 'Simplified request path',
-      columns: [
-        { icon: '🧭', title: 'Discover', description: 'Host sees tools exposed by a configured server.', items: ['List available tools', 'Inspect descriptions', 'Choose a candidate'], z: ['purple', 'purple', 'local'] },
-        { icon: '📨', title: 'Request', description: 'Host sends a structured tool call and arguments.', items: ['Name the tool', 'Send arguments', 'Apply host controls'], z: ['local', 'local', 'orange'] },
-        { icon: '☁️', title: 'Return', description: 'Server calls a service and returns data or an error.', items: ['Authenticate', 'Azure authorizes', 'Inspect result'], z: ['remote', 'orange', 'green'] }
-      ]
+    S('deploy-trace', 3, 'One deploy, from prompt to receipt, in one chat', {
+      scene: 'deploy-trace', pill: 'The deploy',
+      subtitle: 'Every step has a time, an actor, and something you can check.'
     }),
-    S('setup-shape', 3, 'Setup connects a host, server, and identity', {
-      scene: 'terminal', pill: 'Configuration outline · verify current docs',
-      subtitle: 'Source examples are historical; exact settings vary by host and version.',
-      footnote: 'No credential values shown. No login, installation, or server startup performed.',
-      transcript: [
-        { type: 'response', lines: [
-          '1 · Install or select an Azure MCP distribution',
-          '2 · Configure the host-specific server entry',
-          '3 · Select the intended tenant and subscription',
-          '4 · Authenticate using an approved identity',
-          '5 · Inspect exposed tools and run a read-only check'
-        ] },
-        { type: 'divider' },
-        { type: 'user', text: 'copilot /tools' },
-        { type: 'outcome', text: 'Example verification command from source; confirm current CLI syntax' }
-      ]
+    S('setup-choices', 3, 'Setup is four choices, each with a check', {
+      scene: 'setup-choices', pill: 'Setup',
+      subtitle: 'Exact install steps vary by host and version. The choices do not.'
     }),
-    S('scope-services', 3, 'Narrow tool exposure; scope Azure permissions separately', {
-      scene: 'showdown', pill: 'Two different controls',
-      leftLabel: 'Expose every configured service',
-      rightLabel: 'Select the task’s service set',
-      pairs: [
-        { left: { label: 'More available tools', note: 'A broader selection surface' }, right: { label: 'Fewer irrelevant choices', note: 'Expose only task-relevant tools', z: 'purple' } },
-        { left: { label: 'Identity unchanged', note: 'Tool list does not change RBAC' }, right: { label: 'Authorization still applies', note: 'Azure checks principal and scope', z: 'orange' } },
-        { left: { label: 'Review host config', note: 'Confirm server and tenant' }, right: { label: 'Review identity config', note: 'Confirm role and resource scope', z: 'green' } }
-      ],
-      outcomeLeft: { icon: '→', label: 'Tool discovery surface' },
-      outcomeRight: { icon: '→', label: 'Cloud authorization boundary' },
-      footnote: 'Service filter variable and JSON shapes in the source are examples; verify current documentation.'
+    S('tools-vs-rights', 3, 'Reach and rights are separate dials', {
+      scene: 'tools-vs-rights', pill: 'Scope',
+      subtitle: 'What Copilot can reach is set in the host. What Azure allows is set by roles.'
     }),
     S('part-4', 4, 'Keep Authority Explicit', {
-      scene: 'opener', subtitle: 'Authentication, authorization, confirmation, and approval answer different questions.',
+      scene: 'opener', subtitle: 'paystore-staging is deployed. Who gave the green light, at each step?',
       cards: [
-        { icon: '🪪', title: 'Authenticate', blurb: 'Which principal is connected?' },
-        { icon: '🛂', title: 'Authorize', blurb: 'Which actions can it take?' },
-        { icon: '🧑‍⚖️', title: 'Approve', blurb: 'Who accepts this change?' }
+        { icon: '🪪', title: 'Authenticate', blurb: 'Who is connected?' },
+        { icon: '🛂', title: 'Authorize', blurb: 'What may it do, and where?' },
+        { icon: '🧑‍⚖️', title: 'Approve', blurb: 'Who accepts the change?' }
       ],
-      terminal: { context: 'Tool available ≠ operation authorized', detail: 'A human owns consequential deployment' }
+      terminal: { context: 'paystore-staging deployed at 11:24', detail: 'Four green lights made it happen' }
     }),
-    S('authz-not-approval', 4, 'Authentication identifies; authorization and approval decide separately', {
-      scene: 'authority-map', pill: 'Do not collapse these controls',
-      subtitle: 'A host prompt is not a substitute for Azure RBAC or service-owner review'
+    S('four-green-lights', 4, 'Four different green lights deployed paystore-staging', {
+      scene: 'four-green-lights', pill: 'Green lights',
+      subtitle: 'Each came from a different place. None can stand in for another.'
     }),
-    S('role-scope', 4, 'Azure roles change what the connected principal can do', {
-      scene: 'scorecard', pill: 'Role names are not an approval workflow',
-      cards: [
-        { icon: '👁️', title: 'Reader', description: 'Read operations allowed at assigned scope; writes generally denied.' },
-        { icon: '✏️', title: 'Contributor', description: 'Broad resource management within scope; cannot assign roles by itself.' },
-        { icon: '🔑', title: 'Owner', description: 'Resource management plus access assignment at assigned scope.' },
-        { icon: '🧑‍⚖️', title: 'Human approver', description: 'A separate workflow owner reviews the proposed change and evidence.' }
-      ],
-      footnote: 'Effective rights depend on role assignments, scope, deny assignments, conditions, and data-plane permissions.'
+    S('role-scope', 4, 'A role only means something at a scope', {
+      scene: 'role-scope', pill: 'Roles',
+      subtitle: 'The engineer reads production and writes staging. Nothing more.'
     }),
-    S('separate-environments', 4, 'Separate production-read and development-write connections', {
-      scene: 'relay', pill: 'Environment boundary',
-      columns: [
-        { icon: '🏭', title: 'Production', description: 'Use a separately scoped read identity for discovery.', items: ['Select prod endpoint', 'Query approved scope', 'Record returned state'], z: ['orange', 'remote', 'green'] },
-        { icon: '🧪', title: 'Development', description: 'Generate and validate a proposal in an isolated environment.', items: ['Select dev endpoint', 'Review generated code', 'Check plan and cost'], z: ['purple', 'green', 'orange'] },
-        { icon: '✅', title: 'Deployment', description: 'The service owner uses the governed change path.', items: ['Approve pull request', 'Authorize deployment', 'Inspect resulting state'], z: ['orange', 'orange', 'green'] }
-      ]
+    S('separate-environments', 4, 'One connection reads production. Another writes staging.', {
+      scene: 'connections', pill: 'Connections',
+      subtitle: 'Production changes take the governed path, with their own identity.'
     }),
-    S('verify-proposal', 4, 'Compare declared infrastructure with observable environment facts', {
-      scene: 'verify-proposal', pill: 'Illustrative validation',
-      subtitle: 'A mismatch is a useful stop signal, not a deploy instruction'
+    S('owner-decides', 4, 'When the decision is not yours, Copilot drafts the ask', {
+      scene: 'owner-decides', pill: 'Ownership',
+      subtitle: 'The partner rule from Part 2 needs two owners. Copilot brings them the facts.'
     }),
-    S('use-cases-and-limits', 4, 'Each Azure task needs its own evidence and owner', {
-      scene: 'signals', pill: 'Transfer the decision, not a transcript',
-      rows: [
-        { label: 'Environment clone', description: 'Compare selected source settings to target policy and quotas', tag: 'REVIEW DIFF', z: 'purple' },
-        { label: 'Log analysis', description: 'Check query range, workspace, sample, and time window', tag: 'VERIFY DATA', z: 'green' },
-        { label: 'IaC validation', description: 'Check API versions, dependency graph, network, and identity', tag: 'VALIDATE PLAN', z: 'orange' },
-        { label: 'Background audit', description: 'Name task owner, returned artifact, and escalation signal', tag: 'REVIEW HANDOFF', z: 'local' }
-      ],
-      footnote: 'Source scenarios are illustrative; no live clone, log query, or audit was run.'
+    S('other-tasks', 4, 'The same questions carry to your next Azure task', {
+      scene: 'other-tasks', pill: 'Transfer'
     }),
-    S('recovery-and-delegation', 4, 'Missing evidence is a stop-and-recover signal', {
-      scene: 'four-phases', pill: 'Inspect → Bound → Review → Escalate',
-      stageLabel: 'Step', gateLabel: '✓ evidence',
-      stages: [
-        { label: '1', name: 'Inspect', icon: '🔎', description: 'Confirm principal, scope, tool, and result.' },
-        { label: '2', name: 'Bound', icon: '🧰', description: 'Reduce scope or choose a read-only path.' },
-        { label: '3', name: 'Review', icon: '🧑‍⚖️', description: 'Compare the proposal to policy and test evidence.' },
-        { label: '4', name: 'Escalate', icon: '🛑', description: 'Pause when rights or outcome remain unclear.', target: true }
-      ],
-      footnote: 'Cloud delegation and background work need an explicit owner, artifact, and review path.'
-    }),
-    S('before-after', 0, 'Move from copied assumptions to reviewed evidence', {
-      scene: 'before-after', subtitle: 'The value is a better decision, not a headline speed claim.',
-      before: [
-        'Copy settings without recording scope',
-        'Treat generated output as a live fact',
-        'Combine tool permission with human approval',
-        'Call an estimate an observed result'
-      ],
-      after: [
-        'Record principal, resource, fields, and time',
-        'Label samples and verify volatile state',
-        'Separate permission, confirmation, and approval',
-        'Measure comparable tasks before making a speed claim'
-      ],
-      metrics: [
-        { value: 'Scope', detail: 'identity · subscription · resource' },
-        { value: 'Evidence', detail: 'input · output · provenance' },
-        { value: 'Owner', detail: 'review · approval · escalation' }
-      ]
+    S('story-recap', 0, 'One ticket, four habits for your next Azure change', {
+      scene: 'story-recap', pill: 'Recap',
+      subtitle: 'Each part of the paystore-staging story left one habit worth keeping.'
     }),
     S('today', 0, 'Start with one read-only query and a recorded expected result', {
       scene: 'today', subtitle: 'Use a scope your organization has already approved.',
@@ -345,34 +200,32 @@
 
   const NOTES = {
     title: { seconds: 30, notes: [`"Copilot can help turn Azure questions into a structured investigation and a reviewable proposal."`, `The picture is a workflow map, not an execution trace. No Azure service or subscription is connected for this talk.`] },
-    'core-question': { seconds: 40, notes: [`"The decision is how to use live context without giving away the decision itself."`, `"We will keep three things attached: evidence, the identity that can act, and the person who owns approval."`, `→ First, make a query inspectable.`] },
+    'core-question': { seconds: 45, notes: [`"The decision is how to use live Azure context without giving away the decision itself."`, `"Each lane is one thing we keep visible. Context for the developer who inspects state. Evidence for the platform engineer who checks a proposal. Authority for the architect who separates permission from approval."`, `Point down each lane: lens, then the role that needs it, then what that role leaves with.`, `→ First, make a query inspectable.`] },
     contents: { seconds: 35, notes: [`"We start with a scoped query, use it to shape a plan, trace the underlying layers, and finish at the authority boundary."`, `The agenda openers are slides 4, 9, 16, and 22.`] },
-    'part-1': { seconds: 35, sources: [SRC.mcpDocs], notes: [`"A conversational answer becomes useful when we can tell what it looked at and when."`, `→ Ask for fields that support one decision.`] },
-    'query-shape': { seconds: 80, sources: [SRC.mcpStart, SRC.mcpDocs], notes: [`"I want the scope, principal, fields, and time alongside the answer."`, `"Those details let a reviewer decide whether the result fits the question."`, `Point to each card. A displayed value without origin and freshness is a prompt for verification, not a trust signal.`], know: [`Azure Resource Manager and data-plane calls can have distinct authorization surfaces. The authenticated principal's effective access depends on role assignments, scope, conditions, deny assignments, and service-specific permissions. The source's decision tree routes Azure discovery and troubleshooting toward an MCP-assisted query, a bounded resource change toward a plan and review, and work outside Azure toward its owning tool or team. A task with no agreed outcome needs scoping before tool selection.`] },
-    'query-transcript': { seconds: 90, sources: [SRC.mcpDocs, SRC.mcpRepo], notes: [`"This terminal output is illustrative. The example names and values are fictional; no live tool call produced them."`, `"In a real run, I would record which identity, subscription, resource group, and query time produced the answer."`, `Point to the final line. It asks for actual run metadata rather than manufacturing it for the example.`], know: [`The source README includes fabricated-looking resource names and returned counts. Native slides use generic demo names and mark all outputs as illustrative. The MCP server's current tool names and result schemas vary by version; consult the linked docs and repository.`] },
-    'follow-up-context': { seconds: 80, sources: [SRC.mcpDocs], notes: [`"Session context can make a follow-up convenient, but it does not freeze Azure state."`, `"When the decision depends on a volatile property, re-query and preserve the time and scope."`, `The demo Cosmos account and RU/s number are invented sample values, not an observed account.`], know: [`The source talk lists storage, Cosmos DB, App Configuration, Log Analytics, Resource Groups, DevOps artifacts, Azure CLI delegation, and Foundry MCP scenarios. Actual service/tool coverage is version-specific; the deck does not assert that every listed operation is available in every host. The source also claims specific context-compaction thresholds, pruning behavior, and session durations, without a first-party citation; do not repeat those implementation numbers as established facts. Context summaries can omit detail, so re-query material facts.`] },
-    'template-from-state': { seconds: 90, sources: [SRC.mcpDocs, SRC.cli], notes: [`"A production configuration can be a useful reference, but copying it verbatim carries environment-specific assumptions."`, `"The reviewer chooses which settings transfer, then checks the target network, identity, policy, and cost."`, `Walk the right-hand column as the practice: choose, record, compare.`], know: [`The source includes a storage-account variation example: use Standard_LRS for a staging-style variant, move from prod-vnet to staging-vnet, retain an office IP rule, omit a CI/CD IP rule, retain TLS 1.2, and disable blob public access. These are illustrative changes, not validation of the sample JSON, its values, or deployment compatibility.`] },
-    'part-2': { seconds: 35, sources: [SRC.cliUse], notes: [`"Planning earns its place when it makes assumptions visible before a proposed change."`, `→ We need to distinguish three contributors to that plan.`] },
-    'three-paths': { seconds: 100, sources: [SRC.cli, SRC.mcpDocs, SRC.skillsRepo], notes: [`"A tool call provides a capability; workflow instructions can guide the order; people supply context, review, and authority."`, `"These are responsibilities, not a benchmark of guaranteed quality or speed."`, `Point to the human decisions that remain on every path: defining requirements, checking evidence, and authorizing the change.`], know: [`The original recipe compares no Skills, MCP only, and Skills plus MCP. Its time values (45, about 15, and 8 minutes) are unmeasured. This scene does not encode those as results. The actual division of work depends on client, server configuration, instructions, and controls. The source's contrast is useful as a decision model, not proof that Skills prevent errors or supply RBAC.`] },
-    'plan-mode-boundary': { seconds: 90, sources: [SRC.cliUse, SRC.skillsRepo], notes: [`"The source recipe explicitly leaves one question open: does Plan Mode activate these Azure Skills?"`, `"It records a working assumption, but it also says the behavior was never verified."`, `"For this talk, we will describe the intended scenario and call it illustrative."`, `→ Now inspect what the example asks before any code exists.`], know: [`Status is dated 2026-10-31 for the conversion. No refresh or live test was performed. The source recipe describes Path A as assumed and Path B as an alternative if the assumption is false. Both remain possible for this deck; the presenter must not assert either as observed.`] },
-    'clarifying-questions': { seconds: 90, sources: [SRC.cliUse], notes: [`"For the payment API example, the useful questions are about region, plan, database, network, and scale."`, `"Those answers constrain a proposal; they do not prove the subscription was queried."`, `The original README's sample architecture uses values such as East US, a dedicated plan, and a payment subnet. Every example here is illustrative.`], know: [`The source README contains a long Plan Mode transcript, proposed App Service Plan and SQL design, and estimated monthly cost. Its checks and cost are not documented observations or an Azure pricing quote. The sample contains deployable-looking Bicep and a deployment command; this deck deliberately does not execute or reproduce a provisioning step. The hands-on walkthrough also asks about adding a third-party API key, choosing App Service settings versus Key Vault references, selecting production or staging slots, and checking for name conflicts. It proposes a tailored app-settings command after inspection. That is a sensitive configuration decision: prefer an approved secret reference and verify slot behavior; do not put a secret value in chat, notes, or a committed file.`] },
-    'plan-evidence': { seconds: 105, sources: [SRC.mcpDocs, SRC.cliUse], notes: [`"A plan can say a subnet exists or a quota is available. The presenter still needs to know which tool produced that finding and when."`, `"Keep the domain result separate from the test status. A check marked pass is not the same thing as Azure authorizing a write."`, `Point from the prompt to the three illustrative checks. The values and results on this slide are examples, not live verification.`], know: [`The source's sample plan claimed available regional capacity, an existing empty subnet, remaining SQL quota, and a missing firewall rule. It then proposed adding the rule. None of those claims were observed in a real subscription. The presenter must not describe them as live results.`] },
-    'review-before-deploy': { seconds: 95, sources: [SRC.cli, SRC.mcpDocs], notes: [`"Generated Bicep is a draft artifact. A human reviews it, the team validates it, and an authorized owner decides whether a deployment runs."`, `"A plan-mode conversation is not a deployment approval."`, `Trace the three lanes. This deck stops before any Azure change.`], know: [`The source scenario's proposed Bicep includes an App Service Plan at S2, autoscale from 2 to 5, a VNet-integrated App Service, TLS 1.2, FTPS disabled, a Standard S1 SQL database, a firewall rule, and an output connection string using Microsoft Entra authentication. These are source example values, not independently validated infrastructure; network constructs, resource API versions, SKU choices, and secret handling need current review. The source also shows an az deployment group create command. It is intentionally not a live demo and was not executed.`] },
-    'estimate-not-result': { seconds: 80, sources: [SRC.sourceTalk], notes: [`"The old source repeats a 45-minute baseline and an 8-minute prototype cycle."`, `"It provides no timing study, sample, or measurement method, so I will call those source estimates, not results."`, `A team that wants a speed claim can time comparable tasks and include validation, review, and rework.`], know: [`The source README was updated 2026-09-16 and gives about 15 minutes for MCP-only, 1-2 versus 3-4 attempts, and an 8-minute troubleshooting result. These are not verified measurements. The original text supplies no data collection details. Do not repeat them as measured outcomes.`] },
-    'part-3': { seconds: 35, sources: [SRC.skillsNews, SRC.mcpDocs], notes: [`"Now we can trace how guidance, tools, credentials, and Azure enforcement fit together."`, `→ Follow one request through those boundaries.`] },
-    'stack-architecture': { seconds: 100, sources: [SRC.skillsNews, SRC.skillsRepo, SRC.mcpDocs], notes: [`"Skills are guidance. The host chooses how to use that guidance and which available tool to call."`, `"The MCP server receives a structured request and reaches Azure with a configured identity; Azure authorizes each operation."`, `Point out that no arrow grants permission. The service owner and deployment workflow remain separate from this path.`], know: [`The source describes a three-layer stack of Azure Skills, Azure MCP Server, and Foundry MCP Server. This diagram focuses on one Azure request path; Foundry is an optional adjacent integration, not required for every Azure query. The 21 Skills and 200-plus tools across 40-plus services are claims dated to the source talk, not newly checked counts. The source's broader capability list includes resource discovery and configuration reads, KQL/Monitor analysis, Azure CLI and azd delegation, DevOps artifacts, and Foundry model/endpoint work. Each capability depends on the configured server, host, service, and permissions. The source says direct resource queries can go to MCP without Skills; this is a useful architectural possibility, not a guarantee of how every host routes prompts. Verify the actual host's activity trace.`] },
-    'skills-as-guidance': { seconds: 90, sources: [SRC.skillsNews, SRC.skillsRepo], notes: [`"The source names prepare, validate, deploy, and diagnostics as workflow guidance."`, `"A Skill's presence does not tell us whether it activated, what it instructed, or whether a tool call succeeded."`, `Read the footer: verify the current inventory in the repository before describing a count or capability.`], know: [`The source README says the plugin announcement lists 21 skills, installs to a GitHub plugin folder, and is available across Copilot CLI, VS Code, and Claude Code. This deck treats those claims as time-bound to the source, not a refreshed compatibility statement. The existing README enumerates only a subset of the claimed 21.`] },
-    'mcp-request-path': { seconds: 100, sources: [SRC.mcpDocs, SRC.mcpRepo], notes: [`"The host discovers tools, selects a candidate, and sends a structured request."`, `"The server handles the request with its configured credentials; Azure evaluates access and returns data or an error."`, `Point to Azure's authorization step. A tool being listed says nothing about whether this principal may perform a requested action.`], know: [`The original README describes MCP tools/list, tools/call, SDK calls, and natural-language response formatting. Exact protocol details and implementation vary by client/server version. Azure authorization occurs at the service layer; tool confirmation and host policies may also apply.`] },
-    'setup-shape': { seconds: 100, sources: [SRC.mcpStart, SRC.mcpCli, SRC.cli], notes: [`"Setup has four decisions: which distribution, which host configuration, which subscription, and which identity."`, `"Then inspect the exposed tools and begin with a read-only check in an approved scope."`, `The historical source shows extension, package-manager, Docker, and CLI approaches. Verify every command against current documentation before presenting it as current.`], know: [`The source README includes npm, Python, .NET, Docker, VS Code, az login, subscription selection, and the copilot /tools check. One historical host example uses mcpServers with name, command npx, args @azure/mcp, and AZURE_SUBSCRIPTION_ID; the hands-on walkthrough instead uses servers with an azure entry and npx -y @azure/mcp@latest server start. These differing schemas and startup forms are source examples, not current canonical configuration. The README's service filter example is AZURE_MCP_ENABLED_SERVICES=storage,cosmosdb,monitor,appconfig and says to reset the CLI after config changes. Confirm support and current syntax in docs. The source also suggests Azure Skills marketplace/install commands for Copilot CLI and Claude Code, and the Azure MCP extension for VS Code; verify host combinations. The source labels four artifacts (interactive query session, Plan Mode deployment workflow, MCP config, and RBAC-scoped setup), but they were inline README examples rather than separate files; their teaching content is retained in these notes. Never commit a client secret or credential to a repository. Use the organization's approved secret and identity mechanism, and confirm the current server's credential support in its documentation.`] },
-    'scope-services': { seconds: 100, sources: [SRC.mcpDocs, SRC.mcpCli], notes: [`"Selecting fewer services can make the tool surface easier to reason about."`, `"That selection does not narrow the Azure role assignment. Check the identity's actual scope separately."`, `The README shows an enabled-services environment setting as an example; confirm whether it remains supported for your server version.`], know: [`The source lists storage, Cosmos DB, Monitor, App Configuration, resources, DevOps, SQL, Key Vault, AKS, Functions, and App Service. Treat that list and the example filter as dated examples, not a current capability matrix.`] },
-    'part-4': { seconds: 35, sources: [SRC.mcpDocs, SRC.cli], notes: [`"Here is the distinction that keeps the rest of the design honest: identity, permission, and approval are separate."`, `→ Put each one on its own line.`] },
-    'authz-not-approval': { seconds: 110, sources: [SRC.mcpDocs, SRC.cli], notes: [`"Authentication tells us which principal is connected. Authorization determines what that principal may do at a particular scope."`, `"A host confirmation prompt is another control, and the service owner may require an approval workflow beyond it."`, `Point at each box separately. Neither an allowlisted tool nor a clicked prompt grants Azure permissions or replaces change approval.`], know: [`The Azure MCP Server source says it uses authenticated credentials and does not elevate them. Azure RBAC is enforced for control-plane operations; some data-plane capabilities use service-specific roles or policies. Access to Key Vault secrets, database contents, storage data, and DevOps artifacts depends on the configured tools and granted permissions; do not assume the server is metadata-only. MCP availability, host confirmation, and organizational change control are distinct.`] },
-    'role-scope': { seconds: 105, sources: [SRC.mcpDocs], notes: [`"Reader, Contributor, and Owner are different authority levels, assigned at a scope."`, `"Contributor can manage resources within scope; Owner also includes access-management authority."`, `The service owner still decides whether a proposed change follows the organization's approval path.`], know: [`The source README's Reader/Contributor/Owner summary is a useful simplification, not a complete authorization analysis. Effective rights also depend on scope, custom roles, conditions, deny assignments, policy, and data-plane roles. Do not claim every Reader role prevents all conceivable side effects across every connected service.`] },
-    'separate-environments': { seconds: 105, sources: [SRC.mcpDocs, SRC.cli], notes: [`"Separate connections make it easier to see which environment and principal the session targets."`, `"Keep production discovery and development changes in deliberately different scopes."`, `"The person responsible for deployment uses the governed path and checks resulting state."`], know: [`The source recommends separately named production and dev server entries, each with its own subscription ID and identity; production uses a Reader-like scope, development uses a more permissive role only in an isolated subscription. Its example places a client secret in environment configuration; this deck deliberately provides no secret-bearing snippet. The pattern is an organizational design choice, not a safe default conferred by MCP.`] },
-    'verify-proposal': { seconds: 105, sources: [SRC.mcpDocs], notes: [`"A reviewer compares what the file declares with what the environment and service rules establish."`, `"A network mismatch, a plan mismatch, or an identity gap means pause and revise the proposal."`, `All resource names and mismatch signals are illustrative; no Bicep file was queried and no live check was run.`], know: [`The source includes an Azure Function/Event Hub validation story: subnet capacity, partition count, and a plan tier were reported as findings. Those values and conclusions are not validated here. Use current product documentation and actual plan output before acting.`] },
-    'use-cases-and-limits': { seconds: 95, sources: [SRC.mcpDocs, SRC.cli], notes: [`"The source gives three broader cases: clone an environment, inspect logs, and validate infrastructure as code."`, `"Each case has a different evidence source and review owner."`, `Log query timestamps, environment diffs, and IaC plans are examples of evidence to gather; none was collected for this deck.`], know: [`The source's cloning example proposes production-to-staging changes to Storage, App Service, and Cosmos DB, with example SKUs, throughput, a claimed two-hour baseline, a 15-minute result, and a cost comparison. The log example sketches KQL requests and exception queries, a SQL timeout, and a connection-pool suggestion; it cites 450 requests/minute, 200 ms, and an 8-minute diagnosis without a run record. The IaC example lists a VNet subnet, Event Hub partitions, a Function plan constraint, and managed identity. These values and service conclusions are illustrative source claims, not verified evidence. Cloud-delegated audits additionally need task ownership, result retention, tool scope, and escalation handling.`] },
-    'recovery-and-delegation': { seconds: 95, sources: [SRC.cli, SRC.mcpDocs], notes: [`"When identity, scope, or evidence is missing, pause and reduce the task until the result is inspectable."`, `"When the task moves to background delegation, name who owns it and where its result will be reviewed."`, `The source describes the Copilot CLI ampersand delegation prefix. Confirm current host behavior, and use only with approved scopes and a clear return artifact.`], know: [`Recovery includes checking subscription and principal, rerunning a bounded read query, examining server or tool errors, validating the generated file locally, and escalating unresolved authorization or policy questions to the relevant owner. Do not retry an uncertain write blindly. The source's claim that delegation makes the terminal immediately free is not independently verified here. Related extensions named by the source include organization MCP registry governance, custom skills and MCP tools, multi-cloud connections, and programmatic CLI use in CI. These are possible follow-on designs, not validated recommendations or part of this talk's demonstration.`] },
-    'before-after': { seconds: 45, notes: [`"The useful change is a more inspectable decision: scope, evidence, and owner travel together."`, `These are practice changes, not claims about elapsed time or guaranteed outcomes.`] },
+    'part-1': { seconds: 40, sources: [SRC.mcpDocs], notes: [`"For this part we follow one real-shaped task. The payments team needs staging storage that behaves like production, so a platform engineer asks Copilot what production looks like today."`, `"Three moves: ask narrowly, read the receipt, then decide what staging gets."`, `Say once, here: the resource names and values in this part are a worked example.`, `→ It starts with how the question is asked.`] },
+    'query-shape': { seconds: 75, sources: [SRC.mcpStart, SRC.mcpDocs], notes: [`"Same engineer, same goal, two ways to ask."`, `"The broad ask returns a pile. Every account is real, and none of them answers the staging question."`, `"The scoped ask names the subscription, the resource group, the resource, and the fields. Copilot comes back with one resource and exactly what the staging decision needs."`, `Point at the four scope chips. They are the difference between an inventory and an answer.`, `→ Now read that answer the way a reviewer would.`], know: [`Azure Resource Manager and data-plane calls can have distinct authorization surfaces. The authenticated principal's effective access depends on role assignments, scope, conditions, deny assignments, and service-specific permissions. The source's decision tree routes Azure discovery and troubleshooting toward an MCP-assisted query, a bounded resource change toward a plan and review, and work outside Azure toward its owning tool or team. A task with no agreed outcome needs scoping before tool selection.`] },
+    'query-transcript': { seconds: 90, sources: [SRC.mcpDocs, SRC.mcpRepo], notes: [`"Here is the paystore-prod answer. Before I use it, I ask four questions of it."`, `"Scope: is this the right resource? Identity: who could see this view, and with which role? Fields: does it answer the staging task? Freshness: when was it true?"`, `"Together those four make a receipt. A value with no receipt is a prompt to verify, not something to build on."`, `Walk the callouts in reveal order: scope, identity, fields, freshness. In a real run, record the actual principal and query time.`, `→ The receipt has a timestamp for a reason.`], know: [`The source README includes fabricated-looking resource names and returned counts. Native slides use generic demo names. The MCP server's current tool names and result schemas vary by version; consult the linked docs and repository. The principal and queriedAt rows show what to capture from a real run; the server output format can differ.`] },
+    'follow-up-context': { seconds: 80, sources: [SRC.mcpDocs], notes: [`"Follow-ups are where this gets convenient, and where it quietly goes stale."`, `"At 10:02 Copilot returned two IP rules. At 10:15 a teammate added a partner rule in Azure. At 10:40 I ask which rules staging keeps, and the answer comes from the 10:02 snapshot, so it misses one."`, `"The fix is cheap: re-query. The rule of thumb is to re-query when the property can change and the decision depends on it."`, `Point at the two lanes. The chat lane holds a snapshot; the Azure lane keeps moving.`, `→ With a fresh receipt, we can decide what staging gets.`], know: [`The source talk lists storage, Cosmos DB, App Configuration, Log Analytics, Resource Groups, DevOps artifacts, Azure CLI delegation, and Foundry MCP scenarios. Actual service/tool coverage is version-specific; the deck does not assert that every listed operation is available in every host. The source also claims specific context-compaction thresholds, pruning behavior, and session durations, without a first-party citation; do not repeat those implementation numbers as established facts. Context summaries can omit detail, so re-query material facts.`] },
+    'template-from-state': { seconds: 90, sources: [SRC.mcpDocs, SRC.cli], notes: [`"Here is the point of the whole part. Copilot can tell me what production has. It cannot tell me what staging needs."`, `"Copy production as-is and staging inherits geo-redundant storage it does not need, a seat on the production network, and the production pipeline's access."`, `"So I make a call on every setting, and write down why: change the SKU and network, keep the office rule and the security baseline, drop the CI/CD rule."`, `"And the partner rule from 10:15? That is not mine to grant, so it goes to its owner."`, `"What leaves Part 1 is a short list where every difference from production is on purpose. Part 2 turns that list into a plan."`, `→ Planning is next.`], know: [`The source includes a storage-account variation example: use Standard_LRS for a staging-style variant, move from prod-vnet to staging-vnet, retain an office IP rule, omit a CI/CD IP rule, retain TLS 1.2, and disable blob public access. The partner IP rule is an addition that ties back to the drift slide. Check the target service documentation and local policy before reusing these values.`] },
+    'part-2': { seconds: 35, sources: [SRC.cliUse], notes: [`"Part 1 ended with a short list of settings, each one on purpose. Now somebody has to build it."`, `"This is the most ordinary ticket an infra team gets: stand up a storage account in staging. We follow it through three moves: clarify, check, decide."`, `→ First, where the time goes.`] },
+    'the-ticket': { seconds: 90, sources: [SRC.sourceTalk, SRC.cliUse], notes: [`"By hand, getting this ticket to a reviewable plan means looking up both environments, reading the docs and policies, and writing the Bicep. Call it about forty-five minutes."`, `"With Copilot doing the lookups and the first draft, that drops to something like eight."`, `"Look at what did not shrink: review and approval. That block is the same length on both rows, and it is the part worth protecting."`, `These are representative estimates from the source talk, not a measurement. If your team wants a real number, time a few comparable tickets end to end, including checks, rework, and approval.`, `→ Step one: clarify.`], know: [`The source talk quotes 45 minutes by hand and 8 minutes with Skills plus MCP, and about 15 for MCP alone. It supplies no task sample, participant count, baseline, or variance. The per-step split on this slide is a representative breakdown for teaching, not data.`] },
+    'clarify': { seconds: 90, sources: [SRC.cliUse], notes: [`"The engineer asks Copilot to plan the ticket. Before it writes anything, it asks what the ticket leaves open."`, `"Region, subnet, name, how the office reaches it, and the partner rule from Part 1."`, `"Notice the right-hand column. Four answers come from the engineer. One does not: the partner rule belongs to the payments owner, so it stays open."`, `"Five answers, and every one of them is still an assumption."`, `→ So we check them.`], know: [`Copilot CLI plan mode asks clarifying questions before proposing an implementation. Whether Azure Skills activate during plan mode is unverified for this deck, so the talk track says Copilot asks, without naming which skill or tool shaped the questions.`] },
+    'live-checks': { seconds: 105, sources: [SRC.mcpDocs, SRC.cliUse], notes: [`"Each answer meets a live query. Region supports the SKU. The subnet exists and has room. The name is free."`, `"Then the fourth one. The staging resource group carries an Azure Policy that denies public network access on storage. An office IP rule needs public access. So the answer we gave in step one cannot work."`, `"That is the moment this whole part is about. The check changed the plan: a private endpoint replaces the office IP rule."`, `"Each result carries a time and an identity, the same receipt habit as Part 1."`, `→ Now the plan goes to the person who approves it.`], know: [`Azure Policy includes a built-in definition that audits or denies storage accounts with public network access enabled. Storage account names are globally unique, so name availability is a real pre-check. Exact tool names for each query vary by Azure MCP Server version; the slide shows the question asked, not a specific tool.`] },
+    'plan-receipt': { seconds: 95, sources: [SRC.whatIf, SRC.mcpDocs, SRC.cli], notes: [`"Here is what lands in front of the approver. Four blocks."`, `"What changes comes from what-if, an Azure Resource Manager preview. Hand it the Bicep, and Azure reports what it would create, modify, or delete, without changing anything."`, `"Here: three resources to create, nothing modified, nothing deleted. That preview is what the lead approves, and it is what the real deploy gets held to later."`, `"What backs it: the checks, with time and identity. What the checks changed: the private endpoint. What is still open: the partner rule, with its owner."`, `"An approver can say yes to this in a few minutes, because nothing in it asks them to trust the chat."`, `→ And saying yes is its own step.`], know: [`Run a what-if or equivalent validation, in the chat or your pipeline, to produce the change summary. The values on this slide are the worked example; check the target service documentation and local policy before reusing them.`] },
+    'approval-path': { seconds: 90, sources: [SRC.cli, SRC.deploySkill], notes: [`"Four handoffs, four owners. Copilot proposes. The engineer validates. The platform lead approves. Then the deploy runs."`, `"Where it runs is a team choice: this same chat, or your pipeline. Either way, it runs only what was approved."`, `"The last box loops back to Part 1: query the new account and read its receipt. That is how you know the change landed the way the plan said."`, `→ Part 3 takes the same-chat route and shows how it works.`], know: [`Teams often keep production deploys in a pipeline with its own identity and use the same-chat route for dev and staging. Part 4 returns to separating production-read and development-write connections.`] },
+    'part-3': { seconds: 35, sources: [SRC.skillsNews, SRC.mcpDocs], notes: [`"The lead approved the plan. Now the engineer types one more prompt in the same chat: deploy it."`, `"Three pieces make that work: Skills sequence the steps, MCP carries the calls, Azure decides what the engineer may do."`, `→ Start with what that one prompt passes through.`] },
+    'deploy-stack': { seconds: 100, sources: [SRC.deploySkill, SRC.cliUse, SRC.mcpDocs], notes: [`"One prompt, four layers, and each one can say no."`, `"The azure-deploy skill refuses unless the plan is Validated. The host shows the command and waits for a yes. The tools carry the call as the engineer's own sign-in. Azure checks the engineer's role on staging-rg before it writes anything."`, `"Read the right-hand column as your safety net. None of it depends on the model getting it right."`, `→ The first layer is the skill chain. Here is what it enforces.`], know: [`The azure-deploy skill runs azd up, azd deploy, terraform apply, and az deployment commands, and requires azure-prepare and azure-validate to have run first. Copilot hosts ask before running shell commands or tools unless the user has pre-approved them; check your host's approval settings. The Azure MCP Server provides live reads and tool calls; whether a given step runs through an MCP tool or the az CLI depends on the skill and host.`] },
+    'skill-gates': { seconds: 95, sources: [SRC.deploySkill, SRC.skillsRepo], notes: [`"Three skills, one plan file."`, `"azure-prepare writes the plan and the Bicep, and asks you to approve the plan. azure-validate runs the checks, and it is the only skill allowed to mark the plan Validated. azure-deploy will not run without that status, and it asks again before anything destructive."`, `"These are automatic gates on the plan. The lead's approval from Part 2 is the human gate in front of them."`, `→ Now watch one deploy go through.`], know: [`From the azure-deploy SKILL.md: azure-prepare must produce .azure/deployment-plan.md; azure-validate must pass and set status Validated; azure-deploy must not set that status itself; destructive actions require an explicit user prompt. Skill content changes over time; check the current repository before quoting rules.`] },
+    'deploy-trace': { seconds: 100, sources: [SRC.deploySkill, SRC.deployExamples], notes: [`"11:20, the engineer asks to deploy. Copilot shows the exact command and asks."`, `"11:21, the engineer says yes, because the command matches the approved plan. Azure checks the role: Contributor on staging-rg, so the write is allowed."`, `"11:24, three resources created, nothing modified, nothing deleted. Same as the what-if the lead approved."`, `"11:25, the engineer re-queries, the Part 1 habit, and the receipt matches the plan. Ticket closed, and nobody left the chat."`, `→ Getting to this point takes a one-time setup.`], know: [`The times and results are the worked example. In a real run, compare the deployment result with the approved what-if and re-query the resource before closing the ticket.`] },
+    'setup-choices': { seconds: 80, sources: [SRC.skillsNews, SRC.mcpStart, SRC.mcpCli], notes: [`"Setup comes down to four choices, and each has a check."`, `"Install the plugin and confirm the skills show up. Add Azure MCP and confirm the tools are listed. Sign in to the right subscription and confirm it with az account show. Decide the identity and its scope, here a role on staging-rg only."`, `"Then start the way Part 1 did: one read-only query, and read its receipt."`, `→ That fourth choice deserves its own slide.`], know: [`Install commands differ across Copilot CLI, VS Code, and other hosts, and change between versions; follow the current Azure Skills and Azure MCP getting-started docs. Never commit a client secret or credential to a repository; use the organization's approved identity mechanism.`] },
+    'tools-vs-rights': { seconds: 95, sources: [SRC.mcpDocs, SRC.mcpCli], notes: [`"Two dials. What Copilot can reach is set in the host and server configuration. What Azure allows is set by role assignments."`, `"Reading staging config works. Deploying to staging works, after your yes. Deploying to production is reachable, but Azure denies it, because the role is not there. Key Vault secrets are never offered, because the tool is not exposed."`, `"Turning one dial down does not turn the other down. Narrow both to the task."`, `→ Which brings us to authority.`], know: [`Azure MCP Server supports limiting which services or tools are exposed; check the current documentation for the exact setting. Tool exposure never narrows Azure RBAC, and RBAC never hides a tool.`] },
+    'part-4': { seconds: 35, sources: [SRC.mcpDocs, SRC.cli], notes: [`"paystore-staging is deployed. Before we close the ticket, one question: who gave the green light, at each step?"`, `"There were more green lights than it felt like, and each one came from a different place."`, `→ Count them.`] },
+    'four-green-lights': { seconds: 110, sources: [SRC.mcpDocs, SRC.cli], notes: [`"Four green lights. Entra ID said who is connected. Azure RBAC said what that identity may do on staging-rg. Back in Part 2, the platform lead accepted the change on the what-if plan. Then, at 11:21, the host asked to run the command, and the engineer said y because it matched that approved plan."`, `"Order matters: approval comes first, confirmation comes last. Each one lives in a different system, with a different owner."`, `"And none of them stands in for another. Clicking yes in the host grants no role. Holding Contributor approves nothing."`, `→ The second green light, the role, deserves a closer look.`], know: [`The Azure MCP Server uses the signed-in credentials and does not elevate them. Azure RBAC governs control-plane operations; some data-plane access (Key Vault secrets, storage data, database contents) needs service-specific roles or policies. Host confirmation behavior depends on the host and its approval settings.`] },
+    'role-scope': { seconds: 95, sources: [SRC.mcpDocs], notes: [`"Reader, Contributor, Owner. On their own they say nothing. A role is always granted at a scope."`, `"In this story the engineer holds Reader on prod-rg, which is what Part 1 used, and Contributor on staging-rg, which is what Part 3 used."`, `"Owner can grant access to others. Nobody in this chat holds it, and that is on purpose."`, `→ Two roles, two scopes. The cleanest way to keep them apart is two connections.`], know: [`Effective rights also depend on custom roles, conditions, deny assignments, Azure Policy, and data-plane roles. The role-to-scope pairing here is the worked example; your organization's assignments decide the real one.`] },
+    'separate-environments': { seconds: 100, sources: [SRC.mcpDocs, SRC.cli], notes: [`"Production reads go through one connection, with Reader on prod-rg. Staging writes go through another, with Contributor on staging-rg."`, `"Production changes take a third path: the pipeline, with its own identity and its own approval. Not this chat."`, `"The payoff: every receipt names its connection, so you always know which environment you touched."`, `→ Back to the one item still open on the ticket.`], know: [`The source recommends separately named production and development server entries, each with its own subscription and identity. Its example puts a client secret in configuration; this deck deliberately shows none. Use your organization's approved identity mechanism.`] },
+    'owner-decides': { seconds: 105, sources: [SRC.mcpDocs, SRC.cli], notes: [`"Remember the partner rule from Part 2? Still open."`, `"Copilot already has two facts: production has had the rule since 10:15, and staging policy denies public network access."`, `"That makes it two decisions, with two owners. The payments owner decides whether the partner needs staging. The policy owner decides whether an exception is allowed."`, `"The engineer has access to stpaystorestg. That does not make this the engineer's decision, so the change waits. Copilot's job is to draft one clear message with both facts, so the owners can decide quickly."`, `→ This pattern is not specific to storage.`] },
+    'other-tasks': { seconds: 95, sources: [SRC.mcpDocs, SRC.cli], notes: [`"Here is the same pattern on four other Azure tasks."`, `"For each one, ask what Copilot read, as whom, what proves the answer, and who decides what happens next."`, `"Investigating an incident? Check the query, the time window, and the sample before trusting the conclusion. Reviewing IaC? The what-if output is the evidence. A background audit? It needs a named owner and a report someone will actually read."`, `→ Let us pull the whole story together.`], know: [`The source talk also sketches an environment clone with SKU and cost changes, a KQL log investigation, and an IaC validation story. Their figures are source claims and were not re-run for this deck.`] },
+    'story-recap': { seconds: 60, notes: [`"One ticket, start to finish. Each part left a habit."`, `"Part 1: at 10:41 the re-query caught a rule the old answer missed. Every answer carries a receipt."`, `"Part 2: at 11:05 a live policy check turned the IP rule into a private endpoint. Check live before you plan."`, `"Part 3: at 11:24 the deploy matched the approved what-if, and a re-query confirmed it. Hold the deploy to the preview."`, `"Part 4: four green lights, each from its own owner, and one decision still waiting for its owners. Know who gave each green light."`, `"Scope, evidence, and an owner. That is what travels to your next Azure change."`, `→ So where do you start tomorrow?`] },
     today: { seconds: 60, notes: [`"Pick one low-risk read query in a scope your organization already approves."`, `"Write down what you expect to see, compare the response with an approved source, and keep the query time."`, `"If identity or evidence is unclear, stop and ask the owner before expanding access."`], know: [`Transfer prompt: which real Azure task in your workflow has a small, read-only first step, a checkable result, and a named person who decides the next action? The source README lays out three learning horizons: a quick connection and first query; a deeper split between production-read and isolated-development access; and later integration of team conventions, custom instructions, governance, and a measured deployment pilot. Its 10-minute setup estimate and 15-minute/1-hour/2-4-hour learning durations are source estimates, not measured commitments. The source's custom-instruction examples cover naming, required tags, network patterns, public access, and minimum database SKU; adapt policy to your own service owner.`], cue: [`No live demo. Ask the room to name the expected fields, source of truth, and stop condition for a task in their own environment.`] },
     references: { seconds: 30, sources: [SRC.cli, SRC.cliUse, SRC.mcpStart, SRC.mcpDocs, SRC.mcpRepo, SRC.skillsNews, SRC.skillsRepo, SRC.mcpCli], notes: [`"These are first-party starting points for the current host, server, and Skills repository."`, `The Azure Skills announcement is dated 2026-04-27 in the source README. No product-content refresh was performed for this conversion.`] },
     thanks: { seconds: 30, notes: [`"Take one bounded task back to your environment. Keep the query context, evidence, and owner visible."`, `"The useful transfer is a better decision in your workflow, not a promise that every task becomes faster."`] }
