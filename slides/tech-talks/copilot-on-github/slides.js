@@ -1,6 +1,6 @@
 /*
   Copilot on GitHub — the talk, its notes, and its evidence.
-  The approved 39-slide structure stays intact; the notes carry the README's
+  The approved structure (32 slides: review effort and cost added, troubleshooting removed, section 4 condensed to a linked #221 timeline and two zooms) stays intact; the notes carry the README's
   teaching depth so this file is the presenter and handout source of truth.
 */
 (() => {
@@ -11,6 +11,7 @@
     best: { label: 'Get the best results from Copilot cloud agent', href: 'https://docs.github.com/en/copilot/tutorials/cloud-agent/get-the-best-results' },
     plan: { label: 'Research, plan, and code with Copilot cloud agent', href: 'https://github.blog/changelog/2026-04-01-research-plan-and-code-with-copilot-cloud-agent/' },
     review: { label: 'About Copilot code review', href: 'https://docs.github.com/en/copilot/concepts/agents/code-review' },
+    effort: { label: 'Copilot code review effort levels and estimated consumption', href: 'https://docs.github.com/en/copilot/concepts/agents/code-review#review-effort-level' },
     reviewSetup: { label: 'Configure automatic Copilot code review', href: 'https://docs.github.com/en/copilot/how-tos/copilot-on-github/set-up-copilot/configure-code-review' },
     approvals: { label: 'Copilot code review can approve pull requests (preview)', href: 'https://github.blog/changelog/2026-09-01-copilot-code-review-can-now-approve-pull-requests/' },
     instructions: { label: 'Agent-specific instructions with excludeAgent', href: 'https://github.blog/changelog/2025-11-12-copilot-code-review-and-coding-agent-now-support-agent-specific-instructions/' },
@@ -30,11 +31,20 @@
     sdlc: { label: 'Agentic SDLC talk', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/agentic-sdlc' }
   };
 
+  const FH = 'https://github.com/MSBart2/FanHub';
+  const L = {
+    commit: (sha) => `${FH}/commit/${sha}`,
+    review: (id) => `${FH}/pull/221#pullrequestreview-${id}`,
+    thread: (id) => `${FH}/pull/221#discussion_r${id}`,
+    comment: (id) => `${FH}/pull/221#issuecomment-${id}`
+  };
+
   const slides = [
     S('title', 0, 'Copilot on GitHub', {
       subtitle: 'Produce, Reason, Measure',
       tagline: 'Three agents, one pull request. A person ends the loop.',
-      meta: 'Agents on GitHub · Practitioner Tech Talk · 60 minutes'
+      meta: 'Agents on GitHub · Practitioner Tech Talk · 60 minutes',
+      visual: 'pr-stack'
     }),
     S('core-question', 0, 'Copilot can write, review, and check my code. What’s automatic, and where does my judgment come in?', {
       scene: 'core-question',
@@ -59,9 +69,9 @@
       pill: 'The route',
       sections: [
         { icon: '🛠️', title: '1. Produce', subtitle: 'Copilot cloud agent', blurb: 'Shape an issue and inspect the draft it returns.', slide: 5 },
-        { icon: '🔎', title: '2. Reason', subtitle: 'Copilot code review', blurb: 'Read intent, assessments, and open issues.', slide: 12 },
-        { icon: '📏', title: '3. Measure', subtitle: 'GitHub Code Quality', blurb: 'Observe rules and promote trusted thresholds.', slide: 19 },
-        { icon: '🔗', title: '4. Wire it together', subtitle: 'One issue, start to finish', blurb: 'Trace events, evidence, rework, and authority.', slide: 25 }
+        { icon: '🔎', title: '2. Reason', subtitle: 'Copilot code review', blurb: 'Read intent, assessments, and open issues.', slide: 11 },
+        { icon: '📏', title: '3. Measure', subtitle: 'GitHub Code Quality', blurb: 'Observe rules and promote trusted thresholds.', slide: 18 },
+        { icon: '🔗', title: '4. Wire it together', subtitle: 'One issue, start to finish', blurb: 'Trace events, evidence, rework, and authority.', slide: 23 }
       ]
     }),
     S('whole-flow', 0, 'Every push can reopen the question; a person ends the loop.', {
@@ -129,11 +139,12 @@
           'Rewrite: five leaking handlers named.',
           'Response shape and regression tests specified.',
           'Neighboring BUG comments explicitly out of scope.'
-        ]
+        ],
+        href: `${FH}/issues/159`
       }
     }),
     S('produce-use', 1, 'The PR owner checks six things before reading the diff.', {
-      scene: 'signals',
+      scene: 'pr-anatomy',
       pill: 'Produce · acceptance check',
       subtitle: 'Use the plan and the returned evidence to choose what to inspect next.',
       rows: [
@@ -144,17 +155,6 @@
         { label: 'Workflows', description: 'Which workflow runs still wait for approval?', tag: 'checks', z: 'orange' },
         { label: 'Gaps', description: 'What evidence is still absent?', tag: 'decision record', z: 'purple' }
       ]
-    }),
-    S('produce-troubleshoot', 1, 'Each producer signal points to a cause and a recoverable move.', {
-      scene: 'signals',
-      pill: 'Produce · troubleshooting',
-      rows: [
-        { label: 'Empty first commit', description: 'Expected plan commit; wait for implementation and read the plan.', tag: 'inspect next push', z: 'github' },
-        { label: 'Unexpected files', description: 'A setup step or tool side effect may have changed the diff.', tag: 'check final diff', z: 'orange' },
-        { label: 'Dependency churn', description: 'Defaults such as go mod tidy or gofmt may expand scope.', tag: 'ask or revert', z: 'orange' },
-        { label: 'Build or registry fails', description: 'Setup steps or the network allowlist may be incomplete.', tag: 'fix setup; read log', z: 'purple' }
-      ],
-      footnote: 'FanHub #221: review flagged lockfile-only commit 7686606; the next agent push reverted it. The agent justified the x/crypto bump because Gin 1.10.0 required it.'
     }),
     S('produce-authority', 1, 'The cloud agent drafts and pushes; people retain ready, approval, and merge decisions.', {
       scene: 'showdown',
@@ -196,69 +196,92 @@
       footnote: 'Without Review new pushes, the first automatic review can be the only one.'
     }),
     S('reason-triggers', 2, 'A request or policy can start review; push and draft settings remain explicit.', {
-      scene: 'signals',
+      scene: 'review-loop',
       pill: 'Reason · invocation',
-      rows: [
-        { label: 'Request review', description: 'A person selects Copilot in the Reviewers sidebar.', tag: 'human-invoked', z: 'orange' },
-        { label: 'Pull request opened', description: 'A repo or org ruleset, or author setting, enables review.', tag: 'configured', z: 'github' },
-        { label: 'New push', description: 'Review new pushes enables another review; approval is dismissed.', tag: 'if enabled', z: 'purple' },
-        { label: 'Draft pull request', description: 'Review draft pull requests controls draft reviews.', tag: 'if enabled', z: 'green' }
-      ],
+      subtitle: 'When review finds problems, a repair push can restart review, but only if Review new pushes is enabled.',
+      loop: {
+        entries: [
+          { label: 'Request review', tag: 'human-invoked', z: 'orange' },
+          { label: 'Pull request opened', tag: 'ruleset or setting', z: 'github' },
+          { label: 'Draft pull request', tag: 'if drafts enabled', z: 'green' }
+        ],
+        nodes: [
+          { title: 'Copilot reviews', detail: 'analyzes the current head commit', z: 'github' },
+          { title: 'Assessment', detail: 'comments and open issues', z: 'github' },
+          { title: 'Repair', detail: 'author or cloud agent pushes a fix', z: 'purple' },
+          { title: 'New push', detail: 'any Copilot approval is dismissed', z: 'purple' }
+        ],
+        needsWork: 'changes needed',
+        gate: 'if Review new pushes is on',
+        exit: { title: 'Person decides', detail: 'approve and merge' },
+        exitLabel: 'no open issues'
+      },
       footnote: 'If multiple sources apply, Copilot posts one review. User settings cannot disable push or draft reviews enabled by a ruleset.'
     }),
     S('reason-setup-context', 2, 'Review policy controls invocation; scoped instructions shape the reviewer’s context.', {
-      scene: 'evidence',
+      scene: 'review-setup',
       pill: 'Reason · setup and context',
       subtitle: 'Set who can request paid reviews, when automatic review runs, and which repository conventions apply.',
-      diagram: {
-        type: 'split',
-        leftTitle: 'Review policy',
-        left: [
-          'Repository or organization ruleset',
-          'Review new pushes and review drafts',
-          'Lite or Balanced effort; cost varies',
-          'Authorized-users setting and runner choice'
+      setup: {
+        policyTitle: 'Review policy',
+        policy: [
+          { label: 'Automatic review', control: 'chip', value: 'repo or org ruleset' },
+          { label: 'Review new pushes', control: 'toggle' },
+          { label: 'Review draft pull requests', control: 'toggle' },
+          { label: 'Effort', control: 'segments', options: ['Lite', 'Balanced', 'Max'], selected: 1 },
+          { label: 'Only authorized users trigger', control: 'toggle' },
+          { label: 'Runner', control: 'chip', value: 'GitHub-hosted or self-hosted' }
         ],
-        rightTitle: 'Instructions at the PR head',
-        right: [
-          'copilot-instructions.md and AGENTS.md',
-          '*.instructions.md scoped with applyTo',
-          'excludeAgent: code-review or coding-agent',
-          'Keep producer-only rules out of review'
+        core: { title: 'Copilot code review', detail: 'reads policy and the PR head' },
+        policyEdge: 'when and how hard',
+        contextEdge: 'which conventions',
+        contextTitle: 'Instructions at the PR head',
+        files: [
+          { name: '.github/', depth: 0, folder: true },
+          { name: 'copilot-instructions.md', depth: 1, scope: 'every agent' },
+          { name: 'instructions/', depth: 1, folder: true },
+          { name: 'api.instructions.md', depth: 2, scope: 'applyTo: src/api/**' },
+          { name: 'ci.instructions.md', depth: 2, scope: 'excludeAgent: code-review', z: 'orange' },
+          { name: 'AGENTS.md', depth: 0, scope: 'every agent' }
         ]
-      }
+      },
+      footnote: 'Use excludeAgent to keep producer-only rules out of review, or review-only rules away from the cloud agent.'
+    }),
+    S('reason-effort-cost', 2, 'Match review effort to the risk of the change.', {
+      scene: 'effort-tiers',
+      pill: 'Reason · effort and cost',
+      subtitle: 'Each level trades AI credits for depth; Review new pushes multiplies the per-review cost by every push.',
+      pushes: 8,
+      tiers: [
+        { name: 'Lite', model: 'Standard review', use: 'Routine changes where fast feedback matters most', min: 0.05, max: 1, avg: 0.25, z: 'green' },
+        { name: 'Balanced', badge: 'default', model: 'Higher-reasoning model', use: 'Security-sensitive, multi-service, or strict-quality code', min: 0.25, max: 5, avg: 1.5, z: 'github' },
+        { name: 'Max', badge: 'public preview', model: 'Multiple high-reasoning models', use: 'High-risk or release-critical pull requests', min: 1.5, max: 25, avg: 10, z: 'purple' }
+      ],
+      footnote: 'GitHub estimates of AI credits per review; they exclude Actions minutes, grow with PR size and custom instructions, and may change.'
     }),
     S('reason-use-198', 2, 'Four passing component tests and a green build missed an inert Retry button.', {
-      scene: 'evidence',
+      scene: 'gap-proof',
       pill: 'Reason · FanHub #198',
       subtitle: 'Copilot review surfaced a browser interaction gap; the author added a render-mode test that failed on the draft.',
-      diagram: {
-        type: 'split',
-        leftTitle: 'What existing checks showed',
-        left: [
-          'Four component tests passed.',
-          'The build was green.',
-          'Those checks did not exercise the browser interaction.'
-        ],
-        rightTitle: 'What review exposed',
-        right: [
+      gap: {
+        checksTitle: 'What existing checks showed',
+        tests: ['Component test', 'Component test', 'Component test', 'Component test'],
+        build: 'Build',
+        blind: 'Not exercised: the click',
+        checksHref: `${FH}/commit/ba0764f74cc61284a869378392652cb945e698da`,
+        reviewTitle: 'What review exposed',
+        findings: [
           'Retry had no interactive render mode.',
           'Its click handler never wired up.',
-          'Early error clearing made retry unreachable.',
-          'A render-mode test failed on draft, then passed 6 of 6.'
-        ]
+          'Early error clearing made retry unreachable.'
+        ],
+        findingLinks: [`${FH}/pull/198#discussion_r4210466991`, `${FH}/pull/198#discussion_r4210466991`, `${FH}/pull/198#discussion_r4210467074`],
+        proofTitle: 'Proof the gap was real',
+        testName: 'New render-mode test',
+        before: { label: 'On the original draft', result: 'fails' },
+        after: { label: 'After the fix', result: '6 of 6 pass' },
+        proofHref: `${FH}/pull/198#issuecomment-6044316557`
       }
-    }),
-    S('reason-troubleshoot', 2, 'The analyzed commit and open-issues list explain common review surprises.', {
-      scene: 'signals',
-      pill: 'Reason · troubleshooting',
-      rows: [
-        { label: 'No files reviewed', description: 'The review analyzed a plan-only commit.', tag: 'review new pushes', z: 'orange' },
-        { label: 'Green with open issue', description: 'An earlier unresolved thread carried forward.', tag: 'resolve if fixed', z: 'purple' },
-        { label: 'No review after fix', description: 'Review new pushes may be disabled.', tag: 'request review', z: 'github' },
-        { label: 'Low-value comments', description: 'Instructions may be missing or too broad.', tag: 'scope the rules', z: 'green' }
-      ],
-      footnote: 'Every review identifies its commit and whether tests ran during the review. Read assessment and open issues together.'
     }),
     S('reason-authority', 2, 'Code review stays advisory unless admins enable Copilot approvals, a public preview.', {
       scene: 'showdown',
@@ -298,20 +321,20 @@
       ],
       footnote: 'FanHub #221, one observed run on 2026-10-23: scans started about five seconds after each push; a finding appeared about 100 seconds after its push.'
     }),
-    S('measure-standard-ai', 3, 'Standard findings can gate by threshold; AI findings are preview and advisory.', {
+    S('measure-standard-ai', 3, 'Standard findings can gate a merge; AI findings widen what the default branch reveals.', {
       scene: 'showdown',
       pill: 'Measure · two finding types',
-      leftLabel: 'Standard findings · GA',
-      rightLabel: 'AI findings · public preview',
+      leftLabel: 'Standard findings · rules-based',
+      rightLabel: 'AI findings · model-based',
       pairs: [
-        { left: { label: 'CodeQL quality rules', note: 'Fixed query and severity' }, right: { label: 'Model review', note: 'Recently changed files', z: 'orange' } },
-        { left: { label: 'Reproducible', note: 'Same code, rules, tool version' }, right: { label: 'Model-mediated', note: 'Results can vary', z: 'orange' } },
-        { left: { label: 'Pull requests and default branch', note: 'Quality check and dashboard' }, right: { label: 'Default branch only', note: 'As documented 2026-10-21', z: 'orange' } },
-        { left: { label: 'Can gate a merge', note: 'Severity threshold' }, right: { label: 'Cannot gate a merge', note: 'Advisory', z: 'orange' } }
+        { left: { label: 'CodeQL quality rules', note: 'Fixed query and severity' }, right: { label: 'Model analysis', note: 'Reads recently changed files', z: 'orange' } },
+        { left: { label: 'Reproducible', note: 'Same code, rules, tool version' }, right: { label: 'Finds what rules miss', note: 'Results can vary by run', z: 'orange' } },
+        { left: { label: 'Pull requests and default branch', note: 'Quality check and dashboard' }, right: { label: 'Default branch', note: 'Includes non-CodeQL languages', z: 'orange' } },
+        { left: { label: 'Can gate a merge', note: 'Severity threshold' }, right: { label: 'Feeds the backlog', note: 'Triage, fix, or assign to Copilot', z: 'orange' } }
       ],
       outcomeLeft: { icon: '📏', label: 'Threshold can block' },
-      outcomeRight: { icon: '🤖', label: 'AI finding advises' },
-      footnote: 'Status and default-branch scope: docs verified 2026-10-21. Security CodeQL and secret scanning are separate.'
+      outcomeRight: { icon: '🤖', label: 'AI finding widens coverage' },
+      footnote: 'Pull requests show rules-based findings only; AI review of a PR comes from Copilot code review. Security CodeQL and secret scanning are separate.'
     }),
     S('measure-setup', 3, 'Evaluate mode reveals a rule’s effect before the platform owner makes it Active.', {
       scene: 'four-phases',
@@ -339,17 +362,6 @@
       ],
       footnote: '#201 checks passed after the person committed the suggestion. #199 is an observed coverage-gate demonstration.'
     }),
-    S('measure-troubleshoot', 3, 'A clean Code Quality run covers configured rules, not behavior or security review.', {
-      scene: 'signals',
-      pill: 'Measure · troubleshooting',
-      rows: [
-        { label: 'No findings', description: 'The change introduced no pattern recognized by these rules.', tag: 'run tests; review', z: 'github' },
-        { label: 'Two CodeQL checks', description: 'Security CodeQL and Code Quality are separate analyses.', tag: 'read each purpose', z: 'purple' },
-        { label: 'Unexpected block', description: 'A rule may be Active or coverage may be missing.', tag: 'ruleset + coverage', z: 'orange' },
-        { label: 'Finding is intentional', description: 'The rule pattern may not fit this code path.', tag: 'dismiss with reason', z: 'green' }
-      ],
-      footnote: 'Standard findings can gate at the team threshold. AI findings remain advisory; security review and secret scanning stay separate.'
-    }),
     S('wire', 4, 'Wire it together: one issue, start to finish', {
       scene: 'opener',
       subtitle: 'Trace which event woke which agent, what each one returned, and where a person steered the next step.',
@@ -360,103 +372,92 @@
       ],
       terminal: { context: 'FanHub #159 → draft #221', detail: 'Review new pushes on · one observed run' }
     }),
-    S('step-1-assign', 4, 'A requester delegates a bounded issue; the agent opens a plan commit.', {
-      scene: 'event-step',
-      pill: 'Wire it together · step 1',
-      subtitle: 'A human action begins the work; the agent creates the draft.',
-      event: {
-        label: 'Observed on FanHub #221 · one run · 2026-10-23',
-        items: [
-          { when: '15:30:24 UTC', actor: 'Requester', z: 'orange', what: 'Issue #159 rewritten with scope and acceptance criteria, then assigned.' },
-          { when: '15:30:31 UTC', actor: 'Cloud agent', z: 'purple', what: 'Draft #221 opens with plan commit e046f52.' }
+    S('pr-timeline', 4, 'One issue, eight pushes: every push woke review and Code Quality.', {
+      scene: 'pr-timeline',
+      pill: 'Wire it together · FanHub #221',
+      subtitle: 'Observed 2026-10-23 with Review new pushes on. Every marker links to the exact commit, review, or comment.',
+      timeline: {
+        start: '15:30:00',
+        end: '16:08:00',
+        lanes: [
+          { id: 'person', label: 'Person', z: 'orange' },
+          { id: 'agent', label: 'Cloud agent', z: 'purple' },
+          { id: 'review', label: 'Code review', z: 'github' },
+          { id: 'quality', label: 'Code Quality', z: 'green' }
+        ],
+        moments: [
+          { key: 'A', label: 'Wrong push caught', from: '15:31:40', to: '15:41:00', slide: 25 },
+          { key: 'B', label: 'Person steers rework', from: '15:45:20', to: '15:53:20', slide: 25 },
+          { key: 'C', label: 'Two agents, one line', from: '15:54:00', to: '16:07:40', slide: 26 }
+        ],
+        events: [
+          { t: '15:30:24', lane: 'person', label: 'assign #159', title: 'Requester assigns rewritten issue #159', href: `${FH}/issues/159` },
+          { t: '15:46:05', lane: 'person', label: 'resolve + steer', title: 'PR owner resolves the stale lockfile thread and asks @copilot for a shared helper and an x/crypto justification', href: L.comment(6368808889) },
+          { t: '15:54:34', lane: 'person', label: 'staged push', title: 'PR owner pushes staged commit 8a752d2', href: L.commit('8a752d2a2bb9b4acc87e0717d32da77c5c7ffbc2'), push: true },
+          { t: '15:58:28', lane: 'person', label: '@Copilot', title: 'PR owner asks @Copilot to fix the Code Quality finding', href: L.thread(4361521547) },
+          { t: '15:30:31', lane: 'agent', label: 'e046f52', title: 'Initial plan', href: L.commit('e046f52b7c27dd81e1285659faf97553c5720273'), push: true },
+          { t: '15:32:08', lane: 'agent', label: '7686606', title: 'Lockfile-only commit', href: L.commit('7686606b0f7c2459dc8256d2fb6897a387bacd2c'), push: true },
+          { t: '15:37:13', lane: 'agent', label: '6159164', title: 'Redact internal errors in Go handlers', href: L.commit('6159164e9c49291c14730a4b8d194f404a36b647'), push: true },
+          { t: '15:47:44', lane: 'agent', label: '43a258f', title: 'Plan shared handler error response', href: L.commit('43a258f90a1a0d7ff5829b713ccdc8bc234d43d9'), push: true },
+          { t: '15:49:46', lane: 'agent', label: '5444980', title: 'Extract shared internal error responder', href: L.commit('544498006e26eabca6b5b1820e5f35f6513770f6'), push: true },
+          { t: '16:00:53', lane: 'agent', label: '69aa00f', title: 'Remove redundant error detail assignment', href: L.commit('69aa00ffdb38d4e9a9b5389929ab2c160756ae7c'), push: true },
+          { t: '16:01:56', lane: 'agent', label: '6a512c1', title: 'Simplify internal error logging', href: L.commit('6a512c173eb5038954d1ba770bdf8e53002703b6'), push: true },
+          { t: '15:30:42', lane: 'review', label: 'no files', tone: 'github', title: 'Review on e046f52: no files to review', href: L.review(5630574476) },
+          { t: '15:34:31', lane: 'review', label: '🟡 changes', tone: 'orange', title: 'Review on 7686606: Changes recommended', href: L.review(5630624423) },
+          { t: '15:39:35', lane: 'review', label: '🟢 1 open', tone: 'green', title: 'Review on 6159164: Approval recommended, 1 open issue (stale lockfile thread)', href: L.review(5630685049) },
+          { t: '15:50:07', lane: 'review', label: '1 resolved', tone: 'green', title: 'Review on 43a258f: No open issues, 1 resolved since last review', href: L.review(5630829918) },
+          { t: '15:52:18', lane: 'review', tone: 'green', title: 'Review on 5444980: No open issues', href: L.review(5630860166) },
+          { t: '15:57:20', lane: 'review', label: 'optional', tone: 'green', title: 'Review on 8a752d2: optional cleanup, 1 open issue', href: L.review(5630928057) },
+          { t: '16:03:48', lane: 'review', tone: 'green', title: 'Review on 69aa00f: No open issues, 1 resolved since last review', href: L.review(5631006596) },
+          { t: '16:06:08', lane: 'review', label: 'all clear', tone: 'green', title: 'Review on 6a512c1: No open issues', href: L.review(5631034303) },
+          { t: '15:56:18', lane: 'quality', label: 'finding', big: true, title: 'Code Quality on 8a752d2: Useless assignment to local variable, with Autofix', href: L.thread(4361497692) }
         ]
-      }
+      },
+      footnote: 'Code Quality also ran on every push (small ticks), starting about five seconds after each one. One observed run, not a benchmark.'
     }),
-    S('step-2-plan-checks', 4, 'Code Quality scans the plan commit; review reports no files to review.', {
-      scene: 'event-step',
-      pill: 'Wire it together · step 2',
-      subtitle: 'Separate the scan result from the review result; each agent has a different job.',
-      event: {
-        label: 'Observed on FanHub #221 · same plan commit e046f52',
-        items: [
-          { when: '15:30:36 UTC', actor: 'Code Quality', z: 'green', what: 'Scan starts about five seconds after the push.' },
-          { when: '15:30:42 UTC', actor: 'Code review', z: 'github', what: 'Automatic review says it could not review any files.' }
-        ]
-      }
+    S('steer-rework', 4, 'Review caught a wrong push; a person steered the rework.', {
+      scene: 'artifact-chain',
+      pill: 'Wire it together · moments A and B',
+      subtitle: 'Each card is a real artifact on #221. Click one to read it in full.',
+      groups: [{ key: 'A', label: 'Wrong push caught', span: [0, 1] }, { key: 'B', label: 'Person steers rework', span: [2, 3] }],
+      chain: [
+        { when: '15:34:31', actor: 'Code review', z: 'github', status: '🟡 Changes recommended', quote: 'This PR only adds a frontend lockfile entry; it does not change any of the five Go handlers or add the tests required by #159.', ref: 'on 7686606', href: L.thread(4361287746) },
+        { when: '15:37 → 15:39', actor: 'Code review', z: 'github', status: '🟢 1 open issue', quote: 'Static review found no blocking issues in the targeted error sanitization … 1 open issue: Implement the security fix across all five Go handlers.', ref: 'review on 6159164', href: L.review(5630685049) },
+        { when: '15:46:06', actor: 'PR owner', z: 'orange', status: 'Resolves thread, asks for rework', quote: '@copilot … extract a small shared helper … If the x/crypto bump is required, say so in the PR description; otherwise revert it.', ref: 'PR comment', href: L.comment(6368808889) },
+        { when: '15:50 → 15:52', actor: 'Cloud agent', z: 'purple', status: '🟢 No open issues', quote: 'Implemented the shared respondInternalError helper … Kept golang.org/x/crypto v0.23.0 because Gin 1.10.0 requires it.', ref: 'reply + 5444980', href: L.comment(6368896156) }
+      ]
     }),
-    S('step-3-lockfile', 4, 'A lockfile-only push receives a changes-requested review.', {
-      scene: 'event-step',
-      pill: 'Wire it together · step 3',
-      subtitle: 'An agent push is still a new pull request head, so configured review and measurement wake again.',
-      event: {
-        label: 'Observed on FanHub #221 · one run',
-        items: [
-          { when: '15:32:08 UTC', actor: 'Cloud agent', z: 'purple', what: 'Commit 7686606 changes only a frontend lockfile.' },
-          { when: '15:34:31 UTC', actor: 'Code review', z: 'github', what: 'Returns 🟡 Changes recommended on that head.' }
-        ]
-      }
-    }),
-    S('step-4-correction', 4, 'The next agent push fixes the change while review carries one stale open issue.', {
-      scene: 'event-step',
-      pill: 'Wire it together · step 4',
-      subtitle: 'A green recommendation and the open-issues list answer different questions.',
-      event: {
-        label: 'Observed on FanHub #221 · one run',
-        items: [
-          { when: '15:37:13 UTC', actor: 'Cloud agent', z: 'purple', what: 'Commit 6159164 adds the fix and tests; Code Quality reports no findings.' },
-          { when: '15:39:35 UTC', actor: 'Code review', z: 'github', what: 'Returns 🟢 with “1 open issue”: the outdated lockfile thread.' }
-        ]
-      }
-    }),
-    S('step-5-human-steers', 4, 'The PR owner resolves the stale thread and asks the agent for rework.', {
-      scene: 'event-step',
-      pill: 'Wire it together · step 5',
-      subtitle: 'The PR owner closes resolved discussion and names the remaining change in a comment.',
-      event: {
-        label: 'Observed on FanHub #221 · human-invoked actions',
-        items: [
-          { when: '15:46:05 UTC', actor: 'PR owner', z: 'orange', what: 'Resolves the outdated lockfile thread.' },
-          { when: '15:46:06 UTC', actor: 'PR owner', z: 'orange', what: '@copilot: add a shared helper and justify the x/crypto bump.' }
-        ]
-      }
-    }),
-    S('step-6-rework', 4, 'The rework push wakes both agents and review records the resolved thread.', {
-      scene: 'event-step',
-      pill: 'Wire it together · step 6',
-      subtitle: 'The agent explains the dependency decision in the PR description.',
-      event: {
-        label: 'Observed on FanHub #221 · one run',
-        items: [
-          { when: '15:49:46 UTC', actor: 'Cloud agent', z: 'purple', what: 'Commit 5444980 adds the shared helper.' },
-          { when: '15:52:18 UTC', actor: 'Code review', z: 'github', what: '🟢 No open issues; one issue resolved since last review.' }
-        ]
-      }
-    }),
-    S('step-7-staged', 4, 'A deliberately staged human change lets two agents frame the same issue differently.', {
-      scene: 'event-step',
-      pill: 'Wire it together · step 7 · STAGED quality issue',
-      subtitle: 'The nil guard result was immediately overwritten; this commit was deliberately introduced for the demonstration.',
-      event: {
-        label: 'Observed on FanHub #221 · one staged run',
-        items: [
-          { when: '15:54:34 UTC', actor: 'PR owner', z: 'orange', what: 'Pushes 8a752d2, a nil guard whose result is overwritten.' },
-          { when: '15:56:18 UTC', actor: 'Code Quality', z: 'green', what: '“Useless assignment to local variable” with Autofix, about 100 seconds later.' },
-          { when: '15:57:20 UTC', actor: 'Code review', z: 'github', what: '“Optional cleanup … Error() called twice.”' }
-        ]
-      }
-    }),
-    S('step-8-handoff', 4, 'A person hands the finding to the agent; one fix clears both agents’ threads.', {
-      scene: 'event-step',
-      pill: 'Wire it together · step 8',
-      subtitle: 'The agent ran go test in its session; Copilot review stated tests were not executed.',
-      event: {
-        label: 'Observed on FanHub #221 · one run',
-        items: [
-          { when: '15:58:28 UTC', actor: 'PR owner', z: 'orange', what: 'Replies @Copilot on the Code Quality finding.' },
-          { when: '16:00:53 and 16:01:56 UTC', actor: 'Cloud agent', z: 'purple', what: 'Commits 69aa00f and 6a512c1 remove the redundant assignment and simplify internal error logging.' },
-          { when: '16:06:08 UTC', actor: 'Code review', z: 'github', what: '🟢 No open issues; all three threads are resolved.' }
-        ]
-      }
+    S('same-line', 4, 'Two agents flagged the same lines; one handoff cleared both threads.', {
+      scene: 'same-line',
+      pill: 'Wire it together · moment C · staged',
+      subtitle: 'The PR owner deliberately pushed a leftover assignment in 8a752d2 to show how each agent frames it.',
+      code: {
+        file: 'go/backend/handlers/error_response.go',
+        ref: '8a752d2',
+        href: L.commit('8a752d2a2bb9b4acc87e0717d32da77c5c7ffbc2'),
+        first: 11,
+        lines: [
+          'func respondInternalError(…) {',
+          '  detail := "<nil>"',
+          '  if err != nil {',
+          '    detail = err.Error()',
+          '  }',
+          '  detail = fmt.Sprint(err)',
+          '  log.Printf("%s: %s", handler, detail)',
+          '  c.JSON(500, gin.H{"error": "internal server error"})',
+          '}'
+        ],
+        mark: [12, 16]
+      },
+      comments: [
+        { actor: 'Code Quality', when: '15:56:18', z: 'green', title: 'Useless assignment to local variable', body: 'This definition of detail is never used. Autofix suggested.', href: L.thread(4361497692) },
+        { actor: 'Code review', when: '15:57:20', z: 'github', title: 'Optional cleanup', body: 'fmt.Sprint(err) overwrites the nil guard, so non-nil errors call Error() twice.', href: L.thread(4361509094) }
+      ],
+      resolution: [
+        { when: '15:58', actor: 'PR owner', z: 'orange', text: '@Copilot please fix this Code Quality finding', href: L.thread(4361521547) },
+        { when: '16:00–16:01', actor: 'Cloud agent', z: 'purple', text: 'Pushes 69aa00f and 6a512c1', href: L.commit('6a512c173eb5038954d1ba770bdf8e53002703b6') },
+        { when: '16:06', actor: 'Code review', z: 'green', text: '🟢 No open issues; all threads resolved', href: L.review(5631034303) }
+      ]
     }),
     S('what-ends-loop', 4, 'A person ends the loop and writes down what the final head proves.', {
       scene: 'scorecard',
@@ -464,13 +465,13 @@
       subtitle: '#221 stayed a draft with no merge decision. FanHub #210 supplies the merged decision example.',
       cards: [
         { icon: '📦', title: 'Available', description: '#210 patch, agent test runs, green review, clean Code Quality on the head.' },
-        { icon: '🔎', title: 'Absent', description: 'Every #221 Copilot review said tests were not executed; #210 noted no browser check.' },
+        { icon: '🔎', title: 'Absent', description: 'Copilot reviews said tests were not executed; no browser check of the UI.' },
         { icon: '📜', title: 'Policy', description: 'Inspect rulesets, required checks, and quality gates on the final head.' },
-        { icon: '👤', title: 'Judgment and recovery', description: 'Maintainer ran 8 of 8 tests on 02ddaf3; squash 803254f; revert it if needed.' }
+        { icon: '👤', title: 'Judgment and recovery', description: 'Maintainer approved 02ddaf3, merged as 803254f; revert that merge to recover.' }
       ],
       footnote: 'A merge record names the evidence by commit, evidence absent, policy, residual-risk judgment, action, and recovery.'
     }),
-    S('configure-promote-cost', 4, 'Permit production, count review advice, and enforce quality as separate promotions.', {
+    S('configure-promote-cost', 4, 'Roll out each agent in three steps: observe, evaluate, then enforce.', {
       scene: 'four-phases',
       pill: 'Wire it together · configuration and economics',
       subtitle: 'Name an owner, observation period, and rollback condition for each setting.',
@@ -481,40 +482,46 @@
         { label: '2', name: 'Evaluate', icon: '🔍', description: 'Setup steps, new-push review, rules in Evaluate.' },
         { label: '3', name: 'Enforce', icon: '🛑', description: 'Count preview approvals; activate trusted standard rules.', target: true }
       ],
-      footnote: 'As described in 2026-10 sources: Lite review ~$0.05–$1; Balanced ~$0.25–$5 per review. Code Quality: $10 per active committer/month.'
+      footnote: 'GitHub estimates per review: Lite ~$0.25, Balanced ~$1.50, Max ~$10 on average (2026-11). Code Quality: $10 per active committer/month (2026-10).'
     }),
     S('event-map-recap', 4, 'An event map explains the loop more accurately than a linear pipeline.', {
-      scene: 'before-after',
+      scene: 'pipeline-vs-map',
       pill: 'Synthesis · the operating model',
       subtitle: 'Follow actor, trigger, commit, evidence, and decision instead of assuming one fixed sequence.',
+      pipeline: ['Issue', 'Code', 'Review', 'Merge'],
       before: [
         'Treat the work as a fixed pipeline.',
         'Treat one green result as the whole answer.',
         'Assume the agent’s work ends at its push.'
       ],
-      after: [
-        'Configured events can wake agents on every push.',
-        'Tests, review, and quality rules prove different things.',
-        'A person steers, accepts risk, and decides merge.'
-      ],
+      map: {
+        hub: { title: 'New head', detail: 'every push' },
+        agent: { title: 'Cloud agent', detail: 'pushes commits', z: 'purple' },
+        person: { title: 'Person', detail: 'steers and decides', z: 'orange' },
+        review: { title: 'Code review', detail: 'reasons about intent', z: 'github' },
+        quality: { title: 'Code Quality', detail: 'measures rules', z: 'green' },
+        wake: 'configured events wake both',
+        back: 'evidence returns to the person',
+        exit: 'Merge'
+      },
       metrics: [
         { value: 'WHO', detail: 'invoked or acted?' },
         { value: 'WHICH SHA', detail: 'did the agent inspect?' },
         { value: 'WHAT NEXT', detail: 'evidence or decision is missing?' }
       ]
     }),
-    S('replay-last-pr', 4, 'Replay a merged pull request to find the next useful setting change.', {
-      scene: 'today',
-      pill: 'Transfer · apply it to your repository',
-      subtitle: 'Use a real merged PR, its push history, and its evidence. Record what you can verify.',
-      horizons: [
-        { icon: '🔎', label: 'Today', z: 'green', items: ['Pick one merged PR.', 'For each push, list which agents ran.', 'Record the SHA each review saw.'] },
-        { icon: '🧭', label: 'This week', z: 'local', items: ['Mark human and automatic actions.', 'Find a missing review or evidence step.', 'Change one setting and observe.'] },
-        { icon: '📋', label: 'Next pilot', z: 'purple', items: ['Name the owner and acceptance signal.', 'Keep merge authority with the right person.', 'Set a rollback condition.'] }
+    S('next-moves', 4, 'Run one issue through all three agents this week.', {
+      scene: 'role-moves',
+      pill: 'Transfer · your next pull request',
+      subtitle: 'Each role owns one move. Together they produce one pull request you can read with the event map.',
+      roles: [
+        { icon: '🧑‍💻', role: 'Developer', z: 'purple', goal: 'An inspectable draft', steps: ['Rewrite one bug with scope and acceptance criteria.', 'Assign it to the cloud agent.', 'Run the six checks on the draft it returns.'], refs: ['produce-setup-context', 'produce-use'] },
+        { icon: '⚙️', role: 'Platform owner', z: 'github', goal: 'Agents wake on every push', steps: ['Turn on Review new pushes at Balanced effort.', 'Enable Code Quality with rules in Evaluate.', 'Watch a week of cost before promoting.'], refs: ['reason-effort-cost', 'configure-promote-cost'] },
+        { icon: '👥', role: 'Team lead', z: 'orange', goal: 'A merge you can defend', steps: ['Decide what evidence counts before merge.', 'Read the PR: who acted, which SHA, what next.', 'Write the decision record and the revert path.'], refs: ['event-map-recap', 'what-ends-loop'] }
       ],
-      takeaway: 'The first change is the missing event or evidence step you can verify in your own repository.'
+      takeaway: 'Success looks like one merged pull request whose record names the evidence by commit and the person who decided.'
     }),
-    S('references', 0, 'First-party evidence and observed examples', {
+    S('references', 0, 'References', {
       scene: 'references',
       pill: 'Sources',
       groups: [
@@ -531,7 +538,8 @@
           { label: 'CodeQL-powered analysis', href: SRC.detection.href, description: 'Language queries' }
         ] },
         { icon: '🧪', title: 'FanHub observations', z: 'orange', items: [
-          { label: 'Issue #159 rewrite', href: SRC.issue159.href, description: 'Bounded task context' },
+          { label: 'Issue #159 → draft #221', href: SRC.pr221.href, description: 'One issue through all three agents' },
+          { label: 'PR #198', href: SRC.pr198.href, description: 'Review found the inert Retry button' },
           { label: 'PR #210', href: SRC.pr210.href, description: 'Maintainer decision record' }
         ] }
       ]
@@ -543,7 +551,8 @@
         { value: 'Reason', detail: 'Read the commit-specific assessment and open issues.' },
         { value: 'Measure', detail: 'Know which rules can gate and what remains untested.' }
       ],
-      prompt: 'Which event or evidence step will you inspect in your next pull request?'
+      prompt: 'Which event or evidence step will you inspect in your next pull request?',
+      visual: 'pr-closed'
     })
   ];
 
@@ -634,7 +643,7 @@
       ],
       know: ['Setup files include .github/workflows/copilot-setup-steps.yml, with a job named copilot-setup-steps on the default branch. The firewall is on by default and restricts outbound traffic. GitHub and Playwright MCP servers are available by default; Code review shares the MCP configuration. Custom agents live in .github/agents/*.agent.md.'],
       sources: [SRC.best, SRC.cloud, SRC.issue159, SRC.pr221],
-      cue: ['Open FanHub issue #159 and show the original concise issue beside its rewritten acceptance criteria and scope.'],
+      cue: ['Click the “In practice” panel to open FanHub issue #159 and walk its Problem table, acceptance criteria, and Scope section.'],
       seconds: 110
     },
     'produce-use': {
@@ -642,23 +651,11 @@
         '"Before reading the diff, ask six questions: does the plan match the issue; which commit contains the implementation; did the agent change unexpected paths; what tests were added and who ran them; which workflow runs still wait for approval; and what evidence is missing?',
         '"Steer with a comment rather than silently rewriting the agent branch. Every @copilot request can create another plan commit and rework push, which wakes review and measurement again.',
         'Point to the session log for commands the agent ran. The log does not establish that an independent person ran those tests.',
-        '→ If a result is surprising, use its signal to choose a recovery move.'
+        '→ The draft is the agent’s output; the platform boundary on what it can do stays fixed.'
       ],
       know: ['FanHub #210 provides a separate observed example: draft opened 12 seconds after assignment, then a two-file fix with eight regression tests arrived about three and a half minutes later. These are one-run timings, not a service-level guarantee.'],
-      sources: [SRC.cloud, SRC.pr210, SRC.pr221],
+      sources: [SRC.cloud, SRC.pr210, { label: '#210 plan commit 919b158', href: `${FH}/commit/919b158d4db8dc87b1e7d44b0ef4341aab27702f` }, { label: '#210 fix commit 02ddaf3 (two files)', href: `${FH}/commit/02ddaf3df8cf75f6ee98b2637e804bec2b5c1c1e` }, SRC.pr221],
       seconds: 110
-    },
-    'produce-troubleshoot': {
-      notes: [
-        '"An empty first commit is normal when the agent opens a draft with its plan before the implementation push.',
-        '"Unexpected files can come from setup or tool side effects. Dependency and formatting changes can expand scope; ask the agent to justify them or revert them.',
-        '"If the agent cannot build or reach a registry, check setup steps, the allowlist, and the session log.',
-        'On #221, review flagged a lockfile-only commit and the agent later reverted it. The x/crypto bump stayed because the agent recorded that Gin 1.10.0 required it.',
-        '→ These recovery moves help, while the platform boundary remains fixed.'
-      ],
-      know: ['Commit 7686606 changed only a frontend lockfile. The following agent push reverted that change. The dependency justification is the PR description evidence from the observed run.'],
-      sources: [SRC.cloud, SRC.pr221],
-      seconds: 80
     },
     'produce-authority': {
       notes: [
@@ -697,6 +694,7 @@
         '"A person can request Copilot from the Reviewers sidebar. An automatic review can start when a ruleset or user setting requests it.',
         '"Review new pushes and Review draft pull requests are explicit controls. With new-push review disabled, the initial automatic review may be the only one.',
         '"A new push dismisses a Copilot approval, just as a new head needs fresh human review.',
+        '"When the assessment lists open issues, the author or the cloud agent pushes a repair. That push starts another review only when Review new pushes is on; the loop repeats until a person decides.',
         '→ Policy controls when review runs; repository instructions shape the context it reads.'
       ],
       know: ['Repository rules can enable review at organization or repository level. If multiple triggers apply, Copilot posts one review. A user setting cannot disable push or draft reviews that a ruleset enabled.'],
@@ -706,37 +704,42 @@
     'reason-setup-context': {
       notes: [
         '"A platform owner chooses automatic review rules, whether drafts are reviewed, whether new pushes are reviewed, and who can trigger reviews that consume organizational resources.',
-        '"Lite and Balanced are effort choices with different credit ranges. Private repository reviews also use Actions minutes for context gathering. Review runners default to standard GitHub-hosted runners; larger or self-hosted runners are options.',
+        '"Lite, Balanced, and Max are effort choices with different credit ranges; Balanced is the default and Max is in public preview. Private repository reviews also use Actions minutes for context gathering. Review runners default to standard GitHub-hosted runners; larger or self-hosted runners are options.',
         '"Code review reads instruction files from the PR head. Use applyTo to scope rules to paths, and excludeAgent to keep producer-only instructions away from review or vice versa.',
-        '→ A real example shows why review evidence can add value beyond a green test run.'
+        '→ The effort level is the main lever on what each review costs.'
       ],
-      know: ['The source described Lite at about $0.05–$1 and Balanced at about $0.25–$5 of AI credits per review. Automatic-review credits are attributed to the PR author; for cloud-agent PRs, to the human co-author first. Rates may change.'],
+      know: ['Automatic-review credits are attributed to the PR author; for cloud-agent PRs, to the human co-author first. Organization owners set a default effort for automatic reviews; repository administrators can override it. Rates may change.'],
       sources: [SRC.review, SRC.reviewSetup, SRC.instructions],
       seconds: 110
+    },
+    'reason-effort-cost': {
+      notes: [
+        '"Copilot code review has three effort levels. Lite is the standard review: fast, targeted feedback on bugs, security issues, and style. Balanced, the default, routes to a higher-reasoning model for complex logic and cross-service changes. Max, in public preview, uses multiple high-reasoning models for the most scrutiny.',
+        '"GitHub estimates an average of about twenty-five cents per Lite review, a dollar fifty for Balanced, and ten dollars for Max. Max averages about forty times Lite.',
+        '"Ranges are wide: five cents to a dollar for Lite, twenty-five cents to five dollars for Balanced, a dollar fifty to twenty-five dollars for Max. Bigger pull requests and longer custom instructions push toward the top.',
+        '"Review new pushes multiplies that cost. FanHub #221 had eight reviewed pushes; at the averages that is about two dollars at Lite, twelve at Balanced, and eighty at Max for one pull request.',
+        'Point at the use-for line on each card: the choice follows the risk of the change, not the importance of the author.',
+        '→ A real example shows why review evidence can add value beyond a green test run.'
+      ],
+      know: [
+        'Estimated AI credits per review (GitHub docs, 2026-11): Lite $0.05–$1, average ~$0.25; Balanced $0.25–$5, average ~$1.50; Max $1.50–$25, average ~$10. Estimates exclude Actions minutes.',
+        'Effort resolution order: effort chosen on request, then effort previously used on the PR, the requestor’s setting, the repository setting, the organization setting, then GitHub’s default (Balanced). The PR overview comment shows the effort used for each run.',
+        'The eight-push figures are arithmetic on GitHub’s averages for illustration, not observed charges for #221.'
+      ],
+      sources: [SRC.effort, SRC.reviewSetup, SRC.pr221],
+      seconds: 90
     },
     'reason-use-198': {
       notes: [
         '"FanHub #198 is the useful gap: four component tests passed and the build was green, yet the Retry button had no interactive render mode and its click handler never wired up.',
         '"Review also found that clearing the error too early made the retrying state unreachable. The author added a render-mode test that failed against the original draft and then passed six of six.',
-        'Point left to what the existing checks established; point right to the browser behavior that remained unseen. Passing checks and review are complementary evidence.',
-        '→ Read the commit and open-issues list together when a review result looks odd.'
-      ],
-      know: ['This is an observed FanHub pull request example, not a general test-coverage statistic. The additional render-mode test demonstrated the behavior against the original draft.'],
-      sources: [SRC.pr198],
-      cue: ['If internet access and the repository are available, open the #198 diff and review thread; otherwise walk the two proof columns.'],
-      seconds: 120
-    },
-    'reason-troubleshoot': {
-      notes: [
-        '"When Copilot says it could not review files, check whether it analyzed the plan-only commit. Turn on Review new pushes or request review after implementation.',
-        '"A green recommendation with one open issue means an earlier thread remains unresolved. Resolve it when the newer commit fixed it.',
-        '"If the agent fixes a finding but no review appears, check Review new pushes and request review if needed.',
-        'Instructions that are missing or broad can add low-value comments; scope them to paths and separate producer and reviewer rules.',
+        'Point left to what the existing checks established, center to what review found, and right to the test that proved the gap. Passing checks and review are complementary evidence.',
         '→ Review recommends; the approval boundary is a separate choice.'
       ],
-      know: ['FanHub #210 had Review new pushes off and the only automatic review saw the plan commit. A maintainer requested review after the fix. In #221, a person resolved the stale lockfile thread.'],
-      sources: [SRC.review, SRC.reviewSetup, SRC.pr210, SRC.pr221],
-      seconds: 85
+      know: ['This is an observed FanHub pull request example, not a general test-coverage statistic. The additional render-mode test demonstrated the behavior against the original draft.'],
+      sources: [SRC.pr198, { label: '#198 review: no interactive render mode, Retry never wired', href: `${FH}/pull/198#discussion_r4210466991` }, { label: '#198 review: early error clearing hides the retrying state', href: `${FH}/pull/198#discussion_r4210467074` }, { label: '#198 maintainer follow-up: render-mode test 1 failed, then 6/6', href: `${FH}/pull/198#issuecomment-6044316557` }, { label: '#198 fix commit edeadee', href: `${FH}/commit/edeadee65c291cdb7d0feb2ac49d394289112c96` }],
+      cue: ['Click any panel to open its artifact: the draft commit, the Copilot review threads, or the maintainer’s follow-up comment with the failing-then-passing render-mode test. Otherwise walk the three panels.'],
+      seconds: 120
     },
     'reason-authority': {
       notes: [
@@ -766,18 +769,19 @@
         'In the single observed #221 run, scans started about five seconds after every push, including plan commits. The one staged finding appeared about 100 seconds after its push.',
         '→ Standard and AI findings have different status and authority.'
       ],
-      know: ['These timings belong to FanHub #221 on 2026-10-23 and are one observed run, not a benchmark. AI findings were default-branch-only and public preview in the verified docs set.'],
+      know: ['These timings belong to FanHub #221 on 2026-10-23 and are one observed run, not a benchmark. AI findings run on recently changed default-branch code (docs verified 2026-11-04).'],
       sources: [SRC.quality, SRC.detection, SRC.pr221],
       seconds: 80
     },
     'measure-standard-ai': {
       notes: [
         '"Standard findings come from CodeQL quality rules. With the same code, rules, and tool version, they are reproducible and can gate by the configured severity threshold.',
-        '"AI findings are model-mediated, were public preview in the cited source set, and could not block a merge. The documentation described them on the default branch only.',
-        '"Security CodeQL is a separate analysis, and secret scanning is separate again. Do not treat a clean quality run as security review.',
+        '"AI findings come from a model reading recently changed files on the default branch. They catch issues no rule was written for, including in languages CodeQL does not cover, and they land in the backlog, where a person triages them, applies a fix, or assigns them to the cloud agent.',
+        '"On a pull request, Code Quality posts the rules-based findings; AI review of the pull request itself comes from Copilot code review.',
+        '"Security CodeQL is a separate analysis, and secret scanning is separate again. Treat a clean quality run as evidence about quality rules; security review is its own check.',
         '→ A platform owner can observe the rules before activating their gate.'
       ],
-      know: ['Product status statements are dated to sources verified 2026-10-21 and 2026-10-23. Language-specific CodeQL query lists assign category and severity.'],
+      know: ['Docs verified 2026-11-04: on pull requests, Code Quality posts rules-based CodeQL findings only; AI-powered analysis runs on recently changed default-branch code and consumes GitHub AI Credits. Language-specific CodeQL query lists assign category and severity.'],
       sources: [SRC.quality, SRC.detection, SRC.goQueries],
       seconds: 90
     },
@@ -798,136 +802,74 @@
         '"In #201, the author reviewed a changeset that changed a generic catch around int.Parse to int.TryParse, then committed suggestion 0b33cda. The new head’s build and analyses passed.',
         '"In #199, a 27 percent coverage minimum blocked a head at 26.7 percent. Two more tests raised the result to 30 percent and the gate turned green.',
         '"A person can also reply @Copilot for a cloud-agent handoff or dismiss an inapplicable finding with a reason. Every resulting push wakes configured checks again.',
-        '→ A clean run still has a precise boundary.'
+        '→ Now we’ll trace the events and evidence on one pull request.'
       ],
-      know: ['The @Copilot handoff on a Code Quality finding was described as GA in the README source set verified 2026-10-23. Autofix is a suggested changeset; the person commits it.'],
+      know: ['The @Copilot handoff on a Code Quality finding was described as GA in the README source set verified 2026-10-23. Autofix is a suggested changeset; the person commits it.', 'A clean run covers the configured rules only; tests, code review, security CodeQL, and secret scanning answer separate questions.'],
       sources: [SRC.quality, SRC.pr201, SRC.pr199],
       cue: ['Open #201 to inspect the proposed int.TryParse change and commit 0b33cda; open #199 to compare 26.7 percent, the 27 percent minimum, and the later 30 percent result.'],
       seconds: 115
     },
-    'measure-troubleshoot': {
-      notes: [
-        '"No findings means these rules recognized no issue in the changed code. Tests and review still answer different questions about behavior.',
-        '"Two CodeQL checks are expected when both security CodeQL and Code Quality run. Read each for its own purpose.',
-        '"An unexpected block can mean a rule is Active or the coverage upload did not arrive. An intentional pattern can be dismissed with a reason.',
-        '→ Now we’ll trace the events and evidence on one pull request.'
-      ],
-      know: ['Standard findings may gate at the team-configured threshold. AI findings remain advisory in the cited documentation.'],
-      sources: [SRC.quality, SRC.detection],
-      seconds: 80
-    },
     wire: {
       notes: [
         '"This is the payoff: one bounded issue moves through all three agents, and the event history explains what happened.',
-        '"The next eight steps use FanHub draft #221, observed on 2026-10-23 with Review new pushes enabled. Every timestamp is UTC and belongs to one run.',
+        '"The next three slides use FanHub draft #221, observed on 2026-10-23 with Review new pushes enabled: first the whole run, then two zooms. Every timestamp is UTC and belongs to one run.',
         'The staged quality issue was a deliberate human push, not an agent-discovered production defect.',
-        '→ The requester assigns the issue and the cloud agent opens its draft.'
+        '→ Here is the whole run on one screen.'
       ],
       know: ['FanHub #221 remained a draft with no merge decision. The merged example later in the talk is #210.'],
       sources: [SRC.pr221, SRC.issue159],
       seconds: 70
     },
-    'step-1-assign': {
+    'pr-timeline': {
       notes: [
-        '"The requester rewrites issue #159 with acceptance criteria and scope, then assigns it.',
-        '"Seven seconds later, the cloud agent opens draft #221 with plan commit e046f52. That empty planning commit is part of the observed flow.',
-        'Point to the distinct actor labels: requester invokes; cloud agent opens the draft.',
-        '→ The two checks react to that plan commit in different ways.'
+        '"Here is the whole run on one screen. Four lanes: the person, the cloud agent, Copilot code review, and Code Quality. Every dot is clickable and opens the exact commit, review, or comment.',
+        '"Eight pushes, eight reviews. Seven pushes came from the agent and one from a person. Code Quality ran on each one too: the small green ticks.',
+        '"Three moments are worth zooming into. A: the agent pushed the wrong thing and review caught it. B: a person cleaned up and steered the rework. C: a staged human push where both agents flagged the same lines.',
+        'Point at the person lane: four actions across forty minutes. That is the human cost of this loop.',
+        '→ Zoom into moments A and B.'
       ],
-      know: ['Observed on FanHub #221, one run on 2026-10-23. Assignment occurred at 15:30:24 UTC and the draft opened at 15:30:31 UTC.'],
-      sources: [SRC.issue159, SRC.pr221],
-      seconds: 95
+      know: ['All times UTC on 2026-10-23, one observed run with Review new pushes on and Balanced effort. #221 stayed a draft with no merge decision. Commit 8a752d2 was staged deliberately for the demonstration.'],
+      cue: ['Open the PR on GitHub: https://github.com/MSBart2/FanHub/pull/221. Click any marker on the slide to jump to that artifact.'],
+      sources: [SRC.pr221, SRC.issue159],
+      seconds: 150
     },
-    'step-2-plan-checks': {
+    'steer-rework': {
       notes: [
-        '"Code Quality starts its scan about five seconds after the plan commit. It measures the commit even when it contains no implementation.',
-        '"Code review follows and reports that it could not review any files. That is a review result, not a failed Code Quality check.',
-        'Keep the two outputs distinct: scan started, review found no files.',
-        '→ The implementation push gives both agents code to inspect.'
+        '"Moment A. The agent’s second push changed only a frontend lockfile. Review said so plainly: no handlers changed, no tests, and the Fixes #159 claim is not met.',
+        '"The agent’s next push did the real work. Review turned green but listed one open issue: the old lockfile thread. A green recommendation and the open-issues list answer different questions.',
+        '"Moment B. The PR owner resolved that stale thread, then asked for two things in one comment: a shared helper for the repeated error block, and either a justification or a revert for the x/crypto bump.',
+        '"The agent did both and explained the dependency: Gin 1.10.0 requires x/crypto 0.23.0. The next reviews came back clean.',
+        '→ Moment C shows two agents reading the same code.'
       ],
-      know: ['Observed timestamps: Code Quality began at 15:30:36 UTC; the review was posted at 15:30:42 UTC.'],
-      sources: [SRC.pr221, SRC.quality, SRC.review],
-      seconds: 95
-    },
-    'step-3-lockfile': {
-      notes: [
-        '"The agent’s next commit, 7686606, changed only a frontend lockfile.',
-        '"With Review new pushes enabled, code review ran on that head and returned a yellow changes-recommended assessment.',
-        '"This is why the commit identity matters: the assessment says what it analyzed.',
-        '→ The next agent push corrects course, and the open-issues list carries state forward.'
-      ],
-      know: ['The push occurred at 15:32:08 UTC; the review arrived at 15:34:31 UTC. These are one observed run.'],
-      sources: [SRC.pr221, SRC.reviewSetup],
-      seconds: 95
-    },
-    'step-4-correction': {
-      notes: [
-        '"At 15:37:13, the agent pushed commit 6159164 with the fix and tests. Code Quality reported no findings.',
-        '"At 15:39:35, code review recommended approval but still listed one open issue: the outdated lockfile thread.',
-        '"A green recommendation does not silently resolve a thread. The PR owner can read both the assessment and the list.',
-        '→ The PR owner resolves the stale thread and asks for the remaining rework.'
-      ],
-      know: ['The stale lockfile issue remained in the open-issues list until a person resolved it.'],
+      know: ['The 15:50:07 review on 43a258f reported “1 resolved since last review”; the 15:52:18 review on 5444980 reported no open issues.'],
+      cue: ['Click each card to open the review thread, the review, the owner comment, and the agent reply on #221.'],
       sources: [SRC.pr221],
-      seconds: 95
+      seconds: 120
     },
-    'step-5-human-steers': {
+    'same-line': {
       notes: [
-        '"At 15:46:05, the PR owner resolves the lockfile thread because the newer commit corrected it.',
-        '"One second later, the PR owner asks @copilot for a shared helper and a justification for the x/crypto bump.',
-        '"Resolving the old issue and requesting new work are two deliberate human actions.',
-        '→ The agent’s response is another push, so both checks wake again.'
+        '"This push was staged on purpose: a nil guard whose result is immediately overwritten.',
+        '"Code Quality named it by rule, useless assignment to a local variable, and offered an Autofix about a hundred seconds after the push. Code review called it optional cleanup and explained the cost: Error() runs twice.',
+        '"Same lines, two framings: one is a rule with a fix, the other is reasoning about behavior. Both are useful; neither ran the tests.',
+        '"The PR owner replied @Copilot on the Code Quality finding. The agent pushed two small commits, and the final review reported no open issues with every thread resolved.',
+        '→ The loop ends when a person decides, and a green check is one input to that decision.'
       ],
-      know: ['The person who owns the PR steers the branch. This is separate from the requester role, even when one person holds both roles.'],
+      know: ['Code Quality finding at 15:56:18 and review comment at 15:57:20, both on 8a752d2. Fix commits 69aa00f (16:00:53) and 6a512c1 (16:01:56). The agent ran go test in its session; Copilot review stated tests were not executed.'],
+      cue: ['Click the code card to open commit 8a752d2, and each comment card to open its thread.'],
       sources: [SRC.pr221],
-      seconds: 95
-    },
-    'step-6-rework': {
-      notes: [
-        '"The agent added the shared helper in commit 5444980 at 15:49:46.',
-        '"Review ran again at 15:52:18 and returned no open issues, with one issue resolved since the last review.',
-        '"The agent kept the x/crypto bump because Gin 1.10.0 required it and recorded the reason in the PR description.',
-        '→ Next, a human push shows both agents can inspect the same line differently.'
-      ],
-      know: ['The exact dependency justification is from the observed PR description. Timings are one run and not a service guarantee.'],
-      sources: [SRC.pr221],
-      seconds: 95
-    },
-    'step-7-staged': {
-      notes: [
-        '"At 15:54:34, the PR owner deliberately staged a nil guard whose result was immediately overwritten. This is labelled staged because the person introduced it to demonstrate a quality signal.',
-        '"Code Quality named “Useless assignment to local variable” and offered Autofix at 15:56:18, about 100 seconds later.',
-        '"Code review followed at 15:57:20 with a different framing: optional cleanup because Error() was called twice.',
-        '"One line produced two useful but distinct explanations.',
-        '→ A person hands the finding to the agent for a fix.'
-      ],
-      know: ['The commit was 8a752d2. Do not describe the staged change as a naturally discovered production defect or as a test-runner PASS/FAIL.'],
-      sources: [SRC.pr221],
-      seconds: 95
-    },
-    'step-8-handoff': {
-      notes: [
-        '"At 15:58:28, the PR owner replies @Copilot on the Code Quality finding.',
-        '"The agent pushes commits 69aa00f and 6a512c1 to remove the redundant assignment and simplify internal error logging.',
-        '"At 16:06:08, code review says there are no open issues and all three threads are resolved.',
-        '"The agent ran go test in its own session. The review still stated that tests were not executed during review. A person decides whether more evidence is needed.',
-        '→ The event walk ends at a decision point, not at an automatic merge.'
-      ],
-      know: ['This observed run ended with #221 still a draft; it had no merge decision. Keep this separate from FanHub #210.'],
-      sources: [SRC.pr221],
-      seconds: 95
+      seconds: 120
     },
     'what-ends-loop': {
       notes: [
         '"The cloud agent cannot approve or merge. A person decides when another rework round stops paying for itself, and each pass consumes credits and Actions minutes.',
         '"FanHub #221 remained a draft. For an actual merge decision, use #210: the maintainer had the patch, a green assessment, a clean Code Quality run, and the agent’s test runs.',
         '"The full evidence set keeps the cloud-agent patch and session tests, the commit-specific review and open threads, Code Quality and the separate CodeQL security result, and a person-run test with residual-risk judgment in distinct rows.',
-        '"The maintainer independently ran eight of eight tests on commit 02ddaf3, recorded the absent browser check, squash-merged as 803254f, and named reverting that squash commit as recovery.',
+        '"The maintainer approved head 02ddaf3 and merged it as merge commit 803254f. The recovery path is reverting that merge commit.',
         '"Write down the evidence by commit, what is absent, whether policy is satisfied, why residual risk is acceptable, and how to recover.',
         '→ Configuration is how a team changes invocation, evidence, and authority.'
       ],
-      know: ['Every Copilot review on #221 stated tests were not executed. The agent’s own go test run is not an independent maintainer run. #210 is the decision record used here.'],
-      sources: [SRC.pr221, SRC.pr210, SRC.cloud, SRC.review, SRC.quality],
+      know: ['On #210, the Copilot review of 02ddaf3 recommended approval and noted the regression tests were not executed. The agent’s own test run is not an independent maintainer run.'],
+      sources: [SRC.pr210, { label: '#210 Copilot review of 02ddaf3', href: 'https://github.com/MSBart2/FanHub/pull/210#pullrequestreview-5605940436' }, { label: '#210 maintainer approval', href: 'https://github.com/MSBart2/FanHub/pull/210#pullrequestreview-5606463856' }, { label: '#210 merge commit 803254f', href: 'https://github.com/MSBart2/FanHub/commit/803254f74e8fa4ffbd141b25fbe5605d3c4f5ccf' }, SRC.review, SRC.quality],
       seconds: 125
     },
     'configure-promote-cost': {
@@ -935,7 +877,7 @@
         '"The configuration surfaces divide into agent context, invocation and permissions, review policy, merge evidence, and economics.',
         '"Promote in stages: observe scoped tasks and manual reviews; automate review on new pushes while rules remain in Evaluate; then count approval or activate trusted standard rules.',
         '"Each promotion gets an owner, observation period, and rollback. Move a quality rule back to Evaluate, dismiss an inapplicable finding with a reason, resolve a thread, or close and reassign a draft.',
-        '"The cited review ranges were about five cents to one dollar at Lite and about twenty-five cents to five dollars at Balanced, per review. Private repositories also use Actions minutes for context gathering.',
+        '"GitHub’s current estimates average about twenty-five cents per Lite review, a dollar fifty for Balanced, and ten dollars for Max. Private repositories also use Actions minutes for context gathering.',
         '"The README’s 2026-10 billing note listed Code Quality at ten dollars per active committer monthly, plus AI credits for AI findings and Actions minutes for CodeQL scans. Verify current rates before budgeting.',
         '→ The synthesis is an event map, not a fixed pipeline.'
       ],
@@ -955,18 +897,19 @@
       sources: [SRC.cloud, SRC.review, SRC.quality, SRC.workflows, SRC.localSdlc, SRC.sdlc],
       seconds: 90
     },
-    'replay-last-pr': {
+    'next-moves': {
       notes: [
-        '"Choose the last pull request your team merged. For each push, write which agents ran and which commit each one saw.',
-        '"Mark human-invoked actions separately from automatic events. Look for a missing step, such as a fix commit with no review or a green rule check with no behavior test.',
-        '"Change one setting or evidence step at a time. Name the owner, the signal that would show it works, and the rollback condition.',
-        '"The first setting to change is the missing event or evidence step you can verify in your own repository."',
-        'Point to Today, This week, and Next pilot. Each is a transfer horizon, not a claim that a target result has already happened.',
+        '"Here is the move for this week: run one real issue through all three agents, and give each role one job.',
+        '"Developer: rewrite one bug with scope and acceptance criteria, assign it to the cloud agent, and run the six checks on the draft before reading the diff.',
+        '"Platform owner: on one repository, turn on Review new pushes at Balanced effort and enable Code Quality with its rules in Evaluate. Watch a week of cost before promoting anything.',
+        '"Team lead: decide up front what evidence counts, read the pull request with who, which SHA, and what next, and write the decision record with its revert path.',
+        '"Success looks like one merged pull request whose record names the evidence by commit and the person who decided.',
+        'Each card links to the slide that teaches its move; click a chip to jump back if someone asks how.',
         '→ Use the linked evidence to inspect details after the talk.'
       ],
       know: [
-        'The suggested exercise comes from the README’s transfer section. There is no promised performance improvement or target metric; participants inspect their own PR history.',
-        'Concrete next actions: rewrite one open bug with problem, acceptance criteria, and scope; assign it and inspect the plan commit; enable Review new pushes and check the analyzed SHA; enable Code Quality on one repository with a rule in Evaluate; reply @Copilot on one finding and observe the new push; run the agent’s tests yourself before relying on a green assessment.'
+        'Teams already running these agents can also replay their last merged PR: for each push, list which agents ran and which commit each one saw, then fix the first missing event or evidence step.',
+        'Run the agent’s tests yourself before relying on a green assessment; Copilot review states when tests were not executed. No performance result is promised; the evidence comes from the audience’s own PR.'
       ],
       sources: [SRC.cloud, SRC.reviewSetup, SRC.quality],
       cue: ['Ask attendees to choose a recent merged pull request and sketch its push and review events. Do not ask them to expose confidential code or repository details.'],
@@ -987,9 +930,10 @@
       notes: [
         '"The cloud agent produces a draft. Code review reasons about intent. Code Quality measures configured rules.',
         '"A person chooses the context, checks the evidence, steers rework, and decides whether the change ships.',
-        '"Which event or evidence step will you inspect in your next pull request?"'
+        '"Which event or evidence step will you inspect in your next pull request?"',
+        'Point at the closing picture: the same pull request from the title slide, now merged, every agent checked off, and a person’s decision on record.'
       ],
-      know: ['The talk budget is 55:50, leaving 4:10 of the 60-minute duration for questions. Budgets are estimates until a presenter times a run-through.'],
+      know: ['The talk budget is about 47:05, leaving roughly 13 minutes of the 60-minute slot for live demos and questions. Budgets are estimates until a presenter times a run-through.'],
       seconds: 30
     }
   };

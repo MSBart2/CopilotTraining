@@ -1,248 +1,261 @@
-# Conversion recipe autonomously prepared and approved on 2026-10-31 under the
-# user's explicit waiver of recipe/content approval pauses. Preserves the thesis,
-# FanHub evidence, demonstration scope, and four-part teaching arc; splits the
-# three-runtime load report and own-work transfer into focused proof slides.
+# Fresh recipe approved by the user on 2026-11-04 (structural proposal approved in chat).
+# Goal: teach practitioners to write one agent file that works across every Copilot surface.
+# Facts verified 2026-11-04 against the GitHub custom agents configuration reference, the
+# Copilot CLI and cloud agent how-tos, the GitHub Copilot app customization guide, and the
+# VS Code custom agent file reference. FanHub appears as a linked, readable example file.
 version: 1
 
 deck:
   title: "Custom Agents"
-  subtitle: "One File, Every Runtime"
-  tagline: "Design the portable core. Read the resolved run. Place each requirement where it lives."
+  subtitle: "One File, Every Surface"
+  tagline: "Write the role once. Add surface fields on purpose."
 
   agenda:
-    - title: "Design a portable agent contract"
-      takeaway: "Put role, tool boundary, method, and output contract in the shared core, then add runtime-specific fields on purpose."
-      whyItMatters: "Every supported runtime reads the body, while each runtime resolves its own configuration."
-    - title: "Read the resolved run"
-      takeaway: "Verify agent identity, model, tools, checks, and summary from each runtime's own artifacts."
-      whyItMatters: "Declared configuration and executed behavior can differ, and run artifacts show what happened."
-    - title: "Place each requirement in its owning layer"
-      takeaway: "Map each gap to the agent body, launch controls, runtime environment, review, or team policy, then rerun the same proof."
-      whyItMatters: "A targeted change in the right layer, owned by the right person, repairs the gap with a repeatable rerun."
+    - title: "Write a core every surface reads"
+      takeaway: "Put role, boundary, method, and output contract in the description and body, with portable tool aliases and a native folder."
+      whyItMatters: "The body is the one part every Copilot surface obeys, so behavior written there travels with the file."
+    - title: "Read the what-works-where table"
+      takeaway: "See which frontmatter fields VS Code Local, VS Code Copilot, Copilot CLI, cloud agent, and the Copilot app honor."
+      whyItMatters: "Each surface skips the fields it does not support quietly, so the table tells you what a field will do before you rely on it."
+    - title: "Confirm the load on each surface"
+      takeaway: "Check the agent, model, and tools on each surface your team uses, then audit one shared agent of your own."
+      whyItMatters: "A one-minute check per surface shows the agent your team actually runs."
 
-  arcToc: "Design the Core → Read Three Runs → Place and Rerun"
+  arcToc: "Choose the Agent → Write the Core → Add Surface Fields → Confirm"
 
   arcNarrative: >
-    Open with one file entering VS Code, Copilot CLI, and Copilot cloud agent and
-    three dated evidence fragments: the CLI logged claude-sonnet-5.5, VS Code
-    requests ran gpt-6.1-sol, and the cloud agent invoked test-writer before Jest
-    stopped at a missing React dependency. Ask which agent the team shipped.
-    Part 1 builds the portable contract: choose the right customization, divide
-    work among description, tools, and body, publish at the intended scope, and
-    keep launch controls distinct from the profile. Part 2 separates documented
-    support from observed resolution, then follows the same FanHub agent through
-    each runtime. The cloud setup workflow is the memorable recovery: the profile
-    describes a role, while the runtime supplies its environment. Part 3 makes
-    evidence gathering repeatable with a per-runtime load report, layer ownership,
-    and an explicit human boundary in composition. Part 4 transfers the method to
-    an agent the audience already owns. Four sections preserve the existing
-    navigation while giving the former closing exercise an opener and two focused
-    practice slides. A three-part structure was rejected because it hides the
-    transfer decision inside the proof section.
+    Open on one agent file shown beside five surfaces, with the lines each surface reads
+    lighting up: the description and body light everywhere, and each frontmatter field lights
+    only where it is honored. That picture sets the talk's tension: the fields carry the
+    useful extras, and each one works on some surfaces. Part 1 confirms the work earns a
+    custom agent and names the three jobs inside the file: the description selects, the
+    tools bound, the body teaches. Part 2 builds the portable core in practitioner order:
+    put the file where every surface looks, give it a stable ID, write a description that
+    selects well, use portable tool aliases, carry the behavior in the body, and treat the
+    model as a preference written in each surface's format. Part 3 is the climax: the
+    what-works-where table, then the fields that mean different things on different
+    surfaces, what target controls, and the field families that belong to one surface each.
+    Part 4 turns the table into practice: confirm the load on each surface, start from a
+    portable skeleton, and audit one shared agent. A three-part structure that merged the
+    core and the surface fields was considered; four parts win because the core gives the
+    audience a working file before the table shows what to add to it.
 
   sectionOrder:
-    - "1. Design the Portable Core"
-    - "2. Run One File in Three Runtimes"
-    - "3. Prove the Run and Place Each Requirement"
-    - "4. Take It to Your Agents"
+    - "1. Choose the Custom Agent"
+    - "2. Write the Portable Core"
+    - "3. Add Surface Fields on Purpose"
+    - "4. Confirm the Load and Apply It"
 
   sectionModes:
-    "1. Design the Portable Core":
+    "1. Choose the Custom Agent":
       emphasis: medium
       note: >
-        Preserve the different-who decision and the real test-writer profile.
-        Show the four customization primitives, the division among description,
-        tool aliases, and body, and the five-line output contract. Keep repository,
-        personal, and organization/enterprise scopes distinct; most-local
-        precedence and default-branch discovery are separate facts. Name target,
-        user-invocable, and disable-model-invocation as launch controls, not proof
-        that a runtime grants execution authority.
-    "2. Run One File in Three Runtimes":
+        Keep the strongest existing material: the primitive choice (a custom agent owns a
+        role) and the anatomy (description selects, tools bound, body teaches). Present the
+        anatomy with a generic test-writer file and link the FanHub test-writer.agent.md as a
+        complete example practitioners can read. The output contract lives on the
+        body-carries-behavior slide in Part 2, as a body section every surface reads.
+    "2. Write the Portable Core":
       emphasis: high
       note: >
-        Label documented support separately from observed resolution. Keep the
-        dated FanHub evidence and artifact links. Show six aliases as each
-        runtime's own expansion, never as a capability ranking. Mark unobserved
-        cells as unobserved. Keep the VS Code model cause unresolved. Separate
-        runner status from the domain assertion. The cloud recovery must show the
-        setup workflow outside the profile, the @copilot follow-up, and the cloud
-        result of 1 suite and 6 tests passed.
-    "3. Prove the Run and Place Each Requirement":
+        Teach the core in the order a practitioner writes it. Native folders
+        (.github/agents and ~/.copilot/agents) are the locations every surface reads;
+        VS Code Local profile storage and chat.agentFilesLocations stay in the editor.
+        The filename is the ID and the nearest scope wins; name does not deduplicate.
+        The description is the one required field and drives automatic selection.
+        execute, read, edit, search, and agent are portable aliases; web and todo apply
+        outside cloud agent; agent/runSubagent and tool sets are Local references; unknown
+        names are skipped. The body carries the method, boundary, next step, and output
+        contract, up to 30,000 characters. Model is a preference whose format depends on
+        the surface.
+    "3. Add Surface Fields on Purpose":
       emphasis: high
       note: >
-        Give each runtime its own five-question load report and first-party debug
-        source. The recovery matrix names the gap, owning layer, action, and owner:
-        agent producer, developer starting the run, repository maintainer, PR
-        reviewer, or team lead. Pair test-writer with read-only test-reviewer;
-        distinguish a human-selected handoff from agent-to-agent subagent calls.
-        Place final authority in the surrounding controls, not the profile.
-    "4. Take It to Your Agents":
+        The what-works-where table is the anchor and gets the most time. Show five columns:
+        VS Code Local, VS Code Copilot, Copilot CLI, Copilot cloud agent, and GitHub Copilot
+        app. The app column states what the docs confirm (agent picker and /agent; shares
+        CLI skills and MCP servers) and marks field support as "check in the app". Follow
+        with disable-model-invocation, whose documented meaning differs by surface; target,
+        which sets editor interpretation in VS Code; the Local-only family (handoffs,
+        agents, argument-hint); the Copilot runtime family (model-policy, strict-tools-list,
+        include-custom-instructions, skills, reasoning-effort) with the VS Code conversion
+        caveat; and the cloud family (mcp-servers with Agents secrets, metadata). Close on
+        authority: the profile requests a role, and hooks, permissions, and review govern
+        what changes.
+    "4. Confirm the Load and Apply It":
       emphasis: medium
       note: >
-        Turn the audience's existing shared agent into the transfer artifact.
-        Have practitioners predict a runtime difference, gather evidence, assign
-        one gap to an owner, and rerun the same proof. Preserve the own-work
-        question and route broader local orchestration, event-triggered workflows,
-        and PR decisions to their adjacent talks.
+        One table names where to confirm the agent, model, and tools on each surface. Then
+        hand practitioners a portable skeleton and a four-check audit for one agent their
+        team already shares. End on the own-work question.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "The same six aliases expanded to 23 VS Code tools and 14 Copilot CLI tools; these are runtime-specific resolutions, not a capability ranking."
-    - "The Copilot CLI logged its decision: Using model claude-sonnet-5.5 from custom agent test-writer."
-    - "VS Code requests ran gpt-6.1-sol while the profile declared Claude Sonnet 5.5; the cause remains unresolved."
-    - "The cloud agent invoked test-writer, then stopped at a missing React dependency; the local run separately showed 5 passed and 1 failed."
-    - "A setup workflow outside the profile enabled a cloud rerun with 1 suite and 6 tests passed."
+    - "The body is the one part every surface reads; a frontmatter field a surface does not support is skipped without a warning."
+    - "disable-model-invocation stops automatic selection by cloud agent in GitHub's reference and stops subagent calls in VS Code's reference."
+    - "VS Code Local writes the model as a display name such as Claude Sonnet 5.5 (copilot); the Copilot runtime takes model IDs and a fallback list."
+    - ".github/agents and ~/.copilot/agents are the folders every surface reads; VS Code Local profile storage stays inside VS Code."
+    - "One five-column table tells a practitioner what each field does on VS Code Local, VS Code Copilot, Copilot CLI, cloud agent, and the Copilot app."
 
   slides:
     - id: title
       part: 0
-      claim: "One shared agent file can enter three runtimes, each with its own resolved run."
-      scene: "frame: title with deck-local three-runtime visual"
+      claim: "One agent file can serve every Copilot surface a team uses."
+      scene: "frame: title with the deck-local runtime ring updated to five surfaces"
       seconds: 30
     - id: core-question
       part: 0
-      claim: "A team can design for portability by writing the shared core and inspecting each runtime's resolution."
-      scene: "frame: core-question with practitioner roles and observable outcomes"
+      claim: "How do I write one agent file that works in every Copilot surface my team uses?"
+      scene: "frame: core-question; roles are agent author, developer, and team lead"
       seconds: 90
     - id: contents
       part: 0
-      claim: "The argument moves from design, through runtime evidence, into an own-work transfer."
-      scene: "frame: contents with four section opener links"
+      claim: "Choose the agent, write the core, add surface fields, then confirm the load."
+      scene: "frame: contents with four section links"
       seconds: 30
-    - id: cold-open
+    - id: lit-lines
       part: 0
-      claim: "The 2026-10-21 FanHub runs show three different outcomes from the same committed profile."
-      scene: "deck: three evidence fragments; motion reveals VS Code, CLI, then cloud"
-      seconds: 90
+      claim: "Every surface reads the description and body; each frontmatter field lights only where it is honored."
+      scene: "deck: one agent file beside five surface chips; motion: select each surface in turn and light the lines it reads, ending with the body lit for all five"
+      seconds: 120
+
     - id: part-1
       part: 1
-      claim: "A portable contract starts with the work needing a different role."
-      scene: "frame: opener with choose, encode, and publish"
+      claim: "A custom agent earns its file when the work needs a persistent role."
+      scene: "frame: opener with Choose, Select, Teach cards"
       seconds: 30
     - id: primitive-choice
       part: 1
-      claim: "A custom agent earns a file when the work needs a persistent role and distinct boundary."
-      scene: "deck: four customization choices mapped to the work they own"
+      claim: "Instructions own conventions, prompts own a task, skills own a method, and a custom agent owns a role."
+      scene: "deck: primitives (existing); custom agent card is the purple hero"
       seconds: 90
     - id: agent-anatomy
       part: 1
-      claim: "Description selects, tool aliases bound, and the body carries the portable method."
-      scene: "deck: real test-writer configuration excerpt paired with field responsibilities"
-      seconds: 125
-    - id: output-contract
-      part: 1
-      claim: "A five-line body contract makes test results and suspected bugs inspectable across runtimes."
-      scene: "terminal: the report template and a missing-dependency result"
-      seconds: 105
-    - id: publish-scope
-      part: 1
-      claim: "The most-local definition wins, so locate the loaded file before debugging its prompt."
-      scene: "deck: repository, personal, and organization scopes with precedence"
-      seconds: 105
-    - id: launch-controls
-      part: 1
-      claim: "Target and invocation settings control availability and selection, not approval of changes."
-      scene: "signals: target, user-invocable, and disable-model-invocation"
-      seconds: 75
+      claim: "The description selects, the tools bound, and the body teaches."
+      scene: "deck: anatomy (existing) with a portable test-writer header; footnote links the FanHub file as a readable example"
+      seconds: 120
+
     - id: part-2
       part: 2
-      claim: "Evidence begins by separating documented support from what a run actually resolved."
-      scene: "frame: opener with docs, runtime, and artifacts"
+      claim: "The portable core is the part of the file every surface honors."
+      scene: "frame: opener with Place, Describe, Teach cards"
       seconds: 30
-    - id: documented-support
+    - id: portable-locations
       part: 2
-      claim: "The configuration reference documents shared fields and runtime-specific fields as of 2026-10-21."
-      scene: "deck: documented field support matrix across three runtimes"
+      claim: "Put shared agents in .github/agents and personal agents in ~/.copilot/agents so every surface finds them."
+      scene: "deck: table of scope, folder, and surfaces that read it; VS Code profile storage and custom locations shown as editor-only"
+      seconds: 110
+    - id: id-precedence
+      part: 2
+      claim: "The filename is the agent ID, and the nearest scope wins when two files share it."
+      scene: "deck: precedence ladder personal → repository → organization → enterprise; motion: two same-ID files collide and the nearer one stays lit"
+      seconds: 90
+    - id: description-selects
+      part: 2
+      claim: "A description that names the task, the boundary, and when to use it gives every surface something precise to match."
+      scene: "deck: anatomy with a thin description above a three-line description; task, boundary, and when-to-use lines highlighted"
+      seconds: 90
+    - id: portable-tools
+      part: 2
+      claim: "The short tool names (execute, read, edit, search, agent) work everywhere; web, todo, and VS Code Local's own names need a surface check."
+      scene: "deck: table of what to write in tools:, what it lets the agent do, and whether it works on VS Code, CLI, and cloud agent"
       seconds: 120
-    - id: observed-resolution
+    - id: body-carries-behavior
       part: 2
-      claim: "FanHub artifacts show the same profile resolving differently across VS Code, CLI, and cloud."
-      scene: "deck: observed resolution table; unobserved cells remain explicit"
-      seconds: 120
-    - id: vscode-run
+      claim: "Write the boundary, the next step, and the output contract in the body so every surface follows them."
+      scene: "deck: anatomy-style body excerpt with boundary, next step, and contract lines highlighted"
+      seconds: 100
+    - id: model-preference
       part: 2
-      claim: "VS Code honored Local-session handoff behavior, while request logs showed a different model."
-      scene: "deck: observed outcomes beside declared and executed model"
-      seconds: 130
-    - id: cli-run
-      part: 2
-      claim: "Copilot CLI logged the resolved model and reported ten passing tests."
-      scene: "terminal: exact model-resolution line, tool expansion, and test result"
-      seconds: 105
-    - id: cloud-first-run
-      part: 2
-      claim: "The cloud agent invoked test-writer, but Jest stopped because the fresh environment lacked React."
-      scene: "deck: invocation evidence beside environment failure and separate local test result"
-      seconds: 120
-    - id: cloud-recovery
-      part: 2
-      claim: "Setup steps outside the profile enabled a cloud rerun with one suite and six tests passing."
-      scene: "terminal: setup workflow, @copilot follow-up, and observed cloud result"
-      seconds: 160
+      claim: "Each surface writes the model line its own way: display name in VS Code Local, runtime IDs with fallbacks in VS Code Copilot, runtime or provider IDs in the CLI."
+      scene: "deck: table of surface, example model line, and what happens; footnote: leave model out to use the session's model"
+      seconds: 110
+
     - id: part-3
       part: 3
-      claim: "Repeatable proof records the loaded agent, model, tools, checks, and report."
-      scene: "frame: opener with report, owner, and rerun"
+      claim: "Each frontmatter field is a choice to enhance specific surfaces."
+      scene: "frame: opener with Read the table, Check the meaning, Place the field cards"
       seconds: 30
-    - id: vscode-load-report
+    - id: what-works-where
       part: 3
-      claim: "VS Code exposes agent loading, per-request model and tools, terminal results, and the final summary."
-      scene: "deck: five questions mapped to VS Code debug artifacts"
-      seconds: 100
-    - id: cli-load-report
+      claim: "One table shows what each field does on VS Code Local, VS Code Copilot, Copilot CLI, cloud agent, and the Copilot app."
+      scene: "deck: five-column matrix with honored, skipped, and check-in-app marks; motion: rows settle top to bottom"
+      seconds: 160
+    - id: same-field-different-meaning
       part: 3
-      claim: "CLI debug logs and transcripts provide evidence for identity, model, tools, checks, and report."
-      scene: "deck: five questions mapped to CLI commands and log fields"
-      seconds: 85
-    - id: cloud-load-report
-      part: 3
-      claim: "The cloud session log and PR description answer different load-report questions."
-      scene: "deck: five questions mapped to session and PR artifacts"
-      seconds: 100
-    - id: repair-map
-      part: 3
-      claim: "A gap becomes actionable when its owner places it in the body, launch, environment, review, or policy."
-      scene: "deck: six recovery rows with layer and named owner"
-      seconds: 145
-    - id: compose-boundaries
-      part: 3
-      claim: "Handoffs put a person between agents; subagents delegate, while surrounding controls retain authority."
-      scene: "deck: producer-reviewer handoff beside delegated calls and authority boundary"
+      claim: "disable-model-invocation and user-invocable change selection, and their documented meaning differs by surface."
+      scene: "deck: controls (existing) with each field's meaning per surface"
       seconds: 110
+    - id: target-field
+      part: 3
+      claim: "Leave target out for a file that runs everywhere; set it only for an agent meant for one side, knowing VS Code then checks the file against that side's fields."
+      scene: "deck: controls with no target (portable, green), target: vscode, and target: github-copilot"
+      seconds: 90
+    - id: local-only-fields
+      part: 3
+      claim: "handoffs, agents, and argument-hint work only in VS Code Local; the same intent written in the body reaches every surface."
+      scene: "deck: table of field and what it adds across five surface columns; last row shows a body sentence working everywhere"
+      seconds: 100
+    - id: copilot-runtime-fields
+      part: 3
+      claim: "model-policy, strict-tools-list, include-custom-instructions, skills, and reasoning-effort shape the Copilot runtime."
+      scene: "deck: table of field, what it does, and where VS Code conversion forwards it"
+      seconds: 110
+    - id: cloud-fields
+      part: 3
+      claim: "mcp-servers and metadata configure cloud agent, with secrets drawn from Agents secrets and variables."
+      scene: "terminal: an mcp-servers block using ${{ secrets.COPILOT_MCP_* }}; outcome line names the default-branch discovery"
+      seconds: 100
+    - id: authority-boundary
+      part: 3
+      claim: "A boundary in the body asks every surface; tools, hooks, and review enforce it where each one runs."
+      scene: "deck: table of where you write the boundary (body, tools, agent hooks, repository hooks, branch rules + review) across five surfaces"
+      seconds: 90
+
     - id: part-4
       part: 4
-      claim: "The final section applies the same proof loop to an agent the audience already shares."
-      scene: "frame: opener with choose, predict, and verify"
+      claim: "A one-minute check per surface confirms the agent your team runs."
+      scene: "frame: opener with Confirm, Start, Audit cards"
       seconds: 30
-    - id: own-work-check
+    - id: confirm-load
       part: 4
-      claim: "A practitioner can start transfer by predicting which load-report line will differ."
-      scene: "deck: own-work worksheet names candidate, runtime, evidence, and owner"
-      seconds: 110
-    - id: rerun-plan
+      claim: "Each surface shows which agent, model, and tools loaded in a known place."
+      scene: "deck: table of surface and where to check agent, model, and tools"
+      seconds: 120
+    - id: portable-skeleton
       part: 4
-      claim: "Load, compare, place, and rerun produce a repeatable local proof loop."
-      scene: "four-phases: a practitioner routes one gap to its owning layer"
+      claim: "A portable skeleton gives every new agent a core that works everywhere and a marked place for surface fields."
+      scene: "terminal: the skeleton file with core lines and a commented surface-fields block"
+      seconds: 90
+    - id: audit-your-agent
+      part: 4
+      claim: "Four checks turn one shared agent into a portable one: location, core, each field placed, load confirmed."
+      scene: "scorecard: Place, Core, Fields, Confirm"
       seconds: 100
+
     - id: before-after
       part: 0
-      claim: "The team moves from assuming one file behaves identically to reading and repairing each resolved run."
-      scene: "frame: before-after with dated observations and recovery"
+      claim: "From one file assumed to behave the same everywhere to one portable core with surface fields chosen on purpose."
+      scene: "frame: before-after"
       seconds: 45
     - id: today
       part: 0
-      claim: "A small first audit can become a team practice for runtime variance and ownership."
-      scene: "frame: today with observable actions by horizon"
+      claim: "Today, this week, and with the team, each move has a named owner."
+      scene: "frame: today"
       seconds: 50
     - id: references
       part: 0
-      claim: "Every configuration and run claim traces to first-party documentation or FanHub artifacts."
-      scene: "frame: grouped documentation and observed-run references"
+      claim: "First-party references and the FanHub example file."
+      scene: "frame: references"
       seconds: 15
     - id: thanks
       part: 0
-      claim: "Practitioners leave with one shared agent to inspect and a question that directs the next run."
-      scene: "frame: closing visual returns to one file and three runtimes"
+      claim: "Which field in your shared agent works on one surface only?"
+      scene: "frame: thanks with the own-work question"
       seconds: 15
+
+# OPEN DECISION: The GitHub Copilot app column — the docs confirm the agent picker and /agent and
+# shared CLI skills and MCP servers, and leave per-field support unlisted. The deck marks app field
+# cells "check in the app" until a first-party field table appears or a dated run confirms them.

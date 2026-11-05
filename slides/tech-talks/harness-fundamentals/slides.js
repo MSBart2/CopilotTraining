@@ -10,6 +10,10 @@
     sdk: { label: 'GitHub Copilot SDK repository', href: 'https://github.com/github/copilot-sdk' },
     npm: { label: '@github/copilot-sdk 1.0.26 package', href: 'https://www.npmjs.com/package/@github/copilot-sdk' },
     auth: { label: 'Copilot SDK authentication documentation', href: 'https://github.com/github/copilot-sdk/tree/main/docs/auth' },
+    authMethods: { label: 'Copilot SDK authentication methods (subscription required by method)', href: 'https://github.com/github/copilot-sdk/blob/main/docs/auth/authenticate.md' },
+    s2s: { label: 'Copilot SDK server-to-server authentication', href: 'https://github.com/github/copilot-sdk/blob/main/docs/auth/server-to-server-tokens.md' },
+    byok: { label: 'Copilot SDK bring your own key (BYOK)', href: 'https://github.com/github/copilot-sdk/blob/main/docs/auth/byok.md' },
+    tenancy: { label: 'Copilot SDK multi-tenancy and server deployments', href: 'https://github.com/github/copilot-sdk/blob/main/docs/setup/multi-tenancy.md' },
     hooks: { label: 'GitHub Copilot hooks reference', href: 'https://docs.github.com/en/copilot/reference/hooks-reference' },
     vscode: { label: 'VS Code agent hooks documentation (Preview)', href: 'https://code.visualstudio.com/docs/agent-customization/hooks' },
     policies: { label: 'Copilot enterprise and organization policies', href: 'https://docs.github.com/en/copilot/concepts/enterprise/policies' },
@@ -29,29 +33,29 @@
       tagline: 'Understand the loop, then bring AI into your existing apps with tools, controls, and telemetry.',
       meta: 'Extend and Embed · Practitioner Tech Talk · 60 minutes · Copilot SDK 1.0.26'
     }),
-    S('core-question', 0, 'How do I get inside the agent loop and change how it behaves?', {
+    S('core-question', 0, 'What is an agent harness, and why do I care?', {
       pill: 'Core Question',
-      subtitle: 'A harness runs the model, tools, results, and next turn; the host chooses which jobs to own.',
-      highlight: 'Expose an existing method through a narrow tool, and keep user authority and review in the app.',
-      routing: ['Loop', 'Context', 'Tools', 'Control', 'Evidence'], routingLabel: 'Five jobs to choose from',
+      subtitle: 'A harness is the code that runs the agent loop. The Copilot SDK lets your app host one.',
+      highlight: 'Your existing methods become tools, and your app keeps user authority, approval, and evidence.',
+      routing: ['Loop', 'Context', 'Tools', 'Control', 'Evidence'], routingLabel: 'Five jobs a harness does',
       roles: [
-        { icon: '⌨️', title: 'Developer', description: 'Bring the agent into a tool or workflow you already use.' },
-        { icon: '🧰', title: 'Platform engineer', description: 'Decide which checks apply across hosts and sessions.' },
-        { icon: '🏗️', title: 'Architect', description: 'Keep app identity, service authority, and approval explicit.' }
+        { icon: '🧩', title: 'If your app has answers', description: 'People ask questions a service method you own already answers.' },
+        { icon: '🔁', title: 'If a check repeats', description: 'You run the same agent review by hand, change after change.' },
+        { icon: '🛡️', title: 'If you own the rules', description: 'Your app decides what the agent sees, which calls run, and what gets logged.' }
       ],
       stats: [
         { title: 'One readable loop', description: 'pi exposes the mechanism in source.' },
         { title: 'One app method', description: 'A narrow tool can reuse existing capability.' },
-        { title: 'One named owner', description: 'Someone reads the evidence and decides.' }
+        { title: 'One controls checklist', description: 'Who governs access, models, hooks, and billing.' }
       ]
     }),
-    S('contents', 0, 'Four parts, one decision', {
+    S('contents', 0, 'What a harness is, then why you would host one', {
       pill: 'Route · Four parts',
       sections: [
         { icon: '🔁', title: 'What a Harness Is', subtitle: 'Read pi as source', blurb: 'Name five jobs and see how a small loop handles each.', slide: 4 },
-        { icon: '🧰', title: "Drive GitHub's Harness", subtitle: 'Use an app you own', blurb: 'Connect a release question to an existing service method.', slide: 11 },
-        { icon: '🔍', title: 'Decide What It Sees', subtitle: 'Test a deliberate view', blurb: 'Hide the implementation, rerun tests, and inspect evidence.', slide: 19 },
-        { icon: '🤝', title: 'Own It', subtitle: 'Share it with a named owner', blurb: 'Check the surrounding controls and transfer the pattern.', slide: 24 }
+        { icon: '🧰', title: "Drive GitHub's Harness", subtitle: 'Use an app you own', blurb: 'Connect a release question to an existing service method.', slide: 12 },
+        { icon: '🔍', title: 'Decide What It Sees', subtitle: 'Test a deliberate view',         blurb: 'Hide the implementation, rerun tests, and inspect evidence.', slide: 22 },
+                { icon: '💡', title: 'Controls and Ideas', subtitle: 'Check the controls, pick an app', blurb: 'Who governs the harness, and where to embed it next.', slide: 29 }
       ]
     }),
     S('part-1', 1, 'What a Harness Is', {
@@ -62,7 +66,7 @@
         { icon: '🧰', title: 'Name each job', blurb: 'Every hook lands in a known place' },
         { icon: '📡', title: 'Follow the result', blurb: 'Events let a host observe the work' }
       ],
-      terminal: { context: 'Read-only source · pi at f9daca3 · MIT', detail: 'The five jobs transfer; the implementation is one example' }
+      terminal: { context: 'Read-only source · pi at f9daca3', detail: 'The five jobs transfer; the implementation is one example' }
     }),
     S('five-jobs', 1, 'A harness has five jobs', {
       scene: 'job-rows', pill: 'What a Harness Is · Map',
@@ -84,7 +88,7 @@
         { title: 'Run requested tools', detail: 'Validated calls execute or return an error result.', z: 'remote' },
         { title: 'Feed back results', detail: 'Tool results join context before another turn.', z: 'green' }
       ],
-      codeSource: 'pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent-loop.ts#L188-L337 (trimmed)',
+      codeSource: 'pi@f9daca3 · packages/agent/src/agent-loop.ts#L188-L330 (trimmed)',
       code: [
         'while (hasMoreToolCalls || pendingMessages.length > 0) {',
         '  await emit({ type: "turn_end", message, toolResults });'
@@ -100,7 +104,7 @@
         { title: 'convertToLlm', detail: 'Convert the prepared messages.', z: 'remote' },
         { title: 'Model request', detail: 'prepareRequest can choose model or thinking level.', z: 'green' }
       ],
-      codeSource: 'pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent-loop.ts#L398-L404',
+      codeSource: 'pi@f9daca3 · packages/agent/src/agent-loop.ts#L398-L404',
       code: [
         'let messages = context.messages;',
         'if (config.transformContext) {',
@@ -112,22 +116,38 @@
     }),
     S('pi-tools', 1, 'A tool is a contract plus the code that runs it', {
       scene: 'detail-rows', pill: 'What a Harness Is · Tools',
-      subtitle: 'pi’s write tool owns file mutation; find can hand search to an external process.',
-      columns: ['Piece', 'write tool', 'What it contributes'],
+      subtitle: 'pi’s write tool: the model fills a schema, and harness code performs the file mutation.',
+      columns: ['Piece', 'Example', 'What it contributes'],
       rows: [
         { label: 'Schema', detail: 'path and content', proof: 'The model fills a validated contract.', z: 'local' },
         { label: 'Context', detail: '“Create or overwrite files”', proof: 'The snippet and guideline teach when to use it.', z: 'remote' },
-        { label: 'Execution', detail: 'Queue, abort checks, mkdir, writeFile', proof: 'Swappable ops decide where the mutation lands.', z: 'green' },
-        { label: 'Boundary', detail: 'find → ensureTool("fd") → spawn', proof: 'The harness sees the call and result; the OS runs fd.', z: 'orange' }
+        { label: 'Execution', detail: 'Queue, abort checks, mkdir, writeFile', proof: 'Swappable ops decide where the mutation lands.', z: 'green' }
       ],
-      codeSource: 'pi · MIT · earendil-works/pi@f9daca3 · packages/coding-agent/src/core/tools/write.ts#L11-L19 (trimmed)',
+      codeSource: 'pi@f9daca3 · packages/coding-agent/src/core/tools/write.ts#L11-L19 (trimmed)',
       code: [
         'const writeSchema = Type.Object({',
         '  path: Type.String({ description: "Path to the file to write (relative or absolute)" }),',
         '  content: Type.String({ description: "Content to write to the file" }),',
         '});'
       ],
-      footnote: 'A custom glob operation keeps the search inside harness code; the default delegates to fd.'
+      footnote: 'The model only ever sees the schema and guidance; the harness decides what the code does.'
+    }),
+    S('pi-tool-sources', 1, 'A harness bakes in some tools, borrows others, and accepts yours', {
+      scene: 'detail-rows', pill: 'What a Harness Is · Tools',
+      subtitle: 'Every tool looks the same to the model; what changes is whose code runs the call.',
+      columns: ['Source', 'pi example', 'Who runs the call'],
+      rows: [
+        { label: 'Built in', detail: 'write · harness code, no OS command', proof: 'The harness itself performs the work.', z: 'local' },
+        { label: 'Found on host', detail: 'find → ensureTool("fd") → spawn', proof: 'The harness sees call and result; the OS runs fd.', z: 'orange' },
+        { label: 'Registered by you', detail: 'extension · registerTool(definition)', proof: 'Your code runs it, so it can call your app.', z: 'purple' }
+      ],
+      codeSource: 'pi@f9daca3 · packages/coding-agent/src/core/tools/find.ts#L171-L216 (trimmed)',
+      code: [
+        '// Default implementation uses fd.',
+        'const fdPath = await ensureTool("fd");',
+        'const child = spawn(fdPath, args, { stdio: ["ignore", "pipe", "pipe"] });'
+      ],
+      footnote: 'The SDK version of “registered by you” is slide 17: a named tool that calls an existing service method.'
     }),
     S('pi-control', 1, 'A block becomes a reason the model can act on', {
       scene: 'flow', pill: 'What a Harness Is · Control',
@@ -137,7 +157,7 @@
         { title: 'Product policy', detail: 'Return block and a reason, or let the call continue.', z: 'orange' },
         { title: 'Tool result', detail: 'The model reads the reason and can choose another route.', z: 'green' }
       ],
-      codeSource: 'pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent-loop.ts#L738-L765 (trimmed)',
+      codeSource: 'pi@f9daca3 · packages/agent/src/agent-loop.ts#L738-L765 (trimmed)',
       code: [
         'if (beforeResult?.block) {',
         '  createErrorToolResult(beforeResult.reason || "Tool execution was blocked");'
@@ -152,14 +172,14 @@
         { title: 'tool_execution_end', detail: 'Carries tool, call ID, result, error state, and duration when available.', z: 'green' },
         { title: 'subscribe(listener)', detail: 'Any subscriber can feed a UI, log, or budget counter.', z: 'remote' }
       ],
-      codeSource: 'pi · MIT · earendil-works/pi@f9daca3 · packages/agent/src/agent-loop.ts#L929-L937 (trimmed)',
+      codeSource: 'pi@f9daca3 · packages/agent/src/agent-loop.ts#L929-L937 (trimmed)',
       code: [
         'await emit({ type: "tool_execution_end",',
         '  toolCallId: finalized.toolCall.id,',
         '  toolName: finalized.toolCall.name,',
         '  result: finalized.result, isError: finalized.isError });'
       ],
-      footer: 'The loop emits agent, turn, message, tool, and end events.'
+      footer: 'The loop emits start and end events for the agent, each turn, each message, and each tool execution.'
     }),
     S('part-2', 2, "Drive GitHub's Harness", {
       scene: 'opener',
@@ -171,21 +191,48 @@
       ],
       terminal: { context: 'Release dashboard integration sketch', detail: 'Question → named tool → existing service → answer' }
     }),
-    S('sdk-map', 2, 'The SDK gives the host a place in all five jobs', {
-      scene: 'job-rows', pill: "Drive GitHub's Harness · Map",
-      subtitle: 'The SDK surface is what the host configures and observes; runtime internals stay out of scope.',
+    S('sdk-map', 2, 'Same five jobs; the SDK turns each into one option or call', {
+      scene: 'sdk-mirror', pill: "Drive GitHub's Harness · Map",
+      subtitle: 'In pi you wire hooks into a loop you run. With the SDK, the Copilot runtime runs the loop and your app configures each job.',
+      columns: ['pi · you wire it into your loop', 'Copilot SDK · your app passes it in'],
       rows: [
-        { label: 'Loop', detail: 'Copilot runtime; app calls createSession, sendAndWait, abort.', proof: 'Run and dispose a scoped session.', z: 'local' },
-        { label: 'Context', detail: 'systemMessage modes, prompt, and requested model.', proof: 'Describe a role and source of facts.', z: 'remote' },
-        { label: 'Tools', detail: 'defineTool registers a handler; availableTools selects names.', proof: 'Expose a narrow app operation.', z: 'github' },
-        { label: 'Control', detail: 'onPermissionRequest, SDK hooks, and opted-in repository hooks.', proof: 'Bound requests; keep service authorization.', z: 'orange' },
-        { label: 'Evidence', detail: 'session.on events, handler records, and service audit.', proof: 'Join progress to business outcomes.', z: 'green' }
+        { label: 'Loop', z: 'local', pi: 'while (hasMoreToolCalls) { … }', piNote: 'Your code decides each next turn.', sdk: 'await session.sendAndWait({ prompt })', sdkNote: 'The runtime runs the turns; you get the answer.' },
+        { label: 'Context', z: 'remote', pi: 'config.transformContext(messages)', piNote: 'Your code maintains the message list.', sdk: 'infiniteSessions: { enabled: true } // default', sdkNote: 'The runtime maintains and compacts messages for you.' },
+        { label: 'Tools', z: 'github', pi: 'registerTool({ name, parameters, execute })', piNote: 'An extension adds a tool definition.', sdk: 'defineTool("name", { parameters, handler })', sdkNote: 'Pass it in tools: [ … ]; availableTools allowlists.' },
+        { label: 'Control', z: 'orange', pi: 'beforeToolCall → { block, reason }', piNote: 'Block a validated call with a reason.', sdk: 'onPermissionRequest: (request) => decision', sdkNote: 'Approve or reject with feedback.' },
+        { label: 'Evidence', z: 'green', pi: 'subscribe((event) => …)', piNote: 'Listen to the loop’s event stream.', sdk: 'session.on("tool.execution_start", fn)', sdkNote: 'Typed events for UI, logs, and audit.' }
       ],
       footnote: 'Documented SDK architecture: application → SDK → JSON-RPC → Copilot runtime.'
     }),
+    S('sdk-why', 2, 'A useful first embed: a release dashboard that answers “ready?”', {
+      scene: 'detail-rows', pill: "Drive GitHub's Harness · Why",
+      subtitle: 'Integration sketch · Your systems already know who may ship, whether it is ready, and how to ship.',
+      columns: ['Already exists', 'For example', 'What the agent adds'],
+      rows: [
+        { label: 'Who may act', detail: 'The dashboard’s sign-in, roles, and permissions', proof: 'Answers as the signed-in engineer; only release owners are offered “ship”.', z: 'purple' },
+        { label: 'A “ready?” answer', detail: 'A go/no-go signal, such as a Salesforce change record, behind getReadiness()', proof: '“What blocks v2.4?” gets the blockers in plain language, from live data.', z: 'local' },
+        { label: 'A way to “do it”', detail: 'A deploy mechanism, such as a GitHub Actions workflow', proof: 'Points to the next step; a release owner still approves the run.', z: 'green' }
+      ],
+      footnote: 'Swap in your own systems: any app with roles, a readiness answer, and a deploy step fits this pattern.'
+    }),
+    S('sdk-license', 2, 'Every app user needs Copilot, unless you bring your own key', {
+      scene: 'detail-rows', pill: "Drive GitHub's Harness · Licensing",
+      subtitle: '“Does every dashboard user need Copilot?”',
+      columns: ['The session runs as', 'Each app user needs Copilot?', 'Who is billed'],
+      rows: [
+        { label: 'Each signed-in user', detail: 'Yes · per-session gitHubToken from GitHub sign-in or OAuth', proof: 'That user’s Copilot plan; usage and org policy follow the person.', z: 'purple' },
+        { label: 'Your model key (BYOK)', detail: 'No · OpenAI, Azure, Foundry, Anthropic, and more', proof: 'Your model provider, directly; Copilot auth is bypassed.', z: 'green' }
+      ],
+      codeSource: 'copilot-sdk docs/setup/multi-tenancy.md · per-user route on a shared server (trimmed)',
+      code: [
+        'const client = new CopilotClient({ mode: "empty", connection });',
+        'const session = await client.createSession({ gitHubToken: user.githubToken, … });'
+      ],
+      footnote: 'Shared servers pass a token per session, so no one inherits another user’s identity, and run with mode: "empty".'
+    }),
     S('sdk-loop', 2, 'The dashboard starts a scoped session and shows its answer', {
       scene: 'flow', pill: "Drive GitHub's Harness · Loop",
-      subtitle: 'Release-dashboard integration sketch · The app owns the trigger and lifecycle.',
+      subtitle: 'The app owns the trigger and lifecycle.',
       nodes: [
         { title: 'Dashboard action', detail: 'Engineer asks “What blocks v2.4?”', z: 'local' },
         { title: 'SDK session', detail: 'createSession then sendAndWait with one named tool.', z: 'purple' },
@@ -199,14 +246,14 @@
       ],
       footer: 'Cancel with session.abort(); disconnect the session and stop the client at their owning lifecycle.'
     }),
-    S('sdk-context', 2, 'Customize the role without replacing every prompt section', {
+    S('sdk-context', 2, 'You write the instructions; the runtime manages the history', {
       scene: 'detail-rows', pill: "Drive GitHub's Harness · Context",
-      subtitle: 'Release-dashboard integration sketch · Name the source of facts and recovery path.',
-      columns: ['Mode', 'Model gets', 'Boundary'],
+      subtitle: 'Three inputs shape what the model sees; only two are yours to write.',
+      columns: ['What the model sees', 'SDK surface', 'In the release dashboard'],
       rows: [
-        { label: 'append', detail: 'GitHub prompt plus host guidance', proof: 'Add a role or task instruction.', z: 'local' },
-        { label: 'customize', detail: 'GitHub prompt with named sections edited', proof: 'Append custom_instructions while retaining safety sections.', z: 'purple' },
-        { label: 'replace', detail: 'Only the host’s text', proof: 'The SDK prompt guardrails are removed; use only with that understood.', z: 'orange' }
+        { label: 'Instructions', detail: 'systemMessage · append, customize, or replace', proof: 'Append a release-assistant role: use release_readiness, name blockers, report missing facts.', z: 'purple' },
+        { label: 'This request', detail: 'sendAndWait({ prompt, attachments })', proof: 'The engineer’s question and the release it is about.', z: 'local' },
+        { label: 'History', detail: 'infiniteSessions · runtime compaction', proof: 'On by default; compaction events show when the runtime summarizes.', z: 'green' }
       ],
       codeSource: 'Release-dashboard integration sketch · SDK session options',
       code: [
@@ -214,11 +261,11 @@
         '  sections: { custom_instructions: { action: "append", content:',
         '    "Use release_readiness; name blockers; report missing facts." } } }'
       ],
-      footnote: 'A prompt steers behavior; code-level permissions and service checks enforce the boundary.'
+      footnote: 'customize edits one section and keeps the SDK’s safety sections; replace drops them. Instructions steer; code enforces.'
     }),
     S('sdk-tools', 2, 'A named tool can call an existing service method', {
       scene: 'flow', pill: "Drive GitHub's Harness · Tools",
-      subtitle: 'Release-dashboard integration sketch · Register one method, not arbitrary dispatch.',
+      subtitle: 'Register one method, not arbitrary dispatch.',
       nodes: [
         { title: 'Tool contract', detail: 'releaseId: string; required; no extra fields.', z: 'local' },
         { title: 'App handler', detail: 'defineTool calls releaseService.getReadiness(user, releaseId).', z: 'purple' },
@@ -227,119 +274,221 @@
       codeSource: 'Release-dashboard integration sketch · application handler',
       code: [
         'const readinessTool = defineTool("release_readiness", {',
+        '  parameters: z.object({ releaseId: z.string() }).strict(),',
         '  handler: async ({ releaseId }) =>',
         '    releaseService.getReadiness(user, releaseId),',
         '});'
       ],
       footer: 'The authenticated user comes from the app session, never from model-supplied arguments.'
     }),
-    S('sdk-control', 2, 'Tool permission is separate from user authorization', {
-      scene: 'showdown', pill: "Drive GitHub's Harness · Control",
-      subtitle: 'Release-dashboard integration sketch · Session permission and service authority stay separate.',
-      leftLabel: 'SDK permission decision',
-      rightLabel: 'App service decision',
-      pairs: [
-        { left: { label: 'Request: release_readiness', note: 'One named custom tool' }, right: { label: 'Authorize user + releaseId', note: 'Service checks the authenticated app user', z: 'green' } },
-        { left: { label: 'managedApprovalRequired?', note: 'Reject unless a human path exists' }, right: { label: 'Deployment approval', note: 'A separate person approves the exact release and target', z: 'orange' } }
+    S('sdk-control', 2, 'The SDK checks the tool; your service checks the person', {
+      scene: 'two-gates', pill: "Drive GitHub's Harness · Control",
+      subtitle: 'Two engineers ask “What blocks v2.4?”',
+      request: 'Model requests  release_readiness({ releaseId: "v2.4" })',
+      columns: [
+        { title: 'Who asked', question: 'Signed in to the dashboard' },
+        { title: 'Gate 1 · onPermissionRequest', question: 'May this session run this tool?', z: 'purple' },
+        { title: 'Gate 2 · releaseService', question: 'May this person see v2.4?', z: 'remote' },
+        { title: 'What the engineer sees', question: 'In the release page', z: 'green' }
       ],
-      outcomeLeft: { icon: '✓', label: 'Session permission is not business approval' },
-      outcomeRight: { icon: '✓', label: 'Service authority remains in force' },
-      footnote: 'A schema checks input shape; it does not authorize an identifier. Service failures stay visible.'
+      rows: [
+        { cells: [
+          { label: 'Engineer on the v2.4 team', note: 'Identity comes from the app session.' },
+          { mark: '✓', label: 'approve-once', note: 'custom-tool release_readiness is allowed.', z: 'green' },
+          { mark: '✓', label: 'Allowed', note: 'This user can view v2.4; readiness returned.', z: 'green' },
+          { mark: '✓', label: 'The blockers for v2.4', note: 'The answer, with the readiness facts behind it.', z: 'green' }
+        ] },
+        { cells: [
+          { label: 'Engineer without v2.4 access', note: 'Same question, same tool request.' },
+          { mark: '✓', label: 'approve-once', note: 'Same tool name, same decision; gate 1 never sees who asked.', z: 'green' },
+          { mark: '✗', label: 'Denied', note: 'The service refuses and the error is returned, not hidden.', z: 'orange' },
+          { mark: '✗', label: 'No access to v2.4', note: 'The agent explains and points to the release owner.', z: 'orange' }
+        ] }
+      ],
+      codeSource: 'Release-dashboard integration sketch · gate 1, the session permission handler',
+      code: [
+        'onPermissionRequest: (req) => req.kind === "custom-tool" && req.toolName === "release_readiness"',
+        '  ? { kind: "approve-once" }',
+        '  : { kind: "reject", feedback: "Only release_readiness is available here." }'
+      ],
+      footnote: 'Neither gate approves a deployment; that stays a human step in the release process.'
     }),
     S('sdk-evidence', 2, 'Events show execution; the service records the business result', {
       scene: 'flow', pill: "Drive GitHub's Harness · Evidence",
-      subtitle: 'Release-dashboard integration sketch · Stream progress and record bounded metadata.',
+      subtitle: 'Stream progress and record bounded metadata.',
       nodes: [
-        { title: 'session.on', detail: 'assistant.message_delta and tool.execution_start.', z: 'remote' },
+        { title: 'session.on', detail: 'assistant.message_delta and tool.execution_complete.', z: 'remote' },
         { title: 'UI + telemetry', detail: 'Render progress; record sessionId, toolCallId, success.', z: 'purple' },
         { title: 'Service audit', detail: 'Record authorization and readiness result.', z: 'green' }
       ],
       codeSource: 'Release-dashboard integration sketch · application event handlers',
       code: [
         'session.on("assistant.message_delta", e => ui.appendText(e.data.deltaContent));',
-        'session.on("tool.execution_complete", e => telemetry.record(',
-        '  "tool.complete", { sessionId, toolCallId, success: e.data.success }));'
+        'session.on("tool.execution_complete", e => telemetry.record("tool.complete", {',
+        '  sessionId: session.sessionId, toolCallId: e.data.toolCallId, success: e.data.success }));'
       ],
       footer: 'Execution success can coexist with ready: false; app correlation is explicit wiring.'
     }),
-    S('release-flow', 2, 'A completed query can report a release that is not ready', {
-      scene: 'release-flow', pill: "Drive GitHub's Harness · Example",
-      subtitle: 'Illustrative values show where the method, UI, and business approval sit.',
-      nodes: [
-        { title: 'Engineer', detail: '“What blocks v2.4?”', z: 'local' },
-        { title: 'Copilot request', detail: 'release_readiness({ releaseId: "v2.4" })', z: 'purple' },
-        { title: 'Existing service', detail: '{ ready: false, blockers: ["Integration tests failed"] }', z: 'remote' },
-        { title: 'Dashboard + owner', detail: 'Explain blocker; human decides next action.', z: 'orange' }
-      ],
-      footer: 'Illustrative request and result, not a recorded release-dashboard run. Tool success ≠ release readiness.'
+    S('release-flow', 2, 'What the model adds: an answer, a likely cause, a next step', {
+      scene: 'dashboard-mockup', pill: "Drive GitHub's Harness · Example",
+      subtitle: 'Illustrative mockup · The same release dashboard, before and after embedding an SDK session.',
+      mock: {
+        appTitle: 'release-dashboard · Releases › v2.4',
+        release: 'Release v2.4',
+        badge: 'Not ready',
+        status: [
+          { label: 'Go/no-go · Salesforce change record', value: '● Approved', z: 'green' },
+          { label: 'Integration tests · CI', value: '● 1 failing', z: 'orange' },
+          { label: 'Changes since v2.3', value: '14 merged PRs' }
+        ],
+        deploy: 'Deploy v2.4',
+        deployNote: 'GitHub Actions · release owner approves',
+        leftCaption: 'ALREADY IN THE APP',
+        leftCaption2: 'Status for each system; the engineer connects them.',
+        panelTitle: 'Ask Copilot · SDK session in the dashboard',
+        ask: 'What blocks v2.4, and what do I do about it?',
+        tool: 'tool call  release_readiness({ releaseId: "v2.4" })  ·  returned facts  ✓',
+        answer: [
+          { n: 1, text: 'One blocker: checkout.spec fails. Go/no-go is already approved.' },
+          { n: 2, text: 'Likely cause: PR #482 changed tax rounding; failures start there.' },
+          { n: 3, text: 'Next: ask the payments owner to review #482, then rerun CI.' }
+        ],
+        actions: ['Draft go/no-go note', 'Message payments owner', 'What changed since v2.3?']
+      },
+      adds: ['Explains raw status in plain words', 'Connects a failure to its likely cause', 'Drafts the next step; a person sends it'],
+      footer: 'Illustrative values, not a recorded run. The answer cites the test and PR so the engineer can check it.'
     }),
     S('part-3', 3, 'Decide What It Sees', {
       scene: 'opener',
       subtitle: 'The same host can make a useful check independent by changing its agent’s view.',
       cards: [
-        { icon: '🔍', title: 'Set the view', blurb: 'Use two checkpoints for different inputs' },
+        { icon: '🔍', title: 'Set the view', blurb: 'Two checkpoints, two inputs' },
         { icon: '🧪', title: 'Run the test', blurb: 'Host reruns the suite as evidence' },
         { icon: '🧾', title: 'Name the owner', blurb: 'Referee maps it; API owner decides' }
       ],
-      terminal: { context: 'Blind test writer · FanHub · observed 2026-10-26', detail: 'Contract visible · implementation hidden' }
+      terminal: { context: 'examples/apps/blind-tests/app.ts · tests FanHub’s API · observed 2026-10-26', detail: 'Contract visible · implementation hidden' }
     }),
-    S('visibility-policy', 3, 'One policy checks both raw calls and parsed requests', {
-      scene: 'detail-rows', pill: 'Decide What It Sees · Policy',
-      subtitle: 'onPreToolUse sees raw arguments; onPermissionRequest sees a parsed permission request.',
-      columns: ['Checkpoint', 'Input it sees', 'Example host check'],
+    S('blind-app', 3, 'Meet the blind-tests app: all five jobs in one SDK program', {
+      scene: 'code-rows', pill: 'Decide What It Sees · The app',
+      subtitle: 'It clones FanHub at 0ea9e78, starts its API, and asks an agent to test that API without seeing the code.',
+      columns: ['Job', 'In blind-tests/app.ts', 'What it does here'],
       rows: [
-        { label: 'onPreToolUse', detail: 'Raw tool name and arguments', proof: 'Reject a grep scope that sweeps a hidden folder.', z: 'remote' },
-        { label: 'onPermissionRequest', detail: 'Parsed read, write, shell, or custom-tool request', proof: 'Check hidden paths, write contents, and command segments.', z: 'purple' },
-        { label: 'Write-content test', detail: 'A test file tries readFileSync("../../src/…")', proof: 'Host denies code that would read hidden files when run.', z: 'orange' },
-        { label: 'Compound shell test', detail: 'cd node/backend; npm start | tee log', proof: 'Split outside quoted text; test each executable.', z: 'green' }
+        { label: 'Tools', where: 'app.ts:43', code: 'defineTool("api_contract", { handler: async () => contract })', proof: 'The tester’s only view of the API: endpoints from SETUP.md, bug hints stripped.', z: 'github' },
+        { label: 'Context', where: 'app.ts:73', code: 'systemMessage: { mode: "customize", … "black-box API tester" }', proof: 'Sets the role: test from the contract; a failing test is a finding.', z: 'remote' },
+        { label: 'Control', where: 'app.ts:51', code: 'createVisibilityPolicy({ hidden, writable, shellCommands, … })', proof: 'Hides source, docs, and BUGS.md; writes only to __tests__/blind.', z: 'orange' },
+        { label: 'Loop', where: 'app.ts:104', code: 'session.sendAndWait({ prompt: "Write a black-box test suite…" })', proof: 'One request; the runtime takes turns until the suite is written.', z: 'local' },
+        { label: 'Evidence', where: 'app.ts:126 · 144', code: ['execFileSync(node, ["--test", "--test-reporter=tap", …files])', 'referee = createSession({ availableTools: ["view", "grep", "glob"] })'], proof: 'The app reruns the tests itself; a read-only referee may read BUGS.md.', z: 'green' }
       ],
-      footnote: 'Both additional checks are tested; the same 190-line policy is configured differently for each app.'
+      footnote: 'One file, 180 lines: npx tsx apps/blind-tests/app.ts. The next slides follow one real run of it.'
     }),
-    S('blind-result', 3, 'The host reran 12 tests; a referee classified two failures', {
-      scene: 'terminal', pill: 'Decide What It Sees · Observed result', termTitle: 'FanHub · 2026-10-26',
-      subtitle: 'TAP status is separate from the referee’s domain finding.',
+    S('blind-result', 3, 'A test writer that cannot see the code found two real problems', {
+      scene: 'terminal', pill: 'Decide What It Sees · Observed result', termTitle: 'blind-tests app · FanHub API · observed 2026-10-26',
+      subtitle: 'The tester and the referee are the two sessions from the last slide; the app reran the tests in between.',
       transcript: [
-        { type: 'prompt', text: 'Host reruns blind suite' },
-        { type: 'response', lines: ['TAP: 10 passing', 'TAP: 2 failing'] },
+        { type: 'prompt', text: 'npx tsx apps/blind-tests/app.ts' },
+        { type: 'thinking', label: 'Tester session · sees api_contract and the live API, nothing else' },
+        { type: 'response', lines: ['Wrote 5 test files, 12 tests, from the contract alone'] },
         { type: 'divider' },
-        { type: 'outcome', text: 'POST /api/characters → 500 · referee maps BUGS.md #19' },
-        { type: 'outcome', text: 'seasonId filter ignored · referee labels mismatch undocumented' }
+        { type: 'thinking', label: 'The app reruns the tests itself' },
+        { type: 'response', lines: ['TAP: 10 passing, 2 failing'] },
+        { type: 'divider' },
+        { type: 'thinking', label: 'Referee session · read-only · may read BUGS.md' },
+        { type: 'outcome', mark: '!', text: 'POST /api/characters → 500 · matches BUGS.md #19' },
+        { type: 'outcome', mark: '!', text: 'seasonId filter ignored · not in BUGS.md: docs and code disagree' }
       ],
-      footnote: 'Observed run. Agent wrote tests from the contract; the host reran them; a separate read-only referee read source and BUGS.md.'
+      footnote: 'Observed run. The app trusts its own rerun, not the tester’s report, and the API owner decides what changes.'
     }),
-    S('host-boundary', 3, 'A host controls tool calls, not everything a process can do', {
-      scene: 'detail-rows', pill: 'Decide What It Sees · Boundary',
-      subtitle: 'The API owner, not the harness, decides whether the contract or implementation changes.',
+    S('visibility-policy', 3, 'How the app keeps the tester blind: one policy, two SDK checkpoints', {
+      scene: 'code-rows', pill: 'Decide What It Sees · Policy',
+      subtitle: 'onPreToolUse sees raw arguments; onPermissionRequest sees a parsed request. Each row is a rule from the app.',
+      columns: ['Request the tester makes', 'The rule that decides it', 'What happens'],
       rows: [
-        { label: 'Started process', detail: 'A test process has the OS account’s access; a container sets a harder boundary.', proof: 'Owner: OS / platform', z: 'orange' },
-        { label: 'Outside tool calls', detail: 'Other processes, users, and network access sit beyond tool mediation.', proof: 'Owner: platform', z: 'remote' },
-        { label: 'Result correctness', detail: 'A failing test shows disagreement; tests and review inform the decision.', proof: 'Owner: API team', z: 'green' }
+        { label: 'grep across the whole repo', where: 'visibility.ts:179', code: 'sweepsHidden(rel, hiddenRoots) → { permissionDecision: "deny" }', proof: 'onPreToolUse denies it before it runs; the feedback says to narrow the search.', z: 'remote' },
+        { label: 'Call an unknown tool', where: 'app.ts:59', code: 'customTools: new Set(["api_contract"])', proof: 'onPermissionRequest approves only the host’s tool; anything else gets “Unknown tool.”', z: 'purple' },
+        { label: 'Write peek.test.js (reads src/)', where: 'rules.ts:26', code: ['BLIND_TEXT_DENY = [ /(^|[\\s"\'\\\\/])src[\\\\/]/i,', '  /readfile|readdir|createreadstream|opendir|child_process/i, … ]'], proof: 'The new file’s contents match, so the write is denied and peek.test.js never exists.', z: 'orange' },
+        { label: 'cd …; npm start | tee log', where: 'rules.ts:18', code: 'BLIND_SHELL = new Set(["node", "cd", "curl", "ls", …])', proof: 'Split into cd, npm, tee; npm and tee are not listed, so the whole command is denied.', z: 'green' }
       ],
-      footnote: 'Same boundary as pi find → fd: the harness sees the request and result; the operating system runs the process.'
+      codeSource: 'examples/apps/blind-tests/app.ts:88-89 · both checkpoints are createSession options',
+      code: [
+        'onPermissionRequest: policy.onPermissionRequest,   // parsed: read · write · shell · custom-tool',
+        'hooks: { onPreToolUse: policy.onPreToolUse },      // raw: toolName + toolArgs'
+      ],
+      footnote: 'The search, write, and shell rules are tested in examples/test/visibility.test.ts; the same policy file serves the fresh-eyes app.'
     }),
-    S('run-evidence', 3, 'Join decisions and execution records without confusing them', {
-      scene: 'evidence-rows', pill: 'Decide What It Sees · Evidence',
-      subtitle: 'The example log uses one sessionId across repository hooks, host policy, runtime, and app.',
+    S('host-boundary', 3, 'What the SDK can stop, and the one thing it cannot', {
+      scene: 'code-rows', pill: 'Decide What It Sees · Boundary',
+      subtitle: 'Every tool request reaches onPermissionRequest. Code inside an approved process makes none.',
+      columns: ['The agent', 'What the SDK hands your app', 'Stopped?'],
       rows: [
-        { label: 'Repository hook', detail: 'hook.end · preToolUse · success: true', proof: 'A hook ran; this is not the tool’s result.', z: 'remote' },
-        { label: 'Host policy', detail: 'kind: view · path: secrets/.env · decision: deny', proof: 'A decision record explains why a request was refused.', z: 'orange' },
-        { label: 'Runtime', detail: 'tool.complete · tool: view · success: true', proof: 'A tool execution result is distinct from a policy decision.', z: 'green' },
-        { label: 'App summary', detail: 'session-end · toolCalls · allow · deny', proof: 'Counts summarize the session; omit contents and raw output.', z: 'purple' }
+        { label: 'Writes a test file that reads src/', where: 'visibility.ts:126', code: '{ kind: "write", fileName, newFileContents }', proof: '✓ Yes. The app reads the file’s text, sees src/, and denies the write.', z: 'green' },
+        { label: 'Runs npm start', where: 'visibility.ts:137', code: '{ kind: "shell", fullCommandText: "npm start" }', proof: '✓ Yes. npm is not on the allowlist, so the app denies it.', z: 'green' },
+        { label: 'Runs node --test', where: 'visibility.ts:137', code: '{ kind: "shell", fullCommandText: "node --test …" }', proof: 'Approved. node is on the allowlist. This is the last request the SDK sees from this run.', z: 'local' },
+        { label: 'Test code reads a hidden file', code: '// nothing: the read happens inside node, not through a tool', proof: '✗ No. The SDK never hears about it; only the OS account or a container can stop it.', z: 'orange' }
       ],
-      footnote: 'Illustrative, redacted event shapes. Observed repository hooks ran 19 preToolUse times in fresh-eyes and 12 in blind tests; neither run reached for the database.'
+      footnote: 'To stop the last row, run the agent’s processes in a container that holds only the files it may see.'
     }),
-    S('part-4', 4, 'Own It', {
+    S('run-evidence', 3, 'After the run, one log tells you what was blocked, what ran, and how it went', {
+      scene: 'code-rows', pill: 'Decide What It Sees · Evidence',
+      subtitle: 'The app writes every record to one file per run. Each record answers one question.',
+      columns: ['What you want to know', 'The line that records it', 'What the record says'],
+      rows: [
+        { label: 'What did my policy block, and why?', where: 'visibility.ts:99', code: 'rules.log?.({ layer, kind, subject, decision: "deny", rule })', proof: 'The request, the rule it hit, and the decision.', z: 'orange' },
+        { label: 'What did the agent actually run?', where: 'run-log.ts:19', code: ['session.on("tool.execution_complete", (e) =>', '  emit({ toolCallId: e.data.toolCallId, success: e.data.success }))'], proof: 'Each tool call that ran, and whether it succeeded.', z: 'green' },
+        { label: 'Did the repo’s own hooks run?', where: 'run-log.ts:23', code: ['session.on("hook.end", (e) =>', '  emit({ hook: e.data.hookType, success: e.data.success }))'], proof: 'Which hook ran. Its success means the hook ran, not that the tool did.', z: 'remote' },
+        { label: 'How did the whole run go?', where: 'app.ts:117', code: 'log.emit({ event: "session-end", toolCalls, ...policy.counts })', proof: 'Tool calls, allows, and denies, as counts.', z: 'purple' }
+      ],
+      footnote: 'No record holds file contents or command output. Observed: 12 repository hook checks ran in the blind-tests run.'
+    }),
+    S('run-log-lines', 3, 'What the log looks like: six lines from a blind-tests run', {
+      scene: 'jsonl-file', pill: 'Decide What It Sees · Evidence',
+      subtitle: 'One file per run. Each line answers one of the questions on the last slide.',
+      file: 'examples/.runs/blind-tests-<timestamp>/events.jsonl',
+      lines: [
+        {
+          "tag": "repo hook",
+          "z": "remote",
+          "line": "{\"layer\":\"repo-hook\",\"event\":\"hook.end\",\"sessionId\":\"7f3a…\",\"hook\":\"preToolUse\",\"success\":true,\"decision\":null}"
+        },
+        {
+          "tag": "runtime",
+          "z": "green",
+          "line": "{\"layer\":\"runtime\",\"event\":\"tool.start\",\"sessionId\":\"7f3a…\",\"tool\":\"create\",\"toolCallId\":\"call_41\"}"
+        },
+        {
+          "tag": "runtime",
+          "z": "green",
+          "line": "{\"layer\":\"runtime\",\"event\":\"tool.complete\",\"sessionId\":\"7f3a…\",\"toolCallId\":\"call_41\",\"success\":true}"
+        },
+        {
+          "tag": "host policy",
+          "z": "orange",
+          "line": "{\"source\":\"host-policy\",\"layer\":\"pre-tool\",\"kind\":\"view\",\"subject\":\"node/backend/__tests__/readme.md\",\"decision\":\"deny\",\"rule\":\"hidden\"}"
+        },
+        {
+          "tag": "host policy",
+          "z": "orange",
+          "line": "{\"source\":\"host-policy\",\"layer\":\"permission\",\"kind\":\"shell\",\"subject\":\"git status\",\"decision\":\"deny\",\"rule\":\"command-not-allowed:git\"}"
+        },
+        {
+          "tag": "app",
+          "z": "purple",
+          "line": "{\"layer\":\"host\",\"event\":\"rerun\",\"passing\":10,\"failing\":2}"
+        }
+      ],
+      footnote: 'Illustrative lines with fields exactly as the code writes them; values from the 2026-10-26 run. ts trimmed, IDs shortened.'
+    }),
+    S('part-4', 4, 'Controls and Ideas', {
       scene: 'opener',
-      subtitle: 'Account for controls other people own, then give each report a reader and decision owner.',
+      subtitle: 'Check the controls around your harness, then pick the first app to embed it in.',
       cards: [
-        { icon: '🏢', title: 'Surrounding controls', blurb: 'Identity, model, hooks, billing, process' },
+        { icon: '🏢', title: 'Surrounding controls', blurb: 'Access, models, billing, hooks' },
         { icon: '✅', title: 'Pre-flight', blurb: 'Pin, bound, test, and verify' },
-        { icon: '👤', title: 'Named owner', blurb: 'Someone accepts or routes every report' }
+        { icon: '💡', title: 'App ideas', blurb: 'Where to embed it next' }
       ],
-      terminal: { context: 'A shared harness has an owner', detail: 'Which job do you take over?' }
+      terminal: { context: 'Controls before you share it · ideas for where to start', detail: 'Which method will you expose first?' }
     }),
     S('surrounding-controls', 4, 'Different owners control different boundaries', {
-      scene: 'detail-rows', pill: 'Own It · Surrounding Controls',
+      scene: 'detail-rows', pill: 'Controls and Ideas · Surrounding Controls',
       subtitle: 'Verify the effective controls for the identity and runtime your app uses.',
       columns: ['Decision', 'Owner / control point', 'What to verify'],
       rows: [
@@ -352,47 +501,42 @@
       ],
       footnote: 'Machine policy-hook locations and disableAllHooks behavior described here are Copilot CLI-specific.'
     }),
-    S('preflight', 4, 'Before sharing, pin it, bound it, test it, and name an owner', {
-      scene: 'scorecard', pill: 'Own It · Pre-flight',
-      subtitle: 'A useful pre-flight turns the host’s claims into checks another person can repeat.',
+    S('preflight', 4, 'Before someone else runs it: four checks', {
+      scene: 'scorecard', pill: 'Controls and Ideas · Pre-flight',
+      subtitle: 'We want the next person to get the same result inside the same limits. These four checks make that true.',
       cards: [
-        { icon: '📌', title: 'Pin and identify', description: 'Record the SDK and runtime versions; start from a clean, pinned checkout.' },
-        { icon: '⏱️', title: 'Bound the session', description: 'Set a tool budget and wait timeout; dispose sessions and processes in finally.' },
-        { icon: '🧪', title: 'Test the rules', description: 'Unit-test visibility rules with real request shapes; enable repository hooks.' },
-        { icon: '👤', title: 'Name the owner', description: 'Confirm authentication, models, and billing; route each report to a decision owner.' }
+        { icon: '📌', title: 'Make runs repeatable', description: 'Pin the SDK version and start each run from a clean checkout, so results reproduce.' },
+        { icon: '⏱️', title: 'Put limits on each run', description: 'Cap tool calls and wait time, and close the session even when the run fails.' },
+        { icon: '🧪', title: 'Test the policy itself', description: 'Unit-test your permission rules with real request shapes before any agent meets them.' },
+        { icon: '👤', title: 'Check who it runs as', description: 'Confirm sign-in, models, and billing for real users, and name who reads each report.' }
       ]
     }),
-    S('apps-to-embed', 4, 'Start with one method in a tool your team already owns', {
-      scene: 'app-ideas', pill: 'Own It · Transfer',
-      subtitle: 'Each idea retains its app’s permissions, checks, and review decision.',
+    S('apps-to-embed', 4, 'Where the model earns its place: six apps to embed it in', {
+      scene: 'app-ideas', pill: 'Controls and Ideas · Ideas',
+      subtitle: 'Read-only tools plus a question that takes judgment: the model connects and drafts; a person acts.',
       cards: [
-        { title: 'CI console', detail: 'rerunTest and compareRuns; repeated evidence informs the diagnosis.', z: 'local' },
-        { title: 'Dependency portal', detail: 'Isolated upgrade work; the app reruns checks and a person reviews.', z: 'remote' },
-        { title: 'Release dashboard', detail: 'Read readiness; service retains deployment approval.', z: 'purple' },
-        { title: 'Runbook tool', detail: 'Rehearse in a disposable environment; report unclear steps.', z: 'orange' },
-        { title: 'Learning app', detail: 'Isolate submitted code; the app keeps answer keys and records grades.', z: 'github' },
-        { title: 'Developer portal', detail: 'Begin with one stage; app-owned gates connect later handoffs.', z: 'green' }
+        { icon: '🚨', title: 'On-call / incident app', ask: 'What changed right before checkout errors spiked?', adds: 'Lines up alerts, deploys, and flag flips into one timeline and names the likely cause.', tools: 'getAlerts · recentDeploys · flagHistory', human: 'rollback, status post', z: 'orange' },
+        { icon: '📊', title: 'Metrics app', ask: 'Why did signups drop on Tuesday?', adds: 'Picks the slices to compare, runs them, and explains the drop in two sentences.', tools: 'queryMetric(metric, dimension, range)', human: 'what goes to leadership', z: 'local' },
+        { icon: '🛡️', title: 'Security portal', ask: 'Does this CVE actually reach our code?', adds: 'Reads the advisory, finds the call sites, and argues reachable or not with file references.', tools: 'getAdvisory · repo search', human: 'dismiss or fix', z: 'remote' },
+        { icon: '🔀', title: 'Code review queue', ask: 'Which of these 12 PRs is riskiest to merge today?', adds: 'Ranks them by blast radius from changed paths, owners, and test coverage.', tools: 'listPRs · ownersFor · coverageFor', human: 'who reviews, merge', z: 'github' },
+        { icon: '🚀', title: 'Release dashboard', tag: 'Slides 14–21', ask: 'What blocks v2.4, and what is the next step?', adds: 'Connects the failing test to the PR behind it and drafts the go/no-go note.', tools: 'release_readiness', human: 'deploy approval', z: 'purple' },
+        { icon: '📘', title: 'Fresh-eyes docs check', tag: 'Runs today', ask: 'Can a new hire set this up from the docs alone?', adds: 'Follows the docs literally in a clean checkout. Observed: three real findings.', tools: 'report_friction · source hidden', human: 'the docs fix', z: 'green' }
       ],
-      footer: 'Transfer prompt: which existing method, useful question, authority check, and evidence owner fit your workflow?'
+      footer: 'Your turn: which app already has the data, and which question takes a person an hour to answer today?'
     }),
-    S('before-after', 0, 'From watching a loop to hosting one in your app', {
-      pill: 'The Value Recap',
-      before: [
-        'The agent’s loop is hidden behind a prompt',
-        'A useful app method is disconnected from the agent',
-        'Permission and service authorization blur together',
-        'The agent’s summary stands in for evidence'
+    S('before-after', 0, 'What changes when your app hosts the loop', {
+      scene: 'recap', pill: 'The Value Recap',
+      beforeLabel: 'Agent in a chat window', afterLabel: 'Agent hosted in your app',
+      rows: [
+        { job: 'Loop', z: 'local', before: 'A black box behind a prompt', after: 'Five named jobs, each with a hook you can use' },
+        { job: 'Tools', z: 'github', before: 'Cannot reach your app’s data', after: 'Your existing methods become narrow, named tools' },
+        { job: 'Control', z: 'orange', before: 'Approving a tool feels like authorizing a user', after: 'The SDK checks the tool; your service checks the person' },
+        { job: 'Evidence', z: 'green', before: 'You take the agent’s word for what it did', after: 'One log shows what was blocked, what ran, and the result' }
       ],
-      after: [
-        'Name five jobs and choose where to step in',
-        'Expose one selected method through a named tool',
-        'Keep session permission and user authorization distinct',
-        'Use events, service records, and human review'
-      ],
-      metrics: [
-        { value: '~170', detail: 'lines in pi runLoop, approximately' },
-        { value: '5 jobs', detail: 'places to reason about the harness' },
-        { value: '1 method', detail: 'a narrow starting scope for an app' }
+      stats: [
+        { value: '~160', detail: 'lines: the whole pi loop', z: 'purple' },
+        { value: '1 option', detail: 'per job in the Copilot SDK', z: 'remote' },
+        { value: '2 problems', detail: 'found by a tester that never saw the code', z: 'green' }
       ]
     }),
     S('today', 0, 'Make the next step small and inspectable', {
@@ -408,7 +552,7 @@
       pill: 'Sources · verified 2026-10-26',
       groups: [
         { title: 'pi and Copilot SDK', z: 'local', items: [
-          { href: 'https://github.com/earendil-works/pi/tree/f9daca3480732d0042b1df3a6e27221f597a620d', label: 'pi coding agent at f9daca3', description: 'Pinned MIT source excerpts: loop, tools, control, evidence' },
+          { href: 'https://github.com/earendil-works/pi/tree/f9daca3480732d0042b1df3a6e27221f597a620d',           label: 'pi coding agent at f9daca3 (MIT license)', description: 'Pinned source for every pi excerpt: loop, tools, control, evidence' },
           { href: 'https://github.com/github/copilot-sdk', label: 'GitHub Copilot SDK', description: 'Architecture, sessions, tools, hooks, and examples' },
           { href: 'https://www.npmjs.com/package/@github/copilot-sdk', label: '@github/copilot-sdk 1.0.26', description: 'Version used by the examples and recorded runs' },
           { href: 'https://github.com/github/copilot-sdk/tree/main/docs/auth', label: 'SDK authentication', description: 'Signed-in user, token, and BYOK routes' }
@@ -423,13 +567,12 @@
     }),
     S('thanks', 0, 'Harness Fundamentals', {
       chrome: false, visual: 'harness-loop',
-      subtitle: 'Getting Inside the Agent Loop',
+      subtitle: 'Which method in an app you own could become a useful AI tool?',
       cards: [
         { value: '5 jobs', detail: 'Loop, context, tools, control, evidence' },
         { value: 'Your app', detail: 'A custom tool calls a method you already own' },
         { value: 'Your boundary', detail: 'Keep user authority, approvals, and evidence explicit' }
-      ],
-      prompt: 'Which method in an app you own could become a useful AI tool?'
+      ]
     })
   ];
 
@@ -438,7 +581,7 @@
       seconds: 20,
       notes: [
         '"A harness makes the agent loop visible and gives an existing app a way to use its methods through a tool."',
-        'The ring shows the repeated move: model request, tool action, result, next turn.',
+        'The inner ring is one turn: context feeds the model, control gates each requested tool, and tool results return for the next turn. The outer ring is the run, from prompt to final answer; the loop job decides whether another turn starts.',
         '→ Start with the question a developer or platform engineer asks when an agent needs to enter their own workflow.'
       ],
       know: ['This is a practitioner talk about the GitHub Copilot SDK at version 1.0.26 and a read-only source reading of pi pinned at f9daca3.'],
@@ -447,20 +590,20 @@
     'core-question': {
       seconds: 45,
       notes: [
-        '"The question is how to change the loop without giving away the controls the application already owns."',
-        'Point to the five route labels, then the app-method and named-owner outcomes.',
+        '"A harness is the code around the model that runs the loop. You care when your own app could host that loop."',
+        'Point to the five job labels, then read the three if-cards: an app with answers, a repeating check, and rules you own. Each one maps to an example later in the talk.',
         'We will read pi first, sketch an existing release dashboard, and then use the same host to run an independent blind test.'
       ],
-      know: ['Audience: developers and platform engineers already using Copilot in an editor or CLI, plus architects choosing what an embedded agent may request. The decision is which harness job to own and what the host lets the agent see, use, and do.'],
+      know: ['Audience: developers and platform engineers already using Copilot in an editor or CLI who want the agent inside their own tools. The if-cards map to the release dashboard (Part 2), the blind-test and fresh-eyes apps (Part 3), and the visibility policy and run log (Parts 3 and 4).'],
       sources: [SRC.pi, SRC.sdk]
     },
     contents: {
       seconds: 30,
       notes: [
-        '"We will name the loop’s jobs, take those jobs into an app, test a deliberately restricted view, and finish with ownership."',
-        'The openers begin on slides 4, 11, 19, and 24. Click a route card or use the keyboard to move between them.'
+        '"Part 1 answers what a harness is. Parts 2 and 3 answer why you would host one: your app’s methods become tools, and your app decides what the agent sees. Part 4 covers the controls around it and ideas for where to start."',
+        'The openers begin on slides 4, 12, 22, and 29. Click a route card or use the keyboard to move between them.'
       ],
-      know: ['The four-part order is preserved from the approved recipe: What a Harness Is; Drive GitHub’s Harness; Decide What It Sees; Own It.'],
+      know: ['The four-part order is preserved from the approved recipe: What a Harness Is; Drive GitHub’s Harness; Decide What It Sees; Controls and Ideas.'],
       sources: [SRC.pi, SRC.sdk, SRC.visibility]
     },
     'part-1': {
@@ -492,7 +635,7 @@
         'Queued steering messages can join before another turn. Follow-up messages can restart the outer loop; otherwise it breaks.',
         '→ The next question is what context that next request receives.'
       ],
-      know: ['pi’s runLoop is approximately 170 lines. The excerpt in the source README was trimmed from agent-loop.ts around L188-L337. Tool-call batches can terminate; tool results are pushed into context. People can steer mid-run through steering and follow-up messages.'],
+      know: ['pi’s runLoop spans agent-loop.ts L172-L330, about 160 lines. The excerpt is trimmed from L188-L330. Tool-call batches can terminate; tool results are pushed into context. People can steer mid-run through steering and follow-up messages.'],
       sources: [SRC.pi]
     },
     'pi-context': {
@@ -507,15 +650,25 @@
       sources: [SRC.pi]
     },
     'pi-tools': {
-      seconds: 145,
+      seconds: 110,
       notes: [
         '"A tool is a schema the model fills in plus code the harness runs."',
         'For write, point from path and content to the prompt guidance, mutation queue, abort checks, and swappable operations.',
-        'find illustrates a different boundary: ensureTool locates fd and spawn starts it. The harness validates the call and sees the result; fd and the operating system govern execution.',
-        '→ That boundary makes the next question practical: who can block the call?'
+        '→ write is code pi ships. The next question is where else tools come from.'
       ],
-      know: ['pi write.ts is 97 lines and contains no OS command. Its schema has path and content; its prompt contribution says to create or overwrite files and use write for new files or complete rewrites. The executor resolves the path, serializes writes per file, checks cancellation around directory creation, then writes through ops. find.ts can use custom glob ops or call ensureTool("fd") and spawn. A host that needs end-to-end search control can supply custom glob operations.'],
+      know: ['pi write.ts is 97 lines and contains no OS command. Its schema has path and content; its prompt contribution says to create or overwrite files and use write for new files or complete rewrites. The executor resolves the path, serializes writes per file, checks cancellation around directory creation, then writes through ops.'],
       sources: [SRC.pi]
+    },
+    'pi-tool-sources': {
+      seconds: 125,
+      notes: [
+        '"A harness can bake a tool in, borrow a program it finds on the host, or run a tool you register. The model sees the same kind of contract for all three."',
+        'Built in: write is harness code from schema to file. Found on host: find calls ensureTool to locate fd, then spawns it; the harness validates the call and reads the result, while fd and the operating system run the search.',
+        'Registered by you: a pi extension calls registerTool with a definition, and its execute function is your code. That is the door for tools that call your own app or endpoint.',
+        '→ Hold that third row. In Part 2 the SDK version wraps a release service method you already own.'
+      ],
+      know: ['find.ts can use custom glob ops instead of fd; the default calls ensureTool("fd") (L172) and spawn (L216). A host that needs end-to-end search control can supply custom glob operations. registerTool is declared on the extension API in packages/coding-agent/src/core/extensions/types.ts L1675-L1677. In the Copilot SDK, the equivalent is a custom tool passed to the session; slide 17 shows one that calls releaseService.getReadiness.'],
+      sources: [SRC.pi, SRC.sdk]
     },
     'pi-control': {
       seconds: 145,
@@ -552,13 +705,37 @@
     'sdk-map': {
       seconds: 145,
       notes: [
-        '"The five jobs are still there; the SDK gives the host configuration and event surfaces for each."',
-        'Move down the rows. The SDK starts sessions, the app configures context and tools, callbacks govern requests, and events feed the UI.',
-        'Repository hooks add a floor only when the app opts in. Service methods still own domain authorization and results.',
-        '→ The first integration job is to start and stop the session cleanly.'
+        '"The five jobs from pi are all still here. The difference is who writes the loop: in pi you do; with the SDK the Copilot runtime does, and your app passes one option or call per job."',
+        'Read across each row, left to right. Loop: a while loop you own becomes sendAndWait. Context: pi makes you maintain the message list with transformContext; SDK users write no message code because the runtime maintains and compacts history by default. Instructions still come from systemMessage, covered on the Context slide. Tools: registerTool becomes defineTool. Control: beforeToolCall becomes onPermissionRequest. Evidence: subscribe becomes session.on.',
+        'Simpler syntax does not move authority. SDK hooks and opted-in repository hooks add more control points, and service methods still own domain authorization and results.',
+        '→ So where would you host this? Start with an app that already has the answer.'
       ],
-      know: ['Documented SDK architecture: application → SDK → JSON-RPC → Copilot runtime. CopilotClient starts and stops the runtime by default. Claims about the runtime’s internal loop remain out of scope. The SDK also supports structured sendAndWait results when passed a schema.'],
-      sources: [SRC.sdk, SRC.npm]
+      know: ['Documented SDK architecture: application → SDK → JSON-RPC → Copilot runtime. CopilotClient starts and stops the runtime by default. Claims about the runtime’s internal loop remain out of scope. SDK calls on this slide match examples/sdk-quickstart/01 through 05 at SDK 1.0.26. pi names match the pinned source: runLoop and transformContext in agent-loop.ts, registerTool in extensions/types.ts L1675, beforeToolCall, and subscribe. The SDK also supports structured sendAndWait results when passed a schema.'],
+      sources: [SRC.sdk, SRC.npm, SRC.examples, SRC.pi]
+    },
+    'sdk-why': {
+      seconds: 90,
+      notes: [
+        '"A simple, useful first place to embed the SDK is a release dashboard. On release day the question is always the same: are we ready, and if so, ship it."',
+        'We assume three things already exist. First, an app or API that knows who may act: sign-in, roles, permissions. Second, something that gives a good answer to “ready?”: for example, a Salesforce change record as the go/no-go signal, exposed through a readiness method. Third, a way to “do it”: for example, a GitHub Actions deploy workflow.',
+        'Today a release engineer stitches those together by hand: check the go/no-go record, check the pipeline, ask who can approve. Embedded in the dashboard, the agent answers “What blocks v2.4?” as that engineer, from live data, and points to the deploy step. A release owner still approves the run.',
+        'This is the first if-card from the core question: if your app has answers. The rest of Part 2 builds the “ready?” tool; the deploy step stays behind its existing approval.',
+        '→ Before the how, one question every team asks: who needs a license?'
+      ],
+      know: ['The release dashboard is an integration sketch, not an observed run. Salesforce and GitHub Actions are illustrative examples of a go/no-go system of record and a deploy mechanism; substitute ServiceNow, Jira, Azure Pipelines, or an internal API. releaseService.getReadiness(user, releaseId) is an application method in the sketch, not an SDK API. GitHub Actions environments can require reviewers before a deployment job runs, which keeps “do it” a human-approved step. Later slides in this part show the session, context, tool, control, and evidence wiring for the “ready?” half.'],
+      sources: [SRC.sdk]
+    },
+    'sdk-license': {
+      seconds: 90,
+      notes: [
+        '"The first question every team asks: does everyone who uses my app now need a Copilot license? Yes, unless you bring your own model key."',
+        'Row one: each session runs with the signed-in user’s GitHub token, so that person needs Copilot, and usage counts against their plan and their org’s policy. You get per-person attribution for free.',
+        'Row two: bring your own key. The SDK talks to your OpenAI, Azure, Foundry, or Anthropic deployment and bypasses Copilot authentication, so no Copilot license is involved; your model provider bills you.',
+        'For the dashboard, the choice is attribution and billing, not capability. Either way, the service still checks the dashboard user, as the control slide shows.',
+        '→ Now the how: the dashboard starts a session and sends the question.'
+      ],
+      know: ['Source: copilot-sdk docs/auth/authenticate.md, the “Copilot Subscription Required” column: GitHub signed-in user, Yes; GitHub OAuth App, Yes; environment variables, Yes; BYOK, No. byok.md: BYOK bypasses GitHub Copilot authentication and bills directly with the model provider. multi-tenancy.md: shared servers use a per-session GitHub token or rotating provider so sessions do not inherit another user’s identity, and mode: "empty" instead of the default CLI mode. If asked about org billing without user seats: server-to-server-tokens.md documents a GitHub App created and installed on the organization with the Copilot Requests permission, whose one-hour installation tokens bill the organization with no user subscription when an org policy allows it (in GitHub Actions, GITHUB_TOKEN with copilot-requests: write). It is left off the slide because few teams have or can create such an App. Copilot plan pricing and premium-request rules change over time; send billing specifics to current GitHub billing docs. Verified 2026-11-04.'],
+      sources: [SRC.authMethods, SRC.s2s, SRC.byok, SRC.tenancy]
     },
     'sdk-loop': {
       seconds: 145,
@@ -574,12 +751,13 @@
     'sdk-context': {
       seconds: 145,
       notes: [
-        '"The release assistant’s instructions name its role, the source of readiness facts, and what to do when those facts are missing."',
-        'append adds guidance. customize edits named sections while keeping the rest of the SDK prompt. replace supplies only the host’s text.',
-        'replace removes the SDK prompt guardrails, including security restrictions. Instructions steer; permission and service code enforce.',
+        '"pi let the host rebuild the whole message list. The SDK splits that job: you write the instructions and each request; the runtime manages the history."',
+        'Instructions: systemMessage. append adds guidance; customize edits named sections and keeps the rest of the SDK prompt, including safety sections; replace supplies only the host’s text and drops those guardrails. For the dashboard, append a release-assistant role that names release_readiness as the source of facts.',
+        'This request: the prompt and any attachments, here the engineer’s question and the release it concerns.',
+        'History: there is no per-request transform hook like pi’s transformContext. Infinite sessions are on by default and compact in the background; session.compaction_start and compaction_complete events show when it happens, and infiniteSessions thresholds tune it.',
         '→ Now turn the existing service method into one named tool.'
       ],
-      know: ['Documented systemMessage modes: append, customize, and replace. customize sections include identity, tone, environment_context, safety, tool_instructions, custom_instructions, and others. Section actions include replace, remove, append, prepend, preserve, or a function that receives current text. custom_instructions can add application guidance beside repository rules. Observed in two runs of 02-context.ts: the first cited a code file as documentation; the rerun cited package.json for Node 20+ and labeled code/config steps undocumented. A softer attitude-only instruction produced no visible change.'],
+      know: ['Documented systemMessage modes: append, customize, and replace. customize sections include identity, tone, environment_context, safety, tool_instructions, custom_instructions, and others. Section actions include replace, remove, append, prepend, preserve, or a function that receives current text. MessageOptions include prompt and attachments. infiniteSessions defaults to enabled; backgroundCompactionThreshold (for example 0.8) starts background compaction and bufferExhaustionThreshold (for example 0.95) blocks until compaction completes; enabled: false turns it off. Observed in two runs of 02-context.ts: the first cited a code file as documentation; the rerun cited package.json for Node 20+ and labeled code/config steps undocumented. A softer attitude-only instruction produced no visible change.'],
       sources: [SRC.sdk, SRC.npm]
     },
     'sdk-tools': {
@@ -596,13 +774,13 @@
     'sdk-control': {
       seconds: 145,
       notes: [
-        '"Approving a custom-tool request lets this session request that operation; it does not authorize the app user."',
-        'The service checks identity and release access with the request arguments together. Any deployment service retains approval for the exact release and target.',
-        'managedApprovalRequired needs a human path. This minimal handler rejects it and directs the user to the release owner.',
-        'A refusal needs useful feedback; a service failure stays visible so the user and agent can recover.',
+        '"Two engineers ask the same question, and the model makes the same tool request. Gate 1 lets both through, because it only sees the tool name. Gate 2 is your service, and it knows who is asking."',
+        'Walk the first row left to right: on the team, approve-once, allowed, blockers on the page. Then the second row: same request, same approve-once, and the service says no. The engineer sees a clear refusal and where to go next.',
+        'That is why approving a tool is not authorizing a user. The handler in the code panel allows exactly one custom tool and rejects shell, write, and everything else with feedback the model can act on.',
+        'The service takes the user from the app session, never from the model’s arguments, and its refusal stays visible so the agent can explain it. A schema checks input shape; it does not authorize a release ID.',
         '→ The app also needs to distinguish execution progress from the business result.'
       ],
-      know: ['PermissionRequest kinds include read with path; write with fileName and newFileContents; shell with fullCommandText, commands, possiblePaths, and hasWriteFileRedirection; and custom-tool with toolName. SDK hooks see the calls they receive, not every internal operation inside a custom handler. Do not treat approve-once as business approval. Observed in 04-control.ts: a shell request to count TypeScript lines was rejected; the agent switched to view, made six approved reads, and returned counts. FanHub’s repository deny also held in a precedence probe while the SDK onPreToolUse returned allow; SDK callbacks did not run for that call.'],
+      know: ['PermissionRequest kinds include read with path; write with fileName and newFileContents; shell with fullCommandText, commands, possiblePaths, and hasWriteFileRedirection; and custom-tool with toolName. Handlers return approve-once or reject with feedback (examples/sdk-quickstart/04-control.ts). When a request carries managedApprovalRequired, a human approval path is needed; a minimal handler rejects it and directs the user to the release owner. SDK hooks see the calls they receive, not every internal operation inside a custom handler. Do not treat approve-once as business approval. Observed in 04-control.ts: a shell request to count TypeScript lines was rejected; the agent switched to view, made six approved reads, and returned counts. FanHub’s repository deny also held in a precedence probe while the SDK onPreToolUse returned allow; SDK callbacks did not run for that call. The two-engineer rows are an illustrative sketch, not an observed run.'],
       sources: [SRC.sdk, SRC.npm, SRC.hooks]
     },
     'sdk-evidence': {
@@ -620,12 +798,14 @@
     'release-flow': {
       seconds: 145,
       notes: [
-        '"Here the engineer asks what blocks v2.4, and the model requests the one named readiness tool."',
-        'Read the returned value: ready is false and the example blocker is an integration-test failure. The tool can still execute successfully.',
-        'The dashboard explains the result; the release owner decides what happens next. These field values are illustrative, not a recorded integration run.',
+        '"Up to now the tool has only looked things up. This is where the model earns its place: it reads what the tool returns and does the part the engineer used to do by hand."',
+        'Left: the dashboard as it exists. Each system reports its own status: go/no-go approved, one failing test, fourteen merged PRs, and a deploy button waiting on approval. Connecting them is the engineer’s job.',
+        'Right: the same page with an SDK session. One question, one call to release_readiness, which returns the raw facts: the failing test, the merged PRs, and the change-record status. The model does three things the tool cannot.',
+        'One: it explains the status in plain words. Two: it connects the failing test to the PR that most likely caused it, by reading the test failure beside the change list. Three: it drafts the next step and offers follow-ups, such as the go/no-go note or what changed since v2.3. A person sends the message and a release owner still approves the deploy.',
+        '“Likely cause” is an inference. The answer names the test and the PR so the engineer can verify it in one click, which is the verification habit this talk keeps coming back to.',
         '→ The same host can use a different view for a different question.'
       ],
-      know: ['The integration sketch’s releaseService.getReadiness(user, releaseId) validates the release ID, authorizes the authenticated app user, reads CI and approval state, returns permitted fields, and records the operation. A web backend hosts the SDK and forwards progress; credentials and authorization stay on the backend. Start read-only; verify current facts, unauthorized refusal, and distinct query failure versus unfavorable readiness. Route missing facts to the release owner.'],
+      know: ['Illustrative mockup, not a recorded run. In the sketch, releaseService.getReadiness(user, releaseId) validates the release ID, authorizes the authenticated app user, and returns permitted facts: change-record status, failing tests with their first failing commit, and PRs merged since the last release. The model’s value is synthesis over that result: plain-language explanation, cause correlation across fields, drafting, and follow-up questions in the same session. A second read-only tool, such as CI log excerpts, is a natural next step once the first is trusted; it widens what the model can correlate without widening what it can do. The action chips are app UI: drafting runs in the session, and sending or deploying stays a person’s click behind the app’s permissions and GitHub Actions environment approval. Start read-only; verify current facts, unauthorized refusal, and distinct query failure versus unfavorable readiness.'],
       sources: [SRC.sdk, SRC.npm]
     },
     'part-3': {
@@ -633,67 +813,95 @@
       notes: [
         '"Changing what the agent sees can make its report independent of the people who already know the implementation."',
         'The blind tester sees a contract and live API, not implementation or BUGS.md; a separate referee gets a different view.',
-        '→ One shared policy applies at two SDK checkpoints.'
+        '→ First, meet the app this whole part is about.'
       ],
       know: ['The second perspective example in the README is fresh-eyes onboarding: docs only, with source hidden. It remains supporting material rather than the primary section payoff.'],
       sources: [SRC.blind, SRC.fresh, SRC.visibility]
     },
     'visibility-policy': {
-      seconds: 165,
+      seconds: 150,
       notes: [
-        '"A hook sees raw tool arguments; the permission handler sees the runtime’s parsed request."',
-        'The hook can catch a search whose scope sweeps a hidden folder. The host can inspect read paths, write destinations and contents, and each command segment.',
-        'The host denies a test file that would read hidden source when executed. It also splits compound shell input outside quoted text and checks each executable.',
-        'Both behaviors are tested. The same 190-line policy serves fresh-eyes and blind tests with different predicates.',
-        '→ Now look at the host-rerun test result and the independent referee’s classification.'
+        '"Each row is a request the tester could make and the line in the app that decides it. A hook sees raw tool arguments; the permission handler sees the runtime’s parsed request."',
+        'Row one: grep across the whole repo. onPreToolUse sees the raw path, sweepsHidden notices it would include hidden folders, and the hook denies it with feedback to narrow the search. Row two: the only custom tool the policy approves is api_contract.',
+        'One write request deserves a closer look: the agent asks to write peek.test.js into the blind test folder, which is allowed, but that test’s code would read hidden source when it runs. The host reads newFileContents on the write request and denies it, so the file is never created.',
+        'The last row is a chained command. The host splits cd node/backend; npm start | tee log at the separators, outside quoted text, into cd, npm, and tee, and checks each against the blind tester’s allowlist. cd passes; npm and tee do not, so the whole request is denied and the feedback lists the allowed commands. An allowed first word cannot carry a disallowed program behind it.',
+        'The search, write, and shell rules are covered by visibility.test.ts; the custom-tool allowlist is a one-line set check. The same policy file serves the fresh-eyes app with different rules.',
+        '→ A host report is useful only when we name what remains beyond its reach.'
       ],
       know: ['createVisibilityPolicy accepts repoRoot, hidden, readable, writable, shellCommands, shellTextDeny, customTools, and hiddenFeedback. The blind tests expose only api_contract, built from SETUP.md with parenthetical bug hints removed; they hide node/backend/src, frontend, docs, other language tracks, the database, and Markdown including BUGS.md. They permit writes only under node/backend/__tests__/blind and allow shell commands for server/test use. A 5-command-shape test covers quoted separators and command segmentation. Fresh-eyes hides source, allows docs, package.json, .env.example, Dockerfiles, and scripts, writes only .env, excludes web tools, limits the session to report_friction, and uses an 80-call budget plus 20-minute wait.'],
       sources: [SRC.visibility, SRC.blind, SRC.fresh, SRC.examples]
     },
-    'blind-result': {
-      seconds: 165,
+    'blind-app': {
+      seconds: 90,
       notes: [
-        '"The host, not the agent, reran the suite: ten tests passed and two failed."',
-        'The first domain result is POST /api/characters returning 500; a separate read-only referee maps it to BUGS.md number 19, Missing Input Validation.',
-        'The second test expected seasonId filtering, but episodes from every season returned. SETUP.md documents seasonId while the route reads season_id; the referee finds no matching bug entry and labels it undocumented.',
-        'The runner’s TAP status is evidence about tests. The referee’s mapping is a separate interpretation, and the API owner decides which side changes.',
-        '→ A host report is useful only when we name what remains beyond its reach.'
+        '"Part 3 is about one program: the blind-tests app. It lives in this talk’s examples folder, clones FanHub, starts its API, and asks an agent to test that API without seeing the code."',
+        'Read it as the five jobs again, now in a real SDK app. Tools: one custom tool, api_contract, the tester’s only view of the API. Context: a customized system message that makes it a black-box tester. Control: one visibility policy that hides source, docs, and BUGS.md. Loop: a single sendAndWait. Evidence: the app reruns the tests itself, then a second, read-only referee session reads BUGS.md.',
+        'Everything on the next three slides points back to a line in this file.',
+        '→ Here is one real run of it.'
+      ],
+      know: ['examples/apps/blind-tests/app.ts is 180 lines. It imports prepareFanHub (clean clone of FanHub at 0ea9e78), createVisibilityPolicy, and createRunLog from host-kit, and its rules from apps/blind-tests/rules.ts. Line references on these slides are to that file at the current commit. The fresh-eyes app in the same folder reuses the policy with different rules and is supporting material in the README.'],
+      sources: [SRC.blind, SRC.visibility, SRC.examples]
+    },
+    'blind-result': {
+      seconds: 105,
+      notes: [
+        '"One real run of the app. The tester never saw the code, and it still found two real problems."',
+        'Session one, the tester, had only api_contract and the live API. It wrote five test files, twelve tests.',
+        'Then the app, not the agent, reran the suite: ten passed, two failed. We trust the rerun, not the tester’s own account of it.',
+        'Session two is the referee. It is read-only and may read BUGS.md. It mapped POST /api/characters returning 500 to bug number 19, Missing Input Validation. The second failure expected seasonId filtering; SETUP.md documents seasonId while the route reads season_id, and the referee found no matching bug entry.',
+        'Test status and the referee’s mapping are separate evidence. The API owner decides which side changes.',
+        '→ How does the app keep the tester blind? One policy, two SDK checkpoints.'
       ],
       know: ['Observed live run on 2026-10-26: @github/copilot-sdk 1.0.26, model auto, Node 24.22.1 on Windows, FanHub commit 0ea9e78. The host prepared a clean checkout and server on port 5299; on Node 22+ it installs better-sqlite3@^12 with --no-save because FanHub pins ^9 without a prebuilt binary, leaving package.json untouched. The blind app wrote five test files across characters, episodes, shows, quotes, and authentication; host rerun recorded 10 passing and 2 failing. The two denials were a view of a README in the test folder and git status. The README summary also pairs “18 tool calls” with “19 allowed and 2 denied,” which cannot be the same total; this slide omits that inconsistent counter. A second run varied, with 9 passing and 5 failing mapped to BUGS.md #9, #6, and #17, plus a test query-parameter choice noted by the referee. Agent output varies, so the host reruns and the referee is separate.'],
       sources: [SRC.blind, SRC.examples]
     },
     'host-boundary': {
-      seconds: 165,
+      seconds: 150,
       notes: [
-        '"The host governs mediated tool requests; once a process starts, the operating system governs its reach."',
-        'A node --test process can read what its OS account can access. Content inspection catches obvious readFileSync reach-ins, but a container is the hard boundary.',
-        'Other processes, users, and network access sit outside tool mediation. OS accounts, containers, and network rules govern them.',
-        'A failing test is a disagreement, not a verdict. The API owner decides whether the contract or code changes.',
+        '"This slide is the honest limit of everything we just built. The SDK can stop any request the agent makes. It cannot stop code that runs inside a process you already approved."',
+        'Rows one and two: the agent asks to write a test that reads src/, or to run npm start. Both arrive at onPermissionRequest as requests, with the file text or the command line, and the app denies them.',
+        'Row three: the agent asks to run node --test. node is allowed, so the app approves. That approval is the last thing the SDK sees.',
+        'Row four: inside that node process, test code can open any file the OS account can read, for example by building the path at runtime so the text check never matched it. That read is not a tool call, so no request ever reaches the SDK.',
+        'So the SDK policy shapes what the agent asks for; the OS account or a container is the only hard limit on what an approved process does. If you need a guarantee, the container holds only the files the agent may see.',
         '→ Keep the decision, execution, and owner visible in the run log.'
       ],
-      know: ['The blind host reruns tests itself and separates the read-only referee session from the black-box tester. The referee can inspect BUGS.md and source; that later reveal does not change what the tester saw. pi’s find-to-fd boundary gives the same pattern: the harness sees the request and result, while the OS runs the external process.'],
-      sources: [SRC.blind, SRC.pi]
+      know: ['In the SDK, a write permission request carries fileName and newFileContents; a shell request carries fullCommandText, commands, and possiblePaths (visibility.ts:126 and :137 handle them). The blind policy’s write-content check uses BLIND_TEXT_DENY regexes (src/, bugs.md, fanhub.db, readFile/readdir/child_process), which catch plain reach-ins; code that assembles names at runtime is outside what a text check can promise. Other processes, users, and network traffic outside the session are also never requests; accounts, containers, and network rules govern them. This is the same boundary as pi’s find → fd from Part 1, now in SDK terms. Which side of a failing test changes is the API owner’s decision, covered on the observed-result slide.'],
+      sources: [SRC.blind, SRC.visibility]
     },
     'run-evidence': {
-      seconds: 165,
+      seconds: 105,
       notes: [
-        '"One sessionId lets us line up a repository hook, a host decision, runtime activity, and the app’s summary."',
-        'Read the second and third rows separately: a deny is a decision; tool.complete is an execution outcome.',
-        'The example event shapes are illustrative and redacted. Keep names, rules, and counts; leave file contents and command output out.',
-        'The repository floor ran in both supporting apps: 19 preToolUse events in fresh-eyes and 12 in blind tests. Neither agent reached for the database, so the hook did not need to deny one.',
+        '"When someone asks what the agent did, you answer from this log, not from the agent’s summary."',
+        'Each row is a question you will actually get, and the one line in the app that answers it. What did the policy block and why? The policy’s own record. What actually ran? The SDK’s tool.execution_complete event. Did the repository’s hooks run? hook.end. How did the run go overall? The session-end counts.',
+        'Keep them as separate records. A hook’s success: true means the hook ran, not that the tool succeeded, and a tool’s success says nothing about whether your policy approved it. One file per run ties them together; the SDK’s own events also carry the sessionId.',
+        'Notice what the log leaves out: file contents and command output. Names, rules, and counts are enough to answer every question here.',
+        'In the blind-tests run, the repository’s own preToolUse hook ran 12 times; 19 in fresh-eyes. Neither agent reached for the database, so the hook never had to deny.',
+        '→ Here is what those lines look like in the file.'
+      ],
+      know: ['host-kit/run-log.ts subscribes with session.on to tool.execution_start, tool.execution_complete, hook.start, hook.end, and assistant.message, writes JSONL, and omits raw arguments; tool.execution_complete records toolCallId and success, not paths. The visibility policy writes its own decision records (layer, kind, subject, decision, rule) through its log callback. Repository hooks load only when createSession sets enableFileHooks: true, as the blind and fresh-eyes apps do. The hooks overlay protects node/backend/src/database/** and fanhub.db* when loaded. The repository preToolUse deny held while SDK onPreToolUse returned allow in a separate probe.'],
+      sources: [SRC.runLog, SRC.overlay, SRC.examples]
+    },
+    'run-log-lines': {
+      seconds: 75,
+      notes: [
+        '"This is what you actually open after a run. Six lines, read top to bottom."',
+        'Line one: the repository’s own preToolUse hook ran; decision null means it did not object. Lines two and three: the agent created a test file; tool.start and tool.complete share toolCallId call_41, and success true means the write ran.',
+        'Lines four and five are the two denials from the real run: a view of a README in the test folder, hidden because every Markdown file is, and git status, because git is not on the allowlist. Each names the rule it hit.',
+        'The last line is the app’s own rerun: ten passing, two failing. That is the number we trust, not the agent’s summary.',
+        'Notice what is missing everywhere: file contents and command output.',
         '→ Finish by naming the owners and controls around a harness someone else will run.'
       ],
-      know: ['host-kit/run-log.ts writes JSONL, attaches to tool.execution_start, tool.execution_complete, hook.start, hook.end, and assistant.message, and omits raw arguments. The app writes host policy decisions separately; the full run log can join them with runtime tool.complete and session-end summary by sessionId. The hooks overlay protects node/backend/src/database/** and fanhub.db* when loaded. The repository preToolUse deny held while SDK onPreToolUse returned allow in a separate probe.'],
-      sources: [SRC.runLog, SRC.overlay, SRC.examples]
+      know: ['Field shapes come from host-kit/run-log.ts (runtime and repo-hook lines, which carry sessionId), the visibility policy log callback wired in apps/blind-tests/app.ts (log.emit({ source: "host-policy", ...decision }), no sessionId), and app.ts rerun and session-end lines. emit prepends ts to every line; it is trimmed here for width. The repository preToolUse hook returns {} when it allows, so decision logs as null. Recorded 2026-10-26: two host denials (a view of a README in the test folder and git status) and a host rerun of 10 passing and 2 failing. The exact README path and the call ID are illustrative. On Windows, policy subjects are lowercased by toRel.'],
+      sources: [SRC.runLog, SRC.blind, SRC.visibility]
     },
     'part-4': {
       seconds: 20,
       notes: [
-        '"A shared harness enters controls that its author does not own, so the pre-flight names what to check and who accepts the result."',
-        'The report reader is explicit: docs owner for onboarding friction, API owner for contract failures.',
+        '"Two practical questions to finish: what already controls a harness before you share it, and where would you embed one first?"',
+        'Controls first: some are set by admins and platform teams, not by your code. Then a short pre-flight. Then a set of app ideas to take home.',
         '→ Start with the controls around the app.'
       ],
-      know: ['This closes on authority, verification, and transfer: use the user’s actual identity; test the policy; retain a human owner for every report.'],
+      know: ['Part 4 covers authority and transfer: the controls other teams already own around Copilot, a pre-flight that makes the harness’s claims checkable, and existing-app ideas. Each report still has a human reader, such as the docs owner for onboarding friction or the API owner for contract failures.'],
       sources: [SRC.hooks, SRC.policies, SRC.auth]
     },
     'surrounding-controls': {
@@ -711,35 +919,40 @@
     preflight: {
       seconds: 125,
       notes: [
-        '"Before another person runs the app, pin versions, bound the session, test the rules, and name who reads the report."',
-        'If a session-start note is enough, use a sessionStart hook. If one call must never run in every harness, use a repository or machine policy preToolUse hook and keep it fast.',
-        'Choose an SDK host when the workflow needs its own persona, tools, visibility rules, budget, or structured report; enable repository hooks when the repo floor applies.',
-        '→ Choose one existing app method and make its authority and evidence explicit.'
+        '"Before you hand this to someone else, four checks. The goal is simple: they get the same result you did, inside the same limits."',
+        'Repeatable: the blind-tests app clones FanHub at a pinned commit every time and writes that commit into its report. Add the SDK version too, so a surprising result can be rerun.',
+        'Limits: the app caps tool calls with TOOL_BUDGET and the wait with TIMEOUT_MS, aborts when the budget runs out, and disconnects the session whether the run succeeded or not.',
+        'Test the policy: visibility.test.ts feeds the policy real request shapes, a grep over the repo, a write that reads src, a chained shell command, and checks each decision without running an agent.',
+        'Who it runs as: the license slide again. Confirm the user’s sign-in, which models their org allows, and who is billed. Then name the person who reads each report: the API owner for contract failures, the docs owner for onboarding friction.',
+        '→ Now pick where to embed one first.'
       ],
-      know: ['The quickstarts use SDK 1.0.26; record SDK and runtime versions in reports. Start each run from a clean pinned checkout, bound calls and waits, and clean up in finally. Test every visibility rule against real PermissionRequest shapes. Confirm auth, model availability, and billing for actual users. A command preToolUse hook that crashes or exits non-zero denies; a timeout is fail-open, including policy hooks. Stdout carries one JSON object. The permissionDecisionReason is shown to the agent. FanHub’s tested hook completed in about 55 ms against a 5-second budget; this is one test observation, not a universal target.'],
+      know: ['The quickstarts use SDK 1.0.26; record SDK and runtime versions in reports. blind-tests/app.ts sets TOOL_BUDGET (default 120) and TIMEOUT_MS (default 20 minutes), calls session.abort() when the budget is reached, and disconnects both sessions and stops the client after the run. Test every visibility rule against real PermissionRequest shapes. If you also add repository hooks: a command preToolUse hook that crashes or exits non-zero denies, and a timeout is fail-open, including policy hooks; stdout carries one JSON object, and permissionDecisionReason is shown to the agent. FanHub’s tested hook completed in about 55 ms against a 5-second budget; one test observation, not a universal target. Choosing a mechanism: a sessionStart hook fits a session-start note; a repository or machine preToolUse hook fits a call that must never run in any harness; an SDK host fits a workflow that needs its own persona, tools, visibility rules, budget, or structured report.'],
       sources: [SRC.sdk, SRC.npm, SRC.hooks, SRC.examples]
     },
     'apps-to-embed': {
       seconds: 125,
       notes: [
-        '"The first place to look is an app your team already owns: its methods, identity checks, and interface are useful foundations."',
-        'A CI console can compare repeated reruns; one passing rerun does not identify a flaky-test cause. A dependency portal can isolate one upgrade and require a human branch review.',
-        'A release assistant can read readiness and draft a rollout, while the deployment service retains approval. A runbook drill belongs in a disposable environment.',
-        'A learning app isolates submitted code and keeps answer keys out of context and tools. A developer portal can coordinate stages, but each handoff needs an app-owned gate and durable record.',
-        '"Pick one existing method, one useful question, and the evidence a user needs to trust the result."'
+        '"The pattern that pays off: narrow, read-only tools over data your app already has, and a question that takes judgment to answer. The model connects and drafts; a person acts."',
+        'Incident app: alerts, deploys, and flag flips usually live in three tools. The model lines them up and says “the error spike started two minutes after the flag flipped.” Rollback stays a human click.',
+        'Metrics app: the tool takes a metric, a dimension, and a range from fixed lists, never raw SQL. The model chooses which slices to compare and explains the drop. A person decides what goes upstairs.',
+        'Security portal: the hard part of a CVE alert is reachability. The model reads the advisory, searches for the call sites, and makes the case with file references. Dismissing or fixing stays with the owner.',
+        'Code review queue: twelve open PRs, one reviewer. The model ranks them by blast radius from changed paths, code owners, and coverage. People still choose and merge.',
+        'The last two are not hypothetical. The release dashboard is the one we built in Part 2. Fresh-eyes runs today in this talk’s examples and found three real documentation problems in FanHub.',
+        '"Your turn: which app already has the data, and which question takes a person an hour to answer today?"'
       ],
-      know: ['Fresh-eyes is a supporting working app: it starts from a pinned clean FanHub clone; persona follows written docs literally; source is hidden; .env is the only writable path; an allowlist controls setup commands; web tools are excluded; report_friction records step, docSays, reality, doc, and severity. Bounds are 80 tool calls, 20 minutes, and cleanup of a listener on port 5265. Observed: 24 tool calls, 20 allowed, one denied, zero source reads, GET /api/characters returned 200, and three findings. Finding 1: node/SETUP.md says Node 18+; on Node 24 better-sqlite3 had no prebuilt binary and its source build needed Python. Finding 2: node/README.md calls Docker a prerequisite and gives port 3001, while SETUP.md says no Docker and uses 5265. Finding 3: docs give no native-install fallback; the agent recovered with npm exec --package=node@20. The denial was an ad-hoc Node archive download outside the command allowlist; the agent reported it and moved to an allowed route. The docs owner decides what to fix.'],
+      know: ['Cards A through D are illustrative designs; tool names are examples of narrow, read-only app methods. In each, consequential actions (rollback, refund, dismissing an alert, merging, deploying) stay as app UI behind existing permissions. queryMetric takes enumerated metric and dimension values so the model cannot write arbitrary queries. Fresh-eyes is a supporting working app: it starts from a pinned clean FanHub clone; persona follows written docs literally; source is hidden; .env is the only writable path; an allowlist controls setup commands; web tools are excluded; report_friction records step, docSays, reality, doc, and severity. Bounds are 80 tool calls, 20 minutes, and cleanup of a listener on port 5265. Observed: 24 tool calls, 20 allowed, one denied, zero source reads, GET /api/characters returned 200, and three findings. Finding 1: node/SETUP.md says Node 18+; on Node 24 better-sqlite3 had no prebuilt binary and its source build needed Python. Finding 2: node/README.md calls Docker a prerequisite and gives port 3001, while SETUP.md says no Docker and uses 5265. Finding 3: docs give no native-install fallback; the agent recovered with npm exec --package=node@20. The docs owner decides what to fix.'],
       sources: [SRC.fresh, SRC.visibility, SRC.examples]
     },
     'before-after': {
       seconds: 45,
       notes: [
-        '"The shift is from a black-box request to a named job, a narrow method, and an outcome someone can inspect."',
-        'The approximate 170-line count belongs to pi’s source loop. Five jobs are the analysis model, and one existing method is a bounded starting scope.',
-        '→ Here is a small sequence for applying the choice in your own repository.'
+        '"Here is the whole talk in four rows: what changes when the loop runs inside your app instead of behind a chat prompt."',
+        'Read each row as a job. Loop: you can name what happens on every turn. Tools: your methods become the agent’s tools. Control: tool permission and user authorization stay separate. Evidence: you read the log, not the agent’s summary.',
+        'The three numbers are the proof points: pi’s loop fits in about 160 lines, the SDK gives you one option per job, and the blind tester found two real problems, one known bug and one docs-versus-code mismatch, without ever seeing the code.',
+        '→ Here is a small sequence for applying this in your own repository.'
       ],
-      know: ['The source README describes pi runLoop as about 170 lines. It is an approximate source-size observation, not a performance metric.'],
-      sources: [SRC.pi, SRC.sdk]
+      know: ['pi runLoop spans L172-L330 at f9daca3, about 160 lines; an approximate source-size observation, not a performance metric. “One option per job” refers to the slide 13 mirror (sendAndWait, infiniteSessions, defineTool, onPermissionRequest, session.on). The two problems are from the observed 2026-10-26 blind-tests run: POST /api/characters returned 500 (BUGS.md #19) and the seasonId filter mismatch (undocumented).'],
+      sources: [SRC.pi, SRC.sdk, SRC.blind]
     },
     today: {
       seconds: 115,

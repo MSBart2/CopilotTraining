@@ -28,7 +28,7 @@ and the ## headings; the portfolio inventory reads the frontmatter.
 # [Feature or Capability]: [Compelling Subtitle]
 
 > **The Question This Talk Answers:**
-> *"[One short question the learner already asks, in their own words, about getting more of what they want or less of what they don't. See the Core Question Contract in AGENTS.md.]"*
+> *"[One short question the learner already asks, in their own words, about getting more of what they want or less of what they don't. See the Core Question section of AGENTS.md.]"*
 
 **Duration:** [XX] minutes | **Audience:** [Who faces this decision, in which workflow]
 

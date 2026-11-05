@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-10-31
+updated: 2026-11-04
 section: "Extend and Embed"
 audience: [developer, platform-engineer, architect]
 level: applied
@@ -22,6 +22,9 @@ references:
   - url: https://github.com/github/copilot-sdk/tree/main/docs/auth
     label: "Copilot SDK authentication documentation"
     verified: 2026-10-26
+  - url: https://github.com/github/copilot-sdk/blob/main/docs/auth/authenticate.md
+    label: "Copilot SDK authentication methods and subscription requirements"
+    verified: 2026-11-04
   - url: https://docs.github.com/en/copilot/reference/hooks-reference
     label: "GitHub Copilot hooks reference"
     verified: 2026-10-26
@@ -39,7 +42,7 @@ references:
 # Harness Fundamentals: Getting Inside the Agent Loop
 
 > **The Question This Talk Answers:**
-> *"How do I get inside the agent loop and change how it behaves?"*
+> *"What is an agent harness, and why do I care?"*
 
 **Duration:** 60 minutes | **Audience:** Developers and platform engineers who already use Copilot in the editor or CLI and want the agent inside their own tools
 
@@ -47,7 +50,7 @@ references:
 
 ## Present and Study
 
-- **[Open the deck](../../slides/tech-talks/harness-fundamentals/index.html):** 31 native slides. Press `N` to open the notes beside it.
+- **[Open the deck](../../slides/tech-talks/harness-fundamentals/index.html):** 36 native slides. Press `N` to open the notes beside it.
 - **[Speaker notes](../../slides/tech-talks/harness-fundamentals/notes.html):** complete talk track, evidence, technical boundaries, sources, and per-slide timing. The notes are the handout.
 - **[Teaching source](../../slides/tech-talks/harness-fundamentals/slides.js):** slide data and notes together.
 
@@ -59,13 +62,15 @@ Read pi’s loop as source and name its five jobs: loop, context, tools, control
 
 Follow a release-dashboard integration sketch from a question to an existing service method and its result. The SDK permission decision, app-user authorization, business approval, UI, and telemetry remain distinct.
 
+**Do my app's users each need a Copilot license?** Yes, unless you bring your own key. When sessions run with each user's GitHub token (signed-in user or OAuth), every user needs a Copilot subscription and usage counts against their plan. Bring your own key (BYOK) bypasses Copilot authentication and bills your model provider directly. Source: [SDK authentication methods](https://github.com/github/copilot-sdk/blob/main/docs/auth/authenticate.md).
+
 ## 3. Decide What It Sees
 
-See how two SDK checkpoints enforce a deliberate view, then inspect an observed blind-test run: the host reran the suite and a separate referee classified its failures. The API owner still decides what changes.
+Meet the blind-tests app ([`examples/apps/blind-tests/app.ts`](./examples/apps/blind-tests/app.ts)), which tests FanHub's API without seeing its code. Follow one observed run, then the exact lines that keep the tester blind: the host reran the suite and a separate referee classified its failures. The API owner still decides what changes.
 
-## 4. Own It
+## 4. Controls and Ideas
 
-Check the controls surrounding a shared harness, run a concrete pre-flight, and choose one existing method with an owner for its evidence.
+Check the controls other teams already own around a harness, run a concrete pre-flight, and pick the first existing app and method to embed it in.
 
 ## What You Can Do Today
 

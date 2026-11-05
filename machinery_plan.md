@@ -36,7 +36,7 @@ after conversion. Changes are in the worktree; no commit or push was made.
   All 13 superseded active Slidev sources are removed; `surfaces` retains
   its original pilot source as a conversion reference.
 - The integrated native publishing gate validates all 14 native decks,
-  totaling 488 slides after the approved VS Code refresh. Native discovery tests and the strict tech-talk
+  totaling 473 slides after the 2026-11-03 VS Code restructure. Native discovery tests and the strict tech-talk
   handout check pass. The index maps all 14 native decks and their dates.
   Active portfolio reconciliation confirms only `exec-strategy` remains
   on Slidev. All conversion recipes match their deck IDs, order, and timings.
@@ -45,11 +45,12 @@ after conversion. Changes are in the worktree; no commit or push was made.
   Workshop and exec decks stay out of scope; archived talks remain frozen.
 - `vscode-latest` received an approved Universe/1.144 content and recipe
   refresh on 2026-10-31 and an approved announcement-led expansion on 2026-11-01.
-  Its 47-slide, 46:30 deck uses the approved durable
-  outcomes: Find a Better Answer → Keep Work Moving → Delegate with Fewer
-  Interruptions → Check More Than the Code. The login example is local to the
-  verification section; native validation and targeted local publishing pass.
-  All 36 feature visuals are labelled schematics; actual feature screenshots
+  On 2026-11-03 it was restructured around four verbs, Pick → Place → Steer →
+  Keep, with one running login fix as the memory hook: 35 slides, 47:00.
+  The login example now runs talk-wide. A later 2026-11-03 revision removed
+  the running example and opened with an unsorted feature wall: 32 slides, 45:00. All 34 distinct approved features keep their
+  status and limits (24 on hero slides, 10 in roundups). Native validation passes.
+  All feature visuals are labelled schematics; actual feature screenshots
   remain capture work. The 1.143 publication date remains unresolved.
   Qualify local-inference
   claims: local model execution alone does not establish an offline workflow
@@ -378,11 +379,11 @@ and a time budget totaling 42:00 (estimates), and the README is a landing page.
 | surfaces | 28 | native | Pilot complete: 28 of 28; standard slides and patterns extracted to `native/frames.js` and `native/patterns.js` (deck keeps 6 deck-only scenes); notes-first: 28 slides of notes, README slimmed to a landing page | `validate:native` passes (28 slides, 28 PDF pages); pixel-identical to pre-extraction baseline |
 | agentic-lifecycle | 36 | native | Conversion complete; awaiting presenter/content review | Native validation: 36 slides, 36 PDF pages, estimated 51:50; local publishing passes |
 | copilot-on-github | 39 | native | Conversion complete; awaiting presenter/content review | Native validation: 39 slides, 39 PDF pages, estimated 55:50; local publishing passes |
-| copilot-primitives | 33 | native | Conversion complete; awaiting presenter/content review | Native validation: 33 slides, 33 PDF pages, estimated 45:05; local publishing passes |
-| custom-agents | 30 | native | Conversion complete; awaiting presenter/content review | Native validation: 30 slides, 30 PDF pages, estimated 41:30; local publishing passes |
+| copilot-primitives | 33 | native | Conversion complete; awaiting presenter/content review | 2026-11-02: slide 2 convention / implementation / specialization redesign; native validation: 33 slides, 33 PDF pages, estimated 45:50; opening slides and slide 2 motion visually reviewed |
+| custom-agents | 30 | native | Rebuilt 2026-11-04 from the approved one-file-every-surface recipe; awaiting presenter run-through | Native validation: 30 slides, 30 PDF pages, estimated 40:15; app field cells marked "check in the app" (recipe OPEN DECISION) |
 | harness-fundamentals | 31 | native | Conversion complete; awaiting presenter/content review | Native validation: 31 slides, 31 PDF pages, estimated 55:00; local publishing passes |
 | local-agentic-sdlc | 31 | native | Conversion complete; awaiting presenter/content review | Native validation: 31 slides, 31 PDF pages, estimated 40:10; local publishing passes |
-| vscode-latest | 47 | native | Approved announcement-led refresh complete; presenter review and feature captures pending | Native validation: 47 slides, 47 PDF pages, estimated 46:30; local publishing passes |
+| vscode-latest | 32 | native | 2026-11-03 restructure: Pick · Place · Steer · Keep; revision removed the running example and added an opening feature wall; presenter review and feature captures pending | Native validation: 32 slides, 32 PDF pages, estimated 45:00 |
 | agentic-sdlc | 33 | native | Conversion complete; awaiting presenter/content review | Native validation: 33 slides, 33 PDF pages, estimated 86:00; local publishing passes |
 | copilot-azure-mcp | 32 | native | Conversion complete; awaiting presenter/content review | Native validation: 32 slides, 32 PDF pages, estimated 40:15; local publishing passes |
 | copilot-cli | 39 | native | Conversion complete; awaiting presenter/content review | Native validation: 39 slides, 39 PDF pages, estimated 40:00; local publishing passes |

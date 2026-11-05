@@ -2,17 +2,18 @@
 #
 # Reviewed 2026-10-26. Single structural analysis; the user's approval is the review gate.
 # Native conversion plan approved 2026-10-31 under the user's explicit autonomous-build waiver.
-# The 31-slide plan preserves the current four-part narrative and evidence; no news refresh is in scope.
+# The 36-slide plan preserves the current four-part narrative and evidence; no news refresh is in scope.
 #
-# Slide budget: 20 content slides (6 + 7 + 4 + 3) plus 11 structural slides = 31 total.
+# Slide budget: 25 content slides (7 + 9 + 6 + 3) plus 11 structural slides = 36 total.
 # Sections one and two walk the same five jobs in the same order (loop, context, tools, control,
-# evidence), one slide per job, so the audience can line each pi slide up with its SDK slide.
+# evidence), one slide per job (Tools gets a second pi slide for tool sources), so the audience can line each pi slide up with its SDK slide.
 # Treat each section's slide count as a maximum.
 #
 # Evidence labels carry onto slides: "Observed" = live run on 2026-10-26 (SDK 1.0.26, model auto,
 # FanHub 0ea9e78); "Tested" = deterministic unit test in examples/; "Documented" = first-party docs;
 # "Source" = pi excerpt at earendil-works/pi@f9daca3 (MIT). Every pi code block carries the
-# attribution line "pi · MIT · earendil-works/pi@f9daca3 · <path>#<lines>" and stays under 25 lines.
+# source line "pi@f9daca3 · <path>#<lines>" and stays under 25 lines; the MIT license is
+# cited once on the References slide.
 # Each content slide answers one audience question; examples distinguish illustrative and observed results.
 # Each job slide carries one code block; SDK integration excerpts are labeled sketches. Label documented SDK behavior
 # "Documented" and recorded runs "Observed"; never mark a documented claim as observed.
@@ -27,7 +28,7 @@ deck:
 
   agenda:
     - title: "Read a whole harness"
-      takeaway: "pi's agent loop is one function of about 170 lines, and its loop, context, tools, control, and evidence jobs each fit on a slide."
+      takeaway: "pi's agent loop is one function of about 160 lines, and its loop, context, tools, control, and evidence jobs each fit on a slide."
       whyItMatters: "Every hook and SDK callback you write afterward has a clear place: it takes over one named job."
     - title: "Take over the jobs in GitHub's harness"
       takeaway: "An existing app can host the SDK and expose selected methods as tools, keeping service authorization, approval gates, UI, and telemetry."
@@ -36,7 +37,7 @@ deck:
       takeaway: "One visibility policy at two SDK checkpoints produced a blind test suite that surfaced an undocumented API mismatch, with a named owner for every result."
       whyItMatters: "You leave with a pattern for perspective-driven agents, the evidence that backs them, and the pre-flight for sharing one."
 
-  arcToc: "What a Harness Is → Drive GitHub's Harness → Decide What It Sees → Own It"
+  arcToc: "What a Harness Is → Drive GitHub's Harness → Decide What It Sees → Controls and Ideas"
 
   arcNarrative: >
     The talk opens by making the harness visible. Section one reads pi as source, one slide per
@@ -51,7 +52,7 @@ deck:
     the same host, with a different view, writes a blind test suite whose failure the referee labels
     undocumented; the fd boundary returns as what the host cannot see, and the joined event log shows
     the evidence job in practice. Section four is short and practical: the controls other people
-    already own around Copilot, and the pre-flight and named owner that make a harness shareable.
+    already own around Copilot, a pre-flight that makes a harness shareable, and ideas for where to embed one first.
     Reading pi first gives every later lever a name, so each SDK slide lands as a familiar job and section three
     lands as a design choice the audience can repeat.
 
@@ -59,13 +60,13 @@ deck:
     - "What a Harness Is"
     - "Drive GitHub's Harness"
     - "Decide What It Sees"
-    - "Own It"
+    - "Controls and Ideas"
 
   sectionModes:
     "What a Harness Is":
       emphasis: high
       note: >
-        Six content slides, read-only source excerpts with no live run, one slide per job in the
+        Seven content slides, read-only source excerpts with no live run, one slide per job in the
         order loop, context, tools, control, evidence. Slide 1 answers "What does a harness do?": the
         five-jobs table with the pi location for each. Slide 2 (Loop) is the anchor, "Where is the
         agent loop?": the trimmed runLoop excerpt with the five jobs labeled in the margin and three
@@ -74,54 +75,77 @@ deck:
         the transformContext and convertToLlm excerpt, with prepareRequest swapping model or thinking
         level and declareToolChanges announcing tool changes. Slide 4 (Tools) answers "What is inside
         one tool?": the write excerpt labeled schema (contract), prompt snippet (context), mutation
-        queue and abort checks (safety), and swappable ops (where the action lands); one callout
-        carries find: ensureTool("fd") and spawn hand the search to an external program, so the
-        harness decides the call and sees its result while the operating system governs the process.
-        Slide 5 (Control) answers "How does a harness say no?": the beforeToolCall excerpt, the block
+        queue and abort checks (safety), and swappable ops (where the action lands). Slide 5 (Tool
+        sources) answers "Where do tools come from?": built in (write is harness code), found on the
+        host (find: ensureTool("fd") and spawn hand the search to an external program, so the harness
+        decides the call and sees its result while the operating system governs the process), and
+        registered by you (extension registerTool), which points forward to the SDK custom tool that
+        calls an existing app method.
+        Slide 6 (Control) answers "How does a harness say no?": the beforeToolCall excerpt, the block
         reason returned as a tool result the model reads, the truncated-reply rule (stopReason
         "length" fails the whole tool batch), and the agent-session.ts wiring where pi's coding agent
         installs its extensions into beforeToolCall: the loop owns the hook point, the product
-        supplies the policy. Slide 6 (Evidence) answers "How do I see what happened?": the
+        supplies the policy. Slide 7 (Evidence) answers "How do I see what happened?": the
         afterToolCall and tool_execution_end excerpt with the event vocabulary in one line and the
         three-line subscribe excerpt; callouts: afterToolCall can rewrite a result before the model
         reads it, each event names tool, call, result, error, and duration, and anything can listen.
     "Drive GitHub's Harness":
       emphasis: high
       note: >
-        Seven content slides, preserving the five-jobs mirror. One existing release dashboard is
+        Nine content slides, preserving the five-jobs mirror. One existing release dashboard is
         the primary SDK story; label every integration excerpt as a sketch, never as observed.
-        Slide 1 maps pi jobs to SDK surfaces. Slide 2 (Loop) starts a session from a dashboard
+        Slide 1 maps pi jobs to SDK surfaces. Slide 2 (Why) states the use case outright: a release
+        dashboard is a simple, useful first embed. It assumes existing systems for who may act (the
+        app's roles and permissions), a "ready?" answer (for example a Salesforce go/no-go record
+        behind getReadiness), and a "do it" step (for example a GitHub Actions deploy workflow that a
+        release owner approves). The sketch's subtitle label appears once here; later slides keep it
+        on code captions only. Slide 3
+        (Licensing) answers "Does every app user need Copilot?" from the SDK auth docs: per-user
+        GitHub tokens need a Copilot subscription per user; BYOK bypasses Copilot auth. The org
+        GitHub App route stays in notes only, because few teams have one. Slide 4 (Loop) starts a session from a dashboard
         question and returns the answer to its UI; cancellation and lifecycle are in notes.
-        Slide 3 (Context) names the release assistant role and the readiness tool as its source
-        of facts. Slide 4 (Tools) wraps releaseService.getReadiness(user, releaseId) with
+        Slide 5 (Context) separates what the host writes (systemMessage instructions naming the
+        release assistant role and the readiness tool as its source of facts, plus each request's
+        prompt) from what the runtime manages (history compaction via infinite sessions). Slide 6 (Tools) wraps releaseService.getReadiness(user, releaseId) with
         defineTool and exposes only release_readiness. Distinguish application objects from SDK APIs.
-        Slide 5 (Control) approves only that custom-tool name; the existing service still validates
+        Slide 7 (Control) approves only that custom-tool name; the existing service still validates
         arguments, authorizes the app user, and retains business approval gates. Repository hooks
         remain opt-in with enableFileHooks and cannot inspect every internal service operation.
-        Slide 6 (Evidence) sends streamed text to the UI and selected execution metadata to app
+        Slide 8 (Evidence) sends streamed text to the UI and selected execution metadata to app
         telemetry. Separate successful execution from ready: false; the service audit carries the
-        business result, and correlation is application wiring. Slide 7 walks question, tool request,
-        method call, example blocker, UI answer, and control boundaries together. Quickstarts and
+        business result, and correlation is application wiring. Slide 9 is an illustrative dashboard
+        mockup: the existing status pane beside an embedded SDK panel, showing what the model adds
+        beyond the tool (plain-language explanation, a likely cause correlated from the returned facts,
+        and a drafted next step that a person sends). Quickstarts and
         the observed fresh-eyes report remain supporting README examples, not the SDK value statement.
     "Decide What It Sees":
       emphasis: high
       note: >
-        Four content slides, the climax. Slide 1 answers "How do I express what the agent sees?": the
-        createVisibilityPolicy call and the two-checkpoint table, with write-content inspection and
-        per-segment command allowlists as the checks a host makes beyond a hook script (both Tested),
-        tied back to beforeToolCall seeing the whole context. Slide 2 is the blind test writer on one
-        slide: api_contract from SETUP.md with bug hints stripped, hidden paths including BUGS.md,
-        writes only in __tests__/blind, host rerun 10 passing and 2 failing, POST /api/characters →
-        500 mapped to BUGS.md #19, and the seasonId filter labeled undocumented by the referee because
+        Six content slides, the climax, all about one program: examples/apps/blind-tests/app.ts, which
+        clones FanHub at 0ea9e78, starts its API, and tests it blind. Slide 1 introduces the app as the
+        five jobs in real code (defineTool api_contract, customized systemMessage, createVisibilityPolicy,
+        sendAndWait, app rerun plus read-only referee), each row citing app.ts line numbers. Every later
+        Part 3 slide uses code rows that show the exact line behind each check or record. Slide 2 is one
+        observed run: one SDK app hosts a tester session that sees only api_contract (from
+        SETUP.md with bug hints stripped) and the live API, writes 12 tests in __tests__/blind, then the
+        app reruns them itself (10 passing, 2 failing) and a read-only referee session that may read
+        BUGS.md maps POST /api/characters → 500 to #19 and labels the seasonId filter undocumented because
         SETUP.md documents seasonId while the route reads season_id. Label test status apart from the
-        domain finding. Slide 3 answers "What sits outside the host's view?": executed test code, processes
-        outside mediated tools, and whether contract or code is right, framed as pi's find → fd
-        boundary in GitHub's harness, with the container as the outer limit and the API owner deciding
-        which side changes. Slide 4 answers "What evidence does a run leave?": four real JSONL lines
+        domain finding. Slide 3 answers "How does the app keep the tester blind?": both SDK checkpoints
+        as createSession options (onPermissionRequest; hooks.onPreToolUse), with the write-content check
+        (peek.test.js denied by newFileContents) and the chained-command allowlist check (both Tested).
+        Slide 4 answers "What sits outside the host's view?" by walking the blind tester's test run:
+        before it runs, the host sees the write request (newFileContents, a best-effort text check) and
+        the shell request (node --test, approved by command); after the process starts it sees nothing,
+        so the OS account or a container is the only hard limit, and activity outside the session is
+        never a request. Slide 5 answers "What evidence does a run leave?": four real JSONL lines
         (repo-hook, host-policy deny, runtime tool.complete, host session-end) joined by sessionId,
         plus the repository floor active inside both apps (19 preToolUse runs in fresh-eyes, 12 in
         blind tests).
-    "Own It":
+        Slide 6 shows six JSONL lines in the file one run writes (repo hook.end, runtime tool.start and
+        tool.complete sharing a toolCallId, the two recorded host-policy denials, and the app rerun),
+        with fields exactly as the code writes them, labeled illustrative, ts trimmed.
+    "Controls and Ideas":
       emphasis: medium
       note: >
         Three content slides. Slide 1 answers "Which controls surround my harness?": policy hooks loaded
@@ -144,12 +168,12 @@ deck:
     - id: core-question
       part: 0
       claim: "The learner can choose which harness job to take over and which authority remains in the host."
-      scene: "frame: learner question, roles, and transfer"
+      scene: "frame: learner question, if-this-is-you signals, and transfer"
       seconds: 45
     - id: contents
       part: 0
       claim: "The talk moves from a readable harness, to an app-hosted loop, to visibility and ownership."
-      scene: "frame: four-part route linking to slides 4, 11, 19, and 24"
+      scene: "frame: four-part route linking to slides 4, 12, 22, and 29"
       seconds: 30
     - id: part-1
       part: 1
@@ -173,9 +197,14 @@ deck:
       seconds: 145
     - id: pi-tools
       part: 1
-      claim: "A tool combines a schema, model guidance, execution code, and a boundary where external processes take over."
-      scene: "deck: write-tool anatomy beside find-to-fd handoff"
-      seconds: 145
+      claim: "A tool combines a schema the model fills, model guidance, and execution code the harness runs."
+      scene: "deck: write-tool anatomy"
+      seconds: 110
+    - id: pi-tool-sources
+      part: 1
+      claim: "Tools are built into the harness, found on the host, or registered by you; the third is how an app exposes its own methods."
+      scene: "deck: three tool sources with who runs each call, find-to-fd excerpt"
+      seconds: 125
     - id: pi-control
       part: 1
       claim: "A host block returns a reason as a tool result, while the loop owns the hook point."
@@ -193,9 +222,19 @@ deck:
       seconds: 20
     - id: sdk-map
       part: 2
-      claim: "The Copilot SDK exposes host control across the same five harness jobs."
-      scene: "deck: five pi jobs aligned to SDK host surfaces"
+      claim: "Each pi job has a one-option or one-call SDK equivalent; the runtime runs the loop and the app configures it."
+      scene: "deck: pi hook beside its SDK option for each of the five jobs"
       seconds: 145
+    - id: sdk-why
+      part: 2
+      claim: "A release dashboard is a simple, useful first embed when systems already exist for who may act, whether a release is ready, and how to ship it."
+      scene: "deck: who may act, a ready? answer (e.g. Salesforce), and a do-it step (e.g. GitHub Actions), with what the agent adds to each"
+      seconds: 90
+    - id: sdk-license
+      part: 2
+      claim: "Every app user needs a Copilot license when sessions run with their GitHub token; BYOK is the route that needs none."
+      scene: "deck: per-user token and BYOK routes with license requirement and billing, plus the per-session token excerpt"
+      seconds: 90
     - id: sdk-loop
       part: 2
       claim: "The dashboard starts a scoped session, sends a question, and presents the returned answer."
@@ -203,8 +242,8 @@ deck:
       seconds: 145
     - id: sdk-context
       part: 2
-      claim: "The host can append or customize role guidance while retaining SDK prompt sections."
-      scene: "deck: append, customize, and replace modes with their boundary"
+      claim: "The host writes the instructions and each request; the SDK runtime manages history through infinite-session compaction, with no per-request transform hook."
+      scene: "deck: instructions, this request, and history rows with the SDK surface for each"
       seconds: 145
     - id: sdk-tools
       part: 2
@@ -214,7 +253,7 @@ deck:
     - id: sdk-control
       part: 2
       claim: "SDK permission to request a tool and service authorization for a user are separate decisions."
-      scene: "showdown: session permission compared with service authority"
+      scene: "deck: two engineers send the same tool request; gate 1 (onPermissionRequest) approves both, gate 2 (service) allows one and denies the other"
       seconds: 145
     - id: sdk-evidence
       part: 2
@@ -223,34 +262,44 @@ deck:
       seconds: 145
     - id: release-flow
       part: 2
-      claim: "A release assistant can explain an unfavorable result while execution succeeds and a person retains approval."
-      scene: "deck: illustrative question, tool request, service result, and human action"
+      claim: "The tool returns facts; the model adds an explanation, a likely cause, and a drafted next step, while a person sends it and the release owner still approves the deploy."
+      scene: "deck: illustrative release-dashboard mockup, existing status pane beside the embedded SDK panel, with three numbered model contributions"
       seconds: 145
     - id: part-3
       part: 3
       claim: "The same host can run an independent check by changing what its agent sees."
       scene: "frame: shared opener"
       seconds: 20
-    - id: visibility-policy
+    - id: blind-app
       part: 3
-      claim: "Raw-argument hooks and parsed permission callbacks cover different visibility checks."
-      scene: "deck: two SDK checkpoints and tested write and shell rules"
-      seconds: 165
+      claim: "The blind-tests app is all five harness jobs in one 180-line SDK program that tests FanHub's API without seeing its code."
+      scene: "deck: code rows, one per job, with the app.ts line and what it does here"
+      seconds: 90
     - id: blind-result
       part: 3
-      claim: "A host-rerun blind suite found two failures, and a separate referee classified their evidence."
-      scene: "terminal: TAP rerun and referee's documented or undocumented findings"
-      seconds: 165
+      claim: "One SDK app hosts a blind tester and a read-only referee; the app's own rerun found two failures and the referee classified them."
+      scene: "terminal: tester session, app rerun, referee session, each step labeled with what that session could see"
+      seconds: 105
+    - id: visibility-policy
+      part: 3
+      claim: "Each check the tester meets is one line in the app: the onPreToolUse sweep check, the custom-tool allowlist, the write-content patterns, and the shell allowlist."
+      scene: "deck: code rows pairing each tester request with the rule that decides it, plus the createSession wiring"
+      seconds: 150
     - id: host-boundary
       part: 3
-      claim: "The host cannot contain code after launch, govern unmediated activity, or decide which side of a contract mismatch is correct."
-      scene: "signals: process, tool, and judgment boundaries"
-      seconds: 165
+      claim: "The SDK can stop any request the agent makes, but not code running inside a process it already approved; only the OS account or a container limits that."
+      scene: "deck: code rows, each agent action beside the SDK permission request it produces and whether it is stopped; the last row produces no request"
+      seconds: 150
     - id: run-evidence
       part: 3
-      claim: "Joining policy decisions, hook events, runtime outcomes, and app summaries by sessionId makes a run inspectable."
-      scene: "deck: four redacted event layers with separate decision and execution fields"
-      seconds: 165
+      claim: "After a run, one log answers what the policy blocked, what actually ran, whether repo hooks ran, and how the run went, each from its own record joined by sessionId."
+      scene: "deck: code rows keyed by the question each record answers, with the line that writes it"
+      seconds: 105
+    - id: run-log-lines
+      part: 3
+      claim: "One run leaves one JSONL file whose lines separately record repo-hook runs, tool executions, policy denials with their rule, and the app rerun."
+      scene: "deck: events.jsonl file view, six tagged lines with exact field shapes from the code"
+      seconds: 75
     - id: part-4
       part: 4
       claim: "Sharing a harness means accounting for surrounding controls and naming the person who accepts each report."
@@ -263,18 +312,18 @@ deck:
       seconds: 125
     - id: preflight
       part: 4
-      claim: "A shareable host pins, bounds, tests, and names an owner before another person runs it."
+      claim: "Before someone else runs it: make runs repeatable, put limits on each run, test the policy itself, and check who it runs as."
       scene: "scorecard: four pre-flight evidence cards"
       seconds: 125
     - id: apps-to-embed
       part: 4
-      claim: "An existing app method is a useful starting point when its authority, result, and reviewer remain explicit."
-      scene: "deck: six app workflows with their retained controls"
+      claim: "The model earns its place where narrow read-only tools meet a question that takes judgment: incident timelines, metric explanations, CVE reachability, PR risk, release readiness, and docs checks."
+      scene: "deck: six idea cards, each with the question, what the model adds, its read-only tools, and what stays human; real examples tagged"
       seconds: 125
     - id: before-after
       part: 0
-      claim: "The harness moves the team from an opaque request to a named job, narrow method, and reviewable result."
-      scene: "frame: before and after with approximate pi line count and five jobs"
+      claim: "Hosting the loop in your app changes each job: named hooks, your methods as tools, separate tool and user checks, and a log instead of the agent's word."
+      scene: "deck: recap rows keyed by job, chat-window before vs app-hosted after, plus three proof stats"
       seconds: 45
     - id: today
       part: 0
@@ -296,7 +345,7 @@ deck:
   appendix: []
 
   highlightMoments:
-    - "pi's entire agent loop is one function of about 170 lines, and every hook or SDK callback in the talk takes over one of its five jobs."
+    - "pi's entire agent loop is one function of about 160 lines, and every hook or SDK callback in the talk takes over one of its five jobs."
     - "pi's find tool hands its search to fd: the harness decides the call and sees the result, and the operating system governs the process. The blind-test host meets the same boundary."
     - "A custom tool calls an existing app method: the release-dashboard sketch adds AI-driven interaction while retaining service authorization, approval gates, UI, and telemetry."
     - "The blind-test host reran 12 tests and observed 10 passing and 2 failing; the read-only referee mapped one failure to BUGS.md #19 and labeled the seasonId filter mismatch undocumented."

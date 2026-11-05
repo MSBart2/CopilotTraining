@@ -1,26 +1,52 @@
-/* Scoped to this deck's loaders. No shared engine overrides or moving print state. */
-.stage { background: #101411; }
-.stage::after { display: none; }
-.stage .subtitle { color: #aeb9bf; }
-.vl-scene .t-sm { font-size: 18px; }
-.vl-scene .t-xs { font-size: 15px; }
-.vl-scene .t-muted { fill: #aeb9bf; }
-.scene .z-text { fill: color-mix(in srgb, var(--z, var(--accent)) 62%, white); }
-.scene .vl-window { fill: #141b1b; stroke: #445158; }
-.sc-title h1, .sc-thanks h1 { background: none; color: white; }
-.sc-title .title-copy, .sc-thanks .title-copy { flex: 1; }
-.sc-title .stage-body > .scene { flex-basis: 700px; width: 700px; }
-.sc-thanks .stage-body > .scene { flex: 0 0 520px; width: 520px; height: 520px; }
-.sc-title .scene .t-sm, .sc-thanks .scene .t-sm { font-size: 22px; }
-.sc-title .scene .t-xs, .sc-thanks .scene .t-xs { font-size: 18px; }
-.sc-before-after .ba-left .box { fill: none; }
-.sc-before-after .ba-left .ba-item { fill: #bac4ca; }
-.sc-before-after .ba-num { fill: white; }
-.sc-today .box { rx: 6; fill: #161e1d; }
-.sc-today .takeaway { border-radius: 6px; border-left-width: 6px; }
-.sc-references .refs { margin-top: 24px; gap: 32px; }
-.sc-references .ref-group h3 { margin-bottom: 8px; font-size: 20px; }
-.sc-references .ref { background: none; border-width: 0 0 1px 4px; border-radius: 0; padding: 8px 12px; margin-bottom: 6px; gap: 2px; }
-.sc-references .ref b { font-size: 17px; }
-.sc-references .ref span { font-size: 15px; line-height: 1.2; }
-.sc-references .ref code { font-size: 11px; line-height: 1.1; overflow-wrap: anywhere; }
+/* VS Code Agents: Pick, Place, Steer, Keep. Deck-only colours and scene type. */
+
+/* One colour per verb, used by openers, contents, badges, and the release map. */
+.z-pick { --z: #b870ff; }
+.z-place { --z: #22d3ee; }
+.z-steer { --z: #f472b6; }
+.z-keep { --z: #0fbf3e; }
+.stage.part-1 { --accent: #b870ff; --accent-2: #8534f3; }
+.stage.part-2 { --accent: #22d3ee; --accent-2: #60a5fa; }
+.stage.part-3 { --accent: #f472b6; --accent-2: #db2777; }
+.stage.part-4 { --accent: #0fbf3e; --accent-2: #238636; }
+
+/* Title and thanks: long title, square visual on the right. */
+.sc-title h1, .sc-thanks h1 { font-size: 76px; }
+.sc-title .title-sub { font-size: 28px; line-height: 1.3; }
+.sc-title .tagline { font-size: 23px; }
+.sc-title .stage-body > .scene, .sc-thanks .stage-body > .scene { flex: 0 0 660px; width: 660px; height: 660px; }
+
+/* Scene type */
+.scene.vk text.t-sm { font-size: 18px; }
+.scene .vk-mark { letter-spacing: .06em; }
+.scene .vk-verb { font-size: 76px; font-weight: 800; letter-spacing: -.01em; fill: var(--z); }
+.scene .vk-verb-sm { font-size: 34px; font-weight: 800; letter-spacing: .03em; fill: var(--z); }
+.scene .vk-prompt { font-family: var(--mono); font-size: 24px; font-weight: 500; }
+.scene .vk-name { font-size: 24px; font-weight: 700; }
+.scene .vk-q { font-size: 22px; font-weight: 650; }
+.scene .vk-row { font-size: 16px; font-weight: 600; }
+.scene .vk-big { font-size: 30px; font-weight: 750; }
+.scene .vk-chip { font-size: 18px; font-weight: 600; }
+
+/* Scene shapes */
+.scene .box.dashed { stroke-dasharray: 8 6; }
+.scene .wire.zw { stroke: var(--z); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.scene .wire.zw.dashed, .scene .wire.dashed { stroke-dasharray: 7 7; }
+.scene .vk-opt { fill: rgba(255, 255, 255, .03); stroke: var(--line); stroke-width: 1.2; }
+.scene .vk-opt.on { fill: color-mix(in srgb, var(--z) 22%, transparent); stroke: var(--z); stroke-width: 2; }
+.scene .vk-phone { fill: #0d1110; stroke: #5d656e; stroke-width: 3; }
+.scene .vk-field { fill: #1b211e; stroke: var(--line); }
+.scene .vk-btn { fill: var(--purple); }
+.scene .vk-clip { fill: color-mix(in srgb, var(--orange) 14%, transparent); stroke: var(--orange); stroke-width: 2; stroke-dasharray: 6 5; }
+.scene .vk-tick { fill: none; stroke: var(--z, var(--muted)); stroke-width: 2; }
+.scene .vk-dot { fill: var(--z); }
+.scene .vk-dot-off { fill: none; stroke: var(--z, var(--muted)); stroke-width: 2; }
+.scene .vk-bubble { fill: color-mix(in srgb, var(--z) 12%, #141a17); stroke: var(--z); stroke-width: 1.5; }
+
+/* References: four groups of short links fit one page. */
+.sc-references .refs { margin-top: 20px; gap: 28px; }
+.sc-references .ref-group h3 { margin-bottom: 8px; font-size: 22px; }
+.sc-references .ref { padding: 8px 14px; margin-bottom: 8px; gap: 2px; }
+.sc-references .ref b { font-size: 18px; }
+.sc-references .ref span { font-size: 16px; line-height: 1.25; }
+.sc-references .ref code { font-size: 12px; }

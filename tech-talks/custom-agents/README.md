@@ -1,65 +1,59 @@
 ---
 status: active
 portfolioState: deployed
-updated: 2026-10-31
+updated: 2026-11-04
 section: "Foundations"
 audience: [developer, platform-engineer, team-lead]
 level: applied
 duration: 45
 format: core-talk
-decision: "How can a team design one custom agent that behaves the way it intends in every runtime it reaches?"
+decision: "How do I write one agent file that works in every Copilot surface my team uses?"
 prerequisites: [copilot-primitives]
 related: [local-agentic-sdlc, copilot-on-github, agentic-lifecycle, copilot-hooks]
 references:
   - url: https://docs.github.com/en/copilot/reference/custom-agents-configuration
     label: "Custom agents configuration reference"
-    verified: 2026-10-21
+    verified: 2026-11-04
   - url: https://docs.github.com/en/copilot/concepts/customizations/custom-agents
     label: "About custom agents"
-    verified: 2026-10-21
+    verified: 2026-11-04
   - url: https://docs.github.com/en/copilot/concepts/customizations/comparing-customizations
     label: "Comparing GitHub Copilot customizations"
     verified: 2026-10-21
   - url: https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-custom-agents-for-cli
     label: "Create custom agents for Copilot CLI"
-    verified: 2026-10-21
+    verified: 2026-11-04
   - url: https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/create-custom-agents
     label: "Create custom agents for Copilot cloud agent"
-    verified: 2026-10-21
+    verified: 2026-11-04
   - url: https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment
     label: "Customize the cloud agent environment (copilot-setup-steps.yml)"
     verified: 2026-10-21
+  - url: https://docs.github.com/en/copilot/how-tos/github-copilot-app/customize-github-copilot-app
+    label: "Customizing the GitHub Copilot app"
+    verified: 2026-11-04
   - url: https://code.visualstudio.com/docs/agent-customization/custom-agents
     label: "VS Code: custom agents"
     verified: 2026-10-21
   - url: https://code.visualstudio.com/docs/agents/reference/custom-agent-file-reference
     label: "VS Code: custom agent file reference"
-    verified: 2026-10-21
+    verified: 2026-11-04
   - url: https://code.visualstudio.com/docs/agents/agent-troubleshooting/chat-debug-view
     label: "VS Code: Chat Debug view and Agent Debug Log"
     verified: 2026-10-21
   - url: https://github.com/MSBart2/FanHub/blob/main/.github/agents/test-writer.agent.md
-    label: "FanHub test-writer.agent.md"
-    verified: 2026-10-21
-  - url: https://github.com/MSBart2/FanHub/pull/216
-    label: "FanHub #216: test-writer in VS Code"
-    verified: 2026-10-21
-  - url: https://github.com/MSBart2/FanHub/pull/215
-    label: "FanHub #215: test-writer in Copilot CLI"
-    verified: 2026-10-21
-  - url: https://github.com/MSBart2/FanHub/pull/214
-    label: "FanHub #214: test-writer in Copilot cloud agent"
+    label: "FanHub test-writer.agent.md (example file)"
     verified: 2026-10-21
 ---
 
-# Custom Agents: One File, Every Runtime
+# Custom Agents: One File, Every Surface
 
 > **The Question This Talk Answers:**
-> *"How do I make one shared agent behave as intended across the runtimes my team uses?"*
+> *"How do I write one agent file that works in every Copilot surface my team uses?"*
 
 **Duration:** 45 minutes | **Audience:** Developers and platform engineers who write custom agents the team shares, and team leads who rely on them
 
-**Thesis:** One agent file carries a shared role across runtimes, and each runtime resolves that file in its own context. Write portable behavior in the body, add runtime-specific fields on purpose, and read the resolved run in every runtime the team uses.
+**Thesis:** Every Copilot surface reads an agent's description and body, and each surface honors its own set of frontmatter fields. Write the role, boundary, and output contract in the body with portable tool aliases, then add surface fields on purpose where you know they apply.
 
 ## Present and Study
 
@@ -68,34 +62,33 @@ references:
 
 The teaching source is [`slides.js`](../../slides/tech-talks/custom-agents/slides.js). Update slide content and notes there; this page stays a landing page.
 
-## 1. Design the Portable Core
+## 1. Choose the Custom Agent
 
-Choose a custom agent when the work needs a persistent role and distinct tool boundary. Put the portable method and output contract in the body, then publish the profile at the intended scope.
+A custom agent earns its file when the work needs a persistent role. Inside the file, the description selects the agent, the tools set its boundary, and the body teaches its method and output contract.
 
-## 2. Run One File in Three Runtimes
+## 2. Write the Portable Core
 
-Compare documented field support with observed FanHub resolution in VS Code, Copilot CLI, and cloud agent. The dated examples keep unobserved evidence and the unresolved VS Code model discrepancy visible.
+Put the file in `.github/agents/` or `~/.copilot/agents/`, where every surface looks. Give it a stable ID, a description that selects well, and portable tool aliases. Carry the boundary, next step, and output contract in the body, and treat the model as a preference written in each surface's format.
 
-## 3. Prove the Run and Place Each Requirement
+## 3. Add Surface Fields on Purpose
 
-Use each runtime's own artifacts to check agent identity, model, tools, checks, and report. Place each gap with its owning layer and a named producer, developer, maintainer, reviewer, or team lead.
+Read the what-works-where table for VS Code Local, VS Code Copilot, Copilot CLI, Copilot cloud agent, and the GitHub Copilot app. Check fields whose meaning differs by surface, then place Local-only, Copilot runtime, and cloud agent fields where they apply. Hooks, permissions, and review decide what changes.
 
-## 4. Take It to Your Agents
+## 4. Confirm the Load and Apply It
 
-Predict which line in a shared agent's load report will change, run the same task, and assign one observed gap to its owner. Rerun the same proof after one targeted change.
+Confirm which agent, model, and tools loaded on each surface your team uses. Start new agents from a portable skeleton and audit one shared agent with four checks: location, core, fields placed, load confirmed.
 
 ## What You Can Do Today
 
-- **Today:** Check one shared profile against documented fields, find the winning file for its ID, and open one runtime's debug source.
-- **This week:** Run that agent in the runtimes your team uses, fill in the five-question report, and rerun after one owned change.
-- **With the team:** Name the profile producer, environment maintainer, reviewer, and policy owner; agree which runtime differences need escalation.
-- **Apply it to your work:** Which shared agent would behave differently in another runtime, and which report line would show it first?
+- **Today:** Move one shared agent into `.github/agents/` and check each of its frontmatter fields against the what-works-where table.
+- **This week:** Restate any Local-only field's intent in the body, then confirm the agent, model, and tools on each surface your team uses.
+- **With the team:** Agree which surfaces the team supports, and name who owns the shared agent files and the surface checks.
+- **Apply it to your work:** Which field in your shared agent works on one surface only?
 
 ## Key Artifacts
 
-- [FanHub `test-writer.agent.md`](https://github.com/MSBart2/FanHub/blob/main/.github/agents/test-writer.agent.md): the example profile and its shared role.
-- [FanHub pull request #216](https://github.com/MSBart2/FanHub/pull/216), [#215](https://github.com/MSBart2/FanHub/pull/215), and [#214](https://github.com/MSBart2/FanHub/pull/214): dated runtime evidence.
-- [Cloud environment setup guide](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/customize-the-agent-environment): the setup workflow used for the cloud recovery.
+- [FanHub `test-writer.agent.md`](https://github.com/MSBart2/FanHub/blob/main/.github/agents/test-writer.agent.md): a complete agent file you can read, with a portable body and a few surface-specific fields.
+- [Custom agents configuration reference](https://docs.github.com/en/copilot/reference/custom-agents-configuration) and [VS Code custom agent file reference](https://code.visualstudio.com/docs/agents/reference/custom-agent-file-reference): the field definitions behind the what-works-where table.
 
 ## Related Talks
 
@@ -107,4 +100,4 @@ Predict which line in a shared agent's load report will change, run the same tas
 
 ## References
 
-The evidence and first-party sources appear on the relevant slides and in the [speaker notes](../../slides/tech-talks/custom-agents/notes.html). Reference verification dates remain 2026-10-21; the FanHub results are dated observations, not a product-news refresh.
+First-party sources appear on the relevant slides and in the [speaker notes](../../slides/tech-talks/custom-agents/notes.html). Field support was checked against the references on 2026-11-04.

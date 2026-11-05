@@ -272,9 +272,10 @@ refresh:
   recipeReview:
     required: true
     question: >
-      How do I get a useful answer from Copilot and know what it changed?
-    approved: "2026-11-01"
-    decision: "APPROVED by user: expanded announcement-first recipe and all proposed 1.140–1.144 candidates, preserving the four sections and evidence limitations."
+      VS Code ships Copilot changes every week. Which ones change how I work?
+    approved: "2026-11-03"
+    decision: "RESTRUCTURE approved by user 2026-11-03: Pick · Place · Steer · Keep with one running login fix. Supersedes the 2026-11-01 four-outcome, 36-card structure and its rule keeping the login example local to Part 4. All accepted items, statuses, and limitations carry forward; no new release research."
+    previous: "2026-11-01 APPROVED: expanded announcement-first recipe and all proposed 1.140–1.144 candidates, preserving the four sections and evidence limitations."
 
   validation:
     firstPartySourcesVerified: true
@@ -283,16 +284,16 @@ refresh:
     slidesRegenerated: true
     deckBuildPassed: true
     nativeValidated: true
-    slideCount: 47
-    notesArticleCount: 47
-    pdfPageCount: 47
-    talkSeconds: 2790
-    screenshotsInspected: 47
+    slideCount: 32
+    notesArticleCount: 32
+    pdfPageCount: 32
+    talkSeconds: 2700
+    screenshotsInspected: 34
     recipeTimingParity: true
     contentRouterPassed: true
     limitations:
       - "Speaking budgets are estimates pending a presenter run-through."
-      - "All 36 feature cards use labeled illustrative schematics; no live feature UI was captured or installed provider, model, cloud, browser, or desktop feature run recorded."
+      - "On-slide disclaimers removed at user request 2026-11-03; feature visuals are drawn diagrams, and no live feature UI capture or installed provider, model, cloud, browser, or desktop run is recorded. Speaker notes keep the evidence status."
       - "Desktop capture is unavailable in this environment; computer use remains capture-unavailable and all other feature cards retain actionable capture-needed or source-media-link metadata."
       - "The first-party 1.143 page header retrieved no publication date; 2026-10-20 is secondary corroboration and remains a reported gap."
       - "Account eligibility, organization policy, installed tool schemas, and Preview/Experimental controls require a presenter check."

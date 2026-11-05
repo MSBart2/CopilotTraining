@@ -1,43 +1,43 @@
 ---
 status: active
-updated: 2026-11-01
+updated: 2026-11-02
 section: "Agents at Your Keyboard"
 audience: [developer, team-lead]
 level: applied
 duration: 50
 format: release-brief
-decision: "How does a practitioner evaluate answer usefulness, preserve session continuity, bound execution, and accept results from inspectable evidence?"
-question: "How do I get a useful answer from Copilot and know what it changed?"
-thesis: "Evaluate answers against the task, preserve work across interruptions, bound execution, and accept results from fresh evidence."
+decision: "Which intelligence, which place, what may act unasked, and which changes stay for this agent run?"
+question: "VS Code ships Copilot changes every week. Which ones change how I work?"
+thesis: "Every agent run in VS Code comes down to four decisions: pick the intelligence, place the work, steer the run, and keep the changes worth keeping."
 prerequisites: [surfaces]
 related: [copilot-primitives, repo-to-feature, multi-agent-coordination]
 references:
   - url: https://code.visualstudio.com/updates/v1_140
-    label: "VS Code release notes: September 30, 2026 (v1.140)"
-    verified: 2026-10-31
+    label: "VS Code release notes: September 20, 2026 (v1.140)"
+    verified: 2026-10-21
   - url: https://code.visualstudio.com/updates/v1_141
     label: "VS Code release notes: October 7, 2026 (v1.141)"
-    verified: 2026-10-31
+    verified: 2026-10-21
   - url: https://code.visualstudio.com/updates/v1_142
     label: "VS Code release notes: October 14, 2026 (v1.142)"
-    verified: 2026-10-31
-  - url: https://code.visualstudio.com/updates/v1_143
-    label: "VS Code release notes: v1.143 (first-party publication date unresolved)"
-    verified: 2026-10-31
+    verified: 2026-10-21
+  - url: https://code.visualstudio.com/updates/v1_142
+    label: "VS Code release notes: v1.142 (first-party publication date unresolved)"
+    verified: 2026-10-21
   - url: https://code.visualstudio.com/updates/v1_144
     label: "VS Code release notes: October 28, 2026 (v1.144)"
-    verified: 2026-10-31
+    verified: 2026-10-21
   - url: https://github.blog/changelog/2026-10-28-github-copilot-in-vs-code-universe-releases/
     label: "GitHub Copilot in VS Code: Universe releases"
-    verified: 2026-10-31
+    verified: 2026-10-21
   - url: https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion/
     label: "Route and orchestrate models with GitHub Copilot Fusion"
-    verified: 2026-10-31
-  - url: https://code.visualstudio.com/updates/v1_139
-    label: "VS Code release notes: September 23, 2026 (v1.139)"
+    verified: 2026-10-21
+  - url: https://code.visualstudio.com/updates/v1_129
+    label: "VS Code release notes: September 22, 2026 (v1.129)"
     verified: 2026-09-25
-  - url: https://code.visualstudio.com/updates/v1_138
-    label: "VS Code release notes: September 16, 2026 (v1.138)"
+  - url: https://code.visualstudio.com/updates/v1_128
+    label: "VS Code release notes: September 16, 2026 (v1.128)"
     verified: 2026-09-25
   - url: https://code.visualstudio.com/docs/agents/run/agents-window
     label: "Use the Agents window (Preview): signed-out access"
@@ -45,10 +45,10 @@ references:
   - url: https://github.blog/changelog/2026-09-18-github-copilot-weekly-releases-september-14
     label: "GitHub Copilot weekly releases: September 14"
     verified: 2026-09-25
-  - url: https://code.visualstudio.com/updates/v1_132
-    label: "VS Code release notes: August 5, 2026 (v1.132)"
+  - url: https://code.visualstudio.com/updates/v1_122
+    label: "VS Code release notes: August 5, 2026 (v1.122)"
     verified: 2026-08-12
-  - url: https://github.blog/changelog/2026-07-30-github-copilot-in-visual-studio-code-july-2026-releases
+  - url: https://github.blog/changelog/2026-07-20-github-copilot-in-visual-studio-code-july-2026-releases
     label: "GitHub Copilot in VS Code: July 2026 releases"
     verified: 2026-08-12
   - url: https://github.blog/changelog/2026-07-08-github-copilot-in-visual-studio-code-june-2026-releases
@@ -90,59 +90,53 @@ references:
   - url: https://github.blog/changelog/2026-07-01-copilot-vision-is-generally-available/
     label: "Copilot vision is generally available"
     verified: 2026-08-12
-  - url: https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot
+  - url: https://github.blog/changelog/2026-07-21-upcoming-august-2026-model-deprecations-in-github-copilot
     label: "Upcoming September 2026 model deprecations in GitHub Copilot"
     verified: 2026-08-12
 ---
 
-# VS Code Copilot through 1.144: Four Practitioner Outcomes
+# VS Code Agents: Pick, Place, Steer, Keep
 
 > **The Question This Talk Answers:**
-> *"How do I get a useful answer from Copilot and know what it changed?"*
+> *"VS Code ships Copilot changes every week. Which ones change how I work?"*
 
-**Duration:** 50 minutes: 46 minutes 30 seconds estimated talk and 3 minutes 30 seconds for questions | **Audience:** Developers and team leads using AI-assisted workflows in VS Code
+**Duration:** 50 minutes: about 45 minutes estimated talk and about 5 minutes for questions | **Audience:** Developers, team leads, and platform engineers running agent work in VS Code
 
-**Thesis:** Evaluate answers against the task, preserve work across interruptions, bound execution, and accept results from fresh evidence.
+**Thesis:** Every agent run in VS Code comes down to four decisions: pick the intelligence, place the work, steer the run, and keep the changes worth keeping. Releases 1.140–1.144 gave each decision a control you can see and inspect.
 
 ## Present and Study
 
-- **[Open the deck](../../slides/tech-talks/vscode-latest/index.html):** 47 slides: 36 feature cards and 11 framing slides. Press `N` to open speaker notes beside it.
+- **[Open the deck](../../slides/tech-talks/vscode-latest/index.html):** 22 slides that file every agent feature under four verbs, each shown on its own short example. Press `N` to open speaker notes beside it.
 - **[Speaker notes](../../slides/tech-talks/vscode-latest/notes.html):** Talk track, facts for questions, demo cues, first-party evidence, and a time budget for every slide. The notes print as a handout.
 
 The deck and notes live in [`slides.js`](../../slides/tech-talks/vscode-latest/slides.js); this page is the landing page.
 
-## 1. Find a Better Answer
+## 1. Pick: which intelligence answers?
 
-Inspect the redesigned 1.142 model picker, 1.143 local models and comparisons, 1.144 Fusion GA and expanded Preview comparisons, BYOK state, context controls, provider routes, and visual input. Each card names its release, status, use case, newly possible action, proof plan, and limit. No route is called better without measured evidence.
+Compare two attempts at the same task side by side (1.142 Preview; 1.144 folderless start). Let Fusion route the request (1.144 GA) and inspect usage and billing. Point Copilot at your own model with a Custom Endpoint, and see why `statefulResponses: false` matters for a stateless server (1.142). On-device models (1.142) need an NVIDIA GPU with 96 GB or more of VRAM. Where inference runs is separate from where tools send traffic. The scorecard informs the pick; the developer makes it.
 
-## 2. Keep Work Moving
+## 2. Place: where does the work run, and what travels?
 
-Follow sessions across multi-root workspaces, remote hosts, containers, external clients, canvases, worktrees, and cloud. Reopen the session and verify its conversation, workspace, host, and changed files. Cloud sessions use a separate workspace; local uncommitted changes are not copied automatically. Paid-plan and organization-policy rules apply; remote machines and Agent Hosts must remain running.
+Choose a shared checkout or a fresh worktree. Start long-running work as a 1.144 cloud session, check it from GitHub Mobile, and return to the same conversation in VS Code. Local uncommitted changes stay local. Use the Remote Environments dialog and Agent Host to find a target, then verify the host, repository, and toolchain.
 
-## 3. Delegate with Fewer Interruptions
+## 2. Steer: what can I see and change while it runs?
 
-Choose between shared peer chats and isolated worktrees; inspect background shells, queued messages, scoped discard, and working sets. Separate feature access, tool-execution permission, and human acceptance. Assisted permissions GA requires Folder isolation and remains subject to policy. Experimental computer use is limited to eligible local Windows and macOS Copilot-harness sessions, with approval for each application action.
+Stop the one hung test shell without ending the session (1.141 Background Shells, 1.142 Stop Shell). Queue the next step or steer the running one from the Send dropdown. Let assisted permissions (1.144 GA, Folder isolation required) run lower-risk calls, and add sandboxing (1.141) as an extra layer. Computer use (Experimental) applies the same decision to desktop apps you approve, one app at a time.
 
-## 4. Check More Than the Code
+## 4. Keep: which changes stay, on what evidence?
 
-Use one independent local login-page example to inspect browser scope, screenshots, viewport emulation, element feedback, measurements, tests, diffs, and PR evidence. The 390-by-844 viewport and 44-by-44 CSS-pixel target are proposed criteria, not achieved outcomes or accessibility-conformance claims. Keep runner status separate from page behavior; the reviewer accepts, adjusts, holds, or stops.
+Decide file by file with the working set's Keep (1.143) and Undo (1.144), both Experimental. In the Agents window, discard a turn, a session, or a branch from the Changes view. Gather browser evidence at the named viewport, keep runner status, page behavior, and diff review in separate columns, and when they disagree, comment and retry, or Undo or discard.
 
 ## What You Can Do Today
 
-- **Today:** State what makes an answer useful for one task; inspect an eligible route and its access boundary.
-- **This week:** Check what persists across an interruption, then inspect one bounded delegation and its permission path.
-- **This month:** Evaluate model and execution choices with their owners; check policy, network, container fit, cost, and evidence.
-- **Apply it:** Name a task from your repository, its criteria and execution boundary, the human reviewer, and the evidence that determines whether to accept, adjust, or stop.
+Fill in four lines for one real repository task before the agent starts:
 
-## Key Artifacts
+1. **Pick:** which intelligence, and how you will compare or check it.
+2. **Place:** where it runs, and what must travel with it.
+2. **Steer:** what may act unasked, and what you will watch.
+4. **Keep:** the evidence that earns Keep, and who owns recovery when evidence disagrees.
 
-- **Answer-evaluation criteria:** Compare the same task prompt and declared criteria; inspect model, harness, access, cost, and actual output separately.
-- **Session continuity check:** Verify task identity, workspace, host availability, and changed files after reconnecting.
-- **Bounded execution record:** Name the worktree boundary, requested action, permission decision, and human acceptance owner.
-- **Behavior evidence set:** Keep fresh screenshot, measurement, test status, diff, and PR feedback distinct. The local login demo uses proposed criteria only.
-
-Feature visuals are explicitly labeled schematics unless a presenter records an actual capture. No copyrighted source images were downloaded. Source-media links and actionable capture briefs appear in the notes; account eligibility, installed-feature behavior, and policy need a presenter check. The first-party 1.143 release page's publication date remains unresolved; 2026-10-20 is secondary corroboration only. No speed, quality, or interruption-reduction outcome is claimed without evidence.
-
+Account eligibility, installed-feature behavior, and organization policy need a presenter check. The first-party 1.142 release page's publication date remains unresolved; 2026-10-20 is secondary corroboration only. No speed, quality, or interruption-reduction outcome is claimed without evidence.
 ## Related Patterns
 
 - [Custom Agents and Skills](../copilot-primitives/README.md): configure agent behavior and reusable workflow context.

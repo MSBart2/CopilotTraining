@@ -1,7 +1,7 @@
 ---
 status: active
 portfolioState: deployed
-updated: 2026-10-30
+updated: 2026-11-04
 section: "Agents on GitHub"
 audience: [developer, team-lead, platform-engineer]
 level: applied
@@ -75,10 +75,10 @@ references:
 
 ## Present and Study
 
-- **[Open the native deck](../../slides/tech-talks/copilot-on-github/index.html):** 39 slides. Press `N` to open the notes beside it.
+- **[Open the native deck](../../slides/tech-talks/copilot-on-github/index.html):** 32 slides. Press `N` to open the notes beside it.
 - **[Speaker notes](../../slides/tech-talks/copilot-on-github/notes.html):** the complete talk track, evidence, facts for questions, and estimated time for each slide. The notes print as a handout.
 
-The deck and notes are the teaching source in [`slides.js`](../../slides/tech-talks/copilot-on-github/slides.js). Speaking time is estimated at 55:50, leaving 4:10 for questions; a presenter run-through will calibrate the estimate.
+The deck and notes are the teaching source in [`slides.js`](../../slides/tech-talks/copilot-on-github/slides.js). Speaking time is estimated at 47:05, leaving about 13 minutes for live demos and questions; a presenter run-through will calibrate the estimate.
 
 ## 1. Produce: Copilot Cloud Agent
 
@@ -100,9 +100,9 @@ Trace one observed FanHub pull request through its human actions, pushes, review
 
 ### Today
 
-- **Try:** Replay one recently merged pull request and list the agents that ran on each push.
-- **Expected signal:** Each review and scan is tied to a specific commit; human actions and automatic events are distinct.
-- **Validate:** Compare the list with the PR timeline, checks, review commits, and workflow logs.
+- **Try:** Run one issue through all three agents. The developer rewrites one bug with scope and acceptance criteria and assigns it to the cloud agent; the platform owner turns on Review new pushes at Balanced effort and Code Quality with rules in Evaluate on that repository.
+- **Expected signal:** Every push on the draft produces a review and a Code Quality run tied to its commit.
+- **Validate:** The team lead reads the pull request with who acted, which SHA each agent saw, and what evidence is still missing, then writes the decision record.
 
 ### This Week
 
@@ -125,7 +125,7 @@ Trace one observed FanHub pull request through its human actions, pushes, review
 
 ## Key Artifacts
 
-- **[Native deck and notes](../../slides/tech-talks/copilot-on-github/):** reusable event map, decision record, and pull-request replay exercise.
+- **[Native deck and notes](../../slides/tech-talks/copilot-on-github/):** reusable event map, decision record, and role-by-role next moves.
 - **[FanHub issue #159](https://github.com/MSBart2/FanHub/issues/159):** example of rewriting a one-sentence bug as a bounded task with acceptance criteria and scope.
 - **[FanHub draft #221](https://github.com/MSBart2/FanHub/pull/221):** one observed event history through all three agents; it remained a draft with no merge decision.
 - **[FanHub #210](https://github.com/MSBart2/FanHub/pull/210):** separate maintainer merge decision and evidence record.

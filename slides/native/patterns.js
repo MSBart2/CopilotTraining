@@ -7,7 +7,8 @@
   const { svg, html, esc } = window.Kit;
 
   /* Terminal transcript: the prompt and request type out, then the agent's evidence lands line by line.
-     Data: transcript[{type: prompt|user|thinking|response|divider|outcome, ...}], termTitle?. */
+     Data: transcript[{type: prompt|user|thinking|response|divider|outcome, ...}], termTitle?.
+     An outcome with `mark` shows that marker in orange instead of the green ✓ (use it for findings). */
   const terminal = (s) => {
     let t = 400;
     const typed = (text, cps = 22) => {
@@ -26,7 +27,7 @@
       }
       if (e.type === 'response') return e.lines.map((l) => { const out = line('resp', `<span class="bullet">•</span>${esc(l)}`); t += 300; return out; }).join('');
       if (e.type === 'divider') { const out = `<hr class="tl-rule m-in" style="--at:${t}ms">`; t += 250; return out; }
-      if (e.type === 'outcome') { const out = line('outcome', `<span class="ok">✓</span>${esc(e.text)}`); t += 350; return out; }
+      if (e.type === 'outcome') { const out = line('outcome', e.mark ? `<span class="mark">${esc(e.mark)}</span>${esc(e.text)}` : `<span class="ok">✓</span>${esc(e.text)}`); t += 350; return out; }
       return '';
     }).join('');
     return `${html.head(s)}
