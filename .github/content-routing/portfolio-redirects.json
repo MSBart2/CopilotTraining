@@ -112,6 +112,13 @@
       "target": "harness-fundamentals",
       "reason": "Organization controls around the harness (access, model availability, policy hooks, billing route, and acceptance) now sit inside Harness Fundamentals.",
       "decisionId": "harness-fundamentals"
+    },
+    {
+      "source": "copilot-plugins",
+      "status": "merged",
+      "target": "enterprise-patterns",
+      "reason": "Plugin packaging, marketplaces, and the enterprise, team, repository, and personal distribution layers now sit inside Enterprise Patterns; APM remains as its boundary section.",
+      "decisionId": "universe26-layered-baseline"
     }
   ]
 }

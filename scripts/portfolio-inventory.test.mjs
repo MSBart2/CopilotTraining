@@ -71,13 +71,13 @@ test("native talks use README metadata and provide their notes page", () => {
 test("discovers the current consolidated practitioner portfolio", () => {
   const inventory = collectPortfolio(root);
   assert.equal(inventory.counts.totalTalks, 32);
-  assert.equal(inventory.counts.practitionerTalks, 14);
-  assert.equal(inventory.counts.archivedTalks, 18);
-  assert.equal(inventory.counts.deployedTalks, 14);
+  assert.equal(inventory.counts.practitionerTalks, 13);
+  assert.equal(inventory.counts.archivedTalks, 19);
+  assert.equal(inventory.counts.deployedTalks, 13);
   assert.equal(inventory.counts.candidateTalks, 0);
-  assert.equal(inventory.counts.catalogCards, 14);
+  assert.equal(inventory.counts.catalogCards, 13);
   assert.equal(inventory.counts.validTalks, inventory.counts.totalTalks);
-  assert.equal(inventory.redirects.length, 16);
+  assert.equal(inventory.redirects.length, 17);
   assert.equal(new Set(inventory.talks.map(({ slug }) => slug)).size, inventory.counts.totalTalks);
   assert.deepEqual(inventoryErrors(inventory), []);
 });

@@ -1,0 +1,41 @@
+
+> fanhub-frontend@0.1.0 test
+> react-scripts test --watchAll=false --ci
+
+  console.error
+    Warning: `ReactDOMTestUtils.act` is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
+
+    [0m [90m 116 |[39m [36masync[39m [36mfunction[39m loadInitialEpisodes(responseEnvelope [33m=[39m directResponse) {
+     [90m 117 |[39m   [36mconst[39m initial [33m=[39m queueRequest()[33m;[39m
+    [31m[1m>[22m[39m[90m 118 |[39m   [36mawait[39m act([36masync[39m () [33m=>[39m {
+     [90m     |[39m            [31m[1m^[22m[39m
+     [90m 119 |[39m     root[33m.[39mrender([33m<[39m[33mEpisodes[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m 120 |[39m   })[33m;[39m
+     [90m 121 |[39m   expect(episodesApi[33m.[39mgetAll)[33m.[39mtoHaveBeenCalledTimes([35m1[39m)[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:71:30)
+      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:45:7)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1736:7)
+      at loadInitialEpisodes (src/pages/Episodes.test.js:118:12)
+      at src/pages/Episodes.test.js:148:11
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+PASS src/pages/Episodes.test.js
+  √ A1: selecting Season 2 immediately after initial load displays only Season 2 episodes (direct envelope) (199 ms)
+  √ A1: selecting Season 2 immediately after initial load displays only Season 2 episodes (nested envelope) (44 ms)
+  √ A2: an older success cannot overwrite the newer selected season (50 ms)
+  √ A2: an older success cannot finish loading while the latest season request is pending (26 ms)
+  √ A2: an older rejection cannot show an error or finish loading while the latest request is pending (17 ms)
+  √ A2: an older rejection cannot change the latest season's loaded data or show an error (21 ms)
+  √ A3: returning to All Seasons displays all episodes (30 ms)
+  √ A3: clicking the selected Season 2 again deselects it and displays all episodes (28 ms)
+  √ A3: clicking All Seasons when already on all seasons safely displays all episodes (17 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        6.368 s
+Ran all test suites.

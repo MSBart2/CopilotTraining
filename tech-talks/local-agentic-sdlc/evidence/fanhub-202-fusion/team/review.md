@@ -1,0 +1,107 @@
+## Round 1
+
+- **Verdict:** accept
+- **Check:** `.team/evidence/check-1.txt` — 1 test suite passed, 2 tests passed, and ESLint completed for both changed files.
+- **Findings:** None. A1 is exercised by selecting Season 2 immediately after loading all episodes and asserting only Season 2 remains. A2 is exercised by resolving the current request before the earlier season request and asserting the earlier result cannot replace it. The keyed cache and latest-request guards in the implementation meet both criteria.
+
+### Orchestrator status/diff context
+
+`git status --short`:
+```
+M node/frontend/src/pages/Episodes.js
+?? node/frontend/src/pages/Episodes.test.js
+```
+
+`git --no-pager diff`:
+```diff
+diff --git a/node/frontend/src/pages/Episodes.js b/node/frontend/src/pages/Episodes.js
+index a58afcd..b28ef53 100644
+--- a/node/frontend/src/pages/Episodes.js
++++ b/node/frontend/src/pages/Episodes.js
+@@ -2,7 +2,7 @@
+ // NOTE: This file uses .js extension while others use .jsx - inconsistent!
+ // Also mixes different patterns
+ 
+-import React, { useState, useEffect, useCallback } from "react";
++import React, { useState, useEffect, useCallback, useRef } from "react";
+ import EpisodeList from "../components/EpisodeList";
+ import { episodesApi } from "../services/api";
+ 
+@@ -47,8 +47,7 @@ const pageStyles = {
+   },
+ };
+ 
+-let episodeCache = null;
+-let cacheTimestamp = null;
++const episodeCache = new Map();
+ 
+ // Functional component with hooks
+ const Episodes = () => {
+@@ -57,6 +56,7 @@ const Episodes = () => {
+   const [selectedSeason, setSelectedSeason] = useState(null);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState(null);
++  const latestRequest = useRef(0);
+ 
+   // Extract unique seasons from episodes
+   const extractSeasons = useCallback((episodeList) => {
+@@ -75,14 +75,12 @@ const Episodes = () => {
+   // Load episodes
+   const loadEpisodes = useCallback(
+     async (seasonId = null) => {
+-      // Workshop bug (#202): the shared cache ignores the requested season.
++      const requestId = ++latestRequest.current;
+       const now = Date.now();
+-      if (
+-        episodeCache &&
+-        cacheTimestamp &&
+-        now - cacheTimestamp < 30000
+-      ) {
+-        setEpisodes(episodeCache);
++      const cached = episodeCache.get(seasonId);
++      if (cached && now - cached.timestamp < 30000) {
++        setEpisodes(cached.episodes);
++        setError(null);
+         setLoading(false);
+         return;
+       }
+@@ -101,21 +99,28 @@ const Episodes = () => {
+         // Handle different response formats (backend inconsistency!)
+         const data = response.data.data || response.data;
+ 
+-        // Update cache (but doesn't track which season this is for!)
+-        episodeCache = data;
+-        cacheTimestamp = Date.now();
++        episodeCache.set(seasonId, {
++          episodes: data,
++          timestamp: Date.now(),
++        });
+ 
+-        setEpisodes(data);
++        if (latestRequest.current === requestId) {
++          setEpisodes(data);
+ 
+-        // Only extract seasons on initial load
+-        if (!seasonId && data.length > 0) {
+-          setSeasons(extractSeasons(data));
++          // Only extract seasons on initial load
++          if (!seasonId && data.length > 0) {
++            setSeasons(extractSeasons(data));
++          }
+         }
+       } catch (err) {
+-        console.error("Failed to load episodes:", err);
+-        setError("Failed to load episodes. Is the backend running?");
++        if (latestRequest.current === requestId) {
++          console.error("Failed to load episodes:", err);
++          setError("Failed to load episodes. Is the backend running?");
++        }
+       } finally {
+-        setLoading(false);
++        if (latestRequest.current === requestId) {
++          setLoading(false);
++        }
+       }
+     },
+     [extractSeasons],
+```

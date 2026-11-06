@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-05T19:16:09.615Z",
+  "generatedAt": "2026-11-06T20:35:51.950Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
-    "practitionerTalks": 14,
-    "archivedTalks": 18,
-    "deployedTalks": 14,
+    "practitionerTalks": 13,
+    "archivedTalks": 19,
+    "deployedTalks": 13,
     "candidateTalks": 0,
-    "catalogCards": 14,
+    "catalogCards": 13,
     "validTalks": 32
   },
   "warnings": [],
@@ -126,6 +126,13 @@
       "target": "harness-fundamentals",
       "reason": "Organization controls around the harness (access, model availability, policy hooks, billing route, and acceptance) now sit inside Harness Fundamentals.",
       "decisionId": "harness-fundamentals"
+    },
+    {
+      "source": "copilot-plugins",
+      "status": "merged",
+      "target": "enterprise-patterns",
+      "reason": "Plugin packaging, marketplaces, and the enterprise, team, repository, and personal distribution layers now sit inside Enterprise Patterns; APM remains as its boundary section.",
+      "decisionId": "universe26-layered-baseline"
     }
   ],
   "redirectErrors": [],
@@ -776,8 +783,8 @@
         "readme": {
           "path": "tech-talks/copilot-cli/README.md",
           "exists": true,
-          "bytes": 74233,
-          "modified": "2026-10-23T20:21:18.914Z"
+          "bytes": 9709,
+          "modified": "2026-11-06T20:35:51.165Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-cli/deck.recipe.yml",
@@ -1224,9 +1231,9 @@
     {
       "slug": "copilot-plugins",
       "title": "Copilot Plugins & APM: Composable AI Extensions",
-      "status": "active",
+      "status": "archived",
       "portfolioState": "deployed",
-      "updated": "2026-08-10",
+      "updated": "2026-10-31",
       "section": "Extend and Embed",
       "audience": [
         "developer",
@@ -1245,13 +1252,13 @@
       ],
       "deckFormat": "slidev",
       "deckSection": "Extend and Embed",
-      "cataloged": true,
+      "cataloged": false,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-plugins/README.md",
           "exists": true,
-          "bytes": 28025,
-          "modified": "2026-10-23T20:21:18.907Z"
+          "bytes": 5063,
+          "modified": "2026-11-06T20:35:51.166Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-plugins/deck.recipe.yml",
@@ -1262,8 +1269,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-plugins.md",
           "exists": true,
-          "bytes": 24526,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 25029,
+          "modified": "2026-11-06T20:35:51.153Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-plugins/agenda.md",
@@ -1633,48 +1640,57 @@
     },
     {
       "slug": "enterprise-patterns",
-      "title": "Scaling GitHub Copilot Across Organizations",
+      "title": "Enterprise Patterns: One Baseline, Four Layers, Every Team's Choice",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-16",
+      "updated": "2026-11-05",
       "section": "Trust and Govern",
       "audience": [
         "platform-engineer",
-        "security",
         "architect",
-        "engineering-leader"
+        "team-lead"
       ],
-      "level": "strategic",
+      "level": "advanced",
       "duration": 60,
       "format": "core-talk",
-      "decision": "How can organizations standardize, govern, and measure Copilot adoption?",
-      "prerequisites": [],
-      "related": [
-        "copilot-hooks",
-        "agentic-sdlc",
-        "copilot-plugins"
+      "decision": "Which plane (AI controls policy or managed settings) and which layer (enterprise, org, team, repository, or personal) owns each plugin, model, MCP, and telemetry choice, and how do we confirm what one developer actually gets?",
+      "prerequisites": [
+        "copilot-primitives"
       ],
-      "deckFormat": "slidev",
+      "related": [
+        "copilot-primitives",
+        "harness-fundamentals",
+        "copilot-cli",
+        "agentic-workflows",
+        "agentic-sdlc"
+      ],
+      "deckFormat": "native",
       "deckSection": "Trust and Govern",
       "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/enterprise-patterns/README.md",
           "exists": true,
-          "bytes": 63087,
-          "modified": "2026-10-26T15:25:34.400Z"
+          "bytes": 17601,
+          "modified": "2026-11-06T20:35:51.167Z"
         },
         "recipe": {
           "path": "tech-talks/enterprise-patterns/deck.recipe.yml",
           "exists": true,
-          "bytes": 6754,
-          "modified": "2026-10-22T19:19:07.007Z"
+          "bytes": 25594,
+          "modified": "2026-11-06T20:35:51.168Z"
         },
         "deck": {
-          "path": "slides/tech-talks/enterprise-patterns.md",
+          "path": "slides/tech-talks/enterprise-patterns/slides.js",
           "exists": true,
-          "bytes": 28478,
-          "modified": "2026-09-16T01:01:24.021Z"
+          "bytes": 76006,
+          "modified": "2026-11-06T20:35:51.158Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/enterprise-patterns/notes.html",
+          "exists": true,
+          "bytes": 1395,
+          "modified": "2026-11-06T20:35:51.155Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/enterprise-patterns/agenda.md",
@@ -1773,10 +1789,10 @@
     },
     {
       "slug": "local-agentic-sdlc",
-      "title": "Local Agentic SDLC: A Loop with a Contract",
+      "title": "Local Agentic SDLC: Build the Crew, Run the Loop",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-10-22",
+      "updated": "2026-11-06",
       "section": "Agents at Your Keyboard",
       "audience": [
         "developer",
@@ -1785,7 +1801,7 @@
       "level": "applied",
       "duration": 45,
       "format": "core-talk",
-      "decision": "How can a developer run plan, implement, test, review, and integrate locally with custom agents, and know when the run is done?",
+      "decision": "How do I build local agents that can work together on a coding task?",
       "prerequisites": [
         "custom-agents"
       ],
@@ -1796,27 +1812,33 @@
         "agentic-workflows",
         "copilot-on-github"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Agents at Your Keyboard",
       "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/local-agentic-sdlc/README.md",
           "exists": true,
-          "bytes": 21440,
-          "modified": "2026-10-23T20:01:23.223Z"
+          "bytes": 12218,
+          "modified": "2026-11-06T20:35:51.173Z"
         },
         "recipe": {
           "path": "tech-talks/local-agentic-sdlc/deck.recipe.yml",
           "exists": true,
-          "bytes": 8947,
-          "modified": "2026-10-22T03:10:19.280Z"
+          "bytes": 15434,
+          "modified": "2026-11-06T20:35:51.175Z"
         },
         "deck": {
-          "path": "slides/tech-talks/local-agentic-sdlc.md",
+          "path": "slides/tech-talks/local-agentic-sdlc/slides.js",
           "exists": true,
-          "bytes": 42244,
-          "modified": "2026-10-22T19:15:49.036Z"
+          "bytes": 54431,
+          "modified": "2026-11-06T20:35:51.163Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/local-agentic-sdlc/notes.html",
+          "exists": true,
+          "bytes": 1357,
+          "modified": "2026-11-06T20:35:51.161Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/local-agentic-sdlc/agenda.md",

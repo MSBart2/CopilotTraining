@@ -1,0 +1,20 @@
+
+> fanhub-frontend@0.1.0 test
+> react-scripts test --watchAll=false --ci
+
+PASS src/pages/Episodes.test.js
+  √ A1: selecting Season 2 immediately after initial load displays only Season 2 episodes (direct envelope) (126 ms)
+  √ A1: selecting Season 2 immediately after initial load displays only Season 2 episodes (nested envelope) (33 ms)
+  √ A2: an older success cannot overwrite the newer selected season (33 ms)
+  √ A2: an older success cannot finish loading while the latest season request is pending (55 ms)
+  √ A2: an older rejection cannot show an error or finish loading while the latest request is pending (31 ms)
+  √ A2: an older rejection cannot change the latest season's loaded data or show an error (26 ms)
+  √ A3: returning to All Seasons displays all episodes (35 ms)
+  √ A3: clicking the selected Season 2 again deselects it and displays all episodes (37 ms)
+  √ A3: clicking All Seasons when already on all seasons safely displays all episodes (22 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       9 passed, 9 total
+Snapshots:   0 total
+Time:        8.077 s
+Ran all test suites.

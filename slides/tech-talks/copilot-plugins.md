@@ -12,8 +12,8 @@ transition: slide-left
 title: Copilot Plugins & APM
 mdc: true
 section: Extend and Embed
-status: active
-updated: 2026-08-11
+status: archived
+updated: 2026-11-06
 ---
 
 <script setup>

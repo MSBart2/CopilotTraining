@@ -1,0 +1,821 @@
+=== npm --prefix node/frontend test -- --watchAll=false --ci ===
+
+> fanhub-frontend@0.1.0 test
+> react-scripts test --watchAll=false --ci
+
+  console.error
+    Warning: `ReactDOMTestUtils.act` is deprecated in favor of `React.act`. Import `act` from `react` instead of `react-dom/test-utils`. See https://react.dev/warnings/react-dom-test-utils for more info.
+
+    [0m [90m 78 |[39m     )[33m;[39m
+     [90m 79 |[39m
+    [31m[1m>[22m[39m[90m 80 |[39m     [36mawait[39m act([36masync[39m () [33m=>[39m {
+     [90m    |[39m              [31m[1m^[22m[39m
+     [90m 81 |[39m       root[33m.[39mrender([33m<[39m[33mEpisodes[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m 82 |[39m       [36mawait[39m [33mPromise[39m[33m.[39mresolve()[33m;[39m
+     [90m 83 |[39m     })[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:71:30)
+      at error (node_modules/react-dom/cjs/react-dom-test-utils.development.js:45:7)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1736:7)
+      at Object.<anonymous> (src/pages/Episodes.test.js:80:14)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 79 |[39m
+     [90m 80 |[39m     [36mawait[39m act([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 81 |[39m       root[33m.[39mrender([33m<[39m[33mEpisodes[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m    |[39m            [31m[1m^[22m[39m
+     [90m 82 |[39m       [36mawait[39m [33mPromise[39m[33m.[39mresolve()[33m;[39m
+     [90m 83 |[39m     })[33m;[39m
+     [90m 84 |[39m     expect(container[33m.[39mtextContent)[33m.[39mtoContain([32m"Season 1 episode"[39m)[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:28897:5)
+      at ReactDOMRoot.render (node_modules/react-dom/cjs/react-dom.development.js:29353:3)
+      at src/pages/Episodes.test.js:81:12
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:80:14)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 106 |[39m
+     [90m 107 |[39m         [36mif[39m (latestRequest[33m.[39mcurrent [33m===[39m requestId) {
+    [31m[1m>[22m[39m[90m 108 |[39m           setEpisodes(data)[33m;[39m
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 109 |[39m
+     [90m 110 |[39m           [90m// Only extract seasons on initial load[39m
+     [90m 111 |[39m           [36mif[39m ([33m![39mseasonId [33m&&[39m data[33m.[39mlength [33m>[39m [35m0[39m) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setEpisodes (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:108:11
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 110 |[39m           [90m// Only extract seasons on initial load[39m
+     [90m 111 |[39m           [36mif[39m ([33m![39mseasonId [33m&&[39m data[33m.[39mlength [33m>[39m [35m0[39m) {
+    [31m[1m>[22m[39m[90m 112 |[39m             setSeasons(extractSeasons(data))[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 113 |[39m           }
+     [90m 114 |[39m         }
+     [90m 115 |[39m       } [36mcatch[39m (err) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setSeasons (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:112:13
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 120 |[39m       } [36mfinally[39m {
+     [90m 121 |[39m         [36mif[39m (latestRequest[33m.[39mcurrent [33m===[39m requestId) {
+    [31m[1m>[22m[39m[90m 122 |[39m           setLoading([36mfalse[39m)[33m;[39m
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 123 |[39m         }
+     [90m 124 |[39m       }
+     [90m 125 |[39m     }[33m,[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setLoading (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:122:11
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 139 |[39m       loadEpisodes()[33m;[39m
+     [90m 140 |[39m     } [36melse[39m {
+    [31m[1m>[22m[39m[90m 141 |[39m       setSelectedSeason(season[33m.[39mid)[33m;[39m
+     [90m     |[39m       [31m[1m^[22m[39m
+     [90m 142 |[39m       loadEpisodes(season[33m.[39mid)[33m;[39m
+     [90m 143 |[39m     }
+     [90m 144 |[39m   }[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setSelectedSeason (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at handleSeasonClick (src/pages/Episodes.js:141:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:88:7
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:87:14)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 87 |[39m
+     [90m 88 |[39m       [36mtry[39m {
+    [31m[1m>[22m[39m[90m 89 |[39m         setLoading([36mtrue[39m)[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 90 |[39m         setError([36mnull[39m)[33m;[39m
+     [90m 91 |[39m
+     [90m 92 |[39m         [36mconst[39m params [33m=[39m {}[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setLoading (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at loadEpisodes (src/pages/Episodes.js:89:9)
+      at handleSeasonClick (src/pages/Episodes.js:142:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:88:7
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:87:14)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 88 |[39m       [36mtry[39m {
+     [90m 89 |[39m         setLoading([36mtrue[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 90 |[39m         setError([36mnull[39m)[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 91 |[39m
+     [90m 92 |[39m         [36mconst[39m params [33m=[39m {}[33m;[39m
+     [90m 93 |[39m         [36mif[39m (seasonId) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setError (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at loadEpisodes (src/pages/Episodes.js:90:9)
+      at handleSeasonClick (src/pages/Episodes.js:142:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:88:7
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:87:14)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 106 |[39m
+     [90m 107 |[39m         [36mif[39m (latestRequest[33m.[39mcurrent [33m===[39m requestId) {
+    [31m[1m>[22m[39m[90m 108 |[39m           setEpisodes(data)[33m;[39m
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 109 |[39m
+     [90m 110 |[39m           [90m// Only extract seasons on initial load[39m
+     [90m 111 |[39m           [36mif[39m ([33m![39mseasonId [33m&&[39m data[33m.[39mlength [33m>[39m [35m0[39m) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setEpisodes (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:108:11
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 120 |[39m       } [36mfinally[39m {
+     [90m 121 |[39m         [36mif[39m (latestRequest[33m.[39mcurrent [33m===[39m requestId) {
+    [31m[1m>[22m[39m[90m 122 |[39m           setLoading([36mfalse[39m)[33m;[39m
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 123 |[39m         }
+     [90m 124 |[39m       }
+     [90m 125 |[39m     }[33m,[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setLoading (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:122:11
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 53 |[39m
+     [90m 54 |[39m afterEach(() [33m=>[39m {
+    [31m[1m>[22m[39m[90m 55 |[39m   act(() [33m=>[39m root[33m.[39munmount())[33m;[39m
+     [90m    |[39m                  [31m[1m^[22m[39m
+     [90m 56 |[39m   container[33m.[39mremove()[33m;[39m
+     [90m 57 |[39m   jest[33m.[39mrestoreAllMocks()[33m;[39m
+     [90m 58 |[39m })[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:28897:5)
+      at node_modules/react-dom/cjs/react-dom.development.js:29376:7
+      at flushSync (node_modules/react-dom/cjs/react-dom.development.js:26228:14)
+      at ReactDOMRoot.unmount (node_modules/react-dom/cjs/react-dom.development.js:29375:5)
+      at src/pages/Episodes.test.js:55:18
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:55:6)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 108 |[39m
+     [90m 109 |[39m     [36mawait[39m act([36masync[39m () [33m=>[39m {
+    [31m[1m>[22m[39m[90m 110 |[39m       root[33m.[39mrender([33m<[39m[33mEpisodes[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m     |[39m            [31m[1m^[22m[39m
+     [90m 111 |[39m       [36mawait[39m [33mPromise[39m[33m.[39mresolve()[33m;[39m
+     [90m 112 |[39m     })[33m;[39m
+     [90m 113 |[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:28897:5)
+      at ReactDOMRoot.render (node_modules/react-dom/cjs/react-dom.development.js:29353:3)
+      at src/pages/Episodes.test.js:110:12
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:109:14)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 106 |[39m
+     [90m 107 |[39m         [36mif[39m (latestRequest[33m.[39mcurrent [33m===[39m requestId) {
+    [31m[1m>[22m[39m[90m 108 |[39m           setEpisodes(data)[33m;[39m
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 109 |[39m
+     [90m 110 |[39m           [90m// Only extract seasons on initial load[39m
+     [90m 111 |[39m           [36mif[39m ([33m![39mseasonId [33m&&[39m data[33m.[39mlength [33m>[39m [35m0[39m) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setEpisodes (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:108:11
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 110 |[39m           [90m// Only extract seasons on initial load[39m
+     [90m 111 |[39m           [36mif[39m ([33m![39mseasonId [33m&&[39m data[33m.[39mlength [33m>[39m [35m0[39m) {
+    [31m[1m>[22m[39m[90m 112 |[39m             setSeasons(extractSeasons(data))[33m;[39m
+     [90m     |[39m             [31m[1m^[22m[39m
+     [90m 113 |[39m           }
+     [90m 114 |[39m         }
+     [90m 115 |[39m       } [36mcatch[39m (err) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setSeasons (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:112:13
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 120 |[39m       } [36mfinally[39m {
+     [90m 121 |[39m         [36mif[39m (latestRequest[33m.[39mcurrent [33m===[39m requestId) {
+    [31m[1m>[22m[39m[90m 122 |[39m           setLoading([36mfalse[39m)[33m;[39m
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 123 |[39m         }
+     [90m 124 |[39m       }
+     [90m 125 |[39m     }[33m,[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setLoading (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:122:11
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 139 |[39m       loadEpisodes()[33m;[39m
+     [90m 140 |[39m     } [36melse[39m {
+    [31m[1m>[22m[39m[90m 141 |[39m       setSelectedSeason(season[33m.[39mid)[33m;[39m
+     [90m     |[39m       [31m[1m^[22m[39m
+     [90m 142 |[39m       loadEpisodes(season[33m.[39mid)[33m;[39m
+     [90m 143 |[39m     }
+     [90m 144 |[39m   }[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setSelectedSeason (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at handleSeasonClick (src/pages/Episodes.js:141:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:114:15
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:114:8)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 87 |[39m
+     [90m 88 |[39m       [36mtry[39m {
+    [31m[1m>[22m[39m[90m 89 |[39m         setLoading([36mtrue[39m)[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 90 |[39m         setError([36mnull[39m)[33m;[39m
+     [90m 91 |[39m
+     [90m 92 |[39m         [36mconst[39m params [33m=[39m {}[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setLoading (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at loadEpisodes (src/pages/Episodes.js:89:9)
+      at handleSeasonClick (src/pages/Episodes.js:142:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:114:15
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:114:8)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 88 |[39m       [36mtry[39m {
+     [90m 89 |[39m         setLoading([36mtrue[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 90 |[39m         setError([36mnull[39m)[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 91 |[39m
+     [90m 92 |[39m         [36mconst[39m params [33m=[39m {}[33m;[39m
+     [90m 93 |[39m         [36mif[39m (seasonId) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setError (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at loadEpisodes (src/pages/Episodes.js:90:9)
+      at handleSeasonClick (src/pages/Episodes.js:142:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:114:15
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:114:8)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 139 |[39m       loadEpisodes()[33m;[39m
+     [90m 140 |[39m     } [36melse[39m {
+    [31m[1m>[22m[39m[90m 141 |[39m       setSelectedSeason(season[33m.[39mid)[33m;[39m
+     [90m     |[39m       [31m[1m^[22m[39m
+     [90m 142 |[39m       loadEpisodes(season[33m.[39mid)[33m;[39m
+     [90m 143 |[39m     }
+     [90m 144 |[39m   }[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setSelectedSeason (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at handleSeasonClick (src/pages/Episodes.js:141:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:115:15
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:115:8)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 87 |[39m
+     [90m 88 |[39m       [36mtry[39m {
+    [31m[1m>[22m[39m[90m 89 |[39m         setLoading([36mtrue[39m)[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 90 |[39m         setError([36mnull[39m)[33m;[39m
+     [90m 91 |[39m
+     [90m 92 |[39m         [36mconst[39m params [33m=[39m {}[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setLoading (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at loadEpisodes (src/pages/Episodes.js:89:9)
+      at handleSeasonClick (src/pages/Episodes.js:142:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:115:15
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:115:8)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 88 |[39m       [36mtry[39m {
+     [90m 89 |[39m         setLoading([36mtrue[39m)[33m;[39m
+    [31m[1m>[22m[39m[90m 90 |[39m         setError([36mnull[39m)[33m;[39m
+     [90m    |[39m         [31m[1m^[22m[39m
+     [90m 91 |[39m
+     [90m 92 |[39m         [36mconst[39m params [33m=[39m {}[33m;[39m
+     [90m 93 |[39m         [36mif[39m (seasonId) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setError (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at loadEpisodes (src/pages/Episodes.js:90:9)
+      at handleSeasonClick (src/pages/Episodes.js:142:7)
+      at onClick (src/pages/Episodes.js:182:32)
+      at HTMLUnknownElement.callCallback (node_modules/react-dom/cjs/react-dom.development.js:4164:14)
+      at HTMLUnknownElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLUnknownElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at HTMLUnknownElementImpl.dispatchEvent (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:94:17)
+      at HTMLUnknownElement.dispatchEvent (node_modules/jsdom/lib/jsdom/living/generated/EventTarget.js:231:34)
+      at Object.invokeGuardedCallbackDev (node_modules/react-dom/cjs/react-dom.development.js:4213:16)
+      at invokeGuardedCallback (node_modules/react-dom/cjs/react-dom.development.js:4277:31)
+      at invokeGuardedCallbackAndCatchFirstError (node_modules/react-dom/cjs/react-dom.development.js:4291:25)
+      at executeDispatch (node_modules/react-dom/cjs/react-dom.development.js:9041:3)
+      at processDispatchQueueItemsInOrder (node_modules/react-dom/cjs/react-dom.development.js:9073:7)
+      at processDispatchQueue (node_modules/react-dom/cjs/react-dom.development.js:9086:5)
+      at dispatchEventsForPlugins (node_modules/react-dom/cjs/react-dom.development.js:9097:3)
+      at node_modules/react-dom/cjs/react-dom.development.js:9288:12
+      at batchedUpdates$1 (node_modules/react-dom/cjs/react-dom.development.js:26179:12)
+      at batchedUpdates (node_modules/react-dom/cjs/react-dom.development.js:3991:12)
+      at dispatchEventForPluginEventSystem (node_modules/react-dom/cjs/react-dom.development.js:9287:3)
+      at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (node_modules/react-dom/cjs/react-dom.development.js:6465:5)
+      at dispatchEvent (node_modules/react-dom/cjs/react-dom.development.js:6457:5)
+      at dispatchDiscreteEvent (node_modules/react-dom/cjs/react-dom.development.js:6430:5)
+      at HTMLDivElement.callTheUserObjectsOperation (node_modules/jsdom/lib/jsdom/living/generated/EventListener.js:26:30)
+      at innerInvokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:338:25)
+      at invokeEventListeners (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:274:3)
+      at HTMLButtonElementImpl._dispatch (node_modules/jsdom/lib/jsdom/living/events/EventTarget-impl.js:221:9)
+      at fireAnEvent (node_modules/jsdom/lib/jsdom/living/helpers/events.js:18:36)
+      at HTMLButtonElementImpl.click (node_modules/jsdom/lib/jsdom/living/nodes/HTMLElement-impl.js:79:5)
+      at HTMLButtonElement.click (node_modules/jsdom/lib/jsdom/living/generated/HTMLElement.js:110:34)
+      at clickSeason (src/pages/Episodes.test.js:64:10)
+      at src/pages/Episodes.test.js:115:15
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:115:8)
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 106 |[39m
+     [90m 107 |[39m         [36mif[39m (latestRequest[33m.[39mcurrent [33m===[39m requestId) {
+    [31m[1m>[22m[39m[90m 108 |[39m           setEpisodes(data)[33m;[39m
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 109 |[39m
+     [90m 110 |[39m           [90m// Only extract seasons on initial load[39m
+     [90m 111 |[39m           [36mif[39m ([33m![39mseasonId [33m&&[39m data[33m.[39mlength [33m>[39m [35m0[39m) {[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setEpisodes (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:108:11
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 120 |[39m       } [36mfinally[39m {
+     [90m 121 |[39m         [36mif[39m (latestRequest[33m.[39mcurrent [33m===[39m requestId) {
+    [31m[1m>[22m[39m[90m 122 |[39m           setLoading([36mfalse[39m)[33m;[39m
+     [90m     |[39m           [31m[1m^[22m[39m
+     [90m 123 |[39m         }
+     [90m 124 |[39m       }
+     [90m 125 |[39m     }[33m,[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at setLoading (node_modules/react-dom/cjs/react-dom.development.js:16708:7)
+      at src/pages/Episodes.js:122:11
+
+  console.error
+    Warning: The current testing environment is not configured to support act(...)
+
+    [0m [90m 53 |[39m
+     [90m 54 |[39m afterEach(() [33m=>[39m {
+    [31m[1m>[22m[39m[90m 55 |[39m   act(() [33m=>[39m root[33m.[39munmount())[33m;[39m
+     [90m    |[39m                  [31m[1m^[22m[39m
+     [90m 56 |[39m   container[33m.[39mremove()[33m;[39m
+     [90m 57 |[39m   jest[33m.[39mrestoreAllMocks()[33m;[39m
+     [90m 58 |[39m })[33m;[39m[0m
+
+      at printWarning (node_modules/react-dom/cjs/react-dom.development.js:86:30)
+      at error (node_modules/react-dom/cjs/react-dom.development.js:60:7)
+      at isConcurrentActEnvironment (node_modules/react-dom/cjs/react-dom.development.js:25299:7)
+      at warnIfUpdatesNotWrappedWithActDEV (node_modules/react-dom/cjs/react-dom.development.js:27598:12)
+      at scheduleUpdateOnFiber (node_modules/react-dom/cjs/react-dom.development.js:25547:5)
+      at updateContainer (node_modules/react-dom/cjs/react-dom.development.js:28897:5)
+      at node_modules/react-dom/cjs/react-dom.development.js:29376:7
+      at flushSync (node_modules/react-dom/cjs/react-dom.development.js:26228:14)
+      at ReactDOMRoot.unmount (node_modules/react-dom/cjs/react-dom.development.js:29375:5)
+      at src/pages/Episodes.test.js:55:18
+      at act (node_modules/react/cjs/react.development.js:2512:16)
+      at actWithWarning (node_modules/react-dom/cjs/react-dom-test-utils.development.js:1740:10)
+      at Object.<anonymous> (src/pages/Episodes.test.js:55:6)
+      at TestScheduler.scheduleTests (node_modules/@jest/core/build/TestScheduler.js:333:13)
+      at runJest (node_modules/@jest/core/build/runJest.js:404:19)
+      at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
+      at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
+
+PASS src/pages/Episodes.test.js (13.903 s)
+  Episodes season filtering
+    √ A1: Selecting Season 2 shortly after initial load shows only Season 2 episodes (179 ms)
+    √ A2: A late response for an outdated season cannot replace the current selection (80 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        20.925 s
+Ran all test suites.
+=== node/frontend/node_modules/.bin/eslint node/frontend/src/pages/Episodes.js node/frontend/src/pages/Episodes.test.js ===
