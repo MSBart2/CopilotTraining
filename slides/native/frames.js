@@ -82,6 +82,14 @@
     const xs = s.sections.map((_, i) => i * (cw + gap));
     const line = `M${xs[0] + cw / 2} ${ly}L${xs[n - 1] + cw / 2} ${ly}`;
     const lineDur = 1500;
+    /* Long section titles push the subtitle, blurb, and link down; every card grows to the tallest. */
+    const lay = s.sections.map((sec) => {
+      const extra = Math.max(0, Kit.wrap(sec.title, 16).length - 2) * 34;
+      const blurbY = 358 + extra;
+      const linkY = Math.max(456, blurbY + (Kit.wrap(sec.blurb, 30).length - 1) * 26 + 46);
+      return { subY: 318 + extra, blurbY, linkY };
+    });
+    const cardH = Math.max(380, ...lay.map((l) => l.linkY + 28 - 104));
     const body = s.sections.map((sec, i) => {
       const x = xs[i];
       const c = x + cw / 2;
@@ -89,31 +97,32 @@
       const at = 400 + (lineDur * i) / Math.max(1, n - 1);
       const stop = svg.pop(svg.g(svg.circle(c, ly, 28, { cls: 'stop' }) + svg.text(c, ly + 9, String(i + 1), { cls: 't-lg' }), { cls: `z-${z}` }), at);
       const card = svg.enter(
-        svg.g(svg.rect(x, 104, cw, 380, { cls: 'box', r: 20 }) + svg.rect(x, 104, cw, 6, { cls: 'card-top', r: 3 }), { cls: `z-${z}` }) +
+        svg.g(svg.rect(x, 104, cw, cardH, { cls: 'box', r: 20 }) + svg.rect(x, 104, cw, 6, { cls: 'card-top', r: 3 }), { cls: `z-${z}` }) +
         svg.text(x + 30, 172, sec.icon, { cls: 't-emoji', anchor: 'start' }) +
         svg.lines(x + 30, 232, sec.title, { cls: 't-lg', anchor: 'start', max: 16, lh: 34 }) +
-        svg.g(svg.text(x + 30, 318, sec.subtitle, { cls: 't-sm z-text', anchor: 'start' }), { cls: `z-${z}` }) +
-        svg.lines(x + 30, 358, sec.blurb, { cls: 't-muted t-sm', anchor: 'start', max: 30, lh: 26 }) +
-        svg.text(x + 30, 456, `→ slide ${sec.slide}`, { cls: 't-xs t-mono', anchor: 'start' }), at + 150);
+        svg.g(svg.text(x + 30, lay[i].subY, sec.subtitle, { cls: 't-sm z-text', anchor: 'start' }), { cls: `z-${z}` }) +
+        svg.lines(x + 30, lay[i].blurbY, sec.blurb, { cls: 't-muted t-sm', anchor: 'start', max: 30, lh: 26 }) +
+        svg.text(x + 30, cardH + 104 - 28, `→ slide ${sec.slide}`, { cls: 't-xs t-mono', anchor: 'start' }), at + 150);
       return `<a href="#${sec.slide}" aria-label="Go to part ${i + 1}, ${esc(sec.title)}, slide ${sec.slide}">${card}</a>${stop}`;
     }).join('');
     const label = `${n} parts: ${s.sections.map((x, i) => `${i + 1}. ${x.title}, ${x.subtitle.toLowerCase()}`).join('; ')}.`;
-    return `${html.head(s)}${svg.scene(W, 490, label,
+    return `${html.head(s)}${svg.scene(W, cardH + 110, label,
       svg.path(line, { cls: 'wire faint' }) + svg.trace(line, { cls: 'route z-purple', at: 400, dur: lineDur }) +
       svg.ride(line, { z: 'purple', at: 400 + lineDur + 300, dur: 3200, r: 7 }) + body, 'contents')}`;
   };
 
-  /* Part opener: shared by every part slide. Data: cards[3]{icon,title,blurb}, terminal{context,detail}. */
+  /* Part opener: shared by every part slide. Data: cards[3 or 4]{icon,title,blurb}, terminal{context,detail}. */
   const opener = (s, { deck }) => {
     const parts = deck.slides.filter((x) => x.scene === 'opener').length;
     const W = 1440;
-    const cw = 440;
-    const gap = (W - cw * 3) / 2;
+    const n = s.cards.length;
+    const gap = n === 3 ? 60 : 40;
+    const cw = (W - gap * (n - 1)) / n;
     const y = 18;
     const h = 196;
     const mid = y + h / 2;
     const xs = s.cards.map((_, i) => i * (cw + gap));
-    const spine = `M${cw / 2} ${mid}L${xs[2] + cw / 2} ${mid}`;
+    const spine = `M${cw / 2} ${mid}L${xs[n - 1] + cw / 2} ${mid}`;
     const links = xs.slice(0, -1).map((x, i) => {
       const d = `M${x + cw + 10} ${mid}L${xs[i + 1] - 14} ${mid}`;
       return svg.trace(d, { cls: 'wire link', at: 650 + 260 * i, dur: 320 }) +

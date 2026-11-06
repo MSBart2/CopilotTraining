@@ -1,0 +1,9 @@
+
+node\frontend\src\pages\Episodes.test.js
+  29:28  error  'globalThis' is not defined  no-undef
+  30:3   error  'globalThis' is not defined  no-undef
+  50:14  error  'globalThis' is not defined  no-undef
+  52:7   error  'globalThis' is not defined  no-undef
+
+✖ 4 problems (4 errors, 0 warnings)
+

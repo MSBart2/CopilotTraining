@@ -1,278 +1,344 @@
-# RECIPE REFRESH: 2026-10-31
-# DECISION: REVISE — approved under the user's explicit conversion waiver in this session.
-# RATIONALE: Preserve the thesis, four-part spine, examples, artifacts, and approved refresh evidence.
-# Conversion plan: translate the Slidev order into one-claim scenes and carry long-form depth into notes.
+# deck.recipe.yml — Enterprise Patterns (rebuilt 2026-11-05; absorbs copilot-plugins)
+#
+# Source: tech-talks/enterprise-patterns/research.md (approved brief, evidence map, artifacts)
+# and README.md. Notes-first: Native Deck Author writes slides and speaker notes together in
+# slides/tech-talks/enterprise-patterns/slides.js (mode: new).
+#
+# Structure: the approved brief listed five parts. The recipe keeps the four-section ceiling by
+# joining "Prove the Effective Result" and "Where the Pattern Stops" into one closing section,
+# so proof and boundary land together. Every artifact and claim from the brief stays.
 
 version: 1
 
 deck:
-  title: "Scaling GitHub Copilot Across Organizations"
-  subtitle: "Enterprise Patterns for AI Adoption at Scale"
-  tagline: "One reviewed baseline can reach every repository; teams specialize inside its boundary."
+  title: "Enterprise Patterns: One Baseline, Four Layers, Every Team's Choice"
+  subtitle: "Give every team the same Copilot setup and keep their choices"
+  tagline: "Place each choice at the layer its owner controls, then verify what one developer actually gets."
 
   agenda:
-    - title: "Encode the shared floor"
-      takeaway: "Place organization, repository, file-pattern, and directory guidance where each belongs."
-      whyItMatters: "Teams inherit repeatable context while local work keeps its own commands and constraints."
-    - title: "Share knowledge with an owner"
-      takeaway: "Choose skills for reusable expertise and knowledge bases for cross-repository context."
-      whyItMatters: "The source, reviewer, and update path stay visible as guidance compounds."
-    - title: "Measure and govern the boundary"
-      takeaway: "Inspect policy, adoption, workflow movement, and directional ROI with their limits attached."
-      whyItMatters: "Leaders can make the next investment decision with evidence they can explain."
+    - title: "Ship the baseline as one plugin"
+      takeaway: "See an Agent Plugins 1.0 package and marketplace turn copied repository setup into one versioned PLUGIN@MARKETPLACE id."
+      whyItMatters: "One update reaches every repository that uses it, across VS Code, the CLI, the Copilot app, and the cloud agent."
+    - title: "Put each choice where its owner lives"
+      takeaway: "Separate the policy plane (AI controls, enterprise then org) from the settings plane (the .github-private governance repo), then watch one developer receive required, team, and repository-default plugins and hit a visible block."
+      whyItMatters: "Teams and orgs keep real choice while the enterprise floor holds, and every control has a named owner and home."
+    - title: "Verify what one developer actually gets"
+      takeaway: "Walk an effective-settings checklist across teams and surfaces, then read usage metrics as directional evidence."
+      whyItMatters: "You can answer which layer set each value before a rollout widens, and you know when APM earns a place."
 
-  arcToc: "Set standards → Share knowledge → Govern evidence → Enable teams"
+  arcToc: "Package → Place by Owner → Same Rails → Prove and Bound"
 
   arcNarrative: >
-    Keep the approved four-part order. Part 1 opens inside the standards problem and
-    proves where each instruction belongs, then shows an illustrative organization
-    baseline, a review loop, and the assumptions behind the reinvention arithmetic.
-    Part 2 separates Agent Skills from Knowledge Bases by the job each performs and
-    makes source ownership and update review visible. Part 3 moves from that reusable
-    capability into model, licensing, telemetry, tool, and compliance boundaries;
-    migration readiness stays a concise, durable policy check. Part 4 gives managed
-    settings its own control-plane proof, then connects onboarding and measurement to
-    a clearly labeled illustrative investment model. The memorable reveal is one
-    organization policy floor with permitted team specialization and observable
-    results. A separate rollout section was rejected because it would dilute the
-    approved four-part spine; the rollout becomes a practical decision path in Part 4.
+    The talk opens on a recognizable platform scenario: several product teams across four Copilot
+    surfaces, one shared security baseline, one team that needs an extra review plugin, and one
+    repository that wants a scanner its contributors can switch off. Part 1 gives that baseline a
+    shippable shape, an Agent Plugins 1.0 package published through a marketplace, and teaches the
+    available, installed, and enabled vocabulary Part 2 depends on. Part 2 is the peak: the four
+    layers, the force-versus-recommend rule, each settings file in turn, and the anchor demo where
+    one developer receives one effective answer from four owners and watches a blocked install fail
+    visibly. Before the layers, Part 2 names the two planes: AI controls policies set what is
+    allowed (enterprise first, orgs where delegated), and the .github-private governance repository,
+    protected by rulesets and run by AI managers, sets what each client loads; orgs own their
+    instructions, agents, content exclusion, and firewall on the policy plane. Part 3 shows the
+    payoff of learning the path once: model availability and defaults, Fusion effort, the MCP
+    allowlist, context placement, telemetry capture, and fail-closed refresh all ride the same
+    layers, with permission and hook mechanics handed to Harness Fundamentals. Part 4 turns the
+    model into evidence with an effective-settings checklist across teams and surfaces, reads usage
+    metrics as directional signal, and closes on the boundaries: when APM adds value and what the
+    licensing change means for these controls. The scenario-first opening wins over a demo cold open
+    because the four-layer demo lands harder once the audience has felt the three competing asks.
+    The strongest alternate, a layer-by-layer tour (enterprise, team, repository, personal as four
+    sections), spreads the anchor across the whole talk and buries the single effective answer; the
+    chosen order builds to that answer once and reuses it.
 
   sectionOrder:
-    - "Organization-Wide Standards"
-    - "Organizational Skills & Knowledge Bases"
-    - "Governance & Licensing"
-    - "Adoption & Enablement"
+    - "Package the Baseline"
+    - "Place Every Choice at Its Owner's Layer"
+    - "Ride the Same Rails for Models, Context, and Telemetry"
+    - "Prove the Result and Know Where It Stops"
 
   sectionModes:
-    "Organization-Wide Standards":
+    "Package the Baseline":
+      emphasis: medium
+      note: >
+        Make the plugin the unit a platform team ships. Show the release-guard layout with the
+        portable zone (plugin.json with $schema, skills/, mcp.json) and the Copilot zone
+        (com.github.copilot/) visually separated. Land PLUGIN@MARKETPLACE, with the marketplace
+        name taken from marketplace.json, and on the same slide name available, installed, and
+        enabled as three distinct states; Part 2 relies on them. Close with a local install of the plugin as the first proof.
+        Keep mcp.json shape labeled illustrative. Say once in the opener notes that release-guard,
+        platform-tools, pci-review, legacy-deploy, acme-corp, and the team slugs are worked-example
+        names, and that github-security@awesome-copilot is a real public-preview plugin.
+    "Place Every Choice at Its Owner's Layer":
       emphasis: high
       note: >
-        Land the practical selector: repository-wide organization guidance,
-        repository context, file-pattern instructions, and nearest directory playbooks.
-        Show an illustrative instruction fragment beside its scope and review evidence.
-        Keep the 50-team calculation explicitly hypothetical and name its assumptions.
-    "Organizational Skills & Knowledge Bases":
-      emphasis: medium-high
+        The centerpiece. Start with the two planes: AI controls policies (Enabled, Disabled, Let
+        organizations decide; least restrictive across orgs, most restrictive across enterprises)
+        decide what is allowed, and the settings plane decides what each client loads. Then the
+        governance repository: .github-private selected as the configuration source, holding
+        managed settings, team files, and enterprise agent profiles; Internal visibility for PRs;
+        the generated ruleset; AI managers as a custom role on an enterprise team with bypass. Then
+        what the org owns: delegated policies, org custom instructions (cloud and code review only),
+        org custom agents in /agents, content exclusion, and the cloud agent firewall. Then the
+        four-layer table, which also carries the layer limits (where it lives, who owns it, what it can
+        do, what it cannot do). Give the force-versus-recommend rule its own slide: managed
+        settings require (true) or block (false) through enabledPlugins, and optional defaults live
+        in the repository's .github/copilot/settings.json; show the failure signal (a recommended
+        plugin becomes unremovable for everyone) and the recovery. Then each file once: enterprise
+        managed-settings.json with strictKnownMarketplaces and its tradeoff (built-in marketplaces
+        disappear, so list awesome-copilot explicitly); team-mappings.json plus payments.json with
+        additive plugins, overridable keys, and least-restrictive merge; repository defaults in
+        trusted repositories. The anchor demo gets the most time in the talk: one payments-core
+        developer, release-guard locked on, pci-review added by the team, github-security on by
+        repository default and switched off by the developer, and legacy-deploy refused. Keep
+        extraKnownMarketplaces at the team layer described as overridable, per the docs. Keep the
+        repository-level marketplace key and CLI refusal wording labeled illustrative.
+    "Ride the Same Rails for Models, Context, and Telemetry":
+      emphasis: medium
       note: >
-        Give each mechanism a distinct job: skills encode reusable procedures and
-        knowledge bases retrieve context across indexed repositories. Show an
-        illustrative query and a human-owned source, review, and update path.
-    "Governance & Licensing":
-      emphasis: medium-high
+        One insight: the path learned in Part 2 already carries the rest of the baseline. Name the
+        Harness Fundamentals hand-off on the opener (permission, hook, and sandbox behavior inside a
+        session live there). Separate model availability (model policy REST API at enterprise,
+        enterprise team, agent apps, and org) from model default (model and fusionTier in managed
+        settings); a platform-sre team file raises fusionTier to high. The MCP allowlist
+        (allowedMcpServers, deniedMcpServers; deny wins) is the GA control, with two boundaries:
+        agent-profile MCP servers fall to the firewall, and the registry restriction is preview.
+        Place context by scope:
+        instructions and AGENTS.md for every task, skills in plugins for on-demand methods, Copilot
+        Spaces for cross-repository reference (Knowledge Bases converted to Spaces), and Dreaming:
+        three dream types, memories edited directly, skill and instruction changes proposed as pull
+        requests, enabled through Copilot policies. Telemetry: identity on, five
+        content classes off by default, and the highest-precedence managed source supplies the whole
+        telemetry object. Close on forceRemoteSettingsRefresh failing closed, the global default for
+        new features, and the offline-startup tradeoff. Keep the telemetry nesting and the PATCH
+        body labeled illustrative.
+    "Prove the Result and Know Where It Stops":
+      emphasis: medium
       note: >
-        Make authority, policy, and evidence boundaries visible across model access,
-        current licensing terms, telemetry destinations, tool discovery, and compliance
-        review. Treat legacy savings and outcome figures as estimates or illustrations,
-        never as measured results.
-    "Adoption & Enablement":
-      emphasis: high
-      note: >
-        Prove managed settings with an enterprise floor, explicitly overridable keys,
-        team mappings, bounded merge rules, and a validation step for a multi-team user.
-        Pair product-backed adoption signals with their caveats, a self-service kit,
-        and a transfer plan teams can adapt.
+        Proof first, boundary second. The opener points to the thirteen-row effective-settings
+        checklist in the README (one developer in payments-core and platform-sre, every value with
+        the plane or layer that set it, repeated on a second surface) as the audience's take-home
+        proof. Read usage metrics
+        honestly: totals_by_plugin counts skill invocations, keeps the top five entries, and stays
+        separate from skill counts; agent activity joins on agent_id; the impact dashboard and
+        industry comparisons are directional. Then the native-layers-versus-APM table with a short
+        apm.yml beside it: native layers own the Copilot baseline, and APM earns a place for repos
+        that feed several agent tools or need hash-pinned resolution in CI. One licensing slide:
+        GitHub Enterprise includes Copilot metered on AI credits, and the managed controls in this
+        talk need GitHub Enterprise Cloud with Business or Enterprise licenses. Finish on the
+        decision criteria as a placement scorecard that leads into the Today slide.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "A single organization instruction change can set a baseline across repositories; local standards still need owners and verification."
-    - "Agent Skills encode reusable expertise; Knowledge Bases retrieve context across indexed repositories."
-    - "Managed settings permit named team specialization beneath enterprise choices, with explicit merge and product boundaries."
-    - "The 16x saved-hours ratio is an illustrative scenario calculation, not audited attribution or a customer result."
-    - "Impact-dashboard ROI is directional; agent activity uses stable agent_id and avoids nested-count double counting."
+    - "Two planes: AI controls policies decide what is allowed, and the .github-private governance repository decides what each client loads."
+    - "Managed settings require or block; recommendations live in the repository's .github/copilot/settings.json, where contributors can switch them off."
+    - "One developer, four layers, one effective answer: release-guard locked on, pci-review from the team, github-security on by repository default and switched off, legacy-deploy refused."
+    - "MCP servers run only when allowedMcpServers lists them, deniedMcpServers wins every tie, and the cloud agent firewall covers servers defined in agent profiles."
+    - "Native layers own the Copilot baseline; APM earns a place when one repository feeds several agent tools or needs hash-pinned resolution."
 
   slides:
+    # ---- Frame ----
     - id: title
       part: 0
-      claim: "A reviewed organization baseline can make Copilot guidance reusable across repositories."
-      scene: "frame: title with deck visual; shared standards radiate to teams"
-      seconds: 45
+      claim: "One baseline can reach every team while each team keeps its own choices."
+      scene: "frame: title with a deck-local four-ring layer mark (enterprise, team, repository, personal)"
+      seconds: 30
     - id: core-question
       part: 0
-      claim: "The practitioner decision is how to scale adoption while keeping standards, team choice, and proof clear."
-      scene: "frame: core-question; question, audience, and four-part route"
+      claim: "How do I give every team the same Copilot setup without taking away their choices?"
+      scene: "frame: core-question; roles are platform owner, team lead, repository maintainer; agenda lives in notes"
       seconds: 90
     - id: contents
       part: 0
-      claim: "Four decisions connect standards, shared knowledge, governance, and enablement."
-      scene: "frame: contents; four linked section stops"
+      claim: "Package the baseline, place each choice by owner, reuse the same rails, then prove and bound it."
+      scene: "frame: contents with four section links"
       seconds: 30
+    - id: three-asks
+      part: 0
+      claim: "One platform team faces three asks at once: a shared security baseline, a team-only review plugin, and a repository scanner contributors can switch off."
+      scene: "deck: platform team at center with four product teams and four surface chips around it; motion: the three asks arrive one at a time as cards tagged everyone, one team, one repository"
+      seconds: 90
+
+    # ---- Part 1: Package the Baseline ----
     - id: part-1
       part: 1
-      claim: "Organization standards work when each rule lives at the scope that owns it."
-      scene: "frame: opener; establish policy, repository, and directory layers"
-      seconds: 25
-    - id: reinvention-case
+      claim: "A plugin gives the baseline a shape you can version and ship."
+      scene: "frame: opener with Bundle, Publish, Install cards"
+      seconds: 30
+    - id: plugin-unit
       part: 1
-      claim: "The 50-team, 40-hour calculation is a scenario for repeated setup, not an observed result."
-      scene: "scorecard: inputs, multiplication, consequence, and evidence status"
-      seconds: 103
-    - id: standard-selection
+      claim: "Skills, MCP config, agents, and hooks copied into many repositories become one release-guard package."
+      scene: "deck: five repository tiles each holding the same loose files; motion: the files lift out of every tile and collapse into one release-guard package"
+      seconds: 90
+    - id: plugin-anatomy
       part: 1
-      claim: "The selector is the scope of the guidance: organization, repository, file pattern, or directory."
-      scene: "signals: scope question routes each standard to its owner"
-      seconds: 93
-    - id: repo-topology
+      claim: "An Agent Plugins 1.0 package keeps portable skills and MCP servers at the root and Copilot-only agents and hooks in com.github.copilot/."
+      scene: "deck: the release-guard tree beside its plugin.json; motion: the portable zone lights green, then the com.github.copilot zone lights purple, then $schema highlights"
+      seconds: 105
+    - id: marketplace-id
       part: 1
-      claim: "Polyrepos share a baseline across repository lifecycles; monorepos add path-specific guidance."
-      scene: "showdown: polyrepo and monorepo placement with a shared outcome"
-      seconds: 93
-    - id: instruction-artifact
+      claim: "A marketplace makes every plugin addressable as PLUGIN@MARKETPLACE, and each plugin moves through available, installed, and enabled."
+      scene: "deck: marketplace.json listing release-guard, pci-review, legacy-deploy; motion: the name field and a plugin name join into release-guard@platform-tools, then a three-step strip lights Available, Installed, Enabled with Required as a locked variant"
+      seconds: 120
+    - id: local-trial
       part: 1
-      claim: "An instruction is useful when its owner, scope, and concrete review signal are explicit."
-      scene: "terminal: illustrative rule, Copilot action, reviewer check, and pass condition"
-      seconds: 123
-    - id: authority-scope
-      part: 1
-      claim: "The organization owner defines the baseline; repository owners add local context within their authority."
-      scene: "relay: baseline, repository specialization, and review handoff"
-      seconds: 98
-    - id: verification-loop
-      part: 1
-      claim: "A reviewer validates generated work against the same approved rule that shaped it."
-      scene: "scorecard: input, changed artifact, test evidence, human acceptance"
-      seconds: 103
-    - id: savings-model
-      part: 1
-      claim: "The source's 2,900 saved-hours example depends on explicit, locally testable assumptions."
-      scene: "terminal: 400 + 1,000 + 1,500 = 2,900; 2,900 / 180 ≈ 16.1"
-      seconds: 113
+      claim: "A local install proves the package loads before any policy touches it."
+      scene: "terminal: copilot plugin install ./release-guard, then the plugin list, then the release-checklist skill answering in a session"
+      seconds: 75
+
+    # ---- Part 2: Place Every Choice at Its Owner's Layer ----
     - id: part-2
       part: 2
-      claim: "Shared knowledge scales when the mechanism matches the question and an owner maintains it."
-      scene: "frame: opener; reusable procedure, cross-repository context, reviewed update"
-      seconds: 25
-    - id: skill-vs-context
+      claim: "Each choice belongs at the plane and layer of the person who owns it."
+      scene: "frame: opener with Policies, Governance repo, Org, Four layers cards"
+      seconds: 30
+    - id: two-planes
       part: 2
-      claim: "A skill supplies a reusable method; a Knowledge Base supplies indexed repository context."
-      scene: "showdown: same task, distinct mechanism, distinct output"
-      seconds: 98
-    - id: skill-library
+      claim: "AI controls policies decide what is allowed; the settings plane decides what each client loads."
+      scene: "showdown: policy plane (enterprise AI controls → org Copilot settings; Enabled, Disabled, Let organizations decide) versus settings plane (.github-private managed-settings.json → team → repository → personal); outcome: users licensed by several orgs get the least restrictive policy, by several enterprises the most restrictive"
+      seconds: 120
+    - id: governance-repo
       part: 2
-      claim: "A useful skill catalog groups repeatable expertise around security, quality, and operations."
-      scene: "scorecard: three categories, example skill names, maintainers"
-      seconds: 108
-    - id: knowledge-query
+      claim: "The .github-private governance repository holds managed settings, team files, and enterprise agents, and rulesets plus AI managers decide who changes them."
+      scene: "deck: AI controls → Agents → Configuration source pointing at one org's .github-private; motion: copilot/managed-settings.json, team-mappings.json, teams/, and agent profiles light in turn, a ruleset shield closes over them, a member's PR arrives, and an AI managers team with bypass merges it"
+      seconds: 135
+    - id: org-owns
       part: 2
-      claim: "A Knowledge Base query can gather context from repositories an individual checkout does not contain."
-      scene: "terminal: illustrative query, indexed sources, answer inspection"
-      seconds: 103
-    - id: knowledge-maintenance
+      claim: "Org owners hold delegated policies, org instructions, org agents, content exclusion, and the cloud agent firewall for the seats they assign."
+      scene: "signals: Policies (where the enterprise lets orgs decide), Instructions (cloud sessions and code review only), Agents (/agents in .github or .github-private), Content exclusion (org seats; repo admins for their repos), Firewall (Enabled, Disabled, Let repositories decide)"
+      seconds: 120
+    - id: four-layers
       part: 2
-      claim: "A shared skill improves safely when the source owner reviews changes before consumers inherit them."
-      scene: "relay: propose, validate, publish, and observe a versioned update"
-      seconds: 88
+      claim: "On the settings plane, four layers each have a file, an owner, a set of powers, and a limit, and they resolve in a fixed order."
+      scene: "deck: four stacked bands from enterprise to personal, each with file, owner, can, cannot; motion: bands settle top to bottom, a precedence arrow draws down the side, then footer chips light: team files need server-managed delivery, managed controls need GHEC licenses, repository defaults need trusted repositories"
+      seconds: 150
+    - id: force-vs-recommend
+      part: 2
+      claim: "Managed settings require or block; recommendations belong in the repository, where contributors can switch them off."
+      scene: "showdown: managed enabledPlugins true = required, false = blocked versus repository enabledPlugins true = default on; outcome: a misplaced recommendation becomes a mandate, recovered by moving it to the repository file"
+      seconds: 120
+    - id: enterprise-file
+      part: 2
+      claim: "The enterprise file requires release-guard, blocks legacy-deploy, and limits installs to approved marketplaces."
+      scene: "deck: managed-settings.json with three highlighted blocks; motion: enabledPlugins true and false light in turn, then strictKnownMarketplaces lights and the built-in marketplace chip fades while awesome-copilot stays listed"
+      seconds: 120
+    - id: team-file
+      part: 2
+      claim: "A team file adds plugins on top of the baseline and changes only the keys the enterprise marked overridable; a member of several teams gets the least restrictive value."
+      scene: "deck: team-mappings.json pointing to payments.json; motion: pci-review stacks on top of the enterprise list, a locked key bounces off, then a two-team member resolves fusionTier to the least restrictive value"
+      seconds: 120
+    - id: repo-defaults
+      part: 2
+      claim: "A trusted repository turns on github-security by default for its contributors."
+      scene: "terminal: copilot config --repo writing .github/copilot/settings.json with enabledPlugins github-security@awesome-copilot true; outcome lines note trusted repositories and local opt-out"
+      seconds: 90
+    - id: anchor-demo
+      part: 2
+      claim: "One developer, four layers, one effective answer."
+      scene: "deck: one payments-core developer's plugin list with a layer badge per row; motion: release-guard arrives locked (enterprise), pci-review arrives (team), github-security arrives (repository), the developer switches github-security off (personal), and the list settles"
+      seconds: 180
+    - id: blocked-install
+      part: 2
+      claim: "A blocked plugin and an unapproved marketplace fail visibly at install time."
+      scene: "terminal: copilot plugin install legacy-deploy@platform-tools refused, then an install from an unlisted marketplace refused; refusal wording marked as a recorded capture"
+      seconds: 75
+
+    # ---- Part 3: Ride the Same Rails ----
     - id: part-3
       part: 3
-      claim: "Governance connects capability to an approved policy, a current license, and a named reviewer."
-      scene: "frame: opener; model, commercial, and compliance decisions"
-      seconds: 25
-    - id: model-policy
+      claim: "The path you just learned already carries models, MCP, context, and telemetry."
+      scene: "frame: opener with Models, MCP, Context, Telemetry cards; footnote hands permission, hook, and sandbox behavior to Harness Fundamentals"
+      seconds: 40
+    - id: same-path
       part: 3
-      claim: "Model readiness is a policy check followed by a selector check in each affected workflow."
-      scene: "terminal: approved replacement enabled, selector verified, workflow ready"
-      seconds: 108
-    - id: licensing-fit
+      claim: "The four-layer stack from Part 2 also resolves the default model, Fusion effort, the MCP allowlist, telemetry capture, and policy freshness."
+      scene: "deck: the four-layer stack from four-layers; motion: new rows for model, fusionTier, allowedMcpServers, telemetry, and forceRemoteSettingsRefresh slide into the enterprise and team bands"
+      seconds: 60
+    - id: availability-vs-default
       part: 3
-      claim: "License fit follows actual usage and current contract terms; the 30–40% figure is a legacy estimate."
-      scene: "scorecard: frequent, occasional, and review-only usage; local cost inputs"
-      seconds: 93
-    - id: telemetry-tool-governance
+      claim: "Model availability comes from the policy API and model default comes from managed settings; both resolve per team."
+      scene: "showdown: availability (GET /enterprises/acme-corp/teams/platform-sre/copilot/model-policies, four levels) versus default (model fusion, fusionTier); outcome: a default naming a disabled model has nothing to route to"
+      seconds: 120
+    - id: fusion-tier-team
       part: 3
-      claim: "The organization owner controls telemetry destinations and tool discovery at the approved boundary."
-      scene: "signals: destination, fields, retention, access, and tool policy"
-      seconds: 108
-    - id: compliance-evidence
+      claim: "An overridable fusionTier lets platform-sre run at High while everyone else stays at Standard."
+      scene: "deck: managed fusionTier overridable standard and fusion-high.json; motion: two developers start sessions and their effort labels settle at Standard and High"
+      seconds: 105
+    - id: mcp-allowlist
       part: 3
-      claim: "Automation can surface a compliance signal; the accountable reviewer decides whether evidence meets policy."
-      scene: "showdown: illustrative check and human-reviewed evidence"
-      seconds: 118
-    - id: human-review-boundary
+      claim: "allowedMcpServers and deniedMcpServers decide which MCP servers run, deny wins, and agent-profile servers fall to the cloud agent firewall."
+      scene: "deck: the allowlist and denylist JSON from the docs example; motion: three server chips test against the lists (an allowed URL runs, an unlisted command is blocked, a filesystem-root command matches allow and deny and is blocked), then side chips note the MCP policy prerequisite, the preview registry path, and the firewall for agent-profile servers"
+      seconds: 120
+    - id: context-placement
       part: 3
-      claim: "A generated suggestion is evidence for review, not an approval or a compliance finding by itself."
-      scene: "scorecard: proposal, automated check, human authority, escalation"
-      seconds: 93
+      claim: "Rules every task needs go in instructions and AGENTS.md, methods go in plugin skills, cross-repository reference goes in Copilot Spaces, and Dreaming keeps them current."
+      scene: "signals: Instructions and AGENTS.md (every task in scope; org instructions reach cloud sessions and code review), Plugin skills (method on demand), Copilot Spaces (cross-repository reference, Knowledge Bases converted), Dreaming (three dream types; memories edited directly, skill and instruction changes as pull requests; enabled by Copilot policy)"
+      seconds: 105
+    - id: telemetry-capture
+      part: 3
+      claim: "Identity attribution can switch on while all five content classes stay off, and the highest-precedence managed source supplies the whole telemetry object."
+      scene: "deck: a capture panel with identity on and prompts, responses, toolArguments, toolOutput, policyDetail off; motion: an OTel span forms carrying user.name and no prompt text"
+      seconds: 105
+    - id: fail-closed
+      part: 3
+      claim: "forceRemoteSettingsRefresh makes every startup fetch current policy, so Copilot stays closed without a connection to GitHub."
+      scene: "relay: Client starts → fetches policy → succeeds and runs, or fails closed; side notes on the global default for new features and the sandbox minimum client version"
+      seconds: 90
+
+    # ---- Part 4: Prove the Result and Know Where It Stops ----
     - id: part-4
       part: 4
-      claim: "Enablement scales when team choice stays inside a visible enterprise control boundary."
-      scene: "frame: opener; enterprise floor, team specialization, evidence"
-      seconds: 25
-    - id: managed-settings
+      claim: "A baseline is ready when you can name the plane and layer behind every value one developer receives."
+      scene: "frame: opener with Check, Read, Bound cards"
+      seconds: 30
+    - id: usage-read
       part: 4
-      claim: "Enterprise administrators mark overridable keys; all other managed choices remain at the enterprise floor."
-      scene: "four-phases: lock floor, permit keys, map teams, inspect effective settings"
-      seconds: 123
-    - id: team-merge
+      claim: "Usage metrics and the impact dashboard give directional signal on top of the README checklist."
+      scene: "terminal: a usage-metrics response with totals_by_plugin and agent activity keyed by agent_id; outcome lines: top five entries only, keep plugin and skill counts separate, dashboard and industry comparisons are directional"
+      seconds: 90
+    - id: native-vs-apm
       part: 4
-      claim: "Multiple team settings merge by documented rules beneath the enterprise policy."
-      scene: "showdown: least-restrictive values, additive lists, locked choices"
-      seconds: 103
-    - id: effective-config
+      claim: "Native layers own the Copilot baseline; APM earns a place when one repository feeds several agent tools or needs hash-pinned resolution."
+      scene: "deck: the native-layers-versus-APM decision table beside a short apm.yml; motion: rows light in the column that serves them, then the side-by-side note settles"
+      seconds: 120
+    - id: licensing-boundary
       part: 4
-      claim: "An administrator verifies the effective settings for a user with multiple mapped teams."
-      scene: "terminal: mapping input, resolution, and observable validation"
-      seconds: 108
-    - id: impact-dashboard
+      claim: "GitHub Enterprise now includes Copilot metered on AI credits, and these managed controls need GitHub Enterprise Cloud with Business or Enterprise licenses."
+      scene: "scorecard: Access (included with GHE), Metering (AI credits), Controls (GHEC with Business or Enterprise), Credit users (Fusion, plugin actions, Dreaming)"
+      seconds: 75
+    - id: placement-scorecard
       part: 4
-      claim: "The impact dashboard compares cohorts with directional inputs, not audited savings attribution."
-      scene: "showdown: product-backed inputs beside permission and interpretation caveats"
-      seconds: 108
-    - id: agent-activity
-      part: 4
-      claim: "Usage reports join recognized agent-app activity on agent_id without adding nested interactions twice."
-      scene: "terminal: representative fields, stable join, count boundary"
-      seconds: 123
-    - id: measure-movement
-      part: 4
-      claim: "Adoption, workflow movement, and business outcomes answer different measurement questions."
-      scene: "four-phases: leading, intermediate, lagging, and review gate"
-      seconds: 103
-    - id: onboarding-kit
-      part: 4
-      claim: "A 30-minute quick start is a testable onboarding design, with first-use evidence collected locally."
-      scene: "relay: read, configure, exercise, inspect"
-      seconds: 103
-    - id: rollout-gates
-      part: 4
-      claim: "Teams expand a pattern after a bounded pilot produces accepted evidence and a recovery path."
-      scene: "four-phases: pilot, inspect, expand, maintain"
-      seconds: 103
-    - id: community-loop
-      part: 4
-      claim: "A community of practice turns local findings into reviewed, reusable patterns."
-      scene: "relay: team evidence, maintainer review, shared catalog"
-      seconds: 63
-    - id: investment-math
-      part: 4
-      claim: "The 180-hour investment and 2,900-hour return form an illustrative 16.1 saved-hours ratio."
-      scene: "terminal: show component estimates, arithmetic, and attribution boundary"
-      seconds: 122
-    - id: when-pattern-fits
-      part: 4
-      claim: "The pattern fits repeated shared work with an owner; teams keep local control where needs diverge."
-      scene: "signals: readiness, evidence, boundary, and escalation"
-      seconds: 93
+      claim: "Every baseline choice has a home: AI controls policy, org settings, enterprise, team, repository, personal, or another tool."
+      scene: "scorecard: Policy (allowed at all, enterprise or delegated org), Enterprise file (everyone or no one), Team (a defined group or an overridable key), Repository (useful default, optional), Personal (preference), Elsewhere (APM or Harness Fundamentals)"
+      seconds: 75
+
+    # ---- Close ----
     - id: before-after
       part: 0
-      claim: "The operating shift is from scattered setup to an owned baseline with bounded specialization."
-      scene: "frame: before-after; label every numerical item as a scenario estimate"
-      seconds: 75
+      claim: "From skills and MCP config copied repository by repository to one plugin baseline with every choice at its owner's layer."
+      scene: "frame: before-after"
+      seconds: 45
     - id: today
       part: 0
-      claim: "A team can test one shared rule today, build a scoped pilot this week, and review fit this month."
-      scene: "frame: today; actions paired with observable signals and validation"
-      seconds: 105
+      claim: "Today a local plugin, this week a repository default, this month a team pilot with the checklist passing."
+      scene: "frame: today"
+      seconds: 50
     - id: references
       part: 0
-      claim: "First-party documentation and release notes are the evidence trail for this talk."
-      scene: "frame: references; links grouped by administration, configuration, and measurement"
-      seconds: 30
+      claim: "First-party references for plugins, managed settings, model policy, telemetry, metrics, and APM."
+      scene: "frame: references"
+      seconds: 15
     - id: thanks
       part: 0
-      claim: "The audience leaves with a repository decision to test and an evidence owner to name."
-      scene: "frame: thanks with deck visual; transfer question"
-      seconds: 30
+      claim: "Which plugin does your organization copy between repositories by hand today, and which layer owns it?"
+      scene: "frame: thanks with the own-work question"
+      seconds: 15
 
-# OPEN DECISION: Keep the traditional-problem hook inside Part 1 for this conversion; a timed
-# presenter run-through can promote it to a separate frame if the first-minute setup needs room.
+# Budgets are estimates until a presenter times a run-through.
+#
+# DECIDED 2026-11-05: the anchor demo uses recorded captures, with the live option in the notes.
+# A live run needs a GHEC test enterprise with forceRemoteSettingsRefresh on, a platform-tools
+# marketplace repository, and two enterprise teams. The CLI refusal wording and the
+# repository-level marketplace key stay labeled until a dated capture confirms them.

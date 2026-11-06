@@ -1,938 +1,818 @@
 /*
-  Scaling GitHub Copilot Across Organizations — native deck data and teaching notes.
-  Recipe-approved conversion plan: tech-talks/enterprise-patterns/deck.recipe.yml.
-  Slide data and notes stay together so the printed handout carries the entire talk.
+  Enterprise Patterns: One Baseline, Four Layers, Every Team's Choice — deck data and speaker notes.
+  Source: tech-talks/enterprise-patterns/deck.recipe.yml (approved, 39 slides) and research.md.
+  Deck-only scenes live in scenes.js; shared frames and patterns come from slides/native/.
 */
 (() => {
   const S = (id, part, title, more = {}) => ({ id, part, title, section: part ? `Part ${part}` : 'Frame', ...more });
 
   const slides = [
-    S('title', 0, 'Scaling GitHub Copilot Across Organizations', {
-      chrome: false, visual: 'org-ring',
-      subtitle: 'Enterprise Patterns for AI Adoption at Scale',
-      tagline: 'One reviewed baseline can reach every repository; teams specialize inside its boundary.',
-      meta: 'CopilotTraining · Practitioner Tech Talk · Trust and Govern'
+    /* ---- Frame ---- */
+    S('title', 0, 'Enterprise Patterns', {
+      chrome: false, visual: 'layer-rings',
+      subtitle: 'One Baseline, Four Layers, Every Team\'s Choice',
+      tagline: 'Place each choice at the plane and layer its owner controls, then verify what one developer actually gets.',
+      meta: 'CopilotTraining · Practitioner Tech Talk'
     }),
-    S('core-question', 0, 'How do I scale Copilot across our teams without losing consistency, team choice, or proof?', {
-      pill: 'Core Question',
-      subtitle: 'The platform owner sets a reusable baseline; each team verifies the result in its own work.',
-      highlight: 'Standards, knowledge, and evidence scale when owners and authority stay visible.',
-      routing: ['set the scope', 'share expertise', 'govern choices', 'inspect evidence'],
-      routingLabel: 'A practical route',
+    S('core-question', 0, 'How do I give every team the same Copilot setup without taking away their choices?', {
+      pill: 'Core question',
+      subtitle: 'Place each choice at the plane and layer its owner controls, then verify what one developer actually gets.',
+      highlight: 'One baseline, four layers, one effective answer per developer.',
+      routing: ['enterprise', 'team', 'repository', 'personal'], routingLabel: 'Four owners, four layers',
       roles: [
-        { icon: '⌘', title: 'Platform owner', description: 'Set the shared floor and maintain the approved source.' },
-        { icon: '◇', title: 'Repository team', description: 'Add local context, test the result, and own acceptance.' },
-        { icon: '✓', title: 'Service owner', description: 'Decide when evidence meets the organization requirement.' }
+        { icon: '🏢', title: 'Platform owner', description: 'Ships one baseline to every team and blocks what nobody may use.' },
+        { icon: '👥', title: 'Team lead', description: 'Adds the plugins and values the team\'s own work needs.' },
+        { icon: '📁', title: 'Repository maintainer', description: 'Turns on useful defaults that contributors can switch off.' }
       ],
       stats: [
-        { title: '4 scopes', description: 'Organization, repository, file pattern, directory' },
-        { title: '2 knowledge jobs', description: 'Reusable method and cross-repository context' },
-        { title: '1 evidence loop', description: 'Input, result, reviewer, recovery path' }
+        { title: '1 plugin baseline', description: 'Versioned once, installed wherever it applies.' },
+        { title: '2 planes, 4 layers', description: 'Each choice placed with the person who owns it.' },
+        { title: '13 checks', description: 'The effective answer for one real developer.' }
       ]
     }),
-    S('contents', 0, 'Four decisions connect shared guidance to team evidence', {
+    S('contents', 0, 'Package, place, reuse, prove', {
+      pill: 'Agenda · four parts',
       sections: [
-        { icon: '⌘', title: 'Organization-Wide Standards', subtitle: 'Place every rule at its owner', blurb: 'Scope, topology, example, and verification', slide: 4 },
-        { icon: '◇', title: 'Skills and Knowledge', subtitle: 'Match method to context', blurb: 'Reusable expertise, indexed repositories, update ownership', slide: 12 },
-        { icon: '⚖', title: 'Governance & Licensing', subtitle: 'Bound choices with evidence', blurb: 'Models, cost, telemetry, tools, compliance', slide: 17 },
-        { icon: '✓', title: 'Adoption & Enablement', subtitle: 'Prove the boundary works', blurb: 'Managed settings, measurement, self-service, transfer', slide: 23 }
+        { icon: '📦', title: 'Package the Baseline', subtitle: 'Ship one plugin', blurb: 'One package, one id, every surface.', slide: 5 },
+        { icon: '🧭', title: 'Place Every Choice at Its Owner\'s Layer', subtitle: 'Two planes, four layers', blurb: 'Allow, require, add, default, opt out.', slide: 10 },
+        { icon: '🛤️', title: 'Ride the Same Rails for Models, Context, and Telemetry', subtitle: 'Same path, more values', blurb: 'Models, MCP, context, telemetry.', slide: 21 },
+        { icon: '✅', title: 'Prove the Result and Know Where It Stops', subtitle: 'Check, read, bound', blurb: 'Metrics, then the limits.', slide: 29 }
       ]
     }),
-    S('part-1', 1, 'Organization-Wide Standards', {
+    S('three-asks', 0, 'One platform team, three asks at once', {
+      pill: 'The situation',
+      subtitle: 'Every team needs the security baseline, payments needs a review plugin, and one repository wants an optional scanner.'
+    }),
+
+    /* ---- Part 1: Package the Baseline ---- */
+    S('part-1', 1, 'Package the Baseline', {
       scene: 'opener',
-      subtitle: 'Place a shared baseline where its owner can update it, then verify it in repository work.',
+      subtitle: 'A plugin gives the baseline a shape you can version, publish, and install.',
       cards: [
-        { icon: '⌘', title: 'Choose scope', blurb: 'Organization to directory' },
-        { icon: '▤', title: 'Publish context', blurb: 'Rules with real examples' },
-        { icon: '✓', title: 'Review evidence', blurb: 'Tests and human acceptance' }
+        { icon: '📦', title: 'Bundle', blurb: 'Skills, MCP, agents, hooks' },
+        { icon: '🏪', title: 'Publish', blurb: 'One marketplace catalog' },
+        { icon: '⬇️', title: 'Install', blurb: 'One PLUGIN@MARKETPLACE id' }
       ],
-      terminal: { context: 'One baseline can reach many repositories', detail: 'Scope, owner, verification' }
+      terminal: { context: 'release-guard@platform-tools', detail: 'one id, every Copilot surface' }
     }),
-    S('reinvention-case', 1, '50 teams × 40 hours = 2,000 hours in a scenario', {
-      scene: 'scorecard', pill: 'Part 1 · Scenario arithmetic',
+    S('plugin-unit', 1, 'Copied setup becomes one versioned package', {
+      pill: 'Package · the unit you ship', steps: { current: 1, total: 4 },
+      subtitle: 'The skills, MCP config, agents, and hooks copied into every repository collapse into release-guard.'
+    }),
+    S('plugin-anatomy', 1, 'Portable parts at the root, Copilot parts in their own folder', {
+      pill: 'Package · Agent Plugins 1.0', steps: { current: 2, total: 4 },
+      subtitle: 'skills/ and mcp.json work across agent clients; com.github.copilot/ holds Copilot-only agents and hooks.'
+    }),
+    S('marketplace-id', 1, 'A marketplace makes every plugin addressable', {
+      pill: 'Package · marketplace.json', steps: { current: 3, total: 4 },
+      subtitle: 'The id is PLUGIN@MARKETPLACE, and each plugin moves through available, installed, and enabled.'
+    }),
+    S('local-trial', 1, 'A local install proves the package loads', {
+      scene: 'terminal', termTitle: 'copilot · local trial', pill: 'Package · first proof', steps: { current: 4, total: 4 },
+      subtitle: 'Copilot CLI installs release-guard from a folder before any policy touches it.',
+      transcript: [
+        { type: 'prompt', text: 'copilot plugin install ./release-guard' },
+        { type: 'thinking', label: 'Client plugin list:' },
+        { type: 'response', lines: ['release-guard 1.4.0 · skill release-checklist · agent release-reviewer · MCP release-notes'] },
+        { type: 'divider' },
+        { type: 'prompt', text: 'copilot' },
+        { type: 'user', text: 'Run the release checklist for this branch.' },
+        { type: 'thinking', label: 'Copilot CLI:' },
+        { type: 'response', lines: ['Loads the release-checklist skill from release-guard', 'Runs scripts/verify-changelog.sh and reports each checklist item'] },
+        { type: 'divider' },
+        { type: 'outcome', text: 'The package loads and answers before any policy exists' }
+      ],
+      footnote: 'Output paraphrased from the recorded capture; copilot plugin --help names the list subcommand.'
+    }),
+
+    /* ---- Part 2: Place Every Choice at Its Owner's Layer ---- */
+    S('part-2', 2, 'Place Every Choice at Its Owner\'s Layer', {
+      scene: 'opener',
+      subtitle: 'Each choice belongs at the plane and layer of the person who owns it.',
       cards: [
-        { icon: '∑', title: 'Input assumption', description: '50 teams each repeat 40 hours of comparable setup work.' },
-        { icon: '×', title: 'Scenario math', description: '50 × 40 hours = 2,000 hours of potential repetition.' },
-        { icon: '⌘', title: 'Pattern opportunity', description: 'A shared baseline can remove duplicated setup for common rules.' },
-        { icon: '!', title: 'Evidence status', description: 'Illustrative calculation from the source talk; no measured cohort.' }
-      ]
+        { icon: '🛡️', title: 'Policies', blurb: 'Allowed at all' },
+        { icon: '🗄️', title: 'Governance repo', blurb: 'Settings as code' },
+        { icon: '🏛️', title: 'Org', blurb: 'Delegated controls' },
+        { icon: '🧭', title: 'Four layers', blurb: 'One answer' }
+      ],
+      terminal: { context: 'AI controls · managed › team › repository › personal', detail: 'higher wins' }
     }),
-    S('standard-selection', 1, 'The guidance scope determines where the rule belongs', {
-      scene: 'signals', pill: 'Part 1 · Choose the selector',
-      subtitle: 'A platform owner routes each rule by the unit that needs it.',
+    S('two-planes', 2, 'Policies decide what is allowed; settings decide what loads', {
+      scene: 'showdown', pill: 'Place · two planes', steps: { current: 1, total: 10 },
+      subtitle: 'Enterprise AI controls set the policy plane; the .github-private governance repository drives the settings plane.',
+      leftLabel: 'Policy plane · AI controls', rightLabel: 'Settings plane · .github-private',
+      pairs: [
+        { left: { label: 'Enterprise → AI controls', note: 'Enabled, Disabled, or "Let organizations decide"' }, right: { label: 'managed-settings.json → team files', note: 'Governance repository; team files map to enterprise teams', z: 'github' } },
+        { left: { label: 'Organization → Copilot settings', note: 'Orgs choose only where the enterprise delegated' }, right: { label: 'Repository → personal', note: '.github/copilot/settings.json defaults, then the developer\'s own choices', z: 'local' } },
+        { left: { label: 'Decides what is allowed', note: 'Features, agents, models, MCP availability, Dreaming' }, right: { label: 'Decides what each client loads', note: 'Plugins, marketplaces, model default, Fusion tier, MCP allowlist, telemetry, refresh', z: 'purple' } }
+      ],
+      outcomeLeft: { icon: '↔', label: 'Several orgs: usually least restrictive' },
+      outcomeRight: { icon: '✓', label: 'Name the plane first, then the layer' },
+      footnote: 'A user licensed by several enterprises almost always gets the most restrictive policy.'
+    }),
+    S('governance-repo', 2, 'One governance repository holds the settings plane', {
+      pill: 'Place · .github-private', steps: { current: 2, total: 10 },
+      subtitle: 'Managed settings, team files, and enterprise agents live in one repository; rulesets and AI managers decide who changes them.'
+    }),
+    S('org-owns', 2, 'The org owns delegated policy and org-scoped context', {
+      scene: 'signals', pill: 'Place · organization controls', steps: { current: 3, total: 10 },
+      subtitle: 'Org owners act on the policy plane for the seats they assign; the org has no slot in the settings-file chain.',
       rows: [
-        { label: 'Org scope', description: 'Reusable Copilot baseline for eligible repositories', tag: 'Org instructions', z: 'purple' },
-        { label: 'One repository', description: 'Project-wide GitHub Copilot conventions and local context', tag: 'Repo context file', z: 'local' },
-        { label: 'File pattern', description: 'Guidance selected by frontmatter applyTo glob', tag: '*.instructions.md', z: 'remote' },
-        { label: 'Directory scope', description: 'Nearest agent playbook with commands and guardrails', tag: 'AGENTS.md', z: 'green' }
+        { label: 'Policies', description: 'Feature, model, and MCP policies where the enterprise delegated', tag: 'Delegated', z: 'github' },
+        { label: 'Instructions', description: 'Org custom instructions reach cloud sessions and code review only', tag: 'Cloud, review', z: 'local' },
+        { label: 'Agents', description: '/agents in the org\'s .github or .github-private repository', tag: 'Org members', z: 'purple' },
+        { label: 'Content exclusion', description: 'Paths ignored for org-assigned seats; repo admins add their own', tag: 'Org seats', z: 'remote' },
+        { label: 'Firewall', description: 'Cloud agent firewall: Enabled, Disabled, Let repositories decide', tag: 'Cloud agent', z: 'orange' }
       ],
-      footnote: 'Guidance changes context; enforcement still belongs to tests, policy, and accountable reviewers.'
+      footnote: 'Org custom agents are public preview. Settings-page labels are unconfirmed; check your org\'s Copilot settings.'
     }),
-    S('repo-topology', 1, 'Polyrepos share a floor; monorepos add path-specific playbooks', {
-      scene: 'showdown', pill: 'Part 1 · Choose the topology',
-      subtitle: 'The organization owner publishes the common rule; repository owners add local workflow detail.',
-      leftLabel: 'Polyrepo placement',
-      rightLabel: 'Monorepo placement',
+    S('four-layers', 2, 'Four layers, four owners, one fixed order', {
+      pill: 'Place · the settings plane', steps: { current: 4, total: 10 },
+      subtitle: 'On the settings plane, each layer has a file, an owner, powers, and a limit; the higher layer wins when values conflict.'
+    }),
+    S('force-vs-recommend', 2, 'Managed settings require or block; repositories recommend', {
+      scene: 'showdown', pill: 'Place · force versus recommend', steps: { current: 5, total: 10 },
+      subtitle: 'The same enabledPlugins true means "required" in policy and "default on" in a repository.',
+      leftLabel: 'managed-settings.json · enterprise', rightLabel: '.github/copilot/settings.json · repository',
       pairs: [
-        { left: { label: 'Independent repo lifecycle', note: 'Each service maintains local context' }, right: { label: 'Organization instructions', note: 'Common baseline reaches eligible repositories', z: 'purple' } },
-        { left: { label: 'One repository per service', note: 'Repo owner chooses the local additions' }, right: { label: 'Repository instructions', note: 'Project-wide GitHub Copilot context', z: 'local' } },
-        { left: { label: 'Portable playbook as needed', note: 'Root AGENTS.md carries cross-tool workflow detail' }, right: { label: 'Nested AGENTS.md', note: 'Nearest directory scopes local commands', z: 'green' } }
+        { left: { label: 'true = required', note: 'Installed, enabled, and locked on for everyone' }, right: { label: 'true = default on', note: 'Enabled for contributors in trusted repositories; each can switch it off', z: 'local' } },
+        { left: { label: 'false = blocked', note: 'Install refused for everyone' }, right: { label: 'Managed policy still wins', note: 'A repository default leaves required and blocked values untouched', z: 'local' } },
+        { left: { label: 'No "recommend" value', note: 'Managed settings can only require or block' }, right: { label: 'Recommendations live here', note: 'Maintainers own the default; developers own the opt-out', z: 'green' } }
       ],
-      outcomeLeft: { icon: '✓', label: 'Common floor plus local ownership' },
-      outcomeRight: { icon: '✓', label: 'Common floor plus path-local context' }
+      outcomeLeft: { icon: '⚠', label: 'A recommendation in policy becomes a mandate' },
+      outcomeRight: { icon: '✓', label: 'Recover: move it to the repository file' },
+      footnote: 'Docs: "Enterprise-managed settings can only require or block plugins."'
     }),
-    S('instruction-artifact', 1, 'A rule earns trust when its scope and review signal are concrete', {
-      scene: 'terminal', pill: 'Part 1 · Illustrative artifact', termTitle: 'organization instruction example',
-      subtitle: 'A service owner reviews the proposed change; this sample is not an organization policy.',
+    S('enterprise-file', 2, 'The enterprise file requires, blocks, and approves sources', {
+      pill: 'Place · enterprise layer', steps: { current: 6, total: 10 },
+      subtitle: 'release-guard is required, legacy-deploy is blocked, and installs come only from listed marketplaces.'
+    }),
+    S('team-file', 2, 'Teams add on top; only overridable keys move', {
+      pill: 'Place · team layer', steps: { current: 7, total: 10 },
+      subtitle: 'team-mappings.json sends payments teams to payments.json; a member of two teams gets the least restrictive value.'
+    }),
+    S('repo-defaults', 2, 'A trusted repository turns on a default', {
+      scene: 'terminal', termTitle: 'payments-service · repository layer', pill: 'Place · repository layer', steps: { current: 8, total: 10 },
+      subtitle: 'Maintainers write .github/copilot/settings.json; contributors get github-security on and can switch it off.',
       transcript: [
-        { type: 'prompt', text: 'Example baseline: use the approved authentication helper; never log access tokens.' },
-        { type: 'user', text: 'Add an API handler that reads the authenticated user.' },
-        { type: 'thinking', label: 'Copilot proposes:' },
-        { type: 'response', lines: ['Use the repository authentication helper', 'Add a focused test for the authenticated path', 'Show the diff and test result to the reviewer'] },
+        { type: 'prompt', text: 'cat .github/copilot/settings.json' },
+        { type: 'response', lines: ['"enabledPlugins": { "github-security@awesome-copilot": true }', '"extraKnownMarketplaces": { "awesome-copilot": github/awesome-copilot }'] },
         { type: 'divider' },
-        { type: 'outcome', text: 'Reviewer checks helper use, tests, and policy fit' },
-        { type: 'outcome', text: 'Accept only after required checks and owner review' }
+        { type: 'outcome', text: 'copilot config --repo writes this file; --local writes settings.local.json' },
+        { type: 'outcome', text: 'Applies to contributors in trusted repositories' },
+        { type: 'outcome', mark: '↺', text: 'Contributors switch it off where the surface supports it; managed policy still wins' }
       ],
-      footnote: 'Illustrative behavior; a prompt is guidance, while tests and review provide the acceptance evidence.'
+      footnote: 'The repository-level marketplace key is illustrative; confirm it against the plugins concepts page.'
     }),
-    S('authority-scope', 1, 'The organization owner sets the floor; repo owners add local context', {
-      scene: 'relay', pill: 'Part 1 · Authority handoff',
-      subtitle: 'Each layer has a named maintainer and an observable review handoff.',
-      columns: [
-        { icon: '⌘', title: 'Organization owner', description: 'Approves cross-repository standards and their source.', items: ['Define shared rule', 'Review policy change', 'Publish baseline'], z: ['purple', 'orange', 'green'] },
-        { icon: '▤', title: 'Repository owner', description: 'Adds service context and confirms local compatibility.', items: ['Add local context', 'Run repo checks', 'Review diff'], z: ['local', 'remote', 'green'] },
-        { icon: '✓', title: 'Service owner', description: 'Accepts or escalates evidence against local requirements.', items: ['Inspect result', 'Accept or reject', 'Escalate gap'], z: ['github', 'green', 'orange'] }
+    S('anchor-demo', 2, 'One developer, four layers, one effective answer', {
+      pill: 'Place · anchor demo', steps: { current: 9, total: 10 },
+      subtitle: 'A payments-core developer opens the product repository in Copilot CLI and reads the effective plugin list.'
+    }),
+    S('blocked-install', 2, 'Blocked installs fail where the developer can see them', {
+      scene: 'terminal', termTitle: 'copilot · payments-core developer', pill: 'Place · visible refusal', steps: { current: 10, total: 10 },
+      subtitle: 'Copilot CLI refuses a blocked plugin and any marketplace that strictKnownMarketplaces leaves out.',
+      transcript: [
+        { type: 'prompt', text: 'copilot plugin install legacy-deploy@platform-tools' },
+        { type: 'response', lines: ['Refused: blocked by enterprise managed settings'] },
+        { type: 'prompt', text: 'copilot plugin install helper@unlisted-marketplace' },
+        { type: 'response', lines: ['Refused: marketplace is outside the approved list'] },
+        { type: 'divider' },
+        { type: 'outcome', text: 'Both refusals surface at install time, on the developer\'s screen' },
+        { type: 'outcome', mark: '⏺', text: 'Refusal lines paraphrased; play the recorded capture for exact wording' }
       ]
     }),
-    S('verification-loop', 1, 'The reviewer checks the rule and result in the same change', {
-      scene: 'scorecard', pill: 'Part 1 · Verification loop',
-      cards: [
-        { icon: '▤', title: 'Input', description: 'Approved rule plus a representative task and repository context.' },
-        { icon: '↗', title: 'Proposed output', description: 'Copilot change shown as a diff; no policy decision is implied.' },
-        { icon: '✓', title: 'Observable checks', description: 'Tests, static checks, and required human review report separately.' },
-        { icon: '↻', title: 'Recovery', description: 'If a check fails, revise context or rule and rerun the same task.' }
-      ],
-      footnote: 'A generated suggestion is not evidence that the policy is satisfied.'
-    }),
-    S('savings-model', 1, 'The 2,900 saved-hours example is assumption-driven arithmetic', {
-      scene: 'terminal', pill: 'Part 1 · Illustrative estimate', termTitle: 'source README scenario',
-      transcript: [
-        { type: 'prompt', text: 'Platform build estimate: 40 + 60 + 80 = 180 hours invested.' },
-        { type: 'user', text: 'Legacy scenario for 200 developers; savings inputs are assumptions.' },
-        { type: 'response', lines: ['Instructions: 200 × 2 hours = 400', 'Skills: 200 × 5 hours = 1,000', 'Onboarding: 200 × 7.5 hours = 1,500'] },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Illustrative total: 400 + 1,000 + 1,500 = 2,900 hours' },
-        { type: 'outcome', text: '2,900 ÷ 180 ≈ 16.1 saved-hours per invested hour' }
-      ],
-      footnote: 'Scenario only: validate each input locally; the ratio is not audited ROI or a measured customer result.'
-    }),
-    S('part-2', 2, 'Organizational Skills & Knowledge Bases', {
+
+    /* ---- Part 3: Ride the Same Rails ---- */
+    S('part-3', 3, 'Ride the Same Rails for Models, Context, and Telemetry', {
       scene: 'opener',
-      subtitle: 'Choose the mechanism by whether the team needs a reusable method or more repository context.',
+      subtitle: 'The path from Part 2 already carries models, MCP, context, and telemetry.',
       cards: [
-        { icon: '◇', title: 'Reusable method', blurb: 'Skills encode expertise' },
-        { icon: '▦', title: 'Cross-repo context', blurb: 'Knowledge Bases index sources' },
-        { icon: '✓', title: 'Owned updates', blurb: 'Review before reuse' }
+        { icon: '🧠', title: 'Models', blurb: 'Allowed, default' },
+        { icon: '🔌', title: 'MCP', blurb: 'Allowlist, deny wins' },
+        { icon: '📚', title: 'Context', blurb: 'Scope picks home' },
+        { icon: '📡', title: 'Telemetry', blurb: 'Identity, no content' }
       ],
-      terminal: { context: 'Procedure is different from repository context', detail: 'Choose by the question' }
+      terminal: { context: 'Where each value lives', detail: 'permissions, hooks, sandbox → Harness Fundamentals' }
     }),
-    S('skill-vs-context', 2, 'A skill supplies a method; a Knowledge Base supplies context', {
-      scene: 'showdown', pill: 'Part 2 · Two knowledge jobs',
-      subtitle: 'The team asks the same system question; the answer needs both an appropriate source and a method.',
-      leftLabel: 'Agent Skill',
-      rightLabel: 'Knowledge Base',
+    S('same-path', 3, 'The same four layers resolve the rest of the baseline', {
+      pill: 'Rails · one path', steps: { current: 1, total: 7 },
+      subtitle: 'Model, Fusion effort, MCP allowlist, telemetry capture, and policy freshness join the enterprise and team files.',
+      footnote: 'Model availability comes from the model policy API, a separate entry at the same levels.'
+    }),
+    S('availability-vs-default', 3, 'Availability and default are separate entries', {
+      scene: 'showdown', pill: 'Rails · models', steps: { current: 2, total: 7 },
+      subtitle: 'The model policy API decides which models a team can use; managed settings decide which one starts.',
+      leftLabel: 'Availability · model policy REST API', rightLabel: 'Default · managed-settings.json',
       pairs: [
-        { left: { label: 'Encode a repeatable procedure', note: 'Review steps, validation logic, or domain checklist' }, right: { label: 'Index selected repositories', note: 'Retrieve context across approved source repos', z: 'purple' } },
-        { left: { label: 'Owner versions the method', note: 'A reviewed update changes reusable guidance' }, right: { label: 'Admin curates the sources', note: 'A query can draw from multiple indexed repos', z: 'local' } },
-        { left: { label: 'Inspect the skill result', note: 'Verify the proposed checks against current policy' }, right: { label: 'Inspect retrieved evidence', note: 'Confirm citations and source freshness', z: 'green' } }
+        { left: { label: '…/teams/platform-sre/copilot/model-policies', note: 'GET reads one enterprise team\'s policy state' }, right: { label: '"model": { "overridable": "fusion" }', note: 'Sets the default model; team files may change it', z: 'github' } },
+        { left: { label: 'Four levels', note: 'Enterprise, enterprise team, agent apps, organization' }, right: { label: '"fusionTier": { "overridable": "standard" }', note: 'Sets default Fusion effort; any value except unmanaged locks it', z: 'github' } },
+        { left: { label: 'PATCH updates availability', note: 'Request body illustrative; take it from the REST reference' }, right: { label: 'Fusion routes among enabled models', note: 'Admins can disable a model for Fusion alone', z: 'purple' } }
       ],
-      outcomeLeft: { icon: '✓', label: 'Reusable expertise' },
-      outcomeRight: { icon: '✓', label: 'Cross-repository context' },
-      footnote: 'The existing talk identifies Agent Skills as GA and Knowledge Bases as Enterprise Cloud; confirm current eligibility.'
+      outcomeLeft: { icon: '⚠', label: 'A disabled default has nothing to route to' },
+      outcomeRight: { icon: '✓', label: 'Check both entries for each team' }
     }),
-    S('skill-library', 2, 'A small skill catalog can cover repeatable work in three domains', {
-      scene: 'scorecard', pill: 'Part 2 · Catalog examples',
-      cards: [
-        { icon: '⚖', title: 'Security and compliance', description: 'Examples: payment-processing, healthcare-data, security-scanner.' },
-        { icon: '◇', title: 'Architecture and quality', description: 'Examples: architecture-review, performance-budgets, accessibility-check.' },
-        { icon: '⌁', title: 'Cost and operations', description: 'Examples: cost-estimator, tech-debt-analyzer, dependency-risk.' },
-        { icon: '✓', title: 'Catalog contract', description: 'Name owner, source, supported scope, validation, and update process.' }
-      ],
-      footnote: 'Names are illustrative examples from the source talk, not claims about shipped organization skills.'
+    S('fusion-tier-team', 3, 'One overridable key lets platform-sre run at High', {
+      pill: 'Rails · Fusion effort', steps: { current: 3, total: 7 },
+      subtitle: 'Everyone else stays at Standard; the team file changes only the key the enterprise opened.'
     }),
-    S('knowledge-query', 2, 'A cross-repository question needs visible sources and answer review', {
-      scene: 'terminal', pill: 'Part 2 · Illustrative query', termTitle: 'multi-repository context',
-      subtitle: 'An administrator curates the indexed repos; a developer inspects the answer against source files.',
-      transcript: [
-        { type: 'prompt', text: 'Knowledge Base: Payment Platform (illustrative source set)' },
-        { type: 'user', text: '@kb payment-platform: how does fraud detection connect to the payment flow?' },
-        { type: 'thinking', label: 'Copilot retrieves context:' },
-        { type: 'response', lines: ['payment-api: request contract', 'payment-processor: business flow', 'fraud-detection: decision interface', 'compliance-rules: relevant control text'] },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Developer checks cited files and current version before relying on the answer' }
-      ],
-      footnote: 'Illustrative repository labels and query; indexed context is not a substitute for source review.'
+    S('mcp-allowlist', 3, 'The allowlist decides which MCP servers run, and deny wins', {
+      pill: 'Rails · MCP servers', steps: { current: 4, total: 7 },
+      subtitle: 'allowedMcpServers and deniedMcpServers live in managed settings; agent-profile servers fall to the cloud agent firewall.'
     }),
-    S('knowledge-maintenance', 2, 'A reviewed source update makes reusable expertise safer to reuse', {
-      scene: 'relay', pill: 'Part 2 · Maintenance loop',
-      subtitle: 'A domain owner proposes; a reviewer verifies; consumers inspect the published change.',
-      columns: [
-        { icon: '▤', title: 'Author', description: 'Maintainer ties a change to an approved source.', items: ['Name the source', 'Edit the skill', 'Record version'], z: ['local', 'purple', 'orange'] },
-        { icon: '✓', title: 'Reviewer', description: 'Domain authority validates behavior and tests.', items: ['Check scope', 'Run examples', 'Approve update'], z: ['remote', 'green', 'orange'] },
-        { icon: '↗', title: 'Consumer', description: 'Team checks the effective version in its work.', items: ['Read change', 'Try task', 'Report gap'], z: ['github', 'green', 'orange'] }
-      ]
-    }),
-    S('part-3', 3, 'Governance & Licensing', {
-      scene: 'opener',
-      subtitle: 'Every capability depends on approved policy, current commercial terms, and accountable review.',
-      cards: [
-        { icon: '⚖', title: 'Model access', blurb: 'Approved choices and migration' },
-        { icon: '⌁', title: 'Cost and signals', blurb: 'Terms, telemetry, tool policy' },
-        { icon: '✓', title: 'Compliance', blurb: 'Automation plus human decision' }
-      ],
-      terminal: { context: 'Policy defines the boundary', detail: 'Reviewer decides if evidence is enough' }
-    }),
-    S('model-policy', 3, 'Model readiness is a policy check and a selector check', {
-      scene: 'terminal', pill: 'Part 3 · Migration readiness', termTitle: 'generic readiness check',
-      subtitle: 'An administrator enables an approved supported replacement; the workflow owner verifies availability.',
-      transcript: [
-        { type: 'prompt', text: 'Affected workflow uses a model scheduled for retirement.' },
-        { type: 'user', text: 'Administrator checks organization model policy for an approved supported replacement.' },
-        { type: 'response', lines: ['Enable replacement within approved policy', 'Open every affected workflow selector', 'Confirm replacement is available to its users', 'Run a representative task and review output'] },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Readiness evidence: policy enabled and selector verified' }
-      ],
-      footnote: 'The September 2026 notice is historical; this slide teaches a durable readiness check, not a current deadline.'
-    }),
-    S('licensing-fit', 3, 'License fit follows usage and current contract terms', {
-      scene: 'scorecard', pill: 'Part 3 · Cost decision',
-      cards: [
-        { icon: '⌁', title: 'Frequent use', description: 'Compare seat access with observed eligible activity and current terms.' },
-        { icon: '◷', title: 'Occasional use', description: 'Model actual usage and premium-request costs for the stated period.' },
-        { icon: '◉', title: 'Review activity', description: 'Check the exact review access, permission, and license requirements.' },
-        { icon: '!', title: 'Estimate boundary', description: 'The legacy 30–40% reduction figure lacks a documented cohort and method.' }
-      ],
-      footnote: 'Rebuild the cost model from your agreement and usage data; the old percentage is not a result.'
-    }),
-    S('telemetry-tool-governance', 3, 'The organization owner sets telemetry and tool-discovery boundaries', {
-      scene: 'signals', pill: 'Part 3 · Organization-owned controls',
-      subtitle: 'Security and platform owners define the allowed destination, data, and access.',
+    S('context-placement', 3, 'Rules, methods, and reference each have a home', {
+      scene: 'signals', pill: 'Rails · context', steps: { current: 5, total: 7 },
+      subtitle: 'Place context by scope: every task, on demand, or across repositories; Dreaming keeps it current.',
       rows: [
-        { label: 'Telemetry destination', description: 'Set approved export endpoints and the owning team', tag: 'Destination', z: 'purple' },
-        { label: 'Telemetry contract', description: 'Approve fields, retention, access, and interpretation', tag: 'Data boundary', z: 'local' },
-        { label: 'Tool discovery', description: 'Curate a registry or disable external tool discovery', tag: 'MCP policy', z: 'remote' },
-        { label: 'Repository settings', description: 'Local configuration can narrow the org boundary', tag: 'Cannot widen', z: 'orange' }
+        { label: 'Instructions', description: 'Instructions and AGENTS.md: every task; org ones reach cloud and review', tag: 'Every task', z: 'local' },
+        { label: 'Plugin skills', description: 'Methods that load on demand, shipped once for many repositories', tag: 'On demand', z: 'github' },
+        { label: 'Copilot Spaces', description: 'Cross-repository reference; Knowledge Bases convert to Spaces', tag: 'Across repos', z: 'remote' },
+        { label: 'Dreaming', description: 'Edits memories directly; proposes skill and instruction PRs', tag: 'Maintainer PR', z: 'green' }
       ],
-      footnote: 'Treat destination, fields, retention, access, and tool discovery as explicit organizational decisions.'
+      footnote: 'Dreaming: public preview, opt-in, AI credits; enabled by Copilot policy, which enterprises can delegate to orgs.'
     }),
-    S('compliance-evidence', 3, 'An automated check raises evidence; the accountable owner decides', {
-      scene: 'showdown', pill: 'Part 3 · Compliance example',
-      subtitle: 'The example is illustrative; the organization defines and approves each requirement.',
-      leftLabel: 'Manual checklist',
-      rightLabel: 'Automated signal plus review',
-      pairs: [
-        { left: { label: 'Reviewer searches for risk', note: 'The exact rule may be applied inconsistently' }, right: { label: 'Checker flags a pattern', note: 'Example: token logging or missing required test', z: 'purple' } },
-        { left: { label: 'Evidence gathered later', note: 'The source and decision trail may be harder to reconstruct' }, right: { label: 'Run result is recorded', note: 'Link finding to file, rule, and test evidence', z: 'local' } },
-        { left: { label: 'Human resolves finding', note: 'Service owner decides remediation and policy fit' }, right: { label: 'Human retains authority', note: 'Reviewer accepts, rejects, or escalates the evidence', z: 'orange' } }
-      ],
-      outcomeLeft: { icon: '✓', label: 'Accountable human decision' },
-      outcomeRight: { icon: '✓', label: 'Accountable human decision' },
-      footnote: 'Example rule fragments do not establish legal compliance or replace an approved control.'
+    S('telemetry-capture', 3, 'Attribute activity without capturing content', {
+      pill: 'Rails · telemetry', steps: { current: 6, total: 7 },
+      subtitle: 'Identity on, five content classes off; the highest-precedence managed source supplies the whole telemetry object.',
+      footnote: 'Class names and defaults are documented; exact JSON nesting and export keys are illustrative.'
     }),
-    S('human-review-boundary', 3, 'A generated suggestion is not an approval or a finding', {
-      scene: 'scorecard', pill: 'Part 3 · Authority boundary',
-      cards: [
-        { icon: '↗', title: 'Copilot proposes', description: 'The model returns a candidate change or explanation.' },
-        { icon: '⌁', title: 'Automation checks', description: 'Tests and scanners report the checks they actually ran.' },
-        { icon: '✓', title: 'Owner decides', description: 'The accountable reviewer accepts, rejects, or requests more evidence.' },
-        { icon: '↻', title: 'Team recovers', description: 'A failed check routes to a named owner and a repeatable rerun.' }
+    S('fail-closed', 3, 'Fail closed: start only on current policy', {
+      scene: 'relay', pill: 'Rails · freshness', steps: { current: 7, total: 7 },
+      subtitle: 'forceRemoteSettingsRefresh makes every startup fetch current policy; without a connection to GitHub, Copilot stays closed.',
+      columns: [
+        { icon: '✅', title: 'Policy fetch succeeds', description: 'CLI and the Copilot app skip the one-hour cache and load current policy.', items: ['Client starts', 'Fetches policy', 'Runs on current policy'], z: ['local', 'github', 'green'] },
+        { icon: '⛔', title: 'Policy fetch fails', description: 'The client fails closed; VS Code blocks Copilot features until the refresh succeeds.', items: ['Client starts', 'Fetch fails', 'Fails closed'], z: ['local', 'orange', 'orange'] },
+        { icon: '🧭', title: 'Defaults around it', description: 'A global default covers features left Unconfigured; sandbox sets a minimum client version.', items: ['New GA feature', 'Global default decides', 'sandbox: min version'], z: ['github', 'github', 'runtime'] }
       ]
     }),
-    S('part-4', 4, 'Adoption & Enablement', {
+
+    /* ---- Part 4: Prove the Result and Know Where It Stops ---- */
+    S('part-4', 4, 'Prove the Result and Know Where It Stops', {
       scene: 'opener',
-      subtitle: 'Teams specialize inside the enterprise floor, then test the effective policy and workflow evidence.',
+      subtitle: 'A baseline is ready when you can name the plane and layer behind every value one developer receives.',
       cards: [
-        { icon: '⚖', title: 'Bound settings', blurb: 'Floor, allowed keys, team mapping' },
-        { icon: '▤', title: 'Measure use', blurb: 'Directional evidence with limits' },
-        { icon: '↗', title: 'Enable teams', blurb: 'Self-service and review gates' }
+        { icon: '✅', title: 'Check', blurb: 'Thirteen-row checklist in the README' },
+        { icon: '📈', title: 'Read', blurb: 'Metrics as direction' },
+        { icon: '🧱', title: 'Bound', blurb: 'APM and licensing' }
       ],
-      terminal: { context: 'Central policy plus bounded specialization', detail: 'Verify effective settings' }
+      terminal: { context: 'effective-settings checklist', detail: 'one developer, every value, its plane and layer' }
     }),
-    S('managed-settings', 4, 'Administrators permit selected keys beneath a locked enterprise floor', {
-      scene: 'four-phases', pill: 'Part 4 · Managed settings',
-      subtitle: 'Enterprise administrators decide which keys can vary; teams own only those permitted choices.',
-      stageLabel: 'Control',
-      gateLabel: '✓ inspect',
-      stages: [
-        { label: '1', name: 'Set the floor', icon: '⌘', description: 'Administrator defines enterprise values and locked keys.' },
-        { label: '2', name: 'Permit keys', icon: '⚖', description: 'Administrator marks only approved managed keys as overridable.' },
-        { label: '3', name: 'Map teams', icon: '▤', description: 'Versioned files under copilot/teams/ map to team slugs.' },
-        { label: '4', name: 'Inspect result', icon: '✓', description: 'Owner checks effective settings for each supported user context.', target: true }
-      ],
-      footnote: 'Mapping uses team-mappings.json; team specialization is license and product-surface bounded.'
-    }),
-    S('team-merge', 4, 'Team values merge beneath the enterprise floor by documented rules', {
-      scene: 'showdown', pill: 'Part 4 · Multi-team behavior',
-      subtitle: 'The administrator marks overridable keys; additive fields keep the enterprise baseline.',
-      leftLabel: 'Enterprise choice',
-      rightLabel: 'Mapped team result',
-      pairs: [
-        { left: { label: 'Locked key', note: 'Non-overridable enterprise value stays in force' }, right: { label: 'Locked key', note: 'Team file cannot change the enterprise choice', z: 'orange' } },
-        { left: { label: 'Overridable key', note: 'Administrator explicitly permits specialization' }, right: { label: 'Multiple team values', note: 'Resolve to least restrictive allowed value', z: 'purple' } },
-        { left: { label: 'enabledPlugins and extraKnownMarketplaces', note: 'Enterprise baseline supplies its entries' }, right: { label: 'Team entries', note: 'Lists are additive; teams can extend, not shrink', z: 'green' } }
-      ],
-      outcomeLeft: { icon: '⌘', label: 'Enterprise boundary remains' },
-      outcomeRight: { icon: '✓', label: 'Permitted team choice is effective' },
-      footnote: 'Validate behavior for users with multiple team memberships; one team file does not automatically win.'
-    }),
-    S('effective-config', 4, 'An administrator verifies the effective settings for a multi-team user', {
-      scene: 'terminal', pill: 'Part 4 · Configuration proof', termTitle: 'illustrative configuration review',
-      subtitle: 'Use a reviewed snapshot or test account; this walkthrough makes no live settings changes.',
+    S('usage-read', 4, 'Usage metrics add direction on top of the checklist', {
+      scene: 'terminal', termTitle: 'usage metrics response · fields, simplified', pill: 'Prove · read the metrics', steps: { current: 1, total: 4 },
+      subtitle: 'Read totals_by_plugin and agent activity for what they count; the README checklist stays the proof.',
       transcript: [
-        { type: 'prompt', text: 'enterprise floor + overridable key list' },
-        { type: 'user', text: 'team-mappings.json maps team files under copilot/teams/ to team slugs' },
-        { type: 'response', lines: ['Resolve membership for the test user', 'Apply only administrator-approved overrides', 'Combine multi-team values by the documented rule', 'Check additive plugin and marketplace entries'] },
+        { type: 'thinking', label: 'totals_by_plugin' },
+        { type: 'response', lines: ['release-guard@platform-tools · skill invocations tied to the plugin', 'pci-review@platform-tools · skill invocations tied to the plugin', 'top five entries per array; customer ids can group under other or custom'] },
+        { type: 'thinking', label: 'agent activity' },
+        { type: 'response', lines: ['third-party agent apps join on agent_id; per-user entries omit session_count'] },
         { type: 'divider' },
-        { type: 'outcome', text: 'Expected decision: locked keys stay fixed; permitted keys resolve within policy' },
-        { type: 'outcome', text: 'Reviewer records effective result, supported surface, and license scope' }
-      ],
-      footnote: 'Supported scope in the approved refresh: VS Code, Copilot CLI, Copilot App, and Copilot cloud agent with Business or Enterprise.'
-    }),
-    S('impact-dashboard', 4, 'The impact dashboard offers directional cohort evidence', {
-      scene: 'showdown', pill: 'Part 4 · ROI measurement',
-      subtitle: 'The viewer checks access and treats modeled figures as directional inputs.',
-      leftLabel: 'Dashboard inputs',
-      rightLabel: 'Interpretation boundary',
-      pairs: [
-        { left: { label: 'Early-phase and agent-first cohorts', note: 'Compare product-defined developer groups' }, right: { label: 'Corrected 28-day cohort', note: 'Includes every active user in the window', z: 'purple' } },
-        { left: { label: 'Cost, payroll share, PRs per developer', note: 'Salary control models local compensation' }, right: { label: 'AI-credit estimate plus salary input', note: 'Directional model, not audited savings', z: 'orange' } },
-        { left: { label: 'Enable usage metrics policy', note: 'Viewer needs View Copilot Metrics permission' }, right: { label: 'Pair with delivery context', note: 'Dashboard cohort correction does not change API or NDJSON exports', z: 'green' } }
-      ],
-      outcomeLeft: { icon: '✓', label: 'Product-backed comparison' },
-      outcomeRight: { icon: '!', label: 'Direction, not attribution' },
-      footnote: 'The ROI section requires the usage metrics policy and View Copilot Metrics permission.'
-    }),
-    S('agent-activity', 4, 'Join recognized agent activity on agent_id and count interactions once', {
-      scene: 'terminal', pill: 'Part 4 · Usage report fields', termTitle: 'representative report shape',
-      subtitle: 'A metrics owner joins history on the stable identifier, not the mutable display name.',
-      transcript: [
-        { type: 'prompt', text: 'totals_by_3rd_party_agent[]' },
-        { type: 'response', lines: ['agent_id: stable join key', 'display_name: label can change', 'job_starts and session_count: aggregate activity', 'nested user_initiated_interaction_count: do not add to top-level total'] },
-        { type: 'divider' },
-        { type: 'outcome', text: 'Join recognized activity by agent_id' },
-        { type: 'outcome', text: 'Per-user rows omit session_count; unidentified agents may be omitted' },
-        { type: 'outcome', text: 'Array may be absent when there is no agent activity' }
-      ],
-      footnote: 'Use the report schema and period that match your analysis; this is activity evidence, not productivity attribution.'
-    }),
-    S('measure-movement', 4, 'Adoption, workflow movement, and business outcomes answer different questions', {
-      scene: 'four-phases', pill: 'Part 4 · Measurement model',
-      subtitle: 'The measurement owner defines local baselines and targets before reading a trend.',
-      stageLabel: 'Signal',
-      gateLabel: '✓ compare',
-      stages: [
-        { label: '1', name: 'Adoption', icon: '⌁', description: 'Active users, acceptance, and feature activity show reach.' },
-        { label: '2', name: 'Workflow', icon: '↗', description: 'PR flow, review time, and cycle time show process movement.' },
-        { label: '3', name: 'Business', icon: '◇', description: 'Delivery, satisfaction, and cost per feature add context.' },
-        { label: '4', name: 'Decision', icon: '✓', description: 'Compare with local baseline and guardrail before changing investment.', target: true }
-      ],
-      footnote: 'Legacy README targets such as 55–65% acceptance and 80% seat use are proposed targets, not universal benchmarks.'
-    }),
-    S('onboarding-kit', 4, 'A 30-minute quick start is a testable onboarding design', {
-      scene: 'relay', pill: 'Part 4 · Self-service kit',
-      subtitle: 'The kit makes setup reproducible; the team measures whether the first task succeeds.',
-      columns: [
-        { icon: '▤', title: 'Read · 10 min', description: 'Team reads scope, access, and standards.', items: ['Quick start', 'Local prerequisites', 'Support route'], z: ['local', 'purple', 'orange'] },
-        { icon: '⌘', title: 'Configure · 10 min', description: 'Team applies templates to its repository.', items: ['Repo setup', 'Instructions', 'Skills catalog'], z: ['purple', 'local', 'green'] },
-        { icon: '✓', title: 'Exercise · 10 min', description: 'Team validates one real task and records evidence.', items: ['Run task', 'Inspect diff', 'Confirm checks'], z: ['remote', 'green', 'orange'] }
+        { type: 'outcome', mark: '!', text: 'An absent plugin entry can still mean real use' },
+        { type: 'outcome', mark: '!', text: 'Keep plugin and skill counts separate; never add them' },
+        { type: 'outcome', mark: '~', text: 'Impact dashboard ROI and industry comparisons are directional' }
       ]
     }),
-    S('rollout-gates', 4, 'A bounded pilot earns expansion through reviewed evidence', {
-      scene: 'four-phases', pill: 'Part 4 · Adoption rollout',
-      subtitle: 'The platform owner expands only after a real team verifies the pattern and recovery path.',
-      stageLabel: 'Gate',
-      gateLabel: '✓ evidence',
-      stages: [
-        { label: '1', name: 'Select', icon: '⌖', description: 'Choose a repeated task with an owner and measurable check.' },
-        { label: '2', name: 'Pilot', icon: '⌁', description: 'Apply the shared artifact to a bounded team workflow.' },
-        { label: '3', name: 'Inspect', icon: '✓', description: 'Review outcomes, support demand, failures, and recovery.' },
-        { label: '4', name: 'Expand', icon: '↗', description: 'Publish the tested version and monitor local fit.', target: true }
-      ],
-      footnote: 'The source README suggests phases from pilot to wider adoption; its month ranges are planning examples, not guarantees.'
+    S('native-vs-apm', 4, 'Native layers own the baseline; APM adds reach', {
+      pill: 'Bound · native layers and APM', steps: { current: 2, total: 4 },
+      subtitle: 'Add APM when one repository feeds several agent tools or needs hash-pinned resolution in CI.'
     }),
-    S('community-loop', 4, 'A community of practice turns local findings into reviewed patterns', {
-      scene: 'relay', pill: 'Part 4 · Federated learning',
-      subtitle: 'Teams contribute examples; the maintainer curates the catalog and records its review status.',
-      columns: [
-        { icon: '◇', title: 'Team finding', description: 'A team shares a reusable result and its context.', items: ['Show artifact', 'Name boundary', 'Share evidence'], z: ['local', 'orange', 'green'] },
-        { icon: '✓', title: 'Maintainer review', description: 'An owner checks applicability and source freshness.', items: ['Check source', 'Test example', 'Approve update'], z: ['purple', 'green', 'orange'] },
-        { icon: '▤', title: 'Shared catalog', description: 'Peers find the version and contribute corrections.', items: ['Publish pattern', 'Link owner', 'Review quarterly'], z: ['github', 'purple', 'orange'] }
+    S('licensing-boundary', 4, 'Included access, metered use, gated controls', {
+      scene: 'scorecard', pill: 'Bound · licensing', steps: { current: 3, total: 4 },
+      subtitle: 'GitHub Enterprise now includes Copilot; the controls in this talk need GHEC with Business or Enterprise licenses.',
+      cards: [
+        { icon: '🎟️', title: 'Access', description: 'GitHub Enterprise includes Copilot; Standalone is $10/user/month outside GHE.' },
+        { icon: '🪙', title: 'Metering', description: 'Use is metered on AI credits; self-serve rolls out in stages.' },
+        { icon: '🛡️', title: 'Controls', description: 'Managed plugin controls need GHEC and Copilot Business or Enterprise licenses.' },
+        { icon: '⚡', title: 'Credit users', description: 'Fusion, plugin actions such as Explain and Fix, and Dreaming use AI credits.' }
       ]
     }),
-    S('investment-math', 4, 'The 16.1 ratio is saved-hours arithmetic, not audited ROI', {
-      scene: 'terminal', pill: 'Part 4 · Illustrative investment model', termTitle: 'legacy source scenario',
-      transcript: [
-        { type: 'prompt', text: 'Estimated platform effort: instructions 40 + skills 60 + onboarding 80 = 180 hours.' },
-        { type: 'user', text: 'Illustrative savings assumptions for 200 developers:' },
-        { type: 'response', lines: ['Instructions: 200 × 2 = 400 hours', 'Skills: 200 × 5 = 1,000 hours', 'Onboarding: 200 × (8 − 0.5) = 1,500 hours'] },
-        { type: 'divider' },
-        { type: 'outcome', text: '2,900 estimated saved hours ÷ 180 estimated hours = 16.1 ratio' },
-        { type: 'outcome', text: 'Validate time, adoption, quality, and costs in your own workflow' }
-      ],
-      footnote: 'Illustration from the source README. It is not audited attribution, a verified deployment, or a customer result.'
-    }),
-    S('when-pattern-fits', 4, 'The pattern fits repeated shared work with an owner and a local boundary', {
-      scene: 'signals', pill: 'Part 4 · Fit and boundary',
-      subtitle: 'A platform team can start small; each team retains authority where requirements differ.',
-      rows: [
-        { label: 'Shared work', description: 'Several repositories need the same maintained rule', tag: 'Candidate', z: 'purple' },
-        { label: 'Known authority', description: 'A maintainer can approve and update the shared source', tag: 'Owner', z: 'local' },
-        { label: 'Observable check', description: 'A test, review, or metric reveals whether it helps', tag: 'Evidence', z: 'green' },
-        { label: 'Needs diverge', description: 'Team context changes the correct answer or control', tag: 'Specialize', z: 'orange' },
-        { label: 'No owner', description: 'Pause, assign ownership, or narrow scope', tag: 'Escalate', z: 'remote' }
-      ],
-      footnote: 'The source suggests 10–20 successful teams as a directional readiness heuristic, not a universal threshold.'
-    }),
-    S('before-after', 0, 'Move from repeated setup to an owned baseline with bounded choice', {
-      scene: 'before-after', pill: 'The operating shift',
-      before: [
-        'Each team repeats common instruction setup',
-        'Shared expertise sits in separate examples',
-        'Policy boundaries remain implicit',
-        'Usage totals stand in for impact'
-      ],
-      after: [
-        'An owner maintains the common baseline',
-        'Skills and indexed context have separate jobs',
-        'Permitted team choices are explicit and tested',
-        'Product signals retain their limits'
-      ],
-      metrics: [
-        { value: '2,000 h', detail: 'scenario: 50 × 40, not measured' },
-        { value: '16.1×', detail: 'illustrative saved-hours ratio' },
-        { value: 'agent_id', detail: 'stable activity join key' }
+    S('placement-scorecard', 4, 'Every choice has a home', {
+      scene: 'scorecard', pill: 'Bound · placement', steps: { current: 4, total: 4 },
+      subtitle: 'Pick the plane and layer by who must own the choice; send the rest to the tool that owns it.',
+      cards: [
+        { icon: '🛡️', title: 'Policy', description: 'Allowed at all? Enterprise AI controls, or the org where the enterprise delegated.' },
+        { icon: '🏢', title: 'Enterprise file', description: 'Everyone must have it or nobody may: required, blocked, approved sources, locked keys.' },
+        { icon: '👥', title: 'Team', description: 'A defined group needs an extra plugin or its own value on an overridable key.' },
+        { icon: '📁', title: 'Repository', description: 'Contributors benefit by default and can work without it.' },
+        { icon: '🧑‍💻', title: 'Personal', description: 'Preference: an optional plugin from an approved marketplace.' },
+        { icon: '🧭', title: 'Elsewhere', description: 'Several agent tools or hash pinning: APM. Session behavior: Harness Fundamentals.' }
       ]
     }),
-    S('today', 0, 'Start with one rule, one owner, and one visible check', {
+
+    /* ---- Close ---- */
+    S('before-after', 0, 'From copied setup to one baseline with owned choices', {
+      scene: 'before-after', pill: 'The shift',
+      before: ['Skills and MCP config copied repo by repo', 'Optional tools forced on through policy', 'Team exceptions negotiated one at a time', 'Effective setup guessed from config files'],
+      after: ['One versioned plugin, PLUGIN@MARKETPLACE', 'Recommendations as repository defaults', 'Team files add plugins and open keys', 'Thirteen checks name each value\'s owner'],
+      metrics: [{ value: '1', detail: 'plugin baseline' }, { value: '4', detail: 'layers, one effective answer' }, { value: '13', detail: 'checks per developer' }]
+    }),
+    S('today', 0, 'What you can do today', {
       scene: 'today',
       horizons: [
-        { icon: '⌘', label: 'Today', z: 'green', items: ['Choose one repeated repository rule', 'Name its approving owner', 'Write one observable acceptance check'] },
-        { icon: '▤', label: 'This Week', z: 'local', items: ['Test the rule on a representative task', 'Inspect the diff and check result', 'Record the recovery path'] },
-        { icon: '↗', label: 'This Month', z: 'purple', items: ['Pilot with a bounded team', 'Compare with a local baseline', 'Expand only with reviewed evidence'] }
+        { icon: '⚡', label: 'Today', z: 'green', items: ['Wrap one skill in a plugin.json with $schema', 'Install it with copilot plugin install ./PATH', 'Invoke the skill; reinstall after an edit'] },
+        { icon: '🗓️', label: 'This Week', z: 'local', items: ['Publish it through a marketplace.json repo', 'Enable it in one trusted repository', 'Run README checklist rows 2, 5, and 6'] },
+        { icon: '🚀', label: 'This Month', z: 'purple', items: ['Pilot one team mapping in a test enterprise', 'Add a required plugin and fail-closed refresh', 'Pass all thirteen checks for two developers'] }
       ],
-      takeaway: 'Transfer question: which rule in your repository deserves a shared owner, and what evidence will tell you it fits?'
+      takeaway: 'Place each choice at the plane and layer its owner controls, then prove what one developer gets.'
     }),
-    S('references', 0, 'First-party references and release evidence', {
+    S('references', 0, 'References', {
+      scene: 'references', pill: 'First-party sources',
       groups: [
-        { icon: '📖', title: 'Administration and standards', z: 'local', items: [
-          { href: 'https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization', label: 'Managing Copilot in your organization', description: 'Administration and organization policies.' },
-          { href: 'https://docs.github.com/en/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot#adding-organization-wide-custom-instructions', label: 'Organization-wide custom instructions', description: 'Organization-scoped instruction setup.' },
-          { href: 'https://agents.md/', label: 'AGENTS.md open format', description: 'Portable agent guidance format.' },
-          { href: 'https://code.visualstudio.com/docs/enterprise/ai-settings', label: 'Configure AI settings for an enterprise', description: 'Enterprise AI configuration.' }
+        { icon: '📦', title: 'Plugins and marketplaces', z: 'local', items: [
+          { href: 'https://docs.github.com/copilot/concepts/customizations/plugins', label: 'Plugins for GitHub Copilot', description: 'States, components, and surfaces.' },
+          { href: 'https://docs.github.com/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating', label: 'Creating a plugin', description: 'plugin.json, $schema, local install.' },
+          { href: 'https://docs.github.com/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace', label: 'Creating a marketplace', description: 'marketplace.json shape.' },
+          { href: 'https://github.blog/changelog/2026-10-28-repository-plugin-defaults-and-enterprise-plugin-controls-generally-available/', label: 'Plugin defaults and controls GA', description: 'Changelog, 2026-10-28.' }
         ] },
-        { icon: '⚖', title: 'Security, usage, and managed settings', z: 'purple', items: [
-          { href: 'https://code.visualstudio.com/docs/copilot/security', label: 'Security considerations for AI in VS Code', description: 'Security considerations and controls.' },
-          { href: 'https://docs.github.com/en/rest/copilot/copilot-metrics', label: 'Copilot metrics REST API', description: 'Usage metrics and activity reporting.' },
-          { href: 'https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings', label: 'Enterprise team specialization for managed settings', description: 'Team mappings, overrides, and merge behavior.' },
-          { href: 'https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity', label: 'Copilot usage metrics API adds agent app activity', description: 'Recognized agent activity fields and caveats.' }
+        { icon: '🏢', title: 'Policies and governance', z: 'github', items: [
+          { href: 'https://docs.github.com/copilot/concepts/enterprise/policies', label: 'Copilot policies', description: 'Policy plane, multi-org rules.' },
+          { href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/create-github-private-repo', label: 'Create .github-private', description: 'Configuration source.' },
+          { href: 'https://docs.github.com/copilot/reference/enterprise-administrators/enterprise-managed-settings', label: 'Managed settings reference', description: 'Keys, overridable, telemetry.' },
+          { href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/override-settings-for-teams', label: 'Override settings for teams', description: 'Team files and merge rules.' }
         ] },
-        { icon: '◇', title: 'ROI and time-bound notices', z: 'remote', items: [
-          { href: 'https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section', label: 'Copilot impact dashboard ROI section', description: 'Directional cohort comparison and modeled inputs.' },
-          { href: 'https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot', label: '2026 model deprecation notice', description: 'Historical migration-readiness example; deadline has passed.' },
-          { href: 'https://code.visualstudio.com/updates/v1_121', label: 'VS Code release notes: v1.121', description: 'First-party release record.' },
-          { href: 'https://code.visualstudio.com/updates/v1_122', label: 'VS Code release notes: v1.122', description: 'First-party release record.' }
+        { icon: '📡', title: 'Models, MCP, evidence', z: 'purple', items: [
+          { href: 'https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams/', label: 'Model policy API', description: 'Four levels, GET and PATCH.' },
+          { href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-mcp-usage/configure-enterprise-allowlist', label: 'MCP allowlist', description: 'Allow, deny, boundaries.' },
+          { href: 'https://docs.github.com/enterprise-cloud@latest/copilot/concepts/enterprise/opentelemetry', label: 'OpenTelemetry for agents', description: 'Identity and capture classes.' },
+          { href: 'https://github.com/microsoft/apm', label: 'APM (microsoft/apm)', description: 'One manifest, many harnesses.' }
         ] }
       ]
     }),
-    S('thanks', 0, 'Scaling GitHub Copilot Across Organizations', {
-      scene: 'thanks', chrome: false, visual: 'org-ring',
-      subtitle: 'Set the shared floor. Bound team choices. Review the evidence.',
-      cards: [
-        { value: 'Scope', detail: 'Put each rule where its owner can maintain it' },
-        { value: 'Authority', detail: 'Name who can approve, specialize, or escalate' },
-        { value: 'Evidence', detail: 'Test locally; keep estimates labeled' }
-      ],
-      prompt: 'Which rule will your team test first?'
+    S('thanks', 0, 'Enterprise Patterns', {
+      scene: 'thanks', chrome: false,
+      subtitle: 'One baseline, four layers, every team\'s choice.',
+      cards: [{ value: 'Package', detail: 'One plugin, one id' }, { value: 'Place', detail: 'Each choice with its owner' }, { value: 'Prove', detail: 'Thirteen checks in the README' }],
+      prompt: 'Which plugin does your organization copy between repositories by hand today, and which layer owns it?'
     })
   ];
 
+  /* Speaker notes: the talk track for each slide.
+     notes: lines starting with " are spoken; lines starting with → bridge to the next slide; others are presenter direction.
+     know: facts to have ready for questions. cue: demo steps. sources: first-party evidence. seconds: time budget (estimates until a timed run-through). */
   const SRC = {
-    admin: { label: 'Managing Copilot in your organization', href: 'https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization' },
-    instructions: { label: 'Organization-wide custom instructions', href: 'https://docs.github.com/en/copilot/customizing-copilot/adding-custom-instructions-for-github-copilot#adding-organization-wide-custom-instructions' },
-    metrics: { label: 'Copilot metrics REST API', href: 'https://docs.github.com/en/rest/copilot/copilot-metrics' },
-    agentsmd: { label: 'AGENTS.md open format', href: 'https://agents.md/' },
-    skills: { label: 'GitHub Copilot documentation', href: 'https://docs.github.com/en/copilot' },
-    aiSettings: { label: 'Configure AI settings for an enterprise', href: 'https://code.visualstudio.com/docs/enterprise/ai-settings' },
-    security: { label: 'Security considerations for AI in VS Code', href: 'https://code.visualstudio.com/docs/copilot/security' },
-    roi: { label: 'Copilot impact dashboard ROI section', href: 'https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section' },
-    agentActivity: { label: 'Copilot usage metrics API adds agent app activity', href: 'https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity' },
-    managed: { label: 'Enterprise team specialization for managed settings', href: 'https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings' },
-    migration: { label: '2026 Copilot model deprecation notice', href: 'https://github.blog/changelog/2026-07-31-upcoming-august-2026-model-deprecations-in-github-copilot' },
-    v121: { label: 'VS Code release notes v1.121', href: 'https://code.visualstudio.com/updates/v1_121' },
-    v122: { label: 'VS Code release notes v1.122', href: 'https://code.visualstudio.com/updates/v1_122' }
+    concepts: { label: 'Plugins for GitHub Copilot (concepts)', href: 'https://docs.github.com/copilot/concepts/customizations/plugins' },
+    aboutPlugins: { label: 'About plugins for the cloud agent', href: 'https://docs.github.com/copilot/concepts/agents/about-plugins' },
+    cliCreate: { label: 'Creating a plugin for Copilot CLI', href: 'https://docs.github.com/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating' },
+    cliMarket: { label: 'Creating a plugin marketplace for Copilot CLI', href: 'https://docs.github.com/copilot/how-tos/copilot-cli/customize-copilot/plugins-marketplace' },
+    pluginRef: { label: 'Plugin and marketplace reference', href: 'https://docs.github.com/copilot/reference/plugin-and-marketplace-reference' },
+    cliPluginRef: { label: 'CLI plugin reference (plugin.json)', href: 'https://docs.github.com/copilot/reference/cli-plugin-reference#pluginjson' },
+    vscodeRef: { label: 'VS Code agent plugin authoring reference', href: 'https://code.visualstudio.com/docs/agents/reference/agent-plugin-reference' },
+    spec: { label: 'Agent Plugins specification', href: 'https://agent-plugins.org/specification' },
+    ap10: { label: 'Changelog 2026-08-12: Agent Plugins 1.0', href: 'https://github.blog/changelog/2026-08-12-agent-plugins-1-0-in-vs-code-copilot-cli-and-the-copilot-app/' },
+    defaultsGA: { label: 'Changelog 2026-10-28: repository plugin defaults and enterprise plugin controls GA', href: 'https://github.blog/changelog/2026-10-28-repository-plugin-defaults-and-enterprise-plugin-controls-generally-available/' },
+    secExt: { label: 'Changelog 2026-10-28: security extension for the Copilot app', href: 'https://github.blog/changelog/2026-10-28-security-extension-for-the-github-copilot-app/' },
+    policies: { label: 'Copilot policies (concepts)', href: 'https://docs.github.com/copilot/concepts/enterprise/policies' },
+    orgPolicies: { label: 'Manage Copilot policies for an organization', href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-organization/manage-policies' },
+    ghPrivate: { label: 'Create a .github-private repository (enterprise)', href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/create-github-private-repo' },
+    entAgents: { label: 'Prepare for custom agents (enterprise)', href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/manage-agents/prepare-for-custom-agents' },
+    aiManagers: { label: 'Establish AI managers', href: 'https://docs.github.com/copilot/tutorials/roll-out-at-scale/govern-at-scale/establish-ai-managers' },
+    orgInstr: { label: 'Add organization custom instructions', href: 'https://docs.github.com/copilot/how-tos/configure-custom-instructions/add-organization-instructions' },
+    orgAgents: { label: 'Prepare for custom agents (organization)', href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-organization/prepare-for-custom-agents' },
+    exclusion: { label: 'Content exclusion (concepts)', href: 'https://docs.github.com/copilot/concepts/context/content-exclusion' },
+    firewall: { label: 'Customize the cloud agent firewall', href: 'https://docs.github.com/copilot/how-tos/use-copilot-agents/cloud-agent/customize-the-agent-firewall' },
+    mcpAllow: { label: 'Configure an enterprise MCP allowlist', href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-mcp-usage/configure-enterprise-allowlist' },
+    managedRef: { label: 'Enterprise managed settings reference', href: 'https://docs.github.com/copilot/reference/enterprise-administrators/enterprise-managed-settings' },
+    managePlugins: { label: 'Manage plugin marketplaces and plugins with managed settings', href: 'https://docs.github.com/enterprise-cloud@latest/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/manage-plugin-marketplaces-and-plugins' },
+    teams: { label: 'Override settings for enterprise teams', href: 'https://docs.github.com/copilot/how-tos/administer-copilot/manage-for-enterprise/use-managed-settings/override-settings-for-teams' },
+    teamsCl: { label: 'Changelog 2026-08-03: enterprise team specialization', href: 'https://github.blog/changelog/2026-08-03-enterprise-team-specialization-for-managed-settings' },
+    cliConfig: { label: 'Copilot CLI configuration directory reference', href: 'https://docs.github.com/copilot/reference/copilot-cli-reference/cli-config-dir-reference' },
+    enforce: { label: 'Changelog 2026-10-13: managed settings enforcement updates', href: 'https://github.blog/changelog/2026-10-13-enterprise-managed-settings-enforcement-updates' },
+    globalDefault: { label: 'Changelog 2026-10-22: global default for Copilot features', href: 'https://github.blog/changelog/2026-10-22-global-default-for-copilot-features-generally-available' },
+    fusion: { label: 'Changelog 2026-10-28: Copilot Fusion', href: 'https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion/' },
+    modelPolicy: { label: 'Changelog 2026-10-19: model policy API', href: 'https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams/' },
+    telemetryCl: { label: 'Changelog 2026-10-12: telemetry attribution and capture', href: 'https://github.blog/changelog/2026-10-12-client-telemetry-user-attribution-and-configurable-capture/' },
+    otel: { label: 'OpenTelemetry for agent monitoring', href: 'https://docs.github.com/enterprise-cloud@latest/copilot/concepts/enterprise/opentelemetry' },
+    kbSpaces: { label: 'Changelog 2025-10-17: Knowledge Bases convert to Copilot Spaces', href: 'https://github.blog/changelog/2025-10-17-copilot-knowledge-bases-can-now-be-converted-to-copilot-spaces' },
+    intelligence: { label: 'Changelog 2026-10-28: GitHub intelligence (Dreaming)', href: 'https://github.blog/changelog/2026-10-28-github-intelligence-puts-your-code-context-and-history-to-work' },
+    agentActivity: { label: 'Changelog 2026-08-07: usage metrics add agent app activity', href: 'https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity' },
+    roi: { label: 'Changelog 2026-08-07: impact dashboard ROI section', href: 'https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section' },
+    industry: { label: 'Changelog 2026-10-22: industry comparisons', href: 'https://github.blog/changelog/2026-10-22-industry-comparisons-in-the-copilot-impact-dashboard' },
+    ghe: { label: 'Changelog 2026-10-28: GitHub Enterprise includes Copilot', href: 'https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot' },
+    apm: { label: 'APM: Agent Package Manager (microsoft/apm)', href: 'https://github.com/microsoft/apm' },
+    apmDocs: { label: 'APM documentation', href: 'https://microsoft.github.io/apm/' }
   };
 
   const NOTES = {
-    title: { seconds: 45, sources: [SRC.admin, SRC.instructions],
+    title: { seconds: 30, sources: [SRC.defaultsGA, SRC.managedRef],
       notes: [
-        '"A shared Copilot practice becomes an organizational capability when its source has an owner and teams can verify what changes."',
-        'Point to the central organization node, then the repository ring. The ring represents reach, not proof that every repository has adopted or validated a rule.',
-        '→ Start with the question a platform team faces when successful local patterns need to scale.'
+        `"One baseline can now reach every team while each team keeps its own choices. This hour shows how."`,
+        `Point at the four rings: enterprise outside, then team, repository, and the developer in the middle. Every choice in this talk lands on one of these rings.`,
+        `→ Start with the question you brought.`
       ],
       know: [
-        'The ring is a teaching visual. It does not represent a measured deployment, a product topology, or automatic enforcement.',
-        'The talk keeps the approved thesis: standards, governance, knowledge sharing, and measurement can support adoption across teams.'
+        `Audience: platform engineers and enterprise Copilot administrators who run the baseline, plus repository maintainers who own team defaults.`,
+        `This talk absorbs the former Copilot plugins talk: packaging plugins is now Part 1 of the enterprise story.`
       ] },
-    'core-question': { seconds: 90, sources: [SRC.admin, SRC.instructions, SRC.metrics],
+    'core-question': { seconds: 90,
       notes: [
-        '"How do I scale Copilot across our teams without losing consistency, team choice, or proof? That is the decision we will work through."',
-        'Point out the three roles. Platform owners maintain the shared source; repository teams add local context; service owners accept or escalate evidence.',
-        '"The four stops are scope, shared expertise, governed choices, and evidence. Each gives us a practical question to answer."',
-        '→ First, choose where each standard belongs.'
+        `"How do I give every team the same Copilot setup without taking away their choices? If you run a platform team, you have probably asked this out loud."`,
+        `Walk the four chips: enterprise, team, repository, personal. Four owners, four layers.`,
+        `Role cards: the platform owner ships the baseline and blocks what nobody may use; the team lead adds what the team's work needs; the repository maintainer turns on useful defaults contributors can switch off.`,
+        `"The answer: place each choice at the plane and layer its owner controls, then verify what one developer actually gets."`,
+        `→ Four parts get us there.`
       ],
       know: [
-        'The four routing terms are an editorial decision model, not product terminology.',
-        'The audience includes platform engineers, security practitioners, architects, and engineering leaders. No individual persona or customer is implied.'
+        `Judgment lenses: Authority (which plane and layer owns which choice) and Verification (how to confirm the effective result). Context supports both.`,
+        `Two planes: AI controls policies decide what is allowed; the settings plane decides what each client loads. Part 2 opens with both.`,
+        `The tempting mistake runs backward: managed settings can force a plugin, and they have no way to recommend one. Recommendations belong in repositories.`
       ] },
     contents: { seconds: 30,
       notes: [
-        '"We will place the shared rules, choose how knowledge travels, define the governance boundary, and finish with proof and transfer."',
-        'Use the slide links to preview the section starts. The slide numbers in the cards point to slides 4, 12, 17, and 23.',
-        '→ Part 1 starts with the scope decision.'
+        `"Package, place, reuse, prove. Part 2 carries the two planes and the anchor demo; the other parts set it up and pay it off."`,
+        `Keep this brisk.`
       ] },
-    'part-1': { seconds: 25, sources: [SRC.instructions, SRC.agentsmd],
+    'three-asks': { seconds: 90, sources: [SRC.concepts, SRC.defaultsGA],
       notes: [
-        '"The useful baseline starts with one question: which owner and scope can keep this rule current?"',
-        'The three cards order this section: choose scope, publish context, review evidence.',
-        '→ The source talk uses 50 teams and 40 hours to frame the repetition opportunity; we will label the arithmetic as a scenario.'
-      ] },
-    'reinvention-case': { seconds: 103,
-      notes: [
-        '"Fifty teams times forty hours gives two thousand hours in this scenario. The multiplication is sound; the inputs are assumptions."',
-        'Point to the evidence-status card. The source README does not cite a time study or a measured organization, so this is not an observed result.',
-        'Ask which repeated setup work exists locally: duplicated instruction drafting, standards research, or review preparation. Replace the assumed inputs with a local baseline.',
-        '→ Once a repeated task is real, choose the correct configuration scope.'
+        `"One platform team supports several product teams across VS Code, Copilot CLI, the Copilot app, and the cloud agent."`,
+        `Let the three ask cards land one at a time.`,
+        `"Every team needs the same security baseline. The payments teams need one extra review plugin. One repository wants a scanner on by default that contributors can switch off."`,
+        `"Three asks, three owners: the enterprise, one team, one repository. The whole talk puts each ask at its owner's layer."`,
+        `→ First, the baseline needs a shape we can ship.`
       ],
       know: [
-        'Scenario calculation: 50 × 40 = 2,000 hours of potential repeated effort.',
-        'The 40-hours-per-team figure is a legacy source estimate without a defined sample, period, or measurement method. Do not present it as a benchmark.',
-        'The decision to standardize depends on shared requirements, a maintainer, and evidence that the rule helps.'
+        `Plugins span VS Code, Copilot CLI, the Copilot app, and the cloud agent. Not every component works on every surface; LSP server configuration is CLI only.`,
+        `Repository plugin defaults and enterprise require, block, and approved-marketplace controls became generally available on 2026-10-28 in VS Code, the CLI, and the Copilot app.`
       ] },
-    'standard-selection': { seconds: 93, sources: [SRC.instructions, SRC.agentsmd],
+    'part-1': { seconds: 30,
       notes: [
-        '"Choose the selector by the audience for the rule: organization, repository, file pattern, or directory."',
-        'Follow each row from the scope question to its target. Organization-wide custom instructions carry common Copilot guidance; repository instructions add project context; applyTo files target matching files; nearest AGENTS.md carries directory-local workflow guidance.',
-        '"These files guide the model. Tests, policy, and reviewers still determine whether the change is acceptable."',
-        '→ Topology changes how teams maintain those layers.'
+        `"A plugin gives the baseline a shape you can version and ship: bundle it, publish it, install it by one id."`,
+        `Say once, here: release-guard, platform-tools, pci-review, legacy-deploy, acme-corp, and the team slugs payments-core, payments-mobile, and platform-sre are names for a worked example. github-security@awesome-copilot is a real plugin in public preview.`,
+        `→ Start with what platform teams copy today.`
+      ] },
+    'plugin-unit': { seconds: 90, sources: [SRC.concepts, SRC.ap10],
+      notes: [
+        `Let the motion run: five repositories each hold the same loose files, then the files collapse into one package.`,
+        `"Today the release checklist skill, the release-notes MCP config, the reviewer agent, and the hooks live as copies in every repository. Five copies, five places to patch."`,
+        `"A plugin bundles agents, skills, hooks, and MCP server configs so they install and update together. One release of release-guard reaches every repository that uses it."`,
+        `→ What is inside the package?`
       ],
       know: [
-        'Organization-wide custom instructions are managed in organization settings and are intended to provide a baseline across repositories.',
-        'A repository instruction file is `.github/copilot-instructions.md`; file-pattern instruction files use `.github/instructions/*.instructions.md` with `applyTo` metadata.',
-        'AGENTS.md is an open format for agent guidance. A nearest directory playbook can provide local commands and guardrails; verify surface-specific support before relying on it.',
-        'The source README calls local instruction layers overrides. This deck uses the safer term local context and does not promise that local guidance overrides an organization rule.'
+        `Agent Plugins 1.0 is an open standard published 2026-08-06 with AWS, Anysphere, Microsoft, OpenAI, and Vercel; Google is a core maintainer.`,
+        `GA in VS Code, Copilot CLI, the Copilot SDK, and the Copilot app on all plans (changelog 2026-08-12).`,
+        `Agent Plugins needs no separate policy; existing plugin settings apply. The MCP allowlist stays a separate per-server control (Part 3).`
       ] },
-    'repo-topology': { seconds: 93, sources: [SRC.instructions, SRC.agentsmd],
+    'plugin-anatomy': { seconds: 105, sources: [SRC.cliCreate, SRC.vscodeRef, SRC.spec, SRC.cliPluginRef],
       notes: [
-        '"In polyrepos, the organization baseline crosses repository lifecycles. Each repository owner adds the service details."',
-        '"In a monorepo, a shared root can carry common context while file patterns and nested playbooks keep package-specific commands close to the code."',
-        'Point at the two green outcomes: each topology preserves a common floor and local ownership.',
-        '→ Let us see what an illustrative rule looks like when Copilot proposes a change.'
+        `Point at the green zone, then the purple zone, then the $schema line.`,
+        `"The green zone is portable. Spec version 1 defines two component types: skills, one folder deep under skills/, and MCP servers in mcp.json. Any Agent Plugins client can load them."`,
+        `"The purple zone is Copilot-only. VS Code reads agents, hooks, automations, and slash commands from com.github.copilot/ and ignores other clients' namespaces."`,
+        `"Then the line that matters most: $schema. Without it, Copilot CLI reads the manifest as the legacy Copilot format."`,
+        `→ One package. Now make it findable.`
       ],
       know: [
-        'Polyrepo example from the README: organization instructions and repo `.github/copilot-instructions.md`, plus optional root AGENTS.md.',
-        'Monorepo example from the README: repository instruction at root, `.github/instructions/*.instructions.md` for file patterns, and nested `frontend/`, `backend/`, or `infra/` AGENTS.md playbooks.',
-        'These examples describe placement patterns, not a required universal repository layout.'
+        `$schema value: https://agent-plugins.org/schemas/1.0.0/plugin.schema.json. Copilot CLI also recognizes the 1.1.0 schema.`,
+        `Fields shown match the documented example: $schema, name, description, version, author, license. Full field list: CLI plugin reference.`,
+        `mcp.json: the spec defines the format; the exact top-level key is not confirmed, so treat any shape you show as illustrative.`,
+        `Failure signal: a component works in the CLI and is missing elsewhere. Recovery: check that surface's docs before assuming parity.`
       ] },
-    'instruction-artifact': { seconds: 123, sources: [SRC.instructions, SRC.admin],
+    'marketplace-id': { seconds: 120, sources: [SRC.cliMarket, SRC.pluginRef, SRC.concepts, SRC.managePlugins],
       notes: [
-        '"Here is an illustrative security rule: use the approved authentication helper and never log access tokens."',
-        'The task is an API handler. Copilot proposes a change and a focused test; the service owner reviews the diff and the required checks.',
-        '"The rule shapes context. The test and review are the evidence; the prompt alone does not enforce the policy."',
-        'Cue: present a saved example or static diff. Do not change organization settings or install anything live.',
-        '→ The next slide makes those authority handoffs explicit.'
+        `"A marketplace is a repository with a marketplace.json. For Copilot CLI that file is the only required component."`,
+        `Point at the name field, then watch the id assemble.`,
+        `"The plugin name plus the marketplace name gives release-guard@platform-tools. Every policy file in Part 2 refers to that id. Pick a stable kebab-case marketplace name on day one; renaming it changes every id."`,
+        `Point at the state strip as it lights. "Available means listed in a marketplace the developer can see. Installed means the files are on the client. Enabled means the client loads the components."`,
+        `"Required is the locked variant: managed settings install it, enable it, and lock it on. Keep these states apart; in Part 2 a developer switches a plugin off and it stays installed."`,
+        `→ Time for the first proof.`
       ],
       know: [
-        'The example is a generic configuration fragment, not a production-ready security policy. A security owner must specify approved helper names and requirements.',
-        'The previous long README contained detailed sample values for OAuth, encryption, framework choices, testing, accessibility, and performance. Those values are examples only; local domain owners define approved standards.',
-        'The legacy sample named OAuth 2.0 with PKCE, AES-256 at rest, Azure Key Vault, parameterized SQL, React 18 with TypeScript, Node.js 20 LTS, Jest, Playwright, 80% coverage, WCAG 2.1 AA, Lighthouse above 90, a two-second 3G page-load target, and a 200 KB gzipped bundle budget. These are illustrative values from the old draft, not current product requirements or approved security guidance.',
-        'Organization-wide instruction documentation is the source for configuration behavior. A configuration is not itself a runtime test or enforcement mechanism.'
+        `marketplace.json shape: name, owner, metadata, and plugins[] with name, description, version, and source.`,
+        `github/copilot-plugins keeps its catalog at .github/plugin/marketplace.json.`,
+        `The worked-example catalog acme-corp/platform-tools lists release-guard 1.4.0, pci-review 0.9.2, and legacy-deploy 3.1.0, so its ids are release-guard@platform-tools, pci-review@platform-tools, and legacy-deploy@platform-tools.`,
+        `Who acts on which state: the enterprise controls availability through approved sources; the developer or policy installs; repository defaults or the developer enable.`
+      ] },
+    'local-trial': { seconds: 75, sources: [SRC.cliCreate],
+      cue: [
+        `Play the recorded local-install capture.`,
+        `Live option: in a scratch folder run copilot plugin install ./release-guard, list plugins (copilot plugin --help shows the list subcommand), then start copilot and ask it to run the release checklist.`,
+        `In VS Code the plugin appears under Customize in the Chat side panel.`
       ],
-      cue: ['Use a saved instruction fragment and a representative diff. Keep the walkthrough read-only; show the reviewer check beside the proposed output.'] },
-    'authority-scope': { seconds: 98, sources: [SRC.admin, SRC.instructions],
       notes: [
-        '"The platform owner approves a shared rule; the repository owner tests how it fits the service; the service owner accepts or escalates the result."',
-        'Move from left to right across the three lanes. The work packet contains the source, local check, and accepting reviewer.',
-        'This is a recommended responsibility split, not a GitHub role mapping.',
-        '→ A review loop makes the rule observable.'
+        `"Before any policy touches it, prove the package loads. One command installs release-guard from a folder."`,
+        `"The plugin list shows the skill, the agent, and the MCP server. Then a session uses the skill and runs its script. A developer can run this test this afternoon."`,
+        `→ The package works. Now decide who gets it.`
       ],
       know: [
-        'The source README proposed a federated pattern: platform team owns shared infrastructure, teams customize locally, and a community shares findings.',
-        'The exact approval workflow is organization-specific. Identify actual owners and escalation routes before adopting the pattern.',
-        'The source also proposes a monthly pattern-sharing session and quarterly metrics review; these are operating practices, not product features.'
+        `A local plugin is cached; reinstall after an edit (copilot plugin install ./my-plugin) to pick up changes.`,
+        `The exact list subcommand name and the output wording are not confirmed; the slide paraphrases the capture.`
       ] },
-    'verification-loop': { seconds: 103, sources: [SRC.instructions, SRC.security],
+    'part-2': { seconds: 30,
       notes: [
-        '"A reviewer checks the approved rule and the resulting change together."',
-        'Name four separate signals: the input rule, Copilot proposal, automated test results, and human acceptance. A green check from a tool is not the same as a policy decision.',
-        '"When evidence fails, revise the context or the rule, then rerun the representative task."',
-        '→ The original hours-saved story also needs its inputs visible.'
+        `"Each choice belongs at the plane and layer of the person who owns it. Policies decide what is allowed. The governance repository holds the settings. The org owns what the enterprise delegates. Four layers resolve one answer."`,
+        `This part gets the most time and carries the anchor demo.`,
+        `→ Start with the two planes.`
+      ] },
+    'two-planes': { seconds: 120, sources: [SRC.policies, SRC.orgPolicies, SRC.managedRef],
+      notes: [
+        `"Enterprise control arrives through two planes. Knowing which plane answers which question saves hours of searching the wrong page."`,
+        `Walk the left column. "The policy plane lives in enterprise AI controls. Each policy is Enabled, Disabled, or Let organizations decide. Orgs choose only where the enterprise delegated. It decides what a licensed user may use at all: features, agents, models, MCP availability, Dreaming."`,
+        `Walk the right column. "The settings plane runs from the governance repository's managed-settings.json, through team files and repository defaults, to the developer. It decides what each client loads: plugins, marketplaces, model default, Fusion tier, the MCP allowlist, telemetry, refresh."`,
+        `Point at the outcome row. "A user licensed by several orgs usually gets the least restrictive policy. Across several enterprises, almost always the most restrictive."`,
+        `→ The settings plane starts in one repository.`
       ],
       know: [
-        'The source long README gives example quality baselines such as accessibility checks, performance budgets, and minimum test coverage. Those are illustrative; each organization owns its standards.',
-        'Evidence can include test output, static analysis, a diff review, an audit trail, or a local process metric. Select evidence that answers the claimed behavior.',
-        'A skills/checklist example must not be described as automatic compliance unless an approved control actually enforces it.'
+        `Team files follow the same least-restrictive idea per key on the settings plane.`,
+        `Drift control: limit who holds enterprise owner or "Manage enterprise AI controls", and watch the audit log for policy changes.`,
+        `MCP needs both planes: the "MCP servers in Copilot" policy allows MCP at all, and the managed-settings allowlist decides which servers run.`
       ] },
-    'savings-model': { seconds: 113,
+    'governance-repo': { seconds: 135, sources: [SRC.ghPrivate, SRC.entAgents, SRC.aiManagers],
       notes: [
-        '"The source estimates 180 hours to build instructions, skills, and onboarding. It then assumes three categories of savings for two hundred developers."',
-        'Walk the terms: 400 hours for instructions, 1,000 for skills, and 1,500 for onboarding. Their sum is 2,900. Dividing by 180 yields about 16.1 saved-hours per invested hour.',
-        '"That ratio is scenario arithmetic, not audited ROI. Recalculate both effort and savings with your own workflow data."',
-        '→ Part 2 separates the two mechanisms that carry shared knowledge.'
+        `Point at the left panel first. "Enterprise owners pick one org under AI controls, Agents, Configuration source. That org's .github-private becomes the enterprise's source of governance. The Configuration summary shows what it supplies."`,
+        `Let the four rows light. "It holds managed-settings.json, team-mappings.json, the team files, and enterprise agent profiles."`,
+        `"Settings reach every user on the plan with a supported client, whether or not they can read the repository. Choose Internal visibility so every member can propose changes by pull request."`,
+        `Watch the shield close, then the pull request arrive. "Protect agent files using rulesets creates a ruleset: only enterprise owners and bypass actors edit agent profiles. Members with write access still open pull requests."`,
+        `"AI managers merge them: a custom enterprise role with Manage enterprise AI controls and Read enterprise audit logs, on an enterprise team that holds ruleset bypass. Platform experts run governance without enterprise ownership."`,
+        `→ Between the enterprise and the repository sits the org.`
       ],
       know: [
-        'The source README inputs are 40 + 60 + 80 = 180 platform hours; 200 developers × 2 instruction hours = 400; × 5 skill hours = 1,000; and 200 × (8 − 0.5) onboarding hours = 1,500.',
-        'The 2,900 total equals 16.11 times 180 as gross saved-hours divided by invested-hours. This is not a conventional net ROI calculation and excludes ongoing maintenance, adoption, quality, and salary costs.',
-        'The separate 50 × 40 = 2,000 estimate uses different assumptions; do not add the two totals or imply one was observed.',
-        'The long README also contains a conflicting 50x first-year calculation with unsupported inputs. It is not repeated as a result.'
+        `Private visibility works too; then you grant access by hand.`,
+        `The generated ruleset also blocks org owners from org-level agents unless you scope it to the governance org.`,
+        `Add CODEOWNERS and rulesets on copilot/ for the settings files the same way.`,
+        `Enterprise custom roles are public preview.`,
+        `The folder that holds enterprise-level agent profiles is unconfirmed; take the layout from the governance template. The org-level docs name /agents.`
       ] },
-    'part-2': { seconds: 25, sources: [SRC.skills],
+    'org-owns': { seconds: 120, sources: [SRC.orgPolicies, SRC.orgInstr, SRC.orgAgents, SRC.exclusion, SRC.firewall],
       notes: [
-        '"Shared knowledge has two jobs here: teach a reusable method or retrieve context from selected repositories."',
-        'The distinction protects both the source and the expected output.',
-        '→ Compare the mechanisms by their job.'
-      ] },
-    'skill-vs-context': { seconds: 98, sources: [SRC.skills, SRC.admin],
-      notes: [
-        '"A skill encodes a reusable procedure. A Knowledge Base supplies context from selected repositories."',
-        'Read across each pair. A method has an owner and version; indexed context has curated sources. Each still needs inspection before a team relies on the result.',
-        '"The source talk marks Agent Skills as generally available and Knowledge Bases as Enterprise Cloud. Confirm current eligibility for your plan."',
-        '→ A catalog works best when it stays small and owned.'
+        `"The org sits on the policy plane. It has no slot in the settings-file chain; team files belong to enterprise teams, mapped from the governance repository."`,
+        `Walk the five rows. "Policies: only where the enterprise chose Let organizations decide. Instructions: org custom instructions reach cloud sessions on GitHub and Copilot code review; local client sessions do not load them."`,
+        `"Agents: /agents in the org's .github or .github-private repository, available to every member. Content exclusion: paths Copilot ignores for org-assigned seats. Firewall: the cloud agent firewall, Enabled, Disabled, or Let repositories decide."`,
+        `"These controls reach the seats the org assigns. Plan them with the org owners when you plan the enterprise file."`,
+        `→ Now the settings plane, layer by layer.`
       ],
       know: [
-        'The source describes organization-level Agent Skills under `.github/skills/`, centrally versioned and reusable. Confirm the current product details in official documentation before rollout.',
-        'The source describes Knowledge Bases as named collections of indexed repositories queried through Copilot Chat on GitHub.com. The visible `@kb payment-platform` query is illustrative; confirm the current interface before use.',
-        'Knowledge Bases are identified by the approved recipe as Enterprise Cloud only. Product eligibility can change; verify before planning an install or purchase.',
-        'Skills and Knowledge Bases are not the managed-settings control plane. Managed settings govern selected enterprise configuration choices.'
+        `Org custom agents are public preview, and an enterprise ruleset can restrict them.`,
+        `Content exclusion: repository admins also exclude paths in their own repositories; support varies by tool. The exact settings-page labels are unconfirmed.`,
+        `Firewall: the setting covers the firewall and the recommended allowlist; org owners can stop repositories adding rules. It covers processes the Bash tool starts; MCP server processes and setup steps sit outside it.`
       ] },
-    'skill-library': { seconds: 108, sources: [SRC.skills, SRC.security],
+    'four-layers': { seconds: 150, sources: [SRC.managePlugins, SRC.teams, SRC.concepts, SRC.defaultsGA],
       notes: [
-        '"These catalog names group repeated work into security, architecture, quality, cost, and operations."',
-        'Point to the catalog contract. A name without a source owner, supported scope, validation, and update path can become stale guidance.',
-        'The skill names shown are illustrative; no real organization library is claimed.',
-        '→ A Knowledge Base handles a different question: where is the relevant system context?'
+        `Let the bands settle top to bottom, then trace the precedence arrow.`,
+        `"Enterprise: .github-private/copilot/managed-settings.json, owned by enterprise owners and the platform team. It requires or blocks plugins, approves marketplaces, and marks keys overridable."`,
+        `"Team: files under copilot/teams, mapped in team-mappings.json. The platform team owns them, and teams propose changes by pull request. They add plugins and set overridable keys."`,
+        `"Repository: .github/copilot/settings.json, owned by maintainers, turning on defaults in trusted repositories. Personal: the developer's client, switching off defaults where supported."`,
+        `"Read the right column as the guardrail. Each layer has something it cannot do, and that keeps the floor solid."`,
+        `Point at the footer chips. "Three conditions decide whether a layer applies at all: team files need server-managed delivery, managed controls need GitHub Enterprise Cloud licenses, and repository defaults need a trusted repository."`,
+        `→ The rule people get backward.`
       ],
       know: [
-        'Examples carried from the source README: payment-processing, healthcare-data, security-scanner, architecture-review, performance-budgets, accessibility-check, cost-estimator, tech-debt-analyzer, and dependency-risk.',
-        'The longer README gives use cases for security validation, compliance checks, architecture review, performance budgets, accessibility validation, and cloud-cost estimation.',
-        'Examples mentioning PCI or HIPAA require review by the organization security or compliance authority. A skill name does not establish regulatory compliance.'
+        `Precedence, highest first: enterprise, enterprise team, repository, personal.`,
+        `MDM and file deployments cannot use team files; they need one file per group.`,
+        `Licenses: GitHub Enterprise Cloud plus Copilot Business or Enterprise licenses, issued by the enterprise or one of its organizations.`,
+        `Local opt-out of repository defaults works "where supported, subject to managed policy."`,
+        `model was first documented as permissions.model; clients still read the nested value when the top-level key is absent. New configs use top-level model.`
       ] },
-    'knowledge-query': { seconds: 103, sources: [SRC.admin, SRC.skills],
+    'force-vs-recommend': { seconds: 120, sources: [SRC.managePlugins, SRC.defaultsGA],
       notes: [
-        '"The administrator curates the source repositories. The developer asks a question across that selected context."',
-        'Read the repository labels as an illustrative microservice set. Copilot returns material; the developer checks cited files and versions before using the answer.',
-        '"Indexed context saves manual reconstruction only when the sources are current and the answer remains verifiable."',
-        '→ Reusable expertise also needs a source and update path.'
+        `"The same enabledPlugins true means two different things. In managed settings it means required: installed, enabled, locked on. In a repository it means default on."`,
+        `"Managed settings have no recommend value. They require or they block."`,
+        `Point at the orange outcome: "Put a recommendation in policy and it becomes a mandate. Nobody can remove it."`,
+        `"Recovery: move it to .github/copilot/settings.json and delete it from enabledPlugins in policy. Maintainers own the default; developers own the opt-out."`,
+        `→ Now each file in turn, starting at the top.`
       ],
       know: [
-        'The source README describes cross-repository context across API contracts, business logic, schemas, infrastructure, compliance rules, and platform docs.',
-        'Its example lists payment-api, payment-processor, fraud-detection, compliance-rules, and platform-docs. These names represent a hypothetical architecture, not a customer deployment.',
-        'The legacy README mentions 5–50 indexed repositories as a use-case range. Treat that as illustrative, not a product limit or promise.',
-        'A knowledge answer can omit relevant sources or reflect stale content. Inspect source links, repository freshness, and the actual contract before relying on it.'
+        `Docs quote: "Enterprise-managed settings can only require or block plugins. For project-specific defaults, use the repository's .github/copilot/settings.json file."`,
+        `Managed settings beat repository defaults and member preferences.`
       ] },
-    'knowledge-maintenance': { seconds: 88, sources: [SRC.skills],
+    'enterprise-file': { seconds: 120, sources: [SRC.managePlugins, SRC.managedRef],
       notes: [
-        '"A domain owner proposes a change; a reviewer tests it; consumers see which version changed."',
-        'Follow the handoff: source, scope, example, approval, then consumer feedback.',
-        'This loop is a recommended maintenance practice, not a built-in automatic propagation guarantee.',
-        '→ Part 3 moves from reusable knowledge to governed choices.'
+        `Let the three blocks light in turn.`,
+        `"enabledPlugins first: release-guard true is required everywhere; legacy-deploy false is blocked everywhere."`,
+        `"extraKnownMarketplaces adds platform-tools and awesome-copilot as known sources. strictKnownMarketplaces then limits installs to the listed sources."`,
+        `"The tradeoff: strictKnownMarketplaces also turns off the built-in marketplaces. Any public marketplace you still want, like awesome-copilot, goes on the list explicitly."`,
+        `→ The team layer adds on top of this floor.`
       ],
       know: [
-        'The source README claims centrally updated expertise can reach every team using it. In practice, propagation depends on the product surface, repository setup, versioning, and adoption path.',
-        'A review record can identify the requirement, change, test evidence, owner, and affected consumers.',
-        'When a skill changes regulated or security behavior, the designated domain authority decides whether the new version is acceptable.'
+        `Each extraKnownMarketplaces entry maps a name to { "source": { "source": "github", "repo": "ORG/REPO" } } and accepts an optional autoUpdate property.`,
+        `The marketplace key must match the name in that marketplace's marketplace.json. Members need read access to each marketplace repository.`,
+        `The awesome-copilot name is inferred from the documented id github-security@awesome-copilot; confirm it against that repository's marketplace.json before the demo.`,
+        `extraKnownMarketplaces and strictKnownMarketplaces are both on the overridable key list, so the enterprise can open them to team files.`
       ] },
-    'part-3': { seconds: 25, sources: [SRC.admin, SRC.aiSettings],
+    'team-file': { seconds: 120, sources: [SRC.teams, SRC.teamsCl],
       notes: [
-        '"Governance makes the approved boundary visible before teams depend on a capability."',
-        'Point across model access, cost and signals, and compliance review.',
-        '→ Start with the readiness check that remains useful after a model name changes.'
-      ] },
-    'model-policy': { seconds: 108, sources: [SRC.admin, SRC.migration],
-      notes: [
-        '"An administrator enables an approved supported replacement in policy. The workflow owner confirms it appears in the selector."',
-        'Walk each step: policy, selector, representative task, output review. Each is a separate observable check.',
-        'The announcement in the reference set was for September 2026, which has passed. This slide keeps the migration method and avoids a stale deadline.',
-        '→ A valid capability also has to fit the license and current contract.'
+        `"team-mappings.json maps a settings file to enterprise team slugs: payments.json goes to payments-core and payments-mobile; fusion-high.json goes to platform-sre."`,
+        `Point at the middle column as pci-review stacks on: "enabledPlugins in a team file is additive. It adds pci-review on top of the enterprise list, and it cannot unblock legacy-deploy. Every other key moves only when the enterprise marked it overridable."`,
+        `Right column: "A developer in payments-core and platform-sre gets the least restrictive value per key across their team files, beneath enterprise settings. Here that makes fusionTier high."`,
+        `→ The repository layer comes next.`
       ],
       know: [
-        'The original approved content described a model retirement notice and advised enabling an approved replacement before affected workflows depend on it. It required no cleanup after retired models were removed.',
-        'The notice URL and date are historical. Verify current supported models, policy controls, and migration requirements from current documentation.',
-        'The original talk also covers model allow/restrict policy, auto-selection within policy, and model usage review. Current availability and routing behavior depend on product settings and supported models.',
-        'A replacement appearing in one selector does not prove availability in all affected workflows, accounts, or surfaces.'
+        `Overridable keys: model, autoTier, fusionTier, permissions.disableBypassPermissionsMode, permissions.deny, permissions.ask, permissions.allow, allowedMcpServers, deniedMcpServers, extraKnownMarketplaces, strictKnownMarketplaces, sandbox.`,
+        `Team specialization works only for server-managed deployments. MDM and file deployments need separate files per group.`,
+        `Keep .github-private internal so teams can open pull requests proposing changes to their own files.`,
+        `Permission key behavior inside a session is harness behavior; Harness Fundamentals covers it.`
       ] },
-    'licensing-fit': { seconds: 93, sources: [SRC.admin],
+    'repo-defaults': { seconds: 90, sources: [SRC.aboutPlugins, SRC.defaultsGA, SRC.cliConfig, SRC.concepts],
       notes: [
-        '"Start from observed use and the contract you have today. Separate frequent, occasional, and review activity."',
-        'The source README proposed a mix of full seats, usage-based access, and review-only access. Confirm the current commercial terms and feature access for every category.',
-        '"The old 30 to 40 percent reduction has no stated cohort or calculation here, so treat it as an unverified legacy estimate."',
-        '→ Cost visibility also depends on data destinations and tool policy.'
+        `"A maintainer turns on github-security for everyone who contributes to this repository. That is a recommendation, so it lives here."`,
+        `"copilot config --repo writes .github/copilot/settings.json; --local writes settings.local.json. Only repo-overridable keys can be written there."`,
+        `"It applies in trusted repositories, contributors can switch it off where the surface supports it, and managed policy still wins."`,
+        `→ Now all four layers meet in one developer.`
       ],
       know: [
-        'The Slidev source headline claimed 30–40% cost reduction but provided no calculation. It is preserved as an explicitly unverified legacy estimate, not as evidence.',
-        'The README lists frequent developers, occasional contractors or reviewers, and review-only users as possible categories. These are usage categories, not named personas or current licensing advice.',
-        'The legacy example allocates 80 full seats, 40 usage-based accounts, and 80 review-only users in a 200-person organization. This is a hypothetical allocation, not a verified product entitlement or price comparison.',
-        'Check current commercial terms, feature eligibility, premium request billing, and review access with the authoritative plan documentation and contract.'
+        `enabledPlugins in .github/copilot/settings.json is documented: the cloud agent installs plugins declaratively from it. The changelog confirms repositories "define a plugin marketplace and default plugins."`,
+        `The repository-level marketplace key (shown as extraKnownMarketplaces) mirrors the managed shape and is not confirmed; verify it on the plugins concepts page before presenting it as fact.`,
+        `Repository defaults also work for individual Copilot users without managed settings.`,
+        `github-security@awesome-copilot is public preview; its Explain and Fix actions use AI credits, and alert features need GitHub Code Security.`
       ] },
-    'telemetry-tool-governance': { seconds: 108, sources: [SRC.aiSettings, SRC.security],
+    'anchor-demo': { seconds: 180, sources: [SRC.defaultsGA, SRC.managePlugins, SRC.teams, SRC.secExt],
+      cue: [
+        `Default: play the recorded captures in order, one per layer.`,
+        `Live option: a GHEC test enterprise with forceRemoteSettingsRefresh on (so policy edits apply at the next startup), the acme-corp/platform-tools marketplace repository, and two enterprise teams. Sign in as a payments-core member and open the product repository in Copilot CLI.`,
+        `Step 1: list plugins; release-guard is enabled with no action. Try to disable it; the client refuses.`,
+        `Step 2: pci-review is enabled. Show a developer outside the payments teams for contrast.`,
+        `Step 3: github-security@awesome-copilot is enabled by the repository default.`,
+        `Step 4: switch github-security off. It stays installed and disabled.`,
+        `Step 5 is the next slide: the blocked install.`
+      ],
       notes: [
-        '"The organization owner defines where telemetry goes, which fields leave, how long they remain, and who can access them."',
-        '"The same owner sets tool discovery: a curated registry when approved tools need to be discoverable, or disabled discovery when external tool execution is outside policy."',
-        'Point to the boundary: repository configuration can narrow the allowed organization behavior; it cannot widen the approved boundary.',
-        '→ Automation can report a signal, while a human owner decides what it means.'
+        `"Here is the anchor. One developer in payments-core opens the product repository in Copilot CLI."`,
+        `Narrate each row as it arrives. "release-guard arrives from the enterprise, locked on. pci-review arrives from the team file. github-security arrives from the repository default."`,
+        `"Then the developer switches github-security off. It stays installed and disabled. The switch belongs to them."`,
+        `"Four owners, one list. Every row carries the layer that put it there."`,
+        `→ And the one thing nobody here can install.`
       ],
       know: [
-        'The source README frames OpenTelemetry export as an organization-owned contract over destinations, fields, retention, and access.',
-        'It also describes enterprise policy for MCP discovery: use a curated registry or disable MCP when external tool execution is disallowed. Verify exact controls in current enterprise settings.',
-        'Telemetry collection and tool discovery are distinct controls. Do not imply that one setting configures the other.',
-        'Avoid exporting secrets or sensitive data; security and privacy owners define approved data handling.'
+        `Required plugins are installed and enabled automatically, and users cannot disable them.`,
+        `A developer outside the payments teams sees release-guard and github-security, without pci-review.`,
+        `Live runs depend on server-managed delivery and a fresh startup; recorded captures remove that timing risk.`
       ] },
-    'compliance-evidence': { seconds: 118, sources: [SRC.security, SRC.admin],
+    'blocked-install': { seconds: 75, sources: [SRC.managePlugins, SRC.defaultsGA],
       notes: [
-        '"An automated check can flag a possible issue and attach the rule, file, and test evidence."',
-        'The accountable reviewer still determines policy fit and remediation. A skill or agent name does not certify compliance.',
-        '"Keep the example illustrative: actual legal, security, and data-handling requirements come from your approved control owners."',
-        'The old README contained claims about faster reviews, fewer violations, and audit savings without a cited study. Those outcomes are not repeated as facts.',
-        '→ The next slide separates proposal, test status, and approval.'
+        `"legacy-deploy is blocked, so the install fails, and the developer sees why at install time."`,
+        `"An install from a marketplace that strictKnownMarketplaces leaves off the list fails the same way. A visible refusal is the feature: nobody discovers the block three weeks later."`,
+        `→ The same path carries much more than plugins.`
       ],
       know: [
-        'The source contains illustrative PCI and HIPAA examples: card masking, encryption, tokenization, audit logging, PHI access checks, and retention. Domain owners must define exact requirements and evidence.',
-        'The source also contains invented-sounding financial and healthcare case-study outcomes, including violation reductions, review-time improvements, and dollar savings. No first-party evidence or attributable measurement was supplied; they are excluded as factual claims.',
-        'A code review or agent skill may assist with evidence collection. It does not replace the required accountable reviewer or independently establish legal compliance.'
+        `The exact CLI refusal wording is not confirmed; the slide paraphrases. Play the dated recorded capture when exact text matters.`,
+        `A team file cannot unblock a plugin the enterprise set to false.`
       ] },
-    'human-review-boundary': { seconds: 93, sources: [SRC.security],
+    'part-3': { seconds: 40, sources: [SRC.managedRef],
       notes: [
-        '"Copilot proposes. Automation reports the checks it actually ran. The accountable owner makes the acceptance decision."',
-        'Point to the four stages and name recovery: when a check fails, the team gathers the missing evidence, fixes the artifact, and reruns the check.',
-        'Keep tool status separate from domain result. A test can pass while a reviewer rejects the change.',
-        '→ Part 4 makes the enterprise floor and team specialization concrete.'
+        `"You just learned one path: enterprise, team, repository, personal. That path already carries models, MCP, context, and telemetry."`,
+        `"This part covers where those values live and who owns them. How permissions, hooks, and sandboxing behave inside a session is harness behavior; Harness Fundamentals covers it."`,
+        `→ Watch the same stack fill up.`
       ],
-      know: [
-        'The source README lists feature and repository access, model access by team or role, audit logging, content filtering, approved-library controls, training settings, data residency, and interaction-log retention as governance topics. Each capability and policy depends on the actual product configuration and organization agreement.',
-        'Do not claim content filtering blocks every risky suggestion, an agent catches every vulnerability, or a checklist automatically satisfies regulation.',
-        'Escalation owner and recovery procedure are organization-specific; name them before adoption.'
+      know: [`Related talk: Harness Fundamentals (tech-talks/harness-fundamentals) owns permission rules, hooks, sandbox behavior, billing route, and acceptance.`] },
+    'same-path': { seconds: 60, sources: [SRC.managedRef, SRC.enforce, SRC.mcpAllow],
+      notes: [
+        `Let the new chips slide into the enterprise and team bands.`,
+        `"The enterprise file gains model, fusionTier, allowedMcpServers, telemetry, and forceRemoteSettingsRefresh. The platform-sre team file raises fusionTier. Same files, same owners, same review by pull request."`,
+        `→ Models first, because two entries hide behind one word.`
       ] },
-    'part-4': { seconds: 25, sources: [SRC.managed, SRC.roi],
+    'availability-vs-default': { seconds: 120, sources: [SRC.modelPolicy, SRC.fusion, SRC.managedRef],
       notes: [
-        '"Managed settings provide a specific control plane: an enterprise floor, explicitly permitted team choices, and a way to inspect the effective result."',
-        'The section then connects that boundary to directional evidence and a self-service path.',
-        '→ Begin with what the administrator can lock and permit.'
+        `"Two entries hide behind 'the model'. Availability: which models a team may use. Default: which one starts."`,
+        `"Availability comes from the model policy REST API at four levels: enterprise, enterprise team, agent apps, and organization. One GET reads the platform-sre team's policy."`,
+        `"Default comes from managed settings: model set to fusion, and fusionTier for effort, both marked overridable here."`,
+        `"Fusion only routes among models the policy enables. A default naming a disabled model has nothing to route to, so check both entries for each team."`,
+        `→ Now one team raises its effort.`
+      ],
+      know: [
+        `Paths (confirmed): /enterprises/{enterprise}/copilot/model-policies, /enterprises/{enterprise}/teams/{team}/copilot/model-policies, /enterprises/{enterprise}/copilot/apps/model-policies, /orgs/{org}/copilot/model-policies.`,
+        `Example: gh api -H "Accept: application/vnd.github+json" /enterprises/acme-corp/teams/platform-sre/copilot/model-policies.`,
+        `The PATCH request body is not confirmed; take the schema from the REST reference.`,
+        `Enterprise policy can delegate model control to organizations (organization mode) or to teams and apps (enterprise teams mode).`,
+        `Copilot Fusion is GA, replaces the Auto option, and routes or combines models at Standard, High, or Max effort. Admins can disable a model for Fusion alone.`,
+        `Fusion's published benchmark comparison is vendor-reported; keep it off slides as a measured result.`
       ] },
-    'managed-settings': { seconds: 123, sources: [SRC.managed],
+    'fusion-tier-team': { seconds: 105, sources: [SRC.managedRef, SRC.teams, SRC.fusion],
       notes: [
-        '"The enterprise administrator defines the policy floor and marks only selected keys overridable."',
-        'Follow the four stages: set the floor, permit keys, map team files under copilot/teams/ to team slugs, then inspect the effective configuration.',
-        '"A mapped team can specialize a permitted value. Non-overridable enterprise choices remain locked."',
-        'Cue: use a saved configuration or read-only screenshot. Do not write to enterprise settings or create team mappings live.',
-        '→ The merge result depends on the documented key type and team membership.'
+        `"The enterprise sets fusionTier to standard and marks it overridable. The fusion-high.json file sets high, and the mapping sends it to platform-sre."`,
+        `Watch the two sessions start: "A payments-core developer starts at Standard. A platform-sre developer starts at High."`,
+        `"The team file moved one key, the one the enterprise opened. Everything else holds."`,
+        `→ The same managed file decides which MCP servers run.`
       ],
       know: [
-        'The approved update identifies team settings under `copilot/teams/` mapped to team slugs through `team-mappings.json`.',
-        'Enterprise administrators explicitly mark keys overridable. Non-overridable enterprise settings remain locked.',
-        'The approved release notes identify enforcement across VS Code, Copilot CLI, the Copilot App, and Copilot cloud agent with Business or Enterprise licenses.',
-        'This is a product-specific managed-settings control plane. It is separate from skills and knowledge bases.'
-      ],
-      cue: ['Walk through a saved example only. Keep the view read-only and show the enterprise floor, approved override list, team mapping, and effective result.'] },
-    'team-merge': { seconds: 103, sources: [SRC.managed],
-      notes: [
-        '"A locked enterprise key stays fixed. An administrator-permitted key can specialize beneath that boundary."',
-        '"For multiple mapped teams, supported values combine by the least restrictive allowed value. enabledPlugins and extraKnownMarketplaces are additive."',
-        'Point to the enterprise baseline on the left and the effective result on the right. Verify the actual key behavior before relying on it.',
-        '→ A multi-team test account makes the merge observable.'
-      ],
-      know: [
-        'The approved changelog says multiple team settings combine using the least restrictive value beneath enterprise policy.',
-        '`enabledPlugins` and `extraKnownMarketplaces` are additive: teams can grow, but cannot shrink, the enterprise baseline.',
-        '“Least restrictive” does not mean “ignore enterprise policy.” It applies only to keys that the administrator marks overridable.',
-        'Users with multiple memberships need an effective-settings check; never infer precedence from one team file alone.'
+        `fusionTier values from most to least restrictive: standard, high, max, unmanaged. Any value except unmanaged locks the tier against user and repository overrides.`,
+        `fusionTier sets effort and does not choose the model; pair it with model: "fusion".`,
+        `autoTier (efficiency, balance, intelligence, unmanaged) remains for model: "auto".`,
+        `Local-model routing in Fusion is experimental preview.`
       ] },
-    'effective-config': { seconds: 108, sources: [SRC.managed],
+    'mcp-allowlist': { seconds: 120, sources: [SRC.mcpAllow, SRC.managedRef, SRC.firewall],
       notes: [
-        '"The administrator resolves a test user’s team memberships, applies only permitted overrides, and records the effective result."',
-        'Point at the expected decision: locked values stay fixed; permitted values follow the documented merge rule; additive lists preserve the enterprise entries.',
-        '"The check also records surface and license, because the feature boundary matters."',
-        'This is a static walkthrough. It makes no cloud or policy changes.',
-        '→ With authority explicit, the impact dashboard can contribute a separate evidence stream.'
+        `Point at the JSON. "allowedMcpServers lists the servers permitted to run; anything unmatched is blocked. deniedMcpServers blocks unconditionally, even when a server matches the allowlist. Entries match by name, server URL, or command."`,
+        `Let the three tests run. "The GitHub MCP URL matches the wildcard and runs. A command on neither list is blocked. The filesystem server pointed at the root matches the deny entry and is blocked; deny wins."`,
+        `Point at the three side cards. "Three boundaries. The MCP servers in Copilot policy must be enabled first; that is the policy plane. The registry-only restriction is public preview, and the docs recommend this allowlist. MCP servers defined in repository custom agent profiles sit outside the list; the cloud agent firewall governs them."`,
+        `→ MCP decides which tools run. Context decides what the agent knows.`
       ],
       know: [
-        'The example is a review procedure, not a deployable managed-settings payload. Exact schema and file values must come from current documentation.',
-        'Approved support boundary from the 2026-08-03 changelog: VS Code, Copilot CLI, Copilot App, and Copilot cloud agent for Business or Enterprise licenses.',
-        'A useful record includes user/team context, key classification, source files, effective value, client surface, license, and reviewer.'
+        `The allow entries follow the docs example; the deny entry is a worked example of the documented serverCommand matcher.`,
+        `Both keys live in managed-settings.json and are overridable, so a team file can widen or narrow them where the enterprise allows.`,
+        `They cover MCP servers from user and repository settings, and Copilot connectors on supporting clients.`,
+        `Pick one source of truth: the managed-settings allowlist or the preview registry restriction.`
       ] },
-    'impact-dashboard': { seconds: 108, sources: [SRC.roi],
+    'context-placement': { seconds: 105, sources: [SRC.orgInstr, SRC.kbSpaces, SRC.intelligence, SRC.concepts],
       notes: [
-        '"The impact dashboard compares early-phase and agent-first cohorts with cost, payroll, and pull-request inputs."',
-        'The viewer first needs the Copilot usage metrics policy enabled and View Copilot Metrics permission.',
-        '"Treat the output as directional: AI-credit cost is estimated and salary is a modeling input. Pair it with delivery context; do not call it audited savings."',
-        'The 28-day cohort correction includes every active user in the window and does not alter API or NDJSON exports.',
-        '→ Agent app activity is a separate usage-report field family.'
+        `"Context has three scopes, and each has a home."`,
+        `"Rules every task needs go in instructions and AGENTS.md; org instructions reach cloud sessions and code review only. Methods several repositories need go in a plugin skill, loaded on demand. Reference that spans repositories goes in Copilot Spaces; Knowledge Bases convert to Spaces."`,
+        `"Dreaming keeps them current. It runs three dream types: personal memory curation, repository customization, and code review customization. It edits memories directly, and it proposes skill and instruction changes as pull requests maintainers review."`,
+        `→ Telemetry rides the same path too.`
       ],
       know: [
-        'The 2026-08-07 first-party announcement describes ROI cohort comparison for enterprise and organization dashboards using cost per developer per month, payroll share, and pull requests per developer, with a salary modeling control.',
-        'Prerequisites: Copilot usage metrics policy enabled and the viewer has View Copilot Metrics permission.',
-        'GitHub describes AI-credit costs and salary as directional model inputs, not audited attribution.',
-        'The corrected 28-day dashboard cohort includes every active user in that window. The announcement says the correction does not change API or NDJSON exports.'
+        `Dreaming is public preview, opt-in, and uses AI credits. Admins enable it through Copilot policies on the policy plane; enterprises can delegate the choice to orgs.`,
+        `Repository dreams cover repositories allowed by Copilot Memory repository access settings; users also opt in personally.`,
+        `Rule of thumb: package a method as a plugin skill when several repositories need it; keep a rule in instructions when every task in one scope needs it.`,
+        `Depth on instructions and skills lives in Copilot Primitives (tech-talks/copilot-primitives).`
       ] },
-    'agent-activity': { seconds: 123, sources: [SRC.metrics, SRC.agentActivity],
+    'telemetry-capture': { seconds: 105, sources: [SRC.telemetryCl, SRC.otel, SRC.managedRef],
       notes: [
-        '"Join recognized agent-app history on agent_id, because display names can change."',
-        'Point at the exact array and fields: totals_by_3rd_party_agent, agent_id, display_name, job_starts, and aggregate session_count.',
-        '"Do not add nested user_initiated_interaction_count to the top-level field with the same name."',
-        'Per-user entries omit session_count; unidentified agents may be omitted; no activity can mean the array is absent.',
-        '→ Put product use, workflow movement, and business outcomes into separate measurement layers.'
+        `"Turn on identity and you can attribute activity to a person without capturing what they typed."`,
+        `Point at the five off switches: prompts, responses, toolArguments, toolOutput, policyDetail. Each is off by default. Then the span: account, OS user, and machine name attached; no prompt text.`,
+        `"Managed values beat local settings, SDK config, and environment variables. When several managed sources define telemetry, the highest one supplies the whole object. Nothing merges."`,
+        `→ Last on this path: making sure clients run on current policy.`
       ],
       know: [
-        'The 2026-08-07 usage-metrics changelog describes optional `totals_by_3rd_party_agent` in enterprise and organization usage reports.',
-        'Use stable `agent_id` for historical joins; `display_name` is a mutable label. Fields include job starts and aggregate session counts.',
-        'Do not add nested `user_initiated_interaction_count` to the top-level field of the same name.',
-        'Per-user entries omit `session_count`; unidentified agents are omitted; the array is absent when there is no agent activity.',
-        'The source does not establish that activity counts measure productivity, quality, or business impact.'
+        `capture.identity adds the authenticated Copilot account name, local OS account, and machine name to OTel data.`,
+        `toolArguments includes plugin, hook, and MCP identifiers; policyDetail includes items such as raw sandbox paths.`,
+        `Captured content can include source code and file paths. Turn on only the class an investigation needs.`,
+        `Fine-grained classes work in Copilot CLI, the Copilot app, and the VS Code Agent Host. VS Code's local harness honors only identity and legacy captureContent.`,
+        `The exact telemetry nesting and the export and endpoint keys are not confirmed; take them from the managed settings reference.`
       ] },
-    'measure-movement': { seconds: 103, sources: [SRC.metrics, SRC.roi],
+    'fail-closed': { seconds: 90, sources: [SRC.enforce, SRC.globalDefault, SRC.managedRef],
       notes: [
-        '"Leading signals tell us who uses the capability. Workflow signals tell us whether the process moves. Business measures add delivery context."',
-        'The source README proposed example targets: 55–65 percent acceptance and 80 percent seat utilization. Those are proposed local targets, not universal benchmarks.',
-        '"A measurement owner defines the baseline, period, guardrail, and action before interpreting a change."',
-        '→ A self-service kit turns the tested pattern into a repeatable first task.'
+        `"forceRemoteSettingsRefresh true makes clients fetch current policy at startup."`,
+        `"When the fetch succeeds, the CLI and the Copilot app skip the one-hour cache. When it fails, the client fails closed; VS Code blocks Copilot features until the refresh succeeds. The tradeoff: a developer on a plane, behind a dropped VPN, or during a GitHub outage cannot start Copilot at all. Without this setting, the client would start on its cached policy, up to an hour old."`,
+        `Third column: "The global default decides features left Unconfigured, and the sandbox key enforces a minimum client version."`,
+        `→ Time to prove what one developer actually gets.`
       ],
       know: [
-        'The long README lists acceptance, active seats, chat/agent usage, PR velocity, review time, bug-fix cycle, time to market, satisfaction, and cost per feature.',
-        'It also includes AI-generated code share and documentation coverage. Pair those with adoption, delivery, quality, and cost measures rather than using one usage total as a productivity result.',
-        'Legacy values such as acceptance 55–65%, utilization 80%+, PR velocity +30–50%, cost per feature −25–35%, and example dashboard values are not sourced benchmarks. Use them only as historical draft targets or placeholders, never as achieved results.',
-        'The old sample dashboard values (for example 47% to 62% and 89 to 127 PRs per week) are illustrative placeholders, not observed measurements.',
-        'The old assertion that acceptance above 75% signals over-reliance has no supporting evidence here; do not use it as an evaluation rule.',
-        'A useful dashboard pairs each metric with owner, definition, baseline, time window, target status, data source, and an action when the signal crosses a boundary.'
+        `Delivered server-side, forceRemoteSettingsRefresh takes effect on the startup after the client first receives it. MDM or file delivery covers the first startup.`,
+        `Global default for new GA features: Enabled, Disabled, or Let orgs decide. It applies only to features left Unconfigured and is set as an enterprise policy; it is not confirmed as a managed-settings key.`,
+        `The sandbox key's value shape and sandbox behavior belong to Harness Fundamentals.`
       ] },
-    'onboarding-kit': { seconds: 103,
+    'part-4': { seconds: 30,
       notes: [
-        '"The 30-minute kit is a design: ten minutes to read, ten to configure, and ten to test one real task."',
-        'Read the three lanes. Include repository setup, organization standards, skills catalog, review checklist, examples, and a support route.',
-        '"Measure time to first accepted task, support questions, and team feedback locally. The source’s ticket count is a target until measured."',
-        '→ Expansion follows evidence from a bounded pilot.'
+        `"A baseline is ready when you can name the plane and layer behind every value one developer receives.         Check it, read the metrics, then name the limits."`,
+                `"The thirteen-row effective-settings checklist lives in the README: one developer in two teams, every value, and the plane or layer that set it, repeated on a second surface. Run it after the talk."`,
+                `→ Metrics add direction on top of it.`
+              ],
+              know: [
+                `Effective settings resolve as enterprise values, then team files by least restrictive per key, then repository defaults, then personal choices.`
+              ] },
+    'usage-read': { seconds: 90, sources: [SRC.managePlugins, SRC.agentActivity, SRC.roi, SRC.industry],
+      notes: [
+        `"totals_by_plugin counts skill invocations tied to a plugin. Each totals array keeps the five most active entries, so a plugin missing from the list can still be in use. Keep plugin and skill counts separate; never add them together."`,
+        `"Third-party agent app activity joins on agent_id. The impact dashboard ROI section and industry comparisons give direction. The checklist stays the proof."`,
+        `→ Now the edges of the pattern.`
       ],
       know: [
-        'The source kit includes README quick start, repository setup, custom instructions, skills catalog, review checklist, good prompt examples, a custom-agent template, and a sample repository.',
-        'Suggested measures include time from access to first productive use, support tickets per team, satisfaction, and repeated configuration questions.',
-        'The legacy target of fewer than two support tickets per team and 90% satisfaction was not measured; treat as a proposed target only.',
-        'The 30-minute flow is a planned duration, not a guaranteed time-to-productivity result.'
+        `Per-user agent activity entries omit session_count.`,
+        `Industry comparisons are opt-in and not in the API.`,
+        `This talk sets no saved-hours numbers; any target the audience writes down stays a target until measured locally.`,
+        `Access requirements and field definitions live in the usage metrics REST docs linked from the manage-plugins page.`
       ] },
-    'rollout-gates': { seconds: 103,
+    'native-vs-apm': { seconds: 120, sources: [SRC.apm, SRC.apmDocs, SRC.managePlugins, SRC.spec],
       notes: [
-        '"A pilot creates evidence before the platform owner expands a pattern."',
-        'Select one repeated task, run it with a bounded team, inspect both success and failure, and publish the version only after the owner accepts the evidence.',
-        '"When the pattern does not fit, narrow it, route a local exception, or pause and assign an owner."',
-        'The month ranges in the original migration strategy are planning examples, not a promise.',
-        '→ Teams can bring local findings into a shared review loop.'
+        `Let rows light in the column that serves them.`,
+        `"Native layers own the Copilot baseline: require and block, team differences, enforcement on Copilot surfaces, and models and telemetry on the same path."`,
+        `"APM earns a place in two cases: one repository feeds several agent tools, or CI needs hash-pinned resolution so a fresh clone gets identical content. Run them side by side; APM writes repository files, and managed settings still win on Copilot surfaces."`,
+        `→ One more boundary: licensing.`
       ],
       know: [
-        'The old long README proposes pilot, incremental expansion, and organization-wide adoption phases. It suggests multi-month ranges but does not cite outcome data.',
-        'Fit heuristics from the source: repeated standards, inconsistent setup, leadership evidence needs, and governance requirements. Treat these as prompts for a decision, not pass/fail thresholds.',
-        'The source suggests that 10–20 successfully adopting teams can indicate readiness for a wider pattern. This is an internal heuristic without supporting evidence.',
-        'Pause or narrow scope when owners are unavailable, evidence is weak, costs rise, quality declines, or team requirements diverge.'
+        `APM: one apm.yml, a lockfile that pins versions and content hashes, deployment to many harnesses, and apm-policy.yml at install time. Manifest spec v0.3 is a working draft. Lockfile field names are not reproduced here.`,
+        `APM is an open-source Microsoft project with no relationship to managed settings.`,
+        `Agent Plugins 1.0 is portable for skills and MCP; client-specific parts live in each client's namespace.`
       ] },
-    'community-loop': { seconds: 63,
+    'licensing-boundary': { seconds: 75, sources: [SRC.ghe, SRC.defaultsGA, SRC.secExt, SRC.fusion, SRC.intelligence],
       notes: [
-        '"A community of practice lets teams share a result; a maintainer checks whether it belongs in the shared catalog."',
-        'The source proposes monthly pattern sessions, an internal skills catalog, an async discussion channel, and quarterly metrics review.',
-        'Treat recognition and incentives as organization choices, not product capabilities.',
-        '→ Now we can state the investment example without confusing arithmetic with attribution.'
+        `"GitHub Enterprise now includes access to Copilot, metered on AI credits. Copilot Standalone is ten dollars per user per month for people outside a GitHub Enterprise."`,
+        `"The managed controls in this talk need GitHub Enterprise Cloud with Copilot Business or Enterprise licenses, issued by the enterprise or its organizations. Fusion, plugin actions like Explain and Fix, and Dreaming all use AI credits."`,
+        `→ Pull it together into one placement rule.`
+      ],
+      know: [`Self-serve availability rolls out in stages; Business and Enterprise plans remain.`] },
+    'placement-scorecard': { seconds: 75, sources: [SRC.policies, SRC.managePlugins, SRC.teams],
+      notes: [
+        `"Every choice has a home. Policy when the question is whether something is allowed at all. Enterprise file when everyone must have it or nobody may. Team when a defined group needs more. Repository when contributors benefit by default and can work without it. Personal when it is preference."`,
+        `"And elsewhere: APM for several agent tools or hash pinning, Harness Fundamentals for how a permission or hook behaves in a session."`,
+        `→ Here is what changes.`
       ],
       know: [
-        'The community model is a source README recommendation: monthly pattern-sharing, searchable examples, async questions, and quarterly review.',
-        'A contribution becomes reusable after the source owner checks scope, evidence, and maintenance cost.',
-        'The long README contrasts federated and centralized coordination using unsourced staffing, approval, and adoption figures. Those numbers are excluded from factual claims.'
+        `Org settings carry delegated policies plus org-scoped controls: org instructions, org agents, content exclusion, and the cloud agent firewall.`,
+        `Tradeoffs: locking keys gives consistency and costs team autonomy; strictKnownMarketplaces closes supply paths and removes built-in marketplaces; forceRemoteSettingsRefresh gives current policy at every startup and keeps Copilot closed without a connection to GitHub.`,
+        `MDM or file deployments cannot use team overrides; plan per-group files.`
       ] },
-    'investment-math': { seconds: 122,
+    'before-after': { seconds: 45,
       notes: [
-        '"The original example estimates 180 platform hours and 2,900 saved hours. We can show the arithmetic while keeping its evidence status honest."',
-        'Point to each assumption. Instructions assume two hours saved per developer; skills assume five; onboarding assumes a reduction from eight hours to half an hour across 200 developers.',
-        '"The quotient is about 16.1 saved-hours per invested hour. It is not audited ROI, and it excludes ongoing maintenance and quality effects."',
-        '→ The pattern fits when repeated work, ownership, and an observable check all exist.'
-      ],
-      know: [
-        'This example was retained from the long README and the approved recipe. It is a scenario, not an observed deployment or customer story.',
-        'Arithmetic: 200 × 2 = 400; 200 × 5 = 1,000; 200 × (8 − 0.5) = 1,500; total 2,900. Build effort: 40 + 60 + 80 = 180. Ratio: 2,900 / 180 = 16.11.',
-        'Calling this “16x ROI” is imprecise. The deck calls it a saved-hours ratio and does not imply audited attribution.',
-        'The old README’s 50x claim and some outcome comparisons conflict with this example and lack sourced measurement; they are not treated as results.'
+        `"Copied files become one plugin. Forced tools become repository defaults. Exceptions become team files. Guesswork becomes thirteen checks."`,
+        `Land the numbers: one plugin baseline, four layers with one effective answer, thirteen checks per developer.`
       ] },
-    'when-pattern-fits': { seconds: 93, sources: [SRC.admin, SRC.instructions],
+    today: { seconds: 50, sources: [SRC.cliCreate, SRC.cliMarket],
       notes: [
-        '"Look for repeated shared work, an owner, and an observable check. Those conditions make a useful pilot."',
-        '"When requirements diverge, let the team specialize within its authority. When ownership or evidence is missing, narrow the scope or escalate."',
-        'The source’s 10–20 team threshold is a heuristic only, not a universal readiness gate.',
-        '→ Before we close, compare the operating model we can now inspect.'
-      ],
-      know: [
-        'The source recommends enterprise patterns after pilot teams have demonstrated value, with examples around 10–20 teams and 50–200 developers. It gives no empirical validation for these exact thresholds.',
-        'Other fit conditions from the README: common standards, repeated configuration, a leadership measurement need, and a governance requirement.',
-        'The pattern may not fit while a team is still validating local value, when independent teams have no shared rule, or when no maintainer can support the shared layer.'
+        `"Today: wrap one skill in a plugin and install it locally. This week: publish it and make it a repository default. This month: pilot one team mapping and pass the checklist for two developers."`,
+        `"Hold strictKnownMarketplaces until every public marketplace you need is listed. Roll back by removing the team mapping or the enabledPlugins entry and restarting clients."`
       ] },
-    'before-after': { seconds: 75,
+    references: { seconds: 15,
+      notes: [`Leave this up as questions start. Every slide's notes carry its own first-party links.`],
+      know: [`Related talks: Copilot Primitives, Harness Fundamentals, Copilot CLI, GitHub Agentic Workflows, and Agentic SDLC.`] },
+    thanks: { seconds: 15,
       notes: [
-        '"The shift is an owned baseline with bounded team choice and evidence tied to the claim."',
-        'The first two numbers are explicitly scenario values. The stable `agent_id` is a report field used for joins, not an outcome metric.',
-        '→ The final action is to test one rule in your own repository.'
-      ],
-      know: [
-        'The original slide used a 16x label and a 30–40% licensing claim. The first is now labeled as an illustrative saved-hours ratio; the second remains only as an unverified estimate in notes.',
-        'The source’s 500+ developer reach is an example scale, not a reported organization outcome.'
-      ] },
-    today: { seconds: 105,
-      notes: [
-        '"Today, choose one repeated rule and name its owner and acceptance check."',
-        '"This week, test it on a representative task, inspect the diff and check output, and record how the team recovers when the check fails."',
-        '"This month, run a bounded pilot, compare with your local baseline, and expand only after a reviewer accepts the evidence."',
-        'Invite each person to name a repository rule they can test. The next step is a locally owned experiment, not a broad rollout.',
-        '→ The references and notes page carry the source trail and full talk track.'
-      ],
-      know: [
-        'The source README suggests immediate organization-instruction review, a skill for repeated work, a metrics baseline, a 30-minute onboarding kit, and a review of managed settings.',
-        'The user’s own work is the transfer target: identify the candidate repository, decisive context, delegated action, human authority, evidence, and recovery trigger.',
-        'A pilot result remains local until the relevant owner validates and publishes it.'
-      ] },
-    references: { seconds: 30,
-      notes: [
-        '"These first-party docs and release notes are the evidence trail for product behavior in this talk."',
-        'The September 2026 model notice is historical. Check current product documentation before making a time-sensitive policy decision.',
-        '→ Thank the audience and ask which rule they will test first.'
-      ],
-      know: [
-        'Each teaching slide carries its own first-party source links. The references frame includes the README frontmatter sources as well as current product notes already approved in the conversion recipe.',
-        'Release announcements document behavior as of their publication; feature availability and policy controls can change.'
-      ],
-      sources: [SRC.admin, SRC.instructions, SRC.metrics, SRC.agentsmd, SRC.roi, SRC.agentActivity, SRC.managed, SRC.migration, SRC.aiSettings, SRC.security, SRC.v121, SRC.v122] },
-    thanks: { seconds: 30,
-      notes: [
-        '"Set the shared floor, bound team choices, and review evidence."',
-        '"Which rule will your team test first, and who will decide whether the evidence is enough?"',
-        'Leave the notes page open for the source links, caveats, and transfer checklist.'
-      ],
-      know: [
-        'The requested presenter run-through remains a real follow-up. Seconds are authored estimates; the aggregate duration does not substitute for timing a live delivery.'
-      ],
-      sources: [SRC.admin, SRC.instructions] }
+        `"Which plugin does your organization copy between repositories by hand today, and which layer owns it?"`,
+        `Take two answers from the room and place each one on a layer together.`
+      ] }
   };
-
   slides.forEach((s) => Object.assign(s, NOTES[s.id]));
 
   window.DECK = {
     meta: {
-      slug: 'enterprise-patterns',
-      title: 'Scaling GitHub Copilot Across Organizations',
-      short: 'Enterprise Patterns for AI Adoption at Scale',
-      category: 'tech-talks',
-      source: 'tech-talks/enterprise-patterns/README.md',
-      question: 'How do I scale Copilot across our teams without losing consistency, team choice, or proof?',
-      thesis: 'Standards, knowledge, and evidence scale when owners and authority stay visible.'
+      slug: 'enterprise-patterns', title: 'Enterprise Patterns: One Baseline, Four Layers, Every Team\'s Choice', short: 'Enterprise Patterns', category: 'tech-talks', source: 'tech-talks/enterprise-patterns/README.md',
+      question: 'How do I give every team the same Copilot setup without taking away their choices?',
+      thesis: 'Policies decide what is allowed and one layered settings path carries plugins, models, MCP, and telemetry; place each choice at the plane and layer its owner controls, then verify the effective result for a real developer.'
     },
     slides
   };

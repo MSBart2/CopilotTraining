@@ -387,9 +387,9 @@ and a time budget totaling 42:00 (estimates), and the README is a landing page.
 | agentic-sdlc | 33 | native | Conversion complete; awaiting presenter/content review | Native validation: 33 slides, 33 PDF pages, estimated 86:00; local publishing passes |
 | copilot-azure-mcp | 32 | native | Conversion complete; awaiting presenter/content review | Native validation: 32 slides, 32 PDF pages, estimated 40:15; local publishing passes |
 | copilot-cli | 39 | native | Conversion complete; awaiting presenter/content review | Native validation: 39 slides, 39 PDF pages, estimated 40:00; local publishing passes |
-| copilot-plugins | 36 | native | Conversion complete; awaiting presenter/content review | Native validation: 36 slides, 36 PDF pages, estimated 20:17; local publishing passes |
+| copilot-plugins | 36 | native | Archived 2026-11-05: merged into enterprise-patterns (redirect `universe26-layered-baseline`) | Frozen; no further conversion work |
 | copilot-with-foundry | 35 | native | Conversion complete; awaiting presenter/content review | Native validation: 35 slides, 35 PDF pages, estimated 41:40; local publishing passes |
-| enterprise-patterns | 38 | native | Conversion complete; awaiting presenter/content review | Native validation: 38 slides, 38 PDF pages, estimated 55:00; local publishing passes |
+| enterprise-patterns | 37 | native | 2026-11-05 rebuilt from the approved recipe: absorbs copilot-plugins; Universe 2026 layered baseline (package, place, ride the same rails, prove); patched for two planes, .github-private governance repo, org controls, MCP allowlist; checklist slides removed (13-row checklist lives in the README) | Native validation passes: 37 slides, estimated 53:00; presenter run-through pending |
 | exec-strategy | 20 | Slidev | Out of scope: executive talk | Scope decision recorded below |
 
 ## 8. Decision log
@@ -403,6 +403,7 @@ and a time budget totaling 42:00 (estimates), and the README is a landing page.
 | 2026-10-30 | Template action horizons and agenda | Today / This Week / This Month, mirroring the `today` slide; native decks carry the agenda in the core-question notes. | Converted talks drop the agenda slide |
 | 2026-10-30 | Conversion and content-review sequence | The user authorized building the tracked active decks autonomously and reviewing them after conversion. Convert first; refresh product content separately. | Recipe approval pauses waived for this batch; mechanical validation remains required; presenter/content review is pending |
 | 2026-10-31 | Reconcile the tracker with the active portfolio | Convert the six omitted active practitioner talks: agentic-sdlc, copilot-azure-mcp, copilot-cli, copilot-plugins, copilot-with-foundry, enterprise-patterns. | All 14 active practitioner talks are in scope; exec-strategy stays on Slidev; autonomous conversion and later content review continue |
+| 2026-11-05 | Merge copilot-plugins into enterprise-patterns? | Yes. Universe 2026 made enterprise managed settings, team files, repository defaults, and personal choice one layered path for plugins, models, and policy; the two talks taught halves of it and duplicated managed settings. Keep the enterprise-patterns slug; APM becomes a boundary section. | copilot-plugins archived with a redirect; 13 active practitioner talks; enterprise-patterns goes through the full brief → research → recipe → deck path |
 
 ## References
 

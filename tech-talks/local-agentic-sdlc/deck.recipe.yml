@@ -1,155 +1,319 @@
-# Conversion plan approved under the user's explicit waiver on 2026-10-31:
-# proceed without waiting for recipe approval; preserve the existing narrative and proof;
-# review the content after mechanics and conversion are complete.
-# Independent critique: rubber-duck subagent (cross-model; primary is a Claude model).
-# Reconciliation:
-# - Accepted: the contract has four visible fields (role ownership, completion evidence, budget and escalation,
-#   merge authority), repeated in the opening, the run ledger, and the pull request handoff.
-# - Accepted: the Stop hook is a labeled backstop. The section 3 climax is evidence-driven control: the predicted
-#   Router risk became 8 failing tests and the orchestrator routed it to test-writer.
-# - Accepted: section 1 opens with the real four-session run ledger and derives the contract from it.
-# - Accepted: section 2 drops to low emphasis and keeps only mechanisms that enforce the contract; sessionStart
-#   junction and snake_case input move to one compact gotcha slide.
-# - Accepted: section 4 shows what the reviewer of #217 receives, and frames the team lead as owner of budget and
-#   escalation policy.
-# - Accepted: ≈380 credits is presented as one observed run with its per-session breakdown and what it produced.
-#   Developer time and a manual baseline were unmeasured, and the deck says so.
-# - Accepted: the real-run ledger is the cold open; the staged block→allow demo appears in section 3 with a
-#   STAGED label beside the 11 allow / 0 block real record.
-# - Adjusted: section 1 budget stays near 5 slides by folding the split test and seams into one slide.
+# 2026-11-06 recipe rewrite: live FanHub run. After rehearsing the team on FanHub issue 202, the user
+# asked for "a branch with the issue ID", for Part 4 to "do the demo" live with a 50-credit budget and
+# ten minutes, and for the Part 4 setup to ask "how much do you think this will cost?". The user
+# approved teaching Parts 2-3 from the real rehearsal record and retiring the episode-filter example.
+# Earlier approvals preserved as history: CLI-first rebuild, pacing revision, orchestrator-first
+# reorder, episode-filter redesign.
+# Question: How do I build local agents that can work together on a coding task?
+# Thesis: Agent files define the team; an orchestrator, a shared .team/ folder with one writer per file,
+# and checks plus a reviewer turn them into a run a person can trace, resume, and decide on.
+#
+# Source map:
+# - Teaching source: slides/tech-talks/local-agentic-sdlc/slides.js (notes-first).
+# - Team: FanHub .github/agents/ and AGENTS.md, pinned at
+#   https://github.com/MSBart2/FanHub/tree/61bf87964b964c2c0c9e098cf6ebb1900501315b/.github/agents
+# - Rehearsal record: tech-talks/local-agentic-sdlc/evidence/fanhub-202-rehearsal/ — every .team/ file,
+#   check and lint output, the Episodes.js diff, and the new test file from one real run.
+# - Pricing: https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing
+# - Historical proof: FanHub issues 4 and 5 and draft PR 217 (scale-up slide only).
+#
+# Evidence boundaries:
+# - Rehearsal numbers are observed on GPT-6.1 Sol: 11m21s, 39.88 credits, 9 tests, check-1 and check-2 at 9/9,
+#   lint-1 with 4 errors routed to test-writer, lint-2 clean, accept in round 3.
+# - The rehearsal used an earlier agent revision: a person made the branch, the orchestrator improvised
+#   the lint step, and round numbering drifted. Notes name each difference once; 61bf879 fixes them.
+# - Fusion run (evidence/fanhub-202-fusion/): Luna, 1.79 credits read from the CLI, A1-A2 only, 2 tests,
+#   accepted with the All Seasons crash still live. FanHub 74b040b adds the Found stop and E# edge tests;
+#   Part 4 runs those files, so the live run can stop a second time and can cost more than the rehearsal.
+# - The live run is not the rehearsal. The while-it-works clock is the rehearsal clock, labeled as such.
+# - The CLI ignores an agents: metadata key; the worker list is an instruction. --max-ai-credits and
+#   the tools list are enforced. Path limits are instructions, and the diff shows whether they held.
+#
+# Structural review:
+# - Parts 1-3 explain from a real record so every term the live run uses is already defined.
+# - Memorable moment: the cost guess. Hands up, then 39.88 credits, about forty cents, under a budget
+#   the person set. Then the room watches the same team do it again.
+# - Second anchor: passing tests were half the Check; lint failed and step 5 routed it to the file owner.
+# - Judgment lenses: context in task.md and plan.md; delegation in one file per worker; verification
+#   in check-N.txt, lint output, and review.md; authority in task approval, the credit budget,
+#   enforced versus instructed limits, and the person's merge decision.
+#
+# Presenter budget: 39 slides, 40:00 spoken + 5:00 discussion. Part 4 is a 10-minute live run.
 version: 1
 
 deck:
-  title: "Local Agentic SDLC"
-  subtitle: "A Loop with a Contract"
-  tagline: "Roles own the work. Tests decide done. Budgets decide when to stop. A person decides what merges."
+  title: "Local Agentic SDLC: Build the Crew, Run the Loop"
+  subtitle: "Build the Crew, Run the Loop"
+  tagline: "Five agent files. One real bug. A record you can read, and a live run you can watch."
 
   agenda:
-    - title: "Write a loop contract an agent can be held to"
-      takeaway: "Name role ownership, completion evidence, budget and escalation, and merge authority before the first run."
-      whyItMatters: "Each field becomes a check a person can verify from the run's own artifacts."
-    - title: "Let evidence steer the run"
-      takeaway: "Route every failing test to the role that owns the fix, and keep a Stop hook as the backstop for the run that skips the suite."
-      whyItMatters: "A predicted risk, a failing suite, and a reviewer finding each moved the FanHub run forward on evidence."
-    - title: "Hand a reviewer an integrated draft with its evidence"
-      takeaway: "Resolve named seams, record what happened, and open a draft pull request whose body is the integration record."
-      whyItMatters: "The reviewer receives plan, test counts, corrections, open risks, and budget history in one place, and keeps the merge decision."
+    - title: "The team, top down"
+      takeaway: "Read the orchestrator file, the .team/ folder, and the four workers it calls."
+      whyItMatters: "Every action in the run traces back to one line in one file."
+    - title: "How a run works"
+      takeaway: "Follow the FanHub #202 rehearsal from an approved task.md to an accept."
+      whyItMatters: "Passing tests are half the Check; a routed lint failure shows the loop working."
+    - title: "Trust the record"
+      takeaway: "Answer every question from a file, know which limits are enforced, resume from status.md."
+      whyItMatters: "The record outlives the session and the summary."
+    - title: "Run it live"
+      takeaway: "Guess the cost, then watch the same team fix the same bug on stage under a 50-credit budget."
+      whyItMatters: "Unattended, reviewable work for under fifty cents is the reason to build the team."
 
-  arcToc: "Write the Contract → Build the Crew → Evidence Decides → Hand It Off"
+  arcToc: "The Team, Top Down → How a Run Works → Trust the Record → Run It Live"
 
   arcNarrative: >
-    Open on the real FanHub run ledger: four Copilot CLI sessions took issues #4 and #5 from plans posted on the
-    issues, through two parallel worktrees, to integrated draft pull request #217 for about 380 AI credits. Ask
-    what made that run trustworthy. Section 1 answers with the loop contract derived from the ledger: four
-    fields, a plan that names risks before code, and a split test that names seams and their owner. Section 2
-    is compact: the orchestrator holds sequence with no edit tool and an agents allow-list, each role agent has one
-    boundary, worktrees isolate the workstreams, and permissions decide whether the loop can make progress.
-    Section 3 is the climax and shows evidence steering the run: the Router risk the plan predicted became 8
-    failing tests, the implementer reported it, and the orchestrator routed it to test-writer until 47 of 47
-    passed. Then the gate record of 11 allow and 0 block across real runs sits beside a clearly labeled staged
-    backstop, block on 7 failures then allow on 8 of 8, followed by the boundary that tests prove agreement and a
-    person judges intent, and the budget stop at 113.4 of 120 credits that handed control to a person. Section 4
-    pays off with the integration reviewer catching a contrast defect that only existed after both green
-    workstreams merged, then shows exactly what the reviewer of #217 receives and where the pattern hands off to
-    other talks. Leading with the real ledger earns trust first, so the staged demo reads as a teaching aid.
+    FanHub issue 202 opens the talk: choose Season 2 right after the page loads and the old list stays,
+    because one unkeyed cache answers first. Part 1 reads the team top down: the crew map, the anatomy
+    of an agent file, the whole orchestrator file, its seven steps with the tool and file each uses, the
+    .team/ folder with one writer per file, and the four workers. Part 2 follows the real rehearsal.
+    One command branches to issue-202 and drafts task.md; a person approves A1-A3. Planner finds three
+    problems, implementer removes the cache and guards stale responses, and test-writer adds nine tests.
+    Check-1 passes 9 of 9, lint finds four errors in the test file, step 5 routes them to test-writer,
+    and check-2 is clean. The reviewer accepts and names what it could not see. status.md tells the run
+    in ten rows. Part 3 answers every question from a file, separates three kinds of proof, labels
+    each limit by enforcement, compares a cheaper fusion run that passed every check and missed the All
+    Seasons crash, and resumes a stopped run from status.md. Part 4 asks the room to guess
+    the cost, reveals about forty cents, then runs the team live under a 50-credit budget while the
+    room watches .team/ fill in. The close shows Squad (bradygaster/squad) as what deep investment in agents looks like, transfers the team to the audience's own issue, and scales
+    to branches, worktrees, a Stop hook, and an integrated review before a person merges.
 
   sectionOrder:
-    - "1. Write the Loop Contract First"
-    - "2. Build the Orchestrator and Its Crew"
-    - "3. Let Evidence Decide When to Stop"
-    - "4. Integrate, Then Hand It to a Person"
+    - "1. The Team, Top Down"
+    - "2. How a Run Works"
+    - "3. Trust the Record"
+    - "4. Run It Live"
 
   sectionModes:
-    "1. Write the Loop Contract First":
-      emphasis: medium
-      note: >
-        Place the cold open before this section's opener: the four-session run ledger (stage, command shape,
-        observed result, credits) labeled REAL, with the caption "one observed run; developer time and a manual
-        baseline were unmeasured." Inside the section: one slide for the four-field contract table with where each
-        field is enforced; one slide for the plan shape with risks before code, quoting the #5 router risk and the
-        #4 class-component risk; one slide for the split test with the three seams and their owner, plus the
-        line "related entities remain noninteractive" that made parallel work safe. Budget 4 slides plus the cold
-        open.
-    "2. Build the Orchestrator and Its Crew":
-      emphasis: low
-      note: >
-        Keep only mechanisms that enforce the contract. One slide for the orchestrator frontmatter: agents
-        allow-list, no edit tool, agent-scoped Stop hook. One slide for role boundaries that held in the run,
-        including the implementer reporting 8 failures and leaving tests to test-writer. One slide for one
-        worktree per workstream with the copilot --worktree command and budget flags. One compact gotcha slide:
-        shell(gh:*) missed a compound PowerShell command, so the working setup is --allow-all-tools with
-        --deny-tool 'shell(git push)'; a sessionStart hook links node_modules into fresh worktrees; agent-scoped
-        Stop hook input arrives in snake_case. Budget 4 slides.
-    "3. Let Evidence Decide When to Stop":
+    "1. The Team, Top Down":
       emphasis: high
       note: >
-        The climax. Slide 1: the predicted Router risk becoming "useNavigate() may be used only in the context of
-        a <Router>", 8 failed, routed to test-writer, 47 of 47, labeled REAL. Slide 2: the Stop hook core and the
-        block decision with failing output as the next prompt. Slide 3: the gate record, 11 allow and 0 block
-        across real runs, with the reason: the orchestrator runs the suite before it stops. Slide 4: the staged
-        backstop with the two JSONL log lines, labeled STAGED. Slide 5: the boundary, the agent changed tests to
-        match the Series rename; tests prove agreement and a person judges intent. Slide 6: budgets table and
-        the 113.4 of 120 stop, with the person clarifying and resuming at 140 credits. Budget 6 slides.
-    "4. Integrate, Then Hand It to a Person":
+        Start from the bug, then read every file before any run. The orchestrator comes before its
+        workers; its steps slide maps each action word (branch, wait, route, resume) to its source
+        sentence and tool, so nothing in Part 2 appears from nowhere.
+    "2. How a Run Works":
+      emphasis: high
+      note: >
+        One step per slide from the rehearsal record, each a call, a one-line reply, and the file it
+        wrote. The person approves task.md before any worker runs. Give route-lint the most time; it
+        carries the thesis. End on the ten-row status trail.
+    "3. Trust the Record":
       emphasis: medium
       note: >
-        Slide 1: the integration reviewer finding white headings on new white panels after two green workstreams
-        merged, the implementer fix, and the 4.5:1 contrast regression taking the suite from 95 to 96, labeled
-        REAL. Slide 2: seams resolved and the integration record fields. Slide 3: what the reviewer of #217
-        receives (plan comments, suite counts, corrections, open risks, budget history) and who owns what: the
-        reviewer owns merge, the team lead owns budget and escalation policy. Slide 4: recurring CLI passes,
-        file-based state, the stale-run escalation rule, and the untested capped-schedule boundary. Slide 5:
-        where local work stops fitting, routing event-driven work to GitHub Agentic Workflows and assign-and-walk-
-        away work to Copilot on GitHub, plus small changes and slow verification. Slide 6: a four-field contract
-        for one real issue. The integration record and own-work contract get focused slides so the handoff and
-        transfer remain independently inspectable. Budget 6 teaching slides.
+        Read the record as a person would. Separate test, reviewer, and person evidence. Label every
+        limit as enforced or instruction. Show that a cheaper model narrowed task.md and with it the tests,
+        and how the agent files now ask for edge coverage. Resume from status.md with a fresh rerun.
+    "4. Run It Live":
+      emphasis: high
+      note: >
+        The cost question sets the stakes, the reveal answers it with measured rehearsal numbers, and
+        the live run proves the team again. Ten minutes on stage; the while-it-works notes keep the lesson if
+        the clock wins.
 
   preamble: []
   appendix: []
 
   highlightMoments:
-    - "REAL: four Copilot CLI sessions took two issues to integrated draft pull request #217 for about 380 AI credits, with every stage leaving an artifact a person can open."
-    - "REAL: the plan predicted the Router risk, the suite failed 8 of 8, and the orchestrator routed the fix to test-writer until 47 of 47 passed."
-    - "REAL: after two green workstreams merged, the reviewer caught unreadable headings and a 4.5:1 contrast regression test locked the fix."
-    - "REAL and STAGED: 11 allow and 0 block across real runs; a staged run shows block on 7 failures, then allow on 8 of 8. Tests prove agreement, and a person judges intent."
-    - "REAL: integration stopped at 113.4 of 120 credits, a person clarified and resumed, and the run ended in a draft for review."
+    - "The person approves what done means before any worker runs."
+    - "Check-1 is 9 of 9 green, lint fails, and one rule in step 5 routes it to test-writer."
+    - "The reviewer accepts and says what it could not see."
+    - "Same team, two models: 39.88 credits fixed All Seasons, 1.79 credits passed every check and missed it."
+    - "How much do you think this will cost? About forty cents, under a fifty-cent budget."
+    - "The same team fixes the same bug live while .team/ fills in on screen."
 
-# OPEN DECISION: Cost framing. Present ≈380 credits as one observed run with no manual baseline (current choice;
-#   honest and transferable), or time a manual implementation of #4 and #5 first to add a comparison (stronger ROI
-#   story; requires a new measured run before slides).
-
-  # Conversion plan, including standard spine frames. The original 28-slide narrative
-  # remains in order; focused integration-record, recurring-run, and transfer slides
-  # make existing README depth teachable without adding filler.
   slides:
-    - { id: title, part: 0, claim: "A local agentic SDLC becomes reviewable when the run has a contract.", scene: "frame: title and a four-role loop motif", seconds: 30 }
-    - { id: core-question, part: 0, claim: "A developer can hand off an issue while retaining evidence, budget, and merge authority.", scene: "frame: learner question, actors, and observed outcome", seconds: 80 }
-    - { id: contents, part: 0, claim: "The argument moves from contract, to crew, to evidence, to human handoff.", scene: "frame: four linked parts with opener slide numbers", seconds: 25 }
-    - { id: run-ledger, part: 0, claim: "Four real Copilot CLI sessions took FanHub issues #4 and #5 to draft PR #217 for about 380 credits.", scene: "deck: four-stage evidence ledger; motion: plan, parallel worktrees, integrate", seconds: 140 }
-    - { id: part-1, part: 1, claim: "Four explicit answers make delegation inspectable before code changes.", scene: "frame: opener with contract, plan, and split test", seconds: 20 }
-    - { id: four-field-contract, part: 1, claim: "Roles, done evidence, stop budget, and merge authority each map to an enforcement point.", scene: "deck: four contract rows connected to their control", seconds: 90 }
-    - { id: plan-with-risks, part: 1, claim: "A read-only planner posts a fixed plan and names likely breakage before implementation.", scene: "deck: plan artifact beside the #5 router and #4 class-component risks", seconds: 100 }
-    - { id: split-test, part: 1, claim: "Parallelize only when file sets are independent apart from named, integration-owned seams.", scene: "deck: split/keep-together decision and FanHub seams", seconds: 90 }
-    - { id: part-2, part: 2, claim: "The orchestrator keeps sequence while narrow agents hold task boundaries.", scene: "frame: opener with orchestrator, roles, and worktrees", seconds: 20 }
-    - { id: orchestrator-file, part: 2, claim: "An agents allow-list, no edit tool, and an agent-scoped Stop hook bound the orchestrator.", scene: "deck: agent frontmatter with ownership callouts", seconds: 100 }
-    - { id: role-boundaries, part: 2, claim: "The implementer reports test failures and the test-writer owns test edits.", scene: "deck: four role cards and the #5 boundary", seconds: 90 }
-    - { id: worktree-command, part: 2, claim: "One worktree per issue isolates parallel edits while flags cap spend and deny push.", scene: "terminal: actual #4 command and resulting isolated worktree", seconds: 100 }
-    - { id: setup-gotchas, part: 2, claim: "Permission denials, fresh dependencies, and snake_case hook input become diagnosable when logged.", scene: "deck: three setup gotchas with observed fix", seconds: 90 }
-    - { id: part-3, part: 3, claim: "Tests steer the run; a Stop hook backs up the finish decision and budgets yield control.", scene: "frame: opener marking the evidence climax", seconds: 20 }
-    - { id: predicted-failure, part: 3, claim: "The predicted router-context risk became eight failures, a test-writer fix, and 47 passing tests.", scene: "deck: risk → observed failure → routed agent → verified result", seconds: 120 }
-    - { id: stop-hook, part: 3, claim: "A Stop hook returns allow on a passing suite or block with failure output for the next turn.", scene: "deck: suite decision flow with per-session escalation", seconds: 120 }
-    - { id: real-gate-record, part: 3, claim: "The real runs logged 11 allow and 0 block because the orchestrator fixed failures before stopping.", scene: "scorecard: separate hook status from suite outcomes", seconds: 80 }
-    - { id: staged-backstop, part: 3, claim: "A deliberately staged run blocked on seven failures and allowed after eight passed.", scene: "terminal: staged JSONL block and allow records", seconds: 100 }
-    - { id: agreement-and-intent, part: 3, claim: "A green suite proves code-test agreement; a person decides whether the change matches intent.", scene: "showdown: automated agreement versus human judgment", seconds: 90 }
-    - { id: budgets, part: 3, claim: "Credit, continuation, no-progress, and hook limits stop a run and hand the decision to a person.", scene: "deck: observed integration budget stop and control scopes", seconds: 110 }
-    - { id: part-4, part: 4, claim: "Integration exposes defects that isolated green workstreams cannot reveal.", scene: "frame: opener with merged review, record, and person-owned handoff", seconds: 20 }
-    - { id: reviewer-catch, part: 4, claim: "The merged reviewer found unreadable headings and the team added a 4.5:1 regression check.", scene: "deck: two passing branches converge on defect, fix, and 95→96 tests", seconds: 120 }
-    - { id: integration-record, part: 4, claim: "The integration record names seam resolution, test counts, corrections, and remaining risks.", scene: "deck: branch evidence consolidates into a PR-ready record", seconds: 100 }
-    - { id: reviewer-handoff, part: 4, claim: "The reviewer owns merge and intent; the team lead owns future budget and escalation policy.", scene: "relay: issue plans, run evidence, and open risks arrive at a human reviewer", seconds: 100 }
-    - { id: scheduled-loop, part: 4, claim: "A recurring CLI pass needs file-based state, stale-run escalation, and a watched first capped run.", scene: "deck: schedule → fresh-context pass → state check → person on stale or uncertain run", seconds: 95 }
-    - { id: fit-boundary, part: 4, claim: "Local orchestration fits developer-led work with fast checks, not event-triggered or unattended work.", scene: "signals: event trigger, assign-and-walk-away, small change, and slow verification boundaries", seconds: 90 }
-    - { id: own-work-contract, part: 4, claim: "A practitioner can transfer the pattern by writing four answers for one real issue.", scene: "scorecard: role, done command, budget, merge owner, plus a concrete own-work prompt", seconds: 95 }
-    - { id: before-after, part: 0, claim: "The contract turns opaque delegation into bounded work with evidence and a human decision.", scene: "frame: four habit-to-contract pairs and labeled run evidence", seconds: 60 }
-    - { id: today, part: 0, claim: "A developer can begin with one issue contract today, build the crew this week, and test the loop this month.", scene: "frame: today / this week / this month actions", seconds: 70 }
-    - { id: references, part: 0, claim: "First-party documentation and FanHub artifacts let the audience inspect every core mechanism.", scene: "frame: links from README references", seconds: 25 }
-    - { id: thanks, part: 0, claim: "Roles, evidence, budgets, and human authority form one repeatable local loop.", scene: "frame: closing summary and own-work question", seconds: 20 }
+    - id: title
+      part: 0
+      claim: "A developer can build and run a local agent team on one real bug."
+      scene: "frame: title with five-node crew motif"
+      seconds: 30
+    - id: core-question
+      part: 0
+      claim: "How do I build local agents that can work together on a coding task?"
+      scene: "deck: question with workflow motif"
+      seconds: 60
+    - id: contents
+      part: 0
+      claim: "Meet the team, learn the run, trust it, watch it live."
+      scene: "frame: four parts linked to openers 4, 12, 21, 26"
+      seconds: 30
+    - id: part-1
+      part: 1
+      claim: "Read the whole team before running it."
+      scene: "frame: section opener"
+      seconds: 20
+    - id: the-bug
+      part: 1
+      claim: "FanHub #202: one unkeyed cache answers before the selected season loads."
+      scene: "deck: issue, buggy code, and the wrong result"
+      seconds: 70
+    - id: crew-map
+      part: 1
+      claim: "Every worker returns to the orchestrator."
+      scene: "deck: orchestrator with four workers and return arrows"
+      seconds: 70
+    - id: agent-file-anatomy
+      part: 1
+      claim: "An agent file is YAML settings plus a Markdown job description."
+      scene: "deck: planner.agent.md with annotations"
+      seconds: 70
+    - id: whole-orchestrator
+      part: 1
+      claim: "The orchestrator file holds tools, workers, steps, and rules."
+      scene: "deck: four-zone file with matching notes"
+      seconds: 100
+    - id: orchestrator-steps
+      part: 1
+      claim: "Seven steps, each with a tool and a file; branch, wait, route, and resume are sentences."
+      scene: "deck: step table quoting orchestrator.agent.md"
+      seconds: 90
+    - id: team-folder
+      part: 1
+      claim: "The .team/ folder is shared memory with one writer per file."
+      scene: "deck: file, writer, contents, readers table"
+      seconds: 70
+    - id: four-workers
+      part: 1
+      claim: "Four workers share three tools; the file each may write is the difference."
+      scene: "deck: four worker cards"
+      seconds: 60
+    - id: part-2
+      part: 2
+      claim: "Follow one real run from approval to accept."
+      scene: "frame: section opener"
+      seconds: 20
+    - id: kick-off
+      part: 2
+      claim: "One command branches, reads the issue, drafts task.md, and waits."
+      scene: "pattern: terminal transcript"
+      seconds: 40
+    - id: approve-task
+      part: 2
+      claim: "The person approves what done means."
+      scene: "deck: task.md draft to approved"
+      seconds: 70
+    - id: step-plan
+      part: 2
+      claim: "Planner finds three problems behind one symptom."
+      scene: "deck: call and reply with plan.md"
+      seconds: 60
+    - id: step-implement
+      part: 2
+      claim: "Implementer removes the cache, guards stale responses, and logs why."
+      scene: "deck: call and reply with diff and changes.md"
+      seconds: 60
+    - id: step-tests
+      part: 2
+      claim: "Nine tests, and check-1 passes 9 of 9."
+      scene: "deck: call and reply with tests.md and check-1.txt"
+      seconds: 50
+    - id: route-lint
+      part: 2
+      claim: "Lint fails in the test file, and step 5 routes it to test-writer."
+      scene: "deck: lint-1, routing rule, route flow to check-2"
+      seconds: 70
+    - id: review-accept
+      part: 2
+      claim: "The reviewer accepts and names what it could not see."
+      scene: "deck: review.md with criteria and caveat"
+      seconds: 50
+    - id: status-trail
+      part: 2
+      claim: "status.md tells the whole run in ten rows."
+      scene: "deck: status table"
+      seconds: 50
+    - id: part-3
+      part: 3
+      claim: "Trust the record, then rerun."
+      scene: "frame: section opener"
+      seconds: 20
+    - id: read-the-trail
+      part: 3
+      claim: "Every question has a file that answers it."
+      scene: "pattern: annotated question and answer"
+      seconds: 60
+    - id: three-proofs
+      part: 3
+      claim: "Tests, reviewer, and person each own a different proof."
+      scene: "pattern: signals"
+      seconds: 50
+    - id: limits
+      part: 3
+      claim: "Know which lines the CLI enforces."
+      scene: "pattern: signals"
+      seconds: 60
+    - id: cheaper-run
+      part: 3
+      claim: "A cheaper run passed every check and missed a crash; the agent files now ask for that coverage."
+      scene: "pattern: annotated run and fix"
+      seconds: 70
+    - id: resume-from-status
+      part: 3
+      claim: "A stopped run resumes from status.md after a fresh rerun."
+      scene: "deck: last row, new session, rule, resume flow"
+      seconds: 70
+    - id: part-4
+      part: 4
+      claim: "Run the same team on the same bug, live."
+      scene: "frame: section opener with reset commands in the cue"
+      seconds: 20
+    - id: cost-question
+      part: 4
+      claim: "How much do you think this will cost?"
+      scene: "deck: six jobs, a dollar question, three hands-up ranges"
+      seconds: 30
+    - id: cost-reveal
+      part: 4
+      claim: "About forty cents in rehearsal, under a fifty-cent budget we set."
+      scene: "deck: three price cards and what the rehearsal bought"
+      seconds: 40
+    - id: live-kickoff
+      part: 4
+      claim: "Kick off the live run interactively: /agent, /model, a 50-credit limit, then the prompt; the one-line form is the footnote."
+      scene: "pattern: terminal transcript with /agent, /model, and /limits; one-line command as footnote"
+      seconds: 60
+    - id: live-while-it-works
+      part: 4
+      claim: "Approve task.md in front of the room, then watch each file appear."
+      scene: "deck: rehearsal clock, worker, file, what to look for"
+      seconds: 370
+    - id: live-verify
+      part: 4
+      claim: "Verify the live result ourselves."
+      scene: "pattern: annotated check and command"
+      seconds: 80
+    - id: scale-up
+      part: 0
+      claim: "Scale with a branch per issue, a worktree per stream, a Stop hook, and an integrated review."
+      scene: "pattern: signals"
+      seconds: 50
+    - id: before-after
+      part: 0
+      claim: "Agent files become a team you can audit."
+      scene: "frame: before and after"
+      seconds: 40
+    - id: squad-one-prompt
+      part: 0
+      claim: "One sentence to Squad casts a team, and one task fans out to five agents building in parallel."
+      scene: "pattern: terminal transcript of Squad's first session, condensed from its docs"
+      seconds: 60
+    - id: squad-keeps-going
+      part: 0
+      claim: "Say 'Ralph, go' and the backlog works itself down; squad watch keeps it moving while you are away."
+      scene: "pattern: terminal transcript of Ralph's loop and squad watch, condensed from its docs"
+      seconds: 60
+    - id: today
+      part: 0
+      claim: "Run the team on one issue this week."
+      scene: "frame: copy, run, read"
+      seconds: 60
+    - id: references
+      part: 0
+      claim: "Sources you can open and reproduce."
+      scene: "frame: references"
+      seconds: 20
+    - id: thanks
+      part: 0
+      claim: "Build the team. Read the record."
+      scene: "frame: thanks"
+      seconds: 40

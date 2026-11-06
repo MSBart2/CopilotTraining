@@ -61,7 +61,7 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 | Manufacture trustworthy delivery evidence | [Agentic SDLC](agentic-sdlc/) | Repository and CI signals that gate or return agent work |
 | Allow or deny agent actions | [Copilot Hooks](copilot-hooks/) | An execution boundary with an auditable allow, deny, or escalation result |
 | Keep execution and merge authority explicit | [GitHub Copilot Governance](copilot-governance/) | Visible runtime decisions, reviewable evidence, and an authorized merge |
-| Standardize governance across teams | [Enterprise Patterns](enterprise-patterns/) | An operating model with owners, policy, rollout, and success measures |
+| Give every team the same Copilot baseline | [Enterprise Patterns](enterprise-patterns/) | Required, blocked, and default plugins and policy placed at the enterprise, team, repository, and personal layers, with the effective result verified |
 
 ## Extend and Embed
 
@@ -69,7 +69,7 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 | Decision | Talk | Evidence you inspect or produce |
 |---|---|---|
-| Package and distribute team capabilities | [Plugins and APM](copilot-plugins/) | A versioned manifest and lockfile change |
+| Package and distribute team capabilities | [Enterprise Patterns](enterprise-patterns/) | A plugin and marketplace delivered through repository defaults or enterprise policy |
 | Act on live Azure state | [Azure MCP and Skills](copilot-azure-mcp/) | A least-privilege action with before-and-after evidence |
 | Own the agent runtime in an application | [Copilot SDK](copilot-sdk/) | An application-owned trigger, tools, identity, and runtime contract |
 | Connect an external client | [ACP](copilot-acp/) | A client session with explicit permission boundaries |
@@ -92,7 +92,7 @@ Release-specific VS Code changes are routed through [rolling release briefs](../
 
 ### Platform and Governance
 
-[Enterprise Patterns](enterprise-patterns/) → [Plugins and APM](copilot-plugins/) → [GitHub Copilot Governance](copilot-governance/) → [Copilot Hooks](copilot-hooks/) → [Copilot on GitHub](copilot-on-github/) → [Agentic SDLC](agentic-sdlc/)
+[Enterprise Patterns](enterprise-patterns/) → [GitHub Copilot Governance](copilot-governance/) → [Copilot Hooks](copilot-hooks/) → [Copilot on GitHub](copilot-on-github/) → [Agentic SDLC](agentic-sdlc/)
 
 ### Product and Tool Builders
 

@@ -1,0 +1,102 @@
+diff --git a/node/frontend/src/pages/Episodes.js b/node/frontend/src/pages/Episodes.js
+index a58afcd..f33ca4c 100644
+--- a/node/frontend/src/pages/Episodes.js
++++ b/node/frontend/src/pages/Episodes.js
+@@ -2,7 +2,7 @@
+ // NOTE: This file uses .js extension while others use .jsx - inconsistent!
+ // Also mixes different patterns
+ 
+-import React, { useState, useEffect, useCallback } from "react";
++import React, { useState, useEffect, useCallback, useRef } from "react";
+ import EpisodeList from "../components/EpisodeList";
+ import { episodesApi } from "../services/api";
+ 
+@@ -47,9 +47,6 @@ const pageStyles = {
+   },
+ };
+ 
+-let episodeCache = null;
+-let cacheTimestamp = null;
+-
+ // Functional component with hooks
+ const Episodes = () => {
+   const [episodes, setEpisodes] = useState([]);
+@@ -57,6 +54,7 @@ const Episodes = () => {
+   const [selectedSeason, setSelectedSeason] = useState(null);
+   const [loading, setLoading] = useState(true);
+   const [error, setError] = useState(null);
++  const requestIdRef = useRef(0);
+ 
+   // Extract unique seasons from episodes
+   const extractSeasons = useCallback((episodeList) => {
+@@ -75,17 +73,7 @@ const Episodes = () => {
+   // Load episodes
+   const loadEpisodes = useCallback(
+     async (seasonId = null) => {
+-      // Workshop bug (#202): the shared cache ignores the requested season.
+-      const now = Date.now();
+-      if (
+-        episodeCache &&
+-        cacheTimestamp &&
+-        now - cacheTimestamp < 30000
+-      ) {
+-        setEpisodes(episodeCache);
+-        setLoading(false);
+-        return;
+-      }
++      const requestId = ++requestIdRef.current;
+ 
+       try {
+         setLoading(true);
+@@ -97,25 +85,29 @@ const Episodes = () => {
+         }
+ 
+         const response = await episodesApi.getAll(params);
++        if (requestId !== requestIdRef.current) {
++          return;
++        }
+ 
+         // Handle different response formats (backend inconsistency!)
+         const data = response.data.data || response.data;
+ 
+-        // Update cache (but doesn't track which season this is for!)
+-        episodeCache = data;
+-        cacheTimestamp = Date.now();
+-
+         setEpisodes(data);
+ 
+-        // Only extract seasons on initial load
++        // Only extract seasons from all-episodes responses
+         if (!seasonId && data.length > 0) {
+           setSeasons(extractSeasons(data));
+         }
+       } catch (err) {
++        if (requestId !== requestIdRef.current) {
++          return;
++        }
+         console.error("Failed to load episodes:", err);
+         setError("Failed to load episodes. Is the backend running?");
+       } finally {
+-        setLoading(false);
++        if (requestId === requestIdRef.current) {
++          setLoading(false);
++        }
+       }
+     },
+     [extractSeasons],
+@@ -124,11 +116,14 @@ const Episodes = () => {
+   // Initial load
+   useEffect(() => {
+     loadEpisodes();
++    return () => {
++      requestIdRef.current += 1;
++    };
+   }, [loadEpisodes]);
+ 
+   // Handle season filter
+   const handleSeasonClick = (season) => {
+-    if (selectedSeason === season?.id) {
++    if (season === null || selectedSeason === season.id) {
+       // Deselect - show all
+       setSelectedSeason(null);
+       loadEpisodes();

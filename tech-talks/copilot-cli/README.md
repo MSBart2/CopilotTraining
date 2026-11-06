@@ -162,4 +162,4 @@ Carry forward the right thing: a reusable procedure, delegated task, scheduled i
 - **[Copilot Web](../copilot-web/README.md):** GitHub-hosted collaboration and context.
 - **[Copilot CLI + Azure MCP](../copilot-azure-mcp/README.md):** CLI workflows with Azure evidence and tools.
 - **[Copilot Configuration Primitives](../copilot-primitives/README.md):** Stable instructions and reusable context.
-- **[Copilot Plugins](../copilot-plugins/README.md):** Extension packaging and governance.
+- **[Enterprise Patterns](../enterprise-patterns/README.md):** Plugin packaging and layered distribution across enterprise, team, and repository.

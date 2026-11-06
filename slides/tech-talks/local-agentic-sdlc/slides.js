@@ -1,541 +1,591 @@
-/*
-  Local Agentic SDLC — native teaching source.
-  The slide order and speaker notes preserve the approved FanHub run narrative.
-*/
+/* FanHub #202 team: 39 slides, 2400 seconds. Parts 1-3 teach from the rehearsal record; Part 4 runs live. */
 (() => {
   const S = (id, part, title, more = {}) => ({ id, part, title, section: part ? `Part ${part}` : 'Frame', ...more });
-
+  const PIN = '61bf87964b964c2c0c9e098cf6ebb1900501315b';
+  const OLD = '54e9c79276cbffde54167078a8b14cbbaf75b686';
+  const FH = `https://github.com/MSBart2/FanHub/blob/${PIN}`;
+  const FHT = `https://github.com/MSBart2/FanHub/tree/${PIN}`;
+  const DOC = 'https://docs.github.com/en/copilot';
+  const REPO = 'https://github.com/MSBart2/CopilotTraining';
+  const REC = `${REPO}/tree/main/tech-talks/local-agentic-sdlc/evidence/fanhub-202-rehearsal`;
+  const RECB = `${REPO}/blob/main/tech-talks/local-agentic-sdlc/evidence/fanhub-202-rehearsal`;
+  const SRC = {
+    team: { label: 'FanHub agent team · five agent files, pinned', href: `${FHT}/.github/agents` },
+    orchestrator: { label: 'FanHub orchestrator.agent.md · pinned', href: `${FH}/.github/agents/orchestrator.agent.md` },
+    rules: { label: 'FanHub AGENTS.md · Check, rounds, .team/ ownership', href: `${FH}/AGENTS.md` },
+    bug: { label: 'FanHub Episodes.js · the cache bug, pinned', href: `${FH}/node/frontend/src/pages/Episodes.js` },
+    record: { label: 'FanHub #202 rehearsal · the .team/ record', href: REC },
+    checks: { label: 'Rehearsal evidence · check and lint output', href: `${REC}/team/evidence` },
+    fusion: { label: 'FanHub #202 fusion run · Luna, 1.79 credits, the .team/ record', href: `${REPO}/tree/main/tech-talks/local-agentic-sdlc/evidence/fanhub-202-fusion` },
+    edges: { label: 'FanHub 74b040b · Found list and edge tests in the agent files', href: 'https://github.com/MSBart2/FanHub/commit/74b040b2c9b075cbe848c377ddf6ee9385a1e998' },
+    diff: { label: 'Rehearsal diff · Episodes.js and the new tests', href: `${RECB}/source/Episodes.js.diff` },
+    issue202: { label: 'FanHub #202 · season filter shows the wrong episodes', href: 'https://github.com/MSBart2/FanHub/issues/202' },
+    agents: { label: 'Custom agents configuration', href: `${DOC}/reference/custom-agents-configuration` },
+    cliAgents: { label: 'Create custom agents for Copilot CLI', href: `${DOC}/how-tos/copilot-cli/customize-copilot/create-custom-agents-for-cli` },
+    cli: { label: 'Copilot CLI command reference', href: `${DOC}/reference/copilot-cli-reference/cli-command-reference` },
+    pricing: { label: 'Copilot models and pricing · 1 AI credit = $0.01', href: `${DOC}/reference/copilot-billing/models-and-pricing` },
+    limits: { label: 'Copilot CLI · set an AI credit session limit', href: `${DOC}/how-tos/copilot-cli/use-copilot-cli/set-session-limit` },
+    autopilot: { label: 'Copilot CLI autopilot', href: `${DOC}/how-tos/copilot-cli/use-copilot-cli/use-autopilot-mode` },
+    sessions: { label: 'Copilot CLI multiple sessions', href: `${DOC}/how-tos/copilot-cli/use-copilot-cli/work-with-multiple-sessions` },
+    hooks: { label: 'Hooks reference', href: `${DOC}/reference/hooks-reference` },
+    parallel: { label: 'Delegating and parallelizing agent work', href: `${DOC}/concepts/agent-capabilities/choosing-and-delegating-agent-work/delegating-and-parallelizing-work-with-agents` },
+    hookCode: { label: 'FanHub Stop hook · earlier pinned source', href: `https://github.com/MSBart2/FanHub/blob/${OLD}/scripts/copilot-hooks/verify-before-stop.mjs` },
+    pr: { label: 'FanHub #217 · integrated draft and evidence', href: 'https://github.com/MSBart2/FanHub/pull/217' },
+    squad: { label: 'bradygaster/squad · AI agent teams for any project', href: 'https://github.com/bradygaster/squad' },
+    squadFirst: { label: 'Squad docs · Your First Session', href: 'https://bradygaster.github.io/squad/docs/get-started/first-session/' },
+    squadRalph: { label: 'Squad docs · Ralph, the work monitor', href: 'https://bradygaster.github.io/squad/docs/features/ralph/' }
+  };
+  const opener = (id, part, title, subtitle, cards, context, detail) =>
+    S(id, part, title, { scene: 'opener', subtitle, cards: cards.map(([icon, title, blurb]) => ({ icon, title, blurb })), terminal: { context, detail } });
+  const explained = (id, part, title, subtitle, leftLabel, rightLabel, rows, footnote) =>
+    S(id, part, title, { scene: 'annotated-lines', subtitle, leftLabel, rightLabel, rows, footnote });
+  const KICKOFF = 'copilot --agent orchestrator --max-ai-credits 50 -i "Fix FanHub issue #202. Start at step 1."';
   const slides = [
     S('title', 0, 'Local Agentic SDLC', {
-      chrome: false, visual: 'local-loop',
-      subtitle: 'A Loop with a Contract',
-      tagline: 'Roles own the work. Tests decide done. Budgets decide when to stop. A person decides what merges.',
-      meta: 'Agents at Your Keyboard · CopilotTraining Tech Talk · 45 min'
+      chrome: false, visual: 'crew-motif', subtitle: 'Build the Crew, Run the Loop',
+      tagline: 'Five agent files. One real bug. A record you can read, and a live run you can watch.',
+      meta: 'Agents at Your Keyboard · 45 minutes'
     }),
-    S('core-question', 0, 'How do I hand an issue to local agents and know when the work is ready for my review?', {
-      pill: 'Core Question',
-      subtitle: 'A developer sets the contract; Copilot and role agents do bounded work; a reviewer decides what merges.',
-      highlight: 'Write down roles, evidence, budget, and human authority before the first run.',
-      routing: ['roles', 'evidence', 'budget', 'authority'], routingLabel: 'The loop contract',
-      roles: [
-        { icon: '⌨️', title: 'Developer', description: 'Chooses the issue, writes the contract, and starts the local sessions.' },
-        { icon: '🧭', title: 'Orchestrator', description: 'Sequences work and routes evidence to the role that owns it.' },
-        { icon: '🧑‍⚖️', title: 'Reviewer', description: 'Judges intent and owns the merge decision.' }
-      ],
-      stats: [
-        { title: '2 issues → 1 draft PR', description: 'FanHub #4 and #5 integrated in observed run' },
-        { title: '96 / 96 tests', description: 'Integrated suite after a reviewer-driven fix' },
-        { title: '≈380 AI credits', description: 'One observed run; no manual baseline measured' }
-      ]
+    S('core-question', 0, 'How do I build local agents that can work together on a coding task?', {
+      scene: 'workflow-question', pill: 'The question',
+      subtitle: 'Five agent files, a shared .team/ folder, and one real FanHub bug, from issue to accepted fix.',
+      highlight: 'Every reply leaves a file. Every claim points to one.'
     }),
-    S('contents', 0, 'The path from a contract to a human handoff', {
-      sections: [
-        { icon: '📜', title: 'Write the Loop Contract First', subtitle: 'Roles · done · budget · merge', blurb: 'Plan risks early and name the seams before splitting.', slide: 5 },
-        { icon: '🧰', title: 'Build the Crew', subtitle: 'Bounded agents · worktrees', blurb: 'Use mechanisms that enforce the contract.', slide: 9 },
-        { icon: '🧪', title: 'Evidence Decides', subtitle: 'Tests · hook · budget', blurb: 'Follow a predicted risk through a routed fix.', slide: 14 },
-        { icon: '🤝', title: 'Integrate and Hand Off', subtitle: 'Merged review · draft PR', blurb: 'Make evidence and open risks visible.', slide: 21 }
-      ]
+    S('contents', 0, 'Meet the team. Learn the run. Trust it. Watch it live.', { sections: [
+      { icon: '⌘', title: 'The Team, Top Down', subtitle: 'Orchestrator → workers → .team/', blurb: 'Read every agent file and the folder they share.', slide: 4 },
+      { icon: '▷', title: 'How a Run Works', subtitle: 'Issue → approval → accept', blurb: 'Follow the rehearsal through every call and file.', slide: 12 },
+      { icon: '⌕', title: 'Trust the Record', subtitle: 'Trail → proof → resume', blurb: 'Read the record, rerun the check, resume a pause.', slide: 21 },
+      { icon: '◉', title: 'Run It Live', subtitle: 'Guess → kick off → verify', blurb: 'Same team, same bug, ten minutes, on stage.', slide: 27 }
+    ] }),
+    opener('part-1', 1, 'The Team, Top Down', 'One bug, five agent files, and the folder they share.',
+      [['!', 'The bug', 'FanHub #202, one cache block'], ['⇄', 'The orchestrator', 'Who it calls, in what order'], ['▤', '.team/', 'One file per worker']],
+      'FanHub/.github/agents/', 'orchestrator · planner · implementer · test-writer · test-reviewer'),
+    S('the-bug', 1, 'One real bug drives the whole talk', {
+      subtitle: 'FanHub #202: choose Season 2 right after the page loads, and the old list stays. The cache answers first.'
     }),
-    S('run-ledger', 0, 'Four CLI sessions took two issues to one integrated draft', {
-      scene: 'run-ledger',
-      pill: 'Cold open · REAL run',
-      subtitle: 'FanHub · 2026-10-22 · Copilot CLI 1.0.100 · AI credits per session',
-      footnote: 'One observed run: about 380 credits. Developer time and a manual baseline were unmeasured.'
+    S('crew-map', 1, 'Every worker returns to the orchestrator', {
+      pill: 'Team · top down', subtitle: 'The orchestrator calls one worker, reads the file it wrote, and chooses the next call.'
     }),
-    S('part-1', 1, 'Write the Loop Contract First', {
-      scene: 'opener',
-      subtitle: 'Four answers before the first run, a plan with risks before code, and a split test with named seams.',
-      cards: [
-        { icon: '📜', title: 'Four fields', blurb: 'Roles · done · budget · merge owner' },
-        { icon: '⚠️', title: 'Risks first', blurb: 'The plan names what could break' },
-        { icon: '✂️', title: 'Split test', blurb: 'Independent files; seams have an owner' }
-      ],
-      terminal: { context: 'copilot --agent sdlc-orchestrator --mode autopilot -p "plan #4 #5"', detail: 'two plans posted as issue comments · two workstreams' }
+    S('agent-file-anatomy', 1, 'An agent file is settings plus a job description', {
+      subtitle: 'YAML frontmatter between the --- lines configures it. The Markdown body tells it what to do.'
     }),
-    S('four-field-contract', 1, 'Four answers turn a hand-off into checks', {
-      scene: 'four-field-contract',
-      pill: 'Contract · four fields',
-      subtitle: 'The orchestrator states the answers in its first message and final summary.'
+    S('whole-orchestrator', 1, 'The orchestrator file: tools, workers, steps, rules', {
+      subtitle: 'Settings say what it can use. The body says who to call, in what order, and within what limits.'
     }),
-    S('plan-with-risks', 1, 'The planner names risks before anyone writes code', {
-      scene: 'plan-with-risks',
-      pill: 'Contract · plan artifact',
-      subtitle: 'A read-only planner returns a fixed shape and the orchestrator posts it on the issue.'
+    S('orchestrator-steps', 1, 'Seven steps, each with a tool and a file', {
+      subtitle: 'Every action in Parts 2 and 4 traces to one of these lines in orchestrator.agent.md.'
     }),
-    S('split-test', 1, 'Split when files are independent apart from named seams', {
-      scene: 'split-test',
-      pill: 'Contract · split test',
-      subtitle: 'FanHub #4 and #5 could proceed independently because integration owned three shared seams.'
+    S('team-folder', 1, 'The .team/ folder is the shared memory', {
+      subtitle: 'Each worker reads what came before and writes one file. The orchestrator writes the log.'
     }),
-    S('part-2', 2, 'Build the Orchestrator and Its Crew', {
-      scene: 'opener',
-      subtitle: 'Keep the mechanisms that enforce the contract: an orchestrator, narrow roles, and isolated worktrees.',
-      cards: [
-        { icon: '🎼', title: 'Orchestrator', blurb: 'Owns sequence; no edit tool' },
-        { icon: '🧑‍🔧', title: 'Role agents', blurb: 'One boundary for each kind of work' },
-        { icon: '🌳', title: 'Worktrees', blurb: 'One per stream, each with a budget' }
-      ],
-      terminal: { context: '.github/agents/sdlc-orchestrator.agent.md · FanHub', detail: 'planner · implementer · test-writer · test-reviewer' }
+    S('four-workers', 1, 'Four workers, one job and one file each', {
+      subtitle: 'The same three tools for each. The instructions decide where each one may write.'
     }),
-    S('orchestrator-file', 2, 'The orchestrator owns sequence and delegates every edit', {
-      scene: 'orchestrator-file',
-      pill: 'Crew · orchestrator boundary',
-      subtitle: 'The agent allow-list, tool list, and scoped Stop hook express the operating contract.'
-    }),
-    S('role-boundaries', 2, 'Each role agent gets one boundary, and each one held', {
-      scene: 'role-boundaries',
-      pill: 'Crew · role boundaries',
-      subtitle: 'In #5, the implementer reported eight failures and left the test repair to test-writer.'
-    }),
-    S('worktree-command', 2, 'One worktree per workstream, a budget on every session', {
-      scene: 'terminal',
-      pill: 'Crew · command shape',
-      termTitle: 'FanHub · implement #4 · parallel with #5',
-      footnote: 'The same command shape ran independently for #5 with worktree episode-detail and its own session logs.',
+    opener('part-2', 2, 'How a Run Works', 'One real rehearsal: every call out, every file written, every check saved.',
+      [['▷', 'Kick off', 'A person starts and approves'], ['⇄', 'Calls', 'Each worker writes its file'], ['✓', 'Checks', 'Real output, a routed failure']],
+      '.team/status.md', 'Ten rows from issue to accept · 11 minutes · 39.88 credits'),
+    S('kick-off', 2, 'A person starts the run with one command', {
+      scene: 'terminal', subtitle: 'From the FanHub root. The orchestrator branches, reads the issue, drafts the task, and stops.',
+      termTitle: 'PowerShell / FanHub / orchestrator reply, condensed',
       transcript: [
-        { type: 'prompt', text: 'copilot --worktree char-detail --agent sdlc-orchestrator --mode autopilot' },
-        { type: 'response', lines: ['--max-autopilot-continues 15 --max-ai-credits 150', '--allow-all-tools --deny-tool "shell(git push)"'] },
-        { type: 'response', lines: ['--share .\\evidence\\impl4.md --log-dir .\\evidence\\impl4-logs', '-p "implement #4"'] },
-        { type: 'outcome', text: 'New worktree and branch · commit bee5680 · 56/56 tests · 104.12 credits' }
+        { type: 'prompt', text: KICKOFF },
+        { type: 'divider' },
+        { type: 'response', lines: ['Switched to a new branch issue-202.', 'Read issue #202. Drafted .team/task.md: Goal, A1–A3, Check, Status: draft.', 'Edit it, set Status: approved, and reply to continue.'] },
+        { type: 'outcome', mark: '→', text: 'No worker runs until a person approves what done means.' }
       ]
     }),
-    S('setup-gotchas', 2, 'Three setup details made the first runs diagnosable', {
-      scene: 'setup-gotchas',
-      pill: 'Crew · observed setup lessons',
-      subtitle: 'Permission boundaries, fresh worktree dependencies, and hook input all surfaced in the run.'
+    S('approve-task', 2, 'The person approves what done means', {
+      subtitle: 'The orchestrator drafted this from issue #202 and the code. One line from the person starts the workers.'
     }),
-    S('part-3', 3, 'Let Evidence Decide When to Stop', {
-      scene: 'opener',
-      subtitle: 'Tests steer the run, a Stop hook backs them up, and budgets hand control to a person.',
-      cards: [
-        { icon: '🔮', title: 'Predicted risk', blurb: 'The plan forecast eight test failures' },
-        { icon: '🛑', title: 'Backstop', blurb: '11 real allows; staged run proves block' },
-        { icon: '💳', title: 'Budget stop', blurb: '113.4 of 120 credits; person resumes' }
-      ],
-      terminal: { context: '.copilot-loop/hook-log.jsonl', detail: 'decision · blocksSoFar · Tests line · seconds' }
+    S('step-plan', 2, 'Step 2: planner writes plan.md', {
+      subtitle: 'The orchestrator calls planner. The reply is one line; the plan lives in the file.'
     }),
-    S('predicted-failure', 3, 'A predicted risk became eight failures, a routed fix, and 47 passing tests', {
-      scene: 'predicted-failure',
-      pill: 'Evidence · REAL · issue #5',
-      subtitle: 'The existing Episodes test rendered without router context, exactly as the planner predicted.'
+    S('step-implement', 2, 'Step 3: implementer changes src/ and logs it', {
+      subtitle: 'The orchestrator passes plan.md. Implementer edits Episodes.js and writes changes.md.'
     }),
-    S('stop-hook', 3, 'The Stop hook turns done into a test result', {
-      scene: 'stop-hook',
-      pill: 'Evidence · Stop hook',
-      subtitle: 'On a failed suite, Copilot receives the failing output as the next prompt; on a pass, the hook allows the stop.'
+    S('step-tests', 2, 'Step 4: nine tests, and the first check is green', {
+      subtitle: 'Test-writer names each test after its A#. The orchestrator runs the check and saves check-1.txt.'
     }),
-    S('real-gate-record', 3, 'The real runs logged 11 allow and 0 block', {
-      scene: 'real-gate-record',
-      pill: 'Evidence · REAL · hook log',
-      subtitle: 'The orchestrator ran the suite and routed failures before attempting to stop.'
+    S('route-lint', 2, 'Lint fails, and step 5 routes it to the owner', {
+      subtitle: 'Four errors in the test file. The rule picks test-writer. The rerun is clean.'
     }),
-    S('staged-backstop', 3, 'A staged run blocked on seven failures and allowed after eight passed', {
-      scene: 'staged-backstop',
-      pill: 'Evidence · STAGED · hook demo',
-      subtitle: 'The prompt asked the orchestrator to skip tests and finish; the gate returned the failing assertions.'
+    S('review-accept', 2, 'Step 6: the reviewer accepts, and says what it could not see', {
+      subtitle: 'Each A# has a test that would fail. The record also names the gap we fixed since.'
     }),
-    S('agreement-and-intent', 3, 'Tests prove agreement; a person judges intent', {
-      scene: 'showdown',
-      pill: 'Evidence · the verification boundary',
-      leftLabel: 'AUTOMATED GATE',
-      rightLabel: 'HUMAN REVIEW',
-      pairs: [
-        { left: { label: 'Suite result', note: '8 of 8 after Series rename' }, right: { label: 'Code and tests agree', note: 'Repeatable result, about five seconds', z: 'green' } },
-        { left: { label: 'Change intent', note: 'Agent treated rename as intended' }, right: { label: 'Reviewer judges intent', note: 'Was Series the requested behavior?', z: 'orange' } },
-        { left: { label: 'Stop decision', note: 'Hook logged decision and strike' }, right: { label: 'Person owns merge', note: 'Approve, request changes, or reject', z: 'orange' } }
-      ],
-      outcomeLeft: { icon: '✓', label: 'Test agreement is observable' },
-      outcomeRight: { icon: '🧑‍⚖️', label: 'Intent stays with a person' },
-      footnote: 'The staged test runner status is separate from the application behavior it checked.'
+    S('status-trail', 2, 'status.md tells the whole story in ten rows', {
+      subtitle: 'The orchestrator added one row after every reply. The person reads this before the diff.'
     }),
-    S('budgets', 3, 'Budgets stopped runs cleanly and handed control to a person', {
-      scene: 'budgets',
-      pill: 'Evidence · REAL · control limits',
-      subtitle: 'Each stop left a clean state, a transcript, and a stated reason.'
-    }),
-    S('part-4', 4, 'Integrate, Then Hand It to a Person', {
-      scene: 'opener',
-      subtitle: 'Resolve named seams, review the merged whole, and open a draft with its evidence.',
-      cards: [
-        { icon: '🔍', title: 'Merged review', blurb: 'Defect found after green branches met' },
-        { icon: '🧾', title: 'Integration record', blurb: 'Seams, counts, corrections, and risks' },
-        { icon: '🤝', title: 'Draft handoff', blurb: 'The reviewer owns intent and merge' }
-      ],
-      terminal: { context: 'integrate char-detail episode-detail into feat/node-detail-pages', detail: 'draft #217 · Fixes #4 · Fixes #5' }
-    }),
-    S('reviewer-catch', 4, 'The merged reviewer found a defect neither branch had', {
-      scene: 'reviewer-catch',
-      pill: 'Handoff · REAL · merged review',
-      subtitle: 'Global white heading rules met new white panels only after the two workstreams joined.'
-    }),
-    S('integration-record', 4, 'The integration record carries the evidence and remaining risks', {
-      scene: 'integration-record',
-      pill: 'Handoff · integration record',
-      subtitle: 'The record became the body of draft PR #217, with Fixes #4 and Fixes #5.'
-    }),
-    S('reviewer-handoff', 4, 'The reviewer receives the evidence and keeps merge authority', {
-      scene: 'relay',
-      pill: 'Handoff · draft PR #217',
-      columns: [
-        { icon: '📋', title: 'Plan artifacts', description: 'Issue comments make scope and risks reviewable.', items: ['#4 plan', '#5 plan', 'Named seams'], z: ['github', 'github', 'github'] },
-        { icon: '🧪', title: 'Run evidence', description: 'Counts, corrections, and open risks travel with the change.', items: ['56 + 47', '95 → 96', 'Risk list'], z: ['green', 'green', 'orange'] },
-        { icon: '🧑‍⚖️', title: 'Human authority', description: 'The draft waits for review under the repository rules.', items: ['Judge intent', 'Request changes', 'Merge decision'], z: ['orange', 'orange', 'orange'] }
-      ]
-    }),
-    S('scheduled-loop', 4, 'A repeating local pass needs state, stale-run escalation, and a watched first run', {
-      scene: 'scheduled-loop',
-      pill: 'Handoff · recurring work',
-      subtitle: 'Copilot CLI /every is experimental and session-scoped; each pass starts with fresh context.'
-    }),
-    S('fit-boundary', 4, 'Local orchestration fits developer-led work with a fast verification command', {
-      scene: 'signals',
-      pill: 'Handoff · choose the right boundary',
-      subtitle: 'Change the execution model when the trigger, human presence, task size, or verification time changes.',
+    opener('part-3', 3, 'Trust the Record', 'Read the record, know its limits, and pick up where it stopped.',
+      [['⌕', 'Trail', 'Every claim points to a file'], ['⚑', 'Limits', 'Enforced vs. instructed'], ['↻', 'Resume', 'status.md + a fresh rerun']],
+      '.team/evidence/', 'Real npm test and ESLint output from every check'),
+    explained('read-the-trail', 3, 'Every question has a file that answers it',
+      'The person reads the record before trusting any summary.',
+      'QUESTION A PERSON ASKS', 'WHERE .team/ ANSWERS', [
+        ['Did any check fail?', 'lint-1.txt: four globalThis errors in the test file.'],
+        ['What changed in src/, and why?', 'changes.md: each A#, its change, and the risk.'],
+        ['Is every criterion really tested?', 'review.md: why each A# test would fail.'],
+        ['What happens now?', 'status.md last row: person reviews the diff.']
+      ], 'Then rerun the Check yourself. The files say what was true; the rerun says what is true.'),
+    S('three-proofs', 3, 'Three kinds of proof, three owners', {
+      scene: 'signals', subtitle: 'Each answers a different question. Together they make the change reviewable.',
       rows: [
-        { label: 'Developer-led issue', description: 'Local context, worktrees, and a person at the draft', tag: 'Local CLI', z: 'green' },
-        { label: 'Event starts the work', description: 'A label, schedule, or failed check runs without a developer', tag: 'Agentic Workflows', z: 'github' },
-        { label: 'Assign and walk away', description: 'Hosted work returns as a pull request for review', tag: 'Copilot on GitHub', z: 'remote' },
-        { label: 'Small / slow gate', description: 'Plan overhead or long checks change economics', tag: 'Re-scope first', z: 'orange' }
-      ],
-      footnote: 'FanHub plan session: 47 credits. Its test suite ran in about five seconds.'
-    }),
-    S('own-work-contract', 4, 'Write a loop contract for one issue in your repository', {
-      scene: 'own-work-contract',
-      pill: 'Handoff · apply it to your work',
-      subtitle: 'Fill these four fields before you launch the session.'
-    }),
-    S('before-after', 0, 'From agents handling it to a loop with a contract', {
-      scene: 'before-after',
-      before: [
-        'One agent asked to do everything in one session',
-        'Done means the agent said it was done',
-        'Spend noticed after the run',
-        'A diff arrives with a summary to trust'
-      ],
-      after: [
-        'An orchestrator sequences four narrow roles',
-        'Done means suite passes and reviewer accepts',
-        'Every session carries a credit and turn cap',
-        'A draft arrives with evidence and open risks'
-      ],
-      metrics: [
-        { value: '8 → 47/47', detail: 'Predicted risk routed to test-writer · REAL' },
-        { value: '11 / 0', detail: 'Hook allows / blocks in real runs · REAL' },
-        { value: '95 → 96', detail: 'Post-merge contrast regression · REAL' }
+        { label: 'Checks', description: 'check-N.txt: tests and lint pass right now', tag: 'Behavior', z: 'local' },
+        { label: 'Reviewer', description: 'review.md: every A# has a test that can fail', tag: 'Coverage', z: 'green' },
+        { label: 'Person', description: 'status.md + diff + rerun → commit or not', tag: 'Authority', z: 'orange' }
       ]
     }),
-    S('today', 0, 'What you can do today', {
+    S('limits', 3, 'Know which lines are enforced', {
+      scene: 'signals', subtitle: 'The CLI enforces some lines. The rest are instructions, and the diff shows whether they held.',
+      rows: [
+        { label: 'tools: [...]', description: 'strict-tools-list: the agent gets only these tools', tag: 'Enforced', z: 'green' },
+        { label: 'Permission prompt', description: 'you approve each edit, git step, and check command', tag: 'You decide', z: 'orange' },
+        { label: 'Worker list', description: 'guidance; the CLI ignores an agents: key', tag: 'Instruction', z: 'purple' },
+        { label: '“Never a *.test.js file”', description: 'a sentence in the file, not a filesystem sandbox', tag: 'Instruction', z: 'purple' }
+      ]
+    }),
+    explained('cheaper-run', 3, 'A cheaper run passed every check and missed a crash',
+      'Same team, same issue, two models. The tests covered exactly what task.md named.',
+      'RUN, THEN THE FIX', 'WHAT task.md NAMED, AND WHAT FOLLOWED', [
+        ['GPT-6.1 Sol · 39.88 credits', 'A1–A3: it read past the issue, found the All Seasons crash, and fixed it.'],
+        ['Fusion → Luna · 1.79 credits', 'A1–A2 from the issue text: 2 tests, an accept, and the crash still live.'],
+        ['Now: planner + orchestrator', 'plan.md lists Found defects, and the run stops so a person scopes them.'],
+        ['Now: test-writer + reviewer', 'E# tests for each control and risk; a risk with no test means revise.']
+      ], 'The agent files now ask for that coverage, so it holds whichever model runs them.'),
+    S('resume-from-status', 3, 'A stopped run resumes from status.md', {
+      subtitle: 'Credit cap, closed terminal, or a denied prompt: start a new session and point it at the log.'
+    }),
+    opener('part-4', 4, 'Run It Live', 'Same team, same bug, a fresh branch, ten minutes.',
+      [['$', 'Guess', 'What will it cost?'], ['▷', 'Run', 'Kick off and approve'], ['✓', 'Verify', 'status.md, diff, rerun']],
+      'FanHub · main', 'copilot · /agent · /model · /limits set max-ai-credits 50'),
+    S('cost-question', 4, 'How much do you think this will cost?', {
+      subtitle: 'Six jobs, five agents, one real bug. Guess before the next slide.'
+    }),
+    S('cost-reveal', 4, 'Under fifty cents, with a budget we set', {
+      subtitle: 'One AI credit is one cent. The rehearsal used 39.88. Tonight’s budget is 50.'
+    }),
+    S('live-kickoff', 4, 'Kick off the live run', {
+      scene: 'terminal', subtitle: 'FanHub main, no .team/ folder, both servers running. The orchestrator makes the branch.',
+      termTitle: 'PowerShell / FanHub / live',
+      transcript: [
+        { type: 'prompt', text: 'copilot' },
+        { type: 'user', text: '/agent   (choose orchestrator)' },
+        { type: 'user', text: '/model   (choose GPT-6.1 Sol)' },
+        { type: 'user', text: '/limits set max-ai-credits 50' },
+        { type: 'user', text: 'Fix FanHub issue #202. Start at step 1.' },
+        { type: 'divider' },
+        { type: 'response', lines: ['Expect: a switch to branch issue-202, gh issue view 202,', 'then a drafted .team/task.md and a stop for approval.'] },
+        { type: 'outcome', mark: '→', text: 'Approve gh, git switch, and the Check commands. Decline installs, commits, and pushes.' }
+      ],
+      footnote: 'Or in one line: copilot --agent orchestrator --model gpt-6.1-sol --max-ai-credits 50 -i "Fix FanHub issue #202. Start at step 1."'
+    }),
+    S('live-while-it-works', 4, 'While it works: watch the files appear', {
+      subtitle: 'The rehearsal clock is a guide. Each file is a reply we can open as soon as it lands.'
+    }),
+    explained('live-verify', 4, 'Verify the live result ourselves',
+      'The team stops at an accept. Four checks, then the decision is ours.',
+      'RUN OR OPEN', 'WHAT IT PROVES', [
+        ['.team/status.md', 'Last row: accept, and Next: person reviews the diff.'],
+        ['git status --short', 'Episodes.js modified, a new test file, nothing else.'],
+        ['npm --prefix node/frontend test -- --watchAll=false --ci', 'Our own rerun: the tests pass now.'],
+        ['Browser: Season 2, then All Seasons', 'Only Season 2 on the first click; All Seasons brings every episode back.']
+      ], 'Agent accept is evidence. Commit, push, and the pull request stay with the person.'),
+    S('scale-up', 0, 'When one run works, scale with care', {
+      scene: 'signals', subtitle: 'Branches separate diffs. Worktrees separate records. People own the merge.',
+      rows: [
+        { label: 'Branch per issue', description: 'issue-N keeps each run’s diff on its own branch', tag: 'In the file', z: 'green' },
+        { label: 'Worktree per stream', description: 'parallel issues each get a folder and a .team/', tag: 'Parallel', z: 'local' },
+        { label: 'Stop hook', description: 'runs the check before the agent may stop', tag: 'Enforced', z: 'purple' },
+        { label: 'Integrated review', description: 'review the combined diff before a person merges', tag: 'Person', z: 'orange' }
+      ]
+    }),
+    S('before-after', 0, 'Agent files become a team you can audit', {
+      before: ['One broad prompt', 'Context buried in chat', '“Done” in a summary', 'Lost when the session ends'],
+      after: ['Five agent files, one job each', 'task.md a person approved', 'check-N.txt + review.md', 'status.md + a fresh rerun'],
+      metrics: [{ value: 'Context', detail: 'task.md + plan.md' }, { value: 'Evidence', detail: 'check-N.txt + review.md' }, { value: 'Authority', detail: 'Approve, review, commit' }]
+    }),
+    S('squad-one-prompt', 0, 'One sentence, and a whole team builds in parallel', {
+      scene: 'terminal', subtitle: 'bradygaster/squad: describe the app, say yes, and one task fans out to five agents at once.',
+      termTitle: 'Squad · first session, from its docs, condensed',
+      transcript: [
+        { type: 'prompt', text: 'copilot --agent squad' },
+        { type: 'user', text: 'I’m building a recipe sharing app with React and Node.js.' },
+        { type: 'response', lines: ['Your team: Lead · Frontend · Backend · Tester, plus Scribe for memory and Ralph for the backlog.'] },
+        { type: 'user', text: 'Yes. Team, build the recipe listing page.' },
+        { type: 'response', lines: [
+          'Lead: API contract defined; cursor pagination decided',
+          'Frontend: RecipeList component built',
+          'Backend: GET /api/recipes, plus a detail endpoint it saw coming',
+          'Tester: 8 test cases, written while the code was being built',
+          'Scribe: 3 decisions logged to decisions.md'
+        ] },
+        { type: 'outcome', text: 'Five agents, five context windows, one prompt.' }
+      ],
+      footnote: 'Every member gets a charter and its own memory in .squad/, and it grows with every task.'
+    }),
+    S('squad-keeps-going', 0, 'Then say “Ralph, go,” and the backlog works itself down', {
+      scene: 'terminal', subtitle: 'Issues in, merged pull requests out. The team remembers every decision for the next session.',
+      termTitle: 'Squad · Ralph work monitor, from its docs, condensed',
+      transcript: [
+        { type: 'user', text: 'Ralph, go.' },
+        { type: 'response', lines: [
+          'Triage: each issue routed to its owner by routing.md',
+          'Changes requested on a PR: routed back to its author',
+          'CI failing: the agent that wrote it fixes it',
+          'Approved and green: merged, issue closed, next issue'
+        ] },
+        { type: 'outcome', mark: '↻', text: 'Round 3 complete · 2 issues closed, 1 PR merged · continuing' },
+        { type: 'divider' },
+        { type: 'prompt', text: 'squad watch --execute --max-duration 8h' },
+        { type: 'outcome', text: 'Away from the keyboard: polls every 10 minutes and stops after 8 hours.' }
+      ],
+      footnote: 'Commit .squad/ and anyone who clones the repo gets the team, with every decision it has made.'
+    }),
+    S('today', 0, 'Run the team on one issue this week', {
       horizons: [
-        { icon: '⚡', label: 'Today', z: 'green', items: ['Write four contract answers for one issue', 'Choose the meaningful done command', 'Name the reviewer and issue budget'] },
-        { icon: '🗓️', label: 'This Week', z: 'local', items: ['Create the orchestrator allow-list', 'Give the planner a risks-before-code shape', 'Log each Stop decision and escalation'] },
-        { icon: '🚀', label: 'This Month', z: 'purple', items: ['Run parallel worktrees with budgets', 'Put integration evidence in the draft body', 'Agree team budget and escalation policy'] }
-      ],
-      takeaway: 'The reviewer decides what merges; the developer and team lead decide what the next run is allowed to do.'
+        { icon: '⧉', label: 'Copy', items: ['.github/agents/ + AGENTS.md', 'Set your Check commands'] },
+        { icon: '▷', label: 'Run', items: ['One issue, one fast test', 'Approve task.md; answer prompts'] },
+        { icon: '⌕', label: 'Read', items: ['status.md, then the diff', 'Rerun the Check yourself'] }
+      ], takeaway: 'The first win is a run you can explain from its files.'
     }),
-    S('references', 0, 'References and run evidence', {
-      groups: [
-        { icon: '📖', title: 'Agents and parallel work', z: 'local', items: [
-          { href: 'https://code.visualstudio.com/docs/agents/run/subagents', label: 'VS Code: subagents and orchestration patterns', description: 'Subagent orchestration patterns.' },
-          { href: 'https://docs.github.com/en/copilot/reference/custom-agents-configuration', label: 'Custom agents configuration reference', description: 'Agent tool and delegation configuration.' },
-          { href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-custom-agents-for-cli', label: 'Create custom agents for Copilot CLI', description: 'Create repository agents for CLI.' },
-          { href: 'https://docs.github.com/en/copilot/concepts/agent-capabilities/choosing-and-delegating-agent-work/delegating-and-parallelizing-work-with-agents', label: 'Delegating and parallelizing work with agents', description: 'Choosing bounded parallel work.' }
-        ] },
-        { icon: '⌨️', title: 'CLI controls and hooks', z: 'github', items: [
-          { href: 'https://docs.github.com/en/copilot/reference/hooks-reference', label: 'Hooks reference', description: 'Hook events, decisions, and scope.' },
-          { href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/use-autopilot-mode', label: 'Copilot CLI: autopilot mode', description: 'Autopilot and credit controls.' },
-          { href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/work-with-multiple-sessions', label: 'Copilot CLI: multiple sessions', description: 'Multiple sessions and worktrees.' },
-          { href: 'https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference', label: 'Copilot CLI command reference', description: 'CLI flags and commands.' }
-        ] },
-        { icon: '🎬', title: 'FanHub first-party artifacts', z: 'purple', items: [
-          { href: 'https://github.com/MSBart2/FanHub/blob/main/.github/agents/sdlc-orchestrator.agent.md', label: 'sdlc-orchestrator.agent.md', description: 'Role boundaries and run sequence.' },
-          { href: 'https://github.com/MSBart2/FanHub/blob/main/scripts/copilot-hooks/verify-before-stop.mjs', label: 'verify-before-stop.mjs', description: 'Stop-hook implementation.' },
-          { href: 'https://github.com/MSBart2/FanHub/issues/4', label: 'FanHub issue #4', description: 'Character detail issue and plan.' },
-          { href: 'https://github.com/MSBart2/FanHub/issues/5', label: 'FanHub issue #5', description: 'Episode detail issue and plan.' }
-        ] },
-        { icon: '🤝', title: 'Integration evidence', z: 'orange', items: [
-          { href: 'https://github.com/MSBart2/FanHub/pull/217', label: 'FanHub #217', description: 'Integrated draft, evidence, and open risks.' }
-        ] }
-      ]
-    }),
-    S('thanks', 0, 'Local Agentic SDLC', {
-      scene: 'thanks', chrome: false, visual: 'local-loop',
-      subtitle: 'A loop with a contract: roles, evidence, budgets, and a person at the merge',
-      cards: [
-        { value: '8 → 47/47', detail: 'A predicted risk became a routed repair' },
-        { value: '95 → 96', detail: 'Merged review produced a regression check' },
-        { value: 'One draft', detail: 'Evidence arrived; a person retained authority' }
-      ],
-      prompt: 'Which issue will you write a contract for next?'
+    S('references', 0, 'Sources you can open and reproduce', { groups: [
+      { icon: '▷', title: 'Start here', z: 'local', items: [
+        { ...SRC.team, description: 'Five agents, ready to copy' },
+        { ...SRC.rules, description: 'Check, rounds, ownership' },
+        { ...SRC.record, description: 'The run Parts 2 and 3 teach from' },
+        { ...SRC.issue202, description: 'The bug this talk fixes' }
+      ] },
+      { icon: '⌘', title: 'Copilot CLI', z: 'purple', items: [
+        { ...SRC.cliAgents, description: 'Agent discovery in Copilot CLI' },
+        { ...SRC.agents, description: 'Frontmatter fields and tools' },
+        { ...SRC.cli, description: 'Invocation and permission flags' },
+        { ...SRC.pricing, description: 'AI credits and their price' }
+      ] },
+      { icon: '↗', title: 'Go further', z: 'orange', items: [
+        { ...SRC.hookCode, description: 'Optional Stop hook implementation' },
+        { ...SRC.sessions, description: 'Session and worktree isolation' },
+        { ...SRC.squad, description: 'A full agent team, open source' },
+        { ...SRC.pr, description: 'Integrated review and open risks' }
+      ] }
+    ] }),
+    S('thanks', 0, 'Build the team.\nRead the record.', {
+      chrome: false, visual: 'crew-motif', subtitle: 'Which issue will your team fix first?',
+      cards: [{ value: 'Approve', detail: 'What done means' }, { value: 'Trace', detail: 'One file per reply' }, { value: 'Decide', detail: 'Diff + rerun + commit' }]
     })
   ];
 
-  const SRC = {
-    subagents: { label: 'VS Code subagents and orchestration patterns', href: 'https://code.visualstudio.com/docs/agents/run/subagents' },
-    agents: { label: 'Custom agents configuration reference', href: 'https://docs.github.com/en/copilot/reference/custom-agents-configuration' },
-    cliAgents: { label: 'Create custom agents for Copilot CLI', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/create-custom-agents-for-cli' },
-    hooks: { label: 'Hooks reference', href: 'https://docs.github.com/en/copilot/reference/hooks-reference' },
-    autopilot: { label: 'Copilot CLI autopilot mode', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/use-autopilot-mode' },
-    sessions: { label: 'Copilot CLI multiple sessions', href: 'https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/work-with-multiple-sessions' },
-    cli: { label: 'Copilot CLI command reference', href: 'https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-command-reference' },
-    parallel: { label: 'Delegating and parallelizing work with agents', href: 'https://docs.github.com/en/copilot/concepts/agent-capabilities/choosing-and-delegating-agent-work/delegating-and-parallelizing-work-with-agents' },
-    orchestrator: { label: 'FanHub sdlc-orchestrator.agent.md', href: 'https://github.com/MSBart2/FanHub/blob/main/.github/agents/sdlc-orchestrator.agent.md' },
-    hookCode: { label: 'FanHub verify-before-stop.mjs', href: 'https://github.com/MSBart2/FanHub/blob/main/scripts/copilot-hooks/verify-before-stop.mjs' },
-    issue4: { label: 'FanHub issue #4 and plan', href: 'https://github.com/MSBart2/FanHub/issues/4' },
-    issue5: { label: 'FanHub issue #5 and plan', href: 'https://github.com/MSBart2/FanHub/issues/5' },
-    pr: { label: 'FanHub #217 integrated draft pull request', href: 'https://github.com/MSBart2/FanHub/pull/217' },
-    starter: { label: 'Local Agentic SDLC loop-starter example', href: 'https://github.com/MSBart2/CopilotTraining/tree/main/tech-talks/local-agentic-sdlc/examples/loop-starter' }
-  };
-
   const NOTES = {
-    title: { seconds: 30, sources: [SRC.orchestrator, SRC.pr],
+    title: { seconds: 30, sources: [SRC.team, SRC.issue202],
       notes: [
-        `"A developer can hand an issue to a local crew and still keep the important decisions visible."`,
-        `Point to the ring: the orchestrator, role agents, test evidence, and reviewer form one loop.`,
-        `→ Start with the question the developer is trying to answer.`
-      ],
-      know: [`FanHub issues #4 and #5 were character and episode detail pages. The observed run used Copilot CLI 1.0.100 on 2026-10-22.`] },
-    'core-question': { seconds: 80, sources: [SRC.issue4, SRC.issue5, SRC.pr],
+        '"Today a team of five local agents fixes one real bug. We learn it from a recorded run, then we run it live."',
+        'Point to the orchestrator in the middle and the four workers around it. The person sits outside the team: they approve the task at the start and decide on the commit at the end.',
+        '→ Start with the question this answers.'
+      ], know: ['The team lives in FanHub at .github/agents/. The bug is FanHub #202, live on main.'] },
+    'core-question': { seconds: 60, sources: [SRC.team, SRC.rules],
       notes: [
-        `"How do I hand an issue to local agents and know when the work is ready for my review?"`,
-        `Name the actors: the developer defines the task and contract; Copilot's orchestrator sequences; role agents plan, edit, test, or review; the pull-request reviewer decides intent and merge.`,
-        `The displayed outcomes are from one FanHub run: two issues reached an integrated draft, the final suite had 96 passing tests, and the four sessions used about 380 AI credits.`,
-        `"The credit count is a real observation, not an efficiency comparison. Nobody measured developer time or a manual baseline."`,
-        `→ The contract makes each part of the run inspectable.`
-      ],
-      know: [`The reviewer owns the merge decision. The team lead owns the budget and escalation policy inherited by future runs.`] },
-    contents: { seconds: 25, sources: [SRC.pr],
-      notes: [`"We will write the contract, build the crew, let evidence steer the stop, and finish with the human handoff."`, `Part 3 is the evidence climax; part 4 shows the review boundary and how to transfer the method.`],
-      know: [`The four opener slide numbers are 5, 9, 14, and 21, counted from one.`] },
-    'run-ledger': { seconds: 140, sources: [SRC.issue4, SRC.issue5, SRC.pr, SRC.orchestrator],
+        '"How do I build local agents that can work together on a coding task?"',
+        'Read the four rows. Files make each agent callable. Hand-offs keep one worker at a time, always returning to the orchestrator. A shared .team/ folder with one writer per file makes the run traceable. Tests plus a review give a person something real to decide on.',
+        '"We answer it with one bug, start to finish, twice: once from the record, once live."',
+        '→ Here is the route through the talk.'
+      ], know: ['Files and state are Part 1, hand-offs are Part 2, evidence is Part 3, and Part 4 runs it all live.'] },
+    contents: { seconds: 30, sources: [SRC.team],
+      notes: ['"Meet the team top down, learn a run from the rehearsal record, learn to trust that record, then watch it live."', 'The first three parts are explainers. Part 4 is ten minutes of the real thing.', '→ Meet the team.'],
+      know: ['Agenda destinations are slides 4, 12, 21, and 27, counted from one.'] },
+    'part-1': { seconds: 20, sources: [SRC.team],
       notes: [
-        `"Four CLI sessions took two FanHub issues from plans on the issues to an integrated draft pull request."`,
-        `Walk down the ledger. The plan session posted two plans and identified three shared seams. #4 used worktree char-detail and produced commit bee5680 with 56 of 56 tests. #5 used episode-detail; its first suite run had eight failures and its final run had 47 of 47.`,
-        `Integration resolved the seams, found a contrast defect in the merged whole, and opened draft #217 after 96 of 96 tests passed.`,
-        `"This was about 380 AI credits in one observed run. Developer time and a manual baseline were not measured."`,
-        `The orchestrator did not edit code. Issue comments, local commits, hook logs, transcripts, and the pull request body made each stage inspectable.`,
-        `→ What did the developer write down before running these sessions?`
-      ],
-      know: [`Per-session observed credits: plan 47.15; implement #4 104.12; implement #5 102.55; integrate 126.13. Their sum is 379.95, presented as about 380.`, `The #4 reviewer accepted after one round of requested changes; the #5 reviewer accepted after revisions.`, `The ledger records Copilot CLI 1.0.100 on 2026-10-22.`, `This is a single case study. No comparative productivity or labor-saving claim is made.`] },
-    'part-1': { seconds: 20, sources: [SRC.issue4, SRC.issue5],
-      notes: [`"The developer starts by writing four answers that turn a broad hand-off into checks."`, `Point to the contract, the risk-first plan, and the seam test.`, `→ First, make the contract explicit.`],
-      know: [`The four teaching slides in this part move from contract fields, to risk-first plans, to the parallel-work split test.`] },
-    'four-field-contract': { seconds: 90, sources: [SRC.orchestrator, SRC.hookCode, SRC.pr],
+        '"First the whole team, top down: the bug, the orchestrator, the workers, and the folder they share."',
+        '→ Start with the bug.'
+      ], know: ['All five agent files ship in FanHub at .github/agents/. Copilot CLI discovers them when the session starts in the FanHub root.'] },
+    'the-bug': { seconds: 70, sources: [SRC.issue202, SRC.bug],
       notes: [
-        `"Four answers make the run inspectable: who acts, what counts as done, when the run stops, and who may merge."`,
-        `Read across each row. Planner is read-only; implementer edits source; test-writer edits tests; test-reviewer returns a verdict. The frontend Jest suite and reviewer acceptance define done. CLI limits and the hook counter bound the run. A person reviewing the draft owns merge authority.`,
-        `Point to the enforcement column: agent tool lists and instructions, Stop hook and reviewer, CLI flags, and a deny-push rule with draft PR handoff.`,
-        `→ The plan gives those roles a shared starting artifact.`
-      ],
-      know: [`The orchestrator's prompt repeats the contract in its first message and final summary.`, `The implementer's denied push applies during implementation; the integration phase opens the draft pull request. The person retains merge, ready-for-review, and issue-closure authority.`] },
-    'plan-with-risks': { seconds: 100, sources: [SRC.issue4, SRC.issue5],
+        '"A FanHub user picked Season 2 and still saw the old list. Wait a bit, pick again, and it works."',
+        'Read the quote, then the highlighted line. loadEpisodes hands back one shared cache for every filter for thirty seconds. Walk the timeline: the page loads All Seasons and fills the cache. Season 2 three seconds later hits the cache and gets All Seasons again.',
+        '"It is a real bug in a real app, live on FanHub main right now. There is a quick fix, and there is a correct fix."',
+        '→ Who works on it?'
+      ], know: [
+        'The issue text is copied from FanHub #202. The fix was merged once in PR #210 and reverted so the talk can run it live.',
+        'The code is from node/frontend/src/pages/Episodes.js on FanHub main; a source comment line is omitted on the slide.'
+      ] },
+    'crew-map': { seconds: 70, sources: [SRC.team, SRC.rules],
       notes: [
-        `"A read-only planner names the goal, files, tests, risks, and done-when before an implementer edits."`,
-        `Point to the #5 risk: Episodes.test.js rendered without a router, so adding navigation could break it. The #4 plan noted Characters.jsx is a class component, so navigation needed Link wrappers rather than hooks.`,
-        `The orchestrator posted both plans as issue comments. The risk later gives us an observable prediction to check against the suite.`,
-        `→ The plans also help the orchestrator decide whether the issues can run in parallel.`
-      ],
-      know: [`The fixed plan shape includes goal, files to change, files to create, risks before code, tests to add, and a done-when condition.`, `The planner reads the issue and the touched code and writes no files. The issues are the review location for the plans.`] },
-    'split-test': { seconds: 90, sources: [SRC.issue4, SRC.issue5, SRC.parallel],
+        '"The orchestrator calls one worker. The worker reads .team/, writes one file, and replies. The orchestrator reads that file and chooses the next call."',
+        'Trace the purple call down to planner and its cyan reply back up. Every cyan path ends at the orchestrator.',
+        '"Workers never call each other. Only the orchestrator has the agent tool."',
+        'Point to the person on both ends: the issue and approval come in on the left; the diff and commit decision go out on the right.',
+        '→ What does one of these files look like?'
+      ], know: ['Calls are serial: one worker at a time. Only the orchestrator lists the agent and execute tools.'] },
+    'agent-file-anatomy': { seconds: 70, sources: [SRC.team, SRC.cliAgents, SRC.agents],
       notes: [
-        `"Split two issues when their file sets are independent apart from seams with named owners."`,
-        `FanHub's plans had separate page work and could each pass the suite alone. Both touched App.js routes, App.test.js route tests, and node/README.md documentation; integration owned those seams.`,
-        `The planner kept the pages self-contained: related entities remained noninteractive. That removed a dependency between the two workstreams.`,
-        `"When both plans edit the same component, or one needs the other's output, keep them together."`,
-        `→ Each stream now needs a bounded agent crew.`
-      ],
-      know: [`The split is worthwhile only when independent validation and integration cost support the parallel work.`, `App.js merged automatically; App.test.js had the expected add/add conflict; the README kept both feature sections.`] },
-    'part-2': { seconds: 20, sources: [SRC.orchestrator],
-      notes: [`"The orchestrator holds sequence while role agents own edits, tests, and review."`, `This section stays compact: each mechanism enforces a contract field.`, `→ Start at the orchestrator's own agent file.`],
-      know: [`The crew has one orchestrator plus four role agents: planner, implementer, test-writer, and test-reviewer.`] },
-    'orchestrator-file': { seconds: 100, sources: [SRC.orchestrator, SRC.agents, SRC.hooks],
+        '"An agent file is settings plus a job description."',
+        'Define the two formats. YAML frontmatter is the block between the --- lines: name, description, tools. Markdown is everything below: what to read, what to write, how to reply.',
+        'Read the planner body. It reads task.md and the frontend source, edits only plan.md, writes a cause, one task per acceptance criterion, and risks, then replies with one line.',
+        '"The one-line reply matters. The real result is the file, where every later worker can read it."',
+        '→ Now the agent that calls the others.'
+      ], know: [
+        'Long lines are shortened with an ellipsis on the slide; the full text is in FanHub planner.agent.md.',
+        'strict-tools-list limits the agent to the listed tools. include-custom-instructions loads repository instructions such as AGENTS.md.'
+      ] },
+    'whole-orchestrator': { seconds: 100, sources: [SRC.orchestrator, SRC.agents],
       notes: [
-        `"The orchestrator can coordinate every step without holding an edit tool."`,
-        `Read the configuration: agents is an allow-list of planner, implementer, test-writer, and test-reviewer. The tools list has agent, read, search, execute, and todo, but no edit. An agent-scoped Stop hook invokes verify-before-stop.mjs.`,
-        `Its body defines plan, implement, and integrate modes with numbered steps and at most two rounds before it reports.`,
-        `The orchestrator still issues commands and delegates; it does not write source itself.`,
-        `→ Each worker receives only the authority needed for its role.`
-      ],
-      know: [`Planner and implementer set user-invocable false, so they serve the orchestrator rather than appearing in the agent picker.`, `Subagents start without conversation history; the orchestrator must pass the plan, failure output, or review findings in each prompt.`] },
-    'role-boundaries': { seconds: 90, sources: [SRC.orchestrator, SRC.issue5],
+        '"The orchestrator file has four parts: what it can use, who it calls, in what order, and within what limits."',
+        'Settings: five tools. agent calls workers. execute runs gh, git, and the checks. edit writes its own files: the task.md draft, status.md, and evidence.',
+        'Workers: a plain list, one line per worker, each naming the file that worker writes. The body opens with "You coordinate. Workers do the work."',
+        'Steps: seven numbered steps, and step 1 starts by switching to a branch named for the issue. We read them on the next slide.',
+        '"Rules: log every reply in status.md, resume from that log, and never touch source, tests, or a worker file."',
+        '→ Read the seven steps.'
+      ], know: [
+        'The worker list is guidance. Copilot CLI ignores an agents: frontmatter key, and the agent tool can call any visible agent. The list works because the steps name each worker.',
+        'One more rule on the file: round N is the work that leads to check-N, and the orchestrator tells each worker the round number.'
+      ] },
+    'orchestrator-steps': { seconds: 90, sources: [SRC.orchestrator],
       notes: [
-        `"Four narrow roles made the #5 failure routable instead of ambiguous."`,
-        `The planner reads and searches. The implementer changes source, but not tests. The test-writer edits test files. The test-reviewer reads the whole result and returns request-changes or accept with findings.`,
-        `In #5, the implementer reported eight failures and left the test repair to test-writer. The orchestrator passed the failure to the agent that owned test changes.`,
-        `"A subagent starts fresh, so the orchestrator hands it exactly the context it needs."`,
-        `→ Separate worktrees isolate the two implementation streams.`
-      ],
-      know: [`The test-writer agent was reused from the Custom Agents talk. The reviewer was read-only.`, `Role boundaries are enforced by the tools list and agent instructions; a reviewer still judges product intent, not just test status.`] },
-    'worktree-command': { seconds: 100, sources: [SRC.sessions, SRC.autopilot, SRC.cli],
+        '"Every action in the rest of the talk traces to one of these lines."',
+        'Read down the table. Step 1 gets the issue number, switches to branch issue-N, reads the issue with gh, drafts task.md, and stops for the person. Steps 2 to 4 call one worker each and read the file it wrote. Step 5 runs the Check commands and routes a failure. Step 6 calls the reviewer with the diff pasted in. Step 7 stops.',
+        '"Branch, wait, route, and resume are sentences the orchestrator follows. Four tools do the work: edit, agent, execute, read."',
+        'Point to the last row: after every reply, a row goes into status.md. That rule produces the trail we read at the end of Part 2.',
+        '→ Where do those files live?'
+      ], know: ['Step 5 routing goes to the owner of the wrong file: a failing test that matches task.md, or a lint error in source, goes to implementer; any other failure in a test file goes to test-writer. Step 7 also stops after check-4 without an accept, which bounds the loop.'] },
+    'team-folder': { seconds: 70, sources: [SRC.rules, SRC.record],
       notes: [
-        `"A worktree gives each issue its own checkout and branch, so parallel sessions do not edit each other's files."`,
-        `Read the #4 command flags: autopilot continuation cap 15, AI-credit cap 150, allow tools for the compound shell workflow, and explicitly deny git push while implementing.`,
-        `The session shares a transcript and writes logs to a dedicated directory. The #5 session used a separate episode-detail worktree in parallel.`,
-        `Deny rules take precedence over allow rules. The feature commits stayed local until integration.`,
-        `→ The first setup attempt exposed three practical gotchas.`
-      ],
-      know: [`Copilot CLI --worktree creates a sibling worktree on a new branch. A fresh worktree has no node_modules; FanHub's sessionStart hook links dependencies from the main checkout.`, `Observed #4 result: commit bee5680, 56/56 tests, reviewer accepted after one revision round, 104.12 credits.`, `Observed #5 result: commit 24b6a6c, final 47/47 tests, reviewer accepted after revisions, 102.55 credits.`] },
-    'setup-gotchas': { seconds: 90, sources: [SRC.cli, SRC.hooks, SRC.orchestrator],
+        '"The .team/ folder is the team memory. Any agent reads any file. Each file has one writer."',
+        'Read each row left to right: file, writer, what it holds, who reads it. task.md is the only file with two hands on it: the orchestrator drafts it and the person approves it.',
+        '"Rounds are appended, never rewritten. That is why we can trace the run afterward."',
+        '→ Meet the four workers that write these files.'
+      ], know: ['The ownership table comes from FanHub AGENTS.md, which every agent loads through include-custom-instructions. .team/ is gitignored, so it stays put when step 1 switches branches.'] },
+    'four-workers': { seconds: 60, sources: [SRC.team],
       notes: [
-        `"Three small setup details became quick fixes once the run logged what happened."`,
-        `First, shell(gh:*) did not cover a compound PowerShell command that created a folder, wrote a file, and posted an issue comment. Autopilot made no progress and stopped at 38.67 of 40 credits; the working setup allowed tools and explicitly denied git push.`,
-        `Second, fresh worktrees started without node_modules. The sessionStart hook linked the main checkout's frontend dependencies, and both worktrees ran Jest on arrival.`,
-        `Third, the agent-scoped Stop hook supplied snake_case keys such as session_id and stop_reason. The first script expected sessionId; logging raw keys exposed the mismatch.`,
-        `→ Now follow the predicted risk through the evidence.`
-      ],
-      know: [`The complete logged hook keys included hook_event_name, session_id, timestamp, cwd, transcript_path, stop_reason, and stop_hook_active.`, `The plan session spent 47.15 credits, while the separate failed permission attempt stopped at 38.67 of its 40-credit limit. These are distinct runs.`] },
-    'part-3': { seconds: 20, sources: [SRC.hookCode, SRC.issue5],
-      notes: [`"The plan's predicted risk becomes the test failure that steers the run."`, `Distinguish the real FanHub run from the deliberately staged backstop example.`, `→ The predicted router issue is the proof point.`],
-      know: [`The real 11-allow/0-block record and the staged block-then-allow demonstration are separate evidence sets.`] },
-    'predicted-failure': { seconds: 120, sources: [SRC.issue5],
+        '"Four workers, one job and one file each."',
+        'Read across the cards. Planner maps each acceptance criterion to a change and a test. Implementer changes source, never tests. Test-writer writes tests named A1, A2, so a failure points back to task.md. Test-reviewer checks that every criterion has a test that would catch it breaking.',
+        '"None of them runs commands. None of them calls another worker. The orchestrator runs every check."',
+        '→ Watch them run.'
+      ], know: ['All four workers have read, search, and edit only. Where each may write is an instruction in its file, reviewed in the diff, not a filesystem sandbox.'] },
+    'part-2': { seconds: 20, sources: [SRC.record, SRC.checks],
       notes: [
-        `"The planner predicted missing router context; the #5 test run exposed exactly that failure."`,
-        `The implementer added navigation with useNavigate(). The existing Episodes test rendered the page outside a Router, and the suite returned eight failures out of eight with the context error.`,
-        `The implementer reported the failure rather than editing tests. The orchestrator routed the output to test-writer, who added router context to the render helper and added EpisodeDetail and App route coverage.`,
-        `The test reviewer requested revisions and then accepted. The episode-detail commit finished at 47 of 47 tests.`,
-        `"The useful signal is the chain: predicted risk, observed failure, correct role, rerun, reviewer verdict."`,
-        `→ A Stop hook can back up this behavior when the orchestrator tries to finish too early.`
-      ],
-      know: [`The eight failing tests were the existing Episodes tests. After the test-writer changes and added coverage, the worktree had 47 passing tests.`, `The test runner's failure is separate from hook decision status: these were application test failures, not hook blocks.`] },
-    'stop-hook': { seconds: 120, sources: [SRC.hookCode, SRC.hooks],
+        '"Now a real run of this team on this bug: every call out, every file written, every check saved."',
+        'Say it once here: everything in Part 2 is copied from one rehearsal run. The .team/ files and check output are verbatim; the call and reply text in the boxes is condensed.',
+        '→ It starts with a person.'
+      ], know: ['The rehearsal started from FanHub 2a05c25 with the agent files from aeb78a9. The current files add the issue branch, Check commands that include ESLint, and the diff for the reviewer; Part 2 points out each change where it matters.'] },
+    'kick-off': { seconds: 40, sources: [SRC.orchestrator, SRC.cli],
       notes: [
-        `"When the orchestrator tries to stop, the hook runs the frontend Jest suite."`,
-        `Point through the flow: spawn the test command with CI true; status zero returns allow. A failing suite increments a per-session counter and returns block with failure lines and a routing instruction. The CLI supplies that reason to Copilot as its next prompt.`,
-        `After three blocked stops, this script writes an escalation note and allows the stop so a person can take over. Its JSONL decision record is gitignored local evidence.`,
-        `Agent-scoped Stop hooks also stop forcing after eight consecutive blocks; the FanHub script's own three-block limit is earlier.`,
-        `→ In the real run, the hook mostly confirmed work the orchestrator already did.`
-      ],
-      know: [`FanHub ran CI=true npx react-scripts test --watchAll=false in the frontend directory. The shell invocation collected failure output for the reason field.`, `The three-strike escalation is the local script's policy. Eight consecutive blocks is the documented agent-scoped Stop-hook behavior described in the talk's source notes; these are not the same counter.`] },
-    'real-gate-record': { seconds: 80, sources: [SRC.hookCode, SRC.issue4, SRC.issue5, SRC.pr],
+        '"A person starts the run with one command."',
+        'Read the flags. --agent orchestrator picks the entry agent. -i gives it the first prompt. --max-ai-credits 50 is the spending budget for the session.',
+        '"Step 1 makes a branch for the issue, reads it, drafts a task, and stops."',
+        '→ The person reads the draft.'
+      ], know: ['In the rehearsal the person had made the branch by hand; the current step 1 creates issue-202 itself, or reuses it if it exists. Keep permissions interactive and approve each command.'] },
+    'approve-task': { seconds: 70, sources: [SRC.record, SRC.issue202],
       notes: [
-        `"The real hook record has eleven allows and no blocks."`,
-        `Keep the hook result distinct from what the tests found. The hook allowed after the suite passed; the orchestrator's own steps had already run the suite, routed the #5 failure, and asked for the merged contrast correction.`,
-        `The hook is a backstop for a session that skips the suite, not a replacement for the orchestrator's verification steps.`,
-        `→ A staged run lets us see that backstop block.`
-      ],
-      know: [`Across plan, implementation #4, implementation #5, and integration, the hook logged 11 allow and 0 block decisions. The table separately records #5's eight failures and the integration reviewer finding.`, `The hook itself did not catch those failures because the orchestrator addressed them before the attempted stops.`] },
-    'staged-backstop': { seconds: 100, sources: [SRC.hookCode],
+        '"The person approves what done means."',
+        'Read the draft: the issue, a goal, three acceptance criteria, the check command, and Status: draft. A1 is the bug. A2 says an older request can never overwrite a newer selection. A3 says All Seasons comes back.',
+        '"A2 is not in the issue. The orchestrator read the code and saw that a fix for A1 alone could still lose a race."',
+        '"Two questions: do A1 to A3 describe fixed, and is that check the proof you trust? Then change one line."',
+        '→ With the task approved, step 2 calls planner.'
+      ], know: ['A1 and A2 are shortened with an ellipsis on the slide; the full task.md is in the rehearsal record. The current AGENTS.md also puts ESLint on changed files under Check.'] },
+    'step-plan': { seconds: 60, sources: [SRC.record, SRC.team],
       notes: [
-        `"This next record is staged on purpose; it demonstrates the path absent from the real run log."`,
-        `A planted commit changed the episode filter label from Season to Series. The prompt told the orchestrator to skip tests and finish. The hook recorded block with seven failed, one passed, eight total, and returned the assertions.`,
-        `The orchestrator routed the assertions to test-writer. The test-writer updated the expectations, and the next hook record allowed after eight of eight passed.`,
-        `The staged session committed locally as 33163d2 and used 26.89 credits.`,
-        `→ A green gate still cannot decide whether Series was the intended change.`
-      ],
-      know: [`The first subagent call in this staged session failed with a tool schema error and the session ended. A resumed session with "continue" picked up the repair.`, `The staged JSONL fields included branch, decision, blocksSoFar, tests, and seconds.`, `The two records are staged evidence, not part of the real 11-allow/0-block run.`] },
-    'agreement-and-intent': { seconds: 90, sources: [SRC.hookCode, SRC.hooks],
+        '"The orchestrator calls planner. Planner writes plan.md and replies with one line."',
+        'Read the cause: one line number, one unkeyed cache. Then each row: A1 removes the cache, A2 adds a request counter so only the latest request may update the page, A3 handles All Seasons explicitly, which also fixes a crash the issue never mentioned.',
+        '"The plan names its own cost: no cache means more requests. Keep that in mind when we read the diff."',
+        '→ Step 3 calls implementer with this plan.'
+      ], know: ['The plan rows are condensed on the slide; plan.md has the full file, change, and test description for each A#. The All Seasons crash: with a season selected, clicking All Seasons reached season.id on null.'] },
+    'step-implement': { seconds: 60, sources: [SRC.record, SRC.diff],
       notes: [
-        `"The test proves that code and tests agree; it cannot tell us whether the behavior matches product intent."`,
-        `In the staged run, the agent treated the Series rename as wanted and changed expectations. Eight passing tests verified agreement with that change.`,
-        `The reviewer decides whether the rename was requested and whether the change is acceptable. The reviewer owns the merge decision.`,
-        `Keep the observables separate: the test-runner result says eight of eight; the hook decision says allow; a person judges the meaning.`,
-        `→ Budgets decide when the session hands control to that person.`
-      ],
-      know: [`The gate ran in about five seconds in this case. A test suite can confirm its encoded assertions without proving the assertions represent the requested behavior.`, `The hook log recorded decision, strike count, and a Tests line per session.`] },
-    budgets: { seconds: 110, sources: [SRC.autopilot, SRC.cli, SRC.issue4, SRC.pr],
+        '"Implementer edits Episodes.js and logs the change in changes.md."',
+        'Read the diff top down: the cache block goes, a request id is taken at the start of every load, a stale response returns early, and the All Seasons click handles null before season.id.',
+        '"It removed the cache instead of keying it. That is a real design choice, and changes.md says so in plain words."',
+        '→ Step 4 writes the tests.'
+      ], know: ['The diff is condensed: the real change is 17 insertions and 22 deletions, and the stale check also guards the catch and finally blocks. The full diff is in the rehearsal record.'] },
+    'step-tests': { seconds: 50, sources: [SRC.record, SRC.checks],
       notes: [
-        `"A session budget gives the person a defined moment to review the reason and decide whether to resume."`,
-        `The integration run stopped at 113.4 of its 120-credit cap while trying to commit a gitignored integration record. The person read the summary, clarified that the integration record belongs in the pull-request body, and resumed with a 140-credit cap.`,
-        `The implementation sessions set a 15-turn autopilot cap; neither used it. The plan session stopped for no progress when its publishing command exceeded the shell permission. The hook counter separately escalates after three blocked stops.`,
-        `The team lead owns the budget and escalation policy; Copilot does not enlarge the cap by itself.`,
-        `→ Integration then tests the whole produced by both streams.`
-      ],
-      know: [`--max-ai-credits applies to a whole session and its subagents; the CLI warns at 50, 75, and 90 percent. The documented minimum is 30.`, `Autopilot's no-progress stop followed repeated turns without successful tool calls.`, `After a human clarified the pull-request body as the integration record, the run resumed with --resume and a 140-credit limit.`] },
-    'part-4': { seconds: 20, sources: [SRC.pr],
-      notes: [`"Two green branches can still produce a defect when their shared styles and routes meet."`, `Integration reviews the whole, records the evidence, and hands the draft to a person.`, `→ The merged reviewer found the key post-merge issue.`],
-      know: [`Integration reviews a combined diff after each workstream has passed independently; its evidence and open risks go to the human reviewer.`] },
-    'reviewer-catch': { seconds: 120, sources: [SRC.pr],
+        '"Test-writer adds nine tests, named after the criteria. The orchestrator runs the check and saves check-1."',
+        'Read tests.md: two for A1, four for A2, three for A3. Read check-1: nine passed out of nine.',
+        '"Ask the room: is the bug proven fixed?"',
+        '→ The orchestrator was not done checking.'
+      ], know: ['check-1.txt is real react-scripts test output, including one act() deprecation warning. The A1 tests fix the clock and click Season 2 with no time passing, which is what made the original bug reproducible.'] },
+    'route-lint': { seconds: 70, sources: [SRC.checks, SRC.orchestrator],
       notes: [
-        `"The reviewer found unreadable headings only after the two green workstreams merged."`,
-        `Each branch passed alone: 56 of 56 and 47 of 47. On the integrated diff against main, global white heading rules met the new white detail panels.`,
-        `The orchestrator routed the source correction to implementer, which added local heading colors in CharacterDetail.jsx. It routed a regression check to test-writer.`,
-        `The regression used the real stylesheet and checked a 4.5-to-1 contrast threshold for all five headings. The shared suite moved from 95 to 96 tests, all passing.`,
-        `"A merged-whole review found evidence neither isolated workstream could produce."`,
-        `→ The integration record makes that correction and the remaining risks visible.`
-      ],
-      know: [`The defect was white headings on new white panels due to global styles. The contrast regression raised the suite from 95 to 96.`, `Integration commit 036a070 was pushed on the feature branch before draft PR #217 opened.`] },
-    'integration-record': { seconds: 100, sources: [SRC.pr, SRC.issue4, SRC.issue5],
+        '"The tests passed. ESLint on the changed files did not: four errors, all in the test file."',
+        'Read lint-1. globalThis is not defined, four times, in Episodes.test.js.',
+        '"Who fixes it? Step 5 answers: send it to the owner of the wrong file. A lint error in a test file goes to test-writer."',
+        'Follow the row: test-writer switches to window and imports act from react in round 3. Check-2 passes nine of nine, lint-2 is clean, and the act warning is gone too.',
+        '→ Now the reviewer.'
+      ], know: ['In the rehearsal the orchestrator added the ESLint step on its own initiative. The current AGENTS.md lists ESLint under Check, and step 5 runs only the Check commands, so this routing is now planned rather than improvised.'] },
+    'review-accept': { seconds: 50, sources: [SRC.record, SRC.orchestrator],
       notes: [
-        `"The integration record tells the reviewer what merged, what passed, what changed during review, and what remains uncertain."`,
-        `Name the seams: App.js took both routes; App.test.js resolved the expected add/add conflict and retained six character and five episode route tests; the README kept both feature sections.`,
-        `The record counts 56 and 47 before integration, 95 after merging, and 96 after the contrast regression. Shared tests count once.`,
-        `It records no conflicts outside the named seams, the contrast correction, pre-existing strict-CI lint warnings, and unverified live-backend and deep-link refresh behavior.`,
-        `→ The record became the body of the draft the reviewer received.`
-      ],
-      know: [`The integration process used --no-ff merges, resolved conflicts only in named seams, ran the full suite, and asked the reviewer to inspect the whole diff against main.`, `The PR body contained Fixes #4 and Fixes #5. The open risks remained explicitly unverified rather than claimed as solved.`] },
-    'reviewer-handoff': { seconds: 100, sources: [SRC.pr, SRC.orchestrator],
+        '"The reviewer accepts, and explains why each test would catch a regression."',
+        'Read the left panel: put the cache back and A1 fails; remove a guard and A2 fails; A3 catches the null crash.',
+        '"Then read the right panel. The reviewer wrote down what it could not see: the diff. That one line in the record told us what to fix in the orchestrator."',
+        '→ The orchestrator reports. What does the person read?'
+      ], know: ['Agent acceptance is evidence for the person, not merge authority. Since the rehearsal, step 6 pastes git status and git diff into the reviewer call, and the reviewer reads the diff for changed behavior no test exercises.'] },
+    'status-trail': { seconds: 50, sources: [SRC.record],
       notes: [
-        `"The reviewer gets plans, test counts, corrections, and open risks in one draft pull request."`,
-        `The orchestrator pushed one feature branch and opened draft #217. It stopped before marking the PR ready, merging, or closing issues.`,
-        `The reviewer owns the intent behind each change and the merge decision. The team lead owns the budget and escalation policy for the next run.`,
-        `Repository protections apply to this draft like any other pull request.`,
-        `→ The same loop can support recurring local passes, with a different state boundary.`
-      ],
-      know: [`Evidence sources include issue plan comments, local commits, the hook log, session transcripts, suite counts, and the integration record in the PR body.`, `Human approval is not delegated by the orchestrator; the local loop prepares a reviewable draft.`] },
-    'scheduled-loop': { seconds: 95, sources: [SRC.cli, SRC.starter],
+        '"status.md tells the whole story in ten rows."',
+        'Read the highlighted rows: the person approves, check-1 passes with four lint errors and goes to test-writer, the reviewer accepts, and the last row hands the decision to the person.',
+        '"Wrote points at the proof. Next says what happens. Anyone can read this without the chat."',
+        '→ How much of that record can we trust?'
+      ], know: ['The rehearsal numbered the kick-off as its own round, so the rounds run one ahead of the checks. The current rule says round N is the work that leads to check-N. The slide condenses status.md into one table; the file has three.'] },
+    'part-3': { seconds: 20, sources: [SRC.record, SRC.checks],
+      notes: ['"A record is useful when it answers real questions, when we know its limits, and when it survives a pause."', '→ Ask it questions.'],
+      know: ['Every check and lint file in the rehearsal record is real tool output.'] },
+    'read-the-trail': { seconds: 60, sources: [SRC.record],
       notes: [
-        `"A local recurring pass can handle work such as a nightly dependency check while the CLI session stays open."`,
-        `Copilot CLI /every 1h schedules repeated passes, /after schedules one run, and bare /every opens the schedule manager. The command is experimental and session-scoped.`,
-        `Each pass starts with fresh context, so store status, attempt count, and history in a state file the next pass reads first. If the state says a prior pass is still running beyond its limit, escalate to a person and leave that worktree alone.`,
-        `The credit cap applies per pass. Whether /every accepts /goal with --max-ai-credits is untested; watch one capped pass by hand before leaving a schedule active.`,
-        `The loop-starter example provides agent files, state, and a stale-run rule. It is an example, not a measured FanHub production run.`,
-        `→ Trigger and human presence help decide whether local scheduling fits.`
-      ],
-      know: [`The loop-starter example is for a security-advisory response and uses placeholder package names, advisory IDs, PR numbers, and timings.`, `A recurring session does not persist after the CLI session closes. State belongs in the worktree, not only in chat history.`, `The compatibility of /every with a capped /goal remains untested and is shown as a boundary.`] },
-    'fit-boundary': { seconds: 90, sources: [SRC.cli, SRC.issue4],
+        '"Every question a person asks has a file that answers it."',
+        'Read each row: the failure is in lint-1, the source change and its risk in changes.md, the test reasoning in review.md, and the next step in status.md.',
+        '"Then rerun the Check yourself. The files say what was true; the rerun says what is true now."',
+        '→ Three kinds of proof, three owners.'
+      ], know: ['A summary in the chat is the weakest evidence. Each row points to a file with one writer and appended rounds.'] },
+    'three-proofs': { seconds: 50, sources: [SRC.record, SRC.team],
       notes: [
-        `"Keep local orchestration for developer-led work where local context and a fast meaningful check matter."`,
-        `When a label, schedule, or failed check starts work without a developer present, GitHub Agentic Workflows is the relevant pattern. When a developer wants to assign work and walk away, Copilot on GitHub runs in a hosted Actions environment and opens a pull request.`,
-        `Small single-file changes may cost more in planning and review than they save; FanHub's plan session alone used 47 credits. Slow verification also changes the economics of each blocked stop; this suite ran in about five seconds.`,
-        `→ Transfer the contract to a real issue and decide whether the local boundary still fits.`
-      ],
-      know: [`These are fit boundaries, not claims that one surface is universally better.`, `The event-driven work and cloud-agent destinations are described in the related talks: GitHub Agentic Workflows and Copilot on GitHub.`] },
-    'own-work-contract': { seconds: 95, sources: [SRC.orchestrator, SRC.hookCode],
+        '"Checks prove behavior. The reviewer proves coverage. The person holds authority."',
+        'Read each row and its tag. Check output shows tests and lint pass now. review.md shows each criterion has a test that can fail. The person reads status.md and the diff, reruns the check, and decides whether to commit.',
+        '"Each answers a different question, so we keep all three."',
+        '→ Which lines does the CLI actually enforce?'
+      ], know: ['The agents never commit, push, or merge. AGENTS.md and the orchestrator rules say so, and permission prompts keep the person in the loop for every edit and command.'] },
+    limits: { seconds: 60, sources: [SRC.agents, SRC.cli, SRC.cliAgents],
       notes: [
-        `"Pick one issue you would hand to an agent and write four answers before you start."`,
-        `Name who plans, edits source, edits tests, and judges. Choose the fastest meaningful command that defines done. Set the credit or turn budget and the escalation point. Name the person who reads the draft and decides what merges.`,
-        `Then inspect one run's artifacts: plan, diff, test output, hook record, and reviewer findings. If the evidence fails, route the failure to its owner or pause for a person.`,
-        `"Which command would your Stop hook run, how many credits is this issue worth, and who reads the draft before merge?"`,
-        `→ The before-and-after makes the practical shift visible.`
-      ],
-      know: [`The contract adapts to a repository: commands, role names, budget, reviewer, and escalation must match its actual workflow.`, `Related talks go deeper on Custom Agents, Copilot CLI, Copilot Hooks, GitHub Agentic Workflows, and Copilot on GitHub.`] },
-    'before-after': { seconds: 60, sources: [SRC.issue5, SRC.hookCode, SRC.pr],
+        '"Some lines are enforced. Some are instructions. We review the diff either way."',
+        'Read the rows. The tools list with strict-tools-list is enforced. Permission prompts are a person deciding. The worker list and "never a test file" are instructions.',
+        '"Instructions guide the team; the diff and the rerun show whether they held."',
+        '→ Instructions also decide what gets tested. Two runs show how much.'
+      ], know: ['Copilot CLI ignores an agents: frontmatter key, so the agent tool can call any visible agent. execute can modify files; never treat a Markdown rule as a sandbox. Deny rules take precedence over allows.'] },
+    'cheaper-run': { seconds: 70, sources: [SRC.fusion, SRC.record, SRC.edges],
       notes: [
-        `"The shift is what the developer writes before the run and what the reviewer receives after it."`,
-        `Read each pair: sequence and role boundaries replace one broad assignment; a test command and reviewer define done; explicit caps bound spend; the draft arrives with evidence and risks.`,
-        `The three metrics are FanHub evidence: eight failures routed to 47 passing tests, 11 real allows and zero blocks, and 95 to 96 tests after a merged-review regression. The staged block demonstration is separate.`,
-        `→ The audience can start with one issue today.`
-      ],
-      know: [`The center metric is hook status for real runs only; the staged run is described separately and must not be added to the 11/0 count.`] },
-    today: { seconds: 70, sources: [SRC.orchestrator, SRC.hookCode, SRC.pr],
+        '"Same team, same issue, two models. Both passed every check. Only one fixed All Seasons."',
+        'Read the first two rows. Sol drafted A3 after reading the code. Luna drafted A1 and A2 from the issue text. The test-writer wrote one test per criterion, and the reviewer checked each criterion, so both runs earned an accept.',
+        '"Every agent followed its file. The model decided what got tested. Luna’s plan.md even named the all-seasons risk, and nothing turned it into a test."',
+        'Read the last two rows: four edits now on FanHub main. The person still decides scope; the files make sure the question reaches them.',
+        '→ What if the run stops halfway?'
+      ], know: [
+        'The Luna run cost 1.79 credits, read from the CLI by the person who ran it; its .team/ record is in the fusion evidence folder. The crash: handleSeasonClick(null) compares selectedSeason with undefined, then reads season.id on null, on every All Seasons click.',
+        'Part 4 runs these current files. The live run can stop a second time after the plan, when planner lists Found defects.'
+      ] },
+    'resume-from-status': { seconds: 70, sources: [SRC.orchestrator, SRC.cli],
       notes: [
-        `"Today, write the four contract answers for one real issue and choose its done command, budget, and reviewer."`,
-        `This week, define an orchestrator allow-list, a read-only risk-first planner, and a Stop hook that logs decisions and escalates after a bounded number of blocks.`,
-        `This month, run separate worktrees with session budgets, inspect the transcripts and hook log, then put the integration record in the review draft. Agree the next-run budget and escalation policy with the team lead.`,
-        `The reviewer still decides intent and merge.`,
-        `→ The links on the next slide open the source documentation and FanHub artifacts.`
+        '"A stopped run resumes from status.md."',
+        'Suppose the session had ended right after check-1. The last row still says Next: test-writer.',
+        'Read the resume command and the rule: read status.md, ask the person to rerun the last check, then continue from Next.',
+        '"The person reruns and sees the same four lint errors. The file and the code agree, so the next call is safe."',
+        'If the rerun disagrees, the person investigates before any call.',
+        '→ Enough explaining. Let us run it.'
+      ], know: ['The pause on this slide is a what-if; the rehearsal did not stop. Agent files load at session start, so resume in a new session rather than mid-session.'],
+      cue: ['<code>copilot --agent orchestrator -i "Resume from .team/status.md."</code>'] },
+    'part-4': { seconds: 20, sources: [SRC.team],
+      notes: ['"Same team, same bug, a fresh branch, and ten minutes. First, a guess."', '→ What will it cost?'],
+      know: ['Before the talk: FanHub on main, pulled, no .team/ folder, no issue-202 branch, both servers running, Copilot CLI signed in.'],
+      cue: ['From the FanHub root before the talk: <code>git switch main; git pull; Remove-Item -Recurse -Force .team -ErrorAction SilentlyContinue; git branch -D issue-202</code>, then <code>npm --prefix node/backend start</code> and <code>npm --prefix node/frontend start</code> in two more terminals. Set the model to GPT-6.1 Sol with <code>/model</code>, the model the rehearsal used.'] },
+    'cost-question': { seconds: 30, sources: [SRC.pricing],
+      notes: [
+        '"How much do you think this will cost?"',
+        'Point at the six jobs: read the issue, plan, change the code, write tests, check and route, review. All unattended after one approval.',
+        '"Hands up: under a dollar? One to ten? More than ten?"',
+        '→ Here is the answer.'
+      ], know: ['Let the room commit to a guess before advancing. Most rooms guess high.'] },
+    'cost-reveal': { seconds: 40, sources: [SRC.pricing, SRC.record],
+      notes: [
+        '"One AI credit is one cent. The rehearsal used 39.88 credits: about forty cents."',
+        'Read the bottom panel: eleven minutes, three problems found, nine tests, two checks with a routed lint failure, and an accept with a record we can read.',
+        '"Tonight the budget is fifty credits, fifty cents. Let us see what it buys."',
+        '→ Kick it off.'
+      ], know: [
+        'The rate comes from GitHub Copilot models and pricing: 1 AI credit = $0.01 USD. Plan allowances can cover usage, so the out-of-pocket cost can be lower.',
+        '39.88 credits is measured from one rehearsal on GPT-6.1 Sol. Credits per call vary by model, so select GPT-6.1 Sol with /model before the live kick-off to keep the comparison fair. A live run still uses a different number of credits.',
+        'The current agent files also write edge tests and can stop once more for Found defects, so the live run can use more credits than the rehearsal; the 50-credit limit holds either way.'
+      ] },
+    'live-kickoff': { seconds: 60, sources: [SRC.orchestrator, SRC.limits, SRC.cli],
+      notes: [
+        '"Four settings, all inside the session: the agent, the model, the budget, then the prompt."',
+        'Start copilot. Run /agent and choose orchestrator. Run /model and choose GPT-6.1 Sol, the rehearsal model. Run /limits set max-ai-credits 50 so the room sees the budget go in.',
+        'Type the prompt. Narrate step 1 as it happens: the branch switch, gh issue view, then the draft task.md.',
+        'Approve each permission prompt out loud: gh issue view, git switch, then later the Check commands, git status, and git diff. Decline any install, commit, or push.',
+        '→ The draft arrives. Approve it, then watch.'
+      ], know: [
+        'If issue-202 already exists, step 1 switches to it. If .team/task.md names another issue, step 1 stops and asks to move .team/ aside.',
+        'The CLI requires a limit of at least 30 credits. When the limit is reached the run stops cleanly; /limits set with a new value continues from where it stopped.',
+        'The footnote is the same run in one line, for scripts and repeat runs. Point at it: every interactive choice has a matching switch. Run /usage at the end to read the credits spent.'
       ],
-      know: [`These steps are transfer actions, not outcomes reported as already achieved by every audience member.`] },
-    references: { seconds: 25, sources: [SRC.orchestrator, SRC.hookCode, SRC.pr],
-      notes: [`"These first-party references let you inspect the configuration, hook behavior, and integrated run."`, `Point to the agent and hook implementation, then to the issue plans and draft pull request.`],
-      know: [`The README frontmatter references are all represented here, along with FanHub issue #5 for the router risk.`] },
-    thanks: { seconds: 20, sources: [SRC.pr],
-      notes: [`"A useful local loop gives agents bounded work and gives people evidence and authority."`, `Leave the final question visible: which issue will you write a contract for next?`, `→ Thank the audience and take questions.`],
-      know: [`The memorable proof is the predicted risk becoming eight failures, a routed test-writer repair, and 47 passing tests, followed by human review of the integrated draft.`] }
+      cue: ['From the FanHub root: <code>copilot</code>, then <code>/agent</code>, <code>/model</code>, <code>/limits set max-ai-credits 50</code>, and <code>Fix FanHub issue #202. Start at step 1.</code>'] },
+    'live-while-it-works': { seconds: 370, sources: [SRC.record, SRC.orchestrator, SRC.rules],
+      notes: [
+        '"First, the one decision the team cannot make for us: what done means."',
+        'Open .team/task.md on screen. Read the issue line, each criterion, and the Check commands. If a criterion is vague, edit it now. Change Status to approved and tell it to continue.',
+        '"From here the team works. Each row is a file that will appear in .team/."',
+        'Switch between the terminal and the editor. As each file lands, open it and read one line aloud: the Cause in plan.md, one A# in changes.md, one A# and one E# test name in tests.md, the summary line of check-1.',
+        'If plan.md lists Found defects, the orchestrator stops again. Read each Found line aloud, then add it to task.md as an A# or under Out of scope, in front of the room.',
+        'Answer permission prompts as they come. Say which rule in the orchestrator each prompt comes from.',
+        '"If a check fails, watch step 5: which worker gets it, and why?"',
+        'Come back to this slide whenever the screen is quiet. It shows what comes next.',
+        '→ When the reviewer replies, verify.'
+      ], know: [
+        'Expect Check to list the npm test command and ESLint on changed files, from AGENTS.md. The criteria wording varies from run to run.',
+        'Times are approximate from the rehearsal clock; the live run varies. If about ten minutes pass without an accept, leave the session running, read status.md for the current step, and point to the rehearsal record for the rest. If the budget is reached, a new session resumes from status.md after a rerun.'
+      ] },
+    'live-verify': { seconds: 80, sources: [SRC.orchestrator, SRC.rules],
+      notes: [
+        '"The team says accept. Now we check it ourselves."',
+        'Open status.md and read the last row. Run git status --short: Episodes.js modified and a new test file. Rerun the npm test command. Then in the browser, load Episodes, pick Season 2 at once, then click All Seasons.',
+        '"Four checks, and the commit decision stays with a person."',
+        'Run /usage in the CLI and read the credits spent. Compare it with the guesses and with the rehearsal’s 39.88.',
+        '→ When one run works, scale it.'
+      ], know: ['The frontend runs on port 3000 with npm start. After the talk, reset with git switch main, then delete the issue-202 branch and .team/.'] },
+    'scale-up': { seconds: 50, sources: [SRC.hookCode, SRC.hooks, SRC.sessions, SRC.pr],
+      notes: [
+        '"Branch per issue is already in the file. The rest are next steps."',
+        'Read the rows. One branch per issue keeps diffs apart. .team/ is per checkout, so parallel issues each need their own worktree. A Stop hook runs the check before the agent may stop. A combined review catches what separate green runs miss.',
+        '"Each step adds isolation or enforcement. A person still owns the merge."',
+        '→ Recap.'
+      ], know: ['FanHub used a Stop hook in an earlier team: node scripts/copilot-hooks/verify-before-stop.mjs. FanHub #217 combined two isolated green runs, and a merged review still found white headings on white panels.'] },
+    'before-after': { seconds: 40, sources: [SRC.team],
+      notes: [
+        '"Agent files become a team you can audit."',
+        'Read each pair. A broad prompt becomes five files with one job each. Context in chat becomes an approved task.md. Done in a summary becomes check output and a review. A lost session becomes status.md and a rerun.',
+        '"Context, evidence, and authority each have a home."',
+        '→ That is the primer. Here is how far the idea goes.'
+      ], know: ['This is a method comparison, not a measured productivity result.'] },
+    'squad-one-prompt': { seconds: 60, sources: [SRC.squad, SRC.squadFirst],
+      notes: [
+        '"We just watched five files fix one bug for about forty cents. Now picture what happens when someone keeps going for months."',
+        'Introduce Squad: an open-source project by Brady Gaster. It installs a coordinator agent, and the whole team lives in the repository as files. This transcript is condensed from its First Session guide.',
+        'Walk the transcript. One sentence describes the app. Squad proposes a team cast for this project, and every member gets a charter and its own memory. One more sentence, "Team, build the recipe listing page," and five agents start at once, each in its own context window.',
+        '"Look at the tester. It wrote eight test cases from the requirements while the code was still being written. Nobody waited for anybody."',
+        '"And the backend agent added a detail endpoint before anyone asked. Same planner idea we used, running at team scale."',
+        '→ That is one task. Now hand it the backlog.'
+      ], know: [
+        'Install: npm install -g @bradygaster/squad-cli, WinGet, or Homebrew, then squad init. squad init --preset default sets up a full team without the questions.',
+        'Squad names members from a thematic cast, such as Alien characters; the slide shows roles. Saying "team" triggers parallel fan-out; naming one agent sends focused work to it.'
+      ] },
+    'squad-keeps-going': { seconds: 60, sources: [SRC.squad, SRC.squadRalph],
+      notes: [
+        '"Ralph is the team member whose only job is making sure the team never sits idle."',
+        'Read the loop. Ralph reads GitHub issues, routes each one to its owner using routing.md, spawns the agent, watches the pull request, sends review feedback back to the author, sends CI failures back to whoever wrote the code, and merges approved green work. Then it checks again, every round, without asking.',
+        'Point at the second command. squad watch --execute keeps that loop running in a terminal while you are away, with a round or time limit you choose. A GitHub Actions heartbeat can do the triage half even with no terminal open.',
+        'Point at the footnote. decisions.md and each agent\u2019s history.md accumulate. Squad\u2019s own docs say that after two or three real tasks, agents are noticeably better than at a cold start. Commit .squad/ and the whole team, memory included, travels with the repo.',
+        '"Same building blocks as today: agent files, a coordinator, a shared folder, and a person who approves. Built out, they keep a backlog moving overnight. Choose your own approval gates, because Squad\u2019s quick start uses --yolo to skip prompts."',
+        '→ Your first step is smaller. Here it is.'
+      ], know: [
+        'Ralph needs gh authenticated with repo and project scopes. Watch mode limits: --max-rounds N and --max-duration 8h; the first limit reached ends the run.',
+        'The round report is the docs example of Ralph\u2019s check-in format. Squad also projects the team into other hosts with squad init --client, and squad export moves a trained team to another repo.'
+      ] },
+    today: { seconds: 60, sources: [SRC.team, SRC.rules],
+      notes: [
+        '"Run the team on one issue this week."',
+        'Copy the agents and AGENTS.md, and set your Check commands. Pick one issue with a fast test. Kick off, approve the task, and answer each prompt. Then read status.md before the diff, and rerun the Check yourself.',
+        '"The first win is a run you can explain from its files."',
+        '→ Sources next.'
+      ], know: ['Start with a budget such as --max-ai-credits 50 and adjust from your own runs.'],
+      cue: ['<code>copilot --agent orchestrator --max-ai-credits 50 -i "Fix issue #N. Start at step 1."</code>'] },
+    references: { seconds: 20, sources: [SRC.team, SRC.rules, SRC.record, SRC.issue202, SRC.cliAgents, SRC.agents, SRC.cli, SRC.pricing, SRC.hookCode, SRC.sessions, SRC.squad, SRC.pr],
+      notes: ['"Start with the FanHub team and the rehearsal record. Use the docs for runtime details."', '→ Your first issue.'],
+      know: ['FanHub links are pinned to a fixed revision.'] },
+    thanks: { seconds: 40, sources: [SRC.team],
+      notes: ['"Which issue will your team fix first?"', '"Approve what done means, trace every reply, and decide from the evidence."', 'Invite questions about task approval, routing, permissions, cost, and resume.'],
+      know: ['Five minutes of the 45-minute slot remain for discussion. Speaker budgets are estimates until a timed run-through.'] }
   };
-
   slides.forEach((s) => Object.assign(s, NOTES[s.id]));
-
   window.DECK = {
     meta: {
-      slug: 'local-agentic-sdlc',
-      title: 'Local Agentic SDLC: A Loop with a Contract',
-      short: 'Local agent orchestration from issue to reviewable pull request',
-      category: 'tech-talks',
+      slug: 'local-agentic-sdlc', title: 'Local Agentic SDLC: Build the Crew, Run the Loop',
+      short: 'Local Agentic SDLC', category: 'Agents at Your Keyboard',
       source: 'tech-talks/local-agentic-sdlc/README.md',
-      question: 'How do I hand an issue to local agents and know when the work is ready for my review?',
-      thesis: 'Write down roles, evidence, budget, and human authority before the first run; the contract makes the run inspectable.'
-    },
-    slides,
-    data: {}
+      question: 'How do I build local agents that can work together on a coding task?',
+      thesis: 'Agent files define the team; an orchestrator, a shared .team/ folder with one writer per file, and tests plus a reviewer turn them into a run a person can trace, resume, and decide on.'
+    }, slides
   };
 })();
