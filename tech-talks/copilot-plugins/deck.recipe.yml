@@ -1,257 +1,100 @@
-# Conversion recipe refreshed under the user's explicit no-pause waiver.
-# 2026-10-31 · mechanics first, content review later · no new product/news refresh.
-# Preserve the approved four-part story, APM packaging thesis, artifacts, and managed-settings boundary.
+# deck.recipe.yml — Copilot Plugins & APM talk slide generation guidance
+# COUNCIL REVISE (2026-08-10): Preserve the APM packaging thesis and arc; add
+# enterprise managed settings as a bounded, separate governance companion.
 
 version: 1
 
+# Metadata for the deck
 deck:
   title: "Copilot Plugins & APM"
   subtitle: "Composable AI Extensions"
-  tagline: "Try a capability, then package reviewed project configuration."
-  arcToc: "The Opportunity → CLI-First Plugin Management → Building an APM Manifest → What You Can Do Today"
-  arcNarrative: >
-    Keep the existing four-part order. Open with the practitioner decision to separate a personal plugin trial from team-owned repository configuration. Explore marketplace, community, and first-party source paths without presenting listings or sample output as proof. Build from apm.yml intent to apm-lock.yml resolution, review, CI checks, and the separate managed-settings governance boundary. Close with a bounded task, observable evidence, a repository owner, and transfer into the audience's own work. Preserve configuration and command examples as illustrative. Do not execute plugin installs, alter trust, or add product/news claims.
+  tagline: "Install once, configure everywhere"
+
+  # How the opening slides frame the talk
+
+  # Table of contents
+  toc:
+    enabled: true
+
 
   agenda:
-    - title: "The Opportunity"
-      takeaway: "Separate individual plugin exploration from shared repository configuration."
-      whyItMatters: "The project owner decides what becomes team infrastructure."
-    - title: "CLI-First Plugin Management"
-      takeaway: "Use discovery paths to find a candidate, then inspect source, scope, and task evidence."
-      whyItMatters: "A listing is not a security review or adoption decision."
-    - title: "Building an APM Manifest"
-      takeaway: "Review manifest intent, lockfile resolution, CI consistency, and governance boundaries."
-      whyItMatters: "The repository and enterprise owners have distinct authority."
-    - title: "What You Can Do Today"
-      takeaway: "Run one bounded evaluation and carry its evidence into a repository decision."
-      whyItMatters: "Practitioners can transfer the pattern without assuming a successful install."
+    - title: "One Team Setup"
+      takeaway: "Install instructions, skills, plugins, and MCP servers from a manifest."
+      whyItMatters: "Configuration stops drifting across contributors."
+    - title: "Configuration as Code"
+      takeaway: "Version agent setup through apm.yml and lock files."
+      whyItMatters: "Teams can review and reproduce their exact agent environment."
+    - title: "Faster Discovery"
+      takeaway: "Find vetted extensions through a shared marketplace."
+      whyItMatters: "Useful capabilities become easier to evaluate and adopt."
 
+  arcToc: "WHY the shift matters → HOW to explore the ecosystem → CODIFY as team infrastructure → ACT with concrete next steps"
+  arcNarrative: >
+    WHY the shift matters → HOW to explore the ecosystem → CODIFY as team
+    infrastructure (manifest + lockfile together) → ACT with concrete next steps.
+    "The Opportunity" earns audience attention before any CLI syntax appears.
+    "What You Can Do Today" closes on action, not theory — a reading list cannot compete.
+  # "The Lockfile Pattern" folds into "Building an APM Manifest" as its natural conclusion.
   sectionOrder:
     - "The Opportunity"
     - "CLI-First Plugin Management"
     - "Building an APM Manifest"
     - "What You Can Do Today"
 
+  # Emphasis modes for specific sections
   sectionModes:
     "The Opportunity":
-      emphasis: medium
+      emphasis: medium-high
       note: >
-        Preserve the shift from per-developer setup to repository configuration. Teach the copilot plugin / APM scope distinction and the manifest-to-lockfile path. Qualify reproducibility as configuration resolution, not identical generated behavior.
+        Frame the paradigm shift — per-developer configuration → per-repository configuration —
+        before any CLI commands appear; audience buy-in here determines whether the technical
+        sections land as "interesting" or "essential."
     "CLI-First Plugin Management":
       emphasis: high
       note: >
-        Preserve command-based discovery, plugin lifecycle, and discovery sources. Label command transcripts illustrative and not executed. Treat marketplace and community listings as leads; inspect source, permissions, compatibility, and task evidence before adoption.
+        Live-demo apm marketplace browse and copilot plugin install; this is the audience's
+        first hands-on contact with the ecosystem and sets the CLI-first tone for the rest
+        of the talk.
     "Building an APM Manifest":
       emphasis: high
       note: >
-        Preserve plugin, instructions, skills, MCP, lockfile, fresh-clone, update, and CI examples. Use placeholders for unverified package URLs and integrity values. Keep CI as an illustrative shape. Preserve managed settings as a separate companion: additive enterprise keys, team mapping, precedence, dated source availability, client and license scope; never describe this as apm.yml merge or inheritance.
+        Walk through a complete apm.yml with plugins, instructions, skills, and MCP servers,
+        then close with the lockfile pattern as the natural capstone of "configuration as code" —
+        treat apm-lock.yml like package-lock.json, not an implementation detail. Add a bounded
+        companion beat: enterprise managed settings are separate governance, not apm.yml merge
+        or inheritance. enabledPlugins and extraKnownMarketplaces establish an additive enterprise
+        floor; teams extend it through files under copilot/teams/ mapped by team-mappings.json.
+        Users in multiple teams receive least-restrictive team values beneath non-overridable
+        enterprise decisions. This is supported only in VS Code, Copilot CLI, Copilot App, and
+        Copilot cloud agent for Business or Enterprise.
     "What You Can Do Today":
       emphasis: medium-high
       note: >
-        Preserve the 15-minute, one-hour, and two-to-four-hour source exercises as estimates. Convert them into an action ladder with observable evidence, approval ownership, prerequisites, and stop conditions. End with a transfer question about the audience's own repository.
+        Deliver a concrete action ladder — try one plugin locally, add apm.yml to one repo,
+        review the lockfile diff on the next PR — so every attendee leaves with a step they
+        can take within the hour.
 
+  # What to emphasize most (3-5 key points we want readers/audiences to remember)
   highlightMoments:
-    - "copilot plugin commands are for individual exploration; APM packages project configuration."
-    - "apm.yml records project intent; apm-lock.yml records resolution details for review."
-    - "A lockfile improves traceability; it does not certify trust, safety, or task quality."
-    - "Enterprise managed settings govern a separate policy baseline, not APM inheritance."
-    - "A repository owner approves adoption after source, scope, and task evidence are inspectable."
-  slides:
-    - id: title
-      part: 0
-      claim: "A plugin trial can become a reviewable repository configuration."
-      scene: "frame: title + deck visual config-ring; manifest, lockfile, repository, and owner surround the capability."
-      seconds: 20
-    - id: core-question
-      part: 0
-      claim: "A practitioner can extend Copilot and share a reviewed setup across repositories."
-      scene: "frame: core-question; question, context/scope/evidence/owner route, developer/platform/service-owner roles."
-      seconds: 35
-    - id: contents
-      part: 0
-      claim: "The four parts move from opportunity to exploration, packaging, and transfer."
-      scene: "frame: contents; route cards link to openers 4, 9, 15, and 26."
-      seconds: 20
-    - id: part-1
-      part: 1
-      claim: "The practitioner decides whether an individual trial deserves repository packaging."
-      scene: "frame: opener; discover, evaluate, package."
-      seconds: 15
-    - id: repo-config
-      part: 1
-      claim: "A repository manifest makes shared project intent and resolution reviewable."
-      scene: "showdown: repeated personal setup versus repository configuration; no invented savings."
-      seconds: 38
-    - id: scopes
-      part: 1
-      claim: "The plugin CLI supports individual exploration; APM packages project configuration."
-      scene: "showdown: individual plugin lifecycle versus repository manifest and lockfile."
-      seconds: 38
-    - id: architecture
-      part: 1
-      claim: "APM connects repository intent to resolved configuration and contributor installation."
-      scene: "deck stack: manifest → resolver → lockfile → contributor; illustrative flow."
-      seconds: 38
-    - id: evaluate
-      part: 1
-      claim: "A marketplace listing is a candidate, not an adoption decision."
-      scene: "scorecard: purpose, source, access scope, and task evidence."
-      seconds: 38
-    - id: part-2
-      part: 2
-      claim: "Discovery commands start an evaluation; they do not prove trust or success."
-      scene: "frame: opener; discover, inspect, evaluate."
-      seconds: 15
-    - id: marketplace
-      part: 2
-      claim: "A task-specific marketplace query narrows extension discovery."
-      scene: "terminal: illustrative browse and list commands; explicitly not executed."
-      seconds: 38
-    - id: discovery
-      part: 2
-      claim: "Marketplace, community, and first-party sources provide different discovery evidence."
-      scene: "scorecard: APM marketplace, Awesome Copilot, first-party repo, inspect source."
-      seconds: 38
-    - id: install-preview
-      part: 2
-      claim: "A bounded trial ends with inspected local state and task evidence."
-      scene: "terminal: illustrative install/list sequence; no install or trust change."
-      seconds: 38
-    - id: plugin-lifecycle
-      part: 2
-      claim: "Discovery, install, list, and update/removal are distinct lifecycle decisions."
-      scene: "signals: command and actor-bound stage with current-CLI caveat."
-      seconds: 38
-    - id: acceptance
-      part: 2
-      claim: "A trial needs an inspectable output and a named acceptance owner."
-      scene: "scorecard: task input, artifact, verification, human authority."
-      seconds: 38
-    - id: part-3
-      part: 3
-      claim: "Repository packaging makes intent, resolution, and review visible."
-      scene: "frame: opener; manifest, lockfile, review."
-      seconds: 15
-    - id: minimal-manifest
-      part: 3
-      claim: "A minimal manifest expresses named plugin dependencies and version ranges."
-      scene: "artifact: illustrative apm.yml alongside an explanation of what it requests."
-      seconds: 38
-    - id: full-manifest
-      part: 3
-      claim: "The source example combines plugins, instructions, skills, and MCP inputs."
-      scene: "artifact: illustrative YAML; path/source fields and integration boundary."
-      seconds: 38
-    - id: repo-hydration
-      part: 3
-      claim: "A contributor applies reviewed repository configuration and inspects the result."
-      scene: "deck flow: maintainer review → repository → contributor install → validation."
-      seconds: 38
-    - id: lockfile-resolution
-      part: 3
-      claim: "A manifest range expresses intent while the lockfile records an example resolved version."
-      scene: "showdown: requested range versus illustrative resolution; no claim about current registry state."
-      seconds: 38
-    - id: lockfile-fields
-      part: 3
-      claim: "Version, resolved source, and integrity fields provide review evidence."
-      scene: "artifact: placeholder lockfile fields and explicit example boundary."
-      seconds: 38
-    - id: lockfile-review
-      part: 3
-      claim: "An update becomes a deliberate dependency review."
-      scene: "deck flow: change → diff → validation → repository-owner approval."
-      seconds: 38
-    - id: drift-recovery
-      part: 3
-      claim: "A frozen-lockfile check can signal manifest and lockfile disagreement."
-      scene: "signals: pause, compare, resolve intent, rerun; no invented error text."
-      seconds: 38
-    - id: ci-gate
-      part: 3
-      claim: "CI can check manifest-lock consistency before a pull request advances."
-      scene: "artifact: illustrative workflow shape and owner checks; not executed."
-      seconds: 38
-    - id: managed-settings
-      part: 3
-      claim: "Managed settings govern an enterprise baseline separately from APM project packaging."
-      scene: "showdown: repository manifest/lockfile versus enterprise managed keys and owners."
-      seconds: 38
-    - id: managed-boundary
-      part: 3
-      claim: "Team additions remain inside enterprise decisions and documented client scope."
-      scene: "signals: enterprise baseline, team files, multiple-team resolution, dated eligibility scope."
-      seconds: 38
-    - id: part-4
-      part: 4
-      claim: "The audience can carry one bounded task into its own repository."
-      scene: "frame: opener; try, record, decide."
-      seconds: 15
-    - id: choice-ladder
-      part: 4
-      claim: "Evidence gates the move from discovery to shared configuration."
-      scene: "four-phases: discover → trial → package → maintain; not a maturity score."
-      seconds: 40
-    - id: exploratory-check
-      part: 4
-      claim: "One small trial can produce an owner decision without claiming deployment success."
-      scene: "scorecard: pick, bound, inspect, decide; 15-minute source estimate qualified."
-      seconds: 40
-    - id: first-repo
-      part: 4
-      claim: "A repository pilot records intent, resolution, validation, and ownership."
-      scene: "deck flow: choose repository → declare → resolve → share and verify."
-      seconds: 40
-    - id: review-contract
-      part: 4
-      claim: "A maintainer can review provenance, scope, intent, and evidence together."
-      scene: "scorecard: four review questions and separate owner authority."
-      seconds: 40
-    - id: where-pattern-stops
-      part: 4
-      claim: "Unclear source, prerequisites, evidence, or ownership are pause and escalation signals."
-      scene: "signals: do not adopt, resolve first, improve test, escalate."
-      seconds: 40
-    - id: three-situations
-      part: 4
-      claim: "Shared review, project-specific profiles, and CI checks reuse the same review pattern."
-      scene: "scorecard: three source scenarios plus human decision boundary; no customer claims."
-      seconds: 40
-    - id: before-after
-      part: 0
-      claim: "The team moves to repository intent, visible resolution, and named review."
-      scene: "before-after: personal setup contrasted with manifest, lockfile, and approval."
-      seconds: 35
-    - id: today
-      part: 0
-      claim: "One task, artifact, and owner provide a practical transfer step."
-      scene: "today: today / this week / this month horizons with evidence and rollback owner."
-      seconds: 45
-    - id: references
-      part: 0
-      claim: "The linked sources have dated verification records and require rechecking before use."
-      scene: "references: first-party product links, community source identified, verification dates shown."
-      seconds: 25
-    - id: thanks
-      part: 0
-      claim: "A practitioner can choose one task and name the evidence and owner for evaluation."
-      scene: "frame: thanks + config ring and own-work transfer question."
-      seconds: 15
-  preamble: []
-  appendix: []
+    - "copilot plugin install for exploration; apm install for team-wide reproducibility — two tools, two scopes"
+    - "apm.yml is infrastructure: commit it to version control alongside your code, not in a wiki page"
+    - "Lockfiles make 'works on my machine' impossible for AI configuration — apm-lock.yml is non-negotiable"
+    - "The complete onboarding: git clone && apm install gives every contributor identical AI context, zero manual steps"
+    - "APM packages reproducible project configuration; managed settings govern a separate additive enterprise floor that teams can extend — never present this as apm.yml merge or inheritance"
 
-# Explicit approval: the user authorized conversion without recipe-review pauses on 2026-10-31.
-# This complete per-slide plan is approved under that waiver; content review follows the mechanics pass.
-conversion:
-  mode: convert
-  approved: true
-  approval: "User's explicit mechanics-first, no-recipe-pause waiver in session, 2026-10-31."
-  sourceSlidev: "slides/tech-talks/copilot-plugins.md"
-  sourceLanding: "tech-talks/copilot-plugins/README.md"
-  sourceReferencesVerified: "2026-04-17; managed-settings changelog 2026-08-10"
-  contentRefresh: "Do not add product or news content; carry forward the already-approved managed-settings companion."
-  noInstallBoundary: "No third-party install, plugin trust change, or live command execution."
-  planCount: 36
-  totalSeconds: 1217
-  teachingSlides: 25
-  frameAndSpineSlides: 11
+  # References section
+  references:
+    enabled: true
+    mode: numbered  # Use numbered footnote references
+
+  # Thank you slide
+  thankYou:
+    enabled: true
+    variant: standard
+
+# OPEN DECISION: Does "The Lockfile Pattern" return as a standalone fourth section
+# (displacing "What You Can Do Today")?
+# Current choice: lockfile coverage folds into "Building an APM Manifest" to preserve an
+# action-oriented close. Restore as standalone only if audience feedback shows teams are
+# struggling specifically with lockfile drift rather than with initial manifest adoption —
+# i.e., once apm.yml is widely used, the lockfile deserves its own spotlight.
