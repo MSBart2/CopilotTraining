@@ -1,6 +1,11 @@
 ---
 name: Tech Talk Slide Generator
-description: LEGACY. Patch Slidev tech-talk decks (slides/tech-talks/{slug}.md) that have not been converted to the native engine yet. New talks, conversions, and decks with a slides/tech-talks/{slug}/slides.js folder use the Native Deck Author agent. Uses the Vue component system — no raw HTML. Source: tech-talks/{topic}/README.md + deck.recipe.yml.
+description: >
+  LEGACY. Patch Slidev tech-talk decks (slides/tech-talks/{slug}.md) that have not
+  been converted to the native engine yet. New talks, conversions, and decks with
+  a slides/tech-talks/{slug}/slides.js folder use the Native Deck Author agent.
+  Uses the Vue component system — no raw HTML.
+  Source: tech-talks/{topic}/README.md + deck.recipe.yml.
 tools: ["read", "edit/createFile", "edit/editFiles", "execute/runInTerminal", "execute/getTerminalOutput"]
 model: Claude Sonnet 4.6
 argument-hint: "tech-talks/{topic} [patch|regenerate]"

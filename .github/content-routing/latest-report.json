@@ -1,20 +1,769 @@
 {
-  "generatedAt": "2026-11-02T22:17:08.168Z",
+  "generatedAt": "2026-11-06T20:46:30.252Z",
   "feed": {
     "title": "Microsoft Developer Changelog",
-    "lastBuildDate": "2026-11-02T20:00:15.000Z"
+    "lastBuildDate": "2026-11-06T20:00:22.000Z"
   },
   "since": "2026-10-31T00:00:00.000Z",
   "summary": {
-    "scanned": 12,
-    "review": 1,
+    "scanned": 36,
+    "review": 7,
     "adjudicated": 0,
-    "noMatch": 1,
-    "outOfScope": 10,
+    "noMatch": 9,
+    "outOfScope": 20,
     "anomalies": 1,
-    "duplicates": 2
+    "duplicates": 0
   },
   "events": [
+    {
+      "id": "792decb69ea36eae",
+      "title": "Usage metrics API adds code review details and addressed rate",
+      "source": "https://github.blog/changelog/2026-11-05-usage-metrics-api-adds-code-review-details-and-addressed-rate",
+      "published": "2026-11-06T00:19:07.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Management and Governance",
+        "AI + Machine Learning"
+      ],
+      "description": "The enterprise and organization repository-level Copilot usage metrics reports now show what happens to Copilot code review feedback. A new copilot_code_review object on each repos-1-day row reports how many Copilot-reviewed… The post Usage metrics API adds code review details and addressed rate...",
+      "topics": [
+        {
+          "id": "copilot-code-review",
+          "signals": [
+            "copilot code review"
+          ]
+        },
+        {
+          "id": "enterprise-governance",
+          "signals": [
+            "usage metrics"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "talk": "enterprise-patterns",
+          "score": 18,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "explains",
+              "obligation": "Explain enterprise rollout, policy, controls, measurement, and federated governance.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "enterprise",
+            "what",
+            "how"
+          ]
+        },
+        {
+          "talk": "copilot-on-github",
+          "score": 15,
+          "relationships": [
+            {
+              "topic": "copilot-code-review",
+              "role": "explains",
+              "obligation": "Explain code-review configuration, depth, customization, findings, and response workflows.",
+              "matchedSignals": [
+                "copilot code review"
+              ],
+              "redirectedFrom": "copilot-code-review"
+            }
+          ],
+          "profileSignals": [
+            "code",
+            "review",
+            "and",
+            "what"
+          ]
+        },
+        {
+          "talk": "copilot-cli",
+          "score": 14,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "governs",
+              "obligation": "Mention managed settings only when they alter CLI behavior or deployment.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "what",
+            "how"
+          ]
+        },
+        {
+          "talk": "vscode-latest",
+          "score": 14,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "governs",
+              "obligation": "Mention enterprise controls only when they constrain editor capabilities.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "code",
+            "and",
+            "what",
+            "how"
+          ]
+        },
+        {
+          "talk": "exec-strategy",
+          "score": 13,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "applies",
+              "obligation": "Keep board-level investment and control guidance grounded in available evidence.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and"
+          ]
+        }
+      ],
+      "disposition": "review"
+    },
+    {
+      "id": "c4e839eb7da618a5",
+      "title": "Usage metrics API flags telemetry and version gaps",
+      "source": "https://github.blog/changelog/2026-11-05-usage-metrics-api-flags-telemetry-and-version-gaps",
+      "published": "2026-11-06T00:08:31.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Management and Governance",
+        "AI + Machine Learning"
+      ],
+      "description": "The Copilot usage metrics API now shows which users are missing client telemetry or are running IDE or extension versions below the usage metrics minimums. New per-user fields appear in… The post Usage metrics API flags telemetry and version gaps appeared first on The GitHub Blog...",
+      "topics": [
+        {
+          "id": "enterprise-governance",
+          "signals": [
+            "usage metrics"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "talk": "enterprise-patterns",
+          "score": 17,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "explains",
+              "obligation": "Explain enterprise rollout, policy, controls, measurement, and federated governance.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "telemetry",
+            "and"
+          ]
+        },
+        {
+          "talk": "copilot-cli",
+          "score": 13,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "governs",
+              "obligation": "Mention managed settings only when they alter CLI behavior or deployment.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "running"
+          ]
+        },
+        {
+          "talk": "exec-strategy",
+          "score": 13,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "applies",
+              "obligation": "Keep board-level investment and control guidance grounded in available evidence.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and"
+          ]
+        },
+        {
+          "talk": "vscode-latest",
+          "score": 13,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "governs",
+              "obligation": "Mention enterprise controls only when they constrain editor capabilities.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "which"
+          ]
+        }
+      ],
+      "disposition": "review"
+    },
+    {
+      "id": "e10c3a83acce932f",
+      "title": "Secret scanning upgrades detectors, adds SpaceX as partner",
+      "source": "https://github.blog/changelog/2026-11-05-secret-scanning-upgrades-detectors-adds-spacex-as-partner",
+      "published": "2026-11-05T15:48:50.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Security"
+      ],
+      "description": "This update expands secret scanning's detection coverage: New partner: SpaceX is now a secret scanning partner. New detector: GitHub now detects starlink_public_api_v2_secret. Upgraded detectors: Alibaba, AWS, Google, OpenVSX, Pydantic Services,… The post Secret scanning upgrades detectors, adds...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
+    {
+      "id": "99660dde86690b16",
+      "title": "New pull request overview page in public preview",
+      "source": "https://github.blog/changelog/2026-11-05-new-pull-request-overview-page-in-public-preview",
+      "published": "2026-11-05T08:00:00.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Services"
+      ],
+      "description": "On a long pull request, checking what's blocking often means scrolling past dozens of comments and timeline events just to reach the merge box. And once you're there, you still… The post New pull request overview page in public preview appeared first on The GitHub Blog...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
+    {
+      "id": "15254d3804dbe522",
+      "title": "CodeQL 2.27.4 improves accuracy and query metadata",
+      "source": "https://github.blog/changelog/2026-11-04-codeql-2-27-4-improves-accuracy-and-query-metadata",
+      "published": "2026-11-04T20:04:52.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Security"
+      ],
+      "description": "CodeQL is the static analysis engine behind GitHub code scanning, which finds and remediates security issues in your code. We've recently released CodeQL 2.27.4 with query accuracy improvements across several… The post CodeQL 2.27.4 improves accuracy and query metadata appeared first on The GitHub...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
+    {
+      "id": "aebd8a7632f5cafd",
+      "title": "GitHub Copilot is now available in Xcode's coding assistant",
+      "source": "https://github.blog/changelog/2026-11-04-github-copilot-is-now-available-in-xcodes-coding-assistant",
+      "published": "2026-11-04T19:10:40.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "AI + Machine Learning"
+      ],
+      "description": "You can now work with GitHub Copilot directly in Xcode's built-in coding assistant, bringing Copilot into your native Xcode workflow. The integration is now in public preview, available starting with… The post GitHub Copilot is now available in Xcode's coding assistant appeared first on The GitHub...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
+    {
+      "id": "481c8dc1508ac2dc",
+      "title": "Visual Studio Code 1.145",
+      "source": "https://code.visualstudio.com/updates/v1_145",
+      "published": "2026-11-04T17:00:00.000Z",
+      "categories": [
+        "Launched",
+        "Developer Tools",
+        "Visual Studio Code"
+      ],
+      "description": "Learn what's new in Visual Studio Code 1.145...",
+      "topics": [
+        {
+          "id": "vscode-copilot",
+          "signals": [
+            "visual studio code"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "talk": "vscode-latest",
+          "score": 17,
+          "relationships": [
+            {
+              "topic": "vscode-copilot",
+              "role": "explains",
+              "obligation": "Explain current VS Code Copilot capabilities, statuses, boundaries, and operating model.",
+              "matchedSignals": [
+                "visual studio code"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "code",
+            "what"
+          ]
+        },
+        {
+          "talk": "copilot-primitives",
+          "score": 11,
+          "relationships": [
+            {
+              "topic": "vscode-copilot",
+              "role": "depends",
+              "obligation": "Keep VS Code chat debugging surfaces and diagnostics accurate.",
+              "matchedSignals": [
+                "visual studio code"
+              ],
+              "redirectedFrom": "copilot-chat-internals"
+            }
+          ],
+          "profileSignals": [
+            "what"
+          ]
+        },
+        {
+          "talk": "local-agentic-sdlc",
+          "score": 10,
+          "relationships": [
+            {
+              "topic": "vscode-copilot",
+              "role": "depends",
+              "obligation": "Keep the end-to-end VS Code agent workflow and demos executable.",
+              "matchedSignals": [
+                "visual studio code"
+              ],
+              "redirectedFrom": "repo-to-feature"
+            }
+          ],
+          "profileSignals": []
+        }
+      ],
+      "disposition": "review"
+    },
+    {
+      "id": "12cc899e9ef6b0a1",
+      "title": "BYOK and enterprise custom models in the Copilot usage API",
+      "source": "https://github.blog/changelog/2026-11-03-byok-and-enterprise-custom-models-in-the-copilot-usage-api",
+      "published": "2026-11-04T00:32:19.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Management and Governance",
+        "AI + Machine Learning"
+      ],
+      "description": "The Copilot usage metrics API now shows bring your own key (BYOK) usage across GitHub Copilot, so you can separate it from Copilot-hosted model usage. Reports cover two kinds of… The post BYOK and enterprise custom models in the Copilot usage API appeared first on The GitHub Blog...",
+      "topics": [
+        {
+          "id": "model-choice",
+          "signals": [
+            "byok",
+            "bring your own key",
+            "custom model"
+          ]
+        },
+        {
+          "id": "enterprise-governance",
+          "signals": [
+            "usage metrics"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "talk": "enterprise-patterns",
+          "score": 33,
+          "relationships": [
+            {
+              "topic": "model-choice",
+              "role": "governs",
+              "obligation": "Cover organization model policy, cost, access, and data-governance consequences.",
+              "matchedSignals": [
+                "byok",
+                "bring your own key",
+                "custom model"
+              ]
+            },
+            {
+              "topic": "enterprise-governance",
+              "role": "explains",
+              "obligation": "Explain enterprise rollout, policy, controls, measurement, and federated governance.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "enterprise",
+            "models",
+            "key",
+            "you"
+          ]
+        },
+        {
+          "talk": "vscode-latest",
+          "score": 33,
+          "relationships": [
+            {
+              "topic": "model-choice",
+              "role": "explains",
+              "obligation": "Explain editor model choice, provider setup, local models, and sign-in boundaries.",
+              "matchedSignals": [
+                "byok",
+                "bring your own key",
+                "custom model"
+              ]
+            },
+            {
+              "topic": "enterprise-governance",
+              "role": "governs",
+              "obligation": "Mention enterprise controls only when they constrain editor capabilities.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "you",
+            "can"
+          ]
+        },
+        {
+          "talk": "copilot-cli",
+          "score": 30,
+          "relationships": [
+            {
+              "topic": "model-choice",
+              "role": "applies",
+              "obligation": "Explain model selection, provider configuration, and reasoning controls for CLI sessions.",
+              "matchedSignals": [
+                "byok",
+                "bring your own key",
+                "custom model"
+              ]
+            },
+            {
+              "topic": "enterprise-governance",
+              "role": "governs",
+              "obligation": "Mention managed settings only when they alter CLI behavior or deployment.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "key",
+            "you",
+            "can"
+          ]
+        },
+        {
+          "talk": "harness-fundamentals",
+          "score": 22,
+          "relationships": [
+            {
+              "topic": "model-choice",
+              "role": "applies",
+              "obligation": "Keep SDK model-provider, authentication, and BYOK integration guidance accurate.",
+              "matchedSignals": [
+                "byok",
+                "bring your own key",
+                "custom model"
+              ],
+              "redirectedFrom": "copilot-sdk"
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "key",
+            "you",
+            "can"
+          ]
+        },
+        {
+          "talk": "exec-strategy",
+          "score": 11,
+          "relationships": [
+            {
+              "topic": "enterprise-governance",
+              "role": "applies",
+              "obligation": "Keep board-level investment and control guidance grounded in available evidence.",
+              "matchedSignals": [
+                "usage metrics"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "and",
+            "model"
+          ]
+        }
+      ],
+      "disposition": "review"
+    },
+    {
+      "id": "1cca1a3d21d51353",
+      "title": "Dependabot version updates support Agent Package Manager",
+      "source": "https://github.blog/changelog/2026-11-03-dependabot-version-updates-support-agent-package-manager",
+      "published": "2026-11-03T20:24:07.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Security"
+      ],
+      "description": "You can now keep your AI agent skills, prompts, and instructions up to date with Dependabot version updates for Agent Package Manager (APM). Dependabot opens pull requests to update supported… The post Dependabot version updates support Agent Package Manager appeared first on The GitHub Blog...",
+      "topics": [
+        {
+          "id": "customization",
+          "signals": [
+            "agent skills"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "talk": "copilot-primitives",
+          "score": 15,
+          "relationships": [
+            {
+              "topic": "customization",
+              "role": "explains",
+              "obligation": "Explain instructions, skills, prompts, and agents as distinct configuration primitives.",
+              "matchedSignals": [
+                "agent skills"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "you",
+            "can",
+            "skills",
+            "prompts",
+            "and"
+          ]
+        },
+        {
+          "talk": "enterprise-patterns",
+          "score": 12,
+          "relationships": [
+            {
+              "topic": "customization",
+              "role": "applies",
+              "obligation": "Explain packaging and distributing customization bundles.",
+              "matchedSignals": [
+                "agent skills"
+              ],
+              "redirectedFrom": "copilot-plugins"
+            }
+          ],
+          "profileSignals": [
+            "package",
+            "you",
+            "can",
+            "and",
+            "for"
+          ]
+        },
+        {
+          "talk": "harness-fundamentals",
+          "score": 12,
+          "relationships": [
+            {
+              "topic": "customization",
+              "role": "applies",
+              "obligation": "Keep hook availability, events, and governance behavior accurate.",
+              "matchedSignals": [
+                "agent skills"
+              ],
+              "redirectedFrom": "copilot-hooks"
+            }
+          ],
+          "profileSignals": [
+            "you",
+            "can",
+            "and"
+          ]
+        }
+      ],
+      "disposition": "review"
+    },
+    {
+      "id": "5716c43c50968419",
+      "title": "Look up a resource's cost center with the GitHub REST API",
+      "source": "https://github.blog/changelog/2026-11-03-look-up-a-resources-cost-center-with-the-github-rest-api",
+      "published": "2026-11-03T15:27:13.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Management and Governance"
+      ],
+      "description": "You can now use the GitHub REST API to find which cost center a user, organization, repository, or enterprise team belongs to. Previously, you had to list every cost center… The post Look up a resource's cost center with the GitHub REST API appeared first on The GitHub Blog...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
+    {
+      "id": "f5e73fd8187894f4",
+      "title": "GitHub Copilot is now available in JetBrains Air",
+      "source": "https://github.blog/changelog/2026-11-03-github-copilot-is-now-available-in-jetbrains-air",
+      "published": "2026-11-03T15:11:46.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "AI + Machine Learning"
+      ],
+      "description": "You can now delegate coding tasks, guide execution, and review results with GitHub Copilot in JetBrains Air. The integration uses the Agent Client Protocol (ACP) and supports tasks in your… The post GitHub Copilot is now available in JetBrains Air appeared first on The GitHub Blog...",
+      "topics": [
+        {
+          "id": "copilot-sdk",
+          "signals": [
+            "agent client protocol"
+          ]
+        }
+      ],
+      "candidates": [
+        {
+          "talk": "harness-fundamentals",
+          "score": 15,
+          "relationships": [
+            {
+              "topic": "copilot-sdk",
+              "role": "explains",
+              "obligation": "Explain SDK runtime, APIs, authentication, tools, models, and production integration.",
+              "matchedSignals": [
+                "agent client protocol"
+              ],
+              "redirectedFrom": "copilot-sdk"
+            }
+          ],
+          "profileSignals": [
+            "you",
+            "can",
+            "and"
+          ]
+        },
+        {
+          "talk": "vscode-latest",
+          "score": 12,
+          "relationships": [
+            {
+              "topic": "copilot-sdk",
+              "role": "applies",
+              "obligation": "Explain how the SDK underpins portable VS Code agent infrastructure.",
+              "matchedSignals": [
+                "agent client protocol"
+              ]
+            }
+          ],
+          "profileSignals": [
+            "you",
+            "can",
+            "and"
+          ]
+        },
+        {
+          "talk": "local-agentic-sdlc",
+          "score": 9,
+          "relationships": [
+            {
+              "topic": "copilot-sdk",
+              "role": "depends",
+              "obligation": "Keep app harness and runtime claims accurate.",
+              "matchedSignals": [
+                "agent client protocol"
+              ],
+              "redirectedFrom": "copilot-app"
+            }
+          ],
+          "profileSignals": [
+            "can",
+            "coding"
+          ]
+        }
+      ],
+      "disposition": "review"
+    },
+    {
+      "id": "1b5dcd05b94fd5f5",
+      "title": "CodeQL 2.27.3 adds Python 3.15 features and JSON data extensions",
+      "source": "https://github.blog/changelog/2026-11-03-codeql-2-27-3-adds-python-3-15-features-and-json-data-extensions",
+      "published": "2026-11-03T14:56:03.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Security"
+      ],
+      "description": "CodeQL is the static analysis engine behind GitHub code scanning, which finds and remediates security issues in your code. We've recently released CodeQL 2.27.3. It supports new Python 3.15 language… The post CodeQL 2.27.3 adds Python 3.15 features and JSON data extensions appeared first on The...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
+    {
+      "id": "779b592d7acb850e",
+      "title": "Dependabot now supports Python 3.15",
+      "source": "https://github.blog/changelog/2026-11-03-dependabot-now-supports-python-3-15",
+      "published": "2026-11-03T13:49:32.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Security"
+      ],
+      "description": "You can now upgrade your projects to Python 3.15 and keep receiving Dependabot updates. Support for Python 3.15 is available to all github.com users and will be included in GitHub… The post Dependabot now supports Python 3.15 appeared first on The GitHub Blog...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
+    {
+      "id": "0cb0da6ef81301f9",
+      "title": "GitHub Desktop adds short-lived authentication tokens",
+      "source": "https://github.blog/changelog/2026-11-02-github-desktop-adds-short-lived-authentication-tokens",
+      "published": "2026-11-03T07:55:58.000Z",
+      "categories": [
+        "GitHub",
+        "Launched",
+        "Management and Governance",
+        "Security",
+        "Developer Tools"
+      ],
+      "description": "When you sign in to GitHub Desktop 3.6.10 or later, eligible accounts can now use short-lived, automatically refreshing authentication tokens. Short-lived access tokens reduce how long a leaked token can… The post GitHub Desktop adds short-lived authentication tokens appeared first on The GitHub...",
+      "topics": [],
+      "candidates": [],
+      "disposition": "no-match"
+    },
     {
       "id": "8cd919ea50b5b279",
       "title": "Security risk assessments include repository protection status",
@@ -54,7 +803,7 @@
       "candidates": [
         {
           "talk": "agentic-workflows",
-          "score": 12,
+          "score": 13,
           "relationships": [
             {
               "topic": "agentic-workflows",
@@ -62,15 +811,16 @@
               "obligation": "Explain repository-native agent workflow triggers, permissions, outputs, and safety.",
               "matchedSignals": [
                 "github actions"
-              ],
-              "redirectedFrom": "agentic-workflows"
+              ]
             }
           ],
-          "profileSignals": []
+          "profileSignals": [
+            "for"
+          ]
         },
         {
-          "talk": "agent-readiness",
-          "score": 7,
+          "talk": "agentic-sdlc",
+          "score": 9,
           "relationships": [
             {
               "topic": "agentic-workflows",
@@ -78,9 +828,12 @@
               "obligation": "Keep CI/CD infrastructure and agent workflow boundaries accurate.",
               "matchedSignals": [
                 "github actions"
-              ],
-              "redirectedFrom": "agentic-sdlc"
+              ]
             }
+          ],
+          "profileSignals": [
+            "actions",
+            "for"
           ]
         }
       ],
@@ -89,25 +842,12 @@
   ],
   "anomalies": [
     {
-      "id": "2aef72084bb38ec9",
-      "title": "Visual Studio Code 1.145 (Insiders)",
-      "source": "https://code.visualstudio.com/updates/v1_145",
-      "published": "2026-11-04T17:00:00.000Z",
+      "id": "82780a916272831c",
+      "title": "Visual Studio Code 1.146 (Insiders)",
+      "source": "https://code.visualstudio.com/updates/v1_146",
+      "published": "2026-11-11T17:00:00.000Z",
       "reason": "future-dated"
     }
   ],
-  "duplicates": [
-    {
-      "id": "9b5a0d1d94613fe9",
-      "title": "Push protection beyond predefined secret patterns",
-      "source": "https://github.blog/changelog/2026-10-28-push-protection-beyond-predefined-secret-patterns",
-      "duplicateOf": "9b5a0d1d94613fe9"
-    },
-    {
-      "id": "ec46941447ed1875",
-      "title": "GitHub Copilot weekly releases — October 5",
-      "source": "https://github.blog/changelog/2026-10-09-github-copilot-weekly-releases-october-5",
-      "duplicateOf": "ec46941447ed1875"
-    }
-  ]
+  "duplicates": []
 }

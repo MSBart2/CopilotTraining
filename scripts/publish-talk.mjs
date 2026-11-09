@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Publish one reviewed talk from the current (staging) branch to main without
-// bringing along any other unreviewed talk. Works in a temporary worktree of
+// bringing along any other unreviewed talk. Works in an isolated worktree of
 // origin/main, so the current branch and working tree are never touched.
 //
 //   npm run publish:talk -- <slug> [<slug>...] [--include <path>]... [-m "message"] [--push] [--keep]
@@ -11,8 +11,7 @@
 // ship checks, prints the diff stat, and cleans up. Every run ends with a list of
 // talks still waiting and, once none remain, a reminder to ship the tooling.
 import { execFileSync } from "node:child_process";
-import { existsSync, readFileSync, symlinkSync, unlinkSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { existsSync, mkdirSync, readFileSync, symlinkSync, unlinkSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 
 const TRAILER = "Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>";
@@ -102,9 +101,9 @@ function main() {
   const opts = parseArgs(process.argv.slice(2));
   const source = git(["rev-parse", "HEAD"]);
   const branch = git(["rev-parse", "--abbrev-ref", "HEAD"]);
+  git(["fetch", "origin", "main", "--quiet"]);
 
   if (opts.status) {
-    git(["fetch", "origin", "main", "--quiet"]);
     reportPending(pending("origin/main", source), branch);
     return;
   }
@@ -132,8 +131,9 @@ function main() {
   const dirty = git(["status", "--porcelain", "--", ...paths]);
   if (dirty) console.warn(`⚠ Uncommitted changes in these paths are NOT published (commit them first):\n${dirty}\n`);
 
-  git(["fetch", "origin", "main", "--quiet"]);
-  const wt = join(tmpdir(), `publish-${label}-${Date.now()}`);
+  const worktrees = join(resolve(repo, git(["rev-parse", "--git-common-dir"])), "publish-worktrees");
+  mkdirSync(worktrees, { recursive: true });
+  const wt = join(worktrees, `publish-${label}-${Date.now()}`);
   git(["worktree", "add", "--quiet", "--detach", wt, "origin/main"]);
   const links = [];
   try {
@@ -151,11 +151,7 @@ function main() {
 
     console.log(`\n▶ Regenerating index and inventory on main`);
     run(["slides/scripts/sync-index-dates.mjs"], wt);
-    try {
-      run(["scripts/portfolio-inventory.mjs"], wt);
-    } catch {
-      console.warn("⚠ Inventory reported errors (listed above); the file was still regenerated.");
-    }
+    run(["scripts/portfolio-inventory.mjs"], wt);
     git(["add", "-A", "--", ...restorable.filter((p) => existsSync(join(wt, p)))], wt);
     const changed = new Set(git(["diff", "--cached", "--name-only"], wt).split(/\r?\n/).filter(Boolean));
     restoreInventoryNoise(wt, changed);

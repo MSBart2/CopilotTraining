@@ -131,6 +131,11 @@
       "stage": "pushed",
       "updated": "2026-11-05T18:57:16.795Z"
     },
+    "copilot-chat-internals": {
+      "stage": "pushed",
+      "note": "Published to main as c4ccb0e2ad69c29c43d197e1f137d461fdecbea9; current remote deck, notes, and README match the reviewed staging content.",
+      "updated": "2026-11-09T17:07:18.615Z"
+    },
     "copilot-cli": {
       "stage": "pushed",
       "note": "Distance-first rebuild pushed in 0557efe.",
@@ -363,6 +368,11 @@
       "note": "Workflow-first revision pushed in 8700007.",
       "updated": "2026-11-03T23:07:22.958Z"
     },
+    "copilot-with-foundry": {
+      "stage": "pushed",
+      "note": "Published to main as c4ccb0e2ad69c29c43d197e1f137d461fdecbea9; slide 7 Linux overlap fixed in b6da6dd6608607eb792964559dcb9c7427074efc. Current remote deck, notes, and README match the reviewed staging content.",
+      "updated": "2026-11-09T17:07:18.615Z"
+    },
     "custom-agents": {
       "stage": "pushed",
       "note": "Pushed to main as 64e1100 (talk files only). 30 slides, 40:15.",
@@ -550,6 +560,10 @@
         }
       }
     },
+    "enterprise-patterns": {
+      "stage": "pushed",
+      "updated": "2026-11-06T20:37:45.239Z"
+    },
     "harness-fundamentals": {
       "stage": "pushed",
       "note": "Pushed to main as 9575d93 (2026-11-04): harness talk only + additive terminal `mark` in slides/native patterns. Validated on main: harness + all 5 other native decks pass; companions --strict green. Working branch review/native-deck-conversions still has these changes uncommitted.",
@@ -736,6 +750,10 @@
           "updated": "2026-11-04T22:01:02.340Z"
         }
       }
+    },
+    "local-agentic-sdlc": {
+      "stage": "pushed",
+      "updated": "2026-11-06T20:37:51.113Z"
     },
     "surfaces": {
       "stage": "pushed",

@@ -66,7 +66,18 @@ function normalize(data) {
   return { format: FORMAT, version: VERSION, talks };
 }
 
-export async function updateStore(root, mutate) {
+const writes = new Map();
+
+export function updateStore(root, mutate) {
+  const file = storePath(root);
+  const next = (writes.get(file) ?? Promise.resolve()).catch(() => {}).then(() => saveStore(root, mutate));
+  writes.set(file, next);
+  const clear = () => { if (writes.get(file) === next) writes.delete(file); };
+  next.then(clear, clear);
+  return next;
+}
+
+async function saveStore(root, mutate) {
   const file = storePath(root);
   const data = await readStore(root);
   const result = mutate(data);
