@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T16:42:48.235Z",
+  "generatedAt": "2026-11-09T16:53:20.842Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -1539,8 +1539,8 @@
         "deck": {
           "path": "slides/tech-talks/copilot-with-foundry/slides.js",
           "exists": true,
-          "bytes": 57234,
-          "modified": "2026-11-09T16:42:47.303Z"
+          "bytes": 57230,
+          "modified": "2026-11-09T16:53:20.162Z"
         },
         "notesHtml": {
           "path": "slides/tech-talks/copilot-with-foundry/notes.html",
