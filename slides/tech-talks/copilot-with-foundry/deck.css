@@ -1,18 +1,21 @@
 /* Deck-local sizing and typography; shared layers remain unchanged. */
 .scene.code-gap,
 .scene.integration-map,
+.scene.source-quality,
+.scene.answer-compare,
 .scene.deployment-manifest,
 .scene.identity-boundary,
 .scene.illustrative-review,
 .scene.agent-tools,
-.scene.reasoning-loop,
-.scene.freshness-evidence,
-.scene.decision-tree,
-.scene.estimate-filter,
-.scene.implementation-artifacts { flex: 0 0 auto; height: auto; margin-top: 24px; }
+.scene.signal-scenarios,
+.scene.surfaced-debt,
+.scene.readiness-checks,
+.scene.team-shift { flex: 0 0 auto; height: auto; margin-top: 24px; }
 .scene.memory-map { width: 720px; height: 720px; margin: 0; flex: 0 0 720px; }
 .scene.code-gap .t-mono { font-family: var(--mono); }
-.scene.reasoning-loop .t-sm { font-size: 19px; }
-.scene.decision-tree .t-sm { font-size: 20px; }
+.scene.agent-tools .t-sm { font-size: 19px; }
+.scene.readiness-checks .t-sm { font-size: 19px; }
+.scene.surfaced-debt .t-sm { font-size: 19px; }
 .scene.illustrative-review .t-sm { font-size: 22px; }
 .scene .ba-num { font-variant-numeric: tabular-nums; }
+.scene.memory-question .q-num { font-size: 76px; font-weight: 800; font-variant-numeric: tabular-nums; }

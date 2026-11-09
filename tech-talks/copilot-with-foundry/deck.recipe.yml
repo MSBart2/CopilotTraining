@@ -13,7 +13,7 @@ deck:
       takeaway: "Trace what GitHub can establish and what organizational records can add."
       whyItMatters: "The distinction keeps repository evidence and decision rationale separate."
     - title: "Wire the provider"
-      takeaway: "Follow the hosted-agent, knowledge-base, MCP, and identity boundaries."
+      takeaway: "Provision the knowledge base with azd, crawl the sources, and give Copilot its MCP endpoint."
       whyItMatters: "Each actor and permission is visible before a tool call."
     - title: "Keep the human decision"
       takeaway: "Inspect retrieved evidence, verify currency, and request approval before changing code."
@@ -23,12 +23,12 @@ deck:
     Keep the approved sequence and anchor. Open with bypassFraudChecks() and label its
     PR trace as illustrative, then name implementation, operational, and organizational
     context. Show the architecture before configuration so the audience can locate each
-    actor. The middle moves from a hosted-agent setup snapshot and knowledge-base wiring
+    actor. The middle moves from azd provisioning and knowledge-base ingestion
     to an explicit distinction among tool availability, permission, and human approval.
     The peak is the same query answered with implementation evidence and a retrieved,
     dated decision excerpt; neither result is represented as a live deployment or
     observed test. The closing diagnostic pairs positive intent signals with content
-    that does not earn indexing. Carry the original four parts, 5–10% heuristic, sample
+    that does not earn indexing. Carry the original four parts, readiness checks, sample
     artifacts, and transfer actions while disclosing that quantitative ratios and the
     fraud scenario are not measured evidence. Skip product-news refresh and live cloud
     actions.
@@ -48,10 +48,10 @@ deck:
     "Connecting Foundry IQ":
       emphasis: high
       note: >
-        Keep the hosted-agent setup a short, sourced orientation rather than a tutorial.
-        Show the project manifest, knowledge-base/toolbox handoff, document selection,
-        and managed identity. Name the Copilot client, tool server, Foundry runtime,
-        identity, permission grant, and owner separately. Setup snippets are examples;
+        Treat Foundry as infrastructure, not another agent: azd provision plus a
+        postprovision hook builds the index, knowledge sources, and knowledge base, and
+        outputs the MCP endpoint Copilot calls. Copilot is the only agent; it calls as the
+        developer, so name identity, the Search Index Data Reader grant, and owner separately. Setup snippets are examples;
         verify them against current first-party documentation before use.
     "The Organizational Memory Pattern":
       emphasis: high
@@ -65,9 +65,9 @@ deck:
       emphasis: medium
       note: >
         Present signal phrases beside the counterexample: missing or low-value
-        organizational records do not become useful by indexing everything. Frame
-        5–10% as the README's unmeasured planning heuristic, never a measured adoption
-        statistic. End with a local-baseline method and a transfer decision.
+        organizational records do not become useful by indexing everything. Replace
+        the unmeasured 5–10% heuristic with four readiness checks a team can run
+        without Foundry, then end with a two-week pilot and a transfer decision.
   preamble: []
   appendix: []
   highlightMoments:
@@ -75,7 +75,7 @@ deck:
     - "A tool being offered, a caller being permitted, and a person approving a code change are three different decisions."
     - "A March 2023 review excerpt is illustrative evidence in the teaching case, not an observed Foundry retrieval."
     - "The six-step loop checks whether a historical reason still holds before proposing any code change."
-    - "The 5–10% figure is a local planning heuristic to test, not a measured universal share."
+    - "Four readiness checks run without Foundry; a team counts its own why-questions instead of borrowing a percentage."
   slides:
     - { id: title, part: 0, claim: "A coding agent can combine repository evidence with organizational rationale through distinct context providers.", scene: "deck: provider paths converge on a coding question; motion: routes appear in sequence", seconds: 20 }
     - { id: core-question, part: 0, claim: "Add organizational memory only when the task needs a documented reason beyond repository context.", scene: "frame: learner question, three practitioner roles, and the decision", seconds: 40 }
@@ -85,30 +85,22 @@ deck:
     - { id: memory-layers, part: 1, claim: "Implementation, operational, and organizational context route to different authorities.", scene: "scorecard: three context layers and their questions", seconds: 100 }
     - { id: context-router, part: 1, claim: "Route what/how questions to repository sources, current-state questions to operational tools, and why questions to decision records.", scene: "signals: question signals map to context providers", seconds: 70 }
     - { id: intent-boundary, part: 1, claim: "A retrieved rationale explains a past decision but does not prove that the constraint still applies.", scene: "showdown: historical record versus current validation", seconds: 70 }
-    - { id: part-2, part: 2, claim: "Foundry IQ becomes a provider through an indexed source, an MCP toolbox, and an authorized identity.", scene: "frame: index, expose, govern", seconds: 25 }
+    - { id: part-2, part: 2, claim: "Connecting Foundry IQ is infrastructure: provision, ingest, and hand Copilot one MCP endpoint.", scene: "frame: provision, ingest, connect", seconds: 25 }
     - { id: integration-map, part: 2, claim: "The Copilot client requests tools while provider services retrieve their own authoritative context.", scene: "deck: actor-labeled Copilot, GitHub MCP, Foundry IQ, and document paths", seconds: 95 }
-    - { id: hosted-setup, part: 2, claim: "The hosted-agent quickstart scaffolds deployment, but does not itself authorize every tool action.", scene: "terminal: documented setup orientation, no live provisioning", seconds: 75 }
-    - { id: deployment-manifest, part: 2, claim: "The manifest connects a hosted agent to its project, model deployment, endpoint, and runtime configuration.", scene: "deck: manifest fields grouped by responsibility", seconds: 90 }
-    - { id: provision-kb, part: 2, claim: "Knowledge-base setup selects sources, creates an index, exposes a toolbox, and returns an endpoint.", scene: "four-phases: select, index, expose, verify", seconds: 90 }
-    - { id: source-quality, part: 2, claim: "Decision records earn indexing when they are authoritative, scoped, maintainable, and safe to retrieve.", scene: "scorecard: five source classes and curation checks", seconds: 75 }
-    - { id: identity-boundary, part: 2, claim: "Managed identity establishes an identity boundary; a separate grant defines what that identity may access.", scene: "deck: caller identity, permission grant, service decision", seconds: 90 }
+    - { id: azd-provision, part: 2, claim: "azd provision plus a postprovision hook builds the knowledge base and outputs its MCP endpoint; no agent is deployed.", scene: "terminal: env set, provision, get-value KB_MCP_ENDPOINT", seconds: 75 }
+    - { id: deployment-manifest, part: 2, claim: "One azure.yaml provisions the project and model; the hook builds the knowledge base; the only output Copilot needs is the MCP endpoint.", scene: "deck: four cards (project, search service, hook, endpoint output)", seconds: 90 }
+    - { id: source-quality, part: 2, claim: "Foundry IQ knows only connected sources: decision documents crawled into an index (cited), or Microsoft 365 email, meetings, and Teams chats asked live through Work IQ (preview, permission-scoped, uncited).", scene: "deck: indexed versus remote lanes with bypass examples and an owner-scope-path rule", seconds: 90 }
+    - { id: identity-boundary, part: 2, claim: "Identity, permission, and approval are separate controls with separate owners; each fails differently when missing.", scene: "deck: three control cards (question, bypass-question answer, owner, failure signal) over a rule band; identity is the developer calling through Copilot", seconds: 90 }
     - { id: part-3, part: 3, claim: "The organizational-memory pattern combines implementation trace with dated rationale before proposing action.", scene: "frame: code, historical record, reviewed answer", seconds: 25 }
-    - { id: illustrative-review, part: 3, claim: "The sample March 2023 review gives a historical reason and a review condition, not current approval.", scene: "deck: explicitly illustrative decision-record excerpt with dates", seconds: 100 }
-    - { id: answer-without, part: 3, claim: "Without an organizational provider, the agent can report the sample code history but cannot ground the why.", scene: "terminal: illustrative repository-only response", seconds: 70 }
-    - { id: answer-with-foundry, part: 3, claim: "With a permitted Foundry IQ tool, the agent can retrieve a decision excerpt and flag its age for validation.", scene: "terminal: illustrative combined-source response with evidence labels", seconds: 70 }
-    - { id: agent-tools, part: 3, claim: "Separate GitHub and organizational tools keep each provider's authority legible to the model and reviewer.", scene: "deck: tool configuration excerpt and provider ownership", seconds: 100 }
-    - { id: instruction-policy, part: 3, claim: "Instructions can route questions and propose work, while access policy and human review remain separate controls.", scene: "showdown: model instruction, service permission, human approval", seconds: 90 }
-    - { id: reasoning-loop, part: 3, claim: "The agent must trace, recognize a gap, retrieve, synthesize, check currency, and propose—not silently change code.", scene: "deck: six-step evidence loop ending at human decision", seconds: 90 }
-    - { id: freshness-evidence, part: 3, claim: "A dated retrieval is evidence of a past decision; current system state and source citations determine the next check.", scene: "deck: dated rationale paired with present-state verification", seconds: 90 }
-    - { id: permission-vs-approval, part: 3, claim: "Tool invocation permission does not equal authorization to change production code or waive a human review.", scene: "showdown: request, access, proposed change, named human approval", seconds: 90 }
+    - { id: illustrative-review, part: 3, claim: "The March 2023 decision record supplies the risk owner, the alternative, and an expiry; each answers a question the PR left open.", scene: "deck: ADR-042 document card with fields mapped to the PR questions", seconds: 90 }
+    - { id: answer-compare, part: 3, claim: "With repository context alone the agent stops at a missing decision source; with Foundry IQ it proposes a bounded check with the owner.", scene: "deck: same question, repository-only vs repository + org memory panes with outcome bands", seconds: 100 }
+    - { id: agent-tools, part: 3, claim: "Copilot is already the agent: one .agent.md file scopes two MCP servers (GitHub and the knowledge base endpoint), and four instructions drive the bypass run to a proposal; instructions route while permission and the owner govern.", scene: "deck: agent-file card (tools + lettered instructions) beside six bypass steps tagged by instruction, over a controls band", seconds: 130 }
+    - { id: surfaced-debt, part: 3, claim: "Connecting decision records surfaces debt beyond the question asked: an expired time-box, an unfinished follow-up, and conflicting guidance; each becomes an owner issue, and conflicts are cited and stopped.", scene: "deck: three find cards (record says, signal, move) over an owners-decide band", seconds: 100 }
     - { id: part-4, part: 4, claim: "Intent signals justify a local fit check; missing sources or ordinary code tasks point elsewhere.", scene: "frame: signals, exclusions, local threshold", seconds: 25 }
-    - { id: signal-phrases, part: 4, claim: "Repeated questions about why, unknown constraints, and migration surprises indicate a context gap worth testing.", scene: "signals: phrase-to-diagnostic mapping", seconds: 100 }
-    - { id: what-not-to-index, part: 4, claim: "Code-only questions, inaccessible records, and broad uncurated corpora do not justify adding an organizational tool.", scene: "scorecard: exclusion criteria and alternative route", seconds: 90 }
-    - { id: decision-tree, part: 4, claim: "Add Foundry only when a consequential why-question has an authoritative source and an approved access path.", scene: "deck: branching decision gates", seconds: 100 }
-    - { id: estimate-filter, part: 4, claim: "The 5–10% figure is an unmeasured heuristic; teams need a local task sample before using it as a budget.", scene: "deck: estimate separated from a local measurement plan", seconds: 90 }
-    - { id: use-cases, part: 4, claim: "Migration, onboarding, debt review, and compliance checks are candidate workflows only when evidence and owners exist.", scene: "scorecard: four explicitly illustrative workflows", seconds: 90 }
-    - { id: implementation-artifacts, part: 4, claim: "A bounded pilot can begin with a source map, a two-tool configuration, and a reviewable validation issue.", scene: "deck: reusable artifact bundle and evidence checkpoints", seconds: 75 }
-    - { id: before-after, part: 0, claim: "The added provider contributes documented intent; a human still verifies current state and approves any change.", scene: "frame: repository-only versus combined evidence, with no fabricated performance metric", seconds: 60 }
+    - { id: signal-phrases, part: 4, claim: "Four overheard phrases reveal an intent gap; each surfaces in a meeting the team already runs, names what is missing and where it was written down, and shows that the person asking is rarely the person who knows.", scene: "deck: 2x2 scenario cards with heard-in, missing, look-in source chips, and asks/knows roles", seconds: 120 }
+    - { id: what-not-to-index, part: 4, claim: "Route each question to the place that can answer it: code to Copilot + repo, quick facts to the owner, unrecorded decisions to a new ADR, and written-but-scattered rationale to Foundry IQ.", scene: "signals: four question rows routed to four destinations", seconds: 90 }
+    - { id: readiness-checks, part: 4, claim: "Four team-level checks run without Foundry (why-questions heard, decisions written down, sources owned, answers slow to find); a yes on all four earns a two-week pilot.", scene: "deck: four check rows with how-to-check and if-no columns over a pilot band", seconds: 110 }
+    - { id: before-after, part: 0, claim: "Role by role, the running example shifts from asking around and approving on LGTM to cited records, an expiry check, and one owner-reviewed issue.", scene: "deck: role chips with before and after rows over an authority band", seconds: 75 }
     - { id: today, part: 0, claim: "Start with one real why-question, identify the authoritative record, then measure whether retrieval changes the decision.", scene: "frame: today, this week, this month transfer plan", seconds: 90 }
     - { id: references, part: 0, claim: "First-party quickstarts and protocol documentation are the verification path for evolving setup details.", scene: "frame: first-party sources", seconds: 30 }
     - { id: thanks, part: 0, claim: "The transferable decision is when a task needs organizational context and who approves action on it.", scene: "frame: closing question and provider map", seconds: 30 }

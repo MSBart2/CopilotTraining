@@ -1,0 +1,75 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/copilot-with-foundry"
+  cutoff: "2026-10-31"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-11-06"
+    lastBuildDate: "Fri, 06 Nov 2026 20:00:22 GMT"
+  status: approved
+  approved: 2026-11-06
+  updateLevel: content
+  rationale: >
+    The changelog router matched nothing to this talk since 2026-10-31. The first-party
+    Foundry blog shipped one relevant item: the azd Foundry extension reached 1.0 GA on
+    2026-11-05, and its published azure.yaml and command flow differ from the deck's
+    setup and manifest slides. The thesis, section order, and demo stay intact; two
+    Part 2 slides need copy and artifact patches.
+  userEmphasis: []
+
+  accepted:
+    - title: "Microsoft Foundry extension for Azure Developer CLI is generally available"
+      published: "2026-11-05"
+      source: "https://devblogs.microsoft.com/foundry/microsoft-foundry-azure-developer-cli-ga/"
+      verified: "2026-11-06"
+      releaseStatus: "ga"
+      importance: "supporting"
+      targetSection: "2. Connecting Foundry IQ (slides hosted-setup, deployment-manifest)"
+      action: "update"
+      summary: >
+        `azd ext install microsoft.foundry` (1.0, GA; azd 1.37.0+) scaffolds hosted agents with
+        `azd ai agent init --template <sample azure.yaml> --deploy-mode code --src .`, then
+        `azd provision`, local test with `azd ai agent run` / `azd ai agent invoke --local`,
+        and `azd deploy`. The sample azure.yaml declares an `azure.ai.project` service with
+        `deployments` (model, version, sku) and an `azure.ai.agent` service with
+        `codeConfiguration` (runtime, entryPoint), `uses: [ai-project]`, and `container.resources`.
+        Patch hosted-setup's transcript to the GA command flow and replace the deployment-manifest
+        artifact (gpt-4.1 `model:` block, `dependencies: azure.ai.model`, `endpoint`) with the
+        current shape, keeping GITHUB_MCP_ENDPOINT and TOOLBOX_ENDPOINT as the talk's additions.
+        Add `azd deploy --preview` and `azd ai agent doctor` to the notes as review and
+        permission-diagnosis aids that support the talk's authority boundary.
+      limitations:
+        - "Hosted agents still require Foundry permissions and model quota; provisioned resources incur charges."
+        - "Exact env-var syntax for tool endpoints in the new schema needs confirmation against the azure.yaml reference."
+      recipeImpact: "confirm"
+      slideImpact: "patch"
+
+  ignored:
+    - title: "Microsoft Foundry docs: What's new (August 2026 page, updated 2026-11-05)"
+      source: "https://learn.microsoft.com/en-us/azure/foundry/whats-new-foundry"
+      reason: >
+        Page content predates the cutoff (August 2026). Long-running agents, human-in-the-loop
+        approval (preview), and toolbox network isolation are candidates for a future pass on
+        the authority boundary, but nothing new landed after 2026-10-31.
+      relatedTalks: []
+    - title: "Changelog entries routed 2026-10-31 to 2026-11-06 (Dependabot, GitHub Desktop, pull_request_target, etc.)"
+      source: ".github/content-routing/latest-report.md"
+      reason: "No routing match to Foundry, Foundry IQ, or hosted agents."
+      relatedTalks: [agentic-workflows, agentic-sdlc]
+
+  removals: []
+  anomalies:
+    - "Visual Studio Code 1.146 (Insiders) feed entry is future-dated; unrelated to this talk."
+
+  recipeReview:
+    required: false
+    question: >
+      Not required: copy and artifact patches only.
+
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: false
+    slidesRegenerated: false
+    deckBuildPassed: true
