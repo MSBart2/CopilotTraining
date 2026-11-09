@@ -80,7 +80,7 @@
       rows: [
         { label: 'What does it do?', description: 'Inspect code, tests, and PRs', tag: 'GitHub MCP', z: 'local' },
         { label: 'What is live?', description: 'Check incidents and system state', tag: 'Operational MCP', z: 'remote' },
-        { label: 'Why was this chosen?', description: 'Retrieve ADR, review, or decision record', tag: 'Foundry IQ', z: 'purple' },
+        { label: 'Why this choice?', description: 'Retrieve ADR, review, or decision record', tag: 'Foundry IQ', z: 'purple' },
         { label: 'May I change it?', description: 'Ask the authorized service owner', tag: 'Human approval', z: 'orange' }
       ]
     }),
