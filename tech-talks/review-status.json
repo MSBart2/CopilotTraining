@@ -1,0 +1,875 @@
+{
+  "format": "copilottraining.talk-review",
+  "version": 1,
+  "talks": {
+    "agentic-sdlc": {
+      "stage": "pushed",
+      "updated": "2026-11-05T18:57:12.289Z"
+    },
+    "agentic-workflows": {
+      "stage": "pushed",
+      "updated": "2026-11-05T17:05:22.819Z",
+      "slides": {
+        "agent-factory": {
+          "status": "fixed",
+          "note": "Cards now explain causal-chain attribution (/plan and refactor feed coding agents; docs opens its own PRs; people merge). Repo Assist moved to notes. Footnote links to Peli's Agent Factory.",
+          "updated": "2026-11-05T14:50:33.559Z"
+        },
+        "automation-tree": {
+          "status": "fixed",
+          "note": "New decision tree: public? / reviewed in a PR? / capped writes? Any yes = agentic workflow; three noes = Copilot automation.",
+          "updated": "2026-11-05T16:42:51.388Z"
+        },
+        "automations": {
+          "status": "fixed",
+          "note": "New: Copilot automations vs agentic workflow comparison, linked to GitHub docs.",
+          "updated": "2026-11-05T16:36:11.459Z"
+        },
+        "cloud-agent-handoff": {
+          "status": "fixed",
+          "note": "Replaced shared showdown with deck scene route-fork: [plan] #321 reaches a maintainer decision, forks into workflow-per-stage or cloud-agent session + CI gate, rejoins at person merges.",
+          "updated": "2026-11-05T14:57:37.828Z"
+        },
+        "compile-lock": {
+          "status": "fixed",
+          "note": "Rebuilt as lock-jobs: compile strip + real 7-job graph colored model/write/plumbing with permissions.",
+          "updated": "2026-11-05T16:02:20.881Z"
+        },
+        "contents": {
+          "status": "ok",
+          "updated": "2026-11-05T14:16:18.111Z"
+        },
+        "core-question": {
+          "status": "ok",
+          "updated": "2026-11-05T14:16:14.834Z"
+        },
+        "fanhub-202": {
+          "status": "fixed",
+          "note": "Issue moved to subtitle; question rows now pair one-to-one with their observed answers.",
+          "updated": "2026-11-05T16:42:48.804Z"
+        },
+        "hostile-issue": {
+          "status": "fixed",
+          "note": "Rebuilt as injection-gates: five injection asks meet five gates along the run; gate 1 shown open (min-integrity: none).",
+          "updated": "2026-11-05T16:02:26.274Z"
+        },
+        "issueops-flow": {
+          "status": "fixed",
+          "note": "Replaced shared relay with deck scene issueops-lanes: person/agent/repo-write swimlanes across triage, plan, decide; illustrative issue #318 walks the chain.",
+          "updated": "2026-11-05T14:57:35.022Z"
+        },
+        "meet-triage-wizard": {
+          "status": "fixed",
+          "note": "New slide: annotated triage-wizard.md syntax intro (frontmatter = authority, body = judgment).",
+          "updated": "2026-11-05T15:53:09.747Z"
+        },
+        "narrow-draft": {
+          "status": "fixed",
+          "note": "Markers renumbered to ascend in code order: 1 trust, 2 staged, 3 scope, 4 labels.",
+          "updated": "2026-11-05T16:36:06.634Z"
+        },
+        "otherwise": {
+          "status": "fixed",
+          "note": "Moved to Part 2 (slide 18), just before hostile-issue; pill 'Threat boundary'; transitions bridge from staged-mode and into the controls slide.",
+          "updated": "2026-11-05T14:43:03.512Z"
+        },
+        "part-1": {
+          "status": "ok",
+          "updated": "2026-11-05T14:16:21.223Z"
+        },
+        "part-4": {
+          "status": "fixed",
+          "note": "Third card now 'Route deliberately' after removing troubleshoot.",
+          "updated": "2026-11-05T16:36:13.727Z"
+        },
+        "refine-first-loop": {
+          "status": "fixed",
+          "note": "refine-loop: explicit Prompt 2 bubble, staged loop, promote.",
+          "updated": "2026-11-05T16:16:09.068Z"
+        },
+        "staged-mode": {
+          "status": "fixed",
+          "note": "Retitled: dry run where the agent works and the writes become previews.",
+          "updated": "2026-11-05T16:02:26.250Z"
+        },
+        "three-part-test": {
+          "status": "fixed",
+          "note": "Rebuilt as task-sort table: six real tasks scored on recurs/judgment/bounded write and routed to agentic workflow, Actions, or cloud agent.",
+          "updated": "2026-11-05T14:43:00.601Z"
+        },
+        "title": {
+          "status": "ok",
+          "note": "Reframed as Continuous AI: Agent Factory capability ring.",
+          "updated": "2026-11-05T02:29:23.597Z"
+        },
+        "today": {
+          "status": "fixed",
+          "note": "Retitled 'Where to go from here'.",
+          "updated": "2026-11-05T16:36:09.244Z"
+        },
+        "use-cases-react": {
+          "status": "ok",
+          "updated": "2026-11-05T14:47:50.965Z"
+        },
+        "use-cases-scheduled": {
+          "status": "ok",
+          "updated": "2026-11-05T14:47:55.193Z"
+        },
+        "who-acts": {
+          "status": "fixed",
+          "note": "Rebuilt as actor-chain: five actor cards in run order with does/cannot rows.",
+          "updated": "2026-11-05T15:52:58.322Z"
+        },
+        "wizard-intent": {
+          "status": "fixed",
+          "note": "prompt-to-draft: Prompt 1 → coding agent → draft PR; disclaimer removed.",
+          "updated": "2026-11-05T16:16:04.168Z"
+        }
+      }
+    },
+    "copilot-azure-mcp": {
+      "stage": "pushed",
+      "updated": "2026-11-05T18:57:16.795Z"
+    },
+    "copilot-chat-internals": {
+      "stage": "pushed",
+      "note": "Published to main as c4ccb0e2ad69c29c43d197e1f137d461fdecbea9; current remote deck, notes, and README match the reviewed staging content.",
+      "updated": "2026-11-09T17:07:18.615Z"
+    },
+    "copilot-cli": {
+      "stage": "pushed",
+      "note": "Distance-first rebuild pushed in 0557efe.",
+      "updated": "2026-11-03T23:07:20.679Z"
+    },
+    "copilot-on-github": {
+      "stage": "pushed",
+      "note": "Pushed to main in de0604a (talk-only commit from a clean origin/main worktree). 32 slides, ~47:05, native validation and companion checks green.",
+      "updated": "2026-11-04T19:43:19.310Z",
+      "slides": {
+        "configure-promote-cost": {
+          "status": "fixed",
+          "note": "Title rewritten: 'Roll out each agent in three steps: observe, evaluate, then enforce.' Matches the Observe → Evaluate → Enforce stairs; recipe claim aligned. Footnote costs updated earlier.",
+          "updated": "2026-11-04T19:25:42.495Z"
+        },
+        "contents": {
+          "status": "ok",
+          "note": "Reviewed: the section map is clear and the loop is easy to follow.",
+          "updated": "2026-11-04T04:32:56.068Z"
+        },
+        "core-question": {
+          "status": "ok",
+          "note": "Reviewed: the core question grounds the talk in human judgment and evidence.",
+          "updated": "2026-11-04T04:32:53.586Z"
+        },
+        "event-map-recap": {
+          "status": "fixed",
+          "note": "New pipeline-vs-map scene replaces the plain before/after lists: left 'pipeline thinking' (Issue→Code→Review→Merge with three ✗ assumptions); right event map (agent and person push a new head; configured events wake review and Code Quality; evidence returns to the person; only a person merges); WHO / WHICH SHA / WHAT NEXT question cards below.",
+          "updated": "2026-11-04T19:28:48.149Z"
+        },
+        "measure": {
+          "status": "ok",
+          "note": "Reviewed: the measurement section opener is clear and properly distinguishes rule evaluation from human review.",
+          "updated": "2026-11-04T04:33:40.954Z"
+        },
+        "measure-row": {
+          "status": "ok",
+          "note": "Reviewed: the scan flow is concrete and tied to the PR head.",
+          "updated": "2026-11-04T04:33:43.129Z"
+        },
+        "measure-setup": {
+          "status": "ok",
+          "note": "Reviewed: Evaluate mode is framed correctly as a trial before activation.",
+          "updated": "2026-11-04T04:33:47.441Z"
+        },
+        "measure-standard-ai": {
+          "status": "fixed",
+          "note": "AI findings prose rewritten against docs verified 2026-11-04: 'Model analysis / reads recently changed files', 'Finds what rules miss / results can vary by run', 'Default branch / includes non-CodeQL languages', 'Feeds the backlog / triage, fix, or assign to Copilot'. Dropped stale 'public preview' and negative 'cannot gate' framing; headline, footnote, notes, slide 19 know, and recipe aligned.",
+          "updated": "2026-11-04T19:13:22.232Z"
+        },
+        "measure-troubleshoot": {
+          "status": "ok",
+          "note": "Reviewed: the troubleshooting slide correctly separates rule coverage from behavior and security review.",
+          "updated": "2026-11-04T04:33:54.209Z"
+        },
+        "measure-use": {
+          "status": "ok",
+          "note": "Reviewed: the use cases for findings are practical and preserve human authority.",
+          "updated": "2026-11-04T04:33:51.922Z"
+        },
+        "next-moves": {
+          "status": "fixed",
+          "note": "Replaced the backward-looking 'replay a merged PR' exercise with forward next moves by role (Developer, Platform owner, Team lead), each with three steps and live 'Learned in slide N' chips; success banner below. Slide id renamed replay-last-pr → next-moves. README 'Today' section, speaking time (47:05), and recipe updated. Replay kept as a know note for teams already running agents.",
+          "updated": "2026-11-04T19:32:35.219Z"
+        },
+        "pr-timeline": {
+          "status": "fixed",
+          "note": "NEW: replaces the eight step slides. Swimlane timeline of #221 (Person, Cloud agent, Code review, Code Quality) with every marker linked to its exact commit, review, or comment; moments A/B/C link to the zoom slides.",
+          "updated": "2026-11-04T19:22:25.077Z"
+        },
+        "produce": {
+          "status": "ok",
+          "note": "Reviewed: the produce section opener is well-scoped and practical.",
+          "updated": "2026-11-04T04:33:00.023Z"
+        },
+        "produce-authority": {
+          "status": "ok",
+          "note": "Reviewed: the authority boundary is explicit and consistent with the product model.",
+          "updated": "2026-11-04T04:33:14.687Z"
+        },
+        "produce-row": {
+          "status": "ok",
+          "note": "Reviewed: cloud-agent lifecycle and draft PR flow are concrete and accurate.",
+          "updated": "2026-11-04T04:33:04.175Z"
+        },
+        "produce-setup-context": {
+          "status": "ok",
+          "note": "Reviewed: issue shape and acceptance criteria are practical and easy to reuse.",
+          "updated": "2026-11-04T04:33:08.190Z"
+        },
+        "produce-triggers": {
+          "status": "ok",
+          "note": "Reviewed: invocation triggers remain user-driven and appropriately bounded.",
+          "updated": "2026-11-04T04:33:06.243Z"
+        },
+        "produce-troubleshoot": {
+          "status": "fixed",
+          "note": "New triage scene: three columns (signal you see, likely cause, recoverable move) connected by arrows; replaces the shared signals list.",
+          "updated": "2026-11-04T14:12:33.885Z"
+        },
+        "produce-use": {
+          "status": "fixed",
+          "note": "New pr-anatomy scene: mock agent PR with six numbered parts, each linked to the question the owner asks. No longer shares the signals list with slide 10.",
+          "updated": "2026-11-04T14:12:31.542Z"
+        },
+        "reason": {
+          "status": "ok",
+          "note": "Reviewed: the reason section opener is well framed and easy to understand.",
+          "updated": "2026-11-04T04:33:16.583Z"
+        },
+        "reason-authority": {
+          "status": "ok",
+          "note": "Reviewed: the authority boundary is carefully presented with an explicit preview caveat.",
+          "updated": "2026-11-04T04:33:36.839Z"
+        },
+        "reason-row": {
+          "status": "ok",
+          "note": "Reviewed: the trigger logic for review is clear and evidence-backed.",
+          "updated": "2026-11-04T04:33:18.500Z"
+        },
+        "reason-setup-context": {
+          "status": "fixed",
+          "note": "Beautified: new review-setup scene. Left: settings mock (ruleset chip, push/draft/authorized-user toggles, Lite/Balanced/Max segmented control with Balanced default, runner chip). Right: instruction file tree at PR head with scope chips (every agent, applyTo, excludeAgent). Both feed a central Copilot code review node.",
+          "updated": "2026-11-04T19:04:03.539Z"
+        },
+        "reason-triggers": {
+          "status": "fixed",
+          "note": "New review-loop scene: triggers feed Copilot review → assessment → repair (author or cloud agent) → new push, looping back to review only if Review new pushes is on; exits to a person who approves and merges. Notes gained a repair-loop line.",
+          "updated": "2026-11-04T14:15:40.732Z"
+        },
+        "reason-troubleshoot": {
+          "status": "ok",
+          "note": "Reviewed: open issues and commit context are presented in a way that helps explain review surprises.",
+          "updated": "2026-11-04T04:33:33.954Z"
+        },
+        "reason-use-198": {
+          "status": "fixed",
+          "note": "Each panel now links to its exact artifact: checks → draft commit ba0764f; findings 1–2 → review thread r4210466991; finding 3 → r4210467074; proof → maintainer follow-up comment (1 failed/4 passed, then 6/6). Notes sources list all four plus fix commit edeadee.",
+          "updated": "2026-11-04T19:37:18.436Z"
+        },
+        "references": {
+          "status": "ok",
+          "note": "Reviewed: references remain well sourced and properly separated from the main claim.",
+          "updated": "2026-11-04T04:34:32.147Z"
+        },
+        "replay-last-pr": {
+          "status": "ok",
+          "note": "Reviewed: the replay exercise is concrete, actionable, and scope-appropriate.",
+          "updated": "2026-11-04T04:34:29.799Z"
+        },
+        "same-line": {
+          "status": "fixed",
+          "note": "NEW: moment C. Real code from staged commit 8a752d2 (lines 12–16 highlighted) with Code Quality and code review comments side by side, then handoff → fix commits → green review. All linked.",
+          "updated": "2026-11-04T19:22:31.156Z"
+        },
+        "steer-rework": {
+          "status": "fixed",
+          "note": "NEW: moments A and B as four linked artifact cards with real quotes (review thread, review, owner comment, agent reply).",
+          "updated": "2026-11-04T19:22:27.884Z"
+        },
+        "step-1-assign": {
+          "status": "ok",
+          "note": "Reviewed: the issue assignment and draft creation are clearly observed and grounded in a real event sequence.",
+          "updated": "2026-11-04T04:34:00.436Z"
+        },
+        "step-2-plan-checks": {
+          "status": "ok",
+          "note": "Reviewed: the scan-versus-review distinction is a strong explanatory device.",
+          "updated": "2026-11-04T04:34:02.558Z"
+        },
+        "step-3-lockfile": {
+          "status": "ok",
+          "note": "Reviewed: the lockfile-only push example makes the new-head review loop concrete.",
+          "updated": "2026-11-04T04:34:04.846Z"
+        },
+        "step-4-correction": {
+          "status": "ok",
+          "note": "Reviewed: the stale-thread example is a useful demonstration of why evidence and timing matter.",
+          "updated": "2026-11-04T04:34:07.369Z"
+        },
+        "step-5-human-steers": {
+          "status": "ok",
+          "note": "Reviewed: the human steering step correctly shows who resolves stale context and reopens the task.",
+          "updated": "2026-11-04T04:34:09.843Z"
+        },
+        "step-6-rework": {
+          "status": "ok",
+          "note": "Reviewed: the rework signal is clear and consistent with the rest of the event map.",
+          "updated": "2026-11-04T04:34:12.358Z"
+        },
+        "step-7-staged": {
+          "status": "ok",
+          "note": "Reviewed: the staged human change makes the tradeoff between agent framing and human intent concrete.",
+          "updated": "2026-11-04T04:34:14.850Z"
+        },
+        "step-8-handoff": {
+          "status": "ok",
+          "note": "Reviewed: the handoff is realistic and preserves the final human decision.",
+          "updated": "2026-11-04T04:34:17.620Z"
+        },
+        "thanks": {
+          "status": "fixed",
+          "note": "Added a closing 'pr-closed' visual that mirrors the title slide's PR stack in its resolved state: Issue closed, Merged chip, each agent row checked (draft inspected, no open issues on final head, rules pass), and 'Merged by a person — decision recorded, revert path named'. Notes point at the bookend; stale 55:50 budget fixed to 47:05.",
+          "updated": "2026-11-04T19:39:46.467Z"
+        },
+        "title": {
+          "status": "fixed",
+          "note": "Replaced generic loop with pr-stack visual: bounded issue → one draft PR worked by cloud agent (Produce), code review (Reason), Code Quality (Measure) → person approves and merges.",
+          "updated": "2026-11-04T14:09:04.906Z"
+        },
+        "what-ends-loop": {
+          "status": "fixed",
+          "note": "Corrected against GitHub: #210 was merged as merge commit 803254f (not a squash); maintainer approval of 02ddaf3 is linked. Removed the unverifiable '8 of 8 tests' claim. Sources now link the #210 review, approval, and merge commit.",
+          "updated": "2026-11-04T19:22:34.522Z"
+        },
+        "whole-flow": {
+          "status": "fixed",
+          "note": "Redesigned event map from flat grid to numbered stage route with a Steer→Push loop-back arc, colored lane labels, highlighted Decide column, emphasized human merge, dashed 'cannot approve' cell.",
+          "updated": "2026-11-04T14:08:58.424Z"
+        },
+        "wire": {
+          "status": "ok",
+          "note": "Reviewed: the wire-together opener is a succinct synthesis of the full pull-request loop.",
+          "updated": "2026-11-04T04:33:58.209Z"
+        }
+      }
+    },
+    "copilot-primitives": {
+      "stage": "pushed",
+      "note": "Workflow-first revision pushed in 8700007.",
+      "updated": "2026-11-03T23:07:22.958Z"
+    },
+    "copilot-with-foundry": {
+      "stage": "pushed",
+      "note": "Published to main as c4ccb0e2ad69c29c43d197e1f137d461fdecbea9; slide 7 Linux overlap fixed in b6da6dd6608607eb792964559dcb9c7427074efc. Current remote deck, notes, and README match the reviewed staging content.",
+      "updated": "2026-11-09T17:07:18.615Z"
+    },
+    "custom-agents": {
+      "stage": "pushed",
+      "note": "Pushed to main as 64e1100 (talk files only). 30 slides, 40:15.",
+      "updated": "2026-11-05T01:35:21.335Z",
+      "slides": {
+        "agent-anatomy": {
+          "status": "fixed",
+          "note": "Fixed: excerpt now quotes the real FanHub frontmatter verbatim (description, quoted tools/model, handoffs list); anatomy scene preserves YAML indentation and indents wrapped continuations.",
+          "updated": "2026-11-04T04:34:32.289Z"
+        },
+        "authority-boundary": {
+          "status": "fixed",
+          "note": "Reframed on-topic: body sentence asks; tools, agent hooks, repo hooks (.github/hooks), and branch rules + review enforce — per surface. Sourced from GitHub hooks concept + VS Code hooks page (app, CLI, VS Code Copilot share the hook format). Added SRC.hooks and SRC.vscodeHooks.",
+          "updated": "2026-11-05T01:31:23.195Z"
+        },
+        "before-after": {
+          "status": "ok",
+          "note": "Strong close; metrics match evidence.",
+          "updated": "2026-11-04T04:32:33.438Z"
+        },
+        "cli-load-report": {
+          "status": "ok",
+          "note": "Content good. Only shared table header alignment.",
+          "updated": "2026-11-04T04:31:08.548Z"
+        },
+        "cli-run": {
+          "status": "ok",
+          "note": "Matches #215. One log line is split into three bullets, which reads as three log entries. Acceptable; minor.",
+          "updated": "2026-11-04T04:30:50.768Z"
+        },
+        "cloud-first-run": {
+          "status": "fixed",
+          "note": "Fixed: same paired-scene wrap fix as slide 14.",
+          "updated": "2026-11-04T04:34:50.938Z"
+        },
+        "cloud-load-report": {
+          "status": "ok",
+          "note": "Content good; matches #214 'Custom agent used'. Only shared table header alignment.",
+          "updated": "2026-11-04T04:31:08.583Z"
+        },
+        "cloud-recovery": {
+          "status": "fixed",
+          "note": "Fixed: terminal title now 'Recovery timeline · FanHub #214 artifacts'.",
+          "updated": "2026-11-04T04:34:53.838Z"
+        },
+        "cold-open": {
+          "status": "fixed",
+          "note": "Fixed: outcomes scene sizes cards to content; empty band removed.",
+          "updated": "2026-11-04T04:34:21.565Z"
+        },
+        "compose-boundaries": {
+          "status": "fixed",
+          "note": "Fixed: title 'Authority held outside' fits one line; columns align.",
+          "updated": "2026-11-04T04:34:57.402Z"
+        },
+        "contents": {
+          "status": "ok",
+          "note": "Slide links 5/11/18/24 correct.",
+          "updated": "2026-11-04T04:29:33.914Z"
+        },
+        "core-question": {
+          "status": "fixed",
+          "note": "Replaced role cards (author/developer/lead) with three moments the question shows up: fine in my editor, assigned to cloud, a field went quiet. Notes updated.",
+          "updated": "2026-11-04T23:36:40.277Z"
+        },
+        "description-selects": {
+          "status": "fixed",
+          "note": "Rebuilt as a real frontmatter excerpt: a thin description beside a three-line one with task, boundary, and when-to-use highlighted. Dropped the 'Selects on CLI and cloud agent' claim.",
+          "updated": "2026-11-04T23:45:31.890Z"
+        },
+        "documented-support": {
+          "status": "fixed",
+          "note": "Fixed: header labels centered. Content verified: cloud how-to limits model to IDE profiles, so 'Documented for IDE use' stands.",
+          "updated": "2026-11-04T04:34:44.887Z"
+        },
+        "launch-controls": {
+          "status": "fixed",
+          "note": "Fixed: disable-model-invocation now reads 'Stops Copilot from picking this agent on its own; a person selects it' (slide + notes), matching the config reference. Tag pill text centered.",
+          "updated": "2026-11-04T04:34:41.862Z"
+        },
+        "local-only-fields": {
+          "status": "fixed",
+          "note": "Replaced relay cards with a field × five-surface grid (Works / Skipped / Not listed / Check). Last row: a body sentence works everywhere. Title: 'Three Fields Work Only in VS Code Local'.",
+          "updated": "2026-11-05T00:08:50.033Z"
+        },
+        "model-preference": {
+          "status": "fixed",
+          "note": "Replaced the abstract showdown with a per-surface table: a concrete model line for each surface and what happens. Footnote: leave model out to use the session's model.",
+          "updated": "2026-11-04T23:50:53.070Z"
+        },
+        "observed-resolution": {
+          "status": "ok",
+          "note": "Verified against PRs #214/#215/#216. Clean layout. (Shared table header alignment only.)",
+          "updated": "2026-11-04T04:30:50.279Z"
+        },
+        "output-contract": {
+          "status": "fixed",
+          "note": "Fixed: failure outcome uses orange '!' mark; placeholders match the real final-summary contract.",
+          "updated": "2026-11-04T04:34:35.400Z"
+        },
+        "part-1": {
+          "status": "fixed",
+          "note": "Fixed: terminal detail shortened to one line.",
+          "updated": "2026-11-04T04:34:24.668Z"
+        },
+        "part-2": {
+          "status": "ok",
+          "note": "Opener reads well; terminal line fits.",
+          "updated": "2026-11-04T04:30:21.952Z"
+        },
+        "part-3": {
+          "status": "ok",
+          "note": "Opener clean.",
+          "updated": "2026-11-04T04:31:08.928Z"
+        },
+        "part-4": {
+          "status": "ok",
+          "note": "Opener clean.",
+          "updated": "2026-11-04T04:31:22.116Z"
+        },
+        "portable-tools": {
+          "status": "fixed",
+          "note": "Plain-language rewrite: columns 'Write in tools:' / 'Lets the agent' / per-surface 'Works' or 'Skipped'. Dropped 'alias', 'Mapped', 'Not applicable today', 'Local references'.",
+          "updated": "2026-11-04T23:47:49.650Z"
+        },
+        "primitive-choice": {
+          "status": "fixed",
+          "note": "Fixed: new deck scene 'primitives' — each card names the job it owns (conventions/task/method/role), Custom agent card is the purple hero, no 'approved' checks; text fits; footnote ties to test-writer.",
+          "updated": "2026-11-04T04:34:28.141Z"
+        },
+        "publish-scope": {
+          "status": "fixed",
+          "note": "Fixed: deck table scene vertically centers header labels (applies to slides 9, 12, 13, 19–22).",
+          "updated": "2026-11-04T04:34:38.370Z"
+        },
+        "references": {
+          "status": "ok",
+          "note": "All 13 links render; grouping clear.",
+          "updated": "2026-11-04T04:32:33.444Z"
+        },
+        "repair-map": {
+          "status": "ok",
+          "note": "Strong slide; owners named per layer. Only shared table header alignment.",
+          "updated": "2026-11-04T04:31:08.896Z"
+        },
+        "rerun-plan": {
+          "status": "ok",
+          "note": "Four-phase staircase reads well; target on Rerun.",
+          "updated": "2026-11-04T04:31:22.129Z"
+        },
+        "same-field-different-meaning": {
+          "status": "fixed",
+          "note": "Plain-language rewrite around 'who can start the agent'. Tags now name the surface (Cloud agent / VS Code / CLI, cloud, VS Code); dropped 'GitHub reference:' prefixes, 'task context', and the infer trivia footnote.",
+          "updated": "2026-11-04T23:55:57.754Z"
+        },
+        "target-field": {
+          "status": "fixed",
+          "note": "target is a real field (GitHub + VS Code references). Rewrote as 'Leave target Out for a File That Runs Everywhere': no target (portable), target: vscode, target: github-copilot. Dropped schema/harness jargon and the 'vs' framing.",
+          "updated": "2026-11-05T00:05:14.492Z"
+        },
+        "thanks": {
+          "status": "fixed",
+          "note": "Fixed: stat cards shortened (23 · 14 / Open cause / 6 passed) and fit; notes now have the presenter ask the own-work question aloud, since the frame hides prompt when a visual is shown.",
+          "updated": "2026-11-04T04:35:00.867Z"
+        },
+        "title": {
+          "status": "ok",
+          "note": "Clean title; runtime ring reads well.",
+          "updated": "2026-11-04T04:29:30.662Z"
+        },
+        "today": {
+          "status": "ok",
+          "note": "Three horizons, owners named. Clean.",
+          "updated": "2026-11-04T04:32:39.291Z"
+        },
+        "vscode-load-report": {
+          "status": "ok",
+          "note": "Content good. Only shared table header alignment.",
+          "updated": "2026-11-04T04:31:08.216Z"
+        },
+        "vscode-run": {
+          "status": "fixed",
+          "note": "Fixed: paired scene wraps detail at 76 chars; items fill their cards.",
+          "updated": "2026-11-04T04:34:47.907Z"
+        }
+      }
+    },
+    "enterprise-patterns": {
+      "stage": "pushed",
+      "updated": "2026-11-06T20:37:45.239Z"
+    },
+    "harness-fundamentals": {
+      "stage": "pushed",
+      "note": "Pushed to main as 9575d93 (2026-11-04): harness talk only + additive terminal `mark` in slides/native patterns. Validated on main: harness + all 5 other native decks pass; companions --strict green. Working branch review/native-deck-conversions still has these changes uncommitted.",
+      "updated": "2026-11-04T22:54:37.342Z",
+      "slides": {
+        "apps-to-embed": {
+          "status": "fixed",
+          "note": "Replaced tame read-and-approve ideas with six where the model does real work: incident timeline, metrics drop explanation, CVE reachability, PR risk ranking, release dashboard (tagged Slides 14-21), fresh-eyes docs check (tagged Runs today, 3 observed findings). Each card shows the question, what the model adds, read-only tools, and what stays human. Deck scene app-ideas extended for these fields.",
+          "updated": "2026-11-04T22:42:07.410Z"
+        },
+        "before-after": {
+          "status": "fixed",
+          "note": "Retitled 'What changes when your app hosts the loop'. New deck scene recap: one row per job (Loop, Tools, Control, Evidence), chat-window before vs app-hosted after in the job's color; stats now ~160 lines (pi loop), 1 option per job (SDK), 2 problems found blind.",
+          "updated": "2026-11-04T22:46:01.961Z"
+        },
+        "blind-app": {
+          "status": "fixed",
+          "note": "New intro: the blind-tests app (examples/apps/blind-tests/app.ts, tests FanHub's API) as the five jobs in real code, one row per job with app.ts line refs. New shared deck scene code-rows (label + file:line | real code | outcome) now used on the policy, boundary, and evidence slides too.",
+          "updated": "2026-11-04T22:00:59.207Z"
+        },
+        "blind-result": {
+          "status": "fixed",
+          "note": "Rebuilt so it stands alone: names the blind-tests app (one SDK app, two sessions), walks tester session (api_contract + live API only, 12 tests) → the app's own rerun (10 pass / 2 fail) → read-only referee (BUGS.md #19; seasonId undocumented). Moved before the policy slide so the policy has context; transitions updated.",
+          "updated": "2026-11-04T21:44:01.732Z"
+        },
+        "contents": {
+          "status": "fixed",
+          "note": "Retitled from 'Four parts, one decision' (decision was never stated) to 'What a harness is, then why you would host one' to mirror the new core question. Opening note updated.",
+          "updated": "2026-11-04T20:17:19.872Z"
+        },
+        "core-question": {
+          "status": "fixed",
+          "note": "Question simplified; persona cards replaced with if-this-is-you signals. Third stat card 'One named owner' replaced with 'One controls checklist: who governs access, models, hooks, and billing' to match Part 4's new 'Controls and Ideas' theme.",
+          "updated": "2026-11-04T22:33:01.104Z"
+        },
+        "five-jobs": {
+          "status": "ok",
+          "note": "Each pi symbol exists at f9daca3 (runLoop, transformContext, prepareRequest, beforeToolCall, emit).",
+          "updated": "2026-11-04T02:18:24.868Z"
+        },
+        "host-boundary": {
+          "status": "fixed",
+          "note": "Reframed around one question: what can the SDK stop? Rows: write test reading src/ (SDK hands {kind:write, newFileContents} → denied), npm start (shell → denied), node --test (shell → approved; last request the SDK sees), test code reads hidden file (no request → only OS/container can stop it).",
+          "updated": "2026-11-04T22:09:21.720Z"
+        },
+        "part-1": {
+          "status": "ok",
+          "note": "Opener is clean.",
+          "updated": "2026-11-04T02:18:24.629Z"
+        },
+        "part-2": {
+          "status": "ok",
+          "note": "Opener is clean.",
+          "updated": "2026-11-04T02:18:34.697Z"
+        },
+        "part-3": {
+          "status": "fixed",
+          "note": "Fixed: blurb is now 'Two checkpoints, two inputs'.",
+          "updated": "2026-11-04T03:52:57.666Z"
+        },
+        "part-4": {
+          "status": "fixed",
+          "note": "Part 4 renamed 'Own It' → 'Controls and Ideas'. Opener cards: Surrounding controls · Pre-flight · App ideas; terminal asks 'Which method will you expose first?'. Pills on slides 30-32, slide 3 card, README heading, recipe arc and section keys renamed to match.",
+          "updated": "2026-11-04T22:32:59.656Z"
+        },
+        "pi-context": {
+          "status": "fixed",
+          "note": "Fixed: code indentation is preserved; the line inside if() is indented.",
+          "updated": "2026-11-04T03:52:45.968Z"
+        },
+        "pi-control": {
+          "status": "fixed",
+          "note": "Fixed: code indentation is preserved.",
+          "updated": "2026-11-04T03:52:43.917Z"
+        },
+        "pi-evidence": {
+          "status": "fixed",
+          "note": "Fixed: footer rewritten as start/end events for the agent, turns, messages, and tool executions; code is indented.",
+          "updated": "2026-11-04T03:52:44.169Z"
+        },
+        "pi-loop": {
+          "status": "fixed",
+          "note": "Fixed: citation is now #L188-L330, and code indentation is preserved (codePanel lines use white-space: pre).",
+          "updated": "2026-11-04T03:52:43.718Z"
+        },
+        "pi-tool-sources": {
+          "status": "fixed",
+          "note": "New slide: built in (write) / found on host (find → fd) / registered by you (registerTool), pointing forward to SDK custom tool on slide 16. Source lines verified at f9daca3.",
+          "updated": "2026-11-04T20:25:23.277Z"
+        },
+        "pi-tools": {
+          "status": "fixed",
+          "note": "Split: now write-only anatomy (schema, context, execution). find moved to the new tool-sources slide.",
+          "updated": "2026-11-04T20:25:21.721Z"
+        },
+        "preflight": {
+          "status": "fixed",
+          "note": "Rewritten as plain advice: 'Before someone else runs it: four checks' — make runs repeatable, put limits on each run, test the policy itself, check who it runs as. Notes tie each to what blind-tests/app.ts does (pinned FanHub commit, TOOL_BUDGET/TIMEOUT_MS + abort + disconnect, visibility.test.ts, license slide). Hook-mechanism guidance moved to background notes.",
+          "updated": "2026-11-04T22:35:38.724Z"
+        },
+        "references": {
+          "status": "fixed",
+          "note": "MIT license now cited once here; inline 'pi · MIT · earendil-works/' removed from code captions (slides 6-10) and Part 1 opener.",
+          "updated": "2026-11-04T19:56:18.153Z"
+        },
+        "release-flow": {
+          "status": "fixed",
+          "note": "Replaced 4-box flow with an illustrative release-dashboard mockup (new deck scene dashboard-mockup): existing status pane (Salesforce go/no-go, CI, merged PRs, GitHub Actions deploy) beside an embedded 'Ask Copilot' SDK panel. Shows the AI value beyond the tool: explains, connects failure to likely cause (PR #482), drafts next step; a person sends it. Same single release_readiness tool returning richer facts, consistent with slides 18-19. Removed unused releaseFlow scene.",
+          "updated": "2026-11-04T21:17:10.944Z"
+        },
+        "run-evidence": {
+          "status": "fixed",
+          "note": "Rewritten around the questions the log answers: what did my policy block and why (visibility.ts:99), what did the agent actually run (tool.execution_complete), did the repo's hooks run (hook.end; hook success ≠ tool success), how did the run go (session-end counts). Title states the point outright.",
+          "updated": "2026-11-04T22:12:18.636Z"
+        },
+        "run-log-lines": {
+          "status": "fixed",
+          "note": "New last slide for Part 3 (deck scene jsonl-file): six events.jsonl lines from a blind-tests run — repo hook.end, runtime tool.start/tool.complete sharing a toolCallId, the two recorded host-policy denials (README view: hidden; git status: command-not-allowed:git), app rerun 10/2. Field shapes exactly from run-log.ts / app.ts; labeled illustrative, ts trimmed. Also fixed slide 27 subtitle: policy records carry no sessionId; one file per run ties them together.",
+          "updated": "2026-11-04T22:22:16.502Z"
+        },
+        "sdk-context": {
+          "status": "fixed",
+          "note": "Was only about systemMessage modes but sat under 'Context' after pi's transformContext (message rebuilding). Reframed: instructions (systemMessage) + this request (prompt/attachments) are yours; history is runtime-managed via infiniteSessions compaction (no per-request transform hook). Slide 13 Context note updated to match. Verified against SDK Node README.",
+          "updated": "2026-11-04T20:40:08.965Z"
+        },
+        "sdk-control": {
+          "status": "fixed",
+          "note": "Rebuilt as a two-gate walk-through (new deck scene two-gates): same release_readiness request from two engineers; gate 1 onPermissionRequest approves both (only sees tool name), gate 2 releaseService allows one and denies the other; engineer sees blockers vs a clear refusal. Handler code shown. managedApprovalRequired moved to notes; deployment approval to footnote.",
+          "updated": "2026-11-04T20:48:28.499Z"
+        },
+        "sdk-evidence": {
+          "status": "fixed",
+          "note": "Fixed: the card now names tool.execution_complete to match the code, and the code uses session.sessionId and e.data.toolCallId.",
+          "updated": "2026-11-04T03:52:57.633Z"
+        },
+        "sdk-license": {
+          "status": "fixed",
+          "note": "Licensing slide simplified per review: two routes only. Per-user GitHub token = every app user needs Copilot (billed to their plan); BYOK = no Copilot license, billed by model provider. Org GitHub App installation-token route removed from slide (edge case) and kept in presenter notes for Q&A. README matches. Sourced from copilot-sdk docs/auth (verified 2026-11-04).",
+          "updated": "2026-11-04T21:00:10.641Z"
+        },
+        "sdk-loop": {
+          "status": "fixed",
+          "note": "Fixed: code indentation is preserved.",
+          "updated": "2026-11-04T03:52:44.759Z"
+        },
+        "sdk-map": {
+          "status": "fixed",
+          "note": "Redesigned as a pi → SDK mirror. Context row corrected: pi maintains the message list (transformContext); SDK runtime maintains and compacts messages (infiniteSessions, default on). Syntax verified against sdk-quickstart 01-05, SDK README, and pi f9daca3.",
+          "updated": "2026-11-04T20:42:33.647Z"
+        },
+        "sdk-tools": {
+          "status": "fixed",
+          "note": "Fixed: the excerpt now includes 'parameters: z.object({ releaseId: z.string() }).strict()', which backs the Tool contract card.",
+          "updated": "2026-11-04T03:52:57.336Z"
+        },
+        "sdk-why": {
+          "status": "fixed",
+          "note": "Rewritten to state the use case outright: a release dashboard is a useful first embed. Assumes existing systems for who may act (app roles/perms), a 'ready?' answer (e.g. Salesforce go/no-go behind getReadiness), and 'do it' (e.g. GitHub Actions deploy, release owner approves). Removed repeated 'Release-dashboard integration sketch' subtitle prefix from slides 15-20 (code captions keep the sketch label).",
+          "updated": "2026-11-04T21:06:37.080Z"
+        },
+        "surrounding-controls": {
+          "status": "ok",
+          "note": "Owner/verify table is clear; the CLI-specific scope is called out in the footnote.",
+          "updated": "2026-11-04T02:18:24.599Z"
+        },
+        "thanks": {
+          "status": "fixed",
+          "note": "Fixed: the transfer question is now the thanks subtitle, so it's visible next to the loop visual.",
+          "updated": "2026-11-04T03:53:11.353Z"
+        },
+        "title": {
+          "status": "fixed",
+          "note": "Redrew harness-loop as nested cycles: inner TURN ring (context → model → control → tools → results), outer RUN ring (prompt → final answer) with LOOP on top and EVIDENCE at the bottom. Naming matches pi (turn_start/turn_end inside agent_start/agent_end). Also changes slide 31.",
+          "updated": "2026-11-04T20:07:50.384Z"
+        },
+        "today": {
+          "status": "ok",
+          "note": "Matches README's Today/This Week/This Month. Each horizon has a signal and a validation step.",
+          "updated": "2026-11-04T02:18:24.948Z"
+        },
+        "visibility-policy": {
+          "status": "fixed",
+          "note": "Rebuilt with code-rows: each tester request beside the exact rule that decides it (sweepsHidden onPreToolUse deny, customTools set, BLIND_TEXT_DENY, BLIND_SHELL) plus createSession wiring. Footnote narrowed to what visibility.test.ts actually covers (search, write, shell).",
+          "updated": "2026-11-04T22:01:02.340Z"
+        }
+      }
+    },
+    "local-agentic-sdlc": {
+      "stage": "pushed",
+      "updated": "2026-11-06T20:37:51.113Z"
+    },
+    "surfaces": {
+      "stage": "pushed",
+      "note": "Native pilot; committed and deployed.",
+      "updated": "2026-11-03T23:07:21.781Z"
+    },
+    "vscode-latest": {
+      "stage": "pushed",
+      "note": "Pushed to main in d952943 and deployed (run 41744175313). Still open: slide 6 Compare Models icon wording; feature captures.",
+      "updated": "2026-11-04T00:10:34.741Z",
+      "slides": {
+        "core-question": {
+          "status": "fixed",
+          "note": "Rebuilt as an unsorted wall of the 35 agent features; pairs with the release map (30). Roles and agenda moved to notes.",
+          "updated": "2026-11-03T23:35:49.424Z"
+        },
+        "four-decisions": {
+          "status": "fixed",
+          "note": "Cloud sessions and Remote Environments corrected from GA to Experimental.",
+          "updated": "2026-11-03T23:07:42.679Z"
+        },
+        "keep-discard": {
+          "status": "fixed",
+          "note": "Reworded; Agents window Changes view, per file; Last turn / Session / Branch meanings from 1.143 notes.",
+          "updated": "2026-11-03T23:44:31.022Z"
+        },
+        "keep-evidence": {
+          "status": "fixed",
+          "note": "Former recovery slide folded in as an ‘If they disagree’ strip: comment and retry, or Undo or discard.",
+          "updated": "2026-11-03T23:56:49.732Z"
+        },
+        "keep-working-set": {
+          "status": "fixed",
+          "note": "Reworded; corrected to 1.143 Keep + 1.144 Undo on by default; terminal-command edits not shown.",
+          "updated": "2026-11-03T23:42:03.234Z"
+        },
+        "part-3": {
+          "status": "fixed",
+          "note": "Correct card now says queue or steer.",
+          "updated": "2026-11-03T23:08:01.108Z"
+        },
+        "pick-compare": {
+          "status": "needs-fix",
+          "note": "Rebuilt as a how-to. Docs say ‘scale icon’; the 1.144.1 build shows a compare icon in the picker header. Not visible on the presenter machine yet: check chatModelComparisonAvailable.",
+          "updated": "2026-11-03T23:07:44.335Z"
+        },
+        "pick-route-proof": {
+          "status": "fixed",
+          "note": "New proof slide: Unknown vs Teal, observed on local Ollama 0.40.6.",
+          "updated": "2026-11-03T23:07:42.266Z"
+        },
+        "pick-route-setup": {
+          "status": "fixed",
+          "note": "Split from one slide: Custom Endpoint setup for local Ollama; on-device requirements.",
+          "updated": "2026-11-03T23:07:43.353Z"
+        },
+        "place-cloud-return": {
+          "status": "fixed",
+          "note": "Code comes home through Git; no automatic sync to the local folder.",
+          "updated": "2026-11-03T23:07:43.888Z"
+        },
+        "place-cloud-start": {
+          "status": "fixed",
+          "note": "Reason to use cloud added; New → Cloud → Choose Repository; Experimental, not GA.",
+          "updated": "2026-11-03T23:07:43.679Z"
+        },
+        "place-hosts": {
+          "status": "fixed",
+          "note": "New title; checklist label no longer uses the not-X-but-Y flip.",
+          "updated": "2026-11-03T23:08:01.083Z"
+        },
+        "place-roundup": {
+          "status": "fixed",
+          "note": "Codex limit moved off External sessions; duplicate multi-root card removed; cards checked.",
+          "updated": "2026-11-03T23:08:02.653Z"
+        },
+        "place-worktree": {
+          "status": "fixed",
+          "note": "Move chat no longer Codex-only; peer worktrees renamed Multi-folder sessions.",
+          "updated": "2026-11-03T23:07:41.562Z"
+        },
+        "steer-computer-use": {
+          "status": "fixed",
+          "note": "Approval is per app, not per action; stays on for Copilot incl. CLI until /computer off.",
+          "updated": "2026-11-03T23:08:04.007Z"
+        },
+        "steer-permissions": {
+          "status": "fixed",
+          "note": "No extra review step: edits show up in Source Control as uncommitted changes.",
+          "updated": "2026-11-03T23:08:01.370Z"
+        },
+        "steer-queue": {
+          "status": "fixed",
+          "note": "Now the real Send split button: Enter steers, Alt+Enter queues; checked against the 1.144.1 build.",
+          "updated": "2026-11-03T23:08:01.868Z"
+        },
+        "steer-roundup": {
+          "status": "fixed",
+          "note": "Canvases: setting, /create-canvas, Add Context → Canvas. Isolation duplicate removed.",
+          "updated": "2026-11-03T23:08:01.150Z"
+        },
+        "steer-sandbox": {
+          "status": "ok",
+          "note": "Checked against 1.141 notes; Windows OS-update requirement added.",
+          "updated": "2026-11-03T23:09:17.290Z"
+        },
+        "steer-shells": {
+          "status": "ok",
+          "note": "Copilot harness, attached shells only.",
+          "updated": "2026-11-03T23:08:04.065Z"
+        },
+        "title": {
+          "status": "ok",
+          "updated": "2026-11-03T23:11:11.114Z"
+        }
+      }
+    }
+  }
+}

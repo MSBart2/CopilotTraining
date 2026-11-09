@@ -23,6 +23,20 @@ Native decks are practitioner tech talks only. Workshop and exec decks stay on S
 - Keep paths relative (`../../native/`) so the folder works from `slides/` and from `dist/`.
 - Write files as UTF-8 without a BOM.
 
+## Slide contract: Actor, Question, Proof
+
+This applies to every teaching slide, native or Slidev. Every teaching surface must make three things recoverable without relying on hidden presenter context:
+
+1. **Actor:** Name who or what acts when agency matters. Distinguish the practitioner request, Copilot or agent action, control decision, and human approval. Avoid agentless phrases such as "work proceeds" when the actor is Copilot.
+2. **Question and answer:** Every slide answers one audience question. The headline may state the answer rather than use a question mark, but the question and the slide's answer must be unambiguous.
+3. **Proof:** When a slide claims behavior, show a representative input, action, or artifact together with its observable result on the same slide whenever practical. Label test-runner status separately from the domain result so terms such as `PASS`, `allow`, and `deny` cannot be mistaken for one another.
+
+Carry enough context onto each slide that a viewer can identify the actor, task, and consequence after entering mid-section. Use the preceding slide for narrative momentum, not for essential disambiguation.
+
+## Slide budget
+
+Practitioner tech talks have room for 30+ slides, with no fixed slide-count ceiling. Count spine/template slides separately from teaching slides. Let the narrative, demonstration, and speaking-time budget determine the total; each teaching slide answers one audience question and advances the argument or proves a claim. Workshop and executive deck budgets are unchanged.
+
 ## Validate after every change
 
 ```powershell

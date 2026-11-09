@@ -145,7 +145,7 @@ After the user responds:
 ### 3. Planning and writing
 
 1. Incorporate the user's selected outline, toggle choices, or structural edits.
-2. Frame ONE clear question this talk answers, following the Core Question Contract in `AGENTS.md`: the learner's own question, instantly recognizable, about getting more of what they want or less of what they don't.
+2. Frame ONE clear question this talk answers, following the Core Question section of `AGENTS.md`: the learner's own question, instantly recognizable, about getting more of what they want or less of what they don't.
 3. Verify the Content Fitness Rubric (all must be 🟢 before writing).
 4. Organize the approved arc into four parts. Give every part a job in advancing the thesis, proving it, exposing a boundary, or enabling transfer. Place the working artifact where it provides evidence for the central claim.
 
@@ -198,7 +198,7 @@ Do **not** write the recipe yourself — the skill owns this step.
 ### 4. Quality Validation
 
 - [ ] Research Brief was shown and the structure was approved before writing
-- [ ] Question follows the Core Question Contract; one thesis and useful tension organize the four parts
+- [ ] Question follows the Core Question section of `AGENTS.md`; one thesis and useful tension organize the four parts
 - [ ] Content Fitness Rubric is all 🟢 (no 🟡 or 🔴)
 - [ ] Every part in `research.md` names its claim, artifact, evidence, and boundary
 - [ ] Every factual, workflow, and architecture claim maps to the evidence map and a first-party source; directional claims are labeled

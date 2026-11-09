@@ -53,7 +53,7 @@ Slidev talk being converted:
   tech-talks/<topic>/README.md         — long-form article; the source for notes
 Always:
   .github/skills/deck-recipe-review/DECK-RECIPE-TEMPLATE.yml  — recipe schema (all valid fields)
-  AGENTS.md                                                   — Universal Voice and Prose Contract
+  AGENTS.md                                                   — Voice and Prose section
 ```
 
 From these, extract:

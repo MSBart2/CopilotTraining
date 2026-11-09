@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech-talk review</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1 id="page-title">Tech-talk review</h1>
+      <p id="summary" class="muted">Loading active talks…</p>
+    </div>
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+  </header>
+
+  <main>
+    <section id="board-view" aria-labelledby="page-title">
+      <div id="board" class="board"></div>
+    </section>
+
+    <section id="talk-view" hidden aria-labelledby="talk-title">
+      <div class="talk-head">
+        <button type="button" id="back" class="ghost">← All talks</button>
+        <div class="talk-title-wrap">
+          <h2 id="talk-title"></h2>
+          <p id="talk-meta" class="muted"></p>
+        </div>
+        <a id="talk-deck" class="button" target="_blank" rel="noopener" hidden>Open deck</a>
+      </div>
+
+      <div class="talk-controls">
+        <label>Stage
+          <select id="talk-stage"></select>
+        </label>
+        <label class="grow">Talk note
+          <input id="talk-note" type="text" maxlength="2000" placeholder="What is left before this talk ships?">
+        </label>
+        <fieldset class="filter">
+          <legend>Show</legend>
+          <label><input type="radio" name="filter" value="all" checked> All</label>
+          <label><input type="radio" name="filter" value="needs-fix"> Needs fix</label>
+          <label><input type="radio" name="filter" value="unreviewed"> Unreviewed</label>
+        </fieldset>
+      </div>
+
+      <div id="progress" class="progress-line"></div>
+
+      <table class="slides">
+        <caption class="sr-only">Slides and their review status</caption>
+        <thead>
+          <tr><th scope="col">#</th><th scope="col">Slide</th><th scope="col">Min</th><th scope="col">Status</th><th scope="col">Note</th></tr>
+        </thead>
+        <tbody id="slide-rows"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>

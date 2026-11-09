@@ -70,7 +70,7 @@ Use the recipe's per-slide plan when present. Plan for 30+ slides overall and co
 
 Define `const S = (id, part, title, more = {}) => ({ id, part, title, section: part ? \`Part ${part}\` : 'Frame', ...more })` as in the reference deck. `part` 1–4 sets the accent; 0 is a frame slide. Use `scene: 'name'` to render a shared frame or pattern, or to reuse one deck scene across several slides. Field names per frame and pattern are in `slides/native/README.md`; copy shapes from the reference deck.
 
-- **Core question:** the README question, following the Core Question Contract in `AGENTS.md`: the learner's own question in their own words. Keep the learner's wording; the thesis belongs in `subtitle` and `highlight`.
+- **Core question:** the README question, following the Core Question section of `AGENTS.md`: the learner's own question in their own words. Keep the learner's wording; the thesis belongs in `subtitle` and `highlight`.
 - **Contents:** four `sections`, each with the `slide` number of its opener (count from 1).
 - **References:** first-party links from README frontmatter `references`.
 
@@ -98,9 +98,9 @@ The notes replace the long README. A presenter who has never seen the talk deliv
 
 Rules:
 
-- Ground every line in the recipe, research brief, long README (convert), or a first-party source. Never invent metrics, quotes, customers, or personas. Label estimates as estimates.
+- Ground every line in the recipe, research brief, long README (convert), or a first-party source. Never invent metrics, quotes, customers, or personas. Label estimates as estimates: once, on the number itself. A worked example with fictional names needs no per-slide "illustrative" subtitle or footnote; mention it once in the section opener's notes (AGENTS.md, Evidence discipline).
 - Notes render as HTML: avoid raw `<` and `&` (write "and"); `<b>`, `<i>`, `<code>`, and `<kbd>` are allowed.
-- Follow the Universal Voice and Prose Contract in `AGENTS.md`. Never use "should". Lead with what becomes possible.
+- Follow the Voice and Prose section of `AGENTS.md`. Never use "should". Lead with what becomes possible.
 - Spoken lines sound like a person talking to peers: short, concrete, one idea each. Two or three spoken lines per slide is typical; the slide carries the detail.
 - Keep notes in a `NOTES` object keyed by slide id, merged with `slides.forEach((s) => Object.assign(s, NOTES[s.id]))`, so slide data stays scannable.
 - Set `DECK.meta` with `slug`, `title`, `short`, `category`, `source` (the README path), `question`, and `thesis`; the notes page shows the last two as the handout brief.

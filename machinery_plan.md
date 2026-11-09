@@ -1,6 +1,6 @@
 ---
 status: active
-updated: 2026-10-30
+updated: 2026-11-09
 ---
 
 # Slide Machinery Conversion Plan
@@ -15,7 +15,17 @@ This document records findings, proposed decisions, and phases. Items marked
 
 ## Resume point
 
-Paused at the user's request on 2026-10-30, before converting `vscode-latest`.
+All 14 active practitioner talks are converted to native and published on
+`main`. This includes the six talks omitted from the original tracker and
+authorized on 2026-10-31, the subsequent merger of `copilot-plugins` into
+`enterprise-patterns`, and the resurrection of `copilot-chat-internals`.
+The active portfolio also has one executive talk, which stays on Slidev.
+The user authorized autonomous conversion on 2026-10-30 and will review content
+after conversion. The publication baseline is
+`b6da6dd6608607eb792964559dcb9c7427074efc`; all 14 active practitioner talk
+directories match `origin/main`, and their review records now say `pushed`.
+The 2026-11-06 routing inbox remains a discovery snapshot, not an approved
+content-refresh queue.
 
 - `surfaces` and the Phase 0/2 machinery are committed and deployed. The CI
   correction in `6d6a17c` installs Chromium and gates artifact upload on native
@@ -23,15 +33,32 @@ Paused at the user's request on 2026-10-30, before converting `vscode-latest`.
 - Practitioner talks now have room for 30+ slides with no fixed slide-count
   ceiling. Count spine/template slides separately from teaching slides and
   preserve the speaking-time budget. Workshop and exec budgets are unchanged.
-- `vscode-latest` is the next selected candidate. Its README, existing 24-slide
-  deck, recipe, approved September content refresh, and older research were read.
-  No recipe or deck changes have been made, and no new recipe is approved.
-- Next: use `deck-recipe-refresh` in conversion mode, preserving the existing
-  recipe as a baseline. Propose roughly 32–36 focused visual slides within an
-  estimated 46-minute speaking budget (README duration: 50 minutes), then obtain
-  approval before Native Deck Author `convert`.
-- Keep the current "through 1.139" scope unless a content refresh is requested.
-  Reconcile the older research with the current README. Qualify local-inference
+- `vscode-latest`, `agentic-workflows`, `copilot-on-github`, `copilot-primitives`,
+  `custom-agents`, `harness-fundamentals`, and `local-agentic-sdlc` now have
+  native decks and notes. Their seven superseded Slidev sources were removed.
+  Each recipe records its conversion approval under the user's review waiver.
+- `agentic-sdlc`, `copilot-azure-mcp`, `copilot-cli`, `copilot-plugins`,
+  `copilot-with-foundry`, and `enterprise-patterns` are also converted.
+  All 13 superseded active Slidev sources are removed; `surfaces` retains
+  its original pilot source as a conversion reference.
+- The integrated native publishing gate validates all 14 native decks,
+  totaling 473 slides at the publication baseline. Native discovery tests and the strict tech-talk
+  handout check pass. The index maps all 14 native decks and their dates.
+  Active portfolio reconciliation confirms only `exec-strategy` remains
+  on Slidev. Recipe reconciliation remains a separate content-review task.
+- Next: presenter/content review of each converted talk, then separately
+  approved product-content refreshes. Speaking budgets remain estimates.
+  Workshop and exec decks stay out of scope; archived talks remain frozen.
+- `vscode-latest` received an approved Universe/1.144 content and recipe
+  refresh on 2026-10-31 and an approved announcement-led expansion on 2026-11-01.
+  On 2026-11-03 it was restructured around four verbs, Pick → Place → Steer →
+  Keep, with one running login fix as the memory hook: 35 slides, 47:00.
+  The login example now runs talk-wide. A later 2026-11-03 revision removed
+  the running example and opened with an unsorted feature wall: 32 slides, 45:00. All 34 distinct approved features keep their
+  status and limits (24 on hero slides, 10 in roundups). Native validation passes.
+  All feature visuals are labelled schematics; actual feature screenshots
+  remain capture work. The 1.143 publication date remains unresolved.
+  Qualify local-inference
   claims: local model execution alone does not establish an offline workflow
   when tools or MCP can use the network. Label illustrative demo transcripts
   and targets separately from observed results.
@@ -353,16 +380,28 @@ and a time budget totaling 42:00 (estimates), and the README is a landing page.
 
 ## 7. Conversion tracker
 
+All 14 active practitioner talks are published on `main` at the resume-point
+baseline. Slide counts below reflect that baseline; the evidence column retains
+historical conversion checks, whose counts and estimated budgets can differ.
+`tech-talks/review-status.json` records publication separately from slide review.
+
 | Deck | Slides now | Target engine | State | Evidence |
 |---|---|---|---|---|
 | surfaces | 28 | native | Pilot complete: 28 of 28; standard slides and patterns extracted to `native/frames.js` and `native/patterns.js` (deck keeps 6 deck-only scenes); notes-first: 28 slides of notes, README slimmed to a landing page | `validate:native` passes (28 slides, 28 PDF pages); pixel-identical to pre-extraction baseline |
-| agentic-workflows | 36 | native | Not started | — |
-| copilot-on-github | 39 | native | Not started | — |
-| copilot-primitives | 33 | native | Not started | — |
-| custom-agents | 25 | native | Not started | — |
-| harness-fundamentals | 31 | native | Not started | — |
-| local-agentic-sdlc | 28 | native | Not started | — |
-| vscode-latest | 24 | native | Selected next; source review complete; paused before recipe proposal or conversion | See resume point |
+| agentic-workflows | 38 | native | Conversion complete; awaiting presenter/content review | Native validation: 36 slides, 36 PDF pages, estimated 51:50; local publishing passes |
+| copilot-on-github | 32 | native | Conversion complete; awaiting presenter/content review | Native validation: 39 slides, 39 PDF pages, estimated 55:50; local publishing passes |
+| copilot-primitives | 34 | native | Conversion complete; awaiting presenter/content review | 2026-11-02: slide 2 convention / implementation / specialization redesign; native validation: 33 slides, 33 PDF pages, estimated 45:50; opening slides and slide 2 motion visually reviewed |
+| custom-agents | 30 | native | Rebuilt 2026-11-04 from the approved one-file-every-surface recipe; awaiting presenter run-through | Native validation: 30 slides, 30 PDF pages, estimated 40:15; app field cells marked "check in the app" (recipe OPEN DECISION) |
+| harness-fundamentals | 39 | native | Conversion complete; awaiting presenter/content review | Native validation: 31 slides, 31 PDF pages, estimated 55:00; local publishing passes |
+| local-agentic-sdlc | 39 | native | Conversion complete; awaiting presenter/content review | Native validation: 31 slides, 31 PDF pages, estimated 40:10; local publishing passes |
+| vscode-latest | 32 | native | 2026-11-03 restructure: Pick · Place · Steer · Keep; revision removed the running example and added an opening feature wall; presenter review and feature captures pending | Native validation: 32 slides, 32 PDF pages, estimated 45:00 |
+| agentic-sdlc | 33 | native | Conversion complete; awaiting presenter/content review | Native validation: 33 slides, 33 PDF pages, estimated 86:00; local publishing passes |
+| copilot-azure-mcp | 30 | native | Conversion complete; awaiting presenter/content review | Native validation: 32 slides, 32 PDF pages, estimated 40:15; local publishing passes |
+| copilot-cli | 36 | native | Conversion complete; awaiting presenter/content review | Native validation: 39 slides, 39 PDF pages, estimated 40:00; local publishing passes |
+| copilot-plugins | 36 | native | Archived 2026-11-05: merged into enterprise-patterns (redirect `universe26-layered-baseline`) | Frozen; no further conversion work |
+| copilot-with-foundry | 27 | native | Conversion complete; awaiting presenter/content review | Native validation: 35 slides, 35 PDF pages, estimated 41:40; local publishing passes |
+| enterprise-patterns | 37 | native | 2026-11-05 rebuilt from the approved recipe: absorbs copilot-plugins; Universe 2026 layered baseline (package, place, ride the same rails, prove); patched for two planes, .github-private governance repo, org controls, MCP allowlist; checklist slides removed (13-row checklist lives in the README) | Native validation passes: 37 slides, estimated 53:00; presenter run-through pending |
+| copilot-chat-internals | 38 | native | 2026-11-06 resurrected from archive and converted from the approved restructure recipe (Did it load · What was sent · What it did · Keep the trail), updated to VS Code 1.145; README slimmed to a landing page; Slidev `.md` kept until Phase 0; presenter run-through and [verify] items pending | Native validation: 37 slides, 37 PDF pages, estimated 46:50 |
 | exec-strategy | 20 | Slidev | Out of scope: executive talk | Scope decision recorded below |
 
 ## 8. Decision log
@@ -374,6 +413,9 @@ and a time budget totaling 42:00 (estimates), and the README is a landing page.
 | 2026-10-30 | Where does the teaching content live? | Notes-first: `slides.js` notes carry the spoken argument, facts, and sources; the README is a landing page. `research.md` holds approved evidence and is never published. | Refreshes patch notes, not a long README; the notes page is the handout |
 | 2026-10-30 | Scope of the refactor | Practitioner tech talks only (the one-hour show and tell). Workshop and exec decks stay on Slidev. | Legacy Slidev agent and skills remain for those decks and for unconverted talks |
 | 2026-10-30 | Template action horizons and agenda | Today / This Week / This Month, mirroring the `today` slide; native decks carry the agenda in the core-question notes. | Converted talks drop the agenda slide |
+| 2026-10-30 | Conversion and content-review sequence | The user authorized building the tracked active decks autonomously and reviewing them after conversion. Convert first; refresh product content separately. | Recipe approval pauses waived for this batch; mechanical validation remains required; presenter/content review is pending |
+| 2026-10-31 | Reconcile the tracker with the active portfolio | Convert the six omitted active practitioner talks: agentic-sdlc, copilot-azure-mcp, copilot-cli, copilot-plugins, copilot-with-foundry, enterprise-patterns. | All 14 active practitioner talks are in scope; exec-strategy stays on Slidev; autonomous conversion and later content review continue |
+| 2026-11-05 | Merge copilot-plugins into enterprise-patterns? | Yes. Universe 2026 made enterprise managed settings, team files, repository defaults, and personal choice one layered path for plugins, models, and policy; the two talks taught halves of it and duplicated managed settings. Keep the enterprise-patterns slug; APM becomes a boundary section. | copilot-plugins archived with a redirect; 13 active practitioner talks; enterprise-patterns goes through the full brief → research → recipe → deck path |
 
 ## References
 
