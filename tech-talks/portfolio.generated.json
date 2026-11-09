@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-06T20:35:51.950Z",
+  "generatedAt": "2026-11-09T16:42:48.235Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
-    "practitionerTalks": 13,
-    "archivedTalks": 19,
-    "deployedTalks": 13,
+    "practitionerTalks": 14,
+    "archivedTalks": 18,
+    "deployedTalks": 14,
     "candidateTalks": 0,
-    "catalogCards": 13,
+    "catalogCards": 14,
     "validTalks": 32
   },
   "warnings": [],
@@ -27,13 +27,6 @@
       "status": "merged",
       "target": "copilot-primitives",
       "reason": "Owner, lifetime, selector, and evidence boundaries now sit inside Copilot Primitives.",
-      "decisionId": "primitives-restoration"
-    },
-    {
-      "source": "copilot-chat-internals",
-      "status": "merged",
-      "target": "copilot-primitives",
-      "reason": "Delivery inspection and first-boundary repair now sit inside Copilot Primitives.",
       "decisionId": "primitives-restoration"
     },
     {
@@ -690,18 +683,18 @@
     },
     {
       "slug": "copilot-chat-internals",
-      "title": "Copilot Chat Internals: Debugging AI Interactions",
-      "status": "archived",
+      "title": "Copilot Chat Internals: Read the Evidence Every Agent Run Leaves",
+      "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-09-15",
-      "section": "Choose and Configure",
+      "updated": "2026-11-06",
+      "section": "Agents at Your Keyboard",
       "audience": [
         "developer",
         "team-lead",
         "platform-engineer"
       ],
       "level": "applied",
-      "duration": 25,
+      "duration": 55,
       "format": "clinic",
       "decision": "How do I inspect the context Copilot used and diagnose unexpected behavior?",
       "prerequisites": [
@@ -711,27 +704,33 @@
         "copilot-memory",
         "copilot-hooks"
       ],
-      "deckFormat": "slidev",
-      "deckSection": "Choose and Configure",
-      "cataloged": false,
+      "deckFormat": "native",
+      "deckSection": "Agents at Your Keyboard",
+      "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-chat-internals/README.md",
           "exists": true,
-          "bytes": 44284,
-          "modified": "2026-09-16T01:01:24.018Z"
+          "bytes": 7822,
+          "modified": "2026-11-09T16:42:47.304Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-chat-internals/deck.recipe.yml",
           "exists": true,
-          "bytes": 3480,
-          "modified": "2026-08-10T14:25:09.665Z"
+          "bytes": 14835,
+          "modified": "2026-11-09T16:42:47.305Z"
         },
         "deck": {
-          "path": "slides/tech-talks/copilot-chat-internals.md",
+          "path": "slides/tech-talks/copilot-chat-internals/slides.js",
           "exists": true,
-          "bytes": 25445,
-          "modified": "2026-09-16T01:01:24.018Z"
+          "bytes": 81321,
+          "modified": "2026-11-09T16:42:47.295Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/copilot-chat-internals/notes.html",
+          "exists": true,
+          "bytes": 1530,
+          "modified": "2026-11-09T16:42:47.287Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-chat-internals/agenda.md",
@@ -1503,7 +1502,7 @@
       "title": "GitHub Copilot with Microsoft Foundry: Organizational Memory for Coding Agents",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-07-24",
+      "updated": "2026-11-09",
       "section": "Extend and Embed",
       "audience": [
         "platform-engineer",
@@ -1521,27 +1520,33 @@
         "copilot-azure-mcp",
         "enterprise-patterns"
       ],
-      "deckFormat": "slidev",
+      "deckFormat": "native",
       "deckSection": "Extend and Embed",
       "cataloged": true,
       "files": {
         "readme": {
           "path": "tech-talks/copilot-with-foundry/README.md",
           "exists": true,
-          "bytes": 37699,
-          "modified": "2026-10-23T20:01:58.658Z"
+          "bytes": 7308,
+          "modified": "2026-11-09T16:42:47.307Z"
         },
         "recipe": {
           "path": "tech-talks/copilot-with-foundry/deck.recipe.yml",
           "exists": true,
-          "bytes": 8298,
-          "modified": "2026-08-10T14:25:42.619Z"
+          "bytes": 12187,
+          "modified": "2026-11-09T16:42:47.309Z"
         },
         "deck": {
-          "path": "slides/tech-talks/copilot-with-foundry.md",
+          "path": "slides/tech-talks/copilot-with-foundry/slides.js",
           "exists": true,
-          "bytes": 25168,
-          "modified": "2026-10-22T19:15:49.029Z"
+          "bytes": 57234,
+          "modified": "2026-11-09T16:42:47.303Z"
+        },
+        "notesHtml": {
+          "path": "slides/tech-talks/copilot-with-foundry/notes.html",
+          "exists": true,
+          "bytes": 1335,
+          "modified": "2026-11-09T16:42:47.298Z"
         },
         "agendaMarkdown": {
           "path": "slides/companions/tech-talks/copilot-with-foundry/agenda.md",

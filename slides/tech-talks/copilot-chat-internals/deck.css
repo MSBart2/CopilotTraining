@@ -1,0 +1,45 @@
+/* Copilot Chat Internals. Deck-only type for the `rows` scene and a compact references page. */
+.scene .rw-label { font-size: 22px; font-weight: 700; }
+.scene .rw-detail { font-size: 20px; }
+.scene .rw-tag { font-size: 19px; font-weight: 700; }
+
+.sc-references .refs { margin-top: 20px; gap: 28px; }
+.sc-references .ref-group h3 { margin-bottom: 8px; font-size: 22px; }
+.sc-references .ref { padding: 8px 14px; margin-bottom: 8px; gap: 2px; }
+.sc-references .ref b { font-size: 18px; }
+.sc-references .ref span { font-size: 16px; line-height: 1.25; }
+.sc-references .ref code { font-size: 12px; }
+
+/* logs-tree: the Logs view mock */
+.scene .lt-title { font-size: 20px; font-weight: 700; }
+.scene .lt-type { font-size: 15px; font-weight: 700; }
+.scene .lt-text { font-size: 19px; font-weight: 500; }
+.scene .lt-exp { font-size: 16px; }
+.scene .lt-off .chip { fill: transparent; stroke: var(--line); }
+.scene .lt-off .chip-text { fill: var(--muted); }
+.scene .lt-on .chip { stroke-width: 2; stroke: var(--z); }
+
+/* flow-chart: the Agent Flow Chart mock */
+.scene .fc-title { font-size: 20px; font-weight: 700; }
+.scene .fc-detail { font-size: 16px; }
+
+/* columns: three explanation cards */
+.scene .col-head { font-size: 24px; font-weight: 800; }
+.scene .col-t { font-size: 19px; font-weight: 700; }
+.scene .col-d { font-size: 17px; }
+.scene .col-d.t-mono { font-size: 15.5px; }
+/* columns band and verify */
+.scene .band-t { font-size: 20px; font-weight: 700; }
+.scene .vf-who { font-size: 18px; font-weight: 700; }
+.scene .vf-claim { font-size: 18px; font-weight: 500; }
+.scene .vf-line { font-size: 21px; font-weight: 600; }
+.scene .vf-note { font-size: 17px; }
+.scene .check.vf-dark { stroke: #0b0f0c; }
+
+/* runbook and recap */
+.scene .rb-num { font-size: 17px; font-weight: 800; }
+.scene .rb-watch { font-size: 18px; font-weight: 700; }
+.scene .rc-q { font-size: 21px; font-weight: 800; }
+.scene .rc-before { stroke-dasharray: 6 6; opacity: .8; }
+.scene .rc-before-t { font-size: 18px; text-decoration: line-through; text-decoration-color: var(--line); }
+.scene .rc-after-t { font-size: 18px; font-weight: 600; }

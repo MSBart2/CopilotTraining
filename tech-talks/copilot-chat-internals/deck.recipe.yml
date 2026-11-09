@@ -1,68 +1,149 @@
-# deck.recipe.yml — Copilot Chat Internals talk guidance
-
+# Recipe refresh 2026-11-06 (resurrection and conversion to native). Decision: restructure.
+# Approved by the user on 2026-11-06 in chat.
+# Rationale: the March 2026 talk toured five tools (Agent Debug panel, Chat Debug view,
+# thinking tokens, a Diagnostics view, extension logs). By v1.145 the product is one evidence
+# trail: the Agent Customizations editor and Discovery events show what loaded, the Chat Debug
+# view shows what the model received, the Agent Debug Logs panel (Logs, Summary, flow chart,
+# Cache Explorer) shows what the agent did, /troubleshoot reads those logs to explain a run,
+# and file logging plus OpenTelemetry make the trail persistent and shareable. The Diagnostics
+# chat action, Edit Mode, and the /docs/copilot/* URLs are gone.
+# Facts: VS Code release notes v1.110 through v1.145 and docs under /docs/agents and
+# /docs/agent-customization, gathered 2026-11-06. Version-unverified items carry [verify].
+# Structure considered and rejected: one part per tool (the old talk). It teaches a menu of
+# views; the question order teaches a practitioner how to localize a failure.
 version: 1
 
 deck:
   title: "Copilot Chat Internals"
-  subtitle: "Debugging AI Interactions"
-  tagline: "Transform AI debugging from guesswork into systematic investigation"
-
-
+  subtitle: "Read the Evidence Every Agent Run Leaves"
+  tagline: "What loaded, what was sent, what it did, and the trail you keep."
 
   agenda:
-    - title: "Make Context Visible"
-      takeaway: "Inspect prompts, tools, context files, and agent behavior."
-      whyItMatters: "AI failures become diagnosable instead of mysterious."
-    - title: "Understand Compaction"
-      takeaway: "See what context arrived, what was prioritized, and what did not."
-      whyItMatters: "Teams can design prompts and files around real context limits."
-    - title: "Validate Customization"
-      takeaway: "Catch broken instructions, skills, and agent configuration early."
-      whyItMatters: "Setup errors are cheap to fix before they disrupt work."
+    - title: "Localize a surprise in four questions"
+      takeaway: "Ask in order: did my setup load, what did the model receive, what did the agent do, and can I keep the trail."
+      whyItMatters: "Each answer rules out a whole class of causes, so a surprise becomes a located fault in minutes."
+    - title: "Let the agent explain its own run, then check it"
+      takeaway: "Use /troubleshoot on the current or a past session, then confirm its answer in the Logs view."
+      whyItMatters: "The explanation is fast; the log events make it trustworthy."
+    - title: "Keep the trail for your team"
+      takeaway: "Turn on file logging, export a session, and send OpenTelemetry traces to a collector."
+      whyItMatters: "A teammate or a dashboard can inspect the same evidence after the window closes."
 
-  arcToc: "Reveal → Inspect → Configure → Systematize"
+  arcToc: "Did It Load → What Was Sent → What It Did → Keep the Trail"
+
   arcNarrative: >
-    Reveal (real-time observability hook) → Inspect (deep request pipeline)
-    → Configure (diagnostics & validation for the most common failure mode)
-    → Systematize (repeatable troubleshooting patterns practitioners take home).
+    Open cold on one ordinary surprise: the agent ignored a team instruction. Four questions
+    appear beside it, each pointing at the view that answers it; that picture is the talk.
+    Part 1 answers "did my setup load?" with the Agent Customizations editor and Discovery
+    events (loaded, skipped, rejected), using an applyTo glob miss as the worked example.
+    Part 2 answers "what did the model receive?" with the Chat Debug view, the context
+    window indicator, compaction, and Cache Explorer. Part 3 is the climax: the Agent Debug
+    Logs panel shows tool calls, hooks, subagents, and errors, and /troubleshoot reads the
+    same events to explain the run; the anchor moment is the agent naming the skipped file,
+    followed by the presenter confirming it in the Logs view. Part 4 makes the trail durable:
+    file logging, export and import, OpenTelemetry spans, and a symptom-to-view decision map
+    practitioners take to their own repository.
+
   sectionOrder:
-    - "Agent Debug Panel: Real-Time Event Stream (v1.110)"
-    - "Chat Debug View: Complete Request Inspection"
-    - "Customization Diagnostics: Configuration Validation"
-    - "Systematic Troubleshooting Patterns"
+    - "1. Did My Setup Load?"
+    - "2. What Did the Model Receive?"
+    - "3. What Did the Agent Do?"
+    - "4. Keep the Trail"
 
   sectionModes:
-    "Agent Debug Panel: Real-Time Event Stream (v1.110)":
-      emphasis: high
-      note: >
-        The entry wow-moment — live event stream and chart visualization immediately reframes
-        Copilot from black box to observable system, setting the credibility foundation.
-    "Chat Debug View: Complete Request Inspection":
-      emphasis: high
-      note: >
-        Densest technical payload — unifies Chat Debug View, Thinking Tokens, and Context
-        Management into one pipeline mental model most likely to change how engineers debug.
-    "Customization Diagnostics: Configuration Validation":
+    "1. Did My Setup Load?":
       emphasis: medium
       note: >
-        Addresses the #1 failure mode (misconfigured custom instructions) and covers
-        MCP/extension log infrastructure; narrower applicability, paced efficiently.
-    "Systematic Troubleshooting Patterns":
-      emphasis: medium-high
+        Most surprises start here, so it comes first and moves fast. Chat: Open Customizations
+        opens the Agent Customizations editor (instructions, prompts, agents, skills, hooks,
+        MCP servers, plugins) with source and errors per file. Discovery events in Agent Debug
+        Logs say loaded, skipped, or rejected, with the reason. Worked example: an
+        .instructions.md whose applyTo glob misses the edited file. The Chat Customizations
+        Evaluations extension lints instruction files for contradictions and ambiguity in the
+        Problems panel [verify ship version]. Lens: Context.
+    "2. What Did the Model Receive?":
+      emphasis: high
       note: >
-        The practical payoff — repeatable workflows and Before/After frame give practitioners
-        a concrete checklist to apply the same day.
+        Developer: Show Chat Debug View shows, per model request, the system prompt, user
+        prompt, context, response, and tool responses; the proof move is finding the
+        instruction text inside the system prompt. Then the context window: indicator with
+        token use and session cost in AI credits (v1.126), automatic and /compact compaction
+        and what it summarizes or omits, a new chat within the session, and subagents for
+        isolation. Terminal output compression (chat.tools.compressOutput.enabled, v1.120)
+        and deferred tools explain why context is smaller than expected. Cache Explorer
+        diffs consecutive requests to the first divergence. Lenses: Context, Verification.
+    "3. What Did the Agent Do?":
+      emphasis: high
+      note: >
+        The anchor. Developer: Open Agent Debug Logs (Preview; renamed in v1.116) has Logs
+        (flat or tree), Summary (tool calls, tokens, errors, duration), the agent flow chart,
+        and Cache Explorer. Show subagents: stateless, transcript as a read-only peer chat in
+        the Agents window, model and active tool shown inline (v1.131). Reasoning: effort and
+        context size in the model picker (v1.142) and the View Mode verbosity control
+        (Conversation, Compact, Verbose; chat.persistentProgressVerbosity, v1.145,
+        Experimental). Centerpiece: /troubleshoot (Preview) asked "Which customizations were
+        loaded, and did any fail?", then #session for a past run; the presenter confirms the
+        answer in the Logs view. Boundary: the explanation is a hypothesis the events prove.
+        Close with MCP server output and hooks (harness-specific; execute_hook spans).
+        Lenses: Verification, Delegation.
+    "4. Keep the Trail":
+      emphasis: medium
+      note: >
+        github.copilot.chat.agentDebugLog.fileLogging.enabled writes JSONL that persists
+        across sessions; chat.agentHost.agentDebugLog.enabled covers Agent Host sessions.
+        Export produces OTLP JSON; import and #debugEventsSnapshot let a teammate inspect the
+        same run. github.copilot.chat.otel.enabled and otel.otlpEndpoint emit invoke_agent,
+        chat, execute_tool, and execute_hook spans (v1.119; github.copilot.* attributes,
+        v1.122); admins can mandate an endpoint in managed settings (v1.128). Authority: the
+        org decides where traces go. End on the symptom-to-view decision map and a short
+        "what changed since v1.110" list. Lenses: Verification, Authority.
+
+  preamble: []
+  appendix: []
 
   highlightMoments:
-    - "Agent Debug Panel (v1.110) gives real-time event monitoring and chart visualization"
-    - "Chat Debug View exposes every file, instruction, and tool call sent to the model"
-    - "Thinking tokens reveal model reasoning steps before the response is generated"
-    - "Configuration errors diagnosed in 4 min instead of 45 min with the debug view"
-    - "Context compaction and window controls give agents measurably more effective context"
+    - "/troubleshoot reads the agent's own debug events and names the instruction file that was skipped and why."
+    - "Discovery events report every customization as loaded, skipped, or rejected, so a silent miss becomes a visible line."
+    - "The Chat Debug view shows the exact system prompt; if your instruction text is absent, the model never saw it."
+    - "Cache Explorer finds the first point where two consecutive requests diverge."
+    - "OpenTelemetry spans (invoke_agent, chat, execute_tool, execute_hook) put every agent run on the team's existing dashboards."
 
-# OPEN DECISION: Part 3 slides cover both 'Customization Diagnostics' and 'Deep Debugging'
-# (Extension Logs + MCP Servers) in a single section opener. The recipe anchors on
-# 'Customization Diagnostics' because misconfigured instructions are the dominant failure
-# mode — but if the audience skews toward platform/infra engineers, consider swapping the
-# anchor to 'Deep Debugging: Extension Logs and MCP Servers' to foreground the lower-level
-# tooling. Both headings are valid README matches.
+  slides:
+    - { id: title, part: 0, claim: "Every agent run leaves evidence you can read.", scene: "frame: title", seconds: 30 }
+    - { id: core-question, part: 0, claim: "Why didn't the agent do what I expected, and how do I find out?", scene: "frame: core-question; roles developer, team lead, platform engineer", seconds: 90 }
+    - { id: contents, part: 0, claim: "Did it load, what was sent, what it did, keep the trail.", scene: "frame: contents", seconds: 30 }
+    - { id: what-changed, part: 0, claim: "Since v1.110: the Diagnostics action and Edit Mode are gone, the panel was renamed, and docs moved to /docs/agents.", scene: "deck: short changed/removed list", seconds: 60 }
+    - { id: one-surprise, part: 0, claim: "One ignored instruction, four questions, four places to look.", scene: "deck: chat reply ignoring a rule, four question cards each tagged with a view; motion: cards arrive in order", seconds: 120 }
+    - { id: part-1, part: 1, claim: "Did my setup load?", scene: "frame: part opener", seconds: 20 }
+    - { id: customizations-editor, part: 1, claim: "The Agent Customizations editor lists every instruction, agent, skill, hook, and MCP server with its source and errors.", scene: "deck: editor tabs with one file flagged; motion: tabs fill, flag appears", seconds: 90 }
+    - { id: discovery-events, part: 1, claim: "Discovery events say loaded, skipped, or rejected, with the reason.", scene: "deck: three event rows with status chips; motion: rows stream in", seconds: 90 }
+    - { id: applyto-miss, part: 1, claim: "An applyTo glob that misses the edited file skips the instruction silently; the event shows it.", scene: "deck: glob vs edited path side by side, skipped event below; motion: mismatch highlights", seconds: 90 }
+    - { id: evaluations-lint, part: 1, claim: "Instruction linting surfaces contradictions and ambiguity in the Problems panel before a run.", scene: "deck: instruction file with two flagged lines and Problems entries", seconds: 75 }
+    - { id: part-2, part: 2, claim: "What did the model receive?", scene: "frame: part opener", seconds: 20 }
+    - { id: chat-debug-anatomy, part: 2, claim: "The Chat Debug view shows the system prompt, user prompt, context, response, and tool responses for each request.", scene: "deck: one request expanded into five stacked sections; motion: sections unfold", seconds: 120 }
+    - { id: prove-in-prompt, part: 2, claim: "Find your instruction text in the system prompt; absent text means the model never saw it.", scene: "deck: search hit vs no hit in system prompt", seconds: 90 }
+    - { id: context-window, part: 2, claim: "The context indicator shows tokens used, percent full, and session cost in AI credits.", scene: "deck: gauge with category breakdown and credit line", seconds: 90 }
+    - { id: compaction, part: 2, claim: "Compaction summarizes older turns; steer it with /compact, start a new chat in the session, or isolate work in a subagent.", scene: "deck: long history collapsing into a summary block with three alternatives", seconds: 120 }
+    - { id: smaller-context, part: 2, claim: "Output compression and deferred tools keep noise out of the window.", scene: "deck: raw terminal output vs compressed output", seconds: 60 }
+    - { id: cache-explorer, part: 2, claim: "Cache Explorer diffs consecutive requests to the first divergence.", scene: "deck: two request bars aligned, divergence marker", seconds: 90 }
+    - { id: part-3, part: 3, claim: "What did the agent do?", scene: "frame: part opener", seconds: 20 }
+    - { id: debug-logs-views, part: 3, claim: "Agent Debug Logs has four views: Logs, Summary, flow chart, and Cache Explorer.", scene: "deck: four panes with one-line purpose each", seconds: 90 }
+    - { id: logs-tree, part: 3, claim: "The Logs tree shows each tool call, hook, subagent, and error in order.", scene: "deck: event tree with one error expanded", seconds: 75 }
+    - { id: summary-view, part: 3, claim: "Summary totals tool calls, tokens, errors, and duration for the session.", scene: "scorecard: four totals", seconds: 75 }
+    - { id: flow-chart, part: 3, claim: "The flow chart shows handoffs between the agent and its subagents.", scene: "deck: agent node fanning to subagents and tools", seconds: 75 }
+    - { id: subagents, part: 3, claim: "Subagents start stateless; their transcripts, model, and active tool are visible in the Agents window.", scene: "deck: parent session with peer subagent transcript", seconds: 90 }
+    - { id: reasoning-verbosity, part: 3, claim: "Pick thinking effort in the model picker and choose how much reasoning the transcript shows.", scene: "deck: picker plus three view modes", seconds: 75 }
+    - { id: troubleshoot, part: 3, claim: "/troubleshoot reads the debug events and names the skipped file and the reason.", scene: "terminal: /troubleshoot Which customizations were loaded, and did any fail? -> answer citing the skipped event", seconds: 90 }
+    - { id: troubleshoot-explained, part: 3, claim: "/troubleshoot reads captured debug events: what it does, which sessions it works on, and which problems it finds.", scene: "deck: three columns (what it does / where it works / what it finds) with settings and example questions", seconds: 120 }
+    - { id: troubleshoot-verify, part: 3, claim: "Confirm the explanation in the Logs view; the event is the proof.", scene: "deck: claim card traced to three evidence cards (Logs view, Chat Debug view, rerun) and a verdict bar", seconds: 90 }
+    - { id: mcp-hooks, part: 3, claim: "MCP server output and hook events locate failures outside the model.", scene: "deck: runbook, two panels (MCP server, Hook) of four numbered steps each with a watch-for strip; motion: steps arrive in order", seconds: 105 }
+    - { id: part-4, part: 4, claim: "Keep the trail.", scene: "frame: part opener", seconds: 20 }
+    - { id: file-logging, part: 4, claim: "File logging keeps JSONL across sessions, and #session reopens a past run for /troubleshoot.", scene: "deck: settings line and log files on disk", seconds: 90 }
+    - { id: export-share, part: 4, claim: "Export a session as OTLP JSON so a teammate can import and inspect the same run.", scene: "relay: export, share, import", seconds: 75 }
+    - { id: otel, part: 4, claim: "OpenTelemetry emits invoke_agent, chat, execute_tool, and execute_hook spans to any collector.", scene: "deck: nested span waterfall", seconds: 120 }
+    - { id: team-dashboard, part: 4, claim: "Admins can require a collector endpoint in managed settings; the org decides where traces go.", scene: "deck: managed settings telemetry block feeding a dashboard", seconds: 90 }
+    - { id: decision-map, part: 4, claim: "Match the symptom to the view that answers it.", scene: "deck: symptom-to-view table", seconds: 120 }
+    - { id: before-after, part: 0, claim: "From re-prompting and reloading to reading the event that explains the surprise.", scene: "deck: recap, four question lanes, each a struck-through habit tracing down to a green evidence card and the view that holds it; green band: every surprise ends with a named event", seconds: 60 }
+    - { id: today, part: 0, claim: "Open Agent Debug Logs on your next surprise and ask /troubleshoot one question.", scene: "frame: today", seconds: 90 }
+    - { id: references, part: 0, claim: "First-party sources.", scene: "frame: references", seconds: 30 }
+    - { id: thanks, part: 0, claim: "Thanks.", scene: "frame: thanks", seconds: 15 }

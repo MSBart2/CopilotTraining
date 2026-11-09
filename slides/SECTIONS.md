@@ -31,7 +31,7 @@ Top-level container class: `section tech-talks`
 | Section Name | Icon | Slug | Tagline | Contents |
 |---|---|---|---|---|
 | `Foundations` | 🧱 | `foundations` | Choose the surface and encode the context every agent shares | Surfaces, Configuration Primitives, Custom Agents |
-| `Agents at Your Keyboard` | ⌨️ | `agents-at-your-keyboard` | Run, steer, and verify agents locally in VS Code and the CLI | CLI, What's New in VS Code, local SDLC orchestration |
+| `Agents at Your Keyboard` | ⌨️ | `agents-at-your-keyboard` | Run, steer, and verify agents locally in VS Code and the CLI | CLI, What's New in VS Code, local SDLC orchestration, Copilot Chat Internals |
 | `Agents on GitHub` | ☁️ | `agents-on-github` | Hand work to agents GitHub runs, and inspect the evidence they return | Coding agent, Code Review, Code Quality, GitHub Agentic Workflows |
 | `Trust and Govern` | 🛡️ | `trust-and-govern` | Measure readiness, decide what blocks, and name who may approve or override | Agentic SDLC, Enterprise Patterns (plugins and layered baselines) |
 | `Extend and Embed` | 🧩 | `extend-and-embed` | Add capabilities, interfaces, protocols, and governed domain context | Harness Fundamentals, Azure MCP, Foundry |
