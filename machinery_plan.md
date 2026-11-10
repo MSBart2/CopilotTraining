@@ -372,7 +372,7 @@ and a time budget totaling 42:00 (estimates), and the README is a landing page.
 | Visual language | Use Harald's dark semantic palette or the current brand? | **Decided:** current brand plus part accents |
 | Navigation | Keep scroll-snap paging, or add a presenter mode with a timer or next-slide view? | **Built:** one slide at a time, keys, click, swipe, overview (`O`), notes sync (`N`); presenter timer open |
 | Per-slide builds | Animate once on entry (Harald), or add click-stepped builds? | **Decided:** animate once on entry |
-| Exec talks | Include `exec-strategy` (an exec talk) in this conversion? | **Decided:** excluded; exec decks stay on Slidev |
+| Exec talks | Include `exec-strategy` (an exec talk) in this conversion? | **Decided 2026-11-10:** included; exec decks move to the native engine with the Executive talk voice |
 | Archives | Commit snapshots or keep Slidev builds in CI? | **Proposed:** snapshots |
 | Companions during pilot | Exempt native decks from agenda/PDF companion checks? | **Built:** native notes are required; native agenda/PDF generation remains Phase 5 |
 | Pilot slide count | Consolidate from 28 to about 16? | **Decided:** keep 28 for now; revisit after the layouts exist |
@@ -402,7 +402,7 @@ historical conversion checks, whose counts and estimated budgets can differ.
 | copilot-with-foundry | 27 | native | Conversion complete; awaiting presenter/content review | Native validation: 35 slides, 35 PDF pages, estimated 41:40; local publishing passes |
 | enterprise-patterns | 37 | native | 2026-11-05 rebuilt from the approved recipe: absorbs copilot-plugins; Universe 2026 layered baseline (package, place, ride the same rails, prove); patched for two planes, .github-private governance repo, org controls, MCP allowlist; checklist slides removed (13-row checklist lives in the README) | Native validation passes: 37 slides, estimated 53:00; presenter run-through pending |
 | copilot-chat-internals | 38 | native | 2026-11-06 resurrected from archive and converted from the approved restructure recipe (Did it load · What was sent · What it did · Keep the trail), updated to VS Code 1.145; README slimmed to a landing page; Slidev `.md` kept until Phase 0; presenter run-through and [verify] items pending | Native validation: 37 slides, 37 PDF pages, estimated 46:50 |
-| exec-strategy | 20 | Slidev | Out of scope: executive talk | Scope decision recorded below |
+| exec-strategy | 20 | native | 2026-11-10 converted from the approved `nativePlan` (23 slides); README slimmed to a landing page; Slidev `.md` kept until Phase 0; presenter run-through pending | Native validation: 23 slides, 23 PDF pages, estimated 34:30 |
 
 ## 8. Decision log
 
@@ -416,6 +416,7 @@ historical conversion checks, whose counts and estimated budgets can differ.
 | 2026-10-30 | Conversion and content-review sequence | The user authorized building the tracked active decks autonomously and reviewing them after conversion. Convert first; refresh product content separately. | Recipe approval pauses waived for this batch; mechanical validation remains required; presenter/content review is pending |
 | 2026-10-31 | Reconcile the tracker with the active portfolio | Convert the six omitted active practitioner talks: agentic-sdlc, copilot-azure-mcp, copilot-cli, copilot-plugins, copilot-with-foundry, enterprise-patterns. | All 14 active practitioner talks are in scope; exec-strategy stays on Slidev; autonomous conversion and later content review continue |
 | 2026-11-05 | Merge copilot-plugins into enterprise-patterns? | Yes. Universe 2026 made enterprise managed settings, team files, repository defaults, and personal choice one layered path for plugins, models, and policy; the two talks taught halves of it and duplicated managed settings. Keep the enterprise-patterns slug; APM becomes a boundary section. | copilot-plugins archived with a redirect; 13 active practitioner talks; enterprise-patterns goes through the full brief → research → recipe → deck path |
+| 2026-11-10 | Move executive talks onto the native engine? | Yes. The user approved native exec decks; the executive voice, evidence-class labels, and recipe slide budget apply. | exec-strategy converted first; other exec talks follow when their recipes carry a per-slide plan |
 
 ## References
 

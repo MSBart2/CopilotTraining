@@ -88,7 +88,7 @@ Avoid shame, threat framing, unsupported superlatives, frictionless success stor
 |---|---|---|---|
 | **Workshop** | A realistic attempt, inspection, adjustment, and validation | Respectful across experience levels; persona-authentic | What participants build, test, and validate |
 | **Practitioner tech talk** | Opportunity and discovery | Optimistic curiosity; expert-to-expert | What this unlocks, what is now possible, and how it works |
-| **Executive talk** | Business context, industry analogy, and organizational implication | Authoritative, accessible, strategic, and third-person | The decision, owner, tradeoff, evidence, and revisit signal |
+| **Executive talk** | The technical decision maker's platform choice and its delivery outcome | Authoritative, persuasive, evidence-led, and third-person | Why GitHub Copilot is the right AI platform for this organization's SDLC, and how to prove it |
 
 ---
 
@@ -114,7 +114,9 @@ For a new talk, approve a research brief and structural proposal before drafting
 
 ### Executive talk
 
-Clarify the decision, owner, authority boundary, tradeoff, and success signal. Distinguish sourced facts, observed results, estimates, and proposed targets.
+The audience is always a technical decision maker (TDM): a CTO, VP of Engineering, or head of platform engineering or developer experience who chooses and standardizes the AI coding platform. The posture is always persuasive: make the case for choosing GitHub Copilot as the AI platform for an AI-enabled SDLC that ships better software, faster.
+
+Persuasion earns its credibility from evidence. Build the case on first-party sourced capabilities and labeled data, give the TDM criteria they can hold any vendor to, and answer them with Copilot. Name a competitor only with a current, cited source; label vendor and commercially interested numbers once. State the boundary where the case is weaker, the decision and owner, and a measured way to prove the choice (a pilot with thresholds dated before launch). Distinguish sourced facts, observed results, estimates, and proposed targets.
 
 ---
 
@@ -124,9 +126,9 @@ Clarify the decision, owner, authority boundary, tradeoff, and success signal. D
 |---|---|---|
 | Workshop modules (personas, exercises, metrics) | `workshop/` | `module-planner`, `module-creator`; decks: **Slide Generator** (Slidev) |
 | Practitioner tech talks (the 1-hour show-and-tell) | `tech-talks/` | **Tech Talk Generator** (research, landing README, recipe), then **Native Deck Author** (deck and speaker notes in `slides/tech-talks/<slug>/slides.js`); unconverted Slidev decks: **Tech Talk Slide Generator** (legacy, patches only) |
-| Executive talks | `tech-talks/exec-*` | **Exec Talk Generator**; decks: **Slide Generator** (Slidev) |
+| Executive talks | `tech-talks/exec-*` | **Tech Talk Generator** in executive mode (research, landing README, recipe), then **Native Deck Author** (deck and speaker notes in `slides/tech-talks/<slug>/slides.js`) |
 
-Native tech talks are notes-first: the speaker notes are the teaching source and the README is a landing page. Deck authoring rules live in `.github/instructions/native-decks.instructions.md` and `.github/instructions/slidev-decks.instructions.md`.
+Native tech talks and executive talks are notes-first: the speaker notes are the teaching source and the README is a landing page. Deck authoring rules live in `.github/instructions/native-decks.instructions.md` and `.github/instructions/slidev-decks.instructions.md`.
 
 **Archived content is frozen.** Any file with `status: archived` in frontmatter must never be modified by any agent. Stop and inform the user.
 

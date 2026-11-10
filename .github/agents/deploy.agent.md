@@ -71,10 +71,10 @@ one-liner, then push the current branch.
 If the working tree is clean **and** `check-companions` is fully green, say
 so and stop (nothing to ship).
 
-### Native tech-talk decks
+### Native decks
 
-Tech talks use native HTML folders (`slides/tech-talks/<slug>/`) and the shared
-engine in `slides/native/`; workshop and exec decks stay on Slidev.
+Tech talks and executive talks use native HTML folders (`slides/tech-talks/<slug>/`)
+and the shared engine in `slides/native/`; workshop decks stay on Slidev.
 
 For every native folder that is dirty, or every native folder when
 `slides/native/` changed:

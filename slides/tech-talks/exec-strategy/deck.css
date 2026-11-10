@@ -1,0 +1,50 @@
+/* Choosing the AI Platform for Your SDLC — deck-specific layout on top of slides/native/{theme,frames,patterns}.css */
+
+.scene.title-map .m-trace { stroke-width: 2.5; }
+.scene .z-stroke { stroke: color-mix(in srgb, var(--z) 70%, transparent); }
+
+/* Core question: copy on the left, system diagram on the right */
+.sc-question-system .q-split { flex: 1; min-height: 0; display: flex; align-items: center; gap: 56px; }
+.sc-question-system .q-copy { flex: 1; display: flex; flex-direction: column; gap: 22px; }
+.sc-question-system h2.question { margin: 0; font-size: 64px; line-height: 1.06; }
+.sc-question-system .subtitle { margin: 0; font-size: 27px; color: var(--body); }
+.sc-question-system .q-highlight { margin: 6px 0 0; padding-left: 20px; border-left: 4px solid var(--purple-light); font-size: 25px; line-height: 1.4; font-weight: 600; color: var(--purple-light); }
+.sc-question-system .q-for { margin: 0; font: 500 19px var(--mono); color: var(--muted); }
+.sc-question-system .q-split > .scene { flex: 0 0 600px; width: 600px; height: 600px; margin: 0; }
+.scene .q-core { fill: var(--surface); stroke: var(--line); }
+.scene .q-rec-label { letter-spacing: .12em; fill: color-mix(in srgb, var(--indigo) 70%, white); }
+
+/* Four questions over the trust floor */
+.scene .trust-label { letter-spacing: .12em; fill: color-mix(in srgb, var(--orange) 70%, white); }
+.scene .trust-icon { font-size: 24px; font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", var(--sans); }
+.scene .trust-text { font-size: 19px; font-weight: 600; }
+
+/* Readiness ladder and boundary quad */
+.scene .lvl-k { letter-spacing: .08em; fill: color-mix(in srgb, var(--z) 62%, white); }
+.scene .lvl-note { font-size: 19px; font-weight: 500; fill: var(--body); }
+.scene .lvl-later .box { stroke-dasharray: 6 6; }
+.scene .quad-text { font-size: 22px; font-weight: 500; fill: var(--body); }
+
+/* Value recap */
+.scene .milestone { fill: color-mix(in srgb, var(--orange) 40%, var(--bg)); stroke: var(--orange); stroke-width: 2.5; }
+.scene .recap-before { fill: color-mix(in srgb, var(--text) 55%, transparent); }
+.scene .recap-num { font-size: 44px; font-weight: 800; }
+.scene .recap-detail { font-size: 19px; }
+
+/* Shared deck text */
+.scene .bar-text { font-size: 23px; font-weight: 650; }
+.scene .col-k { letter-spacing: .08em; fill: color-mix(in srgb, var(--z) 62%, white); }
+.scene .col-who { font-size: 19px; font-weight: 600; fill: var(--body); }
+.scene .col-v { font-size: 21px; font-weight: 500; fill: var(--body); }
+
+/* Pilot plan fields */
+.scene .field-v { font-size: 20px; font-weight: 500; fill: var(--body); }
+.scene .tl-label { font-size: 22px; font-weight: 700; }
+
+/* Evidence and benchmark */
+.scene .ev-num { font-size: 50px; font-weight: 800; }
+.scene .ev-text { font-size: 22px; font-weight: 500; fill: var(--body); }
+
+/* Four-question answers */
+.scene .ans-label { font-size: 23px; font-weight: 700; }
+.scene .ans-note { font-size: 19px; font-weight: 500; fill: var(--body); }

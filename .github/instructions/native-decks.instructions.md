@@ -5,7 +5,9 @@ description: "Use when editing native HTML tech-talk decks (slides.js, scenes.js
 
 # Native tech-talk decks
 
-Native decks are practitioner tech talks only. Workshop and exec decks stay on Slidev (`slidev-decks.instructions.md` covers those).
+Native decks cover practitioner tech talks and executive talks (`tech-talks/exec-*`). Workshop decks stay on Slidev (`slidev-decks.instructions.md` covers those).
+
+Executive decks follow the Executive talk section in `AGENTS.md`: a technical decision maker audience, a persuasive case for GitHub Copilot, third-person voice, and the decision, owner, evidence class, and boundary visible. "Proof" on an executive slide is a sourced fact, an evidence-class label, a first-party capability, or a named control, never an invented result.
 
 ## Source of truth
 
@@ -35,7 +37,7 @@ Carry enough context onto each slide that a viewer can identify the actor, task,
 
 ## Slide budget
 
-Practitioner tech talks have room for 30+ slides, with no fixed slide-count ceiling. Count spine/template slides separately from teaching slides. Let the narrative, demonstration, and speaking-time budget determine the total; each teaching slide answers one audience question and advances the argument or proves a claim. Workshop and executive deck budgets are unchanged.
+Practitioner tech talks have room for 30+ slides, with no fixed slide-count ceiling. Count spine/template slides separately from teaching slides. Let the narrative, demonstration, and speaking-time budget determine the total; each teaching slide answers one audience question and advances the argument or proves a claim. Executive decks follow the approved per-slide plan and speaking-time budget in their recipe. Workshop deck budgets are unchanged.
 
 ## Validate after every change
 

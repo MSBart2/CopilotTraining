@@ -1,92 +1,306 @@
-# exec.recipe.yml - executive talk generation guidance
-# Fresh review completed 2026-09-16 with independent Rubber Duck and cross-model critiques.
+# deck.recipe.yml - executive talk recipe (deck-recipe-review, executive mode)
+# TDM reframe proposed 2026-11-10. Research brief, structure, and per-slide plan approved by the user 2026-11-10.
+# Fusion benchmark approved for the moving-target slide: unnamed competitor, labeled commercially interested.
 
 version: 1
 
 deck:
-  title: "The Agentic Operating Model"
-  subtitle: "Where agents create value, where humans retain authority, and how leadership proves the return"
-  tagline: "One controlled pilot. One decision record. Scale once, adjust once, or stop."
+  title: "Choosing the AI Platform for Your SDLC"
+  subtitle: "Better software, faster, on the delivery system you already run"
+  tagline: "Evaluate the system around the model. Prove it on one team before you scale."
+
+  audience: >
+    Technical decision makers: CTO, VP Engineering, heads of platform engineering and
+    developer experience. They choose and standardize the AI coding platform and own
+    delivery quality, security posture, and engineering spend.
+
+  coreQuestion: "Which AI platform helps my teams ship better software, faster?"
+
+  thesis: >
+    AI amplifies the delivery system it runs in. Better software, faster, comes from putting
+    agents inside the SDLC system of record, where code, pull requests, checks, security, and
+    policy already live, so every agent action lands as reviewable evidence under controls the
+    organization already runs. GitHub Copilot is built for that position.
+
+  tension: >
+    Tool bake-offs compare editor demos and model output, and both change monthly. Copilot itself
+    routes models from several vendors and hosts partner agent apps under one policy and one
+    metrics surface. The durable decision is the system around the model.
+
+  anchor: "One pull request carrying evidence from three agents, merged by a named human."
+
+  competitivePosture: >
+    No named competitor comparisons. Present four evaluation questions any vendor can be held to,
+    and answer each with first-party sourced Copilot capabilities. Commercially interested sources
+    carry that label once, where the number appears.
+
+  boundary: >
+    The integration case is strongest when GitHub is the system of record for code and pull
+    requests. Budget-gated features (Chat, code review, cloud agent) need available enterprise
+    budget. Impact-dashboard ROI figures are directional estimates. Merge, production release,
+    access changes, and risk acceptance stay with named humans.
 
   agenda:
-    - title: "Authorize the Test"
-      takeaway: "Define the decision, owner, authority boundary, and local commitments first."
-      whyItMatters: "Leadership can evaluate the complete authorization before examining supporting detail."
-    - title: "Earn the Evidence"
-      takeaway: "Use external variance to design a credible local test."
-      whyItMatters: "Current studies do not directly test bounded agent execution."
-    - title: "Make the Gate Real"
-      takeaway: "Predeclare thresholds, measurement custody, and stop conditions."
-      whyItMatters: "A falsifiable gate turns a pilot into a controlled decision process."
+    - title: "Look Past the Model"
+      takeaway: "Outcomes vary with context; AI multiplies the delivery system it lands in."
+      whyItMatters: "A TDM evaluates the platform's fit with the SDLC, not a single model or demo."
+    - title: "Four Questions for Any AI Platform"
+      takeaway: "Context, Delegation, Verification, Authority, each answered by Copilot from first-party sources."
+      whyItMatters: "Gives the TDM vendor-neutral criteria and shows where Copilot answers them natively."
+    - title: "What an AI-Enabled SDLC Looks Like"
+      takeaway: "One issue becomes one evidence-rich pull request; recurring chores run as governed workflows."
+      whyItMatters: "Makes 'better software, faster' concrete and inspectable."
+    - title: "Prove It in Your Org"
+      takeaway: "A 90-day platform pilot with a baseline, platform metrics, and a predeclared gate."
+      whyItMatters: "Turns the platform choice into a measured, reversible decision."
 
-  arcToc: "The Decision -> The Evidence -> Guardrails and Economics -> The Gate"
+  arcToc: "Look Past the Model -> Four Questions -> AI-Enabled SDLC -> Prove It"
 
   arcNarrative: >
-    The briefing states the authorization first so an executive who leaves early can still
-    identify the decision, owner, authority boundary, and required local fields. The Evidence
-    then earns credibility by showing outcome variance and naming the central limitation: current
-    research does not directly test bounded agent execution with post-hoc verification. Guardrails
-    and Economics establish the controlled downside, retained human authority, and fully burdened
-    local scenario without drifting into implementation design or universal ROI. The Gate receives
-    the strongest emphasis because the investment becomes decision-ready only when local thresholds,
-    measurement custody, stop conditions, and the single-adjustment limit are explicit. This order
-    turns three overlapping executive arguments into one authorization for a falsifiable operating-model
-    test.
+    The briefing opens with the TDM's real decision and the evidence that AI outcomes vary with the
+    system around the tool. Four evaluation questions then give leaders criteria they can apply to
+    any vendor, with Copilot's first-party answer for each; this is the competitive case, earned
+    rather than asserted. The AI-enabled SDLC section makes it concrete: one change flowing from issue
+    to agent to review to measured merge, plus governed recurring work and a readiness bar. The close
+    converts conviction into a controlled 90-day pilot measured with platform metrics and DORA delivery
+    signals, so the standardization decision is evidence-based and reversible.
 
   sectionOrder:
-    - "The Decision"
-    - "The Evidence"
-    - "The Guardrails and Economics"
-    - "The Gate"
+    - "Look Past the Model"
+    - "Four Questions for Any AI Platform"
+    - "What an AI-Enabled SDLC Looks Like"
+    - "Prove It in Your Org"
 
   sectionModes:
-    "The Decision":
+    "Look Past the Model":
       emphasis: medium
       note: >
-        Open with the complete decision on one page: authorizing body, CTO sponsor, VP Engineering
-        owner, one team and workflow, local budget ceiling, cross-functional capacity, bounded
-        non-human permissions, independent measurement custody, and a dated return aligned to a
-        real planning cycle. Explain that leadership is pre-authorizing a controlled decision
-        process. Keep the charter readable; do not reproduce every README row.
-    "The Evidence":
+        Octoverse 2026 shows agent work went mainstream (40%+ of PRs start with an agent draft); the
+        impact dashboard's adoption cohorts show each organization its own return. METR stays in notes
+        as the independent counterpoint. DORA 2025: AI is an amplifier.
+        Models change monthly; Copilot Fusion routes across enabled models, model policy controls
+        availability per enterprise, org, team, and agent app, and partner agent apps report into the
+        same usage metrics. Therefore evaluate the system.
+    "Four Questions for Any AI Platform":
       emphasis: high
       note: >
-        Juxtapose the commercially interested GitHub and Accenture positive outcomes with METR's
-        independent small-cohort slowdown. State only the defensible inference: outcomes vary by
-        task, context, and intervention. Make the evidence gap explicit: both studies concern
-        assistant-era work under human authorship, while this pilot tests bounded agent execution.
-        Preserve the closed four-part evidence vocabulary and label Control, Coordination, and
-        Context as an editorial decision framework. Keep the excluded conclusions visible.
-    "The Guardrails and Economics":
+        Context (repo, issues, PR history, custom instructions, portable custom agents, MCP, governed org
+        knowledge). Delegation (IDE, CLI, cloud agent, agentic workflows, SDK; one agent file across
+        surfaces). Verification (Copilot code review, Code Quality, CodeQL Autofix, Actions, secret scanning,
+        all on the PR). Authority (enterprise, org, team, repo, personal layers; managed settings; model
+        policy API; rulesets; usage metrics and telemetry routing). Frame each as a question the TDM asks
+        every vendor.
+    "What an AI-Enabled SDLC Looks Like":
+      emphasis: high
+      note: >
+        The anchor: issue assigned to the cloud agent, draft PR, Copilot code review, Code Quality findings,
+        human steers rework and merges. Agentic workflows handle recurring repository chores through safe
+        outputs with audited runs. Readiness: the L3 launchpad (reliable context, repeatable checks, habitual
+        use). State the boundary honestly.
+    "Prove It in Your Org":
       emphasis: medium
       note: >
-        Compress the operating model to executive-owned content: least privilege, reviewable
-        evidence, retained authority for production and risk acceptance, named control owners,
-        and immediate stop on boundary or control failure. Show a fully burdened local scenario
-        and downside case using organization-specific inputs. Do not recreate the detailed handoff,
-        six-instrument, or formula tables, and do not invent a budget, savings figure, or universal ROI.
-    "The Gate":
-      emphasis: high
-      note: >
-        Make falsifiability the credibility peak. The dated threshold memo must declare minimum
-        outcome volume, comparability, one workflow-specific primary outcome, economic and
-        directional thresholds, guardrail floors, independent measurement custody, an arbiter,
-        and the calendar return date before assisted execution. Scale requires every threshold;
-        Adjust is available once only when its directional floor holds and controls remain intact;
-        Stop covers every other result and any immediate-stop condition. End on the single recorded
-        authorization, not a list of recommendations.
+        Keep the strongest parts of the prior pilot design, trimmed: one team, one workflow, four-week
+        baseline, 90 days, named owners. Measure with the usage metrics API (per-agent activity, code review
+        addressed rate), the impact dashboard (directional ROI), and DORA delivery metrics. Label evidence
+        classes. Predeclare thresholds; scale, adjust once, or stop.
 
   preamble: []
-
   appendix: []
 
   highlightMoments:
-    - "The authorization buys one controlled decision process: one team, one workflow, independent measurement, and a dated scale-once, adjust-once, or stop gate."
-    - "Assistant-era studies report materially different outcomes; neither directly tests bounded agent execution with post-hoc human verification."
-    - "Local authorization rests on four distinct evidence classes: external observation, internal baseline, modeled scenario, and proposed threshold."
-    - "Any authority-boundary or control failure stops the pilot immediately; adjustment is available once and only above a predeclared directional floor."
-    - "Enterprise ROI, universal productivity, headcount reduction, and autonomous production authority remain explicitly outside the pilot's conclusions."
+    - "AI multiplies the delivery system it runs in; the platform decision is a delivery-system decision."
+    - "Four questions any vendor can be held to: where does context come from, where can work be delegated, what evidence lands on the change, and who controls it."
+    - "One pull request carries evidence from the cloud agent, Copilot code review, and Code Quality, and a named human merges it."
+    - "Copilot routes multiple vendors' models and governs partner agent apps under one policy and one metrics surface."
+    - "A 90-day platform pilot with a predeclared gate turns standardization into a measured, reversible decision."
 
-# OPEN DECISION: Will a live delivery use the reusable blank charter or an organization-specific
-# completed charter? The reusable version supports portfolio use; a live authorization requires
-# local budget, thresholds, outcome volume, signatory, and return date before assisted execution.
+  # Per-slide plan (deck-recipe-review executive mode). `intent` holds each slide's claim.
+  targetSeconds: 2520
+  duration: 45
+  slides:
+    - { id: title, part: 0, intent: "Title, subtitle, tagline", seconds: 45 }
+    - {
+        id: core-question,
+        part: 0,
+        intent: "TDM question; thesis in subtitle/highlight",
+        seconds: 60,
+      }
+    - {
+        id: contents,
+        part: 0,
+        intent: "Four sections with opener slide numbers",
+        seconds: 30,
+      }
+    - {
+        id: p1-open,
+        part: 1,
+        intent: "Look Past the Model",
+        seconds: 30,
+      }
+    - {
+        id: outcomes-vary,
+        part: 1,
+        intent: "Octoverse 2026 agent adoption beside impact-dashboard cohorts; platform trend vs. your own return",
+        seconds: 120,
+      }
+    - {
+        id: mirror-multiplier,
+        part: 1,
+        intent: "DORA: AI amplifies the delivery system; same tool, different systems, different results",
+        seconds: 120,
+      }
+    - {
+        id: moving-target,
+        part: 1,
+        intent: "Models change monthly; Fusion routing, model policy, partner agent apps under one policy and metrics. Evaluate the system",
+        seconds: 150,
+      }
+    - {
+        id: p2-open,
+        part: 2,
+        intent: "Four Questions for Any AI Platform",
+        seconds: 30,
+      }
+    - {
+        id: four-questions,
+        part: 2,
+        intent: "Context, Delegation, Verification, Authority as vendor-neutral criteria",
+        seconds: 90,
+      }
+    - {
+        id: q-context,
+        part: 2,
+        intent: "Where does the agent's context come from? Repo, issues, PRs, instructions, portable agents, MCP, org knowledge",
+        seconds: 150,
+      }
+    - {
+        id: q-delegation,
+        part: 2,
+        intent: "Where can work be handed off? IDE, CLI, cloud agent, agentic workflows, SDK; one agent file across surfaces",
+        seconds: 150,
+      }
+    - {
+        id: q-verification,
+        part: 2,
+        intent: "What evidence lands on the change? Code review, Code Quality, CodeQL Autofix, Actions, secret scanning on the PR",
+        seconds: 150,
+      }
+    - {
+        id: q-authority,
+        part: 2,
+        intent: "Who controls it? Layered policy, managed settings, model policy API, rulesets, usage metrics, telemetry",
+        seconds: 150,
+      }
+    - {
+        id: p3-open,
+        part: 3,
+        intent: "What an AI-Enabled SDLC Looks Like",
+        seconds: 30,
+      }
+    - {
+        id: one-pr,
+        part: 3,
+        intent: "Anchor: issue to cloud agent to code review to Code Quality to human merge, evidence on one PR",
+        seconds: 180,
+      }
+    - {
+        id: recurring-work,
+        part: 3,
+        intent: "Agentic workflows: recurring chores through safe outputs with audited runs",
+        seconds: 120,
+      }
+    - {
+        id: readiness,
+        part: 3,
+        intent: "L3 launchpad: reliable context, repeatable checks, habitual use",
+        seconds: 120,
+      }
+    - {
+        id: boundary,
+        part: 3,
+        intent: "Where the case is strongest, what needs budget, what stays human",
+        seconds: 90,
+      }
+    - { id: p4-open, part: 4, intent: "Prove It in Your Org", seconds: 30 }
+    - {
+        id: pilot-shape,
+        part: 4,
+        intent: "One team, one workflow, four-week baseline, 90 days, named owners",
+        seconds: 120,
+      }
+    - {
+        id: measures,
+        part: 4,
+        intent: "Usage metrics API, impact dashboard (directional), DORA; four evidence classes",
+        seconds: 150,
+      }
+    - {
+        id: gate,
+        part: 4,
+        intent: "Thresholds declared before launch; scale, adjust once, or stop",
+        seconds: 120,
+      }
+    - {
+        id: before-after,
+        part: 0,
+        intent: "Before and after: tool trial vs measured platform decision",
+        seconds: 90,
+      }
+    - { id: today, part: 0, intent: "Three TDM actions", seconds: 90 }
+    - {
+        id: references,
+        part: 0,
+        intent: "First-party and research references",
+        seconds: 30,
+      }
+    - { id: thanks, part: 0, intent: "Close", seconds: 15 }
+
+references:
+  - {
+      url: "https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/",
+      label: "Octoverse 2026 (GitHub platform telemetry)",
+      verified: 2026-11-10,
+    }
+  - {
+      url: "https://github.blog/changelog/2026-07-22-new-copilot-usage-metrics-impact-dashboard/",
+      label: "Copilot impact dashboard and adoption cohorts",
+      verified: 2026-11-10,
+    }
+  - {
+      url: "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/",
+      label: "METR randomized study, 2025 (independent, small cohort)",
+      verified: 2026-04-24,
+    }
+  - {
+      url: "https://cloud.google.com/resources/content/dora-roi-of-ai-assisted-software-development",
+      label: "DORA: ROI of AI-assisted software development, 2025",
+      verified: 2026-04-24,
+    }
+  - {
+      url: "https://github.blog/changelog/2026-10-28-route-and-orchestrate-models-with-github-copilot-fusion/",
+      label: "Copilot Fusion GA",
+      verified: 2026-11-10,
+    }
+  - {
+      url: "https://github.blog/changelog/2026-10-19-copilot-model-policy-api-for-enterprise-orgs-and-teams/",
+      label: "Copilot model policy API",
+      verified: 2026-11-10,
+    }
+  - {
+      url: "https://github.blog/changelog/2026-08-07-copilot-usage-metrics-api-adds-agent-app-activity/",
+      label: "Usage metrics API adds agent app activity",
+      verified: 2026-11-10,
+    }
+  - {
+      url: "https://github.blog/changelog/2026-08-07-copilot-impact-dashboard-adds-a-return-on-investment-section/",
+      label: "Impact dashboard ROI section (directional)",
+      verified: 2026-11-10,
+    }
+  - {
+      url: "https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot/",
+      label: "GitHub Enterprise includes Copilot",
+      verified: 2026-11-10,
+    }
+  # Reuse verified first-party references from copilot-on-github, enterprise-patterns, agentic-workflows,
+  # custom-agents, copilot-cli, and agentic-sdlc READMEs for the four-questions and AI-enabled SDLC slides.

@@ -6,7 +6,7 @@ infer: true
 
 # Validate Native Deck
 
-Fast edit-and-verify loop for native tech-talk decks. Slidev decks (workshop, exec, unconverted talks) use `build-slidev-decks` and `inspect-slide`.
+Fast edit-and-verify loop for native tech-talk and executive decks. Slidev decks (workshop and unconverted talks) use `build-slidev-decks` and `inspect-slide`.
 
 ## Commands
 

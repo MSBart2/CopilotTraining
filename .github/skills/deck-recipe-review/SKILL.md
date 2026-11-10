@@ -1,10 +1,11 @@
 ---
 name: deck-recipe-review
 description: >
-  Review a tech-talk's source material (research.md and landing README for a new talk; the
+  Review a talk's source material (research.md and landing README for a new talk; the
   existing deck and long README for a conversion) and produce a deck.recipe.yml covering
   section weighting, narrative arc, coverage gaps, and the per-slide plan with scene intent
-  and time budget. The user's approval is the review gate.
+  and time budget. Covers practitioner tech talks and executive talks (tech-talks/exec-*).
+  The user's approval is the review gate.
   Always overwrites any existing recipe. Triggers: "review the talk", "create the recipe",
   "is this the best use of our time", "section weighting", "coverage gap", "recipe".
 infer: true
@@ -34,6 +35,18 @@ Read the talk's source material, analyze its structure, and write `deck.recipe.y
 - User asks to "review the talk" or check if the structure matches the audience
 
 **Not for:** Minor wording tweaks, slide-level fixes, or adding a single slide.
+
+---
+
+## Executive Mode
+
+For `tech-talks/exec-*`, the recipe schema, approval gate, and per-slide plan stay the same. These rules adjust the review:
+
+- **Audience and posture:** a technical decision maker, and a persuasive, evidence-led case for GitHub Copilot as the AI platform for an AI-enabled SDLC (Executive talk section of `AGENTS.md`). Evaluate every section by whether it moves the TDM toward that decision with evidence.
+- **Arc:** the TDM's decision and honest tension → vendor-neutral criteria answered with first-party Copilot evidence → one concrete AI-enabled SDLC artifact → a measured proof plan for the TDM's organization. Give the criteria and the artifact the highest emphasis.
+- **Budget:** a 45-minute briefing with about 5 minutes for questions. The slide count follows the speaking-time budget; dense executive slides usually run 90–180 seconds each.
+- **Extra fields:** record `audience`, `coreQuestion`, `thesis`, `tension`, `anchor`, `competitivePosture`, and `boundary` under `deck:` so the deck author carries the posture into every slide and note.
+- **Voice:** third person and decision-first; every number in the plan carries its evidence class; vendor or commercially interested data is labeled once.
 
 ---
 
