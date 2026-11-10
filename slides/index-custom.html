@@ -775,7 +775,7 @@
     }
 
     .container {
-      max-width: 2100px;
+      max-width: 1480px;
     }
 
     .hero {
@@ -880,7 +880,7 @@
       top: 0.75rem;
       z-index: 20;
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 1px;
       margin-bottom: 1.75rem;
       overflow: hidden;
@@ -923,10 +923,15 @@
 
     .onboarding-path {
       --group-accent: #f5b800;
-      margin-bottom: 2.25rem;
-      padding: 1.5rem 1.65rem;
-      border-top: 1px solid rgba(245, 184, 0, 0.4);
-      border-bottom: 1px solid rgba(245, 184, 0, 0.22);
+      margin-bottom: 1.75rem;
+      padding: clamp(1.4rem, 2.4vw, 2rem);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(245, 184, 0, 0.16), transparent 45%),
+        var(--section-bg);
+      border: 1px solid rgba(245, 184, 0, 0.45);
+      border-left: 4px solid #f5b800;
+      border-radius: 8px;
+      box-shadow: 0 12px 38px var(--section-shadow);
       scroll-margin-top: 5rem;
     }
 
@@ -1000,87 +1005,162 @@
 
     .onboarding-heading {
       display: flex;
-      align-items: baseline;
+      align-items: flex-end;
       justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 1.1rem;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .onboarding-eyebrow {
+      margin-bottom: 0.35rem;
+      color: #f5b800;
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
     }
 
     .onboarding-heading h2 {
-      font-size: 1.1rem;
+      font-family: "Aptos Display", "Segoe UI Variable Display", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.35rem, 2.2vw, 1.85rem);
       font-weight: 760;
+      line-height: 1.15;
     }
 
     .onboarding-heading p {
+      max-width: 720px;
+      margin-top: 0.4rem;
       color: var(--text-muted);
-      font-size: 0.84rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .onboarding-cta {
+      flex-shrink: 0;
+      padding: 0.7rem 1.15rem;
+      background: #f5b800;
+      border-radius: 6px;
+      color: #111827;
+      font-size: 0.9rem;
+      font-weight: 760;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .onboarding-cta:hover,
+    .onboarding-cta:focus-visible {
+      box-shadow: 0 6px 18px rgba(245, 184, 0, 0.35);
+      outline: none;
+      transform: translateY(-1px);
     }
 
     .onboarding-steps {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 1px;
-      background: var(--section-border);
-      border: 1px solid var(--section-border);
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .onboarding-steps::before {
+      position: absolute;
+      top: 1.05rem;
+      right: 10%;
+      left: 10%;
+      height: 2px;
+      content: "";
+      background: linear-gradient(90deg, rgba(245, 184, 0, 0.7), rgba(245, 184, 0, 0.2));
     }
 
     .onboarding-step {
       position: relative;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
       min-width: 0;
-      min-height: 110px;
-      padding: 1.2rem 2rem 1.2rem 1.15rem;
-      background: rgba(12, 18, 28, 0.94);
       color: var(--text);
       text-decoration: none;
     }
 
-    [data-theme="light"] .onboarding-step {
-      background: rgba(255, 255, 255, 0.96);
+    .onboarding-number {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      width: 2.1rem;
+      height: 2.1rem;
+      margin: 0 auto 0.85rem;
+      background: #f5b800;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px var(--section-bg);
+      color: #111827;
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.8rem;
+      font-weight: 800;
     }
 
-    .onboarding-step::after {
-      position: absolute;
-      top: 50%;
-      right: 0.55rem;
-      content: "→";
-      color: #f5b800;
-      transform: translateY(-50%);
+    .onboarding-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 1rem 1.05rem 1.05rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
     }
 
-    .onboarding-step:last-child::after {
-      content: "✓";
-    }
-
-    .onboarding-step:hover,
-    .onboarding-step:focus-visible {
+    .onboarding-step:hover .onboarding-body,
+    .onboarding-step:focus-visible .onboarding-body {
       background: var(--card-hover-bg);
-      outline: 2px solid #f5b800;
-      outline-offset: -2px;
+      border-color: #f5b800;
+      transform: translateY(-2px);
     }
 
-    .onboarding-number,
+    .onboarding-step:focus-visible {
+      outline: none;
+    }
+
     .onboarding-label,
+    .onboarding-talk,
     .onboarding-detail {
       display: block;
     }
 
-    .onboarding-number {
-      color: #f5b800;
-      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
-      font-size: 0.68rem;
-    }
-
     .onboarding-label {
-      margin-top: 0.25rem;
-      font-size: 0.9rem;
+      font-size: 0.98rem;
       font-weight: 740;
+      line-height: 1.3;
     }
 
     .onboarding-detail {
-      margin-top: 0.35rem;
+      margin: 0.4rem 0 0.75rem;
       color: var(--text-muted);
-      font-size: 0.76rem;
-      line-height: 1.45;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .onboarding-talk {
+      margin-top: auto;
+      padding-top: 0.6rem;
+      border-top: 1px solid var(--section-divider);
+      color: var(--text-dim);
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.7rem;
+    }
+
+    .onboarding-talk strong {
+      color: #f5b800;
+      font-weight: 600;
+    }
+
+    [data-theme="light"] .onboarding-talk strong,
+    [data-theme="light"] .onboarding-eyebrow {
+      color: #a16207;
     }
 
     .delivery-path {
@@ -1193,9 +1273,7 @@
 
     .sub-group {
       --group-accent: #22d3ee;
-      margin: 0 0 3.25rem;
-      padding-left: 1.25rem;
-      border-left: 2px solid color-mix(in srgb, var(--group-accent) 65%, transparent);
+      margin: 0 0 2.5rem;
     }
 
     #platform-teams { --group-accent: #fbbf24; }
@@ -1203,18 +1281,11 @@
     #executive-talks { --group-accent: #60a5fa; }
 
     .sub-group-header {
-      position: sticky;
-      top: 4.5rem;
-      z-index: 10;
-      gap: 0.7rem;
-      margin-bottom: 1.35rem;
-      padding: 0.75rem 0.85rem;
-      background: color-mix(in srgb, var(--section-bg) 92%, var(--group-accent) 8%);
-      border: 1px solid color-mix(in srgb, var(--group-accent) 28%, transparent);
-      border-left: 3px solid var(--group-accent);
-      border-radius: 5px;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
-      backdrop-filter: blur(14px);
+      flex-wrap: wrap;
+      gap: 0.35rem 0.7rem;
+      margin-bottom: 1rem;
+      padding: 0 0 0.6rem;
+      border-bottom: 1px solid color-mix(in srgb, var(--group-accent) 30%, transparent);
     }
 
     .sub-group-label {
@@ -1253,8 +1324,7 @@
     .card,
     .card-shell {
       position: relative;
-      min-height: 190px;
-      padding: 1.4rem 1.45rem 1.3rem;
+      padding: 1.25rem 1.35rem 1.1rem;
       overflow: hidden;
       border-radius: 6px;
       box-shadow: none;
@@ -1296,11 +1366,56 @@
     }
 
     .card p {
-      margin-top: 0.75rem;
+      margin-top: 0.5rem;
       color: var(--card-p);
       font-size: 0.88rem;
-      line-height: 1.65;
-      -webkit-line-clamp: 4;
+      line-height: 1.55;
+      -webkit-line-clamp: 3;
+    }
+
+    .card-body-link {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card .card-q {
+      margin-top: 0.15rem;
+      padding-left: 0.65rem;
+      border-left: 2px solid var(--group-accent, #22d3ee);
+      color: var(--text);
+      font-size: 0.92rem;
+      font-style: italic;
+      line-height: 1.45;
+      -webkit-line-clamp: unset;
+    }
+
+    .card .card-meta {
+      margin-top: auto;
+      padding-top: 0.85rem;
+      color: var(--text-dim);
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.01em;
+    }
+
+    .card .card-meta strong {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .section-hint {
+      margin-top: 0.45rem;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    .section-hint kbd {
+      padding: 0.05rem 0.35rem;
+      border: 1px solid var(--chip-border);
+      border-radius: 3px;
+      background: var(--chip-bg);
+      font-family: "Cascadia Code", "SFMono-Regular", Consolas, monospace;
+      font-size: 0.72rem;
     }
 
     .card-title-row {
@@ -1348,38 +1463,12 @@
         font-size: 0.78rem;
       }
 
-      .onboarding-path {
-        padding: 1.75rem 2rem;
-      }
-
-      .onboarding-heading {
-        margin-bottom: 1rem;
-      }
-
-      .onboarding-heading h2 {
-        font-size: 1.25rem;
-      }
-
-      .onboarding-heading p {
-        font-size: 0.92rem;
-      }
-
-      .onboarding-step {
-        min-height: 126px;
-        padding: 1.45rem 2.25rem 1.4rem 1.35rem;
-      }
-
-      .onboarding-number {
-        font-size: 0.74rem;
-      }
-
       .onboarding-label {
-        font-size: 1rem;
+        font-size: 1.04rem;
       }
 
       .onboarding-detail {
-        font-size: 0.84rem;
-        line-height: 1.5;
+        font-size: 0.86rem;
       }
 
       .grid,
@@ -1389,8 +1478,7 @@
 
       .card,
       .card-shell {
-        min-height: 225px;
-        padding: 1.65rem 1.7rem 1.55rem;
+        padding: 1.4rem 1.5rem 1.25rem;
       }
 
       .card h2 {
@@ -1398,9 +1486,7 @@
       }
 
       .card p {
-        margin-top: 0.7rem;
-        font-size: 0.98rem;
-        line-height: 1.6;
+        font-size: 0.94rem;
       }
 
       .card-chip {
@@ -1459,15 +1545,32 @@
 
       .onboarding-heading {
         display: block;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
       }
 
-      .onboarding-heading p {
-        margin-top: 0.3rem;
+      .onboarding-cta {
+        display: inline-block;
+        margin-top: 1rem;
       }
 
       .onboarding-steps {
         grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+
+      .onboarding-steps::before {
+        display: none;
+      }
+
+      .onboarding-step {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0.85rem;
+      }
+
+      .onboarding-number {
+        flex-shrink: 0;
+        margin: 0.6rem 0 0;
       }
 
       .delivery-path {
@@ -1477,11 +1580,6 @@
 
       .delivery-steps {
         grid-template-columns: 1fr;
-      }
-
-      .onboarding-step {
-        min-height: 92px;
-        padding: 1.15rem 2.1rem 1.15rem 1.05rem;
       }
 
       .catalog-nav a {
@@ -1571,8 +1669,8 @@
       </div>
       <div class="hero-text">
         <p class="eyebrow">Copilot practice library</p>
-        <h1>Build better judgment with AI.</h1>
-        <p class="subtitle">Choose a technical deep dive, leadership briefing, or hands-on module. Each path is built around context, delegation, verification, and authority.</p>
+        <h1>GitHub Copilot talks and workshops</h1>
+        <p class="subtitle">Presenter-ready slide decks for practitioners and leaders, plus hands-on workshop modules. New here? Follow the five-step path below, then browse talks by topic.</p>
       </div>
       <div class="hero-controls">
         <span class="library-status">Current curriculum</span>
@@ -1583,6 +1681,59 @@
       </div>
     </header>
 
+    <section class="onboarding-path" id="start-here" aria-labelledby="start-here-title">
+      <div class="onboarding-heading">
+        <div>
+          <p class="onboarding-eyebrow">Start here</p>
+          <h2 id="start-here-title">New to Copilot? Watch these five talks in order.</h2>
+          <p>About four hours in total. Each talk builds on the one before, from picking the right Copilot to handing a pull request to GitHub.</p>
+        </div>
+        <a class="onboarding-cta" href="tech-talks/surfaces/">Start with step 1 &rarr;</a>
+      </div>
+      <ol class="onboarding-steps">
+        <li><a class="onboarding-step" href="tech-talks/surfaces/">
+          <span class="onboarding-number">1</span>
+          <span class="onboarding-body">
+            <span class="onboarding-label">Pick the right Copilot</span>
+            <span class="onboarding-detail">Learn where Copilot runs and which one fits the task in front of you.</span>
+            <span class="onboarding-talk"><strong>Which Copilot Where?</strong> &middot; 45 min</span>
+          </span>
+        </a></li>
+        <li><a class="onboarding-step" href="tech-talks/copilot-primitives/">
+          <span class="onboarding-number">2</span>
+          <span class="onboarding-body">
+            <span class="onboarding-label">Teach it how your team works</span>
+            <span class="onboarding-detail">Turn team conventions into instructions, prompts, skills, and agents.</span>
+            <span class="onboarding-talk"><strong>Configuration Primitives</strong> &middot; 50 min</span>
+          </span>
+        </a></li>
+        <li><a class="onboarding-step" href="tech-talks/custom-agents/">
+          <span class="onboarding-number">3</span>
+          <span class="onboarding-body">
+            <span class="onboarding-label">Write your first agent</span>
+            <span class="onboarding-detail">One agent file that works in VS Code, the CLI, and on GitHub.</span>
+            <span class="onboarding-talk"><strong>Custom Agents</strong> &middot; 45 min</span>
+          </span>
+        </a></li>
+        <li><a class="onboarding-step" href="tech-talks/local-agentic-sdlc/">
+          <span class="onboarding-number">4</span>
+          <span class="onboarding-body">
+            <span class="onboarding-label">Run agents on your machine</span>
+            <span class="onboarding-detail">Plan, build, test, and review a change locally; tests decide when it's done.</span>
+            <span class="onboarding-talk"><strong>Local Agentic SDLC</strong> &middot; 45 min</span>
+          </span>
+        </a></li>
+        <li><a class="onboarding-step" href="tech-talks/copilot-on-github/">
+          <span class="onboarding-number">5</span>
+          <span class="onboarding-body">
+            <span class="onboarding-label">Hand work to GitHub</span>
+            <span class="onboarding-detail">Let Copilot open and review a pull request, and see where you approve the merge.</span>
+            <span class="onboarding-talk"><strong>Copilot on GitHub</strong> &middot; 60 min</span>
+          </span>
+        </a></li>
+      </ol>
+    </section>
+
     <nav class="catalog-nav" aria-label="Catalog sections">
       <a href="#start-here"><span class="catalog-nav-index">01</span>Start here</a>
       <a href="#tech-talks"><span class="catalog-nav-index">02</span>Tech talks</a>
@@ -1591,47 +1742,14 @@
       <a href="#archived-talks"><span class="catalog-nav-index">05</span>Archived</a>
     </nav>
 
-    <section class="onboarding-path" id="start-here" aria-labelledby="start-here-title">
-      <div class="onboarding-heading">
-        <h2 id="start-here-title">New to Copilot? Follow this path.</h2>
-        <p>One decision and one observable artifact at each step.</p>
-      </div>
-      <div class="onboarding-steps">
-        <a class="onboarding-step" href="tech-talks/surfaces/">
-          <span class="onboarding-number">01</span>
-          <span class="onboarding-label">Choose the surface</span>
-          <span class="onboarding-detail">Match the task to its context, control, and reviewer.</span>
-        </a>
-        <a class="onboarding-step" href="tech-talks/copilot-primitives/">
-          <span class="onboarding-number">02</span>
-          <span class="onboarding-label">Configure shared behavior</span>
-          <span class="onboarding-detail">Choose, build, and verify instructions, prompts, skills, and agents.</span>
-        </a>
-        <a class="onboarding-step" href="tech-talks/custom-agents/">
-          <span class="onboarding-number">03</span>
-          <span class="onboarding-label">Design one portable agent</span>
-          <span class="onboarding-detail">Write one agent file and prove how it behaves in each runtime.</span>
-        </a>
-        <a class="onboarding-step" href="tech-talks/local-agentic-sdlc/">
-          <span class="onboarding-number">04</span>
-          <span class="onboarding-label">Run it at your keyboard</span>
-          <span class="onboarding-detail">Plan, implement, test, and review locally; let tests decide done.</span>
-        </a>
-        <a class="onboarding-step" href="tech-talks/copilot-on-github/">
-          <span class="onboarding-number">05</span>
-          <span class="onboarding-label">Hand it to GitHub</span>
-          <span class="onboarding-detail">Delegate a pull request and weigh each agent's evidence before merge.</span>
-        </a>
-      </div>
-    </section>
-
     <!-- Tech Talks Section -->
     <div class="section tech-talks" id="tech-talks">
       <div class="section-header">
         <span class="section-icon">🔬</span>
         <div>
           <h2 class="section-title">Tech Talks</h2>
-          <p class="section-description">Technical deep-dives for practitioners on specific capabilities</p>
+          <p class="section-description">45–90 minute presenter decks, grouped by where you are with Copilot. Each card opens with the question the talk answers.</p>
+          <p class="section-hint">Click a card to open the slides (press <kbd>N</kbd> for speaker notes). <strong>Notes</strong> opens the talk track as a printable handout.</p>
         </div>
       </div>
       <!-- Foundations -->
@@ -1639,21 +1757,27 @@
         <div class="sub-group-header">
           <span class="sub-group-icon">🧱</span>
           <span class="sub-group-label">Foundations</span>
-          <span class="sub-group-desc">Choose the surface and encode the context every agent shares</span>
+          <span class="sub-group-desc">Where Copilot runs, and how to teach it your team's conventions</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
           <a href="tech-talks/surfaces/" class="card">
             <h2>Which Copilot Where?</h2>
-            <p>Map seven Copilot experiences, choose where work starts, and hand it off when context or review boundaries change.</p>
+            <p class="card-q">Which Copilot fits this job?</p>
+            <p>Tour the seven places Copilot runs, from the editor to GitHub, and get a simple way to pick where a task starts and when to hand it off.</p>
+            <p class="card-meta"><strong>45 min</strong> · Foundational · Everyone</p>
           </a>
           <a href="tech-talks/copilot-primitives/" class="card">
             <h2>Copilot Configuration Primitives</h2>
-            <p>Build instructions, prompts, skills, and agents step by step, compare when each fits, and verify the result.</p>
+            <p class="card-q">How can I teach Copilot how we work?</p>
+            <p>Build instructions, prompts, skills, and agents one at a time on a real repo, with a rule of thumb for which one fits each piece of team know-how.</p>
+            <p class="card-meta"><strong>50 min</strong> · Foundational · Developers, team leads</p>
           </a>
           <a href="tech-talks/custom-agents/" class="card">
             <h2>Custom Agents</h2>
-            <p>Run one agent file in VS Code, the CLI, and the cloud agent, read what each runtime resolved, and place every gap in the layer that owns it.</p>
+            <p class="card-q">How do I write one agent file that works everywhere my team uses Copilot?</p>
+            <p>Run the same agent file in VS Code, the CLI, and the cloud agent, see what each one loaded, and learn which settings travel with the file.</p>
+            <p class="card-meta"><strong>45 min</strong> · Applied · Developers, platform engineers</p>
           </a>
         </div>
       </div>
@@ -1663,27 +1787,33 @@
         <div class="sub-group-header">
           <span class="sub-group-icon">⌨️</span>
           <span class="sub-group-label">Agents at Your Keyboard</span>
-          <span class="sub-group-desc">Run, steer, and verify agents locally in VS Code and the CLI</span>
+          <span class="sub-group-desc">Working with agents in VS Code and the terminal</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
           <a href="tech-talks/copilot-cli/" class="card">
             <h2>Copilot CLI</h2>
-            <p>Close every gap — intent, geography, memory, and scale. Plan Mode, Rubber Duck, Git-free /rewind,
-              Sessions sidebar, /chronicle, live S3→S4 bridge, /fleet fan-out, and cloud delegation.</p>
+            <p class="card-q">How do I get AI help right where I'm working?</p>
+            <p>Copilot in the terminal: plan before it builds, rewind a bad step, search past sessions, fan work out with /fleet, and hand long tasks to the cloud.</p>
+            <p class="card-meta"><strong>45 min</strong> · Applied · Developers, platform engineers</p>
           </a>
           <a href="tech-talks/vscode-latest/" class="card">
             <h2>What's New in VS Code</h2>
-            <p>v1.140–v1.144: Pick the intelligence, place the work, steer the run, and keep the changes worth keeping.
-              Compare models, choose a local worktree or cloud session, inspect permissions, and verify changes before Keep or Undo.</p>
+            <p class="card-q">VS Code ships Copilot changes every week. Which ones change how I work?</p>
+            <p>Releases 1.140–1.144 sorted into four everyday choices: which model, where the agent runs, how to steer it, and which changes to keep.</p>
+            <p class="card-meta"><strong>50 min</strong> · Applied · Developers, team leads</p>
           </a>
           <a href="tech-talks/local-agentic-sdlc/" class="card">
             <h2>Local Agentic SDLC</h2>
-            <p>Run plan, implement, test, review, and integrate locally with an orchestrator and narrow role agents, let tests and a Stop hook decide done, and hand a person an integrated draft.</p>
+            <p class="card-q">How do I build local agents that work together on a coding task?</p>
+            <p>A small crew of agents plans, implements, tests, and reviews on your machine. Tests decide when the work is done; a person decides what merges.</p>
+            <p class="card-meta"><strong>45 min</strong> · Applied · Developers, tech leads</p>
           </a>
           <a href="tech-talks/copilot-chat-internals/" class="card">
             <h2>Copilot Chat Internals</h2>
-            <p>See what the agent saw: inspect the request, loaded customizations, tool calls, and context window, then trace an unexpected result to its cause.</p>
+            <p class="card-q">Why didn't the agent do what I expected, and how do I find out?</p>
+            <p>Open the debug views to see what loaded, what the model received, and which tools ran, then trace a surprising result to its cause.</p>
+            <p class="card-meta"><strong>55 min</strong> · Applied · Developers, team leads</p>
           </a>
         </div>
       </div>
@@ -1693,17 +1823,21 @@
         <div class="sub-group-header">
           <span class="sub-group-icon">☁️</span>
           <span class="sub-group-label">Agents on GitHub</span>
-          <span class="sub-group-desc">Hand work to agents GitHub runs, and inspect the evidence they return</span>
+          <span class="sub-group-desc">Agents that work in GitHub on issues, pull requests, and schedules</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
           <a href="tech-talks/agentic-workflows/" class="card">
             <h2>GitHub Agentic Workflows</h2>
-            <p>Turn recurring repository judgment into a reviewable Markdown contract with bounded tools, safe outputs, and audited runs.</p>
+            <p class="card-q">What can agents run continuously in my repository, and how do I keep them in bounds?</p>
+            <p>Write a recurring repo chore as a Markdown workflow with limited permissions, controlled outputs, and an audit trail for every run.</p>
+            <p class="card-meta"><strong>55 min</strong> · Advanced · Platform engineers, maintainers</p>
           </a>
           <a href="tech-talks/copilot-on-github/" class="card">
             <h2>Copilot on GitHub</h2>
-            <p>Cloud agent produces, code review reasons, Code Quality measures. Decide which evidence earns merge authority.</p>
+            <p class="card-q">Copilot can write, review, and check my code. What's automatic, and where does my judgment come in?</p>
+            <p>Follow one pull request through the cloud agent, Copilot code review, and Code Quality, and see where a person steers rework and approves the merge.</p>
+            <p class="card-meta"><strong>60 min</strong> · Applied · Developers, team leads</p>
           </a>
         </div>
       </div>
@@ -1713,17 +1847,21 @@
         <div class="sub-group-header">
           <span class="sub-group-icon">🛡️</span>
           <span class="sub-group-label">Trust and Govern</span>
-          <span class="sub-group-desc">Measure readiness, decide what blocks, and name who may approve or override</span>
+          <span class="sub-group-desc">Rolling Copilot out across teams with consistent settings and trustworthy checks</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
           <a href="tech-talks/agentic-sdlc/" class="card">
             <h2>Agentic SDLC</h2>
-            <p>Build repository and CI infrastructure that manufactures trustworthy evidence at agent speed.</p>
+            <p class="card-q">How do I ship more with agents and still trust every change?</p>
+            <p>The repository and CI groundwork (reliable context, repeatable checks, everyday habits) that lets a team raise agent autonomy one measured step at a time.</p>
+            <p class="card-meta"><strong>90 min</strong> · Advanced · Architects, platform engineers, engineering leaders</p>
           </a>
           <a href="tech-talks/enterprise-patterns/" class="card">
             <h2>Enterprise Patterns</h2>
-            <p>Give every team the same Copilot baseline: package plugins, place each choice at the enterprise, team, repository, or personal layer, and verify the effective result.</p>
+            <p class="card-q">How do I give every team the same Copilot setup without taking away their choices?</p>
+            <p>Place plugins, models, MCP servers, and policies at the enterprise, org, team, repo, or personal layer, then check what one developer actually gets.</p>
+            <p class="card-meta"><strong>60 min</strong> · Advanced · Platform engineers, Copilot admins</p>
           </a>
         </div>
       </div>
@@ -1733,21 +1871,27 @@
         <div class="sub-group-header">
           <span class="sub-group-icon">🧩</span>
           <span class="sub-group-label">Extend and Embed</span>
-          <span class="sub-group-desc">Add capabilities, interfaces, protocols, and governed domain context</span>
+          <span class="sub-group-desc">Building Copilot into your own apps, Azure, and company knowledge</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
           <a href="tech-talks/harness-fundamentals/" class="card">
             <h2>Harness Fundamentals</h2>
-            <p>Host the agent loop in your own TypeScript app with the Copilot SDK: decide what it sees and does, keep repo hooks as the floor, and prove every call.</p>
+            <p class="card-q">What is an agent harness, and why do I care?</p>
+            <p>Embed the Copilot agent loop in your own TypeScript app with the Copilot SDK; choose what it can see and call while your app keeps approval and logging.</p>
+            <p class="card-meta"><strong>60 min</strong> · Applied · Developers, platform engineers</p>
           </a>
           <a href="tech-talks/copilot-azure-mcp/" class="card">
             <h2>Azure MCP and Skills</h2>
-            <p>Apply domain tools to live Azure state with explicit identity, evidence, and least-privilege authority.</p>
+            <p class="card-q">How do I use Azure context without handing over the decision?</p>
+            <p>Let Copilot read live Azure resources through Azure MCP and skills to draft an infrastructure change you review, with a scoped, least-privilege identity.</p>
+            <p class="card-meta"><strong>45 min</strong> · Applied · Azure developers, platform engineers, security</p>
           </a>
           <a href="tech-talks/copilot-with-foundry/" class="card">
             <h2>GitHub Copilot with Microsoft Foundry</h2>
-            <p>Add governed organizational knowledge when repository context cannot explain intent.</p>
+            <p class="card-q">When does my Copilot agent need organizational memory?</p>
+            <p>Connect a Microsoft Foundry knowledge source when the answer to a "why" question lives outside the repository, and keep permissions and approval separate.</p>
+            <p class="card-meta"><strong>45 min</strong> · Advanced · Architects, platform engineers</p>
           </a>
         </div>
       </div>
@@ -1757,14 +1901,15 @@
         <div class="sub-group-header">
           <span class="sub-group-icon">💼</span>
           <span class="sub-group-label">Executive</span>
-          <span class="sub-group-desc">Strategic narratives for leaders making agentic investment decisions</span>
+          <span class="sub-group-desc">Briefings for leaders deciding where agents fit</span>
           <span class="sub-group-line"></span>
         </div>
         <div class="grid">
           <a href="tech-talks/exec-strategy/" class="card">
             <h2>The Agentic Operating Model</h2>
-            <p>Authorize one controlled pilot with explicit human authority, fully burdened economics, and a falsifiable
-              return gate.</p>
+            <p class="card-q">How do we prove agents pay off before we scale them?</p>
+            <p>Charter one 90-day pilot on one team, name who keeps authority, measure against a baseline, then decide to scale, adjust, or stop.</p>
+            <p class="card-meta"><strong>30–45 min</strong> · Executive · C-suite, VPs, transformation leaders</p>
           </a>
         </div>
       </div>
@@ -2093,7 +2238,7 @@
 
       const { category, slug, href } = parsed;
       const h2 = card.querySelector('h2');
-      const p = card.querySelector('p');
+      const body = [...card.children].filter((el) => el !== h2 && !el.classList.contains('capstone-label'));
       if (!h2) return;
 
       const shell = document.createElement('div');
@@ -2150,11 +2295,11 @@
       titleRow.appendChild(actions);
       shell.appendChild(titleRow);
 
-      if (p) {
+      if (body.length) {
         const bodyLink = document.createElement('a');
         bodyLink.className = 'card-body-link';
         bodyLink.href = href;
-        bodyLink.appendChild(p.cloneNode(true));
+        body.forEach((el) => bodyLink.appendChild(el.cloneNode(true)));
         shell.appendChild(bodyLink);
       }
 
