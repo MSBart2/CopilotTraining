@@ -48,9 +48,11 @@ function collectDates() {
   }
 
   for (const deck of discoverNativeDecks(ROOT)) {
-    const readme = join(ROOT, "..", "tech-talks", deck.slug, "README.md");
-    const content = readFileSync(readme, "utf8");
-    const match = content.match(/^updated:\s*(\d{4}-\d{2}-\d{2})/m);
+    const source = deck.category === "workshop"
+      ? deck.source
+      : join(ROOT, "..", "tech-talks", deck.slug, "README.md");
+    const content = readFileSync(source, "utf8");
+    const match = content.match(/^\s*updated:\s*['"]?(\d{4}-\d{2}-\d{2})/m);
     if (match) dates[deck.slug] = match[1];
   }
 
@@ -58,7 +60,7 @@ function collectDates() {
 }
 
 function collectNativeSlugs() {
-  return discoverNativeDecks(ROOT).map(({ slug }) => slug);
+  return discoverNativeDecks(ROOT).map(({ key }) => key);
 }
 
 function formatDatesMap(dates) {

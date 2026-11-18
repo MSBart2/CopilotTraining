@@ -1,7 +1,7 @@
 # Native deck engine
 
 A zero-build HTML, CSS, JavaScript, and SVG presentation engine for CopilotTraining
-tech talks. Each deck is a folder of plain files; the browser is the runtime.
+tech talks and workshop modules. Each deck is a folder of plain files; the browser is the runtime.
 
 ## Deck layout
 
@@ -14,8 +14,10 @@ slides/
     kit.js                window.Kit: the scene vocabulary
     frames.js             window.FRAMES: standard slides every deck shares
     patterns.js           window.PATTERNS: reusable layouts a deck can pick by name
+    workshop.css          workshop theme and layout (scoped to body.workshop)
+    workshop.js           window.WORKSHOP: ws-* layouts for hands-on modules
     engine.js             render, navigation, live/settled lifecycle, overview, notes page
-  tech-talks/<slug>/
+  tech-talks/<slug>/      (workshop/<slug>/ has the same shape plus deck.plan.yml)
     index.html            the deck
     notes.html            speaker notes with slide previews
     slides.js             window.DECK = { meta, slides }: content and notes
@@ -24,13 +26,13 @@ slides/
 ```
 
 Both HTML pages load CSS in this order: `theme.css`, `frames.css`, `patterns.css`,
-`deck.css`; and scripts in this order: `kit.js`, `frames.js`, `patterns.js`,
-`slides.js`, `scenes.js`, `engine.js`. Paths are relative (`../../native/`), so the
+`workshop.css` (workshop decks), `deck.css`; and scripts in this order: `kit.js`, `frames.js`,
+`patterns.js`, `workshop.js` (workshop decks), `slides.js`, `scenes.js`, `engine.js`. Paths are relative (`../../native/`), so the
 same folder works from `slides/` locally and from `dist/` when deployed.
 
-## Three layers
+## Layers
 
-The engine merges `{ ...FRAMES, ...PATTERNS, ...SCENES }` and renders
+The engine merges `{ ...FRAMES, ...PATTERNS, ...WORKSHOP, ...SCENES }` and renders
 `scenes[slide.scene || slide.id]`. Every stage carries `s-<slide id>` and
 `sc-<scene name>`, so shared CSS targets the scene and deck CSS can still target
 one slide.
@@ -40,6 +42,12 @@ one slide.
 | **Frames** | `title`, `core-question`, `contents`, `opener`, `before-after`, `today`, `references`, `thanks` | Title/thanks: `subtitle`, `tagline`, `meta`, `cards`, `prompt`, optional `visual` and `logo` (`false` hides it). Core question: `routing`, optional `routingLabel`, `roles`, `stats`. Contents: `sections`. Opener: `part`, `terminal`, `cards`. |
 | **Patterns** | `terminal`, `showdown`, `scorecard`, `relay` (alias `patterns`), `signals`, `four-phases` | Terminal: `transcript`, optional `termTitle`; an `outcome` entry with `mark` shows that marker in orange instead of the green ✓. Showdown: `pairs` (any count; `right.optional` draws dashed), `outcomeLeft`, `outcomeRight`. Four phases: `stages` (one `target`), optional `stageLabel`, `gateLabel`. |
 | **Deck** | Anything the talk alone needs, plus visuals | `visual: 'name'` on title or thanks renders `SCENES[name]`, which returns one 760×760 `svg.scene`. |
+| **Workshop** | `ws-title`, `ws-story`, `ws-outcomes`, `ws-eras`, `ws-table`, `ws-stack`, `ws-code`, `ws-compare`, `ws-globs`, `ws-match`, `ws-variants`, `ws-pointers`, `ws-route`, `ws-roadmap`, `ws-exercise`, `ws-check`, `ws-debrief`, `ws-checklist`, `ws-next`, `ws-refs` | Header: `kind` (concept, example, demo, work, check, debrief, frame), `crumb`, `ex`. Exercise: `exercise { id, minutes, file, lead, support }`, `goal`, `steps`, `artifacts`, `done`, optional `prompt`. Check: `where`, `ask` (a `"path\n› question"` string shows the open file), `expect`, `recover`, optional `refs` (file names shown as Copilot's References reply); `mode: 'terminal'` shows each ask as a `$` command with Copy, and an ask starting with `#` as a caption, for checks with no Copilot question. Eras: `eras[{ name, years, image?, alt?, traits, label?, outcomes, good? }]`, a progression of ways of working, oldest first; the last era is current and carries the accent, and `good` ticks its outcomes instead of crossing them. Grids and outcomes take `cols` 2–5. Globs: `globs[{ glob, label, hit, miss, use }]`. Match: `open` path, `marks[{ text, tone }]` highlight path segments, `rows[{ on, tone, file, glob \| always, adds }]`. Variants: `items[{ badge, title, tone, glob | file, code, rules? }]`. Route: `rows[{ scope, tone, need, file, why }]`, broad to specific. Checklist groups take `mark`, `tag`, `tone`; refs groups take `tone`; quotes from a persona take that persona's color. Pointers: `root { file, badge, lines }`, `targets[{ line, file, question, holds, optional }]` pin root lines to target cards. Code: `file`, `code`, `lang`, `mode: 'terminal'` (`$` prompt, `#` comment, other lines output) or the default editor, `numbers: false`, `annotations[{ label, text, lines }]` pins lines to numbered notes. Table: `hops` numbers the first column down a spine, `merge` collapses rows equal across columns. Compare: sides with `file`, `answers`, `include`, `leave`, `note` render as file cards; `flow` with `who` renders numbered actor steps. See `workshop/01-instructions/slides.js`. |
+
+Workshop decks are README-led: the module README and exercises stay the learner's
+source, the notes are the facilitator guide, and the notes page reports hands-on
+minutes (from `exercise.minutes`) separately from speaking time.
+`workshop/01-instructions/` is the reference workshop deck, as `tech-talks/surfaces/` is for talks.
 
 Use a frame or pattern whenever its shape fits, and change it in `native/` when a
 deck needs an improvement every deck can share. A deck scene that reuses a shared

@@ -32,7 +32,7 @@ for (const cat of readdirSync(SRC)) {
   for (const slug of readdirSync(cdir)) {
     const sdir = join(cdir, slug);
     if (!statSync(sdir).isDirectory()) continue;
-    if (cat === "tech-talks" && getNativeDeck(ROOT, slug)) continue;
+    if (getNativeDeck(ROOT, slug, cat)) continue;
     for (const name of readdirSync(sdir)) {
       if (!NAMES.has(name)) continue;
       const src = join(sdir, name);

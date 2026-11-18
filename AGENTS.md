@@ -124,7 +124,7 @@ Persuasion earns its credibility from evidence. Build the case on first-party so
 
 | Content | Location | Agents |
 |---|---|---|
-| Workshop modules (personas, exercises, metrics) | `workshop/` | `module-planner`, `module-creator`; decks: **Slide Generator** (Slidev) |
+| Workshop modules (personas, exercises, metrics) | `workshop/` | `module-planner`, `module-creator`; decks: native workshop folders `slides/workshop/<slug>/` (README-led, see `native-decks.instructions.md`), otherwise **Slide Generator** (Slidev) |
 | Practitioner tech talks (the 1-hour show-and-tell) | `tech-talks/` | **Tech Talk Generator** (research, landing README, recipe), then **Native Deck Author** (deck and speaker notes in `slides/tech-talks/<slug>/slides.js`); unconverted Slidev decks: **Tech Talk Slide Generator** (legacy, patches only) |
 | Executive talks | `tech-talks/exec-*` | **Tech Talk Generator** in executive mode (research, landing README, recipe), then **Native Deck Author** (deck and speaker notes in `slides/tech-talks/<slug>/slides.js`) |
 

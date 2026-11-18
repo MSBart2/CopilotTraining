@@ -1,8 +1,9 @@
 /*
   Native deck engine.
   Load order: kit.js, frames.js (window.FRAMES), patterns.js (window.PATTERNS),
-  the deck's slides.js (window.DECK), the deck's scenes.js (window.SCENES), then engine.js.
-  A slide renders scenes[slide.scene || slide.id]; deck scenes override patterns, which override frames.
+  optional workshop.js (window.WORKSHOP), the deck's slides.js (window.DECK),
+  the deck's scenes.js (window.SCENES), then engine.js.
+  A slide renders scenes[slide.scene || slide.id]; later layers override earlier ones.
 
   The deck shows one slide at a time. Entering a slide marks it live on the next
   frame, so CSS motion restarts on every visit. Reduced motion, print, overview,
@@ -11,7 +12,7 @@
 (() => {
   const { esc, html } = window.Kit;
   const deck = window.DECK;
-  const scenes = { ...window.FRAMES, ...window.PATTERNS, ...window.SCENES };
+  const scenes = { ...window.FRAMES, ...window.PATTERNS, ...window.WORKSHOP, ...window.SCENES };
   if (!deck || !Array.isArray(deck.slides)) throw new Error('engine: window.DECK.slides is missing');
 
   const root = document.documentElement;
@@ -50,12 +51,13 @@
   if (notesRoot) {
     root.classList.add('settled');
     const seconds = slides.reduce((sum, s) => sum + (s.seconds || 0), 0);
+    const handsOn = slides.reduce((sum, s) => sum + (s.exercise?.minutes || 0), 0);
     const mmss = (n) => `${Math.floor(n / 60)}:${String(n % 60).padStart(2, '0')}`;
     const summary = document.getElementById('notes-summary');
-    if (summary) summary.textContent = `${total} slides${seconds ? ` · about ${mmss(seconds)} speaking time` : ''}`;
+    if (summary) summary.textContent = `${total} slides${seconds ? ` · about ${mmss(seconds)} speaking time` : ''}${handsOn ? ` · ${handsOn} min hands-on` : ''}`;
     const brief = document.getElementById('notes-brief');
-    if (brief) brief.innerHTML = [['Question', deck.meta.question], ['Thesis', deck.meta.thesis]]
-      .filter(([, v]) => v).map(([k, v]) => `<p><b>${k}</b> ${esc(v)}</p>`).join('');
+    if (brief) brief.innerHTML = (deck.meta.brief || [['Question', deck.meta.question], ['Thesis', deck.meta.thesis]])
+      .filter(([, v]) => v).map(([k, v]) => `<p><b>${esc(k)}</b> ${esc(v)}</p>`).join('');
     const line = (n) => {
       const cls = n.startsWith('"') ? 'say' : n.startsWith('→') ? 'next' : '';
       return `<p${cls ? ` class="${cls}"` : ''}>${n}</p>`;
@@ -63,7 +65,7 @@
     const list = (title, items, cls = '') => (items?.length ? `<aside class="${cls}"><h3>${title}</h3><ul>${items.map((x) => `<li>${x}</li>`).join('')}</ul></aside>` : '');
     notesRoot.innerHTML = slides.map((s, i) => `
       <article id="${esc(s.id)}" data-n="${i + 1}">
-        <p class="meta">${String(i + 1).padStart(2, '0')} · ${esc(s.section || '')}${s.seconds ? ` · ${mmss(s.seconds)}` : ''}</p>
+        <p class="meta">${String(i + 1).padStart(2, '0')} · ${esc(s.section || '')}${s.seconds ? ` · ${mmss(s.seconds)}` : ''}${s.exercise?.minutes ? ` · then ${s.exercise.minutes} min hands-on` : ''}</p>
         <h2><a href="index.html#${esc(s.id)}">${esc(s.title)}</a></h2>
         <div class="slide">${renderStage(s, i)}</div>
         <div class="copy">

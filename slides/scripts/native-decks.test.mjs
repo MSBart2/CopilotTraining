@@ -47,6 +47,25 @@ test("rejects incomplete native deck folders", () => {
   }
 });
 
+test("discovers native workshop decks by category and ignores media-only folders", () => {
+  const f = fixture();
+  try {
+    f.addDeck("01-instructions", ["index.html", "slides.js", "scenes.js", "notes.html"]);
+    const workshop = join(f.root, "workshop");
+    for (const dir of ["01-instructions", "00-orientation/images", "setup"]) mkdirSync(join(workshop, dir), { recursive: true });
+    for (const file of ["index.html", "slides.js", "scenes.js", "notes.html"]) writeFileSync(join(workshop, "01-instructions", file), "");
+    writeFileSync(join(workshop, "00-orientation/images/wizard.png"), "");
+    writeFileSync(join(workshop, "setup/main.ts"), "");
+
+    assert.deepEqual(discoverNativeDecks(f.root).map(({ key }) => key), ["tech-talks/01-instructions", "workshop/01-instructions"]);
+    assert.deepEqual(discoverNativeDecks(f.root, ["workshop"]).map(({ key }) => key), ["workshop/01-instructions"]);
+    assert.equal(getNativeDeck(f.root, "00-orientation", "workshop"), null);
+    assert.equal(getNativeDeck(f.root, "01-instructions", "exec-talks"), null);
+  } finally {
+    f.cleanup();
+  }
+});
+
 test("Pages installs Chromium and gates artifact upload on native publishing", () => {
   const workflow = readFileSync(new URL("../../.github/workflows/deploy-slides.yml", import.meta.url), "utf8");
   assert.match(workflow, /run: npx playwright install --with-deps chromium/);

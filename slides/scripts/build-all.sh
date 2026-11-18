@@ -44,6 +44,8 @@ done
 if [[ -n "$DECK" ]]; then
     if [[ -f "$(dirname "${BASH_SOURCE[0]}")/../tech-talks/${DECK}/slides.js" ]]; then
         FOLDER="tech-talks"
+    elif [[ -f "$(dirname "${BASH_SOURCE[0]}")/../workshop/${DECK}/slides.js" ]]; then
+        FOLDER="workshop"
     elif [[ -f "$(dirname "${BASH_SOURCE[0]}")/../workshop/${DECK}.md" ]]; then
         FOLDER="workshop"
     elif [[ -f "$(dirname "${BASH_SOURCE[0]}")/../tech-talks/${DECK}.md" ]]; then
@@ -144,6 +146,10 @@ if [[ -z "$FOLDER" || "$FOLDER" == "workshop" ]]; then
                 TOTAL_SKIPPED=$((TOTAL_SKIPPED + 1))
                 continue
             fi
+            if [ -f "${SLIDES_DIR}/workshop/${BASENAME}/slides.js" ]; then
+                echo "   🧭 Using native deck: workshop/${BASENAME}"
+                continue
+            fi
             build_slide "workshop" "${BASENAME}"
             TOTAL_BUILT=$((TOTAL_BUILT + 1))
         fi
@@ -203,16 +209,19 @@ if [[ -z "$FOLDER" || "$FOLDER" == "exec-talks" ]]; then
     echo ""
 fi
 
-# Native tech-talks use their static deck folders and shared engine.
-if [[ -z "$FOLDER" || "$FOLDER" == "tech-talks" ]]; then
+# Native decks use their static deck folders and shared engine.
+if [[ -z "$FOLDER" || "$FOLDER" == "tech-talks" || "$FOLDER" == "workshop" ]]; then
     if [[ -n "$DECK" ]]; then
         node "${SLIDES_DIR}/scripts/build-native-decks.mjs" --deck "$DECK"
+    elif [[ -n "$FOLDER" ]]; then
+        node "${SLIDES_DIR}/scripts/build-native-decks.mjs" --folder "$FOLDER"
     else
-        node "${SLIDES_DIR}/scripts/build-native-decks.mjs" --folder tech-talks
+        node "${SLIDES_DIR}/scripts/build-native-decks.mjs"
     fi
     NATIVE_BUILT=0
-    for NATIVE_DIR in "${SLIDES_DIR}"/tech-talks/*; do
+    for NATIVE_DIR in "${SLIDES_DIR}"/tech-talks/* "${SLIDES_DIR}"/workshop/*; do
         [ -d "$NATIVE_DIR" ] || continue
+        [ -n "$FOLDER" ] && [ "$(basename "$(dirname "$NATIVE_DIR")")" != "$FOLDER" ] && continue
         [ -f "${NATIVE_DIR}/index.html" ] && [ -f "${NATIVE_DIR}/slides.js" ] \
             && [ -f "${NATIVE_DIR}/scenes.js" ] && [ -f "${NATIVE_DIR}/notes.html" ] || continue
         [ -n "$DECK" ] && [ "$(basename "$NATIVE_DIR")" != "$DECK" ] && continue

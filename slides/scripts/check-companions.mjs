@@ -8,7 +8,7 @@
 //   slides/companions/<category>/<slug>/agenda.html
 //   slides/companions/<category>/<slug>/deck.pdf
 //
-// Native tech talks require their in-folder notes.html handout instead.
+// Native decks require their in-folder notes.html handout instead.
 //
 // Stale if the deck markdown is newer than the companion (mtime), or the
 // companion is missing entirely.
@@ -68,25 +68,23 @@ function discoverDecks() {
     if (folderFilter && cat !== folderFilter) continue;
     const dir = join(ROOT, cat);
     if (!existsSync(dir)) continue;
-    if (cat === "tech-talks") {
-      for (const deck of nativeDecks) {
-        if (slugFilter && deck.slug !== slugFilter) continue;
-        if (!isArchived(join(ROOT, "..", "tech-talks", deck.slug, "README.md"))) {
-          decks.push({
-            category: cat,
-            slug: deck.slug,
-            deckPath: deck.source,
-            notesPath: deck.notes,
-            native: true,
-            key: `${cat}/${deck.slug}`,
-          });
-        }
-      }
+    for (const deck of nativeDecks.filter((d) => d.category === cat)) {
+      if (slugFilter && deck.slug !== slugFilter) continue;
+      const readme = join(ROOT, "..", cat, deck.slug, "README.md");
+      if (existsSync(readme) && isArchived(readme)) continue;
+      decks.push({
+        category: cat,
+        slug: deck.slug,
+        deckPath: deck.source,
+        notesPath: deck.notes,
+        native: true,
+        key: deck.key,
+      });
     }
     for (const file of readdirSync(dir).filter((f) => f.endsWith(".md"))) {
       const slug = basename(file, ".md");
       if (SKIP.has(slug) || slug.endsWith("-reference")) continue;
-      if (cat === "tech-talks" && getNativeDeck(ROOT, slug)) continue;
+      if (getNativeDeck(ROOT, slug, cat)) continue;
       if (slugFilter && slug !== slugFilter) continue;
       const abs = join(dir, file);
       if (isArchived(abs)) continue;

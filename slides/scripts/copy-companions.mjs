@@ -38,8 +38,8 @@ for (const cat of readdirSync(SRC, { withFileTypes: true })) {
   const catDir = join(SRC, cat.name);
   for (const slug of readdirSync(catDir, { withFileTypes: true })) {
     if (!slug.isDirectory()) continue;
-    if (cat.name === "tech-talks" && getNativeDeck(SLIDES, slug.name)) {
-      console.log(`  Skipping legacy companions for native tech-talks/${slug.name}.`);
+    if (getNativeDeck(SLIDES, slug.name, cat.name)) {
+      console.log(`  Skipping legacy companions for native ${cat.name}/${slug.name}.`);
       continue;
     }
     const fromDir = join(catDir, slug.name);

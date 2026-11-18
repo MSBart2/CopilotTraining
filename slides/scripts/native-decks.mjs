@@ -3,21 +3,24 @@ import { existsSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
 const REQUIRED_FILES = ["index.html", "slides.js", "scenes.js", "notes.html"];
+export const NATIVE_CATEGORIES = ["tech-talks", "workshop"];
 
-export function getNativeDeck(slidesRoot, slug) {
-  const dir = join(slidesRoot, "tech-talks", slug);
+export function getNativeDeck(slidesRoot, slug, category = "tech-talks") {
+  if (!NATIVE_CATEGORIES.includes(category)) return null;
+  const dir = join(slidesRoot, category, slug);
   if (!existsSync(dir) || !statSync(dir).isDirectory()) return null;
 
   if (slug === "dist" || !REQUIRED_FILES.some((name) => existsSync(join(dir, name)))) return null;
 
   const missing = REQUIRED_FILES.filter((name) => !existsSync(join(dir, name)));
   if (missing.length) {
-    throw new Error(`Incomplete native deck tech-talks/${slug}; missing ${missing.join(", ")}`);
+    throw new Error(`Incomplete native deck ${category}/${slug}; missing ${missing.join(", ")}`);
   }
 
   return {
-    category: "tech-talks",
+    category,
     slug,
+    key: `${category}/${slug}`,
     dir,
     entry: join(dir, "index.html"),
     notes: join(dir, "notes.html"),
@@ -25,13 +28,14 @@ export function getNativeDeck(slidesRoot, slug) {
   };
 }
 
-export function discoverNativeDecks(slidesRoot) {
-  const dir = join(slidesRoot, "tech-talks");
-  if (!existsSync(dir)) return [];
-
-  return readdirSync(dir, { withFileTypes: true })
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => getNativeDeck(slidesRoot, entry.name))
-    .filter(Boolean)
-    .sort((a, b) => a.slug.localeCompare(b.slug));
+export function discoverNativeDecks(slidesRoot, categories = NATIVE_CATEGORIES) {
+  return categories.flatMap((category) => {
+    const dir = join(slidesRoot, category);
+    if (!existsSync(dir)) return [];
+    return readdirSync(dir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory())
+      .map((entry) => getNativeDeck(slidesRoot, entry.name, category))
+      .filter(Boolean)
+      .sort((a, b) => a.slug.localeCompare(b.slug));
+  });
 }

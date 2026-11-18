@@ -16,14 +16,13 @@ export function detectSlideChanges(files, slidesRoot) {
   const changedTalks = new Set();
 
   for (const file of files) {
-    const nativeMatch = file.match(/^slides\/tech-talks\/([^/]+)\//);
-    if (nativeMatch && getNativeDeck(slidesRoot, nativeMatch[1])) {
-      nativeSlugs.add(nativeMatch[1]);
+    const nativeMatch = file.match(/^slides\/(tech-talks|workshop)\/([^/]+)\//);
+    if (nativeMatch && getNativeDeck(slidesRoot, nativeMatch[2], nativeMatch[1])) {
+      nativeSlugs.add(nativeMatch[2]);
     }
-    const slideMatch = file.match(/^slides\/((workshop|tech-talks|exec-talks)\/[^/]+\.md)$/);
+    const slideMatch = file.match(/^slides\/((workshop|tech-talks|exec-talks)\/([^/]+)\.md)$/);
     if (slideMatch && existsSync(join(slidesRoot, slideMatch[1]))) {
-      const slug = slideMatch[1].slice("tech-talks/".length, -3);
-      if (slideMatch[2] !== "tech-talks" || !getNativeDeck(slidesRoot, slug)) {
+      if (!getNativeDeck(slidesRoot, slideMatch[3], slideMatch[2])) {
         changedSlides.add(slideMatch[1]);
       }
     }

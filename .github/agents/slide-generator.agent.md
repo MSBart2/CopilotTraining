@@ -11,6 +11,10 @@ argument-hint: Provide content path (e.g., workshop/03-custom-prompts)
 Generates `slides/workshop/*.md` from audience-facing README files.
 
 > **Executive or tech-talk decks?** Use the **Native Deck Author** agent. This agent covers workshop decks only.
+>
+> **Native workshop decks:** when `slides/workshop/<slug>/slides.js` exists (Module 1 today), that folder is the deck. Edit it under `.github/instructions/native-decks.instructions.md` (Workshop decks) and never regenerate the retained `slides/workshop/<slug>.md`.
+>
+> **Converting a module to native:** when asked to convert a workshop module, build `slides/workshop/<slug>/` by following the Workshop decks section of `.github/instructions/native-decks.instructions.md` (layout chooser and conversion steps), using `slides/workshop/01-instructions/` as the reference deck. Skip the Slidev steps below.
 
 ---
 

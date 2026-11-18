@@ -2194,21 +2194,21 @@
       'vscode-latest': '2026-11-02',
     };
     const SLIDE_NATIVE = {
-      'agentic-sdlc': true,
-      'agentic-workflows': true,
-      'copilot-azure-mcp': true,
-      'copilot-chat-internals': true,
-      'copilot-cli': true,
-      'copilot-on-github': true,
-      'copilot-primitives': true,
-      'copilot-with-foundry': true,
-      'custom-agents': true,
-      'enterprise-patterns': true,
-      'exec-strategy': true,
-      'harness-fundamentals': true,
-      'local-agentic-sdlc': true,
-      'surfaces': true,
-      'vscode-latest': true,
+      'tech-talks/agentic-sdlc': true,
+      'tech-talks/agentic-workflows': true,
+      'tech-talks/copilot-azure-mcp': true,
+      'tech-talks/copilot-chat-internals': true,
+      'tech-talks/copilot-cli': true,
+      'tech-talks/copilot-on-github': true,
+      'tech-talks/copilot-primitives': true,
+      'tech-talks/copilot-with-foundry': true,
+      'tech-talks/custom-agents': true,
+      'tech-talks/enterprise-patterns': true,
+      'tech-talks/exec-strategy': true,
+      'tech-talks/harness-fundamentals': true,
+      'tech-talks/local-agentic-sdlc': true,
+      'tech-talks/surfaces': true,
+      'tech-talks/vscode-latest': true,
     };
 
     function parseDeckHref(href) {
@@ -2261,7 +2261,7 @@
       const actions = document.createElement('div');
       actions.className = 'card-actions';
 
-      if (category === 'tech-talks' && SLIDE_NATIVE[slug]) {
+      if (SLIDE_NATIVE[`${category}/${slug}`]) {
         const notes = document.createElement('a');
         notes.className = 'card-chip card-agenda';
         notes.textContent = 'Notes';

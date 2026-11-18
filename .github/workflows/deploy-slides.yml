@@ -163,7 +163,7 @@ jobs:
             CATEGORY=$(dirname "$SLIDE_FILE")
             BASENAME=$(basename "$SLIDE_FILE" .md)
             KEY="${CATEGORY}/${BASENAME}"
-            if [ "$CATEGORY" = "tech-talks" ] && [ -f "tech-talks/${BASENAME}/slides.js" ]; then
+            if [ -f "${CATEGORY}/${BASENAME}/slides.js" ]; then
               echo "🧭 ${KEY} has a native deck — keeping the Slidev source out of deployment"
               continue
             fi

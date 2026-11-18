@@ -208,7 +208,11 @@ test("native tech talks are notes-first and validated", async () => {
   assert.match(author, /### Notes contract/);
   assert.match(author, /validate:native/);
   assert.match(author, /practitioner tech talks and executive talks/i);
-  assert.match(author, /Workshop decks stay on Slidev/);
+  assert.match(author, /Workshop decks are README-led/);
+  assert.match(
+    await read(".github/instructions/native-decks.instructions.md"),
+    /The README stays the learner's source/,
+  );
   const generator = await read(".github/agents/tech-talk-generator.agent.md");
   assert.match(generator, /research\.md/);
   assert.match(generator, /Native Deck Author/);

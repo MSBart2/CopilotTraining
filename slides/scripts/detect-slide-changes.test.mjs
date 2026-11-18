@@ -15,13 +15,29 @@ function fixture(t) {
       mkdirSync(join(path, ".."), { recursive: true });
       writeFileSync(path, "");
     },
-    native(slug) {
+    native(slug, category = "tech-talks") {
       for (const file of ["index.html", "slides.js", "scenes.js", "notes.html"]) {
-        this.add(`tech-talks/${slug}/${file}`);
+        this.add(`${category}/${slug}/${file}`);
       }
     },
   };
 }
+
+test("native workshop decks replace their retained Slidev source", (t) => {
+  const f = fixture(t);
+  f.native("01-instructions", "workshop");
+  f.add("workshop/01-instructions.md");
+  f.add("workshop/02-agent-plan-mode.md");
+  f.add("workshop/00-orientation/images/wizard.png");
+  const plan = detectSlideChanges([
+    "slides/workshop/01-instructions/slides.js",
+    "slides/workshop/01-instructions.md",
+    "slides/workshop/02-agent-plan-mode.md",
+    "slides/workshop/00-orientation/images/wizard.png",
+  ], f.root);
+  assert.deepEqual(plan.changed_native, ["01-instructions"]);
+  assert.deepEqual(plan.changed_slides, ["workshop/02-agent-plan-mode.md"]);
+});
 
 test("native conversion satisfies talk sync without requiring a Slidev source", (t) => {
   const f = fixture(t);

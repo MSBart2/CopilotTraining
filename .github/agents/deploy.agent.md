@@ -73,15 +73,16 @@ so and stop (nothing to ship).
 
 ### Native decks
 
-Tech talks and executive talks use native HTML folders (`slides/tech-talks/<slug>/`)
-and the shared engine in `slides/native/`; workshop decks stay on Slidev.
+Tech talks, executive talks, and converted workshop modules use native HTML folders
+(`slides/tech-talks/<slug>/`, `slides/workshop/<slug>/`) and the shared engine in
+`slides/native/`; unconverted workshop modules stay on Slidev.
 
 For every native folder that is dirty, or every native folder when
 `slides/native/` changed:
 
 ```powershell
 cd slides
-npm run validate:native -- tech-talks/<slug>
+npm run validate:native -- tech-talks/<slug>   # or workshop/<slug>
 ```
 
 **A failing `validate:native` is a hard stop**, same as `--strict`.

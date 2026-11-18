@@ -45,7 +45,7 @@ page.on('response', (r) => { if (r.status() >= 400) errors.push(`HTTP ${r.status
 await page.goto(`${base}index.html?settled`);
 await page.waitForFunction(() => window.DeckRuntime);
 const deck = await page.evaluate(() => window.DECK.slides.map((s) => ({ id: s.id, title: s.title })));
-const overrides = await page.evaluate(() => Object.keys(window.SCENES || {}).filter((k) => (window.FRAMES && k in window.FRAMES) || (window.PATTERNS && k in window.PATTERNS)));
+const overrides = await page.evaluate(() => Object.keys(window.SCENES || {}).filter((k) => [window.FRAMES, window.PATTERNS, window.WORKSHOP].some((layer) => layer && k in layer)));
 for (const k of overrides) console.warn(`warning: deck scene "${k}" overrides a shared frame or pattern; promote the improvement to slides/native/ or rename the scene`);
 if (shots) fs.mkdirSync(shots, { recursive: true });
 
@@ -56,15 +56,20 @@ const inspect = () => page.evaluate(() => {
   const scenes = [...slide.querySelectorAll('svg.scene')];
   const unlabeled = scenes.filter((s) => !s.getAttribute('aria-label')).length;
   const out = [];
-  const texts = [...slide.querySelectorAll('.stage-body :is(h1,h2,p,li,.pill), svg.scene text')];
+  const texts = [...slide.querySelectorAll('.stage-body :is(h1,h2,h3,p,li,td,th,pre,.pill), svg.scene text')];
   for (const el of texts) {
     const r = el.getBoundingClientRect();
     if (!r.width) continue;
     if (r.left < stage.left - 1 || r.right > stage.right + 1 || r.top < stage.top - 1 || r.bottom > stage.bottom + 1)
       out.push(`"${el.textContent.trim().slice(0, 40)}" leaves the frame`);
   }
+  // HTML text clipped by its own box is unreadable on a projector.
+  for (const el of slide.querySelectorAll('.stage-body :is(pre, .ws-card, .ws-panel, .ws-seg, td)')) {
+    if (el.scrollHeight > el.clientHeight + 2 || el.scrollWidth > el.clientWidth + 2)
+      out.push(`"${el.textContent.trim().slice(0, 40)}" overflows its box`);
+  }
   const progress = slide.querySelector('.deck-progress')?.getBoundingClientRect();
-  const body = [...slide.querySelectorAll('.stage-body > *')];
+  const body = [...slide.querySelectorAll('.stage-body > *, .stage-body :is(.ws-card, .ws-panel)')];
   if (progress) for (const el of body) {
     const r = el.getBoundingClientRect();
     if (r.height && r.bottom > progress.top + 2) out.push(`<${el.tagName.toLowerCase()}${el.className?.baseVal !== undefined ? ` class="${el.className.baseVal}"` : el.className ? ` class="${el.className}"` : ''}> runs into the progress bar`);
@@ -163,6 +168,33 @@ for (const s of talk) {
 }
 const totalSeconds = talk.reduce((n, s) => n + s.seconds, 0);
 
+/* Workshop decks follow their module sources: every source exists and every README exercise has a workboard. */
+let handsOn = 0;
+if (deckRel.startsWith('workshop/')) {
+  const repo = path.resolve(root, '..');
+  const { sources, exercises } = await page.evaluate(() => ({
+    sources: window.DECK.meta.sources || [],
+    exercises: window.DECK.slides.filter((s) => s.exercise).map((s) => ({ id: s.exercise.id, minutes: s.exercise.minutes || 0, file: s.exercise.file }))
+  }));
+  if (!sources.length) fail('workshop', 'DECK.meta.sources lists no module README');
+  const boards = new Map(exercises.map((e) => [e.id, e]));
+  handsOn = exercises.reduce((n, e) => n + e.minutes, 0);
+  for (const src of sources) {
+    const file = path.join(repo, src);
+    if (!fs.existsSync(file)) { fail('workshop', `source ${src} does not exist`); continue; }
+    if (!src.endsWith('README.md')) continue;
+    const linked = [...fs.readFileSync(file, 'utf8').matchAll(/\|\s*\[(\d+\.\d+)\]\((exercise-[\w.-]+\.md)\)/g)];
+    for (const [, id, name] of linked) {
+      const board = boards.get(id);
+      const rel = path.posix.join(path.posix.dirname(src), name);
+      if (!board) fail('workshop', `exercise ${id} in ${src} has no workboard slide`);
+      else if (board.file !== rel) fail('workshop', `exercise ${id} links ${board.file}; ${src} links ${rel}`);
+      if (!fs.existsSync(path.join(repo, rel))) fail('workshop', `${rel} does not exist`);
+      if (board && !board.minutes) fail('workshop', `exercise ${id} has no hands-on minutes`);
+    }
+  }
+}
+
 /* Print: one settled page per slide */
 const pdf = await page.pdf({ width: '16in', height: '9in', printBackground: true });
 const pages = (pdf.toString('latin1').match(/\/Type\s*\/Page[^s]/g) || []).length;
@@ -174,6 +206,6 @@ await browser.close();
 server.close();
 
 console.log(report.join('\n'));
-console.log(`\n${deck.length} slides · ${report.filter((l) => l.includes('pending')).length} pending · PDF ${pages} pages · talk ${Math.floor(totalSeconds / 60)}:${String(totalSeconds % 60).padStart(2, '0')}`);
+console.log(`\n${deck.length} slides · ${report.filter((l) => l.includes('pending')).length} pending · PDF ${pages} pages · talk ${Math.floor(totalSeconds / 60)}:${String(totalSeconds % 60).padStart(2, '0')}${handsOn ? ` · hands-on ${handsOn} min` : ''}`);
 if (failures.length) { console.log(`\n✗ ${failures.length} problem(s)\n  ${failures.join('\n  ')}`); process.exit(1); }
 console.log('✓ native deck checks passed');

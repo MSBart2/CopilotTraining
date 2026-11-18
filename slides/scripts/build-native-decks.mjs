@@ -3,7 +3,7 @@ import { cpSync, copyFileSync, existsSync, mkdirSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
-import { discoverNativeDecks } from "./native-decks.mjs";
+import { NATIVE_CATEGORIES, discoverNativeDecks } from "./native-decks.mjs";
 
 const scriptsDir = fileURLToPath(new URL(".", import.meta.url));
 const slidesRoot = join(scriptsDir, "..");
@@ -18,12 +18,12 @@ if (deckIndex >= 0 && !deckFilter) {
   console.error("--deck requires a slug.");
   process.exit(2);
 }
-if (folderFilter && folderFilter !== "tech-talks") {
-  console.error("Native decks are available only in tech-talks.");
+if (folderFilter && !NATIVE_CATEGORIES.includes(folderFilter)) {
+  console.error(`Native decks are available only in ${NATIVE_CATEGORIES.join(", ")}.`);
   process.exit(2);
 }
 
-const available = discoverNativeDecks(slidesRoot);
+const available = discoverNativeDecks(slidesRoot, folderFilter ? [folderFilter] : NATIVE_CATEGORIES);
 const decks = available.filter((deck) => !deckFilter || deck.slug === deckFilter);
 if (deckFilter && !decks.length) {
   console.log(`No native deck selected for ${deckFilter}; Slidev build selection is unchanged.`);
@@ -64,9 +64,11 @@ if (!existsSync(sharedSource)) throw new Error(`Native engine directory is missi
 rmSync(sharedTarget, { recursive: true, force: true });
 cpSync(sharedSource, sharedTarget, { recursive: true });
 
-mkdirSync(join(distRoot, "tech-talks"), { recursive: true });
-const logo = join(slidesRoot, "tech-talks", "sdp-logo.png");
-if (existsSync(logo)) copyFileSync(logo, join(distRoot, "tech-talks", "sdp-logo.png"));
+for (const category of new Set(decks.map((deck) => deck.category))) {
+  mkdirSync(join(distRoot, category), { recursive: true });
+  const logo = join(slidesRoot, category, "sdp-logo.png");
+  if (existsSync(logo)) copyFileSync(logo, join(distRoot, category, "sdp-logo.png"));
+}
 for (const deck of decks) {
   const target = join(distRoot, deck.category, deck.slug);
   rmSync(target, { recursive: true, force: true });
