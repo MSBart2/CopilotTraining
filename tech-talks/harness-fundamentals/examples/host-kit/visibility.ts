@@ -1,7 +1,7 @@
 // The visibility policy both apps share. One object answers every question the runtime asks before a tool runs:
 // may the agent read this, write this, run this? Rules are plain predicates over repo-relative paths, so they unit-test.
 import path from "node:path";
-import type { PermissionHandler, PermissionRequestResult } from "@github/copilot-sdk";
+import type { PermissionHandler, PermissionRequestResult } from "@microsoft/copilot-sdk";
 
 export type Rel = string;
 
@@ -21,6 +21,8 @@ export interface VisibilityRules {
   shellTextDeny: RegExp[];
   /** Domain tools the host defined and trusts. */
   customTools: Set<string>;
+  /** URLs the runtime may fetch (SDK 2.0 raises a `url` request, e.g. for curl). Omitted means none. */
+  urls?: (url: URL) => boolean;
   /** Feedback the agent receives when it reaches for something hidden. Shapes its recovery. */
   hiddenFeedback: string;
   log?: (entry: Record<string, unknown>) => void;
@@ -43,8 +45,11 @@ export function commandHeads(text: string): string[] {
   return splitSegments(text)
     .map((seg) => seg.trim().replace(/^[&.]\s+/, ""))
     .filter(Boolean)
-    .map((seg) => (seg.match(/^("[^"]+"|'[^']+'|\S+)/)?.[1] ?? "").replace(/^["']|["']$/g, "").toLowerCase().replace(/\.exe$/, ""));
+    .map((seg) => (seg.match(/^("[^"]+"|'[^']+'|\S+)/)?.[1] ?? "").replace(/^["']|["']$/g, "").toLowerCase().replace(/\.(exe|cmd)$/, ""));
 }
+
+/** The host's own servers: localhost and the loopback addresses, never a redirect target elsewhere. */
+export const isLoopbackUrl = (url: URL) => ["localhost", "127.0.0.1", "[::1]"].includes(url.hostname.toLowerCase());
 
 // Separators inside quotes belong to an argument (`node -e "a(); b()"`), so only split outside them.
 function splitSegments(text: string): string[] {
@@ -154,6 +159,16 @@ export function createVisibilityPolicy(rules: VisibilityRules) {
       case "custom-tool": {
         const base = { layer: "permission" as const, kind: "custom-tool", subject: request.toolName };
         return rules.customTools.has(request.toolName) ? allow({ ...base, rule: "host-tool" }) : deny({ ...base, rule: "unknown-tool" }, "Unknown tool.");
+      }
+      case "url": {
+        const base = { layer: "permission" as const, kind: "url", subject: request.url };
+        let url: URL;
+        try {
+          url = new URL(request.url);
+        } catch {
+          return deny({ ...base, rule: "invalid-url" }, "Not a valid URL.");
+        }
+        return rules.urls?.(url) ? allow({ ...base, rule: "allowed-url" }) : deny({ ...base, rule: "url-not-allowed" }, "Only this app's local servers are reachable.");
       }
       default:
         return deny({ layer: "permission", kind: request.kind, subject: request.kind, rule: "unhandled-kind" }, "Not available in this session.");

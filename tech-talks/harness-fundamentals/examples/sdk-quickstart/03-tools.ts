@@ -1,6 +1,6 @@
-// Step 3 · Tools: `tools` adds a tool object your app answers; `availableTools` allowlists tool names, hiding the rest.
+// Step 3 · Tools: `tools.definitions` adds a tool object your app answers; `tools.availableTools` allowlists tool names, hiding the rest.
 //   npx tsx sdk-quickstart/03-tools.ts
-import { CopilotClient, approveAll, defineTool } from "@github/copilot-sdk";
+import { CopilotClient, approveAll, defineTool } from "@microsoft/copilot-sdk";
 
 // Knowledge that lives in your systems, not in the repo.
 const OWNERS: Record<string, string> = {
@@ -22,12 +22,14 @@ const lookupOwner = defineTool("lookup_owner", {
   },
 });
 
-const client = new CopilotClient();
+const client = new CopilotClient({ mode: "coding-agent" });
 const session = await client.createSession({
   model: "auto",
-  onPermissionRequest: approveAll,
-  availableTools: ["view", "glob", "grep", "lookup_owner"],
-  tools: [lookupOwner],
+  permissions: { onRequest: approveAll },
+  tools: {
+    availableTools: ["view", "glob", "grep", "lookup_owner"],
+    definitions: [lookupOwner],
+  },
 });
 
 session.on("tool.execution_start", (e) => console.log(`[tool] ${e.data.toolName}`));

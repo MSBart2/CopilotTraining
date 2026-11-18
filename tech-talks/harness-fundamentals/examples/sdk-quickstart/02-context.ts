@@ -1,11 +1,11 @@
 // Step 2 · Context: decide who the agent is. `customize` edits one section of the system prompt and leaves the others in place.
 //   npx tsx sdk-quickstart/02-context.ts
-import { CopilotClient, approveAll } from "@github/copilot-sdk";
+import { CopilotClient, approveAll } from "@microsoft/copilot-sdk";
 
-const client = new CopilotClient();
+const client = new CopilotClient({ mode: "coding-agent" });
 const session = await client.createSession({
   model: "auto",
-  onPermissionRequest: approveAll,
+  permissions: { onRequest: approveAll },
   systemMessage: {
     mode: "customize",
     sections: {

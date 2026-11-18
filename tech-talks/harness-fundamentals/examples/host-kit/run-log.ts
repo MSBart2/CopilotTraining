@@ -1,7 +1,7 @@
 // One JSONL evidence file per run. Records decisions, tool outcomes, and repo-hook activity; never argument contents.
 import { appendFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
-import type { CopilotSession } from "@github/copilot-sdk";
+import type { CopilotSession } from "@microsoft/copilot-sdk";
 
 export function createRunLog(runDir: string, file = "events.jsonl") {
   mkdirSync(runDir, { recursive: true });

@@ -1,12 +1,12 @@
 // Fresh-eyes onboarding check: an agent that knows only what the docs say tries to get FanHub running
 // in a clean clone, and reports every place the docs and reality disagree.
 //   npx tsx apps/fresh-eyes/app.ts
-import { CopilotClient, defineTool } from "@github/copilot-sdk";
+import { CopilotClient, defineTool } from "@microsoft/copilot-sdk";
 import { readdirSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { createRunLog } from "../../host-kit/run-log.ts";
 import { EXAMPLES_DIR, prepareFanHub, stopListenerOnPort } from "../../host-kit/fanhub.ts";
-import { createVisibilityPolicy, type Rel } from "../../host-kit/visibility.ts";
+import { createVisibilityPolicy, isLoopbackUrl, type Rel } from "../../host-kit/visibility.ts";
 import { FRESH_EYES_SHELL, isDocLike, isSourceCode } from "./rules.ts";
 
 interface Finding {
@@ -68,18 +68,17 @@ const policy = createVisibilityPolicy({
   shellCommands: FRESH_EYES_SHELL,
   shellTextDeny: [/(^|[\s"'\\/])src[\\/]/i],
   customTools: new Set(["report_friction"]),
+  urls: isLoopbackUrl,
   hiddenFeedback: "A new hire follows the docs. Source code is off-limits in this session; work from the documentation and report gaps with report_friction.",
   log: (d) => log.emit({ source: "host-policy", ...d }),
 });
 
-const client = new CopilotClient({ workingDirectory: checkout.dir });
+const client = new CopilotClient({ mode: "coding-agent" });
 const session = await client.createSession({
   clientName: "fresh-eyes",
   model: process.env.MODEL || "auto",
   workingDirectory: checkout.dir,
-  enableFileHooks: true,
-  excludedTools: ["web_fetch", "web_search"],
-  tools: [reportFriction],
+  tools: { definitions: [reportFriction], excludedTools: ["web_fetch", "web_search"] },
   systemMessage: {
     mode: "customize",
     sections: {
@@ -94,8 +93,8 @@ const session = await client.createSession({
       },
     },
   },
-  onPermissionRequest: policy.onPermissionRequest,
-  hooks: { onPreToolUse: policy.onPreToolUse },
+  permissions: { onRequest: policy.onPermissionRequest },
+  hooks: { enableRepositoryHooks: true, handlers: { onPreToolUse: policy.onPreToolUse } },
 });
 log.attach(session);
 

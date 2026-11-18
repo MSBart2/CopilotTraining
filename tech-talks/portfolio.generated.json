@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-09T17:11:21.576Z",
+  "generatedAt": "2026-11-18T21:38:23.489Z",
   "source": "tech-talks/*/README.md",
   "counts": {
     "totalTalks": 32,
@@ -1720,10 +1720,10 @@
     },
     {
       "slug": "harness-fundamentals",
-      "title": "Harness Fundamentals: Getting Inside the Agent Loop",
+      "title": "Harness Fundamentals: Add an Agent Without Owning Another Harness",
       "status": "active",
       "portfolioState": "deployed",
-      "updated": "2026-11-05",
+      "updated": "2026-11-18",
       "section": "Extend and Embed",
       "audience": [
         "developer",
@@ -1731,9 +1731,9 @@
         "architect"
       ],
       "level": "applied",
-      "duration": 60,
+      "duration": 45,
       "format": "core-talk",
-      "decision": "Which of the five harness jobs do I take over for this workflow, and what does my host let the agent see, use, and do?",
+      "decision": "How do I add an agent to my app without owning another harness?",
       "prerequisites": [
         "copilot-cli"
       ],
@@ -1750,20 +1750,20 @@
         "readme": {
           "path": "tech-talks/harness-fundamentals/README.md",
           "exists": true,
-          "bytes": 8312,
-          "modified": "2026-11-05T19:16:08.556Z"
+          "bytes": 10683,
+          "modified": "2026-11-18T21:38:22.852Z"
         },
         "recipe": {
           "path": "tech-talks/harness-fundamentals/deck.recipe.yml",
           "exists": true,
-          "bytes": 12889,
-          "modified": "2026-10-30T17:46:21.161Z"
+          "bytes": 14393,
+          "modified": "2026-11-18T21:38:22.855Z"
         },
         "deck": {
           "path": "slides/tech-talks/harness-fundamentals/slides.js",
           "exists": true,
-          "bytes": 106954,
-          "modified": "2026-11-05T19:16:08.553Z"
+          "bytes": 81895,
+          "modified": "2026-11-18T21:38:22.850Z"
         },
         "notesHtml": {
           "path": "slides/tech-talks/harness-fundamentals/notes.html",

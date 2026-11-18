@@ -1,6 +1,6 @@
 // Step 4 · Control: decide what the agent can do. Every mediated read, write, and shell call asks your handler first.
 //   npx tsx sdk-quickstart/04-control.ts
-import { CopilotClient, type PermissionHandler } from "@github/copilot-sdk";
+import { CopilotClient, type PermissionHandler } from "@microsoft/copilot-sdk";
 
 const onPermissionRequest: PermissionHandler = (request) => {
   const subject =
@@ -16,8 +16,8 @@ const onPermissionRequest: PermissionHandler = (request) => {
   return { kind: "reject", feedback: "This session is read-only. Use the view tool to inspect files." };
 };
 
-const client = new CopilotClient();
-const session = await client.createSession({ model: "auto", onPermissionRequest });
+const client = new CopilotClient({ mode: "coding-agent" });
+const session = await client.createSession({ model: "auto", permissions: { onRequest: onPermissionRequest } });
 
 session.on("tool.execution_start", (e) => console.log(`[tool] ${e.data.toolName}`));
 

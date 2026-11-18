@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import path from "node:path";
 import { test } from "node:test";
-import { commandHeads, createVisibilityPolicy, sweepsHidden, toRel } from "../host-kit/visibility.ts";
+import { commandHeads, createVisibilityPolicy, isLoopbackUrl, sweepsHidden, toRel } from "../host-kit/visibility.ts";
 import { FRESH_EYES_SHELL, isDocLike, isSourceCode } from "../apps/fresh-eyes/rules.ts";
 import { BLIND_SHELL, isBlindReadable, isBlindWritable, isHiddenFromBlindTester, parseContract } from "../apps/blind-tests/rules.ts";
 
@@ -19,6 +19,7 @@ function freshEyes() {
     shellCommands: FRESH_EYES_SHELL,
     shellTextDeny: [/(^|[\s"'\\/])src[\\/]/i],
     customTools: new Set(["report_friction"]),
+    urls: isLoopbackUrl,
     hiddenFeedback: "docs only",
   });
 }
@@ -46,6 +47,16 @@ test("commandHeads splits compound commands and keeps executables", () => {
   assert.deepEqual(commandHeads("node.exe --version && Get-ChildItem -Name | Select-Object -First 3"), ["node", "get-childitem", "select-object"]);
   assert.deepEqual(commandHeads("& \"C:\\tools\\curl.exe\" http://x"), ["c:\\tools\\curl"]);
   assert.deepEqual(commandHeads("node -e \"a(); b() || c()\" | Select-Object -First 1"), ["node", "select-object"]);
+  assert.deepEqual(commandHeads("npm.cmd install; npx.cmd tsc"), ["npm", "npx"]);
+});
+
+test("fresh eyes: the runtime's URL fetches reach local servers only", async () => {
+  const p = freshEyes();
+  const fetchUrl = async (url: string) => (await p.onPermissionRequest({ kind: "url", url, intention: "" } as never, invocation)).kind;
+  assert.equal(await fetchUrl("http://localhost:5265/api/characters"), "approve-once");
+  assert.equal(await fetchUrl("http://127.0.0.1:5265/api/characters"), "approve-once");
+  assert.equal(await fetchUrl("https://nodejs.org/dist/"), "reject");
+  assert.equal(await fetchUrl("http://localhost.example.com/"), "reject");
 });
 
 test("toRel keeps paths inside the repo and rejects escapes", () => {

@@ -1,9 +1,9 @@
 // Step 5 · Evidence: watch the loop. Every delta, tool call, and result arrives as an event your app can render, count, or store.
 //   npx tsx sdk-quickstart/05-evidence.ts
-import { CopilotClient, approveAll } from "@github/copilot-sdk";
+import { CopilotClient, approveAll } from "@microsoft/copilot-sdk";
 
-const client = new CopilotClient();
-const session = await client.createSession({ model: "auto", streaming: true, onPermissionRequest: approveAll });
+const client = new CopilotClient({ mode: "coding-agent" });
+const session = await client.createSession({ model: "auto", events: { streaming: true }, permissions: { onRequest: approveAll } });
 
 session.on("assistant.message_delta", (e) => process.stdout.write(e.data.deltaContent));
 session.on("tool.execution_start", (e) => console.log(`\n[tool] ${e.data.toolName}`));

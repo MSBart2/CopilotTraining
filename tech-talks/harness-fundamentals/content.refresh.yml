@@ -1,0 +1,224 @@
+version: 1
+
+refresh:
+  talk: "tech-talks/harness-fundamentals"
+  cutoff: "2026-11-05"
+  feed:
+    url: "https://developer.microsoft.com/api/changelog/rss"
+    checked: "2026-11-18"
+    lastBuildDate: "Wed, 18 Nov 2026 12:00:42 GMT"
+  status: approved
+  approved: "2026-11-18"
+  updateLevel: structural
+  rationale: >
+    The product is now the Microsoft Copilot SDK (2.0), a breaking release, and the talk's Actionable
+    ending changes from "learn the SDK surface" to "choose the SDK instead of building or adopting another
+    harness." That moves the thesis, the Part 4 purpose, and the Today step, so the recipe needs a full
+    review the user approves. The talk keeps its four parts and the five-jobs mirror between pi and the SDK.
+    The refresh adds a decision (a scorecard for choosing a harness), qualifies one claim that is true only
+    for managed offerings, and pays for the additions by consolidating Part 4 material, because the deck's
+    notes already sum to about 66 minutes against 60 advertised.
+  userEmphasis:
+    - "Frame the talk as Relevant, Compelling, Actionable (AGENTS.md Section 3), with the Actionable step pointing to the Microsoft Copilot SDK instead of a different harness."
+    - "The product name is Microsoft Copilot SDK."
+    - "User-stated: the harness is the default in all Microsoft-owned AI experiences (Foundry, M365, Microsoft Copilot). The Official Microsoft Blog (2026-10-28) supports a softer, attributed form: 'adopted company-wide' and 'standardizing all of our Copilot experiences'. See unresolved."
+    - "Approved 2026-11-18: consolidate each example into one slide, retaining code snippets for the configuration that makes it work. Samples are follow-up learning; no live demo is planned."
+
+  presentationRevision:
+    approved: "2026-11-18"
+    decision: revise
+    scope: >
+      Retain the pi primer, SDK five-job map, licensing, general execution boundary, and
+      harness-choice argument. Consolidate the seven release-dashboard slides into release-flow;
+      consolidate blind-app, blind-result, visibility-policy, and run-evidence into blind-result.
+      Replace apps-to-embed with a dedicated fresh-eyes example in Part 3. Each example shows
+      purpose, selected configuration, result, boundary, and a follow-up link. Full walkthroughs
+      and log details move into notes rather than appendix slides.
+      The closing recap compares pi and Microsoft Copilot SDK on customization, in-process
+      hosting, multi-user boundaries, and fit. Both can embed in-process; SDK 2.0 loads its
+      native runtime in-process by default and requires no separate CLI/runtime process.
+      Highlight the SDK column in white and keep pi muted. Remove the bottom disclaimer;
+      retain the no-sandbox/no-crash-isolation caveat in notes. Present enterprise fit as a
+      requirements decision, not a categorical product ranking. Keep slide count and timing.
+    plannedSlides: 29
+    plannedTalkSeconds: 2425
+    slotMinutes: 45
+
+  accepted:
+    - title: "GitHub Copilot SDK is becoming Microsoft Copilot SDK"
+      published: "2026-10-28"
+      source: "https://github.blog/changelog/2026-10-28-github-copilot-sdk-is-becoming-microsoft-copilot-sdk/"
+      verified: "2026-11-18"
+      releaseStatus: "ga"
+      importance: "headline"
+      targetSection: "All parts; README frontmatter references and thesis; slides sdk-map, sdk-why, sdk-license, references"
+      action: "replace"
+      summary: >
+        The SDK is the programmable interface to the Microsoft Copilot harness, the shared agent foundation
+        used across Microsoft and GitHub products. The rename is phased: existing package names can keep the
+        GitHub Copilot SDK name during the transition and existing users have no immediate required changes.
+        Replace "GitHub Copilot SDK" with "Microsoft Copilot SDK" in deck prose and name the package
+        @microsoft/copilot-sdk 2.0.0 where code appears.
+      limitations:
+        - "@github/copilot-sdk is still published (latest 1.0.34 on 2026-11-18); both names exist during the transition."
+        - "Repository and docs URLs live under both github/copilot-sdk and microsoft/copilot-sdk; cite the URL each claim was read from."
+      recipeImpact: "restructure"
+      slideImpact: "patch"
+
+    - title: "Microsoft Copilot SDK 2.0: breaking API and in-process runtime"
+      published: "2026-11-17"
+      source: "https://commandline.microsoft.com/microsoft-copilot-sdk-2-0-github/"
+      verified: "2026-11-18"
+      releaseStatus: "ga"
+      importance: "headline"
+      targetSection: "Part 2 sdk-map and release-flow, with API detail in follow-up notes; Part 3 blind-result and fresh-eyes; examples/"
+      action: "replace"
+      summary: >
+        2.0 requires a client mode (coding-agent or empty), moves permission handling to permissions.onRequest,
+        groups tools under tools.definitions / availableTools / excludedTools, moves hooks under
+        hooks.handlers with hooks.enableRepositoryHooks, and moves streaming under events. The bundled runtime
+        is hosted in the host's process by default. The repository examples were ported (5 quickstarts, 2 apps,
+        2 host-kit files): tsc exits 0 and 20 unit tests pass. On 2026-11-18 all five quickstarts and both apps
+        ran live against 2.0.0. Two port gaps surfaced in those runs and are fixed: the new url permission kind
+        (now allowed for loopback hosts only) and Windows npm.cmd shims in the shell allowlist.
+      limitations:
+        - "Live runs on 2026-11-18 (Node 26.13.0, Windows, FanHub 0ea9e78): blind-tests reran 14 tests, 12 pass and 2 fail, the same two failures as the earlier 1.0.26 run (12 tests, 10 pass and 2 fail); fresh-eyes reached GET /api/characters 200 after recovering from a better-sqlite3 native build failure on Node 26. Repository hooks fired with session-level workingDirectory."
+        - "The referee's BUGS.md mapping for the POST 500 varies by run (#19 on 1.0.26, #6 on both 2.0 runs); neither entry documents a 500. The deck treats the mapping as a lead."
+        - "Article details beyond the documented API (container hosting, Rust runtime port) stay out of slides unless confirmed in first-party docs."
+      recipeImpact: "revise"
+      slideImpact: "patch"
+
+    - title: "The case for the Microsoft Copilot SDK as the harness choice"
+      published: "2026-10-28"
+      source: "https://blogs.microsoft.com/blog/2026/10/28/introducing-the-microsoft-copilot-harness-unlocking-the-potential-of-truly-multi-model-agentic-work/"
+      verified: "2026-11-18"
+      releaseStatus: "ga"
+      importance: "headline"
+      targetSection: "Part 4 retitled Controls and the Choice; new slide choose-harness; slide one-harness moved up as evidence; Today first step"
+      action: "add"
+      summary: >
+        Vendor claims usable once and labeled as Microsoft's. Portfolio claim, quoted from this blog: the
+        harness is one "we've adopted company-wide," it "powers Copilot Code, Copilot Studio, the GitHub
+        Copilot app, the CLI, VS Code, and more," and "we're standardizing all of our Copilot experiences" on
+        it. Also: builders can use the same harness Microsoft and
+        GitHub ship in their own products without maintaining it; the platforms stay open so other harnesses
+        and frameworks still plug in; 20+ frontier models plus BYOK. The new choose-harness slide turns the
+        five jobs into a scorecard (who maintains the loop, how a second user is isolated, where tool
+        execution runs, model reach, what the audit trail is, what we give up) and ends with a one-method spike.
+        Source map for the rows: the Microsoft blog supports maintained engine and model reach (20+ models,
+        BYOK); the SDK docs (multi-tenancy.md, scaling.md, in-process-runtime.md, README.md under
+        https://raw.githubusercontent.com/microsoft/copilot-sdk/main/) support multi-user hosting, language
+        reach, and execution placement. Each row cites its own source when the slide is written.
+      limitations:
+        - "Vendor-authored. Label once on the scorecard slide, not on every row."
+        - "The GitHub same-model study and benchmarks are also GitHub-authored; label once."
+        - "The scorecard is a decision aid. It reports no measured numbers from this repository."
+      recipeImpact: "restructure"
+      slideImpact: "regenerate"
+
+    - title: "Microsoft Copilot harness in Foundry Agent Service"
+      published: "2026-10-28"
+      source: "https://devblogs.microsoft.com/foundry/microsoft-copilot-harness-in-foundry"
+      verified: "2026-11-18"
+      releaseStatus: "preview"
+      importance: "supporting"
+      targetSection: "Slide one-harness"
+      action: "update"
+      summary: >
+        In Foundry the managed offering runs the agent loop and sandbox, so "Microsoft runs the loop and
+        sandbox" is true there and only there. A self-hosted SDK app runs the loop in its own process.
+        Foundry's hosted harness is a public preview; the slide states that. Related how-to:
+        https://learn.microsoft.com/en-us/azure/foundry/agents/how-to/use-tools-skills-copilot-harness
+      limitations:
+        - "Public preview at the verified date."
+      recipeImpact: "confirm"
+      slideImpact: "patch"
+
+    - title: "Copilot Studio offers the Microsoft Copilot harness as one of three harnesses"
+      published: "2026-10-28"
+      source: "https://learn.microsoft.com/en-us/microsoft-copilot-studio/harnesses-overview"
+      verified: "2026-11-18"
+      releaseStatus: "ga"
+      importance: "supporting"
+      targetSection: "Slide one-harness"
+      action: "update"
+      summary: >
+        Studio lists three harnesses: Microsoft Copilot (described as the most capable option), Customer
+        Conversation, and standard. The standard harness stays supported with no forced switch (FAQ:
+        https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/faqs-copilot-harness).
+        The slide says "available in" for Studio and keeps "default" out until a source supports it.
+      limitations:
+        - "Studio's own docs describe a choice among harnesses, which does not match 'default everywhere'."
+      recipeImpact: "confirm"
+      slideImpact: "patch"
+
+    - title: "SDK 2.0 session sandbox, experimental"
+      published: "2026-11-17"
+      source: "https://www.npmjs.com/package/@microsoft/copilot-sdk (SandboxConfig, marked @experimental, in the shipped 2.0.0 type definitions); runtime hosting: https://raw.githubusercontent.com/microsoft/copilot-sdk/main/docs/setup/in-process-runtime.md; MXC: https://github.com/microsoft/mxc/blob/main/README.md"
+      verified: "2026-11-18"
+      releaseStatus: "experimental"
+      importance: "supporting"
+      targetSection: "Slide host-boundary (one beat in the slide, MXC detail in notes only); Part 4 pre-flight"
+      action: "add"
+      summary: >
+        The loop and the tool execution are separate boundaries. In-process hosting gives neither crash
+        isolation nor a sandbox. 2.0 adds an experimental permissions.sandbox session option (enabled,
+        userPolicy for filesystem and network, allowBypass default false, credential masking) that needs
+        runtime-version support. Local OS enforcement comes from MXC (ProcessContainer on Windows, bubblewrap
+        on Linux, Seatbelt on macOS). The blind tester today is policy-based ordinary Node processes and is
+        not sandboxed; the slide says so.
+      limitations:
+        - "Experimental in the SDK type definitions; version support for the runtime is required."
+        - "Not exercised here. A sandboxed blind-test run stays a proposal until built and observed."
+      recipeImpact: "revise"
+      slideImpact: "patch"
+
+  ignored:
+    - title: "Copilot at Microsoft Ignite: expanding what's possible with intelligence built for work"
+      source: "https://www.microsoft.com/en-us/copilot/blog/2026/11/17/copilot-at-microsoft-ignite-expanding-whats-possible-with-intelligence-built-for-work/"
+      reason: >
+        No mention of the harness. It mentions MXC for local agents on devices with Agent 365, Intune, Defender
+        and Windows, which fits an enterprise-controls talk better than this one.
+      relatedTalks: ["enterprise-patterns"]
+    - title: "Container hosting, Rust runtime port, and multi-tenant deployment detail from the SDK 2.0 article"
+      source: "https://commandline.microsoft.com/microsoft-copilot-sdk-2-0-github/"
+      reason: >
+        Containers are Microsoft's hosting opinion for cloud offerings. They do not change what a harness
+        does, so the deck mentions them in one sentence of notes at most.
+      relatedTalks: ["enterprise-patterns"]
+
+  removals:
+    - "Slide one-harness claim 'Microsoft runs the loop and sandbox' as a general statement; it becomes true only for managed offerings."
+    - "Slide apps-to-embed and slide model-results shrink or merge (candidates from the recipe proposal) to repay the time the scorecard needs."
+    - "Slide run-log-lines merges into run-evidence."
+    - "Presentation revision: sdk-why and sdk-loop through sdk-evidence merge into release-flow; blind-app, visibility-policy, and run-evidence merge into blind-result. apps-to-embed becomes fresh-eyes in Part 3."
+
+  anomalies:
+    - "Rename is phased: both @github/copilot-sdk (1.0.34) and @microsoft/copilot-sdk (2.0.0) are published; docs exist under both github/ and microsoft/ repositories."
+    - "Foundry's Microsoft Copilot harness is a public preview (Foundry blog, 2026-10-28; its only claim is 'Microsoft runs the agent loop and sandbox' for Foundry Agent Service), while the claim being repeated is 'default everywhere'."
+    - "Two blogs, two scopes: the Official Microsoft Blog makes the company-wide claim; the Foundry blog covers Foundry only and has no portfolio claim."
+    - "Copilot Managed Runtime (microsoft.com/copilot/products/copilot-managed-runtime) uses a different SDK (@microsoft/cmr-apps, CLI @microsoft/cmr-cli), never mentions the harness, and cannot source the claim. The names can be confused, so the notes say so once."
+    - "Copilot Studio documents three harnesses and keeps the standard one supported; 'default' does not match that page."
+    - "The Ignite Copilot blog (2026-11-17) mentions no harness, so it cannot source the M365 or Microsoft Copilot app claim."
+
+  recipeReview:
+    required: true
+    question: >
+      Approved presentation revision: keep the four-part harness-choice argument and consolidate
+      each example into one slide with its key configuration, result, boundary, and follow-up link.
+      Preserve the pi primer, SDK job map, licensing, and general permission-versus-isolation concept.
+      Move detailed walkthroughs to the notes and linked samples; plan no live demo.
+      The revised recipe has 29 slides and 40:25 of content in a 45-minute slot.
+
+  unresolved:
+    - claim: "Microsoft Copilot SDK is the default harness in all Microsoft-owned AI experiences, including M365 and the Microsoft Copilot app."
+      status: "Partly sourced. The Official Microsoft Blog (2026-10-28, authored by the Foundry CVP and the GitHub CTO) supports: adopted company-wide; powers Copilot Code, Copilot Studio, the GitHub Copilot app, the CLI, VS Code, 'and more'; standardizing all of our Copilot experiences on it; and the Command Line article (2026-11-17) says 'powering products across our entire portfolio'. No first-party page checked says 'default' or names M365 or the Microsoft Copilot app. The deck uses the attributed wording 'Microsoft says it has adopted this harness company-wide' and stays silent on M365 and the Microsoft Copilot app until a source names them."
+    - claim: "Runtime license and source availability."
+      status: "Unverified. The 'when pi or your own harness wins' boundary makes no claim either way."
+
+  validation:
+    firstPartySourcesVerified: true
+    readmePatched: true
+    recipeApproved: true
+    slidesRegenerated: true
+    deckBuildPassed: true

@@ -14,7 +14,7 @@
     "node": ">=20"
   },
   "dependencies": {
-    "@github/copilot-sdk": "1.0.26"
+    "@microsoft/copilot-sdk": "2.0.0"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

@@ -1,13 +1,13 @@
 // Blind test writer: the agent writes API tests from the contract alone. It never sees the implementation or the
 // bug list. Afterwards a separate referee session, which may read BUGS.md, maps each failure to a documented bug.
 //   npx tsx apps/blind-tests/app.ts
-import { CopilotClient, defineTool, type PermissionHandler } from "@github/copilot-sdk";
+import { CopilotClient, defineTool, type PermissionHandler } from "@microsoft/copilot-sdk";
 import { execFileSync, spawn } from "node:child_process";
 import { cpSync, existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { createRunLog } from "../../host-kit/run-log.ts";
 import { EXAMPLES_DIR, prepareFanHub } from "../../host-kit/fanhub.ts";
-import { createVisibilityPolicy } from "../../host-kit/visibility.ts";
+import { createVisibilityPolicy, isLoopbackUrl } from "../../host-kit/visibility.ts";
 import { BLIND_SHELL, BLIND_TEST_DIR, BLIND_TEXT_DENY, isBlindReadable, isBlindWritable, isHiddenFromBlindTester, parseContract } from "./rules.ts";
 
 const PORT = Number(process.env.FANHUB_PORT ?? 5299);
@@ -57,19 +57,18 @@ const policy = createVisibilityPolicy({
   shellCommands: BLIND_SHELL,
   shellTextDeny: BLIND_TEXT_DENY,
   customTools: new Set(["api_contract"]),
+  urls: isLoopbackUrl,
   hiddenFeedback:
     "You are testing a black box. The implementation and docs are hidden on purpose. Use api_contract and live HTTP calls to learn how the API behaves.",
   log: (d) => log.emit({ source: "host-policy", ...d }),
 });
 
-const client = new CopilotClient({ workingDirectory: checkout.dir });
+const client = new CopilotClient({ mode: "coding-agent" });
 const session = await client.createSession({
   clientName: "blind-tests",
   model: process.env.MODEL || "auto",
   workingDirectory: checkout.dir,
-  enableFileHooks: true,
-  excludedTools: ["web_fetch", "web_search"],
-  tools: [apiContract],
+  tools: { definitions: [apiContract], excludedTools: ["web_fetch", "web_search"] },
   systemMessage: {
     mode: "customize",
     sections: {
@@ -85,8 +84,8 @@ const session = await client.createSession({
       },
     },
   },
-  onPermissionRequest: policy.onPermissionRequest,
-  hooks: { onPreToolUse: policy.onPreToolUse },
+  permissions: { onRequest: policy.onPermissionRequest },
+  hooks: { enableRepositoryHooks: true, handlers: { onPreToolUse: policy.onPreToolUse } },
 });
 log.attach(session);
 
@@ -141,8 +140,8 @@ const referee = await client.createSession({
   clientName: "blind-tests-referee",
   model: process.env.MODEL || "auto",
   workingDirectory: checkout.dir,
-  availableTools: ["view", "grep", "glob"],
-  onPermissionRequest: readOnly,
+  tools: { availableTools: ["view", "grep", "glob"] },
+  permissions: { onRequest: readOnly },
 });
 const mapping = failing.length === 0 ? undefined : await referee.sendAndWait(
   {

@@ -10,14 +10,34 @@
   const describeRows = (s, rows) =>
     `${s.title}. ${rows.map((r) => `${r.label}. ${r.detail} ${r.proof || ''}`).join(' ')}`;
 
-  const codePanel = (s, y) => {
+  const codePanel = (s, y, width = W) => {
     if (!s.code?.length) return { markup: '', height: 0 };
     const height = 44 + 20 * s.code.length;
     const markup =
-      svg.rect(0, y, W, height, { cls: 'box soft', r: 12 }) +
+      svg.rect(0, y, width, height, { cls: 'box soft', r: 12 }) +
       svg.text(18, y + 19, s.codeSource, { cls: 't-xs t-mono', anchor: 'start' }) +
       s.code.map((line, i) => svg.text(22, y + 48 + i * 20, line, { cls: 't-sm t-mono code-line', anchor: 'start' })).join('');
     return { markup, height };
+  };
+
+  const appExample = (s) => {
+    const codeW = 864;
+    const x = codeW + 20;
+    const cardW = W - x;
+    const cardH = 140;
+    const gap = 12;
+    const code = codePanel(s, 0, codeW);
+    const cards = s.cards.map((c, i) => {
+      const y = i * (cardH + gap);
+      const body = svg.rect(x, y, cardW, cardH, { cls: 'zone', r: 14 }) +
+        svg.text(x + 20, y + 30, c.title, { cls: 't-sm z-text', anchor: 'start' }) +
+        svg.lines(x + 20, y + 60, c.detail, { cls: 't-sm', anchor: 'start', max: 49, lh: 23 });
+      return svg.g(svg.enter(body, 400 + i * 240), { cls: `z-${c.z}` });
+    }).join('');
+    const height = Math.max(code.height, s.cards.length * (cardH + gap) - gap);
+    const label = `${s.title}. ${s.code.join(' ')}. ${s.cards.map((c) => `${c.title}: ${c.detail}`).join('. ')}`;
+    const followUp = `<p class="footnote"><a href="${esc(s.followUp.href)}">${esc(s.followUp.label)}</a> · ${esc(s.followUp.detail)}</p>`;
+    return `${html.head(s)}${svg.scene(W, height, label, svg.enter(code.markup, 200) + cards, 'app-example')}${followUp}`;
   };
 
   const jobRows = (s) => {
@@ -126,6 +146,7 @@
   };
 
   const detailRows = (s) => {
+    const emphasizeRight = s.emphasize === 'right';
     const rh = s.rows.length > 5 ? 76 : 88;
     const gap = 8;
     const labelX = 24;
@@ -134,7 +155,7 @@
     // Column headings live inside the scene so they stay aligned with, and attached to, the rows.
     const top = s.columns ? 34 : 0;
     const header = s.columns
-      ? [labelX, detailX, proofX].map((x, i) => svg.text(x, 16, s.columns[i].toUpperCase(), { cls: 't-xs t-mono t-muted col-head', anchor: 'start' })).join('')
+      ? [labelX, detailX, proofX].map((x, i) => svg.text(x, 16, s.columns[i].toUpperCase(), { cls: `${emphasizeRight && i === 2 ? 't-sm' : 't-xs t-muted'} t-mono col-head`, anchor: 'start' })).join('')
       : '';
     const rows = s.rows.map((r, i) => {
       const y = top + i * (rh + gap);
@@ -143,8 +164,8 @@
         svg.rect(0, y, W, rh, { cls: 'box soft', r: 13 }) +
         svg.rect(0, y, 6, rh, { cls: 'card-edge', r: 3 }) +
         svg.lines(labelX, y + 32, r.label, { cls: 't-sm t-mono', anchor: 'start', max: 22, lh: 20 }) +
-        svg.lines(detailX, y + 32, r.detail, { cls: 't-sm', anchor: 'start', max: 45, lh: 21 }) +
-        svg.lines(proofX, y + 29, r.proof, { cls: 't-xs', anchor: 'start', max: 52, lh: 19 });
+        svg.lines(detailX, y + (emphasizeRight ? 29 : 32), r.detail, { cls: emphasizeRight ? 't-xs' : 't-sm', anchor: 'start', max: emphasizeRight ? 52 : 45, lh: emphasizeRight ? 19 : 21 }) +
+        svg.lines(proofX, y + (emphasizeRight ? 32 : 29), r.proof, { cls: emphasizeRight ? 't-sm' : 't-xs', anchor: 'start', max: emphasizeRight ? 45 : 52, lh: emphasizeRight ? 21 : 19 });
       return svg.g(svg.enter(body, 250 + i * 110), { cls: `z-${tone}` });
     }).join('');
     const rowsHeight = top + s.rows.length * rh + (s.rows.length - 1) * gap;
@@ -547,6 +568,7 @@
     flow,
     'detail-rows': detailRows,
     'code-rows': codeRows,
+    'app-example': appExample,
     'jsonl-file': jsonlFile,
     recap,
     'dashboard-mockup': dashboardMockup,
